@@ -107,6 +107,12 @@ export function ruleCoveredByPreset(
 ): boolean {
   if (rule.action !== 'Show') return false;
 
+  if (!rule.rarity) {
+    return (['Normal', 'Magic', 'Rare', 'Unique'] as const).every((rarity) =>
+      ruleCoveredByPreset({ ...rule, rarity }, presetRules),
+    );
+  }
+
   if (rule.baseTypes?.length) {
     return rule.baseTypes.every((base) =>
       baseCovered(base, rule, presetRules),

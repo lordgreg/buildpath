@@ -107,12 +107,15 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
     }
   }
 
-  rules.push({
-    action: 'Show',
-    comment: 'Six sockets',
-    sockets: { min: 6 },
-    style: SLOT_STYLES.link,
-  });
+  for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
+    rules.push({
+      action: 'Show',
+      comment: `Six sockets - ${rarity.toLowerCase()}`,
+      rarity,
+      sockets: { min: 6 },
+      style: SLOT_STYLES.link,
+    });
+  }
 
   return rules;
 }
