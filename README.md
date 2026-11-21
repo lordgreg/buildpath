@@ -5,10 +5,10 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.17.0 — quest alerts, named orb sounds, stable filenames and
-preset auto-sync are live on top of rarity-first colors, folder writing,
-saved-build updates and template coverage. Remaining work is manual QA; real
-meta capture is blocked by poe.ninja’s closed builds API.
+**Status:** v0.18.0 — demo click sounds, quest alerts, named orb sounds,
+stable filenames and preset auto-sync are live on top of rarity-first colors,
+folder writing, saved-build updates and template coverage. Remaining work is
+manual QA; real meta capture is blocked by poe.ninja’s closed builds API.
 
 ## Features
 
@@ -16,7 +16,7 @@ meta capture is blocked by poe.ninja’s closed builds API.
 - Per-league meta snapshots with all skills grouped by family
 - Normal / Strict / Very Strict (hidden in From Scratch mode)
 - Filter preview, download, copy and share links
-- Randomized loot simulator with Ctrl+V item capture and hover tooltips
+- Randomized loot simulator with Ctrl+V item capture, hover tooltips and click alerts
 - Copy/import full-build and rules-only share codes
 - The exact filter being edited is shown in the builder and the demo
 - Locked preset, My rules with templates, quick chips, conflict warnings and an item test box

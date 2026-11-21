@@ -2,6 +2,18 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.18.0 — 2026-11-22
+
+Demo click sounds.
+
+- Clicking an item in the loot simulator now plays the alert from its matching
+  filter rule.
+- Quest items, named orbs, uniques, currency and other rules with an alert are
+  audible; rules without an alert stay silent.
+- The demo synthesises short chimes approximating the game’s built-in sounds
+  rather than shipping GGG audio files.
+- Added a Sound toggle next to Show hidden; the preference is remembered.
+
 ## 0.17.0 — 2026-11-22
 
 Quest alerts and named orb sounds.

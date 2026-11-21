@@ -6,11 +6,11 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.17.0 adds quest and named-orb alerts on top of stable filenames,
-preset auto-sync, rarity-first colors, Leveling Strict Magic floors, seed labels,
-wrong-base gear hiding, section presets, template coverage and saved-build
-updates. Remaining work is manual QA; real meta capture is blocked by poe.ninja’s
-closed builds API.
+**Status:** v0.18.0 adds demo click sounds on top of quest/named-orb alerts,
+stable filenames, preset auto-sync, rarity-first colors, Leveling Strict Magic
+floors, seed labels, wrong-base gear hiding, section presets and template
+coverage. Remaining work is manual QA; real meta capture is blocked by
+poe.ninja’s closed builds API.
 
 ---
 
@@ -635,6 +635,7 @@ Implementation notes:
 - [x] A fresh random subset of drops on load and on every Randomize
 - [x] Pasted items are highlighted as new on the overlay
 - [x] Hovering a label opens the game-style tooltip; tapping pins it on touch
+- [x] Clicking a label plays the matching rule’s alert; Sound toggle; synthesised tones
 - [x] Labels spread across the full background height
 - [x] Click a label to inspect the matching rule
 - [x] Paste one or more in-game item blocks to add them

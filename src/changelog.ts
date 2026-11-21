@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.18.0',
+    date: '2026-11-22',
+    title: 'Demo click sounds',
+    notes: [
+      'Clicking an item in the loot simulator now plays the alert from its matching filter rule.',
+      'Quest items, named orbs, uniques, currency and other rules with an alert are audible; rules without an alert stay silent.',
+      'The demo synthesises short chimes approximating the game’s built-in sounds rather than shipping GGG audio files.',
+      'Added a Sound toggle next to Show hidden; the preference is remembered.',
+    ],
+    commits: [],
+    compare: 'v0.17.0...v0.18.0',
+  },
+  {
     version: '0.17.0',
     date: '2026-11-22',
     title: 'Quest alerts and named orb sounds',
