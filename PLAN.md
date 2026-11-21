@@ -6,9 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.14.0 ships template coverage badges on top of filter naming,
-folder writing and saved-build updates. Remaining work is data capture and
-manual QA.
+**Status:** v0.14.1 composes filter presets from named section presets on top of
+template coverage, filter naming, folder writing and saved-build updates.
+Remaining work is data capture and manual QA.
 
 ---
 
@@ -592,6 +592,9 @@ are always included; old links still resolve.
 Implementation notes:
 
 - `src/core/filter/generate.ts` composes `[...customRules, ...presetRules]`.
+- `src/core/filter/presets.ts` composes the full preset from named gear, gems,
+  currency, maps, uniques and junk section presets (`preset-gems-endgame-strict`).
+  The UI still exposes one global strictness.
 - `src/core/rules/templates.ts` holds the locked template rules.
 - `src/core/rules/key.ts` keys My rules per selected build; phase, strictness
   and theme never hide them.

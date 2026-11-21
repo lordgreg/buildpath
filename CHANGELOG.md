@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.14.1 — 2026-11-21
+
+Composed section presets.
+
+- Filter presets are now composed from named section presets: gear, gems,
+  currency, maps, uniques and junk.
+- Section values and generated filters are unchanged; the UI still exposes one
+  global strictness.
+- Each section preset has a stable id such as `preset-gems-endgame-strict` for
+  tests, debugging and future section-specific tuning.
+
 ## 0.14.0 — 2026-11-21
 
 Template coverage badges.

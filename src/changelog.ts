@@ -17,6 +17,18 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.14.1',
+    date: '2026-11-21',
+    title: 'Composed section presets',
+    notes: [
+      'Filter presets are now composed from named section presets: gear, gems, currency, maps, uniques and junk.',
+      'Section values and generated filters are unchanged; the UI still exposes one global strictness.',
+      'Each section preset has a stable id such as preset-gems-endgame-strict for tests, debugging and future section-specific tuning.',
+    ],
+    commits: [],
+    compare: 'v0.14.0...v0.14.1',
+  },
+  {
     version: '0.14.0',
     date: '2026-11-21',
     title: 'Template coverage badges',
