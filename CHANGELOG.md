@@ -2,6 +2,20 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.14.3 — 2026-11-21
+
+Hide wrong-base gear inside used classes.
+
+- Items in a used class but the wrong base type are now hidden, e.g. strength
+  helmets and strength/dexterity body armours in the minion preset.
+- Leveling 4+ link highlights are limited to the build’s usable slots and bases;
+  a 4-link two-hand sword no longer appears in a minion filter.
+- Unmatched items still default to visible, so the junk rules now include a
+  base-level remainder hide for restricted classes.
+- Added regression items: rare sceptre, one-hand sword, thrusting sword, magic
+  strength helmet, magic strength/dexterity body armour and a 4-link two-hand
+  sword.
+
 ## 0.14.2 — 2026-11-21
 
 Hide rares in unused slots.

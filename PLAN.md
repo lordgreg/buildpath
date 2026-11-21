@@ -6,7 +6,7 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.14.2 hides rares in unused slots at every preset on top of
+**Status:** v0.14.3 hides wrong-base gear inside used classes on top of
 section presets, template coverage, filter naming, folder writing and
 saved-build updates. Remaining work is data capture and manual QA.
 
@@ -444,10 +444,12 @@ Implementation notes:
   These 12 builds are interim: M2e replaces the selector with family → skill →
   ascendancy.
 - Gear rules resolve RePoE tags to base-type lists; slots with no tags use the
-  filter `Class` instead, so future bases keep working.
+  filter `Class` instead, so future bases keep working. Leveling 4+ link rules
+  use the same per-slot target, so they never highlight unusable classes.
 - Rare item-level floors: preset threshold for weapons/armour, 68 for
   accessories, jewels and flasks. Rares in slots the build does not use are
-  hidden at every phase and strictness.
+  hidden at every phase and strictness. Used classes with restricted bases get
+  a final Hide so wrong bases do not fall through to the default visible state.
 - Currency tiers are hand-maintained until M2b replaces them with prices.
 - Uniques are highlighted generically. Unique names are **not** valid
   `BaseType` values; the game rejects the whole filter if one appears.
