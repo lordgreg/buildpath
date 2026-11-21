@@ -7,6 +7,7 @@ import { parseItemText } from '../../core/demo/parse-item.ts';
 import known from '../../core/data/known-base-types.json';
 import { evaluateRules } from '../../core/preview/match.ts';
 import { TEMPLATES } from '../../core/rules/templates.ts';
+import { templateIsCovered } from '../../core/rules/coverage.ts';
 import {
   CHIPS,
   chipLabel,
@@ -486,6 +487,11 @@ export default function AdvancedRules({
     baseRules.filter((rule) => rule.id !== 'scratch-base'),
   );
   const lockedCount = locked.reduce((sum, [, rules]) => sum + rules.length, 0);
+  const coveredTemplates = new Set(
+    TEMPLATES.filter((template) => templateIsCovered(template, baseRules)).map(
+      (template) => template.id,
+    ),
+  );
   const addRules = (rules: Rule[]) => {
     onChange([...customRules, ...rules]);
   };
@@ -965,27 +971,54 @@ export default function AdvancedRules({
             <p className="text-[10px] uppercase tracking-wide text-zinc-600">
               Templates
             </p>
+            {coveredTemplates.size > 0 && (
+              <p className="mt-1 text-[10px] text-zinc-600">
+                “In preset” means the current preset already does this; adding
+                it only overrides the preset’s styling.
+              </p>
+            )}
             <div className="mt-1 flex flex-wrap gap-1.5">
-              {TEMPLATES.map((template) => (
-                <button
-                  key={template.id}
-                  type="button"
-                  title={template.description}
-                  onClick={() => {
-                    addRules(
-                      template.rules.map((rule) => ({
-                        ...JSON.parse(JSON.stringify(rule)),
-                        id: makeId(),
-                        section: 'custom',
-                      })),
-                    );
-                    setMessage(`Added template: ${template.name}.`);
-                  }}
-                  className="rounded-full border border-ink-600 px-2.5 py-1 text-[10px] text-zinc-300 hover:border-ink-500"
-                >
-                  + {template.name}
-                </button>
-              ))}
+              {TEMPLATES.map((template) => {
+                const inPreset = coveredTemplates.has(template.id);
+                return (
+                  <button
+                    key={template.id}
+                    type="button"
+                    title={
+                      inPreset
+                        ? 'The current preset already covers this. Adding the template overrides its styling.'
+                        : template.description
+                    }
+                    onClick={() => {
+                      addRules(
+                        template.rules.map((rule) => ({
+                          ...JSON.parse(JSON.stringify(rule)),
+                          id: makeId(),
+                          section: 'custom',
+                        })),
+                      );
+                      setMessage(
+                        inPreset
+                          ? `Added ${template.name}. It is already in the preset; this copy overrides its style.`
+                          : `Added template: ${template.name}.`,
+                      );
+                    }}
+                    className={cx(
+                      'rounded-full border px-2.5 py-1 text-[10px]',
+                      inPreset
+                        ? 'border-emerald-500/40 text-emerald-200/90 hover:border-emerald-400/60'
+                        : 'border-ink-600 text-zinc-300 hover:border-ink-500',
+                    )}
+                  >
+                    + {template.name}
+                    {inPreset && (
+                      <span className="ml-1.5 text-[9px] uppercase tracking-wide text-emerald-400">
+                        in preset
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
