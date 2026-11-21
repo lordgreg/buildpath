@@ -1,14 +1,10 @@
 import { EQUIPMENT_CLASSES } from './classes.ts';
-import type { Phase, Preset } from './presets.ts';
+import type { Preset } from './presets.ts';
 import { usedFilterClasses } from './rules/gear.ts';
 import type { Archetype } from '../archetypes/types.ts';
 import type { Rule } from './types.ts';
 
-export function junkRules(
-  archetype: Archetype,
-  preset: Preset,
-  phase: Phase,
-): Rule[] {
+export function junkRules(archetype: Archetype, preset: Preset): Rule[] {
   const used = usedFilterClasses(archetype);
   const unused = EQUIPMENT_CLASSES.filter((name) => !used.has(name));
   const allEquipment = [...EQUIPMENT_CLASSES];
@@ -56,7 +52,7 @@ export function junkRules(
     });
   }
 
-  if (phase === 'endgame' && preset.id.endsWith('very-strict')) {
+  if (unused.length > 0) {
     rules.push({
       action: 'Hide',
       comment: 'Rare gear - slots this build does not use',

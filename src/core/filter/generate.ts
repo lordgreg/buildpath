@@ -158,7 +158,7 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
   if (sections.maps) add('maps', mapRules(preset, config.phase));
   if (sections.uniques) add('uniques', uniqueRules());
 
-  add('junk', junkRules(archetype, preset, config.phase));
+  add('junk', junkRules(archetype, preset));
 
   return {
     archetype,
