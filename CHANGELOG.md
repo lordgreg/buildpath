@@ -2,6 +2,16 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.15.2 — 2026-11-22
+
+Brave flag guidance everywhere.
+
+- The `brave://flags/#file-system-access-api` instructions now appear for every
+  unsupported browser, even if Brave detection fails.
+- Copy and Reload actions sit together in the amber browser-support callout.
+- README now has a Folder writing browser support section for Chrome, Chromium,
+  Edge, Brave, Firefox and Safari.
+
 ## 0.15.1 — 2026-11-22
 
 Brave folder-writing guidance.

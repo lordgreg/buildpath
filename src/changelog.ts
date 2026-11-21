@@ -17,6 +17,18 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.15.2',
+    date: '2026-11-22',
+    title: 'Brave flag guidance everywhere',
+    notes: [
+      'The brave://file-system-access flag instructions now appear for every unsupported browser, even if Brave detection fails.',
+      'Copy and Reload actions sit together in the amber browser-support callout.',
+      'README now has a Folder writing browser support section for Chrome, Chromium, Edge, Brave, Firefox and Safari.',
+    ],
+    commits: [],
+    compare: 'v0.15.1...v0.15.2',
+  },
+  {
     version: '0.15.1',
     date: '2026-11-22',
     title: 'Brave folder-writing guidance',

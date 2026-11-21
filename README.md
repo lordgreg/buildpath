@@ -5,7 +5,7 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.15.1 — rarity-first colors, filter naming, folder writing,
+**Status:** v0.15.2 — rarity-first colors, filter naming, folder writing,
 saved-build updates and template coverage are live. Remaining work is manual
 QA; real meta capture is blocked by poe.ninja’s closed builds API.
 
@@ -36,6 +36,13 @@ QA; real meta capture is blocked by poe.ninja’s closed builds API.
 
 **Live:** https://lordgreg.github.io/filterpath/
 **Demo:** https://lordgreg.github.io/filterpath/demo.html
+
+## Folder writing browser support
+
+- Chrome, Chromium and Edge: supported.
+- Brave: disabled by default. Open `brave://flags/#file-system-access-api`, set
+  **File System Access API** to **Enabled**, relaunch Brave, then reload.
+- Firefox and Safari: download only; no folder picker.
 
 ## Development
 
