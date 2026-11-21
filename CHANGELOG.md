@@ -2,6 +2,14 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.3.1 — 2026-11-21
+
+Changelog page and selection plan.
+
+- Fixed the changelog link by serving `changelog.html` as a separate page.
+- Documented the three-step selection model: family, then skill, then ascendancy.
+- Recorded the remaining open plan items and the M2e acceptance criteria.
+
 ## 0.3.0 — 2026-11-21
 
 Changelog, matcher and leak proof.

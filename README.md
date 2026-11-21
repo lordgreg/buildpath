@@ -5,8 +5,9 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.3.0 — M1 shipped, with the preview matcher and changelog. M2
-adds themes, the inventory preview and prices; M3 adds directory sync.
+**Status:** v0.3.1 — M1 shipped, with the preview matcher and a separate
+changelog page. M2e (family → skill → ascendancy) comes next, then themes, the
+inventory preview, prices and directory sync.
 
 ## Features
 
@@ -19,7 +20,7 @@ adds themes, the inventory preview and prices; M3 adds directory sync.
 - Generated client-side; no account and no network calls
 
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md) or the
-[in-site changelog](https://lordgreg.github.io/filterpath/#/changelog).
+[in-site changelog](https://lordgreg.github.io/filterpath/changelog.html).
 
 **Live:** https://lordgreg.github.io/filterpath/
 

@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.3.1',
+    date: '2026-11-21',
+    title: 'Changelog page and selection plan',
+    notes: [
+      'Fixed the changelog link by serving changelog.html as a separate page.',
+      'Documented the three-step selection model: family, then skill, then ascendancy.',
+      'Recorded the remaining open plan items and the M2e acceptance criteria.',
+    ],
+    commits: [
+      { sha: '49caadd', message: 'fix: serve the changelog as its own page' },
+    ],
+    compare: 'v0.3.0...v0.3.1',
+  },
+  {
     version: '0.3.0',
     date: '2026-11-21',
     title: 'Changelog, matcher and leak proof',
