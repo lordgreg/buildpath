@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_STATE, parseWizardHash, wizardHash } from './wizardState.ts';
+import {
+  coerceWizardState,
+  DEFAULT_STATE,
+  parseWizardHash,
+  wizardHash,
+} from './wizardState.ts';
 
 describe('wizard hash', () => {
   it('maps an interim archetype link onto meta mode', () => {
@@ -94,5 +99,30 @@ describe('wizard hash', () => {
     );
     expect(state.leagueId).toBe('covens');
     expect(state.familyId).toBe('minion');
+  });
+});
+
+describe('coerceWizardState', () => {
+  it('normalizes an imported full build', () => {
+    const state = coerceWizardState({
+      mode: 'meta',
+      leagueId: 'covens',
+      familyId: 'bow',
+      skillId: 'toxic-rain',
+      ascendancyId: 'pathfinder',
+      phase: 'endgame',
+      strictness: 'strict',
+      theme: 'contrast',
+    });
+    expect(state).toMatchObject({
+      mode: 'meta',
+      familyId: 'bow',
+      skillId: 'toxic-rain',
+      ascendancyId: 'pathfinder',
+      phase: 'endgame',
+      strictness: 'strict',
+      theme: 'contrast',
+    });
+    expect(Object.values(state.sections).every(Boolean)).toBe(true);
   });
 });

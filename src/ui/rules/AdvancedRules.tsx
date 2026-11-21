@@ -9,12 +9,6 @@ import {
   unionChipBases,
   type ChipId,
 } from '../../core/rules/chips.ts';
-import {
-  decodeShare,
-  encodeShare,
-  SHARE_CODE_LIMIT,
-} from '../../core/share/codec.ts';
-import { copyText } from '../download.ts';
 
 const SECTION_LABELS: Record<RuleSection, string> = {
   gear: 'Build gear',
@@ -62,20 +56,6 @@ function ruleSummary(rule: Rule): string {
   return parts.join(', ');
 }
 
-function downloadJson(name: string, value: unknown): void {
-  const blob = new Blob([JSON.stringify(value, null, 2)], {
-    type: 'application/json',
-  });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement('a');
-  anchor.href = url;
-  anchor.download = name;
-  document.body.append(anchor);
-  anchor.click();
-  anchor.remove();
-  URL.revokeObjectURL(url);
-}
-
 export default function AdvancedRules({
   baseRules,
   clone,
@@ -83,7 +63,7 @@ export default function AdvancedRules({
   onClone,
   onChange,
   onReset,
-  onImportRules,
+  onImportCode,
 }: {
   baseRules: Rule[];
   clone: RuleClone | null;
@@ -91,16 +71,13 @@ export default function AdvancedRules({
   onClone: () => void;
   onChange: (clone: RuleClone) => void;
   onReset: () => void;
-  onImportRules: (rules: Rule[]) => void;
+  onImportCode: (code: string) => Promise<string | null>;
 }) {
   const [chips, setChips] = useState<ChipId[]>([]);
   const [action, setAction] = useState<'Show' | 'Hide'>('Hide');
   const [rarity, setRarity] = useState<(typeof RARITIES)[number]>('Any');
   const [itemLevel, setItemLevel] = useState('');
   const [comment, setComment] = useState('');
-  const [share, setShare] = useState<{ code: string; tooLarge: boolean } | null>(
-    null,
-  );
   const [codeInput, setCodeInput] = useState('');
   const [message, setMessage] = useState<string | null>(null);
 
@@ -177,37 +154,10 @@ export default function AdvancedRules({
     setMessage(null);
   };
 
-  const makeShare = async () => {
-    if (!clone) return;
-    const encoded = await encodeShare({
-      v: 1,
-      label: clone.label,
-      presetVersion,
-      rules: clone.rules,
-    });
-    setShare(encoded);
-  };
-
-  const copyShareLink = () => {
-    if (!share || share.tooLarge) return;
-    const params = new URLSearchParams(window.location.hash.slice(1));
-    params.set('code', share.code);
-    const url = `${window.location.origin}${window.location.pathname}${window.location.search}#${params.toString()}`;
-    void copyText(url);
-    setMessage('Share link copied. Opening it imports these rules.');
-  };
-
   const importCode = async () => {
-    try {
-      const payload = await decodeShare(codeInput);
-      onImportRules(payload.rules);
-      setCodeInput('');
-      setMessage(`Imported ${payload.rules.length} rules from a share code.`);
-    } catch (error) {
-      setMessage(
-        error instanceof Error ? error.message : 'Could not read that code',
-      );
-    }
+    const error = await onImportCode(codeInput);
+    setCodeInput('');
+    setMessage(error ?? 'Imported build code.');
   };
 
   return (
@@ -229,22 +179,6 @@ export default function AdvancedRules({
                 className="rounded-lg border border-ink-600 px-3 py-1.5 text-xs text-zinc-300 hover:border-ink-500"
               >
                 Reset to locked
-              </button>
-              <button
-                type="button"
-                onClick={() =>
-                  downloadJson(`${clone.label}-rules.json`, clone)
-                }
-                className="rounded-lg border border-ink-600 px-3 py-1.5 text-xs text-zinc-300 hover:border-ink-500"
-              >
-                Export JSON
-              </button>
-              <button
-                type="button"
-                onClick={() => void makeShare()}
-                className="rounded-lg border border-ink-600 px-3 py-1.5 text-xs text-zinc-300 hover:border-ink-500"
-              >
-                Share code
               </button>
             </>
           ) : (
@@ -591,56 +525,6 @@ export default function AdvancedRules({
             </ol>
           </div>
 
-          <details className="mt-4 rounded-lg border border-ink-700 bg-ink-900/30 p-3">
-            <summary className="cursor-pointer text-xs text-zinc-400">
-              Share code
-            </summary>
-            <div className="mt-3 space-y-3">
-              <div>
-                <p className="text-[11px] text-zinc-500">
-                  Share code for this clone (limit {SHARE_CODE_LIMIT}{' '}
-                  characters):
-                </p>
-                {share ? (
-                  <div className="mt-1 flex gap-2">
-                    <textarea
-                      readOnly
-                      value={share.code}
-                      className="h-20 min-w-0 flex-1 rounded border border-ink-600 bg-ink-950 p-2 font-mono text-[10px] text-zinc-400"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => void copyText(share.code)}
-                      className="rounded border border-ink-600 px-2 text-xs text-zinc-300"
-                    >
-                      Copy
-                    </button>
-                    <button
-                      type="button"
-                      onClick={copyShareLink}
-                      disabled={share.tooLarge}
-                      className="rounded border border-ink-600 px-2 text-xs text-zinc-300 disabled:opacity-40"
-                    >
-                      Copy link
-                    </button>
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => void makeShare()}
-                    className="mt-1 rounded border border-ink-600 px-2 py-1 text-xs text-zinc-300"
-                  >
-                    Generate code
-                  </button>
-                )}
-                {share?.tooLarge && (
-                  <p className="mt-1 text-[11px] text-amber-300">
-                    Too large for a URL; use the JSON export instead.
-                  </p>
-                )}
-              </div>
-            </div>
-          </details>
         </>
       )}
 

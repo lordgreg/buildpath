@@ -1,14 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
-import {
-  generateFilter,
-} from '../core/filter/generate.ts';
+import { generateFilter } from '../core/filter/generate.ts';
 import {
   STRICTNESS_LABELS_PUBLIC,
   STRICTNESS_ORDER,
   type Phase,
 } from '../core/filter/presets.ts';
 import { cloneKey, createClone, type RuleClone } from '../core/rules/clone.ts';
-import type { Rule } from '../core/filter/types.ts';
 import { THEMES } from '../core/filter/themes.ts';
 import { ASCENDANCIES, getAscendancy } from '../meta/ascendancies.ts';
 import { FAMILIES, getFamily } from '../meta/families.ts';
@@ -22,11 +19,13 @@ import {
 } from '../meta/index.ts';
 import type { BuildMode } from '../meta/types.ts';
 import { APP_VERSION } from '../version.ts';
-import { decodeShare } from '../core/share/codec.ts';
+import { decodeShare, encodeShare } from '../core/share/codec.ts';
+import { rebaseRules, type SavedRules } from '../core/rules/delta.ts';
 import FilterPreview from './FilterPreview.tsx';
 import AdvancedRules from './rules/AdvancedRules.tsx';
-import SavedBuilds from './presets/SavedBuilds.tsx';
-import FolderSync from './sync/FolderSync.tsx';
+import SaveBuildPanel from './save/SaveBuildPanel.tsx';
+import type { SavedBuild } from './presets/storage.ts';
+import { buildHash } from './buildSnapshot.ts';
 import {
   deleteClone,
   loadClone,
@@ -34,7 +33,11 @@ import {
 } from './rules/storage.ts';
 import { copyText, downloadFilter } from './download.ts';
 import { useWizardState } from './useWizardState.ts';
-import { wizardHash } from './wizardState.ts';
+import {
+  coerceWizardState,
+  wizardHash,
+  type WizardState,
+} from './wizardState.ts';
 
 const PHASES: { id: Phase; label: string; hint: string }[] = [
   { id: 'leveling', label: 'Leveling', hint: 'Acts and early maps' },
@@ -57,7 +60,7 @@ const CLASS_ORDER = [
   'Scion',
 ] as const;
 
-type Copied = 'filter' | 'link' | null;
+type Copied = 'code' | 'link' | null;
 
 function cx(...parts: (string | false | undefined)[]): string {
   return parts.filter(Boolean).join(' ');
@@ -146,33 +149,28 @@ export default function Wizard() {
     [state, clone, baseFilter],
   );
 
+  const currentRules: SavedRules | undefined = clone
+    ? { base: baseFilter.rules, edited: clone.rules }
+    : undefined;
+  const currentHash = buildHash(state, currentRules);
+  const [savedHash, setSavedHash] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+
   useEffect(() => {
-    const params = new URLSearchParams(window.location.hash.slice(1));
-    const code = params.get('code');
-    if (!code) return;
-    let cancelled = false;
-    void decodeShare(code)
-      .then((payload) => {
-        if (cancelled) return;
-        const next = createClone({
-          key: activeKey,
-          label: baseFilter.archetype.name,
-          presetVersion: PRESET_VERSION,
-          rules: payload.rules,
-        });
-        saveClone(next);
-        setClone(next);
-        params.delete('code');
-        const hash = params.toString();
-        window.history.replaceState(null, '', hash ? `#${hash}` : '#');
-      })
-      .catch(() => {
-        // Ignore malformed codes; the builder keeps working.
-      });
-    return () => {
-      cancelled = true;
+    if (savedHash === null) setSavedHash(currentHash);
+  }, [savedHash, currentHash]);
+
+  const dirty = savedHash !== null && currentHash !== savedHash;
+
+  useEffect(() => {
+    if (!dirty) return;
+    const handler = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = '';
     };
-  }, [activeKey, baseFilter.archetype.name]);
+    window.addEventListener('beforeunload', handler);
+    return () => window.removeEventListener('beforeunload', handler);
+  }, [dirty]);
 
   const snapshot = getSnapshot(state.leagueId);
   const family = getFamily(state.familyId);
@@ -182,12 +180,41 @@ export default function Wizard() {
     getSkill(state.leagueId, state.skillId) ?? familySkills[0] ?? null;
   const metaAscendancies = skill ? getAscendanciesForSkill(skill) : [];
 
-  const copy = async (kind: Exclude<Copied, null>) => {
+  const makePayload = () => ({
+    v: 1 as const,
+    label: filter.archetype.name,
+    presetVersion: PRESET_VERSION,
+    state,
+    baseRules: baseFilter.rules,
+    editedRules: filter.rules,
+  });
+
+  const copyCode = async () => {
+    const { code } = await encodeShare(makePayload());
+    if (code.length > 64_000) {
+      setNotice('Code is too large to copy; use Download instead.');
+      return;
+    }
+    if (await copyText(code)) {
+      setCopied('code');
+      setNotice('Build code copied. Paste it into Import code.');
+      window.setTimeout(() => setCopied(null), 2000);
+    }
+  };
+
+  const shareLink = async () => {
+    const { code, tooLarge } = await encodeShare(makePayload());
+    if (tooLarge) {
+      setNotice('Code is too large for a link; use Download instead.');
+      return;
+    }
+    const params = new URLSearchParams(wizardHash(state));
+    params.set('code', code);
     const url = new URL(window.location.href);
-    url.hash = wizardHash(state);
-    const text = kind === 'filter' ? filter.text : url.toString();
-    if (await copyText(text)) {
-      setCopied(kind);
+    url.hash = params.toString();
+    if (await copyText(url.toString())) {
+      setCopied('link');
+      setNotice('Share link copied. Opening it restores the build.');
       window.setTimeout(() => setCopied(null), 2000);
     }
   };
@@ -213,16 +240,114 @@ export default function Wizard() {
     setClone(null);
   };
 
-  const handleImportRules = (rules: Rule[]) => {
-    const next = createClone({
-      key: activeKey,
-      label: baseFilter.archetype.name,
-      presetVersion: PRESET_VERSION,
-      rules,
-    });
-    saveClone(next);
-    setClone(next);
+  const loadBuild = (build: SavedBuild) => {
+    const loaded = coerceWizardState(build.state);
+    const loadedKey = cloneKey(
+      loaded,
+      loaded.phase,
+      loaded.strictness,
+      loaded.sections,
+      loaded.theme,
+    );
+    const latestBase = generateFilter({
+      selection: loaded,
+      phase: loaded.phase,
+      strictness: loaded.strictness,
+      theme: loaded.theme,
+      sections: loaded.sections,
+      version: APP_VERSION,
+    }).rules;
+
+    let nextClone: RuleClone | null = null;
+    if (build.rules) {
+      const merged = rebaseRules(build.rules, latestBase);
+      nextClone = createClone({
+        key: loadedKey,
+        label: build.name,
+        presetVersion: PRESET_VERSION,
+        rules: merged,
+      });
+      saveClone(nextClone);
+      setSavedHash(
+        buildHash(loaded, { base: latestBase, edited: merged }),
+      );
+    } else {
+      deleteClone(loadedKey);
+      setSavedHash(buildHash(loaded, undefined));
+    }
+
+    update(loaded);
+    setClone(nextClone);
+    setNotice(`Loaded ${build.name}.`);
   };
+
+  const importCode = async (code: string): Promise<string | null> => {
+    try {
+      const payload = await decodeShare(code);
+      const importedState = coerceWizardState(
+        (payload.state ?? state) as Partial<WizardState>,
+      );
+      const importedKey = cloneKey(
+        importedState,
+        importedState.phase,
+        importedState.strictness,
+        importedState.sections,
+        importedState.theme,
+      );
+      const latestBase = generateFilter({
+        selection: importedState,
+        phase: importedState.phase,
+        strictness: importedState.strictness,
+        theme: importedState.theme,
+        sections: importedState.sections,
+        version: APP_VERSION,
+      }).rules;
+
+      const hasRules = Boolean(
+        payload.baseRules || payload.editedRules || payload.rules,
+      );
+
+      let nextClone: RuleClone | null = null;
+      if (hasRules) {
+        const edited =
+          payload.baseRules && payload.editedRules
+            ? rebaseRules(
+                { base: payload.baseRules, edited: payload.editedRules },
+                latestBase,
+              )
+            : (payload.editedRules ?? payload.rules ?? latestBase);
+        nextClone = createClone({
+          key: importedKey,
+          label: payload.label || filter.archetype.name,
+          presetVersion: PRESET_VERSION,
+          rules: edited,
+        });
+        saveClone(nextClone);
+      } else {
+        deleteClone(importedKey);
+      }
+
+      update(importedState);
+      setClone(nextClone);
+      setNotice('Imported build. Save it if you want to keep it locally.');
+      return null;
+    } catch (error) {
+      return error instanceof Error ? error.message : 'Could not read that code';
+    }
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    const code = params.get('code');
+    if (!code) return;
+    void importCode(code).then(() => {
+      params.delete('code');
+      const hash = params.toString();
+      window.history.replaceState(null, '', hash ? `#${hash}` : '#');
+    });
+    // Deliberately runs once on mount; the payload carries its own selection.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const title =
     state.mode === 'meta' && skill
@@ -242,6 +367,11 @@ export default function Wizard() {
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">
             Path of Exile 1 <span className="text-zinc-600">/</span>{' '}
             <span className="text-zinc-500">v{APP_VERSION}</span>
+            {dirty && (
+              <span className="ml-2 rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] normal-case tracking-normal text-amber-300">
+                unsaved changes
+              </span>
+            )}
           </p>
           <h1 className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             FilterPath
@@ -302,8 +432,6 @@ export default function Wizard() {
                 ))}
               </div>
             </section>
-
-            <SavedBuilds state={state} onLoad={(saved) => update(saved)} />
 
             {state.mode === 'family' && (
               <section aria-labelledby="family-heading">
@@ -372,19 +500,35 @@ export default function Wizard() {
                     League
                   </h2>
                   <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-                    <select
-                      value={state.leagueId}
-                      onChange={(event) =>
-                        update({ leagueId: event.target.value })
-                      }
-                      className="rounded-lg border border-ink-600 bg-ink-800 px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-400"
-                    >
-                      {LEAGUE_INDEX.leagues.map((league) => (
-                        <option key={league.id} value={league.id}>
-                          {league.name}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative w-32">
+                      <select
+                        value={state.leagueId}
+                        onChange={(event) =>
+                          update({ leagueId: event.target.value })
+                        }
+                        className="w-full appearance-none rounded-lg border border-ink-600 bg-ink-800 py-2 pl-3 pr-7 text-sm text-zinc-100 outline-none focus:border-gold-400"
+                      >
+                        {LEAGUE_INDEX.leagues.map((league) => (
+                          <option key={league.id} value={league.id}>
+                            {league.name}
+                          </option>
+                        ))}
+                      </select>
+                      <svg
+                        viewBox="0 0 12 12"
+                        aria-hidden="true"
+                        className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-zinc-500"
+                      >
+                        <path
+                          d="M2 4.5L6 8l4-3.5"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
                     <p className="text-xs text-zinc-500">
                       Captured {snapshot.capturedAt.slice(0, 10)} from{' '}
                       <a
@@ -607,22 +751,26 @@ export default function Wizard() {
               </button>
               <button
                 type="button"
-                onClick={() => void copy('filter')}
+                onClick={() => void copyCode()}
                 className="rounded-lg border border-ink-600 bg-ink-900/70 px-4 py-2.5 text-sm text-zinc-200 transition-colors hover:border-ink-500"
               >
-                {copied === 'filter' ? 'Copied' : 'Copy filter'}
+                {copied === 'code' ? 'Copied' : 'Copy code'}
               </button>
               <button
                 type="button"
-                onClick={() => void copy('link')}
+                onClick={() => void shareLink()}
                 className="rounded-lg px-4 py-2.5 text-sm text-zinc-400 transition-colors hover:text-white"
               >
                 {copied === 'link' ? 'Link copied' : 'Share link'}
               </button>
             </div>
             <p className="mt-2 text-[11px] text-zinc-500">
-              Share links keep mode, selection, phase, strictness and sections.
+              Copy code and Share link both carry the whole build, including
+              custom rules. Paste a code into Import code to restore it.
             </p>
+            {notice && (
+              <p className="mt-2 text-[11px] text-amber-300">{notice}</p>
+            )}
             <p className="mt-3 rounded-lg border border-ink-700 bg-ink-900/60 px-3 py-2 text-[11px] leading-relaxed text-zinc-500">
               In-game name:{' '}
               <span className="break-words font-medium text-zinc-200">
@@ -638,10 +786,15 @@ export default function Wizard() {
           </section>
         </div>
 
-        <FolderSync
+        <SaveBuildPanel
+          state={state}
+          rules={currentRules}
           fileName={filter.fileName}
           text={filter.text}
           appVersion={APP_VERSION}
+          dirty={dirty}
+          onLoad={loadBuild}
+          onSaved={() => setSavedHash(currentHash)}
         />
 
         <AdvancedRules
@@ -651,7 +804,7 @@ export default function Wizard() {
           onClone={handleClone}
           onChange={handleCloneChange}
           onReset={handleCloneReset}
-          onImportRules={handleImportRules}
+          onImportCode={importCode}
         />
 
         <FilterPreview

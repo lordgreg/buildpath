@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { parseItemText } from '../../core/demo/parse-item.ts';
 import { baseTypes } from '../../core/data/base-types.ts';
@@ -31,24 +31,36 @@ function hash(value: string, seed: number): number {
   return Math.abs(result);
 }
 
-function position(
-  index: number,
-  total: number,
-  id: string,
+function layoutPositions(
+  ids: readonly string[],
   seed: number,
-): { x: number; y: number } {
-  const columns = total <= 6 ? 3 : total <= 12 ? 4 : 5;
-  const rows = Math.max(1, Math.ceil(total / columns));
-  const column = index % columns;
-  const row = Math.floor(index / columns);
-  const jitterX = (hash(id, seed) % 7) - 3;
-  const jitterY = (hash(id, seed + 13) % 9) - 4;
-  const xStep = columns > 1 ? 60 / (columns - 1) : 0;
-  const yStep = rows > 1 ? 78 / (rows - 1) : 0;
-  return {
-    x: Math.max(18, Math.min(82, 20 + column * xStep + jitterX)),
-    y: Math.max(7, Math.min(93, 11 + row * yStep + jitterY)),
-  };
+): { x: number; y: number }[] {
+  const placed: { x: number; y: number }[] = [];
+
+  for (const id of ids) {
+    let best = { x: 50, y: 50 };
+    let bestScore = -1;
+    for (let attempt = 0; attempt < 40; attempt += 1) {
+      const x = 10 + (hash(id, seed + attempt * 17) % 80);
+      const y = 8 + (hash(id, seed + attempt * 29 + 7) % 84);
+      const score =
+        placed.length === 0
+          ? 999
+          : Math.min(
+              ...placed.map((point) =>
+                Math.hypot((x - point.x) * 1.4, y - point.y),
+              ),
+            );
+      if (score > bestScore) {
+        best = { x, y };
+        bestScore = score;
+      }
+      if (score >= 16) break;
+    }
+    placed.push(best);
+  }
+
+  return placed;
 }
 
 function pickRandomIds(pool: readonly PreviewItem[], count: number): string[] {
@@ -98,6 +110,10 @@ export default function LootSimulator({
   const shown = rows.filter((row) => row.result.shown).length;
   const hidden = rows.length - shown;
   const visible = showHidden ? rows : rows.filter((row) => row.result.shown);
+  const positions = layoutPositions(
+    visible.map((row) => row.item.id),
+    seed,
+  );
 
   const randomize = () => {
     setDropIds(pickRandomIds(pool, 14));
@@ -112,14 +128,8 @@ export default function LootSimulator({
     : -1;
   const background = `${import.meta.env.BASE_URL}demo-ground.png`;
 
-  const parse = () => {
-    const items = parseItemText(text);
-    if (items.length === 0) {
-      setMessage(
-        'No item blocks found. Paste the full item text, starting at "Item Class:".',
-      );
-      return;
-    }
+  const addItems = (items: PreviewItem[]) => {
+    if (items.length === 0) return;
     const added = items.map((item, index) => ({
       ...item,
       id: `paste-${pasted.length + index}`,
@@ -129,8 +139,34 @@ export default function LootSimulator({
     setAddedIds(added.map((item) => item.id));
     setSeed((value) => value + 1);
     setText('');
-    setMessage(`Added ${items.length} pasted item(s) to the overlay.`);
+    setMessage(`Added ${items.length} item(s) to the overlay.`);
   };
+
+  const parse = () => {
+    const items = parseItemText(text);
+    if (items.length === 0) {
+      setMessage(
+        'No item blocks found. Paste the full item text, starting at "Item Class:".',
+      );
+      return;
+    }
+    addItems(items);
+  };
+
+  useEffect(() => {
+    const onPaste = (event: ClipboardEvent) => {
+      const pastedText = event.clipboardData?.getData('text') ?? '';
+      if (!/Item Class:/i.test(pastedText)) return;
+      const items = parseItemText(pastedText);
+      if (items.length === 0) return;
+      event.preventDefault();
+      addItems(items);
+    };
+    document.addEventListener('paste', onPaste);
+    return () => document.removeEventListener('paste', onPaste);
+    // addItems closes over the current pasted count.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pasted.length]);
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-6xl flex-col px-4 py-6 sm:px-8 sm:py-10">
@@ -183,16 +219,6 @@ export default function LootSimulator({
           </button>
           <button
             type="button"
-            onClick={() => {
-              setPasted([]);
-              setMessage(null);
-            }}
-            className="rounded-lg border border-ink-600 px-4 py-2 text-sm text-zinc-300 hover:border-ink-500"
-          >
-            Clear pasted
-          </button>
-          <button
-            type="button"
             onClick={randomize}
             className="rounded-lg border border-ink-600 px-4 py-2 text-sm text-zinc-300 hover:border-ink-500"
           >
@@ -232,7 +258,7 @@ export default function LootSimulator({
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
         {visible.map(({ item, result }, index) => {
           const style = result.shown ? result.rule?.style : undefined;
-          const { x, y } = position(index, visible.length, item.id, seed);
+          const { x, y } = positions[index] ?? { x: 50, y: 50 };
           const labelStyle: CSSProperties = {
             left: `clamp(10rem, ${x}%, calc(100% - 10rem))`,
             top: `clamp(2rem, ${y}%, calc(100% - 2rem))`,
@@ -290,12 +316,7 @@ export default function LootSimulator({
         )}
 
         {selected && selectedIndex >= 0 && (() => {
-          const { x, y } = position(
-            selectedIndex,
-            visible.length,
-            selected.item.id,
-            seed,
-          );
+          const { x, y } = positions[selectedIndex] ?? { x: 50, y: 50 };
           const base = baseTypes.find(
             (entry) => entry.name === selected.item.baseType,
           );

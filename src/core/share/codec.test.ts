@@ -31,6 +31,20 @@ describe('share codes', () => {
     expect(await decodeShare(code)).toEqual(payload);
   });
 
+  it('round-trips a full build payload', async () => {
+    const payload: SharePayload = {
+      v: 1,
+      label: 'Build',
+      presetVersion: 'abc',
+      state: { mode: 'family', familyId: 'minion' },
+      baseRules: rules,
+      editedRules: rules,
+    };
+    const { code, tooLarge } = await encodeShare(payload);
+    expect(tooLarge).toBe(false);
+    expect(await decodeShare(code)).toEqual(payload);
+  });
+
   it('marks large payloads as too large', async () => {
     const payload: SharePayload = {
       v: 1,

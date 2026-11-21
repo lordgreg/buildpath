@@ -6,7 +6,14 @@ export interface SharePayload {
   v: 1;
   label: string;
   presetVersion: string;
-  rules: Rule[];
+  /** Whole build state (mode, selection, phase, strictness, theme). */
+  state?: unknown;
+  /** Generated rules at save time. */
+  baseRules?: Rule[];
+  /** Edited rules at save time. */
+  editedRules?: Rule[];
+  /** Legacy rules-only payload. */
+  rules?: Rule[];
 }
 
 const encoder = new TextEncoder();
@@ -78,7 +85,12 @@ export async function decodeShare(code: string): Promise<SharePayload> {
   }
 
   const payload = JSON.parse(decoder.decode(bytes)) as SharePayload;
-  if (payload.v !== 1 || !Array.isArray(payload.rules)) {
+  if (payload.v !== 1) throw new Error('Invalid share code');
+  const hasRules =
+    Array.isArray(payload.rules) ||
+    Array.isArray(payload.baseRules) ||
+    Array.isArray(payload.editedRules);
+  if (!hasRules && !payload.state) {
     throw new Error('Invalid share code');
   }
   return payload;

@@ -17,6 +17,16 @@ export function useWizardState(): [
 
   useEffect(() => {
     const hash = wizardHash(state);
+    try {
+      sessionStorage.setItem('filterpath:hash', hash);
+    } catch {
+      // Session storage can be blocked; the URL still carries the state.
+    }
+    if ('BroadcastChannel' in window) {
+      const channel = new BroadcastChannel('filterpath');
+      channel.postMessage({ type: 'state', hash });
+      channel.close();
+    }
     if (window.location.hash.slice(1) !== hash) {
       window.history.replaceState(null, '', `#${hash}`);
     }

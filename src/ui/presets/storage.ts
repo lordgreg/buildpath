@@ -1,3 +1,4 @@
+import type { SavedRules } from '../../core/rules/delta.ts';
 import type { WizardState } from '../wizardState.ts';
 
 export interface SavedBuild {
@@ -5,6 +6,8 @@ export interface SavedBuild {
   name: string;
   createdAt: string;
   state: WizardState;
+  /** Present when the build had an advanced clone. */
+  rules?: SavedRules;
 }
 
 const STORAGE_KEY = 'filterpath.builds.v1';
@@ -40,12 +43,19 @@ export function listBuilds(): SavedBuild[] {
   return readAll().sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
-export function saveBuild(name: string, state: WizardState): SavedBuild {
+export function saveBuild(
+  name: string,
+  state: WizardState,
+  rules?: SavedRules,
+): SavedBuild {
   const build: SavedBuild = {
     id: `build-${Date.now()}`,
     name: name.trim() || 'Untitled build',
     createdAt: new Date().toISOString(),
     state: JSON.parse(JSON.stringify(state)) as WizardState,
+    ...(rules
+      ? { rules: JSON.parse(JSON.stringify(rules)) as SavedRules }
+      : {}),
   };
   writeAll([...readAll(), build]);
   return build;

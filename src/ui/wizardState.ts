@@ -66,6 +66,31 @@ function fill(selection: BuildSelection): Pick<
   };
 }
 
+export function coerceWizardState(input: Partial<WizardState>): WizardState {
+  const selection = coerceSelection({
+    mode: input.mode,
+    familyId: input.familyId,
+    ascendancyId: input.ascendancyId,
+    leagueId: input.leagueId,
+    skillId: input.skillId,
+  });
+  const phase = input.phase === 'endgame' ? 'endgame' : 'leveling';
+  const strictness =
+    input.strictness && STRICTNESS.includes(input.strictness)
+      ? input.strictness
+      : 'normal';
+  const theme = isThemeId(input.theme) ? input.theme : 'classic';
+
+  return {
+    ...DEFAULT_STATE,
+    ...selection,
+    phase,
+    strictness,
+    theme,
+    sections: DEFAULT_SECTIONS,
+  };
+}
+
 export function parseWizardHash(hash: string): WizardState {
   const params = new URLSearchParams(hash.replace(/^#/, ''));
 
