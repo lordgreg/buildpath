@@ -171,13 +171,17 @@ steps, coarse to specific:
    - `bow` — dex; bow + quiver; evasion.
    - `melee` — str or str/dex; one- or two-hander + shield; armour.
    - `hybrid` — dex/int; claw/dagger + shield; evasion/ES.
-2. **Archetype** — a concrete skill from the current league's poe.ninja
-   snapshot, filtered by family. Examples: caster → Hexblast, Detonate Dead,
-   Righteous Fire; minion → Summon Skeletons, Summon Spectre; bow → Lightning
-   Arrow, Toxic Rain; melee → Cyclone, Boneshatter; hybrid → Frost Blades,
-   Hexblast Mines.
+2. **Archetype** — a concrete skill from a league snapshot of poe.ninja's
+   builds pages, filtered by family. Examples: caster → Hexblast, Detonate
+   Dead, Righteous Fire; minion → Summon Skeletons, Summon Spectre; bow →
+   Lightning Arrow, Toxic Rain; melee → Cyclone, Boneshatter; hybrid →
+   Frost Blades, Hexblast Mines.
 3. **Ascendancy** — only ascendancies of classes that can play the skill.
-   Drives the attribute bias, defence mix and optional slot overrides.
+   Drives the attribute bias, defence mix and reviewed exception overrides.
+   The skill owns weapon/offhand; the ascendancy owns armour and attributes.
+
+A league selector sits above the family step. It defaults to the current league
+and exposes older snapshots read-only.
 
 Resolution:
 
@@ -191,17 +195,25 @@ BuildProfile = resolveProfile(family, skill, ascendancy)
   with the family's baseline.
 - Attributes and jewel base come from the ascendancy.
 - Accessories and flasks use shared defaults.
-- File name: `FilterPath-v<ver>-<ascendancy>-<skill>-<phase>-<strictness>.filter`.
-- URL: `#family=...&skill=...&ascendancy=...&phase=...&strictness=...&sections=...`.
+- File name: `FilterPath-v<ver>-<asc>-<skill>-<lev|end>-<strictness>.filter`,
+  e.g. `FilterPath-v0.4.0-necro-spectre-lev-strict.filter`.
+- URL: `#league=...&family=...&skill=...&ascendancy=...&phase=...&strictness=...&sections=...`.
 
 Data:
 
-- `src/meta/ascendancies.ts`: all ascendancies with class, attributes, defence
-  bias and slot overrides.
-- `src/meta/meta.json`: league snapshot with skills, family, allowed classes,
-  ascendancies and play share. Captured **manually** from poe.ninja's builds
-  pages because the builds API is closed. Carries `league`, `capturedAt` and
-  `source`; refreshed by hand each league, never scraped at runtime.
+- `src/meta/ascendancies.ts`: all 19 ascendancies with class, attributes,
+  defence bias and a small reviewed exception table.
+- `src/meta/leagues/<id>.json`: one snapshot per league, with `league`,
+  `capturedAt`, `source` and skills. Each skill carries `name`, `family`,
+  `classes`, `ascendancies` and `playShare`. Target at least 4 skills per
+  family, about 20 per league.
+- `src/meta/leagues/index.json`: league order, newest first, marks the current
+  league.
+- Capture is **manual** from poe.ninja's builds pages because the builds API is
+  closed. A local CLI (`npm run meta:add`) appends or edits a skill; changes
+  land through a PR.
+- A `workflow_dispatch` Action validates meta PRs and opens a league-start
+  refresh reminder. It never fetches builds data.
 - A family-only fallback covers skills missing from the snapshot.
 
 Migration: the 12 current builds become seed skill entries. A compatibility
@@ -236,7 +248,10 @@ src/
       validate.ts        runtime validation
       data/matrix.ts     interim twelve curated builds
       index.ts           registry
-    meta/                families, skills snapshot, ascendancies (M2e)
+    meta/                families, ascendancies, league snapshots (M2e)
+      ascendancies.ts     class, attributes, defence bias, exceptions
+      leagues/<id>.json  one skill snapshot per league
+      leagues/index.json league order and current league
     filter/
       types.ts           rule model, styles
       presets.ts         leveling/endgame x strictness
@@ -267,6 +282,7 @@ src/
   changelog.ts           release and commit data for the site
 scripts/
   extract-repoe.mjs
+  meta-add.mjs           manual league snapshot editor (M2e)
   refresh-economy.mjs    M2c
 ```
 
@@ -406,7 +422,8 @@ overrides win.
   Essence, Oil, Fossil, UniqueWeapon, UniqueArmour, UniqueAccessory,
   UniqueFlask, UniqueJewel) → tiering → schema validation
 - Opens a PR (`chore(economy): refresh tiers for <league>`); no PR on failure
-- ETag cache between runs; UA `FilterPath/x.y (contact: …)`
+- ETag cache between runs; UA
+  `FilterPath/x.y (contact: lordgreg@users.noreply.github.com)`
 - Economy affects only currency/unique/div-card highlighting, never gear bases
 
 **Done:** a valid PR appears with refreshed tiers; a simulated schema break
@@ -417,12 +434,18 @@ leaves the previous file and fails the job.
 Ships before M2d so the preview reflects the final model.
 
 - [ ] Data model: `Family`, `Skill`, `Ascendancy`, `BuildProfile` resolver
-- [ ] Ascendancy table: all 19, with class, attributes and defence bias
-- [ ] Covens meta snapshot (~30 skills) captured manually from poe.ninja
+- [ ] Ascendancy table: all 19, with class, attributes, defence bias and a
+  reviewed exception table
+- [ ] League snapshots: Covens + Standard seed, at least 4 skills per family
+  (~20 total), with a league selector
+- [ ] `npm run meta:add` CLI and meta schema validation
+- [ ] `workflow_dispatch` Action that validates meta PRs and opens a
+  league-start reminder
 - [ ] Three-step UI replacing the flat 12-build grid
-- [ ] Home, skill and ascendancy encoded in the share link and file name
+- [ ] League, family, skill and ascendancy encoded in the share link and file name
 - [ ] Compatibility adapter for old share links and existing goldens
-- [ ] Tests: family filtering, ascendancy filtering, profile resolution
+- [ ] Tests: meta schema, league/family filtering, ascendancy filtering,
+  profile resolution
 
 **Done:** the selector goes family → skill → ascendancy; changing skill changes
 weapon/offhand, changing ascendancy changes armour/attributes; old links still
@@ -460,15 +483,15 @@ See what the filter does before downloading it.
   Armour slots are first-class: helmet, body armour, gloves and boots each get
   a fixed tile, plus weapon, offhand, belt, amulet, two rings and five flask
   slots. Jewel sockets are added if the layout has room.
-- [ ] Each tile shows the base name, rarity colour, a simple class glyph and a
-  shown/hidden badge. Tapping or hovering a tile explains the decision with the
-  matching rule's comment and index from `evaluateRules()`.
+- [ ] Each tile shows the base name, rarity colour, an original FilterPath SVG
+  class icon and a shown/hidden badge. Tapping or hovering a tile explains the
+  decision with the matching rule's comment and index from `evaluateRules()`.
 - [ ] A header summarises "N shown / M hidden" per section, so a strictness
   change is visible at a glance.
 - [ ] The preview is a simulation of FilterPath's decision for representative
   bases, not a game render; it does not imply real stat rolls.
-- [ ] No GGG art. Tiles are CSS/SVG with text and simple class glyphs, so the
-  preview stays offline and licence-clean.
+- [ ] Original SVG icons per item class (~30), drawn for FilterPath. No GGG
+  assets. Text and CSS remain the fallback when an icon is missing.
 - [ ] Live updates with build, phase, strictness and section toggles.
 
 **Done:** every armour slot has at least one fixture and changes state with the
@@ -529,7 +552,7 @@ old file as a backup; unrelated filters in the folder are unchanged.
 - Golden: full filter output per archetype/preset, diffed as text
 - Syntax: a small parser that checks every block's conditions and actions
 - M2d: matcher tests for first-match-wins, `Continue`, and hidden gear
-- M2e: family/skill/ascendancy filtering, profile resolution, compatibility adapter
+- M2e: meta schema, league/family filtering, profile resolution, compatibility adapter
 - M3: mock directory handle; permission, backup, overwrite and no-delete paths
 - M2c: refresh script run against fixture JSON, schema failure path tested
 - CI runs `npm test` before every build
@@ -547,7 +570,9 @@ old file as a backup; unrelated filters in the folder are unchanged.
 - Conventional Commits
 - On every release: bump `package.json`, add the release to
   `src/changelog.ts` and `CHANGELOG.md`, tag `v<version>`, then deploy
-- The poe.ninja skill snapshot is captured by hand; never scrape the builds API
+- The poe.ninja skill snapshot is captured by hand with `meta:add`; never scrape
+  the builds API
+- Meta changes land by PR; the validation Action must pass
 - Keep old share links working until 1.0
 - Every archetype carries `verifiedFor`; bump it when checked against a league
 - Disclaimer stays visible: *"This product isn't affiliated with or endorsed by
@@ -561,6 +586,8 @@ old file as a backup; unrelated filters in the folder are unchanged.
 |---|---|
 | Matrix goes stale each league | `verifiedFor` + changelog + checklist per league |
 | Meta snapshot misses a new meta skill | `capturedAt`, family-only fallback, manual refresh each league |
+| Manual meta edits drift or break the schema | `meta:add` CLI, schema test in CI, validation Action on PRs |
+| League snapshots accumulate with old schemas | migration test and a schema version field per snapshot |
 | Skill → class/ascendancy mapping is wrong | resolver tests; UI only offers allowed classes |
 | Old share links break after M2e | compatibility adapter and a migration test |
 | `HasExplicitMod` breaks between patches | prefer tags/classes; review before use |
@@ -581,18 +608,14 @@ old file as a backup; unrelated filters in the folder are unchanged.
 
 ## 9. Open items
 
-- Contact email for the poe.ninja User-Agent string (M2c)
-- Whether the repo stays public (Pages on free plan requires it)
-- Confirm `master` as the default branch in the Actions workflow if it is renamed
+- Whether to seed the league selector with Covens + Standard or Covens only
+- SVG icon scope: one per item class (~30) or one per equipment slot
+- How off-meta skills behave: family-only fallback or a manual "add skill" field
+- Whether the M2e release is 0.4.0 (current proposal) or a minor bump under 0.3
 - Verify the Windows filter path (`Documents/My Games/Path of Exile`) in the
   install copy, not just Proton
 - Decide how M3b handles old versioned files: keep as `.bak`, archive, or offer
   removal (default: keep and flag)
-- Decide whether the M2d preview uses text-only tiles permanently (no GGG art)
-  or adds original FilterPath illustrations
-- Confirm the five families, especially whether `melee` splits into
-  strength and dexterity variants
-- Choose the poe.ninja snapshot cadence and target skill count (start ~30)
-- Decide whether an ascendancy may override weapon/offhand as well as armour
 - Add the poe.ninja attribution wording to the selector
 - Repository is live at https://lordgreg.github.io/filterpath/
+- Changelog is live at https://lordgreg.github.io/filterpath/changelog.html
