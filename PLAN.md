@@ -370,13 +370,37 @@ See what the filter does before downloading it.
   inventory grid. Every tile shows the item name and rarity colour, with a
   shown/hidden state. Hidden tiles are dimmed; a "show hidden" toggle reveals
   them.
+- [ ] Paper-doll layout, side by side on desktop and stacked on mobile:
+
+  ```
+  EQUIPMENT                         INVENTORY (12 x 5)
+  -------------                     ------------------
+  Weapon      Offhand               [ tile ] [ tile ] [ tile ] ...
+  Helmet      Body armour           [ tile ] [ tile ] [ tile ] ...
+  Gloves      Boots                 [ tile ] [ tile ] [ tile ] ...
+  Belt        Amulet                [ tile ] [ tile ] [ tile ] ...
+  Ring 1      Ring 2                ...
+  Flasks x5
+  ```
+
+  Armour slots are first-class: helmet, body armour, gloves and boots each get
+  a fixed tile, plus weapon, offhand, belt, amulet, two rings and five flask
+  slots. Jewel sockets are added if the layout has room.
+- [ ] Each tile shows the base name, rarity colour, a simple class glyph and a
+  shown/hidden badge. Tapping or hovering a tile explains the decision with the
+  matching rule's comment and index from `evaluateRules()`.
+- [ ] A header summarises "N shown / M hidden" per section, so a strictness
+  change is visible at a glance.
+- [ ] The preview is a simulation of FilterPath's decision for representative
+  bases, not a game render; it does not imply real stat rolls.
 - [ ] No GGG art. Tiles are CSS/SVG with text and simple class glyphs, so the
   preview stays offline and licence-clean.
 - [ ] Live updates with build, phase, strictness and section toggles.
 
-**Done:** switching phase or strictness visibly changes which sample items are
+**Done:** every armour slot has at least one fixture and changes state with the
+archetype; switching phase or strictness visibly changes which sample items are
 shown; a normal ilvl 5 helmet is hidden while an ilvl 86 rare ring is shown;
-the preview loads no external assets.
+tapping a tile shows why; the preview loads no external assets.
 
 ### M3 — Directory sync
 
