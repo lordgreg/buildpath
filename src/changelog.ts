@@ -17,6 +17,26 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.10.1',
+    date: '2026-11-21',
+    title: 'Meta picking, import code, random drops and item tooltips',
+    notes: [
+      'Meta mode: any skill can be picked across families; only the ascendancies recorded for that skill are offered, with their snapshot share.',
+      'Renamed the filter copy button to "Copy filter" and reduced advanced import to a single "Import code" field; the JSON file picker is gone.',
+      'The loot simulator randomizes a fresh subset of drops on load and on Randomize; pasted items are highlighted as new.',
+      'Clicking an item in the inventory preview opens a game-style tooltip with requirements, sockets and the matching rule.',
+      'Inventory tiles now show rarity labels and stronger rarity borders.',
+      'Removed per-section strictness; one global strictness applies to the whole filter.',
+    ],
+    commits: [
+      {
+        sha: 'fdd9c68',
+        message: 'fix: meta picking, import code, random drops and item tooltips (0.10.1)',
+      },
+    ],
+    compare: 'v0.10.0...v0.10.1',
+  },
+  {
     version: '0.10.0',
     date: '2026-11-21',
     title: 'Economy tiers and the daily refresh',

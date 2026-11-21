@@ -2,6 +2,22 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.10.1 — 2026-11-21
+
+Meta picking, import code, random drops and item tooltips.
+
+- Meta mode: any skill can be picked across families; only the ascendancies
+  recorded for that skill are offered, with their snapshot share.
+- Renamed the filter copy button to "Copy filter" and reduced advanced import to
+  a single "Import code" field; the JSON file picker is gone.
+- The loot simulator randomizes a fresh subset of drops on load and on
+  Randomize; pasted items are highlighted as new.
+- Clicking an item in the inventory preview opens a game-style tooltip with
+  requirements, sockets and the matching rule.
+- Inventory tiles now show rarity labels and stronger rarity borders.
+- Removed per-section strictness; one global strictness applies to the whole
+  filter.
+
 ## 0.10.0 — 2026-11-21
 
 Economy tiers and the daily refresh.

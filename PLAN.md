@@ -6,8 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** M2b/M2c shipped at **v0.10.0** with economy tiers and the daily PR
-refresh. Remaining: M3 (directory sync).
+**Status:** M2a and the 0.10.1 UX fixes are live: one global strictness, no
+section toggles, meta skill picking with ascendancy shares, and import/copy
+cleanup. Remaining: M3 (directory sync).
 
 ---
 
@@ -445,8 +446,7 @@ highlights the archetype's bases. *(Confirmed 2026-11-21.)*
 ### M2a — Customize
 
 - [x] Three filter themes: Classic, High contrast, Muted
-- [x] Per-section strictness for gear, gems, currency, maps and uniques
-- [x] Global strictness sets all five; per-section overrides persist in the URL
+- [x] One global strictness for the whole filter (per-section strictness removed in 0.10.1)
 - [x] Saved builds in `localStorage` with load and delete
 - [x] Theme and section strictness included in clone keys
 - [x] Non-default section strictness recorded in the filter header
@@ -458,8 +458,8 @@ Implementation notes:
   clones as well.
 - Saved builds live in `src/ui/presets/storage.ts`; they store the full wizard
   state, not just the selection.
-- Clone keys include theme and per-section strictness, so a clone cannot leak
-  into a differently styled filter.
+- Clone keys include the theme, so a clone cannot leak into a differently
+  styled filter.
 
 **Done:** a returning user regenerates their filter in under 30 seconds.
 
@@ -517,6 +517,10 @@ Implementation notes:
 - The snapshot is manual by design; `meta:add` validates gem names against
   RePoE's catalog, and scripts/basetypes tests fail CI on bad data.
 - A monthly reminder workflow opens one issue when the snapshot is due.
+- Only the ascendancies recorded in `topAscendancies` are offered; their
+  `ascendancyShares` drive the percentages. Both are seed values to replace with
+  a real capture.
+- A skill can be picked across families; the family is derived from the skill.
 
 **Done:** the selector goes family → skill → ascendancy; changing skill changes
 weapon/offhand, changing ascendancy changes armour/attributes; old links still
@@ -582,7 +586,9 @@ Implementation notes:
 
 - [x] Separate `demo.html` page, reachable from the builder with the selection
 - [x] Original game-like ground background
-- [x] Drops scattered as overlapping in-game-style labels, with a Scatter button
+- [x] Drops scattered as overlapping in-game-style labels, with a Randomize button
+- [x] A fresh random subset of drops on load and on every Randomize
+- [x] Pasted items are highlighted as new on the overlay
 - [x] Click a label to inspect the matching rule
 - [x] Paste one or more in-game item blocks to add them
 - [x] Parse class, rarity, base, item level, sockets, links, quality, stack size and map tier
@@ -637,6 +643,8 @@ See what the filter does before downloading it.
 - [x] Original SVG icons per equipment and loot class, drawn for FilterPath. No
   GGG assets. Text and CSS remain the fallback when an icon is missing.
 - [x] Live updates with build, phase and strictness; all sections always on
+- [x] Click an item for a game-style tooltip with requirements, sockets and the rule
+- [x] Rarity labels and stronger borders so unique items are obvious
 
 Implementation notes:
 
@@ -771,8 +779,7 @@ old file as a backup; unrelated filters in the folder are unchanged.
 ## 9. Open items
 
 - Share-code size cap: 8 KB, then file export (implemented)
-- Per-rule style editing: text, border, background, font size and sound
-  (implemented in 0.8.0)
+- Ascendancy shares are seed values; replace them with a real poe.ninja capture
 - Clone update behaviour: warn and reset only (implemented), or attempt a merge
 - Confirm the chip vocabulary beyond DEX/STR/INT, HEAD, 2H and RANGED
 - Confirm the default family for every ascendancy (M2f table)
