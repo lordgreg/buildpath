@@ -2,6 +2,18 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.10.0 — 2026-11-21
+
+Economy tiers and the daily refresh.
+
+- Filter rules now use poe.ninja economy tiers for currency, fragments,
+  divination cards and high-value unique bases.
+- Tiering converts chaos to divine, filters names to valid BaseTypes, and falls
+  back to static lists when data is missing.
+- Hand-written overrides in `src/presets/economy-overrides.yaml` always win.
+- A daily GitHub Actions workflow refreshes the snapshot and opens a PR when
+  tiers change; manual dispatch is available.
+
 ## 0.9.1 — 2026-11-21
 
 Game-like loot simulator and always-on sections.

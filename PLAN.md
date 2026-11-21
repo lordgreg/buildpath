@@ -6,9 +6,8 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.9.1 adds the game-like simulator and removes the section
-toggles; all sections are always included, with advanced clones as overrides.
-Remaining: M2b/M2c (economy) and M3 (directory sync).
+**Status:** M2b/M2c shipped at **v0.10.0** with economy tiers and the daily PR
+refresh. Remaining: M3 (directory sync).
 
 ---
 
@@ -466,29 +465,29 @@ Implementation notes:
 
 ### M2b — Content depth
 
-Unique, divination card and gem rules; economy-aware tiers from a hand-refreshed
-snapshot; manual override file.
+- [x] Economy snapshot generated from poe.ninja's supported economy endpoints
+- [x] Tiers for currency, fragments, divination cards and unique bases
+- [x] Unique names mapped to their base types; high-value bases get a loud rule
+- [x] Hand-written overrides in `src/presets/economy-overrides.yaml` win
+- [x] Names filtered to valid BaseTypes so the client never rejects a filter
+- [x] Static fallbacks when the snapshot is missing or a category is empty
 
-Unique tiering must map unique names to their base types (poe.ninja provides
-`baseType`). Multiple uniques can share a base, so a chase-item rule highlights
-the whole base family; that is acceptable and must be labelled as such in the UI.
-
-**Done:** tiering matches current prices for the top 50 traded items, and
-overrides win.
+**Done:** currency, divination and unique highlighting follow the snapshot;
+overrides win; every emitted name passes the BaseType registry.
 
 ### M2c — Economy automation
 
-- Workflow: daily 06:00 UTC + `workflow_dispatch`
-- Steps: leagues → categories (Currency, Fragment, DivinationCard, Scarab,
-  Essence, Oil, Fossil, UniqueWeapon, UniqueArmour, UniqueAccessory,
-  UniqueFlask, UniqueJewel) → tiering → schema validation
-- Opens a PR (`chore(economy): refresh tiers for <league>`); no PR on failure
-- ETag cache between runs; UA
+- [x] Workflow: daily 06:00 UTC + `workflow_dispatch`
+- [x] Categories: Currency, Fragment, DivinationCard, UniqueWeapon,
+  UniqueArmour, UniqueAccessory, UniqueFlask, UniqueJewel
+- [x] Tiering converts chaos to divine; large unique categories group by base
+- [x] Opens a PR (`chore(economy): refresh tiers`) only when the file changes
+- [x] User-Agent
   `FilterPath/x.y (contact: lordgreg@users.noreply.github.com)`
-- Economy affects only currency/unique/div-card highlighting, never gear bases
+- [x] Economy affects only currency/unique/div-card highlighting, never gear bases
+- [x] CI runs the full test suite before the PR is opened
 
-**Done:** a valid PR appears with refreshed tiers; a simulated schema break
-leaves the previous file and fails the job.
+**Done:** a changed snapshot produces a PR; an unchanged snapshot exits cleanly.
 
 ### M2e — Three-step selection
 

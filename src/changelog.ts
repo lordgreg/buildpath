@@ -17,6 +17,24 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.10.0',
+    date: '2026-11-21',
+    title: 'Economy tiers and the daily refresh',
+    notes: [
+      'Filter rules now use poe.ninja economy tiers for currency, fragments, divination cards and high-value unique bases.',
+      'Tiering converts chaos to divine, filters names to valid BaseTypes, and falls back to static lists when data is missing.',
+      'Hand-written overrides in src/presets/economy-overrides.yaml always win.',
+      'A daily GitHub Actions workflow refreshes the snapshot and opens a PR when tiers change; manual dispatch is available.',
+    ],
+    commits: [
+      {
+        sha: 'afb2a85',
+        message: 'feat: add economy tiers and daily refresh (M2b/M2c)',
+      },
+    ],
+    compare: 'v0.9.1...v0.10.0',
+  },
+  {
     version: '0.9.1',
     date: '2026-11-21',
     title: 'Game-like loot simulator and always-on sections',

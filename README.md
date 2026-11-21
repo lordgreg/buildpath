@@ -5,9 +5,8 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.9.1 — three selection modes, preview, advanced rules, a
-game-like loot simulator, themes and saved builds are live. Remaining: economy
-tiers/cron and directory sync.
+**Status:** v0.10.0 — economy tiers refresh daily from poe.ninja. Remaining:
+M3 directory sync.
 
 ## Features
 
@@ -20,6 +19,7 @@ tiers/cron and directory sync.
 - Locked rule pane, whole-set clones, requirement chips and share codes
 - Loot simulator with pasted in-game items and filter-styled labels
 - Three filter themes, per-section strictness and saved builds
+- Economy-aware currency, divination and unique tiers refreshed daily
 - Build version in the file name and header, e.g.
   `FilterPath-v0.4.0-necromancer-summon-skeletons-lev-normal.filter`
 - Generated client-side; no account and no network calls
