@@ -10,7 +10,18 @@ describe('changelog', () => {
   it('lists versions newest first without duplicates', () => {
     const versions = RELEASES.map((release) => release.version);
     expect(new Set(versions).size).toBe(versions.length);
-    expect(versions).toEqual([...versions].sort((a, b) => (a < b ? 1 : -1)));
+
+    const compare = (a: string, b: string) => {
+      const left = a.split('.').map(Number);
+      const right = b.split('.').map(Number);
+      for (let index = 0; index < 3; index += 1) {
+        if ((left[index] ?? 0) !== (right[index] ?? 0)) {
+          return (right[index] ?? 0) - (left[index] ?? 0);
+        }
+      }
+      return 0;
+    };
+    expect(versions).toEqual([...versions].sort(compare));
   });
 
   it('uses valid commit references', () => {

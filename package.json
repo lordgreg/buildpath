@@ -1,7 +1,7 @@
 {
   "name": "filterpath",
   "private": true,
-  "version": "0.9.1",
+  "version": "0.10.0",
   "type": "module",
   "description": "Build-specific Path of Exile loot filters in three clicks.",
   "scripts": {
@@ -12,6 +12,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc -b",
     "presets:build": "node scripts/build-presets.mjs",
+    "economy:refresh": "node scripts/refresh-economy.mjs",
     "meta:add": "node scripts/meta-add.mjs",
     "extract:repoe": "node scripts/extract-repoe.mjs"
   },

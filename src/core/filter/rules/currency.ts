@@ -1,30 +1,30 @@
+import economy from '../../../generated/economy.json';
 import type { Preset } from '../presets.ts';
 import { COLORS, SLOT_STYLES, type Rule } from '../types.ts';
 
-/** Hand-maintained for M1. M2 replaces the tiering with poe.ninja prices. */
-const TIER_1 = [
+const FALLBACK_TIER_1 = [
   'Divine Orb',
   'Eldritch Chaos Orb',
   'Eldritch Exalted Orb',
   'Eldritch Orb of Annulment',
   'Exalted Orb',
   'Fracturing Orb',
-  'Hinekora\'s Lock',
+  "Hinekora's Lock",
   'Mirror of Kalandra',
   'Sacred Orb',
 ];
 
-const TIER_2 = [
+const FALLBACK_TIER_2 = [
   'Ancient Orb',
   'Blessed Orb',
-  'Cartographer\'s Chisel',
+  "Cartographer's Chisel",
   'Chaos Orb',
   'Chromatic Orb',
-  'Gemcutter\'s Prism',
-  'Glassblower\'s Bauble',
+  "Gemcutter's Prism",
+  "Glassblower's Bauble",
   'Instilling Orb',
   'Enkindling Orb',
-  'Jeweller\'s Orb',
+  "Jeweller's Orb",
   'Orb of Alchemy',
   'Orb of Alteration',
   'Orb of Annulment',
@@ -42,9 +42,9 @@ const TIER_2 = [
   'Vaal Orb',
 ];
 
-const TIER_3 = [
-  'Armourer\'s Scrap',
-  'Blacksmith\'s Whetstone',
+const FALLBACK_TIER_3 = [
+  "Armourer's Scrap",
+  "Blacksmith's Whetstone",
   'Orb of Augmentation',
   'Orb of Transmutation',
   'Perandus Coin',
@@ -52,7 +52,7 @@ const TIER_3 = [
   'Scroll of Wisdom',
 ];
 
-const DIVINATION_TOP = [
+const FALLBACK_DIVINATION_TOP = [
   'House of Mirrors',
   'The Apothecary',
   'The Doctor',
@@ -60,16 +60,55 @@ const DIVINATION_TOP = [
   'The Nurse',
 ];
 
-const DIVINATION_MID = ['Stacked Deck'];
+const FALLBACK_DIVINATION_MID = ['Stacked Deck'];
 
-const TIERS = [TIER_1, TIER_2, TIER_3] as const;
+type TierMap = Record<string, number>;
+
+function namesAt(map: TierMap, tier: number): string[] {
+  return Object.entries(map)
+    .filter(([, value]) => value === tier)
+    .map(([name]) => name)
+    .sort();
+}
+
+function tiersOrFallback(
+  map: TierMap,
+  fallbacks: [number, string[]][],
+): string[][] {
+  if (Object.keys(map).length === 0) {
+    return fallbacks.map(([, names]) => [...names]);
+  }
+  return [1, 2, 3].map((tier) => namesAt(map, tier));
+}
+
+const tiers = economy.tiers as {
+  currency: TierMap;
+  fragment: TierMap;
+  divination: TierMap;
+  uniqueBase: TierMap;
+};
+
+const [TIER_1, TIER_2, TIER_3] = tiersOrFallback(tiers.currency, [
+  [1, FALLBACK_TIER_1],
+  [2, FALLBACK_TIER_2],
+  [3, FALLBACK_TIER_3],
+]);
+
+const [DIVINATION_TOP, DIVINATION_MID] = tiersOrFallback(
+  tiers.divination,
+  [
+    [1, FALLBACK_DIVINATION_TOP],
+    [2, FALLBACK_DIVINATION_MID],
+  ],
+);
 
 export function currencyRules(preset: Preset): Rule[] {
   const rules: Rule[] = [];
+  const allTiers = [TIER_1, TIER_2, TIER_3];
 
-  TIERS.forEach((names, index) => {
+  allTiers.forEach((names, index) => {
     const tier = (index + 1) as 1 | 2 | 3;
-    if (tier > preset.maxVisibleCurrencyTier) return;
+    if (tier > preset.maxVisibleCurrencyTier || names.length === 0) return;
 
     rules.push({
       action: 'Show',
@@ -84,8 +123,9 @@ export function currencyRules(preset: Preset): Rule[] {
     });
   });
 
-  const hidden = TIERS.filter(
-    (_, index) => index + 1 > preset.maxVisibleCurrencyTier,
+  const hidden = allTiers.filter(
+    (names, index) =>
+      index + 1 > preset.maxVisibleCurrencyTier && names.length > 0,
   );
   for (const names of hidden) {
     rules.push({
@@ -95,24 +135,28 @@ export function currencyRules(preset: Preset): Rule[] {
     });
   }
 
-  rules.push({
-    action: 'Show',
-    comment: 'Divination cards - top',
-    baseTypes: [...DIVINATION_TOP],
-    style: SLOT_STYLES.currencyTop,
-  });
+  if (DIVINATION_TOP.length > 0) {
+    rules.push({
+      action: 'Show',
+      comment: 'Divination cards - top',
+      baseTypes: [...DIVINATION_TOP],
+      style: SLOT_STYLES.currencyTop,
+    });
+  }
 
-  rules.push({
-    action: 'Show',
-    comment: 'Divination cards - mid',
-    baseTypes: [...DIVINATION_MID],
-    style: {
-      textColor: COLORS.white,
-      borderColor: COLORS.gold,
-      fontSize: 34,
-      minimapIcon: { size: 0, color: 'Yellow', shape: 'Circle' },
-    },
-  });
+  if (DIVINATION_MID.length > 0) {
+    rules.push({
+      action: 'Show',
+      comment: 'Divination cards - mid',
+      baseTypes: [...DIVINATION_MID],
+      style: {
+        textColor: COLORS.white,
+        borderColor: COLORS.gold,
+        fontSize: 34,
+        minimapIcon: { size: 0, color: 'Yellow', shape: 'Circle' },
+      },
+    });
+  }
 
   return rules;
 }
