@@ -17,6 +17,23 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.5.0',
+    date: '2026-11-21',
+    title: 'Inventory preview with original icons',
+    notes: [
+      'Added a paper-doll preview: weapon, offhand, all four armour slots, belt, amulet, two rings, jewel and two flasks.',
+      'Added the 12 x 5 inventory grid with representative drops, including the reported leak cases.',
+      'Original FilterPath SVG icons per equipment and loot class; no GGG art.',
+      'Tapping a tile shows the matching rule, its index and whether the item is shown or hidden.',
+      'Shown/hidden counts and a show-hidden toggle make strictness changes visible.',
+      'Moved the full-width preview above the generated filter text.',
+    ],
+    commits: [
+      { sha: 'cbb83f9', message: 'feat: add inventory preview with original icons (M2d)' },
+    ],
+    compare: 'v0.4.0...v0.5.0',
+  },
+  {
     version: '0.4.0',
     date: '2026-11-21',
     title: 'Family, skill and ascendancy selection',

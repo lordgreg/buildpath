@@ -2,6 +2,20 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.5.0 — 2026-11-21
+
+Inventory preview with original icons.
+
+- Added a paper-doll preview: weapon, offhand, all four armour slots, belt,
+  amulet, two rings, jewel and two flasks.
+- Added the 12 x 5 inventory grid with representative drops, including the
+  reported leak cases.
+- Original FilterPath SVG icons per equipment and loot class; no GGG art.
+- Tapping a tile shows the matching rule, its index and whether it is shown or
+  hidden.
+- Shown/hidden counts and a show-hidden toggle make strictness changes visible.
+- Moved the full-width preview above the generated filter text.
+
 ## 0.4.0 — 2026-11-21
 
 Family, skill and ascendancy selection.

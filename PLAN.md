@@ -6,10 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** M2e shipped at **v0.4.0** with the family → skill → ascendancy
-selector, league snapshots and the meta CLI. A generated filter was loaded
-successfully in the game client on 2026-11-21. M2d (inventory preview UI),
-M2a/M2b and M3 remain.
+**Status:** M2e and M2d shipped at **v0.5.0** — three-step selection, league
+snapshots, and the paper-doll/inventory preview with original icons. M2a
+(themes and saved presets), M2b/M2c (economy) and M3 (directory sync) remain.
 
 ---
 
@@ -491,12 +490,12 @@ See what the filter does before downloading it.
 - [x] `src/core/preview/match.ts`: evaluate generated rules against an item
   (first match wins, `Continue` respected). Pure, unit-tested, and reused by
   the syntax tests.
-- [ ] `src/ui/preview/InventoryPreview.tsx`: equipment panel (weapon, offhand,
-  helmet, body, gloves, boots, belt, amulet, two rings, flasks) plus a 12x5
+- [x] `src/ui/preview/InventoryPreview.tsx`: equipment panel (weapon, offhand,
+  helmet, body, gloves, boots, belt, amulet, two rings, two flasks) plus a 12x5
   inventory grid. Every tile shows the item name and rarity colour, with a
   shown/hidden state. Hidden tiles are dimmed; a "show hidden" toggle reveals
   them.
-- [ ] Paper-doll layout, side by side on desktop and stacked on mobile:
+- [x] Paper-doll layout, side by side on desktop and stacked on mobile:
 
   ```
   EQUIPMENT                         INVENTORY (12 x 5)
@@ -506,22 +505,31 @@ See what the filter does before downloading it.
   Gloves      Boots                 [ tile ] [ tile ] [ tile ] ...
   Belt        Amulet                [ tile ] [ tile ] [ tile ] ...
   Ring 1      Ring 2                ...
-  Flasks x5
+  Jewel       Life/Utility flasks
   ```
 
   Armour slots are first-class: helmet, body armour, gloves and boots each get
-  a fixed tile, plus weapon, offhand, belt, amulet, two rings and five flask
-  slots. Jewel sockets are added if the layout has room.
-- [ ] Each tile shows the base name, rarity colour, an original FilterPath SVG
+  a fixed tile, plus weapon, offhand, belt, amulet, two rings, a jewel and two
+  flasks (life and utility).
+- [x] Each tile shows the base name, rarity colour, an original FilterPath SVG
   class icon and a shown/hidden badge. Tapping or hovering a tile explains the
   decision with the matching rule's comment and index from `evaluateRules()`.
-- [ ] A header summarises "N shown / M hidden" per section, so a strictness
-  change is visible at a glance.
-- [ ] The preview is a simulation of FilterPath's decision for representative
+- [x] A header summarises "N shown / M hidden" overall and per panel, so a
+  strictness change is visible at a glance.
+- [x] The preview is a simulation of FilterPath's decision for representative
   bases, not a game render; it does not imply real stat rolls.
-- [ ] Original SVG icons per item class (~30), drawn for FilterPath. No GGG
-  assets. Text and CSS remain the fallback when an icon is missing.
-- [ ] Live updates with build, phase, strictness and section toggles.
+- [x] Original SVG icons per equipment and loot class, drawn for FilterPath. No
+  GGG assets. Text and CSS remain the fallback when an icon is missing.
+- [x] Live updates with build, phase, strictness and section toggles.
+
+Implementation notes:
+
+- `src/core/preview/paper-doll.ts` resolves one rare base per slot from the
+  selected build's own base lists, so the equipment panel changes with family,
+  skill and ascendancy.
+- `src/ui/preview/ClassIcon.tsx` holds the original 24x24 line icons.
+- The full-width preview sits below the selector and summary, above the raw
+  filter text; the old right-column preview was too narrow for the grid.
 
 **Done:** every armour slot has at least one fixture and changes state with the
 archetype; switching phase or strictness visibly changes which sample items are
@@ -637,7 +645,7 @@ old file as a backup; unrelated filters in the folder are unchanged.
 
 ## 9. Open items
 
-- SVG icon scope: one per item class (~30) or one per equipment slot
+- Whether to expand the paper doll from two to five flask slots
 - How off-meta skills behave: family-only fallback or a manual "add skill" field
 - Verify the Windows filter path (`Documents/My Games/Path of Exile`) in the
   install copy, not just Proton

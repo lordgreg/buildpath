@@ -5,8 +5,9 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.4.0 — the three-step selector is live. M2d (inventory preview),
-M2a (themes), M2b/M2c (economy) and M3 (directory sync) remain.
+**Status:** v0.5.0 — three-step selection and the inventory preview are live.
+M2a (themes and saved presets), M2b/M2c (economy) and M3 (directory sync)
+remain.
 
 ## Features
 
@@ -15,6 +16,7 @@ M2a (themes), M2b/M2c (economy) and M3 (directory sync) remain.
 - Normal / Strict / Very Strict
 - Toggle gear, gems, currency, maps and uniques
 - Filter preview, download, copy and share links
+- Paper-doll and inventory preview with original icons and rule explanations
 - Build version in the file name and header, e.g.
   `FilterPath-v0.4.0-necromancer-summon-skeletons-lev-normal.filter`
 - Generated client-side; no account and no network calls
