@@ -40,6 +40,16 @@ describe('wizard hash', () => {
     expect(state.sections.currency).toBe(true);
   });
 
+  it('parses theme and per-section strictness', () => {
+    const state = parseWizardHash(
+      '#mode=family&family=minion&theme=contrast&sstrict=gear:strict,gems:very-strict',
+    );
+    expect(state.theme).toBe('contrast');
+    expect(state.sectionStrictness.gear).toBe('strict');
+    expect(state.sectionStrictness.gems).toBe('very-strict');
+    expect(state.sectionStrictness.currency).toBe('normal');
+  });
+
   it('infers meta mode from an old skill link', () => {
     const state = parseWizardHash(
       '#league=covens&family=bow&skill=lightning-arrow&ascendancy=deadeye',

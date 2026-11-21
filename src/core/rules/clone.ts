@@ -17,6 +17,8 @@ export function cloneKey(
   phase: Phase,
   strictness: Strictness,
   sections: Sections,
+  sectionStrictness?: Record<keyof Sections, Strictness>,
+  theme?: string,
 ): string {
   return JSON.stringify({
     mode: selection.mode,
@@ -27,6 +29,8 @@ export function cloneKey(
     phase,
     strictness,
     sections,
+    ...(sectionStrictness ? { sectionStrictness } : {}),
+    ...(theme ? { theme } : {}),
   });
 }
 

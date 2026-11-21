@@ -10,7 +10,16 @@ export default function DemoPage() {
   const state = useMemo(() => parseWizardHash(window.location.hash), []);
   const clone = useMemo(
     () =>
-      loadClone(cloneKey(state, state.phase, state.strictness, state.sections)),
+      loadClone(
+        cloneKey(
+          state,
+          state.phase,
+          state.strictness,
+          state.sections,
+          state.sectionStrictness,
+          state.theme,
+        ),
+      ),
     [state],
   );
 
@@ -20,6 +29,8 @@ export default function DemoPage() {
         selection: state,
         phase: state.phase,
         strictness: state.strictness,
+        sectionStrictness: state.sectionStrictness,
+        theme: state.theme,
         sections: state.sections,
         version: APP_VERSION,
         ...(clone ? { rulesOverride: clone.rules } : {}),

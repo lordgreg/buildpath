@@ -11,6 +11,7 @@ import {
 } from '../core/filter/presets.ts';
 import { cloneKey, createClone, type RuleClone } from '../core/rules/clone.ts';
 import type { Rule } from '../core/filter/types.ts';
+import { THEMES } from '../core/filter/themes.ts';
 import { ASCENDANCIES, getAscendancy } from '../meta/ascendancies.ts';
 import { FAMILIES, getFamily } from '../meta/families.ts';
 import {
@@ -27,6 +28,7 @@ import { decodeShare } from '../core/share/codec.ts';
 import FilterPreview from './FilterPreview.tsx';
 import InventoryPreview from './preview/InventoryPreview.tsx';
 import AdvancedRules from './rules/AdvancedRules.tsx';
+import SavedBuilds from './presets/SavedBuilds.tsx';
 import {
   deleteClone,
   loadClone,
@@ -115,6 +117,8 @@ export default function Wizard() {
     state.phase,
     state.strictness,
     state.sections,
+    state.sectionStrictness,
+    state.theme,
   );
   const [clone, setClone] = useState<RuleClone | null>(() =>
     loadClone(activeKey),
@@ -130,6 +134,8 @@ export default function Wizard() {
         selection: state,
         phase: state.phase,
         strictness: state.strictness,
+        sectionStrictness: state.sectionStrictness,
+        theme: state.theme,
         sections: state.sections,
         version: APP_VERSION,
       }),
@@ -143,6 +149,8 @@ export default function Wizard() {
             selection: state,
             phase: state.phase,
             strictness: state.strictness,
+            sectionStrictness: state.sectionStrictness,
+            theme: state.theme,
             sections: state.sections,
             version: APP_VERSION,
             rulesOverride: clone.rules,
@@ -307,6 +315,8 @@ export default function Wizard() {
                 ))}
               </div>
             </section>
+
+            <SavedBuilds state={state} onLoad={(saved) => update(saved)} />
 
             {state.mode === 'family' && (
               <section aria-labelledby="family-heading">
@@ -503,7 +513,14 @@ export default function Wizard() {
                     key={strictness}
                     type="button"
                     aria-pressed={strictness === state.strictness}
-                    onClick={() => update({ strictness })}
+                    onClick={() =>
+                      update({
+                        strictness,
+                        sectionStrictness: Object.fromEntries(
+                          SECTION_KEYS.map((key) => [key, strictness]),
+                        ) as Record<keyof Sections, (typeof STRICTNESS_ORDER)[number]>,
+                      })
+                    }
                     className={cx(
                       'rounded-lg border px-3 py-2 text-sm transition-colors',
                       strictness === state.strictness
@@ -516,6 +533,73 @@ export default function Wizard() {
                 ))}
               </div>
             </section>
+
+            <section aria-labelledby="theme-heading">
+              <h2
+                id="theme-heading"
+                className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+              >
+                Theme
+              </h2>
+              <div className="mt-3 grid grid-cols-3 gap-2">
+                {THEMES.map((theme) => (
+                  <button
+                    key={theme.id}
+                    type="button"
+                    aria-pressed={theme.id === state.theme}
+                    onClick={() => update({ theme: theme.id })}
+                    className={cx(
+                      'rounded-lg border px-2 py-2 text-left transition-colors',
+                      theme.id === state.theme
+                        ? 'border-gold-400 bg-gold-400/10'
+                        : 'border-ink-700 bg-ink-800/40 hover:border-ink-500',
+                    )}
+                  >
+                    <span className="block text-sm font-medium text-white">
+                      {theme.label}
+                    </span>
+                    <span className="block text-[10px] leading-tight text-zinc-500">
+                      {theme.hint}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            <details className="rounded-xl border border-ink-700 bg-ink-800/40 p-4">
+              <summary className="cursor-pointer text-xs text-zinc-400">
+                Per-section strictness
+              </summary>
+              <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                {SECTION_KEYS.map((key) => (
+                  <label
+                    key={key}
+                    className="text-[11px] uppercase tracking-wide text-zinc-500"
+                  >
+                    {SECTION_META[key].label}
+                    <select
+                      value={state.sectionStrictness[key]}
+                      onChange={(event) =>
+                        update({
+                          sectionStrictness: {
+                            ...state.sectionStrictness,
+                            [key]: event.target
+                              .value as (typeof STRICTNESS_ORDER)[number],
+                          },
+                        })
+                      }
+                      className="mt-1 block w-full rounded border border-ink-600 bg-ink-800 px-2 py-1 text-xs normal-case text-zinc-200"
+                    >
+                      {STRICTNESS_ORDER.map((entry) => (
+                        <option key={entry} value={entry}>
+                          {STRICTNESS_LABELS_PUBLIC[entry]}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                ))}
+              </div>
+            </details>
 
             <section aria-labelledby="sections-heading">
               <h2
