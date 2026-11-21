@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.9.0 — 2026-11-21
+
+Themes, per-section strictness and saved builds.
+
+- Added three filter themes: Classic, High contrast and Muted.
+- Per-section strictness for gear, gems, currency, maps and uniques; the global
+  choice still sets all five.
+- Saved builds in localStorage, with load and delete.
+- Theme and section strictness round-trip through share links and clone keys.
+- The filter header records non-default section strictness.
+
 ## 0.8.0 — 2026-11-21
 
 Loot simulator, style editing and share links.

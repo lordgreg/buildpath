@@ -17,6 +17,25 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.9.0',
+    date: '2026-11-21',
+    title: 'Themes, per-section strictness and saved builds',
+    notes: [
+      'Added three filter themes: Classic, High contrast and Muted.',
+      'Per-section strictness for gear, gems, currency, maps and uniques; the global choice still sets all five.',
+      'Saved builds in localStorage, with load and delete.',
+      'Theme and section strictness round-trip through share links and clone keys.',
+      'The filter header records non-default section strictness.',
+    ],
+    commits: [
+      {
+        sha: '883ff8f',
+        message: 'feat: add themes, per-section strictness and saved builds (M2a)',
+      },
+    ],
+    compare: 'v0.8.0...v0.9.0',
+  },
+  {
     version: '0.8.0',
     date: '2026-11-21',
     title: 'Loot simulator, style editing and share links',

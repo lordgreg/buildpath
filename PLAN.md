@@ -6,8 +6,8 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** M2g and the loot simulator shipped at **v0.8.0**. Remaining: M2a
-(themes and per-section strictness), M2b/M2c (economy) and M3 (directory sync).
+**Status:** M2a shipped at **v0.9.0** with themes, per-section strictness and
+saved builds. Remaining: M2b/M2c (economy) and M3 (directory sync).
 
 ---
 
@@ -443,8 +443,22 @@ highlights the archetype's bases. *(Confirmed 2026-11-21.)*
 
 ### M2a — Customize
 
-Theme (colours, sounds), per-section strictness, saved presets in
-`localStorage`, mobile layout.
+- [x] Three filter themes: Classic, High contrast, Muted
+- [x] Per-section strictness for gear, gems, currency, maps and uniques
+- [x] Global strictness sets all five; per-section overrides persist in the URL
+- [x] Saved builds in `localStorage` with load and delete
+- [x] Theme and section strictness included in clone keys
+- [x] Non-default section strictness recorded in the filter header
+- [x] Mobile layout
+
+Implementation notes:
+
+- `src/core/filter/themes.ts` post-processes generated rules, so themes apply to
+  clones as well.
+- Saved builds live in `src/ui/presets/storage.ts`; they store the full wizard
+  state, not just the selection.
+- Clone keys include theme and per-section strictness, so a clone cannot leak
+  into a differently styled filter.
 
 **Done:** a returning user regenerates their filter in under 30 seconds.
 
