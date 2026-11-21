@@ -89,7 +89,7 @@ export default function Wizard() {
         </div>
         <nav className="flex items-center gap-4 text-xs text-zinc-500">
           <a
-            href="#/changelog"
+            href="./changelog.html"
             className="underline-offset-4 hover:text-zinc-300 hover:underline"
           >
             changelog
