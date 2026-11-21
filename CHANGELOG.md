@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.15.1 — 2026-11-22
+
+Brave folder-writing guidance.
+
+- Brave disables the File System Access API by default; the folder panel now says
+  so instead of a generic “download only”.
+- Added the exact flag, a Copy `brave://` flag button and a Reload after
+  enabling button.
+- Other unsupported browsers now point to Chrome, Chromium or Edge and keep the
+  download fallback.
+
 ## 0.15.0 — 2026-11-21
 
 Rarity-first default colors.

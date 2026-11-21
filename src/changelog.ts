@@ -17,6 +17,18 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.15.1',
+    date: '2026-11-22',
+    title: 'Brave folder-writing guidance',
+    notes: [
+      'Brave disables the File System Access API by default; the folder panel now says so instead of a generic “download only”.',
+      'Added the exact flag, a Copy brave:// flag button and a Reload after enabling button.',
+      'Other unsupported browsers now point to Chrome, Chromium or Edge and keep the download fallback.',
+    ],
+    commits: [],
+    compare: 'v0.15.0...v0.15.1',
+  },
+  {
     version: '0.15.0',
     date: '2026-11-21',
     title: 'Rarity-first default colors',
