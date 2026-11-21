@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.14.4',
+    date: '2026-11-21',
+    title: 'Seed data is labelled honestly',
+    notes: [
+      'Meta snapshots now declare provenance: seed or captured.',
+      'Seed snapshots show “Curated seed updated <date>”, call the numbers seed weights, and no longer claim measured percentages.',
+      'Captured snapshots keep “Captured <date>” and measured percentages.',
+      'PLAN now records that a real poe.ninja builds capture is blocked and that My rules are the resolved overlay mode.',
+    ],
+    commits: [],
+    compare: 'v0.14.3...v0.14.4',
+  },
+  {
     version: '0.14.3',
     date: '2026-11-21',
     title: 'Hide wrong-base gear inside used classes',

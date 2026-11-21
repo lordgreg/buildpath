@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.14.4 — 2026-11-21
+
+Seed data is labelled honestly.
+
+- Meta snapshots now declare `provenance: seed` or `provenance: captured`.
+- Seed snapshots show “Curated seed updated <date>”, call the numbers seed
+  weights, and no longer claim measured percentages.
+- Captured snapshots keep “Captured <date>” and measured percentages.
+- PLAN records that a real poe.ninja builds capture is blocked and that My rules
+  are the resolved overlay mode.
+
 ## 0.14.3 — 2026-11-21
 
 Hide wrong-base gear inside used classes.

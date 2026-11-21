@@ -6,9 +6,10 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.14.3 hides wrong-base gear inside used classes on top of
-section presets, template coverage, filter naming, folder writing and
-saved-build updates. Remaining work is data capture and manual QA.
+**Status:** v0.14.4 labels seed meta snapshots honestly on top of wrong-base
+gear hiding, section presets, template coverage, filter naming, folder writing
+and saved-build updates. Remaining work is manual QA; real meta capture is
+blocked by poe.ninja’s closed builds API.
 
 ---
 
@@ -208,6 +209,9 @@ Data:
 - `families.yaml`, `ascendancies.yaml` (with `defaultFamily`), and
   `meta/<league>.yaml` snapshots.
 - `src/meta/leagues/<id>.json` is replaced by the compiled snapshot.
+- Every snapshot declares `provenance: seed` or `provenance: captured`. Seed
+  snapshots use curated skill weights and placeholder ascendancy splits; the UI
+  labels them as placeholders. A manual capture flips the field to `captured`.
 - Capture is **manual** from poe.ninja's public builds pages because the builds
   API is closed to third parties. Reading the pages and summarising the top
   skills is the intended escape hatch; automated fetching is not.
@@ -220,8 +224,9 @@ Data:
 - A local CLI (`npm run meta:add`) appends or edits a skill; changes land
   through a PR. A validation Action checks meta PRs, and a monthly reminder
   opens an issue.
-- The selector shows "Meta snapshot from poe.ninja builds, captured \<date\>"
-  with a link to the build pages.
+- The selector shows "Curated seed updated \<date\>" for seed snapshots and
+  labels weights as `seed weight`; captured snapshots show "Captured \<date\>"
+  and measured percentages instead.
 
 **Done:** four tabs; family mode needs no class; ascendancy mode uses its
 default loadout; meta mode lists all skills grouped and derives the family;
@@ -538,8 +543,7 @@ Implementation notes:
   RePoE's catalog, and scripts/basetypes tests fail CI on bad data.
 - A monthly reminder workflow opens one issue when the snapshot is due.
 - Only the ascendancies recorded in `topAscendancies` are offered; their
-  `ascendancyShares` drive the percentages. Both are seed values to replace with
-  a real capture.
+  `ascendancyShares` drive the seed weights until a real capture is available.
 - A skill can be picked across families; the family is derived from the skill.
 
 **Done:** the selector goes family → skill → ascendancy; changing skill changes
@@ -603,6 +607,8 @@ Implementation notes:
   and theme never hide them.
 - `src/ui/rules/storage.ts` stores My rules; `src/ui/presets/storage.ts` stores
   saved builds with their custom rules.
+- My rules are the overlay mode: custom rules run before the preset, so no
+  separate whole-set clone or overlay UI is needed.
 
 ### M2h — Loot simulator
 
@@ -836,16 +842,15 @@ old file as a backup; unrelated filters in the folder are unchanged.
 
 ### Data capture (highest priority)
 
-- Replace the seed Covens snapshot with a real poe.ninja capture: skill list,
-  play shares, top ascendancies and ascendancy shares. The current shares are
-  placeholders (55/30/15) and should not be presented as measured.
+- Real poe.ninja builds capture is **blocked**: the builds API is closed. The
+  current Covens and Standard snapshots are marked `provenance: seed`, and the UI
+  labels their weights and ascendancy splits as curated placeholders. Replace
+  them when a lawful capture source is available.
 - Confirm the chip vocabulary beyond DEX/STR/INT, HEAD, 2H and RANGED.
 
 ### Product decisions
 
 - Confirm the default family assigned to every ascendancy.
-- Decide whether an overlay mode (extra rules without cloning the whole set)
-  is needed after M2g.
 - Old versioned filters currently stay in the folder and are flagged stale;
   decide whether to offer archive/removal in addition to the `.bak` copy.
 
