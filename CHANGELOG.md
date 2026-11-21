@@ -2,6 +2,21 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.6.0 — 2026-11-21
+
+Independent family, ascendancy and meta modes.
+
+- Replaced the cascade with three independent modes: by family, by ascendancy
+  and by meta build.
+- Ascendancy mode uses a default family loadout, e.g. Juggernaut two-hand axe
+  or Deadeye bow.
+- Meta mode lists every snapshot skill grouped by family, then the ascendancy.
+- Presets moved to YAML under `src/presets`, compiled to JSON with JSON Schema
+  validation.
+- Mode-aware file names and share links; old cascade and archetype links still
+  resolve.
+- `meta:add` now edits YAML and rebuilds the compiled presets.
+
 ## 0.5.0 — 2026-11-21
 
 Inventory preview with original icons.

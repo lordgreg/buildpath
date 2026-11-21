@@ -17,6 +17,26 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.6.0',
+    date: '2026-11-21',
+    title: 'Independent family, ascendancy and meta modes',
+    notes: [
+      'Replaced the cascade with three independent modes: by family, by ascendancy and by meta build.',
+      'Ascendancy mode uses a default family loadout, e.g. Juggernaut two-hand axe or Deadeye bow.',
+      'Meta mode lists every snapshot skill grouped by family, then the ascendancy.',
+      'Presets moved to YAML under src/presets, compiled to JSON with JSON Schema validation.',
+      'Mode-aware file names and share links; old cascade and archetype links still resolve.',
+      'meta:add now edits YAML and rebuilds the compiled presets.',
+    ],
+    commits: [
+      {
+        sha: '6f70b51',
+        message: 'feat: add independent family, ascendancy and meta modes (M2f)',
+      },
+    ],
+    compare: 'v0.5.0...v0.6.0',
+  },
+  {
     version: '0.5.0',
     date: '2026-11-21',
     title: 'Inventory preview with original icons',

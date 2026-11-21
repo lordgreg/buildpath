@@ -6,9 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.5.0 shipped the cascade selector and the inventory preview. A
-redesign is agreed: three independent selection modes (M2f) and the advanced
-rule editor (M2g). Neither is implemented yet.
+**Status:** M2f shipped at **v0.6.0** with three independent selection modes and
+the YAML preset pipeline. M2g (advanced rules, locked presets, clones) is next,
+then M2a, M2b/M2c and M3.
 
 ---
 
@@ -288,10 +288,10 @@ src/
       validate.ts        runtime validation
       data/matrix.ts     interim twelve curated builds
       index.ts           registry
-    meta/                families, ascendancies, league snapshots (M2e)
-      ascendancies.ts     class, attributes, defence bias, exceptions
-      leagues/<id>.json  one skill snapshot per league
-      leagues/index.json league order and current league
+    meta/                data accessors over generated presets
+      ascendancies.ts     lookup and rank helpers
+      families.ts         lookup helpers
+      leagues/            (removed; see src/presets/leagues)
     presets/             YAML sources: families, ascendancies, leagues (M2f)
     generated/           compiled JSON presets, committed (M2f)
     rules/               clone serialization and share codes (M2g)
@@ -515,15 +515,25 @@ is three independent modes in M2f. Kept for history and legacy-link mapping.
 
 ### M2f — Three selection modes
 
-- [ ] `BuildProfile` refactor: class and ascendancy optional
-- [ ] Family mode: family preset only, no class or skill
-- [ ] Ascendancy mode: flat list grouped by class, `defaultFamily` per ascendancy
-- [ ] Meta mode: league, all skills grouped by family, then ascendancy
-- [ ] Shared phase/strictness/sections below every mode
-- [ ] Mode-aware file names and share links; old links adapt
-- [ ] YAML presets under `src/presets/`, compiled to JSON at build time
-- [ ] JSON Schema validation for every preset file
-- [ ] Tests: mode resolution, default loadouts, preset compilation, legacy links
+- [x] `BuildProfile` refactor: class and ascendancy optional
+- [x] Family mode: family preset only, no class or skill
+- [x] Ascendancy mode: flat list grouped by class, `defaultFamily` per ascendancy
+- [x] Meta mode: league, all skills grouped by family, then ascendancy
+- [x] Shared phase/strictness/sections below every mode
+- [x] Mode-aware file names and share links; old links adapt
+- [x] YAML presets under `src/presets/`, compiled to JSON at build time
+- [x] JSON Schema validation for every preset file
+- [x] Tests: mode resolution, default loadouts, preset compilation, legacy links
+
+Implementation notes:
+
+- `scripts/build-presets.mjs` validates every YAML file with Ajv and writes
+  `src/generated/presets.json` with a preset version hash.
+- `meta:add` edits the YAML snapshot and index timestamps, then rebuilds and
+  validates.
+- `Archetype.class` and `.ascendancy` are optional; family mode has neither.
+- Ascendancy mode applies the default family and its own armour/defence tags.
+- Legacy cascade links and the interim archetype links map to meta mode.
 
 **Done:** the three tabs work independently; ascendancy mode derives its loadout;
 meta mode lists all skills grouped; phase/strictness/sections apply everywhere;

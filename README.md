@@ -5,14 +5,13 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.5.0 — three-step selection and the inventory preview are live.
-M2a (themes and saved presets), M2b/M2c (economy) and M3 (directory sync)
-remain.
+**Status:** v0.6.0 — three independent selection modes are live. Next: M2g
+advanced rules and locked presets, then themes, economy and directory sync.
 
 ## Features
 
-- Family → skill → ascendancy selection with per-league meta snapshots
-- 20 skills across 5 families and all 7 classes, leveling and endgame presets
+- Three independent modes: by family, by ascendancy, or by meta build
+- Per-league meta snapshots with all skills grouped by family
 - Normal / Strict / Very Strict
 - Toggle gear, gems, currency, maps and uniques
 - Filter preview, download, copy and share links
@@ -35,9 +34,10 @@ npm test
 npm run build
 ```
 
-## Refresh base item data
+## Refresh presets and base data
 
 ```bash
+npm run presets:build   # YAML -> src/generated/presets.json, schema-validated
 npm run extract:repoe
 # pin for reproducible output
 REPOE_REF=3.27.0 npm run extract:repoe
