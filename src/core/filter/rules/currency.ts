@@ -1,6 +1,12 @@
 import economy from '../../../generated/economy.json';
 import type { Preset } from '../presets.ts';
-import { COLORS, SLOT_STYLES, type Rule } from '../types.ts';
+import {
+  COLORS,
+  SLOT_STYLES,
+  type NamedAlertSound,
+  type Rule,
+  type Style,
+} from '../types.ts';
 
 const FALLBACK_TIER_1 = [
   'Divine Orb',
@@ -102,8 +108,51 @@ const [DIVINATION_TOP, DIVINATION_MID] = tiersOrFallback(
   ],
 );
 
+const NAMED_ALERTS: {
+  name: string;
+  sound: NamedAlertSound;
+  tier: 1 | 2;
+  style: Style;
+}[] = [
+  {
+    name: 'Mirror of Kalandra',
+    sound: 'ShMirror',
+    tier: 1,
+    style: SLOT_STYLES.currencyTop,
+  },
+  {
+    name: 'Divine Orb',
+    sound: 'ShDivine',
+    tier: 1,
+    style: SLOT_STYLES.currencyTop,
+  },
+  {
+    name: 'Exalted Orb',
+    sound: 'ShExalted',
+    tier: 1,
+    style: SLOT_STYLES.currencyTop,
+  },
+  {
+    name: 'Chaos Orb',
+    sound: 'ShChaos',
+    tier: 2,
+    style: SLOT_STYLES.currencyMid,
+  },
+];
+
 export function currencyRules(preset: Preset): Rule[] {
   const rules: Rule[] = [];
+
+  for (const entry of NAMED_ALERTS) {
+    if (entry.tier > preset.currency.maxVisibleTier) continue;
+    rules.push({
+      action: 'Show',
+      comment: `${entry.name} - alert`,
+      baseTypes: [entry.name],
+      style: { ...entry.style, alertSound: entry.sound },
+    });
+  }
+
   const allTiers = [TIER_1, TIER_2, TIER_3];
 
   allTiers.forEach((names, index) => {

@@ -16,6 +16,7 @@ const RARITY_COLOR: Record<ItemRarity, string> = {
   Magic: '#9a9aff',
   Rare: '#fff07a',
   Unique: '#d98a4a',
+  Quest: '#63e68b',
 };
 
 function cx(...parts: (string | false | undefined)[]): string {

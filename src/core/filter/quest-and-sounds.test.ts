@@ -1,0 +1,105 @@
+import { describe, expect, it } from 'vitest';
+import { parseItemText } from '../demo/parse-item.ts';
+import { emitRules } from './emit.ts';
+import { generateFilter } from './generate.ts';
+import { evaluateRules, type PreviewItem } from '../preview/match.ts';
+import { validateFilter } from './validate.ts';
+import type { Rule } from './types.ts';
+
+const QUEST = `Item Class: Quest Items
+Rarity: Quest
+Sign of Purity
+--------
+Wrought from blood and gold, Innocence fashioned a weapon of tempered purity,
+capable of banishing darkness, and bringing order to the chaos in men's hearts.`;
+
+const currency = (name: string): PreviewItem => ({
+  id: name,
+  name,
+  itemClass: 'Stackable Currency',
+  baseType: name,
+  rarity: 'Normal',
+  itemLevel: 1,
+});
+
+const currencyRule = (name: string, phase: 'leveling' | 'endgame', strictness: 'normal' | 'very-strict') => {
+  const filter = generateFilter({
+    selection: { mode: 'family', familyId: 'minion' },
+    phase,
+    strictness,
+  });
+  return evaluateRules(filter.rules, currency(name));
+};
+
+describe('quest items', () => {
+  it('always shows a quest item with the default alert, even in hide-all scratch', () => {
+    const [quest] = parseItemText(QUEST);
+    expect(quest?.rarity).toBe('Quest');
+
+    for (const selection of [
+      { mode: 'family' as const, familyId: 'minion' as const },
+      { mode: 'scratch' as const, scratchStart: 'hide' as const },
+    ]) {
+      const filter = generateFilter({
+        selection,
+        phase: 'leveling',
+        strictness: 'very-strict',
+      });
+      const result = evaluateRules(filter.rules, quest!);
+      expect(result.shown).toBe(true);
+      expect(result.rule?.comment).toBe('Quest items');
+      expect(result.rule?.style?.alertSound).toBe(1);
+      expect(result.rule?.style?.alertVolume).toBe(300);
+    }
+  });
+});
+
+describe('named currency alerts', () => {
+  it('uses the Sh voice line for each major orb', () => {
+    const expected = {
+      'Chaos Orb': 'ShChaos',
+      'Exalted Orb': 'ShExalted',
+      'Divine Orb': 'ShDivine',
+      'Mirror of Kalandra': 'ShMirror',
+    };
+
+    for (const [name, sound] of Object.entries(expected)) {
+      const result = currencyRule(name, 'leveling', 'normal');
+      expect(result.shown, name).toBe(true);
+      expect(result.rule?.comment, name).toBe(`${name} - alert`);
+      expect(result.rule?.style?.alertSound, name).toBe(sound);
+    }
+  });
+
+  it('still respects the Very Strict currency tier cutoff', () => {
+    expect(currencyRule('Divine Orb', 'endgame', 'very-strict').shown).toBe(
+      true,
+    );
+    expect(currencyRule('Mirror of Kalandra', 'endgame', 'very-strict').shown).toBe(
+      true,
+    );
+    expect(currencyRule('Chaos Orb', 'endgame', 'very-strict').shown).toBe(
+      false,
+    );
+  });
+});
+
+describe('named alert emission', () => {
+  it('emits and validates a Sh voice line without a volume argument', () => {
+    const rule: Rule = {
+      action: 'Show',
+      baseTypes: ['Divine Orb'],
+      style: { alertSound: 'ShDivine' },
+    };
+    expect(emitRules([rule])).toContain('PlayAlertSound ShDivine');
+    expect(
+      validateFilter(`Show\n    BaseType "Divine Orb"\n    PlayAlertSound ShDivine`),
+    ).toEqual([]);
+  });
+
+  it('rejects an unknown Sh voice line', () => {
+    expect(
+      validateFilter(`Show\n    BaseType "Divine Orb"\n    PlayAlertSound ShNope`),
+    ).not.toEqual([]);
+  });
+});

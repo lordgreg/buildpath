@@ -38,7 +38,9 @@ function styleLines(style: Style): string[] {
   }
   if (style.alertSound !== undefined) {
     lines.push(
-      `PlayAlertSound ${style.alertSound} ${style.alertVolume ?? 100}`,
+      typeof style.alertSound === 'string'
+        ? `PlayAlertSound ${style.alertSound}`
+        : `PlayAlertSound ${style.alertSound} ${style.alertVolume ?? 100}`,
     );
   }
   if (style.playEffect) {

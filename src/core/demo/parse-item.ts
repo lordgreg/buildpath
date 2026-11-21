@@ -1,6 +1,12 @@
 import type { ItemRarity, PreviewItem } from '../../core/preview/match.ts';
 
-const RARITIES = new Set<ItemRarity>(['Normal', 'Magic', 'Rare', 'Unique']);
+const RARITIES = new Set<ItemRarity>([
+  'Normal',
+  'Magic',
+  'Rare',
+  'Unique',
+  'Quest',
+]);
 
 function field(lines: string[], name: string): string | undefined {
   const prefix = `${name}:`;

@@ -6,8 +6,24 @@ export type RuleSection =
   | 'currency'
   | 'maps'
   | 'uniques'
+  | 'quest'
   | 'junk'
   | 'custom';
+
+/** Built-in Shaper voice lines that Path of Exile accepts as alert sounds. */
+export type NamedAlertSound =
+  | 'ShAlchemy'
+  | 'ShBlessed'
+  | 'ShChaos'
+  | 'ShDivine'
+  | 'ShExalted'
+  | 'ShFusing'
+  | 'ShGeneral'
+  | 'ShMirror'
+  | 'ShRegal'
+  | 'ShVaal';
+
+export type AlertSound = number | 'None' | NamedAlertSound;
 
 export type Rarity = 'Normal' | 'Magic' | 'Rare' | 'Unique';
 
@@ -52,7 +68,7 @@ export interface Style {
   backgroundColor?: Color;
   /** 18-45 in game. */
   fontSize?: number;
-  alertSound?: number | 'None';
+  alertSound?: AlertSound;
   /** 0-300. */
   alertVolume?: number;
   minimapIcon?: {

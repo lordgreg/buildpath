@@ -136,10 +136,24 @@ function isColor(value: string): boolean {
   });
 }
 
+const NAMED_ALERT_SOUNDS = new Set([
+  'ShAlchemy',
+  'ShBlessed',
+  'ShChaos',
+  'ShDivine',
+  'ShExalted',
+  'ShFusing',
+  'ShGeneral',
+  'ShMirror',
+  'ShRegal',
+  'ShVaal',
+]);
+
 function isAlertSound(value: string): boolean {
   const parts = value.trim().split(/\s+/);
   if (parts.length < 1 || parts.length > 2) return false;
   if (parts[0] === 'None') return parts.length === 1;
+  if (NAMED_ALERT_SOUNDS.has(parts[0]!)) return parts.length === 1;
   const id = Number(parts[0]);
   if (!Number.isInteger(id) || id < 1 || id > 16) return false;
   if (parts.length === 2) {
@@ -248,7 +262,7 @@ function validateAction(keyword: string, value: string): string | null {
     case 'PlayAlertSoundPositional':
       return isAlertSound(value)
         ? null
-        : 'expects a sound id 1-16 (or None) and an optional volume 0-300';
+        : 'expects a sound id 1-16, a Sh... voice line (or None) and an optional volume 0-300';
     case 'CustomAlertSound':
     case 'CustomAlertSoundOptional': {
       const parts = value.trim().split(/\s+/);

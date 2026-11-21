@@ -5,11 +5,21 @@
 # Phase: Endgame - Strict
 # League: Covens
 # Presets: 9515af8785c2
-# Rules: 31 - Base types: 53
+# Rules: 36 - Base types: 53
 # Base data: RePoE master (d9b86d38)
 # Generated at https://lordgreg.github.io/filterpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
 # ========================================================================
+
+# Quest items
+Show
+    Class "Quest Items"
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 217 178 106 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 1 300
+    MinimapIcon 1 Green Circle
 
 # helmet - rare
 Show
@@ -184,6 +194,46 @@ Show
 # Gems - below quality cutoff
 Hide
     Class "Skill Gems" "Support Gems"
+
+# Mirror of Kalandra - alert
+Show
+    BaseType "Mirror of Kalandra"
+    SetFontSize 45
+    SetTextColor 217 178 106 255
+    SetBorderColor 217 178 106 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound ShMirror
+    MinimapIcon 1 Red Star
+
+# Divine Orb - alert
+Show
+    BaseType "Divine Orb"
+    SetFontSize 45
+    SetTextColor 217 178 106 255
+    SetBorderColor 217 178 106 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound ShDivine
+    MinimapIcon 1 Red Star
+
+# Exalted Orb - alert
+Show
+    BaseType "Exalted Orb"
+    SetFontSize 45
+    SetTextColor 217 178 106 255
+    SetBorderColor 217 178 106 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound ShExalted
+    MinimapIcon 1 Red Star
+
+# Chaos Orb - alert
+Show
+    BaseType "Chaos Orb"
+    SetFontSize 40
+    SetTextColor 217 178 106 255
+    SetBorderColor 217 178 106 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound ShChaos
+    MinimapIcon 1 Purple Diamond
 
 # Currency - tier 1
 Show

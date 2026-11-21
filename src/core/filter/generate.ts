@@ -18,7 +18,7 @@ import { currencyRules } from './rules/currency.ts';
 import { gemRules } from './rules/gems.ts';
 import { mapRules } from './rules/maps.ts';
 import { uniqueRules } from './rules/uniques.ts';
-import type { Rule, RuleSection } from './types.ts';
+import { COLORS, type Rule, type RuleSection } from './types.ts';
 import { applyTheme, type ThemeId } from './themes.ts';
 import { filterNameFor, validateFilter, type FilterIssue } from './validate.ts';
 import { buildFileName } from './name.ts';
@@ -82,6 +82,24 @@ export function normalizeSections(sections?: Partial<Sections>): Sections {
   return { ...DEFAULT_SECTIONS, ...sections };
 }
 
+/** Quest items are always shown and audible, even in From Scratch hide-all. */
+const QUEST_RULE: Rule = {
+  action: 'Show',
+  id: 'quest-items',
+  section: 'quest',
+  comment: 'Quest items',
+  classNames: ['Quest Items'],
+  style: {
+    textColor: COLORS.white,
+    borderColor: COLORS.gold,
+    backgroundColor: COLORS.black,
+    fontSize: 40,
+    alertSound: 1,
+    alertVolume: 300,
+    minimapIcon: { size: 1, color: 'Green', shape: 'Circle' },
+  },
+};
+
 /**
  * Builds the rule list without serialising it. The preview matcher consumes
  * the same rules the filter is generated from, so they cannot drift.
@@ -127,12 +145,12 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
       sections,
       version,
       theme,
-      rules: applyTheme([...customRules, baseRule], theme),
+      rules: applyTheme([QUEST_RULE, ...customRules, baseRule], theme),
       baseTypes: [...bases].sort(),
     };
   }
 
-  const rules: Rule[] = [...customRules];
+  const rules: Rule[] = [QUEST_RULE, ...customRules];
   const baseTypes = new Set<string>();
 
   for (const spec of Object.values(archetype.slots)) {
