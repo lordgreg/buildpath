@@ -6,9 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** M2e and M2d shipped at **v0.5.0** — three-step selection, league
-snapshots, and the paper-doll/inventory preview with original icons. M2a
-(themes and saved presets), M2b/M2c (economy) and M3 (directory sync) remain.
+**Status:** v0.5.0 shipped the cascade selector and the inventory preview. A
+redesign is agreed: three independent selection modes (M2f) and the advanced
+rule editor (M2g). Neither is implemented yet.
 
 ---
 
@@ -163,55 +163,50 @@ not prove the right one is selected.
   until they are re-rendered.
 - The site shows the exact in-game name next to Download; use it as the check.
 
-### 2.9 Build selection model (M2e)
+### 2.9 Build selection modes (M2f)
 
-The flat list of 12 curated builds is a placeholder. The selector becomes three
-steps, coarse to specific:
+Selection is **three independent modes**, not a cascade. Tabs at the top; phase,
+strictness and sections are common below in every mode.
 
-1. **Family** — the gear baseline, independent of class:
-   - `caster` — int; wand/sceptre + ES or spirit shield; ES or ES/EV armour.
-   - `minion` — int; minion wand + minion shield; armour/ES.
-   - `bow` — dex; bow + quiver; evasion.
-   - `melee` — str or str/dex; one- or two-hander + shield; armour.
-   - `hybrid` — dex/int; claw/dagger + shield; evasion/ES.
-2. **Archetype** — a concrete skill from a league snapshot of poe.ninja's
-   builds pages, filtered by family. Examples: caster → Hexblast, Detonate
-   Dead, Righteous Fire; minion → Summon Skeletons, Raise Spectre; bow →
-   Lightning Arrow, Toxic Rain; melee → Cyclone, Boneshatter; hybrid →
-   Frost Blades, Hexblast Mines.
-3. **Ascendancy** — only ascendancies of classes that can play the skill.
-   Drives the attribute bias, defence mix and reviewed exception overrides.
-   The skill owns weapon/offhand; the ascendancy owns armour and attributes.
-
-A league selector sits above the family step. It defaults to the current league
-and exposes older snapshots read-only.
+1. **Family (A)** — `caster`, `minion`, `bow`, `melee`, `hybrid`. No class or
+   skill. The profile comes from the family preset:
+   - caster — int; wand/sceptre + ES or spirit shield; ES or ES/EV armour.
+   - minion — int; minion wand + minion shield; armour/ES.
+   - bow — dex; bow + quiver; evasion.
+   - melee — str or str/dex; one- or two-hander + shield; armour.
+   - hybrid — dex/int; claw/dagger + shield; evasion/ES.
+2. **Ascendancy (B)** — a flat list grouped by class. The ascendancy preset
+   gains a `defaultFamily` / default loadout: Necromancer → minion, Deadeye →
+   bow, Juggernaut → melee, Occultist → caster, Trickster → hybrid.
+3. **Meta build (C)** — league selector, all snapshot skills grouped by family,
+   then ascendancy. The family is derived from the skill. Snapshots stay
+   manual.
 
 Resolution:
 
-```
-BuildProfile = resolveProfile(family, skill, ascendancy)
-```
+- A: `profile(family)`.
+- B: `profile(ascendancy.defaultFamily)` with the ascendancy's armour,
+  attributes and exception overrides.
+- C: `profile(skill.family)` with the skill's weapon/offhand overrides and the
+  ascendancy's armour/attributes.
 
-- Weapon and offhand come from the family, overridden by skill exceptions
-  (Righteous Fire sceptre, Cyclone two-hander, bow skills + quiver).
-- Armour tags come from the ascendancy's class and defence bias, intersected
-  with the family's baseline.
-- Attributes and jewel base come from the ascendancy.
-- Accessories and flasks use shared defaults.
-- File name: `FilterPath-v<ver>-<asc>-<skill>-<lev|end>-<strictness>.filter`,
-  e.g. `FilterPath-v0.4.0-necro-spectre-lev-strict.filter`.
-- URL: `#league=...&family=...&skill=...&ascendancy=...&phase=...&strictness=...&sections=...`.
+Common:
+
+- Phase, strictness and sections apply in every mode.
+- File names:
+  - `FilterPath-v<ver>-family-<family>-<lev|end>-<strictness>.filter`
+  - `FilterPath-v<ver>-<ascendancy>-<lev|end>-<strictness>.filter`
+  - `FilterPath-v<ver>-<ascendancy>-<skill>-<lev|end>-<strictness>.filter`
+- URL: `#mode=family|ascendancy|meta&...`.
+- Old cascade links and the 12 interim links resolve to the closest mode.
 
 Data:
 
-- `src/meta/ascendancies.ts`: all 19 ascendancies with class, attributes,
-  defence bias and a small reviewed exception table.
-- `src/meta/leagues/<id>.json`: one snapshot per league, with `league`,
-  `capturedAt`, `source` and skills. Each skill carries `name`, `family`,
-  `classes`, `ascendancies` and `playShare`. Target at least 4 skills per
-  family, about 20 per league.
-- `src/meta/leagues/index.json`: league order, newest first, marks the current
-  league.
+- All presets are YAML under `src/presets/`, compiled to JSON at build time and
+  validated with a JSON Schema. The browser never parses YAML.
+- `families.yaml`, `ascendancies.yaml` (with `defaultFamily`), and
+  `meta/<league>.yaml` snapshots.
+- `src/meta/leagues/<id>.json` is replaced by the compiled snapshot.
 - Capture is **manual** from poe.ninja's public builds pages because the builds
   API is closed to third parties. Reading the pages and summarising the top
   skills is the intended escape hatch; automated fetching is not.
@@ -222,23 +217,50 @@ Data:
   list, so the curator selects a gem instead of typing a name. Popularity,
   classes and ascendancies remain human-curated.
 - A local CLI (`npm run meta:add`) appends or edits a skill; changes land
-  through a PR.
-- If poe.ninja ever grants API access or GGG reopens OAuth registration, the
-  source can be swapped behind a `MetaSource` interface without changing the
-  JSON shape.
+  through a PR. A validation Action checks meta PRs, and a monthly reminder
+  opens an issue.
 - The selector shows "Meta snapshot from poe.ninja builds, captured \<date\>"
   with a link to the build pages.
-- A `workflow_dispatch` Action validates meta PRs and opens a league-start
-  refresh reminder. It never fetches builds data.
-- A family-only fallback covers skills missing from the snapshot.
 
-Migration: the 12 current builds become seed skill entries. A compatibility
-adapter keeps old share links and the golden tests working during the switch.
+**Done:** three tabs; family mode needs no class; ascendancy mode uses its
+default loadout; meta mode lists all skills grouped and derives the family;
+phase/strictness/sections work in all three; share links restore the mode; old
+links still resolve.
 
-**Done:** five family cards; skills filtered by family; ascendancies filtered by
-the skill's classes; changing skill changes weapon/offhand; changing ascendancy
-changes armour/attributes; share links restore all three; old links still open
-a sensible profile.
+### 2.10 Advanced rules and locked presets (M2g)
+
+The filter is inspectable and cloneable, Last-Epoch style.
+
+- **Locked pane** — every generated rule, grouped by section (`gear`, `gems`,
+  `currency`, `maps`, `uniques`, `junk`), read-only, with a lock badge. Clicking
+  a rule shows its conditions, style, order and `Continue`.
+- **Whole-set clone** — copying freezes the current generated rule list into an
+  editable set tied to `mode + source + phase + strictness + sections`. The
+  clone replaces the generated set for that combination; the locked preset
+  stays visible with an "overridden" badge.
+- **Rule cards** — enable, move, duplicate, delete; conditions (class/base,
+  rarity, item level, drop level, area level, sockets, links, quality, stack,
+  map tier), action, style, `Continue`.
+- **Chips** — user-facing groups resolve through RePoE:
+  - `DEX item` / `STR item` / `INT item` use real attribute **requirements**
+    (the extractor keeps `requirements`).
+  - `HEAD` → `Class "Helmets"`.
+  - `Weapon 2H` → two-hand axe/sword/mace, staff and warstaff classes.
+  - `Weapon Ranged` → bases tagged `ranged`.
+  - Each chip shows the resolved base count before it is applied.
+- **Storage and sharing** — clones live in `localStorage`; export/import as
+  YAML or JSON; a compressed base64url share code carries the selection plus
+  custom rules, with a size cap and file fallback.
+- **Versioning** — a clone stores the preset version. When the repo preset
+  changes, the UI warns that the clone is behind and offers a reset; no silent
+  merge.
+- **Preset sources** — YAML profiles under `src/presets/`, validated and
+  compiled to JSON at build time. A clone becomes explicit rule data, so the
+  generator is not re-run for that selection.
+
+**Done:** the locked list shows every rule; a minion family clone can hide DEX
+helmets, 2H weapons and ranged weapons; the clone survives reload; export/import
+and the share code round-trip; resetting restores the locked preset.
 
 ---
 
@@ -247,6 +269,8 @@ a sensible profile.
 - React 19 + Vite 8 + TypeScript 5.9, Tailwind 4
 - Multi-page Vite build: builder (`index.html`) + static changelog
   (`changelog.html`)
+- YAML presets compiled to JSON by a build script; JSON Schema validation with
+  Ajv. No YAML parser in the browser.
 - Vitest for unit and golden-file tests
 - GitHub Pages via Actions, project path `/filterpath/`
 - No router: wizard state lives in the URL hash (shareable links for free)
@@ -268,6 +292,9 @@ src/
       ascendancies.ts     class, attributes, defence bias, exceptions
       leagues/<id>.json  one skill snapshot per league
       leagues/index.json league order and current league
+    presets/             YAML sources: families, ascendancies, leagues (M2f)
+    generated/           compiled JSON presets, committed (M2f)
+    rules/               clone serialization and share codes (M2g)
     filter/
       types.ts           rule model, styles
       presets.ts         leveling/endgame x strictness
@@ -292,11 +319,13 @@ src/
   ui/                    wizard, preview, URL state
     Changelog.tsx        release history page
     preview/             inventory preview components (M2d)
+    rules/               locked pane and rule editor (M2g)
   sync/                  download | clipboard | fileSystem | (future) api
     handles.ts           IndexedDB storage for directory handles (M3a)
     fileSystem.ts        pick, list, read, write (M3a/M3b)
   changelog.ts           release and commit data for the site
 scripts/
+  build-presets.mjs      YAML -> JSON + schema validation (M2f)
   extract-repoe.mjs
   meta-add.mjs           manual league snapshot editor (M2e)
   refresh-economy.mjs    M2c
@@ -479,6 +508,42 @@ Implementation notes:
 weapon/offhand, changing ascendancy changes armour/attributes; old links still
 open a sensible profile.
 
+### M2e — Initial cascade selector (superseded)
+
+Shipped in 0.4.0. Family → skill → ascendancy was a cascade; the agreed model
+is three independent modes in M2f. Kept for history and legacy-link mapping.
+
+### M2f — Three selection modes
+
+- [ ] `BuildProfile` refactor: class and ascendancy optional
+- [ ] Family mode: family preset only, no class or skill
+- [ ] Ascendancy mode: flat list grouped by class, `defaultFamily` per ascendancy
+- [ ] Meta mode: league, all skills grouped by family, then ascendancy
+- [ ] Shared phase/strictness/sections below every mode
+- [ ] Mode-aware file names and share links; old links adapt
+- [ ] YAML presets under `src/presets/`, compiled to JSON at build time
+- [ ] JSON Schema validation for every preset file
+- [ ] Tests: mode resolution, default loadouts, preset compilation, legacy links
+
+**Done:** the three tabs work independently; ascendancy mode derives its loadout;
+meta mode lists all skills grouped; phase/strictness/sections apply everywhere;
+old links still resolve.
+
+### M2g — Advanced rules and locked presets
+
+- [ ] Add `id` and `section` to every generated rule; group the locked pane
+- [ ] Whole-set clone tied to mode + source + phase + strictness + sections
+- [ ] localStorage store, versioned against the source preset
+- [ ] Rule editor: enable, move, duplicate, delete, conditions, style, `Continue`
+- [ ] Chips for DEX/STR/INT requirements, HEAD, Weapon 2H, Weapon Ranged
+- [ ] RePoE extractor keeps item requirements
+- [ ] Export/import YAML or JSON; compressed base64url share code with a cap
+- [ ] Reset-to-locked and stale-clone warning
+- [ ] Tests: clone round-trip, compression, chip expansion, rule ordering
+
+**Done:** a minion family clone can hide DEX helmets, 2H and ranged weapons; the
+clone survives reload and share codes; resetting restores the locked preset.
+
 ### M2d — Visual inventory preview
 
 See what the filter does before downloading it.
@@ -590,6 +655,8 @@ old file as a backup; unrelated filters in the folder are unchanged.
 - Syntax: a small parser that checks every block's conditions and actions
 - M2d: matcher tests for first-match-wins, `Continue`, and hidden gear
 - M2e: meta schema, league/family filtering, profile resolution, compatibility adapter
+- M2f: YAML compilation, JSON Schema validity, mode resolution, default loadouts, legacy links
+- M2g: clone round-trip, share-code compression, chip expansion, rule ordering
 - M3: mock directory handle; permission, backup, overwrite and no-delete paths
 - M2c: refresh script run against fixture JSON, schema failure path tested
 - CI runs `npm test` before every build
@@ -610,6 +677,8 @@ old file as a backup; unrelated filters in the folder are unchanged.
 - The poe.ninja skill snapshot is captured by hand with `meta:add`; never scrape
   the builds API
 - Meta changes land by PR; the validation Action must pass
+- Presets are YAML sources; compiled JSON is committed and validated
+- Clones are versioned against their source preset; no silent merges
 - Keep old share links working until 1.0
 - Every archetype carries `verifiedFor`; bump it when checked against a league
 - Disclaimer stays visible: *"This product isn't affiliated with or endorsed by
@@ -627,6 +696,11 @@ old file as a backup; unrelated filters in the folder are unchanged.
 | League snapshots accumulate with old schemas | migration test and a schema version field per snapshot |
 | Skill → class/ascendancy mapping is wrong | resolver tests; UI only offers allowed classes |
 | Old share links break after M2e | compatibility adapter and a migration test |
+| Share code grows too large | compress, cap the URL, fall back to file export |
+| Clone drifts from an updated preset | store preset version, warn, offer reset, never auto-merge |
+| YAML preset and runtime data drift | compile at build time, commit generated JSON, schema test |
+| `DEX item` means something different to the user | show the resolved base count and examples before applying |
+| Rule order changes silently | explicit order in the editor, `Continue` tests, golden filters |
 | `HasExplicitMod` breaks between patches | prefer tags/classes; review before use |
 | Unknown `BaseType` aborts the whole filter | `known-base-types.json` + CI test + supplement file |
 | Filter placed in a folder the game does not scan | Install docs with the Proton path; M3 folder picker |
@@ -645,13 +719,14 @@ old file as a backup; unrelated filters in the folder are unchanged.
 
 ## 9. Open items
 
-- Whether to expand the paper doll from two to five flask slots
-- How off-meta skills behave: family-only fallback or a manual "add skill" field
+- Share-code size cap: propose 8 KB, then fall back to file export
+- Clone update behaviour: warn and reset only (proposed), or attempt a merge
+- Confirm the chip vocabulary beyond DEX/STR/INT, HEAD, 2H and RANGED
+- Confirm the default family for every ascendancy (M2f table)
+- Whether an overlay mode (rules without cloning) is needed after M2g
 - Verify the Windows filter path (`Documents/My Games/Path of Exile`) in the
   install copy, not just Proton
 - Decide how M3b handles old versioned files: keep as `.bak`, archive, or offer
   removal (default: keep and flag)
-- Add the poe.ninja attribution wording to the selector (currently present in
-  the league row and footer)
 - Repository is live at https://lordgreg.github.io/filterpath/
 - Changelog is live at https://lordgreg.github.io/filterpath/changelog.html
