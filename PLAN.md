@@ -6,8 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** M2a shipped at **v0.9.0** with themes, per-section strictness and
-saved builds. Remaining: M2b/M2c (economy) and M3 (directory sync).
+**Status:** v0.9.1 adds the game-like simulator and removes the section
+toggles; all sections are always included, with advanced clones as overrides.
+Remaining: M2b/M2c (economy) and M3 (directory sync).
 
 ---
 
@@ -165,7 +166,8 @@ not prove the right one is selected.
 ### 2.9 Build selection modes (M2f)
 
 Selection is **three independent modes**, not a cascade. Tabs at the top; phase,
-strictness and sections are common below in every mode.
+strictness are common below in every mode; all filter sections are always
+included, and advanced rules can override or hide anything.
 
 1. **Family (A)** — `caster`, `minion`, `bow`, `melee`, `hybrid`. No class or
    skill. The profile comes from the family preset:
@@ -191,7 +193,7 @@ Resolution:
 
 Common:
 
-- Phase, strictness and sections apply in every mode.
+- Phase and strictness apply in every mode; sections are always included.
 - File names:
   - `FilterPath-v<ver>-family-<family>-<lev|end>-<strictness>.filter`
   - `FilterPath-v<ver>-<ascendancy>-<lev|end>-<strictness>.filter`
@@ -532,7 +534,7 @@ is three independent modes in M2f. Kept for history and legacy-link mapping.
 - [x] Family mode: family preset only, no class or skill
 - [x] Ascendancy mode: flat list grouped by class, `defaultFamily` per ascendancy
 - [x] Meta mode: league, all skills grouped by family, then ascendancy
-- [x] Shared phase/strictness/sections below every mode
+- [x] Shared phase and strictness below every mode; sections always on
 - [x] Mode-aware file names and share links; old links adapt
 - [x] YAML presets under `src/presets/`, compiled to JSON at build time
 - [x] JSON Schema validation for every preset file
@@ -549,8 +551,8 @@ Implementation notes:
 - Legacy cascade links and the interim archetype links map to meta mode.
 
 **Done:** the three tabs work independently; ascendancy mode derives its loadout;
-meta mode lists all skills grouped; phase/strictness/sections apply everywhere;
-old links still resolve.
+meta mode lists all skills grouped; phase/strictness apply everywhere; sections
+are always included; old links still resolve.
 
 ### M2g — Advanced rules and locked presets
 
@@ -580,7 +582,9 @@ Implementation notes:
 ### M2h — Loot simulator
 
 - [x] Separate `demo.html` page, reachable from the builder with the selection
-- [x] Drop cards styled from the matching filter rule
+- [x] Original game-like ground background
+- [x] Drops scattered as overlapping in-game-style labels, with a Scatter button
+- [x] Click a label to inspect the matching rule
 - [x] Paste one or more in-game item blocks to add them
 - [x] Parse class, rarity, base, item level, sockets, links, quality, stack size and map tier
 - [x] Shown/hidden counts and a show-hidden toggle
@@ -633,7 +637,7 @@ See what the filter does before downloading it.
   bases, not a game render; it does not imply real stat rolls.
 - [x] Original SVG icons per equipment and loot class, drawn for FilterPath. No
   GGG assets. Text and CSS remain the fallback when an icon is missing.
-- [x] Live updates with build, phase, strictness and section toggles.
+- [x] Live updates with build, phase and strictness; all sections always on
 
 Implementation notes:
 

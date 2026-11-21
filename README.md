@@ -5,9 +5,9 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.9.0 — three selection modes, preview, advanced rules, loot
-simulator, themes, per-section strictness and saved builds are live. Remaining:
-economy tiers/cron and directory sync.
+**Status:** v0.9.1 — three selection modes, preview, advanced rules, a
+game-like loot simulator, themes and saved builds are live. Remaining: economy
+tiers/cron and directory sync.
 
 ## Features
 

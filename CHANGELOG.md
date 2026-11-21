@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.9.1 — 2026-11-21
+
+Game-like loot simulator and always-on sections.
+
+- The loot simulator now uses an original game-like ground background.
+- Drops are scattered as overlapping in-game-style labels, with a Scatter
+  button.
+- Clicking a label shows the matching rule and reason.
+- Removed the section toggles: all sections are always included, and advanced
+  clones control overrides.
+
 ## 0.9.0 — 2026-11-21
 
 Themes, per-section strictness and saved builds.

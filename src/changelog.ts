@@ -17,6 +17,24 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.9.1',
+    date: '2026-11-21',
+    title: 'Game-like loot simulator and always-on sections',
+    notes: [
+      'The loot simulator now uses an original game-like ground background.',
+      'Drops are scattered as overlapping in-game-style labels, with a Scatter button.',
+      'Clicking a label shows the matching rule and reason.',
+      'Removed the section toggles: all sections are always included, and advanced clones control overrides.',
+    ],
+    commits: [
+      {
+        sha: 'd54704c',
+        message: 'feat: game-like loot simulator and always-on sections (0.9.1)',
+      },
+    ],
+    compare: 'v0.9.0...v0.9.1',
+  },
+  {
     version: '0.9.0',
     date: '2026-11-21',
     title: 'Themes, per-section strictness and saved builds',
