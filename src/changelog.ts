@@ -17,6 +17,25 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.10.2',
+    date: '2026-11-21',
+    title: 'Demo replaces the builder preview',
+    notes: [
+      'Removed the inventory preview from the builder; the loot simulator is now the single preview surface.',
+      'Demo labels spread across the full background height and randomize on load and on Randomize.',
+      'Hovering a demo label opens the game-style item tooltip automatically; tapping pins it on touch.',
+      'Removed the redundant strictness explanation block.',
+      'Deleted the unused paper-doll and icon code.',
+    ],
+    commits: [
+      {
+        sha: '1c8c74c',
+        message: 'feat: replace builder preview with the loot simulator (0.10.2)',
+      },
+    ],
+    compare: 'v0.10.1...v0.10.2',
+  },
+  {
     version: '0.10.1',
     date: '2026-11-21',
     title: 'Meta picking, import code, random drops and item tooltips',

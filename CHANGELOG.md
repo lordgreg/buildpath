@@ -2,6 +2,19 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.10.2 — 2026-11-21
+
+Demo replaces the builder preview.
+
+- Removed the inventory preview from the builder; the loot simulator is now the
+  single preview surface.
+- Demo labels spread across the full background height and randomize on load and
+  on Randomize.
+- Hovering a demo label opens the game-style item tooltip automatically;
+  tapping pins it on touch.
+- Removed the redundant strictness explanation block.
+- Deleted the unused paper-doll and icon code.
+
 ## 0.10.1 — 2026-11-21
 
 Meta picking, import code, random drops and item tooltips.

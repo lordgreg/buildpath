@@ -6,9 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** M2a and the 0.10.1 UX fixes are live: one global strictness, no
-section toggles, meta skill picking with ascendancy shares, and import/copy
-cleanup. Remaining: M3 (directory sync).
+**Status:** v0.10.2 removes the builder preview in favour of the loot
+simulator, with hover tooltips and randomized drops. Remaining: M3 (directory
+sync).
 
 ---
 
@@ -589,6 +589,8 @@ Implementation notes:
 - [x] Drops scattered as overlapping in-game-style labels, with a Randomize button
 - [x] A fresh random subset of drops on load and on every Randomize
 - [x] Pasted items are highlighted as new on the overlay
+- [x] Hovering a label opens the game-style tooltip; tapping pins it on touch
+- [x] Labels spread across the full background height
 - [x] Click a label to inspect the matching rule
 - [x] Paste one or more in-game item blocks to add them
 - [x] Parse class, rarity, base, item level, sockets, links, quality, stack size and map tier
@@ -601,9 +603,10 @@ the game; labels use the filter's colours and font size.
 **Done:** a minion family clone can hide DEX helmets, 2H and ranged weapons; the
 clone survives reload and share codes; resetting restores the locked preset.
 
-### M2d — Visual inventory preview
+### M2d — Visual inventory preview (superseded)
 
-See what the filter does before downloading it.
+The builder preview was removed in 0.10.2; the loot simulator (M2h) is the
+single preview surface.
 
 - [x] `src/core/preview/samples.ts`: reported leak fixtures plus
   representative drops — bases per archetype slot, junk white/magic gear, low-
