@@ -17,6 +17,18 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.14.2',
+    date: '2026-11-21',
+    title: 'Hide rares in unused slots',
+    notes: [
+      'Rare items in slots the build does not use are now hidden at every phase and strictness, not only Endgame Very Strict.',
+      'This removes noise such as rare sceptres and one-hand swords from the minion preset while keeping rare wands, shields and other used slots visible.',
+      'Unmatched items still default to visible; the added hide rule closes that gap for unused equipment classes.',
+    ],
+    commits: [],
+    compare: 'v0.14.1...v0.14.2',
+  },
+  {
     version: '0.14.1',
     date: '2026-11-21',
     title: 'Composed section presets',
