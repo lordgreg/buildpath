@@ -62,13 +62,39 @@ export function folderPathHint(value: string): string | null {
 
 export const BRAVE_FILE_ACCESS_FLAG = 'brave://flags/#file-system-access-api';
 
+export type BrowserKind =
+  | 'brave'
+  | 'chromium'
+  | 'firefox'
+  | 'safari'
+  | 'unknown';
+
 export function isBraveNavigator(nav: Navigator | undefined): boolean {
   return !!nav && 'brave' in nav;
 }
 
+/**
+ * Best-effort browser family for folder-writing guidance. iOS browsers all use
+ * WebKit and cannot write folders, even when their UA looks like Chrome/Edge.
+ */
+export function browserKindFrom(ua: string, brave: boolean): BrowserKind {
+  if (/iPhone|iPad|iPod/i.test(ua)) return 'safari';
+  if (brave) return 'brave';
+  if (/CriOS\/|FxiOS\/|EdgiOS\/|OPiOS\//i.test(ua)) return 'safari';
+  if (/Firefox\//i.test(ua)) return 'firefox';
+  if (/Edg\/|EdgA\/|OPR\/|Opera\/|Chrome\/|Chromium\/|Vivaldi\//i.test(ua)) {
+    return 'chromium';
+  }
+  if (/Safari\/|AppleWebKit\//i.test(ua)) return 'safari';
+  return 'unknown';
+}
+
+export function browserKind(): BrowserKind {
+  if (typeof navigator === 'undefined') return 'unknown';
+  return browserKindFrom(navigator.userAgent ?? '', 'brave' in navigator);
+}
+
 /** Brave exposes a `brave` object; the File System Access API is off by default. */
 export function isBrave(): boolean {
-  return isBraveNavigator(
-    typeof navigator === 'undefined' ? undefined : navigator,
-  );
+  return browserKind() === 'brave';
 }

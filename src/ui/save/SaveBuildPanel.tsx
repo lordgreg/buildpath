@@ -11,9 +11,9 @@ import {
 import type { WizardState } from '../wizardState.ts';
 import {
   BRAVE_FILE_ACCESS_FLAG,
+  browserKind,
   defaultFolderPath,
   folderPathHint,
-  isBrave,
   LINUX_WRITE_COMMAND,
   PROTON_EXTRA_LIBRARY,
   PROTON_FILTER_PATH,
@@ -113,7 +113,7 @@ export default function SaveBuildPanel({
   const [builds, setBuilds] = useState<SavedBuild[]>(() => listBuilds());
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  const brave = isBrave();
+  const browser = browserKind();
   const [pathNote, setPathNote] = useState<string>(() => {
     try {
       return localStorage.getItem('filterpath.folder-path.v1') ?? '';
@@ -379,39 +379,85 @@ export default function SaveBuildPanel({
 
         {!folder.supported && (
           <div className="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-[11px] leading-relaxed text-amber-200">
-            <p>
-              {brave
-                ? 'Brave disables folder writing by default.'
-                : 'This browser cannot write to folders.'}{' '}
-              If you use Brave, open{' '}
-              <code className="break-all rounded bg-ink-900 px-1">
-                {BRAVE_FILE_ACCESS_FLAG}
-              </code>
-              , set <strong>File System Access API</strong> to{' '}
-              <strong>Enabled</strong>, relaunch Brave, then reload this page.
-            </p>
-            {!brave && (
-              <p className="mt-1">
-                Chrome, Chromium and Edge support folder writing. Firefox and
-                Safari only support the download flow.
+            {browser === 'brave' && (
+              <>
+                <p>
+                  Brave disables folder writing by default. Open{' '}
+                  <code className="break-all rounded bg-ink-900 px-1">
+                    {BRAVE_FILE_ACCESS_FLAG}
+                  </code>
+                  , set <strong>File System Access API</strong> to{' '}
+                  <strong>Enabled</strong>, relaunch Brave, then reload this
+                  page.
+                </p>
+                <div className="mt-1 flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => void copyText(BRAVE_FILE_ACCESS_FLAG)}
+                    className="text-[10px] underline underline-offset-2"
+                  >
+                    Copy brave:// flag
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => window.location.reload()}
+                    className="text-[10px] underline underline-offset-2"
+                  >
+                    Reload after enabling
+                  </button>
+                </div>
+              </>
+            )}
+            {browser === 'chromium' && (
+              <p>
+                This Chromium browser should support folder writing, but the API
+                is missing. Check that the site is on HTTPS and that an
+                extension or enterprise policy is not blocking it. Chrome,
+                Chromium and Edge support folder writing by default.
               </p>
             )}
-            <div className="mt-1 flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={() => void copyText(BRAVE_FILE_ACCESS_FLAG)}
-                className="text-[10px] underline underline-offset-2"
-              >
-                Copy brave:// flag
-              </button>
-              <button
-                type="button"
-                onClick={() => window.location.reload()}
-                className="text-[10px] underline underline-offset-2"
-              >
-                Reload after enabling
-              </button>
-            </div>
+            {browser === 'firefox' && (
+              <p>
+                Firefox does not implement the File System Access API. Use
+                Chrome, Chromium or Edge for folder writing, or use the download
+                flow.
+              </p>
+            )}
+            {browser === 'safari' && (
+              <p>
+                Safari and other WebKit browsers do not implement the File
+                System Access API. Use Chrome, Chromium or Edge for folder
+                writing, or use the download flow.
+              </p>
+            )}
+            {browser === 'unknown' && (
+              <>
+                <p>
+                  This browser cannot write to folders. Brave needs{' '}
+                  <code className="break-all rounded bg-ink-900 px-1">
+                    {BRAVE_FILE_ACCESS_FLAG}
+                  </code>
+                  ; Chrome, Chromium and Edge support it by default; Firefox
+                  and Safari do not.
+                </p>
+                <div className="mt-1 flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => void copyText(BRAVE_FILE_ACCESS_FLAG)}
+                    className="text-[10px] underline underline-offset-2"
+                  >
+                    Copy brave:// flag
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => window.location.reload()}
+                    className="text-[10px] underline underline-offset-2"
+                  >
+                    Reload after enabling
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         )}
 
