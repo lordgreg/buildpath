@@ -778,15 +778,33 @@ old file as a backup; unrelated filters in the folder are unchanged.
 
 ## 9. Open items
 
-- Share-code size cap: 8 KB, then file export (implemented)
-- Ascendancy shares are seed values; replace them with a real poe.ninja capture
-- Clone update behaviour: warn and reset only (implemented), or attempt a merge
-- Confirm the chip vocabulary beyond DEX/STR/INT, HEAD, 2H and RANGED
-- Confirm the default family for every ascendancy (M2f table)
-- Whether an overlay mode (rules without cloning) is needed after M2g
+### Data capture (highest priority)
+
+- Replace the seed Covens snapshot with a real poe.ninja capture: skill list,
+  play shares, top ascendancies and ascendancy shares. The current shares are
+  placeholders (55/30/15) and should not be presented as measured.
+- Confirm the chip vocabulary beyond DEX/STR/INT, HEAD, 2H and RANGED.
+
+### Product decisions
+
+- Confirm the default family assigned to every ascendancy.
+- Decide whether an overlay mode (extra rules without cloning the whole set)
+  is needed after M2g.
+- Old versioned filters currently stay in the folder and are flagged stale;
+  decide whether to offer archive/removal in addition to the `.bak` copy.
+
+### Manual validation
+
 - Verify the Windows filter path (`Documents/My Games/Path of Exile`) in the
-  install copy, not just Proton
-- Decide how M3b handles old versioned files: keep as `.bak`, archive, or offer
-  removal (default: keep and flag)
-- Repository is live at https://lordgreg.github.io/filterpath/
-- Changelog is live at https://lordgreg.github.io/filterpath/changelog.html
+  installed build, not just Proton.
+- Run directory sync in Chromium: pick, remember, permission re-request,
+  overwrite confirmation, `.bak` and stale badges.
+- Check the demo hover tooltip, pasted-item highlight, Randomize and mobile.
+- Open a share link in a fresh browser to confirm the clone imports.
+- Dispatch the economy workflow once manually to confirm it opens a PR.
+
+### Links
+
+- Builder: https://lordgreg.github.io/filterpath/
+- Demo: https://lordgreg.github.io/filterpath/demo.html
+- Changelog: https://lordgreg.github.io/filterpath/changelog.html
