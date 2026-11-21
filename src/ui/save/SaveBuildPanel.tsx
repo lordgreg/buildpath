@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import type { Rule } from '../../core/filter/types.ts';
+import { PRESET_VERSION } from '../../meta/index.ts';
+import { filterUpdateKind } from '../../sync/fileSystem.ts';
 import { copyText, downloadFilter } from '../download.ts';
 import {
   deleteBuild,
@@ -580,24 +582,36 @@ export default function SaveBuildPanel({
                 </tr>
               </thead>
               <tbody>
-                {folder.files.map((file) => (
-                  <tr key={file.name} className="border-t border-ink-800">
-                    <td className="py-1 pr-3 text-zinc-300">{file.name}</td>
-                    <td className="py-1 pr-3">{file.appVersion ?? '—'}</td>
-                    <td className="py-1">
-                      {file.name === fileName && (
-                        <span className="mr-2 rounded bg-gold-400/15 px-1.5 py-0.5 text-gold-300">
-                          current
-                        </span>
-                      )}
-                      {file.appVersion && file.appVersion !== appVersion && (
-                        <span className="rounded bg-amber-500/15 px-1.5 py-0.5 text-amber-300">
-                          stale
-                        </span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
+                {folder.files.map((file) => {
+                  const updateKind = filterUpdateKind(
+                    file,
+                    appVersion,
+                    PRESET_VERSION,
+                  );
+                  return (
+                    <tr key={file.name} className="border-t border-ink-800">
+                      <td className="py-1 pr-3 text-zinc-300">{file.name}</td>
+                      <td className="py-1 pr-3">{file.appVersion ?? '—'}</td>
+                      <td className="py-1">
+                        {file.name === fileName && (
+                          <span className="mr-2 rounded bg-gold-400/15 px-1.5 py-0.5 text-gold-300">
+                            current
+                          </span>
+                        )}
+                        {updateKind === 'version' && (
+                          <span className="rounded bg-amber-500/15 px-1.5 py-0.5 text-amber-300">
+                            stale
+                          </span>
+                        )}
+                        {updateKind === 'presets' && (
+                          <span className="rounded bg-amber-500/15 px-1.5 py-0.5 text-amber-300">
+                            old presets
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

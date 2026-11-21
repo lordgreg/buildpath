@@ -1,5 +1,6 @@
 import { getArchetype } from '../archetypes/index.ts';
 import type { Archetype } from '../archetypes/types.ts';
+import { PRESET_VERSION } from '../../meta/index.ts';
 import { resolveBuild } from '../../meta/resolve.ts';
 import type { BuildSelection } from '../../meta/types.ts';
 import { baseTypeMeta } from '../data/base-types.ts';
@@ -197,6 +198,7 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
           `Phase: ${config.phase === 'leveling' ? 'Leveling' : 'Endgame'} - ${STRICTNESS_LABELS_PUBLIC[config.strictness]}`,
         ]),
     `League: ${compiled.archetype.verifiedFor}`,
+    `Presets: ${PRESET_VERSION}`,
     `Rules: ${compiled.rules.length} - Base types: ${compiled.baseTypes.length}`,
     `Base data: RePoE ${baseTypeMeta.ref} (${baseTypeMeta.sha256.slice(0, 8)})`,
     'Generated at https://lordgreg.github.io/filterpath/',
@@ -214,11 +216,10 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
           selection: config.selection,
           phase: config.phase,
           strictness: config.strictness,
-          version: compiled.version,
           name: config.buildName,
         })
       : filterNameFor(
-          `filterpath-${compiled.archetype.id}-${config.phase}-${config.strictness}-${compiled.version}`,
+          `filterpath-${compiled.archetype.id}-${config.phase}-${config.strictness}`,
         ),
     ruleCount: compiled.rules.length,
     baseTypeCount: compiled.baseTypes.length,

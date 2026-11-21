@@ -1,4 +1,5 @@
 import type { Rule } from '../../core/filter/types.ts';
+import { PRESET_VERSION } from '../../meta/index.ts';
 import type { WizardState } from '../wizardState.ts';
 
 export interface SavedBuild {
@@ -6,6 +7,8 @@ export interface SavedBuild {
   name: string;
   createdAt: string;
   updatedAt?: string;
+  /** Preset hash at save time; used to tell the user presets have changed. */
+  presetVersion?: string;
   state: WizardState;
   /** User rules only; the preset is always regenerated from the latest data. */
   customRules?: Rule[];
@@ -78,6 +81,7 @@ export function saveBuild(
     id: `build-${Date.now()}`,
     name: name.trim() || 'Untitled build',
     createdAt: new Date().toISOString(),
+    presetVersion: PRESET_VERSION,
     state: JSON.parse(JSON.stringify(state)) as WizardState,
     ...(rules ? { customRules: rules } : {}),
   };
@@ -101,6 +105,7 @@ export function updateBuild(
     ...previous,
     name: name.trim() || 'Untitled build',
     updatedAt: new Date().toISOString(),
+    presetVersion: PRESET_VERSION,
     state: JSON.parse(JSON.stringify(state)) as WizardState,
     ...(rules ? { customRules: rules } : {}),
   };

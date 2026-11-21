@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { generateFilter } from '../core/filter/generate.ts';
 import {
   STRICTNESS_LABELS_PUBLIC,
@@ -6,6 +6,7 @@ import {
   type Phase,
 } from '../core/filter/presets.ts';
 import { configKey } from '../core/rules/key.ts';
+import { filterUpdateKind } from '../sync/fileSystem.ts';
 import { autoBuildName } from '../core/filter/name.ts';
 import type { Rule } from '../core/filter/types.ts';
 import { THEMES } from '../core/filter/themes.ts';
@@ -116,6 +117,8 @@ export default function Wizard() {
   const [activeBuildId, setActiveBuildId] = useState<string | null>(null);
   const autoName = autoBuildName(state);
   const folder = useFiltersFolder();
+  const autoSyncedRef = useRef<string | null>(null);
+  const filenameNoticeRef = useRef<string | null>(null);
 
   useEffect(() => {
     setCustomRules(loadCustomRules(activeKey));
@@ -261,6 +264,65 @@ export default function Wizard() {
     downloadFilter(filter.fileName, filter.text);
   };
 
+  useEffect(() => {
+    if (!folder.handle) return;
+    const existing = folder.files.find(
+      (file) => file.name === filter.fileName,
+    );
+    if (!existing) return;
+
+    const updateKind = filterUpdateKind(existing, APP_VERSION, PRESET_VERSION);
+    if (!updateKind) return;
+
+    const key = `${filter.fileName}:${existing.presetVersion ?? 'legacy'}:${existing.appVersion ?? 'legacy'}`;
+    if (autoSyncedRef.current === key) return;
+
+    if (folder.permission !== 'granted') {
+      setNotice(
+        `Your filter is using an older version. Grant folder access or Save to update ${filter.fileName}.`,
+      );
+      return;
+    }
+
+    autoSyncedRef.current = key;
+    void folder.write(filter.fileName, filter.text, false).then((result) => {
+      setNotice(
+        result.ok
+          ? updateKind === 'presets'
+            ? 'Your filter was updated with the latest presets.'
+            : 'Your filter was updated to the latest version.'
+          : `Could not update ${filter.fileName}. ${result.message}`,
+      );
+    });
+  }, [
+    filter.fileName,
+    filter.text,
+    folder.files,
+    folder.handle,
+    folder.permission,
+    folder.write,
+  ]);
+
+  useEffect(() => {
+    if (!folder.handle || folder.files.length === 0) return;
+    if (folder.files.some((file) => file.name === filter.fileName)) return;
+
+    const base = filter.fileName.replace(/\.filter$/, '');
+    const old = folder.files.find(
+      (file) =>
+        file.name.startsWith(`${base}-`) &&
+        /-\d+\.\d+\.\d+\.filter$/.test(file.name),
+    );
+    if (!old) return;
+
+    const key = `${filter.fileName}:${old.name}`;
+    if (filenameNoticeRef.current === key) return;
+    filenameNoticeRef.current = key;
+    setNotice(
+      `Filename changed. Download once to create ${filter.fileName}, then select it in-game; future updates sync automatically.`,
+    );
+  }, [filter.fileName, folder.files, folder.handle]);
+
   const loadBuild = (build: SavedBuild) => {
     const loaded = { ...coerceWizardState(build.state), name: build.name };
     const loadedKey = configKey(loaded);
@@ -270,7 +332,11 @@ export default function Wizard() {
     setCustomRules(rules);
     setActiveBuildId(build.id);
     setSavedHash(buildHash(loaded, rules));
-    setNotice(`Loaded ${build.name}.`);
+    setNotice(
+      build.presetVersion === PRESET_VERSION
+        ? `Loaded ${build.name}.`
+        : `Loaded ${build.name}. Presets were refreshed to the latest version.`,
+    );
   };
 
   const importCode = async (code: string): Promise<string | null> => {
@@ -284,7 +350,11 @@ export default function Wizard() {
       update(importedState);
       setCustomRules(rules);
       setActiveBuildId(null);
-      setNotice('Imported build. Save it if you want to keep it locally.');
+      setNotice(
+        payload.presetVersion === PRESET_VERSION
+          ? 'Imported build. Save it if you want to keep it locally.'
+          : 'Imported build with the latest presets. Save it if you want to keep it locally.',
+      );
       return null;
     } catch (error) {
       return error instanceof Error ? error.message : 'Could not read that code';
@@ -916,8 +986,8 @@ export default function Wizard() {
           </ol>
           <p className="mt-3 text-xs text-zinc-500">
             Online filters synced to your PoE account appear in the same
-            dropdown but are separate files. The entry must start with{' '}
-            <span className="text-zinc-300">FilterPath-v</span>.
+            dropdown but are separate files. The entry starts with{' '}
+            <span className="text-zinc-300">filterpath-</span>.
           </p>
           <p className="mt-2 text-xs text-zinc-500">
             Seeing items that should be hidden? Check which filter is selected;

@@ -34,6 +34,7 @@ describe('saved builds', () => {
       { action: 'Show', section: 'custom' },
     ]);
     expect(created.updatedAt).toBeUndefined();
+    expect(created.presetVersion).toBeTruthy();
 
     const updated = updateBuild(
       created.id,

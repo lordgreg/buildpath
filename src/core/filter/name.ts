@@ -39,24 +39,23 @@ export function resolveBuildName(
 }
 
 /**
- * `filterpath-<name>-<phase>-<strictness>-<version>.filter`. From-scratch
- * filters have no phase or strictness, so both collapse into hide-all/show-all.
+ * `filterpath-<name>-<phase>-<strictness>.filter`. The version lives in the
+ * header, so the filename stays stable across releases. From-scratch filters
+ * have no phase or strictness, so both collapse into hide-all/show-all.
  */
 export function buildFileName(input: {
   selection: BuildSelection;
   phase: Phase;
   strictness: Strictness;
-  version: string;
   name?: string;
 }): string {
   const name = resolveBuildName(input.selection, input.name);
-  const version = input.version.replace(/[^0-9A-Za-z.-]/g, '');
 
   if (input.selection.mode === 'scratch') {
     const start =
       input.selection.scratchStart === 'show' ? 'show-all' : 'hide-all';
-    return `filterpath-${name}-${start}-${version}.filter`;
+    return `filterpath-${name}-${start}.filter`;
   }
 
-  return `filterpath-${name}-${input.phase}-${input.strictness}-${version}.filter`;
+  return `filterpath-${name}-${input.phase}-${input.strictness}.filter`;
 }

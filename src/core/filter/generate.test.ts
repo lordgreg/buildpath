@@ -62,7 +62,7 @@ describe('generateFilter', () => {
           expect(filter.text, label).toContain('Show');
           expect(filter.text, label).toContain(archetype.name);
           expect(filter.fileName, label).toMatch(
-            /^filterpath-[a-z0-9-]+-(leveling|endgame)-(normal|strict|very-strict)-dev\.filter$/,
+            /^filterpath-[a-z0-9-]+-(leveling|endgame)-(normal|strict|very-strict)\.filter$/,
           );
           // The game client reads filters as plain text; keep it ASCII.
           expect(filter.text, label).not.toMatch(/[^\x09\x0a\x20-\x7e]/);
@@ -133,8 +133,9 @@ describe('generateFilter', () => {
     });
 
     expect(filter.text).toContain('# FilterPath 9.9.9 - filter format 1');
+    expect(filter.text).toMatch(/^# Presets: [a-f0-9]+$/m);
     expect(filter.fileName).toBe(
-      'filterpath-necro-minions-leveling-normal-9.9.9.filter',
+      'filterpath-necro-minions-leveling-normal.filter',
     );
   });
 

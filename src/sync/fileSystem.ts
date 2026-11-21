@@ -4,23 +4,40 @@ export interface FilterFileInfo {
   modified: number;
   appVersion: string | null;
   formatVersion: number | null;
+  presetVersion: string | null;
   build: string | null;
 }
 
 export interface FilterHeader {
   appVersion: string | null;
   formatVersion: number | null;
+  presetVersion: string | null;
   build: string | null;
 }
 
 export function parseFilterHeader(text: string): FilterHeader {
   const version = /^# FilterPath (\S+) - filter format (\d+)\s*$/m.exec(text);
   const build = /^# Build: (.+)$/m.exec(text);
+  const presets = /^# Presets: (.+)$/m.exec(text);
   return {
     appVersion: version?.[1] ?? null,
     formatVersion: version ? Number(version[2]) : null,
+    presetVersion: presets?.[1]?.trim() ?? null,
     build: build?.[1]?.trim() ?? null,
   };
+}
+
+export type FilterUpdateKind = 'presets' | 'version' | null;
+
+/** Presets take precedence: an old preset hash means the rules are out of date. */
+export function filterUpdateKind(
+  file: Pick<FilterHeader, 'appVersion' | 'presetVersion'>,
+  appVersion: string,
+  presetVersion: string,
+): FilterUpdateKind {
+  if (file.presetVersion !== presetVersion) return 'presets';
+  if (file.appVersion !== appVersion) return 'version';
+  return null;
 }
 
 export function backupName(name: string): string {

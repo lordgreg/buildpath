@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   backupName,
+  filterUpdateKind,
   isFilterFileName,
   listFilterFiles,
   parseFilterHeader,
@@ -54,18 +55,54 @@ const HEADER = `# ==============================================================
 # FilterPath 0.10.2 - filter format 1
 # Build: Necromancer Summon Skeletons - Witch / Necromancer
 # League: Covens
+# Presets: abc123
 `;
+
+describe('filter updates', () => {
+  it('classifies a file as current, version-stale or preset-stale', () => {
+    expect(
+      filterUpdateKind(
+        { appVersion: '1.0.0', presetVersion: 'abc' },
+        '1.0.0',
+        'abc',
+      ),
+    ).toBeNull();
+    expect(
+      filterUpdateKind(
+        { appVersion: '0.9.0', presetVersion: 'abc' },
+        '1.0.0',
+        'abc',
+      ),
+    ).toBe('version');
+    expect(
+      filterUpdateKind(
+        { appVersion: '1.0.0', presetVersion: 'old' },
+        '1.0.0',
+        'abc',
+      ),
+    ).toBe('presets');
+    expect(
+      filterUpdateKind(
+        { appVersion: '0.9.0', presetVersion: null },
+        '1.0.0',
+        'abc',
+      ),
+    ).toBe('presets');
+  });
+});
 
 describe('filter files', () => {
   it('parses the FilterPath header', () => {
     expect(parseFilterHeader(HEADER)).toEqual({
       appVersion: '0.10.2',
       formatVersion: 1,
+      presetVersion: 'abc123',
       build: 'Necromancer Summon Skeletons - Witch / Necromancer',
     });
     expect(parseFilterHeader('# something else')).toEqual({
       appVersion: null,
       formatVersion: null,
+      presetVersion: null,
       build: null,
     });
   });

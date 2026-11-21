@@ -6,8 +6,6 @@ import {
   slugify,
 } from './name.ts';
 
-const version = '0.13.0';
-
 describe('filter naming', () => {
   it('slugifies typed names', () => {
     expect(slugify('My Vortex Build!')).toBe('my-vortex-build');
@@ -45,19 +43,17 @@ describe('filter naming', () => {
         selection: { mode: 'family', familyId: 'minion' },
         phase: 'leveling',
         strictness: 'normal',
-        version,
       }),
-    ).toBe('filterpath-minion-leveling-normal-0.13.0.filter');
+    ).toBe('filterpath-minion-leveling-normal.filter');
 
     expect(
       buildFileName({
         selection: { mode: 'meta', skillId: 'lightning-arrow', ascendancyId: 'deadeye' },
         phase: 'endgame',
         strictness: 'very-strict',
-        version,
         name: 'My LA',
       }),
-    ).toBe('filterpath-my-la-endgame-very-strict-0.13.0.filter');
+    ).toBe('filterpath-my-la-endgame-very-strict.filter');
   });
 
   it('collapses phase and strictness for from-scratch filters', () => {
@@ -66,18 +62,16 @@ describe('filter naming', () => {
         selection: { mode: 'scratch', scratchStart: 'hide' },
         phase: 'leveling',
         strictness: 'normal',
-        version,
       }),
-    ).toBe('filterpath-custom-hide-all-0.13.0.filter');
+    ).toBe('filterpath-custom-hide-all.filter');
 
     expect(
       buildFileName({
         selection: { mode: 'scratch', scratchStart: 'show' },
         phase: 'endgame',
         strictness: 'strict',
-        version,
         name: 'Show me loot',
       }),
-    ).toBe('filterpath-show-me-loot-show-all-0.13.0.filter');
+    ).toBe('filterpath-show-me-loot-show-all.filter');
   });
 });
