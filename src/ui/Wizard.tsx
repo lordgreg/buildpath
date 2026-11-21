@@ -26,6 +26,7 @@ import { decodeShare } from '../core/share/codec.ts';
 import FilterPreview from './FilterPreview.tsx';
 import AdvancedRules from './rules/AdvancedRules.tsx';
 import SavedBuilds from './presets/SavedBuilds.tsx';
+import FolderSync from './sync/FolderSync.tsx';
 import {
   deleteClone,
   loadClone,
@@ -636,6 +637,12 @@ export default function Wizard() {
             </a>
           </section>
         </div>
+
+        <FolderSync
+          fileName={filter.fileName}
+          text={filter.text}
+          appVersion={APP_VERSION}
+        />
 
         <AdvancedRules
           baseRules={baseFilter.rules}

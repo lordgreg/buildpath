@@ -1,0 +1,106 @@
+export interface FilterFileInfo {
+  name: string;
+  size: number;
+  modified: number;
+  appVersion: string | null;
+  formatVersion: number | null;
+  build: string | null;
+}
+
+export interface FilterHeader {
+  appVersion: string | null;
+  formatVersion: number | null;
+  build: string | null;
+}
+
+export function parseFilterHeader(text: string): FilterHeader {
+  const version = /^# FilterPath (\S+) - filter format (\d+)\s*$/m.exec(text);
+  const build = /^# Build: (.+)$/m.exec(text);
+  return {
+    appVersion: version?.[1] ?? null,
+    formatVersion: version ? Number(version[2]) : null,
+    build: build?.[1]?.trim() ?? null,
+  };
+}
+
+export function backupName(name: string): string {
+  return `${name}.bak`;
+}
+
+export function isFilterFileName(name: string): boolean {
+  return name.toLowerCase().endsWith('.filter');
+}
+
+export function supportsDirectoryPicker(): boolean {
+  return typeof window !== 'undefined' && 'showDirectoryPicker' in window;
+}
+
+export async function pickFiltersDirectory(): Promise<FileSystemDirectoryHandle> {
+  return window.showDirectoryPicker({
+    mode: 'readwrite',
+    startIn: 'documents',
+  });
+}
+
+export async function ensurePermission(
+  handle: FileSystemDirectoryHandle,
+  request = true,
+): Promise<PermissionState> {
+  const descriptor = { mode: 'readwrite' as const };
+  const current = (await handle.queryPermission?.(descriptor)) ?? 'granted';
+  if (current === 'granted') return current;
+  if (!request) return current;
+  return (await handle.requestPermission?.(descriptor)) ?? 'denied';
+}
+
+export async function listFilterFiles(
+  handle: FileSystemDirectoryHandle,
+): Promise<FilterFileInfo[]> {
+  const files: FilterFileInfo[] = [];
+  for await (const entry of handle.values()) {
+    if (entry.kind !== 'file') continue;
+    if (!isFilterFileName(entry.name)) continue;
+    const file = await (entry as FileSystemFileHandle).getFile();
+    const header = parseFilterHeader(await file.text());
+    files.push({
+      name: entry.name,
+      size: file.size,
+      modified: file.lastModified,
+      ...header,
+    });
+  }
+  return files.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
+ * Writes a filter, keeping a single `<name>.filter.bak` copy of the previous
+ * contents. Never deletes or touches other files.
+ */
+export async function writeFilter(
+  handle: FileSystemDirectoryHandle,
+  name: string,
+  text: string,
+): Promise<{ backup: string | null }> {
+  let backup: string | null = null;
+
+  try {
+    const existing = await handle.getFileHandle(name);
+    const file = await existing.getFile();
+    const previous = await file.text();
+    backup = backupName(name);
+    const backupHandle = await handle.getFileHandle(backup, { create: true });
+    const backupStream = await backupHandle.createWritable();
+    await backupStream.write(previous);
+    await backupStream.close();
+  } catch (error) {
+    if (!(error instanceof DOMException) || error.name !== 'NotFoundError') {
+      throw error;
+    }
+  }
+
+  const target = await handle.getFileHandle(name, { create: true });
+  const stream = await target.createWritable();
+  await stream.write(text);
+  await stream.close();
+  return { backup };
+}
