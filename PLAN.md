@@ -6,11 +6,10 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.14.5 tightens Leveling Strict Magic gear on top of seed labels,
-wrong-base gear hiding, section presets, template coverage, filter naming,
-folder writing and saved-build updates. Remaining work is manual QA and the
-rarity/default theme rework; real meta capture is blocked by poe.ninja’s closed
-builds API.
+**Status:** v0.15.0 ships rarity-first colors on top of Leveling Strict Magic
+floors, seed labels, wrong-base gear hiding, section presets, template
+coverage, filter naming, folder writing and saved-build updates. Remaining work
+is manual QA; real meta capture is blocked by poe.ninja’s closed builds API.
 
 ---
 
@@ -473,7 +472,7 @@ highlights the archetype's bases. *(Confirmed 2026-11-21.)*
 
 ### M2a — Customize
 
-- [x] Three filter themes: Classic, High contrast, Muted
+- [x] Rarity-first default colors, High contrast, Muted
 - [x] One global strictness for the whole filter (per-section strictness removed in 0.10.1)
 - [x] Saved builds in `localStorage` with load and delete
 - [x] My-rules keys follow the selected build, not phase, strictness or theme
@@ -483,7 +482,9 @@ highlights the archetype's bases. *(Confirmed 2026-11-21.)*
 Implementation notes:
 
 - `src/core/filter/themes.ts` post-processes generated rules, so themes apply to
-  custom rules as well.
+  custom rules as well. The default theme uses rarity for gear text and borders,
+  default gold for currency, pale blue for cards, teal for gems, tan for maps
+  and black backgrounds. Six-socket rules are split per rarity.
 - Saved builds live in `src/ui/presets/storage.ts`; they store the full wizard
   state, not just the selection.
 - My-rules keys follow the selected build, so changing phase, strictness or

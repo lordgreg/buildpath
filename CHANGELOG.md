@@ -2,6 +2,21 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.15.0 — 2026-11-21
+
+Rarity-first default colors.
+
+- Replaced the slot-colored Classic theme with a Rarity theme: gear text and
+  borders follow Normal, Magic, Rare and Unique instead of
+  weapon/armour/accessory.
+- All gear uses a black background; Magic is blue, Rare is yellow and Unique is
+  orange.
+- Currency is default gold, divination cards pale blue, gems teal, maps tan and
+  map fragments gold.
+- Six-socket rules are split by rarity so a six-socket item also gets its
+  rarity color.
+- High contrast and Muted remain; Muted now uses a black background.
+
 ## 0.14.5 — 2026-11-21
 
 Leveling Strict hides everyday Magic gear.
