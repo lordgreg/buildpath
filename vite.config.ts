@@ -21,6 +21,7 @@ export default defineConfig({
       input: {
         main: resolve(root, 'index.html'),
         changelog: resolve(root, 'changelog.html'),
+        demo: resolve(root, 'demo.html'),
       },
     },
   },

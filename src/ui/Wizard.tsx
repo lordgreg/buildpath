@@ -23,6 +23,7 @@ import {
 } from '../meta/index.ts';
 import type { BuildMode } from '../meta/types.ts';
 import { APP_VERSION } from '../version.ts';
+import { decodeShare } from '../core/share/codec.ts';
 import FilterPreview from './FilterPreview.tsx';
 import InventoryPreview from './preview/InventoryPreview.tsx';
 import AdvancedRules from './rules/AdvancedRules.tsx';
@@ -150,6 +151,34 @@ export default function Wizard() {
     [state, clone, baseFilter],
   );
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    const code = params.get('code');
+    if (!code) return;
+    let cancelled = false;
+    void decodeShare(code)
+      .then((payload) => {
+        if (cancelled) return;
+        const next = createClone({
+          key: activeKey,
+          label: baseFilter.archetype.name,
+          presetVersion: PRESET_VERSION,
+          rules: payload.rules,
+        });
+        saveClone(next);
+        setClone(next);
+        params.delete('code');
+        const hash = params.toString();
+        window.history.replaceState(null, '', hash ? `#${hash}` : '#');
+      })
+      .catch(() => {
+        // Ignore malformed codes; the builder keeps working.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [activeKey, baseFilter.archetype.name]);
+
   const snapshot = getSnapshot(state.leagueId);
   const family = getFamily(state.familyId);
   const ascendancy = getAscendancy(state.ascendancyId);
@@ -228,6 +257,12 @@ export default function Wizard() {
           </p>
         </div>
         <nav className="flex items-center gap-4 text-xs text-zinc-500">
+          <a
+            href={`./demo.html#${wizardHash(state)}`}
+            className="underline-offset-4 hover:text-zinc-300 hover:underline"
+          >
+            demo
+          </a>
           <a
             href="./changelog.html"
             className="underline-offset-4 hover:text-zinc-300 hover:underline"

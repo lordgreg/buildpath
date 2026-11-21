@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Rule, RuleSection } from '../../core/filter/types.ts';
 import { SLOT_STYLES } from '../../core/filter/types.ts';
+import { colorToHex, hexToColor } from '../../core/filter/style-utils.ts';
 import type { RuleClone } from '../../core/rules/clone.ts';
 import {
   CHIPS,
@@ -113,6 +114,17 @@ export default function AdvancedRules({
     onChange({ ...clone, rules });
   };
 
+  const updateStyle = (
+    index: number,
+    patch: Partial<NonNullable<Rule['style']>>,
+  ) => {
+    if (!clone) return;
+    const rule = clone.rules[index]!;
+    updateRule(index, {
+      style: { ...(rule.style ?? {}), ...patch },
+    });
+  };
+
   const moveRule = (index: number, delta: number) => {
     if (!clone) return;
     const target = index + delta;
@@ -174,6 +186,15 @@ export default function AdvancedRules({
       rules: clone.rules,
     });
     setShare(encoded);
+  };
+
+  const copyShareLink = () => {
+    if (!share || share.tooLarge) return;
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    params.set('code', share.code);
+    const url = `${window.location.origin}${window.location.pathname}${window.location.search}#${params.toString()}`;
+    void copyText(url);
+    setMessage('Share link copied. Opening it imports these rules.');
   };
 
   const importCode = async () => {
@@ -482,6 +503,98 @@ export default function AdvancedRules({
                       ? ` - ${rule.chips.map((chip) => chipLabel(chip)).join(' + ')}`
                       : ''}
                   </p>
+                  <details className="mt-1 pl-8">
+                    <summary className="cursor-pointer text-[10px] uppercase tracking-wide text-zinc-600">
+                      Style
+                    </summary>
+                    <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                      <label className="text-[10px] text-zinc-500">
+                        Text
+                        <input
+                          type="color"
+                          value={colorToHex(rule.style?.textColor)}
+                          onChange={(event) =>
+                            updateStyle(index, {
+                              textColor: hexToColor(event.target.value),
+                            })
+                          }
+                          className="mt-0.5 block h-7 w-full rounded border border-ink-600 bg-ink-800"
+                        />
+                      </label>
+                      <label className="text-[10px] text-zinc-500">
+                        Border
+                        <input
+                          type="color"
+                          value={colorToHex(rule.style?.borderColor)}
+                          onChange={(event) =>
+                            updateStyle(index, {
+                              borderColor: hexToColor(event.target.value),
+                            })
+                          }
+                          className="mt-0.5 block h-7 w-full rounded border border-ink-600 bg-ink-800"
+                        />
+                      </label>
+                      <label className="text-[10px] text-zinc-500">
+                        Background
+                        <input
+                          type="color"
+                          value={colorToHex(rule.style?.backgroundColor)}
+                          onChange={(event) =>
+                            updateStyle(index, {
+                              backgroundColor: hexToColor(event.target.value),
+                            })
+                          }
+                          className="mt-0.5 block h-7 w-full rounded border border-ink-600 bg-ink-800"
+                        />
+                      </label>
+                      <label className="text-[10px] text-zinc-500">
+                        Font
+                        <input
+                          type="number"
+                          min={18}
+                          max={45}
+                          value={rule.style?.fontSize ?? 40}
+                          onChange={(event) =>
+                            updateStyle(index, {
+                              fontSize: Number(event.target.value),
+                            })
+                          }
+                          className="mt-0.5 block w-full rounded border border-ink-600 bg-ink-800 px-1 py-1 text-xs text-zinc-200"
+                        />
+                      </label>
+                      <label className="text-[10px] text-zinc-500">
+                        Sound
+                        <select
+                          value={String(rule.style?.alertSound ?? 'None')}
+                          onChange={(event) =>
+                            updateStyle(index, {
+                              alertSound:
+                                event.target.value === 'None'
+                                  ? 'None'
+                                  : Number(event.target.value),
+                            })
+                          }
+                          className="mt-0.5 block w-full rounded border border-ink-600 bg-ink-800 px-1 py-1 text-xs text-zinc-200"
+                        >
+                          <option value="None">None</option>
+                          {Array.from({ length: 16 }, (_, sound) => (
+                            <option key={sound + 1} value={sound + 1}>
+                              {sound + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      <div className="flex items-end">
+                        <button
+                          type="button"
+                          onClick={() => updateRule(index, { style: undefined })}
+                          className="rounded border border-ink-600 px-2 py-1 text-[10px] text-zinc-400"
+                        >
+                          Clear style
+                        </button>
+                      </div>
+                    </div>
+                  </details>
                 </li>
               ))}
             </ol>
@@ -510,6 +623,14 @@ export default function AdvancedRules({
                       className="rounded border border-ink-600 px-2 text-xs text-zinc-300"
                     >
                       Copy
+                    </button>
+                    <button
+                      type="button"
+                      onClick={copyShareLink}
+                      disabled={share.tooLarge}
+                      className="rounded border border-ink-600 px-2 text-xs text-zinc-300 disabled:opacity-40"
+                    >
+                      Copy link
                     </button>
                   </div>
                 ) : (
