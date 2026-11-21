@@ -5,8 +5,8 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.13.1 — filter naming, folder writing and saved-build updates are
-live. Remaining work is data capture and manual QA.
+**Status:** v0.14.0 — filter naming, folder writing, saved-build updates and
+template coverage are live. Remaining work is data capture and manual QA.
 
 ## Features
 
@@ -18,6 +18,7 @@ live. Remaining work is data capture and manual QA.
 - Copy/import full-build and rules-only share codes
 - The exact filter being edited is shown in the builder and the demo
 - Locked preset, My rules with templates, quick chips, conflict warnings and an item test box
+- Templates marked “In preset” when the current phase and strictness already cover them
 - From Scratch mode with hidden-all or shown-all start
 - Loot simulator with pasted in-game items and filter-styled labels
 - Three filter themes; saved builds with Update; one global strictness

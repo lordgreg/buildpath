@@ -2,6 +2,19 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.14.0 — 2026-11-21
+
+Template coverage badges.
+
+- Templates show an “In preset” badge when the current preset already guarantees
+  the same outcome.
+- Coverage respects phase and strictness: T15 maps are not covered while
+  leveling, and quality-gem and top-currency cutoffs change with strictness.
+- Six sockets count as covering six links, because a six-link always has six
+  sockets.
+- Clicking an “In preset” template still adds a copy so you can override its
+  styling, with a notice explaining it is redundant.
+
 ## 0.13.1 — 2026-11-21
 
 Reference folder path field.

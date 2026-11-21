@@ -6,8 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.13.1 ships filter naming, folder writing and saved-build
-updates. Remaining work is data capture and manual QA.
+**Status:** v0.14.0 ships template coverage badges on top of filter naming,
+folder writing and saved-build updates. Remaining work is data capture and
+manual QA.
 
 ---
 
@@ -239,7 +240,9 @@ The preset is **locked and never cloned**. Users add rules on top of it.
   sockets, links, quality, stack size, map tier, `Continue`, comment and style.
   Rules can be enabled, reordered by drag or buttons, duplicated and deleted.
 - **Templates** — uniques, 6-links, T15+ maps, quality gems, top currency, top
-  divination cards, ilvl 80+ rares, and hide normal/magic gear.
+  divination cards, ilvl 80+ rares, and hide normal/magic gear. Templates the
+  current preset already covers show an “In preset” badge; clicking still adds
+  a copy so styling can be overridden.
 - **Warnings and search** — catch-all rules that shadow later rules are flagged;
   identical rules are flagged; preset rules are searchable.
 - **Item test** — paste one item to see which custom or preset rule decides it.
@@ -637,6 +640,7 @@ emits the expected rules and in-game filename.
 - [x] Download writes to the connected folder first, then falls back
 - [x] Update button for the loaded saved build; Save creates a copy
 - [x] Reference folder path field with pasted-path hints
+- [x] Template coverage badges that follow phase and strictness
 - [x] Tests: slug/filename, platform detection, write probe, saved-build update
 
 **Done:** a named filter downloads as
