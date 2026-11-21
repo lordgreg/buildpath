@@ -23,8 +23,10 @@ import {
 import type { WizardState } from '../wizardState.ts';
 
 const WINDOWS_PATH = 'Documents\\My Games\\Path of Exile';
-const PROTON_PATH =
-  'steamapps/compatdata/238960/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile';
+const PROTON_DEFAULT_PATH =
+  '~/.local/share/Steam/steamapps/compatdata/238960/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile';
+const PROTON_FIND_COMMAND =
+  'find ~ /mnt /media -path "*compatdata/238960*" -type d -name "Path of Exile" 2>/dev/null';
 
 export default function SaveBuildPanel({
   state,
@@ -291,20 +293,37 @@ export default function SaveBuildPanel({
           <code className="rounded bg-ink-900 px-1 text-zinc-300">
             {WINDOWS_PATH}
           </code>
-          . Linux/Proton:{' '}
-          <code className="rounded bg-ink-900 px-1 text-zinc-300">
-            {PROTON_PATH}
-          </code>{' '}
-          inside your Steam library. In a Flatpak browser you may need to grant
-          access to the Steam library folder.
+          .
+        </p>
+        <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">
+          Linux/Proton: <code className="rounded bg-ink-900 px-1 text-zinc-300">steamapps</code>{' '}
+          lives inside a Steam library, not your home folder. The default is{' '}
+          <code className="break-all rounded bg-ink-900 px-1 text-zinc-300">
+            {PROTON_DEFAULT_PATH}
+          </code>
+          . If PoE is installed on another drive, use that library root instead,
+          e.g. <code className="break-all rounded bg-ink-900 px-1 text-zinc-300">/path/to/SteamLibrary/steamapps/compatdata/238960/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile</code>.
+          The game reads `.filter` files directly in this folder; there is no
+          required `filters` subfolder.
+        </p>
+        <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">
+          Find it automatically: run this in a terminal, then pick the folder it
+          prints.
         </p>
         <div className="mt-1 flex flex-wrap gap-2">
           <button
             type="button"
-            onClick={() => void copyText(PROTON_PATH)}
+            onClick={() => void copyText(PROTON_FIND_COMMAND)}
             className="text-[10px] text-zinc-500 underline underline-offset-2 hover:text-zinc-300"
           >
-            Copy Proton path
+            Copy find command
+          </button>
+          <button
+            type="button"
+            onClick={() => void copyText(PROTON_DEFAULT_PATH)}
+            className="text-[10px] text-zinc-500 underline underline-offset-2 hover:text-zinc-300"
+          >
+            Copy default Proton path
           </button>
           <button
             type="button"
