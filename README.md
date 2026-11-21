@@ -5,9 +5,9 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.14.4 — filter naming, folder writing, saved-build updates and
-template coverage are live. Remaining work is manual QA; real meta capture is
-blocked by poe.ninja’s closed builds API.
+**Status:** v0.14.5 — filter naming, folder writing, saved-build updates and
+template coverage are live. Remaining work is manual QA and the theme rework;
+real meta capture is blocked by poe.ninja’s closed builds API.
 
 ## Features
 

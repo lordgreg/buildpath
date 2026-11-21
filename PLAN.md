@@ -6,10 +6,11 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.14.4 labels seed meta snapshots honestly on top of wrong-base
-gear hiding, section presets, template coverage, filter naming, folder writing
-and saved-build updates. Remaining work is manual QA; real meta capture is
-blocked by poe.ninja’s closed builds API.
+**Status:** v0.14.5 tightens Leveling Strict Magic gear on top of seed labels,
+wrong-base gear hiding, section presets, template coverage, filter naming,
+folder writing and saved-build updates. Remaining work is manual QA and the
+rarity/default theme rework; real meta capture is blocked by poe.ninja’s closed
+builds API.
 
 ---
 
@@ -451,6 +452,8 @@ Implementation notes:
 - Gear rules resolve RePoE tags to base-type lists; slots with no tags use the
   filter `Class` instead, so future bases keep working. Leveling 4+ link rules
   use the same per-slot target, so they never highlight unusable classes.
+- Magic floors: Leveling Normal 10+, Leveling Strict 80+ on an allowed base,
+  and no Magic on Very Strict or any Endgame preset.
 - Rare item-level floors: preset threshold for weapons/armour, 68 for
   accessories, jewels and flasks. Rares in slots the build does not use are
   hidden at every phase and strictness. Used classes with restricted bases get

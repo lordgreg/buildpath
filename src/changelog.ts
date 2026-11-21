@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.14.5',
+    date: '2026-11-21',
+    title: 'Leveling Strict hides everyday Magic gear',
+    notes: [
+      'Leveling Strict now hides Magic gear below item level 80.',
+      'Magic items on a base the build allows still show at ilvl 80+, as a crafting or upgrade outlier.',
+      'Wrong-base Magic items stay hidden even at ilvl 80+.',
+      'This hides the reported ilvl 43 Magic Topaz Ring while keeping the 80+ exception.',
+    ],
+    commits: [],
+    compare: 'v0.14.4...v0.14.5',
+  },
+  {
     version: '0.14.4',
     date: '2026-11-21',
     title: 'Seed data is labelled honestly',
