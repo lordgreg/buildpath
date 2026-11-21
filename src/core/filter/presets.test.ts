@@ -37,6 +37,9 @@ describe('composed presets', () => {
     }
     expect(getPreset('leveling', 'normal').gems.minQuality).toBeNull();
     expect(getPreset('leveling', 'very-strict').gems.minQuality).toBe(5);
+    expect(getPreset('leveling', 'normal').gear.magicMinItemLevel).toBe(10);
+    expect(getPreset('leveling', 'strict').gear.magicMinItemLevel).toBe(80);
+    expect(getPreset('leveling', 'very-strict').gear.magicMinItemLevel).toBeNull();
   });
 
   it('keeps one label and description for the whole preset', () => {

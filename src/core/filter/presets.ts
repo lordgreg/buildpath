@@ -61,7 +61,9 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
     },
     strict: {
       rareMinItemLevel: 15,
-      magicMinItemLevel: 25,
+      // Strict means no everyday Magic gear; an allowed base at ilvl 80+ is
+      // still worth showing as a crafting/upgrade outlier.
+      magicMinItemLevel: 80,
       highlightLinks: true,
     },
     'very-strict': {
