@@ -768,6 +768,8 @@ old file as a backup; unrelated filters in the folder are unchanged.
 - M2d: matcher tests for first-match-wins, `Continue`, and hidden gear
 - M2e: meta schema, league/family filtering, profile resolution, compatibility adapter
 - M2f: YAML compilation, JSON Schema validity, mode resolution, default loadouts, legacy links
+- Preset audit: every family, ascendancy and meta build across all phase/strictness
+  combinations is checked for unused-class, wrong-base and 4-link gear leaks
 - M2g: custom-first ordering, share-code compression, scratch base, templates
 - M3: mock directory handle; permission, backup, overwrite and no-delete paths
 - M2c: refresh script run against fixture JSON, schema failure path tested
