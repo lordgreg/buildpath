@@ -10,6 +10,8 @@ import {
 } from '../presets/storage.ts';
 import type { WizardState } from '../wizardState.ts';
 import {
+  defaultFolderPath,
+  folderPathHint,
   LINUX_WRITE_COMMAND,
   PROTON_EXTRA_LIBRARY,
   PROTON_FILTER_PATH,
@@ -109,6 +111,13 @@ export default function SaveBuildPanel({
   const [builds, setBuilds] = useState<SavedBuild[]>(() => listBuilds());
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [pathNote, setPathNote] = useState<string>(() => {
+    try {
+      return localStorage.getItem('filterpath.folder-path.v1') ?? '';
+    } catch {
+      return '';
+    }
+  });
 
   const resolvedName = name.trim() || autoName;
   const platform = folder.platform;
@@ -121,6 +130,23 @@ export default function SaveBuildPanel({
         : platform === 'mac'
           ? 'macOS'
           : 'OS unknown';
+  const suggestedPath = defaultFolderPath(platform);
+  const pathIssue = folderPathHint(pathNote);
+  const pickerStep =
+    platform === 'windows'
+      ? 'paste the path into the picker\u2019s address bar'
+      : platform === 'mac'
+        ? 'press Cmd+Shift+G in the picker and paste the path'
+        : 'press Ctrl+L in the picker and paste the path';
+
+  const changePathNote = (value: string) => {
+    setPathNote(value);
+    try {
+      localStorage.setItem('filterpath.folder-path.v1', value);
+    } catch {
+      // Ignore blocked storage.
+    }
+  };
 
   const writeToFolder = async (): Promise<string> => {
     if (!folder.handle) return '';
@@ -345,6 +371,56 @@ export default function SaveBuildPanel({
                 Forget
               </button>
             </>
+          )}
+        </div>
+
+        <div className="mt-3 rounded-lg border border-ink-700 bg-ink-900/40 p-3">
+          <label className="block text-[10px] uppercase tracking-wide text-zinc-500">
+            Folder path (reference)
+            <input
+              value={pathNote}
+              onChange={(event) => changePathNote(event.target.value)}
+              placeholder={suggestedPath || 'Paste the filters folder path'}
+              className="mt-1 block w-full rounded border border-ink-600 bg-ink-800 px-2 py-1.5 font-mono text-[11px] normal-case text-zinc-200"
+            />
+          </label>
+          <div className="mt-2 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => void copyText(pathNote || suggestedPath)}
+              className="text-[10px] text-zinc-500 underline underline-offset-2 hover:text-zinc-300"
+            >
+              Copy path
+            </button>
+            {suggestedPath && (
+              <button
+                type="button"
+                onClick={() => changePathNote(suggestedPath)}
+                className="text-[10px] text-zinc-500 underline underline-offset-2 hover:text-zinc-300"
+              >
+                Use suggested path
+              </button>
+            )}
+          </div>
+          <p className="mt-2 text-[11px] leading-relaxed text-zinc-500">
+            {folder.supported ? (
+              <>
+                Reference only: browsers cannot open a typed path. Use{' '}
+                <span className="text-zinc-300">Choose folder</span> to grant
+                access; then {pickerStep}, and open{' '}
+                <span className="text-zinc-300">My Games/Path of Exile</span>{' '}
+                inside it.
+              </>
+            ) : (
+              <>
+                Reference only: this browser cannot write to folders. Use{' '}
+                <span className="text-zinc-300">Download .filter</span> and save
+                it into this path.
+              </>
+            )}
+          </p>
+          {pathIssue && (
+            <p className="mt-1 text-[10px] text-amber-300">{pathIssue}</p>
           )}
         </div>
 
