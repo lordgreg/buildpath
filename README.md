@@ -5,8 +5,8 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.11.0 — directory sync is live in Chromium browsers. All planned
-milestones are shipped.
+**Status:** v0.11.1 — demo capture, build codes, rebased saved builds and merged
+folder saving are live. Remaining work is data capture and manual QA.
 
 ## Features
 
@@ -15,7 +15,8 @@ milestones are shipped.
 - Normal / Strict / Very Strict
 - Toggle gear, gems, currency, maps and uniques
 - Filter preview, download, copy and share links
-- Randomized loot simulator with hover tooltips, filter-styled labels and pasted items
+- Randomized loot simulator with Ctrl+V item capture and hover tooltips
+- Copy/import build codes and saved builds with custom-rule rebasing
 - Locked rule pane, whole-set clones, requirement chips and share codes
 - Loot simulator with pasted in-game items and filter-styled labels
 - Three filter themes and saved builds; one global strictness

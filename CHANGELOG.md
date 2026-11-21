@@ -2,6 +2,26 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.11.1 — 2026-11-21
+
+Demo capture, build codes and merged saving.
+
+- Ctrl+V on the demo immediately imports a valid item block; Clear pasted was
+  removed.
+- Demo labels use independent random X and Y with overlap avoidance, and
+  Randomize draws a new subset.
+- The demo follows the latest builder selection through BroadcastChannel and
+  session fallback.
+- Copy code carries the selection and rules; Import code restores the whole
+  build. The JSON file picker and duplicate share-code panel are gone.
+- Saved builds store custom rule deltas, rebase them onto the latest presets,
+  and flag unsaved changes; refreshing warns first.
+- Save build and the filters folder are merged: local save plus file write when
+  a folder is connected.
+- Folder guidance covers Windows and Proton paths, allows any folder, and
+  offers a download fallback.
+- The league dropdown uses a compact custom chevron.
+
 ## 0.11.0 — 2026-11-21
 
 Directory sync.

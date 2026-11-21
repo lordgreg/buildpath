@@ -6,7 +6,8 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.11.0 ships directory sync. All planned milestones are complete.
+**Status:** v0.11.1 ships demo capture, build codes, rebased saved builds and
+merged folder saving. Remaining work is data capture and manual QA.
 
 ---
 
@@ -799,8 +800,10 @@ old file as a backup; unrelated filters in the folder are unchanged.
   installed build, not just Proton.
 - Run directory sync in Chromium: pick, remember, permission re-request,
   overwrite confirmation, `.bak` and stale badges.
-- Check the demo hover tooltip, pasted-item highlight, Randomize and mobile.
-- Open a share link in a fresh browser to confirm the clone imports.
+- Check demo Ctrl+V capture, hover tooltip, Randomize and mobile.
+- Copy a build code, reload, and Import code it back on the same and a different selection.
+- Save a build with custom rules, change presets, and confirm the delta rebases.
+- Confirm the unsaved-changes prompt on refresh after editing.
 - Dispatch the economy workflow once manually to confirm it opens a PR.
 
 ### Links

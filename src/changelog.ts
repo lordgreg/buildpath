@@ -17,6 +17,28 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.11.1',
+    date: '2026-11-21',
+    title: 'Demo capture, build codes and merged saving',
+    notes: [
+      'Ctrl+V on the demo immediately imports a valid item block; Clear pasted was removed.',
+      'Demo labels use independent random X and Y with overlap avoidance, and Randomize draws a new subset.',
+      'The demo follows the latest builder selection through BroadcastChannel and session fallback.',
+      'Copy code carries the selection and rules; Import code restores the whole build. The JSON file picker and duplicate share-code panel are gone.',
+      'Saved builds store custom rule deltas, rebase them onto the latest presets, and flag unsaved changes; refreshing warns first.',
+      'Save build and the filters folder are merged: local save plus file write when a folder is connected.',
+      'Folder guidance covers Windows and Proton paths, allows any folder, and offers a download fallback.',
+      'The league dropdown uses a compact custom chevron.',
+    ],
+    commits: [
+      {
+        sha: '56b4104',
+        message: 'feat: demo capture, build codes and merged saving (0.11.1)',
+      },
+    ],
+    compare: 'v0.11.0...v0.11.1',
+  },
+  {
     version: '0.11.0',
     date: '2026-11-21',
     title: 'Directory sync',
