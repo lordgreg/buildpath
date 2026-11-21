@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.17.0',
+    date: '2026-11-22',
+    title: 'Quest alerts and named orb sounds',
+    notes: [
+      'Quest items always show and play the default alert (sound 1, volume 300), even in a From Scratch hide-all filter.',
+      'Chaos, Exalted, Divine and Mirror of Kalandra use the game’s built-in Sh voice lines: ShChaos, ShExalted, ShDivine and ShMirror.',
+      'The named orb rules still respect the currency tier cutoff, so Chaos stays hidden on Very Strict.',
+      'Quest items are parsed by the item tester and demo, with a green Quest label colour.',
+    ],
+    commits: [],
+    compare: 'v0.16.0...v0.17.0',
+  },
+  {
     version: '0.16.0',
     date: '2026-11-22',
     title: 'Stable filter filenames and preset auto-sync',

@@ -2,6 +2,19 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.17.0 — 2026-11-22
+
+Quest alerts and named orb sounds.
+
+- Quest items always show and play the default alert (sound 1, volume 300),
+  even in a From Scratch hide-all filter.
+- Chaos, Exalted, Divine and Mirror of Kalandra use the game’s built-in Sh voice
+  lines: `ShChaos`, `ShExalted`, `ShDivine` and `ShMirror`.
+- The named orb rules still respect the currency tier cutoff, so Chaos stays
+  hidden on Very Strict.
+- Quest items are parsed by the item tester and demo, with a green Quest label
+  colour.
+
 ## 0.16.0 — 2026-11-22
 
 Stable filter filenames and preset auto-sync.

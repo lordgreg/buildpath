@@ -6,11 +6,11 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.16.0 adds stable filter filenames and preset auto-sync on top of
-rarity-first colors, Leveling Strict Magic floors, seed labels, wrong-base gear
-hiding, section presets, template coverage, filter naming and saved-build
-updates. Remaining work is manual QA; real meta capture is blocked by
-poe.ninja’s closed builds API.
+**Status:** v0.17.0 adds quest and named-orb alerts on top of stable filenames,
+preset auto-sync, rarity-first colors, Leveling Strict Magic floors, seed labels,
+wrong-base gear hiding, section presets, template coverage and saved-build
+updates. Remaining work is manual QA; real meta capture is blocked by poe.ninja’s
+closed builds API.
 
 ---
 
@@ -248,6 +248,9 @@ The preset is **locked and never cloned**. Users add rules on top of it.
 - **Rule editor** — action, classes, base types, rarity, item level range,
   sockets, links, quality, stack size, map tier, `Continue`, comment and style.
   Rules can be enabled, reordered by drag or buttons, duplicated and deleted.
+- **Always-on alerts** — quest items always show with the default alert, even
+  in From Scratch hide-all. Chaos, Exalted, Divine and Mirror use the built-in
+  `ShChaos`/`ShExalted`/`ShDivine`/`ShMirror` voice lines.
 - **Templates** — uniques, 6-links, T15+ maps, quality gems, top currency, top
   divination cards, ilvl 80+ rares, and hide normal/magic gear. Templates the
   current preset already covers show an “In preset” badge; clicking still adds
@@ -608,6 +611,7 @@ are always included; old links still resolve.
 - [x] Saved builds store only selection + My rules; old clones discarded
 - [x] Tests: custom-first ordering, scratch base, templates, config keys
 - [x] Filter names, folder OS detection, write probe and saved-build updates
+- [x] Quest alert and named orb voice lines
 
 Implementation notes:
 
