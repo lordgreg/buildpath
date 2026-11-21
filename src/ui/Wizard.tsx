@@ -50,7 +50,7 @@ const PHASES: { id: Phase; label: string; hint: string }[] = [
 const MODES: { id: BuildMode; label: string; hint: string }[] = [
   { id: 'family', label: 'By family', hint: 'Basic gear profile' },
   { id: 'ascendancy', label: 'By ascendancy', hint: 'Class default loadout' },
-  { id: 'meta', label: 'By meta build', hint: 'poe.ninja snapshot' },
+  { id: 'meta', label: 'By meta build', hint: 'Curated meta seed' },
   { id: 'scratch', label: 'From scratch', hint: 'Blank filter, your rules' },
 ];
 
@@ -177,6 +177,7 @@ export default function Wizard() {
   }, [dirty]);
 
   const snapshot = getSnapshot(state.leagueId);
+  const seed = snapshot.provenance === 'seed';
   const family = getFamily(state.familyId);
   const ascendancy = getAscendancy(state.ascendancyId);
   const familySkills = getSkills(state.leagueId, state.familyId);
@@ -548,16 +549,32 @@ export default function Wizard() {
                         />
                       </svg>
                     </div>
-                    <p className="text-xs text-zinc-500">
-                      Captured {snapshot.capturedAt.slice(0, 10)} from{' '}
-                      <a
-                        href={snapshot.source}
-                        className="underline underline-offset-2 hover:text-zinc-300"
-                      >
-                        poe.ninja builds
-                      </a>
-                      .
-                    </p>
+                    {seed ? (
+                      <p className="text-xs text-zinc-500">
+                        Curated seed updated{' '}
+                        {snapshot.capturedAt.slice(0, 10)}. Popularity weights
+                        and ascendancy splits are placeholders, not measured
+                        from{' '}
+                        <a
+                          href={snapshot.source}
+                          className="underline underline-offset-2 hover:text-zinc-300"
+                        >
+                          poe.ninja builds
+                        </a>
+                        .
+                      </p>
+                    ) : (
+                      <p className="text-xs text-zinc-500">
+                        Captured {snapshot.capturedAt.slice(0, 10)} from{' '}
+                        <a
+                          href={snapshot.source}
+                          className="underline underline-offset-2 hover:text-zinc-300"
+                        >
+                          poe.ninja builds
+                        </a>
+                        .
+                      </p>
+                    )}
                   </div>
                 </section>
 
@@ -586,7 +603,9 @@ export default function Wizard() {
                               title={entry.name}
                               subtitle={
                                 entry.playShare !== undefined
-                                  ? `${entry.playShare}% of snapshot`
+                                  ? seed
+                                    ? `seed weight ${entry.playShare}`
+                                    : `${entry.playShare}% of snapshot`
                                   : undefined
                               }
                             />
@@ -613,13 +632,15 @@ export default function Wizard() {
                         onClick={() => update({ ascendancyId: entry.id })}
                         title={entry.name}
                         subtitle={[
-                        skill?.ascendancyShares?.[entry.id] !== undefined
-                          ? `${skill.ascendancyShares[entry.id]}% of builds`
-                          : null,
-                        entry.class,
-                      ]
-                        .filter(Boolean)
-                        .join(' - ')}
+                          skill?.ascendancyShares?.[entry.id] !== undefined
+                            ? seed
+                              ? `seed weight ${skill.ascendancyShares[entry.id]}`
+                              : `${skill.ascendancyShares[entry.id]}% of builds`
+                            : null,
+                          entry.class,
+                        ]
+                          .filter(Boolean)
+                          .join(' - ')}
                       />
                     ))}
                   </div>
@@ -911,7 +932,10 @@ export default function Wizard() {
           in any way.
         </p>
         <p className="mt-1">
-          Base item data from RePoE. Meta snapshots and prices from poe.ninja.
+          Base item data from RePoE. Economy tiers from poe.ninja.{' '}
+          {seed
+            ? 'Meta snapshots are curated seeds, not measured builds.'
+            : 'Meta snapshots from poe.ninja.'}
         </p>
       </footer>
 

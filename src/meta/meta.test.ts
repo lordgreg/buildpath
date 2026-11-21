@@ -52,6 +52,7 @@ describe('league snapshots', () => {
         expect(snapshot.league.name).toBe(league.name);
         expect(snapshot.capturedAt).toBe(league.capturedAt);
         expect(snapshot.schemaVersion).toBe(1);
+        expect(['seed', 'captured']).toContain(snapshot.provenance);
       });
 
       it('has unique skills with real gem names', () => {

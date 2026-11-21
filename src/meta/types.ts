@@ -25,7 +25,7 @@ export interface SkillEntry {
   classes: CharacterClass[];
   /** Preferred ascendancies, in display order. Must belong to `classes`. */
   topAscendancies?: string[];
-  /** Approximate share of the skill's builds, from the snapshot. */
+  /** Curated seed weight, or a measured share when provenance is captured. */
   ascendancyShares?: Record<string, number>;
   /** Approximate share of the league's builds, for ordering. */
   playShare?: number;
@@ -38,6 +38,8 @@ export interface SkillEntry {
 
 export interface LeagueSnapshot {
   schemaVersion: 1;
+  /** `seed` means curated placeholders; `captured` means measured data. */
+  provenance: 'seed' | 'captured';
   league: { id: string; name: string };
   capturedAt: string;
   source: string;
