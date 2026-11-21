@@ -87,16 +87,24 @@ export default function Wizard() {
             Three clicks, no account.
           </p>
         </div>
-        <a
-          href="https://github.com/lordgreg/filterpath"
-          className="text-xs text-zinc-500 underline-offset-4 hover:text-zinc-300 hover:underline"
-        >
-          source
-        </a>
+        <nav className="flex items-center gap-4 text-xs text-zinc-500">
+          <a
+            href="#/changelog"
+            className="underline-offset-4 hover:text-zinc-300 hover:underline"
+          >
+            changelog
+          </a>
+          <a
+            href="https://github.com/lordgreg/filterpath"
+            className="underline-offset-4 hover:text-zinc-300 hover:underline"
+          >
+            source
+          </a>
+        </nav>
       </header>
 
       <main className="mt-8 grid flex-1 gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start">
-        <div className="space-y-7">
+        <div className="min-w-0 space-y-7">
           <section aria-labelledby="build-heading">
             <h2
               id="build-heading"
@@ -198,7 +206,7 @@ export default function Wizard() {
             >
               3. Strictness
             </h2>
-            <div className="mt-3 grid gap-2 sm:grid-cols-3">
+            <div className="mt-3 grid grid-cols-3 gap-2">
               {STRICTNESS_ORDER.map((strictness) => {
                 const selected = strictness === state.strictness;
                 return (
@@ -261,8 +269,8 @@ export default function Wizard() {
           </section>
         </div>
 
-        <div className="space-y-4 lg:sticky lg:top-8">
-          <section className="rounded-xl border border-gold-400/25 bg-ink-800/70 p-5">
+        <div className="min-w-0 space-y-4 lg:sticky lg:top-8">
+          <section className="min-w-0 rounded-xl border border-gold-400/25 bg-ink-800/70 p-5">
             <p className="text-[11px] uppercase tracking-[0.2em] text-gold-400">
               {archetype.class} / {archetype.ascendancy}
             </p>
@@ -312,6 +320,12 @@ export default function Wizard() {
             <p className="mt-2 text-[11px] text-zinc-500">
               Share links keep the build, phase, strictness and sections.
             </p>
+            <p className="mt-3 rounded-lg border border-ink-700 bg-ink-900/60 px-3 py-2 text-[11px] leading-relaxed text-zinc-500">
+              In-game name:{' '}
+              <span className="break-words font-medium text-zinc-200">
+                {filter.fileName.replace(/\.filter$/, '')}
+              </span>
+            </p>
           </section>
 
           <FilterPreview
@@ -346,8 +360,13 @@ export default function Wizard() {
               </li>
             </ol>
             <p className="mt-3 text-xs text-zinc-500">
-              M3 will write the file into that folder for you in Chromium
-              browsers.
+              Online filters synced to your PoE account appear in the same
+              dropdown but are separate files. The entry must start with{' '}
+              <span className="text-zinc-300">FilterPath-v</span>.
+            </p>
+            <p className="mt-2 text-xs text-zinc-500">
+              Seeing items that should be hidden? Check which filter is
+              selected; another filter can still be active.
             </p>
           </details>
         </div>

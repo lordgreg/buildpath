@@ -18,11 +18,11 @@ export default function FilterPreview({
   const lineCount = text.split('\n').length - 1;
 
   return (
-    <section className="rounded-xl border border-ink-700 bg-ink-950/60">
+    <section className="min-w-0 rounded-xl border border-ink-700 bg-ink-950/60">
       <header className="flex flex-wrap items-center justify-between gap-2 border-b border-ink-700 px-4 py-3">
-        <div>
+        <div className="min-w-0">
           <h2 className="text-sm font-medium text-white">Generated filter</h2>
-          <p className="text-xs text-zinc-500">{fileName}</p>
+          <p className="break-words text-xs text-zinc-500">{fileName}</p>
         </div>
         <dl className="flex gap-4 text-right text-xs text-zinc-400">
           <div>
