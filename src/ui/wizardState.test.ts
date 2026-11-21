@@ -36,8 +36,8 @@ describe('wizard hash', () => {
     expect(state.ascendancyId).toBe('deadeye');
     expect(state.phase).toBe('endgame');
     expect(state.strictness).toBe('strict');
-    expect(state.sections.gems).toBe(false);
-    expect(state.sections.currency).toBe(true);
+    // Sections are always fully enabled; advanced rules control inclusion.
+    expect(Object.values(state.sections).every(Boolean)).toBe(true);
   });
 
   it('parses theme and per-section strictness', () => {

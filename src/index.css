@@ -30,6 +30,21 @@
     @apply bg-gold-400/30 text-white;
   }
 
+  .demo-label {
+    animation: demo-label-in 260ms ease-out;
+    font-variant: small-caps;
+    letter-spacing: 0.03em;
+  }
+
+  @keyframes demo-label-in {
+    from {
+      transform: translate(-50%, calc(-50% + 8px)) scale(0.98);
+    }
+    to {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
   pre {
     scrollbar-width: thin;
     scrollbar-color: var(--color-ink-600) transparent;

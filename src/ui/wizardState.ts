@@ -77,15 +77,6 @@ function fill(selection: BuildSelection): Pick<
 export function parseWizardHash(hash: string): WizardState {
   const params = new URLSearchParams(hash.replace(/^#/, ''));
 
-  const sections = { ...DEFAULT_SECTIONS };
-  const sectionList = params.get('sections');
-  if (sectionList !== null) {
-    const wanted = new Set(sectionList.split(',').filter(Boolean));
-    for (const key of SECTION_KEYS) {
-      sections[key] = wanted.has(key);
-    }
-  }
-
   const phase = params.get('phase') as Phase | null;
   const strictness = params.get('strictness') as Strictness | null;
   const chosenStrictness =
@@ -117,7 +108,7 @@ export function parseWizardHash(hash: string): WizardState {
     strictness: chosenStrictness,
     sectionStrictness,
     theme,
-    sections,
+    sections: DEFAULT_SECTIONS,
   };
 
   const legacyId = params.get('archetype');
@@ -177,9 +168,5 @@ export function wizardHash(state: WizardState): string {
     ),
   );
   params.set('theme', state.theme);
-  params.set(
-    'sections',
-    SECTION_KEYS.filter((key) => state.sections[key]).join(','),
-  );
   return params.toString();
 }

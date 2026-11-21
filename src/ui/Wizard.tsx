@@ -600,45 +600,6 @@ export default function Wizard() {
                 ))}
               </div>
             </details>
-
-            <section aria-labelledby="sections-heading">
-              <h2
-                id="sections-heading"
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-              >
-                Sections
-              </h2>
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                {SECTION_KEYS.map((key) => (
-                  <label
-                    key={key}
-                    className="flex cursor-pointer items-start gap-3 rounded-lg border border-ink-700 bg-ink-800/40 px-3 py-2.5 hover:border-ink-500"
-                  >
-                    <input
-                      type="checkbox"
-                      className="mt-0.5 size-4 accent-gold-400"
-                      checked={state.sections[key]}
-                      onChange={() =>
-                        update({
-                          sections: {
-                            ...state.sections,
-                            [key]: !state.sections[key],
-                          },
-                        })
-                      }
-                    />
-                    <span>
-                      <span className="block text-sm text-zinc-200">
-                        {SECTION_META[key].label}
-                      </span>
-                      <span className="block text-xs text-zinc-500">
-                        {SECTION_META[key].hint}
-                      </span>
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </section>
           </div>
 
           <section className="min-w-0 rounded-xl border border-gold-400/25 bg-ink-800/70 p-5">
