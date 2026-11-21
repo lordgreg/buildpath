@@ -17,6 +17,27 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.7.0',
+    date: '2026-11-21',
+    title: 'Advanced rules, locked presets and clones',
+    notes: [
+      'Every generated rule is shown in a locked, section-grouped pane.',
+      'Whole-set clones are stored in localStorage and replace the generated rules for that exact selection.',
+      'Rule editor: enable, reorder, duplicate, delete, change action, comment, rarity, item level and Continue.',
+      'New rules can be built from DEX/STR/INT requirement chips, Head, Weapon 2H and Weapon ranged.',
+      'RePoE base data now keeps attribute requirements for accurate chips.',
+      'Export/import JSON and compressed share codes, capped at 8 KB with a file fallback.',
+      'Stale clones warn when the locked preset changes and never merge silently.',
+    ],
+    commits: [
+      {
+        sha: 'a4bba89',
+        message: 'feat: add advanced rules, locked presets and clones (M2g)',
+      },
+    ],
+    compare: 'v0.6.0...v0.7.0',
+  },
+  {
     version: '0.6.0',
     date: '2026-11-21',
     title: 'Independent family, ascendancy and meta modes',

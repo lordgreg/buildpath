@@ -6,9 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** M2f shipped at **v0.6.0** with three independent selection modes and
-the YAML preset pipeline. M2g (advanced rules, locked presets, clones) is next,
-then M2a, M2b/M2c and M3.
+**Status:** M2g shipped at **v0.7.0** with locked presets, whole-set clones,
+requirement chips and share codes. Remaining: M2a (themes and per-section
+strictness), M2b/M2c (economy) and M3 (directory sync).
 
 ---
 
@@ -541,15 +541,27 @@ old links still resolve.
 
 ### M2g — Advanced rules and locked presets
 
-- [ ] Add `id` and `section` to every generated rule; group the locked pane
-- [ ] Whole-set clone tied to mode + source + phase + strictness + sections
-- [ ] localStorage store, versioned against the source preset
-- [ ] Rule editor: enable, move, duplicate, delete, conditions, style, `Continue`
-- [ ] Chips for DEX/STR/INT requirements, HEAD, Weapon 2H, Weapon Ranged
-- [ ] RePoE extractor keeps item requirements
-- [ ] Export/import YAML or JSON; compressed base64url share code with a cap
-- [ ] Reset-to-locked and stale-clone warning
-- [ ] Tests: clone round-trip, compression, chip expansion, rule ordering
+- [x] Add `id` and `section` to every generated rule; group the locked pane
+- [x] Whole-set clone tied to mode + source + phase + strictness + sections
+- [x] localStorage store, versioned against the source preset
+- [x] Rule editor: enable, move, duplicate, delete, action, comment, rarity,
+  item level and `Continue`
+- [ ] Style editing per rule (colours, sounds, icons) — follow-up
+- [x] Chips for DEX/STR/INT requirements, HEAD, Weapon 2H, Weapon Ranged
+- [x] RePoE extractor keeps item requirements
+- [x] Export/import JSON; compressed base64url share code with an 8 KB cap
+- [x] Reset-to-locked and stale-clone warning
+- [x] Tests: clone round-trip, compression, chip expansion, rule ordering
+
+Implementation notes:
+
+- `src/core/rules/chips.ts` resolves the friendly chips to base-type lists.
+- `src/core/rules/clone.ts` and `src/core/share/codec.ts` handle the clone
+  format and compressed code.
+- `src/ui/rules/AdvancedRules.tsx` renders the locked pane and editor;
+  `src/ui/rules/storage.ts` persists clones per selection key.
+- Custom rules are built from chips and get a default Show style; style editing
+  is the remaining piece of this milestone.
 
 **Done:** a minion family clone can hide DEX helmets, 2H and ranged weapons; the
 clone survives reload and share codes; resetting restores the locked preset.
@@ -729,8 +741,9 @@ old file as a backup; unrelated filters in the folder are unchanged.
 
 ## 9. Open items
 
-- Share-code size cap: propose 8 KB, then fall back to file export
-- Clone update behaviour: warn and reset only (proposed), or attempt a merge
+- Share-code size cap: 8 KB, then file export (implemented)
+- Per-rule style editing: colours, sounds and minimap icons (M2g follow-up)
+- Clone update behaviour: warn and reset only (implemented), or attempt a merge
 - Confirm the chip vocabulary beyond DEX/STR/INT, HEAD, 2H and RANGED
 - Confirm the default family for every ascendancy (M2f table)
 - Whether an overlay mode (rules without cloning) is needed after M2g

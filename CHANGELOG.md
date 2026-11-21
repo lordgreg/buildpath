@@ -2,6 +2,22 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.7.0 — 2026-11-21
+
+Advanced rules, locked presets and clones.
+
+- Every generated rule is shown in a locked, section-grouped pane.
+- Whole-set clones are stored in localStorage and replace the generated rules
+  for that exact selection.
+- Rule editor: enable, reorder, duplicate, delete, change action, comment,
+  rarity, item level and Continue.
+- New rules can be built from DEX/STR/INT requirement chips, Head, Weapon 2H and
+  Weapon ranged.
+- RePoE base data now keeps attribute requirements for accurate chips.
+- Export/import JSON and compressed share codes, capped at 8 KB with a file
+  fallback.
+- Stale clones warn when the locked preset changes and never merge silently.
+
 ## 0.6.0 — 2026-11-21
 
 Independent family, ascendancy and meta modes.
