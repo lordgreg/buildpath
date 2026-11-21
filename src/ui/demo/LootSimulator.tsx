@@ -10,6 +10,7 @@ import {
   type PreviewItem,
 } from '../../core/preview/match.ts';
 import { SAMPLE_ITEMS } from '../../core/preview/samples.ts';
+import { playAlertSound } from './alertSound.ts';
 
 const RARITY_COLOR: Record<ItemRarity, string> = {
   Normal: '#d6d6d6',
@@ -87,6 +88,22 @@ export default function LootSimulator({
   const [pasted, setPasted] = useState<PreviewItem[]>([]);
   const [text, setText] = useState('');
   const [showHidden, setShowHidden] = useState(true);
+  const [soundOn, setSoundOn] = useState(() => {
+    try {
+      return localStorage.getItem('filterpath.demo-sound.v1') !== 'off';
+    } catch {
+      return true;
+    }
+  });
+
+  const toggleSound = (value: boolean) => {
+    setSoundOn(value);
+    try {
+      localStorage.setItem('filterpath.demo-sound.v1', value ? 'on' : 'off');
+    } catch {
+      // Ignore blocked storage.
+    }
+  };
   const [message, setMessage] = useState<string | null>(null);
   const [seed, setSeed] = useState(1);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -233,6 +250,18 @@ export default function LootSimulator({
           >
             Randomize
           </button>
+          <label
+            className="flex items-center gap-2 rounded-lg border border-ink-600 px-3 py-2 text-xs text-zinc-400"
+            title="Play the alert sound from the matching filter rule"
+          >
+            <input
+              type="checkbox"
+              className="size-4 accent-gold-400"
+              checked={soundOn}
+              onChange={(event) => toggleSound(event.target.checked)}
+            />
+            sound
+          </label>
           <label className="flex items-center gap-2 rounded-lg border border-ink-600 px-3 py-2 text-xs text-zinc-400">
             <input
               type="checkbox"
@@ -254,7 +283,9 @@ export default function LootSimulator({
           <span className="text-emerald-300">{shown} shown</span>,{' '}
           <span className="text-zinc-500">{hidden} hidden</span>
         </p>
-        <p className="text-zinc-600">Click a label to inspect the rule.</p>
+        <p className="text-zinc-600">
+          Click a label to inspect the rule and play its alert.
+        </p>
       </div>
 
       <section
@@ -288,6 +319,12 @@ export default function LootSimulator({
               type="button"
               onClick={(event) => {
                 event.stopPropagation();
+                if (soundOn) {
+                  playAlertSound(
+                    result.rule?.style?.alertSound,
+                    result.rule?.style?.alertVolume,
+                  );
+                }
                 setPinnedId((previous) =>
                   previous === item.id ? null : item.id,
                 );
@@ -297,7 +334,7 @@ export default function LootSimulator({
               onFocus={() => setHoveredId(item.id)}
               onBlur={() => setHoveredId(null)}
               style={labelStyle}
-              title={`${item.name} - ${result.shown ? 'shown' : 'hidden'}: ${result.reason}`}
+              title={`${item.name} - ${result.shown ? 'shown' : 'hidden'}: ${result.reason} - click for the alert`}
               className={cx(
                 'demo-label absolute max-w-[min(18rem,70vw)] -translate-x-1/2 -translate-y-1/2 truncate rounded-sm border px-3 py-1 font-serif leading-tight shadow-[0_2px_8px_rgba(0,0,0,0.65)]',
                 result.shown ? 'opacity-100' : 'border-dashed opacity-35 grayscale',
