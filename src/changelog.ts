@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.15.3',
+    date: '2026-11-22',
+    title: 'Browser-specific folder guidance',
+    notes: [
+      'Only Brave gets the brave://file-system-access flag instructions.',
+      'Chrome, Chromium and Edge get a “should be supported” message with policy/extension checks and no flag.',
+      'Firefox and Safari get a “use a Chromium browser or download” message, because neither implements the API.',
+      'Unknown browsers get the Brave flag plus the general support summary.',
+    ],
+    commits: [],
+    compare: 'v0.15.2...v0.15.3',
+  },
+  {
     version: '0.15.2',
     date: '2026-11-22',
     title: 'Brave flag guidance everywhere',

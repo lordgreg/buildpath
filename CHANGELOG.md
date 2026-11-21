@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.15.3 — 2026-11-22
+
+Browser-specific folder guidance.
+
+- Only Brave gets the `brave://flags/#file-system-access-api` instructions.
+- Chrome, Chromium and Edge get a “should be supported” message with
+  policy/extension checks and no flag.
+- Firefox and Safari get a “use a Chromium browser or download” message,
+  because neither implements the API.
+- Unknown browsers get the Brave flag plus the general support summary.
+
 ## 0.15.2 — 2026-11-22
 
 Brave flag guidance everywhere.

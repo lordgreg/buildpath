@@ -6,9 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.15.2 makes Brave folder-writing guidance unconditional on top of
-rarity-first colors, Leveling Strict Magic floors, seed labels, wrong-base gear
-hiding, section presets, template coverage, filter naming, folder writing and
+**Status:** v0.15.3 adds browser-specific folder guidance on top of rarity-first
+colors, Leveling Strict Magic floors, seed labels, wrong-base gear hiding,
+section presets, template coverage, filter naming, folder writing and
 saved-build updates. Remaining work is manual QA; real meta capture is blocked
 by poe.ninja’s closed builds API.
 
@@ -738,9 +738,10 @@ tapping a tile shows why; the preview loads no external assets.
 - Reading is supported too: enumerate `.filter` files, read them, parse the
   FilterPath header (`FilterPath <version> - filter format <n>`).
 - Firefox and Safari do not implement the picker; they keep the download flow.
-- Brave implements the API only behind `brave://flags/#file-system-access-api`.
-  The panel shows the flag, a copy action and a reload action when the API is
-  missing, even if Brave detection fails.
+- Only Brave needs a flag (`brave://flags/#file-system-access-api`); Chrome,
+  Chromium and Edge support folder writing by default, and Firefox/Safari do
+  not implement it. The panel shows the matching message for the detected
+  browser.
 - Linux/Proton: the user picks
   `<Steam library>/steamapps/compatdata/238960/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile`.
   The library can be outside the home folder, e.g. `/mnt/<drive>/SteamLibrary`; `steamapps` is per library.
