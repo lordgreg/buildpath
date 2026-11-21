@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.18.2 — 2026-11-22
+
+Hide Gold Rings while leveling.
+
+- Gold Ring, the Item Rarity base, is hidden in Leveling Normal, Strict and Very
+  Strict.
+- Normal, Magic and Rare Gold Rings are hidden; unique Gold Rings such as
+  Andvarius remain visible.
+- Endgame is unchanged: an ilvl 80+ Gold Ring can still show if the rare floor
+  allows it.
+
 ## 0.18.1 — 2026-11-22
 
 Paste currency items into the demo.

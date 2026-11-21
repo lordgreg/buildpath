@@ -6,11 +6,11 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.18.1 adds currency paste support on top of demo click sounds,
-quest/named-orb alerts, stable filenames, preset auto-sync, rarity-first colors,
-Leveling Strict Magic floors, seed labels, wrong-base gear hiding, section
-presets and template coverage. Remaining work is manual QA; real meta capture is
-blocked by poe.ninja’s closed builds API.
+**Status:** v0.18.2 adds a Gold Ring exclusion while leveling on top of currency
+paste support, demo sounds, quest/named-orb alerts, stable filenames, preset
+auto-sync, rarity-first colors, Leveling Strict Magic floors and wrong-base gear
+hiding. Remaining work is manual QA; real meta capture is blocked by poe.ninja’s
+closed builds API.
 
 ---
 
@@ -465,6 +465,8 @@ Implementation notes:
   use the same per-slot target, so they never highlight unusable classes.
 - Magic floors: Leveling Normal 10+, Leveling Strict 80+ on an allowed base,
   and no Magic on Very Strict or any Endgame preset.
+- Gold Ring (the Item Rarity base) is hidden in every leveling preset for
+  Normal/Magic/Rare; unique Gold Rings remain visible. Endgame is unchanged.
 - Rare item-level floors: preset threshold for weapons/armour, 68 for
   accessories, jewels and flasks. Rares in slots the build does not use are
   hidden at every phase and strictness. Used classes with restricted bases get

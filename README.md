@@ -5,10 +5,10 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.18.1 — currency paste support and demo click sounds are live on
-top of quest/named-orb alerts, stable filenames, preset auto-sync and
-rarity-first colors. Remaining work is manual QA; real meta capture is blocked
-by poe.ninja’s closed builds API.
+**Status:** v0.18.2 — Gold Ring exclusion while leveling is live on top of
+currency paste support, demo sounds, quest/named-orb alerts, stable filenames,
+preset auto-sync and rarity-first colors. Remaining work is manual QA; real meta
+capture is blocked by poe.ninja’s closed builds API.
 
 ## Features
 
