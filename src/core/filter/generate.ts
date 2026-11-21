@@ -1,8 +1,15 @@
 import { getArchetype } from '../archetypes/index.ts';
+import type { Archetype } from '../archetypes/types.ts';
 import { baseTypeMeta } from '../data/base-types.ts';
 import { emitFilter } from './emit.ts';
 import { junkRules } from './junk.ts';
-import { getPreset, STRICTNESS_LABELS_PUBLIC, type Phase, type Strictness } from './presets.ts';
+import {
+  getPreset,
+  STRICTNESS_LABELS_PUBLIC,
+  type Phase,
+  type Preset,
+  type Strictness,
+} from './presets.ts';
 import { baseTypesFor, gearRules } from './rules/gear.ts';
 import { currencyRules } from './rules/currency.ts';
 import { gemRules } from './rules/gems.ts';
@@ -39,12 +46,20 @@ export interface FilterConfig {
   version?: string;
 }
 
-export interface GeneratedFilter {
+export interface CompiledFilter {
+  archetype: Archetype;
+  preset: Preset;
+  sections: Sections;
+  version: string;
+  rules: Rule[];
+  baseTypes: string[];
+}
+
+export interface GeneratedFilter extends CompiledFilter {
   text: string;
   fileName: string;
   ruleCount: number;
   baseTypeCount: number;
-  sections: Sections;
   warnings: FilterIssue[];
 }
 
@@ -52,7 +67,11 @@ export function normalizeSections(sections?: Partial<Sections>): Sections {
   return { ...DEFAULT_SECTIONS, ...sections };
 }
 
-export function generateFilter(config: FilterConfig): GeneratedFilter {
+/**
+ * Builds the rule list without serialising it. The preview matcher consumes
+ * the same rules the filter is generated from, so they cannot drift.
+ */
+export function compileFilter(config: FilterConfig): CompiledFilter {
   const archetype = getArchetype(config.archetypeId);
   if (!archetype) {
     throw new Error(`Unknown archetype "${config.archetypeId}"`);
@@ -77,30 +96,43 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
 
   rules.push(...junkRules(archetype, preset, config.phase));
 
+  return {
+    archetype,
+    preset,
+    sections,
+    version,
+    rules,
+    baseTypes: [...baseTypes].sort(),
+  };
+}
+
+export function generateFilter(config: FilterConfig): GeneratedFilter {
+  const compiled = compileFilter(config);
+
   const header = [
     '========================================================================',
-    `FilterPath ${version} - filter format ${FILTER_FORMAT_VERSION}`,
+    `FilterPath ${compiled.version} - filter format ${FILTER_FORMAT_VERSION}`,
     'Build-specific loot filter',
-    `Build: ${archetype.name} - ${archetype.class} / ${archetype.ascendancy}`,
+    `Build: ${compiled.archetype.name} - ${compiled.archetype.class} / ${compiled.archetype.ascendancy}`,
     `Phase: ${config.phase === 'leveling' ? 'Leveling' : 'Endgame'} - ${STRICTNESS_LABELS_PUBLIC[config.strictness]}`,
-    `League: ${archetype.verifiedFor}`,
-    `Rules: ${rules.length} - Base types: ${baseTypes.size}`,
+    `League: ${compiled.archetype.verifiedFor}`,
+    `Rules: ${compiled.rules.length} - Base types: ${compiled.baseTypes.length}`,
     `Base data: RePoE ${baseTypeMeta.ref} (${baseTypeMeta.sha256.slice(0, 8)})`,
     'Generated at https://lordgreg.github.io/filterpath/',
     'Not affiliated with or endorsed by Grinding Gear Games.',
     '========================================================================',
   ];
 
-  const text = emitFilter(header, rules);
+  const text = emitFilter(header, compiled.rules);
 
   return {
+    ...compiled,
     text,
     fileName: filterNameFor(
-      `FilterPath-v${version}-${archetype.id}-${config.phase}-${config.strictness}`,
+      `FilterPath-v${compiled.version}-${compiled.archetype.id}-${config.phase}-${config.strictness}`,
     ),
-    ruleCount: rules.length,
-    baseTypeCount: baseTypes.size,
-    sections,
+    ruleCount: compiled.rules.length,
+    baseTypeCount: compiled.baseTypes.length,
     warnings: validateFilter(text),
   };
 }
