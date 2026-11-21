@@ -2,6 +2,27 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.13.0 — 2026-11-21
+
+Filter names, folder writing and save updates.
+
+- Filter files now use
+  `filterpath-<name>-<phase>-<strictness>-<version>.filter`. From Scratch uses
+  `hide-all` or `show-all` instead of phase and strictness.
+- The build name is optional: empty names fall back to a readable slug from the
+  selection, e.g. `minion` or `lightning-arrow-deadeye`.
+- A typed name changes the filename and demo label immediately, before saving.
+- The builder and demo both show the exact filter being edited.
+- Download writes into the connected filters folder first, asks before
+  overwriting, and falls back to a browser download.
+- The folder panel detects Windows, Linux/Proton or macOS and shows the matching
+  path first; the other platform stays behind a disclosure.
+- Choosing another folder runs a read/write probe and reports permission
+  problems, with a copyable `chmod` hint on Linux and folder-permission steps on
+  Windows.
+- Saved builds show an Update button next to Load/Delete for the loaded build;
+  Save creates a copy.
+
 ## 0.12.0 — 2026-11-21
 
 Advanced rules rework and From Scratch mode.

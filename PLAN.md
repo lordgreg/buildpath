@@ -6,8 +6,8 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.12.0 ships the advanced-rules rework and From Scratch mode.
-Remaining work is data capture and manual QA.
+**Status:** v0.13.0 ships filter naming, folder writing and saved-build
+updates. Remaining work is data capture and manual QA.
 
 ---
 
@@ -251,6 +251,30 @@ The preset is **locked and never cloned**. Users add rules on top of it.
 **Done:** the preset cannot be edited; copying a rule/group overrides it; My
 rules survive reload and share codes; conflict warnings and the item test work.
 
+### 2.11 Filter identity, filenames and folder writing (M2j, 0.13.0)
+
+- **One identity** — the builder and demo show the exact filename being edited.
+  The build name travels in the share hash, so the demo never shows a stale
+  filter.
+- **Filename pattern** — `filterpath-<name>-<phase>-<strictness>-<version>.filter`.
+  From Scratch collapses phase/strictness into `hide-all` or `show-all`.
+- **Automatic name** — an empty name resolves from the selection: family id,
+  ascendancy id, `<skill>-<ascendancy>`, or `custom`. A typed name is slugified
+  and applies immediately.
+- **Folder guidance** — the browser detects Windows, Linux/Proton or macOS and
+  shows the matching folder first. The other platform stays behind a disclosure.
+- **Custom folder** — the native picker accepts any folder; a temporary write
+  proves read/write access. Failures show a copyable `chmod u+w` hint on Linux or
+  folder-permission steps on Windows. Browsers never expose the absolute path.
+- **Download** — when a folder is connected, Download writes there first, asks
+  before overwriting and falls back to a browser download.
+- **Saved builds** — loading marks a build as active; its row gets `Update`,
+  which overwrites name, selection and My rules. Top-level Save creates a copy.
+
+**Done:** a named filter downloads as
+`filterpath-my-vortex-endgame-strict-0.13.0.filter`; the demo shows the same
+name; a read-only folder is reported before saving; Update keeps the saved id.
+
 ---
 
 ## 3. Stack
@@ -425,8 +449,9 @@ Implementation notes:
 - Every emitted `BaseType` is checked against `known-base-types.json` (RePoE
   plus a small reviewed supplement) so a bad name fails CI.
 - Deep links: `#archetype=...&phase=...&strictness=...&sections=gear,gems,...`.
-- In-game file name is `FilterPath-v<version>-<build>-<phase>-<strictness>`,
-  e.g. `FilterPath-v0.3.0-necro-minions-leveling-strict`.
+- In-game file name is
+  `filterpath-<name>-<phase>-<strictness>-<version>.filter`, e.g.
+  `filterpath-necro-minions-leveling-strict-0.13.0.filter`.
 
 **Done:** a generated filter loads in-game with no errors, hides junk, and
 highlights the archetype's bases. *(Confirmed 2026-11-21.)*
@@ -558,6 +583,7 @@ are always included; old links still resolve.
 - [x] Full-build and rules-only share codes
 - [x] Saved builds store only selection + My rules; old clones discarded
 - [x] Tests: custom-first ordering, scratch base, templates, config keys
+- [x] Filter names, folder OS detection, write probe and saved-build updates
 
 Implementation notes:
 
@@ -597,6 +623,23 @@ the game; labels use the filter's colours and font size.
 
 **Done:** a from-scratch hide-all filter with only “Show all uniques” added
 emits the expected rules and in-game filename.
+
+### M2j — Filter identity, filenames and folder writing
+
+- [x] Exact filename shown in the builder and demo
+- [x] `filterpath-<name>-<phase>-<strictness>-<version>.filter`
+- [x] From Scratch uses `hide-all` / `show-all`
+- [x] Optional name with an automatic slug fallback
+- [x] OS detection with matching Windows or Linux/Proton guidance
+- [x] Custom folder picker with a read/write probe
+- [x] Permission hints, including a copyable `chmod u+w` command
+- [x] Download writes to the connected folder first, then falls back
+- [x] Update button for the loaded saved build; Save creates a copy
+- [x] Tests: slug/filename, platform detection, write probe, saved-build update
+
+**Done:** a named filter downloads as
+`filterpath-my-vortex-endgame-strict-0.13.0.filter`; the demo shows the same
+name; a read-only folder is reported before saving; Update keeps the saved id.
 
 ### M2d — Visual inventory preview (superseded)
 

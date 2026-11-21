@@ -17,6 +17,23 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.13.0',
+    date: '2026-11-21',
+    title: 'Filter names, folder writing and save updates',
+    notes: [
+      'Filter files now use filterpath-<name>-<phase>-<strictness>-<version>.filter. From Scratch uses hide-all or show-all instead of phase and strictness.',
+      'The build name is optional: empty names fall back to a readable slug from the selection, e.g. minion or lightning-arrow-deadeye.',
+      'A typed name changes the filename and the demo label immediately, before the build is saved.',
+      'The builder and demo both show the exact filter being edited, including when you switch to the demo.',
+      'The main Download button writes into the connected filters folder first, asks before overwriting, and falls back to a browser download.',
+      'The folder panel detects Windows, Linux/Proton or macOS and shows the matching path first; the other platform stays behind a disclosure.',
+      'Choosing another folder runs a read/write probe and reports permission problems, with a copyable chmod hint on Linux and folder-permission steps on Windows.',
+      'Saved builds now show an Update button next to Load/Delete for the build you loaded; Save creates a copy.',
+    ],
+    commits: [],
+    compare: 'v0.12.0...v0.13.0',
+  },
+  {
     version: '0.12.0',
     date: '2026-11-21',
     title: 'Advanced rules rework and From Scratch mode',
