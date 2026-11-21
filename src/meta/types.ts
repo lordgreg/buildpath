@@ -60,7 +60,7 @@ export interface Ascendancy {
   offhand?: SlotSpec | null;
 }
 
-export type BuildMode = 'family' | 'ascendancy' | 'meta';
+export type BuildMode = 'family' | 'ascendancy' | 'meta' | 'scratch';
 
 export interface BuildSelection {
   mode: BuildMode;
@@ -68,4 +68,6 @@ export interface BuildSelection {
   ascendancyId?: string;
   leagueId?: string;
   skillId?: string;
+  /** From-scratch base: hide everything or show everything. */
+  scratchStart?: 'hide' | 'show';
 }

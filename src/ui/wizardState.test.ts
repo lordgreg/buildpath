@@ -52,6 +52,17 @@ describe('wizard hash', () => {
     expect(state.theme).toBe('contrast');
   });
 
+  it('parses from-scratch mode', () => {
+    const state = parseWizardHash(
+      '#mode=scratch&scratchStart=show&theme=contrast',
+    );
+    expect(state.mode).toBe('scratch');
+    expect(state.scratchStart).toBe('show');
+    expect(state.theme).toBe('contrast');
+    expect(wizardHash(state)).toContain('mode=scratch');
+    expect(wizardHash(state)).toContain('scratchStart=show');
+  });
+
   it('infers meta mode from an old skill link', () => {
     const state = parseWizardHash(
       '#league=covens&family=bow&skill=lightning-arrow&ascendancy=deadeye',

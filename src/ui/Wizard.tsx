@@ -5,7 +5,8 @@ import {
   STRICTNESS_ORDER,
   type Phase,
 } from '../core/filter/presets.ts';
-import { cloneKey, createClone, type RuleClone } from '../core/rules/clone.ts';
+import { configKey } from '../core/rules/key.ts';
+import type { Rule } from '../core/filter/types.ts';
 import { THEMES } from '../core/filter/themes.ts';
 import { ASCENDANCIES, getAscendancy } from '../meta/ascendancies.ts';
 import { FAMILIES, getFamily } from '../meta/families.ts';
@@ -20,21 +21,21 @@ import {
 import type { BuildMode } from '../meta/types.ts';
 import { APP_VERSION } from '../version.ts';
 import { decodeShare, encodeShare } from '../core/share/codec.ts';
-import { rebaseRules, type SavedRules } from '../core/rules/delta.ts';
 import FilterPreview from './FilterPreview.tsx';
 import AdvancedRules from './rules/AdvancedRules.tsx';
 import SaveBuildPanel from './save/SaveBuildPanel.tsx';
-import type { SavedBuild } from './presets/storage.ts';
+import { discardLegacyBuilds, type SavedBuild } from './presets/storage.ts';
 import { buildHash } from './buildSnapshot.ts';
 import {
-  deleteClone,
-  loadClone,
-  saveClone,
+  discardLegacyClones,
+  loadCustomRules,
+  saveCustomRules,
 } from './rules/storage.ts';
 import { copyText, downloadFilter } from './download.ts';
 import { useWizardState } from './useWizardState.ts';
 import {
   coerceWizardState,
+  DEFAULT_STATE,
   wizardHash,
   type WizardState,
 } from './wizardState.ts';
@@ -48,6 +49,7 @@ const MODES: { id: BuildMode; label: string; hint: string }[] = [
   { id: 'family', label: 'By family', hint: 'Basic gear profile' },
   { id: 'ascendancy', label: 'By ascendancy', hint: 'Class default loadout' },
   { id: 'meta', label: 'By meta build', hint: 'poe.ninja snapshot' },
+  { id: 'scratch', label: 'From scratch', hint: 'Blank filter, your rules' },
 ];
 
 const CLASS_ORDER = [
@@ -105,19 +107,13 @@ function OptionButton({
 export default function Wizard() {
   const [state, update] = useWizardState();
   const [copied, setCopied] = useState<Copied>(null);
-  const activeKey = cloneKey(
-    state,
-    state.phase,
-    state.strictness,
-    state.sections,
-    state.theme,
-  );
-  const [clone, setClone] = useState<RuleClone | null>(() =>
-    loadClone(activeKey),
+  const activeKey = configKey(state);
+  const [customRules, setCustomRules] = useState<Rule[]>(() =>
+    loadCustomRules(activeKey),
   );
 
   useEffect(() => {
-    setClone(loadClone(activeKey));
+    setCustomRules(loadCustomRules(activeKey));
   }, [activeKey]);
 
   const baseFilter = useMemo(
@@ -135,26 +131,27 @@ export default function Wizard() {
 
   const filter = useMemo(
     () =>
-      clone
-        ? generateFilter({
-            selection: state,
-            phase: state.phase,
-            strictness: state.strictness,
-                theme: state.theme,
-            sections: state.sections,
-            version: APP_VERSION,
-            rulesOverride: clone.rules,
-          })
-        : baseFilter,
-    [state, clone, baseFilter],
+      generateFilter({
+        selection: state,
+        phase: state.phase,
+        strictness: state.strictness,
+        theme: state.theme,
+        sections: state.sections,
+        version: APP_VERSION,
+        customRules,
+      }),
+    [state, customRules],
   );
 
-  const currentRules: SavedRules | undefined = clone
-    ? { base: baseFilter.rules, edited: clone.rules }
-    : undefined;
-  const currentHash = buildHash(state, currentRules);
+  const currentHash = buildHash(state, customRules);
   const [savedHash, setSavedHash] = useState<string | null>(null);
-  const [notice, setNotice] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(() => {
+    const clones = discardLegacyClones();
+    const builds = discardLegacyBuilds();
+    return clones || builds
+      ? 'Old whole-set clones and saved builds were discarded. Presets now regenerate; re-save your build to keep its My rules.'
+      : null;
+  });
 
   useEffect(() => {
     if (savedHash === null) setSavedHash(currentHash);
@@ -185,8 +182,7 @@ export default function Wizard() {
     label: filter.archetype.name,
     presetVersion: PRESET_VERSION,
     state,
-    baseRules: baseFilter.rules,
-    editedRules: filter.rules,
+    customRules,
   });
 
   const copyCode = async () => {
@@ -219,116 +215,48 @@ export default function Wizard() {
     }
   };
 
-  const handleClone = () => {
-    const next = createClone({
-      key: activeKey,
-      label: baseFilter.archetype.name,
-      presetVersion: PRESET_VERSION,
-      rules: baseFilter.rules,
-    });
-    saveClone(next);
-    setClone(next);
+  const changeCustomRules = (rules: Rule[]) => {
+    saveCustomRules(activeKey, rules);
+    setCustomRules(rules);
   };
 
-  const handleCloneChange = (next: RuleClone) => {
-    saveClone(next);
-    setClone(next);
-  };
-
-  const handleCloneReset = () => {
-    deleteClone(activeKey);
-    setClone(null);
+  const resetBuild = () => {
+    if (
+      dirty &&
+      !window.confirm('Discard unsaved changes and reset the filter?')
+    ) {
+      return;
+    }
+    const next = { ...DEFAULT_STATE };
+    saveCustomRules(activeKey, []);
+    saveCustomRules(configKey(next), []);
+    update(next);
+    setCustomRules([]);
+    setSavedHash(buildHash(next, []));
+    setNotice('Filter reset.');
   };
 
   const loadBuild = (build: SavedBuild) => {
     const loaded = coerceWizardState(build.state);
-    const loadedKey = cloneKey(
-      loaded,
-      loaded.phase,
-      loaded.strictness,
-      loaded.sections,
-      loaded.theme,
-    );
-    const latestBase = generateFilter({
-      selection: loaded,
-      phase: loaded.phase,
-      strictness: loaded.strictness,
-      theme: loaded.theme,
-      sections: loaded.sections,
-      version: APP_VERSION,
-    }).rules;
-
-    let nextClone: RuleClone | null = null;
-    if (build.rules) {
-      const merged = rebaseRules(build.rules, latestBase);
-      nextClone = createClone({
-        key: loadedKey,
-        label: build.name,
-        presetVersion: PRESET_VERSION,
-        rules: merged,
-      });
-      saveClone(nextClone);
-      setSavedHash(
-        buildHash(loaded, { base: latestBase, edited: merged }),
-      );
-    } else {
-      deleteClone(loadedKey);
-      setSavedHash(buildHash(loaded, undefined));
-    }
-
+    const loadedKey = configKey(loaded);
+    const rules = build.customRules ?? [];
+    saveCustomRules(loadedKey, rules);
     update(loaded);
-    setClone(nextClone);
+    setCustomRules(rules);
+    setSavedHash(buildHash(loaded, rules));
     setNotice(`Loaded ${build.name}.`);
   };
 
   const importCode = async (code: string): Promise<string | null> => {
     try {
       const payload = await decodeShare(code);
-      const importedState = coerceWizardState(
-        (payload.state ?? state) as Partial<WizardState>,
-      );
-      const importedKey = cloneKey(
-        importedState,
-        importedState.phase,
-        importedState.strictness,
-        importedState.sections,
-        importedState.theme,
-      );
-      const latestBase = generateFilter({
-        selection: importedState,
-        phase: importedState.phase,
-        strictness: importedState.strictness,
-        theme: importedState.theme,
-        sections: importedState.sections,
-        version: APP_VERSION,
-      }).rules;
-
-      const hasRules = Boolean(
-        payload.baseRules || payload.editedRules || payload.rules,
-      );
-
-      let nextClone: RuleClone | null = null;
-      if (hasRules) {
-        const edited =
-          payload.baseRules && payload.editedRules
-            ? rebaseRules(
-                { base: payload.baseRules, edited: payload.editedRules },
-                latestBase,
-              )
-            : (payload.editedRules ?? payload.rules ?? latestBase);
-        nextClone = createClone({
-          key: importedKey,
-          label: payload.label || filter.archetype.name,
-          presetVersion: PRESET_VERSION,
-          rules: edited,
-        });
-        saveClone(nextClone);
-      } else {
-        deleteClone(importedKey);
-      }
-
+      const importedState = payload.state
+        ? coerceWizardState(payload.state as Partial<WizardState>)
+        : state;
+      const rules = payload.customRules ?? payload.rules ?? [];
+      saveCustomRules(configKey(importedState), rules);
       update(importedState);
-      setClone(nextClone);
+      setCustomRules(rules);
       setNotice('Imported build. Save it if you want to keep it locally.');
       return null;
     } catch (error) {
@@ -336,11 +264,27 @@ export default function Wizard() {
     }
   };
 
+  const importRulesCode = async (code: string): Promise<string | null> => {
+    try {
+      const payload = await decodeShare(code);
+      const rules = payload.customRules ?? payload.rules ?? [];
+      changeCustomRules(rules);
+      return `Imported ${rules.length} custom rule(s).`;
+    } catch (error) {
+      return error instanceof Error ? error.message : 'Could not read that code';
+    }
+  };
+
+  // Capture the code before the hash-sync effect rewrites the URL.
+  const [initialCode] = useState(
+    () =>
+      new URLSearchParams(window.location.hash.slice(1)).get('code') ?? null,
+  );
+
   useEffect(() => {
-    const params = new URLSearchParams(window.location.hash.slice(1));
-    const code = params.get('code');
-    if (!code) return;
-    void importCode(code).then(() => {
+    if (!initialCode) return;
+    void importCode(initialCode).then(() => {
+      const params = new URLSearchParams(window.location.hash.slice(1));
       params.delete('code');
       const hash = params.toString();
       window.history.replaceState(null, '', hash ? `#${hash}` : '#');
@@ -354,11 +298,13 @@ export default function Wizard() {
       ? `${ascendancy.name} ${skill.name}`
       : filter.archetype.name;
   const eyebrow =
-    state.mode === 'family'
-      ? 'Family preset'
-      : state.mode === 'ascendancy'
-        ? `${ascendancy.class} / Ascendancy`
-        : `${ascendancy.class} / ${family.name}`;
+    state.mode === 'scratch'
+      ? 'Custom filter'
+      : state.mode === 'family'
+        ? 'Family preset'
+        : state.mode === 'ascendancy'
+          ? `${ascendancy.class} / Ascendancy`
+          : `${ascendancy.class} / ${family.name}`;
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-6xl flex-col px-5 py-8 pb-28 sm:px-8 sm:py-12 lg:pb-12">
@@ -374,11 +320,19 @@ export default function Wizard() {
             )}
           </p>
           <h1 className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            FilterPath
+            <button
+              type="button"
+              onClick={resetBuild}
+              title="Reset the filter"
+              className="cursor-pointer transition-opacity hover:opacity-80"
+            >
+              FilterPath
+            </button>
           </h1>
           <p className="mt-2 max-w-xl text-sm text-zinc-400">
-            Pick a build one way, tune the phases and strictness, then inspect
-            exactly what the filter will show.
+            {state.mode === 'scratch'
+              ? 'Choose where to start, add rules, then inspect exactly what the filter will show.'
+              : 'Pick a build one way, tune the phase and strictness, then inspect exactly what the filter will show.'}
           </p>
         </div>
         <nav className="flex items-center gap-4 text-xs text-zinc-500">
@@ -407,7 +361,7 @@ export default function Wizard() {
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
           <div className="min-w-0 space-y-7">
             <section aria-label="Selection mode">
-              <div className="grid grid-cols-3 gap-2" role="tablist">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4" role="tablist">
                 {MODES.map((mode) => (
                   <button
                     key={mode.id}
@@ -432,6 +386,39 @@ export default function Wizard() {
                 ))}
               </div>
             </section>
+
+            {state.mode === 'scratch' && (
+              <section aria-labelledby="scratch-heading">
+                <h2
+                  id="scratch-heading"
+                  className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+                >
+                  1. Starting point
+                </h2>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  {(['hide', 'show'] as const).map((start) => (
+                    <button
+                      key={start}
+                      type="button"
+                      aria-pressed={state.scratchStart === start}
+                      onClick={() => update({ scratchStart: start })}
+                      className={cx(
+                        'rounded-lg border px-3 py-2.5 text-left text-sm transition-colors',
+                        state.scratchStart === start
+                          ? 'border-gold-400 bg-gold-400/10 text-white'
+                          : 'border-ink-700 bg-ink-800/40 text-zinc-300 hover:border-ink-500',
+                      )}
+                    >
+                      {start === 'hide' ? 'Hide everything' : 'Show everything'}
+                    </button>
+                  ))}
+                </div>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-500">
+                  Add rules under Advanced rules. Templates such as uniques,
+                  6-links and T15 maps are one click away.
+                </p>
+              </section>
+            )}
 
             {state.mode === 'family' && (
               <section aria-labelledby="family-heading">
@@ -608,7 +595,8 @@ export default function Wizard() {
               </>
             )}
 
-            <section aria-labelledby="phase-heading">
+            {state.mode !== 'scratch' && (
+              <section aria-labelledby="phase-heading">
               <h2
                 id="phase-heading"
                 className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
@@ -637,8 +625,10 @@ export default function Wizard() {
                 ))}
               </div>
             </section>
+            )}
 
-            <section aria-labelledby="strictness-heading">
+            {state.mode !== 'scratch' && (
+              <section aria-labelledby="strictness-heading">
               <h2
                 id="strictness-heading"
                 className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
@@ -664,6 +654,7 @@ export default function Wizard() {
                 ))}
               </div>
             </section>
+            )}
 
             <section aria-labelledby="theme-heading">
               <h2
@@ -712,7 +703,7 @@ export default function Wizard() {
               <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
                 {MODES.find((mode) => mode.id === state.mode)?.label}
               </span>
-              {state.mode !== 'family' && (
+              {(state.mode === 'ascendancy' || state.mode === 'meta') && (
                 <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
                   {family.name}
                 </span>
@@ -722,21 +713,31 @@ export default function Wizard() {
                   {snapshot.league.name}
                 </span>
               )}
+              {state.mode === 'scratch' ? (
+                <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                  {state.scratchStart === 'hide'
+                    ? 'Hide everything'
+                    : 'Show everything'}
+                </span>
+              ) : (
+                <>
+                  <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                    {state.phase === 'leveling' ? 'Leveling' : 'Endgame'}
+                  </span>
+                  <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                    {STRICTNESS_LABELS_PUBLIC[state.strictness]}
+                  </span>
+                </>
+              )}
               <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                {state.phase === 'leveling' ? 'Leveling' : 'Endgame'}
-              </span>
-              <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                {STRICTNESS_LABELS_PUBLIC[state.strictness]}
-              </span>
-              <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                {filter.ruleCount} rules
+                {filter.ruleCount} {filter.ruleCount === 1 ? 'rule' : 'rules'}
               </span>
               <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
                 {filter.baseTypeCount} base types
               </span>
-              {clone && (
+              {customRules.length > 0 && (
                 <span className="rounded-full border border-gold-400/50 px-2 py-0.5 text-gold-300">
-                  custom rules
+                  {customRules.length} custom rules
                 </span>
               )}
             </div>
@@ -788,7 +789,7 @@ export default function Wizard() {
 
         <SaveBuildPanel
           state={state}
-          rules={currentRules}
+          customRules={customRules}
           fileName={filter.fileName}
           text={filter.text}
           appVersion={APP_VERSION}
@@ -799,12 +800,12 @@ export default function Wizard() {
 
         <AdvancedRules
           baseRules={baseFilter.rules}
-          clone={clone}
+          customRules={customRules}
+          label={filter.archetype.name}
           presetVersion={PRESET_VERSION}
-          onClone={handleClone}
-          onChange={handleCloneChange}
-          onReset={handleCloneReset}
+          onChange={changeCustomRules}
           onImportCode={importCode}
+          onImportRulesCode={importRulesCode}
         />
 
         <FilterPreview

@@ -12,6 +12,8 @@ export interface SharePayload {
   baseRules?: Rule[];
   /** Edited rules at save time. */
   editedRules?: Rule[];
+  /** User rules only; the preset is regenerated. */
+  customRules?: Rule[];
   /** Legacy rules-only payload. */
   rules?: Rule[];
 }
@@ -88,6 +90,7 @@ export async function decodeShare(code: string): Promise<SharePayload> {
   if (payload.v !== 1) throw new Error('Invalid share code');
   const hasRules =
     Array.isArray(payload.rules) ||
+    Array.isArray(payload.customRules) ||
     Array.isArray(payload.baseRules) ||
     Array.isArray(payload.editedRules);
   if (!hasRules && !payload.state) {

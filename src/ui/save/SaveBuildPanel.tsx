@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { SavedRules } from '../../core/rules/delta.ts';
+import type { Rule } from '../../core/filter/types.ts';
 import {
   ensurePermission,
   listFilterFiles,
@@ -30,7 +30,7 @@ const PROTON_FIND_COMMAND =
 
 export default function SaveBuildPanel({
   state,
-  rules,
+  customRules,
   fileName,
   text,
   appVersion,
@@ -39,7 +39,7 @@ export default function SaveBuildPanel({
   onSaved,
 }: {
   state: WizardState;
-  rules?: SavedRules;
+  customRules?: Rule[];
   fileName: string;
   text: string;
   appVersion: string;
@@ -113,7 +113,7 @@ export default function SaveBuildPanel({
     if (!name.trim()) return;
     setBusy(true);
     try {
-      saveBuild(name, state, rules);
+      saveBuild(name, state, customRules);
       setBuilds(listBuilds());
       setName('');
       onSaved();
@@ -218,7 +218,7 @@ export default function SaveBuildPanel({
                 {build.name}
               </span>
               <span className="text-[10px] text-zinc-600">
-                {build.rules ? 'custom rules' : 'preset'}
+                {build.customRules?.length ? `${build.customRules.length} custom rules` : 'preset only'}
               </span>
               <button
                 type="button"

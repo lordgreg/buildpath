@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { generateFilter } from '../core/filter/generate.ts';
-import { cloneKey } from '../core/rules/clone.ts';
+import { configKey } from '../core/rules/key.ts';
 import { APP_VERSION } from '../version.ts';
-import { loadClone } from './rules/storage.ts';
+import { loadCustomRules } from './rules/storage.ts';
 import { parseWizardHash, wizardHash, type WizardState } from './wizardState.ts';
 import LootSimulator from './demo/LootSimulator.tsx';
 
@@ -67,19 +67,9 @@ export default function DemoPage() {
     };
   }, []);
 
-  const clone = useMemo(
-    () =>
-      loadClone(
-        cloneKey(
-          state,
-          state.phase,
-          state.strictness,
-          state.sections,
-          state.theme,
-        ),
-      ),
-    [state],
-  );
+  const customRules = useMemo(() => {
+    return loadCustomRules(configKey(state));
+  }, [state]);
 
   const filter = useMemo(
     () =>
@@ -90,9 +80,9 @@ export default function DemoPage() {
         theme: state.theme,
         sections: state.sections,
         version: APP_VERSION,
-        ...(clone ? { rulesOverride: clone.rules } : {}),
+        customRules,
       }),
-    [state, clone],
+    [state, customRules],
   );
 
   return (

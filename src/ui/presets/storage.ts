@@ -1,4 +1,4 @@
-import type { SavedRules } from '../../core/rules/delta.ts';
+import type { Rule } from '../../core/filter/types.ts';
 import type { WizardState } from '../wizardState.ts';
 
 export interface SavedBuild {
@@ -6,13 +6,29 @@ export interface SavedBuild {
   name: string;
   createdAt: string;
   state: WizardState;
-  /** Present when the build had an advanced clone. */
-  rules?: SavedRules;
+  /** User rules only; the preset is always regenerated from the latest data. */
+  customRules?: Rule[];
 }
 
-const STORAGE_KEY = 'filterpath.builds.v1';
+const STORAGE_KEY = 'filterpath.builds.v2';
+const LEGACY_KEY = 'filterpath.builds.v1';
+
+export function discardLegacyBuilds(): boolean {
+  try {
+    if (localStorage.getItem(LEGACY_KEY) === null) return false;
+    localStorage.removeItem(LEGACY_KEY);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function discardLegacy(): void {
+  discardLegacyBuilds();
+}
 
 function readAll(): SavedBuild[] {
+  discardLegacy();
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
@@ -46,15 +62,15 @@ export function listBuilds(): SavedBuild[] {
 export function saveBuild(
   name: string,
   state: WizardState,
-  rules?: SavedRules,
+  customRules?: Rule[],
 ): SavedBuild {
   const build: SavedBuild = {
     id: `build-${Date.now()}`,
     name: name.trim() || 'Untitled build',
     createdAt: new Date().toISOString(),
     state: JSON.parse(JSON.stringify(state)) as WizardState,
-    ...(rules
-      ? { rules: JSON.parse(JSON.stringify(rules)) as SavedRules }
+    ...(customRules && customRules.length > 0
+      ? { customRules: JSON.parse(JSON.stringify(customRules)) as Rule[] }
       : {}),
   };
   writeAll([...readAll(), build]);

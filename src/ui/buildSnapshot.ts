@@ -1,9 +1,9 @@
-import type { SavedRules } from '../core/rules/delta.ts';
+import type { Rule } from '../core/filter/types.ts';
 import type { WizardState } from './wizardState.ts';
 
 export function buildHash(
   state: WizardState,
-  rules: SavedRules | undefined,
+  customRules?: Rule[],
 ): string {
-  return JSON.stringify({ state, rules: rules ?? null });
+  return JSON.stringify({ state, customRules: customRules ?? [] });
 }

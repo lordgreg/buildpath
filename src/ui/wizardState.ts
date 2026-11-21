@@ -16,6 +16,7 @@ export interface WizardState {
   ascendancyId: string;
   leagueId: string;
   skillId: string;
+  scratchStart: 'hide' | 'show';
   phase: Phase;
   strictness: Strictness;
   theme: ThemeId;
@@ -32,6 +33,7 @@ export const DEFAULT_STATE: WizardState = {
   ascendancyId: DEFAULT_ASCENDANCY,
   leagueId: CURRENT_LEAGUE_ID,
   skillId: DEFAULT_SKILL,
+  scratchStart: 'hide',
   phase: 'leveling',
   strictness: 'normal',
   theme: 'classic',
@@ -43,7 +45,7 @@ const STRICTNESS: Strictness[] = ['normal', 'strict', 'very-strict'];
 
 function fill(selection: BuildSelection): Pick<
   WizardState,
-  'mode' | 'familyId' | 'ascendancyId' | 'leagueId' | 'skillId'
+  'mode' | 'familyId' | 'ascendancyId' | 'leagueId' | 'skillId' | 'scratchStart'
 > {
   const skill = getSkill(
     selection.leagueId ?? CURRENT_LEAGUE_ID,
@@ -63,6 +65,7 @@ function fill(selection: BuildSelection): Pick<
         : DEFAULT_ASCENDANCY),
     leagueId: selection.leagueId ?? CURRENT_LEAGUE_ID,
     skillId: selection.skillId ?? skill?.id ?? DEFAULT_SKILL,
+    scratchStart: selection.scratchStart === 'show' ? 'show' : 'hide',
   };
 }
 
@@ -73,6 +76,7 @@ export function coerceWizardState(input: Partial<WizardState>): WizardState {
     ascendancyId: input.ascendancyId,
     leagueId: input.leagueId,
     skillId: input.skillId,
+    scratchStart: input.scratchStart,
   });
   const phase = input.phase === 'endgame' ? 'endgame' : 'leveling';
   const strictness =
@@ -84,6 +88,7 @@ export function coerceWizardState(input: Partial<WizardState>): WizardState {
   return {
     ...DEFAULT_STATE,
     ...selection,
+    scratchStart: input.scratchStart === 'show' ? 'show' : 'hide',
     phase,
     strictness,
     theme,
@@ -125,7 +130,8 @@ export function parseWizardHash(hash: string): WizardState {
   const mode: BuildMode =
     modeParam === 'family' ||
     modeParam === 'ascendancy' ||
-    modeParam === 'meta'
+    modeParam === 'meta' ||
+    modeParam === 'scratch'
       ? modeParam
       : hasSkill
         ? 'meta'
@@ -139,6 +145,8 @@ export function parseWizardHash(hash: string): WizardState {
     ascendancyId: params.get('ascendancy') ?? undefined,
     leagueId: params.get('league') ?? undefined,
     skillId: params.get('skill') ?? undefined,
+    scratchStart:
+      params.get('scratchStart') === 'show' ? 'show' : 'hide',
   });
 
   return { ...fill(selection), ...common };
@@ -148,7 +156,9 @@ export function wizardHash(state: WizardState): string {
   const params = new URLSearchParams();
   params.set('mode', state.mode);
 
-  if (state.mode === 'family') {
+  if (state.mode === 'scratch') {
+    params.set('scratchStart', state.scratchStart);
+  } else if (state.mode === 'family') {
     params.set('family', state.familyId);
   } else if (state.mode === 'ascendancy') {
     params.set('ascendancy', state.ascendancyId);
@@ -159,8 +169,10 @@ export function wizardHash(state: WizardState): string {
     params.set('ascendancy', state.ascendancyId);
   }
 
-  params.set('phase', state.phase);
-  params.set('strictness', state.strictness);
+  if (state.mode !== 'scratch') {
+    params.set('phase', state.phase);
+    params.set('strictness', state.strictness);
+  }
   params.set('theme', state.theme);
   return params.toString();
 }

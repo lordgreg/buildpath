@@ -70,6 +70,8 @@ export function defaultSelection(): BuildSelection {
 }
 
 export function isValidSelection(selection: BuildSelection): boolean {
+  if (selection.mode === 'scratch') return true;
+
   if (selection.mode === 'family') {
     return FAMILIES.some((family) => family.id === selection.familyId);
   }
@@ -101,6 +103,13 @@ export function coerceSelection(
   if (input.mode === 'family') {
     const family = FAMILIES.find((entry) => entry.id === input.familyId);
     return { mode: 'family', familyId: family?.id ?? 'minion' };
+  }
+
+  if (input.mode === 'scratch') {
+    return {
+      mode: 'scratch',
+      scratchStart: input.scratchStart === 'show' ? 'show' : 'hide',
+    };
   }
 
   if (input.mode === 'ascendancy') {

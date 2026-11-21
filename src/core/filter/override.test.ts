@@ -10,88 +10,104 @@ const selection = {
   familyId: 'minion' as const,
 };
 
-describe('generated rule metadata', () => {
-  it('gives every rule an id and a section', () => {
+const customRules: Rule[] = [
+  {
+    id: 'custom-0',
+    section: 'custom',
+    action: 'Hide',
+    baseTypes: ['Hubris Circlet'],
+    rarity: 'Rare',
+    itemLevel: { min: 80 },
+    comment: 'Hide high DEX heads',
+  },
+  {
+    id: 'custom-1',
+    section: 'custom',
+    action: 'Show',
+    baseTypes: ['Foo Base'],
+    disabled: true,
+  },
+];
+
+describe('custom rules', () => {
+  it('puts custom rules before the generated preset', () => {
     const compiled = compileFilter({
       selection,
       phase: 'leveling',
       strictness: 'normal',
+      customRules,
     });
 
-    expect(compiled.rules.length).toBeGreaterThan(10);
-    for (const rule of compiled.rules) {
-      expect(rule.id, rule.comment).toMatch(/^[a-z]+-\d+$/);
-      expect(rule.section).toBeTruthy();
-    }
-    expect(new Set(compiled.rules.map((rule) => rule.section))).toContain(
-      'gear',
-    );
-    expect(new Set(compiled.rules.map((rule) => rule.section))).toContain(
-      'junk',
-    );
-  });
-});
-
-describe('rulesOverride', () => {
-  const override: Rule[] = [
-    {
-      id: 'custom-0',
-      section: 'custom',
-      action: 'Hide',
-      baseTypes: ['Hubris Circlet'],
-      rarity: 'Rare',
-      itemLevel: { min: 80 },
-      comment: 'Hide high DEX heads',
-    },
-    {
-      id: 'custom-1',
-      section: 'custom',
-      action: 'Show',
-      baseTypes: ['Divine Orb'],
-      disabled: true,
-    },
-  ];
-
-  it('replaces generated rules and skips disabled ones', () => {
-    const compiled = compileFilter({
-      selection,
-      phase: 'leveling',
-      strictness: 'normal',
-      rulesOverride: override,
-    });
-
-    expect(compiled.rules).toHaveLength(1);
     expect(compiled.rules[0]?.id).toBe('custom-0');
-    expect(compiled.baseTypes).toEqual(['Hubris Circlet']);
+    expect(compiled.rules.length).toBeGreaterThan(1);
+    expect(compiled.rules.some((rule) => rule.section === 'gear')).toBe(true);
+    expect(compiled.baseTypes).toContain('Hubris Circlet');
   });
 
-  it('emits a valid filter with only the custom rule', () => {
+  it('emits both custom and preset rules, skipping disabled ones', () => {
     const filter = generateFilter({
       selection,
       phase: 'leveling',
       strictness: 'normal',
-      rulesOverride: override,
+      customRules,
     });
 
     expect(validateFilter(filter.text)).toEqual([]);
     expect(filter.text).toContain('# Hide high DEX heads');
-    expect(filter.text).not.toContain('Divine Orb');
-    expect(filter.ruleCount).toBe(1);
+    expect(filter.text).toContain('# helmet - rare');
+    expect(filter.text).not.toContain('Foo Base');
   });
 
-  it('skips disabled rules when matching', () => {
+  it('skips disabled custom rules when matching and emitting', () => {
     const item = {
-      id: 'orb',
-      name: 'Divine Orb',
-      itemClass: 'Stackable Currency',
-      baseType: 'Divine Orb',
+      id: 'foo',
+      name: 'Foo Base',
+      itemClass: 'Helmets',
+      baseType: 'Foo Base',
       rarity: 'Normal' as const,
       itemLevel: 1,
     };
-    expect(evaluateRules(override, item).shown).toBe(true);
+    expect(evaluateRules(customRules, item).shown).toBe(true);
+    expect(emitRules(customRules)).not.toContain('Foo Base');
+  });
+});
+
+describe('from scratch', () => {
+  const scratch = {
+    mode: 'scratch' as const,
+    scratchStart: 'hide' as const,
+  };
+
+  it('emits only custom rules plus the hide-all base', () => {
+    const filter = generateFilter({
+      selection: scratch,
+      phase: 'leveling',
+      strictness: 'normal',
+      customRules: [
+        {
+          id: 'custom-0',
+          section: 'custom',
+          action: 'Show',
+          rarity: 'Unique',
+          comment: 'Uniques',
+        },
+      ],
+    });
+
+    expect(filter.text).toContain('# Uniques');
+    expect(filter.text).toContain('# From scratch - hide everything');
+    expect(filter.text).not.toContain('# helmet - rare');
+    expect(filter.fileName).toBe(
+      'FilterPath-vdev-from-scratch-hide.filter',
+    );
   });
 
-  it('skips disabled rules when emitting', () => {
-    expect(emitRules(override)).not.toContain('Divine Orb');
+  it('supports show-all as the base', () => {
+    const filter = generateFilter({
+      selection: { mode: 'scratch', scratchStart: 'show' },
+      phase: 'leveling',
+      strictness: 'normal',
+    });
+    expect(filter.text).toContain('# From scratch - show everything');
   });
 });

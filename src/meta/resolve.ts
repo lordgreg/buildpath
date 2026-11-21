@@ -136,6 +136,24 @@ export function resolveMeta(selection: BuildSelection): Archetype {
   };
 }
 
+export function resolveScratch(selection: BuildSelection): Archetype {
+  const start = selection.scratchStart === 'show' ? 'show' : 'hide';
+  return {
+    id: 'from-scratch',
+    name: 'From Scratch',
+    summary:
+      start === 'hide'
+        ? 'Everything starts hidden; add rules to show what you want.'
+        : 'Everything starts visible; add rules to hide what you do not want.',
+    leveling: true,
+    verifiedFor: verifiedFor(),
+    slots: {},
+    attributes: [],
+    keyMods: [],
+    skills: [],
+  };
+}
+
 export function resolveBuild(selection: BuildSelection): Archetype {
   if (!isValidSelection(selection)) {
     throw new Error(
@@ -144,6 +162,8 @@ export function resolveBuild(selection: BuildSelection): Archetype {
   }
 
   switch (selection.mode) {
+    case 'scratch':
+      return resolveScratch(selection);
     case 'family':
       return resolveFamily(selection.familyId!);
     case 'ascendancy':

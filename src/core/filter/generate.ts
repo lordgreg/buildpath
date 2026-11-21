@@ -50,8 +50,8 @@ export interface FilterConfig {
   sections?: Sections;
   /** Visual theme applied after rule generation. */
   theme?: ThemeId;
-  /** Cloned rule set; replaces the generated rules for this config. */
-  rulesOverride?: Rule[];
+  /** User rules, evaluated before the generated preset. */
+  customRules?: Rule[];
   /** Build version embedded in the header and file name. */
   version?: string;
 }
@@ -99,32 +99,44 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
   const version = config.version ?? DEFAULT_FILTER_VERSION;
   const theme = config.theme ?? 'classic';
 
-  if (config.rulesOverride) {
-    const rules = config.rulesOverride
-      .filter((rule) => !rule.disabled)
-      .map((rule, index) => ({
-        ...rule,
-        id: rule.id ?? `custom-${index}`,
-        section: rule.section ?? ('custom' as RuleSection),
-      }));
-    const bases = new Set(rules.flatMap((rule) => rule.baseTypes ?? []));
+  const customRules = (config.customRules ?? [])
+    .filter((rule) => !rule.disabled)
+    .map((rule, index) => ({
+      ...rule,
+      id: rule.id ?? `custom-${index}`,
+      section: rule.section ?? ('custom' as RuleSection),
+    }));
+
+  if (config.selection?.mode === 'scratch') {
+    const start = config.selection.scratchStart === 'show' ? 'show' : 'hide';
+    const baseRule: Rule = {
+      action: start === 'show' ? 'Show' : 'Hide',
+      id: 'scratch-base',
+      section: 'custom',
+      comment: `From scratch - ${start} everything`,
+      itemLevel: { min: 0 },
+    };
+    const bases = new Set(customRules.flatMap((rule) => rule.baseTypes ?? []));
     return {
       archetype,
       preset,
       sections,
       version,
       theme,
-      rules: applyTheme(rules, theme),
+      rules: applyTheme([...customRules, baseRule], theme),
       baseTypes: [...bases].sort(),
     };
   }
 
-  const rules: Rule[] = [];
+  const rules: Rule[] = [...customRules];
   const baseTypes = new Set<string>();
 
   for (const spec of Object.values(archetype.slots)) {
     if (!spec) continue;
     for (const base of baseTypesFor(spec)) baseTypes.add(base);
+  }
+  for (const rule of customRules) {
+    for (const base of rule.baseTypes ?? []) baseTypes.add(base);
   }
 
   const add = (section: RuleSection, generated: Rule[]) => {
@@ -159,6 +171,10 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
 export function generateFilter(config: FilterConfig): GeneratedFilter {
   const compiled = compileFilter(config);
 
+  const scratch = config.selection?.mode === 'scratch';
+  const scratchStart =
+    config.selection?.scratchStart === 'show' ? 'show' : 'hide';
+
   const header = [
     '========================================================================',
     `FilterPath ${compiled.version} - filter format ${FILTER_FORMAT_VERSION}`,
@@ -172,7 +188,11 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
           }`
         : ''
     }`,
-    `Phase: ${config.phase === 'leveling' ? 'Leveling' : 'Endgame'} - ${STRICTNESS_LABELS_PUBLIC[config.strictness]}`,
+    ...(scratch
+      ? [`Mode: From scratch - ${scratchStart} everything`]
+      : [
+          `Phase: ${config.phase === 'leveling' ? 'Leveling' : 'Endgame'} - ${STRICTNESS_LABELS_PUBLIC[config.strictness]}`,
+        ]),
     `League: ${compiled.archetype.verifiedFor}`,
     `Rules: ${compiled.rules.length} - Base types: ${compiled.baseTypes.length}`,
     `Base data: RePoE ${baseTypeMeta.ref} (${baseTypeMeta.sha256.slice(0, 8)})`,
@@ -188,9 +208,11 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
     ...compiled,
     text,
     fileName: filterNameFor(
-      `FilterPath-v${compiled.version}-${compiled.archetype.id}-${
-        config.selection ? phase : config.phase
-      }-${config.strictness}`,
+      scratch
+        ? `FilterPath-v${compiled.version}-from-scratch-${scratchStart}`
+        : `FilterPath-v${compiled.version}-${compiled.archetype.id}-${
+            config.selection ? phase : config.phase
+          }-${config.strictness}`,
     ),
     ruleCount: compiled.rules.length,
     baseTypeCount: compiled.baseTypes.length,
