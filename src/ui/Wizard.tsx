@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   generateFilter,
   SECTION_KEYS,
@@ -9,6 +9,8 @@ import {
   STRICTNESS_ORDER,
   type Phase,
 } from '../core/filter/presets.ts';
+import { cloneKey, createClone, type RuleClone } from '../core/rules/clone.ts';
+import type { Rule } from '../core/filter/types.ts';
 import { ASCENDANCIES, getAscendancy } from '../meta/ascendancies.ts';
 import { FAMILIES, getFamily } from '../meta/families.ts';
 import {
@@ -17,11 +19,18 @@ import {
   getSkills,
   getSnapshot,
   LEAGUE_INDEX,
+  PRESET_VERSION,
 } from '../meta/index.ts';
 import type { BuildMode } from '../meta/types.ts';
 import { APP_VERSION } from '../version.ts';
 import FilterPreview from './FilterPreview.tsx';
 import InventoryPreview from './preview/InventoryPreview.tsx';
+import AdvancedRules from './rules/AdvancedRules.tsx';
+import {
+  deleteClone,
+  loadClone,
+  saveClone,
+} from './rules/storage.ts';
 import { copyText, downloadFilter } from './download.ts';
 import { useWizardState } from './useWizardState.ts';
 import { wizardHash } from './wizardState.ts';
@@ -100,8 +109,21 @@ function OptionButton({
 export default function Wizard() {
   const [state, update] = useWizardState();
   const [copied, setCopied] = useState<Copied>(null);
+  const activeKey = cloneKey(
+    state,
+    state.phase,
+    state.strictness,
+    state.sections,
+  );
+  const [clone, setClone] = useState<RuleClone | null>(() =>
+    loadClone(activeKey),
+  );
 
-  const filter = useMemo(
+  useEffect(() => {
+    setClone(loadClone(activeKey));
+  }, [activeKey]);
+
+  const baseFilter = useMemo(
     () =>
       generateFilter({
         selection: state,
@@ -111,6 +133,21 @@ export default function Wizard() {
         version: APP_VERSION,
       }),
     [state],
+  );
+
+  const filter = useMemo(
+    () =>
+      clone
+        ? generateFilter({
+            selection: state,
+            phase: state.phase,
+            strictness: state.strictness,
+            sections: state.sections,
+            version: APP_VERSION,
+            rulesOverride: clone.rules,
+          })
+        : baseFilter,
+    [state, clone, baseFilter],
   );
 
   const snapshot = getSnapshot(state.leagueId);
@@ -129,6 +166,38 @@ export default function Wizard() {
       setCopied(kind);
       window.setTimeout(() => setCopied(null), 2000);
     }
+  };
+
+  const handleClone = () => {
+    const next = createClone({
+      key: activeKey,
+      label: baseFilter.archetype.name,
+      presetVersion: PRESET_VERSION,
+      rules: baseFilter.rules,
+    });
+    saveClone(next);
+    setClone(next);
+  };
+
+  const handleCloneChange = (next: RuleClone) => {
+    saveClone(next);
+    setClone(next);
+  };
+
+  const handleCloneReset = () => {
+    deleteClone(activeKey);
+    setClone(null);
+  };
+
+  const handleImportRules = (rules: Rule[]) => {
+    const next = createClone({
+      key: activeKey,
+      label: baseFilter.archetype.name,
+      presetVersion: PRESET_VERSION,
+      rules,
+    });
+    saveClone(next);
+    setClone(next);
   };
 
   const title =
@@ -488,6 +557,11 @@ export default function Wizard() {
               <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
                 {filter.baseTypeCount} base types
               </span>
+              {clone && (
+                <span className="rounded-full border border-gold-400/50 px-2 py-0.5 text-gold-300">
+                  custom rules
+                </span>
+              )}
             </div>
 
             <div className="mt-5 grid gap-2 sm:grid-cols-[1fr_auto_auto]">
@@ -526,6 +600,16 @@ export default function Wizard() {
         </div>
 
         <InventoryPreview rules={filter.rules} archetype={filter.archetype} />
+
+        <AdvancedRules
+          baseRules={baseFilter.rules}
+          clone={clone}
+          presetVersion={PRESET_VERSION}
+          onClone={handleClone}
+          onChange={handleCloneChange}
+          onReset={handleCloneReset}
+          onImportRules={handleImportRules}
+        />
 
         <FilterPreview
           text={filter.text}

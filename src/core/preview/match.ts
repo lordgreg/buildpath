@@ -85,6 +85,7 @@ export function evaluateRules(
 
   for (let index = 0; index < rules.length; index += 1) {
     const rule = rules[index]!;
+    if (rule.disabled) continue;
     if (!ruleMatches(rule, item)) continue;
 
     decision = { rule, index };

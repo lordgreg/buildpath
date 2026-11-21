@@ -17,7 +17,7 @@ import { currencyRules } from './rules/currency.ts';
 import { gemRules } from './rules/gems.ts';
 import { mapRules } from './rules/maps.ts';
 import { uniqueRules } from './rules/uniques.ts';
-import type { Rule } from './types.ts';
+import type { Rule, RuleSection } from './types.ts';
 import { filterNameFor, validateFilter, type FilterIssue } from './validate.ts';
 import { DEFAULT_FILTER_VERSION, FILTER_FORMAT_VERSION } from './version.ts';
 
@@ -42,11 +42,13 @@ export const SECTION_KEYS = Object.keys(DEFAULT_SECTIONS) as (keyof Sections)[];
 export interface FilterConfig {
   /** Legacy 12-build selector; kept for old links and goldens. */
   archetypeId?: string;
-  /** New family -> skill -> ascendancy selection. Takes precedence. */
+  /** New family/ascendancy/meta selection. Takes precedence. */
   selection?: BuildSelection;
   phase: Phase;
   strictness: Strictness;
   sections?: Sections;
+  /** Cloned rule set; replaces the generated rules for this config. */
+  rulesOverride?: Rule[];
   /** Build version embedded in the header and file name. */
   version?: string;
 }
@@ -91,6 +93,26 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
   const preset = getPreset(config.phase, config.strictness);
   const sections = normalizeSections(config.sections);
   const version = config.version ?? DEFAULT_FILTER_VERSION;
+
+  if (config.rulesOverride) {
+    const rules = config.rulesOverride
+      .filter((rule) => !rule.disabled)
+      .map((rule, index) => ({
+        ...rule,
+        id: rule.id ?? `custom-${index}`,
+        section: rule.section ?? ('custom' as RuleSection),
+      }));
+    const bases = new Set(rules.flatMap((rule) => rule.baseTypes ?? []));
+    return {
+      archetype,
+      preset,
+      sections,
+      version,
+      rules,
+      baseTypes: [...bases].sort(),
+    };
+  }
+
   const rules: Rule[] = [];
   const baseTypes = new Set<string>();
 
@@ -99,13 +121,23 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
     for (const base of baseTypesFor(spec)) baseTypes.add(base);
   }
 
-  if (sections.gear) rules.push(...gearRules(archetype, preset));
-  if (sections.gems) rules.push(...gemRules(preset));
-  if (sections.currency) rules.push(...currencyRules(preset));
-  if (sections.maps) rules.push(...mapRules(preset, config.phase));
-  if (sections.uniques) rules.push(...uniqueRules());
+  const add = (section: RuleSection, generated: Rule[]) => {
+    for (const rule of generated) {
+      rules.push({
+        ...rule,
+        id: `${section}-${rules.length}`,
+        section,
+      });
+    }
+  };
 
-  rules.push(...junkRules(archetype, preset, config.phase));
+  if (sections.gear) add('gear', gearRules(archetype, preset));
+  if (sections.gems) add('gems', gemRules(preset));
+  if (sections.currency) add('currency', currencyRules(preset));
+  if (sections.maps) add('maps', mapRules(preset, config.phase));
+  if (sections.uniques) add('uniques', uniqueRules());
+
+  add('junk', junkRules(archetype, preset, config.phase));
 
   return {
     archetype,

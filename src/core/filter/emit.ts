@@ -60,6 +60,7 @@ export function emitRules(rules: readonly Rule[]): string {
   const blocks: string[] = [];
 
   for (const rule of rules) {
+    if (rule.disabled) continue;
     const lines: string[] = [];
 
     if (rule.comment) {

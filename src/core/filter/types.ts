@@ -1,5 +1,14 @@
 export type FilterAction = 'Show' | 'Hide';
 
+export type RuleSection =
+  | 'gear'
+  | 'gems'
+  | 'currency'
+  | 'maps'
+  | 'uniques'
+  | 'junk'
+  | 'custom';
+
 export type Rarity = 'Normal' | 'Magic' | 'Rare' | 'Unique';
 
 export type Color =
@@ -61,6 +70,14 @@ export interface Range {
 
 export interface Rule {
   action: FilterAction;
+  /** Stable identifier inside a generated or cloned rule set. */
+  id?: string;
+  /** Group used by the locked pane and the editor. */
+  section?: RuleSection;
+  /** Disabled rules are kept in a clone but skipped by emit and match. */
+  disabled?: boolean;
+  /** Chip ids used to build a custom rule, for editing and display. */
+  chips?: string[];
   comment?: string;
   classNames?: string[];
   baseTypes?: string[];

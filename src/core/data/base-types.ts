@@ -7,6 +7,12 @@ export interface BaseType {
   dropLevel: number;
   width: number;
   height: number;
+  /** Attribute requirements; absent for jewellery and other requirement-free bases. */
+  requirements?: {
+    str?: number;
+    dex?: number;
+    int?: number;
+  };
 }
 
 export interface BaseTypeMeta {
@@ -26,4 +32,10 @@ export function basesWithTag(tag: string): BaseType[] {
 
 export function basesWithClass(itemClass: string): BaseType[] {
   return data.items.filter((item) => item.itemClass === itemClass);
+}
+
+export function basesRequiring(
+  attribute: 'str' | 'dex' | 'int',
+): BaseType[] {
+  return data.items.filter((item) => (item.requirements?.[attribute] ?? 0) > 0);
 }

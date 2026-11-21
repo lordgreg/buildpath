@@ -70,6 +70,13 @@ for (const item of Object.values(raw)) {
     dropLevel: item.drop_level ?? 0,
     width: item.inventory_width ?? 1,
     height: item.inventory_height ?? 1,
+    requirements: item.requirements
+      ? {
+          str: item.requirements.strength ?? 0,
+          dex: item.requirements.dexterity ?? 0,
+          int: item.requirements.intelligence ?? 0,
+        }
+      : undefined,
   });
 }
 
