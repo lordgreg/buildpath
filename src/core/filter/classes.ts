@@ -1,0 +1,78 @@
+/** RePoE `item_class` -> the plural `Class` value used by item filters. */
+const FILTER_CLASSES: Record<string, string> = {
+  Amulet: 'Amulets',
+  Belt: 'Belts',
+  'Body Armour': 'Body Armours',
+  Boots: 'Boots',
+  Bow: 'Bows',
+  Claw: 'Claws',
+  Dagger: 'Daggers',
+  Gloves: 'Gloves',
+  Helmet: 'Helmets',
+  'One Hand Axe': 'One Hand Axes',
+  'One Hand Mace': 'One Hand Maces',
+  'One Hand Sword': 'One Hand Swords',
+  Quiver: 'Quivers',
+  Ring: 'Rings',
+  'Rune Dagger': 'Rune Daggers',
+  Sceptre: 'Sceptres',
+  Shield: 'Shields',
+  Staff: 'Staves',
+  'Thrusting One Hand Sword': 'Thrusting One Hand Swords',
+  'Two Hand Axe': 'Two Hand Axes',
+  'Two Hand Mace': 'Two Hand Maces',
+  'Two Hand Sword': 'Two Hand Swords',
+  Wand: 'Wands',
+  Warstaff: 'Warstaves',
+  'Life Flask': 'Life Flasks',
+  'Mana Flask': 'Mana Flasks',
+  'Hybrid Flask': 'Hybrid Flasks',
+  'Utility Flask': 'Utility Flasks',
+  Jewel: 'Jewels',
+  AbyssJewel: 'Abyss Jewels',
+};
+
+export function toFilterClass(itemClass: string): string {
+  return FILTER_CLASSES[itemClass] ?? itemClass;
+}
+
+/** Every equipment class the junk rules may hide. */
+export const EQUIPMENT_CLASSES = [
+  'Amulets',
+  'Belts',
+  'Body Armours',
+  'Boots',
+  'Bows',
+  'Claws',
+  'Daggers',
+  'Gloves',
+  'Helmets',
+  'One Hand Axes',
+  'One Hand Maces',
+  'One Hand Swords',
+  'Quivers',
+  'Rings',
+  'Rune Daggers',
+  'Sceptres',
+  'Shields',
+  'Staves',
+  'Thrusting One Hand Swords',
+  'Two Hand Axes',
+  'Two Hand Maces',
+  'Two Hand Swords',
+  'Wands',
+  'Warstaves',
+  'Life Flasks',
+  'Mana Flasks',
+  'Hybrid Flasks',
+  'Utility Flasks',
+  'Jewels',
+  'Abyss Jewels',
+] as const;
+
+export const FLASK_CLASSES = [
+  'Life Flasks',
+  'Mana Flasks',
+  'Hybrid Flasks',
+  'Utility Flasks',
+] as const;

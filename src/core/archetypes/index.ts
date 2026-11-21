@@ -1,10 +1,4 @@
-import type { Archetype } from './types.ts';
-import { necroMinions } from './data/necro-minions.ts';
+import { archetypes, getArchetype } from './data/matrix.ts';
 
-export const archetypes: readonly Archetype[] = [necroMinions];
-
-export function getArchetype(id: string): Archetype | undefined {
-  return archetypes.find((archetype) => archetype.id === id);
-}
-
+export { archetypes, getArchetype };
 export type { Archetype } from './types.ts';

@@ -1,0 +1,109 @@
+import type { Archetype, ItemSlot, SlotSpec } from '../../archetypes/types.ts';
+import { resolveSlotBases } from '../../data/resolve.ts';
+import { toFilterClass } from '../classes.ts';
+import type { Preset } from '../presets.ts';
+import { SLOT_STYLES, type Rule, type Style } from '../types.ts';
+
+const WEAPON_SLOTS = new Set<ItemSlot>(['weapon', 'offhand']);
+const ARMOUR_SLOTS = new Set<ItemSlot>(['helmet', 'body', 'gloves', 'boots']);
+const ACCESSORY_SLOTS = new Set<ItemSlot>([
+  'belt',
+  'amulet',
+  'ring',
+  'jewel',
+  'flask',
+]);
+
+/** Accessories and jewels stay worth identifying below the gear cutoff. */
+const ACCESSORY_ITEM_LEVEL = 68;
+
+export function slotStyle(slot: ItemSlot): Style {
+  if (WEAPON_SLOTS.has(slot)) return SLOT_STYLES.weapon;
+  if (ARMOUR_SLOTS.has(slot)) return SLOT_STYLES.armour;
+  return SLOT_STYLES.accessory;
+}
+
+function quiet(style: Style): Style {
+  return {
+    textColor: style.textColor,
+    borderColor: style.borderColor,
+    fontSize: 34,
+  };
+}
+
+export function filterClassesFor(spec: SlotSpec): string[] {
+  return spec.itemClasses.map(toFilterClass);
+}
+
+/** Base types when the spec is narrow enough; otherwise an empty list. */
+export function baseTypesFor(spec: SlotSpec): string[] {
+  if (spec.bases?.length) return [...new Set(spec.bases)].sort();
+  if (spec.tags?.length) {
+    return [...new Set(resolveSlotBases(spec).map((base) => base.name))].sort();
+  }
+  return [];
+}
+
+export function usedFilterClasses(archetype: Archetype): Set<string> {
+  const classes = new Set<string>();
+  for (const spec of Object.values(archetype.slots)) {
+    if (!spec) continue;
+    for (const className of filterClassesFor(spec)) classes.add(className);
+  }
+  return classes;
+}
+
+export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
+  const rules: Rule[] = [];
+
+  for (const [slot, spec] of Object.entries(archetype.slots) as [
+    ItemSlot,
+    SlotSpec,
+  ][]) {
+    const bases = baseTypesFor(spec);
+    const classNames = bases.length > 0 ? undefined : filterClassesFor(spec);
+    const target = bases.length > 0 ? { baseTypes: bases } : { classNames };
+    const rareMinItemLevel = ACCESSORY_SLOTS.has(slot)
+      ? Math.min(preset.rareMinItemLevel, ACCESSORY_ITEM_LEVEL)
+      : preset.rareMinItemLevel;
+
+    rules.push({
+      action: 'Show',
+      comment: `${slot} - rare`,
+      ...target,
+      rarity: 'Rare',
+      itemLevel: { min: rareMinItemLevel },
+      style: slotStyle(slot),
+    });
+
+    if (preset.magicMinItemLevel !== null) {
+      rules.push({
+        action: 'Show',
+        comment: `${slot} - magic`,
+        ...target,
+        rarity: 'Magic',
+        itemLevel: { min: preset.magicMinItemLevel },
+        style: quiet(slotStyle(slot)),
+      });
+    }
+  }
+
+  if (preset.highlightLinks) {
+    rules.push({
+      action: 'Show',
+      comment: 'Leveling - 4+ links',
+      rarity: 'Normal',
+      linkedSockets: { min: 4 },
+      style: SLOT_STYLES.link,
+    });
+  }
+
+  rules.push({
+    action: 'Show',
+    comment: 'Six sockets',
+    sockets: { min: 6 },
+    style: SLOT_STYLES.link,
+  });
+
+  return rules;
+}

@@ -29,4 +29,19 @@
   ::selection {
     @apply bg-gold-400/30 text-white;
   }
+
+  pre {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ink-600) transparent;
+  }
+
+  pre::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    background: var(--color-ink-600);
+    border-radius: 4px;
+  }
 }

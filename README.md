@@ -5,7 +5,18 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** M0 — foundation. Nothing is selectable yet.
+**Status:** M1 — pick a build and download a filter. M2 adds themes, prices and
+scheduled economy updates; M3 writes the file into your filters folder.
+
+## Features
+
+- 12 builds across all 7 classes, leveling and endgame presets
+- Normal / Strict / Very Strict
+- Toggle gear, gems, currency, maps and uniques
+- Filter preview, download, copy and share links
+- Generated client-side; no account and no network calls
+
+**Live:** https://lordgreg.github.io/filterpath/
 
 ## Development
 

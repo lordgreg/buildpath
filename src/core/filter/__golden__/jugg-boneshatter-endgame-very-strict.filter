@@ -1,0 +1,248 @@
+# ========================================================================
+# FilterPath - build-specific loot filter
+# Build: Boneshatter Juggernaut - Marauder / Juggernaut
+# Phase: Endgame - Very Strict
+# League: Covens
+# Rules: 27 - Base types: 54
+# Base data: RePoE master (bffe158f)
+# Generated at https://lordgreg.github.io/filterpath/
+# Not affiliated with or endorsed by Grinding Gear Games.
+# ========================================================================
+
+# helmet - rare
+Show
+    BaseType "Barbute Helmet" "Close Helmet" "Cone Helmet" "Eternal Burgonet" "Ezomyte Burgonet" "Gladiator Helmet" "Iron Hat" "Reaver Helmet" "Royal Burgonet" "Samnite Helmet" "Siege Helmet"
+    Rarity Rare
+    ItemLevel >= 86
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 90 220 220 255
+    SetBackgroundColor 10 28 48 255
+    PlayAlertSound 2 220
+    MinimapIcon 1 Cyan Diamond
+
+# body - rare
+Show
+    BaseType "Arena Plate" "Astral Plate" "Battle Plate" "Bronze Plate" "Chestplate" "Colosseum Plate" "Copper Plate" "Crusader Plate" "Full Plate" "Gladiator Plate" "Glorious Plate" "Golden Plate" "Lordly Plate" "Majestic Plate" "Plate Vest" "Sun Plate" "War Plate"
+    Rarity Rare
+    ItemLevel >= 86
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 90 220 220 255
+    SetBackgroundColor 10 28 48 255
+    PlayAlertSound 2 220
+    MinimapIcon 1 Cyan Diamond
+
+# gloves - rare
+Show
+    BaseType "Ancient Gauntlets" "Antique Gauntlets" "Bronze Gauntlets" "Debilitation Gauntlets" "Goliath Gauntlets" "Gruelling Gauntlets" "Iron Gauntlets" "Plated Gauntlets" "Spiked Gloves" "Steel Gauntlets" "Taxing Gauntlets" "Titan Gauntlets" "Vaal Gauntlets"
+    Rarity Rare
+    ItemLevel >= 86
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 90 220 220 255
+    SetBackgroundColor 10 28 48 255
+    PlayAlertSound 2 220
+    MinimapIcon 1 Cyan Diamond
+
+# boots - rare
+Show
+    BaseType "Ancient Greaves" "Antique Greaves" "Basemetal Treads" "Brimstone Treads" "Darksteel Treads" "Goliath Greaves" "Iron Greaves" "Plated Greaves" "Reinforced Greaves" "Steel Greaves" "Titan Greaves" "Vaal Greaves"
+    Rarity Rare
+    ItemLevel >= 86
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 90 220 220 255
+    SetBackgroundColor 10 28 48 255
+    PlayAlertSound 2 220
+    MinimapIcon 1 Cyan Diamond
+
+# belt - rare
+Show
+    Class "Belts"
+    Rarity Rare
+    ItemLevel >= 68
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
+    SetBackgroundColor 8 32 18 255
+    PlayAlertSound 3 150
+    MinimapIcon 1 Green Hexagon
+
+# amulet - rare
+Show
+    Class "Amulets"
+    Rarity Rare
+    ItemLevel >= 68
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
+    SetBackgroundColor 8 32 18 255
+    PlayAlertSound 3 150
+    MinimapIcon 1 Green Hexagon
+
+# ring - rare
+Show
+    Class "Rings"
+    Rarity Rare
+    ItemLevel >= 68
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
+    SetBackgroundColor 8 32 18 255
+    PlayAlertSound 3 150
+    MinimapIcon 1 Green Hexagon
+
+# jewel - rare
+Show
+    BaseType "Crimson Jewel"
+    Rarity Rare
+    ItemLevel >= 68
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
+    SetBackgroundColor 8 32 18 255
+    PlayAlertSound 3 150
+    MinimapIcon 1 Green Hexagon
+
+# flask - rare
+Show
+    Class "Life Flasks" "Utility Flasks"
+    Rarity Rare
+    ItemLevel >= 68
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
+    SetBackgroundColor 8 32 18 255
+    PlayAlertSound 3 150
+    MinimapIcon 1 Green Hexagon
+
+# weapon - rare
+Show
+    Class "Two Hand Axes"
+    Rarity Rare
+    ItemLevel >= 86
+    SetFontSize 45
+    SetTextColor 255 255 255 255
+    SetBorderColor 217 178 106 255
+    SetBackgroundColor 40 28 12 255
+    PlayAlertSound 1 300
+    MinimapIcon 1 Yellow Star
+
+# Six sockets
+Show
+    Sockets >= 6
+    SetFontSize 38
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
+
+# Gems - quality 10+
+Show
+    Class "Skill Gems" "Support Gems"
+    Quality >= 10
+    SetFontSize 40
+    SetTextColor 90 220 220 255
+    SetBorderColor 120 180 255 255
+    PlayAlertSound 8 180
+    MinimapIcon 0 Blue Circle
+
+# Gems - below quality cutoff
+Hide
+    Class "Skill Gems" "Support Gems"
+
+# Currency - tier 1
+Show
+    BaseType "Divine Orb" "Eldritch Chaos Orb" "Eldritch Exalted Orb" "Eldritch Orb of Annulment" "Exalted Orb" "Fracturing Orb" "Hinekora's Lock" "Mirror of Kalandra" "Sacred Orb"
+    SetFontSize 45
+    SetTextColor 255 255 255 255
+    SetBorderColor 240 90 90 255
+    SetBackgroundColor 55 8 8 255
+    PlayAlertSound 6 300
+    MinimapIcon 1 Red Star
+
+# Currency - below tier cutoff
+Hide
+    BaseType "Ancient Orb" "Blessed Orb" "Cartographer's Chisel" "Chaos Orb" "Chromatic Orb" "Gemcutter's Prism" "Glassblower's Bauble" "Instilling Orb" "Enkindling Orb" "Jeweller's Orb" "Orb of Alchemy" "Orb of Alteration" "Orb of Annulment" "Orb of Binding" "Orb of Chance" "Orb of Fusing" "Orb of Regret" "Orb of Scouring" "Orb of Unmaking" "Prime Regrading Lens" "Regal Orb" "Secondary Regrading Lens" "Tailoring Orb" "Tempering Orb" "Vaal Orb"
+
+# Currency - below tier cutoff
+Hide
+    BaseType "Armourer's Scrap" "Blacksmith's Whetstone" "Orb of Augmentation" "Orb of Transmutation" "Perandus Coin" "Portal Scroll" "Scroll of Wisdom"
+
+# Divination cards - top
+Show
+    BaseType "House of Mirrors" "The Apothecary" "The Doctor" "The Fiend" "The Nurse"
+    SetFontSize 45
+    SetTextColor 255 255 255 255
+    SetBorderColor 240 90 90 255
+    SetBackgroundColor 55 8 8 255
+    PlayAlertSound 6 300
+    MinimapIcon 1 Red Star
+
+# Divination cards - mid
+Show
+    BaseType "Stacked Deck"
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 217 178 106 255
+    MinimapIcon 0 Yellow Circle
+
+# Maps - tier 15+
+Show
+    Class "Maps"
+    MapTier >= 15
+    SetFontSize 38
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 180 255 255
+
+# Maps - below tier cutoff
+Hide
+    Class "Maps"
+
+# Map fragments
+Show
+    Class "Map Fragments"
+    SetFontSize 36
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 180 255 255
+
+# Uniques - chase items
+Show
+    BaseType "Aegis Aurora" "Ashes of the Stars" "Headhunter" "Kalandra's Touch" "Mageblood" "Nimis" "Original Sin" "Progenesis" "The Squire" "Voices"
+    Rarity Unique
+    SetFontSize 45
+    SetTextColor 255 255 255 255
+    SetBorderColor 240 90 90 255
+    SetBackgroundColor 55 8 8 255
+    PlayAlertSound 6 300
+    MinimapIcon 1 Red Star
+
+# Uniques
+Show
+    Rarity Unique
+    SetFontSize 40
+    SetTextColor 255 166 0 255
+    SetBorderColor 255 166 0 255
+    SetBackgroundColor 40 28 12 255
+    PlayAlertSound 4 200
+    MinimapIcon 1 Red Star
+
+# Magic gear
+Hide
+    Class "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks" "Jewels" "Abyss Jewels"
+    Rarity Magic
+
+# Normal gear
+Hide
+    Class "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks" "Jewels" "Abyss Jewels"
+    Rarity Normal
+
+# Rare gear - below item level 86
+Hide
+    Class "Helmets" "Body Armours" "Gloves" "Boots" "Belts" "Amulets" "Rings" "Jewels" "Life Flasks" "Utility Flasks" "Two Hand Axes"
+    Rarity Rare
+    ItemLevel <= 85
+
+# Rare gear - slots this build does not use
+Hide
+    Class "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
+    Rarity Rare
