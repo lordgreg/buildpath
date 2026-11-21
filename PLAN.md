@@ -73,6 +73,9 @@ behind the same `FilterSync` interface for if GGG reopens registration.
 
 - Builds/profiles API is explicitly closed to third parties (load and privacy
   reasons). The curated archetype matrix is the only lawful route.
+- Reading the public builds pages by hand and summarising the top skills is
+  fine; automated fetching is not. The GGG ladder alternative needs an OAuth
+  client, and registration is frozen.
 - Economy endpoints are a supported public surface:
   - `GET /poe1/api/economy/leagues`
   - `GET /poe1/api/economy/stash/current/currency/overview?league=&type=Currency|Fragment`
@@ -209,9 +212,22 @@ Data:
   family, about 20 per league.
 - `src/meta/leagues/index.json`: league order, newest first, marks the current
   league.
-- Capture is **manual** from poe.ninja's builds pages because the builds API is
-  closed. A local CLI (`npm run meta:add`) appends or edits a skill; changes
-  land through a PR.
+- Capture is **manual** from poe.ninja's public builds pages because the builds
+  API is closed to third parties. Reading the pages and summarising the top
+  skills is the intended escape hatch; automated fetching is not.
+- Capture windows: within the first 48 hours of a league and after the first
+  balance patch; monthly as a backstop. Twenty entries take roughly 15-20
+  minutes.
+- Skill names are validated against RePoE's `gems.json`; `meta:add` offers that
+  list, so the curator selects a gem instead of typing a name. Popularity,
+  classes and ascendancies remain human-curated.
+- A local CLI (`npm run meta:add`) appends or edits a skill; changes land
+  through a PR.
+- If poe.ninja ever grants API access or GGG reopens OAuth registration, the
+  source can be swapped behind a `MetaSource` interface without changing the
+  JSON shape.
+- The selector shows "Meta snapshot from poe.ninja builds, captured \<date\>"
+  with a link to the build pages.
 - A `workflow_dispatch` Action validates meta PRs and opens a league-start
   refresh reminder. It never fetches builds data.
 - A family-only fallback covers skills missing from the snapshot.
