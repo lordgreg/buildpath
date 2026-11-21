@@ -1,6 +1,14 @@
 import type { Rule } from '../filter/types.ts';
 
-export type ItemRarity = 'Normal' | 'Magic' | 'Rare' | 'Unique' | 'Quest';
+export type ItemRarity =
+  | 'Normal'
+  | 'Magic'
+  | 'Rare'
+  | 'Unique'
+  | 'Quest'
+  | 'Currency'
+  | 'Gem'
+  | 'Divination Card';
 
 /**
  * The subset of item data a filter rule can match. This is also the shape the

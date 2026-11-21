@@ -18,6 +18,9 @@ const RARITY_COLOR: Record<ItemRarity, string> = {
   Rare: '#fff07a',
   Unique: '#d98a4a',
   Quest: '#63e68b',
+  Currency: '#d9b26a',
+  Gem: '#1ba29b',
+  'Divination Card': '#b0c4de',
 };
 
 function cx(...parts: (string | false | undefined)[]): string {

@@ -87,6 +87,25 @@ Unidentified`);
     });
   });
 
+  it('parses currency blocks with Rarity: Currency', () => {
+    const items = parseItemText(`Item Class: Stackable Currency
+Rarity: Currency
+Divine Orb
+--------
+Stack Size: 1/20
+--------
+Randomises the values of the random modifiers on an item
+--------
+Right click this item then left click a magic, rare or unique item to apply it.`);
+    expect(items[0]).toMatchObject({
+      name: 'Divine Orb',
+      itemClass: 'Stackable Currency',
+      baseType: 'Divine Orb',
+      rarity: 'Currency',
+      stackSize: 1,
+    });
+  });
+
   it('ignores text without an item class', () => {
     expect(parseItemText('hello world')).toEqual([]);
   });

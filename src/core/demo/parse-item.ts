@@ -6,6 +6,9 @@ const RARITIES = new Set<ItemRarity>([
   'Rare',
   'Unique',
   'Quest',
+  'Currency',
+  'Gem',
+  'Divination Card',
 ]);
 
 function field(lines: string[], name: string): string | undefined {
@@ -81,6 +84,9 @@ export function parseItemText(text: string): PreviewItem[] {
     const sockets = parseSockets(field(lines, 'Sockets'));
     const quality = field(lines, 'Quality');
     const stack = field(lines, 'Stack Size');
+    const stackSize = stack
+      ? Number.parseInt(stack.split('/')[0]!, 10)
+      : undefined;
     const mapTier = field(lines, 'Map Tier');
 
     items.push({
@@ -94,7 +100,9 @@ export function parseItemText(text: string): PreviewItem[] {
       ...(quality
         ? { quality: Number(quality.replace(/[^\d]/g, '')) }
         : {}),
-      ...(stack ? { stackSize: Number(stack) } : {}),
+      ...(stackSize !== undefined && Number.isFinite(stackSize)
+        ? { stackSize }
+        : {}),
       ...(mapTier ? { mapTier: Number(mapTier) } : {}),
       corrupted: lines.includes('Corrupted'),
       identified: !lines.includes('Unidentified'),
