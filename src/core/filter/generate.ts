@@ -1,5 +1,7 @@
 import { getArchetype } from '../archetypes/index.ts';
 import type { Archetype } from '../archetypes/types.ts';
+import { resolveBuild } from '../../meta/resolve.ts';
+import type { BuildSelection } from '../../meta/types.ts';
 import { baseTypeMeta } from '../data/base-types.ts';
 import { emitFilter } from './emit.ts';
 import { junkRules } from './junk.ts';
@@ -38,7 +40,10 @@ export const DEFAULT_SECTIONS: Sections = {
 export const SECTION_KEYS = Object.keys(DEFAULT_SECTIONS) as (keyof Sections)[];
 
 export interface FilterConfig {
-  archetypeId: string;
+  /** Legacy 12-build selector; kept for old links and goldens. */
+  archetypeId?: string;
+  /** New family -> skill -> ascendancy selection. Takes precedence. */
+  selection?: BuildSelection;
   phase: Phase;
   strictness: Strictness;
   sections?: Sections;
@@ -72,9 +77,15 @@ export function normalizeSections(sections?: Partial<Sections>): Sections {
  * the same rules the filter is generated from, so they cannot drift.
  */
 export function compileFilter(config: FilterConfig): CompiledFilter {
-  const archetype = getArchetype(config.archetypeId);
+  const archetype = config.selection
+    ? resolveBuild(config.selection)
+    : getArchetype(config.archetypeId ?? '');
   if (!archetype) {
-    throw new Error(`Unknown archetype "${config.archetypeId}"`);
+    throw new Error(
+      config.archetypeId
+        ? `Unknown archetype "${config.archetypeId}"`
+        : 'Provide either a selection or an archetypeId',
+    );
   }
 
   const preset = getPreset(config.phase, config.strictness);
@@ -124,12 +135,15 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
   ];
 
   const text = emitFilter(header, compiled.rules);
+  const phase = config.phase === 'leveling' ? 'lev' : 'end';
 
   return {
     ...compiled,
     text,
     fileName: filterNameFor(
-      `FilterPath-v${compiled.version}-${compiled.archetype.id}-${config.phase}-${config.strictness}`,
+      config.selection
+        ? `FilterPath-v${compiled.version}-${compiled.archetype.id}-${phase}-${config.strictness}`
+        : `FilterPath-v${compiled.version}-${compiled.archetype.id}-${config.phase}-${config.strictness}`,
     ),
     ruleCount: compiled.rules.length,
     baseTypeCount: compiled.baseTypes.length,

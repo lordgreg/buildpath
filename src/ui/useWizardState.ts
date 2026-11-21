@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getArchetype } from '../core/archetypes/index.ts';
+import { coerceSelection } from '../meta/index.ts';
 import {
   DEFAULT_STATE,
   parseWizardHash,
@@ -30,10 +30,8 @@ export function useWizardState(): [
 
   const update = useCallback((patch: Partial<WizardState>) => {
     setState((previous) => {
-      if (patch.archetypeId && !getArchetype(patch.archetypeId)) {
-        return previous;
-      }
-      return { ...previous, ...patch };
+      const next = { ...previous, ...patch };
+      return { ...next, ...coerceSelection(next) };
     });
   }, []);
 

@@ -23,6 +23,10 @@ const KNOWN_OUT = fileURLToPath(
 const EXTRA = fileURLToPath(
   new URL('../src/core/data/base-types-extra.json', import.meta.url),
 );
+const SKILLS_OUT = fileURLToPath(
+  new URL('../src/meta/skill-names.json', import.meta.url),
+);
+const GEMS_SOURCE = `https://raw.githubusercontent.com/brather1ng/RePoE/${REF}/RePoE/data/gems.json`;
 const USER_AGENT = 'FilterPath/0.1 (+https://github.com/lordgreg/filterpath)';
 
 // RePoE splits gear, flasks and jewels across domains. Filter rules need all
@@ -97,6 +101,40 @@ try {
 
 const knownNames = [...known].sort();
 
+const gemsResponse = await fetch(GEMS_SOURCE, {
+  headers: { 'user-agent': USER_AGENT },
+});
+if (!gemsResponse.ok) {
+  throw new Error(
+    `RePoE gems request failed: ${gemsResponse.status} ${gemsResponse.statusText}`,
+  );
+}
+const gemData = await gemsResponse.json();
+const skillByName = new Map();
+for (const gem of Object.values(gemData)) {
+  const name = gem.base_item?.display_name;
+  if (!name || name.startsWith('[')) continue;
+  if (gem.is_support) continue;
+  if (gem.base_item.release_state !== 'released') continue;
+  if (!gem.active_skill) continue;
+  if (skillByName.has(name)) continue;
+
+  const tags = gem.tags ?? [];
+  skillByName.set(name, {
+    name,
+    types: gem.active_skill.types ?? [],
+    tags,
+    weaponRestrictions: gem.active_skill.weapon_restrictions ?? [],
+    primaryAttribute:
+      ['strength', 'dexterity', 'intelligence'].find((tag) =>
+        tags.includes(tag),
+      ) ?? null,
+  });
+}
+const skillNames = [...skillByName.values()].sort((a, b) =>
+  a.name.localeCompare(b.name),
+);
+
 const digest = createHash('sha256').update(JSON.stringify(items)).digest('hex');
 
 const output = {
@@ -123,7 +161,24 @@ await writeFile(
     0,
   )}\n`,
 );
+await writeFile(
+  SKILLS_OUT,
+  `${JSON.stringify(
+    {
+      meta: {
+        source: GEMS_SOURCE,
+        ref: REF,
+        generatedAt: new Date().toISOString(),
+        count: skillNames.length,
+      },
+      skills: skillNames,
+    },
+    null,
+    0,
+  )}\n`,
+);
 
 console.log(`Wrote ${items.length} base types to ${OUT}`);
 console.log(`Wrote ${knownNames.length} known BaseType names to ${KNOWN_OUT}`);
+console.log(`Wrote ${skillNames.length} skill gems to ${SKILLS_OUT}`);
 console.log(`sha256 ${digest}`);

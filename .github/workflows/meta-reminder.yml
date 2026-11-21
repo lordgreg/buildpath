@@ -1,0 +1,36 @@
+name: Meta snapshot reminder
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Open a reminder if none is open
+        run: |
+          count=$(gh issue list --state open \
+            --search '"[meta] Snapshot refresh" in:title' \
+            --json number --jq 'length')
+          if [ "$count" != "0" ]; then
+            echo "A snapshot refresh issue is already open."
+            exit 0
+          fi
+          gh issue create \
+            --title "[meta] Snapshot refresh" \
+            --body "The league build snapshot may be stale.
+
+          - [ ] Capture the top skills from https://poe.ninja/poe1/builds (public pages, not the API)
+          - [ ] Run \`npm run meta:add\` for additions and changes
+          - [ ] Keep at least four skills per family
+          - [ ] Open a PR; the Validate meta workflow must pass
+
+          Capture at league start and after the first balance patch."
