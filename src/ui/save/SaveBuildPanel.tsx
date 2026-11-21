@@ -338,15 +338,6 @@ export default function SaveBuildPanel({
               {folder.handle ? 'Change folder' : 'Choose folder'}
             </button>
           )}
-          {!folder.supported && brave && (
-            <button
-              type="button"
-              onClick={() => window.location.reload()}
-              className="rounded border border-ink-600 px-2 py-1 text-[11px] text-zinc-300"
-            >
-              Reload after enabling
-            </button>
-          )}
           {folder.supported && folder.handle && folder.permission !== 'granted' && (
             <button
               type="button"
@@ -388,34 +379,39 @@ export default function SaveBuildPanel({
 
         {!folder.supported && (
           <div className="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-[11px] leading-relaxed text-amber-200">
-            {brave ? (
-              <>
-                <p>
-                  Brave disables folder writing by default. Open{' '}
-                  <code className="rounded bg-ink-900 px-1">
-                    {BRAVE_FILE_ACCESS_FLAG}
-                  </code>
-                  , set <strong>File System Access API</strong> to{' '}
-                  <strong>Enabled</strong>, relaunch Brave, then reload this
-                  page.
-                </p>
-                <button
-                  type="button"
-                  onClick={() =>
-                    void copyText(BRAVE_FILE_ACCESS_FLAG)
-                  }
-                  className="mt-1 text-[10px] underline underline-offset-2"
-                >
-                  Copy brave:// flag
-                </button>
-              </>
-            ) : (
-              <p>
-                This browser cannot write to folders. Use Chrome, Chromium or
-                Edge for folder writing; Firefox and Safari only support the
-                download flow.
+            <p>
+              {brave
+                ? 'Brave disables folder writing by default.'
+                : 'This browser cannot write to folders.'}{' '}
+              If you use Brave, open{' '}
+              <code className="break-all rounded bg-ink-900 px-1">
+                {BRAVE_FILE_ACCESS_FLAG}
+              </code>
+              , set <strong>File System Access API</strong> to{' '}
+              <strong>Enabled</strong>, relaunch Brave, then reload this page.
+            </p>
+            {!brave && (
+              <p className="mt-1">
+                Chrome, Chromium and Edge support folder writing. Firefox and
+                Safari only support the download flow.
               </p>
             )}
+            <div className="mt-1 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => void copyText(BRAVE_FILE_ACCESS_FLAG)}
+                className="text-[10px] underline underline-offset-2"
+              >
+                Copy brave:// flag
+              </button>
+              <button
+                type="button"
+                onClick={() => window.location.reload()}
+                className="text-[10px] underline underline-offset-2"
+              >
+                Reload after enabling
+              </button>
+            </div>
           </div>
         )}
 
