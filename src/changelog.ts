@@ -17,6 +17,27 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.4.0',
+    date: '2026-11-21',
+    title: 'Family, skill and ascendancy selection',
+    notes: [
+      'Replaced the flat 12-build grid with three steps: family, skill, ascendancy.',
+      'Added a league selector with Covens and Standard snapshots, 20 skills each.',
+      'Mapped all 19 ascendancies to armour, shield and jewel tags.',
+      'Skills own weapon and offhand; two-handed skills drop the offhand.',
+      'Compact file names such as FilterPath-v0.4.0-necromancer-summon-skeletons-lev-normal.filter.',
+      'Old archetype share links now resolve to the closest new selection.',
+      'Added the manual meta:add CLI, schema tests, a PR validation workflow and a monthly refresh reminder.',
+    ],
+    commits: [
+      {
+        sha: '5b97db7',
+        message: 'feat: add family, skill and ascendancy selection (M2e)',
+      },
+    ],
+    compare: 'v0.3.1...v0.4.0',
+  },
+  {
     version: '0.3.1',
     date: '2026-11-21',
     title: 'Changelog page and selection plan',

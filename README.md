@@ -5,18 +5,18 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.3.1 — M1 shipped, with the preview matcher and a separate
-changelog page. M2e (family → skill → ascendancy) comes next, then themes, the
-inventory preview, prices and directory sync.
+**Status:** v0.4.0 — the three-step selector is live. M2d (inventory preview),
+M2a (themes), M2b/M2c (economy) and M3 (directory sync) remain.
 
 ## Features
 
-- 12 builds across all 7 classes, leveling and endgame presets
+- Family → skill → ascendancy selection with per-league meta snapshots
+- 20 skills across 5 families and all 7 classes, leveling and endgame presets
 - Normal / Strict / Very Strict
 - Toggle gear, gems, currency, maps and uniques
 - Filter preview, download, copy and share links
 - Build version in the file name and header, e.g.
-  `FilterPath-v0.3.0-necro-minions-leveling-strict.filter`
+  `FilterPath-v0.4.0-necromancer-summon-skeletons-lev-normal.filter`
 - Generated client-side; no account and no network calls
 
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md) or the

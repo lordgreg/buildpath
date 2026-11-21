@@ -6,9 +6,10 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** M0, M1 and the M2d matcher groundwork shipped at **v0.3.1**. A
-generated filter was loaded successfully in the game client on 2026-11-21.
-M2e (three-step selection), M2a/M2b and the inventory UI are next.
+**Status:** M2e shipped at **v0.4.0** with the family → skill → ascendancy
+selector, league snapshots and the meta CLI. A generated filter was loaded
+successfully in the game client on 2026-11-21. M2d (inventory preview UI),
+M2a/M2b and M3 remain.
 
 ---
 
@@ -176,7 +177,7 @@ steps, coarse to specific:
    - `hybrid` — dex/int; claw/dagger + shield; evasion/ES.
 2. **Archetype** — a concrete skill from a league snapshot of poe.ninja's
    builds pages, filtered by family. Examples: caster → Hexblast, Detonate
-   Dead, Righteous Fire; minion → Summon Skeletons, Summon Spectre; bow →
+   Dead, Righteous Fire; minion → Summon Skeletons, Raise Spectre; bow →
    Lightning Arrow, Toxic Rain; melee → Cyclone, Boneshatter; hybrid →
    Frost Blades, Hexblast Mines.
 3. **Ascendancy** — only ascendancies of classes that can play the skill.
@@ -334,7 +335,7 @@ Unit tests sit next to the code (`*.test.ts`).
   },
   "attributes": ["int"],
   "keyMods": ["+1 to Level of all Minion Skill Gems"],
-  "skills": ["Summon Skeletons", "Raise Zombie", "Summon Spectre"]
+  "skills": ["Summon Skeletons", "Raise Zombie", "Raise Spectre"]
 }
 ```
 
@@ -390,6 +391,7 @@ always wins.
 - [x] Loaded successfully in the game client (Linux/Proton, Covens)
 - [x] In-site changelog with releases and commit links
 - [x] Exact in-game filter name shown next to Download
+- [x] Three-step selection (M2e) shipped in 0.4.0
 
 Implementation notes:
 
@@ -449,19 +451,30 @@ leaves the previous file and fails the job.
 
 Ships before M2d so the preview reflects the final model.
 
-- [ ] Data model: `Family`, `Skill`, `Ascendancy`, `BuildProfile` resolver
-- [ ] Ascendancy table: all 19, with class, attributes, defence bias and a
+- [x] Data model: `Family`, `Skill`, `Ascendancy`, `BuildProfile` resolver
+- [x] Ascendancy table: all 19, with class, attributes, defence bias and a
   reviewed exception table
-- [ ] League snapshots: Covens + Standard seed, at least 4 skills per family
-  (~20 total), with a league selector
-- [ ] `npm run meta:add` CLI and meta schema validation
-- [ ] `workflow_dispatch` Action that validates meta PRs and opens a
+- [x] League snapshots: Covens + Standard seed, at least 4 skills per family
+  (20 total), with a league selector
+- [x] `npm run meta:add` CLI and meta schema validation
+- [x] `workflow_dispatch` Action that validates meta PRs and opens a
   league-start reminder
-- [ ] Three-step UI replacing the flat 12-build grid
-- [ ] League, family, skill and ascendancy encoded in the share link and file name
-- [ ] Compatibility adapter for old share links and existing goldens
-- [ ] Tests: meta schema, league/family filtering, ascendancy filtering,
+- [x] Three-step UI replacing the flat 12-build grid
+- [x] League, family, skill and ascendancy encoded in the share link and file name
+- [x] Compatibility adapter for old share links and existing goldens
+- [x] Tests: meta schema, league/family filtering, ascendancy filtering,
   profile resolution
+
+Implementation notes:
+
+- `src/meta/families.ts`, `ascendancies.ts`, `leagues/*.json`, `index.ts` and
+  `resolve.ts`; `compileFilter` accepts either a legacy `archetypeId` or a
+  `selection`.
+- Compact file name:
+  `FilterPath-v0.4.0-necromancer-summon-skeletons-lev-normal.filter`.
+- The snapshot is manual by design; `meta:add` validates gem names against
+  RePoE's catalog, and scripts/basetypes tests fail CI on bad data.
+- A monthly reminder workflow opens one issue when the snapshot is due.
 
 **Done:** the selector goes family → skill → ascendancy; changing skill changes
 weapon/offhand, changing ascendancy changes armour/attributes; old links still
@@ -624,14 +637,13 @@ old file as a backup; unrelated filters in the folder are unchanged.
 
 ## 9. Open items
 
-- Whether to seed the league selector with Covens + Standard or Covens only
 - SVG icon scope: one per item class (~30) or one per equipment slot
 - How off-meta skills behave: family-only fallback or a manual "add skill" field
-- Whether the M2e release is 0.4.0 (current proposal) or a minor bump under 0.3
 - Verify the Windows filter path (`Documents/My Games/Path of Exile`) in the
   install copy, not just Proton
 - Decide how M3b handles old versioned files: keep as `.bak`, archive, or offer
   removal (default: keep and flag)
-- Add the poe.ninja attribution wording to the selector
+- Add the poe.ninja attribution wording to the selector (currently present in
+  the league row and footer)
 - Repository is live at https://lordgreg.github.io/filterpath/
 - Changelog is live at https://lordgreg.github.io/filterpath/changelog.html

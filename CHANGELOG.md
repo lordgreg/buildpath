@@ -2,6 +2,19 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.4.0 — 2026-11-21
+
+Family, skill and ascendancy selection.
+
+- Replaced the flat 12-build grid with three steps: family, skill, ascendancy.
+- Added a league selector with Covens and Standard snapshots, 20 skills each.
+- Mapped all 19 ascendancies to armour, shield and jewel tags.
+- Skills own weapon and offhand; two-handed skills drop the offhand.
+- Compact file names such as `FilterPath-v0.4.0-necromancer-summon-skeletons-lev-normal.filter`.
+- Old archetype share links resolve to the closest new selection.
+- Added the manual `meta:add` CLI, schema tests, a PR validation workflow and a
+  monthly refresh reminder.
+
 ## 0.3.1 — 2026-11-21
 
 Changelog page and selection plan.
