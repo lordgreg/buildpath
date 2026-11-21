@@ -48,6 +48,14 @@
             "type": "array",
             "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
           },
+          "ascendancyShares": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
           "playShare": { "type": "number", "minimum": 0 },
           "leveling": { "type": "boolean" },
           "weapon": { "$ref": "#/definitions/slot" },

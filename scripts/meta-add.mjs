@@ -15,6 +15,7 @@
  *   --family <id>          caster | minion | bow | melee | hybrid
  *   --classes <a,b>        playable classes
  *   --ascendancies <a,b>   preferred ascendancies, in order
+ *   --shares <id:pct,...>  ascendancy shares from the snapshot
  *   --share <number>       approximate play share
  *   --weapon <itemClass>   skill weapon override
  *   --two-handed           drop the offhand
@@ -89,7 +90,7 @@ function slug(value) {
 
 if (flag('help') || args.length === 0) {
   console.log(
-    'Usage: npm run meta:add -- --league <id> --skill "<gem>" --family <id> --classes A,B --ascendancies x,y [--share N] [--weapon Class] [--two-handed] [--no-leveling]',
+    'Usage: npm run meta:add -- --league <id> --skill "<gem>" --family <id> --classes A,B --ascendancies x,y [--shares deadeye:55,pathfinder:30] [--share N] [--weapon Class] [--two-handed] [--no-leveling]',
   );
   process.exit(0);
 }
@@ -106,6 +107,10 @@ const skillName = option('skill');
 const family = option('family');
 const classes = list('classes');
 const topAscendancies = list('ascendancies');
+const sharePairs = list('shares').map((pair) => {
+  const [id, value] = pair.split(':');
+  return [id, Number(value)];
+});
 const share = option('share');
 const weapon = option('weapon');
 const offhand = option('offhand');
@@ -134,6 +139,14 @@ if (skillName && !catalog.skills.some((skill) => skill.name === skillName)) {
 if (share !== undefined && !Number.isFinite(Number(share))) {
   errors.push('--share must be a number');
 }
+for (const [id, value] of sharePairs) {
+  if (!topAscendancies.includes(id)) {
+    errors.push(`--shares ${id} is not in --ascendancies`);
+  }
+  if (!Number.isFinite(value) || value < 0 || value > 100) {
+    errors.push(`--shares ${id} must be a percentage`);
+  }
+}
 if (errors.length > 0) {
   for (const error of errors) console.error(`error: ${error}`);
   process.exit(1);
@@ -154,12 +167,18 @@ if (!indexEntry) {
   process.exit(1);
 }
 
+const existing = snapshot.skills.find((skill) => skill.name === skillName);
 const entry = {
   id: slug(skillName),
   name: skillName,
   family,
   classes,
   topAscendancies,
+  ...(sharePairs.length > 0
+    ? { ascendancyShares: Object.fromEntries(sharePairs) }
+    : existing?.ascendancyShares
+      ? { ascendancyShares: existing.ascendancyShares }
+      : {}),
   ...(share !== undefined ? { playShare: Number(share) } : {}),
   leveling: !flag('no-leveling'),
   ...(weapon ? { weapon: { itemClasses: [weapon] } } : {}),

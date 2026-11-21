@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   generateFilter,
-  SECTION_KEYS,
-  type Sections,
 } from '../core/filter/generate.ts';
 import {
   STRICTNESS_LABELS_PUBLIC,
@@ -59,14 +57,6 @@ const CLASS_ORDER = [
   'Scion',
 ] as const;
 
-const SECTION_META: Record<keyof Sections, { label: string; hint: string }> = {
-  gear: { label: 'Build gear', hint: 'Rare and magic bases for your slots' },
-  gems: { label: 'Gems', hint: 'Quality gems worth picking up' },
-  currency: { label: 'Currency', hint: 'Orbs, shards and divination cards' },
-  maps: { label: 'Maps & fragments', hint: 'Map tiers and fragments' },
-  uniques: { label: 'Uniques', hint: 'All uniques, chase items louder' },
-};
-
 type Copied = 'filter' | 'link' | null;
 
 function cx(...parts: (string | false | undefined)[]): string {
@@ -117,7 +107,6 @@ export default function Wizard() {
     state.phase,
     state.strictness,
     state.sections,
-    state.sectionStrictness,
     state.theme,
   );
   const [clone, setClone] = useState<RuleClone | null>(() =>
@@ -134,7 +123,6 @@ export default function Wizard() {
         selection: state,
         phase: state.phase,
         strictness: state.strictness,
-        sectionStrictness: state.sectionStrictness,
         theme: state.theme,
         sections: state.sections,
         version: APP_VERSION,
@@ -149,8 +137,7 @@ export default function Wizard() {
             selection: state,
             phase: state.phase,
             strictness: state.strictness,
-            sectionStrictness: state.sectionStrictness,
-            theme: state.theme,
+                theme: state.theme,
             sections: state.sections,
             version: APP_VERSION,
             rulesOverride: clone.rules,
@@ -462,7 +449,14 @@ export default function Wizard() {
                         selected={entry.id === state.ascendancyId}
                         onClick={() => update({ ascendancyId: entry.id })}
                         title={entry.name}
-                        subtitle={entry.class}
+                        subtitle={[
+                        skill?.ascendancyShares?.[entry.id] !== undefined
+                          ? `${skill.ascendancyShares[entry.id]}% of builds`
+                          : null,
+                        entry.class,
+                      ]
+                        .filter(Boolean)
+                        .join(' - ')}
                       />
                     ))}
                   </div>
@@ -513,14 +507,7 @@ export default function Wizard() {
                     key={strictness}
                     type="button"
                     aria-pressed={strictness === state.strictness}
-                    onClick={() =>
-                      update({
-                        strictness,
-                        sectionStrictness: Object.fromEntries(
-                          SECTION_KEYS.map((key) => [key, strictness]),
-                        ) as Record<keyof Sections, (typeof STRICTNESS_ORDER)[number]>,
-                      })
-                    }
+                    onClick={() => update({ strictness })}
                     className={cx(
                       'rounded-lg border px-3 py-2 text-sm transition-colors',
                       strictness === state.strictness
@@ -568,37 +555,13 @@ export default function Wizard() {
 
             <details className="rounded-xl border border-ink-700 bg-ink-800/40 p-4">
               <summary className="cursor-pointer text-xs text-zinc-400">
-                Per-section strictness
+                One strictness for the whole filter
               </summary>
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                {SECTION_KEYS.map((key) => (
-                  <label
-                    key={key}
-                    className="text-[11px] uppercase tracking-wide text-zinc-500"
-                  >
-                    {SECTION_META[key].label}
-                    <select
-                      value={state.sectionStrictness[key]}
-                      onChange={(event) =>
-                        update({
-                          sectionStrictness: {
-                            ...state.sectionStrictness,
-                            [key]: event.target
-                              .value as (typeof STRICTNESS_ORDER)[number],
-                          },
-                        })
-                      }
-                      className="mt-1 block w-full rounded border border-ink-600 bg-ink-800 px-2 py-1 text-xs normal-case text-zinc-200"
-                    >
-                      {STRICTNESS_ORDER.map((entry) => (
-                        <option key={entry} value={entry}>
-                          {STRICTNESS_LABELS_PUBLIC[entry]}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                ))}
-              </div>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-500">
+                The selected strictness governs every section. To hide or change
+                a specific group, clone the preset under Advanced rules and edit
+                its rules.
+              </p>
             </details>
           </div>
 
@@ -657,7 +620,7 @@ export default function Wizard() {
                 onClick={() => void copy('filter')}
                 className="rounded-lg border border-ink-600 bg-ink-900/70 px-4 py-2.5 text-sm text-zinc-200 transition-colors hover:border-ink-500"
               >
-                {copied === 'filter' ? 'Copied' : 'Copy'}
+                {copied === 'filter' ? 'Copied' : 'Copy filter'}
               </button>
               <button
                 type="button"

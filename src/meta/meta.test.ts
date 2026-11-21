@@ -94,15 +94,26 @@ describe('league snapshots', () => {
     });
   }
 
-  it('makes every ascendancy reachable', () => {
-    const reachable = new Set<string>();
+  it('has a share for every top ascendancy', () => {
     for (const skill of getSnapshot(LEAGUE_INDEX.current).skills) {
-      for (const ascendancy of getAscendanciesForSkill(skill)) {
-        reachable.add(ascendancy.id);
+      for (const ascendancyId of skill.topAscendancies ?? []) {
+        expect(
+          skill.ascendancyShares?.[ascendancyId],
+          `${skill.id}/${ascendancyId}`,
+        ).toBeTypeOf('number');
       }
     }
-    for (const ascendancy of ASCENDANCIES) {
-      expect(reachable.has(ascendancy.id), ascendancy.id).toBe(true);
+  });
+
+  it('only exposes the ascendancies listed for each skill', () => {
+    for (const skill of getSnapshot(LEAGUE_INDEX.current).skills) {
+      const ascendancies = getAscendanciesForSkill(skill);
+      expect(ascendancies.length, skill.id).toBeGreaterThan(0);
+      for (const ascendancy of ascendancies) {
+        expect(skill.topAscendancies, `${skill.id}/${ascendancy.id}`).toContain(
+          ascendancy.id,
+        );
+      }
     }
   });
 });
@@ -140,7 +151,7 @@ describe('selection', () => {
       mode: 'meta',
       leagueId: 'covens',
       familyId: 'bow',
-      skillId: 'summon-skeletons',
+      skillId: 'nope',
       ascendancyId: 'necromancer',
     });
 
@@ -148,6 +159,20 @@ describe('selection', () => {
     expect(selection.skillId).toBe('lightning-arrow');
     expect(getAscendancy(selection.ascendancyId!).class).toBe('Ranger');
     expect(isValidSelection(selection)).toBe(true);
+  });
+
+  it('keeps a valid skill even when it belongs to another family', () => {
+    const selection = coerceSelection({
+      mode: 'meta',
+      leagueId: 'covens',
+      familyId: 'bow',
+      skillId: 'summon-skeletons',
+      ascendancyId: 'necromancer',
+    });
+
+    expect(selection.familyId).toBe('minion');
+    expect(selection.skillId).toBe('summon-skeletons');
+    expect(selection.ascendancyId).toBe('necromancer');
   });
 
   it('maps every interim archetype link', () => {

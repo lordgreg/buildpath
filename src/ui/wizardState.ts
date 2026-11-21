@@ -1,8 +1,4 @@
-import {
-  DEFAULT_SECTIONS,
-  SECTION_KEYS,
-  type Sections,
-} from '../core/filter/generate.ts';
+import { DEFAULT_SECTIONS, type Sections } from '../core/filter/generate.ts';
 import type { Phase, Strictness } from '../core/filter/presets.ts';
 import { isThemeId, type ThemeId } from '../core/filter/themes.ts';
 import { getAscendancy } from '../meta/ascendancies.ts';
@@ -22,7 +18,6 @@ export interface WizardState {
   skillId: string;
   phase: Phase;
   strictness: Strictness;
-  sectionStrictness: Record<keyof Sections, Strictness>;
   theme: ThemeId;
   sections: Sections;
 }
@@ -39,9 +34,6 @@ export const DEFAULT_STATE: WizardState = {
   skillId: DEFAULT_SKILL,
   phase: 'leveling',
   strictness: 'normal',
-  sectionStrictness: Object.fromEntries(
-    SECTION_KEYS.map((key) => [key, 'normal']),
-  ) as Record<keyof Sections, Strictness>,
   theme: 'classic',
   sections: DEFAULT_SECTIONS,
 };
@@ -84,29 +76,12 @@ export function parseWizardHash(hash: string): WizardState {
       ? strictness
       : DEFAULT_STATE.strictness;
 
-  const sectionStrictness = Object.fromEntries(
-    SECTION_KEYS.map((key) => [key, chosenStrictness]),
-  ) as Record<keyof Sections, Strictness>;
-  const sstrict = params.get('sstrict');
-  if (sstrict) {
-    for (const part of sstrict.split(',')) {
-      const [key, value] = part.split(':') as [
-        keyof Sections,
-        Strictness,
-      ];
-      if (SECTION_KEYS.includes(key) && STRICTNESS.includes(value)) {
-        sectionStrictness[key] = value;
-      }
-    }
-  }
-
   const themeParam = params.get('theme');
   const theme = isThemeId(themeParam) ? themeParam : DEFAULT_STATE.theme;
 
   const common = {
     phase: phase && PHASES.includes(phase) ? phase : DEFAULT_STATE.phase,
     strictness: chosenStrictness,
-    sectionStrictness,
     theme,
     sections: DEFAULT_SECTIONS,
   };
@@ -161,12 +136,6 @@ export function wizardHash(state: WizardState): string {
 
   params.set('phase', state.phase);
   params.set('strictness', state.strictness);
-  params.set(
-    'sstrict',
-    SECTION_KEYS.map((key) => `${key}:${state.sectionStrictness[key]}`).join(
-      ',',
-    ),
-  );
   params.set('theme', state.theme);
   return params.toString();
 }

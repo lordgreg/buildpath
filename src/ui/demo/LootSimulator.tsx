@@ -45,6 +45,15 @@ function position(index: number, id: string, seed: number): {
   };
 }
 
+function pickRandomIds(pool: readonly PreviewItem[], count: number): string[] {
+  const copy = [...pool];
+  for (let index = copy.length - 1; index > 0; index -= 1) {
+    const swap = Math.floor(Math.random() * (index + 1));
+    [copy[index], copy[swap]] = [copy[swap]!, copy[index]!];
+  }
+  return copy.slice(0, Math.min(count, copy.length)).map((item) => item.id);
+}
+
 export default function LootSimulator({
   rules,
   label,
@@ -60,19 +69,35 @@ export default function LootSimulator({
   const [message, setMessage] = useState<string | null>(null);
   const [seed, setSeed] = useState(1);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [addedIds, setAddedIds] = useState<string[]>([]);
+  const [dropIds, setDropIds] = useState<string[]>(() =>
+    pickRandomIds(SAMPLE_ITEMS, 14),
+  );
+
+  const pool = useMemo(() => [...SAMPLE_ITEMS, ...pasted], [pasted]);
 
   const rows = useMemo(
     () =>
-      [...SAMPLE_ITEMS, ...pasted].map((item) => ({
-        item,
-        result: evaluateRules(rules, item),
-      })),
-    [pasted, rules],
+      dropIds
+        .map((id) => pool.find((item) => item.id === id))
+        .filter((item): item is PreviewItem => Boolean(item))
+        .map((item) => ({
+          item,
+          result: evaluateRules(rules, item),
+        })),
+    [dropIds, pool, rules],
   );
 
   const shown = rows.filter((row) => row.result.shown).length;
   const hidden = rows.length - shown;
   const visible = showHidden ? rows : rows.filter((row) => row.result.shown);
+
+  const randomize = () => {
+    setDropIds(pickRandomIds(pool, 14));
+    setSeed((value) => value + 1);
+    setAddedIds([]);
+    setSelectedId(null);
+  };
   const selected = rows.find((row) => row.item.id === selectedId);
   const background = `${import.meta.env.BASE_URL}demo-ground.png`;
 
@@ -84,15 +109,16 @@ export default function LootSimulator({
       );
       return;
     }
-    setPasted((previous) => [
-      ...previous,
-      ...items.map((item, index) => ({
-        ...item,
-        id: `paste-${previous.length + index}`,
-      })),
-    ]);
+    const added = items.map((item, index) => ({
+      ...item,
+      id: `paste-${pasted.length + index}`,
+    }));
+    setPasted((previous) => [...previous, ...added]);
+    setDropIds((previous) => [...previous, ...added.map((item) => item.id)]);
+    setAddedIds(added.map((item) => item.id));
+    setSeed((value) => value + 1);
     setText('');
-    setMessage(`Added ${items.length} pasted item(s).`);
+    setMessage(`Added ${items.length} pasted item(s) to the overlay.`);
   };
 
   return (
@@ -156,10 +182,10 @@ export default function LootSimulator({
           </button>
           <button
             type="button"
-            onClick={() => setSeed((value) => value + 1)}
+            onClick={randomize}
             className="rounded-lg border border-ink-600 px-4 py-2 text-sm text-zinc-300 hover:border-ink-500"
           >
-            Scatter
+            Randomize
           </button>
           <label className="flex items-center gap-2 rounded-lg border border-ink-600 px-3 py-2 text-xs text-zinc-400">
             <input
@@ -178,7 +204,7 @@ export default function LootSimulator({
 
       <div className="mt-3 flex flex-wrap items-baseline justify-between gap-2 text-xs">
         <p className="text-zinc-500">
-          {rows.length} drops:{' '}
+          {rows.length} of {pool.length} pooled drops:{' '}
           <span className="text-emerald-300">{shown} shown</span>,{' '}
           <span className="text-zinc-500">{hidden} hidden</span>
         </p>
@@ -223,9 +249,15 @@ export default function LootSimulator({
               className={cx(
                 'demo-label absolute max-w-[min(24rem,82vw)] -translate-x-1/2 -translate-y-1/2 truncate rounded-sm border px-3 py-1 font-serif leading-tight shadow-[0_2px_8px_rgba(0,0,0,0.65)]',
                 result.shown ? 'opacity-100' : 'border-dashed opacity-35 grayscale',
+                addedIds.includes(item.id) && 'ring-2 ring-gold-400',
               )}
             >
               {item.name}
+              {addedIds.includes(item.id) && (
+                <span className="ml-2 rounded bg-gold-400/20 px-1 text-[9px] uppercase tracking-wide text-gold-300">
+                  new
+                </span>
+              )}
               {!result.shown && (
                 <span className="ml-2 text-[9px] uppercase tracking-wide opacity-70">
                   hidden

@@ -40,14 +40,11 @@ describe('wizard hash', () => {
     expect(Object.values(state.sections).every(Boolean)).toBe(true);
   });
 
-  it('parses theme and per-section strictness', () => {
+  it('parses the filter theme', () => {
     const state = parseWizardHash(
-      '#mode=family&family=minion&theme=contrast&sstrict=gear:strict,gems:very-strict',
+      '#mode=family&family=minion&theme=contrast',
     );
     expect(state.theme).toBe('contrast');
-    expect(state.sectionStrictness.gear).toBe('strict');
-    expect(state.sectionStrictness.gems).toBe('very-strict');
-    expect(state.sectionStrictness.currency).toBe('normal');
   });
 
   it('infers meta mode from an old skill link', () => {
@@ -75,11 +72,20 @@ describe('wizard hash', () => {
 
   it('repairs an impossible meta selection', () => {
     const state = parseWizardHash(
-      '#mode=meta&league=covens&family=bow&skill=summon-skeletons&ascendancy=necromancer',
+      '#mode=meta&league=covens&family=bow&skill=nope&ascendancy=necromancer',
     );
     expect(state.familyId).toBe('bow');
     expect(state.skillId).toBe('lightning-arrow');
     expect(state.ascendancyId).toBe('deadeye');
+  });
+
+  it('allows a skill from another family', () => {
+    const state = parseWizardHash(
+      '#mode=meta&league=covens&family=bow&skill=summon-skeletons&ascendancy=necromancer',
+    );
+    expect(state.familyId).toBe('minion');
+    expect(state.skillId).toBe('summon-skeletons');
+    expect(state.ascendancyId).toBe('necromancer');
   });
 
   it('falls back on an unknown league', () => {

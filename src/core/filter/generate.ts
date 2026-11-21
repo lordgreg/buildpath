@@ -48,8 +48,6 @@ export interface FilterConfig {
   phase: Phase;
   strictness: Strictness;
   sections?: Sections;
-  /** Per-section override of the global strictness. */
-  sectionStrictness?: Partial<Record<keyof Sections, Strictness>>;
   /** Visual theme applied after rule generation. */
   theme?: ThemeId;
   /** Cloned rule set; replaces the generated rules for this config. */
@@ -100,8 +98,6 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
   const sections = normalizeSections(config.sections);
   const version = config.version ?? DEFAULT_FILTER_VERSION;
   const theme = config.theme ?? 'classic';
-  const strictnessFor = (key: keyof Sections): Strictness =>
-    config.sectionStrictness?.[key] ?? config.strictness;
 
   if (config.rulesOverride) {
     const rules = config.rulesOverride
@@ -141,36 +137,13 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
     }
   };
 
-  if (sections.gear) {
-    add('gear', gearRules(archetype, getPreset(config.phase, strictnessFor('gear'))));
-  }
-  if (sections.gems) {
-    add('gems', gemRules(getPreset(config.phase, strictnessFor('gems'))));
-  }
-  if (sections.currency) {
-    add(
-      'currency',
-      currencyRules(getPreset(config.phase, strictnessFor('currency'))),
-    );
-  }
-  if (sections.maps) {
-    add(
-      'maps',
-      mapRules(getPreset(config.phase, strictnessFor('maps')), config.phase),
-    );
-  }
-  if (sections.uniques) {
-    add('uniques', uniqueRules());
-  }
+  if (sections.gear) add('gear', gearRules(archetype, preset));
+  if (sections.gems) add('gems', gemRules(preset));
+  if (sections.currency) add('currency', currencyRules(preset));
+  if (sections.maps) add('maps', mapRules(preset, config.phase));
+  if (sections.uniques) add('uniques', uniqueRules());
 
-  add(
-    'junk',
-    junkRules(
-      archetype,
-      getPreset(config.phase, strictnessFor('gear')),
-      config.phase,
-    ),
-  );
+  add('junk', junkRules(archetype, preset, config.phase));
 
   return {
     archetype,
@@ -186,14 +159,6 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
 export function generateFilter(config: FilterConfig): GeneratedFilter {
   const compiled = compileFilter(config);
 
-  const deviations = (Object.keys(config.sectionStrictness ?? {}) as (keyof Sections)[])
-    .filter(
-      (key) =>
-        config.sectionStrictness?.[key] !== undefined &&
-        config.sectionStrictness[key] !== config.strictness,
-    )
-    .map((key) => `${key}=${config.sectionStrictness![key]}`);
-
   const header = [
     '========================================================================',
     `FilterPath ${compiled.version} - filter format ${FILTER_FORMAT_VERSION}`,
@@ -208,9 +173,6 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
         : ''
     }`,
     `Phase: ${config.phase === 'leveling' ? 'Leveling' : 'Endgame'} - ${STRICTNESS_LABELS_PUBLIC[config.strictness]}`,
-    ...(deviations.length > 0
-      ? [`Section strictness: ${deviations.join(', ')}`]
-      : []),
     `League: ${compiled.archetype.verifiedFor}`,
     `Rules: ${compiled.rules.length} - Base types: ${compiled.baseTypes.length}`,
     `Base data: RePoE ${baseTypeMeta.ref} (${baseTypeMeta.sha256.slice(0, 8)})`,

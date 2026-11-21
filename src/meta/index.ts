@@ -55,14 +55,14 @@ export function getAscendanciesForSkill(skill: SkillEntry): Ascendancy[] {
   const allowed = ASCENDANCIES.filter((ascendancy) =>
     skill.classes.includes(ascendancy.class),
   );
-  const rank = new Map(
-    (skill.topAscendancies ?? []).map((id, index) => [id, index]),
-  );
-  return allowed.sort((a, b) => {
-    const aRank = rank.get(a.id) ?? Number.MAX_SAFE_INTEGER;
-    const bRank = rank.get(b.id) ?? Number.MAX_SAFE_INTEGER;
-    return aRank - bRank || a.name.localeCompare(b.name);
-  });
+  const order = skill.topAscendancies ?? [];
+  if (order.length > 0) {
+    const byId = new Map(allowed.map((entry) => [entry.id, entry]));
+    return order
+      .map((id) => byId.get(id))
+      .filter((entry): entry is Ascendancy => Boolean(entry));
+  }
+  return allowed.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export function defaultSelection(): BuildSelection {
@@ -127,7 +127,9 @@ export function coerceSelection(
 
   const familySkills = getSkills(leagueId, familyId);
   let skill =
-    familySkills.find((entry) => entry.id === input.skillId) ?? familySkills[0];
+    getSnapshot(leagueId).skills.find((entry) => entry.id === input.skillId) ??
+    familySkills.find((entry) => entry.id === input.skillId) ??
+    familySkills[0];
 
   if (!skill) {
     for (const family of FAMILIES) {

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { Archetype } from '../../core/archetypes/types.ts';
+import { baseTypes } from '../../core/data/base-types.ts';
 import type { Rule } from '../../core/filter/types.ts';
 import {
   evaluateRules,
@@ -11,10 +12,24 @@ import { SAMPLE_ITEMS } from '../../core/preview/samples.ts';
 import ClassIcon from './ClassIcon.tsx';
 
 const RARITY_STYLE: Record<PreviewItem['rarity'], string> = {
-  Normal: 'border-zinc-600',
-  Magic: 'border-sky-500/70',
-  Rare: 'border-amber-400/80',
-  Unique: 'border-orange-500/80',
+  Normal: 'border-zinc-600 bg-zinc-900/70',
+  Magic: 'border-sky-500 bg-sky-950/40',
+  Rare: 'border-amber-400 bg-amber-950/30',
+  Unique: 'border-orange-500 bg-orange-950/35',
+};
+
+const RARITY_TEXT: Record<PreviewItem['rarity'], string> = {
+  Normal: 'text-zinc-300',
+  Magic: 'text-sky-300',
+  Rare: 'text-amber-200',
+  Unique: 'text-orange-300',
+};
+
+const RARITY_HEX: Record<PreviewItem['rarity'], string> = {
+  Normal: '#a1a1aa',
+  Magic: '#7dd3fc',
+  Rare: '#fbbf24',
+  Unique: '#f97316',
 };
 
 function cx(...parts: (string | false | undefined)[]): string {
@@ -38,7 +53,7 @@ function ItemTile({
       onClick={onSelect}
       title={`${item.name} - ${result.shown ? 'shown' : 'hidden'}: ${result.reason}`}
       className={cx(
-        'relative flex aspect-square w-full min-w-0 flex-col items-center justify-center gap-0.5 overflow-hidden rounded border bg-ink-900/60 p-1 text-center transition-colors',
+        'relative flex aspect-square w-full min-w-0 flex-col items-center justify-center gap-0.5 overflow-hidden rounded border-2 p-1 text-center transition-colors',
         RARITY_STYLE[item.rarity],
         result.shown ? 'text-zinc-200' : 'opacity-40 grayscale',
         selected && 'ring-2 ring-gold-400',
@@ -48,12 +63,17 @@ function ItemTile({
         itemClass={item.itemClass}
         className="size-4 shrink-0 text-zinc-300"
       />
-      <span className="line-clamp-2 w-full break-words text-[9px] leading-tight">
+      <span className={cx('line-clamp-2 w-full break-words text-[9px] leading-tight', RARITY_TEXT[item.rarity])}>
         {item.name}
       </span>
+      {item.rarity !== 'Normal' && (
+        <span className={cx('absolute left-0.5 top-0.5 rounded bg-black/60 px-1 text-[7px] uppercase tracking-wide', RARITY_TEXT[item.rarity])}>
+          {item.rarity}
+        </span>
+      )}
       {!result.shown && (
         <span className="absolute right-0.5 top-0.5 rounded bg-ink-950/90 px-1 text-[8px] uppercase tracking-wide text-zinc-500">
-          h
+          hidden
         </span>
       )}
     </button>
@@ -200,24 +220,115 @@ export default function InventoryPreview({
       </div>
 
       {selected && (
-        <div className="mt-4 rounded-lg border border-ink-700 bg-ink-900/60 px-3 py-2 text-xs">
-          <p className="text-zinc-200">
-            {selected.item.name}{' '}
-            <span className="text-zinc-500">
-              - {selected.item.rarity} {selected.item.itemClass}
-            </span>
-          </p>
-          <p
-            className={
-              selected.result.shown ? 'text-emerald-300' : 'text-zinc-500'
-            }
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+          onClick={() => setSelectedId(null)}
+        >
+          <div
+            className="w-full max-w-sm overflow-hidden rounded-lg border-2 bg-[#0b0b10] shadow-2xl"
+            style={{ borderColor: RARITY_HEX[selected.item.rarity] }}
+            onClick={(event) => event.stopPropagation()}
           >
-            {selected.result.shown ? 'Shown' : 'Hidden'}{' '}
-            {selected.result.index >= 0
-              ? `by rule #${selected.result.index + 1}`
-              : '(no rule matched)'}
-            : {selected.result.reason}
-          </p>
+            <div
+              className="border-b px-4 py-3 text-center"
+              style={{
+                backgroundColor: `${RARITY_HEX[selected.item.rarity]}22`,
+                borderColor: RARITY_HEX[selected.item.rarity],
+              }}
+            >
+              <p
+                className="font-serif text-lg leading-tight"
+                style={{ color: RARITY_HEX[selected.item.rarity] }}
+              >
+                {selected.item.name}
+              </p>
+              {selected.item.baseType !== selected.item.name && (
+                <p className="mt-1 text-xs text-zinc-400">
+                  {selected.item.baseType}
+                </p>
+              )}
+            </div>
+            <div className="space-y-1 px-4 py-3 text-center text-xs text-zinc-300">
+              <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-500">
+                {selected.item.itemClass}
+              </p>
+              <p>
+                {selected.item.rarity} - item level {selected.item.itemLevel}
+              </p>
+              {(() => {
+                const base = baseTypes.find(
+                  (entry) => entry.name === selected.item.baseType,
+                );
+                if (!base) return null;
+                const requirements = base.requirements ?? {};
+                const labels = [
+                  requirements.str ? `${requirements.str} Str` : null,
+                  requirements.dex ? `${requirements.dex} Dex` : null,
+                  requirements.int ? `${requirements.int} Int` : null,
+                ].filter(Boolean);
+                return (
+                  <>
+                    {labels.length > 0 && (
+                      <p className="text-zinc-400">
+                        Requires {labels.join(', ')}
+                      </p>
+                    )}
+                    <p className="text-zinc-500">Drop level {base.dropLevel}</p>
+                  </>
+                );
+              })()}
+              {(selected.item.sockets !== undefined ||
+                selected.item.quality !== undefined ||
+                selected.item.stackSize !== undefined ||
+                selected.item.mapTier !== undefined) && (
+                <p className="text-zinc-500">
+                  {[
+                    selected.item.sockets !== undefined
+                      ? `${selected.item.sockets} sockets`
+                      : null,
+                    selected.item.linkedSockets !== undefined
+                      ? `${selected.item.linkedSockets} links`
+                      : null,
+                    selected.item.quality !== undefined
+                      ? `${selected.item.quality}% quality`
+                      : null,
+                    selected.item.stackSize !== undefined
+                      ? `stack ${selected.item.stackSize}`
+                      : null,
+                    selected.item.mapTier !== undefined
+                      ? `tier ${selected.item.mapTier}`
+                      : null,
+                  ]
+                    .filter(Boolean)
+                    .join(' - ')}
+                </p>
+              )}
+              <div className="my-2 border-t border-zinc-700" />
+              <p
+                className={
+                  selected.result.shown
+                    ? 'text-emerald-300'
+                    : 'text-zinc-500'
+                }
+              >
+                {selected.result.shown ? 'Shown' : 'Hidden'}{' '}
+                {selected.result.index >= 0
+                  ? `by rule #${selected.result.index + 1}`
+                  : '(no rule matched)'}
+              </p>
+              <p className="text-zinc-500">{selected.result.reason}</p>
+              <p className="pt-1 text-[10px] text-zinc-600">
+                Representative base; stat rolls are not simulated.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setSelectedId(null)}
+              className="w-full border-t border-ink-700 py-2 text-xs text-zinc-400 hover:text-white"
+            >
+              Close
+            </button>
+          </div>
         </div>
       )}
 

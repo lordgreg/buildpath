@@ -210,23 +210,6 @@ export default function AdvancedRules({
     }
   };
 
-  const importFile = async (file: File | undefined) => {
-    if (!file) return;
-    try {
-      const parsed = JSON.parse(await file.text()) as {
-        rules?: Rule[];
-      };
-      if (!Array.isArray(parsed.rules)) {
-        setMessage('That file has no rules array.');
-        return;
-      }
-      onImportRules(parsed.rules);
-      setMessage(`Imported ${parsed.rules.length} rules from a file.`);
-    } catch {
-      setMessage('Could not read that JSON file.');
-    }
-  };
-
   return (
     <section className="min-w-0 rounded-xl border border-ink-700 bg-ink-800/40 p-4 sm:p-5">
       <header className="flex flex-wrap items-start justify-between gap-3">
@@ -273,17 +256,25 @@ export default function AdvancedRules({
               Clone preset
             </button>
           )}
-          <label className="cursor-pointer rounded-lg border border-ink-600 px-3 py-1.5 text-xs text-zinc-300 hover:border-ink-500">
-            Import JSON
-            <input
-              type="file"
-              accept=".json,application/json"
-              className="hidden"
-              onChange={(event) => void importFile(event.target.files?.[0])}
-            />
-          </label>
         </div>
       </header>
+
+      <div className="mt-3 flex flex-wrap gap-2">
+        <input
+          type="text"
+          placeholder="Import code"
+          value={codeInput}
+          onChange={(event) => setCodeInput(event.target.value)}
+          className="min-w-0 flex-1 rounded border border-ink-600 bg-ink-800 px-2 py-1.5 text-xs text-zinc-200"
+        />
+        <button
+          type="button"
+          onClick={() => void importCode()}
+          className="rounded border border-ink-600 px-3 py-1.5 text-xs text-zinc-300 hover:border-ink-500"
+        >
+          Import code
+        </button>
+      </div>
 
       {clone && clone.presetVersion !== presetVersion && (
         <p className="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">
@@ -602,7 +593,7 @@ export default function AdvancedRules({
 
           <details className="mt-4 rounded-lg border border-ink-700 bg-ink-900/30 p-3">
             <summary className="cursor-pointer text-xs text-zinc-400">
-              Import / export code
+              Share code
             </summary>
             <div className="mt-3 space-y-3">
               <div>
@@ -647,22 +638,6 @@ export default function AdvancedRules({
                     Too large for a URL; use the JSON export instead.
                   </p>
                 )}
-              </div>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  placeholder="paste a share code"
-                  value={codeInput}
-                  onChange={(event) => setCodeInput(event.target.value)}
-                  className="min-w-0 flex-1 rounded border border-ink-600 bg-ink-800 px-2 py-1 text-xs text-zinc-200"
-                />
-                <button
-                  type="button"
-                  onClick={() => void importCode()}
-                  className="rounded border border-ink-600 px-2 py-1 text-xs text-zinc-300"
-                >
-                  Import code
-                </button>
               </div>
             </div>
           </details>

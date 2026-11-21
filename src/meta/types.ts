@@ -25,6 +25,8 @@ export interface SkillEntry {
   classes: CharacterClass[];
   /** Preferred ascendancies, in display order. Must belong to `classes`. */
   topAscendancies?: string[];
+  /** Approximate share of the skill's builds, from the snapshot. */
+  ascendancyShares?: Record<string, number>;
   /** Approximate share of the league's builds, for ordering. */
   playShare?: number;
   leveling: boolean;
