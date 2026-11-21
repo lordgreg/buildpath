@@ -59,7 +59,6 @@ describe('validateArchetype', () => {
     expect(paths).toContain('verifiedFor');
     expect(paths).toContain('attributes');
     expect(paths).toContain('slots');
-    expect(paths).toContain('skills');
   });
 
   it('rejects unknown attributes and empty item classes', () => {

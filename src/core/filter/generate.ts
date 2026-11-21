@@ -124,7 +124,15 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
     '========================================================================',
     `FilterPath ${compiled.version} - filter format ${FILTER_FORMAT_VERSION}`,
     'Build-specific loot filter',
-    `Build: ${compiled.archetype.name} - ${compiled.archetype.class} / ${compiled.archetype.ascendancy}`,
+    `Build: ${compiled.archetype.name}${
+      compiled.archetype.class
+        ? ` - ${compiled.archetype.class}${
+            compiled.archetype.ascendancy
+              ? ` / ${compiled.archetype.ascendancy}`
+              : ''
+          }`
+        : ''
+    }`,
     `Phase: ${config.phase === 'leveling' ? 'Leveling' : 'Endgame'} - ${STRICTNESS_LABELS_PUBLIC[config.strictness]}`,
     `League: ${compiled.archetype.verifiedFor}`,
     `Rules: ${compiled.rules.length} - Base types: ${compiled.baseTypes.length}`,
@@ -141,9 +149,9 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
     ...compiled,
     text,
     fileName: filterNameFor(
-      config.selection
-        ? `FilterPath-v${compiled.version}-${compiled.archetype.id}-${phase}-${config.strictness}`
-        : `FilterPath-v${compiled.version}-${compiled.archetype.id}-${config.phase}-${config.strictness}`,
+      `FilterPath-v${compiled.version}-${compiled.archetype.id}-${
+        config.selection ? phase : config.phase
+      }-${config.strictness}`,
     ),
     ruleCount: compiled.rules.length,
     baseTypeCount: compiled.baseTypes.length,

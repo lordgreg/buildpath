@@ -46,17 +46,24 @@ export interface Ascendancy {
   id: string;
   name: string;
   class: CharacterClass;
+  defaultFamily: FamilyId;
   attributes: Attribute[];
   /** RePoE tags used for the four armour slots. */
   defenceTags: string[];
   /** RePoE tags intersected with the Shield class. */
   shieldTags: string[];
   jewelTag: string;
+  /** Optional loadout override; otherwise the default family supplies it. */
+  weapon?: SlotSpec;
+  offhand?: SlotSpec | null;
 }
 
+export type BuildMode = 'family' | 'ascendancy' | 'meta';
+
 export interface BuildSelection {
-  leagueId: string;
-  familyId: FamilyId;
-  skillId: string;
-  ascendancyId: string;
+  mode: BuildMode;
+  familyId?: FamilyId;
+  ascendancyId?: string;
+  leagueId?: string;
+  skillId?: string;
 }

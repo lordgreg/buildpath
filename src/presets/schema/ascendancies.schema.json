@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "ascendancies"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "ascendancies": {
+      "type": "array",
+      "minItems": 19,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "class",
+          "defaultFamily",
+          "attributes",
+          "defenceTags",
+          "shieldTags",
+          "jewelTag"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string", "minLength": 1 },
+          "class": {
+            "enum": [
+              "Scion",
+              "Marauder",
+              "Ranger",
+              "Duelist",
+              "Witch",
+              "Templar",
+              "Shadow"
+            ]
+          },
+          "defaultFamily": {
+            "enum": ["caster", "minion", "bow", "melee", "hybrid"]
+          },
+          "attributes": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "enum": ["str", "dex", "int"] }
+          },
+          "defenceTags": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "shieldTags": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "jewelTag": { "type": "string", "minLength": 1 },
+          "weapon": { "$ref": "#/definitions/slot" },
+          "offhand": {
+            "anyOf": [{ "$ref": "#/definitions/slot" }, { "type": "null" }]
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "slot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["itemClasses"],
+      "properties": {
+        "itemClasses": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "bases": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "defence": {
+          "type": "array",
+          "items": { "enum": ["armour", "evasion", "energy-shield", "ward"] }
+        },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

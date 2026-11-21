@@ -9,7 +9,7 @@ import {
   STRICTNESS_ORDER,
   type Phase,
 } from '../core/filter/presets.ts';
-import { getAscendancy } from '../meta/ascendancies.ts';
+import { ASCENDANCIES, getAscendancy } from '../meta/ascendancies.ts';
 import { FAMILIES, getFamily } from '../meta/families.ts';
 import {
   getAscendanciesForSkill,
@@ -18,6 +18,7 @@ import {
   getSnapshot,
   LEAGUE_INDEX,
 } from '../meta/index.ts';
+import type { BuildMode } from '../meta/types.ts';
 import { APP_VERSION } from '../version.ts';
 import FilterPreview from './FilterPreview.tsx';
 import InventoryPreview from './preview/InventoryPreview.tsx';
@@ -29,6 +30,22 @@ const PHASES: { id: Phase; label: string; hint: string }[] = [
   { id: 'leveling', label: 'Leveling', hint: 'Acts and early maps' },
   { id: 'endgame', label: 'Endgame', hint: 'Geared character' },
 ];
+
+const MODES: { id: BuildMode; label: string; hint: string }[] = [
+  { id: 'family', label: 'By family', hint: 'Basic gear profile' },
+  { id: 'ascendancy', label: 'By ascendancy', hint: 'Class default loadout' },
+  { id: 'meta', label: 'By meta build', hint: 'poe.ninja snapshot' },
+];
+
+const CLASS_ORDER = [
+  'Witch',
+  'Templar',
+  'Marauder',
+  'Duelist',
+  'Ranger',
+  'Shadow',
+  'Scion',
+] as const;
 
 const SECTION_META: Record<keyof Sections, { label: string; hint: string }> = {
   gear: { label: 'Build gear', hint: 'Rare and magic bases for your slots' },
@@ -42,6 +59,42 @@ type Copied = 'filter' | 'link' | null;
 
 function cx(...parts: (string | false | undefined)[]): string {
   return parts.filter(Boolean).join(' ');
+}
+
+function OptionButton({
+  selected,
+  onClick,
+  title,
+  subtitle,
+  compact = false,
+}: {
+  selected: boolean;
+  onClick: () => void;
+  title: string;
+  subtitle?: string;
+  compact?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={selected}
+      onClick={onClick}
+      className={cx(
+        'min-w-0 rounded-lg border px-3 text-left transition-colors',
+        compact ? 'py-2' : 'py-2.5',
+        selected
+          ? 'border-gold-400 bg-gold-400/10 text-white'
+          : 'border-ink-700 bg-ink-800/40 text-zinc-300 hover:border-ink-500',
+      )}
+    >
+      <span className="block text-sm font-medium leading-tight">{title}</span>
+      {subtitle && (
+        <span className="mt-0.5 line-clamp-2 block text-xs leading-snug text-zinc-500">
+          {subtitle}
+        </span>
+      )}
+    </button>
+  );
 }
 
 export default function Wizard() {
@@ -62,10 +115,11 @@ export default function Wizard() {
 
   const snapshot = getSnapshot(state.leagueId);
   const family = getFamily(state.familyId);
-  const familySkills = getSkills(state.leagueId, state.familyId);
-  const skill = getSkill(state.leagueId, state.skillId) ?? familySkills[0]!;
-  const ascendancies = getAscendanciesForSkill(skill);
   const ascendancy = getAscendancy(state.ascendancyId);
+  const familySkills = getSkills(state.leagueId, state.familyId);
+  const skill =
+    getSkill(state.leagueId, state.skillId) ?? familySkills[0] ?? null;
+  const metaAscendancies = skill ? getAscendanciesForSkill(skill) : [];
 
   const copy = async (kind: Exclude<Copied, null>) => {
     const url = new URL(window.location.href);
@@ -76,6 +130,17 @@ export default function Wizard() {
       window.setTimeout(() => setCopied(null), 2000);
     }
   };
+
+  const title =
+    state.mode === 'meta' && skill
+      ? `${ascendancy.name} ${skill.name}`
+      : filter.archetype.name;
+  const eyebrow =
+    state.mode === 'family'
+      ? 'Family preset'
+      : state.mode === 'ascendancy'
+        ? `${ascendancy.class} / Ascendancy`
+        : `${ascendancy.class} / ${family.name}`;
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-6xl flex-col px-5 py-8 pb-28 sm:px-8 sm:py-12 lg:pb-12">
@@ -89,8 +154,8 @@ export default function Wizard() {
             FilterPath
           </h1>
           <p className="mt-2 max-w-xl text-sm text-zinc-400">
-            Pick a family, a skill and an ascendancy. Get a filter that
-            highlights what the build needs.
+            Pick a build one way, tune the phases and strictness, then inspect
+            exactly what the filter will show.
           </p>
         </div>
         <nav className="flex items-center gap-4 text-xs text-zinc-500">
@@ -112,169 +177,202 @@ export default function Wizard() {
       <main className="mt-8 flex-1 space-y-6">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
           <div className="min-w-0 space-y-7">
-          <section aria-labelledby="league-heading">
-            <h2
-              id="league-heading"
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-            >
-              League
-            </h2>
-            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-              <select
-                value={state.leagueId}
-                onChange={(event) => update({ leagueId: event.target.value })}
-                className="rounded-lg border border-ink-600 bg-ink-800 px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-400"
-              >
-                {LEAGUE_INDEX.leagues.map((league) => (
-                  <option key={league.id} value={league.id}>
-                    {league.name}
-                  </option>
-                ))}
-              </select>
-              <p className="text-xs text-zinc-500">
-                Meta captured {snapshot.capturedAt.slice(0, 10)} from{' '}
-                <a
-                  href={snapshot.source}
-                  className="underline underline-offset-2 hover:text-zinc-300"
-                >
-                  poe.ninja builds
-                </a>
-                .
-              </p>
-            </div>
-          </section>
-
-          <section aria-labelledby="family-heading">
-            <h2
-              id="family-heading"
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-            >
-              1. Family
-            </h2>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2">
-              {FAMILIES.map((entry) => {
-                const selected = entry.id === state.familyId;
-                return (
+            <section aria-label="Selection mode">
+              <div className="grid grid-cols-3 gap-2" role="tablist">
+                {MODES.map((mode) => (
                   <button
-                    key={entry.id}
+                    key={mode.id}
                     type="button"
-                    aria-pressed={selected}
-                    onClick={() => update({ familyId: entry.id })}
+                    role="tab"
+                    aria-selected={state.mode === mode.id}
+                    onClick={() => update({ mode: mode.id })}
                     className={cx(
-                      'rounded-lg border px-3 py-2.5 text-left transition-colors',
-                      selected
-                        ? 'border-gold-400 bg-gold-400/10'
-                        : 'border-ink-700 bg-ink-800/40 hover:border-ink-500 hover:bg-ink-800/80',
-                    )}
-                  >
-                    <span className="block text-sm font-medium text-white">
-                      {entry.name}
-                    </span>
-                    <span className="mt-0.5 block text-xs leading-relaxed text-zinc-500">
-                      {entry.summary}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </section>
-
-          <section aria-labelledby="skill-heading">
-            <h2
-              id="skill-heading"
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-            >
-              2. Skill
-            </h2>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2">
-              {familySkills.map((entry) => {
-                const selected = entry.id === state.skillId;
-                return (
-                  <button
-                    key={entry.id}
-                    type="button"
-                    aria-pressed={selected}
-                    onClick={() => update({ skillId: entry.id })}
-                    className={cx(
-                      'rounded-lg border px-3 py-2.5 text-left transition-colors',
-                      selected
+                      'rounded-lg border px-2 py-2.5 text-left transition-colors',
+                      state.mode === mode.id
                         ? 'border-gold-400 bg-gold-400/10'
                         : 'border-ink-700 bg-ink-800/40 hover:border-ink-500',
                     )}
                   >
                     <span className="block text-sm font-medium text-white">
-                      {entry.name}
+                      {mode.label}
                     </span>
-                    <span className="mt-0.5 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
-                      <span>
-                        {entry.playShare !== undefined
-                          ? `${entry.playShare}% of snapshot`
-                          : 'Meta pick'}
-                      </span>
-                      {!entry.leveling && (
-                        <span className="rounded bg-ink-700 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-zinc-400">
-                          endgame
-                        </span>
-                      )}
+                    <span className="mt-0.5 block text-[11px] leading-tight text-zinc-500">
+                      {mode.hint}
                     </span>
                   </button>
-                );
-              })}
-            </div>
-          </section>
+                ))}
+              </div>
+            </section>
 
-          <section aria-labelledby="ascendancy-heading">
-            <h2
-              id="ascendancy-heading"
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-            >
-              3. Ascendancy
-            </h2>
-            <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {ascendancies.map((entry) => {
-                const selected = entry.id === state.ascendancyId;
-                return (
-                  <button
-                    key={entry.id}
-                    type="button"
-                    aria-pressed={selected}
-                    onClick={() => update({ ascendancyId: entry.id })}
-                    className={cx(
-                      'rounded-lg border px-3 py-2 text-left text-sm transition-colors',
-                      selected
-                        ? 'border-gold-400 bg-gold-400/10 text-white'
-                        : 'border-ink-700 bg-ink-800/40 text-zinc-300 hover:border-ink-500',
-                    )}
+            {state.mode === 'family' && (
+              <section aria-labelledby="family-heading">
+                <h2
+                  id="family-heading"
+                  className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+                >
+                  1. Family
+                </h2>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {FAMILIES.map((entry) => (
+                    <OptionButton
+                      key={entry.id}
+                      selected={entry.id === state.familyId}
+                      onClick={() => update({ familyId: entry.id })}
+                      title={entry.name}
+                      subtitle={entry.summary}
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {state.mode === 'ascendancy' && (
+              <section aria-labelledby="ascendancy-pick-heading">
+                <h2
+                  id="ascendancy-pick-heading"
+                  className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+                >
+                  1. Ascendancy
+                </h2>
+                {CLASS_ORDER.map((className) => {
+                  const entries = ASCENDANCIES.filter(
+                    (entry) => entry.class === className,
+                  );
+                  return (
+                    <div key={className} className="mt-4">
+                      <h3 className="mb-2 text-[11px] uppercase tracking-[0.18em] text-zinc-600">
+                        {className}
+                      </h3>
+                      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                        {entries.map((entry) => (
+                          <OptionButton
+                            key={entry.id}
+                            compact
+                            selected={entry.id === state.ascendancyId}
+                            onClick={() => update({ ascendancyId: entry.id })}
+                            title={entry.name}
+                            subtitle={getFamily(entry.defaultFamily).name}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </section>
+            )}
+
+            {state.mode === 'meta' && (
+              <>
+                <section aria-labelledby="league-heading">
+                  <h2
+                    id="league-heading"
+                    className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
                   >
-                    <span className="block">{entry.name}</span>
-                    <span className="block text-[11px] text-zinc-500">
-                      {entry.class}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </section>
+                    League
+                  </h2>
+                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <select
+                      value={state.leagueId}
+                      onChange={(event) =>
+                        update({ leagueId: event.target.value })
+                      }
+                      className="rounded-lg border border-ink-600 bg-ink-800 px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-400"
+                    >
+                      {LEAGUE_INDEX.leagues.map((league) => (
+                        <option key={league.id} value={league.id}>
+                          {league.name}
+                        </option>
+                      ))}
+                    </select>
+                    <p className="text-xs text-zinc-500">
+                      Captured {snapshot.capturedAt.slice(0, 10)} from{' '}
+                      <a
+                        href={snapshot.source}
+                        className="underline underline-offset-2 hover:text-zinc-300"
+                      >
+                        poe.ninja builds
+                      </a>
+                      .
+                    </p>
+                  </div>
+                </section>
 
-          <section aria-labelledby="phase-heading">
-            <h2
-              id="phase-heading"
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-            >
-              Phase
-            </h2>
-            <div className="mt-3 grid grid-cols-2 gap-2">
-              {PHASES.map((phase) => {
-                const selected = phase.id === state.phase;
-                return (
+                <section aria-labelledby="skill-heading">
+                  <h2
+                    id="skill-heading"
+                    className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+                  >
+                    1. Skill
+                  </h2>
+                  {FAMILIES.map((familyEntry) => {
+                    const skills = getSkills(state.leagueId, familyEntry.id);
+                    if (skills.length === 0) return null;
+                    return (
+                      <div key={familyEntry.id} className="mt-4">
+                        <h3 className="mb-2 text-[11px] uppercase tracking-[0.18em] text-zinc-600">
+                          {familyEntry.name}
+                        </h3>
+                        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                          {skills.map((entry) => (
+                            <OptionButton
+                              key={entry.id}
+                              compact
+                              selected={entry.id === state.skillId}
+                              onClick={() => update({ skillId: entry.id })}
+                              title={entry.name}
+                              subtitle={
+                                entry.playShare !== undefined
+                                  ? `${entry.playShare}% of snapshot`
+                                  : undefined
+                              }
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </section>
+
+                <section aria-labelledby="meta-ascendancy-heading">
+                  <h2
+                    id="meta-ascendancy-heading"
+                    className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+                  >
+                    2. Ascendancy
+                  </h2>
+                  <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                    {metaAscendancies.map((entry) => (
+                      <OptionButton
+                        key={entry.id}
+                        compact
+                        selected={entry.id === state.ascendancyId}
+                        onClick={() => update({ ascendancyId: entry.id })}
+                        title={entry.name}
+                        subtitle={entry.class}
+                      />
+                    ))}
+                  </div>
+                </section>
+              </>
+            )}
+
+            <section aria-labelledby="phase-heading">
+              <h2
+                id="phase-heading"
+                className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+              >
+                Phase
+              </h2>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                {PHASES.map((phase) => (
                   <button
                     key={phase.id}
                     type="button"
-                    aria-pressed={selected}
+                    aria-pressed={phase.id === state.phase}
                     onClick={() => update({ phase: phase.id })}
                     className={cx(
                       'rounded-lg border px-3 py-2.5 text-left transition-colors',
-                      selected
+                      phase.id === state.phase
                         ? 'border-gold-400 bg-gold-400/10'
                         : 'border-ink-700 bg-ink-800/40 hover:border-ink-500',
                     )}
@@ -284,113 +382,100 @@ export default function Wizard() {
                     </span>
                     <span className="text-xs text-zinc-500">{phase.hint}</span>
                   </button>
-                );
-              })}
-            </div>
+                ))}
+              </div>
+            </section>
 
-            {!skill.leveling && state.phase === 'leveling' && (
-              <p className="mt-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">
-                {skill.name} is an endgame build.{' '}
-                <button
-                  type="button"
-                  className="underline underline-offset-2"
-                  onClick={() => update({ phase: 'endgame' })}
-                >
-                  Switch to Endgame
-                </button>
-              </p>
-            )}
-          </section>
-
-          <section aria-labelledby="strictness-heading">
-            <h2
-              id="strictness-heading"
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-            >
-              Strictness
-            </h2>
-            <div className="mt-3 grid grid-cols-3 gap-2">
-              {STRICTNESS_ORDER.map((strictness) => {
-                const selected = strictness === state.strictness;
-                return (
+            <section aria-labelledby="strictness-heading">
+              <h2
+                id="strictness-heading"
+                className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+              >
+                Strictness
+              </h2>
+              <div className="mt-3 grid grid-cols-3 gap-2">
+                {STRICTNESS_ORDER.map((strictness) => (
                   <button
                     key={strictness}
                     type="button"
-                    aria-pressed={selected}
+                    aria-pressed={strictness === state.strictness}
                     onClick={() => update({ strictness })}
                     className={cx(
                       'rounded-lg border px-3 py-2 text-sm transition-colors',
-                      selected
+                      strictness === state.strictness
                         ? 'border-gold-400 bg-gold-400/10 text-white'
                         : 'border-ink-700 bg-ink-800/40 text-zinc-300 hover:border-ink-500',
                     )}
                   >
                     {STRICTNESS_LABELS_PUBLIC[strictness]}
                   </button>
-                );
-              })}
-            </div>
-          </section>
+                ))}
+              </div>
+            </section>
 
-          <section aria-labelledby="sections-heading">
-            <h2
-              id="sections-heading"
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-            >
-              Sections
-            </h2>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2">
-              {SECTION_KEYS.map((key) => (
-                <label
-                  key={key}
-                  className="flex cursor-pointer items-start gap-3 rounded-lg border border-ink-700 bg-ink-800/40 px-3 py-2.5 hover:border-ink-500"
-                >
-                  <input
-                    type="checkbox"
-                    className="mt-0.5 size-4 accent-gold-400"
-                    checked={state.sections[key]}
-                    onChange={() =>
-                      update({
-                        sections: {
-                          ...state.sections,
-                          [key]: !state.sections[key],
-                        },
-                      })
-                    }
-                  />
-                  <span>
-                    <span className="block text-sm text-zinc-200">
-                      {SECTION_META[key].label}
+            <section aria-labelledby="sections-heading">
+              <h2
+                id="sections-heading"
+                className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+              >
+                Sections
+              </h2>
+              <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                {SECTION_KEYS.map((key) => (
+                  <label
+                    key={key}
+                    className="flex cursor-pointer items-start gap-3 rounded-lg border border-ink-700 bg-ink-800/40 px-3 py-2.5 hover:border-ink-500"
+                  >
+                    <input
+                      type="checkbox"
+                      className="mt-0.5 size-4 accent-gold-400"
+                      checked={state.sections[key]}
+                      onChange={() =>
+                        update({
+                          sections: {
+                            ...state.sections,
+                            [key]: !state.sections[key],
+                          },
+                        })
+                      }
+                    />
+                    <span>
+                      <span className="block text-sm text-zinc-200">
+                        {SECTION_META[key].label}
+                      </span>
+                      <span className="block text-xs text-zinc-500">
+                        {SECTION_META[key].hint}
+                      </span>
                     </span>
-                    <span className="block text-xs text-zinc-500">
-                      {SECTION_META[key].hint}
-                    </span>
-                  </span>
-                </label>
-              ))}
-            </div>
-          </section>
-        </div>
+                  </label>
+                ))}
+              </div>
+            </section>
+          </div>
 
-        <div className="min-w-0 space-y-4 lg:sticky lg:top-8">
           <section className="min-w-0 rounded-xl border border-gold-400/25 bg-ink-800/70 p-5">
             <p className="text-[11px] uppercase tracking-[0.2em] text-gold-400">
-              {ascendancy.class} / {family.name}
+              {eyebrow}
             </p>
-            <h2 className="mt-1 text-2xl font-semibold text-white">
-              {ascendancy.name} {skill.name}
-            </h2>
+            <h2 className="mt-1 text-2xl font-semibold text-white">{title}</h2>
             <p className="mt-1 text-sm leading-relaxed text-zinc-400">
               {filter.archetype.summary}
             </p>
 
             <div className="mt-4 flex flex-wrap gap-1.5 text-[11px]">
               <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                {snapshot.league.name}
+                {MODES.find((mode) => mode.id === state.mode)?.label}
               </span>
-              <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                {family.name}
-              </span>
+              {state.mode !== 'family' && (
+                <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                  {family.name}
+                </span>
+              )}
+              {state.mode === 'meta' && (
+                <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                  {snapshot.league.name}
+                </span>
+              )}
               <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
                 {state.phase === 'leveling' ? 'Leveling' : 'Endgame'}
               </span>
@@ -429,8 +514,7 @@ export default function Wizard() {
               </button>
             </div>
             <p className="mt-2 text-[11px] text-zinc-500">
-              Share links keep league, family, skill, ascendancy, phase,
-              strictness and sections.
+              Share links keep mode, selection, phase, strictness and sections.
             </p>
             <p className="mt-3 rounded-lg border border-ink-700 bg-ink-900/60 px-3 py-2 text-[11px] leading-relaxed text-zinc-500">
               In-game name:{' '}
@@ -439,7 +523,6 @@ export default function Wizard() {
               </span>
             </p>
           </section>
-        </div>
         </div>
 
         <InventoryPreview rules={filter.rules} archetype={filter.archetype} />
@@ -500,9 +583,7 @@ export default function Wizard() {
       <div className="fixed inset-x-0 bottom-0 z-30 border-t border-ink-700 bg-ink-900/95 px-4 py-3 backdrop-blur lg:hidden">
         <div className="mx-auto flex max-w-6xl items-center gap-3">
           <div className="min-w-0 flex-1">
-            <p className="truncate text-xs font-medium text-zinc-100">
-              {ascendancy.name} {skill.name}
-            </p>
+            <p className="truncate text-xs font-medium text-zinc-100">{title}</p>
             <p className="truncate text-[11px] text-zinc-500">
               {state.phase === 'leveling' ? 'Leveling' : 'Endgame'} -{' '}
               {STRICTNESS_LABELS_PUBLIC[state.strictness]} - {filter.ruleCount}{' '}

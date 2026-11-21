@@ -1,6 +1,4 @@
-import covensJson from './leagues/covens.json';
-import standardJson from './leagues/standard.json';
-import leagueIndex from './leagues/index.json';
+import presets from '../generated/presets.json';
 import { ASCENDANCIES } from './ascendancies.ts';
 import { FAMILIES } from './families.ts';
 import type {
@@ -11,16 +9,21 @@ import type {
   SkillEntry,
 } from './types.ts';
 
-const snapshots: Record<string, LeagueSnapshot> = {
-  covens: covensJson as unknown as LeagueSnapshot,
-  standard: standardJson as unknown as LeagueSnapshot,
+const snapshots = presets.leagues.snapshots as unknown as Record<
+  string,
+  LeagueSnapshot
+>;
+
+export const PRESET_VERSION = presets.version;
+
+export const LEAGUE_INDEX = {
+  current: presets.leagues.current,
+  leagues: presets.leagues.index,
 };
 
-export const LEAGUE_INDEX = leagueIndex;
+export const LEAGUE_IDS = LEAGUE_INDEX.leagues.map((entry) => entry.id);
 
-export const LEAGUE_IDS = leagueIndex.leagues.map((entry) => entry.id);
-
-export const CURRENT_LEAGUE_ID = leagueIndex.current;
+export const CURRENT_LEAGUE_ID = LEAGUE_INDEX.current;
 
 export function getSnapshot(leagueId: string): LeagueSnapshot {
   const snapshot = snapshots[leagueId];
@@ -63,20 +66,26 @@ export function getAscendanciesForSkill(skill: SkillEntry): Ascendancy[] {
 }
 
 export function defaultSelection(): BuildSelection {
-  return {
-    leagueId: CURRENT_LEAGUE_ID,
-    familyId: 'minion',
-    skillId: 'summon-skeletons',
-    ascendancyId: 'necromancer',
-  };
+  return { mode: 'family', familyId: 'minion' };
 }
 
 export function isValidSelection(selection: BuildSelection): boolean {
-  const snapshot = snapshots[selection.leagueId];
+  if (selection.mode === 'family') {
+    return FAMILIES.some((family) => family.id === selection.familyId);
+  }
+
+  if (selection.mode === 'ascendancy') {
+    return ASCENDANCIES.some(
+      (ascendancy) => ascendancy.id === selection.ascendancyId,
+    );
+  }
+
+  if (selection.mode !== 'meta') return false;
+
+  const snapshot = snapshots[selection.leagueId ?? ''];
   if (!snapshot) return false;
   const skill = snapshot.skills.find((entry) => entry.id === selection.skillId);
   if (!skill) return false;
-  if (skill.family !== selection.familyId) return false;
   const ascendancy = ASCENDANCIES.find(
     (entry) => entry.id === selection.ascendancyId,
   );
@@ -84,22 +93,37 @@ export function isValidSelection(selection: BuildSelection): boolean {
   return skill.classes.includes(ascendancy.class);
 }
 
-/**
- * Repairs a partial or stale selection after a hash change: unknown league or
- * family fall back, a skill that no longer exists picks the family's top skill,
- * and an invalid ascendancy picks the skill's first allowed one.
- */
 export function coerceSelection(
   input: Partial<BuildSelection> = {},
 ): BuildSelection {
   const fallback = defaultSelection();
+
+  if (input.mode === 'family') {
+    const family = FAMILIES.find((entry) => entry.id === input.familyId);
+    return { mode: 'family', familyId: family?.id ?? 'minion' };
+  }
+
+  if (input.mode === 'ascendancy') {
+    const ascendancy = ASCENDANCIES.find(
+      (entry) => entry.id === input.ascendancyId,
+    );
+    const chosen = ascendancy ?? ASCENDANCIES.find((e) => e.id === 'necromancer')!;
+    return {
+      mode: 'ascendancy',
+      ascendancyId: chosen.id,
+      familyId: chosen.defaultFamily,
+    };
+  }
+
+  if (input.mode !== 'meta') return fallback;
+
   const leagueId =
     input.leagueId && snapshots[input.leagueId]
       ? input.leagueId
-      : fallback.leagueId;
+      : CURRENT_LEAGUE_ID;
   const familyId = FAMILIES.some((family) => family.id === input.familyId)
     ? (input.familyId as FamilyId)
-    : fallback.familyId;
+    : 'caster';
 
   const familySkills = getSkills(leagueId, familyId);
   let skill =
@@ -120,11 +144,10 @@ export function coerceSelection(
   const ascendancy =
     ascendancies.find((entry) => entry.id === input.ascendancyId) ??
     ascendancies[0];
-  if (!ascendancy) {
-    throw new Error(`No ascendancy available for "${skill.id}"`);
-  }
+  if (!ascendancy) throw new Error(`No ascendancy available for "${skill.id}"`);
 
   return {
+    mode: 'meta',
     leagueId,
     familyId: skill.family,
     skillId: skill.id,
@@ -132,7 +155,10 @@ export function coerceSelection(
   };
 }
 
-const LEGACY_SELECTIONS: Record<string, Omit<BuildSelection, 'leagueId'>> = {
+const LEGACY_SELECTIONS: Record<
+  string,
+  { familyId: FamilyId; skillId: string; ascendancyId: string }
+> = {
   'necro-minions': {
     familyId: 'minion',
     skillId: 'summon-skeletons',
@@ -195,11 +221,12 @@ const LEGACY_SELECTIONS: Record<string, Omit<BuildSelection, 'leagueId'>> = {
   },
 };
 
-/** Maps the interim 12-build links onto the new selection. */
+/** Maps the interim 12-build links onto the new meta selection. */
 export function legacySelection(archetypeId: string): BuildSelection | null {
   const legacy = LEGACY_SELECTIONS[archetypeId];
   if (!legacy) return null;
   const selection: BuildSelection = {
+    mode: 'meta',
     leagueId: CURRENT_LEAGUE_ID,
     ...legacy,
   };

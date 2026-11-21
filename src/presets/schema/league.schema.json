@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "league", "capturedAt", "source", "skills"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "league": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "name": { "type": "string", "minLength": 1 }
+      }
+    },
+    "capturedAt": { "type": "string", "format": "date-time" },
+    "source": { "type": "string", "format": "uri" },
+    "skills": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "family", "classes", "leveling"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string", "minLength": 1 },
+          "family": {
+            "enum": ["caster", "minion", "bow", "melee", "hybrid"]
+          },
+          "classes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "enum": [
+                "Scion",
+                "Marauder",
+                "Ranger",
+                "Duelist",
+                "Witch",
+                "Templar",
+                "Shadow"
+              ]
+            }
+          },
+          "topAscendancies": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+          },
+          "playShare": { "type": "number", "minimum": 0 },
+          "leveling": { "type": "boolean" },
+          "weapon": { "$ref": "#/definitions/slot" },
+          "offhand": {
+            "anyOf": [{ "$ref": "#/definitions/slot" }, { "type": "null" }]
+          },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "slot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["itemClasses"],
+      "properties": {
+        "itemClasses": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "bases": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "defence": {
+          "type": "array",
+          "items": { "enum": ["armour", "evasion", "energy-shield", "ward"] }
+        },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

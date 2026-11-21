@@ -22,12 +22,16 @@
  *   --no-leveling          mark as endgame-only
  *   --list-skills          print the valid gem names and exit
  */
+import { execFileSync } from 'node:child_process';
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import { parse, stringify } from 'yaml';
 
 const ROOT = new URL('../', import.meta.url);
 const CATALOG = new URL('src/meta/skill-names.json', ROOT);
-const LEAGUES = new URL('src/meta/leagues/', ROOT);
+const LEAGUES = new URL('src/presets/leagues/', ROOT);
+const LEAGUE_INDEX = new URL('src/presets/leagues/index.yaml', ROOT);
+const BUILD = new URL('scripts/build-presets.mjs', ROOT);
 
 const FAMILIES = ['caster', 'minion', 'bow', 'melee', 'hybrid'];
 const CLASSES = [
@@ -135,12 +139,18 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-const leagueFile = new URL(`${leagueId}.json`, LEAGUES);
+const leagueFile = new URL(`${leagueId}.yaml`, LEAGUES);
 let snapshot;
 try {
-  snapshot = JSON.parse(await readFile(fileURLToPath(leagueFile), 'utf8'));
+  snapshot = parse(await readFile(fileURLToPath(leagueFile), 'utf8'));
 } catch {
-  console.error(`error: no snapshot at src/meta/leagues/${leagueId}.json`);
+  console.error(`error: no snapshot at src/presets/leagues/${leagueId}.yaml`);
+  process.exit(1);
+}
+const indexDoc = parse(await readFile(fileURLToPath(LEAGUE_INDEX), 'utf8'));
+const indexEntry = indexDoc.leagues?.find((league) => league.id === leagueId);
+if (!indexEntry) {
+  console.error(`error: ${leagueId} is not listed in leagues/index.yaml`);
   process.exit(1);
 }
 
@@ -171,11 +181,12 @@ snapshot.skills.sort(
     (b.playShare ?? 0) - (a.playShare ?? 0) || a.name.localeCompare(b.name),
 );
 snapshot.capturedAt = new Date().toISOString();
+indexEntry.capturedAt = snapshot.capturedAt;
 
-await writeFile(
-  fileURLToPath(leagueFile),
-  `${JSON.stringify(snapshot, null, 2)}\n`,
-);
+await writeFile(fileURLToPath(leagueFile), stringify(snapshot));
+await writeFile(fileURLToPath(LEAGUE_INDEX), stringify(indexDoc));
+
+execFileSync(process.execPath, [fileURLToPath(BUILD)], { stdio: 'inherit' });
 
 console.log(
   `${existingIndex >= 0 ? 'Updated' : 'Added'} ${skillName} in ${leagueId} (${snapshot.skills.length} skills).`,

@@ -137,6 +137,7 @@ describe('selection', () => {
 
   it('coerces an impossible family/skill/ascendancy combination', () => {
     const selection = coerceSelection({
+      mode: 'meta',
       leagueId: 'covens',
       familyId: 'bow',
       skillId: 'summon-skeletons',
@@ -145,7 +146,7 @@ describe('selection', () => {
 
     expect(selection.familyId).toBe('bow');
     expect(selection.skillId).toBe('lightning-arrow');
-    expect(getAscendancy(selection.ascendancyId).class).toBe('Ranger');
+    expect(getAscendancy(selection.ascendancyId!).class).toBe('Ranger');
     expect(isValidSelection(selection)).toBe(true);
   });
 
@@ -178,6 +179,7 @@ describe('resolveBuild', () => {
     ascendancyId: string,
   ) =>
     resolveBuild({
+      mode: 'meta',
       leagueId: LEAGUE_INDEX.current,
       familyId,
       skillId,
@@ -227,6 +229,7 @@ describe('resolveBuild', () => {
     for (const skill of snapshot.skills) {
       const ascendancy = getAscendanciesForSkill(skill)[0]!;
       const build = resolveBuild({
+        mode: 'meta',
         leagueId: LEAGUE_INDEX.current,
         familyId: skill.family,
         skillId: skill.id,
@@ -255,6 +258,7 @@ describe('selection filters', () => {
     for (const skill of snapshot.skills) {
       const ascendancy = getAscendanciesForSkill(skill)[0]!;
       const selection: BuildSelection = {
+        mode: 'meta',
         leagueId: LEAGUE_INDEX.current,
         familyId: skill.family,
         skillId: skill.id,

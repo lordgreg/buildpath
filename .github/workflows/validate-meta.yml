@@ -3,7 +3,10 @@ name: Validate meta snapshot
 on:
   pull_request:
     paths:
+      - 'src/presets/**'
+      - 'src/generated/**'
       - 'src/meta/**'
+      - 'scripts/build-presets.mjs'
       - 'scripts/meta-add.mjs'
       - '.github/workflows/validate-meta.yml'
   workflow_dispatch:

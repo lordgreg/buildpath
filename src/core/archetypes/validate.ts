@@ -43,10 +43,12 @@ export function validateArchetype(archetype: Archetype): ValidationIssue[] {
     issue('id', 'must be a lowercase slug such as "necro-minions"');
   }
   if (!archetype.name.trim()) issue('name', 'must not be empty');
-  if (!CLASSES.has(archetype.class)) {
+  if (archetype.class !== undefined && !CLASSES.has(archetype.class)) {
     issue('class', `unknown class "${archetype.class}"`);
   }
-  if (!archetype.ascendancy.trim()) issue('ascendancy', 'must not be empty');
+  if (archetype.ascendancy !== undefined && !archetype.ascendancy.trim()) {
+    issue('ascendancy', 'must not be empty when present');
+  }
   if (!archetype.summary.trim()) issue('summary', 'must not be empty');
   if (typeof archetype.leveling !== 'boolean') {
     issue('leveling', 'must be a boolean');
@@ -61,9 +63,6 @@ export function validateArchetype(archetype: Archetype): ValidationIssue[] {
     if (!ATTRIBUTES.has(attribute)) {
       issue('attributes', `unknown attribute "${attribute}"`);
     }
-  }
-  if (archetype.skills.length === 0) {
-    issue('skills', 'needs at least one skill');
   }
 
   const slots = Object.entries(archetype.slots);

@@ -1,0 +1,57 @@
+schemaVersion: 1
+families:
+  - id: caster
+    name: Caster
+    summary: Intelligence bases, spells and an energy-shield shield.
+    attributes: [int]
+    armourTags: [int_armour]
+    jewelTag: intjewel
+    weapon:
+      itemClasses: [Wand]
+    offhand:
+      itemClasses: [Shield]
+      tags: [int_armour]
+  - id: minion
+    name: Minion
+    summary: Minion wand and shield, armour/ES hybrid bases.
+    attributes: [int]
+    armourTags: [int_armour, str_int_armour]
+    jewelTag: intjewel
+    weapon:
+      itemClasses: [Wand]
+      tags: [weapon_can_roll_minion_modifiers]
+    offhand:
+      itemClasses: [Shield]
+      tags: [focus_can_roll_minion_modifiers]
+  - id: bow
+    name: Bow
+    summary: Evasion bases, bow and quiver.
+    attributes: [dex]
+    armourTags: [dex_armour]
+    jewelTag: dexjewel
+    weapon:
+      itemClasses: [Bow]
+    offhand:
+      itemClasses: [Quiver]
+  - id: melee
+    name: Melee
+    summary: Strength bases, one-hander and shield by default.
+    attributes: [str]
+    armourTags: [str_armour]
+    jewelTag: strjewel
+    weapon:
+      itemClasses: [One Hand Sword]
+    offhand:
+      itemClasses: [Shield]
+      tags: [str_shield]
+  - id: hybrid
+    name: Hybrid
+    summary: Dexterity/intelligence bases, claw and shield.
+    attributes: [dex, int]
+    armourTags: [dex_int_armour]
+    jewelTag: dexjewel
+    weapon:
+      itemClasses: [Claw]
+    offhand:
+      itemClasses: [Shield]
+      tags: [dex_int_shield]

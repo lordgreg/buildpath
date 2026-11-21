@@ -19,6 +19,7 @@ describe('paper doll', () => {
     for (const skill of snapshot.skills) {
       const ascendancy = getAscendanciesForSkill(skill)[0]!;
       const selection = {
+        mode: 'meta' as const,
         leagueId: LEAGUE_INDEX.current,
         familyId: skill.family,
         skillId: skill.id,
@@ -49,6 +50,7 @@ describe('paper doll', () => {
   it('leaves the offhand empty for two-handed skills', () => {
     const twoHanded = compileFilter({
       selection: {
+        mode: 'meta',
         leagueId: LEAGUE_INDEX.current,
         familyId: 'melee',
         skillId: 'cyclone',
@@ -64,6 +66,7 @@ describe('paper doll', () => {
   it('includes the flask and jewel slots', () => {
     const compiled = compileFilter({
       selection: {
+        mode: 'meta',
         leagueId: LEAGUE_INDEX.current,
         familyId: 'minion',
         skillId: 'summon-skeletons',

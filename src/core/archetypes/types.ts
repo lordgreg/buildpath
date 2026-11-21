@@ -45,8 +45,8 @@ export interface Archetype {
   /** Stable slug used in share links. */
   id: string;
   name: string;
-  class: CharacterClass;
-  ascendancy: string;
+  class?: CharacterClass;
+  ascendancy?: string;
   /** One line shown in the picker. */
   summary: string;
   /** Whether the archetype is playable from act 1 without twink gear. */
