@@ -5,7 +5,7 @@
 # Phase: Leveling - Normal
 # League: Covens
 # Presets: 9515af8785c2
-# Rules: 50 - Base types: 109
+# Rules: 53 - Base types: 109
 # Base data: RePoE master (d9b86d38)
 # Generated at https://lordgreg.github.io/filterpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -20,6 +20,21 @@ Show
     SetBackgroundColor 0 0 0 255
     PlayAlertSound 1 300
     MinimapIcon 1 Green Circle
+
+# Gold Ring (normal) - excluded base
+Hide
+    BaseType "Gold Ring"
+    Rarity Normal
+
+# Gold Ring (magic) - excluded base
+Hide
+    BaseType "Gold Ring"
+    Rarity Magic
+
+# Gold Ring (rare) - excluded base
+Hide
+    BaseType "Gold Ring"
+    Rarity Rare
 
 # helmet - rare
 Show

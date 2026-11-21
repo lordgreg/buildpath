@@ -10,6 +10,8 @@ export interface GearPreset {
   magicMinItemLevel: number | null;
   /** Highlight 4+ links and 6-sockets regardless of rarity. */
   highlightLinks: boolean;
+  /** Non-unique bases the build never wants, hidden before gear rules. */
+  hiddenBases?: string[];
 }
 
 export interface GemsPreset {
@@ -58,6 +60,7 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
       rareMinItemLevel: 1,
       magicMinItemLevel: 10,
       highlightLinks: true,
+      hiddenBases: ['Gold Ring'],
     },
     strict: {
       rareMinItemLevel: 15,
@@ -65,11 +68,13 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
       // still worth showing as a crafting/upgrade outlier.
       magicMinItemLevel: 80,
       highlightLinks: true,
+      hiddenBases: ['Gold Ring'],
     },
     'very-strict': {
       rareMinItemLevel: 30,
       magicMinItemLevel: null,
       highlightLinks: false,
+      hiddenBases: ['Gold Ring'],
     },
   },
   endgame: {

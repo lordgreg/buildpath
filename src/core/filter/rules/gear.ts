@@ -64,6 +64,17 @@ export function usedFilterClasses(archetype: Archetype): Set<string> {
 export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
   const rules: Rule[] = [];
 
+  for (const base of preset.gear.hiddenBases ?? []) {
+    for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
+      rules.push({
+        action: 'Hide',
+        comment: `${base} (${rarity.toLowerCase()}) - excluded base`,
+        baseTypes: [base],
+        rarity,
+      });
+    }
+  }
+
   for (const [slot, spec] of Object.entries(archetype.slots) as [
     ItemSlot,
     SlotSpec,
