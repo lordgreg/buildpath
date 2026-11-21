@@ -20,6 +20,7 @@ import {
 } from '../meta/index.ts';
 import { APP_VERSION } from '../version.ts';
 import FilterPreview from './FilterPreview.tsx';
+import InventoryPreview from './preview/InventoryPreview.tsx';
 import { copyText, downloadFilter } from './download.ts';
 import { useWizardState } from './useWizardState.ts';
 import { wizardHash } from './wizardState.ts';
@@ -108,8 +109,9 @@ export default function Wizard() {
         </nav>
       </header>
 
-      <main className="mt-8 grid flex-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
-        <div className="min-w-0 space-y-7">
+      <main className="mt-8 flex-1 space-y-6">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
+          <div className="min-w-0 space-y-7">
           <section aria-labelledby="league-heading">
             <h2
               id="league-heading"
@@ -437,49 +439,52 @@ export default function Wizard() {
               </span>
             </p>
           </section>
-
-          <FilterPreview
-            text={filter.text}
-            fileName={filter.fileName}
-            ruleCount={filter.ruleCount}
-            baseTypeCount={filter.baseTypeCount}
-            warnings={filter.warnings}
-          />
-
-          <details className="rounded-xl border border-ink-700 bg-ink-800/40 p-4 text-sm">
-            <summary className="cursor-pointer text-zinc-200">
-              How to install
-            </summary>
-            <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-xs leading-relaxed text-zinc-400">
-              <li>Download the file.</li>
-              <li>
-                Put it in{' '}
-                <code className="rounded bg-ink-900 px-1 py-0.5 text-zinc-300">
-                  Documents/My Games/Path of Exile
-                </code>
-                . On Linux/Proton that is{' '}
-                <code className="rounded bg-ink-900 px-1 py-0.5 text-zinc-300">
-                  compatdata/238960/pfx/drive_c/users/steamuser/Documents/My
-                  Games/Path of Exile
-                </code>
-                .
-              </li>
-              <li>
-                In game: Options → UI → Item Filter, then pick{' '}
-                <span className="text-zinc-300">FilterPath</span>.
-              </li>
-            </ol>
-            <p className="mt-3 text-xs text-zinc-500">
-              Online filters synced to your PoE account appear in the same
-              dropdown but are separate files. The entry must start with{' '}
-              <span className="text-zinc-300">FilterPath-v</span>.
-            </p>
-            <p className="mt-2 text-xs text-zinc-500">
-              Seeing items that should be hidden? Check which filter is
-              selected; another filter can still be active.
-            </p>
-          </details>
         </div>
+        </div>
+
+        <InventoryPreview rules={filter.rules} archetype={filter.archetype} />
+
+        <FilterPreview
+          text={filter.text}
+          fileName={filter.fileName}
+          ruleCount={filter.ruleCount}
+          baseTypeCount={filter.baseTypeCount}
+          warnings={filter.warnings}
+        />
+
+        <details className="rounded-xl border border-ink-700 bg-ink-800/40 p-4 text-sm">
+          <summary className="cursor-pointer text-zinc-200">
+            How to install
+          </summary>
+          <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-xs leading-relaxed text-zinc-400">
+            <li>Download the file.</li>
+            <li>
+              Put it in{' '}
+              <code className="rounded bg-ink-900 px-1 py-0.5 text-zinc-300">
+                Documents/My Games/Path of Exile
+              </code>
+              . On Linux/Proton that is{' '}
+              <code className="rounded bg-ink-900 px-1 py-0.5 text-zinc-300">
+                compatdata/238960/pfx/drive_c/users/steamuser/Documents/My
+                Games/Path of Exile
+              </code>
+              .
+            </li>
+            <li>
+              In game: Options → UI → Item Filter, then pick{' '}
+              <span className="text-zinc-300">FilterPath</span>.
+            </li>
+          </ol>
+          <p className="mt-3 text-xs text-zinc-500">
+            Online filters synced to your PoE account appear in the same
+            dropdown but are separate files. The entry must start with{' '}
+            <span className="text-zinc-300">FilterPath-v</span>.
+          </p>
+          <p className="mt-2 text-xs text-zinc-500">
+            Seeing items that should be hidden? Check which filter is selected;
+            another filter can still be active.
+          </p>
+        </details>
       </main>
 
       <footer className="mt-12 border-t border-ink-700 pt-5 text-xs leading-relaxed text-zinc-500">
