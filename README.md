@@ -5,7 +5,7 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.13.0 — filter naming, folder writing and saved-build updates are
+**Status:** v0.13.1 — filter naming, folder writing and saved-build updates are
 live. Remaining work is data capture and manual QA.
 
 ## Features
@@ -22,7 +22,7 @@ live. Remaining work is data capture and manual QA.
 - Loot simulator with pasted in-game items and filter-styled labels
 - Three filter themes; saved builds with Update; one global strictness
 - Economy-aware currency, divination and unique tiers refreshed daily
-- Chromium folder writing with OS-aware path hints, a read/write test and .bak backups
+- Chromium folder writing with OS-aware path hints, a reference path field, a read/write test and .bak backups
 - Build version in the file name and header, e.g.
   `filterpath-minion-leveling-normal-0.13.0.filter`; names are optional and
   derived from the selection when empty

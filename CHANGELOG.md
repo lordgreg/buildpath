@@ -2,6 +2,19 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.13.1 — 2026-11-21
+
+Reference folder path field.
+
+- Added a Folder path field for pasting the filters folder location, with Copy
+  and Use suggested path buttons.
+- The field is reference-only: browsers cannot grant access to a typed path, so
+  Choose folder still connects the folder.
+- The picker tip explains Ctrl+L on Linux, the address bar on Windows and
+  Cmd+Shift+G on macOS.
+- Pasting a path that stops at Documents now warns that the game folder is
+  My Games/Path of Exile inside it.
+
 ## 0.13.0 — 2026-11-21
 
 Filter names, folder writing and save updates.

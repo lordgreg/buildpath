@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.13.1',
+    date: '2026-11-21',
+    title: 'Reference folder path field',
+    notes: [
+      'Added a Folder path field for pasting the filters folder location, with Copy and Use suggested path buttons.',
+      'The field is reference-only: browsers cannot grant access to a typed path, so Choose folder still connects the folder.',
+      'The picker tip explains Ctrl+L on Linux, the address bar on Windows and Cmd+Shift+G on macOS.',
+      'Pasting a path that stops at Documents now warns that the game folder is My Games/Path of Exile inside it.',
+    ],
+    commits: [],
+    compare: 'v0.13.0...v0.13.1',
+  },
+  {
     version: '0.13.0',
     date: '2026-11-21',
     title: 'Filter names, folder writing and save updates',

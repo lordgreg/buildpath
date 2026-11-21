@@ -6,7 +6,7 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.13.0 ships filter naming, folder writing and saved-build
+**Status:** v0.13.1 ships filter naming, folder writing and saved-build
 updates. Remaining work is data capture and manual QA.
 
 ---
@@ -263,8 +263,9 @@ rules survive reload and share codes; conflict warnings and the item test work.
   and applies immediately.
 - **Folder guidance** — the browser detects Windows, Linux/Proton or macOS and
   shows the matching folder first. The other platform stays behind a disclosure.
-- **Custom folder** — the native picker accepts any folder; a temporary write
-  proves read/write access. Failures show a copyable `chmod u+w` hint on Linux or
+- **Custom folder** — a reference path field stores the location you paste; the
+  native picker still grants access, and a temporary write proves read/write
+  access. Failures show a copyable `chmod u+w` hint on Linux or
   folder-permission steps on Windows. Browsers never expose the absolute path.
 - **Download** — when a folder is connected, Download writes there first, asks
   before overwriting and falls back to a browser download.
@@ -635,6 +636,7 @@ emits the expected rules and in-game filename.
 - [x] Permission hints, including a copyable `chmod u+w` command
 - [x] Download writes to the connected folder first, then falls back
 - [x] Update button for the loaded saved build; Save creates a copy
+- [x] Reference folder path field with pasted-path hints
 - [x] Tests: slug/filename, platform detection, write probe, saved-build update
 
 **Done:** a named filter downloads as
