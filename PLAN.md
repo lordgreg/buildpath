@@ -188,8 +188,8 @@ of producing an empty rule.
 - [x] Archetype type + validator + sample, tests
 - [x] RePoE extractor and committed `base-types.json`
 - [x] GitHub Actions deploy, `.nojekyll`, MIT, disclaimer
-- [ ] Name availability spot-check (GitHub repo created as `lordgreg/filterpath`)
-- [ ] First successful deploy
+- [x] Name availability spot-check (GitHub repo created as `lordgreg/filterpath`)
+- [x] First successful deploy
 
 **Done:** app is live on Pages, `npm test` and `npm run build` pass in CI.
 
@@ -285,3 +285,4 @@ download on Firefox/Safari. `FilterSync.api()` stays a stub.
 - Contact email for the poe.ninja User-Agent string (M2c)
 - Whether the repo stays public (Pages on free plan requires it)
 - Confirm `master` as the default branch in the Actions workflow if it is renamed
+- Repository is live at https://lordgreg.github.io/filterpath/
