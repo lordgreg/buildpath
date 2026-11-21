@@ -6,8 +6,8 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.11.2 ships Steam-library-aware folder guidance. Remaining work is
-data capture and manual QA.
+**Status:** v0.12.0 ships the advanced-rules rework and From Scratch mode.
+Remaining work is data capture and manual QA.
 
 ---
 
@@ -222,45 +222,34 @@ Data:
 - The selector shows "Meta snapshot from poe.ninja builds, captured \<date\>"
   with a link to the build pages.
 
-**Done:** three tabs; family mode needs no class; ascendancy mode uses its
+**Done:** four tabs; family mode needs no class; ascendancy mode uses its
 default loadout; meta mode lists all skills grouped and derives the family;
-phase/strictness/sections work in all three; share links restore the mode; old
+From Scratch needs only a starting point; share links restore the mode; old
 links still resolve.
 
-### 2.10 Advanced rules and locked presets (M2g)
+### 2.10 Advanced rules (M2g, revised in 0.12.0)
 
-The filter is inspectable and cloneable, Last-Epoch style.
+The preset is **locked and never cloned**. Users add rules on top of it.
 
-- **Locked pane** — every generated rule, grouped by section (`gear`, `gems`,
-  `currency`, `maps`, `uniques`, `junk`), read-only, with a lock badge. Clicking
-  a rule shows its conditions, style, order and `Continue`.
-- **Whole-set clone** — copying freezes the current generated rule list into an
-  editable set tied to `mode + source + phase + strictness + sections`. The
-  clone replaces the generated set for that combination; the locked preset
-  stays visible with an "overridden" badge.
-- **Rule cards** — enable, move, duplicate, delete; conditions (class/base,
-  rarity, item level, drop level, area level, sockets, links, quality, stack,
-  map tier), action, style, `Continue`.
-- **Chips** — user-facing groups resolve through RePoE:
-  - `DEX item` / `STR item` / `INT item` use real attribute **requirements**
-    (the extractor keeps `requirements`).
-  - `HEAD` → `Class "Helmets"`.
-  - `Weapon 2H` → two-hand axe/sword/mace, staff and warstaff classes.
-  - `Weapon Ranged` → bases tagged `ranged`.
-  - Each chip shows the resolved base count before it is applied.
-- **Storage and sharing** — clones live in `localStorage`; export/import as
-  YAML or JSON; a compressed base64url share code carries the selection plus
-  custom rules, with a size cap and file fallback.
-- **Versioning** — a clone stores the preset version. When the repo preset
-  changes, the UI warns that the clone is behind and offers a reset; no silent
-  merge.
-- **Preset sources** — YAML profiles under `src/presets/`, validated and
-  compiled to JSON at build time. A clone becomes explicit rule data, so the
-  generator is not re-run for that selection.
+- **My rules first** — custom rules are evaluated before every preset rule, so a
+  copied preset rule overrides it until the copy is disabled or deleted.
+- **Copy, not clone** — copy one preset rule or a whole section into My rules.
+  The preset stays visible and untouched.
+- **Rule editor** — action, classes, base types, rarity, item level range,
+  sockets, links, quality, stack size, map tier, `Continue`, comment and style.
+  Rules can be enabled, reordered by drag or buttons, duplicated and deleted.
+- **Templates** — uniques, 6-links, T15+ maps, quality gems, top currency, top
+  divination cards, ilvl 80+ rares, and hide normal/magic gear.
+- **Warnings and search** — catch-all rules that shadow later rules are flagged;
+  identical rules are flagged; preset rules are searchable.
+- **Item test** — paste one item to see which custom or preset rule decides it.
+- **Sharing** — full-build codes carry selection + My rules; rules-only codes
+  carry just My rules.
+- **Saved builds** — store selection + My rules only. Presets regenerate from
+  the latest data. Old whole-set clones are discarded.
 
-**Done:** the locked list shows every rule; a minion family clone can hide DEX
-helmets, 2H weapons and ranged weapons; the clone survives reload; export/import
-and the share code round-trip; resetting restores the locked preset.
+**Done:** the preset cannot be edited; copying a rule/group overrides it; My
+rules survive reload and share codes; conflict warnings and the item test work.
 
 ---
 
@@ -294,7 +283,7 @@ src/
       leagues/            (removed; see src/presets/leagues)
     presets/             YAML sources: families, ascendancies, leagues (M2f)
     generated/           compiled JSON presets, committed (M2f)
-    rules/               clone serialization and share codes (M2g)
+    rules/               custom rules, keys, templates and share codes (M2g)
     filter/
       types.ts           rule model, styles
       presets.ts         leveling/endgame x strictness
@@ -447,18 +436,18 @@ highlights the archetype's bases. *(Confirmed 2026-11-21.)*
 - [x] Three filter themes: Classic, High contrast, Muted
 - [x] One global strictness for the whole filter (per-section strictness removed in 0.10.1)
 - [x] Saved builds in `localStorage` with load and delete
-- [x] Theme and section strictness included in clone keys
+- [x] My-rules keys follow the selected build, not phase, strictness or theme
 - [x] Non-default section strictness recorded in the filter header
 - [x] Mobile layout
 
 Implementation notes:
 
 - `src/core/filter/themes.ts` post-processes generated rules, so themes apply to
-  clones as well.
+  custom rules as well.
 - Saved builds live in `src/ui/presets/storage.ts`; they store the full wizard
   state, not just the selection.
-- Clone keys include the theme, so a clone cannot leak into a differently
-  styled filter.
+- My-rules keys follow the selected build, so changing phase, strictness or
+  theme keeps the same rules.
 
 **Done:** a returning user regenerates their filter in under 30 seconds.
 
@@ -556,30 +545,28 @@ Implementation notes:
 meta mode lists all skills grouped; phase/strictness apply everywhere; sections
 are always included; old links still resolve.
 
-### M2g — Advanced rules and locked presets
+### M2g — Advanced rules
 
-- [x] Add `id` and `section` to every generated rule; group the locked pane
-- [x] Whole-set clone tied to mode + source + phase + strictness + sections
-- [x] localStorage store, versioned against the source preset
-- [x] Rule editor: enable, move, duplicate, delete, action, comment, rarity,
-  item level and `Continue`
-- [x] Style editing per rule: text, border, background, font size and sound
-- [x] Chips for DEX/STR/INT requirements, HEAD, Weapon 2H, Weapon Ranged
-- [x] RePoE extractor keeps item requirements
-- [x] Export/import JSON; compressed base64url share code with an 8 KB cap
-- [x] Share link that imports the clone when opened
-- [x] Reset-to-locked and stale-clone warning
-- [x] Tests: clone round-trip, compression, chip expansion, rule ordering
+- [x] Preset locked; no whole-set clone
+- [x] My rules evaluated before the preset
+- [x] Copy one preset rule or a whole section
+- [x] Editor: classes, bases, rarity, ilvl range, sockets, links, quality,
+  stack, map tier, Continue, comment and style
+- [x] Drag and button reordering, enable, duplicate, delete
+- [x] Templates for uniques, 6-links, T15 maps, gems, currency, cards and rares
+- [x] Search, catch-all/duplicate warnings and an item test box
+- [x] Full-build and rules-only share codes
+- [x] Saved builds store only selection + My rules; old clones discarded
+- [x] Tests: custom-first ordering, scratch base, templates, config keys
 
 Implementation notes:
 
-- `src/core/rules/chips.ts` resolves the friendly chips to base-type lists.
-- `src/core/rules/clone.ts` and `src/core/share/codec.ts` handle the clone
-  format and compressed code.
-- `src/ui/rules/AdvancedRules.tsx` renders the locked pane and editor;
-  `src/ui/rules/storage.ts` persists clones per selection key.
-- Custom rules are built from chips and get a default Show style; every rule in
-  a clone can edit text, border, background, font size and alert sound.
+- `src/core/filter/generate.ts` composes `[...customRules, ...presetRules]`.
+- `src/core/rules/templates.ts` holds the locked template rules.
+- `src/core/rules/key.ts` keys My rules per selected build; phase, strictness
+  and theme never hide them.
+- `src/ui/rules/storage.ts` stores My rules; `src/ui/presets/storage.ts` stores
+  saved builds with their custom rules.
 
 ### M2h — Loot simulator
 
@@ -599,8 +586,17 @@ Implementation notes:
 **Done:** pasting the four reported items shows the same shown/hidden outcome as
 the game; labels use the filter's colours and font size.
 
-**Done:** a minion family clone can hide DEX helmets, 2H and ranged weapons; the
-clone survives reload and share codes; resetting restores the locked preset.
+### M2i — From Scratch mode
+
+- [x] Fourth root mode beside family, ascendancy and meta
+- [x] Choose Hide everything or Show everything as the starting point
+- [x] Phase and strictness hidden in this mode
+- [x] Templates and My rules are the only sources of rules
+- [x] Mode-aware filename and URL
+- [x] FilterPath title resets with an unsaved-changes confirmation
+
+**Done:** a from-scratch hide-all filter with only “Show all uniques” added
+emits the expected rules and in-game filename.
 
 ### M2d — Visual inventory preview (superseded)
 
@@ -717,7 +713,7 @@ old file as a backup; unrelated filters in the folder are unchanged.
 - M2d: matcher tests for first-match-wins, `Continue`, and hidden gear
 - M2e: meta schema, league/family filtering, profile resolution, compatibility adapter
 - M2f: YAML compilation, JSON Schema validity, mode resolution, default loadouts, legacy links
-- M2g: clone round-trip, share-code compression, chip expansion, rule ordering
+- M2g: custom-first ordering, share-code compression, scratch base, templates
 - M3: mock directory handle; permission, backup, overwrite and no-delete paths
 - M2c: refresh script run against fixture JSON, schema failure path tested
 - CI runs `npm test` before every build
@@ -739,7 +735,8 @@ old file as a backup; unrelated filters in the folder are unchanged.
   the builds API
 - Meta changes land by PR; the validation Action must pass
 - Presets are YAML sources; compiled JSON is committed and validated
-- Clones are versioned against their source preset; no silent merges
+- My rules are keyed by selection; presets always regenerate from the latest
+  preset version
 - Keep old share links working until 1.0
 - Every archetype carries `verifiedFor`; bump it when checked against a league
 - Disclaimer stays visible: *"This product isn't affiliated with or endorsed by
@@ -758,7 +755,7 @@ old file as a backup; unrelated filters in the folder are unchanged.
 | Skill → class/ascendancy mapping is wrong | resolver tests; UI only offers allowed classes |
 | Old share links break after M2e | compatibility adapter and a migration test |
 | Share code grows too large | compress, cap the URL, fall back to file export |
-| Clone drifts from an updated preset | store preset version, warn, offer reset, never auto-merge |
+| Custom rules shadow preset rules unexpectedly | custom-first notice, catch-all warning, per-rule copy |
 | YAML preset and runtime data drift | compile at build time, commit generated JSON, schema test |
 | `DEX item` means something different to the user | show the resolved base count and examples before applying |
 | Rule order changes silently | explicit order in the editor, `Continue` tests, golden filters |
@@ -803,7 +800,7 @@ old file as a backup; unrelated filters in the folder are unchanged.
   overwrite confirmation, `.bak` and stale badges.
 - Check demo Ctrl+V capture, hover tooltip, Randomize and mobile.
 - Copy a build code, reload, and Import code it back on the same and a different selection.
-- Save a build with custom rules, change presets, and confirm the delta rebases.
+- Save a build with custom rules; confirm presets regenerate while My rules persist.
 - Confirm the unsaved-changes prompt on refresh after editing.
 - Dispatch the economy workflow once manually to confirm it opens a PR.
 

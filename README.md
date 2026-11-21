@@ -5,19 +5,19 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.11.2 — folder guidance is Steam-library aware. Remaining work is
-data capture and manual QA.
+**Status:** v0.12.0 — advanced rules, My rules, templates and From Scratch mode
+are live. Remaining work is data capture and manual QA.
 
 ## Features
 
-- Three independent modes: by family, by ascendancy, or by meta build
+- Four independent modes: by family, by ascendancy, by meta build, or from scratch
 - Per-league meta snapshots with all skills grouped by family
-- Normal / Strict / Very Strict
-- Toggle gear, gems, currency, maps and uniques
+- Normal / Strict / Very Strict (hidden in From Scratch mode)
 - Filter preview, download, copy and share links
 - Randomized loot simulator with Ctrl+V item capture and hover tooltips
-- Copy/import build codes and saved builds with custom-rule rebasing
-- Locked rule pane, whole-set clones, requirement chips and share codes
+- Copy/import full-build and rules-only share codes
+- Locked preset, My rules with templates, quick chips, conflict warnings and an item test box
+- From Scratch mode with hidden-all or shown-all start
 - Loot simulator with pasted in-game items and filter-styled labels
 - Three filter themes and saved builds; one global strictness
 - Economy-aware currency, divination and unique tiers refreshed daily

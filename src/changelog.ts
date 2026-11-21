@@ -17,6 +17,24 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.12.0',
+    date: '2026-11-21',
+    title: 'Advanced rules rework and From Scratch mode',
+    notes: [
+      'The preset is now locked and never cloned. My rules are evaluated first; copy individual preset rules or whole groups to override them.',
+      'Rebuilt My rules editor: item classes, base types, quick attribute/slot chips, rarity, ilvl range, sockets, links, quality, stack, map tier, Continue, style, search and drag reordering.',
+      'Added predefined templates: uniques, 6-links, T15 maps, quality gems, top currency, top divination cards, ilvl 80 rares and hide normal/magic gear.',
+      'Added From Scratch mode with Hide everything or Show everything as the starting point; phase and strictness are hidden there.',
+      'Added conflict warnings, an item test box, rules-only share codes, and full-build code import/export.',
+      'My rules follow the selected build, so changing phase, strictness or theme keeps them.',
+      'Saved builds now store selection + My rules only; presets always regenerate. Old whole-set clones and saved builds are discarded with a notice.',
+      'Share links that carry a build code now restore the build instead of dropping the code.',
+      'Clicking the FilterPath title resets the filter, with a confirmation when there are unsaved changes.',
+    ],
+    commits: [],
+    compare: 'v0.11.2...v0.12.0',
+  },
+  {
     version: '0.11.2',
     date: '2026-11-21',
     title: 'Steam library-aware filter paths',
