@@ -2,6 +2,18 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.11.2 — 2026-11-21
+
+Steam library-aware filter paths.
+
+- Folder guidance now explains that `steamapps` lives inside each Steam
+  library, not the home folder.
+- Shows the default Proton path, an extra-library example, and a `find` command
+  to locate the prefix.
+- Clarifies that `.filter` files go directly into
+  `Documents/My Games/Path of Exile`, with no `filters` subfolder.
+- Updates the builder install steps with the same wording.
+
 ## 0.11.1 — 2026-11-21
 
 Demo capture, build codes and merged saving.

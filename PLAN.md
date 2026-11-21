@@ -6,8 +6,8 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.11.1 ships demo capture, build codes, rebased saved builds and
-merged folder saving. Remaining work is data capture and manual QA.
+**Status:** v0.11.2 ships Steam-library-aware folder guidance. Remaining work is
+data capture and manual QA.
 
 ---
 
@@ -677,7 +677,8 @@ tapping a tile shows why; the preview loads no external assets.
   FilterPath header (`FilterPath <version> - filter format <n>`).
 - Firefox and Safari do not implement the picker; they keep the download flow.
 - Linux/Proton: the user picks
-  `compatdata/238960/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile`.
+  `<Steam library>/steamapps/compatdata/238960/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile`.
+  The library can be outside the home folder, e.g. `/mnt/<drive>/SteamLibrary`; `steamapps` is per library.
   Flatpak browsers may need filesystem permission for `/mnt` before the folder
   is visible.
 - Safety: never delete or overwrite unrelated files; write a `.bak` copy before

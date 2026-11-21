@@ -5,8 +5,8 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.11.1 — demo capture, build codes, rebased saved builds and merged
-folder saving are live. Remaining work is data capture and manual QA.
+**Status:** v0.11.2 — folder guidance is Steam-library aware. Remaining work is
+data capture and manual QA.
 
 ## Features
 

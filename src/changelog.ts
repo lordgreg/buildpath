@@ -17,6 +17,24 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.11.2',
+    date: '2026-11-21',
+    title: 'Steam library-aware filter paths',
+    notes: [
+      'Folder guidance now explains that steamapps lives inside each Steam library, not the home folder.',
+      'Shows the default Proton path, an extra-library example, and a find command to locate the prefix.',
+      'Clarifies that .filter files go directly into Documents/My Games/Path of Exile, with no filters subfolder.',
+      'Updates the builder install steps with the same library-aware wording.',
+    ],
+    commits: [
+      {
+        sha: '479ee66',
+        message: 'fix: explain Steam library paths for folder sync (0.11.2)',
+      },
+    ],
+    compare: 'v0.11.1...v0.11.2',
+  },
+  {
     version: '0.11.1',
     date: '2026-11-21',
     title: 'Demo capture, build codes and merged saving',
