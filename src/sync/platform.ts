@@ -59,3 +59,16 @@ export function folderPathHint(value: string): string | null {
   }
   return null;
 }
+
+export const BRAVE_FILE_ACCESS_FLAG = 'brave://flags/#file-system-access-api';
+
+export function isBraveNavigator(nav: Navigator | undefined): boolean {
+  return !!nav && 'brave' in nav;
+}
+
+/** Brave exposes a `brave` object; the File System Access API is off by default. */
+export function isBrave(): boolean {
+  return isBraveNavigator(
+    typeof navigator === 'undefined' ? undefined : navigator,
+  );
+}

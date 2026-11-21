@@ -10,8 +10,10 @@ import {
 } from '../presets/storage.ts';
 import type { WizardState } from '../wizardState.ts';
 import {
+  BRAVE_FILE_ACCESS_FLAG,
   defaultFolderPath,
   folderPathHint,
+  isBrave,
   LINUX_WRITE_COMMAND,
   PROTON_EXTRA_LIBRARY,
   PROTON_FILTER_PATH,
@@ -111,6 +113,7 @@ export default function SaveBuildPanel({
   const [builds, setBuilds] = useState<SavedBuild[]>(() => listBuilds());
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const brave = isBrave();
   const [pathNote, setPathNote] = useState<string>(() => {
     try {
       return localStorage.getItem('filterpath.folder-path.v1') ?? '';
@@ -335,6 +338,15 @@ export default function SaveBuildPanel({
               {folder.handle ? 'Change folder' : 'Choose folder'}
             </button>
           )}
+          {!folder.supported && brave && (
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              className="rounded border border-ink-600 px-2 py-1 text-[11px] text-zinc-300"
+            >
+              Reload after enabling
+            </button>
+          )}
           {folder.supported && folder.handle && folder.permission !== 'granted' && (
             <button
               type="button"
@@ -373,6 +385,39 @@ export default function SaveBuildPanel({
             </>
           )}
         </div>
+
+        {!folder.supported && (
+          <div className="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-[11px] leading-relaxed text-amber-200">
+            {brave ? (
+              <>
+                <p>
+                  Brave disables folder writing by default. Open{' '}
+                  <code className="rounded bg-ink-900 px-1">
+                    {BRAVE_FILE_ACCESS_FLAG}
+                  </code>
+                  , set <strong>File System Access API</strong> to{' '}
+                  <strong>Enabled</strong>, relaunch Brave, then reload this
+                  page.
+                </p>
+                <button
+                  type="button"
+                  onClick={() =>
+                    void copyText(BRAVE_FILE_ACCESS_FLAG)
+                  }
+                  className="mt-1 text-[10px] underline underline-offset-2"
+                >
+                  Copy brave:// flag
+                </button>
+              </>
+            ) : (
+              <p>
+                This browser cannot write to folders. Use Chrome, Chromium or
+                Edge for folder writing; Firefox and Safari only support the
+                download flow.
+              </p>
+            )}
+          </div>
+        )}
 
         <div className="mt-3 rounded-lg border border-ink-700 bg-ink-900/40 p-3">
           <label className="block text-[10px] uppercase tracking-wide text-zinc-500">
@@ -413,9 +458,10 @@ export default function SaveBuildPanel({
               </>
             ) : (
               <>
-                Reference only: this browser cannot write to folders. Use{' '}
-                <span className="text-zinc-300">Download .filter</span> and save
-                it into this path.
+                Reference only: this path is not connected. Resolve the browser
+                note above, then use{' '}
+                <span className="text-zinc-300">Download .filter</span> or
+                <span className="text-zinc-300"> Choose folder</span>.
               </>
             )}
           </p>

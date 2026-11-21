@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import {
+  BRAVE_FILE_ACCESS_FLAG,
   defaultFolderPath,
   detectPlatform,
   folderPathHint,
+  isBraveNavigator,
   platformFrom,
   PROTON_FILTER_PATH,
   WINDOWS_FILTER_PATH,
@@ -31,6 +33,14 @@ describe('platform guidance', () => {
     expect(PROTON_FILTER_PATH).toContain('compatdata/238960');
     expect(writeHint('linux')).toContain('chmod u+w');
     expect(writeHint('windows')).toContain('Properties');
+  });
+
+  it('recognises Brave and exposes the flag url', () => {
+    expect(isBraveNavigator({ brave: {} } as unknown as Navigator)).toBe(true);
+    expect(isBraveNavigator({} as Navigator)).toBe(false);
+    expect(BRAVE_FILE_ACCESS_FLAG).toBe(
+      'brave://flags/#file-system-access-api',
+    );
   });
 
   it('suggests a folder path per platform', () => {
