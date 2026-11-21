@@ -27,7 +27,10 @@ export const RELEASES: Release[] = [
       'The download panel now shows the exact in-game filter name.',
       'Install notes now explain that online filters and local files are separate.',
     ],
-    commits: [],
+    commits: [
+      { sha: 'b0f3f76', message: 'feat: share filter rules with a preview matcher' },
+      { sha: 'bb84fff', message: 'feat: add an in-site changelog' },
+    ],
     compare: 'v0.2.0...v0.3.0',
   },
   {

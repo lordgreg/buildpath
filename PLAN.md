@@ -6,8 +6,9 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** M0 and M1 shipped at **v0.2.0**. A generated filter was loaded
-successfully in the game client on 2026-11-21. M2a/M2b are next.
+**Status:** M0, M1 and the M2d matcher groundwork shipped at **v0.3.0**. A
+generated filter was loaded successfully in the game client on 2026-11-21.
+M2a/M2b and the inventory UI are next.
 
 ---
 
@@ -139,9 +140,24 @@ build instead of the user's filter.
 | RePoE missing `Fracturing Orb`, `Hinekora's Lock` | Reviewed supplement merged into the registry |
 | RePoE has no `int_shield` tag | Intersect broader tags with `Class` (e.g. `int_armour` + `Shields`) |
 | Non-ASCII text in comments is pointless risk | Filters are ASCII-only, asserted in tests |
+| Reported leaks (normal gloves, magic axe, low magic armour) | All four items were from an **online filter still selected** (`item_filter` in `production_Config.ini` pointed at `OnlineFilters/PVzj7BcL`), not FilterPath. Added matcher fixtures proving FilterPath hides them and surfaced the exact in-game name |
 | Client caches the filter list after a file changes | Reopen the dropdown or restart; documented in install steps |
 | Pages workflow used Node 20-era actions | Action majors kept current (`checkout@v7`, etc.) |
 | A filter that parses can still be functionally wrong | In-game smoke test is part of M1's definition of done |
+
+### 2.8 Verifying which filter the game is running
+
+The dropdown mixes local files and online filters, so "the filter loaded" does
+not prove the right one is selected.
+
+- The selected local filter must appear as `FilterPath-v<version>-...` in the
+  in-game dropdown.
+- Online filters live in `OnlineFilters/` under
+  `Documents/My Games/Path of Exile` and use opaque IDs. `item_filter=<id>` in
+  `production_Config.ini` identifies the active one.
+- Items already on the ground may keep labels from the previously active filter
+  until they are re-rendered.
+- The site shows the exact in-game name next to Download; use it as the check.
 
 ---
 
@@ -184,11 +200,15 @@ src/
       overrides.json     hand-written, wins over fetched prices
     tiering.ts           price -> tier, pure (M2b)
     preview/             filter matching against sample items (M2d)
+    preview/match.ts     first-match evaluation, Continue support
+    preview/samples.ts   reported leaks + representative drops
   ui/                    wizard, preview, URL state
+    Changelog.tsx        release history page
     preview/             inventory preview components (M2d)
   sync/                  download | clipboard | fileSystem | (future) api
     handles.ts           IndexedDB storage for directory handles (M3a)
     fileSystem.ts        pick, list, read, write (M3a/M3b)
+  changelog.ts           release and commit data for the site
 scripts/
   extract-repoe.mjs
   refresh-economy.mjs    M2c
@@ -280,6 +300,8 @@ always wins.
 - [x] Syntax validator on emitted output; golden files for representative builds
 - [x] Version in the filter header and file name (app + filter format)
 - [x] Loaded successfully in the game client (Linux/Proton, Covens)
+- [x] In-site changelog with releases and commit links
+- [x] Exact in-game filter name shown next to Download
 
 Implementation notes:
 
@@ -295,7 +317,7 @@ Implementation notes:
   plus a small reviewed supplement) so a bad name fails CI.
 - Deep links: `#archetype=...&phase=...&strictness=...&sections=gear,gems,...`.
 - In-game file name is `FilterPath-v<version>-<build>-<phase>-<strictness>`,
-  e.g. `FilterPath-v0.2.0-necro-minions-leveling-strict`.
+  e.g. `FilterPath-v0.3.0-necro-minions-leveling-strict`.
 
 **Done:** a generated filter loads in-game with no errors, hides junk, and
 highlights the archetype's bases. *(Confirmed 2026-11-21.)*
@@ -336,20 +358,21 @@ leaves the previous file and fails the job.
 
 See what the filter does before downloading it.
 
-- `src/core/preview/sample-items.ts`: ~40 representative drops — one or two
-  bases per archetype slot, junk white/magic gear, low- and high-ilvl rares,
-  currency, a divination card, a unique, a gem, a map.
-- `src/core/preview/match.ts`: evaluate generated rules against an item
-  (first match wins, `Continue` respected). Pure, unit-tested, and reusable by
+- [x] `src/core/preview/samples.ts`: reported leak fixtures plus
+  representative drops — bases per archetype slot, junk white/magic gear, low-
+  and high-ilvl rares, currency, a divination card stand-in, a unique, a gem,
+  a map.
+- [x] `src/core/preview/match.ts`: evaluate generated rules against an item
+  (first match wins, `Continue` respected). Pure, unit-tested, and reused by
   the syntax tests.
-- `src/ui/preview/InventoryPreview.tsx`: equipment panel (weapon, offhand,
+- [ ] `src/ui/preview/InventoryPreview.tsx`: equipment panel (weapon, offhand,
   helmet, body, gloves, boots, belt, amulet, two rings, flasks) plus a 12x5
   inventory grid. Every tile shows the item name and rarity colour, with a
   shown/hidden state. Hidden tiles are dimmed; a "show hidden" toggle reveals
   them.
-- No GGG art. Tiles are CSS/SVG with text and simple class glyphs, so the
+- [ ] No GGG art. Tiles are CSS/SVG with text and simple class glyphs, so the
   preview stays offline and licence-clean.
-- Live updates with build, phase, strictness and section toggles.
+- [ ] Live updates with build, phase, strictness and section toggles.
 
 **Done:** switching phase or strictness visibly changes which sample items are
 shown; a normal ilvl 5 helmet is hidden while an ilvl 86 rare ring is shown;
@@ -423,6 +446,8 @@ old file as a backup; unrelated filters in the folder are unchanged.
 - No network in the browser
 - No secrets, no analytics
 - Conventional Commits
+- On every release: bump `package.json`, add the release to
+  `src/changelog.ts` and `CHANGELOG.md`, tag `v<version>`, then deploy
 - Every archetype carries `verifiedFor`; bump it when checked against a league
 - Disclaimer stays visible: *"This product isn't affiliated with or endorsed by
   Grinding Gear Games in any way."*
@@ -437,7 +462,8 @@ old file as a backup; unrelated filters in the folder are unchanged.
 | `HasExplicitMod` breaks between patches | prefer tags/classes; review before use |
 | Unknown `BaseType` aborts the whole filter | `known-base-types.json` + CI test + supplement file |
 | Filter placed in a folder the game does not scan | Install docs with the Proton path; M3 folder picker |
-| Online filters mistaken for local files | Docs call out `OnlineFilters/` |
+| Online filters mistaken for local files | Docs call out `OnlineFilters/`; the site shows the exact in-game name |
+| A different filter stays selected and looks like a leak | Verify section 2.8; matcher fixtures prove FilterPath's behaviour |
 | poe.ninja schema drift | schema validation, keep-last-good, PR review |
 | Actions schedule delayed or disabled after inactivity | `workflow_dispatch`; economy drift only affects tiering |
 | Chromium-only folder sync | download fallback everywhere |

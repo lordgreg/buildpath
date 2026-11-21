@@ -5,8 +5,8 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** M1 — pick a build and download a filter. M2 adds themes, prices and
-scheduled economy updates; M3 writes the file into your filters folder.
+**Status:** v0.3.0 — M1 shipped, with the preview matcher and changelog. M2
+adds themes, the inventory preview and prices; M3 adds directory sync.
 
 ## Features
 
@@ -15,8 +15,11 @@ scheduled economy updates; M3 writes the file into your filters folder.
 - Toggle gear, gems, currency, maps and uniques
 - Filter preview, download, copy and share links
 - Build version in the file name and header, e.g.
-  `FilterPath-v0.2.0-necro-minions-leveling-strict.filter`
+  `FilterPath-v0.3.0-necro-minions-leveling-strict.filter`
 - Generated client-side; no account and no network calls
+
+**Changelog:** [CHANGELOG.md](./CHANGELOG.md) or the
+[in-site changelog](https://lordgreg.github.io/filterpath/#/changelog).
 
 **Live:** https://lordgreg.github.io/filterpath/
 
@@ -47,10 +50,15 @@ depend on the network.
 ## Layout
 
 ```
-src/core/     framework-free: archetypes, rules, emit, tiering
-src/ui/       React wizard and preview
-src/sync/     download, clipboard, File System Access, future API
-scripts/      data extractors
+src/core/                  framework-free
+  archetypes/              types, validator, curated matrix
+  filter/                  rule model, presets, emit, validator, generator
+  preview/                 rule matcher and sample items
+  data/                    base types, economy, overrides
+src/ui/                    wizard, changelog, URL state
+src/sync/                  download, clipboard, File System Access
+src/changelog.ts           release and commit data for the site
+scripts/                   data extractors
 ```
 
 See [PLAN.md](./PLAN.md) for the milestones and constraints.
