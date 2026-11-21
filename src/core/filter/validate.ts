@@ -125,7 +125,7 @@ const EFFECT_COLORS = new Set([
 ]);
 
 const NUMERIC = /^(?:(?:>=|<=|==|=|<|>|!=)\s*)?-?\d+(?:\.\d+)?$/;
-const ITEM_FILTER_NAME = /^[A-Za-z0-9 _-]+\.filter$/;
+const ITEM_FILTER_NAME = /^[A-Za-z0-9 ._-]+\.filter$/;
 
 function isColor(value: string): boolean {
   const parts = value.trim().split(/\s+/);
@@ -368,7 +368,12 @@ export function validateFilter(text: string): FilterIssue[] {
 }
 
 export function filterNameFor(name: string): string {
-  const base = name.replace(/[^A-Za-z0-9 _-]/g, '').trim() || 'FilterPath';
+  const base = name
+    .replace(/[^A-Za-z0-9 ._-]/g, '')
+    .replace(/\.{2,}/g, '.')
+    .replace(/^[.\s]+|[.\s]+$/g, '')
+    .trim();
+  if (!base) return 'FilterPath.filter';
   return base.endsWith('.filter') ? base : `${base}.filter`;
 }
 

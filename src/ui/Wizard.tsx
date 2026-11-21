@@ -15,6 +15,7 @@ import FilterPreview from './FilterPreview.tsx';
 import { copyText, downloadFilter } from './download.ts';
 import { useWizardState } from './useWizardState.ts';
 import { wizardHash } from './wizardState.ts';
+import { APP_VERSION } from '../version.ts';
 
 const CLASS_ORDER: CharacterClass[] = [
   'Witch',
@@ -49,7 +50,10 @@ export default function Wizard() {
   const [state, update] = useWizardState();
   const [copied, setCopied] = useState<Copied>(null);
 
-  const filter = useMemo(() => generateFilter(state), [state]);
+  const filter = useMemo(
+    () => generateFilter({ ...state, version: APP_VERSION }),
+    [state],
+  );
   const archetype = getArchetype(state.archetypeId) ?? archetypes[0]!;
 
   const groups = CLASS_ORDER.map((className) => ({
@@ -72,7 +76,8 @@ export default function Wizard() {
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">
-            Path of Exile 1
+            Path of Exile 1 <span className="text-zinc-600">/</span>{' '}
+            <span className="text-zinc-500">v{APP_VERSION}</span>
           </p>
           <h1 className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             FilterPath

@@ -10,6 +10,7 @@ import { mapRules } from './rules/maps.ts';
 import { uniqueRules } from './rules/uniques.ts';
 import type { Rule } from './types.ts';
 import { filterNameFor, validateFilter, type FilterIssue } from './validate.ts';
+import { DEFAULT_FILTER_VERSION, FILTER_FORMAT_VERSION } from './version.ts';
 
 export interface Sections {
   gear: boolean;
@@ -34,6 +35,8 @@ export interface FilterConfig {
   phase: Phase;
   strictness: Strictness;
   sections?: Sections;
+  /** Build version embedded in the header and file name. */
+  version?: string;
 }
 
 export interface GeneratedFilter {
@@ -57,6 +60,7 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
 
   const preset = getPreset(config.phase, config.strictness);
   const sections = normalizeSections(config.sections);
+  const version = config.version ?? DEFAULT_FILTER_VERSION;
   const rules: Rule[] = [];
   const baseTypes = new Set<string>();
 
@@ -75,7 +79,8 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
 
   const header = [
     '========================================================================',
-    'FilterPath - build-specific loot filter',
+    `FilterPath ${version} - filter format ${FILTER_FORMAT_VERSION}`,
+    'Build-specific loot filter',
     `Build: ${archetype.name} - ${archetype.class} / ${archetype.ascendancy}`,
     `Phase: ${config.phase === 'leveling' ? 'Leveling' : 'Endgame'} - ${STRICTNESS_LABELS_PUBLIC[config.strictness]}`,
     `League: ${archetype.verifiedFor}`,
@@ -91,7 +96,7 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
   return {
     text,
     fileName: filterNameFor(
-      `FilterPath-${archetype.id}-${config.phase}-${config.strictness}`,
+      `FilterPath-v${version}-${archetype.id}-${config.phase}-${config.strictness}`,
     ),
     ruleCount: rules.length,
     baseTypeCount: baseTypes.size,

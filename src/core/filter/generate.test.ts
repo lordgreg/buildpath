@@ -62,7 +62,7 @@ describe('generateFilter', () => {
           expect(filter.text, label).toContain('Show');
           expect(filter.text, label).toContain(archetype.name);
           expect(filter.fileName, label).toMatch(
-            /^FilterPath-[a-z0-9-]+-(leveling|endgame)-(normal|strict|very-strict)\.filter$/,
+            /^FilterPath-v[0-9A-Za-z._-]+-(leveling|endgame)-(normal|strict|very-strict)\.filter$/,
           );
           // The game client reads filters as plain text; keep it ASCII.
           expect(filter.text, label).not.toMatch(/[^\x09\x0a\x20-\x7e]/);
@@ -122,6 +122,20 @@ describe('generateFilter', () => {
       ...DEFAULT_SECTIONS,
       gear: false,
     });
+  });
+
+  it('embeds the build version and filter format', () => {
+    const filter = generateFilter({
+      archetypeId: 'necro-minions',
+      phase: 'leveling',
+      strictness: 'normal',
+      version: '9.9.9',
+    });
+
+    expect(filter.text).toContain('# FilterPath 9.9.9 - filter format 1');
+    expect(filter.fileName).toBe(
+      'FilterPath-v9.9.9-necro-minions-leveling-normal.filter',
+    );
   });
 
   it('resolves a known archetype for the UI', () => {

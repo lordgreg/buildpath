@@ -14,6 +14,8 @@ scheduled economy updates; M3 writes the file into your filters folder.
 - Normal / Strict / Very Strict
 - Toggle gear, gems, currency, maps and uniques
 - Filter preview, download, copy and share links
+- Build version in the file name and header, e.g.
+  `FilterPath-v0.2.0-necro-minions-leveling-strict.filter`
 - Generated client-side; no account and no network calls
 
 **Live:** https://lordgreg.github.io/filterpath/

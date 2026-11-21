@@ -88,6 +88,12 @@ describe('filterNameFor', () => {
     );
   });
 
+  it('keeps a versioned name', () => {
+    expect(filterNameFor('FilterPath-v0.2.0-necro-minions-leveling-normal')).toBe(
+      'FilterPath-v0.2.0-necro-minions-leveling-normal.filter',
+    );
+  });
+
   it('strips path and shell characters', () => {
     expect(filterNameFor('../../evil:name*')).toBe('evilname.filter');
   });
