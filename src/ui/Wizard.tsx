@@ -6,6 +6,7 @@ import {
   type Phase,
 } from '../core/filter/presets.ts';
 import { configKey } from '../core/rules/key.ts';
+import { autoBuildName } from '../core/filter/name.ts';
 import type { Rule } from '../core/filter/types.ts';
 import { THEMES } from '../core/filter/themes.ts';
 import { ASCENDANCIES, getAscendancy } from '../meta/ascendancies.ts';
@@ -24,6 +25,7 @@ import { decodeShare, encodeShare } from '../core/share/codec.ts';
 import FilterPreview from './FilterPreview.tsx';
 import AdvancedRules from './rules/AdvancedRules.tsx';
 import SaveBuildPanel from './save/SaveBuildPanel.tsx';
+import { useFiltersFolder } from './save/useFiltersFolder.ts';
 import { discardLegacyBuilds, type SavedBuild } from './presets/storage.ts';
 import { buildHash } from './buildSnapshot.ts';
 import {
@@ -111,6 +113,9 @@ export default function Wizard() {
   const [customRules, setCustomRules] = useState<Rule[]>(() =>
     loadCustomRules(activeKey),
   );
+  const [activeBuildId, setActiveBuildId] = useState<string | null>(null);
+  const autoName = autoBuildName(state);
+  const folder = useFiltersFolder();
 
   useEffect(() => {
     setCustomRules(loadCustomRules(activeKey));
@@ -125,6 +130,7 @@ export default function Wizard() {
         theme: state.theme,
         sections: state.sections,
         version: APP_VERSION,
+        buildName: state.name,
       }),
     [state],
   );
@@ -139,6 +145,7 @@ export default function Wizard() {
         sections: state.sections,
         version: APP_VERSION,
         customRules,
+        buildName: state.name,
       }),
     [state, customRules],
   );
@@ -232,17 +239,35 @@ export default function Wizard() {
     saveCustomRules(configKey(next), []);
     update(next);
     setCustomRules([]);
+    setActiveBuildId(null);
     setSavedHash(buildHash(next, []));
     setNotice('Filter reset.');
   };
 
+  const download = async () => {
+    if (folder.handle) {
+      const result = await folder.write(filter.fileName, filter.text, true);
+      if (result.ok) {
+        setNotice(result.message);
+        return;
+      }
+      if (result.cancelled) {
+        setNotice(result.message);
+        return;
+      }
+      setNotice(`${result.message} Downloading instead.`);
+    }
+    downloadFilter(filter.fileName, filter.text);
+  };
+
   const loadBuild = (build: SavedBuild) => {
-    const loaded = coerceWizardState(build.state);
+    const loaded = { ...coerceWizardState(build.state), name: build.name };
     const loadedKey = configKey(loaded);
     const rules = build.customRules ?? [];
     saveCustomRules(loadedKey, rules);
     update(loaded);
     setCustomRules(rules);
+    setActiveBuildId(build.id);
     setSavedHash(buildHash(loaded, rules));
     setNotice(`Loaded ${build.name}.`);
   };
@@ -257,6 +282,7 @@ export default function Wizard() {
       saveCustomRules(configKey(importedState), rules);
       update(importedState);
       setCustomRules(rules);
+      setActiveBuildId(null);
       setNotice('Imported build. Save it if you want to keep it locally.');
       return null;
     } catch (error) {
@@ -333,6 +359,12 @@ export default function Wizard() {
             {state.mode === 'scratch'
               ? 'Choose where to start, add rules, then inspect exactly what the filter will show.'
               : 'Pick a build one way, tune the phase and strictness, then inspect exactly what the filter will show.'}
+          </p>
+          <p className="mt-2 max-w-xl text-[11px] text-zinc-600">
+            Editing{' '}
+            <code className="break-words rounded bg-ink-900/70 px-1.5 py-0.5 text-zinc-400">
+              {filter.fileName}
+            </code>
           </p>
         </div>
         <nav className="flex items-center gap-4 text-xs text-zinc-500">
@@ -745,10 +777,11 @@ export default function Wizard() {
             <div className="mt-5 grid gap-2 sm:grid-cols-[1fr_auto_auto]">
               <button
                 type="button"
-                onClick={() => downloadFilter(filter.fileName, filter.text)}
-                className="rounded-lg bg-gold-400 px-4 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-gold-300"
+                onClick={() => void download()}
+                disabled={folder.busy}
+                className="rounded-lg bg-gold-400 px-4 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-gold-300 disabled:opacity-40"
               >
-                Download .filter
+                {folder.handle ? `Save to ${folder.handle.name}` : 'Download .filter'}
               </button>
               <button
                 type="button"
@@ -765,6 +798,12 @@ export default function Wizard() {
                 {copied === 'link' ? 'Link copied' : 'Share link'}
               </button>
             </div>
+            {folder.handle && (
+              <p className="mt-2 text-[10px] text-zinc-600">
+                Writes into {folder.handle.name}; asks before overwriting and
+                downloads instead if the folder cannot be written.
+              </p>
+            )}
             <p className="mt-2 text-[11px] text-zinc-500">
               Copy code and Share link both carry the whole build, including
               custom rules. Paste a code into Import code to restore it.
@@ -794,8 +833,23 @@ export default function Wizard() {
           text={filter.text}
           appVersion={APP_VERSION}
           dirty={dirty}
+          name={state.name}
+          autoName={autoName}
+          activeBuildId={activeBuildId}
+          folder={folder}
+          onNameChange={(name) => update({ name })}
           onLoad={loadBuild}
-          onSaved={() => setSavedHash(currentHash)}
+          onSaved={(build) => {
+            setActiveBuildId(build.id);
+            setSavedHash(currentHash);
+          }}
+          onUpdated={(build) => {
+            setActiveBuildId(build.id);
+            setSavedHash(currentHash);
+          }}
+          onDeleted={(id) => {
+            if (activeBuildId === id) setActiveBuildId(null);
+          }}
         />
 
         <AdvancedRules
@@ -873,8 +927,9 @@ export default function Wizard() {
           </div>
           <button
             type="button"
-            onClick={() => downloadFilter(filter.fileName, filter.text)}
-            className="shrink-0 rounded-lg bg-gold-400 px-4 py-2 text-sm font-semibold text-ink-950"
+            onClick={() => void download()}
+            disabled={folder.busy}
+            className="shrink-0 rounded-lg bg-gold-400 px-4 py-2 text-sm font-semibold text-ink-950 disabled:opacity-40"
           >
             Download
           </button>

@@ -11,6 +11,8 @@ import {
 import type { BuildMode, BuildSelection, FamilyId } from '../meta/types.ts';
 
 export interface WizardState {
+  /** User-facing build name; empty means derive it from the selection. */
+  name: string;
   mode: BuildMode;
   familyId: FamilyId;
   ascendancyId: string;
@@ -28,6 +30,7 @@ const DEFAULT_ASCENDANCY = 'necromancer';
 const DEFAULT_SKILL = 'summon-skeletons';
 
 export const DEFAULT_STATE: WizardState = {
+  name: '',
   mode: 'family',
   familyId: DEFAULT_FAMILY,
   ascendancyId: DEFAULT_ASCENDANCY,
@@ -84,10 +87,13 @@ export function coerceWizardState(input: Partial<WizardState>): WizardState {
       ? input.strictness
       : 'normal';
   const theme = isThemeId(input.theme) ? input.theme : 'classic';
+  const name =
+    typeof input.name === 'string' ? input.name.trim().slice(0, 80) : '';
 
   return {
     ...DEFAULT_STATE,
     ...selection,
+    name,
     scratchStart: input.scratchStart === 'show' ? 'show' : 'hide',
     phase,
     strictness,
@@ -110,6 +116,7 @@ export function parseWizardHash(hash: string): WizardState {
   const theme = isThemeId(themeParam) ? themeParam : DEFAULT_STATE.theme;
 
   const common = {
+    name: (params.get('name') ?? '').trim().slice(0, 80),
     phase: phase && PHASES.includes(phase) ? phase : DEFAULT_STATE.phase,
     strictness: chosenStrictness,
     theme,
@@ -174,5 +181,6 @@ export function wizardHash(state: WizardState): string {
     params.set('strictness', state.strictness);
   }
   params.set('theme', state.theme);
+  if (state.name.trim()) params.set('name', state.name.trim());
   return params.toString();
 }

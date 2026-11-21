@@ -81,6 +81,7 @@ export default function DemoPage() {
         sections: state.sections,
         version: APP_VERSION,
         customRules,
+        buildName: state.name,
       }),
     [state, customRules],
   );
@@ -89,6 +90,7 @@ export default function DemoPage() {
     <LootSimulator
       rules={filter.rules}
       label={`${filter.archetype.name} - ${filter.archetype.verifiedFor}`}
+      fileName={filter.fileName}
       builderHash={wizardHash(state)}
     />
   );

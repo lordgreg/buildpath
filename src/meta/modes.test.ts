@@ -79,7 +79,7 @@ describe('family mode', () => {
           expect(filter.warnings, label).toEqual([]);
           expect(validateFilter(filter.text), label).toEqual([]);
           expect(filter.fileName, label).toBe(
-            `FilterPath-vdev-family-${family.id}-${phase === 'leveling' ? 'lev' : 'end'}-${strictness}.filter`,
+            `filterpath-${family.id}-${phase}-${strictness}-dev.filter`,
           );
           expect(filter.text, label).not.toMatch(/[^\x09\x0a\x20-\x7e]/);
           for (const line of filter.text.split('\n')) {
@@ -150,7 +150,7 @@ describe('ascendancy mode', () => {
       });
       expect(filter.warnings, ascendancy.id).toEqual([]);
       expect(filter.fileName, ascendancy.id).toBe(
-        `FilterPath-vdev-${ascendancy.id}-end-strict.filter`,
+        `filterpath-${ascendancy.id}-endgame-strict-dev.filter`,
       );
     }
   });

@@ -20,6 +20,7 @@ import { uniqueRules } from './rules/uniques.ts';
 import type { Rule, RuleSection } from './types.ts';
 import { applyTheme, type ThemeId } from './themes.ts';
 import { filterNameFor, validateFilter, type FilterIssue } from './validate.ts';
+import { buildFileName } from './name.ts';
 import { DEFAULT_FILTER_VERSION, FILTER_FORMAT_VERSION } from './version.ts';
 
 export interface Sections {
@@ -54,6 +55,8 @@ export interface FilterConfig {
   customRules?: Rule[];
   /** Build version embedded in the header and file name. */
   version?: string;
+  /** Optional user name for the downloaded file. */
+  buildName?: string;
 }
 
 export interface CompiledFilter {
@@ -202,18 +205,21 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
   ];
 
   const text = emitFilter(header, compiled.rules);
-  const phase = config.phase === 'leveling' ? 'lev' : 'end';
 
   return {
     ...compiled,
     text,
-    fileName: filterNameFor(
-      scratch
-        ? `FilterPath-v${compiled.version}-from-scratch-${scratchStart}`
-        : `FilterPath-v${compiled.version}-${compiled.archetype.id}-${
-            config.selection ? phase : config.phase
-          }-${config.strictness}`,
-    ),
+    fileName: config.selection
+      ? buildFileName({
+          selection: config.selection,
+          phase: config.phase,
+          strictness: config.strictness,
+          version: compiled.version,
+          name: config.buildName,
+        })
+      : filterNameFor(
+          `filterpath-${compiled.archetype.id}-${config.phase}-${config.strictness}-${compiled.version}`,
+        ),
     ruleCount: compiled.rules.length,
     baseTypeCount: compiled.baseTypes.length,
     warnings: validateFilter(text),

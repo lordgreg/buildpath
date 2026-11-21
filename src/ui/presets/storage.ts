@@ -5,6 +5,7 @@ export interface SavedBuild {
   id: string;
   name: string;
   createdAt: string;
+  updatedAt?: string;
   state: WizardState;
   /** User rules only; the preset is always regenerated from the latest data. */
   customRules?: Rule[];
@@ -55,8 +56,16 @@ function writeAll(builds: SavedBuild[]): void {
   }
 }
 
+function cloneRules(rules?: Rule[]): Rule[] | undefined {
+  return rules && rules.length > 0
+    ? (JSON.parse(JSON.stringify(rules)) as Rule[])
+    : undefined;
+}
+
 export function listBuilds(): SavedBuild[] {
-  return readAll().sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  return readAll().sort((a, b) =>
+    (b.updatedAt ?? b.createdAt).localeCompare(a.updatedAt ?? a.createdAt),
+  );
 }
 
 export function saveBuild(
@@ -64,16 +73,40 @@ export function saveBuild(
   state: WizardState,
   customRules?: Rule[],
 ): SavedBuild {
+  const rules = cloneRules(customRules);
   const build: SavedBuild = {
     id: `build-${Date.now()}`,
     name: name.trim() || 'Untitled build',
     createdAt: new Date().toISOString(),
     state: JSON.parse(JSON.stringify(state)) as WizardState,
-    ...(customRules && customRules.length > 0
-      ? { customRules: JSON.parse(JSON.stringify(customRules)) as Rule[] }
-      : {}),
+    ...(rules ? { customRules: rules } : {}),
   };
   writeAll([...readAll(), build]);
+  return build;
+}
+
+/** Overwrites a saved build in place, keeping its id and creation time. */
+export function updateBuild(
+  id: string,
+  name: string,
+  state: WizardState,
+  customRules?: Rule[],
+): SavedBuild | null {
+  const builds = readAll();
+  const index = builds.findIndex((build) => build.id === id);
+  if (index < 0) return null;
+  const previous = builds[index]!;
+  const rules = cloneRules(customRules);
+  const build: SavedBuild = {
+    ...previous,
+    name: name.trim() || 'Untitled build',
+    updatedAt: new Date().toISOString(),
+    state: JSON.parse(JSON.stringify(state)) as WizardState,
+    ...(rules ? { customRules: rules } : {}),
+  };
+  if (!rules) delete build.customRules;
+  builds[index] = build;
+  writeAll(builds);
   return build;
 }
 

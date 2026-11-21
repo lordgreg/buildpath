@@ -75,10 +75,12 @@ function pickRandomIds(pool: readonly PreviewItem[], count: number): string[] {
 export default function LootSimulator({
   rules,
   label,
+  fileName,
   builderHash,
 }: {
   rules: readonly Rule[];
   label: string;
+  fileName: string;
   builderHash: string;
 }) {
   const [pasted, setPasted] = useState<PreviewItem[]>([]);
@@ -182,6 +184,12 @@ export default function LootSimulator({
             Simulating <span className="text-zinc-200">{label}</span>. Drops are
             scattered like in-game labels; paste one from the game to see it
             here.
+          </p>
+          <p className="mt-2 max-w-xl text-[11px] text-zinc-600">
+            Editing{' '}
+            <code className="break-words rounded bg-ink-900/70 px-1.5 py-0.5 text-zinc-400">
+              {fileName}
+            </code>
           </p>
         </div>
         <nav className="flex flex-wrap gap-4 text-xs text-zinc-500">

@@ -53,6 +53,42 @@ export async function ensurePermission(
   return (await handle.requestPermission?.(descriptor)) ?? 'denied';
 }
 
+export type WriteProbe = 'ok' | 'read-only' | 'error';
+
+export interface DirectoryProbe {
+  read: boolean;
+  write: WriteProbe;
+}
+
+/** Writes and removes a temporary file to prove the folder is writable. */
+export async function probeFilterDirectory(
+  handle: FileSystemDirectoryHandle,
+): Promise<DirectoryProbe> {
+  let readable = true;
+  try {
+    await listFilterFiles(handle);
+  } catch {
+    readable = false;
+  }
+
+  const probeName = `.filterpath-write-test-${Date.now()}`;
+  try {
+    const file = await handle.getFileHandle(probeName, { create: true });
+    const stream = await file.createWritable();
+    await stream.write('FilterPath write test');
+    await stream.close();
+  } catch {
+    return { read: readable, write: readable ? 'read-only' : 'error' };
+  }
+
+  try {
+    await handle.removeEntry(probeName);
+  } catch {
+    // A leftover probe file is harmless; the important part was the write.
+  }
+  return { read: readable, write: 'ok' };
+}
+
 export async function listFilterFiles(
   handle: FileSystemDirectoryHandle,
 ): Promise<FilterFileInfo[]> {

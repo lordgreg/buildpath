@@ -4,6 +4,7 @@ import {
   isFilterFileName,
   listFilterFiles,
   parseFilterHeader,
+  probeFilterDirectory,
   writeFilter,
 } from './fileSystem.ts';
 
@@ -42,6 +43,9 @@ function directory(files: Map<string, string>) {
     },
     async *values() {
       for (const name of files.keys()) yield fileHandle(name, files);
+    },
+    async removeEntry(name: string) {
+      files.delete(name);
     },
   } as unknown as FileSystemDirectoryHandle;
 }
@@ -108,5 +112,42 @@ describe('filter files', () => {
     expect(result.backup).toBeNull();
     expect(files.get('FilterPath.filter')).toBe('new text');
     expect(files.get('other.filter')).toBe('keep me');
+  });
+});
+
+describe('directory write probe', () => {
+  it('writes and removes a temporary file', async () => {
+    const files = new Map<string, string>();
+    const result = await probeFilterDirectory(directory(files));
+    expect(result).toEqual({ read: true, write: 'ok' });
+    expect([...files.keys()]).toEqual([]);
+  });
+
+  it('reports a read-only folder', async () => {
+    const handle = {
+      async *values() {},
+      async getFileHandle() {
+        throw new DOMException('denied', 'NotAllowedError');
+      },
+    } as unknown as FileSystemDirectoryHandle;
+    expect(await probeFilterDirectory(handle)).toEqual({
+      read: true,
+      write: 'read-only',
+    });
+  });
+
+  it('reports an unreadable folder', async () => {
+    const handle = {
+      async *values() {
+        throw new DOMException('denied', 'NotAllowedError');
+      },
+      async getFileHandle() {
+        throw new DOMException('denied', 'NotAllowedError');
+      },
+    } as unknown as FileSystemDirectoryHandle;
+    expect(await probeFilterDirectory(handle)).toEqual({
+      read: false,
+      write: 'error',
+    });
   });
 });

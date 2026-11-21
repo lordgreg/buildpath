@@ -302,7 +302,7 @@ describe('selection filters', () => {
           expect(validateFilter(filter.text), label).toEqual([]);
           expect(filter.warnings, label).toEqual([]);
           expect(filter.fileName, label).toMatch(
-            /^FilterPath-vdev-[a-z-]+-(lev|end)-(normal|strict|very-strict)\.filter$/,
+            /^filterpath-[a-z0-9-]+-(leveling|endgame)-(normal|strict|very-strict)-dev\.filter$/,
           );
           expect(filter.text, label).not.toMatch(/[^\x09\x0a\x20-\x7e]/);
 
@@ -327,7 +327,7 @@ describe('selection filters', () => {
       strictness: 'normal',
     });
     expect(filter.fileName).toBe(
-      'FilterPath-vdev-necro-minions-leveling-normal.filter',
+      'filterpath-necro-minions-leveling-normal-dev.filter',
     );
   });
 });

@@ -45,11 +45,25 @@ describe('wizard hash', () => {
     expect(Object.values(state.sections).every(Boolean)).toBe(true);
   });
 
+  it('trims the imported build name', () => {
+    const state = coerceWizardState({ name: '  My Vortex  ' });
+    expect(state.name).toBe('My Vortex');
+  });
+
   it('parses the filter theme', () => {
     const state = parseWizardHash(
       '#mode=family&family=minion&theme=contrast',
     );
     expect(state.theme).toBe('contrast');
+  });
+
+  it('carries the build name through the hash', () => {
+    const state = parseWizardHash(
+      '#mode=scratch&scratchStart=show&name=My%20Vortex',
+    );
+    expect(state.name).toBe('My Vortex');
+    expect(wizardHash(state)).toContain('name=My+Vortex');
+    expect(parseWizardHash(`#${wizardHash(state)}`)).toEqual(state);
   });
 
   it('parses from-scratch mode', () => {
@@ -135,5 +149,10 @@ describe('coerceWizardState', () => {
       theme: 'contrast',
     });
     expect(Object.values(state.sections).every(Boolean)).toBe(true);
+  });
+
+  it('trims the imported build name', () => {
+    const state = coerceWizardState({ name: '  My Vortex  ' });
+    expect(state.name).toBe('My Vortex');
   });
 });
