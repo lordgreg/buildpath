@@ -49,9 +49,100 @@ Item Level: 43
 --------
 Unidentified`;
 
+const REAVER_HELMET = `Item Class: Helmets
+Rarity: Magic
+Reaver Helmet
+--------
+Armour: 230
+--------
+Requirements:
+Strength: 85
+--------
+Sockets: W
+--------
+Item Level: 42
+--------
+Unidentified`;
+
+const HUSSAR_BRIGANDINE = `Item Class: Body Armours
+Rarity: Magic
+Hussar Brigandine
+--------
+Armour: 245
+Evasion Rating: 245
+--------
+Requirements:
+Str: 62
+Dex: 62
+--------
+Sockets: W
+--------
+Item Level: 42
+--------
+Unidentified`;
+
+const FOOTMAN_SWORD = `Item Class: Two Hand Swords
+Rarity: Normal
+Footman Sword
+--------
+Two Handed Sword
+Physical Damage: 39-65
+Critical Strike Chance: 5.00%
+Attacks per Second: 1.45
+Weapon Range: 1.3 metres
+--------
+Requirements:
+Level: 40
+Str: 57
+Dex: 83
+--------
+Sockets: W-W-W-W
+--------
+Item Level: 41
+--------
+{ Implicit Modifier — Attack }
+60% increased Global Accuracy Rating`;
+
+const BURNISHED_FOIL = `Item Class: Thrusting One Hand Swords
+Rarity: Rare
+Burnished Foil
+--------
+One Handed Sword
+Physical Damage: 25-46
+Critical Strike Chance: 6.00%
+Attacks per Second: 1.40
+Weapon Range: 1.4 metres
+--------
+Requirements:
+Dexterity: 131 (unmet)
+--------
+Sockets: W
+--------
+Item Level: 43
+--------
+{ Implicit Modifier — Damage, Critical }
++25% to Global Critical Strike Multiplier
+--------
+Unidentified`;
+
+const HUBRIS_CIRCLET = `Item Class: Helmets
+Rarity: Magic
+Hubris Circlet
+--------
+Armour: 180
+Energy Shield: 40
+--------
+Requirements:
+Int: 69
+--------
+Sockets: W
+--------
+Item Level: 42
+--------`;
+
 const WAND = `Item Class: Wands
 Rarity: Rare
-Profane Wand
+Calling Wand
 --------
 Wand
 Physical Damage: 20-37
@@ -96,6 +187,70 @@ describe('unused-slot rares', () => {
         ).toBe(false);
       }
     }
+  });
+
+  it('hides magic helmets and body armours outside the minion bases', () => {
+    for (const [label, text] of [
+      ['str helmet', REAVER_HELMET],
+      ['str/dex body armour', HUSSAR_BRIGANDINE],
+    ] as const) {
+      const [item] = parseItemText(text);
+      expect(item, label).toBeTruthy();
+      for (const phase of ['leveling', 'endgame'] as const) {
+        for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+          const filter = generateFilter({ selection, phase, strictness });
+          const result = evaluateRules(filter.rules, item!);
+          expect(
+            result.shown,
+            `${label} ${phase}/${strictness}: ${result.reason}`,
+          ).toBe(false);
+        }
+      }
+    }
+  });
+
+  it('hides a normal 4-link two-hand sword in the minion preset', () => {
+    const [item] = parseItemText(FOOTMAN_SWORD);
+    expect(item?.itemClass).toBe('Two Hand Swords');
+    expect(item?.linkedSockets).toBe(4);
+
+    for (const phase of ['leveling', 'endgame'] as const) {
+      for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+        const filter = generateFilter({ selection, phase, strictness });
+        const result = evaluateRules(filter.rules, item!);
+        expect(
+          result.shown,
+          `${phase}/${strictness}: ${result.reason}`,
+        ).toBe(false);
+      }
+    }
+  });
+
+  it('hides a rare thrusting sword in the minion preset', () => {
+    const [item] = parseItemText(BURNISHED_FOIL);
+    expect(item?.itemClass).toBe('Thrusting One Hand Swords');
+    expect(item?.baseType).toBe('Burnished Foil');
+
+    for (const phase of ['leveling', 'endgame'] as const) {
+      for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+        const filter = generateFilter({ selection, phase, strictness });
+        const result = evaluateRules(filter.rules, item!);
+        expect(
+          result.shown,
+          `${phase}/${strictness}: ${result.reason}`,
+        ).toBe(false);
+      }
+    }
+  });
+
+  it('keeps a magic int helmet visible while leveling', () => {
+    const [item] = parseItemText(HUBRIS_CIRCLET);
+    const filter = generateFilter({
+      selection,
+      phase: 'leveling',
+      strictness: 'normal',
+    });
+    expect(evaluateRules(filter.rules, item!).shown).toBe(true);
   });
 
   it('keeps a rare wand visible while leveling', () => {

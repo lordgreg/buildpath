@@ -13,6 +13,14 @@ const ACCESSORY_SLOTS = new Set<ItemSlot>([
   'jewel',
   'flask',
 ]);
+const SOCKET_SLOTS = new Set<ItemSlot>([
+  'weapon',
+  'offhand',
+  'helmet',
+  'body',
+  'gloves',
+  'boots',
+]);
 
 /** Accessories and jewels stay worth identifying below the gear cutoff. */
 const ACCESSORY_ITEM_LEVEL = 68;
@@ -86,16 +94,17 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
         style: quiet(slotStyle(slot)),
       });
     }
-  }
 
-  if (preset.gear.highlightLinks) {
-    rules.push({
-      action: 'Show',
-      comment: 'Leveling - 4+ links',
-      rarity: 'Normal',
-      linkedSockets: { min: 4 },
-      style: SLOT_STYLES.link,
-    });
+    if (preset.gear.highlightLinks && SOCKET_SLOTS.has(slot)) {
+      rules.push({
+        action: 'Show',
+        comment: `Leveling - 4+ links (${slot})`,
+        ...target,
+        rarity: 'Normal',
+        linkedSockets: { min: 4 },
+        style: SLOT_STYLES.link,
+      });
+    }
   }
 
   rules.push({

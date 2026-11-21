@@ -4,7 +4,7 @@
 # Build: Necromancer Minions - Witch / Necromancer
 # Phase: Leveling - Normal
 # League: Covens
-# Rules: 37 - Base types: 109
+# Rules: 43 - Base types: 109
 # Base data: RePoE master (d9b86d38)
 # Generated at https://lordgreg.github.io/filterpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -31,6 +31,15 @@ Show
     SetTextColor 255 255 255 255
     SetBorderColor 90 220 220 255
 
+# Leveling - 4+ links (helmet)
+Show
+    BaseType "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Necromancer Circlet" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    Rarity Normal
+    LinkedSockets >= 4
+    SetFontSize 38
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
+
 # body - rare
 Show
     BaseType "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Occultist's Vestment" "Ornate Ringmail" "Ringmail Coat" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Vaal Regalia" "Widowsilk Robe"
@@ -51,6 +60,15 @@ Show
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 90 220 220 255
+
+# Leveling - 4+ links (body)
+Show
+    BaseType "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Occultist's Vestment" "Ornate Ringmail" "Ringmail Coat" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Vaal Regalia" "Widowsilk Robe"
+    Rarity Normal
+    LinkedSockets >= 4
+    SetFontSize 38
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
 
 # gloves - rare
 Show
@@ -73,6 +91,15 @@ Show
     SetTextColor 255 255 255 255
     SetBorderColor 90 220 220 255
 
+# Leveling - 4+ links (gloves)
+Show
+    BaseType "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Mesh Gloves" "Nexus Gloves" "Ringmail Gloves" "Riveted Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Wool Gloves" "Zealot Gloves"
+    Rarity Normal
+    LinkedSockets >= 4
+    SetFontSize 38
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
+
 # boots - rare
 Show
     BaseType "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Mesh Boots" "Nightwind Slippers" "Ringmail Boots" "Riveted Boots" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Wool Shoes" "Zealot Boots"
@@ -93,6 +120,15 @@ Show
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 90 220 220 255
+
+# Leveling - 4+ links (boots)
+Show
+    BaseType "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Mesh Boots" "Nightwind Slippers" "Ringmail Boots" "Riveted Boots" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Wool Shoes" "Zealot Boots"
+    Rarity Normal
+    LinkedSockets >= 4
+    SetFontSize 38
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
 
 # belt - rare
 Show
@@ -220,6 +256,15 @@ Show
     SetTextColor 255 255 255 255
     SetBorderColor 217 178 106 255
 
+# Leveling - 4+ links (weapon)
+Show
+    BaseType "Calling Wand" "Convening Wand" "Convoking Wand"
+    Rarity Normal
+    LinkedSockets >= 4
+    SetFontSize 38
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
+
 # offhand - rare
 Show
     BaseType "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
@@ -241,8 +286,9 @@ Show
     SetTextColor 255 255 255 255
     SetBorderColor 217 178 106 255
 
-# Leveling - 4+ links
+# Leveling - 4+ links (offhand)
 Show
+    BaseType "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -358,3 +404,7 @@ Hide
 Hide
     Class "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
     Rarity Rare
+
+# Gear - bases this build does not use
+Hide
+    Class "Body Armours" "Boots" "Gloves" "Helmets" "Jewels" "Shields" "Wands"
