@@ -326,9 +326,14 @@ export default function Wizard() {
               <li>
                 Put it in{' '}
                 <code className="rounded bg-ink-900 px-1 py-0.5 text-zinc-300">
-                  Documents/Path of Exile/filters
+                  Documents/My Games/Path of Exile
                 </code>
-                . On Linux/Proton that is inside the game's compatdata prefix.
+                . On Linux/Proton that is{' '}
+                <code className="rounded bg-ink-900 px-1 py-0.5 text-zinc-300">
+                  compatdata/238960/pfx/drive_c/users/steamuser/Documents/My
+                  Games/Path of Exile
+                </code>
+                .
               </li>
               <li>
                 In game: Options → UI → Item Filter, then pick{' '}

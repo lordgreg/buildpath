@@ -62,7 +62,7 @@ Consequences:
   We cannot borrow its credentials.
 
 Therefore M3 is **local folder sync**: the File System Access API writes the
-filter straight into `Documents/Path of Exile/filters`. OAuth upload stays
+filter straight into `Documents/My Games/Path of Exile`. OAuth upload stays
 behind the same `FilterSync` interface for if GGG reopens registration.
 
 ### 2.3 poe.ninja: economy yes, builds no
@@ -252,7 +252,7 @@ leaves the previous file and fails the job.
 
 ### M3 — Sync
 
-File System Access API: pick the filters folder once, remember the directory
+File System Access API: pick the Path of Exile documents folder once, remember the directory
 handle in IndexedDB, write `<name>.filter`, confirm overwrite, fall back to
 download on Firefox/Safari. `FilterSync.api()` stays a stub.
 
