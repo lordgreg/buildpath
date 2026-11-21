@@ -1,27 +1,11 @@
 import { SLOT_STYLES, type Rule } from '../types.ts';
 
-const TOP_UNIQUES = [
-  'Aegis Aurora',
-  'Ashes of the Stars',
-  'Headhunter',
-  'Kalandra\'s Touch',
-  'Mageblood',
-  'Nimis',
-  'Original Sin',
-  'Progenesis',
-  'The Squire',
-  'Voices',
-];
-
+/**
+ * Unique names are not valid BaseType values. Until M2b adds base-level
+ * tiering from prices, all uniques share one rule.
+ */
 export function uniqueRules(): Rule[] {
   return [
-    {
-      action: 'Show',
-      comment: 'Uniques - chase items',
-      baseTypes: [...TOP_UNIQUES],
-      rarity: 'Unique',
-      style: SLOT_STYLES.currencyTop,
-    },
     {
       action: 'Show',
       comment: 'Uniques',

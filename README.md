@@ -36,8 +36,11 @@ REPOE_REF=3.27.0 npm run extract:repoe
 ```
 
 Writes `src/core/data/base-types.json` from
-[RePoE](https://github.com/brather1ng/RePoE). The trimmed file is committed so
-builds never depend on the network.
+[RePoE](https://github.com/brather1ng/RePoE), plus
+`known-base-types.json` (every name valid in a `BaseType` condition). Items
+missing from RePoE can be added to `base-types-extra.json` after checking them
+against a working filter. Both generated files are committed so builds never
+depend on the network.
 
 ## Layout
 
