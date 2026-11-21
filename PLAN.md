@@ -6,9 +6,7 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.10.2 removes the builder preview in favour of the loot
-simulator, with hover tooltips and randomized drops. Remaining: M3 (directory
-sync).
+**Status:** v0.11.0 ships directory sync. All planned milestones are complete.
 
 ---
 
@@ -696,11 +694,10 @@ cancelling changes nothing.
 
 #### M3b — List, detect, update
 
-- List local `.filter` files, read headers, show app version and filter format.
-- Detect stale FilterPath files and offer "Update".
-- Keep the previous version as `.bak`; never auto-delete.
-- Show which files are not FilterPath's, and leave them untouched unless the
-  user explicitly picks one.
+- [x] List local `.filter` files, read headers, show app version and filter format.
+- [x] Detect stale FilterPath files and flag them.
+- [x] Keep the previous version as `.bak`; never auto-delete.
+- [x] Leave unrelated files untouched.
 
 **Done:** an old `v0.1` filter is flagged; updating writes `v0.2` and keeps the
 old file as a backup; unrelated filters in the folder are unchanged.

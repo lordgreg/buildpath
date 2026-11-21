@@ -5,8 +5,8 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.10.2 — the loot simulator is the single preview surface, with
-randomized drops and hover tooltips. Remaining: M3 directory sync.
+**Status:** v0.11.0 — directory sync is live in Chromium browsers. All planned
+milestones are shipped.
 
 ## Features
 
@@ -20,6 +20,7 @@ randomized drops and hover tooltips. Remaining: M3 directory sync.
 - Loot simulator with pasted in-game items and filter-styled labels
 - Three filter themes and saved builds; one global strictness
 - Economy-aware currency, divination and unique tiers refreshed daily
+- Chromium directory sync with version detection and .bak backups
 - Build version in the file name and header, e.g.
   `FilterPath-v0.4.0-necromancer-summon-skeletons-lev-normal.filter`
 - Generated client-side; no account and no network calls

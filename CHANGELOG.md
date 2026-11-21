@@ -2,6 +2,20 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.11.0 — 2026-11-21
+
+Directory sync.
+
+- Save the filter directly into the PoE filters folder in Chromium browsers.
+- The folder handle is remembered in IndexedDB; write permission is requested on
+  demand.
+- Lists existing .filter files with their FilterPath version and flags stale
+  files.
+- Overwrites ask for confirmation and keep the previous contents as
+  `<name>.filter.bak`.
+- Never deletes or modifies unrelated files; Firefox and Safari keep the
+  download flow.
+
 ## 0.10.2 — 2026-11-21
 
 Demo replaces the builder preview.

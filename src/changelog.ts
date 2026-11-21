@@ -17,6 +17,25 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.11.0',
+    date: '2026-11-21',
+    title: 'Directory sync',
+    notes: [
+      'Save the filter directly into the PoE filters folder in Chromium browsers.',
+      'The folder handle is remembered in IndexedDB; write permission is requested on demand.',
+      'Lists existing .filter files with their FilterPath version and flags stale files.',
+      'Overwrites ask for confirmation and keep the previous contents as <name>.filter.bak.',
+      'Never deletes or modifies unrelated files; Firefox and Safari keep the download flow.',
+    ],
+    commits: [
+      {
+        sha: '1489334',
+        message: 'feat: directory sync with version detection and backups (0.11.0)',
+      },
+    ],
+    compare: 'v0.10.2...v0.11.0',
+  },
+  {
     version: '0.10.2',
     date: '2026-11-21',
     title: 'Demo replaces the builder preview',
