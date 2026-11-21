@@ -6,11 +6,11 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.18.0 adds demo click sounds on top of quest/named-orb alerts,
-stable filenames, preset auto-sync, rarity-first colors, Leveling Strict Magic
-floors, seed labels, wrong-base gear hiding, section presets and template
-coverage. Remaining work is manual QA; real meta capture is blocked by
-poe.ninja’s closed builds API.
+**Status:** v0.18.1 adds currency paste support on top of demo click sounds,
+quest/named-orb alerts, stable filenames, preset auto-sync, rarity-first colors,
+Leveling Strict Magic floors, seed labels, wrong-base gear hiding, section
+presets and template coverage. Remaining work is manual QA; real meta capture is
+blocked by poe.ninja’s closed builds API.
 
 ---
 
@@ -640,6 +640,7 @@ Implementation notes:
 - [x] Click a label to inspect the matching rule
 - [x] Paste one or more in-game item blocks to add them
 - [x] Parse class, rarity, base, item level, sockets, links, quality, stack size and map tier
+- [x] Currency, Gem and Divination Card rarities; `1/20` stack size
 - [x] Shown/hidden counts and a show-hidden toggle
 - [x] Tests for the paste parser
 

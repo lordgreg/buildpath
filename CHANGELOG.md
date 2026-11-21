@@ -2,6 +2,18 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.18.1 — 2026-11-22
+
+Paste currency items into the demo.
+
+- The item parser now accepts `Rarity: Currency`, `Gem` and `Divination Card`,
+  so orbs no longer fail with “No item blocks found”.
+- `Stack Size` lines such as `1/20` now parse as the current stack (`1`) instead
+  of an invalid number.
+- Divine, Exalted, Chaos and Regal orbs can be pasted into the demo and item
+  tester; their matching rule and alert are used.
+- The demo pool now includes Divine, Mirror, Exalted, Chaos and Regal orbs.
+
 ## 0.18.0 — 2026-11-22
 
 Demo click sounds.
