@@ -17,6 +17,25 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.8.0',
+    date: '2026-11-21',
+    title: 'Loot simulator, style editing and share links',
+    notes: [
+      'Added a loot simulator page that shows drops with their filter labels.',
+      'Paste item text from the game to add it to the simulation; parses class, rarity, base, item level, sockets, links, quality, stack size and map tier.',
+      'Per-rule style editing: text, border, background, font size and alert sound.',
+      'Share codes can now be copied as a link; opening the link imports the clone automatically.',
+      'The builder header links to the simulator with the current selection.',
+    ],
+    commits: [
+      {
+        sha: 'ec8a45e',
+        message: 'feat: add loot simulator, style editing and share links (0.8.0)',
+      },
+    ],
+    compare: 'v0.7.0...v0.8.0',
+  },
+  {
     version: '0.7.0',
     date: '2026-11-21',
     title: 'Advanced rules, locked presets and clones',

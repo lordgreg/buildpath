@@ -6,9 +6,8 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** M2g shipped at **v0.7.0** with locked presets, whole-set clones,
-requirement chips and share codes. Remaining: M2a (themes and per-section
-strictness), M2b/M2c (economy) and M3 (directory sync).
+**Status:** M2g and the loot simulator shipped at **v0.8.0**. Remaining: M2a
+(themes and per-section strictness), M2b/M2c (economy) and M3 (directory sync).
 
 ---
 
@@ -546,10 +545,11 @@ old links still resolve.
 - [x] localStorage store, versioned against the source preset
 - [x] Rule editor: enable, move, duplicate, delete, action, comment, rarity,
   item level and `Continue`
-- [ ] Style editing per rule (colours, sounds, icons) — follow-up
+- [x] Style editing per rule: text, border, background, font size and sound
 - [x] Chips for DEX/STR/INT requirements, HEAD, Weapon 2H, Weapon Ranged
 - [x] RePoE extractor keeps item requirements
 - [x] Export/import JSON; compressed base64url share code with an 8 KB cap
+- [x] Share link that imports the clone when opened
 - [x] Reset-to-locked and stale-clone warning
 - [x] Tests: clone round-trip, compression, chip expansion, rule ordering
 
@@ -560,8 +560,20 @@ Implementation notes:
   format and compressed code.
 - `src/ui/rules/AdvancedRules.tsx` renders the locked pane and editor;
   `src/ui/rules/storage.ts` persists clones per selection key.
-- Custom rules are built from chips and get a default Show style; style editing
-  is the remaining piece of this milestone.
+- Custom rules are built from chips and get a default Show style; every rule in
+  a clone can edit text, border, background, font size and alert sound.
+
+### M2h — Loot simulator
+
+- [x] Separate `demo.html` page, reachable from the builder with the selection
+- [x] Drop cards styled from the matching filter rule
+- [x] Paste one or more in-game item blocks to add them
+- [x] Parse class, rarity, base, item level, sockets, links, quality, stack size and map tier
+- [x] Shown/hidden counts and a show-hidden toggle
+- [x] Tests for the paste parser
+
+**Done:** pasting the four reported items shows the same shown/hidden outcome as
+the game; labels use the filter's colours and font size.
 
 **Done:** a minion family clone can hide DEX helmets, 2H and ranged weapons; the
 clone survives reload and share codes; resetting restores the locked preset.
@@ -742,7 +754,8 @@ old file as a backup; unrelated filters in the folder are unchanged.
 ## 9. Open items
 
 - Share-code size cap: 8 KB, then file export (implemented)
-- Per-rule style editing: colours, sounds and minimap icons (M2g follow-up)
+- Per-rule style editing: text, border, background, font size and sound
+  (implemented in 0.8.0)
 - Clone update behaviour: warn and reset only (implemented), or attempt a merge
 - Confirm the chip vocabulary beyond DEX/STR/INT, HEAD, 2H and RANGED
 - Confirm the default family for every ascendancy (M2f table)

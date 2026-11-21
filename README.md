@@ -5,9 +5,9 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.7.0 — three selection modes, the inventory preview, and the
-advanced rule editor with locked presets and clones are live. Remaining: style
-editing, per-section strictness, themes, economy and directory sync.
+**Status:** v0.8.0 — three selection modes, preview, advanced rules, style
+editing and the loot simulator are live. Remaining: themes and per-section
+strictness, economy tiers/cron, and directory sync.
 
 ## Features
 
@@ -18,6 +18,7 @@ editing, per-section strictness, themes, economy and directory sync.
 - Filter preview, download, copy and share links
 - Paper-doll and inventory preview with original icons and rule explanations
 - Locked rule pane, whole-set clones, requirement chips and share codes
+- Loot simulator with pasted in-game items and filter-styled labels
 - Build version in the file name and header, e.g.
   `FilterPath-v0.4.0-necromancer-summon-skeletons-lev-normal.filter`
 - Generated client-side; no account and no network calls
@@ -26,6 +27,7 @@ editing, per-section strictness, themes, economy and directory sync.
 [in-site changelog](https://lordgreg.github.io/filterpath/changelog.html).
 
 **Live:** https://lordgreg.github.io/filterpath/
+**Demo:** https://lordgreg.github.io/filterpath/demo.html
 
 ## Development
 
