@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { parseItemText } from '../../core/demo/parse-item.ts';
+import { baseTypes } from '../../core/data/base-types.ts';
 import { colorToCss } from '../../core/filter/style-utils.ts';
 import type { Rule } from '../../core/filter/types.ts';
 import {
@@ -30,18 +31,23 @@ function hash(value: string, seed: number): number {
   return Math.abs(result);
 }
 
-function position(index: number, id: string, seed: number): {
-  x: number;
-  y: number;
-} {
-  const columns = 5;
+function position(
+  index: number,
+  total: number,
+  id: string,
+  seed: number,
+): { x: number; y: number } {
+  const columns = total <= 6 ? 3 : total <= 12 ? 4 : 5;
+  const rows = Math.max(1, Math.ceil(total / columns));
   const column = index % columns;
   const row = Math.floor(index / columns);
-  const jitterX = (hash(id, seed) % 9) - 4;
+  const jitterX = (hash(id, seed) % 7) - 3;
   const jitterY = (hash(id, seed + 13) % 9) - 4;
+  const xStep = columns > 1 ? 60 / (columns - 1) : 0;
+  const yStep = rows > 1 ? 78 / (rows - 1) : 0;
   return {
-    x: Math.max(10, Math.min(90, 12 + column * 19 + jitterX)),
-    y: Math.max(8, Math.min(92, 10 + (row % 7) * 13 + jitterY)),
+    x: Math.max(18, Math.min(82, 20 + column * xStep + jitterX)),
+    y: Math.max(7, Math.min(93, 11 + row * yStep + jitterY)),
   };
 }
 
@@ -68,7 +74,8 @@ export default function LootSimulator({
   const [showHidden, setShowHidden] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
   const [seed, setSeed] = useState(1);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [pinnedId, setPinnedId] = useState<string | null>(null);
   const [addedIds, setAddedIds] = useState<string[]>([]);
   const [dropIds, setDropIds] = useState<string[]>(() =>
     pickRandomIds(SAMPLE_ITEMS, 14),
@@ -96,9 +103,13 @@ export default function LootSimulator({
     setDropIds(pickRandomIds(pool, 14));
     setSeed((value) => value + 1);
     setAddedIds([]);
-    setSelectedId(null);
+    setPinnedId(null);
+    setHoveredId(null);
   };
-  const selected = rows.find((row) => row.item.id === selectedId);
+  const selected = rows.find((row) => row.item.id === (hoveredId ?? pinnedId));
+  const selectedIndex = selected
+    ? visible.findIndex((row) => row.item.id === selected.item.id)
+    : -1;
   const background = `${import.meta.env.BASE_URL}demo-ground.png`;
 
   const parse = () => {
@@ -215,15 +226,15 @@ export default function LootSimulator({
         className="relative mt-3 h-[68vh] min-h-[480px] max-h-[820px] overflow-hidden rounded-xl border border-ink-700 bg-ink-950 bg-cover bg-center shadow-2xl"
         style={{ backgroundImage: `url(${background})` }}
         onClick={(event) => {
-          if (event.target === event.currentTarget) setSelectedId(null);
+          if (event.target === event.currentTarget) setPinnedId(null);
         }}
       >
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
         {visible.map(({ item, result }, index) => {
           const style = result.shown ? result.rule?.style : undefined;
-          const { x, y } = position(index, item.id, seed);
+          const { x, y } = position(index, visible.length, item.id, seed);
           const labelStyle: CSSProperties = {
-            left: `clamp(7rem, ${x}%, calc(100% - 7rem))`,
+            left: `clamp(10rem, ${x}%, calc(100% - 10rem))`,
             top: `clamp(2rem, ${y}%, calc(100% - 2rem))`,
             zIndex: 10 + index,
             color:
@@ -242,12 +253,18 @@ export default function LootSimulator({
               type="button"
               onClick={(event) => {
                 event.stopPropagation();
-                setSelectedId(item.id);
+                setPinnedId((previous) =>
+                  previous === item.id ? null : item.id,
+                );
               }}
+              onMouseEnter={() => setHoveredId(item.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              onFocus={() => setHoveredId(item.id)}
+              onBlur={() => setHoveredId(null)}
               style={labelStyle}
               title={`${item.name} - ${result.shown ? 'shown' : 'hidden'}: ${result.reason}`}
               className={cx(
-                'demo-label absolute max-w-[min(24rem,82vw)] -translate-x-1/2 -translate-y-1/2 truncate rounded-sm border px-3 py-1 font-serif leading-tight shadow-[0_2px_8px_rgba(0,0,0,0.65)]',
+                'demo-label absolute max-w-[min(18rem,70vw)] -translate-x-1/2 -translate-y-1/2 truncate rounded-sm border px-3 py-1 font-serif leading-tight shadow-[0_2px_8px_rgba(0,0,0,0.65)]',
                 result.shown ? 'opacity-100' : 'border-dashed opacity-35 grayscale',
                 addedIds.includes(item.id) && 'ring-2 ring-gold-400',
               )}
@@ -271,32 +288,118 @@ export default function LootSimulator({
             Nothing is visible with these settings.
           </p>
         )}
-      </section>
 
-      {selected && (
-        <div className="mt-3 rounded-lg border border-ink-700 bg-ink-800/60 px-3 py-2 text-xs">
-          <p className="text-zinc-200">
-            {selected.item.name}{' '}
-            <span className="text-zinc-500">
-              - {selected.item.rarity} {selected.item.itemClass}
-              {selected.item.itemLevel
-                ? `, ilvl ${selected.item.itemLevel}`
-                : ''}
-            </span>
-          </p>
-          <p
-            className={
-              selected.result.shown ? 'text-emerald-300' : 'text-zinc-500'
-            }
-          >
-            {selected.result.shown ? 'Shown' : 'Hidden'}{' '}
-            {selected.result.index >= 0
-              ? `by rule #${selected.result.index + 1}`
-              : '(no rule matched)'}
-            : {selected.result.reason}
-          </p>
-        </div>
-      )}
+        {selected && selectedIndex >= 0 && (() => {
+          const { x, y } = position(
+            selectedIndex,
+            visible.length,
+            selected.item.id,
+            seed,
+          );
+          const base = baseTypes.find(
+            (entry) => entry.name === selected.item.baseType,
+          );
+          const requirements = base?.requirements ?? {};
+          const requirementLabels = [
+            requirements.str ? `${requirements.str} Str` : null,
+            requirements.dex ? `${requirements.dex} Dex` : null,
+            requirements.int ? `${requirements.int} Int` : null,
+          ].filter(Boolean);
+          const above = y > 45;
+          return (
+            <div
+              className="pointer-events-none absolute z-50 w-72 max-w-[85vw] rounded-lg border-2 bg-[#0b0b10]/95 text-xs shadow-2xl"
+              style={{
+                left: `clamp(9rem, ${x}%, calc(100% - 9rem))`,
+                top: `${y}%`,
+                transform: above
+                  ? 'translate(-50%, calc(-100% - 1.1rem))'
+                  : 'translate(-50%, 1.1rem)',
+                borderColor: RARITY_COLOR[selected.item.rarity],
+              }}
+            >
+              <div
+                className="border-b px-3 py-2 text-center"
+                style={{
+                  backgroundColor: `${RARITY_COLOR[selected.item.rarity]}22`,
+                  borderColor: RARITY_COLOR[selected.item.rarity],
+                }}
+              >
+                <p
+                  className="font-serif leading-tight"
+                  style={{ color: RARITY_COLOR[selected.item.rarity] }}
+                >
+                  {selected.item.name}
+                </p>
+                {selected.item.baseType !== selected.item.name && (
+                  <p className="text-[10px] text-zinc-400">
+                    {selected.item.baseType}
+                  </p>
+                )}
+              </div>
+              <div className="space-y-0.5 px-3 py-2 text-center text-zinc-300">
+                <p className="text-[9px] uppercase tracking-[0.16em] text-zinc-500">
+                  {selected.item.itemClass}
+                </p>
+                <p>
+                  {selected.item.rarity} - ilvl {selected.item.itemLevel}
+                </p>
+                {requirementLabels.length > 0 && (
+                  <p className="text-zinc-400">
+                    Requires {requirementLabels.join(', ')}
+                  </p>
+                )}
+                {base && (
+                  <p className="text-zinc-500">Drop level {base.dropLevel}</p>
+                )}
+                {(selected.item.sockets !== undefined ||
+                  selected.item.quality !== undefined ||
+                  selected.item.stackSize !== undefined ||
+                  selected.item.mapTier !== undefined) && (
+                  <p className="text-zinc-500">
+                    {[
+                      selected.item.sockets !== undefined
+                        ? `${selected.item.sockets} sockets`
+                        : null,
+                      selected.item.linkedSockets !== undefined
+                        ? `${selected.item.linkedSockets} links`
+                        : null,
+                      selected.item.quality !== undefined
+                        ? `${selected.item.quality}% quality`
+                        : null,
+                      selected.item.stackSize !== undefined
+                        ? `stack ${selected.item.stackSize}`
+                        : null,
+                      selected.item.mapTier !== undefined
+                        ? `tier ${selected.item.mapTier}`
+                        : null,
+                    ]
+                      .filter(Boolean)
+                      .join(' - ')}
+                  </p>
+                )}
+                <div className="my-1 border-t border-zinc-700" />
+                <p
+                  className={
+                    selected.result.shown
+                      ? 'text-emerald-300'
+                      : 'text-zinc-500'
+                  }
+                >
+                  {selected.result.shown ? 'Shown' : 'Hidden'}{' '}
+                  {selected.result.index >= 0
+                    ? `by rule #${selected.result.index + 1}`
+                    : '(default)'}
+                  : {selected.result.reason}
+                </p>
+                <p className="text-[9px] text-zinc-600">
+                  Representative base; stat rolls not simulated.
+                </p>
+              </div>
+            </div>
+          );
+        })()}
+      </section>
 
       <footer className="mt-8 border-t border-ink-700 pt-4 text-xs leading-relaxed text-zinc-500">
         <p>

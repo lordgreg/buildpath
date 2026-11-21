@@ -24,7 +24,6 @@ import type { BuildMode } from '../meta/types.ts';
 import { APP_VERSION } from '../version.ts';
 import { decodeShare } from '../core/share/codec.ts';
 import FilterPreview from './FilterPreview.tsx';
-import InventoryPreview from './preview/InventoryPreview.tsx';
 import AdvancedRules from './rules/AdvancedRules.tsx';
 import SavedBuilds from './presets/SavedBuilds.tsx';
 import {
@@ -553,16 +552,6 @@ export default function Wizard() {
               </div>
             </section>
 
-            <details className="rounded-xl border border-ink-700 bg-ink-800/40 p-4">
-              <summary className="cursor-pointer text-xs text-zinc-400">
-                One strictness for the whole filter
-              </summary>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-500">
-                The selected strictness governs every section. To hide or change
-                a specific group, clone the preset under Advanced rules and edit
-                its rules.
-              </p>
-            </details>
           </div>
 
           <section className="min-w-0 rounded-xl border border-gold-400/25 bg-ink-800/70 p-5">
@@ -639,10 +628,14 @@ export default function Wizard() {
                 {filter.fileName.replace(/\.filter$/, '')}
               </span>
             </p>
+            <a
+              href={`./demo.html#${wizardHash(state)}`}
+              className="mt-2 block rounded-lg border border-ink-600 px-4 py-2 text-center text-sm text-zinc-300 transition-colors hover:border-ink-500 hover:text-white"
+            >
+              Open loot simulator
+            </a>
           </section>
         </div>
-
-        <InventoryPreview rules={filter.rules} archetype={filter.archetype} />
 
         <AdvancedRules
           baseRules={baseFilter.rules}
