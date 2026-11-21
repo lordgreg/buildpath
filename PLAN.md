@@ -6,11 +6,11 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.15.3 adds browser-specific folder guidance on top of rarity-first
-colors, Leveling Strict Magic floors, seed labels, wrong-base gear hiding,
-section presets, template coverage, filter naming, folder writing and
-saved-build updates. Remaining work is manual QA; real meta capture is blocked
-by poe.ninja’s closed builds API.
+**Status:** v0.16.0 adds stable filter filenames and preset auto-sync on top of
+rarity-first colors, Leveling Strict Magic floors, seed labels, wrong-base gear
+hiding, section presets, template coverage, filter naming and saved-build
+updates. Remaining work is manual QA; real meta capture is blocked by
+poe.ninja’s closed builds API.
 
 ---
 
@@ -109,14 +109,17 @@ dropdown only shows the file name.
   (Vite `define`); the UI shows the same value.
 - `FILTER_FORMAT_VERSION` in `src/core/filter/version.ts` tracks the emitted
   structure. Bump it when a consumer must notice a change.
-- Header: `# FilterPath <app version> - filter format <n>`.
-- File name: `FilterPath-v<app version>-<build>-<phase>-<strictness>.filter`,
-  so the dropdown shows exactly which version produced the file.
-- A version bump therefore creates a new file name; old files are never
-  silently overwritten by a download. Directory sync (M3b) reads the header to
-  detect and update stale FilterPath files.
-- Goldens pin `dev`; a separate test pins `9.9.9` to cover the format line and
-  the sanitised file name.
+- Header: `# FilterPath <app version> - filter format <n>` plus
+  `# Presets: <preset hash>`.
+- File name: `filterpath-<name>-<phase>-<strictness>.filter`; the version is
+  deliberately **not** in the name, so the in-game selection survives releases.
+- The header is the source of truth for staleness. Directory sync reads the
+  preset hash and app version, writes the latest filter (keeping a `.bak`) and
+  tells the user “Your filter was updated with the latest presets.”
+- Saved builds and imported codes carry the preset hash at creation time; an
+  older hash produces a refresh notice while the preview regenerates.
+- Goldens pin `dev`; a separate test pins `9.9.9` to cover the header and the
+  stable file name.
 
 ### 2.6 Client validation: the `BaseType` namespace
 
@@ -156,8 +159,8 @@ build instead of the user's filter.
 The dropdown mixes local files and online filters, so "the filter loaded" does
 not prove the right one is selected.
 
-- The selected local filter must appear as `FilterPath-v<version>-...` in the
-  in-game dropdown.
+- The selected local filter appears as `filterpath-...filter` in the in-game
+  dropdown; the header, not the filename, carries the version and preset hash.
 - Online filters live in `OnlineFilters/` under
   `Documents/My Games/Path of Exile` and use opaque IDs. `item_filter=<id>` in
   `production_Config.ini` identifies the active one.
@@ -196,10 +199,10 @@ Resolution:
 Common:
 
 - Phase and strictness apply in every mode; sections are always included.
-- File names:
-  - `FilterPath-v<ver>-family-<family>-<lev|end>-<strictness>.filter`
-  - `FilterPath-v<ver>-<ascendancy>-<lev|end>-<strictness>.filter`
-  - `FilterPath-v<ver>-<ascendancy>-<skill>-<lev|end>-<strictness>.filter`
+- File names are stable across releases:
+  - `filterpath-family-<family>-<lev|end>-<strictness>.filter`
+  - `filterpath-<ascendancy>-<lev|end>-<strictness>.filter`
+  - `filterpath-<skill>-<ascendancy>-<lev|end>-<strictness>.filter`
 - URL: `#mode=family|ascendancy|meta&...`.
 - Old cascade links and the 12 interim links resolve to the closest mode.
 
@@ -265,8 +268,9 @@ rules survive reload and share codes; conflict warnings and the item test work.
 - **One identity** — the builder and demo show the exact filename being edited.
   The build name travels in the share hash, so the demo never shows a stale
   filter.
-- **Filename pattern** — `filterpath-<name>-<phase>-<strictness>-<version>.filter`.
-  From Scratch collapses phase/strictness into `hide-all` or `show-all`.
+- **Filename pattern** — `filterpath-<name>-<phase>-<strictness>.filter`. The
+  version and preset hash live in the header. From Scratch collapses
+  phase/strictness into `hide-all` or `show-all`.
 - **Automatic name** — an empty name resolves from the selection: family id,
   ascendancy id, `<skill>-<ascendancy>`, or `custom`. A typed name is slugified
   and applies immediately.
@@ -278,12 +282,16 @@ rules survive reload and share codes; conflict warnings and the item test work.
   folder-permission steps on Windows. Browsers never expose the absolute path.
 - **Download** — when a folder is connected, Download writes there first, asks
   before overwriting and falls back to a browser download.
+- **Auto-sync** — on load, a stale connected filter is rewritten with the latest
+  presets (keeping a `.bak`); saved builds and imported codes with an older
+  preset hash show a refresh notice.
 - **Saved builds** — loading marks a build as active; its row gets `Update`,
   which overwrites name, selection and My rules. Top-level Save creates a copy.
 
 **Done:** a named filter downloads as
-`filterpath-my-vortex-endgame-strict-0.13.0.filter`; the demo shows the same
-name; a read-only folder is reported before saving; Update keeps the saved id.
+`filterpath-my-vortex-endgame-strict.filter`; the demo shows the same
+name; a read-only folder is reported before saving; Update keeps the saved id;
+an older connected file is rewritten with a `.bak` on load.
 
 ---
 
@@ -438,7 +446,7 @@ always wins.
 - [x] Section toggles: gear, gems, currency, maps/fragments, uniques
 - [x] Live `.filter` preview, download, copy to clipboard, share link in hash
 - [x] Syntax validator on emitted output; golden files for representative builds
-- [x] Version in the filter header and file name (app + filter format)
+- [x] Version in the filter header; stable file name
 - [x] Loaded successfully in the game client (Linux/Proton, Covens)
 - [x] In-site changelog with releases and commit links
 - [x] Exact in-game filter name shown next to Download
@@ -465,8 +473,8 @@ Implementation notes:
   plus a small reviewed supplement) so a bad name fails CI.
 - Deep links: `#archetype=...&phase=...&strictness=...&sections=gear,gems,...`.
 - In-game file name is
-  `filterpath-<name>-<phase>-<strictness>-<version>.filter`, e.g.
-  `filterpath-necro-minions-leveling-strict-0.13.0.filter`.
+  `filterpath-<name>-<phase>-<strictness>.filter`, e.g.
+  `filterpath-necro-minions-leveling-strict.filter`.
 
 **Done:** a generated filter loads in-game with no errors, hides junk, and
 highlights the archetype's bases. *(Confirmed 2026-11-21.)*
@@ -543,7 +551,7 @@ Implementation notes:
   `resolve.ts`; `compileFilter` accepts either a legacy `archetypeId` or a
   `selection`.
 - Compact file name:
-  `FilterPath-v0.4.0-necromancer-summon-skeletons-lev-normal.filter`.
+  `filterpath-necromancer-summon-skeletons-leveling-normal.filter`.
 - The snapshot is manual by design; `meta:add` validates gem names against
   RePoE's catalog, and scripts/basetypes tests fail CI on bad data.
 - A monthly reminder workflow opens one issue when the snapshot is due.
@@ -648,7 +656,8 @@ emits the expected rules and in-game filename.
 ### M2j — Filter identity, filenames and folder writing
 
 - [x] Exact filename shown in the builder and demo
-- [x] `filterpath-<name>-<phase>-<strictness>-<version>.filter`
+- [x] `filterpath-<name>-<phase>-<strictness>.filter` (stable across releases)
+- [x] Preset hash in the header; auto-sync of a stale connected file
 - [x] From Scratch uses `hide-all` / `show-all`
 - [x] Optional name with an automatic slug fallback
 - [x] OS detection with matching Windows or Linux/Proton guidance
@@ -661,8 +670,9 @@ emits the expected rules and in-game filename.
 - [x] Tests: slug/filename, platform detection, write probe, saved-build update
 
 **Done:** a named filter downloads as
-`filterpath-my-vortex-endgame-strict-0.13.0.filter`; the demo shows the same
-name; a read-only folder is reported before saving; Update keeps the saved id.
+`filterpath-my-vortex-endgame-strict.filter`; the demo shows the same
+name; a read-only folder is reported before saving; Update keeps the saved id;
+an older connected file is rewritten with a `.bak` on load.
 
 ### M2d — Visual inventory preview (superseded)
 
@@ -775,7 +785,7 @@ old file as a backup; unrelated filters in the folder are unchanged.
 ## 6. Testing
 
 - Unit: archetype validation, tag resolution against base data, tiering, emit
-- Version: header line and file name pinned at `9.9.9`; format version asserted
+- Version: header pinned at `9.9.9`; stable file name asserted; preset hash parsed
 - BaseType registry: every name in every generated filter must exist in
   `known-base-types.json`; unique item names are explicitly rejected
 - Golden: full filter output per archetype/preset, diffed as text

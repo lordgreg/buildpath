@@ -2,6 +2,23 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.16.0 — 2026-11-22
+
+Stable filter filenames and preset auto-sync.
+
+- Filter filenames no longer include the version:
+  `filterpath-<name>-<phase>-<strictness>.filter`. From Scratch uses
+  `hide-all` / `show-all`.
+- The filter header now records the preset hash, so the site can tell whether a
+  filter file was built from older presets.
+- When the connected filter file is stale, the site updates it automatically
+  (keeping a `.bak`) and shows “Your filter was updated with the latest
+  presets.”
+- Saved builds and imported codes with an older preset hash show a refresh
+  notice; the preview always regenerates with the latest presets.
+- Existing versioned files need one download to create the stable filename;
+  after that, preset updates sync automatically.
+
 ## 0.15.3 — 2026-11-22
 
 Browser-specific folder guidance.

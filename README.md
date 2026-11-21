@@ -5,9 +5,10 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.15.3 — rarity-first colors, filter naming, folder writing,
-saved-build updates and template coverage are live. Remaining work is manual
-QA; real meta capture is blocked by poe.ninja’s closed builds API.
+**Status:** v0.16.0 — stable filter filenames and preset auto-sync are live on
+top of rarity-first colors, folder writing, saved-build updates and template
+coverage. Remaining work is manual QA; real meta capture is blocked by
+poe.ninja’s closed builds API.
 
 ## Features
 
@@ -26,9 +27,10 @@ QA; real meta capture is blocked by poe.ninja’s closed builds API.
 - Economy-aware currency, divination and unique tiers refreshed daily
 - Chromium folder writing with OS-aware path hints, a reference path field, a read/write test and .bak backups
 - Brave users get the `brave://flags/#file-system-access-api` step directly in the panel
-- Build version in the file name and header, e.g.
-  `filterpath-minion-leveling-normal-0.13.0.filter`; names are optional and
-  derived from the selection when empty
+- Stable file name and version/preset hash in the header, e.g.
+  `filterpath-minion-leveling-normal.filter`; names are optional and derived
+  from the selection when empty
+- Connected filter files auto-update when the preset or app version changes
 - Generated client-side; no account and no network calls
 
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md) or the
