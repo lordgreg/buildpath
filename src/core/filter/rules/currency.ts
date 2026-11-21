@@ -108,7 +108,7 @@ export function currencyRules(preset: Preset): Rule[] {
 
   allTiers.forEach((names, index) => {
     const tier = (index + 1) as 1 | 2 | 3;
-    if (tier > preset.maxVisibleCurrencyTier || names.length === 0) return;
+    if (tier > preset.currency.maxVisibleTier || names.length === 0) return;
 
     rules.push({
       action: 'Show',
@@ -125,7 +125,7 @@ export function currencyRules(preset: Preset): Rule[] {
 
   const hidden = allTiers.filter(
     (names, index) =>
-      index + 1 > preset.maxVisibleCurrencyTier && names.length > 0,
+      index + 1 > preset.currency.maxVisibleTier && names.length > 0,
   );
   for (const names of hidden) {
     rules.push({

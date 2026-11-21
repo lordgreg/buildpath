@@ -4,16 +4,16 @@ import { SLOT_STYLES, type Rule } from '../types.ts';
 export function mapRules(preset: Preset, phase: Phase): Rule[] {
   const rules: Rule[] = [];
 
-  if (phase === 'endgame' && preset.mapMinTier !== null) {
+  if (phase === 'endgame' && preset.maps.minTier !== null) {
     rules.push({
       action: 'Show',
-      comment: `Maps - tier ${preset.mapMinTier}+`,
+      comment: `Maps - tier ${preset.maps.minTier}+`,
       classNames: ['Maps'],
-      mapTier: { min: preset.mapMinTier },
+      mapTier: { min: preset.maps.minTier },
       style: SLOT_STYLES.map,
     });
 
-    if (preset.mapMinTier > 1) {
+    if (preset.maps.minTier > 1) {
       rules.push({
         action: 'Hide',
         comment: 'Maps - below tier cutoff',

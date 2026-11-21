@@ -8,18 +8,18 @@ export function gemRules(preset: Preset): Rule[] {
     {
       action: 'Show',
       comment:
-        preset.gemMinQuality === null
+        preset.gems.minQuality === null
           ? 'Gems'
-          : `Gems - quality ${preset.gemMinQuality}+`,
+          : `Gems - quality ${preset.gems.minQuality}+`,
       classNames: GEM_CLASSES,
-      ...(preset.gemMinQuality !== null
-        ? { quality: { min: preset.gemMinQuality } }
+      ...(preset.gems.minQuality !== null
+        ? { quality: { min: preset.gems.minQuality } }
         : {}),
       style: SLOT_STYLES.gem,
     },
   ];
 
-  if (preset.gemMinQuality !== null) {
+  if (preset.gems.minQuality !== null) {
     rules.push({
       action: 'Hide',
       comment: 'Gems - below quality cutoff',

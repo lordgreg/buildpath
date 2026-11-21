@@ -14,7 +14,7 @@ export function junkRules(
   const allEquipment = [...EQUIPMENT_CLASSES];
   const rules: Rule[] = [];
 
-  if (preset.magicMinItemLevel === null) {
+  if (preset.gear.magicMinItemLevel === null) {
     rules.push({
       action: 'Hide',
       comment: 'Magic gear',
@@ -32,10 +32,10 @@ export function junkRules(
     }
     rules.push({
       action: 'Hide',
-      comment: `Magic gear - below item level ${preset.magicMinItemLevel}`,
+      comment: `Magic gear - below item level ${preset.gear.magicMinItemLevel}`,
       classNames: allEquipment,
       rarity: 'Magic',
-      itemLevel: { max: preset.magicMinItemLevel - 1 },
+      itemLevel: { max: preset.gear.magicMinItemLevel - 1 },
     });
   }
 
@@ -46,13 +46,13 @@ export function junkRules(
     rarity: 'Normal',
   });
 
-  if (preset.rareMinItemLevel > 1) {
+  if (preset.gear.rareMinItemLevel > 1) {
     rules.push({
       action: 'Hide',
-      comment: `Rare gear - below item level ${preset.rareMinItemLevel}`,
+      comment: `Rare gear - below item level ${preset.gear.rareMinItemLevel}`,
       classNames: [...used],
       rarity: 'Rare',
-      itemLevel: { max: preset.rareMinItemLevel - 1 },
+      itemLevel: { max: preset.gear.rareMinItemLevel - 1 },
     });
   }
 

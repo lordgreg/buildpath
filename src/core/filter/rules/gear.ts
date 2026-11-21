@@ -64,8 +64,8 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
     const classNames = bases.length > 0 ? undefined : filterClassesFor(spec);
     const target = bases.length > 0 ? { baseTypes: bases } : { classNames };
     const rareMinItemLevel = ACCESSORY_SLOTS.has(slot)
-      ? Math.min(preset.rareMinItemLevel, ACCESSORY_ITEM_LEVEL)
-      : preset.rareMinItemLevel;
+      ? Math.min(preset.gear.rareMinItemLevel, ACCESSORY_ITEM_LEVEL)
+      : preset.gear.rareMinItemLevel;
 
     rules.push({
       action: 'Show',
@@ -76,19 +76,19 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
       style: slotStyle(slot),
     });
 
-    if (preset.magicMinItemLevel !== null) {
+    if (preset.gear.magicMinItemLevel !== null) {
       rules.push({
         action: 'Show',
         comment: `${slot} - magic`,
         ...target,
         rarity: 'Magic',
-        itemLevel: { min: preset.magicMinItemLevel },
+        itemLevel: { min: preset.gear.magicMinItemLevel },
         style: quiet(slotStyle(slot)),
       });
     }
   }
 
-  if (preset.highlightLinks) {
+  if (preset.gear.highlightLinks) {
     rules.push({
       action: 'Show',
       comment: 'Leveling - 4+ links',
