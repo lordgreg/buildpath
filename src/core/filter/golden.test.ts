@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { generateFilter, type FilterConfig } from './generate.ts';
 
@@ -29,7 +29,15 @@ describe('golden filters', () => {
     const name = `${config.archetypeId}-${config.phase}-${config.strictness}`;
 
     it(`matches ${name}`, () => {
-      expect(generateFilter(config).text).toBe(golden(name));
+      const text = generateFilter(config).text;
+      // Regenerate with `GOLDEN_WRITE=1 npm test` after reviewing a diff.
+      if (process.env.GOLDEN_WRITE) {
+        writeFileSync(
+          new URL(`./__golden__/${name}.filter`, import.meta.url),
+          text,
+        );
+      }
+      expect(text).toBe(golden(name));
     });
   }
 });
