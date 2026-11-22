@@ -6,6 +6,7 @@ on:
       - 'src/presets/**'
       - 'src/generated/**'
       - 'src/meta/**'
+      - 'src/core/audit/**'
       - 'scripts/build-presets.mjs'
       - 'scripts/meta-add.mjs'
       - '.github/workflows/validate-meta.yml'
@@ -25,3 +26,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - name: Build the behaviour audit page
+        run: npm run build
+      - name: Upload the behaviour audit report
+        uses: actions/upload-artifact@v7
+        with:
+          name: behaviour-audit
+          path: dist/tests.html
+          if-no-files-found: error
