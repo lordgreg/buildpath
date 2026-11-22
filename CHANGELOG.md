@@ -2,6 +2,15 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.26.0 — 2026-11-22
+
+Live loot preview in the builder.
+
+- The builder now shows a small loot preview under the preset card. It uses the
+  same rules and label styling as the loot simulator, so switching the theme,
+  phase or strictness updates it in place. Click the preview to open the full
+  simulator, where items can be pasted and inspected.
+
 ## 0.25.1 — 2026-11-22
 
 Remove the sound-pack option.

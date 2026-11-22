@@ -17,6 +17,16 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.26.0',
+    date: '2026-11-22',
+    title: 'Live loot preview in the builder',
+    notes: [
+      'The builder now shows a small loot preview under the preset card. It uses the same rules and label styling as the loot simulator, so switching the theme, phase or strictness updates it in place. Click the preview to open the full simulator, where items can be pasted and inspected.',
+    ],
+    commits: [],
+    compare: 'v0.25.1...v0.26.0',
+  },
+  {
     version: '0.25.1',
     date: '2026-11-22',
     title: 'Remove the sound-pack option',
