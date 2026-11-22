@@ -121,7 +121,7 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
     if (preset.gear.highlightLinks && SOCKET_SLOTS.has(slot)) {
       rules.push({
         action: 'Show',
-        comment: `Leveling - 4+ links (${slot})`,
+        comment: `4+ links (${slot})`,
         ...target,
         rarity: 'Normal',
         linkedSockets: { min: 4 },

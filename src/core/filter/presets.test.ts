@@ -18,17 +18,40 @@ describe('composed presets', () => {
     expect(normal.gear).toMatchObject({
       rareMinItemLevel: 80,
       magicMinItemLevel: null,
-      highlightLinks: false,
+      highlightLinks: true,
     });
     expect(normal.gems.minQuality).toBe(1);
     expect(normal.currency.maxVisibleTier).toBe(2);
     expect(normal.maps.minTier).toBe(1);
+    expect(normal.uniques.maxVisibleTier).toBe(3);
 
     const veryStrict = getPreset('endgame', 'very-strict');
     expect(veryStrict.gear.rareMinItemLevel).toBe(86);
+    expect(veryStrict.gear.highlightLinks).toBe(false);
     expect(veryStrict.gems.minQuality).toBe(10);
-    expect(veryStrict.currency.maxVisibleTier).toBe(1);
+    expect(veryStrict.currency.maxVisibleTier).toBe(2);
     expect(veryStrict.maps.minTier).toBe(15);
+    expect(veryStrict.uniques.maxVisibleTier).toBe(2);
+  });
+
+  it('shows 4-links while leveling and in endgame normal', () => {
+    for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+      expect(
+        getPreset('leveling', strictness).gear.highlightLinks,
+        `leveling ${strictness}`,
+      ).toBe(true);
+    }
+    expect(getPreset('endgame', 'normal').gear.highlightLinks).toBe(true);
+    expect(getPreset('endgame', 'strict').gear.highlightLinks).toBe(false);
+    expect(getPreset('endgame', 'very-strict').gear.highlightLinks).toBe(false);
+  });
+
+  it('hides poor uniques only at very strict', () => {
+    for (const phase of ['leveling', 'endgame'] as const) {
+      expect(getPreset(phase, 'normal').uniques.maxVisibleTier).toBe(3);
+      expect(getPreset(phase, 'strict').uniques.maxVisibleTier).toBe(3);
+      expect(getPreset(phase, 'very-strict').uniques.maxVisibleTier).toBe(2);
+    }
   });
 
   it('disables map tier rules while leveling', () => {

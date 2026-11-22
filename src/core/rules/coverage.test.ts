@@ -53,7 +53,8 @@ describe('template coverage', () => {
   it('follows strictness cutoffs', () => {
     expect(covered('show-quality-gems', 'endgame', 'strict')).toBe(false);
     expect(covered('show-quality-gems', 'endgame', 'very-strict')).toBe(false);
-    expect(covered('show-top-currency', 'endgame', 'very-strict')).toBe(false);
+    // Very Strict now keeps tier-2 currency, so tiers 1 and 2 are covered.
+    expect(covered('show-top-currency', 'endgame', 'very-strict')).toBe(true);
     expect(covered('show-t15-maps', 'endgame', 'very-strict')).toBe(true);
   });
 

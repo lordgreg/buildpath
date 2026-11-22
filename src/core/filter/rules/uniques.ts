@@ -1,14 +1,26 @@
 import economy from '../../../generated/economy.json';
+import type { Preset } from '../presets.ts';
 import { SLOT_STYLES, type Rule } from '../types.ts';
 
-function highValueBases(): string[] {
-  return Object.entries(economy.tiers.uniqueBase)
-    .filter(([, tier]) => tier === 1)
+type TierMap = Record<string, number>;
+
+const UNIQUE_BASES = economy.tiers.uniqueBase as TierMap;
+
+function basesAtTier(tier: number): string[] {
+  return Object.entries(UNIQUE_BASES)
+    .filter(([, value]) => value === tier)
     .map(([baseType]) => baseType)
     .sort();
 }
 
-const TOP_BASES = highValueBases();
+function basesAboveTier(tier: number): string[] {
+  return Object.entries(UNIQUE_BASES)
+    .filter(([, value]) => value > tier)
+    .map(([baseType]) => baseType)
+    .sort();
+}
+
+const TOP_BASES = basesAtTier(1);
 
 const JEWEL_CLASSES = ['Jewels', 'Abyss Jewels'];
 
@@ -19,9 +31,10 @@ const TOP_JEWEL_BASES = TOP_BASES.filter((baseType) =>
 
 /**
  * Unique names are not valid BaseType values. Tiering therefore highlights the
- * bases that carry high-value uniques; the generic rule still catches the rest.
+ * bases that carry high-value uniques; a low-tier hide removes the cheap bases
+ * at high strictness, and the generic rule catches the rest.
  */
-export function uniqueRules(): Rule[] {
+export function uniqueRules(preset: Preset): Rule[] {
   const rules: Rule[] = [];
 
   if (TOP_JEWEL_BASES.length > 0) {
@@ -43,6 +56,18 @@ export function uniqueRules(): Rule[] {
       rarity: 'Unique',
       styleKind: 's-tier',
       style: SLOT_STYLES.currencyTop,
+    });
+  }
+
+  // Runs before the class and generic show rules so cheap bases actually stay
+  // hidden. Normal and Strict keep every unique (cutoff 3 -> empty list).
+  const lowTierBases = basesAboveTier(preset.uniques.maxVisibleTier);
+  if (lowTierBases.length > 0) {
+    rules.push({
+      action: 'Hide',
+      comment: 'Uniques - low tier bases',
+      baseTypes: lowTierBases,
+      rarity: 'Unique',
     });
   }
 

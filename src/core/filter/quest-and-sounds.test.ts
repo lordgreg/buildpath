@@ -71,7 +71,7 @@ describe('named currency alerts', () => {
     }
   });
 
-  it('still respects the Very Strict currency tier cutoff', () => {
+  it('keeps tier-2 orbs and hides tier-3 at Very Strict', () => {
     expect(currencyRule('Divine Orb', 'endgame', 'very-strict').shown).toBe(
       true,
     );
@@ -79,8 +79,11 @@ describe('named currency alerts', () => {
       true,
     );
     expect(currencyRule('Chaos Orb', 'endgame', 'very-strict').shown).toBe(
-      false,
+      true,
     );
+    expect(
+      currencyRule('Scroll of Wisdom', 'endgame', 'very-strict').shown,
+    ).toBe(false);
   });
 });
 

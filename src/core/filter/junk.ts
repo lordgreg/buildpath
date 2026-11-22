@@ -1,4 +1,4 @@
-import { EQUIPMENT_CLASSES } from './classes.ts';
+import { EQUIPMENT_CLASSES, FLASK_CLASSES } from './classes.ts';
 import type { Preset } from './presets.ts';
 import {
   baseTypesFor,
@@ -12,6 +12,11 @@ export function junkRules(archetype: Archetype, preset: Preset): Rule[] {
   const used = usedFilterClasses(archetype);
   const unused = EQUIPMENT_CLASSES.filter((name) => !used.has(name));
   const allEquipment = [...EQUIPMENT_CLASSES];
+  // Magic flasks are the everyday endgame consumable; the all-Magic hide keeps
+  // them visible. Unused flask classes are still caught by the per-slot hide.
+  const flaskClasses = new Set<string>(FLASK_CLASSES);
+  const magicEquipment = allEquipment.filter((name) => !flaskClasses.has(name));
+  const unusedFlasks = unused.filter((name) => flaskClasses.has(name));
   const rules: Rule[] = [];
 
   // Classes where the build allows only some bases, e.g. int helmets but not
@@ -33,9 +38,17 @@ export function junkRules(archetype: Archetype, preset: Preset): Rule[] {
     rules.push({
       action: 'Hide',
       comment: 'Magic gear',
-      classNames: allEquipment,
+      classNames: magicEquipment,
       rarity: 'Magic',
     });
+    if (unusedFlasks.length > 0) {
+      rules.push({
+        action: 'Hide',
+        comment: 'Magic gear - flask classes this build does not use',
+        classNames: unusedFlasks,
+        rarity: 'Magic',
+      });
+    }
   } else {
     if (unused.length > 0) {
       rules.push({

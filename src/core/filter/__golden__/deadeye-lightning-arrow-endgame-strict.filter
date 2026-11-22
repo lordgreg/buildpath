@@ -5,7 +5,7 @@
 # Phase: Endgame - Strict
 # League: Covens
 # Presets: 30f1aaff2ac6
-# Rules: 40 - Base types: 53
+# Rules: 41 - Base types: 53
 # Base data: RePoE master (d9b86d38)
 # Generated at https://lordgreg.github.io/filterpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -352,7 +352,12 @@ Show
 
 # Magic gear
 Hide
-    Class "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks" "Jewels" "Abyss Jewels"
+    Class "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Jewels" "Abyss Jewels"
+    Rarity Magic
+
+# Magic gear - flask classes this build does not use
+Hide
+    Class "Mana Flasks" "Hybrid Flasks"
     Rarity Magic
 
 # Normal gear

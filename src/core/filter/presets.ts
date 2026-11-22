@@ -34,6 +34,8 @@ export interface MapsPreset {
 
 export interface UniquesPreset {
   id: string;
+  /** 1 = best bases only, 3 = every unique. Bases above the cutoff are hidden. */
+  maxVisibleTier: 1 | 2 | 3;
 }
 
 export interface JunkPreset {
@@ -73,7 +75,7 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
     'very-strict': {
       rareMinItemLevel: 30,
       magicMinItemLevel: null,
-      highlightLinks: false,
+      highlightLinks: true,
       hiddenBases: ['Gold Ring'],
     },
   },
@@ -81,7 +83,7 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
     normal: {
       rareMinItemLevel: 80,
       magicMinItemLevel: null,
-      highlightLinks: false,
+      highlightLinks: true,
     },
     strict: {
       rareMinItemLevel: 83,
@@ -118,7 +120,22 @@ const CURRENCY: Matrix<Omit<CurrencyPreset, 'id'>> = {
   endgame: {
     normal: { maxVisibleTier: 2 },
     strict: { maxVisibleTier: 2 },
-    'very-strict': { maxVisibleTier: 1 },
+    // Keep Chaos and the other tier-2 orbs; only the vendor-tier scrolls and
+    // scraps are hidden.
+    'very-strict': { maxVisibleTier: 2 },
+  },
+};
+
+const UNIQUES: Matrix<Omit<UniquesPreset, 'id'>> = {
+  leveling: {
+    normal: { maxVisibleTier: 3 },
+    strict: { maxVisibleTier: 3 },
+    'very-strict': { maxVisibleTier: 2 },
+  },
+  endgame: {
+    normal: { maxVisibleTier: 3 },
+    strict: { maxVisibleTier: 3 },
+    'very-strict': { maxVisibleTier: 2 },
   },
 };
 
@@ -180,6 +197,7 @@ export function getPreset(phase: Phase, strictness: Strictness): Preset {
     },
     uniques: {
       id: sectionId('preset-uniques', phase, strictness),
+      ...UNIQUES[phase][strictness],
     },
     junk: {
       id: sectionId('preset-junk', phase, strictness),

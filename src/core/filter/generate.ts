@@ -176,7 +176,7 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
   if (sections.gems) add('gems', gemRules(preset));
   if (sections.currency) add('currency', currencyRules(preset));
   if (sections.maps) add('maps', mapRules(preset, config.phase));
-  if (sections.uniques) add('uniques', uniqueRules());
+  if (sections.uniques) add('uniques', uniqueRules(preset));
 
   add('junk', junkRules(archetype, preset));
   // Style-only category rules run last so they never change what the preset

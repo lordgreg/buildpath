@@ -90,9 +90,12 @@ describe('preview matcher', () => {
     expect(evaluateRules(rules, item('four-link')).shown).toBe(true);
   });
 
-  it('hides a four-link normal item in endgame', () => {
-    const rules = rulesFor('necro-minions', 'endgame', 'normal');
-    expect(evaluateRules(rules, item('four-link')).shown).toBe(false);
+  it('shows a four-link normal item in endgame normal but hides it in strict', () => {
+    const normal = rulesFor('necro-minions', 'endgame', 'normal');
+    expect(evaluateRules(normal, item('four-link')).shown).toBe(true);
+
+    const strict = rulesFor('necro-minions', 'endgame', 'strict');
+    expect(evaluateRules(strict, item('four-link')).shown).toBe(false);
   });
 
   it('always shows six-socket items', () => {
