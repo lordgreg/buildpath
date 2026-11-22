@@ -2,6 +2,15 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.23.0 — 2026-11-22
+
+Hide small gold piles.
+
+- Gold piles below a per-strictness threshold are hidden, so only the larger
+  piles keep a label; the floor rises from Soft to Uber (leveling 10/20/50,
+  endgame 50/100/200). Gold is auto-collected, so a hidden pile only loses the
+  ground label.
+
 ## 0.22.0 — 2026-11-22
 
 League first, stale-filter cleanup and more chips.

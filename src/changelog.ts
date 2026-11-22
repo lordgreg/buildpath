@@ -17,6 +17,16 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.23.0',
+    date: '2026-11-22',
+    title: 'Hide small gold piles',
+    notes: [
+      'Gold piles below a per-strictness threshold are hidden, so only the larger piles keep a label; the floor rises from Soft to Uber (leveling 10/20/50, endgame 50/100/200). Gold is auto-collected, so a hidden pile only loses the ground label.',
+    ],
+    commits: [],
+    compare: 'v0.22.0...v0.23.0',
+  },
+  {
     version: '0.22.0',
     date: '2026-11-22',
     title: 'League first, stale-filter cleanup and more chips',
