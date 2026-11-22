@@ -28,6 +28,7 @@ import FilterPreview from './FilterPreview.tsx';
 import ThemePreview from './demo/ThemePreview.tsx';
 import AdvancedRules, { type RulePrefill } from './rules/AdvancedRules.tsx';
 import SaveBuildPanel from './save/SaveBuildPanel.tsx';
+import ResumePanel from './save/ResumePanel.tsx';
 import FolderGuidance from './save/FolderGuidance.tsx';
 import { useFiltersFolder } from './save/useFiltersFolder.ts';
 import { discardLegacyBuilds, type SavedBuild } from './presets/storage.ts';
@@ -572,9 +573,13 @@ export default function Wizard() {
               <>
                 <p className="rounded-lg border border-ink-700 bg-ink-900/40 px-3 py-2 text-xs leading-relaxed text-zinc-500">
                   Nothing is selected yet. Choose a way to build to generate a
-                  filter. Saved builds and the import box appear once a mode is
-                  picked.
+                  filter. The import box appears once a mode is picked.
                 </p>
+                <ResumePanel
+                  folder={folder}
+                  onLoadBuild={loadBuild}
+                  onLoadFile={loadFile}
+                />
                 {notice && (
                   <p className="text-[11px] text-amber-300">{notice}</p>
                 )}
