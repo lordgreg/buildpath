@@ -19,8 +19,9 @@ families:
     attributes: [int]
     armourTags: [int_armour, str_int_armour]
     jewelTag: intjewel
-    # Cloth Belt's implicit is stun/block recovery, useless for a summoner.
-    excludedBases: [Cloth Belt]
+    # Cloth Belt's stun/block recovery is useless for a summoner, and so are
+    # the life and mana regen amulet bases.
+    excludedBases: [Cloth Belt, Coral Amulet, Marble Amulet, Blue Pearl Amulet]
     weapon:
       itemClasses: [Wand]
       tags: [weapon_can_roll_minion_modifiers]

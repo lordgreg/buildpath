@@ -295,3 +295,95 @@ describe('family excluded bases', () => {
     expect(found.shown).toBe(true);
   });
 });
+
+const CORAL_AMULET = `Item Class: Amulets
+Rarity: Rare
+Coral Amulet
+--------
+Item Level: 53
+--------
+{ Implicit Modifier — Life }
+Regenerate 3.9(2-4) Life per second
+--------
+Unidentified`;
+
+function amulet(
+  baseType: string,
+  rarity: PreviewItem['rarity'],
+  itemLevel = 53,
+): PreviewItem {
+  return {
+    id: `${baseType}-${rarity}`,
+    name: baseType,
+    itemClass: 'Amulets',
+    baseType,
+    rarity,
+    itemLevel,
+    identified: true,
+  };
+}
+
+describe('minion amulet exclusions', () => {
+  const MINION_SELECTIONS = [
+    { mode: 'family' as const, familyId: 'minion' as const },
+    { mode: 'ascendancy' as const, ascendancyId: 'necromancer' },
+  ];
+  const REGEN_AMULETS = [
+    'Coral Amulet',
+    'Marble Amulet',
+    'Blue Pearl Amulet',
+  ];
+
+  it('parses the reported unidentified rare Coral Amulet', () => {
+    const [parsed] = parseItemText(CORAL_AMULET);
+    expect(parsed).toMatchObject({
+      itemClass: 'Amulets',
+      baseType: 'Coral Amulet',
+      rarity: 'Rare',
+      itemLevel: 53,
+      identified: false,
+    });
+  });
+
+  it('hides normal, magic and rare regen amulets for minion builds', () => {
+    for (const selection of MINION_SELECTIONS) {
+      for (const base of REGEN_AMULETS) {
+        for (const phase of ['leveling', 'endgame'] as const) {
+          for (const strictness of ['soft', 'strict', 'uber'] as const) {
+            for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
+              const filter = generateFilter({ selection, phase, strictness });
+              const found = evaluateRules(filter.rules, amulet(base, rarity));
+              expect(
+                found.shown,
+                `${selection.mode}/${base}/${phase}/${strictness}/${rarity}`,
+              ).toBe(false);
+              expect(found.reason).toContain('excluded base');
+            }
+          }
+        }
+      }
+    }
+  });
+
+  it('keeps unique regen amulets visible', () => {
+    for (const base of REGEN_AMULETS) {
+      const filter = generateFilter({
+        selection: MINION_SELECTIONS[0]!,
+        phase: 'leveling',
+        strictness: 'soft',
+      });
+      const found = evaluateRules(filter.rules, amulet(base, 'Unique'));
+      expect(found.shown, base).toBe(true);
+    }
+  });
+
+  it('keeps other amulet bases visible for minion builds', () => {
+    const filter = generateFilter({
+      selection: MINION_SELECTIONS[0]!,
+      phase: 'leveling',
+      strictness: 'soft',
+    });
+    const found = evaluateRules(filter.rules, amulet('Onyx Amulet', 'Rare'));
+    expect(found.shown).toBe(true);
+  });
+});
