@@ -117,11 +117,13 @@ interface ThemePalette {
   rarity: Record<Rarity, Color>;
   colors: ThemeColors;
   quest: { text: Color; border: Color; background: Color };
+  veiled: { text: Color; border: Color; background: Color };
   chase: { text: Color; background: Color };
   backgrounds: Partial<Record<StyleKind, Color>>;
 }
 
-interface QuestSpec {
+/** Text/border/background triple for a category that ignores rarity colour. */
+interface TintSpec {
   text: string;
   border: string;
   background?: string;
@@ -141,7 +143,8 @@ interface PaletteSpec {
   gold: string;
   purple: string;
   green: string;
-  quest: QuestSpec;
+  quest: TintSpec;
+  veiled: TintSpec;
   chase: { text: string; background: string };
   /** Force every category background to one colour (contrast, muted). */
   flatBackgrounds?: string;
@@ -184,6 +187,7 @@ function buildPalette(spec: PaletteSpec): ThemePalette {
   }
 
   const questBorder = hex(spec.quest.border);
+  const veiledBorder = hex(spec.veiled.border);
   return {
     base,
     rarity: {
@@ -199,6 +203,13 @@ function buildPalette(spec: PaletteSpec): ThemePalette {
       background: spec.quest.background
         ? hex(spec.quest.background)
         : mix(base, questBorder, 0.32),
+    },
+    veiled: {
+      text: hex(spec.veiled.text),
+      border: veiledBorder,
+      background: spec.veiled.background
+        ? hex(spec.veiled.background)
+        : mix(base, veiledBorder, 0.32),
     },
     chase: {
       text: hex(spec.chase.text),
@@ -222,6 +233,7 @@ const RARITY_PALETTE = buildPalette({
   purple: '#be78ff',
   green: '#78e68c',
   quest: { text: '#ffffff', border: '#d9b26a', background: '#3a2600' },
+  veiled: { text: '#ffb8f0', border: '#ff5cd6', background: '#2a0a24' },
   chase: { text: '#12000a', background: '#ff2d95' },
   backgrounds: {
     's-tier': '#3a0b2e',
@@ -250,6 +262,7 @@ const CATPPUCCIN_PALETTE = buildPalette({
   purple: '#cba6f7',
   green: '#a6e3a1',
   quest: { text: '#cdd6f4', border: '#fab387' },
+  veiled: { text: '#f5c2e7', border: '#f5a9e0' },
   chase: { text: '#1a0a18', background: '#ea76cb' },
 });
 
@@ -267,6 +280,7 @@ const DRACULA_PALETTE = buildPalette({
   purple: '#bd93f9',
   green: '#50fa7b',
   quest: { text: '#f8f8f2', border: '#ffb86c' },
+  veiled: { text: '#ffb8de', border: '#ff79c6' },
   chase: { text: '#12001a', background: '#ff79c6' },
 });
 
@@ -284,6 +298,7 @@ const NORD_PALETTE = buildPalette({
   purple: '#b48ead',
   green: '#a3be8c',
   quest: { text: '#eceff4', border: '#d08770' },
+  veiled: { text: '#e3c2dc', border: '#b48ead' },
   chase: { text: '#191d24', background: '#bf616a' },
 });
 
@@ -301,6 +316,7 @@ const SOLARIZED_PALETTE = buildPalette({
   purple: '#d33682',
   green: '#859900',
   quest: { text: '#eee8d5', border: '#cb4b16' },
+  veiled: { text: '#e8a0c8', border: '#d33682' },
   chase: { text: '#001b22', background: '#d33682' },
 });
 
@@ -318,6 +334,7 @@ const TOKYO_PALETTE = buildPalette({
   purple: '#bb9af7',
   green: '#9ece6a',
   quest: { text: '#c0caf5', border: '#ff9e64' },
+  veiled: { text: '#f5b8e0', border: '#ff5c9e' },
   chase: { text: '#1a0010', background: '#ff007c' },
 });
 
@@ -335,6 +352,7 @@ const CONTRAST_PALETTE = buildPalette({
   purple: '#ffffff',
   green: '#ffffff',
   quest: { text: '#ffffff', border: '#ffffff', background: '#000000' },
+  veiled: { text: '#ffffff', border: '#ffffff', background: '#000000' },
   chase: { text: '#ffffff', background: '#000000' },
   flatBackgrounds: '#000000',
 });
@@ -353,6 +371,7 @@ const MUTED_PALETTE = buildPalette({
   purple: '#bebebe',
   green: '#bebebe',
   quest: { text: '#bebebe', border: '#bebebe', background: '#000000' },
+  veiled: { text: '#bebebe', border: '#bebebe', background: '#000000' },
   chase: { text: '#bebebe', background: '#000000' },
   flatBackgrounds: '#000000',
 });
@@ -418,6 +437,14 @@ function paintRule(rule: Rule, palette: ThemePalette): Rule {
       palette.quest.text,
       palette.quest.border,
       palette.quest.background,
+    );
+  }
+  if (rule.section === 'veiled' || rule.styleKind === 'veiled') {
+    return withColors(
+      rule,
+      palette.veiled.text,
+      palette.veiled.border,
+      palette.veiled.background,
     );
   }
 

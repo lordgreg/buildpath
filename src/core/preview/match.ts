@@ -31,6 +31,8 @@ export interface PreviewItem {
   mapTier?: number;
   corrupted?: boolean;
   identified?: boolean;
+  /** Names of the item's explicit mods, e.g. "Veiled" or "of Renewal". */
+  explicitMods?: string[];
 }
 
 export interface MatchResult {
@@ -49,6 +51,15 @@ function inRange(
   if (range.min !== undefined && value < range.min) return false;
   if (range.max !== undefined && value > range.max) return false;
   return true;
+}
+
+/** The game matches an item mod whose name contains the filter string. */
+function hasExplicitMod(item: PreviewItem, names: readonly string[]): boolean {
+  const mods = (item.explicitMods ?? []).map((mod) => mod.toLowerCase());
+  return names.some((name) => {
+    const needle = name.toLowerCase();
+    return mods.some((mod) => mod.includes(needle));
+  });
 }
 
 export function ruleMatches(rule: Rule, item: PreviewItem): boolean {
@@ -74,6 +85,13 @@ export function ruleMatches(rule: Rule, item: PreviewItem): boolean {
   if (
     rule.identified !== undefined &&
     (item.identified ?? false) !== rule.identified
+  ) {
+    return false;
+  }
+
+  if (
+    rule.hasExplicitMod?.length &&
+    !hasExplicitMod(item, rule.hasExplicitMod)
   ) {
     return false;
   }

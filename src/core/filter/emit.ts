@@ -131,6 +131,9 @@ function ruleLines(rule: Rule): string[] {
   if (rule.identified !== undefined) {
     lines.push(`${INDENT}Identified ${rule.identified ? 'True' : 'False'}`);
   }
+  if (rule.hasExplicitMod?.length) {
+    lines.push(`${INDENT}HasExplicitMod ${quoteList(rule.hasExplicitMod)}`);
+  }
   if (rule.continue) {
     lines.push(`${INDENT}Continue`);
   }

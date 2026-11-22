@@ -22,6 +22,7 @@ const SECTION_LABELS: Record<RuleSection, string> = {
   currency: 'Currency',
   maps: 'Maps & fragments',
   quest: 'Quest items',
+  veiled: 'Veiled items',
   uniques: 'Uniques',
   junk: 'Junk hides',
   league: 'League drops',

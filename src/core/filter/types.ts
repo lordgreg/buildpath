@@ -7,6 +7,7 @@ export type RuleSection =
   | 'maps'
   | 'uniques'
   | 'quest'
+  | 'veiled'
   | 'junk'
   | 'league'
   | 'custom';
@@ -30,6 +31,7 @@ export type StyleKind =
   | 'gold'
   | 'league'
   | 'quest'
+  | 'veiled'
   | 'chase';
 
 /** Built-in Shaper voice lines that Path of Exile accepts as alert sounds. */
@@ -121,6 +123,8 @@ export interface Rule {
   comment?: string;
   classNames?: string[];
   baseTypes?: string[];
+  /** Explicit mod names; the game matches a mod whose name contains the value. */
+  hasExplicitMod?: string[];
   rarity?: Rarity;
   itemLevel?: Range;
   dropLevel?: Range;

@@ -244,6 +244,12 @@ describe('rarity theme', () => {
     styleKind: 'quest',
     style: baseStyle,
   };
+  const veiled: Rule = {
+    action: 'Show',
+    section: 'veiled',
+    styleKind: 'veiled',
+    style: baseStyle,
+  };
 
   it('gives Mirror and Divine a vivid chase background', () => {
     expect(styleOf(chase)).toMatchObject({
@@ -260,12 +266,22 @@ describe('rarity theme', () => {
     });
   });
 
-  it('resolves chase and quest colours for every theme', () => {
+  it('gives veiled items a magenta background', () => {
+    expect(styleOf(veiled)).toMatchObject({
+      textColor: [255, 184, 240, 255],
+      borderColor: [255, 92, 214, 255],
+      backgroundColor: [42, 10, 36, 255],
+    });
+  });
+
+  it('resolves chase, quest and veiled colours for every theme', () => {
     for (const theme of THEMES) {
       const chaseStyle = applyTheme([chase], theme.id)[0]!.style!;
       const questStyle = applyTheme([quest], theme.id)[0]!.style!;
+      const veiledStyle = applyTheme([veiled], theme.id)[0]!.style!;
       expect(chaseStyle.backgroundColor, theme.id).toBeDefined();
       expect(questStyle.backgroundColor, theme.id).toBeDefined();
+      expect(veiledStyle.backgroundColor, theme.id).toBeDefined();
       expect(chaseStyle.textColor, theme.id).not.toEqual(
         chaseStyle.backgroundColor,
       );

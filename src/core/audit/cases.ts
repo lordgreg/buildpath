@@ -19,6 +19,7 @@ export type AuditCategory =
   | 'gear-magic'
   | 'gear-rare'
   | 'quest'
+  | 'veiled'
   | 'league'
   | 'leak';
 
@@ -410,6 +411,18 @@ export const AUDIT_CASES: AuditCase[] = [
       'Currency',
       { itemLevel: 1 },
     ),
+    expect: () => true,
+  },
+  {
+    id: 'veiled-bow',
+    label: 'Wrath Barrage (veiled)',
+    category: 'veiled',
+    note: 'always shown',
+    item: item('veiled-bow', 'Bows', 'Ranger Bow', 'Rare', {
+      name: 'Wrath Barrage',
+      itemLevel: 63,
+      explicitMods: ['Veiled'],
+    }),
     expect: () => true,
   },
   {

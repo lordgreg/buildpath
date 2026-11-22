@@ -14,6 +14,9 @@ const RARITIES = new Set<ItemRarity>([
 /** League drops such as Viscera are copied without a Rarity line. */
 const CLASS_ONLY_RARITIES = new Set(['Viscera']);
 
+/** Explicit mod name, e.g. `{ Prefix Modifier "Veiled" }`. */
+const EXPLICIT_MOD = /^\{\s*(?:\w+ )*(?:Prefix|Suffix) Modifier "([^"]+)"/;
+
 function field(lines: string[], name: string): string | undefined {
   const prefix = `${name}:`;
   const line = lines.find((entry) => entry.trim().startsWith(prefix));
@@ -97,6 +100,9 @@ export function parseItemText(text: string): PreviewItem[] {
       ? Number.parseInt(stack.split('/')[0]!, 10)
       : undefined;
     const mapTier = field(lines, 'Map Tier');
+    const explicitMods = lines
+      .map((line) => EXPLICIT_MOD.exec(line)?.[1])
+      .filter((name): name is string => Boolean(name));
 
     items.push({
       id: `paste-${index}`,
@@ -113,6 +119,7 @@ export function parseItemText(text: string): PreviewItem[] {
         ? { stackSize }
         : {}),
       ...(mapTier ? { mapTier: Number(mapTier) } : {}),
+      ...(explicitMods.length ? { explicitMods } : {}),
       corrupted: lines.includes('Corrupted'),
       identified: !lines.includes('Unidentified'),
     });

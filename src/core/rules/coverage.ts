@@ -41,6 +41,18 @@ function namesCover(
   return target.every((name) => allowed.has(name));
 }
 
+/** The game matches an explicit mod whose name contains the filter value. */
+function modsCover(
+  cover: readonly string[],
+  target: readonly string[],
+): boolean {
+  const allowed = cover.map((name) => name.toLowerCase());
+  return target.every((name) => {
+    const lower = name.toLowerCase();
+    return allowed.some((value) => lower.includes(value));
+  });
+}
+
 /** True when every item matched by `target` is also matched by `cover`. */
 export function ruleCovers(cover: Rule, target: Rule): boolean {
   if (cover.action !== target.action) return false;
@@ -52,6 +64,10 @@ export function ruleCovers(cover: Rule, target: Rule): boolean {
   }
   if (cover.identified !== undefined && cover.identified !== target.identified) {
     return false;
+  }
+  if (cover.hasExplicitMod?.length) {
+    if (!target.hasExplicitMod?.length) return false;
+    if (!modsCover(cover.hasExplicitMod, target.hasExplicitMod)) return false;
   }
 
   if (cover.classNames) {

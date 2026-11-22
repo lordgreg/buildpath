@@ -140,6 +140,23 @@ const TREASURE_KEY_RULE: Rule = {
 };
 
 /**
+ * Veiled items carry an unidentified mod worth unveiling, so they are always
+ * shown whatever the build or strictness. The game matches a mod name that
+ * contains "Veil", covering "Veiled" and legacy names such as "of the Veil".
+ */
+const VEILED_RULE: Rule = {
+  action: 'Show',
+  id: 'veiled-items',
+  section: 'veiled',
+  comment: 'Veiled items',
+  hasExplicitMod: ['Veil'],
+  styleKind: 'veiled',
+  style: {
+    fontSize: 45,
+  },
+};
+
+/**
  * Builds the rule list without serialising it. The preview matcher consumes
  * the same rules the filter is generated from, so they cannot drift.
  */
@@ -187,14 +204,19 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
       version,
       theme,
       rules: applyTheme(
-        [QUEST_RULE, TREASURE_KEY_RULE, ...customRules, baseRule],
+        [QUEST_RULE, TREASURE_KEY_RULE, VEILED_RULE, ...customRules, baseRule],
         theme,
       ),
       baseTypes: [...bases].sort(),
     };
   }
 
-  const rules: Rule[] = [QUEST_RULE, TREASURE_KEY_RULE, ...customRules];
+  const rules: Rule[] = [
+    QUEST_RULE,
+    TREASURE_KEY_RULE,
+    VEILED_RULE,
+    ...customRules,
+  ];
   const baseTypes = new Set<string>();
 
   for (const spec of Object.values(archetype.slots)) {

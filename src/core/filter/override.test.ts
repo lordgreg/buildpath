@@ -40,7 +40,8 @@ describe('custom rules', () => {
 
     expect(compiled.rules[0]?.id).toBe('quest-items');
     expect(compiled.rules[1]?.id).toBe('quest-treasure-key');
-    expect(compiled.rules[2]?.id).toBe('custom-0');
+    expect(compiled.rules[2]?.id).toBe('veiled-items');
+    expect(compiled.rules[3]?.id).toBe('custom-0');
     expect(compiled.rules.length).toBeGreaterThan(1);
     expect(compiled.rules.some((rule) => rule.section === 'gear')).toBe(true);
     expect(compiled.baseTypes).toContain('Hubris Circlet');
