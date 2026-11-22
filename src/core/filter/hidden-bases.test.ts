@@ -185,11 +185,53 @@ function ring(
   };
 }
 
+const PHOENIX_GRIP = `Item Class: Rings
+Rarity: Rare
+Phoenix Grip
+Iron Ring
+--------
+Requirements:
+Level: 32
+--------
+Item Level: 49
+--------
+{ Implicit Modifier — Damage, Physical, Attack }
+Adds 1 to 4 Physical Damage to Attacks
+--------
+{ Prefix Modifier "Cerulean" (Tier: 9) — Mana }
++39(35-39) to maximum Mana
+{ Suffix Modifier "of Consumption" (Tier: 4) — Mana }
+Gain 11(11-15) Mana per Enemy Killed
+{ Suffix Modifier "of the Seal" (Tier: 7) — Elemental, Cold, Resistance }
++14(12-17)% to Cold Resistance
+{ Suffix Modifier "of Excitement" (Tier: 6) — Mana }
+18(10-19)% increased Mana Regeneration Rate`;
+
 describe('family excluded bases', () => {
   const CASTER_SELECTIONS = [
     { mode: 'family' as const, familyId: 'caster' as const },
     { mode: 'ascendancy' as const, ascendancyId: 'elementalist' },
   ];
+
+  it('parses and hides the reported Phoenix Grip Iron Ring for casters', () => {
+    const [parsed] = parseItemText(PHOENIX_GRIP);
+    expect(parsed).toMatchObject({
+      itemClass: 'Rings',
+      baseType: 'Iron Ring',
+      rarity: 'Rare',
+      itemLevel: 49,
+    });
+    for (const selection of CASTER_SELECTIONS) {
+      const filter = generateFilter({
+        selection,
+        phase: 'leveling',
+        strictness: 'normal',
+      });
+      const found = evaluateRules(filter.rules, parsed!);
+      expect(found.shown).toBe(false);
+      expect(found.reason).toContain('excluded base');
+    }
+  });
 
   it('hides rare Iron Rings for caster builds', () => {
     for (const selection of CASTER_SELECTIONS) {
