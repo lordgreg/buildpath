@@ -116,7 +116,8 @@ scripts/       YAML compiler and data extractors
 
 Related workflows:
 
-- `economy.yml` — daily cron refreshes tiers and opens a PR if they changed.
+- `economy.yml` — daily cron refreshes tiers, regenerates the golden filters
+  when tiers move, and opens a PR if anything changed.
 - `validate-meta.yml` — runs `npm test` on PRs touching presets/meta.
 - `meta-reminder.yml` — monthly issue to remind about a snapshot refresh.
 
