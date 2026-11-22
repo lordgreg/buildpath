@@ -17,6 +17,16 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.24.1',
+    date: '2026-11-22',
+    title: 'Hide the regen amulets in minion presets',
+    notes: [
+      'The minion family and the Necromancer now hide normal, magic and rare Coral, Marble and Blue Pearl Amulets, whose life and mana regen implicits a summoner cannot use. Unique amulets stay visible.',
+    ],
+    commits: [],
+    compare: 'v0.24.0...v0.24.1',
+  },
+  {
     version: '0.24.0',
     date: '2026-11-22',
     title: 'Custom-rule overrides and loot-simulator deep links',

@@ -2,6 +2,14 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.24.1 — 2026-11-22
+
+Hide the regen amulets in minion presets.
+
+- The minion family and the Necromancer now hide normal, magic and rare Coral,
+  Marble and Blue Pearl Amulets, whose life and mana regen implicits a summoner
+  cannot use. Unique amulets stay visible.
+
 ## 0.24.0 — 2026-11-22
 
 Custom-rule overrides and loot-simulator deep links.
