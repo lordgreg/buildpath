@@ -5,10 +5,11 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.18.2 — Gold Ring exclusion while leveling is live on top of
-currency paste support, demo sounds, quest/named-orb alerts, stable filenames,
-preset auto-sync and rarity-first colors. Remaining work is manual QA; real meta
-capture is blocked by poe.ninja’s closed builds API.
+**Status:** v0.19.0 — category backgrounds for S-tier orbs, cards, gems,
+fragments, jewels, flasks and league drops are live on top of currency paste
+support, demo sounds, quest/named-orb alerts, stable filenames, preset auto-sync
+and rarity-first colors. Remaining work is manual QA; real meta capture is
+blocked by poe.ninja’s closed builds API.
 
 ## Features
 
@@ -23,7 +24,9 @@ capture is blocked by poe.ninja’s closed builds API.
 - Templates marked “In preset” when the current phase and strictness already cover them
 - From Scratch mode with hidden-all or shown-all start
 - Loot simulator with pasted in-game items and filter-styled labels
-- Three filter themes; saved builds with Update; one global strictness
+- Three filter themes; Rarity adds category backgrounds for S-tier orbs, cards, gems, fragments, jewels, flasks and league drops
+- Build-specific base exclusions, e.g. Necromancer hides Cloth Belt and Caster hides Iron Ring
+- Saved builds with Update; one global strictness
 - Economy-aware currency, divination and unique tiers refreshed daily
 - Chromium folder writing with OS-aware path hints, a reference path field, a read/write test and .bak backups
 - Brave users get the `brave://flags/#file-system-access-api` step directly in the panel

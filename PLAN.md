@@ -6,11 +6,12 @@ Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
 levelling or endgame, download a `.filter`. No account, no loot simulator, no
 hundred-item editor.
 
-**Status:** v0.18.2 adds a Gold Ring exclusion while leveling on top of currency
-paste support, demo sounds, quest/named-orb alerts, stable filenames, preset
-auto-sync, rarity-first colors, Leveling Strict Magic floors and wrong-base gear
-hiding. Remaining work is manual QA; real meta capture is blocked by poe.ninja’s
-closed builds API.
+**Status:** v0.19.0 adds category backgrounds for S-tier orbs, cards, gems,
+fragments, jewels, flasks and league drops, plus build-specific base exclusions
+(Necromancer hides Cloth Belt), on top of currency paste support, demo sounds,
+quest/named-orb alerts, stable filenames, preset auto-sync, rarity-first colors,
+Leveling Strict Magic floors and wrong-base gear hiding. Remaining work is manual
+QA; real meta capture is blocked by poe.ninja’s closed builds API.
 
 ---
 
@@ -467,6 +468,11 @@ Implementation notes:
   and no Magic on Very Strict or any Endgame preset.
 - Gold Ring (the Item Rarity base) is hidden in every leveling preset for
   Normal/Magic/Rare; unique Gold Rings remain visible. Endgame is unchanged.
+- Builds can exclude bases through `excludedBases` on the ascendancy or
+  archetype. Necromancer excludes Cloth Belt, whose stun-threshold implicit a
+  summoner cannot use; unique Cloth Belts remain visible. Caster and its
+  ascendancies exclude Iron Ring, whose physical attack implicit is useless for
+  spells; unique Iron Rings remain visible.
 - Rare item-level floors: preset threshold for weapons/armour, 68 for
   accessories, jewels and flasks. Rares in slots the build does not use are
   hidden at every phase and strictness. Used classes with restricted bases get
@@ -497,8 +503,10 @@ Implementation notes:
 
 - `src/core/filter/themes.ts` post-processes generated rules, so themes apply to
   custom rules as well. The default theme uses rarity for gear text and borders,
-  default gold for currency, pale blue for cards, teal for gems, tan for maps
-  and black backgrounds. Six-socket rules are split per rarity.
+  default gold for currency, pale blue for cards, teal for gems and tan for maps.
+  A `styleKind` category layer picks backgrounds for S-tier orbs, best jewels,
+  cards, gems, fragments, flasks, jewels, gold piles and league drops; everything
+  else keeps black. Six-socket rules are split per rarity.
 - Saved builds live in `src/ui/presets/storage.ts`; they store the full wizard
   state, not just the selection.
 - My-rules keys follow the selected build, so changing phase, strictness or
