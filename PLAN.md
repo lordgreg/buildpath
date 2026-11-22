@@ -281,7 +281,8 @@ The preset is **locked and never cloned**. Users add rules on top of it.
 
 - React 19 + Vite 8 + TypeScript 5.9, Tailwind 4
 - Multi-page Vite build: builder (`index.html`) + static changelog
-  (`changelog.html`) + loot simulator (`demo.html`)
+  (`changelog.html`) + loot simulator (`demo.html`) + behaviour audit
+  (`tests.html`)
 - YAML presets compiled to JSON by a build script; JSON Schema validation with
   Ajv. No YAML parser in the browser.
 - Vitest for unit and golden-file tests
@@ -323,6 +324,9 @@ src/
     preview/
       match.ts           first-match evaluation, Continue support
       samples.ts         reported leaks + representative drops
+    audit/
+      cases.ts           labelled drop catalog (one or more per category)
+      report.ts          selection x case matrix + rule provenance
     demo/
       parse-item.ts      parses pasted in-game item text
     share/
@@ -346,6 +350,7 @@ src/
     platform.ts          OS detection and folder hints
   ui/                    wizard, demo, URL state
     Changelog.tsx        release history page
+    TestsPage.tsx        behaviour audit page (tests.html)
     Wizard.tsx           builder shell
     demo/                loot simulator
     rules/               locked pane and rule editor
@@ -441,7 +446,65 @@ to a forced tier and always wins over the fetched value.
   templates
 - Sync: mock directory handle; permission, backup, overwrite and no-delete paths
 - Economy: refresh script run against fixture JSON, schema failure path tested
+- Ascendancy registry: `ascendancies.yaml` matches the reviewed expected list
+  (id/name/class); every `defaultFamily` is a real family; every
+  `defenceTags`/`shieldTags`/`jewelTag` resolves to at least one base
+- Behaviour audit: every selection x case matrix has an assertion, not just a
+  fixture replay (see 5.1)
 - CI runs `npm test` before every build
+
+### 5.1 Behaviour audit
+
+The `BaseType` and golden tests prove a filter *parses* and stays
+byte-stable. They do not prove the preset *decides correctly* for every kind
+of drop. The behaviour audit runs the real matcher (`evaluateRules`) over a
+structured case catalog for **every** selection at every phase and strictness,
+and turns the outcome into a report a human can read. It answers three
+questions.
+
+1. **Are the ascendancies correct?** The ladder list is hand-maintained and
+   has no RePoE source. Mirror the `BaseType` pattern: a reviewed
+   `src/presets/ascendancies.expected.ts` (id, name, class) is the source of
+   truth, and a test asserts `ascendancies.yaml` matches it exactly. New or
+   removed league ascendancies then fail the build until the expected list is
+   reviewed, instead of silently shipping a wrong class or family.
+2. **Do the predefined rules cover every kind of drop?** A
+   `src/core/audit/cases.ts` catalog with one or more labelled cases per
+   category: scrolls, orbs per tier, fragments, divination cards, maps across
+   tiers, normal/magic/rare gear per class and slot base, flasks, gems
+   (quality 0 and 20), jewels, uniques, quest items, plus the four reported
+   leaks. Each case records the expected outcome per strictness, so the audit
+   asserts intent rather than only replaying fixtures.
+3. **Show or hide, and where does it come from?** The matrix becomes a report:
+   rows are presets (`family:*`, `ascendancy:*`, `meta:*`), columns are cases.
+   Each cell is shown/hidden **plus provenance** — the deciding rule's
+   `section`, `id`, `comment` and its 1-based line range in the emitted
+   `.filter`. "Shown by default (no rule matched)" is a distinct state from
+   "shown by rule", so the visibility default can never mask a real decision.
+
+Mechanism — one source of truth:
+
+- `src/core/audit/report.ts` builds a serialisable report from `compileFilter`
+  + `evaluateRules`. Framework-free, no network, deterministic order.
+- The tests are the gate; the report is the data. `coverage-audit.test.ts`
+  keeps its invariants and a new `audit-report.test.ts` asserts the catalog
+  has an expected outcome for every case.
+- `tests.html` (a fourth Vite entry, like `changelog.html`) renders the same
+  report. Presets collapse by default; each cell names the rule and the
+  emitted line, so a screenshot in a bug report points straight at the source.
+  The page header carries the app version and preset hash, tying a report to
+  one release.
+- A **behaviour golden** (`__golden__/audit-summary`) pins the compact
+  `selection -> case -> shown|hidden + rule id` summary, so an unintended rule
+  reorder appears as a reviewable diff instead of a silent behaviour change.
+
+Deployment (recommendation): generate the report at build time and deploy it
+as part of the Pages site. It is a view over `src/core`, so it stays offline
+and always matches the deployed version, and a cell can be deep-linked from an
+issue. The same generator also runs on PRs in `validate-meta.yml` and uploads
+`tests.html` as an artifact, so a pre-merge report exists without a second
+site. Only the behaviour golden is committed; the full report is not (too
+noisy).
 
 ---
 
@@ -460,6 +523,8 @@ to a forced tier and always wins over the fetched value.
   the builds API
 - Meta changes land by PR; the validation Action must pass
 - Presets are YAML sources; compiled JSON is committed and validated
+- The behaviour audit page renders the same `src/core` report the tests assert;
+  its data is never hand-written
 - My rules are keyed by selection; presets always regenerate from the latest
   preset version
 - Keep old share links working until 1.0
@@ -483,7 +548,9 @@ to a forced tier and always wins over the fetched value.
 | Custom rules shadow preset rules unexpectedly | custom-first notice, catch-all warning, per-rule copy |
 | YAML preset and runtime data drift | compile at build time, commit generated JSON, schema test |
 | `DEX item` means something different to the user | show the resolved base count and examples before applying |
-| Rule order changes silently | explicit order in the editor, `Continue` tests, golden filters |
+| Rule order changes silently | explicit order in the editor, `Continue` tests, golden filters, behaviour golden |
+| Ascendancy list drifts from the game | reviewed `ascendancies.expected.ts` + registry test, `verifiedFor` per league |
+| Audit passes but a category is untested | cases catalog requires an expected outcome per category |
 | `HasExplicitMod` breaks between patches | prefer tags/classes; review before use |
 | Unknown `BaseType` aborts the whole filter | `known-base-types.json` + CI test + supplement file |
 | Filter placed in a folder the game does not scan | Install docs with the Proton path; folder picker |
@@ -520,6 +587,12 @@ to a forced tier and always wins over the fetched value.
 - The `defaultFamily` assigned to each of the three new ascendancies (Warden →
   bow, Luminary and Reliquarian → caster) is a first guess; revisit it against
   the league.
+- Behaviour audit (5.1): deploy decided — build `tests.html` at build time,
+  deploy it with Pages, and upload the same file as a PR artifact from
+  `validate-meta.yml`. One generator, no second site.
+- Behaviour audit: the Scion ladder currently has three entries (Ascendant,
+  Luminary, Reliquarian); confirm this is intended for the target league and
+  pin it in `ascendancies.expected.ts`.
 
 ### Manual validation
 

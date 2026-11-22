@@ -96,6 +96,12 @@ scripts/       YAML compiler and data extractors
   header and the stable file name.
 - Preset audit tests check every family, ascendancy and meta build across all
   phase/strictness combinations for unused-class, wrong-base and 4-link leaks.
+- Behaviour audit (`src/core/audit/`): a labelled drop catalog is run through
+  the real matcher for every build; `report.test.ts` asserts the recorded
+  outcomes, `golden.test.ts` pins the compact summary. The same report renders
+  `tests.html`. Regenerate the golden with `AUDIT_WRITE=1 npm test`.
+- Ascendancy registry (`ascendancies.expected.ts`) pins the ladder list; the
+  YAML must match it exactly.
 - CI runs `npm test` before every deploy (`.github/workflows/deploy.yml`).
 
 ## Release workflow
@@ -119,6 +125,7 @@ Related workflows:
 | Change filter output | `src/core/filter/` (esp. `generate.ts`, `emit.ts`) |
 | Custom rules, templates, share codes | `src/core/rules/` |
 | Rule matching / preview | `src/core/preview/match.ts` |
+| Behaviour audit page / report | `src/core/audit/`, `src/ui/TestsPage.tsx` |
 | Base types / economy data | `src/core/data/`, `src/generated/` |
 | Wizard / UI / URL state | `src/ui/` |
 | Folder writing / download | `src/sync/` |
