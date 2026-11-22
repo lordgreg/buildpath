@@ -75,6 +75,22 @@ function currency(id: string, label: string, name: string): AuditCase {
   };
 }
 
+/** Gold is auto-collected; only piles at or above the preset threshold show. */
+function gold(stackSize: number): AuditCase {
+  const id = `gold-${stackSize}`;
+  return {
+    id,
+    label: `Gold x${stackSize}`,
+    category: 'currency',
+    note: `stack ${stackSize}`,
+    item: item(id, 'Stackable Currency', 'Gold', 'Currency', {
+      itemLevel: 1,
+      stackSize,
+    }),
+    expect: ({ preset }) => stackSize >= preset.currency.goldMinStack,
+  };
+}
+
 export const AUDIT_CASES: AuditCase[] = [
   // Currency: an orb per tier, plus the vendor scrolls.
   currency('currency-mirror', 'Mirror of Kalandra', 'Mirror of Kalandra'),
@@ -86,6 +102,11 @@ export const AUDIT_CASES: AuditCase[] = [
   currency('currency-transmute', 'Orb of Transmutation', 'Orb of Transmutation'),
   currency('currency-wisdom', 'Scroll of Wisdom', 'Scroll of Wisdom'),
   currency('currency-portal', 'Portal Scroll', 'Portal Scroll'),
+
+  // Gold: piles below the preset threshold are hidden at every phase.
+  gold(1),
+  gold(10),
+  gold(100),
 
   // Fragments: tier 3 hides at the strictest cutoffs.
   {

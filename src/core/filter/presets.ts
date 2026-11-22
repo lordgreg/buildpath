@@ -28,6 +28,11 @@ export interface CurrencyPreset {
   maxVisibleTier: 1 | 2 | 3;
   /** Divination cards: 1 = top only, 3 = every card. */
   divinationMaxTier: 1 | 2 | 3;
+  /**
+   * Gold piles smaller than this are hidden. Gold is auto-collected, so the
+   * ground label is only clutter; higher tiers keep only the big payouts.
+   */
+  goldMinStack: number;
 }
 
 export interface MapsPreset {
@@ -125,17 +130,19 @@ const GEMS: Matrix<Omit<GemsPreset, 'id'>> = {
   },
 };
 
-// Soft shows every orb and card; Strict and Uber drop the low tiers.
+// Soft shows every orb and card; Strict and Uber drop the low tiers. Gold is
+// auto-collected, so the ground label is only clutter and the threshold rises
+// with strictness to keep only the larger piles.
 const CURRENCY: Matrix<Omit<CurrencyPreset, 'id'>> = {
   leveling: {
-    soft: { maxVisibleTier: 3, divinationMaxTier: 3 },
-    strict: { maxVisibleTier: 2, divinationMaxTier: 2 },
-    uber: { maxVisibleTier: 2, divinationMaxTier: 1 },
+    soft: { maxVisibleTier: 3, divinationMaxTier: 3, goldMinStack: 10 },
+    strict: { maxVisibleTier: 2, divinationMaxTier: 2, goldMinStack: 20 },
+    uber: { maxVisibleTier: 2, divinationMaxTier: 1, goldMinStack: 50 },
   },
   endgame: {
-    soft: { maxVisibleTier: 3, divinationMaxTier: 3 },
-    strict: { maxVisibleTier: 2, divinationMaxTier: 2 },
-    uber: { maxVisibleTier: 2, divinationMaxTier: 1 },
+    soft: { maxVisibleTier: 3, divinationMaxTier: 3, goldMinStack: 50 },
+    strict: { maxVisibleTier: 2, divinationMaxTier: 2, goldMinStack: 100 },
+    uber: { maxVisibleTier: 2, divinationMaxTier: 1, goldMinStack: 200 },
   },
 };
 

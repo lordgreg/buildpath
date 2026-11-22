@@ -5,7 +5,7 @@
 # Phase: Endgame - Strict
 # League: Covens
 # Presets: b1aeae04f922
-# Rules: 69 - Base types: 53
+# Rules: 71 - Base types: 53
 # Base data: RePoE master (d9b86d38)
 # Generated at https://lordgreg.github.io/filterpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -404,6 +404,19 @@ Show
 # Gems - below quality cutoff
 Hide
     Class "Skill Gems" "Support Gems"
+
+# Gold - stacks of 100+
+Show
+    BaseType "Gold"
+    StackSize >= 100
+    SetFontSize 34
+    SetTextColor 217 178 106 255
+    SetBorderColor 217 178 106 255
+    SetBackgroundColor 58 42 0 255
+
+# Gold - small stacks
+Hide
+    BaseType "Gold"
 
 # Mirror of Kalandra - alert
 Show

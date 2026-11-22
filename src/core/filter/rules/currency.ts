@@ -168,6 +168,27 @@ const NAMED_ALERTS: {
 export function currencyRules(preset: Preset): Rule[] {
   const rules: Rule[] = [];
 
+  // Gold is auto-collected, so hiding a pile only removes the ground label.
+  // Show piles at or above the preset threshold; hide the rest. RePoE does not
+  // ship gold, so "Gold" is a reviewed entry in base-types-extra.json.
+  rules.push({
+    action: 'Show',
+    comment: `Gold - stacks of ${preset.currency.goldMinStack}+`,
+    baseTypes: ['Gold'],
+    stackSize: { min: preset.currency.goldMinStack },
+    styleKind: 'gold',
+    style: {
+      textColor: COLORS.gold,
+      borderColor: COLORS.gold,
+      fontSize: 34,
+    },
+  });
+  rules.push({
+    action: 'Hide',
+    comment: 'Gold - small stacks',
+    baseTypes: ['Gold'],
+  });
+
   for (const entry of NAMED_ALERTS) {
     if (entry.tier > preset.currency.maxVisibleTier) continue;
     rules.push({
@@ -230,8 +251,8 @@ export function currencyRules(preset: Preset): Rule[] {
     }
   }
 
-  // Style-only catch-all: cards and gold piles are already visible by default,
-  // so this changes their backdrop without changing what the preset shows.
+  // Style-only catch-all: cards are already visible by default, so this
+  // changes their backdrop without changing what the preset shows.
   rules.push({
     action: 'Show',
     comment: 'Divination cards',
