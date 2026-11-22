@@ -2,17 +2,8 @@
 
 Build-specific Path of Exile 1 loot filters in three clicks.
 
-Pick an archetype (`Necromancer minions`, `Cyclone`, `Lightning Arrow`), pick
-levelling or endgame, download a `.filter`. No account, no loot simulator, no
-hundred-item editor.
-
-**Status:** v0.19.1 hides Cloth Belt in the Minion family preset, on top of
-category backgrounds for S-tier orbs, cards, gems, fragments, jewels, flasks and
-league drops and build-specific base exclusions, on top of currency paste
-support, demo sounds, quest/named-orb alerts, stable filenames, preset
-auto-sync, rarity-first colors, Leveling Strict Magic floors and wrong-base
-gear hiding. Remaining work is manual QA; real meta capture is blocked by
-poe.ninja’s closed builds API.
+Pick a family, an ascendancy or a meta build, then levelling or endgame, and
+download a `.filter`. No account, no loot simulator, no hundred-item editor.
 
 ---
 
@@ -32,7 +23,7 @@ on **time to a working filter**, not on features.
 ### Non-goals (v1)
 
 - PoE 2, Ruthless, SSF-specific tuning
-- Loot simulator, per-item rule editor, filter import/round-trip
+- A general filter editor with import/round-trip
 - i18n
 - Runtime calls to poe.ninja or pathofexile.com from the browser
 - Monetisation of any kind
@@ -69,7 +60,7 @@ Consequences:
 - FilterBlade's sync works because its confidential client predates the freeze.
   We cannot borrow its credentials.
 
-Therefore M3 is **local folder sync**: the File System Access API writes the
+Therefore sync is **local folder sync**: the File System Access API writes the
 filter straight into `Documents/My Games/Path of Exile`. OAuth upload stays
 behind the same `FilterSync` interface for if GGG reopens registration.
 
@@ -129,16 +120,16 @@ The game validates every name in every `BaseType` condition and **rejects the
 whole filter** on the first unknown one. Two consequences:
 
 - Unique item names are not base types. `BaseType "Aegis Aurora"` aborts the
-  filter; filters reference `Champion Kite Shield` instead. Until M2b, all
-  uniques share one generic rule.
+  filter; filters reference `Champion Kite Shield` instead. High-value uniques
+  are highlighted by base type; the rest share one generic rule.
 - Currency and divination card names *are* base types, so they can be listed
   directly. poe.ninja's item overview exposes a `baseType` field for uniques,
-  which M2c should use to turn prices into valid filter rules.
+  which the refresh script uses to turn prices into valid filter rules.
 
 `known-base-types.json` plus the CI test is the safety net. One typo fails the
 build instead of the user's filter.
 
-### 2.7 Lessons from M0–M1
+### 2.7 Lessons that shaped the design
 
 | What happened | Durable fix |
 |---|---|
@@ -154,7 +145,7 @@ build instead of the user's filter.
 | Client caches the filter list after a file changes | Reopen the dropdown or restart; documented in install steps |
 | "changelog" did nothing | The link used a hash route inside an app that owns the hash. The changelog is now a separate `changelog.html` Vite entry |
 | Pages workflow used Node 20-era actions | Action majors kept current (`checkout@v7`, etc.) |
-| A filter that parses can still be functionally wrong | In-game smoke test is part of M1's definition of done |
+| A filter that parses can still be functionally wrong | In-game smoke test is part of the definition of done |
 
 ### 2.8 Verifying which filter the game is running
 
@@ -170,7 +161,7 @@ not prove the right one is selected.
   until they are re-rendered.
 - The site shows the exact in-game name next to Download; use it as the check.
 
-### 2.9 Build selection modes (M2f)
+### 2.9 Build selection modes
 
 Selection is **three independent modes**, not a cascade. Tabs at the top; phase,
 strictness are common below in every mode; all filter sections are always
@@ -213,8 +204,7 @@ Data:
 - All presets are YAML under `src/presets/`, compiled to JSON at build time and
   validated with a JSON Schema. The browser never parses YAML.
 - `families.yaml`, `ascendancies.yaml` (with `defaultFamily`), and
-  `meta/<league>.yaml` snapshots.
-- `src/meta/leagues/<id>.json` is replaced by the compiled snapshot.
+  `leagues/<league>.yaml` snapshots.
 - Every snapshot declares `provenance: seed` or `provenance: captured`. Seed
   snapshots use curated skill weights and placeholder ascendancy splits; the UI
   labels them as placeholders. A manual capture flips the field to `captured`.
@@ -234,12 +224,7 @@ Data:
   labels weights as `seed weight`; captured snapshots show "Captured \<date\>"
   and measured percentages instead.
 
-**Done:** four tabs; family mode needs no class; ascendancy mode uses its
-default loadout; meta mode lists all skills grouped and derives the family;
-From Scratch needs only a starting point; share links restore the mode; old
-links still resolve.
-
-### 2.10 Advanced rules (M2g, revised in 0.12.0)
+### 2.10 Advanced rules
 
 The preset is **locked and never cloned**. Users add rules on top of it.
 
@@ -265,10 +250,7 @@ The preset is **locked and never cloned**. Users add rules on top of it.
 - **Saved builds** — store selection + My rules only. Presets regenerate from
   the latest data. Old whole-set clones are discarded.
 
-**Done:** the preset cannot be edited; copying a rule/group overrides it; My
-rules survive reload and share codes; conflict warnings and the item test work.
-
-### 2.11 Filter identity, filenames and folder writing (M2j, 0.13.0)
+### 2.11 Filter identity, filenames and folder writing
 
 - **One identity** — the builder and demo show the exact filename being edited.
   The build name travels in the share hash, so the demo never shows a stale
@@ -293,18 +275,13 @@ rules survive reload and share codes; conflict warnings and the item test work.
 - **Saved builds** — loading marks a build as active; its row gets `Update`,
   which overwrites name, selection and My rules. Top-level Save creates a copy.
 
-**Done:** a named filter downloads as
-`filterpath-my-vortex-endgame-strict.filter`; the demo shows the same
-name; a read-only folder is reported before saving; Update keeps the saved id;
-an older connected file is rewritten with a `.bak` on load.
-
 ---
 
 ## 3. Stack
 
 - React 19 + Vite 8 + TypeScript 5.9, Tailwind 4
 - Multi-page Vite build: builder (`index.html`) + static changelog
-  (`changelog.html`)
+  (`changelog.html`) + loot simulator (`demo.html`)
 - YAML presets compiled to JSON by a build script; JSON Schema validation with
   Ajv. No YAML parser in the browser.
 - Vitest for unit and golden-file tests
@@ -322,15 +299,9 @@ src/
     archetypes/
       types.ts           Archetype and SlotSpec
       validate.ts        runtime validation
-      data/matrix.ts     interim twelve curated builds
+      data/matrix.ts     legacy twelve curated builds (old links + goldens)
       index.ts           registry
-    meta/                data accessors over generated presets
-      ascendancies.ts     lookup and rank helpers
-      families.ts         lookup helpers
-      leagues/            (removed; see src/presets/leagues)
-    presets/             YAML sources: families, ascendancies, leagues (M2f)
-    generated/           compiled JSON presets, committed (M2f)
-    rules/               custom rules, keys, templates and share codes (M2g)
+    rules/               custom rules, keys, templates, coverage, share codes
     filter/
       types.ts           rule model, styles
       presets.ts         leveling/endgame x strictness
@@ -339,32 +310,53 @@ src/
       version.ts         filter format version
       generate.ts        config -> filter text
       junk.ts            hides for irrelevant gear
-      rules/             gear, currency, gems, maps, uniques
+      name.ts            file name and slug
+      themes.ts          color themes
+      classes.ts         RePoE item class -> filter Class
+      rules/             gear, currency, gems, maps, uniques, league
       __golden__/        representative generated filters
     data/
       base-types.json    generated, committed
       known-base-types.json  every valid BaseType, generated
       base-types-extra.json  reviewed supplement for RePoE gaps
       resolve.ts         slot spec -> base types
-      economy.json       generated by M2c, committed
-      overrides.json     hand-written, wins over fetched prices
-    tiering.ts           price -> tier, pure (M2b)
     preview/
       match.ts           first-match evaluation, Continue support
       samples.ts         reported leaks + representative drops
-  ui/                    wizard, preview, URL state
+    demo/
+      parse-item.ts      parses pasted in-game item text
+    share/
+      codec.ts           share-code encode and decode
+  meta/                  accessors over the compiled presets
+    ascendancies.ts      lookup and rank helpers
+    families.ts          lookup helpers
+    resolve.ts           selection -> BuildProfile
+    types.ts             Family, Skill, Ascendancy, BuildSelection
+    skill-names.json     gem-name catalog from RePoE
+  presets/               YAML sources
+    families.yaml
+    ascendancies.yaml
+    economy-overrides.yaml
+    leagues/             per-league skill snapshots
+    schema/              JSON Schema for the YAML
+  generated/             compiled presets + economy, committed
+  sync/                  download | clipboard | fileSystem
+    handles.ts           IndexedDB storage for directory handles
+    fileSystem.ts        pick, list, read, write
+    platform.ts          OS detection and folder hints
+  ui/                    wizard, demo, URL state
     Changelog.tsx        release history page
-    preview/             inventory preview components (M2d)
-    rules/               locked pane and rule editor (M2g)
-  sync/                  download | clipboard | fileSystem | (future) api
-    handles.ts           IndexedDB storage for directory handles (M3a)
-    fileSystem.ts        pick, list, read, write (M3a/M3b)
+    Wizard.tsx           builder shell
+    demo/                loot simulator
+    rules/               locked pane and rule editor
+    presets/             saved-build storage
+    save/                folder connect and save panel
   changelog.ts           release and commit data for the site
 scripts/
-  build-presets.mjs      YAML -> JSON + schema validation (M2f)
+  build-presets.mjs      YAML -> JSON + schema validation
   extract-repoe.mjs
-  meta-add.mjs           manual league snapshot editor (M2e)
-  refresh-economy.mjs    M2c
+  meta-add.mjs           manual league snapshot editor
+  refresh-economy.mjs
 ```
 
 Unit tests sit next to the code (`*.test.ts`).
@@ -415,7 +407,7 @@ of producing an empty rule.
   "fetchedAt": "2026-11-21T06:00:00Z",
   "source": "poe.ninja",
   "tiers": {
-    "currency": { "Divine Orb": 1, "Chaos Orb": 3 },
+    "currency": { "Divine Orb": 1, "Chaos Orb": 2 },
     "uniqueBase": { "Leather Belt": 1, "Heavy Belt": 1 }
   }
 }
@@ -425,382 +417,12 @@ Unique prices arrive keyed by unique name, but filter rules need the **base
 type**. The refresh script maps each unique to poe.ninja's `baseType` field and
 tiers the base types; unique names remain UI labels only.
 
-`overrides.json` maps a base type (or currency/card name) to a forced tier and
-always wins.
+`src/presets/economy-overrides.yaml` maps a base type (or currency/card name)
+to a forced tier and always wins over the fetched value.
 
 ---
 
-## 5. Milestones
-
-### M0 — Foundation
-
-- [x] Name, scope, framework decided
-- [x] Vite/React/TS/Tailwind scaffold, `base: '/filterpath/'`
-- [x] Archetype type + validator + sample, tests
-- [x] RePoE extractor and committed `base-types.json`
-- [x] GitHub Actions deploy, `.nojekyll`, MIT, disclaimer
-- [x] Name availability spot-check (GitHub repo created as `lordgreg/filterpath`)
-- [x] First successful deploy
-
-**Done:** app is live on Pages, `npm test` and `npm run build` pass in CI.
-
-### M1 — Pick and download
-
-- [x] 12 archetypes covering all 7 classes
-- [x] Leveling and endgame presets; Normal/Strict/Very Strict
-- [x] Section toggles: gear, gems, currency, maps/fragments, uniques
-- [x] Live `.filter` preview, download, copy to clipboard, share link in hash
-- [x] Syntax validator on emitted output; golden files for representative builds
-- [x] Version in the filter header; stable file name
-- [x] Loaded successfully in the game client (Linux/Proton, Covens)
-- [x] In-site changelog with releases and commit links
-- [x] Exact in-game filter name shown next to Download
-- [x] Three-step selection (M2e) shipped in 0.4.0
-
-Implementation notes:
-
-- Archetypes live in one matrix file, `src/core/archetypes/data/matrix.ts`.
-  These 12 builds are interim: M2e replaces the selector with family → skill →
-  ascendancy.
-- Gear rules resolve RePoE tags to base-type lists; slots with no tags use the
-  filter `Class` instead, so future bases keep working. Leveling 4+ link rules
-  use the same per-slot target, so they never highlight unusable classes.
-- Magic floors: Leveling Normal 10+, Leveling Strict 80+ on an allowed base,
-  and no Magic on Very Strict or any Endgame preset.
-- Gold Ring (the Item Rarity base) is hidden in every leveling preset for
-  Normal/Magic/Rare; unique Gold Rings remain visible. Endgame is unchanged.
-- Builds can exclude bases through `excludedBases` on the family, ascendancy or
-  archetype; a family exclusion covers its ascendancies and meta builds. The
-  Minion family excludes Cloth Belt, whose stun-threshold implicit a summoner
-  cannot use; unique Cloth Belts remain visible. The Caster family excludes Iron
-  Ring, whose physical attack implicit is useless for spells; unique Iron Rings
-  remain visible.
-- Rare item-level floors: preset threshold for weapons/armour, 68 for
-  accessories, jewels and flasks. Rares in slots the build does not use are
-  hidden at every phase and strictness. Used classes with restricted bases get
-  a final Hide so wrong bases do not fall through to the default visible state.
-- Currency tiers are hand-maintained until M2b replaces them with prices.
-- Uniques are highlighted generically. Unique names are **not** valid
-  `BaseType` values; the game rejects the whole filter if one appears.
-- Every emitted `BaseType` is checked against `known-base-types.json` (RePoE
-  plus a small reviewed supplement) so a bad name fails CI.
-- Deep links: `#archetype=...&phase=...&strictness=...&sections=gear,gems,...`.
-- In-game file name is
-  `filterpath-<name>-<phase>-<strictness>.filter`, e.g.
-  `filterpath-necro-minions-leveling-strict.filter`.
-
-**Done:** a generated filter loads in-game with no errors, hides junk, and
-highlights the archetype's bases. *(Confirmed 2026-11-21.)*
-
-### M2a — Customize
-
-- [x] Rarity-first default colors, High contrast, Muted
-- [x] One global strictness for the whole filter (per-section strictness removed in 0.10.1)
-- [x] Saved builds in `localStorage` with load and delete
-- [x] My-rules keys follow the selected build, not phase, strictness or theme
-- [x] Non-default section strictness recorded in the filter header
-- [x] Mobile layout
-
-Implementation notes:
-
-- `src/core/filter/themes.ts` post-processes generated rules, so themes apply to
-  custom rules as well. The default theme uses rarity for gear text and borders,
-  default gold for currency, pale blue for cards, teal for gems and tan for maps.
-  A `styleKind` category layer picks backgrounds for S-tier orbs, best jewels,
-  cards, gems, fragments, flasks, jewels, gold piles and league drops; everything
-  else keeps black. Six-socket rules are split per rarity.
-- Saved builds live in `src/ui/presets/storage.ts`; they store the full wizard
-  state, not just the selection.
-- My-rules keys follow the selected build, so changing phase, strictness or
-  theme keeps the same rules.
-
-**Done:** a returning user regenerates their filter in under 30 seconds.
-
-### M2b — Content depth
-
-- [x] Economy snapshot generated from poe.ninja's supported economy endpoints
-- [x] Tiers for currency, fragments, divination cards and unique bases
-- [x] Unique names mapped to their base types; high-value bases get a loud rule
-- [x] Hand-written overrides in `src/presets/economy-overrides.yaml` win
-- [x] Names filtered to valid BaseTypes so the client never rejects a filter
-- [x] Static fallbacks when the snapshot is missing or a category is empty
-
-**Done:** currency, divination and unique highlighting follow the snapshot;
-overrides win; every emitted name passes the BaseType registry.
-
-### M2c — Economy automation
-
-- [x] Workflow: daily 06:00 UTC + `workflow_dispatch`
-- [x] Categories: Currency, Fragment, DivinationCard, UniqueWeapon,
-  UniqueArmour, UniqueAccessory, UniqueFlask, UniqueJewel
-- [x] Tiering converts chaos to divine; large unique categories group by base
-- [x] Opens a PR (`chore(economy): refresh tiers`) only when the file changes
-- [x] User-Agent
-  `FilterPath/x.y (contact: lordgreg@users.noreply.github.com)`
-- [x] Economy affects only currency/unique/div-card highlighting, never gear bases
-- [x] CI runs the full test suite before the PR is opened
-
-**Done:** a changed snapshot produces a PR; an unchanged snapshot exits cleanly.
-
-### M2e — Three-step selection
-
-Ships before M2d so the preview reflects the final model.
-
-- [x] Data model: `Family`, `Skill`, `Ascendancy`, `BuildProfile` resolver
-- [x] Ascendancy table: all 19, with class, attributes, defence bias and a
-  reviewed exception table
-- [x] League snapshots: Covens + Standard seed, at least 4 skills per family
-  (20 total), with a league selector
-- [x] `npm run meta:add` CLI and meta schema validation
-- [x] `workflow_dispatch` Action that validates meta PRs and opens a
-  league-start reminder
-- [x] Three-step UI replacing the flat 12-build grid
-- [x] League, family, skill and ascendancy encoded in the share link and file name
-- [x] Compatibility adapter for old share links and existing goldens
-- [x] Tests: meta schema, league/family filtering, ascendancy filtering,
-  profile resolution
-
-Implementation notes:
-
-- `src/meta/families.ts`, `ascendancies.ts`, `leagues/*.json`, `index.ts` and
-  `resolve.ts`; `compileFilter` accepts either a legacy `archetypeId` or a
-  `selection`.
-- Compact file name:
-  `filterpath-necromancer-summon-skeletons-leveling-normal.filter`.
-- The snapshot is manual by design; `meta:add` validates gem names against
-  RePoE's catalog, and scripts/basetypes tests fail CI on bad data.
-- A monthly reminder workflow opens one issue when the snapshot is due.
-- Only the ascendancies recorded in `topAscendancies` are offered; their
-  `ascendancyShares` drive the seed weights until a real capture is available.
-- A skill can be picked across families; the family is derived from the skill.
-
-**Done:** the selector goes family → skill → ascendancy; changing skill changes
-weapon/offhand, changing ascendancy changes armour/attributes; old links still
-open a sensible profile.
-
-### M2e — Initial cascade selector (superseded)
-
-Shipped in 0.4.0. Family → skill → ascendancy was a cascade; the agreed model
-is three independent modes in M2f. Kept for history and legacy-link mapping.
-
-### M2f — Three selection modes
-
-- [x] `BuildProfile` refactor: class and ascendancy optional
-- [x] Family mode: family preset only, no class or skill
-- [x] Ascendancy mode: flat list grouped by class, `defaultFamily` per ascendancy
-- [x] Meta mode: league, all skills grouped by family, then ascendancy
-- [x] Shared phase and strictness below every mode; sections always on
-- [x] Mode-aware file names and share links; old links adapt
-- [x] YAML presets under `src/presets/`, compiled to JSON at build time
-- [x] JSON Schema validation for every preset file
-- [x] Tests: mode resolution, default loadouts, preset compilation, legacy links
-
-Implementation notes:
-
-- `scripts/build-presets.mjs` validates every YAML file with Ajv and writes
-  `src/generated/presets.json` with a preset version hash.
-- `meta:add` edits the YAML snapshot and index timestamps, then rebuilds and
-  validates.
-- `Archetype.class` and `.ascendancy` are optional; family mode has neither.
-- Ascendancy mode applies the default family and its own armour/defence tags.
-- Legacy cascade links and the interim archetype links map to meta mode.
-
-**Done:** the three tabs work independently; ascendancy mode derives its loadout;
-meta mode lists all skills grouped; phase/strictness apply everywhere; sections
-are always included; old links still resolve.
-
-### M2g — Advanced rules
-
-- [x] Preset locked; no whole-set clone
-- [x] My rules evaluated before the preset
-- [x] Copy one preset rule or a whole section
-- [x] Editor: classes, bases, rarity, ilvl range, sockets, links, quality,
-  stack, map tier, Continue, comment and style
-- [x] Drag and button reordering, enable, duplicate, delete
-- [x] Templates for uniques, 6-links, T15 maps, gems, currency, cards and rares
-- [x] Search, catch-all/duplicate warnings and an item test box
-- [x] Full-build and rules-only share codes
-- [x] Saved builds store only selection + My rules; old clones discarded
-- [x] Tests: custom-first ordering, scratch base, templates, config keys
-- [x] Filter names, folder OS detection, write probe and saved-build updates
-- [x] Quest alert and named orb voice lines
-
-Implementation notes:
-
-- `src/core/filter/generate.ts` composes `[...customRules, ...presetRules]`.
-- `src/core/filter/presets.ts` composes the full preset from named gear, gems,
-  currency, maps, uniques and junk section presets (`preset-gems-endgame-strict`).
-  The UI still exposes one global strictness.
-- `src/core/rules/templates.ts` holds the locked template rules.
-- `src/core/rules/key.ts` keys My rules per selected build; phase, strictness
-  and theme never hide them.
-- `src/ui/rules/storage.ts` stores My rules; `src/ui/presets/storage.ts` stores
-  saved builds with their custom rules.
-- My rules are the overlay mode: custom rules run before the preset, so no
-  separate whole-set clone or overlay UI is needed.
-
-### M2h — Loot simulator
-
-- [x] Separate `demo.html` page, reachable from the builder with the selection
-- [x] Original game-like ground background
-- [x] Drops scattered as overlapping in-game-style labels, with a Randomize button
-- [x] A fresh random subset of drops on load and on every Randomize
-- [x] Pasted items are highlighted as new on the overlay
-- [x] Hovering a label opens the game-style tooltip; tapping pins it on touch
-- [x] Clicking a label plays the matching rule’s alert; Sound toggle; synthesised tones
-- [x] Labels spread across the full background height
-- [x] Click a label to inspect the matching rule
-- [x] Paste one or more in-game item blocks to add them
-- [x] Parse class, rarity, base, item level, sockets, links, quality, stack size and map tier
-- [x] Currency, Gem and Divination Card rarities; `1/20` stack size
-- [x] Shown/hidden counts and a show-hidden toggle
-- [x] Tests for the paste parser
-
-**Done:** pasting the four reported items shows the same shown/hidden outcome as
-the game; labels use the filter's colours and font size.
-
-### M2i — From Scratch mode
-
-- [x] Fourth root mode beside family, ascendancy and meta
-- [x] Choose Hide everything or Show everything as the starting point
-- [x] Phase and strictness hidden in this mode
-- [x] Templates and My rules are the only sources of rules
-- [x] Mode-aware filename and URL
-- [x] FilterPath title resets with an unsaved-changes confirmation
-
-**Done:** a from-scratch hide-all filter with only “Show all uniques” added
-emits the expected rules and in-game filename.
-
-### M2j — Filter identity, filenames and folder writing
-
-- [x] Exact filename shown in the builder and demo
-- [x] `filterpath-<name>-<phase>-<strictness>.filter` (stable across releases)
-- [x] Preset hash in the header; auto-sync of a stale connected file
-- [x] From Scratch uses `hide-all` / `show-all`
-- [x] Optional name with an automatic slug fallback
-- [x] OS detection with matching Windows or Linux/Proton guidance
-- [x] Custom folder picker with a read/write probe
-- [x] Permission hints, including a copyable `chmod u+w` command
-- [x] Download writes to the connected folder first, then falls back
-- [x] Update button for the loaded saved build; Save creates a copy
-- [x] Reference folder path field with pasted-path hints
-- [x] Template coverage badges that follow phase and strictness
-- [x] Tests: slug/filename, platform detection, write probe, saved-build update
-
-**Done:** a named filter downloads as
-`filterpath-my-vortex-endgame-strict.filter`; the demo shows the same
-name; a read-only folder is reported before saving; Update keeps the saved id;
-an older connected file is rewritten with a `.bak` on load.
-
-### M2d — Visual inventory preview (superseded)
-
-The builder preview was removed in 0.10.2; the loot simulator (M2h) is the
-single preview surface.
-
-- [x] `src/core/preview/samples.ts`: reported leak fixtures plus
-  representative drops — bases per archetype slot, junk white/magic gear, low-
-  and high-ilvl rares, currency, a divination card stand-in, a unique, a gem,
-  a map.
-- [x] `src/core/preview/match.ts`: evaluate generated rules against an item
-  (first match wins, `Continue` respected). Pure, unit-tested, and reused by
-  the syntax tests.
-- [x] `src/ui/preview/InventoryPreview.tsx`: equipment panel (weapon, offhand,
-  helmet, body, gloves, boots, belt, amulet, two rings, two flasks) plus a 12x5
-  inventory grid. Every tile shows the item name and rarity colour, with a
-  shown/hidden state. Hidden tiles are dimmed; a "show hidden" toggle reveals
-  them.
-- [x] Paper-doll layout, side by side on desktop and stacked on mobile:
-
-  ```
-  EQUIPMENT                         INVENTORY (12 x 5)
-  -------------                     ------------------
-  Weapon      Offhand               [ tile ] [ tile ] [ tile ] ...
-  Helmet      Body armour           [ tile ] [ tile ] [ tile ] ...
-  Gloves      Boots                 [ tile ] [ tile ] [ tile ] ...
-  Belt        Amulet                [ tile ] [ tile ] [ tile ] ...
-  Ring 1      Ring 2                ...
-  Jewel       Life/Utility flasks
-  ```
-
-  Armour slots are first-class: helmet, body armour, gloves and boots each get
-  a fixed tile, plus weapon, offhand, belt, amulet, two rings, a jewel and two
-  flasks (life and utility).
-- [x] Each tile shows the base name, rarity colour, an original FilterPath SVG
-  class icon and a shown/hidden badge. Tapping or hovering a tile explains the
-  decision with the matching rule's comment and index from `evaluateRules()`.
-- [x] A header summarises "N shown / M hidden" overall and per panel, so a
-  strictness change is visible at a glance.
-- [x] The preview is a simulation of FilterPath's decision for representative
-  bases, not a game render; it does not imply real stat rolls.
-- [x] Original SVG icons per equipment and loot class, drawn for FilterPath. No
-  GGG assets. Text and CSS remain the fallback when an icon is missing.
-- [x] Live updates with build, phase and strictness; all sections always on
-- [x] Click an item for a game-style tooltip with requirements, sockets and the rule
-- [x] Rarity labels and stronger borders so unique items are obvious
-
-Implementation notes:
-
-- `src/core/preview/paper-doll.ts` resolves one rare base per slot from the
-  selected build's own base lists, so the equipment panel changes with family,
-  skill and ascendancy.
-- `src/ui/preview/ClassIcon.tsx` holds the original 24x24 line icons.
-- The full-width preview sits below the selector and summary, above the raw
-  filter text; the old right-column preview was too narrow for the grid.
-
-**Done:** every armour slot has at least one fixture and changes state with the
-archetype; switching phase or strictness visibly changes which sample items are
-shown; a normal ilvl 5 helmet is hidden while an ilvl 86 rare ring is shown;
-tapping a tile shows why; the preview loads no external assets.
-
-### M3 — Directory sync
-
-**Feasibility:** yes on Chromium, with limits.
-
-- `showDirectoryPicker({ mode: 'readwrite' })` grants access to a user-chosen
-  folder. GitHub Pages can use it; no backend involved.
-- Directory handles are structured-cloneable. Store them in **IndexedDB**, not
-  `localStorage`; `localStorage` only keeps the preference flag.
-- Permission is per origin and may return to `prompt` after a restart.
-  `requestPermission()` needs a user gesture, so sync is **on demand**: the user
-  clicks "Save to folder". No background watcher, no silent writes.
-- Reading is supported too: enumerate `.filter` files, read them, parse the
-  FilterPath header (`FilterPath <version> - filter format <n>`).
-- Firefox and Safari do not implement the picker; they keep the download flow.
-- Only Brave needs a flag (`brave://flags/#file-system-access-api`); Chrome,
-  Chromium and Edge support folder writing by default, and Firefox/Safari do
-  not implement it. The panel shows the matching message for the detected
-  browser.
-- Linux/Proton: the user picks
-  `<Steam library>/steamapps/compatdata/238960/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile`.
-  The library can be outside the home folder, e.g. `/mnt/<drive>/SteamLibrary`; `steamapps` is per library.
-  Flatpak browsers may need filesystem permission for `/mnt` before the folder
-  is visible.
-- Safety: never delete or overwrite unrelated files; write a `.bak` copy before
-  replacing; ask before overwriting a file FilterPath did not generate.
-
-#### M3a — Pick, remember, write
-
-- Folder picker, writability check, handle stored in IndexedDB.
-- "Save to folder" writes the current filter; overwrite confirmation.
-- Re-request permission on return visits with a clear explanation.
-- Download remains the fallback.
-
-**Done:** pick the folder once, reload the page, one click writes the filter;
-cancelling changes nothing.
-
-#### M3b — List, detect, update
-
-- [x] List local `.filter` files, read headers, show app version and filter format.
-- [x] Detect stale FilterPath files and flag them.
-- [x] Keep the previous version as `.bak`; never auto-delete.
-- [x] Leave unrelated files untouched.
-
-**Done:** an old `v0.1` filter is flagged; updating writes `v0.2` and keeps the
-old file as a backup; unrelated filters in the folder are unchanged.
-
----
-
-## 6. Testing
+## 5. Testing
 
 - Unit: archetype validation, tag resolution against base data, tiering, emit
 - Version: header pinned at `9.9.9`; stable file name asserted; preset hash parsed
@@ -808,19 +430,22 @@ old file as a backup; unrelated filters in the folder are unchanged.
   `known-base-types.json`; unique item names are explicitly rejected
 - Golden: full filter output per archetype/preset, diffed as text
 - Syntax: a small parser that checks every block's conditions and actions
-- M2d: matcher tests for first-match-wins, `Continue`, and hidden gear
-- M2e: meta schema, league/family filtering, profile resolution, compatibility adapter
-- M2f: YAML compilation, JSON Schema validity, mode resolution, default loadouts, legacy links
-- Preset audit: every family, ascendancy and meta build across all phase/strictness
-  combinations is checked for unused-class, wrong-base and 4-link gear leaks
-- M2g: custom-first ordering, share-code compression, scratch base, templates
-- M3: mock directory handle; permission, backup, overwrite and no-delete paths
-- M2c: refresh script run against fixture JSON, schema failure path tested
+- Preview matcher: first-match-wins, `Continue`, and hidden gear
+- Meta: schema, league/family filtering, profile resolution, compatibility adapter
+- Presets: YAML compilation, JSON Schema validity, mode resolution, default
+  loadouts, legacy links
+- Preset audit: every family, ascendancy and meta build across all
+  phase/strictness combinations is checked for unused-class, wrong-base and
+  4-link gear leaks
+- Custom rules: custom-first ordering, share-code compression, scratch base,
+  templates
+- Sync: mock directory handle; permission, backup, overwrite and no-delete paths
+- Economy: refresh script run against fixture JSON, schema failure path tested
 - CI runs `npm test` before every build
 
 ---
 
-## 7. Conventions
+## 6. Conventions
 
 - `src/core` must not import React
 - Emit output is deterministic: stable section and rule order, LF line endings
@@ -844,7 +469,7 @@ old file as a backup; unrelated filters in the folder are unchanged.
 
 ---
 
-## 8. Risks
+## 7. Risks
 
 | Risk | Mitigation |
 |---|---|
@@ -853,7 +478,7 @@ old file as a backup; unrelated filters in the folder are unchanged.
 | Manual meta edits drift or break the schema | `meta:add` CLI, schema test in CI, validation Action on PRs |
 | League snapshots accumulate with old schemas | migration test and a schema version field per snapshot |
 | Skill → class/ascendancy mapping is wrong | resolver tests; UI only offers allowed classes |
-| Old share links break after M2e | compatibility adapter and a migration test |
+| Old share links break after the selection rewrite | compatibility adapter and a migration test |
 | Share code grows too large | compress, cap the URL, fall back to file export |
 | Custom rules shadow preset rules unexpectedly | custom-first notice, catch-all warning, per-rule copy |
 | YAML preset and runtime data drift | compile at build time, commit generated JSON, schema test |
@@ -861,7 +486,7 @@ old file as a backup; unrelated filters in the folder are unchanged.
 | Rule order changes silently | explicit order in the editor, `Continue` tests, golden filters |
 | `HasExplicitMod` breaks between patches | prefer tags/classes; review before use |
 | Unknown `BaseType` aborts the whole filter | `known-base-types.json` + CI test + supplement file |
-| Filter placed in a folder the game does not scan | Install docs with the Proton path; M3 folder picker |
+| Filter placed in a folder the game does not scan | Install docs with the Proton path; folder picker |
 | Online filters mistaken for local files | Docs call out `OnlineFilters/`; the site shows the exact in-game name |
 | A different filter stays selected and looks like a leak | Verify section 2.8; matcher fixtures prove FilterPath's behaviour |
 | poe.ninja schema drift | schema validation, keep-last-good, PR review |
@@ -869,13 +494,13 @@ old file as a backup; unrelated filters in the folder are unchanged.
 | Chromium-only folder sync | download fallback everywhere |
 | Stored directory handle loses permission | explicit re-request flow, no silent writes |
 | Flatpak browser cannot see the Proton prefix | manual download fallback, documented |
-| Versioned files accumulate in the filters folder | M3b detects stale versions, writes `.bak`, never auto-deletes |
+| Versioned files accumulate in the filters folder | sync detects stale versions, writes `.bak`, never auto-deletes |
 | RePoE dataset changes | commit output, pin `REPOE_REF`, diff in review |
 | GGG policy changes | static, non-commercial, disclaimer, no internal endpoints |
 
 ---
 
-## 9. Open items
+## 8. Open items
 
 ### Data capture (highest priority)
 
@@ -896,24 +521,10 @@ old file as a backup; unrelated filters in the folder are unchanged.
 The current three-tier preset matrix is too coarse and misaligned. Address the
 following in order.
 
-#### P1 — correctness
-
-- **Magic flasks are hidden in endgame presets.** The all-Magic hide in
-  `junk.ts` also removes Life and Utility flasks. Add a Magic Flask show rule or
-  exempt flasks from the Magic-gear hide. Nearly every endgame build uses one.
-- **4-link and 6-socket Normal gear is hidden.** Exempt these from the
-  all-Normal hide so leveling filters still show them.
-- **Very Strict hides tier-2 currency.** `maxVisibleTier: 1` hides Chaos and
-  Alchemy. Move Very Strict to `2`; add a separate tier-2 floor for the highest
-  strictness if "Chaos+ only" is needed.
-- **Very Strict does not hide poor uniques or rares.** `UniquesPreset` has no
-  strictness field. Add `maxVisibleTier: 1 | 2 | 3` and hide low-tier uniques at
-  Very Strict and above.
-
 #### P2 — make the three tiers meaningful
 
 | Button | Gear | Magic | Rare floor | Currency | Maps | Uniques |
-|---|---|---|---:|---|---|---|
+|---|---|---|---|---:|---|---|
 | Normal | Show whites/4-links | Show | 68 | Hide tier 3 | T1+ | All |
 | Strict | Hide low whites | Show | 80 | Hide tier 3 | T1+ | All |
 | Very Strict | Hide whites/blues below 75 | Hide | 83 | Hide tier 3, keep tier 2 | T11+ | Hide poor |
@@ -926,7 +537,6 @@ uniques.
 
 - Add **Soft** and **Uber** as optional strictness values, or rename the
   existing three to **Soft / Strict / Uber**.
-- Add `UniquesPreset.maxVisibleTier`.
 - Add map rules for T11 and T14, not only T15.
 - Hide low-tier divination cards and fragments as strictness rises; currently
   only gear, currency, gems, and maps scale.
@@ -943,13 +553,25 @@ uniques.
 - Mark `standard.yaml` as seed/fallback; it is currently a duplicate of the
   Covens seed.
 
+#### P5 — economy currency tiering
+
+The static tier lists in `scripts/refresh-economy.mjs` are dead code.
+`STATIC_CURRENCY_T1`/`T2` never apply, because the value pass has already set
+every key, so `if (!currencyTiers[name])` is always false. The committed
+snapshot therefore disagrees with the code's own `FALLBACK_TIER_1/2/3` and
+`STATIC_CURRENCY_T2`; for example `Orb of Alchemy` is tier 3, not the tier 2
+those lists intend.
+
+Fix the whole static list, not just Alchemy: make the static floors
+authoritative (and regenerate the snapshot), or delete them and rely on the
+value thresholds alone. Keep it as its own economy/data change, not P1: it
+moves roughly twenty currencies between tiers and changes what Very Strict
+shows.
+
 #### Conclusion
 
-The three-tier model is too coarse and misaligned. Normal is stricter than
-intended, Strict is nearly identical to Normal, and Very Strict over-hides
-currency while under-hiding uniques. Fix correctness first (Magic flasks,
-whites, currency floor, unique filtering), then rebalance the three tiers, then
-add breadth and refresh the snapshots.
+The three-tier model is still too coarse. Rebalance the three tiers (P2), then
+add breadth (P3), refresh the snapshots (P4), and fix the economy tiering (P5).
 
 ### Manual validation
 
