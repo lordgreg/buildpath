@@ -177,9 +177,12 @@ included, and advanced rules can override or hide anything.
 2. **Ascendancy (B)** — a flat list grouped by class. The ascendancy preset
    gains a `defaultFamily` / default loadout: Necromancer → minion, Deadeye →
    bow, Juggernaut → melee, Occultist → caster, Trickster → hybrid.
-3. **Meta build (C)** — league selector, all snapshot skills grouped by family,
+3. **Meta build (C)** — the selected league's snapshot skills grouped by family,
    then ascendancy. The family is derived from the skill. Snapshots stay
    manual.
+
+The **league is chosen first**, above the mode tabs; the current league is
+preselected and Standard is the fallback. It drives the meta snapshots.
 
 Resolution:
 
@@ -272,6 +275,9 @@ The preset is **locked and never cloned**. Users add rules on top of it.
 - **Auto-sync** — on load, a stale connected filter is rewritten with the latest
   presets (keeping a `.bak`); saved builds and imported codes with an older
   preset hash show a refresh notice.
+- **Stale cleanup** — when the connected folder holds stale FilterPath filters,
+  the sync panel offers a confirmed "Remove N outdated" action that deletes
+  those files and their `.bak` copies; unrelated files are never touched.
 - **Saved builds** — loading marks a build as active; its row gets `Update`,
   which overwrites name, selection and My rules. Top-level Save creates a copy.
 
@@ -337,9 +343,11 @@ src/
     resolve.ts           selection -> BuildProfile
     types.ts             Family, Skill, Ascendancy, BuildSelection
     skill-names.json     gem-name catalog from RePoE
+    skill-names-extra.json  reviewed supplement for translated gem names
   presets/               YAML sources
     families.yaml
     ascendancies.yaml
+    ascendancies.expected.ts  reviewed ladder registry (id/name/class)
     economy-overrides.yaml
     leagues/             per-league skill snapshots
     schema/              JSON Schema for the YAML
@@ -487,8 +495,9 @@ Mechanism — one source of truth:
 - `src/core/audit/report.ts` builds a serialisable report from `compileFilter`
   + `evaluateRules`. Framework-free, no network, deterministic order.
 - The tests are the gate; the report is the data. `coverage-audit.test.ts`
-  keeps its invariants and a new `audit-report.test.ts` asserts the catalog
-  has an expected outcome for every case.
+  keeps its invariants, `src/core/audit/report.test.ts` asserts the catalog has
+  an expected outcome for every case, and `src/core/audit/golden.test.ts` diffs
+  the behaviour golden.
 - `tests.html` (a fourth Vite entry, like `changelog.html`) renders the same
   report. Presets collapse by default; each cell names the rule and the
   emitted line, so a screenshot in a bug report points straight at the source.
@@ -497,9 +506,11 @@ Mechanism — one source of truth:
 - A **behaviour golden** (`__golden__/audit-summary`) pins the compact
   `selection -> case -> shown|hidden + rule id` summary, so an unintended rule
   reorder appears as a reviewable diff instead of a silent behaviour change.
+  Regenerate it with `AUDIT_WRITE=1 npm test` once a diff is confirmed correct;
+  the committed golden is what the suite diffs against.
 
-Deployment (recommendation): generate the report at build time and deploy it
-as part of the Pages site. It is a view over `src/core`, so it stays offline
+Deployment: generate the report at build time and deploy it as part of the
+Pages site. It is a view over `src/core`, so it stays offline
 and always matches the deployed version, and a cell can be deep-linked from an
 issue. The same generator also runs on PRs in `validate-meta.yml` and uploads
 `tests.html` as an artifact, so a pre-merge report exists without a second
@@ -561,7 +572,7 @@ noisy).
 | Chromium-only folder sync | download fallback everywhere |
 | Stored directory handle loses permission | explicit re-request flow, no silent writes |
 | Flatpak browser cannot see the Proton prefix | manual download fallback, documented |
-| Versioned files accumulate in the filters folder | sync detects stale versions, writes `.bak`, never auto-deletes |
+| Versioned files accumulate in the filters folder | sync flags stale versions and writes `.bak`; removal is a deliberate, confirmed user action over listed FilterPath files only |
 | RePoE dataset changes | commit output, pin `REPOE_REF`, diff in review |
 | GGG policy changes | static, non-commercial, disclaimer, no internal endpoints |
 
@@ -576,20 +587,14 @@ noisy).
   weights and ascendancy splits as curated placeholders. The Covens seed now
   carries the current ascendancies and the named skills; replace the weights
   when a lawful capture source is available.
-- Confirm the chip vocabulary beyond DEX/STR/INT, HEAD, 2H and RANGED.
 
 ### Product decisions
 
-- Old versioned filters stay in the folder and are flagged stale; decide whether
-  to offer archive/removal in addition to the `.bak` copy.
 - `standard.yaml` is a seed duplicate of the Covens seed; decide whether to keep
   it as a fallback or drop it.
 - The `defaultFamily` assigned to each of the three new ascendancies (Warden →
   bow, Luminary and Reliquarian → caster) is a first guess; revisit it against
   the league.
-- Behaviour audit (5.1): deploy decided — build `tests.html` at build time,
-  deploy it with Pages, and upload the same file as a PR artifact from
-  `validate-meta.yml`. One generator, no second site.
 - Behaviour audit: the Scion ladder currently has three entries (Ascendant,
   Luminary, Reliquarian); confirm this is intended for the target league and
   pin it in `ascendancies.expected.ts`.
@@ -599,7 +604,10 @@ noisy).
 - Verify the Windows filter path (`Documents/My Games/Path of Exile`) in the
   installed build, not just Proton.
 - Run directory sync in Chromium: pick, remember, permission re-request,
-  overwrite confirmation, `.bak` and stale badges.
+  overwrite confirmation, `.bak` and stale badges, and the "Remove N outdated"
+  action.
+- In-game levelling necromancer run: turn any mismatch into a matcher fixture
+  and a labelled audit case.
 - Check demo Ctrl+V capture, hover tooltip, Randomize and mobile.
 - Copy a build code, reload, and Import code it back on the same and a different selection.
 - Save a build with custom rules; confirm presets regenerate while My rules persist.

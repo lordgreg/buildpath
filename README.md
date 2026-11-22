@@ -5,17 +5,18 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.19.1 — the Minion family preset now hides Cloth Belt, on top of
-category backgrounds for S-tier orbs, cards, gems, fragments, jewels, flasks and
-league drops, currency paste support, demo sounds, quest/named-orb alerts,
-stable filenames, preset auto-sync and rarity-first colors. Remaining work is
-manual QA; real meta capture is blocked by poe.ninja’s closed builds API.
+**Status:** v0.22.0 — three strictness tiers (Soft / Strict / Uber), maps graded
+by tier, and the Warden, Luminary and Reliquarian ascendancies. The league is the
+first choice in the builder, a connected folder can remove its outdated filters
+in one click, and a behaviour audit page runs a labelled drop catalog through the
+real matcher for every build. Remaining work is manual QA; real meta capture is
+blocked by poe.ninja’s closed builds API.
 
 ## Features
 
 - Four independent modes: by family, by ascendancy, by meta build, or from scratch
 - Per-league meta snapshots with all skills grouped by family
-- Normal / Strict / Very Strict (hidden in From Scratch mode)
+- Soft / Strict / Uber (hidden in From Scratch mode)
 - Filter preview, download, copy and share links
 - Randomized loot simulator with Ctrl+V item capture, hover tooltips and click alerts
 - Copy/import full-build and rules-only share codes
@@ -31,7 +32,7 @@ manual QA; real meta capture is blocked by poe.ninja’s closed builds API.
 - Chromium folder writing with OS-aware path hints, a reference path field, a read/write test and .bak backups
 - Brave users get the `brave://flags/#file-system-access-api` step directly in the panel
 - Stable file name and version/preset hash in the header, e.g.
-  `filterpath-minion-leveling-normal.filter`; names are optional and derived
+  `filterpath-minion-leveling-soft.filter`; names are optional and derived
   from the selection when empty
 - Connected filter files auto-update when the preset or app version changes
 - Generated client-side; no account and no network calls
@@ -81,6 +82,7 @@ src/core/                  framework-free
   archetypes/              types, validator, curated matrix
   filter/                  rule model, presets, emit, validator, generator
   preview/                 rule matcher and sample items
+  audit/                   behaviour audit catalog + report
   data/                    base types, economy, overrides
 src/ui/                    wizard, changelog, URL state
 src/sync/                  download, clipboard, File System Access
@@ -88,7 +90,7 @@ src/changelog.ts           release and commit data for the site
 scripts/                   data extractors
 ```
 
-See [PLAN.md](./PLAN.md) for the milestones and constraints.
+See [PLAN.md](./PLAN.md) for the design and constraints.
 
 ## Legal
 
