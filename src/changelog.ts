@@ -17,6 +17,16 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.25.1',
+    date: '2026-11-22',
+    title: 'Remove the sound-pack option',
+    notes: [
+      'Removed the sound-pack selector. Filters always use the game\'s built-in alert sounds and the loot simulator keeps its chime preview, so nothing has to be downloaded or placed next to the filter.',
+    ],
+    commits: [],
+    compare: 'v0.25.0...v0.25.1',
+  },
+  {
     version: '0.25.0',
     date: '2026-11-22',
     title: 'Themes and sound packs',

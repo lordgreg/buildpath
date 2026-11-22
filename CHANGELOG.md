@@ -2,6 +2,14 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.25.1 — 2026-11-22
+
+Remove the sound-pack option.
+
+- Removed the sound-pack selector. Filters always use the game's built-in alert
+  sounds and the loot simulator keeps its chime preview, so nothing has to be
+  downloaded or placed next to the filter.
+
 ## 0.25.0 — 2026-11-22
 
 Themes and sound packs.
