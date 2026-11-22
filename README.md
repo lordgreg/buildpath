@@ -5,11 +5,11 @@ Build-specific Path of Exile 1 loot filters in three clicks.
 Pick your archetype, get a valid `.filter` that highlights the bases your build
 actually wants and hides the rest. No account, no simulator.
 
-**Status:** v0.19.0 — category backgrounds for S-tier orbs, cards, gems,
-fragments, jewels, flasks and league drops are live on top of currency paste
-support, demo sounds, quest/named-orb alerts, stable filenames, preset auto-sync
-and rarity-first colors. Remaining work is manual QA; real meta capture is
-blocked by poe.ninja’s closed builds API.
+**Status:** v0.19.1 — the Minion family preset now hides Cloth Belt, on top of
+category backgrounds for S-tier orbs, cards, gems, fragments, jewels, flasks and
+league drops, currency paste support, demo sounds, quest/named-orb alerts,
+stable filenames, preset auto-sync and rarity-first colors. Remaining work is
+manual QA; real meta capture is blocked by poe.ninja’s closed builds API.
 
 ## Features
 

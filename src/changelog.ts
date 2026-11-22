@@ -17,6 +17,18 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.19.1',
+    date: '2026-11-22',
+    title: 'Hide Cloth Belt in the Minion preset',
+    notes: [
+      'The Minion family preset now hides normal, magic and rare Cloth Belts, matching the Necromancer ascendancy.',
+      'The exclusion moved from the Necromancer ascendancy to the Minion family, which is the default preset and the one the Necromancer actually uses.',
+      'Unique Cloth Belts such as Fated Cloth Belt remain visible.',
+    ],
+    commits: [],
+    compare: 'v0.19.0...v0.19.1',
+  },
+  {
     version: '0.19.0',
     date: '2026-11-22',
     title: 'Category backgrounds and build-specific base exclusions',
