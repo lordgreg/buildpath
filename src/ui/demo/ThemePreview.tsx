@@ -40,7 +40,7 @@ export default function ThemePreview({
     <a
       href={`./demo.html#${hash}`}
       title="Open the loot simulator"
-      aria-label="Loot preview - open the loot simulator"
+      aria-label="Open the loot simulator"
       className="group relative block overflow-hidden rounded-xl border border-ink-700 bg-ink-950 bg-cover bg-center shadow-2xl transition-colors hover:border-ink-500"
       style={{ backgroundImage: `url(${background})` }}
     >
@@ -69,7 +69,7 @@ export default function ThemePreview({
           </span>
         ))}
         <span className="absolute bottom-2 right-3 text-[10px] uppercase tracking-[0.2em] text-white/60 transition-colors group-hover:text-white/90">
-          Loot preview ↗
+          Open loot simulator ↗
         </span>
       </div>
     </a>

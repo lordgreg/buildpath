@@ -118,7 +118,7 @@ export default function TestsPage() {
             href="./demo.html"
             className="text-zinc-500 underline-offset-4 hover:text-zinc-300 hover:underline"
           >
-            demo
+            loot simulator
           </a>
           <a
             href="./changelog.html"

@@ -476,7 +476,7 @@ export default function Wizard() {
             href={`./demo.html#${wizardHash(state)}`}
             className="underline-offset-4 hover:text-zinc-300 hover:underline"
           >
-            demo
+            loot simulator
           </a>
           <a
             href="./changelog.html"
@@ -959,12 +959,6 @@ export default function Wizard() {
                   {filter.fileName.replace(/\.filter$/, '')}
                 </span>
               </p>
-              <a
-                href={`./demo.html#${wizardHash(state)}`}
-                className="mt-2 block rounded-lg border border-ink-600 px-4 py-2 text-center text-sm text-zinc-300 transition-colors hover:border-ink-500 hover:text-white"
-              >
-                Open loot simulator
-              </a>
             </section>
 
             <ThemePreview rules={filter.rules} hash={wizardHash(state)} />

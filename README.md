@@ -20,7 +20,7 @@ blocked by poe.ninja’s closed builds API.
 - Filter preview, download, copy and share links
 - Randomized loot simulator with Ctrl+V item capture, hover tooltips and click alerts
 - Copy/import full-build and rules-only share codes
-- The exact filter being edited is shown in the builder and the demo
+- The exact filter being edited is shown in the builder and the loot simulator
 - Locked preset, My rules with templates, quick chips, conflict warnings and an item test box
 - Templates marked “In preset” when the current phase and strictness already cover them
 - From Scratch mode with hidden-all or shown-all start
@@ -42,7 +42,7 @@ blocked by poe.ninja’s closed builds API.
 [in-site changelog](https://lordgreg.github.io/filterpath/changelog.html).
 
 **Live:** https://lordgreg.github.io/filterpath/
-**Demo:** https://lordgreg.github.io/filterpath/demo.html
+**Loot simulator:** https://lordgreg.github.io/filterpath/demo.html
 
 ## Folder writing browser support
 

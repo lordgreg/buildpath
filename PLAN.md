@@ -257,9 +257,9 @@ The preset is **locked and never cloned**. Users add rules on top of it.
 
 ### 2.11 Filter identity, filenames and folder writing
 
-- **One identity** — the builder and demo show the exact filename being edited.
-  The build name travels in the share hash, so the demo never shows a stale
-  filter.
+- **One identity** — the builder and the loot simulator show the exact filename
+  being edited. The build name travels in the share hash, so the loot simulator
+  never shows a stale filter.
 - **Filename pattern** — `filterpath-<name>-<phase>-<strictness>.filter`. The
   version and preset hash live in the header. From Scratch collapses
   phase/strictness into `hide-all` or `show-all`.
@@ -359,7 +359,7 @@ src/
     handles.ts           IndexedDB storage for directory handles
     fileSystem.ts        pick, list, read, write
     platform.ts          OS detection and folder hints
-  ui/                    wizard, demo, URL state
+  ui/                    wizard, loot simulator, URL state
     Changelog.tsx        release history page
     TestsPage.tsx        behaviour audit page (tests.html)
     Wizard.tsx           builder shell
@@ -611,7 +611,7 @@ noisy).
   action.
 - In-game levelling necromancer run: turn any mismatch into a matcher fixture
   and a labelled audit case.
-- Check demo Ctrl+V capture, hover tooltip, Randomize and mobile.
+- Check loot simulator Ctrl+V capture, hover tooltip, Randomize and mobile.
 - Copy a build code, reload, and Import code it back on the same and a different selection.
 - Save a build with custom rules; confirm presets regenerate while My rules persist.
 - Confirm the unsaved-changes prompt on refresh after editing.
@@ -620,5 +620,5 @@ noisy).
 ### Links
 
 - Builder: https://lordgreg.github.io/filterpath/
-- Demo: https://lordgreg.github.io/filterpath/demo.html
+- Loot simulator: https://lordgreg.github.io/filterpath/demo.html
 - Changelog: https://lordgreg.github.io/filterpath/changelog.html
