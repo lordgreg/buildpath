@@ -19,9 +19,9 @@ families:
     attributes: [int]
     armourTags: [int_armour, str_int_armour]
     jewelTag: intjewel
-    # Cloth Belt's stun/block recovery is useless for a summoner, and so are
-    # the life and mana regen amulet bases.
-    excludedBases: [Cloth Belt, Coral Amulet, Marble Amulet, Blue Pearl Amulet]
+    # Cloth Belt's stun/block recovery is useless for a summoner, as are the
+    # life and mana regen amulet bases and Iron Ring's physical attack implicit.
+    excludedBases: [Cloth Belt, Coral Amulet, Marble Amulet, Blue Pearl Amulet, Iron Ring]
     # Leather Belt's life implicit is the only belt a summoner wants; the other
     # belt implicits (phys, stun duration, strength) are wasted on minions.
     belt:

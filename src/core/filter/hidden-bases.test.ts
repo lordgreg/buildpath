@@ -446,3 +446,63 @@ describe('minion belt allowlist', () => {
     expect(found.shown).toBe(true);
   });
 });
+
+const FATED_IRON_RING = `Item Class: Rings
+Rarity: Rare
+Fated Iron Ring
+Iron Ring
+--------
+Item Level: 58
+--------
+{ Implicit Modifier — Damage, Physical, Attack }
+Adds 1 to 4 Physical Damage to Attacks
+--------
+Unidentified`;
+
+describe('minion Iron Ring exclusion', () => {
+  const MINION_SELECTIONS = [
+    { mode: 'family' as const, familyId: 'minion' as const },
+    { mode: 'ascendancy' as const, ascendancyId: 'necromancer' },
+  ];
+
+  it('parses the reported unidentified rare Fated Iron Ring', () => {
+    const [parsed] = parseItemText(FATED_IRON_RING);
+    expect(parsed).toMatchObject({
+      itemClass: 'Rings',
+      baseType: 'Iron Ring',
+      rarity: 'Rare',
+      itemLevel: 58,
+      identified: false,
+    });
+  });
+
+  it('hides normal, magic and rare Iron Rings for minion builds in every preset', () => {
+    for (const selection of MINION_SELECTIONS) {
+      for (const phase of ['leveling', 'endgame'] as const) {
+        for (const strictness of ['soft', 'strict', 'uber'] as const) {
+          for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
+            const filter = generateFilter({ selection, phase, strictness });
+            const found = evaluateRules(filter.rules, ring('Iron Ring', rarity));
+            expect(
+              found.shown,
+              `${selection.mode}/${phase}/${strictness}/${rarity}`,
+            ).toBe(false);
+            expect(found.reason).toContain('excluded base');
+          }
+        }
+      }
+    }
+  });
+
+  it('keeps unique Iron Rings visible for minion builds', () => {
+    for (const selection of MINION_SELECTIONS) {
+      const filter = generateFilter({
+        selection,
+        phase: 'leveling',
+        strictness: 'soft',
+      });
+      const found = evaluateRules(filter.rules, ring('Iron Ring', 'Unique'));
+      expect(found.shown, selection.mode).toBe(true);
+    }
+  });
+});
