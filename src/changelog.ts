@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.22.0',
+    date: '2026-11-22',
+    title: 'League first, stale-filter cleanup and more chips',
+    notes: [
+      'The league is now the first choice, at the top of the builder; the current league stays preselected and Standard is the fallback.',
+      'A connected filters folder can remove its outdated FilterPath filters, along with their .bak copies, in one click.',
+      'The rule editor chips now cover every equipment slot plus one-hand weapons.',
+      'A behaviour audit page runs a labelled drop catalog through the real matcher for every build, with the outcomes pinned in tests and a golden summary.',
+    ],
+    commits: [],
+    compare: 'v0.21.0...v0.22.0',
+  },
+  {
     version: '0.21.0',
     date: '2026-11-22',
     title: 'Soft / Strict / Uber, graded maps and the new ascendancies',

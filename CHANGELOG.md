@@ -2,6 +2,18 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.22.0 — 2026-11-22
+
+League first, stale-filter cleanup and more chips.
+
+- The league is now the first choice, at the top of the builder; the current
+  league stays preselected and Standard is the fallback.
+- A connected filters folder can remove its outdated FilterPath filters, along
+  with their `.bak` copies, in one click.
+- The rule editor chips now cover every equipment slot plus one-hand weapons.
+- A behaviour audit page runs a labelled drop catalog through the real matcher
+  for every build, with the outcomes pinned in tests and a golden summary.
+
 ## 0.21.0 — 2026-11-22
 
 Soft / Strict / Uber, graded maps and the new ascendancies.
