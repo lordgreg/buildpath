@@ -1,27 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
-import type { CSSProperties } from 'react';
 import { parseItemText } from '../../core/demo/parse-item.ts';
 import { baseTypes } from '../../core/data/base-types.ts';
-import { colorToCss } from '../../core/filter/style-utils.ts';
 import type { Rule } from '../../core/filter/types.ts';
 import {
   evaluateRules,
-  type ItemRarity,
   type PreviewItem,
 } from '../../core/preview/match.ts';
 import { SAMPLE_ITEMS } from '../../core/preview/samples.ts';
 import { playAlertSound } from './alertSound.ts';
-
-const RARITY_COLOR: Record<ItemRarity, string> = {
-  Normal: '#d6d6d6',
-  Magic: '#9a9aff',
-  Rare: '#fff07a',
-  Unique: '#d98a4a',
-  Quest: '#63e68b',
-  Currency: '#d9b26a',
-  Gem: '#1ba29b',
-  'Divination Card': '#b0c4de',
-};
+import { lootLabelStyle, RARITY_COLOR } from './lootLabel.ts';
 
 function cx(...parts: (string | false | undefined)[]): string {
   return parts.filter(Boolean).join(' ');
@@ -308,19 +295,11 @@ export default function LootSimulator({
         {visible.map(({ item, result }, index) => {
           const style = result.shown ? result.rule?.style : undefined;
           const { x, y } = positions[index] ?? { x: 50, y: 50 };
-          const labelStyle: CSSProperties = {
+          const labelStyle = {
             left: `clamp(10rem, ${x}%, calc(100% - 10rem))`,
             top: `clamp(2rem, ${y}%, calc(100% - 2rem))`,
             zIndex: 10 + index,
-            color:
-              colorToCss(style?.textColor) ??
-              (result.shown ? RARITY_COLOR[item.rarity] : '#8a8a8a'),
-            backgroundColor:
-              colorToCss(style?.backgroundColor) ?? 'rgba(2, 3, 6, 0.92)',
-            borderColor:
-              colorToCss(style?.borderColor) ??
-              (result.shown ? RARITY_COLOR[item.rarity] : '#3f3f46'),
-            fontSize: `${Math.min(18, Math.max(11, style?.fontSize ?? 13))}px`,
+            ...lootLabelStyle(style, item.rarity, result.shown),
           };
           return (
             <button

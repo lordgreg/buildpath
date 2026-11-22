@@ -24,6 +24,7 @@ import type { BuildMode } from '../meta/types.ts';
 import { APP_VERSION } from '../version.ts';
 import { decodeShare, encodeShare } from '../core/share/codec.ts';
 import FilterPreview from './FilterPreview.tsx';
+import ThemePreview from './demo/ThemePreview.tsx';
 import AdvancedRules, { type RulePrefill } from './rules/AdvancedRules.tsx';
 import SaveBuildPanel from './save/SaveBuildPanel.tsx';
 import FolderGuidance from './save/FolderGuidance.tsx';
@@ -862,108 +863,112 @@ export default function Wizard() {
 
           </div>
 
-          <section className="min-w-0 rounded-xl border border-gold-400/25 bg-ink-800/70 p-5">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-gold-400">
-              {eyebrow}
-            </p>
-            <h2 className="mt-1 text-2xl font-semibold text-white">{title}</h2>
-            <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-              {filter.archetype.summary}
-            </p>
-
-            <div className="mt-4 flex flex-wrap gap-1.5 text-[11px]">
-              <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                {MODES.find((mode) => mode.id === state.mode)?.label}
-              </span>
-              {(state.mode === 'ascendancy' || state.mode === 'meta') && (
-                <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                  {family.name}
-                </span>
-              )}
-              {state.mode === 'meta' && (
-                <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                  {snapshot.league.name}
-                </span>
-              )}
-              {state.mode === 'scratch' ? (
-                <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                  {state.scratchStart === 'hide'
-                    ? 'Hide everything'
-                    : 'Show everything'}
-                </span>
-              ) : (
-                <>
-                  <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                    {state.phase === 'leveling' ? 'Leveling' : 'Endgame'}
-                  </span>
-                  <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                    {STRICTNESS_LABELS_PUBLIC[state.strictness]}
-                  </span>
-                </>
-              )}
-              <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                {filter.ruleCount} {filter.ruleCount === 1 ? 'rule' : 'rules'}
-              </span>
-              <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
-                {filter.baseTypeCount} base types
-              </span>
-              {customRules.length > 0 && (
-                <span className="rounded-full border border-gold-400/50 px-2 py-0.5 text-gold-300">
-                  {customRules.length} custom rules
-                </span>
-              )}
-            </div>
-
-            <div className="mt-5 grid gap-2 sm:grid-cols-[1fr_auto_auto]">
-              <button
-                type="button"
-                onClick={() => void download()}
-                disabled={folder.busy}
-                className="rounded-lg bg-gold-400 px-4 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-gold-300 disabled:opacity-40"
-              >
-                {folder.handle ? `Save to ${folder.handle.name}` : 'Download .filter'}
-              </button>
-              <button
-                type="button"
-                onClick={() => void copyCode()}
-                className="rounded-lg border border-ink-600 bg-ink-900/70 px-4 py-2.5 text-sm text-zinc-200 transition-colors hover:border-ink-500"
-              >
-                {copied === 'code' ? 'Copied' : 'Copy code'}
-              </button>
-              <button
-                type="button"
-                onClick={() => void shareLink()}
-                className="rounded-lg px-4 py-2.5 text-sm text-zinc-400 transition-colors hover:text-white"
-              >
-                {copied === 'link' ? 'Link copied' : 'Share link'}
-              </button>
-            </div>
-            {folder.handle && (
-              <p className="mt-2 text-[10px] text-zinc-600">
-                Writes into {folder.handle.name}; asks before overwriting and
-                downloads instead if the folder cannot be written.
+          <div className="min-w-0 space-y-6">
+            <section className="rounded-xl border border-gold-400/25 bg-ink-800/70 p-5">
+              <p className="text-[11px] uppercase tracking-[0.2em] text-gold-400">
+                {eyebrow}
               </p>
-            )}
-            <p className="mt-2 text-[11px] text-zinc-500">
-              Copy code and Share link both carry the whole build, including
-              custom rules. Paste a code into Import code to restore it.
-            </p>
-            {notice && (
-              <p className="mt-2 text-[11px] text-amber-300">{notice}</p>
-            )}
-            <p className="mt-3 rounded-lg border border-ink-700 bg-ink-900/60 px-3 py-2 text-[11px] leading-relaxed text-zinc-500">
-              In-game name:{' '}
-              <span className="break-words font-medium text-zinc-200">
-                {filter.fileName.replace(/\.filter$/, '')}
-              </span>
-            </p>
-            <a
-              href={`./demo.html#${wizardHash(state)}`}
-              className="mt-2 block rounded-lg border border-ink-600 px-4 py-2 text-center text-sm text-zinc-300 transition-colors hover:border-ink-500 hover:text-white"
-            >
-              Open loot simulator
-            </a>
-          </section>
+              <h2 className="mt-1 text-2xl font-semibold text-white">{title}</h2>
+              <p className="mt-1 text-sm leading-relaxed text-zinc-400">
+                {filter.archetype.summary}
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-1.5 text-[11px]">
+                <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                  {MODES.find((mode) => mode.id === state.mode)?.label}
+                </span>
+                {(state.mode === 'ascendancy' || state.mode === 'meta') && (
+                  <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                    {family.name}
+                  </span>
+                )}
+                {state.mode === 'meta' && (
+                  <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                    {snapshot.league.name}
+                  </span>
+                )}
+                {state.mode === 'scratch' ? (
+                  <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                    {state.scratchStart === 'hide'
+                      ? 'Hide everything'
+                      : 'Show everything'}
+                  </span>
+                ) : (
+                  <>
+                    <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                      {state.phase === 'leveling' ? 'Leveling' : 'Endgame'}
+                    </span>
+                    <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                      {STRICTNESS_LABELS_PUBLIC[state.strictness]}
+                    </span>
+                  </>
+                )}
+                <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                  {filter.ruleCount} {filter.ruleCount === 1 ? 'rule' : 'rules'}
+                </span>
+                <span className="rounded-full border border-ink-600 px-2 py-0.5 text-zinc-300">
+                  {filter.baseTypeCount} base types
+                </span>
+                {customRules.length > 0 && (
+                  <span className="rounded-full border border-gold-400/50 px-2 py-0.5 text-gold-300">
+                    {customRules.length} custom rules
+                  </span>
+                )}
+              </div>
+
+              <div className="mt-5 grid gap-2 sm:grid-cols-[1fr_auto_auto]">
+                <button
+                  type="button"
+                  onClick={() => void download()}
+                  disabled={folder.busy}
+                  className="rounded-lg bg-gold-400 px-4 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-gold-300 disabled:opacity-40"
+                >
+                  {folder.handle ? `Save to ${folder.handle.name}` : 'Download .filter'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => void copyCode()}
+                  className="rounded-lg border border-ink-600 bg-ink-900/70 px-4 py-2.5 text-sm text-zinc-200 transition-colors hover:border-ink-500"
+                >
+                  {copied === 'code' ? 'Copied' : 'Copy code'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => void shareLink()}
+                  className="rounded-lg px-4 py-2.5 text-sm text-zinc-400 transition-colors hover:text-white"
+                >
+                  {copied === 'link' ? 'Link copied' : 'Share link'}
+                </button>
+              </div>
+              {folder.handle && (
+                <p className="mt-2 text-[10px] text-zinc-600">
+                  Writes into {folder.handle.name}; asks before overwriting and
+                  downloads instead if the folder cannot be written.
+                </p>
+              )}
+              <p className="mt-2 text-[11px] text-zinc-500">
+                Copy code and Share link both carry the whole build, including
+                custom rules. Paste a code into Import code to restore it.
+              </p>
+              {notice && (
+                <p className="mt-2 text-[11px] text-amber-300">{notice}</p>
+              )}
+              <p className="mt-3 rounded-lg border border-ink-700 bg-ink-900/60 px-3 py-2 text-[11px] leading-relaxed text-zinc-500">
+                In-game name:{' '}
+                <span className="break-words font-medium text-zinc-200">
+                  {filter.fileName.replace(/\.filter$/, '')}
+                </span>
+              </p>
+              <a
+                href={`./demo.html#${wizardHash(state)}`}
+                className="mt-2 block rounded-lg border border-ink-600 px-4 py-2 text-center text-sm text-zinc-300 transition-colors hover:border-ink-500 hover:text-white"
+              >
+                Open loot simulator
+              </a>
+            </section>
+
+            <ThemePreview rules={filter.rules} hash={wizardHash(state)} />
+          </div>
         </div>
 
         <SaveBuildPanel

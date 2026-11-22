@@ -26,6 +26,7 @@ blocked by poe.ninja’s closed builds API.
 - From Scratch mode with hidden-all or shown-all start
 - Loot simulator with pasted in-game items and filter-styled labels
 - Eight filter themes; Rarity is the base and the rest only recolour it, from High contrast and Muted to Catppuccin, Dracula, Nord, Solarized Dark and Tokyo Night
+- Live loot preview in the builder that restyles as you change theme, phase or strictness; click it to open the full simulator
 - Build-specific base exclusions, e.g. Necromancer hides Cloth Belt and shows only Leather Belt, and Caster hides Iron Ring
 - Saved builds with Update; one global strictness
 - Economy-aware currency, divination and unique tiers refreshed daily
