@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.21.0 — 2026-11-22
+
+Soft / Strict / Uber, graded maps and the new ascendancies.
+
+- The three strictness tiers are now Soft, Strict and Uber. Old share links and
+  saved builds keep working.
+- Maps are graded by tier — T15 over T14 over T11 — and divination cards and
+  fragments now hide their low tiers as strictness rises.
+- Warden (Ranger), Luminary and Reliquarian (Scion) replace Raider, and the
+  Covens seed gains the ten missing skills.
+
 ## 0.20.0 — 2026-11-22
 
 Preset tiers, currency tiers and folder help.
