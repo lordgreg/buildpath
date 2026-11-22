@@ -505,73 +505,21 @@ to a forced tier and always wins over the fetched value.
 ### Data capture (highest priority)
 
 - Real poe.ninja builds capture is **blocked**: the builds API is closed. The
-  current Covens and Standard snapshots are marked `provenance: seed`, and the UI
-  labels their weights and ascendancy splits as curated placeholders. Replace
-  them when a lawful capture source is available.
+  Covens and Standard snapshots are `provenance: seed`, so the UI labels their
+  weights and ascendancy splits as curated placeholders. The Covens seed now
+  carries the current ascendancies and the named skills; replace the weights
+  when a lawful capture source is available.
 - Confirm the chip vocabulary beyond DEX/STR/INT, HEAD, 2H and RANGED.
 
 ### Product decisions
 
-- Confirm the default family assigned to every ascendancy.
-- Old versioned filters currently stay in the folder and are flagged stale;
-  decide whether to offer archive/removal in addition to the `.bak` copy.
-
-### Preset update priorities
-
-The current three-tier preset matrix is too coarse and misaligned. Address the
-following in order.
-
-#### P2 — make the three tiers meaningful
-
-| Button | Gear | Magic | Rare floor | Currency | Maps | Uniques |
-|---|---|---|---|---:|---|---|
-| Normal | Show whites/4-links | Show | 68 | Hide tier 3 | T1+ | All |
-| Strict | Hide low whites | Show | 80 | Hide tier 3 | T1+ | All |
-| Very Strict | Hide whites/blues below 75 | Hide | 83 | Hide tier 3, keep tier 2 | T11+ | Hide poor |
-
-Normal must become the beginner default. Strict must differ meaningfully from
-Normal. Very Strict must stop over-hiding currency and start hiding poor
-uniques.
-
-#### P3 — add breadth
-
-- Add **Soft** and **Uber** as optional strictness values, or rename the
-  existing three to **Soft / Strict / Uber**.
-- Add map rules for T11 and T14, not only T15.
-- Hide low-tier divination cards and fragments as strictness rises; currently
-  only gear, currency, gems, and maps scale.
-
-#### P4 — refresh meta snapshots
-
-- Replace the Covens seed with the current top skills and ascendancy shares.
-- Add **Luminary**, **Reliquarian**, and **Warden**; remove or deprecate
-  **Raider**.
-- Add missing skills: **Animate Guardian, Cyclone of Tumult, Static Strike,
-  Void Shockwave, Scorching Ray of Immolation, Storm Burst of Repulsion,
-  Animate Weapon of Ranged Arms, Lightning Tendrils of Eccentricity, Static
-  Strike of Gathering Lightning, Flicker Strike**.
-- Mark `standard.yaml` as seed/fallback; it is currently a duplicate of the
-  Covens seed.
-
-#### P5 — economy currency tiering
-
-The static tier lists in `scripts/refresh-economy.mjs` are dead code.
-`STATIC_CURRENCY_T1`/`T2` never apply, because the value pass has already set
-every key, so `if (!currencyTiers[name])` is always false. The committed
-snapshot therefore disagrees with the code's own `FALLBACK_TIER_1/2/3` and
-`STATIC_CURRENCY_T2`; for example `Orb of Alchemy` is tier 3, not the tier 2
-those lists intend.
-
-Fix the whole static list, not just Alchemy: make the static floors
-authoritative (and regenerate the snapshot), or delete them and rely on the
-value thresholds alone. Keep it as its own economy/data change, not P1: it
-moves roughly twenty currencies between tiers and changes what Very Strict
-shows.
-
-#### Conclusion
-
-The three-tier model is still too coarse. Rebalance the three tiers (P2), then
-add breadth (P3), refresh the snapshots (P4), and fix the economy tiering (P5).
+- Old versioned filters stay in the folder and are flagged stale; decide whether
+  to offer archive/removal in addition to the `.bak` copy.
+- `standard.yaml` is a seed duplicate of the Covens seed; decide whether to keep
+  it as a fallback or drop it.
+- The `defaultFamily` assigned to each of the three new ascendancies (Warden →
+  bow, Luminary and Reliquarian → caster) is a first guess; revisit it against
+  the league.
 
 ### Manual validation
 
