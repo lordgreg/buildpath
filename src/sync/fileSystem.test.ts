@@ -6,6 +6,7 @@ import {
   listFilterFiles,
   parseFilterHeader,
   probeFilterDirectory,
+  removeFilterFile,
   writeFilter,
 } from './fileSystem.ts';
 
@@ -148,6 +149,18 @@ describe('filter files', () => {
     );
     expect(result.backup).toBeNull();
     expect(files.get('FilterPath.filter')).toBe('new text');
+    expect(files.get('other.filter')).toBe('keep me');
+  });
+
+  it('removes a filter and its backup, leaving other files alone', async () => {
+    const files = new Map([
+      ['FilterPath.filter', 'current'],
+      ['FilterPath.filter.bak', 'previous'],
+      ['other.filter', 'keep me'],
+    ]);
+    await removeFilterFile(directory(files), 'FilterPath.filter');
+    expect(files.has('FilterPath.filter')).toBe(false);
+    expect(files.has('FilterPath.filter.bak')).toBe(false);
     expect(files.get('other.filter')).toBe('keep me');
   });
 });

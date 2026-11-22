@@ -129,6 +129,22 @@ export async function listFilterFiles(
  * Writes a filter, keeping a single `<name>.filter.bak` copy of the previous
  * contents. Never deletes or touches other files.
  */
+/**
+ * Removes one FilterPath file and its `.bak` copy. Callers must only pass names
+ * that came from `listFilterFiles`, so unrelated files are never touched.
+ */
+export async function removeFilterFile(
+  handle: FileSystemDirectoryHandle,
+  name: string,
+): Promise<void> {
+  await handle.removeEntry(name);
+  try {
+    await handle.removeEntry(backupName(name));
+  } catch {
+    // No backup to remove.
+  }
+}
+
 export async function writeFilter(
   handle: FileSystemDirectoryHandle,
   name: string,

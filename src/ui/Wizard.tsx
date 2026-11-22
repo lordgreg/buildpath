@@ -464,6 +464,49 @@ export default function Wizard() {
       <main className="mt-8 flex-1 space-y-6">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
           <div className="min-w-0 space-y-7">
+            <section aria-labelledby="league-heading">
+              <h2
+                id="league-heading"
+                className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+              >
+                League
+              </h2>
+              <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+                <div className="relative w-36">
+                  <select
+                    value={state.leagueId}
+                    onChange={(event) =>
+                      update({ leagueId: event.target.value })
+                    }
+                    className="w-full appearance-none rounded-lg border border-ink-600 bg-ink-800 py-2 pl-3 pr-7 text-sm text-zinc-100 outline-none focus:border-gold-400"
+                  >
+                    {LEAGUE_INDEX.leagues.map((league) => (
+                      <option key={league.id} value={league.id}>
+                        {league.name}
+                      </option>
+                    ))}
+                  </select>
+                  <svg
+                    viewBox="0 0 12 12"
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-zinc-500"
+                  >
+                    <path
+                      d="M2 4.5L6 8l4-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+                <p className="text-[11px] text-zinc-600">
+                  The current league is preselected; Standard is the fallback.
+                </p>
+              </div>
+            </section>
+
             <section aria-label="Selection mode">
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-4" role="tablist">
                 {MODES.map((mode) => (
@@ -583,70 +626,38 @@ export default function Wizard() {
 
             {state.mode === 'meta' && (
               <>
-                <section aria-labelledby="league-heading">
+                <section aria-labelledby="snapshot-heading">
                   <h2
-                    id="league-heading"
+                    id="snapshot-heading"
                     className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
                   >
-                    League
+                    Snapshot
                   </h2>
-                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-                    <div className="relative w-32">
-                      <select
-                        value={state.leagueId}
-                        onChange={(event) =>
-                          update({ leagueId: event.target.value })
-                        }
-                        className="w-full appearance-none rounded-lg border border-ink-600 bg-ink-800 py-2 pl-3 pr-7 text-sm text-zinc-100 outline-none focus:border-gold-400"
+                  {seed ? (
+                    <p className="mt-2 text-xs text-zinc-500">
+                      Curated seed updated {snapshot.capturedAt.slice(0, 10)}.
+                      Popularity weights and ascendancy splits are placeholders,
+                      not measured from{' '}
+                      <a
+                        href={snapshot.source}
+                        className="underline underline-offset-2 hover:text-zinc-300"
                       >
-                        {LEAGUE_INDEX.leagues.map((league) => (
-                          <option key={league.id} value={league.id}>
-                            {league.name}
-                          </option>
-                        ))}
-                      </select>
-                      <svg
-                        viewBox="0 0 12 12"
-                        aria-hidden="true"
-                        className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-zinc-500"
+                        poe.ninja builds
+                      </a>
+                      .
+                    </p>
+                  ) : (
+                    <p className="mt-2 text-xs text-zinc-500">
+                      Captured {snapshot.capturedAt.slice(0, 10)} from{' '}
+                      <a
+                        href={snapshot.source}
+                        className="underline underline-offset-2 hover:text-zinc-300"
                       >
-                        <path
-                          d="M2 4.5L6 8l4-3.5"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    {seed ? (
-                      <p className="text-xs text-zinc-500">
-                        Curated seed updated{' '}
-                        {snapshot.capturedAt.slice(0, 10)}. Popularity weights
-                        and ascendancy splits are placeholders, not measured
-                        from{' '}
-                        <a
-                          href={snapshot.source}
-                          className="underline underline-offset-2 hover:text-zinc-300"
-                        >
-                          poe.ninja builds
-                        </a>
-                        .
-                      </p>
-                    ) : (
-                      <p className="text-xs text-zinc-500">
-                        Captured {snapshot.capturedAt.slice(0, 10)} from{' '}
-                        <a
-                          href={snapshot.source}
-                          className="underline underline-offset-2 hover:text-zinc-300"
-                        >
-                          poe.ninja builds
-                        </a>
-                        .
-                      </p>
-                    )}
-                  </div>
+                        poe.ninja builds
+                      </a>
+                      .
+                    </p>
+                  )}
                 </section>
 
                 <section aria-labelledby="skill-heading">

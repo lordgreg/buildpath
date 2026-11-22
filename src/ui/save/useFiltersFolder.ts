@@ -4,6 +4,7 @@ import {
   listFilterFiles,
   pickFiltersDirectory,
   probeFilterDirectory,
+  removeFilterFile,
   supportsDirectoryPicker,
   writeFilter,
   type FilterFileInfo,
@@ -44,6 +45,8 @@ export interface FiltersFolder {
     text: string,
     confirmOverwrite?: boolean,
   ) => Promise<WriteResult>;
+  /** Removes FilterPath files (and their `.bak` copies) from the folder. */
+  remove: (names: string[]) => Promise<void>;
   forget: () => Promise<void>;
 }
 
@@ -212,6 +215,27 @@ export function useFiltersFolder(): FiltersFolder {
     [handle, platform],
   );
 
+  const remove = useCallback(
+    async (names: string[]) => {
+      if (!handle || names.length === 0) return;
+      setBusy(true);
+      try {
+        for (const name of names) await removeFilterFile(handle, name);
+        await refreshFiles(handle);
+        setStatus(
+          names.length === 1
+            ? `Removed ${names[0]}.`
+            : `Removed ${names.length} old filters.`,
+        );
+      } catch {
+        setStatus('Could not remove every filter.');
+      } finally {
+        setBusy(false);
+      }
+    },
+    [handle, refreshFiles],
+  );
+
   const forget = useCallback(async () => {
     await clearDirectoryHandle();
     setHandle(null);
@@ -234,6 +258,7 @@ export function useFiltersFolder(): FiltersFolder {
     grant,
     test,
     write,
+    remove,
     forget,
   };
 }

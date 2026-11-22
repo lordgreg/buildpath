@@ -67,6 +67,9 @@ export default function SaveBuildPanel({
         : platform === 'mac'
           ? 'macOS'
           : 'OS unknown';
+  const staleFiles = folder.files.filter(
+    (file) => filterUpdateKind(file, appVersion, PRESET_VERSION) !== null,
+  );
 
   const writeToFolder = async (): Promise<string> => {
     if (!folder.handle) return '';
@@ -403,6 +406,26 @@ export default function SaveBuildPanel({
           >
             Download .filter instead
           </button>
+          {staleFiles.length > 0 && (
+            <button
+              type="button"
+              onClick={() => {
+                if (
+                  window.confirm(
+                    `Remove ${staleFiles.length} outdated FilterPath filter${
+                      staleFiles.length === 1 ? '' : 's'
+                    }? Their .bak copies go too.`,
+                  )
+                ) {
+                  void folder.remove(staleFiles.map((file) => file.name));
+                }
+              }}
+              disabled={folder.busy}
+              className="text-[10px] text-red-300 underline underline-offset-2 hover:text-red-200 disabled:opacity-40"
+            >
+              Remove {staleFiles.length} outdated
+            </button>
+          )}
         </div>
 
         {folder.files.length > 0 && (
