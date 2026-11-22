@@ -2,6 +2,24 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.28.0 — 2026-11-22
+
+Collapsible panels and resuming saved filters.
+
+- The Generated filter window is now collapsible, exactly like Advanced rules.
+  Both sections start collapsed and remember whether you opened them, so the
+  layout stays the way you left it.
+- A chevron in each collapsed section shows that it can be opened, and it turns
+  to point down while the section is open.
+- The Generated filter copy button is now a copy icon on the right of the
+  header, next to the Rules, Bases and Lines counts and separated by a thin
+  divider. It shows a check mark while the filter text is on the clipboard.
+- Opening an empty builder now offers to resume what you already have: builds
+  saved in this browser, and filters in a folder you connected earlier (grant
+  access to list them).
+- Each FilterPath filter in the connected folder has a Delete button next to
+  Load, with a confirmation prompt, that removes the file and its .bak copy.
+
 ## 0.27.0 — 2026-11-22
 
 Your last good filter, and one build code.
