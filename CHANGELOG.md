@@ -2,6 +2,16 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.26.1 — 2026-11-22
+
+One name for the loot simulator.
+
+- The loot simulator is now called the same thing everywhere. The builder and
+  audit nav links read "loot simulator" instead of "demo", and the builder
+  preview caption reads "Open loot simulator". The redundant "Open loot
+  simulator" button in the preset card is gone, since the preview card below it
+  already links to the same place.
+
 ## 0.26.0 — 2026-11-22
 
 Live loot preview in the builder.

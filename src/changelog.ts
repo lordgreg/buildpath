@@ -17,6 +17,16 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.26.1',
+    date: '2026-11-22',
+    title: 'One name for the loot simulator',
+    notes: [
+      'The loot simulator is now called the same thing everywhere. The builder and audit nav links read "loot simulator" instead of "demo", and the builder preview caption reads "Open loot simulator". The redundant "Open loot simulator" button in the preset card is gone, since the preview card below it already links to the same place.',
+    ],
+    commits: [],
+    compare: 'v0.26.0...v0.26.1',
+  },
+  {
     version: '0.26.0',
     date: '2026-11-22',
     title: 'Live loot preview in the builder',
