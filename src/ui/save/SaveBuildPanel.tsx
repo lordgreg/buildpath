@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import type { Rule } from '../../core/filter/types.ts';
 import { PRESET_VERSION } from '../../meta/index.ts';
-import { filterUpdateKind } from '../../sync/fileSystem.ts';
+import {
+  filterUpdateKind,
+  type FilterFileInfo,
+} from '../../sync/fileSystem.ts';
 import { copyText, downloadFilter } from '../download.ts';
 import {
   deleteBuild,
@@ -32,6 +35,7 @@ export default function SaveBuildPanel({
   folder,
   onNameChange,
   onLoad,
+  onLoadFile,
   onSaved,
   onUpdated,
   onWritten,
@@ -49,6 +53,8 @@ export default function SaveBuildPanel({
   folder: FiltersFolder;
   onNameChange: (name: string) => void;
   onLoad: (build: SavedBuild) => void;
+  /** Loads a FilterPath filter from the connected folder into the builder. */
+  onLoadFile: (file: FilterFileInfo) => void;
   onSaved: (build: SavedBuild) => void;
   onUpdated: (build: SavedBuild) => void;
   /** Called after the .filter file is written to the folder. */
@@ -457,6 +463,15 @@ export default function SaveBuildPanel({
                       <td className="py-1 pr-3 text-zinc-300">{file.name}</td>
                       <td className="py-1 pr-3">{file.appVersion ?? '—'}</td>
                       <td className="py-1">
+                        {file.selection && file.name !== fileName && (
+                          <button
+                            type="button"
+                            onClick={() => onLoadFile(file)}
+                            className="mr-2 rounded border border-ink-600 px-1.5 py-0.5 text-zinc-300 transition-colors hover:border-ink-500"
+                          >
+                            Load
+                          </button>
+                        )}
                         {file.name === fileName && (
                           <span className="mr-2 rounded bg-gold-400/15 px-1.5 py-0.5 text-gold-300">
                             current

@@ -14,9 +14,6 @@ import {
   type ChipId,
   unionChipBases,
 } from '../../core/rules/chips.ts';
-import { encodeShare } from '../../core/share/codec.ts';
-import { copyText } from '../download.ts';
-
 const SECTION_LABELS: Record<RuleSection, string> = {
   gear: 'Build gear',
   gems: 'Gems',
@@ -469,24 +466,16 @@ function ConditionsEditor({
 export default function AdvancedRules({
   baseRules,
   customRules,
-  label,
-  presetVersion,
   focusIndex,
   prefill,
   onChange,
-  onImportCode,
-  onImportRulesCode,
 }: {
   baseRules: Rule[];
   customRules: Rule[];
-  label: string;
-  presetVersion: string;
   /** Index into the emitted rule list to scroll to and highlight. */
   focusIndex?: number;
   prefill?: RulePrefill;
   onChange: (rules: Rule[]) => void;
-  onImportCode: (code: string) => Promise<string | null>;
-  onImportRulesCode: (code: string) => Promise<string | null>;
 }) {
   const [draft, setDraft] = useState<Draft>(() => ({
     ...EMPTY_DRAFT,
@@ -495,10 +484,9 @@ export default function AdvancedRules({
     ...(prefill?.rarity ? { rarity: prefill.rarity } : {}),
     ...(prefill?.ilvlMin ? { ilvlMin: prefill.ilvlMin } : {}),
   }));
+  const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [message, setMessage] = useState<string | null>(null);
-  const [codeInput, setCodeInput] = useState('');
-  const [rulesCodeInput, setRulesCodeInput] = useState('');
   const [testText, setTestText] = useState('');
   const [testResult, setTestResult] = useState<string | null>(null);
   const [dragged, setDragged] = useState<number | null>(null);
@@ -551,6 +539,7 @@ export default function AdvancedRules({
   useEffect(() => {
     if (focusedRef.current) return;
     const customCount = customRules.length;
+    if (prefill || focusIndex !== undefined) setOpen(true);
     if (prefill) {
       editorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       focusedRef.current = true;
@@ -719,28 +708,6 @@ export default function AdvancedRules({
     }
   });
 
-  const copyRulesCode = async () => {
-    const { code } = await encodeShare({
-      v: 1,
-      label,
-      presetVersion,
-      customRules,
-    });
-    if (code.length > 64_000) {
-      setMessage('Rules code too large; save the build instead.');
-      return;
-    }
-    if (await copyText(code)) {
-      setMessage('My rules code copied.');
-    }
-  };
-
-  const importRules = async () => {
-    const error = await onImportRulesCode(rulesCodeInput);
-    setRulesCodeInput('');
-    setMessage(error ?? 'Imported My rules.');
-  };
-
   const testItem = () => {
     const [item] = parseItemText(testText);
     if (!item) {
@@ -756,36 +723,22 @@ export default function AdvancedRules({
   };
 
   return (
-    <section className="min-w-0 rounded-xl border border-ink-700 bg-ink-800/40 p-4 sm:p-5">
-      <header className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h2 className="text-sm font-medium text-white">Advanced rules</h2>
-          <p className="mt-0.5 text-xs text-zinc-500">
-            The preset is locked. My rules are evaluated first, so a copied
-            preset rule overrides it until you remove the copy.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <input
-            value={codeInput}
-            onChange={(event) => setCodeInput(event.target.value)}
-            placeholder="Import build code"
-            className="w-44 rounded border border-ink-600 bg-ink-800 px-2 py-1.5 text-xs text-zinc-200"
-          />
-          <button
-            type="button"
-            onClick={() => {
-              void onImportCode(codeInput).then((error) => {
-                setCodeInput('');
-                setMessage(error ?? 'Imported build code.');
-              });
-            }}
-            className="rounded border border-ink-600 px-3 py-1.5 text-xs text-zinc-300"
-          >
-            Import code
-          </button>
-        </div>
-      </header>
+    <details
+      open={open}
+      onToggle={(event) => setOpen(event.currentTarget.open)}
+      className="min-w-0 rounded-xl border border-ink-700 bg-ink-800/40 p-4 sm:p-5"
+    >
+      <summary className="flex cursor-pointer flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <span className="text-sm font-medium text-white">Advanced rules</span>
+        <span className="text-xs text-zinc-500">
+          {lockedCount} locked preset {lockedCount === 1 ? 'rule' : 'rules'},{' '}
+          {customRules.length} My {customRules.length === 1 ? 'rule' : 'rules'}
+        </span>
+      </summary>
+      <p className="mt-2 text-xs text-zinc-500">
+        The preset is locked. My rules are evaluated first, so a copied preset
+        rule overrides it until you remove the copy.
+      </p>
 
       {message && (
         <p className="mt-3 rounded-lg border border-ink-600 bg-ink-900/60 px-3 py-2 text-xs text-zinc-300">
@@ -1229,37 +1182,6 @@ export default function AdvancedRules({
             </p>
           )}
 
-          <details className="mt-4 rounded-lg border border-ink-700 bg-ink-900/30 p-3">
-            <summary className="cursor-pointer text-xs text-zinc-400">
-              My rules code
-            </summary>
-            <div className="mt-2 flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => void copyRulesCode()}
-                className="rounded border border-ink-600 px-2 py-1 text-xs text-zinc-300"
-              >
-                Copy rules code
-              </button>
-              <input
-                value={rulesCodeInput}
-                onChange={(event) => setRulesCodeInput(event.target.value)}
-                placeholder="paste rules code"
-                className="min-w-0 flex-1 rounded border border-ink-600 bg-ink-800 px-2 py-1 text-xs text-zinc-200"
-              />
-              <button
-                type="button"
-                onClick={() => void importRules()}
-                className="rounded border border-ink-600 px-2 py-1 text-xs text-zinc-300"
-              >
-                Import rules
-              </button>
-            </div>
-            <p className="mt-1 text-[10px] text-zinc-600">
-              Rules-only codes do not carry the build selection.
-            </p>
-          </details>
-
           <div className="mt-4 rounded-lg border border-ink-700 bg-ink-900/30 p-3">
             <p className="text-[10px] uppercase tracking-wide text-zinc-600">
               Test an item
@@ -1379,6 +1301,6 @@ export default function AdvancedRules({
           )}
         </div>
       </div>
-    </section>
+    </details>
   );
 }

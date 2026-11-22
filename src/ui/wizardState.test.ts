@@ -3,6 +3,7 @@ import {
   coerceWizardState,
   DEFAULT_STATE,
   parseWizardHash,
+  ruleKey,
   wizardHash,
 } from './wizardState.ts';
 
@@ -131,6 +132,38 @@ describe('wizard hash', () => {
     );
     expect(state.leagueId).toBe('covens');
     expect(state.familyId).toBe('minion');
+  });
+});
+
+describe('empty start state', () => {
+  it('opens an empty hash with nothing selected', () => {
+    expect(parseWizardHash('').mode).toBe('start');
+    expect(parseWizardHash('#').mode).toBe('start');
+    expect(parseWizardHash('#mode=start').mode).toBe('start');
+    expect(parseWizardHash('#mode=start')).toEqual(DEFAULT_STATE);
+  });
+
+  it('round-trips the empty state through the hash', () => {
+    expect(wizardHash(DEFAULT_STATE)).toBe('mode=start');
+    expect(parseWizardHash(`#${wizardHash(DEFAULT_STATE)}`)).toEqual(
+      DEFAULT_STATE,
+    );
+  });
+
+  it('coerces a missing or unknown mode to the empty state', () => {
+    expect(coerceWizardState({}).mode).toBe('start');
+    expect(coerceWizardState({ name: 'X' }).name).toBe('X');
+  });
+
+  it('keeps a family hash out of the empty state', () => {
+    expect(parseWizardHash('#family=bow').mode).toBe('family');
+  });
+
+  it('uses a stand-in rule key for the empty state', () => {
+    expect(ruleKey(DEFAULT_STATE)).toBe('start');
+    expect(ruleKey(parseWizardHash('#mode=family&family=bow'))).toBe(
+      'family:bow',
+    );
   });
 });
 

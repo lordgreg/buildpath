@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import type { FilterIssue } from '../core/filter/validate.ts';
+import { copyText } from './download.ts';
 
 interface FilterPreviewProps {
   text: string;
@@ -16,6 +18,14 @@ export default function FilterPreview({
   warnings,
 }: FilterPreviewProps) {
   const lineCount = text.split('\n').length - 1;
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    if (await copyText(text)) {
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   return (
     <section className="min-w-0 rounded-xl border border-ink-700 bg-ink-950/60">
@@ -24,6 +34,13 @@ export default function FilterPreview({
           <h2 className="text-sm font-medium text-white">Generated filter</h2>
           <p className="break-words text-xs text-zinc-500">{fileName}</p>
         </div>
+        <button
+          type="button"
+          onClick={() => void copy()}
+          className="rounded-lg border border-ink-600 bg-ink-900/70 px-3 py-1.5 text-xs text-zinc-200 transition-colors hover:border-ink-500"
+        >
+          {copied ? 'Copied' : 'Copy'}
+        </button>
         <dl className="flex gap-4 text-right text-xs text-zinc-400">
           <div>
             <dt className="text-[10px] uppercase tracking-wider text-zinc-600">

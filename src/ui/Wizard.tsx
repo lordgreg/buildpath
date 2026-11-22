@@ -5,10 +5,11 @@ import {
   STRICTNESS_ORDER,
   type Phase,
 } from '../core/filter/presets.ts';
-import { configKey } from '../core/rules/key.ts';
-import { filterUpdateKind } from '../sync/fileSystem.ts';
+import {
+  filterUpdateKind,
+  type FilterFileInfo,
+} from '../sync/fileSystem.ts';
 import { autoBuildName } from '../core/filter/name.ts';
-import type { Rule } from '../core/filter/types.ts';
 import { THEMES } from '../core/filter/themes.ts';
 import { ASCENDANCIES, getAscendancy } from '../meta/ascendancies.ts';
 import { FAMILIES, getFamily } from '../meta/families.ts';
@@ -30,17 +31,14 @@ import SaveBuildPanel from './save/SaveBuildPanel.tsx';
 import FolderGuidance from './save/FolderGuidance.tsx';
 import { useFiltersFolder } from './save/useFiltersFolder.ts';
 import { discardLegacyBuilds, type SavedBuild } from './presets/storage.ts';
-import { buildHash } from './buildSnapshot.ts';
-import {
-  discardLegacyClones,
-  loadCustomRules,
-  saveCustomRules,
-} from './rules/storage.ts';
+import { discardLegacyClones, loadCustomRules } from './rules/storage.ts';
 import { copyText, downloadFilter } from './download.ts';
-import { useWizardState } from './useWizardState.ts';
+import { useBuildSession } from './useBuildSession.ts';
 import {
+  asSelected,
   coerceWizardState,
-  DEFAULT_STATE,
+  parseWizardHash,
+  ruleKey,
   wizardHash,
   type WizardState,
 } from './wizardState.ts';
@@ -67,7 +65,7 @@ const CLASS_ORDER = [
   'Scion',
 ] as const;
 
-type Copied = 'code' | 'link' | null;
+type Copied = 'code' | null;
 
 function cx(...parts: (string | false | undefined)[]): string {
   return parts.filter(Boolean).join(' ');
@@ -110,53 +108,25 @@ function OptionButton({
 }
 
 export default function Wizard() {
-  const [state, update] = useWizardState();
+  const {
+    state,
+    customRules,
+    dirty,
+    update,
+    setRules,
+    load,
+    commit,
+    reset,
+    startNew,
+  } = useBuildSession();
   const [copied, setCopied] = useState<Copied>(null);
-  const activeKey = configKey(state);
-  const [customRules, setCustomRules] = useState<Rule[]>(() =>
-    loadCustomRules(activeKey),
-  );
+  const [codeInput, setCodeInput] = useState('');
   const [activeBuildId, setActiveBuildId] = useState<string | null>(null);
-  const autoName = autoBuildName(state);
+  const isStart = state.mode === 'start';
+  const autoName = isStart ? '' : autoBuildName(asSelected(state));
   const folder = useFiltersFolder();
   const autoSyncedRef = useRef<string | null>(null);
   const filenameNoticeRef = useRef<string | null>(null);
-
-  useEffect(() => {
-    setCustomRules(loadCustomRules(activeKey));
-  }, [activeKey]);
-
-  const baseFilter = useMemo(
-    () =>
-      generateFilter({
-        selection: state,
-        phase: state.phase,
-        strictness: state.strictness,
-        theme: state.theme,
-        sections: state.sections,
-        version: APP_VERSION,
-        buildName: state.name,
-      }),
-    [state],
-  );
-
-  const filter = useMemo(
-    () =>
-      generateFilter({
-        selection: state,
-        phase: state.phase,
-        strictness: state.strictness,
-        theme: state.theme,
-        sections: state.sections,
-        version: APP_VERSION,
-        customRules,
-        buildName: state.name,
-      }),
-    [state, customRules],
-  );
-
-  const currentHash = buildHash(state, customRules);
-  const [savedHash, setSavedHash] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(() => {
     const clones = discardLegacyClones();
     const builds = discardLegacyBuilds();
@@ -165,11 +135,38 @@ export default function Wizard() {
       : null;
   });
 
-  useEffect(() => {
-    if (savedHash === null) setSavedHash(currentHash);
-  }, [savedHash, currentHash]);
+  const baseFilter = useMemo(
+    () =>
+      isStart
+        ? null
+        : generateFilter({
+            selection: asSelected(state),
+            phase: state.phase,
+            strictness: state.strictness,
+            theme: state.theme,
+            sections: state.sections,
+            version: APP_VERSION,
+            buildName: state.name,
+          }),
+    [state, isStart],
+  );
 
-  const dirty = savedHash !== null && currentHash !== savedHash;
+  const filter = useMemo(
+    () =>
+      isStart
+        ? null
+        : generateFilter({
+            selection: asSelected(state),
+            phase: state.phase,
+            strictness: state.strictness,
+            theme: state.theme,
+            sections: state.sections,
+            version: APP_VERSION,
+            customRules,
+            buildName: state.name,
+          }),
+    [state, customRules, isStart],
+  );
 
   useEffect(() => {
     if (!dirty) return;
@@ -192,7 +189,7 @@ export default function Wizard() {
 
   const makePayload = () => ({
     v: 1 as const,
-    label: filter.archetype.name,
+    label: filter?.archetype.name ?? '',
     presetVersion: PRESET_VERSION,
     state,
     customRules,
@@ -206,55 +203,41 @@ export default function Wizard() {
     }
     if (await copyText(code)) {
       setCopied('code');
-      setNotice('Build code copied. Paste it into Import code.');
+      setNotice('Build code copied. Paste it below to restore the build.');
       window.setTimeout(() => setCopied(null), 2000);
     }
   };
 
-  const shareLink = async () => {
-    const { code, tooLarge } = await encodeShare(makePayload());
-    if (tooLarge) {
-      setNotice('Code is too large for a link; use Download instead.');
-      return;
-    }
-    const params = new URLSearchParams(wizardHash(state));
-    params.set('code', code);
-    const url = new URL(window.location.href);
-    url.hash = params.toString();
-    if (await copyText(url.toString())) {
-      setCopied('link');
-      setNotice('Share link copied. Opening it restores the build.');
-      window.setTimeout(() => setCopied(null), 2000);
-    }
+  const runImportCode = async () => {
+    const error = await importCode(codeInput);
+    setCodeInput('');
+    setNotice(error ?? 'Imported build code.');
   };
 
-  const changeCustomRules = (rules: Rule[]) => {
-    saveCustomRules(activeKey, rules);
-    setCustomRules(rules);
-  };
-
-  const resetBuild = () => {
+  const newFilter = () => {
     if (
       dirty &&
-      !window.confirm('Discard unsaved changes and reset the filter?')
+      !window.confirm('Start a new filter? Unsaved changes will be discarded.')
     ) {
       return;
     }
-    const next = { ...DEFAULT_STATE };
-    saveCustomRules(activeKey, []);
-    saveCustomRules(configKey(next), []);
-    update(next);
-    setCustomRules([]);
+    startNew();
     setActiveBuildId(null);
-    setSavedHash(buildHash(next, []));
-    setNotice('Filter reset.');
+    setNotice('Started a new filter.');
+  };
+
+  const resetChanges = () => {
+    if (!dirty) return;
+    reset();
+    setNotice('Reverted to the last saved state.');
   };
 
   const download = async () => {
+    if (!filter) return;
     if (folder.handle) {
       const result = await folder.write(filter.fileName, filter.text, true);
       if (result.ok) {
-        setSavedHash(currentHash);
+        commit(state, customRules);
         setNotice(result.message);
         return;
       }
@@ -266,10 +249,11 @@ export default function Wizard() {
     }
     downloadFilter(filter.fileName, filter.text);
     // Writing the .filter counts as saving, so the "unsaved changes" badge clears.
-    setSavedHash(currentHash);
+    commit(state, customRules);
   };
 
   useEffect(() => {
+    if (!filter) return;
     if (!folder.handle) return;
     const existing = folder.files.find(
       (file) => file.name === filter.fileName,
@@ -300,8 +284,8 @@ export default function Wizard() {
       );
     });
   }, [
-    filter.fileName,
-    filter.text,
+    filter?.fileName,
+    filter?.text,
     folder.files,
     folder.handle,
     folder.permission,
@@ -309,6 +293,7 @@ export default function Wizard() {
   ]);
 
   useEffect(() => {
+    if (!filter) return;
     if (!folder.handle || folder.files.length === 0) return;
     if (folder.files.some((file) => file.name === filter.fileName)) return;
 
@@ -326,22 +311,30 @@ export default function Wizard() {
     setNotice(
       `Filename changed. Download once to create ${filter.fileName}, then select it in-game; future updates sync automatically.`,
     );
-  }, [filter.fileName, folder.files, folder.handle]);
+  }, [filter?.fileName, folder.files, folder.handle]);
 
   const loadBuild = (build: SavedBuild) => {
     const loaded = { ...coerceWizardState(build.state), name: build.name };
-    const loadedKey = configKey(loaded);
     const rules = build.customRules ?? [];
-    saveCustomRules(loadedKey, rules);
-    update(loaded);
-    setCustomRules(rules);
+    load(loaded, rules);
     setActiveBuildId(build.id);
-    setSavedHash(buildHash(loaded, rules));
     setNotice(
       build.presetVersion === PRESET_VERSION
         ? `Loaded ${build.name}.`
         : `Loaded ${build.name}. Presets were refreshed to the latest version.`,
     );
+  };
+
+  /** Loads a FilterPath file from the connected folder back into the builder. */
+  const loadFile = (file: FilterFileInfo) => {
+    if (!file.selection) {
+      setNotice(`${file.name} has no saved selection, so it cannot be loaded.`);
+      return;
+    }
+    const loaded = parseWizardHash(`#${file.selection}`);
+    load(loaded, loadCustomRules(ruleKey(loaded)));
+    setActiveBuildId(null);
+    setNotice(`Loaded ${file.name}.`);
   };
 
   const importCode = async (code: string): Promise<string | null> => {
@@ -351,9 +344,7 @@ export default function Wizard() {
         ? coerceWizardState(payload.state as Partial<WizardState>)
         : state;
       const rules = payload.customRules ?? payload.rules ?? [];
-      saveCustomRules(configKey(importedState), rules);
-      update(importedState);
-      setCustomRules(rules);
+      load(importedState, rules);
       setActiveBuildId(null);
       setNotice(
         payload.presetVersion === PRESET_VERSION
@@ -361,17 +352,6 @@ export default function Wizard() {
           : 'Imported build with the latest presets. Save it if you want to keep it locally.',
       );
       return null;
-    } catch (error) {
-      return error instanceof Error ? error.message : 'Could not read that code';
-    }
-  };
-
-  const importRulesCode = async (code: string): Promise<string | null> => {
-    try {
-      const payload = await decodeShare(code);
-      const rules = payload.customRules ?? payload.rules ?? [];
-      changeCustomRules(rules);
-      return `Imported ${rules.length} custom rule(s).`;
     } catch (error) {
       return error instanceof Error ? error.message : 'Could not read that code';
     }
@@ -423,12 +403,14 @@ export default function Wizard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const title =
-    state.mode === 'meta' && skill
+  const title = isStart
+    ? 'New filter'
+    : state.mode === 'meta' && skill
       ? `${ascendancy.name} ${skill.name}`
-      : filter.archetype.name;
-  const eyebrow =
-    state.mode === 'scratch'
+      : (filter?.archetype.name ?? '');
+  const eyebrow = isStart
+    ? 'New filter'
+    : state.mode === 'scratch'
       ? 'Custom filter'
       : state.mode === 'family'
         ? 'Family preset'
@@ -440,36 +422,50 @@ export default function Wizard() {
     <div className="mx-auto flex min-h-dvh max-w-6xl flex-col px-5 py-8 pb-28 sm:px-8 sm:py-12 lg:pb-12">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">
+          <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">
             Path of Exile 1 <span className="text-zinc-600">/</span>{' '}
             <span className="text-zinc-500">v{APP_VERSION}</span>
             {dirty && (
-              <span className="ml-2 rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] normal-case tracking-normal text-amber-300">
-                unsaved changes
-              </span>
+              <>
+                <span className="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] normal-case tracking-normal text-amber-300">
+                  unsaved changes
+                </span>
+                <button
+                  type="button"
+                  onClick={resetChanges}
+                  title="Discard edits and go back to the last saved state"
+                  className="rounded border border-amber-500/40 px-1.5 py-0.5 text-[10px] normal-case tracking-normal text-amber-200 transition-colors hover:border-amber-400 hover:text-amber-100"
+                >
+                  Reset
+                </button>
+              </>
             )}
           </p>
           <h1 className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             <button
               type="button"
-              onClick={resetBuild}
-              title="Reset the filter"
+              onClick={newFilter}
+              title="Start a new filter"
               className="cursor-pointer transition-opacity hover:opacity-80"
             >
               FilterPath
             </button>
           </h1>
           <p className="mt-2 max-w-xl text-sm text-zinc-400">
-            {state.mode === 'scratch'
-              ? 'Choose where to start, add rules, then inspect exactly what the filter will show.'
-              : 'Pick a build one way, tune the phase and strictness, then inspect exactly what the filter will show.'}
+            {isStart
+              ? 'Pick how you want to build a filter, then tune the phase, strictness and theme.'
+              : state.mode === 'scratch'
+                ? 'Choose where to start, add rules, then inspect exactly what the filter will show.'
+                : 'Pick a build one way, tune the phase and strictness, then inspect exactly what the filter will show.'}
           </p>
-          <p className="mt-2 max-w-xl text-[11px] text-zinc-600">
-            Editing{' '}
-            <code className="break-words rounded bg-ink-900/70 px-1.5 py-0.5 text-zinc-400">
-              {filter.fileName}
-            </code>
-          </p>
+          {filter && (
+            <p className="mt-2 max-w-xl text-[11px] text-zinc-600">
+              Editing{' '}
+              <code className="break-words rounded bg-ink-900/70 px-1.5 py-0.5 text-zinc-400">
+                {filter.fileName}
+              </code>
+            </p>
+          )}
         </div>
         <nav className="flex items-center gap-4 text-xs text-zinc-500">
           <a
@@ -571,6 +567,19 @@ export default function Wizard() {
                 ))}
               </div>
             </section>
+
+            {isStart && (
+              <>
+                <p className="rounded-lg border border-ink-700 bg-ink-900/40 px-3 py-2 text-xs leading-relaxed text-zinc-500">
+                  Nothing is selected yet. Choose a way to build to generate a
+                  filter. Saved builds and the import box appear once a mode is
+                  picked.
+                </p>
+                {notice && (
+                  <p className="text-[11px] text-amber-300">{notice}</p>
+                )}
+              </>
+            )}
 
             {state.mode === 'scratch' && (
               <section aria-labelledby="scratch-heading">
@@ -768,7 +777,7 @@ export default function Wizard() {
               </>
             )}
 
-            {state.mode !== 'scratch' && (
+            {!isStart && state.mode !== 'scratch' && (
               <section aria-labelledby="phase-heading">
               <h2
                 id="phase-heading"
@@ -800,7 +809,7 @@ export default function Wizard() {
             </section>
             )}
 
-            {state.mode !== 'scratch' && (
+            {!isStart && state.mode !== 'scratch' && (
               <section aria-labelledby="strictness-heading">
               <h2
                 id="strictness-heading"
@@ -829,6 +838,7 @@ export default function Wizard() {
             </section>
             )}
 
+            {!isStart && (
             <section aria-labelledby="theme-heading">
               <h2
                 id="theme-heading"
@@ -860,9 +870,11 @@ export default function Wizard() {
                 ))}
               </div>
             </section>
+            )}
 
           </div>
 
+          {filter && (
           <div className="min-w-0 space-y-6">
             <section className="rounded-xl border border-gold-400/25 bg-ink-800/70 p-5">
               <p className="text-[11px] uppercase tracking-[0.2em] text-gold-400">
@@ -916,7 +928,7 @@ export default function Wizard() {
                 )}
               </div>
 
-              <div className="mt-5 grid gap-2 sm:grid-cols-[1fr_auto_auto]">
+              <div className="mt-5 grid gap-2 sm:grid-cols-[1fr_auto]">
                 <button
                   type="button"
                   onClick={() => void download()}
@@ -932,12 +944,20 @@ export default function Wizard() {
                 >
                   {copied === 'code' ? 'Copied' : 'Copy code'}
                 </button>
+              </div>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <input
+                  value={codeInput}
+                  onChange={(event) => setCodeInput(event.target.value)}
+                  placeholder="Paste a build code"
+                  className="min-w-0 flex-1 rounded border border-ink-600 bg-ink-800 px-2 py-1.5 text-xs text-zinc-200"
+                />
                 <button
                   type="button"
-                  onClick={() => void shareLink()}
-                  className="rounded-lg px-4 py-2.5 text-sm text-zinc-400 transition-colors hover:text-white"
+                  onClick={() => void runImportCode()}
+                  className="rounded border border-ink-600 px-3 py-1.5 text-xs text-zinc-300"
                 >
-                  {copied === 'link' ? 'Link copied' : 'Share link'}
+                  Import code
                 </button>
               </div>
               {folder.handle && (
@@ -947,8 +967,9 @@ export default function Wizard() {
                 </p>
               )}
               <p className="mt-2 text-[11px] text-zinc-500">
-                Copy code and Share link both carry the whole build, including
-                custom rules. Paste a code into Import code to restore it.
+                One build code carries the whole build, including My rules. Copy
+                it to save or share, and paste it here to restore. The filter
+                text can also be copied from the window below.
               </p>
               {notice && (
                 <p className="mt-2 text-[11px] text-amber-300">{notice}</p>
@@ -963,54 +984,56 @@ export default function Wizard() {
 
             <ThemePreview rules={filter.rules} hash={wizardHash(state)} />
           </div>
+          )}
         </div>
 
-        <SaveBuildPanel
-          state={state}
-          customRules={customRules}
-          fileName={filter.fileName}
-          text={filter.text}
-          appVersion={APP_VERSION}
-          dirty={dirty}
-          name={state.name}
-          autoName={autoName}
-          activeBuildId={activeBuildId}
-          folder={folder}
-          onNameChange={(name) => update({ name })}
-          onLoad={loadBuild}
-          onSaved={(build) => {
-            setActiveBuildId(build.id);
-            setSavedHash(currentHash);
-          }}
-          onUpdated={(build) => {
-            setActiveBuildId(build.id);
-            setSavedHash(currentHash);
-          }}
-          onWritten={() => setSavedHash(currentHash)}
-          onDeleted={(id) => {
-            if (activeBuildId === id) setActiveBuildId(null);
-          }}
-        />
+        {filter && baseFilter && (
+          <>
+            <SaveBuildPanel
+              state={state}
+              customRules={customRules}
+              fileName={filter.fileName}
+              text={filter.text}
+              appVersion={APP_VERSION}
+              dirty={dirty}
+              name={state.name}
+              autoName={autoName}
+              activeBuildId={activeBuildId}
+              folder={folder}
+              onNameChange={(name) => update({ name })}
+              onLoad={loadBuild}
+              onLoadFile={loadFile}
+              onSaved={(build) => {
+                setActiveBuildId(build.id);
+                commit(state, customRules);
+              }}
+              onUpdated={(build) => {
+                setActiveBuildId(build.id);
+                commit(state, customRules);
+              }}
+              onWritten={() => commit(state, customRules)}
+              onDeleted={(id) => {
+                if (activeBuildId === id) setActiveBuildId(null);
+              }}
+            />
 
-        <AdvancedRules
-          baseRules={baseFilter.rules}
-          customRules={customRules}
-          label={filter.archetype.name}
-          presetVersion={PRESET_VERSION}
-          focusIndex={focusIndex}
-          prefill={prefill}
-          onChange={changeCustomRules}
-          onImportCode={importCode}
-          onImportRulesCode={importRulesCode}
-        />
+            <AdvancedRules
+              baseRules={baseFilter.rules}
+              customRules={customRules}
+              focusIndex={focusIndex}
+              prefill={prefill}
+              onChange={setRules}
+            />
 
-        <FilterPreview
-          text={filter.text}
-          fileName={filter.fileName}
-          ruleCount={filter.ruleCount}
-          baseTypeCount={filter.baseTypeCount}
-          warnings={filter.warnings}
-        />
+            <FilterPreview
+              text={filter.text}
+              fileName={filter.fileName}
+              ruleCount={filter.ruleCount}
+              baseTypeCount={filter.baseTypeCount}
+              warnings={filter.warnings}
+            />
+          </>
+        )}
 
         <details className="rounded-xl border border-ink-700 bg-ink-800/40 p-4 text-sm">
           <summary className="cursor-pointer text-zinc-200">
@@ -1050,26 +1073,28 @@ export default function Wizard() {
         </p>
       </footer>
 
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-ink-700 bg-ink-900/95 px-4 py-3 backdrop-blur lg:hidden">
-        <div className="mx-auto flex max-w-6xl items-center gap-3">
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-xs font-medium text-zinc-100">{title}</p>
-            <p className="truncate text-[11px] text-zinc-500">
-              {state.phase === 'leveling' ? 'Leveling' : 'Endgame'} -{' '}
-              {STRICTNESS_LABELS_PUBLIC[state.strictness]} - {filter.ruleCount}{' '}
-              rules
-            </p>
+      {filter && (
+        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-ink-700 bg-ink-900/95 px-4 py-3 backdrop-blur lg:hidden">
+          <div className="mx-auto flex max-w-6xl items-center gap-3">
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-xs font-medium text-zinc-100">{title}</p>
+              <p className="truncate text-[11px] text-zinc-500">
+                {state.phase === 'leveling' ? 'Leveling' : 'Endgame'} -{' '}
+                {STRICTNESS_LABELS_PUBLIC[state.strictness]} - {filter.ruleCount}{' '}
+                rules
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => void download()}
+              disabled={folder.busy}
+              className="shrink-0 rounded-lg bg-gold-400 px-4 py-2 text-sm font-semibold text-ink-950 disabled:opacity-40"
+            >
+              Download
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={() => void download()}
-            disabled={folder.busy}
-            className="shrink-0 rounded-lg bg-gold-400 px-4 py-2 text-sm font-semibold text-ink-950 disabled:opacity-40"
-          >
-            Download
-          </button>
         </div>
-      </div>
+      )}
     </div>
   );
 }

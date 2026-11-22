@@ -1,10 +1,12 @@
 import { DEFAULT_SECTIONS, type Sections } from '../core/filter/generate.ts';
+import { buildHashParams } from '../core/filter/hash.ts';
 import {
   coerceStrictness,
   type Phase,
   type Strictness,
 } from '../core/filter/presets.ts';
 import { coerceThemeId, type ThemeId } from '../core/filter/themes.ts';
+import { configKey } from '../core/rules/key.ts';
 import { getAscendancy } from '../meta/ascendancies.ts';
 import { getSkill } from '../meta/index.ts';
 import {
@@ -14,10 +16,21 @@ import {
 } from '../meta/index.ts';
 import type { BuildMode, BuildSelection, FamilyId } from '../meta/types.ts';
 
+/** The build modes plus `start`, the empty builder with nothing selected. */
+export type WizardMode = BuildMode | 'start';
+
+/** A wizard state with a real mode; the empty `start` state is excluded. */
+export type SelectedState = WizardState & { mode: BuildMode };
+
+/** Narrows a state known to have a mode. Callers guard `mode !== 'start'`. */
+export function asSelected(state: WizardState): SelectedState {
+  return state as SelectedState;
+}
+
 export interface WizardState {
   /** User-facing build name; empty means derive it from the selection. */
   name: string;
-  mode: BuildMode;
+  mode: WizardMode;
   familyId: FamilyId;
   ascendancyId: string;
   leagueId: string;
@@ -35,7 +48,7 @@ const DEFAULT_SKILL = 'summon-skeletons';
 
 export const DEFAULT_STATE: WizardState = {
   name: '',
-  mode: 'family',
+  mode: 'start',
   familyId: DEFAULT_FAMILY,
   ascendancyId: DEFAULT_ASCENDANCY,
   leagueId: CURRENT_LEAGUE_ID,
@@ -76,19 +89,31 @@ function fill(selection: BuildSelection): Pick<
 }
 
 export function coerceWizardState(input: Partial<WizardState>): WizardState {
+  const phase = input.phase === 'endgame' ? 'endgame' : 'leveling';
+  const strictness = coerceStrictness(input.strictness);
+  const theme = coerceThemeId(input.theme);
+  const name =
+    typeof input.name === 'string' ? input.name.trim().slice(0, 80) : '';
+
+  const mode = input.mode;
+  // Missing or `start`: a brand-new, empty filter with nothing selected.
+  if (
+    mode !== 'family' &&
+    mode !== 'ascendancy' &&
+    mode !== 'meta' &&
+    mode !== 'scratch'
+  ) {
+    return { ...DEFAULT_STATE, name, phase, strictness, theme };
+  }
+
   const selection = coerceSelection({
-    mode: input.mode,
+    mode,
     familyId: input.familyId,
     ascendancyId: input.ascendancyId,
     leagueId: input.leagueId,
     skillId: input.skillId,
     scratchStart: input.scratchStart,
   });
-  const phase = input.phase === 'endgame' ? 'endgame' : 'leveling';
-  const strictness = coerceStrictness(input.strictness);
-  const theme = coerceThemeId(input.theme);
-  const name =
-    typeof input.name === 'string' ? input.name.trim().slice(0, 80) : '';
 
   return {
     ...DEFAULT_STATE,
@@ -125,10 +150,17 @@ export function parseWizardHash(hash: string): WizardState {
     if (legacy) return { ...fill(legacy), ...common };
   }
 
-  const modeParam = params.get('mode') as BuildMode | null;
+  const modeParam = params.get('mode') as WizardMode | null;
+  if (modeParam === 'start') return { ...DEFAULT_STATE, ...common };
+
   const hasSkill = params.get('skill') !== null;
   const hasFamily = params.get('family') !== null;
   const hasAscendancy = params.get('ascendancy') !== null;
+
+  // An empty hash opens the empty builder, not the old family default.
+  if (modeParam === null && !hasSkill && !hasFamily && !hasAscendancy) {
+    return { ...DEFAULT_STATE, ...common };
+  }
 
   const mode: BuildMode =
     modeParam === 'family' ||
@@ -156,27 +188,17 @@ export function parseWizardHash(hash: string): WizardState {
 }
 
 export function wizardHash(state: WizardState): string {
-  const params = new URLSearchParams();
-  params.set('mode', state.mode);
+  if (state.mode === 'start') return 'mode=start';
+  return buildHashParams({
+    selection: asSelected(state),
+    phase: state.phase,
+    strictness: state.strictness,
+    theme: state.theme,
+    name: state.name,
+  });
+}
 
-  if (state.mode === 'scratch') {
-    params.set('scratchStart', state.scratchStart);
-  } else if (state.mode === 'family') {
-    params.set('family', state.familyId);
-  } else if (state.mode === 'ascendancy') {
-    params.set('ascendancy', state.ascendancyId);
-  } else {
-    params.set('league', state.leagueId);
-    params.set('family', state.familyId);
-    params.set('skill', state.skillId);
-    params.set('ascendancy', state.ascendancyId);
-  }
-
-  if (state.mode !== 'scratch') {
-    params.set('phase', state.phase);
-    params.set('strictness', state.strictness);
-  }
-  params.set('theme', state.theme);
-  if (state.name.trim()) params.set('name', state.name.trim());
-  return params.toString();
+/** Key for a build's My rules. `start` keeps no rules of its own. */
+export function ruleKey(state: WizardState): string {
+  return state.mode === 'start' ? 'start' : configKey(asSelected(state));
 }
