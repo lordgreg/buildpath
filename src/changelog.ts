@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.24.0',
+    date: '2026-11-22',
+    title: 'Custom-rule overrides and loot-simulator deep links',
+    notes: [
+      'Two identical My rules are now named by number in the warning.',
+      'Each custom rule shows which preset rule it overrides, with a click to jump to and highlight it.',
+      'Writing the .filter counts as saved, so the "unsaved changes" badge clears on Download, Write file now, Save build or Update.',
+      "Overwriting a FilterPath filter no longer asks; the previous version is still kept as .bak.",
+      'The loot simulator can jump to the rule that decided a drop, and open the rule editor pre-filled from the item.',
+    ],
+    commits: [],
+    compare: 'v0.23.0...v0.24.0',
+  },
+  {
     version: '0.23.0',
     date: '2026-11-22',
     title: 'Hide small gold piles',

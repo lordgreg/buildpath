@@ -2,6 +2,20 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.24.0 — 2026-11-22
+
+Custom-rule overrides and loot-simulator deep links.
+
+- Two identical My rules are now named by number in the warning.
+- Each custom rule shows which preset rule it overrides, with a click to jump
+  to and highlight it.
+- Writing the `.filter` counts as saved, so the "unsaved changes" badge clears
+  on Download, Write file now, Save build or Update.
+- Overwriting a FilterPath filter no longer asks; the previous version is still
+  kept as `.bak`.
+- The loot simulator can jump to the rule that decided a drop, and open the rule
+  editor pre-filled from the item.
+
 ## 0.23.0 — 2026-11-22
 
 Hide small gold piles.
