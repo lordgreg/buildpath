@@ -17,6 +17,16 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.24.2',
+    date: '2026-11-22',
+    title: 'Fix filters failing to load on removed base types',
+    notes: [
+      'Generated filters no longer list seven base types the game has dropped or renamed, which made the client refuse the whole filter with "no base types found matching": Gauche, Sinistral and Southswing Gloves, Taxing, Gruelling and Debilitation Gauntlets, and Serpent Wand. The registry now strips them via a reviewed removal list, checked against the game\'s own item data.',
+    ],
+    commits: [],
+    compare: 'v0.24.1...v0.24.2',
+  },
+  {
     version: '0.24.1',
     date: '2026-11-22',
     title: 'Hide the regen amulets in minion presets',

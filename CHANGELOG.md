@@ -2,6 +2,16 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.24.2 — 2026-11-22
+
+Fix filters failing to load on removed base types.
+
+- Generated filters no longer list seven base types the game has dropped or
+  renamed, which made the client refuse the whole filter with "no base types
+  found matching": Gauche, Sinistral and Southswing Gloves, Taxing, Gruelling
+  and Debilitation Gauntlets, and Serpent Wand. The registry now strips them via
+  a reviewed removal list, checked against the game's own item data.
+
 ## 0.24.1 — 2026-11-22
 
 Hide the regen amulets in minion presets.
