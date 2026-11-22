@@ -23,9 +23,12 @@ function armourSlots(tags: string[]): Partial<Record<ItemSlot, SlotSpec>> {
   };
 }
 
-function jewellery(jewelTag: string): Partial<Record<ItemSlot, SlotSpec>> {
+function jewellery(
+  jewelTag: string,
+  belt?: SlotSpec,
+): Partial<Record<ItemSlot, SlotSpec>> {
   return {
-    belt: { itemClasses: ['Belt'] },
+    belt: belt ?? { itemClasses: ['Belt'] },
     amulet: { itemClasses: ['Amulet'] },
     ring: { itemClasses: ['Ring'] },
     jewel: { itemClasses: ['Jewel'], tags: [jewelTag] },
@@ -66,7 +69,7 @@ export function resolveFamily(familyId: string): Archetype {
     verifiedFor: verifiedFor(),
     slots: {
       ...armourSlots(family.armourTags),
-      ...jewellery(family.jewelTag),
+      ...jewellery(family.jewelTag, family.belt),
       ...loadout(family.weapon, family.offhand),
     },
     attributes: family.attributes as Attribute[],
@@ -98,7 +101,7 @@ export function resolveAscendancy(ascendancyId: string): Archetype {
     verifiedFor: verifiedFor(),
     slots: {
       ...armourSlots(ascendancy.defenceTags),
-      ...jewellery(ascendancy.jewelTag),
+      ...jewellery(ascendancy.jewelTag, ascendancy.belt ?? family.belt),
       ...loadout(weapon, offhand),
     },
     attributes: ascendancy.attributes,
@@ -134,7 +137,7 @@ export function resolveMeta(selection: BuildSelection): Archetype {
     verifiedFor: getSnapshot(leagueId).league.name,
     slots: {
       ...armourSlots(ascendancy.defenceTags),
-      ...jewellery(ascendancy.jewelTag),
+      ...jewellery(ascendancy.jewelTag, ascendancy.belt ?? family.belt),
       ...loadout(weapon, offhand),
     },
     attributes: ascendancy.attributes,

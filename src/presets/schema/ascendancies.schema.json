@@ -61,7 +61,8 @@
           "weapon": { "$ref": "#/definitions/slot" },
           "offhand": {
             "anyOf": [{ "$ref": "#/definitions/slot" }, { "type": "null" }]
-          }
+          },
+          "belt": { "$ref": "#/definitions/slot" }
         }
       }
     }

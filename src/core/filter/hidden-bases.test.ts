@@ -387,3 +387,62 @@ describe('minion amulet exclusions', () => {
     expect(found.shown).toBe(true);
   });
 });
+
+describe('minion belt allowlist', () => {
+  const MINION_SELECTIONS = [
+    { mode: 'family' as const, familyId: 'minion' as const },
+    { mode: 'ascendancy' as const, ascendancyId: 'necromancer' },
+  ];
+  const STR_BELTS = ['Rustic Sash', 'Studded Belt', 'Heavy Belt'];
+
+  it('hides rare str belts for minion builds in every preset', () => {
+    for (const selection of MINION_SELECTIONS) {
+      for (const base of STR_BELTS) {
+        for (const phase of ['leveling', 'endgame'] as const) {
+          for (const strictness of ['soft', 'strict', 'uber'] as const) {
+            const filter = generateFilter({ selection, phase, strictness });
+            const found = evaluateRules(filter.rules, belt(base, 'Rare', 86));
+            expect(
+              found.shown,
+              `${selection.mode}/${base}/${phase}/${strictness}`,
+            ).toBe(false);
+            expect(found.reason).toContain('bases this build does not use');
+          }
+        }
+      }
+    }
+  });
+
+  it('keeps rare Leather Belts visible for minion builds', () => {
+    for (const selection of MINION_SELECTIONS) {
+      for (const phase of ['leveling', 'endgame'] as const) {
+        const filter = generateFilter({ selection, phase, strictness: 'uber' });
+        const found = evaluateRules(
+          filter.rules,
+          belt('Leather Belt', 'Rare', 86),
+        );
+        expect(found.shown, `${selection.mode}/${phase}`).toBe(true);
+      }
+    }
+  });
+
+  it('keeps unique str belts visible for minion builds', () => {
+    const filter = generateFilter({
+      selection: MINION_SELECTIONS[0]!,
+      phase: 'leveling',
+      strictness: 'soft',
+    });
+    const found = evaluateRules(filter.rules, belt('Heavy Belt', 'Unique', 86));
+    expect(found.shown).toBe(true);
+  });
+
+  it('leaves str belts visible for other builds', () => {
+    const filter = generateFilter({
+      selection: { mode: 'family', familyId: 'melee' },
+      phase: 'leveling',
+      strictness: 'soft',
+    });
+    const found = evaluateRules(filter.rules, belt('Rustic Sash', 'Rare', 86));
+    expect(found.shown).toBe(true);
+  });
+});

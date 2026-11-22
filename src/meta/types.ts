@@ -17,6 +17,8 @@ export interface Family {
   jewelTag: string;
   /** Bases this family's builds never want. */
   excludedBases?: string[];
+  /** Optional belt allowlist; otherwise every Belt base is highlighted. */
+  belt?: SlotSpec;
 }
 
 export interface SkillEntry {
@@ -61,6 +63,8 @@ export interface Ascendancy {
   jewelTag: string;
   /** Bases this ascendancy's builds never want. */
   excludedBases?: string[];
+  /** Optional belt allowlist; otherwise the default family supplies it. */
+  belt?: SlotSpec;
   /** Optional loadout override; otherwise the default family supplies it. */
   weapon?: SlotSpec;
   offhand?: SlotSpec | null;

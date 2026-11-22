@@ -22,6 +22,11 @@ families:
     # Cloth Belt's stun/block recovery is useless for a summoner, and so are
     # the life and mana regen amulet bases.
     excludedBases: [Cloth Belt, Coral Amulet, Marble Amulet, Blue Pearl Amulet]
+    # Leather Belt's life implicit is the only belt a summoner wants; the other
+    # belt implicits (phys, stun duration, strength) are wasted on minions.
+    belt:
+      itemClasses: [Belt]
+      bases: [Leather Belt]
     weapon:
       itemClasses: [Wand]
       tags: [weapon_can_roll_minion_modifiers]
