@@ -253,6 +253,7 @@ export default function Wizard() {
     if (folder.handle) {
       const result = await folder.write(filter.fileName, filter.text, true);
       if (result.ok) {
+        setSavedHash(currentHash);
         setNotice(result.message);
         return;
       }
@@ -263,6 +264,8 @@ export default function Wizard() {
       setNotice(`${result.message} Downloading instead.`);
     }
     downloadFilter(filter.fileName, filter.text);
+    // Writing the .filter counts as saving, so the "unsaved changes" badge clears.
+    setSavedHash(currentHash);
   };
 
   useEffect(() => {
@@ -956,6 +959,7 @@ export default function Wizard() {
             setActiveBuildId(build.id);
             setSavedHash(currentHash);
           }}
+          onWritten={() => setSavedHash(currentHash)}
           onDeleted={(id) => {
             if (activeBuildId === id) setActiveBuildId(null);
           }}

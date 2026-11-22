@@ -17,7 +17,7 @@ import {
   LINUX_WRITE_COMMAND,
   writeHint,
 } from '../../sync/platform.ts';
-import type { FiltersFolder } from './useFiltersFolder.ts';
+import type { FiltersFolder, WriteResult } from './useFiltersFolder.ts';
 
 export default function SaveBuildPanel({
   state,
@@ -34,6 +34,7 @@ export default function SaveBuildPanel({
   onLoad,
   onSaved,
   onUpdated,
+  onWritten,
   onDeleted,
 }: {
   state: WizardState;
@@ -50,6 +51,8 @@ export default function SaveBuildPanel({
   onLoad: (build: SavedBuild) => void;
   onSaved: (build: SavedBuild) => void;
   onUpdated: (build: SavedBuild) => void;
+  /** Called after the .filter file is written to the folder. */
+  onWritten: () => void;
   onDeleted: (id: string) => void;
 }) {
   const [builds, setBuilds] = useState<SavedBuild[]>(() => listBuilds());
@@ -71,10 +74,9 @@ export default function SaveBuildPanel({
     (file) => filterUpdateKind(file, appVersion, PRESET_VERSION) !== null,
   );
 
-  const writeToFolder = async (): Promise<string> => {
-    if (!folder.handle) return '';
-    const result = await folder.write(fileName, text, true);
-    return result.message;
+  const writeToFolder = async (): Promise<WriteResult> => {
+    if (!folder.handle) return { ok: false, message: '' };
+    return folder.write(fileName, text, true);
   };
 
   const save = async () => {
@@ -86,7 +88,9 @@ export default function SaveBuildPanel({
 
       let message = 'Build saved locally.';
       if (folder.handle) {
-        message = `${message} ${await writeToFolder()}`;
+        const result = await writeToFolder();
+        message = `${message} ${result.message}`;
+        if (result.ok) onWritten();
       } else if (folder.supported) {
         message += ' Choose a filters folder below to also write the .filter file.';
       } else {
@@ -118,7 +122,9 @@ export default function SaveBuildPanel({
       onUpdated(build);
       let message = `Updated ${build.name}.`;
       if (folder.handle) {
-        message = `${message} ${await writeToFolder()}`;
+        const result = await writeToFolder();
+        message = `${message} ${result.message}`;
+        if (result.ok) onWritten();
       }
       setStatus(message);
     } catch {
@@ -130,8 +136,9 @@ export default function SaveBuildPanel({
 
   const saveFile = async () => {
     if (!folder.handle) return;
-    const message = await writeToFolder();
-    setStatus(message);
+    const result = await writeToFolder();
+    setStatus(result.message);
+    if (result.ok) onWritten();
   };
 
   return (
