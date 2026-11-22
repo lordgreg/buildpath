@@ -110,13 +110,22 @@ describe('filter files', () => {
       formatVersion: 1,
       presetVersion: 'abc123',
       build: 'Necromancer Summon Skeletons - Witch / Necromancer',
+      selection: null,
     });
     expect(parseFilterHeader('# something else')).toEqual({
       appVersion: null,
       formatVersion: null,
       presetVersion: null,
       build: null,
+      selection: null,
     });
+  });
+
+  it('reads the Selection line a generated filter carries', () => {
+    const text = `${HEADER}# Selection: mode=family&family=minion&phase=leveling&strictness=soft\n`;
+    expect(parseFilterHeader(text).selection).toBe(
+      'mode=family&family=minion&phase=leveling&strictness=soft',
+    );
   });
 
   it('recognises filter names and backups', () => {

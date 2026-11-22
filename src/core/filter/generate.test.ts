@@ -141,6 +141,28 @@ describe('generateFilter', () => {
     );
   });
 
+  it('writes a Selection line for a build selection', () => {
+    const filter = generateFilter({
+      selection: { mode: 'family', familyId: 'bow' },
+      phase: 'endgame',
+      strictness: 'strict',
+      theme: 'contrast',
+      buildName: 'My Bow',
+    });
+
+    expect(filter.text).toMatch(
+      /^# Selection: mode=family&family=bow&phase=endgame&strictness=strict&theme=contrast&name=My\+Bow$/m,
+    );
+    // Legacy archetype configs carry no selection of their own.
+    expect(
+      generateFilter({
+        archetypeId: 'necro-minions',
+        phase: 'leveling',
+        strictness: 'soft',
+      }).text,
+    ).not.toContain('# Selection:');
+  });
+
   it('resolves a known archetype for the UI', () => {
     expect(getArchetype('slayer-cyclone')?.ascendancy).toBe('Slayer');
   });

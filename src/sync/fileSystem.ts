@@ -6,6 +6,8 @@ export interface FilterFileInfo {
   formatVersion: number | null;
   presetVersion: string | null;
   build: string | null;
+  /** The build query string from the `Selection:` header line, if present. */
+  selection: string | null;
 }
 
 export interface FilterHeader {
@@ -13,17 +15,20 @@ export interface FilterHeader {
   formatVersion: number | null;
   presetVersion: string | null;
   build: string | null;
+  selection: string | null;
 }
 
 export function parseFilterHeader(text: string): FilterHeader {
   const version = /^# FilterPath (\S+) - filter format (\d+)\s*$/m.exec(text);
   const build = /^# Build: (.+)$/m.exec(text);
   const presets = /^# Presets: (.+)$/m.exec(text);
+  const selection = /^# Selection: (.+)$/m.exec(text);
   return {
     appVersion: version?.[1] ?? null,
     formatVersion: version ? Number(version[2]) : null,
     presetVersion: presets?.[1]?.trim() ?? null,
     build: build?.[1]?.trim() ?? null,
+    selection: selection?.[1]?.trim() ?? null,
   };
 }
 

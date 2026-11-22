@@ -6,6 +6,7 @@ import type { BuildSelection } from '../../meta/types.ts';
 import { baseTypeMeta } from '../data/base-types.ts';
 import { withoutUnknownBases } from '../rules/sanitize.ts';
 import { emitFilterWithSpans } from './emit.ts';
+import { buildHashParams } from './hash.ts';
 import { junkRules } from './junk.ts';
 import {
   getPreset,
@@ -235,6 +236,18 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
       : [
           `Phase: ${config.phase === 'leveling' ? 'Leveling' : 'Endgame'} - ${STRICTNESS_LABELS_PUBLIC[config.strictness]}`,
         ]),
+    // Lets the folder lister load a FilterPath file back into the builder.
+    ...(config.selection
+      ? [
+          `Selection: ${buildHashParams({
+            selection: config.selection,
+            phase: config.phase,
+            strictness: config.strictness,
+            theme: compiled.theme,
+            name: config.buildName,
+          })}`,
+        ]
+      : []),
     `League: ${compiled.archetype.verifiedFor}`,
     `Presets: ${PRESET_VERSION}`,
     `Rules: ${compiled.rules.length} - Base types: ${compiled.baseTypes.length}`,
