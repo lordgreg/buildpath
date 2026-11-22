@@ -47,11 +47,13 @@ const CLASSES = [
 // Keep in sync with src/meta/ascendancies.ts.
 const ASCENDANCY_CLASS = {
   ascendant: 'Scion',
+  luminary: 'Scion',
+  reliquarian: 'Scion',
   juggernaut: 'Marauder',
   berserker: 'Marauder',
   chieftain: 'Marauder',
   deadeye: 'Ranger',
-  raider: 'Ranger',
+  warden: 'Ranger',
   pathfinder: 'Ranger',
   slayer: 'Duelist',
   gladiator: 'Duelist',
