@@ -57,6 +57,22 @@ describe('wizard hash', () => {
     expect(state.theme).toBe('contrast');
   });
 
+  it('defaults to rarity and maps the legacy classic id', () => {
+    expect(parseWizardHash('#mode=family&family=minion').theme).toBe('rarity');
+    expect(
+      parseWizardHash('#mode=family&family=minion&theme=classic').theme,
+    ).toBe('rarity');
+  });
+
+  it('carries the sound pack through the hash', () => {
+    const state = parseWizardHash('#mode=family&family=minion&soundPack=c64');
+    expect(state.soundPack).toBe('c64');
+    expect(wizardHash(state)).toContain('soundPack=c64');
+    expect(parseWizardHash('#mode=family&family=minion').soundPack).toBe(
+      'default',
+    );
+  });
+
   it('carries the build name through the hash', () => {
     const state = parseWizardHash(
       '#mode=scratch&scratchStart=show&name=My%20Vortex',

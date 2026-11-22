@@ -133,21 +133,21 @@ const NAMED_ALERTS: {
   sound: NamedAlertSound;
   tier: 1 | 2;
   style: Style;
-  styleKind: 's-tier' | 'currency-top' | 'currency-mid';
+  styleKind: 's-tier' | 'currency-top' | 'currency-mid' | 'chase';
 }[] = [
   {
     name: 'Mirror of Kalandra',
     sound: 'ShMirror',
     tier: 1,
-    style: SLOT_STYLES.currencyTop,
-    styleKind: 's-tier',
+    style: { ...SLOT_STYLES.currencyTop, playEffect: 'Red' },
+    styleKind: 'chase',
   },
   {
     name: 'Divine Orb',
     sound: 'ShDivine',
     tier: 1,
-    style: SLOT_STYLES.currencyTop,
-    styleKind: 's-tier',
+    style: { ...SLOT_STYLES.currencyTop, playEffect: 'Red' },
+    styleKind: 'chase',
   },
   {
     name: 'Exalted Orb',

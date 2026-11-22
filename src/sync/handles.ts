@@ -1,6 +1,7 @@
 const DB_NAME = 'filterpath';
 const STORE = 'handles';
 const DIRECTORY_KEY = 'filters-directory';
+const SOUNDS_KEY = 'sounds-directory';
 
 function openDatabase(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -52,4 +53,30 @@ export async function loadDirectoryHandle(): Promise<FileSystemDirectoryHandle |
 export async function clearDirectoryHandle(): Promise<void> {
   if (typeof indexedDB === 'undefined') return;
   await transaction('readwrite', (store) => store.delete(DIRECTORY_KEY));
+}
+
+/** Folder the demo reads custom alert sounds from (read-only). */
+export async function saveSoundsHandle(
+  handle: FileSystemDirectoryHandle,
+): Promise<void> {
+  if (typeof indexedDB === 'undefined') return;
+  await transaction('readwrite', (store) => store.put(handle, SOUNDS_KEY));
+}
+
+export async function loadSoundsHandle(): Promise<FileSystemDirectoryHandle | null> {
+  if (typeof indexedDB === 'undefined') return null;
+  try {
+    const value = await transaction<FileSystemDirectoryHandle | undefined>(
+      'readonly',
+      (store) => store.get(SOUNDS_KEY),
+    );
+    return value ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export async function clearSoundsHandle(): Promise<void> {
+  if (typeof indexedDB === 'undefined') return;
+  await transaction('readwrite', (store) => store.delete(SOUNDS_KEY));
 }

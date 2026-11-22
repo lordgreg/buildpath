@@ -28,7 +28,9 @@ export type StyleKind =
   | 'jewel'
   | 'flask'
   | 'gold'
-  | 'league';
+  | 'league'
+  | 'quest'
+  | 'chase';
 
 /** Built-in Shaper voice lines that Path of Exile accepts as alert sounds. */
 export type NamedAlertSound =
@@ -89,6 +91,8 @@ export interface Style {
   /** 18-45 in game. */
   fontSize?: number;
   alertSound?: AlertSound;
+  /** Custom sound file emitted as CustomAlertSound. Takes over from alertSound. */
+  customAlertSound?: string;
   /** 0-300. */
   alertVolume?: number;
   minimapIcon?: {

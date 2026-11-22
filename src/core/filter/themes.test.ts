@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { applyTheme, isThemeId } from './themes.ts';
+import { applyTheme, coerceThemeId, isThemeId, THEMES } from './themes.ts';
+import { generateFilter } from './generate.ts';
 import { COLORS, type Rule } from './types.ts';
 
 const baseStyle = {
@@ -116,7 +117,7 @@ const league: Rule = {
   style: baseStyle,
 };
 
-const styleOf = (rule: Rule) => applyTheme([rule], 'classic')[0]!.style!;
+const styleOf = (rule: Rule) => applyTheme([rule], 'rarity')[0]!.style!;
 
 describe('rarity theme', () => {
   it('uses rarity colours for gear and a black background', () => {
@@ -213,7 +214,7 @@ describe('rarity theme', () => {
 
   it('leaves unclassified custom rules and Hide rules alone', () => {
     expect(styleOf(custom)).toEqual(baseStyle);
-    expect(applyTheme([hide], 'classic')[0]).toEqual(hide);
+    expect(applyTheme([hide], 'rarity')[0]).toEqual(hide);
   });
 
   it('still applies contrast and muted', () => {
@@ -231,8 +232,84 @@ describe('rarity theme', () => {
     });
   });
 
+  const chase: Rule = {
+    action: 'Show',
+    section: 'currency',
+    styleKind: 'chase',
+    style: { ...baseStyle, alertSound: 'ShMirror' },
+  };
+  const quest: Rule = {
+    action: 'Show',
+    section: 'quest',
+    styleKind: 'quest',
+    style: baseStyle,
+  };
+
+  it('gives Mirror and Divine a vivid chase background', () => {
+    expect(styleOf(chase)).toMatchObject({
+      textColor: [18, 0, 10, 255],
+      backgroundColor: [255, 45, 149, 255],
+    });
+  });
+
+  it('gives quest items a dark amber background', () => {
+    expect(styleOf(quest)).toMatchObject({
+      textColor: COLORS.white,
+      borderColor: COLORS.gold,
+      backgroundColor: [58, 38, 0, 255],
+    });
+  });
+
+  it('resolves chase and quest colours for every theme', () => {
+    for (const theme of THEMES) {
+      const chaseStyle = applyTheme([chase], theme.id)[0]!.style!;
+      const questStyle = applyTheme([quest], theme.id)[0]!.style!;
+      expect(chaseStyle.backgroundColor, theme.id).toBeDefined();
+      expect(questStyle.backgroundColor, theme.id).toBeDefined();
+      expect(chaseStyle.textColor, theme.id).not.toEqual(
+        chaseStyle.backgroundColor,
+      );
+    }
+  });
+
+  it('defines a full palette for every theme', () => {
+    for (const theme of THEMES) {
+      const style = applyTheme([rareGear], theme.id)[0]!.style!;
+      expect(style.textColor, theme.id).toBeDefined();
+      expect(style.borderColor, theme.id).toBeDefined();
+      expect(style.backgroundColor, theme.id).toBeDefined();
+    }
+  });
+
   it('validates theme ids', () => {
-    expect(isThemeId('classic')).toBe(true);
+    expect(isThemeId('rarity')).toBe(true);
+    expect(isThemeId('tokyo-night')).toBe(true);
+    expect(isThemeId('classic')).toBe(false);
     expect(isThemeId('neon')).toBe(false);
+  });
+
+  it('maps the legacy classic id onto rarity', () => {
+    expect(coerceThemeId('classic')).toBe('rarity');
+    expect(coerceThemeId('rarity')).toBe('rarity');
+    expect(coerceThemeId('nonsense')).toBe('rarity');
+    expect(coerceThemeId(undefined)).toBe('rarity');
+  });
+});
+
+describe('generated filters pick up the theme', () => {
+  const selection = { mode: 'family' as const, familyId: 'caster' as const };
+  const build = (theme: Parameters<typeof generateFilter>[0]['theme']) =>
+    generateFilter({ selection, phase: 'endgame', strictness: 'soft', theme });
+
+  it('uses the dracula rare accent in the emitted filter', () => {
+    const filter = build('dracula');
+    expect(filter.warnings).toEqual([]);
+    // Rare gear text is dracula yellow #f1fa8c.
+    expect(filter.text).toContain('SetTextColor 241 250 140 255');
+    expect(filter.text).not.toContain('SetTextColor 255 255 119 255');
+  });
+
+  it('defaults to the rarity palette', () => {
+    expect(build(undefined).text).toBe(build('rarity').text);
   });
 });
