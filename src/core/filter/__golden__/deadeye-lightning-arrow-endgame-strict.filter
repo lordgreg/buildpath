@@ -5,7 +5,7 @@
 # Phase: Endgame - Strict
 # League: Covens
 # Presets: 8a4ff319edec
-# Rules: 72 - Base types: 50
+# Rules: 73 - Base types: 50
 # Base data: RePoE master (2e9af305)
 # Generated at https://lordgreg.github.io/filterpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -14,6 +14,16 @@
 # Quest items
 Show
     Class "Quest Items"
+    SetFontSize 40
+    SetTextColor 255 255 255 255
+    SetBorderColor 217 178 106 255
+    SetBackgroundColor 58 38 0 255
+    PlayAlertSound 1 300
+    MinimapIcon 1 Green Circle
+
+# Labyrinth treasure key
+Show
+    BaseType "Treasure Key"
     SetFontSize 40
     SetTextColor 255 255 255 255
     SetBorderColor 217 178 106 255

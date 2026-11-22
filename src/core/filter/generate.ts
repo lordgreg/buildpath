@@ -117,6 +117,29 @@ const QUEST_RULE: Rule = {
 };
 
 /**
+ * Labyrinth treasure keys are quest-like pickups: always shown and audible,
+ * whatever the build or strictness. RePoE does not ship the base, so
+ * "Treasure Key" is a reviewed entry in base-types-extra.json.
+ */
+const TREASURE_KEY_RULE: Rule = {
+  action: 'Show',
+  id: 'quest-treasure-key',
+  section: 'quest',
+  comment: 'Labyrinth treasure key',
+  baseTypes: ['Treasure Key'],
+  styleKind: 'quest',
+  style: {
+    textColor: COLORS.white,
+    borderColor: COLORS.gold,
+    backgroundColor: COLORS.black,
+    fontSize: 40,
+    alertSound: 1,
+    alertVolume: 300,
+    minimapIcon: { size: 1, color: 'Green', shape: 'Circle' },
+  },
+};
+
+/**
  * Builds the rule list without serialising it. The preview matcher consumes
  * the same rules the filter is generated from, so they cannot drift.
  */
@@ -163,12 +186,15 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
       sections,
       version,
       theme,
-      rules: applyTheme([QUEST_RULE, ...customRules, baseRule], theme),
+      rules: applyTheme(
+        [QUEST_RULE, TREASURE_KEY_RULE, ...customRules, baseRule],
+        theme,
+      ),
       baseTypes: [...bases].sort(),
     };
   }
 
-  const rules: Rule[] = [QUEST_RULE, ...customRules];
+  const rules: Rule[] = [QUEST_RULE, TREASURE_KEY_RULE, ...customRules];
   const baseTypes = new Set<string>();
 
   for (const spec of Object.values(archetype.slots)) {

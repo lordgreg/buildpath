@@ -374,6 +374,20 @@ export const AUDIT_CASES: AuditCase[] = [
     expect: () => true,
   },
   {
+    id: 'quest-treasure-key',
+    label: 'Treasure Key (labyrinth)',
+    category: 'quest',
+    note: 'always shown',
+    item: item(
+      'quest-treasure-key',
+      'Labyrinth Items',
+      'Treasure Key',
+      'Currency',
+      { itemLevel: 1 },
+    ),
+    expect: () => true,
+  },
+  {
     id: 'league-viscera',
     label: "Lesser Justicar's Helm",
     category: 'league',

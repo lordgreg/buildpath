@@ -54,6 +54,37 @@ describe('quest items', () => {
   });
 });
 
+const TREASURE_KEY = `Item Class: Labyrinth Items
+Rarity: Currency
+Treasure Key
+--------
+This item is required to open one of Izaro's Treasure Chests located in the Labyrinth. This item will drop on the ground when leaving the Labyrinth.`;
+
+describe('labyrinth treasure keys', () => {
+  it('always shows a Treasure Key with the default alert, even in hide-all scratch', () => {
+    const [key] = parseItemText(TREASURE_KEY);
+    expect(key?.baseType).toBe('Treasure Key');
+    expect(key?.itemClass).toBe('Labyrinth Items');
+    expect(key?.rarity).toBe('Currency');
+
+    for (const selection of [
+      { mode: 'family' as const, familyId: 'minion' as const },
+      { mode: 'scratch' as const, scratchStart: 'hide' as const },
+    ]) {
+      const filter = generateFilter({
+        selection,
+        phase: 'endgame',
+        strictness: 'uber',
+      });
+      const result = evaluateRules(filter.rules, key!);
+      expect(result.shown).toBe(true);
+      expect(result.rule?.comment).toBe('Labyrinth treasure key');
+      expect(result.rule?.style?.alertSound).toBe(1);
+      expect(result.rule?.style?.alertVolume).toBe(300);
+    }
+  });
+});
+
 describe('named currency alerts', () => {
   it('uses the Sh voice line for each major orb', () => {
     const expected = {
