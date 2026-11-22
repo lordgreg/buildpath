@@ -17,6 +17,18 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.32.0',
+    date: '2026-11-22',
+    title: 'Always show veiled items',
+    notes: [
+      'Veiled items are now always shown, in leveling and endgame, whatever the build or strictness. They get their own magenta text, border and background in every theme, with no alert sound or minimap icon.',
+      'The rule matches the game\'s explicit mod names containing "Veil", so it catches "Veiled" and the legacy "of the Veil" variants without false positives.',
+      'The behaviour audit gains a veiled rare bow case, and the golden filters and summary are regenerated (one more visible drop everywhere).',
+    ],
+    commits: [],
+    compare: 'v0.31.0...v0.32.0',
+  },
+  {
     version: '0.31.0',
     date: '2026-11-22',
     title: 'Silent leveling gems, and a stricter leveling gate',

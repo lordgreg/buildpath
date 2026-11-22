@@ -2,6 +2,18 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.32.0 — 2026-11-22
+
+Always show veiled items.
+
+- Veiled items are now always shown, in leveling and endgame, whatever the build
+  or strictness. They get their own magenta text, border and background in every
+  theme, with no alert sound or minimap icon.
+- The rule matches the game's explicit mod names containing "Veil", so it catches
+  "Veiled" and the legacy "of the Veil" variants without false positives.
+- The behaviour audit gains a veiled rare bow case, and the golden filters and
+  summary are regenerated (one more visible drop everywhere).
+
 ## 0.31.0 — 2026-11-22
 
 Silent leveling gems, and a stricter leveling gate.
