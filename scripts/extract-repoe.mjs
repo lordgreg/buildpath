@@ -23,6 +23,9 @@ const KNOWN_OUT = fileURLToPath(
 const EXTRA = fileURLToPath(
   new URL('../src/core/data/base-types-extra.json', import.meta.url),
 );
+const REMOVED = fileURLToPath(
+  new URL('../src/core/data/base-types-removed.json', import.meta.url),
+);
 const SKILLS_OUT = fileURLToPath(
   new URL('../src/meta/skill-names.json', import.meta.url),
 );
@@ -31,6 +34,16 @@ const SKILLS_EXTRA = fileURLToPath(
 );
 const GEMS_SOURCE = `https://raw.githubusercontent.com/brather1ng/RePoE/${REF}/RePoE/data/gems.json`;
 const USER_AGENT = 'FilterPath/0.1 (+https://github.com/lordgreg/filterpath)';
+
+/** Reads a JSON array, treating a missing or malformed file as empty. */
+async function readJsonList(path) {
+  try {
+    const value = JSON.parse(await readFile(path, 'utf8'));
+    return Array.isArray(value) ? value : [];
+  } catch {
+    return [];
+  }
+}
 
 // RePoE splits gear, flasks and jewels across domains. Filter rules need all
 // three, so include them and normalise flask classes to singular names.
@@ -83,9 +96,17 @@ for (const item of Object.values(raw)) {
   });
 }
 
-const items = [...byKey.values()].sort(
-  (a, b) => a.name.localeCompare(b.name) || a.itemClass.localeCompare(b.itemClass),
-);
+// RePoE still reports a few bases as released that the live game has dropped or
+// renamed. Every entry here is checked against the game's own item data, since
+// a single unknown name makes the client refuse the whole filter.
+const removed = new Set(await readJsonList(REMOVED));
+
+const items = [...byKey.values()]
+  .filter((item) => !removed.has(item.name))
+  .sort(
+    (a, b) =>
+      a.name.localeCompare(b.name) || a.itemClass.localeCompare(b.itemClass),
+  );
 
 // Every name the game will accept in a BaseType condition: gear, currency,
 // divination cards, gems, and unique-only bases. Unique item names are not in
@@ -108,6 +129,10 @@ try {
 } catch {
   // No supplement file, nothing to merge.
 }
+
+// Names the game rejects must leave the registry too, or it would validate a
+// filter the client then refuses to load.
+for (const name of removed) known.delete(name);
 
 const knownNames = [...known].sort();
 

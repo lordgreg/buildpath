@@ -85,7 +85,10 @@ scripts/       YAML compiler and data extractors
 - The **`BaseType` registry is the safety net**: every name in every generated
   filter must exist in `src/core/data/known-base-types.json`. A typo must fail
   the build, not the user's filter. RePoE gaps are added to the reviewed
-  `base-types-extra.json`.
+  `base-types-extra.json`; bases RePoE still lists but the live game has
+  dropped or renamed are removed via the reviewed `base-types-removed.json`.
+  Adding or removing a name is checked against the game's own item data, since
+  one unknown name makes the client refuse the entire filter.
 - Generated data (`base-types.json`, `known-base-types.json`,
   `src/generated/*.json`) is committed so builds never depend on the network.
 

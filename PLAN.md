@@ -90,8 +90,10 @@ with `npm run extract:repoe` (pin `REPOE_REF` for reproducibility).
 The same extractor writes `known-base-types.json`, the registry of every name
 the game accepts in a `BaseType` condition. RePoE lags on some new items
 (`Fracturing Orb`, `Hinekora's Lock`), so a small reviewed supplement,
-`base-types-extra.json`, is merged in. Every generated filter is validated
-against this registry in CI.
+`base-types-extra.json`, is merged in. It also over-reports: bases the live
+game has dropped or renamed (`Gauche Gloves`, `Serpent Wand`) are listed in the
+reviewed `base-types-removed.json` and stripped from both the data and the
+registry. Every generated filter is validated against this registry in CI.
 
 ### 2.5 Versioning
 
@@ -326,6 +328,7 @@ src/
       base-types.json    generated, committed
       known-base-types.json  every valid BaseType, generated
       base-types-extra.json  reviewed supplement for RePoE gaps
+      base-types-removed.json  reviewed removals for dropped/renamed bases
       resolve.ts         slot spec -> base types
     preview/
       match.ts           first-match evaluation, Continue support
@@ -563,7 +566,7 @@ noisy).
 | Ascendancy list drifts from the game | reviewed `ascendancies.expected.ts` + registry test, `verifiedFor` per league |
 | Audit passes but a category is untested | cases catalog requires an expected outcome per category |
 | `HasExplicitMod` breaks between patches | prefer tags/classes; review before use |
-| Unknown `BaseType` aborts the whole filter | `known-base-types.json` + CI test + supplement file |
+| Unknown `BaseType` aborts the whole filter | `known-base-types.json` + CI test + reviewed supplement/removal files |
 | Filter placed in a folder the game does not scan | Install docs with the Proton path; folder picker |
 | Online filters mistaken for local files | Docs call out `OnlineFilters/`; the site shows the exact in-game name |
 | A different filter stays selected and looks like a leak | Verify section 2.8; matcher fixtures prove FilterPath's behaviour |

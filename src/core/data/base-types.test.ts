@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { archetypes } from '../archetypes/index.ts';
+import removed from './base-types-removed.json';
+import known from './known-base-types.json';
 import { baseTypeMeta, baseTypes, basesWithTag } from './base-types.ts';
 import { resolveSlotBases } from './resolve.ts';
 
@@ -26,6 +28,19 @@ describe('base type data', () => {
       (base) => base.name,
     );
     expect(names).toContain('Bone Spirit Shield');
+  });
+
+  it('drops bases the live game no longer has', () => {
+    // RePoE still reports these as released, but the game has dropped or
+    // renamed them. A single unknown name makes the client refuse the whole
+    // filter, so they must be absent from both the data and the registry.
+    const baseNames = new Set(baseTypes.map((base) => base.name));
+    const knownNames = new Set(known.names);
+    expect(removed.length).toBeGreaterThan(0);
+    for (const name of removed) {
+      expect(baseNames.has(name), `data: ${name}`).toBe(false);
+      expect(knownNames.has(name), `registry: ${name}`).toBe(false);
+    }
   });
 });
 
