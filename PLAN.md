@@ -891,6 +891,66 @@ old file as a backup; unrelated filters in the folder are unchanged.
 - Old versioned filters currently stay in the folder and are flagged stale;
   decide whether to offer archive/removal in addition to the `.bak` copy.
 
+### Preset update priorities
+
+The current three-tier preset matrix is too coarse and misaligned. Address the
+following in order.
+
+#### P1 — correctness
+
+- **Magic flasks are hidden in endgame presets.** The all-Magic hide in
+  `junk.ts` also removes Life and Utility flasks. Add a Magic Flask show rule or
+  exempt flasks from the Magic-gear hide. Nearly every endgame build uses one.
+- **4-link and 6-socket Normal gear is hidden.** Exempt these from the
+  all-Normal hide so leveling filters still show them.
+- **Very Strict hides tier-2 currency.** `maxVisibleTier: 1` hides Chaos and
+  Alchemy. Move Very Strict to `2`; add a separate tier-2 floor for the highest
+  strictness if "Chaos+ only" is needed.
+- **Very Strict does not hide poor uniques or rares.** `UniquesPreset` has no
+  strictness field. Add `maxVisibleTier: 1 | 2 | 3` and hide low-tier uniques at
+  Very Strict and above.
+
+#### P2 — make the three tiers meaningful
+
+| Button | Gear | Magic | Rare floor | Currency | Maps | Uniques |
+|---|---|---|---:|---|---|---|
+| Normal | Show whites/4-links | Show | 68 | Hide tier 3 | T1+ | All |
+| Strict | Hide low whites | Show | 80 | Hide tier 3 | T1+ | All |
+| Very Strict | Hide whites/blues below 75 | Hide | 83 | Hide tier 3, keep tier 2 | T11+ | Hide poor |
+
+Normal must become the beginner default. Strict must differ meaningfully from
+Normal. Very Strict must stop over-hiding currency and start hiding poor
+uniques.
+
+#### P3 — add breadth
+
+- Add **Soft** and **Uber** as optional strictness values, or rename the
+  existing three to **Soft / Strict / Uber**.
+- Add `UniquesPreset.maxVisibleTier`.
+- Add map rules for T11 and T14, not only T15.
+- Hide low-tier divination cards and fragments as strictness rises; currently
+  only gear, currency, gems, and maps scale.
+
+#### P4 — refresh meta snapshots
+
+- Replace the Covens seed with the current top skills and ascendancy shares.
+- Add **Luminary**, **Reliquarian**, and **Warden**; remove or deprecate
+  **Raider**.
+- Add missing skills: **Animate Guardian, Cyclone of Tumult, Static Strike,
+  Void Shockwave, Scorching Ray of Immolation, Storm Burst of Repulsion,
+  Animate Weapon of Ranged Arms, Lightning Tendrils of Eccentricity, Static
+  Strike of Gathering Lightning, Flicker Strike**.
+- Mark `standard.yaml` as seed/fallback; it is currently a duplicate of the
+  Covens seed.
+
+#### Conclusion
+
+The three-tier model is too coarse and misaligned. Normal is stricter than
+intended, Strict is nearly identical to Normal, and Very Strict over-hides
+currency while under-hiding uniques. Fix correctness first (Magic flasks,
+whites, currency floor, unique filtering), then rebalance the three tiers, then
+add breadth and refresh the snapshots.
+
 ### Manual validation
 
 - Verify the Windows filter path (`Documents/My Games/Path of Exile`) in the
