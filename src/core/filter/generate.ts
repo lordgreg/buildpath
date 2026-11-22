@@ -4,6 +4,7 @@ import { PRESET_VERSION } from '../../meta/index.ts';
 import { resolveBuild } from '../../meta/resolve.ts';
 import type { BuildSelection } from '../../meta/types.ts';
 import { baseTypeMeta } from '../data/base-types.ts';
+import { withoutUnknownBases } from '../rules/sanitize.ts';
 import { emitFilterWithSpans } from './emit.ts';
 import { junkRules } from './junk.ts';
 import {
@@ -134,13 +135,15 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
   const version = config.version ?? DEFAULT_FILTER_VERSION;
   const theme = config.theme ?? 'classic';
 
-  const customRules = (config.customRules ?? [])
-    .filter((rule) => !rule.disabled)
-    .map((rule, index) => ({
-      ...rule,
-      id: rule.id ?? `custom-${index}`,
-      section: rule.section ?? ('custom' as RuleSection),
-    }));
+  // A custom rule may predate a data fix and list a base the game dropped. Drop
+  // those names here so the emitted filter always loads, whatever the source.
+  const customRules = withoutUnknownBases(
+    (config.customRules ?? []).filter((rule) => !rule.disabled),
+  ).map((rule, index) => ({
+    ...rule,
+    id: rule.id ?? `custom-${index}`,
+    section: rule.section ?? ('custom' as RuleSection),
+  }));
 
   if (config.selection?.mode === 'scratch') {
     const start = config.selection.scratchStart === 'show' ? 'show' : 'hide';
