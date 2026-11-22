@@ -17,6 +17,21 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.27.0',
+    date: '2026-11-22',
+    title: 'Your last good filter, and one build code',
+    notes: [
+      'Clicking the FilterPath title now starts a new, empty filter instead of jumping to a preset. Nothing is selected until you pick a way to build.',
+      'A Reset button appears next to the "unsaved changes" badge and returns to the last saved state. Reloading the page, or leaving and coming back, does the same: unsaved edits are discarded and your last saved build is restored.',
+      'Your last saved build is remembered on the device, so reopening the site brings it back. It is only updated when you download, write, save, update, import or load a build.',
+      'Every FilterPath file now carries its build selection in the header, and each filter in the connected folder has a Load button, so you can switch to another saved filter exactly as it was generated.',
+      'The builder keeps a single build code: Copy code and Import code both carry the whole build, including My rules. The separate share link and rules-only code are gone, and the Generated filter window has its own Copy button.',
+      'Advanced rules is collapsed by default and shows how many locked preset rules and how many My rules the build has.',
+    ],
+    commits: [],
+    compare: 'v0.26.1...v0.27.0',
+  },
+  {
     version: '0.26.1',
     date: '2026-11-22',
     title: 'One name for the loot simulator',
