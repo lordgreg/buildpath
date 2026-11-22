@@ -10,7 +10,7 @@ import type { BuildSelection } from '../../meta/types.ts';
 import type { Archetype } from '../archetypes/types.ts';
 import { baseTypes, type BaseType } from '../data/base-types.ts';
 import { evaluateRules, type PreviewItem } from '../preview/match.ts';
-import { EQUIPMENT_CLASSES, toFilterClass } from './classes.ts';
+import { EQUIPMENT_CLASSES, FLASK_CLASSES, toFilterClass } from './classes.ts';
 import { generateFilter } from './generate.ts';
 import {
   baseTypesFor,
@@ -167,9 +167,11 @@ describe('preset coverage audit', () => {
           const filter = generateFilter({ selection, phase, strictness });
           const { allowed, unused, unrestricted } = coverage(filter.archetype);
           const highlight = filter.preset.gear.highlightLinks;
-          const magicVisible =
-            phase === 'leveling' &&
-            filter.preset.gear.magicMinItemLevel !== null;
+          const magicVisible = filter.preset.gear.magicMinItemLevel !== null;
+          const normalVisible = filter.preset.gear.normalMinItemLevel !== null;
+          // Fixtures are ilvl 100, above every floor, so a build base shows
+          // whenever whites are on for the preset.
+          const normalShown = normalVisible || highlight;
           const where = `${label} ${phase}/${strictness}`;
 
           const check = (
@@ -204,17 +206,23 @@ describe('preset coverage audit', () => {
             }
           }
 
+          const flasks = new Set<string>(FLASK_CLASSES);
           for (const className of unrestricted) {
             const base = firstBase(className);
             if (!base) continue;
             check(item(base, 'Rare'), true, `${className} unrestricted rare`);
+            check(
+              item(base, 'Normal'),
+              normalVisible && !flasks.has(className),
+              `${className} unrestricted normal`,
+            );
             if (SOCKETABLE.has(className)) {
               check(
                 item(base, 'Normal', {
                   linkedSockets: 4,
                   sockets: 4,
                 }),
-                highlight,
+                normalShown,
                 `${className} unrestricted 4-link`,
               );
             }
@@ -236,13 +244,18 @@ describe('preset coverage audit', () => {
                 magicVisible,
                 `${className} allowed magic`,
               );
+              check(
+                item(allowedBase, 'Normal'),
+                normalVisible,
+                `${className} allowed normal`,
+              );
               if (SOCKETABLE.has(className)) {
                 check(
                   item(allowedBase, 'Normal', {
                     linkedSockets: 4,
                     sockets: 4,
                   }),
-                  highlight,
+                  normalShown,
                   `${className} allowed 4-link`,
                 );
               }
@@ -250,6 +263,7 @@ describe('preset coverage audit', () => {
             if (wrong) {
               check(item(wrong, 'Rare'), false, `${className} wrong rare`);
               check(item(wrong, 'Magic'), false, `${className} wrong magic`);
+              check(item(wrong, 'Normal'), false, `${className} wrong normal`);
               if (SOCKETABLE.has(className)) {
                 check(
                   item(wrong, 'Normal', {

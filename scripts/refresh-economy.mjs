@@ -36,37 +36,45 @@ async function get(path) {
   return response.json();
 }
 
+// Curated tiers, mirrored by FALLBACK_TIER_1/2 in
+// src/core/filter/rules/currency.ts. T1 always shows; T2 is a floor.
 const STATIC_CURRENCY_T1 = [
   'Divine Orb',
-  'Mirror of Kalandra',
-  'Hinekora\'s Lock',
-  'Fracturing Orb',
-  'Sacred Orb',
+  'Eldritch Chaos Orb',
+  'Eldritch Exalted Orb',
+  'Eldritch Orb of Annulment',
   'Exalted Orb',
+  'Fracturing Orb',
+  "Hinekora's Lock",
+  'Mirror of Kalandra',
+  'Sacred Orb',
 ];
 const STATIC_CURRENCY_T2 = [
-  'Chaos Orb',
-  'Orb of Alchemy',
-  'Orb of Annulment',
-  'Regal Orb',
-  'Vaal Orb',
-  "Gemcutter's Prism",
-  'Orb of Fusing',
-  "Jeweller's Orb",
-  'Chromatic Orb',
-  'Orb of Alteration',
-  'Orb of Scouring',
-  'Orb of Regret',
+  'Ancient Orb',
   'Blessed Orb',
   "Cartographer's Chisel",
+  'Chaos Orb',
+  'Chromatic Orb',
+  "Gemcutter's Prism",
   "Glassblower's Bauble",
   'Instilling Orb',
   'Enkindling Orb',
-  'Orb of Unmaking',
-  'Orb of Chance',
+  "Jeweller's Orb",
+  'Orb of Alchemy',
+  'Orb of Alteration',
+  'Orb of Annulment',
   'Orb of Binding',
+  'Orb of Chance',
+  'Orb of Fusing',
+  'Orb of Regret',
+  'Orb of Scouring',
+  'Orb of Unmaking',
+  'Prime Regrading Lens',
+  'Regal Orb',
+  'Secondary Regrading Lens',
   'Tailoring Orb',
   'Tempering Orb',
+  'Vaal Orb',
 ];
 
 function uniqueTier(value, divineChaos) {
@@ -114,7 +122,10 @@ for (const line of currency.lines) {
 }
 for (const name of STATIC_CURRENCY_T1) currencyTiers[name] = 1;
 for (const name of STATIC_CURRENCY_T2) {
-  if (!currencyTiers[name]) currencyTiers[name] = 2;
+  // Floor, not a cap: keep a value-tiered T1, promote everything else.
+  if (currencyTiers[name] === undefined || currencyTiers[name] > 2) {
+    currencyTiers[name] = 2;
+  }
 }
 
 const fragmentTiers = {};

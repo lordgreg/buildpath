@@ -17,11 +17,12 @@ describe('composed presets', () => {
     const normal = getPreset('endgame', 'normal');
     expect(normal.gear).toMatchObject({
       rareMinItemLevel: 80,
-      magicMinItemLevel: null,
+      normalMinItemLevel: 68,
+      magicMinItemLevel: 75,
       highlightLinks: true,
     });
     expect(normal.gems.minQuality).toBe(1);
-    expect(normal.currency.maxVisibleTier).toBe(2);
+    expect(normal.currency.maxVisibleTier).toBe(3);
     expect(normal.maps.minTier).toBe(1);
     expect(normal.uniques.maxVisibleTier).toBe(3);
 
@@ -62,7 +63,39 @@ describe('composed presets', () => {
     expect(getPreset('leveling', 'very-strict').gems.minQuality).toBe(5);
     expect(getPreset('leveling', 'normal').gear.magicMinItemLevel).toBe(10);
     expect(getPreset('leveling', 'strict').gear.magicMinItemLevel).toBe(80);
-    expect(getPreset('leveling', 'very-strict').gear.magicMinItemLevel).toBeNull();
+    expect(getPreset('leveling', 'very-strict').gear.magicMinItemLevel).toBe(85);
+  });
+
+  it('raises the white and blue floors with strictness', () => {
+    const whites: Record<string, [number, number, number]> = {
+      leveling: [0, 68, 75],
+      endgame: [68, 75, 80],
+    };
+    const blues: Record<string, [number, number, number]> = {
+      leveling: [10, 80, 85],
+      endgame: [75, 80, 85],
+    };
+    for (const phase of ['leveling', 'endgame'] as const) {
+      (['normal', 'strict', 'very-strict'] as const).forEach(
+        (strictness, index) => {
+          const gear = getPreset(phase, strictness).gear;
+          expect(gear.normalMinItemLevel, `${phase}/${strictness} white`).toBe(
+            whites[phase]![index],
+          );
+          expect(gear.magicMinItemLevel, `${phase}/${strictness} blue`).toBe(
+            blues[phase]![index],
+          );
+        },
+      );
+    }
+  });
+
+  it('shows all currency at normal and hides the vendor tier above it', () => {
+    for (const phase of ['leveling', 'endgame'] as const) {
+      expect(getPreset(phase, 'normal').currency.maxVisibleTier).toBe(3);
+      expect(getPreset(phase, 'strict').currency.maxVisibleTier).toBe(2);
+      expect(getPreset(phase, 'very-strict').currency.maxVisibleTier).toBe(2);
+    }
   });
 
   it('keeps one label and description for the whole preset', () => {

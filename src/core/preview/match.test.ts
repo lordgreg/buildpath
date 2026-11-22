@@ -33,10 +33,10 @@ describe('reported leaks', () => {
     }
   });
 
-  it('always hides normal gear without links, for every build and preset', () => {
+  it('hides a normal glove below the white floor at every strict tier', () => {
     for (const archetype of archetypes) {
       for (const phase of PHASES) {
-        for (const strictness of STRICTNESS) {
+        for (const strictness of ['strict', 'very-strict'] as const) {
           const result = evaluateRules(
             rulesFor(archetype.id, phase, strictness),
             item('report-normal-gloves'),
@@ -48,6 +48,14 @@ describe('reported leaks', () => {
         }
       }
     }
+  });
+
+  it('shows a normal glove on a matching base at the loosest leveling tier', () => {
+    const result = evaluateRules(
+      rulesFor('deadeye-lightning-arrow', 'leveling', 'normal'),
+      item('report-normal-gloves'),
+    );
+    expect(result.shown, result.reason).toBe(true);
   });
 
   it('always hides one-hand axes, since no archetype uses them', () => {

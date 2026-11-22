@@ -67,12 +67,39 @@ export function junkRules(archetype: Archetype, preset: Preset): Rule[] {
     });
   }
 
-  rules.push({
-    action: 'Hide',
-    comment: 'Normal gear',
-    classNames: allEquipment,
-    rarity: 'Normal',
-  });
+  if (preset.gear.normalMinItemLevel === null) {
+    rules.push({
+      action: 'Hide',
+      comment: 'Normal gear',
+      classNames: allEquipment,
+      rarity: 'Normal',
+    });
+  } else {
+    if (unused.length > 0) {
+      rules.push({
+        action: 'Hide',
+        comment: 'Normal gear - slots this build does not use',
+        classNames: unused,
+        rarity: 'Normal',
+      });
+    }
+    if (preset.gear.normalMinItemLevel > 0) {
+      rules.push({
+        action: 'Hide',
+        comment: `Normal gear - below item level ${preset.gear.normalMinItemLevel}`,
+        classNames: allEquipment,
+        rarity: 'Normal',
+        itemLevel: { max: preset.gear.normalMinItemLevel - 1 },
+      });
+    }
+    // Flasks are exempt from the white floor (see gear.ts); hide them here.
+    rules.push({
+      action: 'Hide',
+      comment: 'Normal flasks',
+      classNames: [...FLASK_CLASSES],
+      rarity: 'Normal',
+    });
+  }
 
   if (preset.gear.rareMinItemLevel > 1) {
     rules.push({

@@ -6,6 +6,8 @@ export interface GearPreset {
   id: string;
   /** Minimum item level for rare gear in the archetype's slots. */
   rareMinItemLevel: number;
+  /** Minimum item level for normal (white) gear. `null` hides whites entirely. */
+  normalMinItemLevel: number | null;
   /** Minimum item level for magic gear. `null` hides magic gear entirely. */
   magicMinItemLevel: number | null;
   /** Highlight 4+ links and 6-sockets regardless of rarity. */
@@ -56,25 +58,30 @@ export interface Preset {
 
 type Matrix<T> = Record<Phase, Record<Strictness, T>>;
 
+// Normal/Strict/Very Strict raise the white and blue floors so each tier is a
+// clear step: Normal shows every base a beginner might want, Very Strict only
+// keeps high-ilvl bases worth crafting on. Flasks are excluded from the white
+// floor (see gear.ts); they are never a crafting base.
 const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
   leveling: {
     normal: {
       rareMinItemLevel: 1,
+      normalMinItemLevel: 0,
       magicMinItemLevel: 10,
       highlightLinks: true,
       hiddenBases: ['Gold Ring'],
     },
     strict: {
       rareMinItemLevel: 15,
-      // Strict means no everyday Magic gear; an allowed base at ilvl 80+ is
-      // still worth showing as a crafting/upgrade outlier.
+      normalMinItemLevel: 68,
       magicMinItemLevel: 80,
       highlightLinks: true,
       hiddenBases: ['Gold Ring'],
     },
     'very-strict': {
       rareMinItemLevel: 30,
-      magicMinItemLevel: null,
+      normalMinItemLevel: 75,
+      magicMinItemLevel: 85,
       highlightLinks: true,
       hiddenBases: ['Gold Ring'],
     },
@@ -82,17 +89,20 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
   endgame: {
     normal: {
       rareMinItemLevel: 80,
-      magicMinItemLevel: null,
+      normalMinItemLevel: 68,
+      magicMinItemLevel: 75,
       highlightLinks: true,
     },
     strict: {
       rareMinItemLevel: 83,
-      magicMinItemLevel: null,
+      normalMinItemLevel: 75,
+      magicMinItemLevel: 80,
       highlightLinks: false,
     },
     'very-strict': {
       rareMinItemLevel: 86,
-      magicMinItemLevel: null,
+      normalMinItemLevel: 80,
+      magicMinItemLevel: 85,
       highlightLinks: false,
     },
   },
@@ -111,17 +121,16 @@ const GEMS: Matrix<Omit<GemsPreset, 'id'>> = {
   },
 };
 
+// Normal shows every orb; Strict and Very Strict drop the vendor tier.
 const CURRENCY: Matrix<Omit<CurrencyPreset, 'id'>> = {
   leveling: {
     normal: { maxVisibleTier: 3 },
-    strict: { maxVisibleTier: 3 },
+    strict: { maxVisibleTier: 2 },
     'very-strict': { maxVisibleTier: 2 },
   },
   endgame: {
-    normal: { maxVisibleTier: 2 },
+    normal: { maxVisibleTier: 3 },
     strict: { maxVisibleTier: 2 },
-    // Keep Chaos and the other tier-2 orbs; only the vendor-tier scrolls and
-    // scraps are hidden.
     'very-strict': { maxVisibleTier: 2 },
   },
 };

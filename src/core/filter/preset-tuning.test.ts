@@ -63,19 +63,24 @@ describe('magic flasks stay visible when magic gear is hidden', () => {
   });
 });
 
+// ilvl 10 is below every white floor, so only the 4-link rule can show these.
 const allowedFourLink = item('Hubris Circlet', 'Helmets', 'Normal', {
+  itemLevel: 10,
   sockets: 4,
   linkedSockets: 4,
 });
 const wrongBaseFourLink = item('Reaver Helmet', 'Helmets', 'Normal', {
+  itemLevel: 10,
   sockets: 4,
   linkedSockets: 4,
 });
 const unusedClassFourLink = item('Crude Bow', 'Bows', 'Normal', {
+  itemLevel: 10,
   sockets: 4,
   linkedSockets: 4,
 });
 const sixSocket = item('Hubris Circlet', 'Helmets', 'Normal', {
+  itemLevel: 10,
   sockets: 6,
   linkedSockets: 6,
 });
@@ -100,6 +105,41 @@ describe('4-link and 6-socket normal gear', () => {
     for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
       expect(shown(sixSocket, 'endgame', strictness), strictness).toBe(true);
     }
+  });
+});
+
+const whiteHelmet = item('Hubris Circlet', 'Helmets', 'Normal');
+const lowWhiteHelmet = item('Hubris Circlet', 'Helmets', 'Normal', {
+  itemLevel: 20,
+});
+const wrongWhiteHelmet = item('Reaver Helmet', 'Helmets', 'Normal');
+const whiteFlask = item('Divine Life Flask', 'Life Flasks', 'Normal');
+const blueHelmet = item('Hubris Circlet', 'Helmets', 'Magic');
+const lowBlueHelmet = item('Hubris Circlet', 'Helmets', 'Magic', {
+  itemLevel: 60,
+});
+
+describe('white and blue item-level floors', () => {
+  it('shows a white base above the floor and hides one below', () => {
+    expect(shown(whiteHelmet, 'endgame', 'normal')).toBe(true); // floor 68
+    expect(shown(whiteHelmet, 'endgame', 'very-strict')).toBe(true); // floor 80
+    expect(shown(lowWhiteHelmet, 'endgame', 'normal')).toBe(false);
+    expect(shown(lowWhiteHelmet, 'endgame', 'strict')).toBe(false); // floor 75
+  });
+
+  it("only shows whites on the build's own bases", () => {
+    expect(shown(wrongWhiteHelmet, 'endgame', 'normal')).toBe(false);
+  });
+
+  it('never shows normal flasks', () => {
+    expect(shown(whiteFlask, 'endgame', 'normal')).toBe(false);
+    expect(shown(whiteFlask, 'leveling', 'normal')).toBe(false);
+  });
+
+  it('shows a blue base at the blue floor', () => {
+    expect(shown(blueHelmet, 'endgame', 'normal')).toBe(true); // floor 75
+    expect(shown(blueHelmet, 'endgame', 'very-strict')).toBe(true); // floor 85
+    expect(shown(lowBlueHelmet, 'endgame', 'normal')).toBe(false);
   });
 });
 

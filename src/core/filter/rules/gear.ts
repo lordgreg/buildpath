@@ -140,5 +140,29 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
     });
   }
 
+  // White base floors run after the 6-socket rules so a six-socket still wins
+  // the link highlight, and skip flasks: a normal flask is never a crafting
+  // base, so the junk rules hide it.
+  if (preset.gear.normalMinItemLevel !== null) {
+    for (const [slot, spec] of Object.entries(archetype.slots) as [
+      ItemSlot,
+      SlotSpec,
+    ][]) {
+      if (slot === 'flask') continue;
+      const bases = baseTypesFor(spec);
+      const classNames = bases.length > 0 ? undefined : filterClassesFor(spec);
+      const target = bases.length > 0 ? { baseTypes: bases } : { classNames };
+      rules.push({
+        action: 'Show',
+        comment: `${slot} - normal`,
+        ...target,
+        rarity: 'Normal',
+        itemLevel: { min: preset.gear.normalMinItemLevel },
+        ...(categoryFor(slot) ? { styleKind: categoryFor(slot) } : {}),
+        style: quiet(slotStyle(slot)),
+      });
+    }
+  }
+
   return rules;
 }
