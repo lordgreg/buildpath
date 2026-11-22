@@ -62,6 +62,44 @@ describe('rule chips', () => {
     expect(bases.some((name) => /Bow/.test(name))).toBe(true);
   });
 
+  it('resolves slot chips to their item class', () => {
+    const slots: [ChipId, string][] = [
+      ['slot:head', 'Helmet'],
+      ['slot:body', 'Body Armour'],
+      ['slot:gloves', 'Gloves'],
+      ['slot:boots', 'Boots'],
+      ['slot:shield', 'Shield'],
+      ['slot:quiver', 'Quiver'],
+      ['slot:belt', 'Belt'],
+      ['slot:amulet', 'Amulet'],
+      ['slot:ring', 'Ring'],
+    ];
+    for (const [id, itemClass] of slots) {
+      const bases = chipBaseTypes(id);
+      expect(bases.length, id).toBeGreaterThan(0);
+      for (const name of bases) {
+        const base = baseTypes.find((entry) => entry.name === name)!;
+        expect(base.itemClass, `${id}: ${name}`).toBe(itemClass);
+      }
+    }
+  });
+
+  it('1H never resolves to a two-hand class', () => {
+    const twoHand = new Set([
+      'Two Hand Axes',
+      'Two Hand Swords',
+      'Two Hand Maces',
+      'Staves',
+      'Warstaves',
+    ]);
+    const bases = chipBaseTypes('weapon:1h');
+    expect(bases.length).toBeGreaterThan(0);
+    for (const name of bases) {
+      const base = baseTypes.find((entry) => entry.name === name)!;
+      expect(twoHand.has(toFilterClass(base.itemClass)), name).toBe(false);
+    }
+  });
+
   it('unions and sorts without duplicates', () => {
     const union = unionChipBases(['slot:head', 'weapon:2h', 'slot:head']);
     expect(union).toEqual([...new Set(union)]);

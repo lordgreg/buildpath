@@ -10,6 +10,15 @@ export type ChipId =
   | 'attr:dex'
   | 'attr:int'
   | 'slot:head'
+  | 'slot:body'
+  | 'slot:gloves'
+  | 'slot:boots'
+  | 'slot:shield'
+  | 'slot:quiver'
+  | 'slot:belt'
+  | 'slot:amulet'
+  | 'slot:ring'
+  | 'weapon:1h'
   | 'weapon:2h'
   | 'weapon:ranged';
 
@@ -36,6 +45,19 @@ export const CHIPS: ChipDefinition[] = [
     hint: 'Bases whose requirements include intelligence',
   },
   { id: 'slot:head', label: 'Head', hint: 'Helmets' },
+  { id: 'slot:body', label: 'Body', hint: 'Body armours' },
+  { id: 'slot:gloves', label: 'Gloves', hint: 'Gloves' },
+  { id: 'slot:boots', label: 'Boots', hint: 'Boots' },
+  { id: 'slot:shield', label: 'Shield', hint: 'Shields' },
+  { id: 'slot:quiver', label: 'Quiver', hint: 'Quivers' },
+  { id: 'slot:belt', label: 'Belt', hint: 'Belts' },
+  { id: 'slot:amulet', label: 'Amulet', hint: 'Amulets' },
+  { id: 'slot:ring', label: 'Ring', hint: 'Rings' },
+  {
+    id: 'weapon:1h',
+    label: 'Weapon 1H',
+    hint: 'One-hand axes, swords, maces, claws, daggers, sceptres and wands',
+  },
   {
     id: 'weapon:2h',
     label: 'Weapon 2H',
@@ -47,6 +69,31 @@ export const CHIPS: ChipDefinition[] = [
     hint: 'Bases tagged ranged, such as bows and wands',
   },
 ];
+
+/** RePoE item class behind each slot chip. */
+const SLOT_CLASS: Partial<Record<ChipId, string>> = {
+  'slot:head': 'Helmet',
+  'slot:body': 'Body Armour',
+  'slot:gloves': 'Gloves',
+  'slot:boots': 'Boots',
+  'slot:shield': 'Shield',
+  'slot:quiver': 'Quiver',
+  'slot:belt': 'Belt',
+  'slot:amulet': 'Amulet',
+  'slot:ring': 'Ring',
+};
+
+const ONE_HAND_CLASSES = new Set([
+  'One Hand Axes',
+  'One Hand Maces',
+  'One Hand Swords',
+  'Thrusting One Hand Swords',
+  'Claws',
+  'Daggers',
+  'Rune Daggers',
+  'Sceptres',
+  'Wands',
+]);
 
 const TWO_HAND_CLASSES = new Set([
   'Two Hand Axes',
@@ -61,6 +108,13 @@ function names(bases: { name: string }[]): string[] {
 }
 
 export function chipBaseTypes(id: ChipId): string[] {
+  const slotClass = SLOT_CLASS[id];
+  if (slotClass) {
+    return names(
+      baseTypes.filter((base) => base.itemClass === slotClass),
+    );
+  }
+
   switch (id) {
     case 'attr:str':
       return names(basesRequiring('str'));
@@ -68,8 +122,12 @@ export function chipBaseTypes(id: ChipId): string[] {
       return names(basesRequiring('dex'));
     case 'attr:int':
       return names(basesRequiring('int'));
-    case 'slot:head':
-      return names(baseTypes.filter((base) => base.itemClass === 'Helmet'));
+    case 'weapon:1h':
+      return names(
+        baseTypes.filter((base) =>
+          ONE_HAND_CLASSES.has(toFilterClass(base.itemClass)),
+        ),
+      );
     case 'weapon:2h':
       return names(
         baseTypes.filter((base) =>
@@ -78,6 +136,8 @@ export function chipBaseTypes(id: ChipId): string[] {
       );
     case 'weapon:ranged':
       return names(basesWithTag('ranged'));
+    default:
+      return [];
   }
 }
 
