@@ -3,6 +3,7 @@ import type { Rule } from '../../core/filter/types.ts';
 import { PRESET_VERSION } from '../../meta/index.ts';
 import {
   filterUpdateKind,
+  isFilterPathFileName,
   type FilterFileInfo,
 } from '../../sync/fileSystem.ts';
 import { copyText, downloadFilter } from '../download.ts';
@@ -470,6 +471,24 @@ export default function SaveBuildPanel({
                             className="mr-2 rounded border border-ink-600 px-1.5 py-0.5 text-zinc-300 transition-colors hover:border-ink-500"
                           >
                             Load
+                          </button>
+                        )}
+                        {isFilterPathFileName(file.name) && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              if (
+                                window.confirm(
+                                  `Remove ${file.name} and its .bak copy from ${folder.handle?.name}?`,
+                                )
+                              ) {
+                                void folder.remove([file.name]);
+                              }
+                            }}
+                            disabled={folder.busy}
+                            className="mr-2 rounded border border-ink-600 px-1.5 py-0.5 text-red-300 transition-colors hover:border-ink-500 disabled:opacity-40"
+                          >
+                            Delete
                           </button>
                         )}
                         {file.name === fileName && (
