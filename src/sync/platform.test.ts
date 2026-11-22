@@ -2,9 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   BRAVE_FILE_ACCESS_FLAG,
   browserKindFrom,
-  defaultFolderPath,
   detectPlatform,
-  folderPathHint,
   isBraveNavigator,
   platformFrom,
   PROTON_FILTER_PATH,
@@ -66,29 +64,4 @@ describe('platform guidance', () => {
     expect(browserKindFrom('', false)).toBe('unknown');
   });
 
-  it('suggests a folder path per platform', () => {
-    expect(defaultFolderPath('windows')).toContain('My Games');
-    expect(defaultFolderPath('linux')).toContain('compatdata/238960');
-    expect(defaultFolderPath('mac')).toBe('');
-  });
-
-  it('flags common pasted-path mistakes', () => {
-    expect(folderPathHint('relative/path')).toContain('absolute');
-    expect(
-      folderPathHint(
-        '/mnt/Secondary/SteamLibrary/steamapps/compatdata/238960/pfx/drive_c/users/steamuser/Documents',
-      ),
-    ).toContain('My Games/Path of Exile');
-    expect(
-      folderPathHint(
-        '/mnt/Secondary/SteamLibrary/steamapps/compatdata/238960/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile/',
-      ),
-    ).toBeNull();
-    expect(folderPathHint('C:\\Users\\me\\Documents\\My Games\\Path of Exile')).toBeNull();
-    expect(
-      folderPathHint(
-        '~/.local/share/Steam/steamapps/compatdata/238960/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile',
-      ),
-    ).toBeNull();
-  });
 });

@@ -26,6 +26,7 @@ import { decodeShare, encodeShare } from '../core/share/codec.ts';
 import FilterPreview from './FilterPreview.tsx';
 import AdvancedRules from './rules/AdvancedRules.tsx';
 import SaveBuildPanel from './save/SaveBuildPanel.tsx';
+import FolderGuidance from './save/FolderGuidance.tsx';
 import { useFiltersFolder } from './save/useFiltersFolder.ts';
 import { discardLegacyBuilds, type SavedBuild } from './presets/storage.ts';
 import { buildHash } from './buildSnapshot.ts';
@@ -967,18 +968,7 @@ export default function Wizard() {
           </summary>
           <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-xs leading-relaxed text-zinc-400">
             <li>Download the file.</li>
-            <li>
-              Put it in{' '}
-              <code className="rounded bg-ink-900 px-1 py-0.5 text-zinc-300">
-                Documents/My Games/Path of Exile
-              </code>
-              . On Linux/Proton that is{' '}
-              <code className="rounded bg-ink-900 px-1 py-0.5 text-zinc-300">
-                compatdata/238960/pfx/drive_c/users/steamuser/Documents/My
-                Games/Path of Exile
-              </code>
-              .
-            </li>
+            <li>Put it in the game's filter folder (paths below).</li>
             <li>
               In game: Options → UI → Item Filter, then pick{' '}
               <span className="text-zinc-300">FilterPath</span>.
@@ -993,6 +983,7 @@ export default function Wizard() {
             Seeing items that should be hidden? Check which filter is selected;
             another filter can still be active.
           </p>
+          <FolderGuidance platform={folder.platform} />
         </details>
       </main>
 

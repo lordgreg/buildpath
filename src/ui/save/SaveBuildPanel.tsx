@@ -14,70 +14,10 @@ import type { WizardState } from '../wizardState.ts';
 import {
   BRAVE_FILE_ACCESS_FLAG,
   browserKind,
-  defaultFolderPath,
-  folderPathHint,
   LINUX_WRITE_COMMAND,
-  PROTON_EXTRA_LIBRARY,
-  PROTON_FILTER_PATH,
-  PROTON_FIND_COMMAND,
-  WINDOWS_FILTER_PATH,
   writeHint,
 } from '../../sync/platform.ts';
 import type { FiltersFolder } from './useFiltersFolder.ts';
-
-function PathCode({ children }: { children: string }) {
-  return (
-    <code className="break-all rounded bg-ink-900 px-1 text-zinc-300">
-      {children}
-    </code>
-  );
-}
-
-function WindowsGuidance() {
-  return (
-    <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">
-      Windows: filters live in <PathCode>{WINDOWS_FILTER_PATH}</PathCode>. Pick
-      that folder. If it does not exist yet, launch Path of Exile once and
-      change the filter in-game to create it.
-    </p>
-  );
-}
-
-function LinuxGuidance() {
-  return (
-    <>
-      <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">
-        Linux/Proton: <PathCode>steamapps</PathCode> lives inside a Steam
-        library, not your home folder. The default is{' '}
-        <PathCode>{PROTON_FILTER_PATH}</PathCode>. The game reads{' '}
-        <PathCode>.filter</PathCode> files directly in this folder; there is no
-        required <PathCode>filters</PathCode> subfolder.
-      </p>
-      <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">
-        If PoE is on another drive, use <PathCode>{PROTON_EXTRA_LIBRARY}</PathCode>.
-      </p>
-      <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">
-        Find it automatically, then pick the folder it prints.
-      </p>
-      <div className="mt-1 flex flex-wrap gap-3">
-        <button
-          type="button"
-          onClick={() => void copyText(PROTON_FIND_COMMAND)}
-          className="text-[10px] text-zinc-500 underline underline-offset-2 hover:text-zinc-300"
-        >
-          Copy find command
-        </button>
-        <button
-          type="button"
-          onClick={() => void copyText(PROTON_FILTER_PATH)}
-          className="text-[10px] text-zinc-500 underline underline-offset-2 hover:text-zinc-300"
-        >
-          Copy default Proton path
-        </button>
-      </div>
-    </>
-  );
-}
 
 export default function SaveBuildPanel({
   state,
@@ -116,17 +56,9 @@ export default function SaveBuildPanel({
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const browser = browserKind();
-  const [pathNote, setPathNote] = useState<string>(() => {
-    try {
-      return localStorage.getItem('filterpath.folder-path.v1') ?? '';
-    } catch {
-      return '';
-    }
-  });
 
   const resolvedName = name.trim() || autoName;
   const platform = folder.platform;
-  const showBothPaths = platform !== 'windows' && platform !== 'linux';
   const platformLabel =
     platform === 'windows'
       ? 'Windows'
@@ -135,23 +67,6 @@ export default function SaveBuildPanel({
         : platform === 'mac'
           ? 'macOS'
           : 'OS unknown';
-  const suggestedPath = defaultFolderPath(platform);
-  const pathIssue = folderPathHint(pathNote);
-  const pickerStep =
-    platform === 'windows'
-      ? 'paste the path into the picker\u2019s address bar'
-      : platform === 'mac'
-        ? 'press Cmd+Shift+G in the picker and paste the path'
-        : 'press Ctrl+L in the picker and paste the path';
-
-  const changePathNote = (value: string) => {
-    setPathNote(value);
-    try {
-      localStorage.setItem('filterpath.folder-path.v1', value);
-    } catch {
-      // Ignore blocked storage.
-    }
-  };
 
   const writeToFolder = async (): Promise<string> => {
     if (!folder.handle) return '';
@@ -461,87 +376,6 @@ export default function SaveBuildPanel({
               </>
             )}
           </div>
-        )}
-
-        <div className="mt-3 rounded-lg border border-ink-700 bg-ink-900/40 p-3">
-          <label className="block text-[10px] uppercase tracking-wide text-zinc-500">
-            Folder path (reference)
-            <input
-              value={pathNote}
-              onChange={(event) => changePathNote(event.target.value)}
-              placeholder={suggestedPath || 'Paste the filters folder path'}
-              className="mt-1 block w-full rounded border border-ink-600 bg-ink-800 px-2 py-1.5 font-mono text-[11px] normal-case text-zinc-200"
-            />
-          </label>
-          <div className="mt-2 flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={() => void copyText(pathNote || suggestedPath)}
-              className="text-[10px] text-zinc-500 underline underline-offset-2 hover:text-zinc-300"
-            >
-              Copy path
-            </button>
-            {suggestedPath && (
-              <button
-                type="button"
-                onClick={() => changePathNote(suggestedPath)}
-                className="text-[10px] text-zinc-500 underline underline-offset-2 hover:text-zinc-300"
-              >
-                Use suggested path
-              </button>
-            )}
-          </div>
-          <p className="mt-2 text-[11px] leading-relaxed text-zinc-500">
-            {folder.supported ? (
-              <>
-                Reference only: browsers cannot open a typed path. Use{' '}
-                <span className="text-zinc-300">Choose folder</span> to grant
-                access; then {pickerStep}, and open{' '}
-                <span className="text-zinc-300">My Games/Path of Exile</span>{' '}
-                inside it.
-              </>
-            ) : (
-              <>
-                Reference only: this path is not connected. Resolve the browser
-                note above, then use{' '}
-                <span className="text-zinc-300">Download .filter</span> or
-                <span className="text-zinc-300"> Choose folder</span>.
-              </>
-            )}
-          </p>
-          {pathIssue && (
-            <p className="mt-1 text-[10px] text-amber-300">{pathIssue}</p>
-          )}
-        </div>
-
-        <p className="mt-2 text-[11px] leading-relaxed text-zinc-500">
-          Any folder works; pick the one the game reads. The browser only learns
-          the folder name, not its full path.
-        </p>
-
-        {showBothPaths && (
-          <>
-            <WindowsGuidance />
-            <LinuxGuidance />
-          </>
-        )}
-        {platform === 'windows' && <WindowsGuidance />}
-        {platform === 'linux' && <LinuxGuidance />}
-
-        {showBothPaths && (
-          <p className="mt-2 text-[11px] leading-relaxed text-zinc-500">
-            macOS/other: Path of Exile under Wine or CrossOver uses a prefix
-            similar to the Proton path; choose that folder.
-          </p>
-        )}
-
-        {!showBothPaths && (
-          <details className="mt-2">
-            <summary className="cursor-pointer text-[10px] uppercase tracking-wide text-zinc-600">
-              Other platform
-            </summary>
-            {platform === 'windows' ? <LinuxGuidance /> : <WindowsGuidance />}
-          </details>
         )}
 
         {folder.handle &&

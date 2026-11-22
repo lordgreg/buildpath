@@ -37,29 +37,6 @@ export function writeHint(platform: Platform): string {
   }
   return `Linux/Proton: make the folder writable for your user, e.g. ${LINUX_WRITE_COMMAND}.`;
 }
-export function defaultFolderPath(platform: Platform): string {
-  if (platform === 'windows') return WINDOWS_FILTER_PATH;
-  if (platform === 'linux') return PROTON_FILTER_PATH;
-  return '';
-}
-
-/** A gentle check for pasted reference paths; access still needs the picker. */
-export function folderPathHint(value: string): string | null {
-  const path = value.trim();
-  if (!path) return null;
-  const normalized = path.replace(/\\/g, '/').replace(/\/+$/, '');
-  if (!/^(\/|~\/|[A-Za-z]:\/)/.test(normalized)) {
-    return 'Use an absolute path, starting with / or a drive letter.';
-  }
-  if (/\/Documents$/i.test(normalized)) {
-    return 'That is the Documents folder. Choose My Games/Path of Exile inside it.';
-  }
-  if (!/\/Path of Exile$/i.test(normalized)) {
-    return 'The game folder usually ends with Documents/My Games/Path of Exile.';
-  }
-  return null;
-}
-
 export const BRAVE_FILE_ACCESS_FLAG = 'brave://flags/#file-system-access-api';
 
 export type BrowserKind =
