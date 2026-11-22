@@ -59,6 +59,9 @@ export function resolveFamily(familyId: string): Archetype {
     id: `family-${family.id}`,
     name: family.name,
     summary: family.summary,
+    ...(family.excludedBases
+      ? { excludedBases: family.excludedBases }
+      : {}),
     leveling: true,
     verifiedFor: verifiedFor(),
     slots: {
@@ -82,12 +85,14 @@ export function resolveAscendancy(ascendancyId: string): Archetype {
         ? { ...family.offhand, tags: ascendancy.shieldTags }
         : family.offhand;
   const weapon = ascendancy.weapon ?? family.weapon;
+  const excludedBases = ascendancy.excludedBases ?? family.excludedBases;
 
   return {
     id: ascendancy.id,
     name: ascendancy.name,
     class: ascendancy.class,
     ascendancy: ascendancy.name,
+    ...(excludedBases ? { excludedBases } : {}),
     summary: `Default ${family.name.toLowerCase()} loadout: ${loadoutLabel(weapon, offhand)}.`,
     leveling: true,
     verifiedFor: verifiedFor(),
@@ -116,12 +121,14 @@ export function resolveMeta(selection: BuildSelection): Archetype {
         ? skill.offhand
         : family.offhand;
   const weapon = skill.weapon ?? family.weapon;
+  const excludedBases = ascendancy.excludedBases ?? family.excludedBases;
 
   return {
     id: `${ascendancy.id}-${skill.id}`,
     name: `${ascendancy.name} ${skill.name}`,
     class: ascendancy.class,
     ascendancy: ascendancy.name,
+    ...(excludedBases ? { excludedBases } : {}),
     summary: `${family.name} profile for ${skill.name}: ${loadoutLabel(weapon, offhand)}.`,
     leveling: skill.leveling,
     verifiedFor: getSnapshot(leagueId).league.name,

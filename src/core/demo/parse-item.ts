@@ -11,6 +11,9 @@ const RARITIES = new Set<ItemRarity>([
   'Divination Card',
 ]);
 
+/** League drops such as Viscera are copied without a Rarity line. */
+const CLASS_ONLY_RARITIES = new Set(['Viscera']);
+
 function field(lines: string[], name: string): string | undefined {
   const prefix = `${name}:`;
   const line = lines.find((entry) => entry.trim().startsWith(prefix));
@@ -19,9 +22,11 @@ function field(lines: string[], name: string): string | undefined {
 
 function nameLines(lines: string[]): string[] {
   const rarityIndex = lines.findIndex((line) => line.startsWith('Rarity:'));
-  if (rarityIndex === -1) return [];
+  const classIndex = lines.findIndex((line) => line.startsWith('Item Class:'));
+  const start = rarityIndex === -1 ? classIndex + 1 : rarityIndex + 1;
+  if (start <= 0) return [];
   const names: string[] = [];
-  for (const line of lines.slice(rarityIndex + 1)) {
+  for (const line of lines.slice(start)) {
     const trimmed = line.trim();
     if (trimmed === '' || /^-+$/.test(trimmed)) break;
     names.push(trimmed);
@@ -68,14 +73,18 @@ export function parseItemText(text: string): PreviewItem[] {
 
     const itemClass = field(lines, 'Item Class');
     const rarityField = field(lines, 'Rarity');
-    if (!itemClass || !rarityField || !RARITIES.has(rarityField as ItemRarity)) {
-      continue;
-    }
+    const rarity =
+      rarityField && RARITIES.has(rarityField as ItemRarity)
+        ? (rarityField as ItemRarity)
+        : itemClass && CLASS_ONLY_RARITIES.has(itemClass)
+          ? 'Normal'
+          : undefined;
+    if (!itemClass || !rarity) continue;
 
     const names = nameLines(lines);
     if (names.length === 0) continue;
 
-    const isRare = rarityField === 'Rare' || rarityField === 'Unique';
+    const isRare = rarity === 'Rare' || rarity === 'Unique';
     const name = names[0]!;
     const baseType = (
       isRare && names[1] ? names[1] : name.replace(/^Superior\s+/i, '')
@@ -94,7 +103,7 @@ export function parseItemText(text: string): PreviewItem[] {
       name,
       itemClass,
       baseType,
-      rarity: rarityField as ItemRarity,
+      rarity,
       itemLevel: Number(field(lines, 'Item Level') ?? 0),
       ...(sockets.sockets !== undefined ? sockets : {}),
       ...(quality

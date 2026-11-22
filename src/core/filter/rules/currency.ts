@@ -113,30 +113,35 @@ const NAMED_ALERTS: {
   sound: NamedAlertSound;
   tier: 1 | 2;
   style: Style;
+  styleKind: 's-tier' | 'currency-top' | 'currency-mid';
 }[] = [
   {
     name: 'Mirror of Kalandra',
     sound: 'ShMirror',
     tier: 1,
     style: SLOT_STYLES.currencyTop,
+    styleKind: 's-tier',
   },
   {
     name: 'Divine Orb',
     sound: 'ShDivine',
     tier: 1,
     style: SLOT_STYLES.currencyTop,
+    styleKind: 's-tier',
   },
   {
     name: 'Exalted Orb',
     sound: 'ShExalted',
     tier: 1,
     style: SLOT_STYLES.currencyTop,
+    styleKind: 'currency-top',
   },
   {
     name: 'Chaos Orb',
     sound: 'ShChaos',
     tier: 2,
     style: SLOT_STYLES.currencyMid,
+    styleKind: 'currency-mid',
   },
 ];
 
@@ -149,6 +154,7 @@ export function currencyRules(preset: Preset): Rule[] {
       action: 'Show',
       comment: `${entry.name} - alert`,
       baseTypes: [entry.name],
+      styleKind: entry.styleKind,
       style: { ...entry.style, alertSound: entry.sound },
     });
   }
@@ -163,6 +169,7 @@ export function currencyRules(preset: Preset): Rule[] {
       action: 'Show',
       comment: `Currency - tier ${tier}`,
       baseTypes: [...names],
+      styleKind: tier === 1 ? 'currency-top' : tier === 2 ? 'currency-mid' : undefined,
       style:
         tier === 1
           ? SLOT_STYLES.currencyTop
@@ -189,6 +196,7 @@ export function currencyRules(preset: Preset): Rule[] {
       action: 'Show',
       comment: 'Divination cards - top',
       baseTypes: [...DIVINATION_TOP],
+      styleKind: 'card',
       style: SLOT_STYLES.currencyTop,
     });
   }
@@ -198,6 +206,7 @@ export function currencyRules(preset: Preset): Rule[] {
       action: 'Show',
       comment: 'Divination cards - mid',
       baseTypes: [...DIVINATION_MID],
+      styleKind: 'card',
       style: {
         textColor: COLORS.white,
         borderColor: COLORS.gold,
@@ -206,6 +215,20 @@ export function currencyRules(preset: Preset): Rule[] {
       },
     });
   }
+
+  // Style-only catch-all: cards and gold piles are already visible by default,
+  // so this changes their backdrop without changing what the preset shows.
+  rules.push({
+    action: 'Show',
+    comment: 'Divination cards',
+    classNames: ['Divination Cards'],
+    styleKind: 'card',
+    style: {
+      textColor: COLORS.card,
+      borderColor: COLORS.card,
+      fontSize: 34,
+    },
+  });
 
   return rules;
 }

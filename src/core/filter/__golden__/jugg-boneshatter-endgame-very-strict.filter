@@ -4,8 +4,8 @@
 # Build: Boneshatter Juggernaut - Marauder / Juggernaut
 # Phase: Endgame - Very Strict
 # League: Covens
-# Presets: 9515af8785c2
-# Rules: 34 - Base types: 54
+# Presets: bf8311191b12
+# Rules: 38 - Base types: 54
 # Base data: RePoE master (d9b86d38)
 # Generated at https://lordgreg.github.io/filterpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -113,7 +113,7 @@ Show
     SetFontSize 40
     SetTextColor 255 255 119 255
     SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
+    SetBackgroundColor 20 26 58 255
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
 
@@ -125,7 +125,7 @@ Show
     SetFontSize 40
     SetTextColor 255 255 119 255
     SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
+    SetBackgroundColor 6 42 26 255
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
 
@@ -175,7 +175,7 @@ Show
     SetFontSize 40
     SetTextColor 27 162 155 255
     SetBorderColor 27 162 155 255
-    SetBackgroundColor 0 0 0 255
+    SetBackgroundColor 6 42 42 255
     PlayAlertSound 8 180
     MinimapIcon 0 Blue Circle
 
@@ -189,7 +189,7 @@ Show
     SetFontSize 45
     SetTextColor 217 178 106 255
     SetBorderColor 217 178 106 255
-    SetBackgroundColor 0 0 0 255
+    SetBackgroundColor 58 11 46 255
     PlayAlertSound ShMirror
     MinimapIcon 1 Red Star
 
@@ -199,7 +199,7 @@ Show
     SetFontSize 45
     SetTextColor 217 178 106 255
     SetBorderColor 217 178 106 255
-    SetBackgroundColor 0 0 0 255
+    SetBackgroundColor 58 11 46 255
     PlayAlertSound ShDivine
     MinimapIcon 1 Red Star
 
@@ -237,7 +237,7 @@ Show
     SetFontSize 45
     SetTextColor 176 196 222 255
     SetBorderColor 176 196 222 255
-    SetBackgroundColor 0 0 0 255
+    SetBackgroundColor 10 26 51 255
     PlayAlertSound 6 300
     MinimapIcon 1 Red Star
 
@@ -247,8 +247,16 @@ Show
     SetFontSize 34
     SetTextColor 176 196 222 255
     SetBorderColor 176 196 222 255
-    SetBackgroundColor 0 0 0 255
+    SetBackgroundColor 10 26 51 255
     MinimapIcon 0 Yellow Circle
+
+# Divination cards
+Show
+    Class "Divination Cards"
+    SetFontSize 34
+    SetTextColor 176 196 222 255
+    SetBorderColor 176 196 222 255
+    SetBackgroundColor 10 26 51 255
 
 # Maps - tier 15+
 Show
@@ -269,7 +277,18 @@ Show
     SetFontSize 36
     SetTextColor 217 178 106 255
     SetBorderColor 217 178 106 255
-    SetBackgroundColor 0 0 0 255
+    SetBackgroundColor 42 30 8 255
+
+# Uniques - best jewels
+Show
+    BaseType "Cobalt Jewel" "Crimson Jewel" "Large Cluster Jewel" "Murderous Eye Jewel" "Prismatic Jewel" "Searching Eye Jewel" "Timeless Jewel" "Viridian Jewel"
+    Rarity Unique
+    SetFontSize 40
+    SetTextColor 255 166 0 255
+    SetBorderColor 255 166 0 255
+    SetBackgroundColor 36 16 58 255
+    PlayAlertSound 4 200
+    MinimapIcon 1 Red Star
 
 # Uniques - high-value bases
 Show
@@ -278,8 +297,19 @@ Show
     SetFontSize 45
     SetTextColor 255 166 0 255
     SetBorderColor 255 166 0 255
-    SetBackgroundColor 0 0 0 255
+    SetBackgroundColor 58 11 46 255
     PlayAlertSound 6 300
+    MinimapIcon 1 Red Star
+
+# Uniques - jewels
+Show
+    Class "Jewels" "Abyss Jewels"
+    Rarity Unique
+    SetFontSize 40
+    SetTextColor 255 166 0 255
+    SetBorderColor 255 166 0 255
+    SetBackgroundColor 20 26 58 255
+    PlayAlertSound 4 200
     MinimapIcon 1 Red Star
 
 # Uniques
@@ -316,3 +346,11 @@ Hide
 # Gear - bases this build does not use
 Hide
     Class "Body Armours" "Boots" "Gloves" "Helmets" "Jewels"
+
+# League drops - Viscera
+Show
+    Class "Viscera"
+    SetFontSize 38
+    SetTextColor 255 166 0 255
+    SetBorderColor 255 166 0 255
+    SetBackgroundColor 58 22 0 255

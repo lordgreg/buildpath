@@ -17,6 +17,21 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.19.0',
+    date: '2026-11-22',
+    title: 'Category backgrounds and build-specific base exclusions',
+    notes: [
+      'The Rarity theme now uses category backgrounds: S-tier orbs get deep magenta, best jewels violet, divination cards navy, quality flasks emerald, fragments amber, gems teal, jewels indigo and league viscera burnt orange.',
+      'Divine Orb and Mirror of Kalandra are S-tier; high-value unique bases share the S-tier backdrop, while best jewels keep their own violet.',
+      'Category colours only restyle items the preset already shows; visibility is unchanged. High contrast and Muted stay uniform.',
+      'Necromancer builds now exclude Cloth Belt, whose stun-threshold implicit a summoner cannot use. Unique Cloth Belts remain visible.',
+      'Caster builds, including Elementalist, now exclude Iron Ring, whose physical attack implicit is useless for spells. Unique Iron Rings remain visible.',
+      'The demo pool and item parser accept league Viscera drops, which have no Rarity line.',
+    ],
+    commits: [],
+    compare: 'v0.18.2...v0.19.0',
+  },
+  {
     version: '0.18.2',
     date: '2026-11-22',
     title: 'Hide Gold Rings while leveling',

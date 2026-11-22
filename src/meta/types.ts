@@ -15,6 +15,8 @@ export interface Family {
   offhand: SlotSpec | null;
   armourTags: string[];
   jewelTag: string;
+  /** Bases this family's builds never want. */
+  excludedBases?: string[];
 }
 
 export interface SkillEntry {
@@ -57,6 +59,8 @@ export interface Ascendancy {
   /** RePoE tags intersected with the Shield class. */
   shieldTags: string[];
   jewelTag: string;
+  /** Bases this ascendancy's builds never want. */
+  excludedBases?: string[];
   /** Optional loadout override; otherwise the default family supplies it. */
   weapon?: SlotSpec;
   offhand?: SlotSpec | null;

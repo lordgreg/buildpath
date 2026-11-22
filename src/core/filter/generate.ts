@@ -17,6 +17,7 @@ import { baseTypesFor, gearRules } from './rules/gear.ts';
 import { currencyRules } from './rules/currency.ts';
 import { gemRules } from './rules/gems.ts';
 import { mapRules } from './rules/maps.ts';
+import { leagueRules } from './rules/league.ts';
 import { uniqueRules } from './rules/uniques.ts';
 import { COLORS, type Rule, type RuleSection } from './types.ts';
 import { applyTheme, type ThemeId } from './themes.ts';
@@ -178,6 +179,9 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
   if (sections.uniques) add('uniques', uniqueRules());
 
   add('junk', junkRules(archetype, preset));
+  // Style-only category rules run last so they never change what the preset
+  // shows; they only restyle items that were already visible.
+  add('league', leagueRules());
 
   return {
     archetype,

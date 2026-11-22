@@ -8,7 +8,27 @@ export type RuleSection =
   | 'uniques'
   | 'quest'
   | 'junk'
+  | 'league'
   | 'custom';
+
+/**
+ * Category used by the rarity theme to pick a background colour. Text and
+ * border colours still follow rarity; this only changes the backdrop.
+ */
+export type StyleKind =
+  | 's-tier'
+  | 'currency-top'
+  | 'currency-mid'
+  | 'card'
+  | 'gem'
+  | 'map'
+  | 'fragment'
+  | 'unique'
+  | 'jewel-best'
+  | 'jewel'
+  | 'flask'
+  | 'gold'
+  | 'league';
 
 /** Built-in Shaper voice lines that Path of Exile accepts as alert sounds. */
 export type NamedAlertSound =
@@ -94,6 +114,8 @@ export interface Rule {
   disabled?: boolean;
   /** Chip ids used to build a custom rule, for editing and display. */
   chips?: string[];
+  /** Category background used by the rarity theme. */
+  styleKind?: StyleKind;
   comment?: string;
   classNames?: string[];
   baseTypes?: string[];
@@ -132,6 +154,16 @@ export const COLORS = {
   darkGreen: [8, 32, 18, 255],
   darkPurple: [40, 10, 55, 255],
   darkRed: [55, 8, 8, 255],
+  // Category backgrounds for the rarity theme. Dark enough for white text.
+  sTier: [58, 11, 46, 255],
+  jewelBest: [36, 16, 58, 255],
+  cardBg: [10, 26, 51, 255],
+  flaskBg: [6, 42, 26, 255],
+  fragmentBg: [42, 30, 8, 255],
+  gemBg: [6, 42, 42, 255],
+  goldBg: [58, 42, 0, 255],
+  jewelBg: [20, 26, 58, 255],
+  leagueBg: [58, 22, 0, 255],
   black: [0, 0, 0, 255],
 } as const satisfies Record<string, Color>;
 

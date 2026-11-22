@@ -79,3 +79,148 @@ describe('hidden bases', () => {
     expect(found.shown).toBe(true);
   });
 });
+
+const NECROMANCER = {
+  mode: 'ascendancy' as const,
+  ascendancyId: 'necromancer',
+};
+
+const CLOTH_BELT = `Item Class: Belts
+Rarity: Rare
+Fated Cloth Belt
+Cloth Belt
+--------
+Item Level: 48
+--------
+{ Implicit Modifier }
+12(10-15)% increased Stun and Block Recovery
+--------
+Unidentified`;
+
+function belt(
+  baseType: string,
+  rarity: PreviewItem['rarity'],
+  itemLevel = 48,
+): PreviewItem {
+  return {
+    id: `${baseType}-${rarity}`,
+    name: baseType,
+    itemClass: 'Belts',
+    baseType,
+    rarity,
+    itemLevel,
+    identified: true,
+  };
+}
+
+function necroResult(
+  sample: PreviewItem,
+  phase: 'leveling' | 'endgame',
+  strictness: 'normal' | 'strict' | 'very-strict',
+) {
+  const filter = generateFilter({
+    selection: NECROMANCER,
+    phase,
+    strictness,
+  });
+  return evaluateRules(filter.rules, sample);
+}
+
+describe('ascendancy excluded bases', () => {
+  it('parses the reported Fated Cloth Belt', () => {
+    const [parsed] = parseItemText(CLOTH_BELT);
+    expect(parsed).toMatchObject({
+      itemClass: 'Belts',
+      baseType: 'Cloth Belt',
+      rarity: 'Rare',
+      itemLevel: 48,
+    });
+  });
+
+  it('hides rare and magic Cloth Belts for the Necromancer in every preset', () => {
+    for (const phase of ['leveling', 'endgame'] as const) {
+      for (const strictness of [
+        'normal',
+        'strict',
+        'very-strict',
+      ] as const) {
+        for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
+          const found = necroResult(belt('Cloth Belt', rarity), phase, strictness);
+          expect(found.shown, `${phase}/${strictness}/${rarity}`).toBe(false);
+          expect(found.reason).toContain('excluded base');
+        }
+      }
+    }
+  });
+
+  it('keeps unique Cloth Belts visible', () => {
+    const found = necroResult(belt('Cloth Belt', 'Unique'), 'endgame', 'normal');
+    expect(found.shown).toBe(true);
+  });
+
+  it('leaves Cloth Belts visible for other ascendancies', () => {
+    const filter = generateFilter({
+      selection: { mode: 'ascendancy', ascendancyId: 'elementalist' },
+      phase: 'leveling',
+      strictness: 'normal',
+    });
+    const found = evaluateRules(filter.rules, belt('Cloth Belt', 'Rare'));
+    expect(found.shown).toBe(true);
+  });
+});
+
+function ring(
+  baseType: string,
+  rarity: PreviewItem['rarity'],
+  itemLevel = 49,
+): PreviewItem {
+  return {
+    id: `${baseType}-${rarity}`,
+    name: baseType,
+    itemClass: 'Rings',
+    baseType,
+    rarity,
+    itemLevel,
+    identified: true,
+  };
+}
+
+describe('family excluded bases', () => {
+  const CASTER_SELECTIONS = [
+    { mode: 'family' as const, familyId: 'caster' as const },
+    { mode: 'ascendancy' as const, ascendancyId: 'elementalist' },
+  ];
+
+  it('hides rare Iron Rings for caster builds', () => {
+    for (const selection of CASTER_SELECTIONS) {
+      const filter = generateFilter({
+        selection,
+        phase: 'leveling',
+        strictness: 'normal',
+      });
+      const found = evaluateRules(filter.rules, ring('Iron Ring', 'Rare'));
+      expect(found.shown).toBe(false);
+      expect(found.reason).toContain('excluded base');
+    }
+  });
+
+  it('keeps unique Iron Rings visible for casters', () => {
+    const filter = generateFilter({
+      selection: CASTER_SELECTIONS[0]!,
+      phase: 'leveling',
+      strictness: 'normal',
+    });
+    const found = evaluateRules(filter.rules, ring('Iron Ring', 'Unique'));
+    expect(found.shown).toBe(true);
+  });
+
+  it('does not exclude Iron Rings for attack builds', () => {
+    const filter = generateFilter({
+      selection: { mode: 'family', familyId: 'bow' },
+      phase: 'leveling',
+      strictness: 'normal',
+    });
+    const found = evaluateRules(filter.rules, ring('Iron Ring', 'Rare'));
+    expect(found.shown).toBe(true);
+  });
+});

@@ -15,6 +15,7 @@ export function gemRules(preset: Preset): Rule[] {
       ...(preset.gems.minQuality !== null
         ? { quality: { min: preset.gems.minQuality } }
         : {}),
+      styleKind: 'gem',
       style: SLOT_STYLES.gem,
     },
   ];

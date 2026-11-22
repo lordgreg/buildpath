@@ -1,4 +1,10 @@
-import { COLORS, type Color, type Rarity, type Rule } from './types.ts';
+import {
+  COLORS,
+  type Color,
+  type Rarity,
+  type Rule,
+  type StyleKind,
+} from './types.ts';
 
 export type ThemeId = 'classic' | 'contrast' | 'muted';
 
@@ -9,7 +15,11 @@ export interface ThemeDefinition {
 }
 
 export const THEMES: ThemeDefinition[] = [
-  { id: 'classic', label: 'Rarity', hint: 'Rarity text and borders, black background' },
+  {
+    id: 'classic',
+    label: 'Rarity',
+    hint: 'Rarity text and borders, category backgrounds',
+  },
   {
     id: 'contrast',
     label: 'High contrast',
@@ -29,14 +39,36 @@ const RARITY_COLORS: Record<Rarity, Color> = {
   Unique: COLORS.orange,
 };
 
-function withColors(rule: Rule, text: Color, border: Color): Rule {
+/** Category backgrounds. Anything absent keeps the black backdrop. */
+const STYLE_BACKGROUNDS: Partial<Record<StyleKind, Color>> = {
+  's-tier': COLORS.sTier,
+  'jewel-best': COLORS.jewelBest,
+  card: COLORS.cardBg,
+  flask: COLORS.flaskBg,
+  fragment: COLORS.fragmentBg,
+  gem: COLORS.gemBg,
+  gold: COLORS.goldBg,
+  jewel: COLORS.jewelBg,
+  league: COLORS.leagueBg,
+};
+
+function backgroundFor(rule: Rule): Color {
+  return (rule.styleKind && STYLE_BACKGROUNDS[rule.styleKind]) ?? COLORS.black;
+}
+
+function withColors(
+  rule: Rule,
+  text: Color,
+  border: Color,
+  background: Color = COLORS.black,
+): Rule {
   return {
     ...rule,
     style: {
       ...rule.style,
       textColor: text,
       borderColor: border,
-      backgroundColor: COLORS.black,
+      backgroundColor: background,
     },
   };
 }
@@ -45,32 +77,41 @@ function withColors(rule: Rule, text: Color, border: Color): Rule {
 function rarityRule(rule: Rule): Rule {
   if (!rule.style || rule.action === 'Hide') return rule;
 
+  const background = backgroundFor(rule);
+
   switch (rule.section) {
     case 'currency':
       return rule.comment?.startsWith('Divination cards')
-        ? withColors(rule, COLORS.card, COLORS.card)
-        : withColors(rule, COLORS.gold, COLORS.gold);
+        ? withColors(rule, COLORS.card, COLORS.card, background)
+        : withColors(rule, COLORS.gold, COLORS.gold, background);
     case 'gems':
-      return withColors(rule, COLORS.gem, COLORS.gem);
+      return withColors(rule, COLORS.gem, COLORS.gem, background);
     case 'maps':
       return rule.comment === 'Map fragments'
-        ? withColors(rule, COLORS.gold, COLORS.gold)
-        : withColors(rule, COLORS.map, COLORS.map);
+        ? withColors(rule, COLORS.gold, COLORS.gold, background)
+        : withColors(rule, COLORS.map, COLORS.map, background);
     case 'uniques':
-      return withColors(rule, COLORS.orange, COLORS.orange);
+      return withColors(rule, COLORS.orange, COLORS.orange, background);
+    case 'league':
+      return withColors(rule, COLORS.orange, COLORS.orange, background);
     case 'custom':
       return rule.rarity
-        ? withColors(rule, RARITY_COLORS[rule.rarity], RARITY_COLORS[rule.rarity])
+        ? withColors(
+            rule,
+            RARITY_COLORS[rule.rarity],
+            RARITY_COLORS[rule.rarity],
+            background,
+          )
         : rule;
     default:
       if (rule.rarity) {
         const color = RARITY_COLORS[rule.rarity];
-        return withColors(rule, color, color);
+        return withColors(rule, color, color, background);
       }
       // The six-socket rule intentionally keeps its link highlight colour.
       return {
         ...rule,
-        style: { ...rule.style, backgroundColor: COLORS.black },
+        style: { ...rule.style, backgroundColor: background },
       };
   }
 }

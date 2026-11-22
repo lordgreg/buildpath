@@ -6,6 +6,8 @@ families:
     attributes: [int]
     armourTags: [int_armour]
     jewelTag: intjewel
+    # Iron Ring's physical attack implicit is useless for spell casters.
+    excludedBases: [Iron Ring]
     weapon:
       itemClasses: [Wand]
     offhand:

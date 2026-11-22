@@ -2,7 +2,7 @@ import type { Archetype, ItemSlot, SlotSpec } from '../../archetypes/types.ts';
 import { resolveSlotBases } from '../../data/resolve.ts';
 import { toFilterClass } from '../classes.ts';
 import type { Preset } from '../presets.ts';
-import { SLOT_STYLES, type Rule, type Style } from '../types.ts';
+import { SLOT_STYLES, type Rule, type Style, type StyleKind } from '../types.ts';
 
 const WEAPON_SLOTS = new Set<ItemSlot>(['weapon', 'offhand']);
 const ARMOUR_SLOTS = new Set<ItemSlot>(['helmet', 'body', 'gloves', 'boots']);
@@ -29,6 +29,12 @@ export function slotStyle(slot: ItemSlot): Style {
   if (WEAPON_SLOTS.has(slot)) return SLOT_STYLES.weapon;
   if (ARMOUR_SLOTS.has(slot)) return SLOT_STYLES.armour;
   return SLOT_STYLES.accessory;
+}
+
+function categoryFor(slot: ItemSlot): StyleKind | undefined {
+  if (slot === 'jewel') return 'jewel';
+  if (slot === 'flask') return 'flask';
+  return undefined;
 }
 
 function quiet(style: Style): Style {
@@ -64,7 +70,11 @@ export function usedFilterClasses(archetype: Archetype): Set<string> {
 export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
   const rules: Rule[] = [];
 
-  for (const base of preset.gear.hiddenBases ?? []) {
+  const excludedBases = new Set([
+    ...(preset.gear.hiddenBases ?? []),
+    ...(archetype.excludedBases ?? []),
+  ]);
+  for (const base of excludedBases) {
     for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
       rules.push({
         action: 'Hide',
@@ -92,6 +102,7 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
       ...target,
       rarity: 'Rare',
       itemLevel: { min: rareMinItemLevel },
+      ...(categoryFor(slot) ? { styleKind: categoryFor(slot) } : {}),
       style: slotStyle(slot),
     });
 
@@ -102,6 +113,7 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
         ...target,
         rarity: 'Magic',
         itemLevel: { min: preset.gear.magicMinItemLevel },
+        ...(categoryFor(slot) ? { styleKind: categoryFor(slot) } : {}),
         style: quiet(slotStyle(slot)),
       });
     }

@@ -25,6 +25,7 @@ const SECTION_LABELS: Record<RuleSection, string> = {
   quest: 'Quest items',
   uniques: 'Uniques',
   junk: 'Junk hides',
+  league: 'League drops',
   custom: 'Custom',
 };
 

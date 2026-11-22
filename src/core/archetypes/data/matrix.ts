@@ -40,6 +40,7 @@ export const archetypes: readonly Archetype[] = [
     class: 'Witch',
     ascendancy: 'Necromancer',
     summary: 'Skeletons, zombies and spectres fight while you keep them alive.',
+    excludedBases: ['Cloth Belt'],
     leveling: true,
     verifiedFor: 'Covens',
     slots: {

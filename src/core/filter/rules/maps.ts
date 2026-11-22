@@ -10,6 +10,7 @@ export function mapRules(preset: Preset, phase: Phase): Rule[] {
       comment: `Maps - tier ${preset.maps.minTier}+`,
       classNames: ['Maps'],
       mapTier: { min: preset.maps.minTier },
+      styleKind: 'map',
       style: SLOT_STYLES.map,
     });
 
@@ -26,6 +27,7 @@ export function mapRules(preset: Preset, phase: Phase): Rule[] {
     action: 'Show',
     comment: 'Map fragments',
     classNames: ['Map Fragments'],
+    styleKind: 'fragment',
     style: {
       textColor: SLOT_STYLES.map.textColor,
       borderColor: SLOT_STYLES.map.borderColor,

@@ -106,6 +106,27 @@ Right click this item then left click a magic, rare or unique item to apply it.`
     });
   });
 
+  it('parses league Viscera drops without a Rarity line', () => {
+    const items = parseItemText(`Item Class: Viscera
+Lesser Justicar's Helm
+--------
+Head
+--------
+Item Level: 41
+--------
+{ Implicit Modifier }
+22(18-24)% increased Stun Threshold
+--------
+Take this to the Wickerman in a town or hideout to attach it.`);
+    expect(items[0]).toMatchObject({
+      name: "Lesser Justicar's Helm",
+      itemClass: 'Viscera',
+      baseType: "Lesser Justicar's Helm",
+      rarity: 'Normal',
+      itemLevel: 41,
+    });
+  });
+
   it('ignores text without an item class', () => {
     expect(parseItemText('hello world')).toEqual([]);
   });

@@ -100,6 +100,8 @@ ascendancies:
     defenceTags: [int_armour, str_int_armour]
     shieldTags: [str_int_shield]
     jewelTag: intjewel
+    # Cloth Belt's implicit is stun/block recovery, useless for a summoner.
+    excludedBases: [Cloth Belt]
   - id: elementalist
     name: Elementalist
     class: Witch
