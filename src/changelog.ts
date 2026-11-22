@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.20.0',
+    date: '2026-11-22',
+    title: 'Preset tiers, currency tiers and folder help',
+    notes: [
+      'The three strictness tiers now step clearly: Normal, Strict and Very Strict raise the white and blue item-level floors, and only the build’s own bases are shown. Normal is the loosest (a beginner default), Very Strict keeps only high-ilvl bases.',
+      'Magic flasks are visible again in endgame, where the all-Magic hide used to remove them, and 4-links show in every leveling preset and in Endgame Normal.',
+      'Very Strict keeps tier-2 currency — Chaos, Alchemy, Vaal, Regal, Fusing and the rest — and hides low-tier uniques instead of over-hiding orbs.',
+      'The economy tier lists now actually apply, so Strict no longer drops good currency: only the vendor tier (scrolls, transmutes, catalysts) is hidden.',
+      'The builder drops the unusable “Folder path (reference)” field; the Windows and Linux filter paths now sit inside the How to install section.',
+    ],
+    commits: [],
+    compare: 'v0.19.1...v0.20.0',
+  },
+  {
     version: '0.19.1',
     date: '2026-11-22',
     title: 'Hide Cloth Belt in the Minion preset',
