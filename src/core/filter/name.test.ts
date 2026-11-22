@@ -42,18 +42,18 @@ describe('filter naming', () => {
       buildFileName({
         selection: { mode: 'family', familyId: 'minion' },
         phase: 'leveling',
-        strictness: 'normal',
+        strictness: 'soft',
       }),
-    ).toBe('filterpath-minion-leveling-normal.filter');
+    ).toBe('filterpath-minion-leveling-soft.filter');
 
     expect(
       buildFileName({
         selection: { mode: 'meta', skillId: 'lightning-arrow', ascendancyId: 'deadeye' },
         phase: 'endgame',
-        strictness: 'very-strict',
+        strictness: 'uber',
         name: 'My LA',
       }),
-    ).toBe('filterpath-my-la-endgame-very-strict.filter');
+    ).toBe('filterpath-my-la-endgame-uber.filter');
   });
 
   it('collapses phase and strictness for from-scratch filters', () => {
@@ -61,7 +61,7 @@ describe('filter naming', () => {
       buildFileName({
         selection: { mode: 'scratch', scratchStart: 'hide' },
         phase: 'leveling',
-        strictness: 'normal',
+        strictness: 'soft',
       }),
     ).toBe('filterpath-custom-hide-all.filter');
 

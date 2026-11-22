@@ -1,6 +1,6 @@
 export type Phase = 'leveling' | 'endgame';
 
-export type Strictness = 'normal' | 'strict' | 'very-strict';
+export type Strictness = 'soft' | 'strict' | 'uber';
 
 export interface GearPreset {
   id: string;
@@ -26,12 +26,16 @@ export interface CurrencyPreset {
   id: string;
   /** 1 = top tier only, 2 = top and mid, 3 = everything. */
   maxVisibleTier: 1 | 2 | 3;
+  /** Divination cards: 1 = top only, 3 = every card. */
+  divinationMaxTier: 1 | 2 | 3;
 }
 
 export interface MapsPreset {
   id: string;
   /** Endgame maps below this tier are hidden. `null` disables map rules. */
   minTier: number | null;
+  /** Fragments: 1 = top only, 3 = every fragment. */
+  fragmentMaxTier: 1 | 2 | 3;
 }
 
 export interface UniquesPreset {
@@ -58,13 +62,13 @@ export interface Preset {
 
 type Matrix<T> = Record<Phase, Record<Strictness, T>>;
 
-// Normal/Strict/Very Strict raise the white and blue floors so each tier is a
-// clear step: Normal shows every base a beginner might want, Very Strict only
-// keeps high-ilvl bases worth crafting on. Flasks are excluded from the white
-// floor (see gear.ts); they are never a crafting base.
+// Soft/Strict/Uber raise the white and blue floors so each tier is a clear
+// step: Soft shows every base a beginner might want, Uber only keeps high-ilvl
+// bases worth crafting on. Flasks are excluded from the white floor (see
+// gear.ts); they are never a crafting base.
 const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
   leveling: {
-    normal: {
+    soft: {
       rareMinItemLevel: 1,
       normalMinItemLevel: 0,
       magicMinItemLevel: 10,
@@ -78,7 +82,7 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
       highlightLinks: true,
       hiddenBases: ['Gold Ring'],
     },
-    'very-strict': {
+    uber: {
       rareMinItemLevel: 30,
       normalMinItemLevel: 75,
       magicMinItemLevel: 85,
@@ -87,7 +91,7 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
     },
   },
   endgame: {
-    normal: {
+    soft: {
       rareMinItemLevel: 80,
       normalMinItemLevel: 68,
       magicMinItemLevel: 75,
@@ -99,7 +103,7 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
       magicMinItemLevel: 80,
       highlightLinks: false,
     },
-    'very-strict': {
+    uber: {
       rareMinItemLevel: 86,
       normalMinItemLevel: 80,
       magicMinItemLevel: 85,
@@ -110,62 +114,74 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
 
 const GEMS: Matrix<Omit<GemsPreset, 'id'>> = {
   leveling: {
-    normal: { minQuality: null },
+    soft: { minQuality: null },
     strict: { minQuality: null },
-    'very-strict': { minQuality: 5 },
+    uber: { minQuality: 5 },
   },
   endgame: {
-    normal: { minQuality: 1 },
+    soft: { minQuality: 1 },
     strict: { minQuality: 5 },
-    'very-strict': { minQuality: 10 },
+    uber: { minQuality: 10 },
   },
 };
 
-// Normal shows every orb; Strict and Very Strict drop the vendor tier.
+// Soft shows every orb and card; Strict and Uber drop the low tiers.
 const CURRENCY: Matrix<Omit<CurrencyPreset, 'id'>> = {
   leveling: {
-    normal: { maxVisibleTier: 3 },
-    strict: { maxVisibleTier: 2 },
-    'very-strict': { maxVisibleTier: 2 },
+    soft: { maxVisibleTier: 3, divinationMaxTier: 3 },
+    strict: { maxVisibleTier: 2, divinationMaxTier: 2 },
+    uber: { maxVisibleTier: 2, divinationMaxTier: 1 },
   },
   endgame: {
-    normal: { maxVisibleTier: 3 },
-    strict: { maxVisibleTier: 2 },
-    'very-strict': { maxVisibleTier: 2 },
+    soft: { maxVisibleTier: 3, divinationMaxTier: 3 },
+    strict: { maxVisibleTier: 2, divinationMaxTier: 2 },
+    uber: { maxVisibleTier: 2, divinationMaxTier: 1 },
   },
 };
 
 const UNIQUES: Matrix<Omit<UniquesPreset, 'id'>> = {
   leveling: {
-    normal: { maxVisibleTier: 3 },
+    soft: { maxVisibleTier: 3 },
     strict: { maxVisibleTier: 3 },
-    'very-strict': { maxVisibleTier: 2 },
+    uber: { maxVisibleTier: 2 },
   },
   endgame: {
-    normal: { maxVisibleTier: 3 },
+    soft: { maxVisibleTier: 3 },
     strict: { maxVisibleTier: 3 },
-    'very-strict': { maxVisibleTier: 2 },
+    uber: { maxVisibleTier: 2 },
   },
 };
 
 const MAPS: Matrix<Omit<MapsPreset, 'id'>> = {
   leveling: {
-    normal: { minTier: null },
-    strict: { minTier: null },
-    'very-strict': { minTier: null },
+    soft: { minTier: null, fragmentMaxTier: 3 },
+    strict: { minTier: null, fragmentMaxTier: 2 },
+    uber: { minTier: null, fragmentMaxTier: 1 },
   },
   endgame: {
-    normal: { minTier: 1 },
-    strict: { minTier: 11 },
-    'very-strict': { minTier: 15 },
+    soft: { minTier: 1, fragmentMaxTier: 3 },
+    strict: { minTier: 11, fragmentMaxTier: 2 },
+    uber: { minTier: 15, fragmentMaxTier: 1 },
   },
 };
 
 const STRICTNESS_LABELS: Record<Strictness, string> = {
-  normal: 'Normal',
+  soft: 'Soft',
   strict: 'Strict',
-  'very-strict': 'Very Strict',
+  uber: 'Uber',
 };
+
+/** Old share links and saved builds used these names before the 0.21 rename. */
+const LEGACY_STRICTNESS: Record<string, Strictness> = {
+  normal: 'soft',
+  'very-strict': 'uber',
+};
+
+export function coerceStrictness(value: string | null | undefined): Strictness {
+  if (value === 'soft' || value === 'strict' || value === 'uber') return value;
+  if (value && value in LEGACY_STRICTNESS) return LEGACY_STRICTNESS[value]!;
+  return 'soft';
+}
 
 function sectionId(
   section: string,
@@ -214,6 +230,6 @@ export function getPreset(phase: Phase, strictness: Strictness): Preset {
   };
 }
 
-export const STRICTNESS_ORDER: Strictness[] = ['normal', 'strict', 'very-strict'];
+export const STRICTNESS_ORDER: Strictness[] = ['soft', 'strict', 'uber'];
 
 export const STRICTNESS_LABELS_PUBLIC = STRICTNESS_LABELS;

@@ -35,7 +35,7 @@ function item(
 function result(
   sample: PreviewItem,
   phase: 'leveling' | 'endgame',
-  strictness: 'normal' | 'strict' | 'very-strict',
+  strictness: 'soft' | 'strict' | 'uber',
 ) {
   const filter = generateFilter({ selection, phase, strictness });
   return evaluateRules(filter.rules, sample);
@@ -54,7 +54,7 @@ describe('hidden bases', () => {
   });
 
   it('hides normal, magic and rare Gold Rings in every leveling preset', () => {
-    for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+    for (const strictness of ['soft', 'strict', 'uber'] as const) {
       for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
         const found = result(item('Gold Ring', rarity), 'leveling', strictness);
         expect(found.shown, `${strictness}/${rarity}`).toBe(false);
@@ -64,18 +64,18 @@ describe('hidden bases', () => {
   });
 
   it('keeps unique Gold Rings such as Andvarius visible', () => {
-    const found = result(item('Gold Ring', 'Unique'), 'leveling', 'normal');
+    const found = result(item('Gold Ring', 'Unique'), 'leveling', 'soft');
     expect(found.shown).toBe(true);
     expect(found.reason).toBe('Uniques');
   });
 
   it('does not hide Gold Ring at endgame', () => {
-    const found = result(item('Gold Ring', 'Rare', 85), 'endgame', 'normal');
+    const found = result(item('Gold Ring', 'Rare', 85), 'endgame', 'soft');
     expect(found.shown).toBe(true);
   });
 
   it('leaves other ring bases visible while leveling', () => {
-    const found = result(item('Amethyst Ring', 'Rare'), 'leveling', 'normal');
+    const found = result(item('Amethyst Ring', 'Rare'), 'leveling', 'soft');
     expect(found.shown).toBe(true);
   });
 });
@@ -116,7 +116,7 @@ function belt(
 function necroResult(
   sample: PreviewItem,
   phase: 'leveling' | 'endgame',
-  strictness: 'normal' | 'strict' | 'very-strict',
+  strictness: 'soft' | 'strict' | 'uber',
 ) {
   const filter = generateFilter({
     selection: NECROMANCER,
@@ -140,9 +140,9 @@ describe('ascendancy excluded bases', () => {
   it('hides rare and magic Cloth Belts for the Necromancer in every preset', () => {
     for (const phase of ['leveling', 'endgame'] as const) {
       for (const strictness of [
-        'normal',
+        'soft',
         'strict',
-        'very-strict',
+        'uber',
       ] as const) {
         for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
           const found = necroResult(belt('Cloth Belt', rarity), phase, strictness);
@@ -154,7 +154,7 @@ describe('ascendancy excluded bases', () => {
   });
 
   it('keeps unique Cloth Belts visible', () => {
-    const found = necroResult(belt('Cloth Belt', 'Unique'), 'endgame', 'normal');
+    const found = necroResult(belt('Cloth Belt', 'Unique'), 'endgame', 'soft');
     expect(found.shown).toBe(true);
   });
 
@@ -162,7 +162,7 @@ describe('ascendancy excluded bases', () => {
     const filter = generateFilter({
       selection: { mode: 'ascendancy', ascendancyId: 'elementalist' },
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
     });
     const found = evaluateRules(filter.rules, belt('Cloth Belt', 'Rare'));
     expect(found.shown).toBe(true);
@@ -225,7 +225,7 @@ describe('family excluded bases', () => {
       const filter = generateFilter({
         selection,
         phase: 'leveling',
-        strictness: 'normal',
+        strictness: 'soft',
       });
       const found = evaluateRules(filter.rules, parsed!);
       expect(found.shown).toBe(false);
@@ -238,7 +238,7 @@ describe('family excluded bases', () => {
       const filter = generateFilter({
         selection,
         phase: 'leveling',
-        strictness: 'normal',
+        strictness: 'soft',
       });
       const found = evaluateRules(filter.rules, ring('Iron Ring', 'Rare'));
       expect(found.shown).toBe(false);
@@ -250,7 +250,7 @@ describe('family excluded bases', () => {
     const filter = generateFilter({
       selection: CASTER_SELECTIONS[0]!,
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
     });
     const found = evaluateRules(filter.rules, ring('Iron Ring', 'Unique'));
     expect(found.shown).toBe(true);
@@ -260,7 +260,7 @@ describe('family excluded bases', () => {
     const filter = generateFilter({
       selection: { mode: 'family', familyId: 'bow' },
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
     });
     const found = evaluateRules(filter.rules, ring('Iron Ring', 'Rare'));
     expect(found.shown).toBe(true);
@@ -269,9 +269,9 @@ describe('family excluded bases', () => {
   it('hides Cloth Belts for the minion family like the Necromancer', () => {
     for (const phase of ['leveling', 'endgame'] as const) {
       for (const strictness of [
-        'normal',
+        'soft',
         'strict',
-        'very-strict',
+        'uber',
       ] as const) {
         const filter = generateFilter({
           selection: { mode: 'family', familyId: 'minion' },
@@ -289,7 +289,7 @@ describe('family excluded bases', () => {
     const filter = generateFilter({
       selection: { mode: 'family', familyId: 'minion' },
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
     });
     const found = evaluateRules(filter.rules, belt('Cloth Belt', 'Unique'));
     expect(found.shown).toBe(true);

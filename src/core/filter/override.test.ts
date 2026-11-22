@@ -34,7 +34,7 @@ describe('custom rules', () => {
     const compiled = compileFilter({
       selection,
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
       customRules,
     });
 
@@ -49,7 +49,7 @@ describe('custom rules', () => {
     const filter = generateFilter({
       selection,
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
       customRules,
     });
 
@@ -83,7 +83,7 @@ describe('from scratch', () => {
     const filter = generateFilter({
       selection: scratch,
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
       customRules: [
         {
           id: 'custom-0',
@@ -107,7 +107,7 @@ describe('from scratch', () => {
     const filter = generateFilter({
       selection: { mode: 'scratch', scratchStart: 'show' },
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
     });
     expect(filter.text).toContain('# From scratch - show everything');
   });

@@ -25,7 +25,7 @@ describe('validateFilter', () => {
     const filter = generateFilter({
       archetypeId: 'necro-minions',
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
     });
     expect(filter.warnings).toEqual([]);
     expect(validateFilter(filter.text)).toEqual([]);

@@ -160,9 +160,9 @@ describe('preset coverage audit', () => {
     for (const { label, selection } of BUILD_SELECTIONS) {
       for (const phase of ['leveling', 'endgame'] as const) {
         for (const strictness of [
-          'normal',
+          'soft',
           'strict',
-          'very-strict',
+          'uber',
         ] as const) {
           const filter = generateFilter({ selection, phase, strictness });
           const { allowed, unused, unrestricted } = coverage(filter.archetype);

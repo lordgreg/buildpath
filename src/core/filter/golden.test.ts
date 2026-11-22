@@ -6,7 +6,7 @@ const CASES: FilterConfig[] = [
   {
     archetypeId: 'necro-minions',
     phase: 'leveling',
-    strictness: 'normal',
+    strictness: 'soft',
   },
   {
     archetypeId: 'deadeye-lightning-arrow',
@@ -16,7 +16,7 @@ const CASES: FilterConfig[] = [
   {
     archetypeId: 'jugg-boneshatter',
     phase: 'endgame',
-    strictness: 'very-strict',
+    strictness: 'uber',
   },
 ];
 

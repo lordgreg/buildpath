@@ -28,7 +28,7 @@ describe('economy snapshot', () => {
     const filter = generateFilter({
       selection: { mode: 'family', familyId: 'minion' },
       phase: 'endgame',
-      strictness: 'normal',
+      strictness: 'soft',
     });
     expect(filter.text).toContain('# Uniques - high-value bases');
     expect(filter.text).toContain('Rarity Unique');

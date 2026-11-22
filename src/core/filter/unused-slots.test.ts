@@ -161,7 +161,7 @@ describe('unused-slot rares', () => {
     expect(item?.baseType).toBe('Shadow Sceptre');
 
     for (const phase of ['leveling', 'endgame'] as const) {
-      for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+      for (const strictness of ['soft', 'strict', 'uber'] as const) {
         const filter = generateFilter({ selection, phase, strictness });
         const result = evaluateRules(filter.rules, item!);
         expect(
@@ -178,7 +178,7 @@ describe('unused-slot rares', () => {
     expect(item?.baseType).toBe('Baselard');
 
     for (const phase of ['leveling', 'endgame'] as const) {
-      for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+      for (const strictness of ['soft', 'strict', 'uber'] as const) {
         const filter = generateFilter({ selection, phase, strictness });
         const result = evaluateRules(filter.rules, item!);
         expect(
@@ -197,7 +197,7 @@ describe('unused-slot rares', () => {
       const [item] = parseItemText(text);
       expect(item, label).toBeTruthy();
       for (const phase of ['leveling', 'endgame'] as const) {
-        for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+        for (const strictness of ['soft', 'strict', 'uber'] as const) {
           const filter = generateFilter({ selection, phase, strictness });
           const result = evaluateRules(filter.rules, item!);
           expect(
@@ -215,7 +215,7 @@ describe('unused-slot rares', () => {
     expect(item?.linkedSockets).toBe(4);
 
     for (const phase of ['leveling', 'endgame'] as const) {
-      for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+      for (const strictness of ['soft', 'strict', 'uber'] as const) {
         const filter = generateFilter({ selection, phase, strictness });
         const result = evaluateRules(filter.rules, item!);
         expect(
@@ -232,7 +232,7 @@ describe('unused-slot rares', () => {
     expect(item?.baseType).toBe('Burnished Foil');
 
     for (const phase of ['leveling', 'endgame'] as const) {
-      for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+      for (const strictness of ['soft', 'strict', 'uber'] as const) {
         const filter = generateFilter({ selection, phase, strictness });
         const result = evaluateRules(filter.rules, item!);
         expect(
@@ -248,7 +248,7 @@ describe('unused-slot rares', () => {
     const filter = generateFilter({
       selection,
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
     });
     expect(evaluateRules(filter.rules, item!).shown).toBe(true);
   });
@@ -258,7 +258,7 @@ describe('unused-slot rares', () => {
     const filter = generateFilter({
       selection,
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
     });
     expect(evaluateRules(filter.rules, item!).shown).toBe(true);
   });

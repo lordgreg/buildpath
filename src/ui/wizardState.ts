@@ -1,5 +1,9 @@
 import { DEFAULT_SECTIONS, type Sections } from '../core/filter/generate.ts';
-import type { Phase, Strictness } from '../core/filter/presets.ts';
+import {
+  coerceStrictness,
+  type Phase,
+  type Strictness,
+} from '../core/filter/presets.ts';
 import { isThemeId, type ThemeId } from '../core/filter/themes.ts';
 import { getAscendancy } from '../meta/ascendancies.ts';
 import { getSkill } from '../meta/index.ts';
@@ -38,13 +42,12 @@ export const DEFAULT_STATE: WizardState = {
   skillId: DEFAULT_SKILL,
   scratchStart: 'hide',
   phase: 'leveling',
-  strictness: 'normal',
+  strictness: 'soft',
   theme: 'classic',
   sections: DEFAULT_SECTIONS,
 };
 
 const PHASES: Phase[] = ['leveling', 'endgame'];
-const STRICTNESS: Strictness[] = ['normal', 'strict', 'very-strict'];
 
 function fill(selection: BuildSelection): Pick<
   WizardState,
@@ -82,10 +85,7 @@ export function coerceWizardState(input: Partial<WizardState>): WizardState {
     scratchStart: input.scratchStart,
   });
   const phase = input.phase === 'endgame' ? 'endgame' : 'leveling';
-  const strictness =
-    input.strictness && STRICTNESS.includes(input.strictness)
-      ? input.strictness
-      : 'normal';
+  const strictness = coerceStrictness(input.strictness);
   const theme = isThemeId(input.theme) ? input.theme : 'classic';
   const name =
     typeof input.name === 'string' ? input.name.trim().slice(0, 80) : '';
@@ -106,11 +106,7 @@ export function parseWizardHash(hash: string): WizardState {
   const params = new URLSearchParams(hash.replace(/^#/, ''));
 
   const phase = params.get('phase') as Phase | null;
-  const strictness = params.get('strictness') as Strictness | null;
-  const chosenStrictness =
-    strictness && STRICTNESS.includes(strictness)
-      ? strictness
-      : DEFAULT_STATE.strictness;
+  const chosenStrictness = coerceStrictness(params.get('strictness'));
 
   const themeParam = params.get('theme');
   const theme = isThemeId(themeParam) ? themeParam : DEFAULT_STATE.theme;

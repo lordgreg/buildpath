@@ -18,14 +18,14 @@ import {
 import { resolveBuild } from './resolve.ts';
 
 const PHASES: Phase[] = ['leveling', 'endgame'];
-const STRICTNESS: Strictness[] = ['normal', 'strict', 'very-strict'];
+const STRICTNESS: Strictness[] = ['soft', 'strict', 'uber'];
 const knownNames = new Set(knownBaseTypes.names);
 const FAMILY_IDS = new Set(FAMILIES.map((family) => family.id));
 
 describe('generated presets', () => {
   it('lists five families and nineteen ascendancies', () => {
     expect(FAMILIES).toHaveLength(5);
-    expect(ASCENDANCIES).toHaveLength(19);
+    expect(ASCENDANCIES).toHaveLength(21);
     expect(PRESET_VERSION).toMatch(/^[0-9a-f]{12}$/);
   });
 

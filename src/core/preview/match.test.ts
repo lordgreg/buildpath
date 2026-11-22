@@ -7,7 +7,7 @@ import { evaluateRules, ruleMatches } from './match.ts';
 import { REPORTED_LEAKS, SAMPLE_ITEMS } from './samples.ts';
 
 const PHASES: Phase[] = ['leveling', 'endgame'];
-const STRICTNESS: Strictness[] = ['normal', 'strict', 'very-strict'];
+const STRICTNESS: Strictness[] = ['soft', 'strict', 'uber'];
 
 function rulesFor(
   archetypeId: string,
@@ -36,7 +36,7 @@ describe('reported leaks', () => {
   it('hides a normal glove below the white floor at every strict tier', () => {
     for (const archetype of archetypes) {
       for (const phase of PHASES) {
-        for (const strictness of ['strict', 'very-strict'] as const) {
+        for (const strictness of ['strict', 'uber'] as const) {
           const result = evaluateRules(
             rulesFor(archetype.id, phase, strictness),
             item('report-normal-gloves'),
@@ -52,7 +52,7 @@ describe('reported leaks', () => {
 
   it('shows a normal glove on a matching base at the loosest leveling tier', () => {
     const result = evaluateRules(
-      rulesFor('deadeye-lightning-arrow', 'leveling', 'normal'),
+      rulesFor('deadeye-lightning-arrow', 'leveling', 'soft'),
       item('report-normal-gloves'),
     );
     expect(result.shown, result.reason).toBe(true);
@@ -84,7 +84,7 @@ describe('reported leaks', () => {
   });
 
   it('shows low-level magic armour for a matching build in normal leveling', () => {
-    const rules = rulesFor('pathfinder-toxic-rain', 'leveling', 'normal');
+    const rules = rulesFor('pathfinder-toxic-rain', 'leveling', 'soft');
     for (const id of ['report-magic-vest', 'report-magic-mitts']) {
       const result = evaluateRules(rules, item(id));
       expect(result.shown, `${id}: ${result.reason}`).toBe(true);
@@ -99,7 +99,7 @@ describe('preview matcher', () => {
   });
 
   it('shows a four-link normal item in endgame normal but hides it in strict', () => {
-    const normal = rulesFor('necro-minions', 'endgame', 'normal');
+    const normal = rulesFor('necro-minions', 'endgame', 'soft');
     expect(evaluateRules(normal, item('four-link')).shown).toBe(true);
 
     const strict = rulesFor('necro-minions', 'endgame', 'strict');
@@ -107,17 +107,17 @@ describe('preview matcher', () => {
   });
 
   it('always shows six-socket items', () => {
-    const rules = rulesFor('jugg-boneshatter', 'endgame', 'very-strict');
+    const rules = rulesFor('jugg-boneshatter', 'endgame', 'uber');
     expect(evaluateRules(rules, item('six-socket')).shown).toBe(true);
   });
 
   it('shows a high-level rare ring in endgame very strict', () => {
-    const rules = rulesFor('necro-minions', 'endgame', 'very-strict');
+    const rules = rulesFor('necro-minions', 'endgame', 'uber');
     expect(evaluateRules(rules, item('rare-ring')).shown).toBe(true);
   });
 
   it('shows currency and hides it below the cutoff', () => {
-    const endgame = rulesFor('necro-minions', 'endgame', 'very-strict');
+    const endgame = rulesFor('necro-minions', 'endgame', 'uber');
     expect(evaluateRules(endgame, item('currency-divine')).shown).toBe(true);
     expect(evaluateRules(endgame, item('currency-wisdom')).shown).toBe(false);
   });

@@ -22,7 +22,7 @@ const currency = (name: string): PreviewItem => ({
   itemLevel: 1,
 });
 
-const currencyRule = (name: string, phase: 'leveling' | 'endgame', strictness: 'normal' | 'very-strict') => {
+const currencyRule = (name: string, phase: 'leveling' | 'endgame', strictness: 'soft' | 'uber') => {
   const filter = generateFilter({
     selection: { mode: 'family', familyId: 'minion' },
     phase,
@@ -43,7 +43,7 @@ describe('quest items', () => {
       const filter = generateFilter({
         selection,
         phase: 'leveling',
-        strictness: 'very-strict',
+        strictness: 'uber',
       });
       const result = evaluateRules(filter.rules, quest!);
       expect(result.shown).toBe(true);
@@ -64,25 +64,25 @@ describe('named currency alerts', () => {
     };
 
     for (const [name, sound] of Object.entries(expected)) {
-      const result = currencyRule(name, 'leveling', 'normal');
+      const result = currencyRule(name, 'leveling', 'soft');
       expect(result.shown, name).toBe(true);
       expect(result.rule?.comment, name).toBe(`${name} - alert`);
       expect(result.rule?.style?.alertSound, name).toBe(sound);
     }
   });
 
-  it('keeps tier-2 orbs and hides tier-3 at Very Strict', () => {
-    expect(currencyRule('Divine Orb', 'endgame', 'very-strict').shown).toBe(
+  it('keeps tier-2 orbs and hides tier-3 at Uber', () => {
+    expect(currencyRule('Divine Orb', 'endgame', 'uber').shown).toBe(
       true,
     );
-    expect(currencyRule('Mirror of Kalandra', 'endgame', 'very-strict').shown).toBe(
+    expect(currencyRule('Mirror of Kalandra', 'endgame', 'uber').shown).toBe(
       true,
     );
-    expect(currencyRule('Chaos Orb', 'endgame', 'very-strict').shown).toBe(
+    expect(currencyRule('Chaos Orb', 'endgame', 'uber').shown).toBe(
       true,
     );
     expect(
-      currencyRule('Scroll of Wisdom', 'endgame', 'very-strict').shown,
+      currencyRule('Scroll of Wisdom', 'endgame', 'uber').shown,
     ).toBe(false);
   });
 });

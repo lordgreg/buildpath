@@ -20,6 +20,7 @@ import {
 } from './index.ts';
 import { resolveBuild } from './resolve.ts';
 import catalog from './skill-names.json';
+import skillNamesExtra from './skill-names-extra.json';
 import type { BuildSelection, FamilyId } from './types.ts';
 
 const CLASSES = new Set([
@@ -32,7 +33,10 @@ const CLASSES = new Set([
   'Shadow',
 ]);
 const FAMILY_IDS = new Set<FamilyId>(FAMILIES.map((family) => family.id));
-const SKILL_NAMES = new Set(catalog.skills.map((skill) => skill.name));
+const SKILL_NAMES = new Set([
+  ...catalog.skills.map((skill) => skill.name),
+  ...skillNamesExtra,
+]);
 const allTags = new Set(baseTypes.flatMap((base) => base.tags));
 const knownNames = new Set(knownBaseTypes.names);
 
@@ -276,7 +280,7 @@ describe('resolveBuild', () => {
 
 describe('selection filters', () => {
   const phases: Phase[] = ['leveling', 'endgame'];
-  const strictness: Strictness[] = ['normal', 'strict', 'very-strict'];
+  const strictness: Strictness[] = ['soft', 'strict', 'uber'];
 
   it('generates valid filters for every skill', () => {
     const snapshot = getSnapshot(LEAGUE_INDEX.current);
@@ -303,7 +307,7 @@ describe('selection filters', () => {
           expect(validateFilter(filter.text), label).toEqual([]);
           expect(filter.warnings, label).toEqual([]);
           expect(filter.fileName, label).toMatch(
-            /^filterpath-[a-z0-9-]+-(leveling|endgame)-(normal|strict|very-strict)\.filter$/,
+            /^filterpath-[a-z0-9-]+-(leveling|endgame)-(soft|strict|uber)\.filter$/,
           );
           expect(filter.text, label).not.toMatch(/[^\x09\x0a\x20-\x7e]/);
 
@@ -325,10 +329,10 @@ describe('selection filters', () => {
     const filter = generateFilter({
       archetypeId: 'necro-minions',
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
     });
     expect(filter.fileName).toBe(
-      'filterpath-necro-minions-leveling-normal.filter',
+      'filterpath-necro-minions-leveling-soft.filter',
     );
   });
 });

@@ -155,6 +155,42 @@
       "jewelTag": "intjewel"
     },
     {
+      "id": "luminary",
+      "name": "Luminary",
+      "class": "Scion",
+      "defaultFamily": "caster",
+      "attributes": [
+        "str",
+        "int"
+      ],
+      "defenceTags": [
+        "str_int_armour",
+        "int_armour"
+      ],
+      "shieldTags": [
+        "str_int_shield"
+      ],
+      "jewelTag": "intjewel"
+    },
+    {
+      "id": "reliquarian",
+      "name": "Reliquarian",
+      "class": "Scion",
+      "defaultFamily": "caster",
+      "attributes": [
+        "str",
+        "int"
+      ],
+      "defenceTags": [
+        "str_int_armour",
+        "str_armour"
+      ],
+      "shieldTags": [
+        "str_int_shield"
+      ],
+      "jewelTag": "intjewel"
+    },
+    {
       "id": "juggernaut",
       "name": "Juggernaut",
       "class": "Marauder",
@@ -240,8 +276,8 @@
       "jewelTag": "dexjewel"
     },
     {
-      "id": "raider",
-      "name": "Raider",
+      "id": "warden",
+      "name": "Warden",
       "class": "Ranger",
       "defaultFamily": "bow",
       "attributes": [
@@ -741,14 +777,14 @@
             "topAscendancies": [
               "deadeye",
               "pathfinder",
-              "raider"
+              "warden"
             ],
             "playShare": 4,
             "leveling": true,
             "ascendancyShares": {
               "deadeye": 55,
               "pathfinder": 30,
-              "raider": 15
+              "warden": 15
             }
           },
           {
@@ -762,7 +798,7 @@
             ],
             "topAscendancies": [
               "trickster",
-              "raider",
+              "warden",
               "deadeye"
             ],
             "playShare": 3,
@@ -774,7 +810,7 @@
             },
             "ascendancyShares": {
               "trickster": 55,
-              "raider": 30,
+              "warden": 30,
               "deadeye": 15
             }
           },
@@ -855,14 +891,14 @@
             ],
             "topAscendancies": [
               "deadeye",
-              "raider",
+              "warden",
               "pathfinder"
             ],
             "playShare": 2,
             "leveling": true,
             "ascendancyShares": {
               "deadeye": 55,
-              "raider": 30,
+              "warden": 30,
               "pathfinder": 15
             }
           },
@@ -877,7 +913,7 @@
             ],
             "topAscendancies": [
               "champion",
-              "raider",
+              "warden",
               "slayer"
             ],
             "playShare": 2,
@@ -889,7 +925,7 @@
             },
             "ascendancyShares": {
               "champion": 55,
-              "raider": 30,
+              "warden": 30,
               "slayer": 15
             }
           },
@@ -1016,6 +1052,258 @@
               "necromancer": 55,
               "guardian": 30,
               "ascendant": 15
+            }
+          },
+          {
+            "id": "animate-guardian",
+            "name": "Animate Guardian",
+            "family": "minion",
+            "classes": [
+              "Witch",
+              "Templar",
+              "Scion"
+            ],
+            "topAscendancies": [
+              "necromancer",
+              "guardian",
+              "ascendant"
+            ],
+            "playShare": 2,
+            "leveling": true,
+            "ascendancyShares": {
+              "necromancer": 55,
+              "guardian": 30,
+              "ascendant": 15
+            }
+          },
+          {
+            "id": "animate-weapon-of-ranged-arms",
+            "name": "Animate Weapon of Ranged Arms",
+            "family": "minion",
+            "classes": [
+              "Witch",
+              "Templar",
+              "Scion"
+            ],
+            "topAscendancies": [
+              "necromancer",
+              "guardian",
+              "ascendant"
+            ],
+            "playShare": 1,
+            "leveling": true,
+            "ascendancyShares": {
+              "necromancer": 55,
+              "guardian": 30,
+              "ascendant": 15
+            }
+          },
+          {
+            "id": "cyclone-of-tumult",
+            "name": "Cyclone of Tumult",
+            "family": "melee",
+            "classes": [
+              "Duelist",
+              "Marauder",
+              "Scion"
+            ],
+            "topAscendancies": [
+              "slayer",
+              "champion",
+              "berserker"
+            ],
+            "playShare": 2,
+            "leveling": true,
+            "weapon": {
+              "itemClasses": [
+                "Two Hand Sword"
+              ]
+            },
+            "offhand": null,
+            "ascendancyShares": {
+              "slayer": 55,
+              "champion": 30,
+              "berserker": 15
+            }
+          },
+          {
+            "id": "static-strike",
+            "name": "Static Strike",
+            "family": "melee",
+            "classes": [
+              "Duelist",
+              "Marauder",
+              "Templar"
+            ],
+            "topAscendancies": [
+              "champion",
+              "slayer",
+              "juggernaut"
+            ],
+            "playShare": 2,
+            "leveling": true,
+            "weapon": {
+              "itemClasses": [
+                "One Hand Sword"
+              ]
+            },
+            "ascendancyShares": {
+              "champion": 55,
+              "slayer": 30,
+              "juggernaut": 15
+            }
+          },
+          {
+            "id": "static-strike-of-gathering-lightning",
+            "name": "Static Strike of Gathering Lightning",
+            "family": "melee",
+            "classes": [
+              "Duelist",
+              "Marauder",
+              "Templar"
+            ],
+            "topAscendancies": [
+              "champion",
+              "slayer",
+              "juggernaut"
+            ],
+            "playShare": 1,
+            "leveling": true,
+            "weapon": {
+              "itemClasses": [
+                "One Hand Sword"
+              ]
+            },
+            "ascendancyShares": {
+              "champion": 55,
+              "slayer": 30,
+              "juggernaut": 15
+            }
+          },
+          {
+            "id": "void-shockwave",
+            "name": "Void Shockwave",
+            "family": "melee",
+            "classes": [
+              "Marauder",
+              "Duelist",
+              "Scion"
+            ],
+            "topAscendancies": [
+              "juggernaut",
+              "berserker",
+              "chieftain"
+            ],
+            "playShare": 2,
+            "leveling": true,
+            "weapon": {
+              "itemClasses": [
+                "Two Hand Mace"
+              ]
+            },
+            "offhand": null,
+            "ascendancyShares": {
+              "juggernaut": 55,
+              "berserker": 30,
+              "chieftain": 15
+            }
+          },
+          {
+            "id": "flicker-strike",
+            "name": "Flicker Strike",
+            "family": "melee",
+            "classes": [
+              "Duelist",
+              "Shadow",
+              "Ranger"
+            ],
+            "topAscendancies": [
+              "slayer",
+              "trickster",
+              "deadeye"
+            ],
+            "playShare": 1,
+            "leveling": true,
+            "weapon": {
+              "itemClasses": [
+                "One Hand Sword"
+              ]
+            },
+            "ascendancyShares": {
+              "slayer": 55,
+              "trickster": 30,
+              "deadeye": 15
+            }
+          },
+          {
+            "id": "scorching-ray-of-immolation",
+            "name": "Scorching Ray of Immolation",
+            "family": "caster",
+            "classes": [
+              "Templar",
+              "Witch",
+              "Scion"
+            ],
+            "topAscendancies": [
+              "inquisitor",
+              "elementalist",
+              "hierophant"
+            ],
+            "playShare": 2,
+            "leveling": true,
+            "weapon": {
+              "itemClasses": [
+                "Sceptre"
+              ]
+            },
+            "ascendancyShares": {
+              "inquisitor": 55,
+              "elementalist": 30,
+              "hierophant": 15
+            }
+          },
+          {
+            "id": "storm-burst-of-repulsion",
+            "name": "Storm Burst of Repulsion",
+            "family": "caster",
+            "classes": [
+              "Witch",
+              "Templar",
+              "Shadow"
+            ],
+            "topAscendancies": [
+              "elementalist",
+              "occultist",
+              "inquisitor"
+            ],
+            "playShare": 2,
+            "leveling": true,
+            "ascendancyShares": {
+              "elementalist": 55,
+              "occultist": 30,
+              "inquisitor": 15
+            }
+          },
+          {
+            "id": "lightning-tendrils-of-eccentricity",
+            "name": "Lightning Tendrils of Eccentricity",
+            "family": "caster",
+            "classes": [
+              "Witch",
+              "Templar",
+              "Shadow"
+            ],
+            "topAscendancies": [
+              "elementalist",
+              "inquisitor",
+              "hierophant"
+            ],
+            "playShare": 1,
+            "leveling": true,
+            "ascendancyShares": {
+              "elementalist": 55,
+              "inquisitor": 30,
+              "hierophant": 15
             }
           }
         ]
@@ -1240,14 +1528,14 @@
             "topAscendancies": [
               "deadeye",
               "pathfinder",
-              "raider"
+              "warden"
             ],
             "playShare": 4,
             "leveling": true,
             "ascendancyShares": {
               "deadeye": 55,
               "pathfinder": 30,
-              "raider": 15
+              "warden": 15
             }
           },
           {
@@ -1261,7 +1549,7 @@
             ],
             "topAscendancies": [
               "trickster",
-              "raider",
+              "warden",
               "deadeye"
             ],
             "playShare": 3,
@@ -1273,7 +1561,7 @@
             },
             "ascendancyShares": {
               "trickster": 55,
-              "raider": 30,
+              "warden": 30,
               "deadeye": 15
             }
           },
@@ -1354,14 +1642,14 @@
             ],
             "topAscendancies": [
               "deadeye",
-              "raider",
+              "warden",
               "pathfinder"
             ],
             "playShare": 2,
             "leveling": true,
             "ascendancyShares": {
               "deadeye": 55,
-              "raider": 30,
+              "warden": 30,
               "pathfinder": 15
             }
           },
@@ -1376,7 +1664,7 @@
             ],
             "topAscendancies": [
               "champion",
-              "raider",
+              "warden",
               "slayer"
             ],
             "playShare": 2,
@@ -1388,7 +1676,7 @@
             },
             "ascendancyShares": {
               "champion": 55,
-              "raider": 30,
+              "warden": 30,
               "slayer": 15
             }
           },
@@ -1521,5 +1809,5 @@
       }
     }
   },
-  "version": "30f1aaff2ac6"
+  "version": "b1aeae04f922"
 }

@@ -6,7 +6,7 @@ import type { Rule } from '../filter/types.ts';
 
 const rulesFor = (
   phase: 'leveling' | 'endgame',
-  strictness: 'normal' | 'strict' | 'very-strict',
+  strictness: 'soft' | 'strict' | 'uber',
 ) =>
   compileFilter({
     selection: { mode: 'family', familyId: 'minion' },
@@ -23,7 +23,7 @@ const template = (id: string) => {
 const covered = (
   id: string,
   phase: 'leveling' | 'endgame',
-  strictness: 'normal' | 'strict' | 'very-strict',
+  strictness: 'soft' | 'strict' | 'uber',
 ) => templateIsCovered(template(id), rulesFor(phase, strictness));
 
 describe('template coverage', () => {
@@ -38,42 +38,42 @@ describe('template coverage', () => {
     };
     expect(ruleCovers(showSockets, showLinks)).toBe(true);
     expect(ruleCovers(showLinks, showSockets)).toBe(false);
-    expect(covered('show-six-links', 'leveling', 'very-strict')).toBe(true);
+    expect(covered('show-six-links', 'leveling', 'uber')).toBe(true);
   });
 
   it('marks endgame normal templates already in the preset', () => {
-    expect(covered('show-uniques', 'endgame', 'normal')).toBe(true);
-    expect(covered('show-six-links', 'endgame', 'normal')).toBe(true);
-    expect(covered('show-t15-maps', 'endgame', 'normal')).toBe(true);
-    expect(covered('show-quality-gems', 'endgame', 'normal')).toBe(true);
-    expect(covered('show-top-currency', 'endgame', 'normal')).toBe(true);
-    expect(covered('show-top-cards', 'endgame', 'normal')).toBe(true);
+    expect(covered('show-uniques', 'endgame', 'soft')).toBe(true);
+    expect(covered('show-six-links', 'endgame', 'soft')).toBe(true);
+    expect(covered('show-t15-maps', 'endgame', 'soft')).toBe(true);
+    expect(covered('show-quality-gems', 'endgame', 'soft')).toBe(true);
+    expect(covered('show-top-currency', 'endgame', 'soft')).toBe(true);
+    expect(covered('show-top-cards', 'endgame', 'soft')).toBe(true);
   });
 
   it('follows strictness cutoffs', () => {
     expect(covered('show-quality-gems', 'endgame', 'strict')).toBe(false);
-    expect(covered('show-quality-gems', 'endgame', 'very-strict')).toBe(false);
-    // Very Strict now keeps tier-2 currency, so tiers 1 and 2 are covered.
-    expect(covered('show-top-currency', 'endgame', 'very-strict')).toBe(true);
-    expect(covered('show-t15-maps', 'endgame', 'very-strict')).toBe(true);
+    expect(covered('show-quality-gems', 'endgame', 'uber')).toBe(false);
+    // Uber now keeps tier-2 currency, so tiers 1 and 2 are covered.
+    expect(covered('show-top-currency', 'endgame', 'uber')).toBe(true);
+    expect(covered('show-t15-maps', 'endgame', 'uber')).toBe(true);
   });
 
   it('does not claim leveling map coverage', () => {
-    expect(covered('show-t15-maps', 'leveling', 'normal')).toBe(false);
-    expect(covered('show-quality-gems', 'leveling', 'normal')).toBe(true);
-    expect(covered('show-top-currency', 'leveling', 'normal')).toBe(true);
+    expect(covered('show-t15-maps', 'leveling', 'soft')).toBe(false);
+    expect(covered('show-quality-gems', 'leveling', 'soft')).toBe(true);
+    expect(covered('show-top-currency', 'leveling', 'soft')).toBe(true);
   });
 
   it('leaves broad templates and Hide templates uncovered', () => {
-    expect(covered('show-rare-80', 'endgame', 'normal')).toBe(false);
-    expect(covered('hide-normal-magic-gear', 'endgame', 'normal')).toBe(false);
+    expect(covered('show-rare-80', 'endgame', 'soft')).toBe(false);
+    expect(covered('hide-normal-magic-gear', 'endgame', 'soft')).toBe(false);
   });
 
   it('marks nothing covered for From Scratch', () => {
     const scratch = compileFilter({
       selection: { mode: 'scratch', scratchStart: 'hide' },
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
     }).rules;
     for (const entry of TEMPLATES) {
       expect(templateIsCovered(entry, scratch), entry.id).toBe(false);

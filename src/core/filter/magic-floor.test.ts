@@ -26,7 +26,7 @@ function item(
 function shownAt(
   sample: PreviewItem,
   phase: 'leveling' | 'endgame',
-  strictness: 'normal' | 'strict' | 'very-strict',
+  strictness: 'soft' | 'strict' | 'uber',
 ): boolean {
   const filter = generateFilter({ selection, phase, strictness });
   return evaluateRules(filter.rules, sample).shown;
@@ -35,12 +35,12 @@ function shownAt(
 describe('leveling strict magic floor', () => {
   it('hides the reported magic ring at leveling strict', () => {
     const ring = item('Topaz Ring', 'Rings', 43);
-    expect(shownAt(ring, 'leveling', 'normal')).toBe(true);
+    expect(shownAt(ring, 'leveling', 'soft')).toBe(true);
     expect(shownAt(ring, 'leveling', 'strict')).toBe(false);
-    expect(shownAt(ring, 'leveling', 'very-strict')).toBe(false);
-    expect(shownAt(ring, 'endgame', 'normal')).toBe(false);
+    expect(shownAt(ring, 'leveling', 'uber')).toBe(false);
+    expect(shownAt(ring, 'endgame', 'soft')).toBe(false);
     expect(shownAt(ring, 'endgame', 'strict')).toBe(false);
-    expect(shownAt(ring, 'endgame', 'very-strict')).toBe(false);
+    expect(shownAt(ring, 'endgame', 'uber')).toBe(false);
   });
 
   it('shows an allowed base at ilvl 80+ only', () => {

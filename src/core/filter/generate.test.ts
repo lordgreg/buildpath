@@ -10,7 +10,7 @@ import type { Phase, Strictness } from './presets.ts';
 import { validateFilter } from './validate.ts';
 
 const PHASES: Phase[] = ['leveling', 'endgame'];
-const STRICTNESS: Strictness[] = ['normal', 'strict', 'very-strict'];
+const STRICTNESS: Strictness[] = ['soft', 'strict', 'uber'];
 
 function block(text: string, comment: string): string {
   const start = text.indexOf(`# ${comment}`);
@@ -39,7 +39,7 @@ describe('generateFilter', () => {
       generateFilter({
         archetypeId: 'nope',
         phase: 'leveling',
-        strictness: 'normal',
+        strictness: 'soft',
       }),
     ).toThrow(/Unknown archetype/);
   });
@@ -62,7 +62,7 @@ describe('generateFilter', () => {
           expect(filter.text, label).toContain('Show');
           expect(filter.text, label).toContain(archetype.name);
           expect(filter.fileName, label).toMatch(
-            /^filterpath-[a-z0-9-]+-(leveling|endgame)-(normal|strict|very-strict)\.filter$/,
+            /^filterpath-[a-z0-9-]+-(leveling|endgame)-(soft|strict|uber)\.filter$/,
           );
           // The game client reads filters as plain text; keep it ASCII.
           expect(filter.text, label).not.toMatch(/[^\x09\x0a\x20-\x7e]/);
@@ -75,7 +75,7 @@ describe('generateFilter', () => {
     const filter = generateFilter({
       archetypeId: 'necro-minions',
       phase: 'endgame',
-      strictness: 'very-strict',
+      strictness: 'uber',
     });
 
     expect(block(filter.text, 'weapon - rare')).toContain('ItemLevel >= 86');
@@ -88,14 +88,16 @@ describe('generateFilter', () => {
       phase: 'endgame',
       strictness: 'strict',
     });
-    expect(block(filter.text, 'Maps - tier 11+')).toContain('MapTier >= 11');
+    expect(block(filter.text, 'Maps - tier 11-13')).toContain('MapTier >= 11');
+    expect(block(filter.text, 'Maps - tier 14')).toContain('MapTier >= 14');
+    expect(block(filter.text, 'Maps - tier 15+')).toContain('MapTier >= 15');
   });
 
   it('hides low currency in strict endgame presets', () => {
     const filter = generateFilter({
       archetypeId: 'jugg-boneshatter',
       phase: 'endgame',
-      strictness: 'very-strict',
+      strictness: 'uber',
     });
     expect(filter.text).toContain('# Currency - below tier cutoff');
     expect(filter.text).toContain('"Scroll of Wisdom"');
@@ -105,7 +107,7 @@ describe('generateFilter', () => {
     const config: FilterConfig = {
       archetypeId: 'necro-minions',
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
       sections: { ...DEFAULT_SECTIONS, gear: false, currency: false },
     };
     const filter = generateFilter(config);
@@ -128,14 +130,14 @@ describe('generateFilter', () => {
     const filter = generateFilter({
       archetypeId: 'necro-minions',
       phase: 'leveling',
-      strictness: 'normal',
+      strictness: 'soft',
       version: '9.9.9',
     });
 
     expect(filter.text).toContain('# FilterPath 9.9.9 - filter format 1');
     expect(filter.text).toMatch(/^# Presets: [a-f0-9]+$/m);
     expect(filter.fileName).toBe(
-      'filterpath-necro-minions-leveling-normal.filter',
+      'filterpath-necro-minions-leveling-soft.filter',
     );
   });
 

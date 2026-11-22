@@ -30,7 +30,7 @@ function item(
 function shown(
   sample: PreviewItem,
   phase: 'leveling' | 'endgame',
-  strictness: 'normal' | 'strict' | 'very-strict',
+  strictness: 'soft' | 'strict' | 'uber',
 ): boolean {
   const filter = generateFilter({ selection, phase, strictness });
   return evaluateRules(filter.rules, sample).shown;
@@ -43,10 +43,10 @@ const normalFlask = item('Divine Life Flask', 'Life Flasks', 'Normal');
 describe('magic flasks stay visible when magic gear is hidden', () => {
   it('shows a used magic flask at endgame and leveling very strict', () => {
     for (const [phase, strictness] of [
-      ['endgame', 'normal'],
+      ['endgame', 'soft'],
       ['endgame', 'strict'],
-      ['endgame', 'very-strict'],
-      ['leveling', 'very-strict'],
+      ['endgame', 'uber'],
+      ['leveling', 'uber'],
     ] as const) {
       expect(shown(lifeFlask, phase, strictness), `${phase}/${strictness}`).toBe(
         true,
@@ -55,11 +55,11 @@ describe('magic flasks stay visible when magic gear is hidden', () => {
   });
 
   it('still hides a flask class the build does not use', () => {
-    expect(shown(manaFlask, 'endgame', 'normal')).toBe(false);
+    expect(shown(manaFlask, 'endgame', 'soft')).toBe(false);
   });
 
   it('still hides normal flasks', () => {
-    expect(shown(normalFlask, 'endgame', 'normal')).toBe(false);
+    expect(shown(normalFlask, 'endgame', 'soft')).toBe(false);
   });
 });
 
@@ -87,22 +87,22 @@ const sixSocket = item('Hubris Circlet', 'Helmets', 'Normal', {
 
 describe('4-link and 6-socket normal gear', () => {
   it('shows an allowed 4-link while leveling and in endgame normal', () => {
-    expect(shown(allowedFourLink, 'leveling', 'very-strict')).toBe(true);
-    expect(shown(allowedFourLink, 'endgame', 'normal')).toBe(true);
+    expect(shown(allowedFourLink, 'leveling', 'uber')).toBe(true);
+    expect(shown(allowedFourLink, 'endgame', 'soft')).toBe(true);
   });
 
   it('hides an allowed 4-link in endgame strict and very strict', () => {
     expect(shown(allowedFourLink, 'endgame', 'strict')).toBe(false);
-    expect(shown(allowedFourLink, 'endgame', 'very-strict')).toBe(false);
+    expect(shown(allowedFourLink, 'endgame', 'uber')).toBe(false);
   });
 
   it('never shows a 4-link on a wrong base or unused class', () => {
-    expect(shown(wrongBaseFourLink, 'endgame', 'normal')).toBe(false);
-    expect(shown(unusedClassFourLink, 'endgame', 'normal')).toBe(false);
+    expect(shown(wrongBaseFourLink, 'endgame', 'soft')).toBe(false);
+    expect(shown(unusedClassFourLink, 'endgame', 'soft')).toBe(false);
   });
 
   it('keeps 6-sockets visible at every strictness', () => {
-    for (const strictness of ['normal', 'strict', 'very-strict'] as const) {
+    for (const strictness of ['soft', 'strict', 'uber'] as const) {
       expect(shown(sixSocket, 'endgame', strictness), strictness).toBe(true);
     }
   });
@@ -119,27 +119,55 @@ const lowBlueHelmet = item('Hubris Circlet', 'Helmets', 'Magic', {
   itemLevel: 60,
 });
 
+describe('map tiers and card scaling', () => {
+  const text = (strictness: 'soft' | 'strict' | 'uber') =>
+    generateFilter({ selection, phase: 'endgame', strictness }).text;
+
+  it('grades maps T15 > T14 > T11 above the cutoff', () => {
+    const strict = text('strict');
+    expect(strict).toContain('# Maps - tier 15+');
+    expect(strict).toContain('# Maps - tier 14');
+    expect(strict).toContain('# Maps - tier 11-13');
+    expect(strict).toContain('# Maps - below tier cutoff');
+  });
+
+  it('keeps only the top band at uber', () => {
+    const uber = text('uber');
+    expect(uber).toContain('# Maps - tier 15+');
+    expect(uber).not.toContain('# Maps - tier 14');
+    expect(uber).not.toContain('# Maps - tier 11-13');
+  });
+
+  it('hides low-tier cards and fragments as strictness rises', () => {
+    expect(text('soft')).toContain('# Divination cards - tier 3');
+    expect(text('soft')).not.toContain('# Divination cards - below tier cutoff');
+    expect(text('strict')).toContain('# Divination cards - below tier cutoff');
+    expect(text('uber')).toContain('# Divination cards - below tier cutoff');
+    expect(text('uber')).not.toContain('# Map fragments - tier 2');
+  });
+});
+
 describe('white and blue item-level floors', () => {
   it('shows a white base above the floor and hides one below', () => {
-    expect(shown(whiteHelmet, 'endgame', 'normal')).toBe(true); // floor 68
-    expect(shown(whiteHelmet, 'endgame', 'very-strict')).toBe(true); // floor 80
-    expect(shown(lowWhiteHelmet, 'endgame', 'normal')).toBe(false);
+    expect(shown(whiteHelmet, 'endgame', 'soft')).toBe(true); // floor 68
+    expect(shown(whiteHelmet, 'endgame', 'uber')).toBe(true); // floor 80
+    expect(shown(lowWhiteHelmet, 'endgame', 'soft')).toBe(false);
     expect(shown(lowWhiteHelmet, 'endgame', 'strict')).toBe(false); // floor 75
   });
 
   it("only shows whites on the build's own bases", () => {
-    expect(shown(wrongWhiteHelmet, 'endgame', 'normal')).toBe(false);
+    expect(shown(wrongWhiteHelmet, 'endgame', 'soft')).toBe(false);
   });
 
   it('never shows normal flasks', () => {
-    expect(shown(whiteFlask, 'endgame', 'normal')).toBe(false);
-    expect(shown(whiteFlask, 'leveling', 'normal')).toBe(false);
+    expect(shown(whiteFlask, 'endgame', 'soft')).toBe(false);
+    expect(shown(whiteFlask, 'leveling', 'soft')).toBe(false);
   });
 
   it('shows a blue base at the blue floor', () => {
-    expect(shown(blueHelmet, 'endgame', 'normal')).toBe(true); // floor 75
-    expect(shown(blueHelmet, 'endgame', 'very-strict')).toBe(true); // floor 85
-    expect(shown(lowBlueHelmet, 'endgame', 'normal')).toBe(false);
+    expect(shown(blueHelmet, 'endgame', 'soft')).toBe(true); // floor 75
+    expect(shown(blueHelmet, 'endgame', 'uber')).toBe(true); // floor 85
+    expect(shown(lowBlueHelmet, 'endgame', 'soft')).toBe(false);
   });
 });
 
@@ -161,7 +189,7 @@ const unique = (base: string) => item(base, 'Rings', 'Unique');
 
 describe('unique tier cutoff', () => {
   it('shows every unique at normal and strict', () => {
-    for (const strictness of ['normal', 'strict'] as const) {
+    for (const strictness of ['soft', 'strict'] as const) {
       expect(shown(unique(tier3Base), 'endgame', strictness), strictness).toBe(
         true,
       );
@@ -169,12 +197,12 @@ describe('unique tier cutoff', () => {
   });
 
   it('keeps tier 1 and 2 uniques at very strict', () => {
-    expect(shown(unique(tier1Base), 'endgame', 'very-strict')).toBe(true);
-    expect(shown(unique(tier2Base), 'endgame', 'very-strict')).toBe(true);
+    expect(shown(unique(tier1Base), 'endgame', 'uber')).toBe(true);
+    expect(shown(unique(tier2Base), 'endgame', 'uber')).toBe(true);
   });
 
   it('hides tier 3 uniques at very strict', () => {
-    expect(shown(unique(tier3Base), 'endgame', 'very-strict')).toBe(false);
-    expect(shown(unique(tier3Base), 'leveling', 'very-strict')).toBe(false);
+    expect(shown(unique(tier3Base), 'endgame', 'uber')).toBe(false);
+    expect(shown(unique(tier3Base), 'leveling', 'uber')).toBe(false);
   });
 });

@@ -26,6 +26,9 @@ const EXTRA = fileURLToPath(
 const SKILLS_OUT = fileURLToPath(
   new URL('../src/meta/skill-names.json', import.meta.url),
 );
+const SKILLS_EXTRA = fileURLToPath(
+  new URL('../src/meta/skill-names-extra.json', import.meta.url),
+);
 const GEMS_SOURCE = `https://raw.githubusercontent.com/brather1ng/RePoE/${REF}/RePoE/data/gems.json`;
 const USER_AGENT = 'FilterPath/0.1 (+https://github.com/lordgreg/filterpath)';
 
@@ -138,9 +141,29 @@ for (const gem of Object.values(gemData)) {
       ) ?? null,
   });
 }
-const skillNames = [...skillByName.values()].sort((a, b) =>
-  a.name.localeCompare(b.name),
-);
+const skillNames = [...skillByName.values()];
+
+// RePoE's gem feed lags on transfigured and other new gems, so a reviewed
+// supplement is merged in the same way as base-types-extra.json.
+try {
+  const extra = JSON.parse(await readFile(SKILLS_EXTRA, 'utf8'));
+  const seen = new Set(skillNames.map((skill) => skill.name));
+  for (const name of extra) {
+    if (seen.has(name)) continue;
+    skillNames.push({
+      name,
+      types: [],
+      tags: [],
+      weaponRestrictions: [],
+      primaryAttribute: null,
+    });
+    seen.add(name);
+  }
+} catch {
+  // No supplement file, nothing to merge.
+}
+
+skillNames.sort((a, b) => a.name.localeCompare(b.name));
 
 const digest = createHash('sha256').update(JSON.stringify(items)).digest('hex');
 

@@ -6,7 +6,7 @@ import type { Phase, Strictness } from './presets.ts';
 
 const knownNames = new Set(known.names);
 const PHASES: Phase[] = ['leveling', 'endgame'];
-const STRICTNESS: Strictness[] = ['normal', 'strict', 'very-strict'];
+const STRICTNESS: Strictness[] = ['soft', 'strict', 'uber'];
 
 describe('known BaseType registry', () => {
   it('contains gear, currency and divination cards', () => {

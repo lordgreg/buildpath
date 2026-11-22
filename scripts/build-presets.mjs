@@ -94,6 +94,9 @@ const skillCatalog = new Set(
     (skill) => skill.name,
   ),
 );
+for (const name of await readJson('src/meta/skill-names-extra.json')) {
+  skillCatalog.add(name);
+}
 
 for (const ascendancy of ascendanciesDoc.ascendancies ?? []) {
   if (!familyIds.has(ascendancy.defaultFamily)) {

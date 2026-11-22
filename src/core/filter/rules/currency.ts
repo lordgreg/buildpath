@@ -100,13 +100,33 @@ const [TIER_1, TIER_2, TIER_3] = tiersOrFallback(tiers.currency, [
   [3, FALLBACK_TIER_3],
 ]);
 
-const [DIVINATION_TOP, DIVINATION_MID] = tiersOrFallback(
+const [DIVINATION_1, DIVINATION_2, DIVINATION_3] = tiersOrFallback(
   tiers.divination,
   [
     [1, FALLBACK_DIVINATION_TOP],
     [2, FALLBACK_DIVINATION_MID],
+    [3, []],
   ],
 );
+
+const DIVINATION_TIERS: { tier: 1 | 2 | 3; names: string[]; style: Style }[] = [
+  { tier: 1, names: DIVINATION_1!, style: SLOT_STYLES.currencyTop },
+  {
+    tier: 2,
+    names: DIVINATION_2!,
+    style: {
+      textColor: COLORS.white,
+      borderColor: COLORS.gold,
+      fontSize: 34,
+      minimapIcon: { size: 0, color: 'Yellow', shape: 'Circle' },
+    },
+  },
+  {
+    tier: 3,
+    names: DIVINATION_3!,
+    style: { textColor: COLORS.card, borderColor: COLORS.card, fontSize: 34 },
+  },
+];
 
 const NAMED_ALERTS: {
   name: string;
@@ -191,29 +211,23 @@ export function currencyRules(preset: Preset): Rule[] {
     });
   }
 
-  if (DIVINATION_TOP.length > 0) {
-    rules.push({
-      action: 'Show',
-      comment: 'Divination cards - top',
-      baseTypes: [...DIVINATION_TOP],
-      styleKind: 'card',
-      style: SLOT_STYLES.currencyTop,
-    });
-  }
-
-  if (DIVINATION_MID.length > 0) {
-    rules.push({
-      action: 'Show',
-      comment: 'Divination cards - mid',
-      baseTypes: [...DIVINATION_MID],
-      styleKind: 'card',
-      style: {
-        textColor: COLORS.white,
-        borderColor: COLORS.gold,
-        fontSize: 34,
-        minimapIcon: { size: 0, color: 'Yellow', shape: 'Circle' },
-      },
-    });
+  for (const { tier, names, style } of DIVINATION_TIERS) {
+    if (names.length === 0) continue;
+    if (tier <= preset.currency.divinationMaxTier) {
+      rules.push({
+        action: 'Show',
+        comment: `Divination cards - tier ${tier}`,
+        baseTypes: [...names],
+        styleKind: 'card',
+        style,
+      });
+    } else {
+      rules.push({
+        action: 'Hide',
+        comment: 'Divination cards - below tier cutoff',
+        baseTypes: [...names],
+      });
+    }
   }
 
   // Style-only catch-all: cards and gold piles are already visible by default,
