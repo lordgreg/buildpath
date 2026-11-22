@@ -36,9 +36,7 @@ function styleLines(style: Style): string[] {
   if (style.backgroundColor) {
     lines.push(`SetBackgroundColor ${color(style.backgroundColor)}`);
   }
-  if (style.customAlertSound) {
-    lines.push(`CustomAlertSoundOptional ${quote(style.customAlertSound)}`);
-  } else if (style.alertSound !== undefined) {
+  if (style.alertSound !== undefined) {
     lines.push(
       typeof style.alertSound === 'string'
         ? `PlayAlertSound ${style.alertSound}`

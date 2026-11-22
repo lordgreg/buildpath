@@ -5,11 +5,6 @@ import {
   type Strictness,
 } from '../core/filter/presets.ts';
 import { coerceThemeId, type ThemeId } from '../core/filter/themes.ts';
-import {
-  coerceSoundPackId,
-  DEFAULT_SOUND_PACK,
-  type SoundPackId,
-} from '../core/filter/sounds.ts';
 import { getAscendancy } from '../meta/ascendancies.ts';
 import { getSkill } from '../meta/index.ts';
 import {
@@ -31,7 +26,6 @@ export interface WizardState {
   phase: Phase;
   strictness: Strictness;
   theme: ThemeId;
-  soundPack: SoundPackId;
   sections: Sections;
 }
 
@@ -50,7 +44,6 @@ export const DEFAULT_STATE: WizardState = {
   phase: 'leveling',
   strictness: 'soft',
   theme: 'rarity',
-  soundPack: DEFAULT_SOUND_PACK,
   sections: DEFAULT_SECTIONS,
 };
 
@@ -94,7 +87,6 @@ export function coerceWizardState(input: Partial<WizardState>): WizardState {
   const phase = input.phase === 'endgame' ? 'endgame' : 'leveling';
   const strictness = coerceStrictness(input.strictness);
   const theme = coerceThemeId(input.theme);
-  const soundPack = coerceSoundPackId(input.soundPack);
   const name =
     typeof input.name === 'string' ? input.name.trim().slice(0, 80) : '';
 
@@ -106,7 +98,6 @@ export function coerceWizardState(input: Partial<WizardState>): WizardState {
     phase,
     strictness,
     theme,
-    soundPack,
     sections: DEFAULT_SECTIONS,
   };
 }
@@ -125,7 +116,6 @@ export function parseWizardHash(hash: string): WizardState {
     phase: phase && PHASES.includes(phase) ? phase : DEFAULT_STATE.phase,
     strictness: chosenStrictness,
     theme,
-    soundPack: coerceSoundPackId(params.get('soundPack')),
     sections: DEFAULT_SECTIONS,
   };
 
@@ -187,7 +177,6 @@ export function wizardHash(state: WizardState): string {
     params.set('strictness', state.strictness);
   }
   params.set('theme', state.theme);
-  params.set('soundPack', state.soundPack);
   if (state.name.trim()) params.set('name', state.name.trim());
   return params.toString();
 }

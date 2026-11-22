@@ -22,7 +22,6 @@ import { leagueRules } from './rules/league.ts';
 import { uniqueRules } from './rules/uniques.ts';
 import { COLORS, type FilterAction, type Rule, type RuleSection } from './types.ts';
 import { applyTheme, type ThemeId } from './themes.ts';
-import { applySoundPack, DEFAULT_SOUND_PACK, type SoundPackId } from './sounds.ts';
 import { filterNameFor, validateFilter, type FilterIssue } from './validate.ts';
 import { buildFileName } from './name.ts';
 import { DEFAULT_FILTER_VERSION, FILTER_FORMAT_VERSION } from './version.ts';
@@ -55,8 +54,6 @@ export interface FilterConfig {
   sections?: Sections;
   /** Visual theme applied after rule generation. */
   theme?: ThemeId;
-  /** Sound pack applied before the theme; default keeps built-in sounds. */
-  soundPack?: SoundPackId;
   /** User rules, evaluated before the generated preset. */
   customRules?: Rule[];
   /** Build version embedded in the header and file name. */
@@ -71,7 +68,6 @@ export interface CompiledFilter {
   sections: Sections;
   version: string;
   theme: ThemeId;
-  soundPack: SoundPackId;
   rules: Rule[];
   baseTypes: string[];
 }
@@ -139,7 +135,6 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
   const sections = normalizeSections(config.sections);
   const version = config.version ?? DEFAULT_FILTER_VERSION;
   const theme = config.theme ?? 'rarity';
-  const soundPack = config.soundPack ?? DEFAULT_SOUND_PACK;
 
   // A custom rule may predate a data fix and list a base the game dropped. Drop
   // those names here so the emitted filter always loads, whatever the source.
@@ -167,11 +162,7 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
       sections,
       version,
       theme,
-      soundPack,
-      rules: applyTheme(
-        applySoundPack([QUEST_RULE, ...customRules, baseRule], soundPack),
-        theme,
-      ),
+      rules: applyTheme([QUEST_RULE, ...customRules, baseRule], theme),
       baseTypes: [...bases].sort(),
     };
   }
@@ -214,8 +205,7 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
     sections,
     version,
     theme,
-    soundPack,
-    rules: applyTheme(applySoundPack(rules, soundPack), theme),
+    rules: applyTheme(rules, theme),
     baseTypes: [...baseTypes].sort(),
   };
 }

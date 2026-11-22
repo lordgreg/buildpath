@@ -26,7 +26,6 @@ blocked by poe.ninja’s closed builds API.
 - From Scratch mode with hidden-all or shown-all start
 - Loot simulator with pasted in-game items and filter-styled labels
 - Eight filter themes; Rarity is the base and the rest only recolour it, from High contrast and Muted to Catppuccin, Dracula, Nord, Solarized Dark and Tokyo Night
-- Sound packs (Super Mario, Street Fighter, Loom, Commodore 64) emit CustomAlertSoundOptional; the demo reads your own fp-*.mp3 files for 1:1 playback
 - Build-specific base exclusions, e.g. Necromancer hides Cloth Belt and shows only Leather Belt, and Caster hides Iron Ring
 - Saved builds with Update; one global strictness
 - Economy-aware currency, divination and unique tiers refreshed daily

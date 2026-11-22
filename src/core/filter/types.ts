@@ -91,8 +91,6 @@ export interface Style {
   /** 18-45 in game. */
   fontSize?: number;
   alertSound?: AlertSound;
-  /** Custom sound file emitted as CustomAlertSound. Takes over from alertSound. */
-  customAlertSound?: string;
   /** 0-300. */
   alertVolume?: number;
   minimapIcon?: {

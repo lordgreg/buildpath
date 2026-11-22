@@ -78,7 +78,6 @@ export default function DemoPage() {
         phase: state.phase,
         strictness: state.strictness,
         theme: state.theme,
-        soundPack: state.soundPack,
         sections: state.sections,
         version: APP_VERSION,
         customRules,

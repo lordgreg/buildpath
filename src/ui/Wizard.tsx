@@ -10,7 +10,6 @@ import { filterUpdateKind } from '../sync/fileSystem.ts';
 import { autoBuildName } from '../core/filter/name.ts';
 import type { Rule } from '../core/filter/types.ts';
 import { THEMES } from '../core/filter/themes.ts';
-import { SOUND_PACKS } from '../core/filter/sounds.ts';
 import { ASCENDANCIES, getAscendancy } from '../meta/ascendancies.ts';
 import { FAMILIES, getFamily } from '../meta/families.ts';
 import {
@@ -133,7 +132,6 @@ export default function Wizard() {
         phase: state.phase,
         strictness: state.strictness,
         theme: state.theme,
-        soundPack: state.soundPack,
         sections: state.sections,
         version: APP_VERSION,
         buildName: state.name,
@@ -148,7 +146,6 @@ export default function Wizard() {
         phase: state.phase,
         strictness: state.strictness,
         theme: state.theme,
-        soundPack: state.soundPack,
         sections: state.sections,
         version: APP_VERSION,
         customRules,
@@ -861,42 +858,6 @@ export default function Wizard() {
                   </button>
                 ))}
               </div>
-            </section>
-
-            <section aria-labelledby="sound-heading">
-              <h2
-                id="sound-heading"
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-              >
-                Sound pack
-              </h2>
-              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
-                {SOUND_PACKS.map((pack) => (
-                  <button
-                    key={pack.id}
-                    type="button"
-                    aria-pressed={pack.id === state.soundPack}
-                    onClick={() => update({ soundPack: pack.id })}
-                    className={cx(
-                      'rounded-lg border px-2 py-2 text-left transition-colors',
-                      pack.id === state.soundPack
-                        ? 'border-gold-400 bg-gold-400/10'
-                        : 'border-ink-700 bg-ink-800/40 hover:border-ink-500',
-                    )}
-                  >
-                    <span className="block text-sm font-medium text-white">
-                      {pack.label}
-                    </span>
-                    <span className="block text-[10px] leading-tight text-zinc-500">
-                      {pack.hint}
-                    </span>
-                  </button>
-                ))}
-              </div>
-              <p className="mt-2 text-[10px] leading-tight text-zinc-600">
-                Custom packs emit CustomAlertSoundOptional. Drop the matching
-                fp-*.mp3 files next to your filter to hear them in game.
-              </p>
             </section>
 
           </div>

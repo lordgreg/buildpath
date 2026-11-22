@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { parseItemText } from '../../core/demo/parse-item.ts';
 import { baseTypes } from '../../core/data/base-types.ts';
@@ -10,15 +10,7 @@ import {
   type PreviewItem,
 } from '../../core/preview/match.ts';
 import { SAMPLE_ITEMS } from '../../core/preview/samples.ts';
-import { playAlertFile, playAlertSound } from './alertSound.ts';
-import {
-  ensureReadPermission,
-  loadSoundBlob,
-  loadSoundsHandle,
-  pickSoundsFolder,
-  saveSoundsHandle,
-  supportsSoundsFolder,
-} from './soundFolder.ts';
+import { playAlertSound } from './alertSound.ts';
 
 const RARITY_COLOR: Record<ItemRarity, string> = {
   Normal: '#d6d6d6',
@@ -114,68 +106,6 @@ export default function LootSimulator({
     } catch {
       // Ignore blocked storage.
     }
-  };
-  const [soundsHandle, setSoundsHandle] =
-    useState<FileSystemDirectoryHandle | null>(null);
-  const [soundsStatus, setSoundsStatus] = useState<string | null>(null);
-  const soundCache = useRef(new Map<string, Blob>());
-
-  useEffect(() => {
-    let cancelled = false;
-    void (async () => {
-      if (!supportsSoundsFolder()) return;
-      const stored = await loadSoundsHandle();
-      if (!stored || cancelled) return;
-      const permission = await ensureReadPermission(stored, false);
-      if (cancelled || permission !== 'granted') return;
-      setSoundsHandle(stored);
-      setSoundsStatus(`Custom sounds: ${stored.name}`);
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const connectSounds = async () => {
-    if (!supportsSoundsFolder()) return;
-    try {
-      const directory = await pickSoundsFolder();
-      const permission = await ensureReadPermission(directory);
-      if (permission !== 'granted') {
-        setSoundsStatus('Read permission was not granted.');
-        return;
-      }
-      soundCache.current.clear();
-      setSoundsHandle(directory);
-      try {
-        await saveSoundsHandle(directory);
-      } catch {
-        // The folder works for this session only.
-      }
-      setSoundsStatus(`Custom sounds: ${directory.name}`);
-    } catch (error) {
-      if (error instanceof DOMException && error.name === 'AbortError') return;
-      setSoundsStatus('Could not open that folder.');
-    }
-  };
-
-  const playAlert = async (
-    rule: Rule | null | undefined,
-    volume: number | undefined,
-  ) => {
-    const file = rule?.style?.customAlertSound;
-    if (file && soundsHandle) {
-      let blob = soundCache.current.get(file);
-      if (!blob) {
-        const loaded = await loadSoundBlob(soundsHandle, file);
-        if (loaded) {
-          blob = loaded;
-          soundCache.current.set(file, loaded);
-        }
-      }
-      if (blob && (await playAlertFile(blob, volume))) return;
-    }
-    playAlertSound(rule?.style?.alertSound, volume);
   };
   const [message, setMessage] = useState<string | null>(null);
   const [seed, setSeed] = useState(1);
@@ -341,16 +271,6 @@ export default function LootSimulator({
             />
             sound
           </label>
-          {supportsSoundsFolder() && (
-            <button
-              type="button"
-              onClick={() => void connectSounds()}
-              className="rounded-lg border border-ink-600 px-3 py-2 text-xs text-zinc-400 hover:border-ink-500"
-              title="Read fp-*.mp3 files from a folder so custom alert sounds play exactly as in game"
-            >
-              {soundsHandle ? 'sounds connected' : 'connect sounds'}
-            </button>
-          )}
           <label className="flex items-center gap-2 rounded-lg border border-ink-600 px-3 py-2 text-xs text-zinc-400">
             <input
               type="checkbox"
@@ -363,9 +283,6 @@ export default function LootSimulator({
         </div>
         {message && (
           <p className="text-xs text-zinc-400 lg:col-span-2">{message}</p>
-        )}
-        {soundsStatus && (
-          <p className="text-xs text-zinc-500 lg:col-span-2">{soundsStatus}</p>
         )}
       </section>
 
@@ -412,7 +329,10 @@ export default function LootSimulator({
               onClick={(event) => {
                 event.stopPropagation();
                 if (soundOn) {
-                  void playAlert(result.rule, result.rule?.style?.alertVolume);
+                  playAlertSound(
+                    result.rule?.style?.alertSound,
+                    result.rule?.style?.alertVolume,
+                  );
                 }
                 setPinnedId((previous) =>
                   previous === item.id ? null : item.id,

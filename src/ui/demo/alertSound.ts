@@ -98,28 +98,3 @@ export function playAlertSound(
     );
   }
 }
-
-/**
- * Plays a real audio file the user supplied (their filter's CustomAlertSound).
- * Returns false when it cannot be decoded, so the caller can fall back.
- */
-export async function playAlertFile(
-  blob: Blob,
-  volume = 100,
-): Promise<boolean> {
-  const ctx = audioContext();
-  if (!ctx) return false;
-  if (ctx.state === 'suspended') void ctx.resume();
-  try {
-    const buffer = await ctx.decodeAudioData(await blob.arrayBuffer());
-    const source = ctx.createBufferSource();
-    source.buffer = buffer;
-    const gain = ctx.createGain();
-    gain.gain.value = Math.min(1, Math.max(0.05, volume / 300));
-    source.connect(gain).connect(ctx.destination);
-    source.start();
-    return true;
-  } catch {
-    return false;
-  }
-}

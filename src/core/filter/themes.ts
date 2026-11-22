@@ -475,7 +475,6 @@ function applyModifier(rule: Rule, modifier: ThemeModifier | undefined): Rule {
   if (modifier?.stripMedia) {
     const {
       alertSound: _alertSound,
-      customAlertSound: _customAlertSound,
       minimapIcon: _minimapIcon,
       playEffect: _playEffect,
       ...rest
