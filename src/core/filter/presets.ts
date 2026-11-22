@@ -18,8 +18,12 @@ export interface GearPreset {
 
 export interface GemsPreset {
   id: string;
-  /** Show gems at or above this quality; `null` shows every gem. */
+  /** Show gems at or above this quality (OR with `minItemLevel`); `null` = no quality gate. */
   minQuality: number | null;
+  /** Also show gems at or above this item level (OR with `minQuality`); `null` = no level gate. */
+  minItemLevel: number | null;
+  /** Play the alert sound when a gem is shown; off while leveling. */
+  alert: boolean;
 }
 
 export interface CurrencyPreset {
@@ -117,16 +121,19 @@ const GEAR: Matrix<Omit<GearPreset, 'id'>> = {
   },
 };
 
+// Leveling gems are not worth an alert, so they are silent; leveling strict
+// also keeps only gems that carry quality or dropped above the early areas.
+// Endgame gates on quality alone and keeps the alert.
 const GEMS: Matrix<Omit<GemsPreset, 'id'>> = {
   leveling: {
-    soft: { minQuality: null },
-    strict: { minQuality: null },
-    uber: { minQuality: 5 },
+    soft: { minQuality: null, minItemLevel: null, alert: false },
+    strict: { minQuality: 5, minItemLevel: 10, alert: false },
+    uber: { minQuality: 5, minItemLevel: null, alert: false },
   },
   endgame: {
-    soft: { minQuality: 1 },
-    strict: { minQuality: 5 },
-    uber: { minQuality: 10 },
+    soft: { minQuality: 1, minItemLevel: null, alert: true },
+    strict: { minQuality: 5, minItemLevel: null, alert: true },
+    uber: { minQuality: 10, minItemLevel: null, alert: true },
   },
 };
 

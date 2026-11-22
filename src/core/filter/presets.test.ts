@@ -66,6 +66,24 @@ describe('composed presets', () => {
     expect(getPreset('leveling', 'uber').gear.magicMinItemLevel).toBe(85);
   });
 
+  it('gates leveling gems and silences them', () => {
+    expect(getPreset('leveling', 'soft').gems).toMatchObject({
+      minQuality: null,
+      minItemLevel: null,
+      alert: false,
+    });
+    expect(getPreset('leveling', 'strict').gems).toMatchObject({
+      minQuality: 5,
+      minItemLevel: 10,
+      alert: false,
+    });
+    for (const strictness of ['soft', 'strict', 'uber'] as const) {
+      expect(getPreset('leveling', strictness).gems.alert).toBe(false);
+      expect(getPreset('endgame', strictness).gems.alert).toBe(true);
+      expect(getPreset('endgame', strictness).gems.minItemLevel).toBeNull();
+    }
+  });
+
   it('raises the white and blue floors with strictness', () => {
     const whites: Record<string, [number, number, number]> = {
       leveling: [0, 68, 75],

@@ -75,6 +75,19 @@ function currency(id: string, label: string, name: string): AuditCase {
   };
 }
 
+/**
+ * Gems show when no gate is set, or when they clear the quality or item level
+ * gate; the preset treats the two gates as an OR.
+ */
+function gemShown(preset: Preset, quality: number, itemLevel: number): boolean {
+  const { minQuality, minItemLevel } = preset.gems;
+  if (minQuality === null && minItemLevel === null) return true;
+  return (
+    (minQuality !== null && quality >= minQuality) ||
+    (minItemLevel !== null && itemLevel >= minItemLevel)
+  );
+}
+
 /** Gold is auto-collected; only piles at or above the preset threshold show. */
 function gold(stackSize: number): AuditCase {
   const id = `gold-${stackSize}`;
@@ -189,7 +202,8 @@ export const AUDIT_CASES: AuditCase[] = [
       phase === 'leveling' || preset.maps.minTier === null || 5 >= preset.maps.minTier,
   },
 
-  // Gems: quality 0 only survives where every gem is shown.
+  // Gems: a gem shows when no gate is set, or when it clears the quality or
+  // item level gate (the two are an OR).
   {
     id: 'gem-quality',
     label: 'Fireball (20 quality)',
@@ -199,7 +213,7 @@ export const AUDIT_CASES: AuditCase[] = [
       itemLevel: 1,
       quality: 20,
     }),
-    expect: ({ preset }) => 20 >= (preset.gems.minQuality ?? 0),
+    expect: ({ preset }) => gemShown(preset, 20, 1),
   },
   {
     id: 'gem-plain',
@@ -210,7 +224,18 @@ export const AUDIT_CASES: AuditCase[] = [
       itemLevel: 1,
       quality: 0,
     }),
-    expect: ({ preset }) => 0 >= (preset.gems.minQuality ?? 0),
+    expect: ({ preset }) => gemShown(preset, 0, 1),
+  },
+  {
+    id: 'gem-level',
+    label: 'Fireball (item level 20)',
+    category: 'gem',
+    note: 'quality 0, ilvl 20',
+    item: item('gem-level', 'Skill Gems', 'Fireball', 'Gem', {
+      itemLevel: 20,
+      quality: 0,
+    }),
+    expect: ({ preset }) => gemShown(preset, 0, 20),
   },
 
   // Uniques: cheap bases are hidden at Uber, valuable bases always show.
