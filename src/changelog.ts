@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.25.0',
+    date: '2026-11-22',
+    title: 'Themes and sound packs',
+    notes: [
+      'Filter themes now share one structure: Rarity is the base and every other theme only swaps the colours. Added High contrast, Muted, Catppuccin, Dracula, Nord, Solarized Dark and Tokyo Night; old classic links open as Rarity.',
+      'Quest items get a dark amber background, and Mirror of Kalandra and Divine Orb get a vivid chase box with dark text and a PlayEffect beam so they stand out immediately.',
+      'Sound packs change the alert sounds. Default keeps the game\'s built-in sounds, while Super Mario, Street Fighter, Loom and Commodore 64 emit CustomAlertSoundOptional. Drop the matching fp-*.mp3 files next to your filter and the loot simulator reads the same files for 1:1 playback.',
+      'The minion family and the Necromancer now show only Leather Belt. The other belt bases are hidden and unique belts stay visible.',
+    ],
+    commits: [],
+    compare: 'v0.24.3...v0.25.0',
+  },
+  {
     version: '0.24.3',
     date: '2026-11-22',
     title: 'Fix filters failing to load on stale custom rules',
