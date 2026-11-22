@@ -48,6 +48,14 @@ export function isFilterFileName(name: string): boolean {
   return name.toLowerCase().endsWith('.filter');
 }
 
+/**
+ * Files FilterPath writes itself. They are safe to overwrite without asking:
+ * every write keeps the previous contents as `<name>.bak`.
+ */
+export function isFilterPathFileName(name: string): boolean {
+  return /^filterpath-/i.test(name);
+}
+
 export function supportsDirectoryPicker(): boolean {
   return typeof window !== 'undefined' && 'showDirectoryPicker' in window;
 }

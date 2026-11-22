@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import {
   ensurePermission,
+  isFilterPathFileName,
   listFilterFiles,
   pickFiltersDirectory,
   probeFilterDirectory,
@@ -185,9 +186,12 @@ export function useFiltersFolder(): FiltersFolder {
         const currentFiles = await listFilterFiles(handle);
         setFiles(currentFiles);
         const exists = currentFiles.some((file) => file.name === name);
+        // FilterPath's own files keep a `.bak` and are safe to overwrite, so
+        // they never prompt. A foreign file with the same name still asks.
         if (
           exists &&
           confirmOverwrite &&
+          !isFilterPathFileName(name) &&
           !window.confirm(
             `Overwrite ${name}? The previous version is kept as ${name}.bak.`,
           )

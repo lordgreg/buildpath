@@ -3,12 +3,23 @@ import {
   backupName,
   filterUpdateKind,
   isFilterFileName,
+  isFilterPathFileName,
   listFilterFiles,
   parseFilterHeader,
   probeFilterDirectory,
   removeFilterFile,
   writeFilter,
 } from './fileSystem.ts';
+
+describe('isFilterPathFileName', () => {
+  it('recognises the files FilterPath writes, and only those', () => {
+    expect(isFilterPathFileName('filterpath-minion-leveling-soft.filter')).toBe(
+      true,
+    );
+    expect(isFilterPathFileName('FilterPath-custom.filter')).toBe(true);
+    expect(isFilterPathFileName('neversink.filter')).toBe(false);
+  });
+});
 
 function fileHandle(name: string, files: Map<string, string>) {
   return {
