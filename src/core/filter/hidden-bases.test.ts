@@ -265,4 +265,33 @@ describe('family excluded bases', () => {
     const found = evaluateRules(filter.rules, ring('Iron Ring', 'Rare'));
     expect(found.shown).toBe(true);
   });
+
+  it('hides Cloth Belts for the minion family like the Necromancer', () => {
+    for (const phase of ['leveling', 'endgame'] as const) {
+      for (const strictness of [
+        'normal',
+        'strict',
+        'very-strict',
+      ] as const) {
+        const filter = generateFilter({
+          selection: { mode: 'family', familyId: 'minion' },
+          phase,
+          strictness,
+        });
+        const found = evaluateRules(filter.rules, belt('Cloth Belt', 'Rare'));
+        expect(found.shown, `${phase}/${strictness}`).toBe(false);
+        expect(found.reason).toContain('excluded base');
+      }
+    }
+  });
+
+  it('keeps unique Cloth Belts visible for the minion family', () => {
+    const filter = generateFilter({
+      selection: { mode: 'family', familyId: 'minion' },
+      phase: 'leveling',
+      strictness: 'normal',
+    });
+    const found = evaluateRules(filter.rules, belt('Cloth Belt', 'Unique'));
+    expect(found.shown).toBe(true);
+  });
 });

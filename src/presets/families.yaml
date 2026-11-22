@@ -19,6 +19,8 @@ families:
     attributes: [int]
     armourTags: [int_armour, str_int_armour]
     jewelTag: intjewel
+    # Cloth Belt's implicit is stun/block recovery, useless for a summoner.
+    excludedBases: [Cloth Belt]
     weapon:
       itemClasses: [Wand]
       tags: [weapon_can_roll_minion_modifiers]
