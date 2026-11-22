@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.31.0 — 2026-11-22
+
+Silent leveling gems, and a stricter leveling gate.
+
+- Gems no longer play an alert sound while leveling, in soft, strict and uber.
+  Endgame gems keep their alert.
+- In leveling strict, gems now show only if they have 5% quality or more, or an
+  item level of 10 or more. Plain gems from the earliest areas are hidden.
+  Leveling soft still shows every gem, and leveling uber keeps its quality-5
+  gate.
+
 ## 0.30.0 — 2026-11-22
 
 Hide Iron Rings on minion builds.

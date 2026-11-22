@@ -17,6 +17,17 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.31.0',
+    date: '2026-11-22',
+    title: 'Silent leveling gems, and a stricter leveling gate',
+    notes: [
+      'Gems no longer play an alert sound while leveling, in soft, strict and uber. Endgame gems keep their alert.',
+      'In leveling strict, gems now show only if they have 5% quality or more, or an item level of 10 or more. Plain gems from the earliest areas are hidden. Leveling soft still shows every gem, and leveling uber keeps its quality-5 gate.',
+    ],
+    commits: [],
+    compare: 'v0.30.0...v0.31.0',
+  },
+  {
     version: '0.30.0',
     date: '2026-11-22',
     title: 'Hide Iron Rings on minion builds',
