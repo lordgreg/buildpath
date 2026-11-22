@@ -2,6 +2,15 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.24.3 — 2026-11-22
+
+Fix filters failing to load on stale custom rules.
+
+- A custom rule that still listed a base the game has dropped (for example a
+  preset rule copied before the last fix) made the whole filter fail to load.
+  The generator now drops unknown base types and the stored rules are cleaned
+  when loaded, so the editor shows the same rule the filter uses.
+
 ## 0.24.2 — 2026-11-22
 
 Fix filters failing to load on removed base types.

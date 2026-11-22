@@ -17,6 +17,16 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.24.3',
+    date: '2026-11-22',
+    title: 'Fix filters failing to load on stale custom rules',
+    notes: [
+      'A custom rule that still listed a base the game has dropped (for example a preset rule copied before the last fix) made the whole filter fail to load. The generator now drops unknown base types and the stored rules are cleaned when loaded, so the editor shows the same rule the filter uses.',
+    ],
+    commits: [],
+    compare: 'v0.24.2...v0.24.3',
+  },
+  {
     version: '0.24.2',
     date: '2026-11-22',
     title: 'Fix filters failing to load on removed base types',
