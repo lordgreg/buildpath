@@ -2,6 +2,16 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.29.0 — 2026-11-22
+
+Always show Labyrinth Treasure Keys.
+
+- Labyrinth Treasure Keys (Item Class: Labyrinth Items) are now built-in quest
+  items in every filter. They are shown with the quest styling, an alert sound
+  and a green minimap dot, even in From Scratch hide-all.
+- RePoE does not ship the Treasure Key base, so it is a reviewed entry in the
+  base-type registry, checked against the game's own item text.
+
 ## 0.28.0 — 2026-11-22
 
 Collapsible panels and resuming saved filters.

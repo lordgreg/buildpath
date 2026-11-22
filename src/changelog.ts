@@ -17,6 +17,17 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.29.0',
+    date: '2026-11-22',
+    title: 'Always show Labyrinth Treasure Keys',
+    notes: [
+      'Labyrinth Treasure Keys (Item Class: Labyrinth Items) are now built-in quest items in every filter. They are shown with the quest styling, an alert sound and a green minimap dot, even in From Scratch hide-all.',
+      'RePoE does not ship the Treasure Key base, so it is a reviewed entry in the base-type registry, checked against the game\'s own item text.',
+    ],
+    commits: [],
+    compare: 'v0.28.0...v0.29.0',
+  },
+  {
     version: '0.28.0',
     date: '2026-11-22',
     title: 'Collapsible panels and resuming saved filters',
