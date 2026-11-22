@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.30.0 — 2026-11-22
+
+Hide Iron Rings on minion builds.
+
+- Iron Rings are now excluded on minion builds, in every phase and strictness.
+  Iron Ring's physical attack implicit is useless to a summoner, so rare and
+  lower rings are hidden for the minion family, the Necromancer and minion meta
+  builds.
+- Unique Iron Rings (such as Andvarius) and attack builds that want the base are
+  unaffected.
+
 ## 0.29.0 — 2026-11-22
 
 Always show Labyrinth Treasure Keys.
