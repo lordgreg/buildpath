@@ -453,6 +453,12 @@ export default function Wizard() {
             changelog
           </a>
           <a
+            href="./tests.html"
+            className="underline-offset-4 hover:text-zinc-300 hover:underline"
+          >
+            audit
+          </a>
+          <a
             href="https://github.com/lordgreg/filterpath"
             className="underline-offset-4 hover:text-zinc-300 hover:underline"
           >

@@ -28,6 +28,12 @@ export default function Changelog() {
             Back to builder
           </a>
           <a
+            href="./tests.html"
+            className="text-zinc-500 underline-offset-4 hover:text-zinc-300 hover:underline"
+          >
+            Behaviour audit
+          </a>
+          <a
             href={REPO_URL}
             className="text-zinc-500 underline-offset-4 hover:text-zinc-300 hover:underline"
           >

@@ -226,6 +226,12 @@ export default function LootSimulator({
           >
             changelog
           </a>
+          <a
+            href="./tests.html"
+            className="underline-offset-4 hover:text-zinc-300 hover:underline"
+          >
+            audit
+          </a>
         </nav>
       </header>
 
