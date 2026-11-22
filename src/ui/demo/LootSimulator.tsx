@@ -384,7 +384,13 @@ export default function LootSimulator({
           const above = y > 45;
           return (
             <div
-              className="pointer-events-none absolute z-50 w-72 max-w-[85vw] rounded-lg border-2 bg-[#0b0b10]/95 text-xs shadow-2xl"
+              className={cx(
+                'absolute z-50 w-72 max-w-[85vw] rounded-lg border-2 bg-[#0b0b10]/95 text-xs shadow-2xl',
+                // Pinned tooltips are interactive so their links can be clicked.
+                pinnedId === selected.item.id
+                  ? 'pointer-events-auto'
+                  : 'pointer-events-none',
+              )}
               style={{
                 left: `clamp(9rem, ${x}%, calc(100% - 9rem))`,
                 top: `${y}%`,
@@ -463,13 +469,38 @@ export default function LootSimulator({
                   }
                 >
                   {selected.result.shown ? 'Shown' : 'Hidden'}{' '}
-                  {selected.result.index >= 0
-                    ? `by rule #${selected.result.index + 1}`
-                    : '(default)'}
+                  {selected.result.index >= 0 ? (
+                    <a
+                      href={`./#${builderHash}&rule=${selected.result.index}`}
+                      className="underline underline-offset-2 hover:text-white"
+                      title="Open this rule in the builder"
+                    >
+                      by rule #{selected.result.index + 1}
+                    </a>
+                  ) : (
+                    '(default)'
+                  )}
                   : {selected.result.reason}
                 </p>
-                <p className="text-[9px] text-zinc-600">
-                  Representative base; stat rolls not simulated.
+                <p className="mt-1 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[10px]">
+                  <a
+                    href={`./#${builderHash}&newClass=${encodeURIComponent(
+                      selected.item.itemClass,
+                    )}&newBase=${encodeURIComponent(
+                      selected.item.baseType,
+                    )}&newRarity=${encodeURIComponent(
+                      selected.item.rarity,
+                    )}&newIlvl=${encodeURIComponent(
+                      String(selected.item.itemLevel),
+                    )}`}
+                    className="text-gold-300 underline underline-offset-2 hover:text-gold-200"
+                  >
+                    Create custom rule
+                  </a>
+                </p>
+                <p className="mt-1 text-[9px] text-zinc-600">
+                  Click to pin, then follow a link. Representative base; stat
+                  rolls not simulated.
                 </p>
               </div>
             </div>

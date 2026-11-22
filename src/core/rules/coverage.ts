@@ -1,5 +1,10 @@
+import { baseTypes } from '../data/base-types.ts';
 import type { Range, Rule } from '../filter/types.ts';
 import type { RuleTemplate } from './templates.ts';
+
+const CLASS_BY_BASE = new Map(
+  baseTypes.map((base) => [base.name, base.itemClass]),
+);
 
 const RANGE_KEYS = [
   'itemLevel',
@@ -80,6 +85,85 @@ export function ruleCovers(cover: Rule, target: Rule): boolean {
       continue;
     }
     return false;
+  }
+
+  return true;
+}
+
+function rangesIntersect(a: Range, b: Range): boolean {
+  const aMin = a.min ?? Number.NEGATIVE_INFINITY;
+  const aMax = a.max ?? Number.POSITIVE_INFINITY;
+  const bMin = b.min ?? Number.NEGATIVE_INFINITY;
+  const bMax = b.max ?? Number.POSITIVE_INFINITY;
+  return aMin <= bMax && bMin <= aMax;
+}
+
+function shareName(a: readonly string[], b: readonly string[]): boolean {
+  const names = new Set(b);
+  return a.some((name) => names.has(name));
+}
+
+/** Classes a base-type list can resolve to; empty when none are known. */
+function classesOf(bases: readonly string[]): string[] {
+  const classes = new Set<string>();
+  for (const base of bases) {
+    const itemClass = CLASS_BY_BASE.get(base);
+    if (itemClass) classes.add(itemClass);
+  }
+  return [...classes];
+}
+
+function targetsIntersect(a: Rule, b: Rule): boolean {
+  const aBases = a.baseTypes ?? [];
+  const bBases = b.baseTypes ?? [];
+  const aClasses = a.classNames ?? [];
+  const bClasses = b.classNames ?? [];
+
+  if (aBases.length && bBases.length) return shareName(aBases, bBases);
+  if (aClasses.length && bClasses.length) return shareName(aClasses, bClasses);
+
+  if (aBases.length && bClasses.length) {
+    const classes = classesOf(aBases);
+    return classes.length === 0 || classes.some((name) => bClasses.includes(name));
+  }
+  if (aClasses.length && bBases.length) {
+    const classes = classesOf(bBases);
+    return classes.length === 0 || classes.some((name) => aClasses.includes(name));
+  }
+
+  // At most one side is constrained, so one rule is the broader match.
+  return true;
+}
+
+/**
+ * True when two rules can match the same item, ignoring the action. This is
+ * what "overrides" means for a custom rule: it is evaluated before the preset,
+ * so any preset rule it can match is shadowed. A hidden rule can never match,
+ * so it never overlaps.
+ */
+export function rulesOverlap(a: Rule, b: Rule): boolean {
+  if (a.disabled || b.disabled) return false;
+  if (a.rarity && b.rarity && a.rarity !== b.rarity) return false;
+  if (
+    a.corrupted !== undefined &&
+    b.corrupted !== undefined &&
+    a.corrupted !== b.corrupted
+  ) {
+    return false;
+  }
+  if (
+    a.identified !== undefined &&
+    b.identified !== undefined &&
+    a.identified !== b.identified
+  ) {
+    return false;
+  }
+  if (!targetsIntersect(a, b)) return false;
+
+  for (const key of RANGE_KEYS) {
+    const aBound = a[key];
+    const bBound = b[key];
+    if (aBound && bBound && !rangesIntersect(aBound, bBound)) return false;
   }
 
   return true;

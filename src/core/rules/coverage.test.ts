@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { compileFilter } from '../filter/generate.ts';
-import { ruleCovers, templateIsCovered } from './coverage.ts';
+import { ruleCovers, rulesOverlap, templateIsCovered } from './coverage.ts';
 import { TEMPLATES } from './templates.ts';
 import type { Rule } from '../filter/types.ts';
 
@@ -78,5 +78,67 @@ describe('template coverage', () => {
     for (const entry of TEMPLATES) {
       expect(templateIsCovered(entry, scratch), entry.id).toBe(false);
     }
+  });
+});
+
+describe('rule overlap', () => {
+  it('shares base types and ignores the action', () => {
+    expect(
+      rulesOverlap(
+        { action: 'Hide', baseTypes: ['Chaos Orb'] },
+        { action: 'Show', baseTypes: ['Chaos Orb', 'Divine Orb'] },
+      ),
+    ).toBe(true);
+    expect(
+      rulesOverlap(
+        { action: 'Hide', baseTypes: ['Chaos Orb'] },
+        { action: 'Show', baseTypes: ['Divine Orb'] },
+      ),
+    ).toBe(false);
+  });
+
+  it('resolves a base type against a class', () => {
+    expect(
+      rulesOverlap(
+        { action: 'Show', baseTypes: ['Rawhide Gloves'] },
+        { action: 'Show', classNames: ['Gloves'] },
+      ),
+    ).toBe(true);
+    expect(
+      rulesOverlap(
+        { action: 'Show', baseTypes: ['Rawhide Gloves'] },
+        { action: 'Show', classNames: ['Helmets'] },
+      ),
+    ).toBe(false);
+  });
+
+  it('respects rarity and ranges', () => {
+    expect(
+      rulesOverlap(
+        { action: 'Show', rarity: 'Rare' },
+        { action: 'Show', rarity: 'Normal' },
+      ),
+    ).toBe(false);
+    expect(
+      rulesOverlap(
+        { action: 'Show', itemLevel: { min: 80 } },
+        { action: 'Show', itemLevel: { max: 50 } },
+      ),
+    ).toBe(false);
+    expect(
+      rulesOverlap(
+        { action: 'Show', itemLevel: { min: 80 } },
+        { action: 'Show', itemLevel: { max: 90 } },
+      ),
+    ).toBe(true);
+  });
+
+  it('never overlaps a disabled rule', () => {
+    expect(
+      rulesOverlap(
+        { action: 'Hide', disabled: true, baseTypes: ['Chaos Orb'] },
+        { action: 'Show', baseTypes: ['Chaos Orb'] },
+      ),
+    ).toBe(false);
   });
 });

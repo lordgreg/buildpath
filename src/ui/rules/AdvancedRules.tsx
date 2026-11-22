@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Rule, RuleSection } from '../../core/filter/types.ts';
 import { SLOT_STYLES } from '../../core/filter/types.ts';
 import { colorToHex, hexToColor } from '../../core/filter/style-utils.ts';
@@ -7,7 +7,7 @@ import { parseItemText } from '../../core/demo/parse-item.ts';
 import known from '../../core/data/known-base-types.json';
 import { evaluateRules } from '../../core/preview/match.ts';
 import { TEMPLATES } from '../../core/rules/templates.ts';
-import { templateIsCovered } from '../../core/rules/coverage.ts';
+import { rulesOverlap, templateIsCovered } from '../../core/rules/coverage.ts';
 import {
   CHIPS,
   chipLabel,
@@ -75,6 +75,14 @@ const EMPTY_DRAFT: Draft = {
   comment: '',
   continue: false,
 };
+
+/** Seeds the rule editor, e.g. when the demo asks to turn an item into a rule. */
+export interface RulePrefill {
+  classes?: string[];
+  bases?: string;
+  rarity?: 'Normal' | 'Magic' | 'Rare' | 'Unique';
+  ilvlMin?: string;
+}
 
 function cx(...parts: (string | false | undefined)[]): string {
   return parts.filter(Boolean).join(' ');
@@ -463,6 +471,8 @@ export default function AdvancedRules({
   customRules,
   label,
   presetVersion,
+  focusIndex,
+  prefill,
   onChange,
   onImportCode,
   onImportRulesCode,
@@ -471,11 +481,20 @@ export default function AdvancedRules({
   customRules: Rule[];
   label: string;
   presetVersion: string;
+  /** Index into the emitted rule list to scroll to and highlight. */
+  focusIndex?: number;
+  prefill?: RulePrefill;
   onChange: (rules: Rule[]) => void;
   onImportCode: (code: string) => Promise<string | null>;
   onImportRulesCode: (code: string) => Promise<string | null>;
 }) {
-  const [draft, setDraft] = useState<Draft>(EMPTY_DRAFT);
+  const [draft, setDraft] = useState<Draft>(() => ({
+    ...EMPTY_DRAFT,
+    ...(prefill?.classes ? { classes: prefill.classes } : {}),
+    ...(prefill?.bases ? { bases: prefill.bases } : {}),
+    ...(prefill?.rarity ? { rarity: prefill.rarity } : {}),
+    ...(prefill?.ilvlMin ? { ilvlMin: prefill.ilvlMin } : {}),
+  }));
   const [search, setSearch] = useState('');
   const [message, setMessage] = useState<string | null>(null);
   const [codeInput, setCodeInput] = useState('');
@@ -483,12 +502,73 @@ export default function AdvancedRules({
   const [testText, setTestText] = useState('');
   const [testResult, setTestResult] = useState<string | null>(null);
   const [dragged, setDragged] = useState<number | null>(null);
+  const [highlightId, setHighlightId] = useState<string | null>(null);
+  const editorRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useRef<Record<string, HTMLDetailsElement | null>>({});
+  const focusedRef = useRef(false);
 
   const scratch = baseRules.some((rule) => rule.id === 'scratch-base');
   const locked = groupRules(
     baseRules.filter((rule) => rule.id !== 'scratch-base'),
   );
   const lockedCount = locked.reduce((sum, [, rules]) => sum + rules.length, 0);
+
+  const presetRules = useMemo(
+    () =>
+      baseRules.filter(
+        (rule) => rule.section !== 'quest' && rule.section !== 'custom',
+      ),
+    [baseRules],
+  );
+
+  // Preset rules each custom rule can match, and therefore override, because
+  // My rules are evaluated first.
+  const overrides = useMemo(
+    () =>
+      customRules.map((rule) =>
+        presetRules.filter((preset) => rulesOverlap(rule, preset)),
+      ),
+    [customRules, presetRules],
+  );
+
+  const jumpToRule = (rule: Rule) => {
+    if (!rule.id) return;
+    const custom = rule.section === 'custom';
+    if (!custom && rule.section) {
+      sectionRefs.current[rule.section]?.setAttribute('open', '');
+    }
+    setHighlightId(rule.id);
+    requestAnimationFrame(() => {
+      document
+        .getElementById(`${custom ? 'custom' : 'preset'}-rule-${rule.id}`)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    window.setTimeout(() => setHighlightId(null), 2500);
+  };
+
+  // Deep link from the loot simulator: reveal the deciding rule, or seed the
+  // editor from the item that was pasted.
+  useEffect(() => {
+    if (focusedRef.current) return;
+    const customCount = customRules.length;
+    if (prefill) {
+      editorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      focusedRef.current = true;
+      return;
+    }
+    if (focusIndex === undefined) return;
+    const target =
+      focusIndex < 1 + customCount
+        ? focusIndex === 0
+          ? baseRules[0]
+          : customRules[focusIndex - 1]
+        : baseRules[focusIndex - customCount];
+    if (!target) return;
+    focusedRef.current = true;
+    jumpToRule(target);
+    // Runs once for the deep link; later edits must not re-scroll.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const coveredTemplates = new Set(
     TEMPLATES.filter((template) => templateIsCovered(template, baseRules)).map(
       (template) => template.id,
@@ -622,21 +702,22 @@ export default function AdvancedRules({
       `Rule #${catchAll + 1} matches every item, so later My rules can never run.`,
     );
   }
-  const seen = new Set<string>();
-  for (const rule of customRules) {
+  const seen = new Map<string, number>();
+  customRules.forEach((rule, index) => {
     const serialized = conditionSignature(rule);
-    if (seen.has(serialized)) {
-      warnings.push('Two My rules are identical.');
-      break;
+    const first = seen.get(serialized);
+    if (first !== undefined) {
+      warnings.push(`My rules #${first + 1} and #${index + 1} are identical.`);
+    } else {
+      seen.set(serialized, index);
     }
-    seen.add(serialized);
     const unknown = (rule.baseTypes ?? []).filter(
       (base) => !KNOWN_BASES.has(base),
     );
     if (unknown.length > 0) {
       warnings.push(`Unknown base type(s): ${unknown.join(', ')}`);
     }
-  }
+  });
 
   const copyRulesCode = async () => {
     const { code } = await encodeShare({
@@ -711,9 +792,9 @@ export default function AdvancedRules({
           {message}
         </p>
       )}
-      {warnings.map((warning) => (
+      {warnings.map((warning, index) => (
         <p
-          key={warning}
+          key={`${index}-${warning}`}
           className="mt-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-200"
         >
           {warning}
@@ -728,7 +809,10 @@ export default function AdvancedRules({
             </h3>
           </div>
 
-          <div className="mt-2 rounded-lg border border-ink-700 bg-ink-900/40 p-3">
+          <div
+            ref={editorRef}
+            className="mt-2 rounded-lg border border-ink-700 bg-ink-900/40 p-3"
+          >
             <div className="grid gap-2 sm:grid-cols-2">
               <label className="text-[10px] uppercase tracking-wide text-zinc-500">
                 Action
@@ -1028,12 +1112,16 @@ export default function AdvancedRules({
             {customRules.map((rule, index) => (
               <li
                 key={rule.id ?? index}
+                id={`custom-rule-${rule.id ?? index}`}
                 draggable
                 onDragStart={() => setDragged(index)}
                 onDragOver={(event) => event.preventDefault()}
                 onDrop={() => drop(index)}
                 className={cx(
-                  'rounded-lg border border-ink-700 bg-ink-900/50 p-2.5',
+                  'rounded-lg border bg-ink-900/50 p-2.5 transition-colors',
+                  highlightId === rule.id
+                    ? 'border-gold-400 ring-2 ring-gold-400/40'
+                    : 'border-ink-700',
                   rule.disabled && 'opacity-50',
                 )}
               >
@@ -1106,6 +1194,22 @@ export default function AdvancedRules({
                 <p className="mt-1 pl-7 text-[11px] text-zinc-600">
                   {ruleSummary(rule)}
                 </p>
+                {overrides[index]!.length > 0 && (
+                  <p className="mt-1 pl-7 text-[11px] text-amber-300/80">
+                    Overrides preset{' '}
+                    <button
+                      type="button"
+                      onClick={() => jumpToRule(overrides[index]![0]!)}
+                      className="underline underline-offset-2 hover:text-amber-100"
+                    >
+                      {overrides[index]![0]!.comment ??
+                        ruleSummary(overrides[index]![0]!)}
+                    </button>
+                    {overrides[index]!.length > 1
+                      ? ` and ${overrides[index]!.length - 1} more`
+                      : ''}
+                  </p>
+                )}
                 <div className="pl-7">
                   <ConditionsEditor
                     rule={rule}
@@ -1211,6 +1315,9 @@ export default function AdvancedRules({
               return (
                 <details
                   key={section}
+                  ref={(element) => {
+                    sectionRefs.current[section] = element;
+                  }}
                   className="rounded border border-ink-700/70"
                 >
                   <summary className="flex cursor-pointer items-center justify-between gap-2 px-2 py-1.5 text-[11px] uppercase tracking-wide text-zinc-500">
@@ -1232,7 +1339,12 @@ export default function AdvancedRules({
                     {visibleRules.map((rule) => (
                       <li
                         key={rule.id}
-                        className="flex items-start gap-2 text-[11px] text-zinc-500"
+                        id={`preset-rule-${rule.id}`}
+                        className={cx(
+                          'flex items-start gap-2 rounded px-1 text-[11px] text-zinc-500 transition-colors',
+                          highlightId === rule.id &&
+                            'bg-gold-400/10 ring-1 ring-gold-400/40',
+                        )}
                       >
                         <span
                           className={cx(

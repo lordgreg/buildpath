@@ -24,7 +24,7 @@ import type { BuildMode } from '../meta/types.ts';
 import { APP_VERSION } from '../version.ts';
 import { decodeShare, encodeShare } from '../core/share/codec.ts';
 import FilterPreview from './FilterPreview.tsx';
-import AdvancedRules from './rules/AdvancedRules.tsx';
+import AdvancedRules, { type RulePrefill } from './rules/AdvancedRules.tsx';
 import SaveBuildPanel from './save/SaveBuildPanel.tsx';
 import FolderGuidance from './save/FolderGuidance.tsx';
 import { useFiltersFolder } from './save/useFiltersFolder.ts';
@@ -381,6 +381,34 @@ export default function Wizard() {
     () =>
       new URLSearchParams(window.location.hash.slice(1)).get('code') ?? null,
   );
+
+  // Deep links from the loot simulator: focus the deciding rule, or prefill a
+  // new rule from the pasted item. Read once, before the hash rewrites.
+  const [focusIndex] = useState(() => {
+    const raw = new URLSearchParams(window.location.hash.slice(1)).get('rule');
+    return raw !== null && /^\d+$/.test(raw) ? Number(raw) : undefined;
+  });
+
+  const [prefill] = useState<RulePrefill | undefined>(() => {
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    const bases = params.get('newBase')?.trim();
+    const classes = params.get('newClass')?.trim();
+    const rarity = params.get('newRarity');
+    const ilvl = params.get('newIlvl');
+    if (!bases && !classes) return undefined;
+    return {
+      classes: classes ? [classes] : undefined,
+      bases: bases || undefined,
+      rarity:
+        rarity === 'Normal' ||
+        rarity === 'Magic' ||
+        rarity === 'Rare' ||
+        rarity === 'Unique'
+          ? rarity
+          : undefined,
+      ilvlMin: ilvl && /^\d+$/.test(ilvl) ? ilvl : undefined,
+    };
+  });
 
   useEffect(() => {
     if (!initialCode) return;
@@ -970,6 +998,8 @@ export default function Wizard() {
           customRules={customRules}
           label={filter.archetype.name}
           presetVersion={PRESET_VERSION}
+          focusIndex={focusIndex}
+          prefill={prefill}
           onChange={changeCustomRules}
           onImportCode={importCode}
           onImportRulesCode={importRulesCode}
