@@ -4,7 +4,7 @@ import { PRESET_VERSION } from '../../meta/index.ts';
 import { resolveBuild } from '../../meta/resolve.ts';
 import type { BuildSelection } from '../../meta/types.ts';
 import { baseTypeMeta } from '../data/base-types.ts';
-import { emitFilter } from './emit.ts';
+import { emitFilterWithSpans } from './emit.ts';
 import { junkRules } from './junk.ts';
 import {
   getPreset,
@@ -19,7 +19,7 @@ import { gemRules } from './rules/gems.ts';
 import { mapRules } from './rules/maps.ts';
 import { leagueRules } from './rules/league.ts';
 import { uniqueRules } from './rules/uniques.ts';
-import { COLORS, type Rule, type RuleSection } from './types.ts';
+import { COLORS, type FilterAction, type Rule, type RuleSection } from './types.ts';
 import { applyTheme, type ThemeId } from './themes.ts';
 import { filterNameFor, validateFilter, type FilterIssue } from './validate.ts';
 import { buildFileName } from './name.ts';
@@ -77,6 +77,18 @@ export interface GeneratedFilter extends CompiledFilter {
   ruleCount: number;
   baseTypeCount: number;
   warnings: FilterIssue[];
+  /** 1-based line range of each enabled rule in `text`, for provenance. */
+  lineSpans: RuleLineSpan[];
+}
+
+export interface RuleLineSpan {
+  index: number;
+  id?: string;
+  section?: RuleSection;
+  comment?: string;
+  action: FilterAction;
+  startLine: number;
+  endLine: number;
 }
 
 export function normalizeSections(sections?: Partial<Sections>): Sections {
@@ -228,7 +240,7 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
     '========================================================================',
   ];
 
-  const text = emitFilter(header, compiled.rules);
+  const { text, spans } = emitFilterWithSpans(header, compiled.rules);
 
   return {
     ...compiled,
@@ -246,5 +258,14 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
     ruleCount: compiled.rules.length,
     baseTypeCount: compiled.baseTypes.length,
     warnings: validateFilter(text),
+    lineSpans: spans.map((span) => ({
+      index: span.index,
+      id: span.rule.id,
+      section: span.rule.section,
+      comment: span.rule.comment,
+      action: span.rule.action,
+      startLine: span.startLine,
+      endLine: span.endLine,
+    })),
   };
 }
