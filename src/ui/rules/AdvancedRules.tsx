@@ -14,6 +14,8 @@ import {
   type ChipId,
   unionChipBases,
 } from '../../core/rules/chips.ts';
+import CollapseChevron from '../CollapseChevron.tsx';
+import { usePersistedOpen } from '../usePersistedOpen.ts';
 const SECTION_LABELS: Record<RuleSection, string> = {
   gear: 'Build gear',
   gems: 'Gems',
@@ -484,7 +486,7 @@ export default function AdvancedRules({
     ...(prefill?.rarity ? { rarity: prefill.rarity } : {}),
     ...(prefill?.ilvlMin ? { ilvlMin: prefill.ilvlMin } : {}),
   }));
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = usePersistedOpen('advanced-rules-open');
   const [search, setSearch] = useState('');
   const [message, setMessage] = useState<string | null>(null);
   const [testText, setTestText] = useState('');
@@ -728,8 +730,11 @@ export default function AdvancedRules({
       onToggle={(event) => setOpen(event.currentTarget.open)}
       className="min-w-0 rounded-xl border border-ink-700 bg-ink-800/40 p-4 sm:p-5"
     >
-      <summary className="flex cursor-pointer flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <span className="text-sm font-medium text-white">Advanced rules</span>
+      <summary className="flex cursor-pointer flex-wrap items-center justify-between gap-x-3 gap-y-1">
+        <span className="flex items-center gap-2 text-sm font-medium text-white">
+          <CollapseChevron open={open} />
+          Advanced rules
+        </span>
         <span className="text-xs text-zinc-500">
           {lockedCount} locked preset {lockedCount === 1 ? 'rule' : 'rules'},{' '}
           {customRules.length} My {customRules.length === 1 ? 'rule' : 'rules'}
