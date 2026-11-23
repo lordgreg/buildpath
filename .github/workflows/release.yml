@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Create GitHub release from CHANGELOG.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          version="${tag#v}"
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists; nothing to do."
+            exit 0
+          fi
+
+          notes="$(mktemp)"
+          awk -v ver="$version" '
+            index($0, "## " ver " ") == 1 { found = 1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md | sed -e '/./,$!d' -e :a -e '/^\n*$/{$d;N;ba' > "$notes"
+
+          if [ ! -s "$notes" ]; then
+            echo "::error::No CHANGELOG.md section found for $version"
+            exit 1
+          fi
+
+          summary="$(grep -m1 . "$notes" | sed 's/\.$//')"
+          gh release create "$tag" \
+            --title "$tag - $summary" \
+            --notes-file "$notes" \
+            --verify-tag

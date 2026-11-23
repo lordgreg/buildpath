@@ -111,8 +111,12 @@ scripts/       YAML compiler and data extractors
 
 1. Bump `package.json` version.
 2. Add the release to **both** `src/changelog.ts` and `CHANGELOG.md`.
-3. Commit, tag `v<version>`, push to `master`.
-4. The deploy workflow runs `npm test` + `npm run build` and publishes to Pages.
+3. Commit, tag `v<version>`, then push the commit **and the tag**
+   (`git push origin master --follow-tags`). An unpushed tag is invisible to
+   GitHub.
+4. The release workflow (`.github/workflows/release.yml`) creates the GitHub
+   Release from the matching `CHANGELOG.md` section when the tag is pushed.
+5. The deploy workflow runs `npm test` + `npm run build` and publishes to Pages.
 
 Related workflows:
 
