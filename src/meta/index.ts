@@ -51,6 +51,32 @@ export function getSkill(
   return getSnapshot(leagueId).skills.find((skill) => skill.id === skillId);
 }
 
+export interface SkillWeightGroup {
+  /** Null for skills without a seed weight. */
+  weight: number | null;
+  skills: SkillEntry[];
+}
+
+/**
+ * Groups a league's skills by seed weight, highest first. Skills without a
+ * weight fall into a final `null` group. Names sort within each group.
+ */
+export function groupSkillsByWeight(leagueId: string): SkillWeightGroup[] {
+  const groups = new Map<number | null, SkillEntry[]>();
+  for (const skill of getSnapshot(leagueId).skills) {
+    const weight = skill.playShare ?? null;
+    const group = groups.get(weight) ?? [];
+    group.push(skill);
+    groups.set(weight, group);
+  }
+  for (const group of groups.values()) {
+    group.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  return [...groups.entries()]
+    .sort(([a], [b]) => (b ?? -1) - (a ?? -1))
+    .map(([weight, skills]) => ({ weight, skills }));
+}
+
 export function getAscendanciesForSkill(skill: SkillEntry): Ascendancy[] {
   const allowed = ASCENDANCIES.filter((ascendancy) =>
     skill.classes.includes(ascendancy.class),

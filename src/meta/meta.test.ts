@@ -14,6 +14,7 @@ import {
   getAscendanciesForSkill,
   getSkills,
   getSnapshot,
+  groupSkillsByWeight,
   isValidSelection,
   LEAGUE_INDEX,
   legacySelection,
@@ -119,6 +120,36 @@ describe('league snapshots', () => {
           ascendancy.id,
         );
       }
+    }
+  });
+});
+
+describe('skill weight grouping', () => {
+  const groups = groupSkillsByWeight(LEAGUE_INDEX.current);
+  const snapshot = getSnapshot(LEAGUE_INDEX.current);
+
+  it('keeps every skill exactly once', () => {
+    expect(groups.flatMap((group) => group.skills)).toHaveLength(
+      snapshot.skills.length,
+    );
+    expect(new Set(groups.flatMap((group) => group.skills.map((s) => s.id))).size).toBe(
+      snapshot.skills.length,
+    );
+  });
+
+  it('orders groups from the highest weight down', () => {
+    const weights = groups.map((group) => group.weight ?? -1);
+    expect(weights).toEqual([...weights].sort((a, b) => b - a));
+    expect(new Set(weights).size).toBe(weights.length);
+  });
+
+  it('puts every skill in its weight group and sorts names', () => {
+    for (const group of groups) {
+      for (const skill of group.skills) {
+        expect(skill.playShare ?? null).toBe(group.weight);
+      }
+      const names = group.skills.map((skill) => skill.name);
+      expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b)));
     }
   });
 });

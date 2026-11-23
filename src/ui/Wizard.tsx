@@ -18,10 +18,11 @@ import {
   getSkill,
   getSkills,
   getSnapshot,
+  groupSkillsByWeight,
   LEAGUE_INDEX,
   PRESET_VERSION,
 } from '../meta/index.ts';
-import type { BuildMode } from '../meta/types.ts';
+import type { BuildMode, SkillEntry } from '../meta/types.ts';
 import { APP_VERSION } from '../version.ts';
 import { decodeShare, encodeShare } from '../core/share/codec.ts';
 import FilterPreview from './FilterPreview.tsx';
@@ -123,6 +124,9 @@ export default function Wizard() {
   const [copied, setCopied] = useState<Copied>(null);
   const [codeInput, setCodeInput] = useState('');
   const [activeBuildId, setActiveBuildId] = useState<string | null>(null);
+  const [metaGrouping, setMetaGrouping] = useState<'family' | 'weight'>(
+    'family',
+  );
   const isStart = state.mode === 'start';
   const autoName = isStart ? '' : autoBuildName(asSelected(state));
   const folder = useFiltersFolder();
@@ -187,6 +191,25 @@ export default function Wizard() {
   const skill =
     getSkill(state.leagueId, state.skillId) ?? familySkills[0] ?? null;
   const metaAscendancies = skill ? getAscendanciesForSkill(skill) : [];
+
+  const metaSkillButton = (entry: SkillEntry) => (
+    <OptionButton
+      key={entry.id}
+      compact
+      selected={entry.id === state.skillId}
+      onClick={() => update({ skillId: entry.id })}
+      title={entry.name}
+      subtitle={
+        metaGrouping === 'family'
+          ? entry.playShare !== undefined
+            ? seed
+              ? `seed weight ${entry.playShare}`
+              : `${entry.playShare}% of snapshot`
+            : undefined
+          : getFamily(entry.family).name
+      }
+    />
+  );
 
   const makePayload = () => ({
     v: 1 as const,
@@ -713,41 +736,68 @@ export default function Wizard() {
                 </section>
 
                 <section aria-labelledby="skill-heading">
-                  <h2
-                    id="skill-heading"
-                    className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-                  >
-                    1. Skill
-                  </h2>
-                  {FAMILIES.map((familyEntry) => {
-                    const skills = getSkills(state.leagueId, familyEntry.id);
-                    if (skills.length === 0) return null;
-                    return (
-                      <div key={familyEntry.id} className="mt-4">
-                        <h3 className="mb-2 text-[11px] uppercase tracking-[0.18em] text-zinc-600">
-                          {familyEntry.name}
-                        </h3>
-                        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                          {skills.map((entry) => (
-                            <OptionButton
-                              key={entry.id}
-                              compact
-                              selected={entry.id === state.skillId}
-                              onClick={() => update({ skillId: entry.id })}
-                              title={entry.name}
-                              subtitle={
-                                entry.playShare !== undefined
-                                  ? seed
-                                    ? `seed weight ${entry.playShare}`
-                                    : `${entry.playShare}% of snapshot`
-                                  : undefined
-                              }
-                            />
-                          ))}
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h2
+                      id="skill-heading"
+                      className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+                    >
+                      1. Skill
+                    </h2>
+                    <div
+                      className="flex gap-1"
+                      role="group"
+                      aria-label="Group skills by"
+                    >
+                      {(['family', 'weight'] as const).map((value) => (
+                        <button
+                          key={value}
+                          type="button"
+                          aria-pressed={metaGrouping === value}
+                          onClick={() => setMetaGrouping(value)}
+                          className={cx(
+                            'rounded border px-2 py-0.5 text-[10px]',
+                            metaGrouping === value
+                              ? 'border-gold-400/60 bg-gold-400/10 text-gold-300'
+                              : 'border-ink-600 text-zinc-500 hover:text-zinc-300',
+                          )}
+                        >
+                          {value === 'family' ? 'Family' : 'Seed weight'}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  {metaGrouping === 'family'
+                    ? FAMILIES.map((familyEntry) => {
+                        const skills = getSkills(
+                          state.leagueId,
+                          familyEntry.id,
+                        );
+                        if (skills.length === 0) return null;
+                        return (
+                          <div key={familyEntry.id} className="mt-4">
+                            <h3 className="mb-2 text-[11px] uppercase tracking-[0.18em] text-zinc-600">
+                              {familyEntry.name}
+                            </h3>
+                            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                              {skills.map(metaSkillButton)}
+                            </div>
+                          </div>
+                        );
+                      })
+                    : groupSkillsByWeight(state.leagueId).map((group) => (
+                        <div key={group.weight ?? 'none'} className="mt-4">
+                          <h3 className="mb-2 text-[11px] uppercase tracking-[0.18em] text-zinc-600">
+                            {group.weight === null
+                              ? 'No seed weight'
+                              : seed
+                                ? `Seed weight ${group.weight}`
+                                : `${group.weight}% of snapshot`}
+                          </h3>
+                          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                            {group.skills.map(metaSkillButton)}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      ))}
                 </section>
 
                 <section aria-labelledby="meta-ascendancy-heading">

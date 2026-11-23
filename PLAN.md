@@ -179,9 +179,9 @@ included, and advanced rules can override or hide anything.
 2. **Ascendancy (B)** — a flat list grouped by class. The ascendancy preset
    gains a `defaultFamily` / default loadout: Necromancer → minion, Deadeye →
    bow, Juggernaut → melee, Occultist → caster, Trickster → hybrid.
-3. **Meta build (C)** — the selected league's snapshot skills grouped by family,
-   then ascendancy. The family is derived from the skill. Snapshots stay
-   manual.
+3. **Meta build (C)** — the selected league's snapshot skills grouped by family
+   or by seed weight, then ascendancy. The family is derived from the skill.
+   Snapshots stay manual.
 
 The **league is chosen first**, above the mode tabs; the current league is
 preselected and Standard is the fallback. It drives the meta snapshots.
