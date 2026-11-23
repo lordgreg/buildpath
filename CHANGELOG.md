@@ -2,6 +2,16 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.33.0 — 2026-11-23
+
+Automatic folder checks and meta grouping.
+
+- A connected filters folder is now checked for read/write access automatically
+  when it is restored after a refresh, so the access badge and read-only hint are
+  accurate without pressing Test access.
+- By meta build can now group skills by family or by seed weight. The seed-weight
+  view puts the most popular skills first and shows each skill's family.
+
 ## 0.32.0 — 2026-11-22
 
 Always show veiled items.
