@@ -270,7 +270,9 @@ The preset is **locked and never cloned**. Users add rules on top of it.
   shows the matching folder first. The other platform stays behind a disclosure.
 - **Custom folder** — a reference path field stores the location you paste; the
   native picker still grants access, and a temporary write proves read/write
-  access. Failures show a copyable `chmod u+w` hint on Linux or
+  access. When the stored handle still has permission after a refresh, the
+  read/write check runs automatically on load, so no manual "Test access" step
+  is needed. Failures show a copyable `chmod u+w` hint on Linux or
   folder-permission steps on Windows. Browsers never expose the absolute path.
 - **Download** — when a folder is connected, Download writes there first, asks
   before overwriting and falls back to a browser download.

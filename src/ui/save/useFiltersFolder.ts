@@ -75,22 +75,6 @@ export function useFiltersFolder(): FiltersFolder {
     [],
   );
 
-  useEffect(() => {
-    let cancelled = false;
-    void (async () => {
-      const stored = await loadDirectoryHandle();
-      if (!stored || cancelled) return;
-      setHandle(stored);
-      const current = await ensurePermission(stored, false);
-      if (cancelled) return;
-      setPermission(current);
-      if (current === 'granted') await refreshFiles(stored);
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [refreshFiles]);
-
   const runProbe = useCallback(
     async (directory: FileSystemDirectoryHandle) => {
       setBusy(true);
@@ -114,6 +98,22 @@ export function useFiltersFolder(): FiltersFolder {
     },
     [platform, refreshFiles],
   );
+
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      const stored = await loadDirectoryHandle();
+      if (!stored || cancelled) return;
+      setHandle(stored);
+      const current = await ensurePermission(stored, false);
+      if (cancelled) return;
+      setPermission(current);
+      if (current === 'granted') await runProbe(stored);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [runProbe]);
 
   const choose = useCallback(async () => {
     if (!supported) return;

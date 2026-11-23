@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   backupName,
+  ensurePermission,
   filterUpdateKind,
   isFilterFileName,
   isFilterPathFileName,
@@ -182,6 +183,38 @@ describe('filter files', () => {
     expect(files.has('FilterPath.filter')).toBe(false);
     expect(files.has('FilterPath.filter.bak')).toBe(false);
     expect(files.get('other.filter')).toBe('keep me');
+  });
+});
+
+describe('ensurePermission', () => {
+  function handle(state: PermissionState, request: PermissionState = 'granted') {
+    let requested = false;
+    const directory = {
+      queryPermission: async () => state,
+      requestPermission: async () => {
+        requested = true;
+        return request;
+      },
+    } as unknown as FileSystemDirectoryHandle;
+    return { directory, requested: () => requested };
+  }
+
+  it('returns an existing grant without prompting', async () => {
+    const { directory, requested } = handle('granted');
+    expect(await ensurePermission(directory)).toBe('granted');
+    expect(requested()).toBe(false);
+  });
+
+  it('queries without prompting when request is false', async () => {
+    const { directory, requested } = handle('prompt');
+    expect(await ensurePermission(directory, false)).toBe('prompt');
+    expect(requested()).toBe(false);
+  });
+
+  it('requests permission when the user asks for it', async () => {
+    const { directory, requested } = handle('prompt', 'granted');
+    expect(await ensurePermission(directory)).toBe('granted');
+    expect(requested()).toBe(true);
   });
 });
 
