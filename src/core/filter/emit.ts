@@ -1,3 +1,4 @@
+import { hasEmptyListCondition } from '../rules/sanitize.ts';
 import type { Color, Rule, Style } from './types.ts';
 
 const INDENT = '    ';
@@ -157,6 +158,9 @@ export function emitRulesWithSpans(rules: readonly Rule[]): {
   const blocks: { rule: Rule; index: number; lines: string[] }[] = [];
   rules.forEach((rule, index) => {
     if (rule.disabled) return;
+    // An empty list matches nothing; writing the block without that line
+    // would match everything instead.
+    if (hasEmptyListCondition(rule)) return;
     blocks.push({ rule, index, lines: ruleLines(rule) });
   });
 

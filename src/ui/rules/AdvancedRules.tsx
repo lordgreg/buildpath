@@ -8,6 +8,7 @@ import known from '../../core/data/known-base-types.json';
 import { evaluateRules } from '../../core/preview/match.ts';
 import { TEMPLATES } from '../../core/rules/templates.ts';
 import { rulesOverlap, templateIsCovered } from '../../core/rules/coverage.ts';
+import { customRuleProblem } from '../../core/rules/sanitize.ts';
 import {
   CHIPS,
   chipLabel,
@@ -187,7 +188,11 @@ const RANGE_KEYS = [
   'mapTier',
 ] as const;
 
-/** Removes empty ranges and lists so a cleared field stops counting as a condition. */
+/**
+ * Removes empty ranges so a cleared field stops counting as a condition. An
+ * emptied Classes or Base types list is kept: dropping it would silently widen
+ * the rule, so the generator skips it and the editor asks for a value instead.
+ */
 function tidyRule(rule: Rule): Rule {
   const next: Rule = { ...rule };
   for (const key of RANGE_KEYS) {
@@ -196,10 +201,7 @@ function tidyRule(rule: Rule): Rule {
       delete next[key];
     }
   }
-  for (const key of ['classNames', 'baseTypes', 'chips'] as const) {
-    const values = next[key];
-    if (values && values.length === 0) delete next[key];
-  }
+  if (next.chips?.length === 0) delete next.chips;
   return next;
 }
 
@@ -318,7 +320,10 @@ function ConditionsEditor({
             value={rule.classNames?.join(', ') ?? ''}
             onChange={(event) => {
               const values = splitList(event.target.value);
-              onChange({ classNames: values.length ? values : undefined });
+              // Clearing an existing list keeps it, empty; see tidyRule.
+              onChange({
+                classNames: values.length || rule.classNames ? values : undefined,
+              });
             }}
             className="mt-0.5 block w-full rounded border border-ink-600 bg-ink-800 px-2 py-1 text-xs text-zinc-200"
           />
@@ -329,7 +334,9 @@ function ConditionsEditor({
             value={rule.baseTypes?.join(', ') ?? ''}
             onChange={(event) => {
               const values = splitList(event.target.value);
-              onChange({ baseTypes: values.length ? values : undefined });
+              onChange({
+                baseTypes: values.length || rule.baseTypes ? values : undefined,
+              });
             }}
             className="mt-0.5 block w-full rounded border border-ink-600 bg-ink-800 px-2 py-1 text-xs text-zinc-200"
           />
@@ -688,7 +695,9 @@ export default function AdvancedRules({
   };
 
   const warnings: string[] = [];
-  const catchAll = customRules.findIndex((rule) => !hasConditions(rule));
+  const catchAll = customRules.findIndex(
+    (rule) => !hasConditions(rule) && !customRuleProblem(rule),
+  );
   if (catchAll >= 0 && catchAll < customRules.length - 1) {
     warnings.push(
       `Rule #${catchAll + 1} matches every item, so later My rules can never run.`,
@@ -702,6 +711,11 @@ export default function AdvancedRules({
       warnings.push(`My rules #${first + 1} and #${index + 1} are identical.`);
     } else {
       seen.set(serialized, index);
+    }
+    const problem = customRuleProblem(rule);
+    if (problem) {
+      warnings.push(`My rules #${index + 1} is not written: ${problem}`);
+      return;
     }
     const unknown = (rule.baseTypes ?? []).filter(
       (base) => !KNOWN_BASES.has(base),

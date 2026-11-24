@@ -4,7 +4,7 @@ import { PRESET_VERSION } from '../../meta/index.ts';
 import { resolveBuild } from '../../meta/resolve.ts';
 import type { BuildSelection } from '../../meta/types.ts';
 import { baseTypeMeta } from '../data/base-types.ts';
-import { withoutUnknownBases } from '../rules/sanitize.ts';
+import { prepareCustomRules, type SkippedRule } from '../rules/sanitize.ts';
 import { emitFilterWithSpans } from './emit.ts';
 import { buildHashParams } from './hash.ts';
 import { junkRules } from './junk.ts';
@@ -71,6 +71,8 @@ export interface CompiledFilter {
   theme: ThemeId;
   rules: Rule[];
   baseTypes: string[];
+  /** Custom rules left out of the filter, by position in `customRules`. */
+  skippedCustomRules: SkippedRule[];
 }
 
 export interface GeneratedFilter extends CompiledFilter {
@@ -179,9 +181,16 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
 
   // A custom rule may predate a data fix and list a base the game dropped. Drop
   // those names here so the emitted filter always loads, whatever the source.
-  const customRules = withoutUnknownBases(
-    (config.customRules ?? []).filter((rule) => !rule.disabled),
-  ).map((rule, index) => ({
+  // A rule left with an empty list is skipped and reported, never widened.
+  const enabled = (config.customRules ?? [])
+    .map((rule, index) => ({ rule, index }))
+    .filter(({ rule }) => !rule.disabled);
+  const prepared = prepareCustomRules(enabled.map(({ rule }) => rule));
+  const skippedCustomRules = prepared.skipped.map((entry) => ({
+    ...entry,
+    index: enabled[entry.index]!.index,
+  }));
+  const customRules = prepared.rules.map((rule, index) => ({
     ...rule,
     id: rule.id ?? `custom-${index}`,
     section: rule.section ?? ('custom' as RuleSection),
@@ -208,6 +217,7 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
         theme,
       ),
       baseTypes: [...bases].sort(),
+      skippedCustomRules,
     };
   }
 
@@ -256,6 +266,7 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
     theme,
     rules: applyTheme(rules, theme),
     baseTypes: [...baseTypes].sort(),
+    skippedCustomRules,
   };
 }
 

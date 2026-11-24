@@ -25,6 +25,7 @@ import {
 import type { BuildMode, SkillEntry } from '../meta/types.ts';
 import { APP_VERSION } from '../version.ts';
 import { decodeShare, encodeShare } from '../core/share/codec.ts';
+import { shapeRules } from '../core/rules/sanitize.ts';
 import FilterPreview from './FilterPreview.tsx';
 import ThemePreview from './demo/ThemePreview.tsx';
 import AdvancedRules, { type RulePrefill } from './rules/AdvancedRules.tsx';
@@ -324,7 +325,7 @@ export default function Wizard() {
 
   const loadBuild = (build: SavedBuild) => {
     const loaded = { ...coerceWizardState(build.state), name: build.name };
-    const rules = build.customRules ?? [];
+    const { rules } = shapeRules(build.customRules ?? []);
     load(loaded, rules);
     setActiveBuildId(build.id);
     setNotice(
@@ -352,13 +353,20 @@ export default function Wizard() {
       const importedState = payload.state
         ? coerceWizardState(payload.state as Partial<WizardState>)
         : state;
-      const rules = payload.customRules ?? payload.rules ?? [];
+      const { rules, dropped } = shapeRules(
+        payload.customRules ?? payload.rules ?? [],
+      );
       load(importedState, rules);
       setActiveBuildId(null);
+      const skipped =
+        dropped > 0
+          ? ` ${dropped} malformed rule${dropped === 1 ? ' was' : 's were'} skipped.`
+          : '';
       setNotice(
-        payload.presetVersion === PRESET_VERSION
+        (payload.presetVersion === PRESET_VERSION
           ? 'Imported build. Save it if you want to keep it locally.'
-          : 'Imported build with the latest presets. Save it if you want to keep it locally.',
+          : 'Imported build with the latest presets. Save it if you want to keep it locally.') +
+          skipped,
       );
       return null;
     } catch (error) {

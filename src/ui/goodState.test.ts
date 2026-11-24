@@ -38,7 +38,7 @@ describe('good state', () => {
     expect(loadGoodState()).toBeNull();
   });
 
-  it('drops base types the game no longer accepts', () => {
+  it('keeps unknown base types for the editor to show', () => {
     saveGoodState({
       state: DEFAULT_STATE,
       customRules: [
@@ -50,7 +50,28 @@ describe('good state', () => {
         },
       ],
     });
-    expect(loadGoodState()?.customRules[0]?.baseTypes).toEqual(['Leather Belt']);
+    // The generator drops the unknown name; stripping it on load would let an
+    // edit turn a rule listing only unknown names into a catch-all.
+    expect(loadGoodState()?.customRules[0]?.baseTypes).toEqual([
+      'Not A Real Base',
+      'Leather Belt',
+    ]);
+  });
+
+  it('drops malformed rules', () => {
+    localStorage.setItem(
+      'filterpath.good.v1',
+      JSON.stringify({
+        state: DEFAULT_STATE,
+        customRules: [
+          { action: 'Hide', baseTypes: 'Leather Belt' },
+          { action: 'Show', baseTypes: ['Leather Belt'] },
+        ],
+      }),
+    );
+    expect(loadGoodState()?.customRules).toEqual([
+      { action: 'Show', baseTypes: ['Leather Belt'] },
+    ]);
   });
 
   it('forgets the saved build on clear', () => {

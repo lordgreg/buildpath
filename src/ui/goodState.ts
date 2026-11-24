@@ -1,5 +1,5 @@
 import type { Rule } from '../core/filter/types.ts';
-import { withoutUnknownBases } from '../core/rules/sanitize.ts';
+import { shapeRules } from '../core/rules/sanitize.ts';
 import { coerceWizardState, type WizardState } from './wizardState.ts';
 
 /**
@@ -24,9 +24,7 @@ export function loadGoodState(): GoodState | null {
     } | null;
     if (!parsed || typeof parsed !== 'object') return null;
     const state = coerceWizardState((parsed.state ?? {}) as Partial<WizardState>);
-    const customRules = withoutUnknownBases(
-      Array.isArray(parsed.customRules) ? (parsed.customRules as Rule[]) : [],
-    );
+    const customRules = shapeRules(parsed.customRules).rules;
     return { state, customRules };
   } catch {
     return null;

@@ -1,5 +1,5 @@
 import type { Rule } from '../../core/filter/types.ts';
-import { withoutUnknownBases } from '../../core/rules/sanitize.ts';
+import { shapeRules } from '../../core/rules/sanitize.ts';
 
 const STORAGE_KEY = 'filterpath.custom-rules.v2';
 const LEGACY_CLONES = 'filterpath.clones.v1';
@@ -50,9 +50,9 @@ function writeAll(rules: Record<string, Rule[]>): void {
 }
 
 export function loadCustomRules(key: string): Rule[] {
-  // Stored rules may reference a base the game has since dropped; strip those
-  // names on the way in so the editor and the filter never see them.
-  return withoutUnknownBases(readAll()[key] ?? []);
+  // Names the game has since dropped are kept so the editor can show them;
+  // the generator leaves them out. Only malformed rules are discarded here.
+  return shapeRules(readAll()[key] ?? []).rules;
 }
 
 export function saveCustomRules(key: string, rules: Rule[]): void {

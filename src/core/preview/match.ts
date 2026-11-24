@@ -1,4 +1,5 @@
 import type { Rule } from '../filter/types.ts';
+import { hasEmptyListCondition } from '../rules/sanitize.ts';
 
 export type ItemRarity =
   | 'Normal'
@@ -63,6 +64,8 @@ function hasExplicitMod(item: PreviewItem, names: readonly string[]): boolean {
 }
 
 export function ruleMatches(rule: Rule, item: PreviewItem): boolean {
+  // The emitter skips such a block, so the preview must not match it either.
+  if (hasEmptyListCondition(rule)) return false;
   if (rule.classNames && !rule.classNames.includes(item.itemClass)) return false;
   if (rule.baseTypes && !rule.baseTypes.includes(item.baseType)) return false;
   if (rule.rarity && rule.rarity !== item.rarity) return false;
