@@ -699,14 +699,17 @@ asserted against the registry.
 - Register the veiled category in the audit catalog. **Already done** with the
   0.32.0 veiled rules.
 
-**Phase 4 - builder bugs.** Typing spaces/commas in rule conditions; Item test
-in emitted order; From Scratch message (always says "visible"), veiled
-overlap, `hasExplicitMod` in editor helpers; `coverage.ts` compares RePoE
-singular classes with filter plurals, so overlap warnings rarely fire;
-themes overwrite custom colours; generator warnings hidden in a collapsed
-section; regeneration per keystroke in the name field; silent storage/folder
-failures and no error boundary; header-only folder reads; magic item parsing
-and thousands separators in the loot simulator; audit deep links never decode.
+**Phase 4 - builder bugs (0.37.0). Done.** Typing spaces/commas in rule
+conditions (draft list fields); Item test in emitted order
+(`core/rules/order.ts`); From Scratch message reads its own base rule; veiled
+rules excluded from overlap warnings and mod rules compare by containment;
+`hasExplicitMod` counts as a condition in the editor helpers; `coverage.ts`
+maps base types to plural filter classes; themes keep colours a custom rule sets
+itself; a warnings badge shows while the generated filter is collapsed; the name
+field commits on blur instead of regenerating per keystroke; storage failures
+are reported and a render error shows a boundary instead of a blank page;
+folder listings read only the header; magic items and thousands separators
+parse; audit deep links decode.
 
 **Phase 5 - data pipeline and CI.** Mark synced filters stale after an
 economy-only deploy (hash of sorted tiers); validate poe.ninja responses and

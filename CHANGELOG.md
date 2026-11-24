@@ -2,6 +2,28 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.37.0 — 2026-11-24
+
+Builder fixes across the rule editor and the folder.
+
+- Typing a comma in the class or base-type field no longer deletes it, so a
+  second entry can be started. Explicit-mod rules now count as conditions in the
+  catch-all, duplicate and summary checks.
+- The item test decides in the order the filter writes: the always-on quest and
+  veiled blocks first, then My rules, then the preset.
+- A custom rule no longer loses its own text and border colours when you switch
+  theme, and generator warnings show a count while the generated filter is
+  collapsed.
+- The build name is applied on blur or Enter instead of rebuilding the whole
+  filter on every keystroke. From Scratch reads its own starting action instead
+  of always claiming everything is visible.
+- Overlap warnings stop listing the quest and veiled safety rules, and two
+  explicit-mod rules only overlap when the mod names actually match.
+- The folder listing reads only the first 4 KB of each filter, and a blocked
+  local storage or a render crash now says so instead of failing silently.
+- Loot-simulator parsing handles magic items with a base line and numbers with
+  thousands separators, and behaviour-audit deep links decode again.
+
 ## 0.36.0 — 2026-11-24
 
 Cluster jewels, unique maps and link safety.
