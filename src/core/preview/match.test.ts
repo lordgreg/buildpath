@@ -170,4 +170,40 @@ describe('preview matcher', () => {
       ),
     ).toBe(false);
   });
+
+  it('treats currency, gems and cards as Normal rarity', () => {
+    const normal = { action: 'Show', rarity: 'Normal' } as const;
+    for (const id of ['currency-divine', 'gem-zero', 'divination-card']) {
+      expect(ruleMatches(normal, item(id)), id).toBe(true);
+    }
+    expect(ruleMatches(normal, item('rare-ring'))).toBe(false);
+    expect(
+      ruleMatches({ action: 'Show', rarity: 'Rare' }, item('currency-divine')),
+    ).toBe(false);
+  });
+
+  it('reads missing sockets, links, quality and stack size as the game does', () => {
+    const nonSocketable = item('currency-divine');
+    expect(
+      ruleMatches({ action: 'Show', sockets: { max: 0 } }, nonSocketable),
+    ).toBe(true);
+    expect(
+      ruleMatches({ action: 'Show', sockets: { min: 1 } }, nonSocketable),
+    ).toBe(false);
+    expect(
+      ruleMatches({ action: 'Show', linkedSockets: { max: 0 } }, nonSocketable),
+    ).toBe(true);
+    expect(
+      ruleMatches({ action: 'Show', quality: { max: 0 } }, nonSocketable),
+    ).toBe(true);
+    expect(
+      ruleMatches({ action: 'Show', quality: { min: 1 } }, nonSocketable),
+    ).toBe(false);
+    expect(
+      ruleMatches({ action: 'Show', stackSize: { max: 1 } }, item('rare-ring')),
+    ).toBe(true);
+    expect(
+      ruleMatches({ action: 'Show', stackSize: { min: 2 } }, item('rare-ring')),
+    ).toBe(false);
+  });
 });

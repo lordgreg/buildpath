@@ -642,8 +642,8 @@ open Advanced rules and map the rule index correctly (`core/rules/focus.ts`).
   directory handle: current file only, header must round-trip, skipped in
   import sessions; ask before an import replaces existing My rules.
 - Preview parity: currency, gems and cards count as `Rarity Normal`; missing
-  sockets/links/quality are 0 and stack size 1; `Continue` keeps earlier style.
-  Verify in game first.
+  sockets/links/quality are 0 and stack size 1 (done). `Continue` keeps earlier
+  style still needs the in-game check before it is modelled.
 
 **Phase 2 - base data source (own release, needs a decision).** Move
 `extract:repoe` from the frozen `brather1ng/RePoE` (no pushes since 2022, no

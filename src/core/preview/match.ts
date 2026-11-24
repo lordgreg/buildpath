@@ -63,20 +63,40 @@ function hasExplicitMod(item: PreviewItem, names: readonly string[]): boolean {
   });
 }
 
+/**
+ * Currency, gems, divination cards and quest items are Normal-rarity items
+ * with a special class, so `Rarity Normal` matches them in game.
+ */
+const NORMAL_RARITIES = new Set<ItemRarity>([
+  'Normal',
+  'Currency',
+  'Gem',
+  'Divination Card',
+  'Quest',
+]);
+
+function matchesRarity(item: PreviewItem, rarity: Rule['rarity']): boolean {
+  if (!rarity) return true;
+  if (rarity === 'Normal') return NORMAL_RARITIES.has(item.rarity);
+  return rarity === item.rarity;
+}
+
 export function ruleMatches(rule: Rule, item: PreviewItem): boolean {
   // The emitter skips such a block, so the preview must not match it either.
   if (hasEmptyListCondition(rule)) return false;
   if (rule.classNames && !rule.classNames.includes(item.itemClass)) return false;
   if (rule.baseTypes && !rule.baseTypes.includes(item.baseType)) return false;
-  if (rule.rarity && rule.rarity !== item.rarity) return false;
+  if (!matchesRarity(item, rule.rarity)) return false;
 
   if (!inRange(item.itemLevel, rule.itemLevel)) return false;
   if (!inRange(item.dropLevel, rule.dropLevel)) return false;
   if (!inRange(item.areaLevel, rule.areaLevel)) return false;
-  if (!inRange(item.stackSize, rule.stackSize)) return false;
-  if (!inRange(item.quality, rule.quality)) return false;
-  if (!inRange(item.sockets, rule.sockets)) return false;
-  if (!inRange(item.linkedSockets, rule.linkedSockets)) return false;
+  // The game reports 0 sockets, links and quality, and a stack size of 1, for
+  // items that do not have the property.
+  if (!inRange(item.stackSize ?? 1, rule.stackSize)) return false;
+  if (!inRange(item.quality ?? 0, rule.quality)) return false;
+  if (!inRange(item.sockets ?? 0, rule.sockets)) return false;
+  if (!inRange(item.linkedSockets ?? 0, rule.linkedSockets)) return false;
   if (!inRange(item.mapTier, rule.mapTier)) return false;
 
   if (
