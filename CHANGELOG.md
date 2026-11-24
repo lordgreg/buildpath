@@ -2,6 +2,30 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.33.1 — 2026-11-24
+
+Safer folder sync and custom rules.
+
+- "Remove N outdated" no longer deletes filters FilterPath did not write. A file
+  counts as FilterPath's only when its name starts with filterpath- and its
+  header says FilterPath wrote it. Newer files, the current file and .bak copies
+  FilterPath did not write are never touched, and the confirmation lists every
+  file it will remove.
+- Outdated filters in the connected folder are no longer rewritten
+  automatically. The builder tells you the current file is outdated; check the
+  build and press Save to update it (the old file is kept as .bak).
+- A custom rule whose base types are all unknown, or whose list is empty, is no
+  longer written as a block that hides everything. It is left out of the filter,
+  and the rule editor says why and names the unknown base types.
+- Custom rules from build codes or saved data are checked before they reach the
+  filter. A rule the game cannot read is left out with a warning instead of
+  breaking the whole filter or crashing the builder; comments lose characters a
+  filter cannot hold.
+- Minimap icon and beam colours follow GGG's list (Grey, plus Brown, Orange and
+  Pink).
+- If an earlier version already turned one of your rules into a bare Show or
+  Hide, check My rules: such a rule now matches every item, as it did before.
+
 ## 0.33.0 — 2026-11-23
 
 Automatic folder checks and meta grouping.
