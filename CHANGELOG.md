@@ -2,6 +2,23 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.35.0 — 2026-11-24
+
+Current game data and economy names that actually emit.
+
+- Base item data now comes from the maintained RePoE export (game data
+  3.30.0.4.3) instead of a repository that has not been updated since 2022,
+  pinned to one export commit so the generated files stay reproducible.
+- Bases added since the old data are recognised, including the current league
+  gear. The golden filters gain 64 bases; nothing was removed.
+- Every economy name is now a valid base type. The Reliquary Keys, Valdo's
+  Puzzle Box and the Zorath's Eyes were missing from the registry, so their
+  fragment rules could not be written; they emit now. A test keeps every
+  economy tier name mapped to a known base type.
+- The base-type registry admits only item classes the filter language knows, so
+  internal placeholders cannot slip in and a typed base name still has to be
+  real.
+
 ## 0.34.1 — 2026-11-24
 
 Install help collapses like the other panels.
