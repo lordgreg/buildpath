@@ -281,7 +281,10 @@ The preset is **locked and never cloned**. Users add rules on top of it.
   preset hash show a refresh notice.
 - **Stale cleanup** — when the connected folder holds stale FilterPath filters,
   the sync panel offers a confirmed "Remove N outdated" action that deletes
-  those files and their `.bak` copies; unrelated files are never touched.
+  those files and their own `.bak` copies. Ownership means a `filterpath-` name
+  and a FilterPath header in the leading comment block; the current file, newer
+  or unrecognised versions, and a `.bak` FilterPath did not write are never
+  touched, and neither are unrelated files.
 - **Saved builds** — loading marks a build as active; its row gets `Update`,
   which overwrites name, selection and My rules. Top-level Save creates a copy.
 

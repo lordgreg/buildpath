@@ -1,3 +1,5 @@
+import { FILTER_FORMAT_VERSION } from '../core/filter/version.ts';
+
 export interface FilterFileInfo {
   name: string;
   size: number;
@@ -18,11 +20,25 @@ export interface FilterHeader {
   selection: string | null;
 }
 
+/**
+ * The comment block at the very top of the file. A FilterPath header only
+ * counts there, so a foreign filter that quotes one further down is not ours.
+ */
+function leadingComments(text: string): string {
+  const lines: string[] = [];
+  for (const line of text.split(/\r?\n/)) {
+    if (!line.startsWith('#')) break;
+    lines.push(line);
+  }
+  return lines.join('\n');
+}
+
 export function parseFilterHeader(text: string): FilterHeader {
-  const version = /^# FilterPath (\S+) - filter format (\d+)\s*$/m.exec(text);
-  const build = /^# Build: (.+)$/m.exec(text);
-  const presets = /^# Presets: (.+)$/m.exec(text);
-  const selection = /^# Selection: (.+)$/m.exec(text);
+  const header = leadingComments(text);
+  const version = /^# FilterPath (\S+) - filter format (\d+)\s*$/m.exec(header);
+  const build = /^# Build: (.+)$/m.exec(header);
+  const presets = /^# Presets: (.+)$/m.exec(header);
+  const selection = /^# Selection: (.+)$/m.exec(header);
   return {
     appVersion: version?.[1] ?? null,
     formatVersion: version ? Number(version[2]) : null,
@@ -32,14 +48,38 @@ export function parseFilterHeader(text: string): FilterHeader {
   };
 }
 
+/** -1, 0 or 1 for dotted numeric versions; null when either is not one. */
+function compareVersions(a: string, b: string): number | null {
+  const pattern = /^\d+(\.\d+)*$/;
+  if (!pattern.test(a) || !pattern.test(b)) return null;
+  const left = a.split('.').map(Number);
+  const right = b.split('.').map(Number);
+  for (let index = 0; index < Math.max(left.length, right.length); index += 1) {
+    const diff = (left[index] ?? 0) - (right[index] ?? 0);
+    if (diff !== 0) return Math.sign(diff);
+  }
+  return 0;
+}
+
 export type FilterUpdateKind = 'presets' | 'version' | null;
 
-/** Presets take precedence: an old preset hash means the rules are out of date. */
+/**
+ * Presets take precedence: an old preset hash means the rules are out of date.
+ * Only files FilterPath wrote can be outdated, and never one written by a newer
+ * or unrecognised release: an older open tab must not replace it.
+ */
 export function filterUpdateKind(
-  file: Pick<FilterHeader, 'appVersion' | 'presetVersion'>,
+  file: Pick<FilterHeader, 'appVersion' | 'presetVersion'> &
+    Partial<Pick<FilterHeader, 'formatVersion'>>,
   appVersion: string,
   presetVersion: string,
 ): FilterUpdateKind {
+  if (file.appVersion === null) return null;
+  if ((file.formatVersion ?? 0) > FILTER_FORMAT_VERSION) return null;
+  if (file.appVersion !== appVersion) {
+    const order = compareVersions(file.appVersion, appVersion);
+    if (order === null || order > 0) return null;
+  }
   if (file.presetVersion !== presetVersion) return 'presets';
   if (file.appVersion !== appVersion) return 'version';
   return null;
@@ -54,11 +94,69 @@ export function isFilterFileName(name: string): boolean {
 }
 
 /**
- * Files FilterPath writes itself. They are safe to overwrite without asking:
- * every write keeps the previous contents as `<name>.bak`.
+ * Files named like FilterPath's own. The name alone does not prove FilterPath
+ * wrote the file; use `isOwnedFilterPathFile` before deleting or overwriting.
  */
 export function isFilterPathFileName(name: string): boolean {
   return /^filterpath-/i.test(name);
+}
+
+/**
+ * A file FilterPath wrote: its name and its leading header both say so. Only
+ * these are overwritten without asking or offered for removal.
+ */
+export function isOwnedFilterPathFile(
+  file: Pick<FilterFileInfo, 'name' | 'appVersion'>,
+): boolean {
+  return isFilterPathFileName(file.name) && file.appVersion !== null;
+}
+
+/** Outdated FilterPath files that may be bulk-removed; never the current one. */
+export function staleFilterPathFiles<
+  T extends Pick<
+    FilterFileInfo,
+    'name' | 'appVersion' | 'presetVersion' | 'formatVersion'
+  >,
+>(
+  files: readonly T[],
+  currentName: string,
+  appVersion: string,
+  presetVersion: string,
+): T[] {
+  return files.filter(
+    (file) =>
+      file.name !== currentName &&
+      isOwnedFilterPathFile(file) &&
+      filterUpdateKind(file, appVersion, presetVersion) !== null,
+  );
+}
+
+/** The `.bak` next to a filter holds a file FilterPath did not write. */
+export class ForeignBackupError extends Error {
+  readonly backup: string;
+
+  constructor(backup: string) {
+    super(
+      `${backup} holds a filter FilterPath did not write. Move or rename it, then try again.`,
+    );
+    this.name = 'ForeignBackupError';
+    this.backup = backup;
+  }
+}
+
+async function readHeader(
+  handle: FileSystemDirectoryHandle,
+  name: string,
+): Promise<FilterHeader | null> {
+  try {
+    const file = await (await handle.getFileHandle(name)).getFile();
+    return parseFilterHeader(await file.text());
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'NotFoundError') {
+      return null;
+    }
+    throw error;
+  }
 }
 
 export function supportsDirectoryPicker(): boolean {
@@ -139,25 +237,28 @@ export async function listFilterFiles(
 }
 
 /**
- * Writes a filter, keeping a single `<name>.filter.bak` copy of the previous
- * contents. Never deletes or touches other files.
- */
-/**
- * Removes one FilterPath file and its `.bak` copy. Callers must only pass names
- * that came from `listFilterFiles`, so unrelated files are never touched.
+ * Removes one FilterPath file and its `.bak` copy. Throws, touching nothing,
+ * when the file's header shows FilterPath did not write it; a `.bak` FilterPath
+ * did not write is left in place.
  */
 export async function removeFilterFile(
   handle: FileSystemDirectoryHandle,
   name: string,
 ): Promise<void> {
-  await handle.removeEntry(name);
-  try {
-    await handle.removeEntry(backupName(name));
-  } catch {
-    // No backup to remove.
+  const header = await readHeader(handle, name);
+  if (!header || !isOwnedFilterPathFile({ name, appVersion: header.appVersion })) {
+    throw new Error(`${name} was not written by FilterPath; not removed.`);
   }
+  await handle.removeEntry(name);
+  const backup = await readHeader(handle, backupName(name));
+  if (backup?.appVersion) await handle.removeEntry(backupName(name));
 }
 
+/**
+ * Writes a filter, keeping a single `<name>.bak` copy of the previous contents.
+ * Never deletes or touches other files, and never overwrites a `.bak` that
+ * FilterPath did not write (throws `ForeignBackupError` instead).
+ */
 export async function writeFilter(
   handle: FileSystemDirectoryHandle,
   name: string,
@@ -169,6 +270,10 @@ export async function writeFilter(
     const existing = await handle.getFileHandle(name);
     const file = await existing.getFile();
     const previous = await file.text();
+    const previousBackup = await readHeader(handle, backupName(name));
+    if (previousBackup && !previousBackup.appVersion) {
+      throw new ForeignBackupError(backupName(name));
+    }
     backup = backupName(name);
     const backupHandle = await handle.getFileHandle(backup, { create: true });
     const backupStream = await backupHandle.createWritable();

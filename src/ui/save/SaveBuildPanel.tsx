@@ -3,7 +3,8 @@ import type { Rule } from '../../core/filter/types.ts';
 import { PRESET_VERSION } from '../../meta/index.ts';
 import {
   filterUpdateKind,
-  isFilterPathFileName,
+  isOwnedFilterPathFile,
+  staleFilterPathFiles,
   type FilterFileInfo,
 } from '../../sync/fileSystem.ts';
 import { copyText, downloadFilter } from '../download.ts';
@@ -77,8 +78,11 @@ export default function SaveBuildPanel({
         : platform === 'mac'
           ? 'macOS'
           : 'OS unknown';
-  const staleFiles = folder.files.filter(
-    (file) => filterUpdateKind(file, appVersion, PRESET_VERSION) !== null,
+  const staleFiles = staleFilterPathFiles(
+    folder.files,
+    fileName,
+    appVersion,
+    PRESET_VERSION,
   );
 
   const writeToFolder = async (): Promise<WriteResult> => {
@@ -428,7 +432,9 @@ export default function SaveBuildPanel({
                   window.confirm(
                     `Remove ${staleFiles.length} outdated FilterPath filter${
                       staleFiles.length === 1 ? '' : 's'
-                    }? Their .bak copies go too.`,
+                    }? Their .bak copies go too.\n\n${staleFiles
+                      .map((file) => file.name)
+                      .join('\n')}`,
                   )
                 ) {
                   void folder.remove(staleFiles.map((file) => file.name));
@@ -473,7 +479,7 @@ export default function SaveBuildPanel({
                             Load
                           </button>
                         )}
-                        {isFilterPathFileName(file.name) && (
+                        {isOwnedFilterPathFile(file) && (
                           <button
                             type="button"
                             onClick={() => {

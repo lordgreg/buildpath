@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import {
   ensurePermission,
-  isFilterPathFileName,
+  ForeignBackupError,
+  isOwnedFilterPathFile,
   listFilterFiles,
   pickFiltersDirectory,
   probeFilterDirectory,
@@ -46,7 +47,7 @@ export interface FiltersFolder {
     text: string,
     confirmOverwrite?: boolean,
   ) => Promise<WriteResult>;
-  /** Removes FilterPath files (and their `.bak` copies) from the folder. */
+  /** Removes FilterPath-written files (and their own `.bak` copies). */
   remove: (names: string[]) => Promise<void>;
   forget: () => Promise<void>;
 }
@@ -185,13 +186,13 @@ export function useFiltersFolder(): FiltersFolder {
         }
         const currentFiles = await listFilterFiles(handle);
         setFiles(currentFiles);
-        const exists = currentFiles.some((file) => file.name === name);
-        // FilterPath's own files keep a `.bak` and are safe to overwrite, so
-        // they never prompt. A foreign file with the same name still asks.
+        const existing = currentFiles.find((file) => file.name === name);
+        // Files FilterPath wrote keep a `.bak` and are safe to overwrite, so
+        // they never prompt. Any other file with the same name still asks.
         if (
-          exists &&
+          existing &&
           confirmOverwrite &&
-          !isFilterPathFileName(name) &&
+          !isOwnedFilterPathFile(existing) &&
           !window.confirm(
             `Overwrite ${name}? The previous version is kept as ${name}.bak.`,
           )
@@ -207,7 +208,10 @@ export function useFiltersFolder(): FiltersFolder {
             ? `Filter written. Previous version copied to ${backup}.`
             : `Filter written to ${handle.name}.`,
         };
-      } catch {
+      } catch (error) {
+        if (error instanceof ForeignBackupError) {
+          return { ok: false, message: error.message };
+        }
         return {
           ok: false,
           message: `Could not write the filter. ${writeHint(platform)}`,
@@ -224,15 +228,25 @@ export function useFiltersFolder(): FiltersFolder {
       if (!handle || names.length === 0) return;
       setBusy(true);
       try {
-        for (const name of names) await removeFilterFile(handle, name);
+        // removeFilterFile re-checks each header, so a file FilterPath did not
+        // write is skipped even if the listing was stale.
+        let removed = 0;
+        for (const name of names) {
+          try {
+            await removeFilterFile(handle, name);
+            removed += 1;
+          } catch {
+            // Reported below; keep going with the rest.
+          }
+        }
         await refreshFiles(handle);
         setStatus(
-          names.length === 1
-            ? `Removed ${names[0]}.`
-            : `Removed ${names.length} old filters.`,
+          removed < names.length
+            ? `Removed ${removed} of ${names.length}; the rest were not FilterPath filters or could not be removed.`
+            : names.length === 1
+              ? `Removed ${names[0]}.`
+              : `Removed ${names.length} old filters.`,
         );
-      } catch {
-        setStatus('Could not remove every filter.');
       } finally {
         setBusy(false);
       }
