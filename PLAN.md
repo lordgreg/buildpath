@@ -110,10 +110,12 @@ dropdown only shows the file name.
   deliberately **not** in the name, so the in-game selection survives releases.
 - The header is the source of truth for staleness. Directory sync reads the
   preset hash and app version of the current file and tells the user it is
-  outdated; Save rewrites it (keeping a `.bak`). Automatic rewrites are paused
-  since 0.33.1: the live builder state could hold another build's rules or
-  unsaved edits. They return only once a write can be verified against the
-  rules it was made from.
+  outdated; Save rewrites it (keeping a `.bak`). An automatic rewrite happens
+  only from a verified per-file snapshot stored next to the directory handle:
+  the builder must still hold the exact selection and My rules the file was
+  written with, the file must still hash to what FilterPath wrote, and the
+  header must read back as expected. Anything else is reported for the user to
+  check and save.
 - Saved builds and imported codes carry the preset hash at creation time; an
   older hash produces a refresh notice while the preview regenerates.
 - Goldens pin `dev`; a separate test pins `9.9.9` to cover the header and the
@@ -279,10 +281,11 @@ The preset is **locked and never cloned**. Users add rules on top of it.
   folder-permission steps on Windows. Browsers never expose the absolute path.
 - **Download** — when a folder is connected, Download writes there first, asks
   before overwriting and falls back to a browser download.
-- **Outdated notice** — on load, a stale connected filter is reported and Save
-  rewrites it with the latest presets (keeping a `.bak`); automatic rewrites
-  are paused (see 2.5). Saved builds and imported codes with an older preset
-  hash show a refresh notice.
+- **Outdated notice** — on load, a stale connected filter is rewritten
+  automatically when a verified snapshot proves it is the same build and the
+  file is untouched; otherwise the panel reports it and Save rewrites it with
+  the latest presets (keeping a `.bak`). See 2.5. Saved builds and imported
+  codes with an older preset hash show a refresh notice.
 - **Stale cleanup** — when the connected folder holds stale FilterPath filters,
   the sync panel offers a confirmed "Remove N outdated" action that deletes
   those files and their own `.bak` copies. Ownership means a `filterpath-` name

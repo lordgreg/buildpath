@@ -10,6 +10,8 @@ import {
   listFilterFiles,
   parseFilterHeader,
   probeFilterDirectory,
+  readFilterHeader,
+  readFilterText,
   removeFilterFile,
   staleFilterPathFiles,
   writeFilter,
@@ -217,6 +219,22 @@ describe('staleFilterPathFiles', () => {
 });
 
 describe('filter files', () => {
+  it('reads a file header and text, and reports a missing file', async () => {
+    const files = new Map([['FilterPath.filter', HEADER]]);
+    const handle = directory(files);
+
+    expect(await readFilterHeader(handle, 'FilterPath.filter')).toEqual({
+      appVersion: '0.10.2',
+      formatVersion: 1,
+      presetVersion: 'abc123',
+      build: 'Necromancer Summon Skeletons - Witch / Necromancer',
+      selection: null,
+    });
+    expect(await readFilterText(handle, 'FilterPath.filter')).toBe(HEADER);
+    expect(await readFilterHeader(handle, 'missing.filter')).toBeNull();
+    expect(await readFilterText(handle, 'missing.filter')).toBeNull();
+  });
+
   it('parses the FilterPath header', () => {
     expect(parseFilterHeader(HEADER)).toEqual({
       appVersion: '0.10.2',

@@ -171,6 +171,33 @@ async function readHeader(
   }
 }
 
+/** The header of a file in the folder, or null when it is not there. */
+export async function readFilterHeader(
+  handle: FileSystemDirectoryHandle,
+  name: string,
+): Promise<FilterHeader | null> {
+  const header = await readHeader(handle, name);
+  if (!header) return null;
+  const { empty: _empty, ...rest } = header;
+  return rest;
+}
+
+/** The whole text of a file in the folder, or null when it is not there. */
+export async function readFilterText(
+  handle: FileSystemDirectoryHandle,
+  name: string,
+): Promise<string | null> {
+  try {
+    const file = await (await handle.getFileHandle(name)).getFile();
+    return await file.text();
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'NotFoundError') {
+      return null;
+    }
+    throw error;
+  }
+}
+
 export function supportsDirectoryPicker(): boolean {
   return typeof window !== 'undefined' && 'showDirectoryPicker' in window;
 }

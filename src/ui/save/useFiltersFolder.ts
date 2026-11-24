@@ -6,6 +6,8 @@ import {
   listFilterFiles,
   pickFiltersDirectory,
   probeFilterDirectory,
+  readFilterHeader,
+  readFilterText,
   removeFilterFile,
   sameFileName,
   supportsDirectoryPicker,
@@ -15,9 +17,18 @@ import {
 } from '../../sync/fileSystem.ts';
 import {
   clearDirectoryHandle,
+  clearWriteSnapshot,
   loadDirectoryHandle,
+  loadWriteSnapshot,
   saveDirectoryHandle,
+  saveWriteSnapshot,
 } from '../../sync/handles.ts';
+import { autoWriteVerified, snapshotFor, type AutoWriteResult } from '../../sync/snapshot.ts';
+import { FILTER_FORMAT_VERSION } from '../../core/filter/version.ts';
+import { PRESET_VERSION } from '../../meta/index.ts';
+import type { BuildSelection } from '../../meta/types.ts';
+import type { Rule } from '../../core/filter/types.ts';
+import { APP_VERSION } from '../../version.ts';
 import {
   detectPlatform,
   writeHint,
@@ -29,6 +40,28 @@ export interface WriteResult {
   message: string;
   /** The user declined to overwrite an existing filter. */
   cancelled?: boolean;
+}
+
+/** The build a written file belongs to, stored for verified rewrites. */
+export interface WriteSource {
+  selection: BuildSelection;
+  rules: Rule[];
+}
+
+export interface WriteOptions {
+  /** Ask before overwriting a file FilterPath did not write. */
+  confirmOverwrite?: boolean;
+  /** Records what was written, enabling a later verified rewrite. */
+  source?: WriteSource;
+}
+
+export interface AutoWriteInput {
+  fileName: string;
+  text: string;
+  selection: BuildSelection;
+  rules: Rule[];
+  dirty: boolean;
+  imported: boolean;
 }
 
 export interface FiltersFolder {
@@ -46,8 +79,10 @@ export interface FiltersFolder {
   write: (
     name: string,
     text: string,
-    confirmOverwrite?: boolean,
+    options?: WriteOptions,
   ) => Promise<WriteResult>;
+  /** Rewrites an outdated filter only when the write is proven safe. */
+  autoWrite: (input: AutoWriteInput) => Promise<AutoWriteResult>;
   /** Removes FilterPath-written files (and their own `.bak` copies). */
   remove: (names: string[]) => Promise<void>;
   forget: () => Promise<void>;
@@ -170,8 +205,9 @@ export function useFiltersFolder(): FiltersFolder {
     async (
       name: string,
       text: string,
-      confirmOverwrite = true,
+      options: WriteOptions = {},
     ): Promise<WriteResult> => {
+      const confirmOverwrite = options.confirmOverwrite ?? true;
       if (!handle) {
         return { ok: false, message: 'No filters folder is connected.' };
       }
@@ -201,6 +237,19 @@ export function useFiltersFolder(): FiltersFolder {
           return { ok: false, message: 'File not overwritten.', cancelled: true };
         }
         const { backup } = await writeFilter(handle, name, text);
+        if (options.source) {
+          await saveWriteSnapshot(
+            snapshotFor({
+              fileName: name,
+              selection: options.source.selection,
+              rules: options.source.rules,
+              text,
+              appVersion: APP_VERSION,
+              presetVersion: PRESET_VERSION,
+              formatVersion: FILTER_FORMAT_VERSION,
+            }),
+          );
+        }
         setFiles(await listFilterFiles(handle));
         setProbe('ok');
         return {
@@ -224,6 +273,49 @@ export function useFiltersFolder(): FiltersFolder {
     [handle, platform],
   );
 
+  /**
+   * Rewrites an outdated file without asking, but only when the stored
+   * snapshot proves it is the same build and the file is still the one
+   * FilterPath wrote. Anything else is left alone for the user to check.
+   */
+  const autoWrite = useCallback(
+    async (input: AutoWriteInput): Promise<AutoWriteResult> => {
+      if (!handle) return { ok: false, reason: 'missing-file' };
+
+      const current = await ensurePermission(handle, false);
+      setPermission(current);
+      if (current !== 'granted') return { ok: false, reason: 'write-failed' };
+
+      setBusy(true);
+      try {
+        const result = await autoWriteVerified(
+          {
+            readText: (name) => readFilterText(handle, name),
+            readHeader: (name) => readFilterHeader(handle, name),
+            write: async (name, text) => {
+              await writeFilter(handle, name, text);
+            },
+          },
+          { load: loadWriteSnapshot, save: saveWriteSnapshot },
+          {
+            ...input,
+            appVersion: APP_VERSION,
+            presetVersion: PRESET_VERSION,
+            formatVersion: FILTER_FORMAT_VERSION,
+          },
+        );
+        if (result.ok) {
+          setFiles(await listFilterFiles(handle));
+          setProbe('ok');
+        }
+        return result;
+      } finally {
+        setBusy(false);
+      }
+    },
+    [handle],
+  );
+
   const remove = useCallback(
     async (names: string[]) => {
       if (!handle || names.length === 0) return;
@@ -241,6 +333,7 @@ export function useFiltersFolder(): FiltersFolder {
         for (const name of names) {
           try {
             await removeFilterFile(handle, name);
+            await clearWriteSnapshot(name);
             removed += 1;
           } catch {
             // Reported below; keep going with the rest.
@@ -283,6 +376,7 @@ export function useFiltersFolder(): FiltersFolder {
     grant,
     test,
     write,
+    autoWrite,
     remove,
     forget,
   };

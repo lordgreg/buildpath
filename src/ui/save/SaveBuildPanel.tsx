@@ -16,6 +16,7 @@ import {
   type SavedBuild,
 } from '../presets/storage.ts';
 import type { WizardState } from '../wizardState.ts';
+import { asSelected } from '../wizardState.ts';
 import {
   BRAVE_FILE_ACCESS_FLAG,
   browserKind,
@@ -87,7 +88,10 @@ export default function SaveBuildPanel({
 
   const writeToFolder = async (): Promise<WriteResult> => {
     if (!folder.handle) return { ok: false, message: '' };
-    return folder.write(fileName, text, true);
+    return folder.write(fileName, text, {
+      confirmOverwrite: true,
+      source: { selection: asSelected(state), rules: customRules ?? [] },
+    });
   };
 
   const save = async () => {

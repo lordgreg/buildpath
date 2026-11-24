@@ -37,6 +37,7 @@ import { useFiltersFolder } from './save/useFiltersFolder.ts';
 import { discardLegacyBuilds, type SavedBuild } from './presets/storage.ts';
 import {
   discardLegacyClones,
+  loadCustomRules,
   loadCustomRulesWithNotices,
 } from './rules/storage.ts';
 import { copyText, downloadFilter } from './download.ts';
@@ -139,6 +140,8 @@ export default function Wizard() {
   const folder = useFiltersFolder();
   const outdatedNoticeRef = useRef<string | null>(null);
   const filenameNoticeRef = useRef<string | null>(null);
+  /** The build arrived from a share code in this session. */
+  const importedRef = useRef<string | null>(null);
   const [notice, setNotice] = useState<string | null>(() => {
     const clones = discardLegacyClones();
     const builds = discardLegacyBuilds();
@@ -259,6 +262,7 @@ export default function Wizard() {
       return;
     }
     startNew();
+    importedRef.current = null;
     setActiveBuildId(null);
     setNotice('Started a new filter.');
   };
@@ -266,14 +270,19 @@ export default function Wizard() {
   const resetChanges = () => {
     if (!dirty) return;
     reset();
+    importedRef.current = null;
     setNotice('Reverted to the last saved state.');
   };
 
   const download = async () => {
     if (!filter) return;
     if (folder.handle) {
-      const result = await folder.write(filter.fileName, filter.text, true);
+      const result = await folder.write(filter.fileName, filter.text, {
+        confirmOverwrite: true,
+        source: { selection: asSelected(state), rules: customRules },
+      });
       if (result.ok) {
+        importedRef.current = null;
         commit(state, customRules);
         setNotice(result.message);
         return;
@@ -286,12 +295,13 @@ export default function Wizard() {
     }
     downloadFilter(filter.fileName, filter.text);
     // Writing the .filter counts as saving, so the "unsaved changes" badge clears.
+    importedRef.current = null;
     commit(state, customRules);
   };
 
-  // An outdated file in the connected folder is reported, never rewritten on
-  // its own: the live builder state may hold another build's rules or unsaved
-  // edits. The user checks the build and saves it explicitly.
+  // An outdated file is rewritten only when the stored snapshot proves the
+  // builder still holds the build that wrote it and the file is untouched.
+  // Otherwise the user checks the build and saves it explicitly.
   useEffect(() => {
     if (!filter) return;
     if (!folder.handle) return;
@@ -307,12 +317,46 @@ export default function Wizard() {
     if (outdatedNoticeRef.current === key) return;
     outdatedNoticeRef.current = key;
 
-    setNotice(
-      `${filter.fileName} in ${folder.handle.name} was made with ${
-        updateKind === 'presets' ? 'older presets' : 'an older FilterPath'
-      }. Check the build, then Save to update it; the old file is kept as .bak.`,
-    );
-  }, [filter?.fileName, folder.files, folder.handle]);
+    const selection = asSelected(state);
+    void folder
+      .autoWrite({
+        fileName: filter.fileName,
+        text: filter.text,
+        selection,
+        rules: customRules,
+        dirty,
+        imported: importedRef.current === ruleKey(selection),
+      })
+      .then((result) => {
+        if (result.ok) {
+          setNotice(
+            updateKind === 'presets'
+              ? 'Your filter was updated with the latest presets.'
+              : 'Your filter was updated to the latest version.',
+          );
+          return;
+        }
+        setNotice(
+          `${filter.fileName} in ${folder.handle?.name} was made with ${
+            updateKind === 'presets' ? 'older presets' : 'an older FilterPath'
+          }. Check the build, then Save to update it; the old file is kept as .bak.`,
+        );
+      })
+      .catch(() => {
+        setNotice(
+          `Could not update ${filter.fileName}. Check the build, then Save to update it.`,
+        );
+      });
+  }, [
+    filter?.fileName,
+    filter?.text,
+    folder.files,
+    folder.handle,
+    folder.autoWrite,
+    state,
+    customRules,
+    dirty,
+  ]);
 
   useEffect(() => {
     if (!filter) return;
@@ -344,6 +388,7 @@ export default function Wizard() {
         : `Loaded ${build.name}. Presets were refreshed to the latest version.`,
       ...notices,
     ]);
+    importedRef.current = null;
     setActiveBuildId(build.id);
   };
 
@@ -356,6 +401,7 @@ export default function Wizard() {
     const loaded = parseWizardHash(`#${file.selection}`);
     const { rules, notices } = loadCustomRulesWithNotices(ruleKey(loaded));
     load(loaded, rules, [`Loaded ${file.name}.`, ...notices]);
+    importedRef.current = null;
     setActiveBuildId(null);
   };
 
@@ -365,13 +411,31 @@ export default function Wizard() {
       const importedState = payload.state
         ? coerceWizardState(payload.state as Partial<WizardState>)
         : state;
-      const { rules, dropped, notices } = shapeRules(
+      const { rules: importedRules, dropped, notices } = shapeRules(
         payload.customRules ?? payload.rules ?? [],
       );
+
+      // Importing over a build that already has My rules asks first, so a
+      // pasted code cannot silently replace work saved in this browser.
+      const key = importedState.mode === 'start' ? null : ruleKey(importedState);
+      const existing = key ? loadCustomRules(key) : [];
+      let rules = importedRules;
+      if (key && importedRules.length > 0 && existing.length > 0) {
+        if (
+          !window.confirm(
+            `Replace the ${existing.length} My rule${existing.length === 1 ? '' : 's'} saved for this build with the ${importedRules.length} from the code?`,
+          )
+        ) {
+          rules = existing;
+        }
+      }
+
+      const kept = rules === existing && importedRules.length > 0;
       const messages = [
         payload.presetVersion === PRESET_VERSION
           ? 'Imported build. Save it if you want to keep it locally.'
           : 'Imported build with the latest presets. Save it if you want to keep it locally.',
+        ...(kept ? ['Kept the My rules already saved for this build.'] : []),
         ...(dropped > 0
           ? [
               `${dropped} malformed rule${dropped === 1 ? ' was' : 's were'} skipped.`,
@@ -380,6 +444,7 @@ export default function Wizard() {
         ...notices,
       ];
       load(importedState, rules, messages);
+      importedRef.current = key;
       setActiveBuildId(null);
       return null;
     } catch (error) {
@@ -1072,7 +1137,10 @@ export default function Wizard() {
                 setActiveBuildId(build.id);
                 commit(state, customRules);
               }}
-              onWritten={() => commit(state, customRules)}
+              onWritten={() => {
+                importedRef.current = null;
+                commit(state, customRules);
+              }}
               onDeleted={(id) => {
                 if (activeBuildId === id) setActiveBuildId(null);
               }}
