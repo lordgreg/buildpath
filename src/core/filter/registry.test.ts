@@ -77,51 +77,36 @@ describe('all-selections helper', () => {
 });
 
 describe('generated filters across every selection', () => {
-  it('only reference registered Class and BaseType names', () => {
-    const unknownClasses = new Set<string>();
-    const unknownBases = new Set<string>();
+  // Every selection x phase x strictness: one pass, two invariants.
+  it(
+    'only reference registered names the emitter can write exactly',
+    () => {
+      const unknownClasses = new Set<string>();
+      const unknownBases = new Set<string>();
+      const unsafe = new Set<string>();
 
-    for (const { label, selection } of allSelections()) {
-      for (const phase of PHASES) {
-        for (const strictness of STRICTNESS_ORDER) {
-          const where = `${label} ${phase}/${strictness}`;
-          const filter = generateFilter({ selection, phase, strictness });
+      for (const { label, selection } of allSelections()) {
+        for (const phase of PHASES) {
+          for (const strictness of STRICTNESS_ORDER) {
+            const where = `${label} ${phase}/${strictness}`;
+            const filter = generateFilter({ selection, phase, strictness });
 
-          for (const name of emittedNames(filter.text, 'Class')) {
-            if (!classNames.has(name)) unknownClasses.add(`${where}: ${name}`);
-          }
-          for (const name of emittedNames(filter.text, 'BaseType')) {
-            if (!baseTypeNames.has(name)) unknownBases.add(`${where}: ${name}`);
-          }
-        }
-      }
-    }
-
-    expect([...unknownClasses]).toEqual([]);
-    expect([...unknownBases]).toEqual([]);
-  });
-
-  it('only emit names the emitter can write exactly', () => {
-    const unsafe = new Set<string>();
-
-    for (const { label, selection } of allSelections()) {
-      for (const phase of PHASES) {
-        for (const strictness of STRICTNESS_ORDER) {
-          const where = `${label} ${phase}/${strictness}`;
-          const filter = generateFilter({ selection, phase, strictness });
-
-          for (const rule of filter.rules) {
-            for (const name of rule.classNames ?? []) {
-              if (!EMIT_SAFE_CLASSES.has(name)) unsafe.add(`${where}: class ${name}`);
+            for (const name of emittedNames(filter.text, 'Class')) {
+              if (!classNames.has(name)) unknownClasses.add(`${where}: ${name}`);
+              if (!EMIT_SAFE_CLASSES.has(name)) unsafe.add(`${where}: ${name}`);
             }
-            for (const name of rule.baseTypes ?? []) {
-              if (!EMIT_SAFE_BASE_TYPES.has(name)) unsafe.add(`${where}: base ${name}`);
+            for (const name of emittedNames(filter.text, 'BaseType')) {
+              if (!baseTypeNames.has(name)) unknownBases.add(`${where}: ${name}`);
+              if (!EMIT_SAFE_BASE_TYPES.has(name)) unsafe.add(`${where}: ${name}`);
             }
           }
         }
       }
-    }
 
-    expect([...unsafe]).toEqual([]);
-  });
+      expect([...unknownClasses]).toEqual([]);
+      expect([...unknownBases]).toEqual([]);
+      expect([...unsafe]).toEqual([]);
+    },
+    60_000,
+  );
 });

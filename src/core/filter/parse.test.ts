@@ -213,24 +213,29 @@ describe('parseFilter', () => {
 });
 
 describe('parse-back round trip', () => {
-  it('round-trips every generated filter', () => {
-    for (const { label, selection } of allSelections()) {
-      for (const phase of PHASES) {
-        for (const strictness of STRICTNESS_ORDER) {
-          const where = `${label} ${phase}/${strictness}`;
-          const filter = generateFilter({ selection, phase, strictness });
+  // Every selection x phase x strictness: a few thousand generated filters.
+  it(
+    'round-trips every generated filter',
+    () => {
+      for (const { label, selection } of allSelections()) {
+        for (const phase of PHASES) {
+          for (const strictness of STRICTNESS_ORDER) {
+            const where = `${label} ${phase}/${strictness}`;
+            const filter = generateFilter({ selection, phase, strictness });
 
-          expect(filter.warnings, where).toEqual([]);
+            expect(filter.warnings, where).toEqual([]);
 
-          const parsed = parseFilter(filter.text);
-          expect(parsed.issues, where).toEqual([]);
-          expect(parsed.rules, where).toEqual(
-            filter.rules.map((rule) => comparable(rule)),
-          );
+            const parsed = parseFilter(filter.text);
+            expect(parsed.issues, where).toEqual([]);
+            expect(parsed.rules, where).toEqual(
+              filter.rules.map((rule) => comparable(rule)),
+            );
+          }
         }
       }
-    }
-  });
+    },
+    60_000,
+  );
 
   it('round-trips hostile custom rules or reports why they were left out', () => {
     const hostile: Rule[] = [
