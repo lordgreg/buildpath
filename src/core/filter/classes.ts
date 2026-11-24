@@ -1,40 +1,4 @@
-/** RePoE `item_class` -> the plural `Class` value used by item filters. */
-const FILTER_CLASSES: Record<string, string> = {
-  Amulet: 'Amulets',
-  Belt: 'Belts',
-  'Body Armour': 'Body Armours',
-  Boots: 'Boots',
-  Bow: 'Bows',
-  Claw: 'Claws',
-  Dagger: 'Daggers',
-  Gloves: 'Gloves',
-  Helmet: 'Helmets',
-  'One Hand Axe': 'One Hand Axes',
-  'One Hand Mace': 'One Hand Maces',
-  'One Hand Sword': 'One Hand Swords',
-  Quiver: 'Quivers',
-  Ring: 'Rings',
-  'Rune Dagger': 'Rune Daggers',
-  Sceptre: 'Sceptres',
-  Shield: 'Shields',
-  Staff: 'Staves',
-  'Thrusting One Hand Sword': 'Thrusting One Hand Swords',
-  'Two Hand Axe': 'Two Hand Axes',
-  'Two Hand Mace': 'Two Hand Maces',
-  'Two Hand Sword': 'Two Hand Swords',
-  Wand: 'Wands',
-  Warstaff: 'Warstaves',
-  'Life Flask': 'Life Flasks',
-  'Mana Flask': 'Mana Flasks',
-  'Hybrid Flask': 'Hybrid Flasks',
-  'Utility Flask': 'Utility Flasks',
-  Jewel: 'Jewels',
-  AbyssJewel: 'Abyss Jewels',
-};
-
-export function toFilterClass(itemClass: string): string {
-  return FILTER_CLASSES[itemClass] ?? itemClass;
-}
+export { toFilterClass } from '../data/classes.ts';
 
 /** Every equipment class the junk rules may hide. */
 export const EQUIPMENT_CLASSES = [

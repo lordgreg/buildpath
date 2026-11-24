@@ -26,6 +26,18 @@ const EXTRA = fileURLToPath(
 const REMOVED = fileURLToPath(
   new URL('../src/core/data/base-types-removed.json', import.meta.url),
 );
+const CLASS_MAP = fileURLToPath(
+  new URL('../src/core/data/class-map.json', import.meta.url),
+);
+const CLASSES_EXTRA = fileURLToPath(
+  new URL('../src/core/data/classes-extra.json', import.meta.url),
+);
+const CLASSES_REMOVED = fileURLToPath(
+  new URL('../src/core/data/classes-removed.json', import.meta.url),
+);
+const CLASSES_OUT = fileURLToPath(
+  new URL('../src/core/data/known-classes.json', import.meta.url),
+);
 const SKILLS_OUT = fileURLToPath(
   new URL('../src/meta/skill-names.json', import.meta.url),
 );
@@ -43,6 +55,15 @@ async function readJsonList(path) {
   } catch {
     return [];
   }
+}
+
+/** Reads a required JSON object; a missing or malformed file is a build error. */
+async function readJsonObject(path) {
+  const value = JSON.parse(await readFile(path, 'utf8'));
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new Error(`${path} must hold a JSON object`);
+  }
+  return value;
 }
 
 // RePoE splits gear, flasks and jewels across domains. Filter rules need all
@@ -136,6 +157,30 @@ for (const name of removed) known.delete(name);
 
 const knownNames = [...known].sort();
 
+// Every `Class` value the game accepts. RePoE's item_class values are the raw
+// source; class-map.json turns them into the plural names filters use. A new
+// raw class without a mapping fails the run so it is reviewed, not guessed.
+const classMap = await readJsonObject(CLASS_MAP);
+const classExtras = await readJsonList(CLASSES_EXTRA);
+const classRemoved = new Set(await readJsonList(CLASSES_REMOVED));
+
+const knownClasses = new Set();
+for (const item of Object.values(raw)) {
+  const rawClass = item.item_class;
+  if (!rawClass) continue;
+  const filterClass = classMap[rawClass];
+  if (!filterClass) {
+    throw new Error(
+      `No filter class mapping for RePoE item_class "${rawClass}". Add it to src/core/data/class-map.json.`,
+    );
+  }
+  knownClasses.add(filterClass);
+}
+for (const name of classExtras) knownClasses.add(name);
+for (const name of classRemoved) knownClasses.delete(name);
+
+const knownClassNames = [...knownClasses].sort();
+
 const gemsResponse = await fetch(GEMS_SOURCE, {
   headers: { 'user-agent': USER_AGENT },
 });
@@ -217,6 +262,22 @@ await writeFile(
   )}\n`,
 );
 await writeFile(
+  CLASSES_OUT,
+  `${JSON.stringify(
+    {
+      meta: {
+        source: SOURCE,
+        ref: REF,
+        generatedAt: new Date().toISOString(),
+        count: knownClassNames.length,
+      },
+      names: knownClassNames,
+    },
+    null,
+    0,
+  )}\n`,
+);
+await writeFile(
   SKILLS_OUT,
   `${JSON.stringify(
     {
@@ -235,5 +296,6 @@ await writeFile(
 
 console.log(`Wrote ${items.length} base types to ${OUT}`);
 console.log(`Wrote ${knownNames.length} known BaseType names to ${KNOWN_OUT}`);
+console.log(`Wrote ${knownClassNames.length} known Class names to ${CLASSES_OUT}`);
 console.log(`Wrote ${skillNames.length} skill gems to ${SKILLS_OUT}`);
 console.log(`sha256 ${digest}`);
