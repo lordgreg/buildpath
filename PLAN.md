@@ -600,6 +600,102 @@ noisy).
   carries the current ascendancies and the named skills; replace the weights
   when a lawful capture source is available.
 
+### Improvement roadmap
+
+Reviewed by a three-model council (Claude Opus 5.5, GPT-6.2 Sol, Gemini 4
+Neon), passed in round 3 (best scores 8, 8, 9). Each item is one Conventional
+Commit; a behaviour change lands with its assertions and reviewed golden diff
+in the same commit. Guiding rule: **sanitising never widens a rule** - a rule
+that cannot be emitted safely is disabled with a notice, never written with a
+condition removed or a name altered.
+
+**Phase 0 - hotfix (done, 0.33.1 and 0.33.2).** CI on every PR with a
+generated-data drift check; folder sync only touches files FilterPath wrote;
+automatic folder writes paused; empty or all-unknown list conditions are
+skipped instead of becoming catch-alls; custom rules validated fail-closed in
+`compileFilter`; MinimapIcon/PlayEffect colours per GGG; loot simulator links
+open Advanced rules and map the rule index correctly (`core/rules/focus.ts`).
+
+**Phase 1 - exact matching and safe sync (0.34.0).**
+
+- Registries: reviewed `known-classes.json` (the game rejects unknown classes
+  too) and an emit-safe name set; one all-selections test helper covering every
+  skill x ascendancy pair and both scratch starts.
+- Parse-back test: emitted text, parsed by `validate.ts`, must equal
+  `compiled.rules` field by field for all selections and hostile custom rules.
+- Emit `Class ==` / `BaseType ==`. Without `==` the game matches substrings:
+  `Hide BaseType "Gold"` hides unique Gold Flask, Golden Mask and Gold Ring;
+  card hides `"Hope"`, `"Hubris"`, `"Death"` hide Mortal Hope, Hubris Circlet,
+  Death Bow; `"Ring"` gives every unique ring the S-tier alert. `HasExplicitMod
+  "Veil"` stays a contains-match. Legacy partial classes expand to every
+  containing registry class with a notice; registered terms narrow (`Daggers`
+  no longer matches `Rune Daggers`) and are flagged. Bump
+  `FILTER_FORMAT_VERSION`. Gate: in-game smoke test, incl. `Class ==
+  "Viscera"`.
+- Structural `sanitizeRule` on decode and storage read: coerce, never throw,
+  never drop a condition; bounded decompression; v1 codes keep working.
+- Re-enable automatic folder writes from a verified per-file snapshot
+  (selection, the exact My rules written, text hash) stored next to the
+  directory handle: current file only, header must round-trip, skipped in
+  import sessions; ask before an import replaces existing My rules.
+- Preview parity: currency, gems and cards count as `Rarity Normal`; missing
+  sockets/links/quality are 0 and stack size 1; `Continue` keeps earlier style.
+  Verify in game first.
+
+**Phase 2 - base data source (own release, needs a decision).** Move
+`extract:repoe` from the frozen `brather1ng/RePoE` (no pushes since 2022, no
+tags; `REPOE_REF=3.27.0` 404s) to a maintained fork pinned by SHA. 18 of 49
+economy fragment names (Reliquary Keys, Valdo's Puzzle Box) are missing from
+the registry today. Not behaviour-neutral: review the golden and audit diff for
+every newly admitted name and land any floors with it.
+
+**Phase 3 - preset coverage (0.35.0, does not wait for Phase 2).**
+
+- Show Empower/Enlighten/Enhance before the gem quality cutoff.
+- Show Large/Medium/Small Cluster Jewels at every rarity (hidden in every build
+  today); abyss jewels per family (open question).
+- Unique maps: early `Show Class == "Maps" Rarity Unique` with unique style;
+  the theme honours `styleKind` (fragment repaint in its own commit).
+- Levelling 4-links: highlight Normal/Magic, keep below-floor rares, keep the
+  build's base targeting, exclude uniques.
+- Never hide 6-links: loud gear rule for non-uniques; unique 6-links after the
+  top-tier unique Shows, before the low-tier Hide.
+- Economy overrides applied offline (`economy.json` stays raw, overrides
+  compiled into `presets.json`, category membership checked) and reviewed
+  floors for per-unit stackables, Stacked Deck and endgame fragments.
+- Leveling gems gate on `AreaLevel` if gems carry no `ItemLevel` (verify).
+- Register the veiled category in the audit catalog.
+
+**Phase 4 - builder bugs.** Typing spaces/commas in rule conditions; Item test
+in emitted order; From Scratch message (always says "visible"), veiled
+overlap, `hasExplicitMod` in editor helpers; `coverage.ts` compares RePoE
+singular classes with filter plurals, so overlap warnings rarely fire;
+themes overwrite custom colours; generator warnings hidden in a collapsed
+section; regeneration per keystroke in the name field; silent storage/folder
+failures and no error boundary; header-only folder reads; magic item parsing
+and thousands separators in the loot simulator; audit deep links never decode.
+
+**Phase 5 - data pipeline and CI.** Mark synced filters stale after an
+economy-only deploy (hash of sorted tiers); validate poe.ninja responses and
+keep the last good snapshot; stable `economy.json` and one rolling PR; ETag and
+last body per endpoint in `actions/cache`, User-Agent from `package.json`,
+timeout and retry (2.3); least-privilege workflows; `meta:add` keeps existing
+fields; a test that `CHANGELOG.md` and `changelog.ts` agree; a runnable audit
+artifact.
+
+**Phase 6 - polish.** Compress `demo-ground.png` (2 MB, also on the builder);
+`tests.html` noindex; labels on unlabeled inputs; a test that `src/core` never
+imports React; docs drift (README status, "no simulator", "Four modes",
+removed reference path field, `ui/download.ts`, `core/share`, four Vite
+entries, annotated tags).
+
+**Backlog.** Full accessibility pass, simulator list view for mobile, split
+`Wizard.tsx` and `AdvancedRules.tsx`, start-screen import, live My rules sync to
+the simulator, strictness diff, build export file, GemLevel/transfigured
+fields, PWA. **Cut:** a separate share link (single build code since 0.27),
+base-type `<datalist>`, style-editor and rule-model expansion (drifts toward a
+general editor), "create rule from item" in Item test (the simulator has it).
+
 ### Product decisions
 
 - `standard.yaml` is a seed duplicate of the Covens seed; decide whether to keep
@@ -610,14 +706,27 @@ noisy).
 - Behaviour audit: the Scion ladder currently has three entries (Ascendant,
   Luminary, Reliquarian); confirm this is intended for the target league and
   pin it in `ascendancies.expected.ts`.
+- Use `==` for every `Class` and `BaseType` (recommended: yes).
+- Move base data to the maintained RePoE fork pinned by SHA (recommended: yes,
+  as its own release).
+- Names that are not plain ASCII (`Maelström Staff`): drop from emission,
+  never transliterate (recommended: yes).
+- Levelling hides every white and every mana flask for every build: intended?
+- After a release every other build's file counts as outdated and can be
+  bulk-removed: keep, with the file list in the confirmation (recommended).
+- Abyss jewels per family: caster Hypnotic Eye, minion Ghastly Eye, melee
+  Murderous Eye, bow Searching Eye (recommended).
 
 ### Manual validation
 
 - Verify the Windows filter path (`Documents/My Games/Path of Exile`) in the
   installed build, not just Proton.
 - Run directory sync in Chromium: pick, remember, permission re-request,
-  overwrite confirmation, `.bak` and stale badges, and the "Remove N outdated"
-  action.
+  overwrite confirmation, `.bak` and stale badges, the outdated-file notice and
+  Save, and "Remove N outdated" with a foreign filter and a foreign `.bak` in
+  the folder (both must stay).
+- Import a build code holding a malformed or unknown-base rule: the editor
+  names it and the filter leaves it out.
 - In-game levelling necromancer run: turn any mismatch into a matcher fixture
   and a labelled audit case.
 - Check loot simulator Ctrl+V capture, hover tooltip, Randomize and mobile.
