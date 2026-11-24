@@ -55,15 +55,19 @@ export type Color =
   | readonly [number, number, number]
   | readonly [number, number, number, number];
 
+/** GGG's colour list for `MinimapIcon` and `PlayEffect`. */
 export type MinimapColor =
   | 'Red'
   | 'Green'
   | 'Blue'
+  | 'Brown'
+  | 'White'
   | 'Yellow'
   | 'Cyan'
-  | 'Purple'
-  | 'White'
-  | 'Gray';
+  | 'Grey'
+  | 'Orange'
+  | 'Pink'
+  | 'Purple';
 
 export type MinimapShape =
   | 'Circle'
@@ -76,15 +80,7 @@ export type MinimapShape =
   | 'Moon'
   | 'Pentagon';
 
-export type EffectColor =
-  | 'Red'
-  | 'Green'
-  | 'Blue'
-  | 'Yellow'
-  | 'Cyan'
-  | 'Purple'
-  | 'White'
-  | 'Grey';
+export type EffectColor = MinimapColor;
 
 export interface Style {
   textColor?: Color;

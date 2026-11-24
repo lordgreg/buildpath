@@ -96,11 +96,14 @@ const MINIMAP_COLORS = new Set([
   'Red',
   'Green',
   'Blue',
+  'Brown',
+  'White',
   'Yellow',
   'Cyan',
+  'Grey',
+  'Orange',
+  'Pink',
   'Purple',
-  'White',
-  'Gray',
 ]);
 const MINIMAP_SHAPES = new Set([
   'Circle',
@@ -113,16 +116,7 @@ const MINIMAP_SHAPES = new Set([
   'Moon',
   'Pentagon',
 ]);
-const EFFECT_COLORS = new Set([
-  'Red',
-  'Green',
-  'Blue',
-  'Yellow',
-  'Cyan',
-  'Purple',
-  'White',
-  'Grey',
-]);
+const EFFECT_COLORS = MINIMAP_COLORS;
 
 const NUMERIC = /^(?:(?:>=|<=|==|=|<|>|!=)\s*)?-?\d+(?:\.\d+)?$/;
 const ITEM_FILTER_NAME = /^[A-Za-z0-9 ._-]+\.filter$/;
