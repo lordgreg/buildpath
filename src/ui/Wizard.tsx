@@ -1084,6 +1084,7 @@ export default function Wizard() {
               </div>
               <div className="mt-2 flex flex-wrap gap-2">
                 <input
+                  aria-label="Paste a build code"
                   value={codeInput}
                   onChange={(event) => setCodeInput(event.target.value)}
                   placeholder="Paste a build code"

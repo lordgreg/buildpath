@@ -184,6 +184,7 @@ export default function SaveBuildPanel({
       <div className="mt-3 flex flex-wrap gap-2">
         <input
           type="text"
+          aria-label="Build name"
           value={nameDraft}
           onChange={(event) => setNameDraft(event.target.value)}
           onBlur={commitName}

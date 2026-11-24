@@ -158,6 +158,7 @@ export default function TestsPage() {
             ))}
           </div>
           <input
+            aria-label="Filter builds"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Filter builds..."
