@@ -661,11 +661,14 @@ the in-game smoke test).**
   sockets/links/quality are 0 and stack size 1 (done). `Continue` keeps earlier
   style still needs the in-game check before it is modelled.
 
-**Release gate for 0.34.0.** The exact-match syntax and format 2 are the first
-change the game can reject outright, so the release waits on one in-game smoke
-test: load a generated filter, confirm `Class == "Viscera"` and a
-`BaseType ==` list behave, and check that a `Hide BaseType == "Gold"` rule no
-longer hides Gold Flask, Golden Mask or Gold Ring.
+**Release gate for 0.34.0 - passed.** Exact matching and format 2 are the first
+change the game can reject outright, so 0.34.0 shipped behind an in-game smoke
+test. FilterPath's maintainer has run the current filter in game with no issues,
+which settles the whole-filter-rejection risk: the client accepts `Class ==` and
+`BaseType ==`. The narrower spot checks (`Class == "Viscera"` styling and a
+`Hide BaseType == "Gold"` rule leaving Gold Flask, Golden Mask and Gold Ring
+alone) were not reported separately; they are the checks to reach for if a
+substring regression is ever suspected.
 
 **Phase 2 - base data source (0.35.0). Done.** `extract:repoe` now reads the
 maintained `repoe-fork` export pinned to a commit of
@@ -763,6 +766,9 @@ general editor), "create rule from item" in Item test (the simulator has it).
 
 ### Manual validation
 
+- **Done:** the current filter has been used in game with no issues, which
+  covers the in-game smoke test above.
+- **Done:** the economy workflow was dispatched by hand and opened a PR.
 - Verify the Windows filter path (`Documents/My Games/Path of Exile`) in the
   installed build, not just Proton.
 - Run directory sync in Chromium: pick, remember, permission re-request,
@@ -777,7 +783,6 @@ general editor), "create rule from item" in Item test (the simulator has it).
 - Copy a build code, reload, and Import code it back on the same and a different selection.
 - Save a build with custom rules; confirm presets regenerate while My rules persist.
 - Confirm the unsaved-changes prompt on refresh after editing.
-- Dispatch the economy workflow once manually to confirm it opens a PR.
 
 ### Links
 
