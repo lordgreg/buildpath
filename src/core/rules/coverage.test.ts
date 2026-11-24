@@ -158,4 +158,26 @@ describe('rule overlap', () => {
       ),
     ).toBe(false);
   });
+
+  it('matches explicit mods by containment, not by presence', () => {
+    expect(
+      rulesOverlap(
+        { action: 'Show', hasExplicitMod: ['Veil'] },
+        { action: 'Hide', hasExplicitMod: ['of the Veil'] },
+      ),
+    ).toBe(true);
+    expect(
+      rulesOverlap(
+        { action: 'Show', hasExplicitMod: ['Veil'] },
+        { action: 'Hide', hasExplicitMod: ['of Renewal'] },
+      ),
+    ).toBe(false);
+    // One side without a mod condition is broader and still overlaps.
+    expect(
+      rulesOverlap(
+        { action: 'Show', hasExplicitMod: ['Veil'] },
+        { action: 'Hide', rarity: 'Rare' },
+      ),
+    ).toBe(true);
+  });
 });

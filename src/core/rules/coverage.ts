@@ -175,6 +175,19 @@ export function rulesOverlap(a: Rule, b: Rule): boolean {
   ) {
     return false;
   }
+  // A mod shows the same item only when the two values match by the game's own
+  // substring rule, so a "Veil" rule does not override an unrelated mod rule.
+  if (a.hasExplicitMod?.length && b.hasExplicitMod?.length) {
+    const matches = (mods: readonly string[], others: readonly string[]) =>
+      mods.some((mod) =>
+        others.some(
+          (other) =>
+            mod.toLowerCase().includes(other.toLowerCase()) ||
+            other.toLowerCase().includes(mod.toLowerCase()),
+        ),
+      );
+    if (!matches(a.hasExplicitMod, b.hasExplicitMod)) return false;
+  }
   if (!targetsIntersect(a, b)) return false;
 
   for (const key of RANGE_KEYS) {

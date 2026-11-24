@@ -109,6 +109,47 @@ function splitList(value: string): string[] {
     .filter(Boolean);
 }
 
+/**
+ * A comma-separated list input that keeps the text the user typed. Parsing on
+ * every keystroke typed a comma away, so a second entry could not be started;
+ * the draft only normalises when the field loses focus.
+ */
+function ListField({
+  label,
+  value,
+  onCommit,
+}: {
+  label: string;
+  value?: string[];
+  onCommit: (values: string[]) => void;
+}) {
+  const [draft, setDraft] = useState(value?.join(', ') ?? '');
+  const [focused, setFocused] = useState(false);
+
+  useEffect(() => {
+    if (!focused) setDraft(value?.join(', ') ?? '');
+  }, [value, focused]);
+
+  return (
+    <label className="text-[10px] text-zinc-500">
+      {label}
+      <input
+        value={draft}
+        onChange={(event) => {
+          setDraft(event.target.value);
+          onCommit(splitList(event.target.value));
+        }}
+        onFocus={() => setFocused(true)}
+        onBlur={() => {
+          setFocused(false);
+          setDraft(value?.join(', ') ?? '');
+        }}
+        className="mt-0.5 block w-full rounded border border-ink-600 bg-ink-800 px-2 py-1 text-xs text-zinc-200"
+      />
+    </label>
+  );
+}
+
 function number(value: string): number | undefined {
   if (value.trim() === '') return undefined;
   const parsed = Number(value);
@@ -127,6 +168,9 @@ function ruleSummary(rule: Rule): string {
   if (rule.chips?.length) {
     parts.push(rule.chips.map((chip) => chipLabel(chip)).join(' + '));
   }
+  if (rule.hasExplicitMod?.length) {
+    parts.push(`mod: ${rule.hasExplicitMod.join(', ')}`);
+  }
   if (rule.rarity) parts.push(rule.rarity);
   if (rule.itemLevel?.min !== undefined) parts.push(`ilvl ${rule.itemLevel.min}+`);
   if (rule.itemLevel?.max !== undefined) parts.push(`ilvl <=${rule.itemLevel.max}`);
@@ -144,6 +188,7 @@ function hasConditions(rule: Rule): boolean {
   return Boolean(
     rule.classNames?.length ||
       rule.baseTypes?.length ||
+      rule.hasExplicitMod?.length ||
       rule.rarity ||
       rule.itemLevel ||
       rule.dropLevel ||
@@ -162,6 +207,7 @@ function conditionSignature(rule: Rule): string {
   return JSON.stringify({
     classNames: rule.classNames,
     baseTypes: rule.baseTypes,
+    hasExplicitMod: rule.hasExplicitMod,
     rarity: rule.rarity,
     itemLevel: rule.itemLevel,
     dropLevel: rule.dropLevel,
@@ -317,33 +363,25 @@ function ConditionsEditor({
         Conditions
       </summary>
       <div className="mt-2 grid gap-2 sm:grid-cols-2">
-        <label className="text-[10px] text-zinc-500">
-          Classes (comma separated)
-          <input
-            value={rule.classNames?.join(', ') ?? ''}
-            onChange={(event) => {
-              const values = splitList(event.target.value);
-              // Clearing an existing list keeps it, empty; see tidyRule.
-              onChange({
-                classNames: values.length || rule.classNames ? values : undefined,
-              });
-            }}
-            className="mt-0.5 block w-full rounded border border-ink-600 bg-ink-800 px-2 py-1 text-xs text-zinc-200"
-          />
-        </label>
-        <label className="text-[10px] text-zinc-500">
-          Base types (comma separated)
-          <input
-            value={rule.baseTypes?.join(', ') ?? ''}
-            onChange={(event) => {
-              const values = splitList(event.target.value);
-              onChange({
-                baseTypes: values.length || rule.baseTypes ? values : undefined,
-              });
-            }}
-            className="mt-0.5 block w-full rounded border border-ink-600 bg-ink-800 px-2 py-1 text-xs text-zinc-200"
-          />
-        </label>
+        <ListField
+          label="Classes (comma separated)"
+          value={rule.classNames}
+          onCommit={(values) =>
+            // Clearing an existing list keeps it, empty; see tidyRule.
+            onChange({
+              classNames: values.length || rule.classNames ? values : undefined,
+            })
+          }
+        />
+        <ListField
+          label="Base types (comma separated)"
+          value={rule.baseTypes}
+          onCommit={(values) =>
+            onChange({
+              baseTypes: values.length || rule.baseTypes ? values : undefined,
+            })
+          }
+        />
         <label className="text-[10px] text-zinc-500">
           Rarity
           <select
@@ -521,7 +559,12 @@ export default function AdvancedRules({
   const presetRules = useMemo(
     () =>
       baseRules.filter(
-        (rule) => rule.section !== 'quest' && rule.section !== 'custom',
+        (rule) =>
+          // Quest and veiled rules are always-on safety nets, not something a
+          // custom rule is said to override.
+          rule.section !== 'quest' &&
+          rule.section !== 'veiled' &&
+          rule.section !== 'custom',
       ),
     [baseRules],
   );
@@ -1254,8 +1297,14 @@ export default function AdvancedRules({
           {scratch ? (
             <p className="mt-2 rounded-lg border border-ink-700 bg-ink-900/40 px-3 py-2 text-xs text-zinc-500">
               From Scratch has no preset. Everything starts{' '}
-              {baseRules[0]?.action === 'Show' ? 'visible' : 'hidden'}; add My
-              rules to change that.
+              {baseRules.some(
+                (rule) =>
+                  rule.comment?.startsWith('From scratch') &&
+                  rule.action === 'Show',
+              )
+                ? 'visible'
+                : 'hidden'}
+              ; add My rules to change that.
             </p>
           ) : (
           <div className="mt-2 space-y-2">
