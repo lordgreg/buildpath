@@ -9,6 +9,7 @@ import { evaluateRules } from '../../core/preview/match.ts';
 import { TEMPLATES } from '../../core/rules/templates.ts';
 import { rulesOverlap, templateIsCovered } from '../../core/rules/coverage.ts';
 import { customRuleProblem } from '../../core/rules/sanitize.ts';
+import { hasEmptyListCondition } from '../../core/filter/rule-lists.ts';
 import {
   CHIPS,
   chipLabel,
@@ -114,6 +115,7 @@ function number(value: string): number | undefined {
 }
 
 function targetLabel(rule: Rule): string {
+  if (hasEmptyListCondition(rule)) return 'nothing (empty list, not written)';
   if (rule.baseTypes?.length) return `${rule.baseTypes.length} base types`;
   if (rule.classNames?.length) return rule.classNames.join(', ');
   return 'any item';
