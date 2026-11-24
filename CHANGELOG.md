@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.40.0 — 2026-11-24
+
+Mana flasks while leveling.
+
+- A fresh character drinks mana flasks as much as life flasks, so while leveling
+  they now get the same slot treatment: the same rarity floors, the same
+  styling and the same hide below the floor. Endgame profiles still hide them.
+- Open product decisions are recorded as settled in the plan: the Standard
+  fallback snapshot stays, the ascendancy default families are accepted, and the
+  three-entry Scion ladder is confirmed.
+
 ## 0.39.0 — 2026-11-24
 
 Polish: a lighter background, labelled inputs and honest docs.
