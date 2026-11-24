@@ -5,7 +5,7 @@
 # Phase: Endgame - Strict
 # League: Covens
 # Presets: 1efbf3b2952f
-# Rules: 74 - Base types: 63
+# Rules: 75 - Base types: 63
 # Base data: RePoE 1d825f53356023dee0fbb3ec23d94057da8fe0ac (4f01123d)
 # Generated at https://lordgreg.github.io/filterpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -38,6 +38,15 @@ Show
     SetTextColor 255 184 240 255
     SetBorderColor 255 92 214 255
     SetBackgroundColor 42 10 36 255
+
+# Cluster jewels
+Show
+    BaseType == "Large Cluster Jewel" "Medium Cluster Jewel" "Small Cluster Jewel"
+    SetFontSize 38
+    SetTextColor 255 255 255 255
+    SetBorderColor 120 230 140 255
+    SetBackgroundColor 20 26 58 255
+    MinimapIcon 1 Green Hexagon
 
 # helmet - rare
 Show

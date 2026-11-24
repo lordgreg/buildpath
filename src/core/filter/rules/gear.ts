@@ -25,6 +25,59 @@ const SOCKET_SLOTS = new Set<ItemSlot>([
 /** Accessories and jewels stay worth identifying below the gear cutoff. */
 const ACCESSORY_ITEM_LEVEL = 68;
 
+/** Cluster jewels are never part of a slot spec; they are always worth a look. */
+const CLUSTER_JEWELS = [
+  'Large Cluster Jewel',
+  'Medium Cluster Jewel',
+  'Small Cluster Jewel',
+];
+
+/**
+ * Abyss jewels roll one affix pool per damage style. The build's family picks
+ * the eye that fits; a family without a match keeps the generic jewel behaviour.
+ */
+const ABYSS_JEWELS: Record<string, string> = {
+  caster: 'Hypnotic Eye Jewel',
+  minion: 'Ghastly Eye Jewel',
+  melee: 'Murderous Eye Jewel',
+  bow: 'Searching Eye Jewel',
+  hybrid: 'Searching Eye Jewel',
+};
+
+/** Quiet jewel styling: visible and labelled, without an alert. */
+const JEWEL_COVERAGE_STYLE: Style = {
+  textColor: SLOT_STYLES.accessory.textColor,
+  borderColor: SLOT_STYLES.accessory.borderColor,
+  fontSize: 38,
+  minimapIcon: { size: 1, color: 'Green', shape: 'Hexagon' },
+};
+
+/** Jewels every build should see, whatever its slot targeting. */
+export function jewelCoverageRules(archetype: Archetype): Rule[] {
+  const rules: Rule[] = [
+    {
+      action: 'Show',
+      comment: 'Cluster jewels',
+      baseTypes: CLUSTER_JEWELS,
+      styleKind: 'jewel',
+      style: JEWEL_COVERAGE_STYLE,
+    },
+  ];
+
+  const abyss = archetype.familyId ? ABYSS_JEWELS[archetype.familyId] : undefined;
+  if (abyss) {
+    rules.push({
+      action: 'Show',
+      comment: `Abyss jewels - ${archetype.familyId}`,
+      baseTypes: [abyss],
+      styleKind: 'jewel',
+      style: JEWEL_COVERAGE_STYLE,
+    });
+  }
+
+  return rules;
+}
+
 export function slotStyle(slot: ItemSlot): Style {
   if (WEAPON_SLOTS.has(slot)) return SLOT_STYLES.weapon;
   if (ARMOUR_SLOTS.has(slot)) return SLOT_STYLES.armour;
@@ -68,7 +121,7 @@ export function usedFilterClasses(archetype: Archetype): Set<string> {
 }
 
 export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
-  const rules: Rule[] = [];
+  const rules: Rule[] = [...jewelCoverageRules(archetype)];
 
   const excludedBases = new Set([
     ...(preset.gear.hiddenBases ?? []),

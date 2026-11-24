@@ -55,6 +55,8 @@ export interface Archetype {
   leveling: boolean;
   /** League the gear mapping was last checked against, e.g. "Covens". */
   verifiedFor: string;
+  /** Build family, when the selection has one; drives abyss-jewel coverage. */
+  familyId?: string;
   slots: Partial<Record<ItemSlot, SlotSpec>>;
   attributes: Attribute[];
   /**

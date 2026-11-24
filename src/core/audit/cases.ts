@@ -426,6 +426,16 @@ export const AUDIT_CASES: AuditCase[] = [
     expect: () => true,
   },
   {
+    id: 'cluster-jewel',
+    label: 'Large Cluster Jewel',
+    category: 'jewel',
+    note: 'every build, every rarity',
+    item: item('cluster-jewel', 'Jewels', 'Large Cluster Jewel', 'Magic', {
+      itemLevel: 75,
+    }),
+    expect: () => true,
+  },
+  {
     id: 'league-viscera',
     label: "Lesser Justicar's Helm",
     category: 'league',

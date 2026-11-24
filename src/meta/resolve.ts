@@ -67,6 +67,7 @@ export function resolveFamily(familyId: string): Archetype {
       : {}),
     leveling: true,
     verifiedFor: verifiedFor(),
+    familyId: family.id,
     slots: {
       ...armourSlots(family.armourTags),
       ...jewellery(family.jewelTag, family.belt),
@@ -99,6 +100,7 @@ export function resolveAscendancy(ascendancyId: string): Archetype {
     summary: `Default ${family.name.toLowerCase()} loadout: ${loadoutLabel(weapon, offhand)}.`,
     leveling: true,
     verifiedFor: verifiedFor(),
+    familyId: family.id,
     slots: {
       ...armourSlots(ascendancy.defenceTags),
       ...jewellery(ascendancy.jewelTag, ascendancy.belt ?? family.belt),
@@ -135,6 +137,7 @@ export function resolveMeta(selection: BuildSelection): Archetype {
     summary: `${family.name} profile for ${skill.name}: ${loadoutLabel(weapon, offhand)}.`,
     leveling: skill.leveling,
     verifiedFor: getSnapshot(leagueId).league.name,
+    familyId: skill.family,
     slots: {
       ...armourSlots(ascendancy.defenceTags),
       ...jewellery(ascendancy.jewelTag, ascendancy.belt ?? family.belt),
