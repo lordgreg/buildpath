@@ -47,6 +47,11 @@ export default function FilterPreview({
         <span className="min-w-0 break-words text-xs text-zinc-500">
           {fileName}
         </span>
+        {warnings.length > 0 && (
+          <span className="rounded-full border border-red-800/60 bg-red-950/50 px-2 py-0.5 text-[10px] font-medium text-red-200">
+            {warnings.length} {warnings.length === 1 ? 'warning' : 'warnings'}
+          </span>
+        )}
         <span className="ml-auto flex items-center gap-3">
           <span className="flex gap-4 text-right text-xs text-zinc-400">
             <span>

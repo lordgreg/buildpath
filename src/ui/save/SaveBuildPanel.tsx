@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Rule } from '../../core/filter/types.ts';
 import { PRESET_VERSION } from '../../meta/index.ts';
 import {
@@ -67,7 +67,18 @@ export default function SaveBuildPanel({
   const [builds, setBuilds] = useState<SavedBuild[]>(() => listBuilds());
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  // The name feeds the generated text and file name, so a local draft keeps the
+  // whole filter from regenerating on every keystroke.
+  const [nameDraft, setNameDraft] = useState(name);
   const browser = browserKind();
+
+  useEffect(() => {
+    setNameDraft(name);
+  }, [name]);
+
+  const commitName = () => {
+    if (nameDraft !== name) onNameChange(nameDraft);
+  };
 
   const resolvedName = name.trim() || autoName;
   const platform = folder.platform;
@@ -173,8 +184,15 @@ export default function SaveBuildPanel({
       <div className="mt-3 flex flex-wrap gap-2">
         <input
           type="text"
-          value={name}
-          onChange={(event) => onNameChange(event.target.value)}
+          value={nameDraft}
+          onChange={(event) => setNameDraft(event.target.value)}
+          onBlur={commitName}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              commitName();
+              event.currentTarget.blur();
+            }
+          }}
           placeholder={`${autoName} (auto)`}
           className="min-w-0 flex-1 rounded border border-ink-600 bg-ink-800 px-2 py-1.5 text-xs text-zinc-200"
         />
