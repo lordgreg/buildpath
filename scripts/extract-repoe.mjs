@@ -1,21 +1,31 @@
 #!/usr/bin/env node
 /**
- * Downloads RePoE's base item dump and trims it to what a loot filter needs.
+ * Downloads a Path of Exile data export and trims it to what a loot filter
+ * needs. We keep name, item class, tags, drop level and inventory size. Tags
+ * are the important part: they let archetypes select whole families of bases
+ * without hand-typing hundreds of names.
  *
- * RePoE: https://github.com/brather1ng/RePoE (community datamining).
- * We keep name, item class, tags, drop level and inventory size. Tags are the
- * important part: they let archetypes select whole families of bases without
- * hand-typing hundreds of names.
+ * The source is the maintained RePoE export published by repoe-fork, which is
+ * no longer the frozen brather1ng/RePoE repository:
  *
- * Override the source with REPOE_REF=<tag-or-commit> for a reproducible run.
+ *   https://github.com/repoe-fork/repoe            parser and schema
+ *   https://github.com/repoe-fork/repoe-fork.github.io   generated data
+ *
+ * The export is pinned to one commit of the generated-data repository, so a
+ * run is reproducible even though the site serves the newest export. Bump the
+ * pin deliberately and review the diff.
+ *
+ * Override the pin with REPOE_REF=<commit> for a one-off run.
  */
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const REF = process.env.REPOE_REF ?? 'master';
-const SOURCE = `https://raw.githubusercontent.com/brather1ng/RePoE/${REF}/RePoE/data/base_items.json`;
+/** Export 3.30.0.4.3, published by repoe-fork/repoe-fork.github.io. */
+const REF = process.env.REPOE_REF ?? '1d825f53356023dee0fbb3ec23d94057da8fe0ac';
+const DATA_ROOT = `https://raw.githubusercontent.com/repoe-fork/repoe-fork.github.io/${REF}/data`;
+const SOURCE = `${DATA_ROOT}/base_items.json`;
 const OUT = fileURLToPath(new URL('../src/core/data/base-types.json', import.meta.url));
 const KNOWN_OUT = fileURLToPath(
   new URL('../src/core/data/known-base-types.json', import.meta.url),
@@ -28,6 +38,9 @@ const REMOVED = fileURLToPath(
 );
 const CLASS_MAP = fileURLToPath(
   new URL('../src/core/data/class-map.json', import.meta.url),
+);
+const EQUIPMENT_CLASSES = fileURLToPath(
+  new URL('../src/core/data/equipment-classes.json', import.meta.url),
 );
 const CLASSES_EXTRA = fileURLToPath(
   new URL('../src/core/data/classes-extra.json', import.meta.url),
@@ -44,7 +57,7 @@ const SKILLS_OUT = fileURLToPath(
 const SKILLS_EXTRA = fileURLToPath(
   new URL('../src/meta/skill-names-extra.json', import.meta.url),
 );
-const GEMS_SOURCE = `https://raw.githubusercontent.com/brather1ng/RePoE/${REF}/RePoE/data/gems.json`;
+const GEMS_SOURCE = `${DATA_ROOT}/gems.json`;
 const USER_AGENT = 'FilterPath/0.1 (+https://github.com/lordgreg/filterpath)';
 
 /** Reads a JSON array, treating a missing or malformed file as empty. */
@@ -66,9 +79,16 @@ async function readJsonObject(path) {
   return value;
 }
 
-// RePoE splits gear, flasks and jewels across domains. Filter rules need all
-// three, so include them and normalise flask classes to singular names.
-const DOMAINS = new Set(['item', 'flask', 'misc', 'abyss_jewel', 'affliction_jewel']);
+// The export has one entry per item class, and item classes are the stable
+// unit. Which classes hold gear comes from the reviewed equipment list; which
+// raw classes map to a filter class comes from class-map.json. A raw class
+// without a mapping is not filterable, so it is left out instead of guessed.
+const classMap = await readJsonObject(CLASS_MAP);
+const classExtras = await readJsonList(CLASSES_EXTRA);
+const classRemoved = new Set(await readJsonList(CLASSES_REMOVED));
+const equipmentClasses = new Set(await readJsonList(EQUIPMENT_CLASSES));
+
+/** The flask classes the game names differently from RePoE's `LifeFlask`. */
 const FLASK_CLASSES = {
   LifeFlask: 'Life Flask',
   ManaFlask: 'Mana Flask',
@@ -76,21 +96,27 @@ const FLASK_CLASSES = {
   UtilityFlask: 'Utility Flask',
 };
 
+const filterClassOf = (item) => {
+  const rawClass = FLASK_CLASSES[item.item_class] ?? item.item_class;
+  return classMap[rawClass] ?? null;
+};
+
 const response = await fetch(SOURCE, { headers: { 'user-agent': USER_AGENT } });
 if (!response.ok) {
-  throw new Error(`RePoE request failed: ${response.status} ${response.statusText}`);
+  throw new Error(`Data export request failed: ${response.status} ${response.statusText}`);
 }
 
 const raw = await response.json();
 const byKey = new Map();
 
 for (const item of Object.values(raw)) {
-  if (!DOMAINS.has(item.domain)) continue;
   if (item.release_state !== 'released') continue;
   if (!item.name || !item.item_class) continue;
   if (item.item_class === 'FishingRod') continue;
 
   const itemClass = FLASK_CLASSES[item.item_class] ?? item.item_class;
+  if (!equipmentClasses.has(classMap[itemClass])) continue;
+
   const key = `${item.name}\u0000${itemClass}`;
   const existing = byKey.get(key);
 
@@ -129,9 +155,33 @@ const items = [...byKey.values()]
       a.name.localeCompare(b.name) || a.itemClass.localeCompare(b.itemClass),
   );
 
+// Every `Class` value the game accepts. The export's item_class values are the
+// raw source; class-map.json turns them into the plural names filters use. A
+// raw class without a mapping is a class the filter language does not know, so
+// it is left out and reported instead of guessed.
+const knownClasses = new Set();
+const unmappedClasses = new Set();
+for (const item of Object.values(raw)) {
+  const rawClass = FLASK_CLASSES[item.item_class] ?? item.item_class;
+  if (!rawClass) continue;
+  const filterClass = classMap[rawClass];
+  if (!filterClass) {
+    unmappedClasses.add(rawClass);
+    continue;
+  }
+  knownClasses.add(filterClass);
+}
+for (const name of classExtras) knownClasses.add(name);
+for (const name of classRemoved) knownClasses.delete(name);
+
+const knownClassNames = [...knownClasses].sort();
+
 // Every name the game will accept in a BaseType condition: gear, currency,
-// divination cards, gems, and unique-only bases. Unique item names are not in
-// this namespace, which is why filters must reference a unique's base type.
+// divination cards, fragments, gems, and unique-only bases. Unique item names
+// are not in this namespace, which is why filters must reference a unique's
+// base type. Only item classes the filter language knows are admitted, so
+// placeholder classes (HiddenItem, RemovedItem, GhostItem, ...) never enter the
+// registry and a typo still fails the build.
 const known = new Set();
 for (const item of Object.values(raw)) {
   if (!item.name || !item.item_class) continue;
@@ -139,11 +189,13 @@ for (const item of Object.values(raw)) {
     continue;
   }
   if (item.item_class === 'FishingRod') continue;
+  const filterClass = filterClassOf(item);
+  if (!filterClass || !knownClasses.has(filterClass)) continue;
   known.add(item.name);
 }
 
-// RePoE occasionally lags behind newly added items. The supplement is
-// hand-checked against a working filter and reviewed in diffs.
+// A supplement for names the export lags on. Hand-checked against a working
+// filter and reviewed in diffs.
 try {
   const extra = JSON.parse(await readFile(EXTRA, 'utf8'));
   for (const name of extra) known.add(name);
@@ -156,30 +208,6 @@ try {
 for (const name of removed) known.delete(name);
 
 const knownNames = [...known].sort();
-
-// Every `Class` value the game accepts. RePoE's item_class values are the raw
-// source; class-map.json turns them into the plural names filters use. A new
-// raw class without a mapping fails the run so it is reviewed, not guessed.
-const classMap = await readJsonObject(CLASS_MAP);
-const classExtras = await readJsonList(CLASSES_EXTRA);
-const classRemoved = new Set(await readJsonList(CLASSES_REMOVED));
-
-const knownClasses = new Set();
-for (const item of Object.values(raw)) {
-  const rawClass = item.item_class;
-  if (!rawClass) continue;
-  const filterClass = classMap[rawClass];
-  if (!filterClass) {
-    throw new Error(
-      `No filter class mapping for RePoE item_class "${rawClass}". Add it to src/core/data/class-map.json.`,
-    );
-  }
-  knownClasses.add(filterClass);
-}
-for (const name of classExtras) knownClasses.add(name);
-for (const name of classRemoved) knownClasses.delete(name);
-
-const knownClassNames = [...knownClasses].sort();
 
 const gemsResponse = await fetch(GEMS_SOURCE, {
   headers: { 'user-agent': USER_AGENT },
@@ -299,3 +327,8 @@ console.log(`Wrote ${knownNames.length} known BaseType names to ${KNOWN_OUT}`);
 console.log(`Wrote ${knownClassNames.length} known Class names to ${CLASSES_OUT}`);
 console.log(`Wrote ${skillNames.length} skill gems to ${SKILLS_OUT}`);
 console.log(`sha256 ${digest}`);
+if (unmappedClasses.size > 0) {
+  console.log(
+    `Left out ${unmappedClasses.size} item classes with no filter class: ${[...unmappedClasses].sort().join(', ')}`,
+  );
+}

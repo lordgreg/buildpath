@@ -83,17 +83,29 @@ behind the same `FilterSync` interface for if GGG reopens registration.
 
 ### 2.4 Base item data
 
-RePoE `base_items.json` trimmed to `name`, `itemClass`, `tags`, `dropLevel`,
-`width`, `height`. Committed so builds are offline and reproducible. Refresh
-with `npm run extract:repoe` (pin `REPOE_REF` for reproducibility).
+The source is the maintained RePoE export, not the frozen `brather1ng/RePoE`
+repository (no pushes since 2022):
+
+- `repoe-fork/repoe` holds the parser and schema; `repoe-fork/repoe-fork.github.io`
+  holds the generated data that the extractor reads.
+- The export is pinned to one commit of the data repository and recorded in
+  `base-types.json`'s meta, so a run is reproducible. Bump the pin deliberately
+  and review the diff.
+- Exported `base_items.json` trimmed to `name`, `itemClass`, `tags`, `dropLevel`,
+  `width`, `height`. Committed so builds are offline and reproducible. Refresh
+  with `npm run extract:repoe` (`REPOE_REF=<commit>` overrides the pin).
 
 The same extractor writes `known-base-types.json`, the registry of every name
-the game accepts in a `BaseType` condition. RePoE lags on some new items
-(`Fracturing Orb`, `Hinekora's Lock`), so a small reviewed supplement,
-`base-types-extra.json`, is merged in. It also over-reports: bases the live
-game has dropped or renamed (`Gauche Gloves`, `Serpent Wand`) are listed in the
+the game accepts in a `BaseType` condition. Only item classes the filter
+language knows (`class-map.json`) are admitted, so the export's internal
+placeholder classes (`HiddenItem`, `RemovedItem`, `GhostItem`, ...) never enter
+the registry and a typo still fails the build. A small reviewed supplement,
+`base-types-extra.json`, covers names the export lags on. Bases the live game
+has dropped or renamed (`Gauche Gloves`, `Serpent Wand`) are listed in the
 reviewed `base-types-removed.json` and stripped from both the data and the
-registry. Every generated filter is validated against this registry in CI.
+registry. Every generated filter is validated against this registry in CI, and
+so is every name in the economy tiers: a tier list the registry cannot write
+would make the game refuse the whole filter.
 
 ### 2.5 Versioning
 
@@ -339,6 +351,9 @@ src/
     data/
       base-types.json    generated, committed
       known-base-types.json  every valid BaseType, generated
+      known-classes.json     every valid Class, generated
+      class-map.json         RePoE item class -> filter Class (reviewed)
+      equipment-classes.json gear, flasks and jewels the slots resolve from (reviewed)
       base-types-extra.json  reviewed supplement for RePoE gaps
       base-types-removed.json  reviewed removals for dropped/renamed bases
       resolve.ts         slot spec -> base types
@@ -652,12 +667,16 @@ test: load a generated filter, confirm `Class == "Viscera"` and a
 `BaseType ==` list behave, and check that a `Hide BaseType == "Gold"` rule no
 longer hides Gold Flask, Golden Mask or Gold Ring.
 
-**Phase 2 - base data source (own release, needs a decision).** Move
-`extract:repoe` from the frozen `brather1ng/RePoE` (no pushes since 2022, no
-tags; `REPOE_REF=3.27.0` 404s) to a maintained fork pinned by SHA. 18 of 49
-economy fragment names (Reliquary Keys, Valdo's Puzzle Box) are missing from
-the registry today. Not behaviour-neutral: review the golden and audit diff for
-every newly admitted name and land any floors with it.
+**Phase 2 - base data source (0.35.0). Done.** `extract:repoe` now reads the
+maintained `repoe-fork` export pinned to a commit of
+`repoe-fork/repoe-fork.github.io` (export 3.30.0.4.3) instead of the frozen
+`brather1ng/RePoE`, whose `REPOE_REF=3.27.0` 404s. Selection moved from RePoE
+domains to the reviewed equipment classes, and the registry admits only item
+classes the filter language knows, so placeholder classes stay out. All 18
+previously missing economy names (Reliquary Keys, Valdo's Puzzle Box, Zorath's
+Eyes) are in the registry; the golden diff is 64 newly admitted bases and no
+removals; the behaviour summary did not change. Every economy tier name is now
+asserted against the registry.
 
 **Phase 3 - preset coverage (0.35.0, does not wait for Phase 2).**
 

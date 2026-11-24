@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { archetypes } from '../archetypes/index.ts';
+import { FILTER_CLASSES } from './classes.ts';
+import equipmentClasses from './equipment-classes.json';
 import removed from './base-types-removed.json';
 import known from './known-base-types.json';
 import { baseTypeMeta, baseTypes, basesWithTag } from './base-types.ts';
@@ -40,6 +42,25 @@ describe('base type data', () => {
     for (const name of removed) {
       expect(baseNames.has(name), `data: ${name}`).toBe(false);
       expect(knownNames.has(name), `registry: ${name}`).toBe(false);
+    }
+  });
+
+  it('keeps placeholder classes out of the registry', () => {
+    // The export labels internal placeholders with classes the filter language
+    // does not know. Admitting their names would let a typo pass validation.
+    const knownNames = new Set(known.names);
+    for (const name of ['Hidden Item', 'Fleshgraft', 'Enshrouded Gloves']) {
+      expect(knownNames.has(name), name).toBe(false);
+    }
+  });
+
+  it('only holds equipment classes in the trimmed data', () => {
+    const equipment = new Set<string>(equipmentClasses);
+    for (const base of baseTypes) {
+      expect(
+        equipment.has(FILTER_CLASSES[base.itemClass] ?? base.itemClass),
+        `${base.name} (${base.itemClass})`,
+      ).toBe(true);
     }
   });
 });

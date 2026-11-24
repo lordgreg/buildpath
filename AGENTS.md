@@ -29,8 +29,8 @@ Data scripts (only needed when touching generated data):
 
 ```bash
 npm run presets:build    # YAML -> src/generated/presets.json, schema-validated
-npm run extract:repoe    # refresh src/core/data/base-types.json from RePoE
-REPOE_REF=3.27.0 npm run extract:repoe   # pin for reproducible output
+npm run extract:repoe    # refresh base data and registries from the RePoE export
+REPOE_REF=<commit> npm run extract:repoe   # override the pinned export commit
 npm run economy:refresh  # poe.ninja economy tiers
 npm run meta:add         # append/edit a league snapshot skill (manual capture)
 ```

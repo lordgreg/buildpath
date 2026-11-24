@@ -65,16 +65,18 @@ npm run build
 ```bash
 npm run presets:build   # YAML -> src/generated/presets.json, schema-validated
 npm run extract:repoe
-# pin for reproducible output
-REPOE_REF=3.27.0 npm run extract:repoe
+# override the pinned export commit
+REPOE_REF=<commit> npm run extract:repoe
 ```
 
-Writes `src/core/data/base-types.json` from
-[RePoE](https://github.com/brather1ng/RePoE), plus
-`known-base-types.json` (every name valid in a `BaseType` condition). Items
-missing from RePoE can be added to `base-types-extra.json` after checking them
-against a working filter. Both generated files are committed so builds never
-depend on the network.
+Writes `src/core/data/base-types.json` from the maintained
+[RePoE export](https://repoe-fork.github.io/) published by `repoe-fork`, pinned
+to one commit of `repoe-fork/repoe-fork.github.io`, plus
+`known-base-types.json` (every name valid in a `BaseType` condition) and
+`known-classes.json`. Only item classes the filter language knows are admitted.
+Items missing from the export can be added to `base-types-extra.json` after
+checking them against a working filter. All generated files are committed so
+builds never depend on the network.
 
 ## Layout
 
