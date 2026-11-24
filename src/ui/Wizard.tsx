@@ -130,7 +130,7 @@ export default function Wizard() {
   const isStart = state.mode === 'start';
   const autoName = isStart ? '' : autoBuildName(asSelected(state));
   const folder = useFiltersFolder();
-  const autoSyncedRef = useRef<string | null>(null);
+  const outdatedNoticeRef = useRef<string | null>(null);
   const filenameNoticeRef = useRef<string | null>(null);
   const [notice, setNotice] = useState<string | null>(() => {
     const clones = discardLegacyClones();
@@ -276,6 +276,9 @@ export default function Wizard() {
     commit(state, customRules);
   };
 
+  // An outdated file in the connected folder is reported, never rewritten on
+  // its own: the live builder state may hold another build's rules or unsaved
+  // edits. The user checks the build and saves it explicitly.
   useEffect(() => {
     if (!filter) return;
     if (!folder.handle) return;
@@ -288,33 +291,15 @@ export default function Wizard() {
     if (!updateKind) return;
 
     const key = `${filter.fileName}:${existing.presetVersion ?? 'legacy'}:${existing.appVersion ?? 'legacy'}`;
-    if (autoSyncedRef.current === key) return;
+    if (outdatedNoticeRef.current === key) return;
+    outdatedNoticeRef.current = key;
 
-    if (folder.permission !== 'granted') {
-      setNotice(
-        `Your filter is using an older version. Grant folder access or Save to update ${filter.fileName}.`,
-      );
-      return;
-    }
-
-    autoSyncedRef.current = key;
-    void folder.write(filter.fileName, filter.text, false).then((result) => {
-      setNotice(
-        result.ok
-          ? updateKind === 'presets'
-            ? 'Your filter was updated with the latest presets.'
-            : 'Your filter was updated to the latest version.'
-          : `Could not update ${filter.fileName}. ${result.message}`,
-      );
-    });
-  }, [
-    filter?.fileName,
-    filter?.text,
-    folder.files,
-    folder.handle,
-    folder.permission,
-    folder.write,
-  ]);
+    setNotice(
+      `${filter.fileName} in ${folder.handle.name} was made with ${
+        updateKind === 'presets' ? 'older presets' : 'an older FilterPath'
+      }. Check the build, then Save to update it; the old file is kept as .bak.`,
+    );
+  }, [filter?.fileName, folder.files, folder.handle]);
 
   useEffect(() => {
     if (!filter) return;
@@ -333,7 +318,7 @@ export default function Wizard() {
     if (filenameNoticeRef.current === key) return;
     filenameNoticeRef.current = key;
     setNotice(
-      `Filename changed. Download once to create ${filter.fileName}, then select it in-game; future updates sync automatically.`,
+      `Filename changed. Download once to create ${filter.fileName}, then select it in-game.`,
     );
   }, [filter?.fileName, folder.files, folder.handle]);
 
