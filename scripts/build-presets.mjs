@@ -153,6 +153,39 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
+// The economy snapshot stays exactly what poe.ninja returned. Hand-written
+// overrides are merged here, so the browser reads one compiled file and a bad
+// override fails the build instead of shipping silently.
+const economy = await readJson('src/generated/economy.json');
+const overridesDoc = await readYaml('economy-overrides.yaml');
+const overrideErrors = [];
+for (const [category, values] of Object.entries(overridesDoc.tiers ?? {})) {
+  const tiers = economy.tiers?.[category];
+  if (!tiers) {
+    overrideErrors.push(`economy-overrides.yaml: unknown category "${category}"`);
+    continue;
+  }
+  for (const [name, tier] of Object.entries(values ?? {})) {
+    if (!(name in tiers)) {
+      overrideErrors.push(
+        `economy-overrides.yaml: "${name}" is not in the ${category} tiers`,
+      );
+      continue;
+    }
+    if (![1, 2, 3].includes(tier)) {
+      overrideErrors.push(
+        `economy-overrides.yaml: ${category}/${name} has tier ${tier}, expected 1-3`,
+      );
+      continue;
+    }
+    tiers[name] = tier;
+  }
+}
+if (overrideErrors.length > 0) {
+  for (const error of overrideErrors) console.error(`error: ${error}`);
+  process.exit(1);
+}
+
 const base = {
   schemaVersion: 1,
   families: familiesDoc.families,
@@ -161,6 +194,13 @@ const base = {
     current: leagueIndex.current,
     index: leagueIndex.leagues,
     snapshots,
+  },
+  economy: {
+    league: economy.league,
+    fetchedAt: economy.fetchedAt,
+    source: economy.source,
+    divineChaos: economy.divineChaos,
+    tiers: economy.tiers,
   },
 };
 const version = createHash('sha256')

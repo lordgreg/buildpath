@@ -1,10 +1,10 @@
-import economy from '../../../generated/economy.json';
+import { ECONOMY_TIERS } from '../../data/economy.ts';
 import type { Preset } from '../presets.ts';
 import { SLOT_STYLES, type Rule } from '../types.ts';
 
 type TierMap = Record<string, number>;
 
-const UNIQUE_BASES = economy.tiers.uniqueBase as TierMap;
+const UNIQUE_BASES = ECONOMY_TIERS.uniqueBase as TierMap;
 
 function basesAtTier(tier: number): string[] {
   return Object.entries(UNIQUE_BASES)

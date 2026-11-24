@@ -9,12 +9,10 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parse as parseYaml } from 'yaml';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(ROOT, 'src/generated/economy.json');
 const KNOWN = resolve(ROOT, 'src/core/data/known-base-types.json');
-const OVERRIDES = resolve(ROOT, 'src/presets/economy-overrides.yaml');
 const UA = 'FilterPath/0.9.0 (contact: lordgreg@users.noreply.github.com)';
 const BASE = 'https://poe.ninja/poe1/api/economy';
 
@@ -178,17 +176,8 @@ const output = {
   },
 };
 
-const overrides = parseYaml(await readFile(OVERRIDES, 'utf8'));
-for (const [category, values] of Object.entries(overrides.tiers ?? {})) {
-  for (const [name, tier] of Object.entries(values ?? {})) {
-    if (!output.tiers[category]) continue;
-    if (![1, 2, 3].includes(tier)) {
-      throw new Error(`Override for ${category}/${name} has tier ${tier}`);
-    }
-    output.tiers[category][name] = tier;
-  }
-}
-
+// Hand-written overrides are applied by build-presets.mjs, so this file stays a
+// faithful snapshot of what poe.ninja returned.
 await writeFile(OUT, `${JSON.stringify(output, null, 2)}\n`);
 
 const count = (tiers, wanted) =>

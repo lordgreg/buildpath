@@ -1,4 +1,4 @@
-import economy from '../../../generated/economy.json';
+import { ECONOMY_TIERS } from '../../data/economy.ts';
 import type { Preset } from '../presets.ts';
 import {
   COLORS,
@@ -87,7 +87,7 @@ function tiersOrFallback(
   return [1, 2, 3].map((tier) => namesAt(map, tier));
 }
 
-const tiers = economy.tiers as {
+const tiers = ECONOMY_TIERS as {
   currency: TierMap;
   fragment: TierMap;
   divination: TierMap;

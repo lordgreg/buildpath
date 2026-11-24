@@ -1,4 +1,4 @@
-import economy from '../../generated/economy.json';
+import { ECONOMY_TIERS } from '../data/economy.ts';
 import type { Phase, Preset, Strictness } from '../filter/presets.ts';
 import type { PreviewItem } from '../preview/match.ts';
 
@@ -45,10 +45,10 @@ export interface AuditCase {
   expect?: (ctx: ExpectContext) => boolean | undefined;
 }
 
-const currencyTier = economy.tiers.currency as Record<string, number>;
-const fragmentTier = economy.tiers.fragment as Record<string, number>;
-const divinationTier = economy.tiers.divination as Record<string, number>;
-const uniqueBaseTier = economy.tiers.uniqueBase as Record<string, number>;
+const currencyTier = ECONOMY_TIERS.currency as Record<string, number>;
+const fragmentTier = ECONOMY_TIERS.fragment as Record<string, number>;
+const divinationTier = ECONOMY_TIERS.divination as Record<string, number>;
+const uniqueBaseTier = ECONOMY_TIERS.uniqueBase as Record<string, number>;
 
 function item(
   id: string,

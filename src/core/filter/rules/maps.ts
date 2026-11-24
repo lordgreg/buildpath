@@ -1,10 +1,10 @@
-import economy from '../../../generated/economy.json';
+import { ECONOMY_TIERS } from '../../data/economy.ts';
 import known from '../../data/known-base-types.json';
 import type { Phase, Preset } from '../presets.ts';
 import { COLORS, SLOT_STYLES, type Rule, type Style } from '../types.ts';
 
 const knownNames = new Set(known.names);
-const FRAGMENT_TIERS = economy.tiers.fragment as Record<string, number>;
+const FRAGMENT_TIERS = ECONOMY_TIERS.fragment as Record<string, number>;
 
 /** Graded map bands, loudest first. Lower bands are only added at or below the cutoff. */
 const MAP_BANDS: { min: number; max?: number; style: Style; label: string }[] = [

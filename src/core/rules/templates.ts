@@ -1,4 +1,4 @@
-import economy from '../../generated/economy.json';
+import { ECONOMY_TIERS } from '../data/economy.ts';
 import { EQUIPMENT_CLASSES } from '../filter/classes.ts';
 import { SLOT_STYLES, type Rule } from '../filter/types.ts';
 
@@ -17,11 +17,11 @@ function tierNames(map: Record<string, number>, tiers: number[]): string[] {
 }
 
 const TOP_CURRENCY = tierNames(
-  economy.tiers.currency as Record<string, number>,
+  ECONOMY_TIERS.currency as Record<string, number>,
   [1, 2],
 );
 const TOP_CARDS = tierNames(
-  economy.tiers.divination as Record<string, number>,
+  ECONOMY_TIERS.divination as Record<string, number>,
   [1],
 );
 
