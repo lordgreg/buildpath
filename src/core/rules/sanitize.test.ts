@@ -81,7 +81,7 @@ describe('custom rule values', () => {
       { action: 'Hide', classNames: ['Rings\nShow'] },
       { action: 'Hide', hasExplicitMod: ['   '] },
       { action: 'Hide', baseTypes: ['Maelstr\u00f6m Staff'] },
-      { action: 'Hide', baseTypes: ['"O\' Eternal"'] },
+      { action: 'Hide', classNames: ['"Rings"'] },
     ];
     for (const rule of bad) {
       expect(customRuleProblem(rule as Rule), JSON.stringify(rule)).not.toBeNull();
@@ -152,6 +152,13 @@ describe('custom rule values', () => {
     expect(hostile.lineSpans).toHaveLength(plain.lineSpans.length + 1);
     expect(hostile.skippedCustomRules.map((entry) => entry.index)).toEqual([1, 2]);
     expect(hostile.warnings).toEqual(plain.warnings);
+  });
+
+  it('keep a known card name that carries its own quotes', () => {
+    const { rules } = prepareCustomRules([
+      { action: 'Show', baseTypes: ['"The Nameless Play"'] },
+    ]);
+    expect(rules[0]!.baseTypes).toEqual(['"The Nameless Play"']);
   });
 
   it('keep intentional catch-alls', () => {

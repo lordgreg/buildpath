@@ -127,18 +127,21 @@ const NAMED_SOUNDS = new Set<string>([
   'ShVaal',
 ] satisfies NamedAlertSound[]);
 
-/**
- * A value the emitter can quote as written: printable ASCII without `"`.
- * Anything else would be altered on the way out, and the game rejects the
- * whole filter for a name it does not know exactly.
- */
-function isEmitSafe(value: string): boolean {
-  return /^[\x20-\x7E]+$/.test(value) && !value.includes('"') && value.trim() !== '';
+function isPrintable(value: string): boolean {
+  return /^[\x20-\x7E]+$/.test(value) && value.trim() !== '';
 }
 
+/**
+ * Values the emitter can write without changing what they select. Anything
+ * else is dropped, never altered: the game rejects the whole filter for a name
+ * it does not know. A known base type may carry its own quotes (the emitter
+ * strips them and the game still finds the card); other values may not.
+ */
 function usableValues(key: ListKey, values: readonly string[]): string[] {
-  const safe = values.filter(isEmitSafe);
-  return key === 'baseTypes' ? safe.filter((name) => KNOWN_BASES.has(name)) : safe;
+  const safe = values.filter(isPrintable);
+  return key === 'baseTypes'
+    ? safe.filter((name) => KNOWN_BASES.has(name))
+    : safe.filter((value) => !value.includes('"'));
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {

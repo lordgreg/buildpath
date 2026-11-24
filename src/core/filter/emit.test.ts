@@ -29,15 +29,21 @@ describe('emitRules', () => {
     );
   });
 
-  it('leaves out a block holding a value the game cannot read', () => {
-    const { text, rejected } = emitRulesWithSpans([
+  it('strips quotes from values instead of producing broken syntax', () => {
+    const text = emitRules([
       { action: 'Show', baseTypes: ['The "Best" Base'], rarity: 'Unique' },
+    ]);
+    expect(text).toContain('BaseType "The Best Base"');
+  });
+
+  it('leaves out a block holding text a filter cannot contain', () => {
+    const { text, rejected } = emitRulesWithSpans([
       { action: 'Hide', comment: 'two\nShow', rarity: 'Normal' },
       { action: 'Hide', classNames: ['Rings\nShow'] },
       { action: 'Show', rarity: 'Rare' },
     ]);
     expect(text).toBe('Show\n    Rarity Rare\n');
-    expect(rejected.map((entry) => entry.index)).toEqual([0, 1, 2]);
+    expect(rejected.map((entry) => entry.index)).toEqual([0, 1]);
   });
 
   it('supports ranges, booleans, continue and every style action', () => {

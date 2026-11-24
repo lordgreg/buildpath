@@ -3,20 +3,17 @@ import type { Color, Rule, Style } from './types.ts';
 
 const INDENT = '    ';
 
+/**
+ * A few registry names carry their own quotes (`"The Nameless Play"`). The
+ * game matches BaseType by substring, so the name without them still selects
+ * the card.
+ */
 function quote(value: string): string {
-  return `"${value}"`;
+  return `"${value.replaceAll('"', '')}"`;
 }
 
-/** Printable ASCII only; a quoted value must not hold a quote of its own. */
-function blockProblem(rule: Rule, lines: readonly string[]): string | null {
-  const values = [
-    ...(rule.classNames ?? []),
-    ...(rule.baseTypes ?? []),
-    ...(rule.hasExplicitMod ?? []),
-  ];
-  if (values.some((value) => value.includes('"'))) {
-    return 'a quoted value contains a quote';
-  }
+/** Every emitted line must be printable ASCII. */
+function blockProblem(lines: readonly string[]): string | null {
   if (lines.some((line) => !/^[\x20-\x7E]*$/.test(line))) {
     return 'it contains characters a filter cannot hold';
   }
@@ -196,7 +193,7 @@ export function emitRulesWithSpans(rules: readonly Rule[]): {
       rejected.push({ rule, index, reason: 'it could not be written' });
       return;
     }
-    const reason = blockProblem(rule, lines);
+    const reason = blockProblem(lines);
     if (reason) {
       rejected.push({ rule, index, reason });
       return;
