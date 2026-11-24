@@ -186,10 +186,16 @@ export function emitRulesWithSpans(rules: readonly Rule[]): {
     // An empty list matches nothing; writing the block without that line
     // would match everything instead.
     if (hasEmptyListCondition(rule)) return;
-    const lines = ruleLines(rule);
     // Last line of defence: custom rules are cleaned in compileFilter, so this
     // only fires on a bug. One bad block must not make the game reject the
     // whole filter, and must not crash the builder either.
+    let lines: string[];
+    try {
+      lines = ruleLines(rule);
+    } catch {
+      rejected.push({ rule, index, reason: 'it could not be written' });
+      return;
+    }
     const reason = blockProblem(rule, lines);
     if (reason) {
       rejected.push({ rule, index, reason });

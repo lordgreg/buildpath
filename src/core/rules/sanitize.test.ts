@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { emitRules } from '../filter/emit.ts';
 import { generateFilter } from '../filter/generate.ts';
+import { THEMES } from '../filter/themes.ts';
 import type { Rule } from '../filter/types.ts';
 import { evaluateRules } from '../preview/match.ts';
 import {
@@ -156,6 +157,42 @@ describe('custom rule values', () => {
   it('keep intentional catch-alls', () => {
     const { rules } = prepareCustomRules([{ action: 'Hide' }]);
     expect(rules).toEqual([{ action: 'Hide' }]);
+  });
+
+  it('drop a style kind or section the theme does not know', () => {
+    const { rules } = prepareCustomRules([
+      {
+        action: 'Show',
+        rarity: 'Rare',
+        styleKind: 'constructor' as never,
+        section: 'toString' as never,
+      },
+      { action: 'Show', rarity: 'Magic', styleKind: 'gem', section: 'gear' },
+    ]);
+    expect(rules[0]).toEqual({ action: 'Show', rarity: 'Rare' });
+    expect(rules[1]).toMatchObject({ styleKind: 'gem', section: 'gear' });
+  });
+
+  it('never crash the generator, whatever the theme', () => {
+    for (const { id: theme } of THEMES) {
+      expect(() =>
+        generateFilter({
+          selection: { mode: 'family', familyId: 'minion' },
+          phase: 'endgame',
+          strictness: 'soft',
+          theme,
+          customRules: [
+            {
+              action: 'Show',
+              rarity: 'Rare',
+              style: {},
+              styleKind: '__proto__' as never,
+              section: 'hasOwnProperty' as never,
+            },
+          ],
+        }),
+      ).not.toThrow();
+    }
   });
 });
 

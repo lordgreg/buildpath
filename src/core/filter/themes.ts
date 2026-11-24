@@ -399,7 +399,9 @@ const THEME_MODIFIERS: Partial<Record<ThemeId, ThemeModifier>> = {
 };
 
 function backgroundFor(rule: Rule, palette: ThemePalette): Color {
-  return (rule.styleKind && palette.backgrounds[rule.styleKind]) ?? palette.base;
+  return rule.styleKind && Object.hasOwn(palette.backgrounds, rule.styleKind)
+    ? (palette.backgrounds[rule.styleKind] ?? palette.base)
+    : palette.base;
 }
 
 function withColors(

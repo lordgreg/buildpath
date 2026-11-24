@@ -5,7 +5,9 @@ import type {
   NamedAlertSound,
   Rarity,
   Rule,
+  RuleSection,
   Style,
+  StyleKind,
 } from '../filter/types.ts';
 
 const KNOWN_BASES = new Set(known.names);
@@ -53,6 +55,38 @@ const RARITIES = new Set<string>([
   'Rare',
   'Unique',
 ] satisfies Rarity[]);
+
+const SECTIONS = new Set<string>([
+  'gear',
+  'gems',
+  'currency',
+  'maps',
+  'uniques',
+  'quest',
+  'veiled',
+  'junk',
+  'league',
+  'custom',
+] satisfies RuleSection[]);
+
+const STYLE_KINDS = new Set<string>([
+  's-tier',
+  'currency-top',
+  'currency-mid',
+  'card',
+  'gem',
+  'map',
+  'fragment',
+  'unique',
+  'jewel-best',
+  'jewel',
+  'flask',
+  'gold',
+  'league',
+  'quest',
+  'veiled',
+  'chase',
+] satisfies StyleKind[]);
 
 const ICON_COLORS = new Set<string>([
   'Red',
@@ -257,6 +291,12 @@ function cleanRule(rule: Rule): Rule {
     else next.comment = comment;
   }
   if (next.style) next.style = cleanStyle(next.style as Record<string, unknown>);
+  // The theme looks both up by name; an unknown one could resolve to an
+  // inherited object property such as "constructor" and crash the build.
+  if (next.section !== undefined && !SECTIONS.has(next.section)) delete next.section;
+  if (next.styleKind !== undefined && !STYLE_KINDS.has(next.styleKind)) {
+    delete next.styleKind;
+  }
   return next;
 }
 
