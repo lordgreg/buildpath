@@ -23,7 +23,17 @@ interface Selection {
 function readHash(): Selection | null {
   const raw = window.location.hash.replace(/^#/, '');
   if (!raw) return null;
-  const [build, phase, strictness, caseId] = raw.split('|');
+  const parts = raw.split('|');
+  if (parts.length !== 4) return null;
+  // Links are written with encodeURIComponent; labels contain ":" and "+".
+  const decoded = parts.map((part) => {
+    try {
+      return decodeURIComponent(part);
+    } catch {
+      return part;
+    }
+  });
+  const [build, phase, strictness, caseId] = decoded;
   if (!build || !phase || !strictness || !caseId) return null;
   return { build, phase, strictness, caseId };
 }
