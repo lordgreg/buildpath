@@ -1,9 +1,10 @@
 import { baseTypes } from '../data/base-types.ts';
+import { toFilterClass } from '../filter/classes.ts';
 import type { Range, Rule } from '../filter/types.ts';
 import type { RuleTemplate } from './templates.ts';
 
 const CLASS_BY_BASE = new Map(
-  baseTypes.map((base) => [base.name, base.itemClass]),
+  baseTypes.map((base) => [base.name, toFilterClass(base.itemClass)]),
 );
 
 const RANGE_KEYS = [

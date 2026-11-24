@@ -112,6 +112,23 @@ describe('rule overlap', () => {
     ).toBe(false);
   });
 
+  it('maps base types to the plural filter class', () => {
+    // RePoE calls the class "Helmet"; filters say "Helmets". A base on one side
+    // and a class on the other used to never match.
+    expect(
+      rulesOverlap(
+        { action: 'Show', baseTypes: ['Hubris Circlet'] },
+        { action: 'Show', classNames: ['Helmets'] },
+      ),
+    ).toBe(true);
+    expect(
+      rulesOverlap(
+        { action: 'Show', baseTypes: ['Hubris Circlet'] },
+        { action: 'Show', classNames: ['Body Armours'] },
+      ),
+    ).toBe(false);
+  });
+
   it('respects rarity and ranges', () => {
     expect(
       rulesOverlap(
