@@ -79,6 +79,14 @@ describe('validateFilter', () => {
       validateFilter('Show\n    Rarity Rare\n    ItemLevel > 80'),
     ).toEqual([]);
   });
+
+  it('accepts exact-match Class and BaseType lists', () => {
+    expect(
+      validateFilter(
+        'Show\n    Class == "Wands" "Staves"\n    BaseType == "Convoking Wand"',
+      ),
+    ).toEqual([]);
+  });
 });
 
 describe('filterNameFor', () => {

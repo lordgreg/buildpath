@@ -1,3 +1,13 @@
+import type {
+  Color,
+  MinimapColor,
+  MinimapShape,
+  NamedAlertSound,
+  Range,
+  Rule,
+  Style,
+} from './types.ts';
+
 export interface FilterIssue {
   /** 1-based line in the filter text, when the issue points at one. */
   line?: number;
@@ -92,6 +102,12 @@ const RARITIES = new Set([
 
 const QUOTED_LIST = /^(?:"[^"]*")(?:\s+"[^"]*")*$/;
 const QUOTED = /^"[^"]*"$/;
+const EXACT_PREFIX = /^==\s+/;
+
+/** `Class == "A"` and `Class "A"` name the same list. */
+function listValue(value: string): string {
+  return value.replace(EXACT_PREFIX, '');
+}
 
 const MINIMAP_COLORS = new Set([
   'Red',
@@ -182,6 +198,10 @@ function validateCondition(keyword: string, value: string): string | null {
   switch (keyword) {
     case 'Class':
     case 'BaseType':
+      if (!QUOTED_LIST.test(listValue(value))) {
+        return 'expects one or more quoted values';
+      }
+      return null;
     case 'HasInfluence':
     case 'ArchnemesisMod':
     case 'EnchantmentPassiveNode':
@@ -374,6 +394,349 @@ export function validateFilter(text: string): FilterIssue[] {
   closeBlock(lines.length);
 
   return issues;
+}
+
+export interface ParsedFilter {
+  rules: Rule[];
+  issues: FilterIssue[];
+}
+
+const RANGE_CONDITIONS = {
+  ItemLevel: 'itemLevel',
+  DropLevel: 'dropLevel',
+  AreaLevel: 'areaLevel',
+  StackSize: 'stackSize',
+  Quality: 'quality',
+  Sockets: 'sockets',
+  LinkedSockets: 'linkedSockets',
+  MapTier: 'mapTier',
+} as const;
+
+type RangeKey = (typeof RANGE_CONDITIONS)[keyof typeof RANGE_CONDITIONS];
+
+const RANGE_COMPARISON = /^(>=|<=|==|=|>|<|!=)?\s*(-?\d+(?:\.\d+)?)$/;
+const QUOTED_VALUE = /"([^"]*)"/g;
+
+function parseQuotedList(value: string): string[] {
+  const values: string[] = [];
+  for (const match of value.matchAll(QUOTED_VALUE)) {
+    values.push(match[1]!);
+  }
+  return values;
+}
+
+function parseColor(value: string): Color | null {
+  const parts = value.trim().split(/\s+/).map(Number);
+  if (parts.length === 3) {
+    return [parts[0]!, parts[1]!, parts[2]!] as Color;
+  }
+  if (parts.length === 4) {
+    return [parts[0]!, parts[1]!, parts[2]!, parts[3]!] as Color;
+  }
+  return null;
+}
+
+interface PendingRule {
+  rule: Rule;
+  style: Style;
+  styleUsed: boolean;
+}
+
+function parseCondition(
+  rule: Rule,
+  keyword: string,
+  value: string,
+  line: number,
+  issues: FilterIssue[],
+): void {
+  switch (keyword) {
+    case 'Class':
+      rule.classNames = parseQuotedList(listValue(value));
+      return;
+    case 'BaseType':
+      rule.baseTypes = parseQuotedList(listValue(value));
+      return;
+    case 'HasExplicitMod':
+      rule.hasExplicitMod = parseQuotedList(value);
+      return;
+    case 'Rarity':
+      if (
+        value === 'Normal' ||
+        value === 'Magic' ||
+        value === 'Rare' ||
+        value === 'Unique'
+      ) {
+        rule.rarity = value;
+      } else {
+        issues.push({
+          line,
+          message: `Rarity "${value}" cannot be represented by the parser`,
+        });
+      }
+      return;
+    case 'Corrupted':
+      rule.corrupted = value === 'True';
+      return;
+    case 'Identified':
+      rule.identified = value === 'True';
+      return;
+    default: {
+      const key = RANGE_CONDITIONS[keyword as keyof typeof RANGE_CONDITIONS];
+      if (!key) {
+        issues.push({
+          line,
+          message: `${keyword} is a valid condition but the parser cannot represent it`,
+        });
+        return;
+      }
+      const match = RANGE_COMPARISON.exec(value);
+      if (!match) {
+        issues.push({
+          line,
+          message: `${keyword} expects a number with an optional comparison`,
+        });
+        return;
+      }
+      const operator = match[1] ?? '=';
+      const number = Number(match[2]);
+      const range: Range = rule[key as RangeKey] ?? {};
+      if (operator === '>=') {
+        range.min = number;
+      } else if (operator === '<=') {
+        range.max = number;
+      } else if (operator === '=' || operator === '==') {
+        range.min = number;
+        range.max = number;
+      } else {
+        issues.push({
+          line,
+          message: `${keyword} ${operator} cannot be represented; use >= or <=`,
+        });
+        return;
+      }
+      rule[key as RangeKey] = range;
+    }
+  }
+}
+
+function parseAction(
+  current: PendingRule,
+  keyword: string,
+  value: string,
+  line: number,
+  issues: FilterIssue[],
+): void {
+  const { style } = current;
+  switch (keyword) {
+    case 'SetFontSize':
+      style.fontSize = Number(value);
+      current.styleUsed = true;
+      return;
+    case 'SetTextColor': {
+      const color = parseColor(value);
+      if (!color) {
+        issues.push({ line, message: 'SetTextColor expects 3 or 4 numbers' });
+        return;
+      }
+      style.textColor = color;
+      current.styleUsed = true;
+      return;
+    }
+    case 'SetBorderColor': {
+      const color = parseColor(value);
+      if (!color) {
+        issues.push({ line, message: 'SetBorderColor expects 3 or 4 numbers' });
+        return;
+      }
+      style.borderColor = color;
+      current.styleUsed = true;
+      return;
+    }
+    case 'SetBackgroundColor': {
+      const color = parseColor(value);
+      if (!color) {
+        issues.push({ line, message: 'SetBackgroundColor expects 3 or 4 numbers' });
+        return;
+      }
+      style.backgroundColor = color;
+      current.styleUsed = true;
+      return;
+    }
+    case 'PlayAlertSound': {
+      const parts = value.trim().split(/\s+/);
+      const first = parts[0]!;
+      if (first === 'None') {
+        style.alertSound = 'None';
+      } else if (NAMED_ALERT_SOUNDS.has(first)) {
+        style.alertSound = first as NamedAlertSound;
+      } else {
+        style.alertSound = Number(first);
+        if (parts[1] !== undefined) style.alertVolume = Number(parts[1]);
+      }
+      current.styleUsed = true;
+      return;
+    }
+    case 'PlayEffect': {
+      const parts = value.trim().split(/\s+/);
+      style.playEffect = parts[0] as MinimapColor;
+      if (parts.length > 1) {
+        issues.push({
+          line,
+          message: `PlayEffect ${parts[1]} cannot be represented by the parser`,
+        });
+      }
+      current.styleUsed = true;
+      return;
+    }
+    case 'MinimapIcon': {
+      const [size, color, shape] = value.trim().split(/\s+/);
+      style.minimapIcon = {
+        size: Number(size) as 0 | 1 | 2,
+        color: color as MinimapColor,
+        shape: shape as MinimapShape,
+      };
+      current.styleUsed = true;
+      return;
+    }
+    default:
+      issues.push({
+        line,
+        message: `${keyword} is a valid action but the parser cannot represent it`,
+      });
+  }
+}
+
+/**
+ * Reads emitted filter text back into rules. It shares the keyword sets and
+ * value checks with `validateFilter`, so a line that validates parses here.
+ * The returned rules carry only what the text carries: metadata such as `id`,
+ * `section` and `styleKind` is not emitted and cannot come back.
+ */
+export function parseFilter(text: string): ParsedFilter {
+  const rules: Rule[] = [];
+  const issues: FilterIssue[] = [];
+  const lines = text.split('\n');
+
+  let pendingComment: string | undefined;
+  let current: PendingRule | undefined;
+  let skipBlock = false;
+
+  const finish = () => {
+    if (!current) return;
+    if (current.styleUsed) current.rule.style = current.style;
+    rules.push(current.rule);
+    current = undefined;
+  };
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const lineNumber = index + 1;
+    const raw = lines[index]!;
+    const line = raw.trim();
+
+    if (line === '') {
+      finish();
+      pendingComment = undefined;
+      skipBlock = false;
+      continue;
+    }
+
+    if (line.startsWith('#')) {
+      // A comment ends the previous block and may label the next one. Header
+      // comments are followed by a blank line, so they are dropped there.
+      if (skipBlock) continue;
+      finish();
+      pendingComment = line.slice(1).trimStart();
+      continue;
+    }
+
+    const [keyword, ...rest] = line.split(/\s+/);
+    const value = rest.join(' ').trim();
+
+    if (BLOCKS.has(keyword!)) {
+      finish();
+      skipBlock = false;
+      if (value !== '') {
+        issues.push({
+          line: lineNumber,
+          message: `${keyword} does not take a value on the same line`,
+        });
+      }
+      if (keyword !== 'Show' && keyword !== 'Hide') {
+        issues.push({
+          line: lineNumber,
+          message: `cannot parse a ${keyword} block`,
+        });
+        pendingComment = undefined;
+        skipBlock = true;
+        continue;
+      }
+      current = {
+        rule: {
+          action: keyword,
+          ...(pendingComment ? { comment: pendingComment } : {}),
+        },
+        style: {},
+        styleUsed: false,
+      };
+      pendingComment = undefined;
+      continue;
+    }
+
+    if (skipBlock) continue;
+
+    if (!current) {
+      issues.push({
+        line: lineNumber,
+        message: `"${keyword}" appears outside a Show/Hide block`,
+      });
+      pendingComment = undefined;
+      continue;
+    }
+
+    if (!/^\s/.test(raw)) {
+      issues.push({
+        line: lineNumber,
+        message: `"${keyword}" is not indented inside a block`,
+      });
+    }
+
+    if (keyword === 'Continue') {
+      if (value !== '') {
+        issues.push({ line: lineNumber, message: 'Continue takes no value' });
+        continue;
+      }
+      current.rule.continue = true;
+      continue;
+    }
+
+    if (CONDITIONS.has(keyword!)) {
+      const problem = validateCondition(keyword!, value);
+      if (problem) {
+        issues.push({ line: lineNumber, message: `${keyword} ${problem}` });
+        continue;
+      }
+      parseCondition(current.rule, keyword!, value, lineNumber, issues);
+      continue;
+    }
+
+    if (ACTIONS.has(keyword!)) {
+      const problem = validateAction(keyword!, value);
+      if (problem) {
+        issues.push({ line: lineNumber, message: `${keyword} ${problem}` });
+        continue;
+      }
+      parseAction(current, keyword!, value, lineNumber, issues);
+      continue;
+    }
+
+    issues.push({
+      line: lineNumber,
+      message: `unknown keyword "${keyword}"`,
+    });
+  }
+
+  finish();
+  return { rules, issues };
 }
 
 export function filterNameFor(name: string): string {
