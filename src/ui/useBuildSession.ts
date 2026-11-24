@@ -25,6 +25,8 @@ export interface BuildSession {
   dirty: boolean;
   /** Class-name migrations from the last load, ready to show once. */
   notices: string[];
+  /** localStorage refused a write, so this session will not be remembered. */
+  storageFailed: boolean;
   update: (patch: Partial<WizardState>) => void;
   setRules: (rules: Rule[]) => void;
   /** Adopt a build as both the live state and the new good state. */
@@ -111,13 +113,14 @@ export function useBuildSession(): BuildSession {
   const [customRules, setCustomRules] = useState<Rule[]>(initial.customRules);
   const [good, setGood] = useState<GoodState>(initial.good);
   const [notices, setNotices] = useState<string[]>(initial.notices);
+  const [storageFailed, setStorageFailed] = useState(false);
   const lastKey = useRef<string | null>(null);
   const stateRef = useRef(state);
   stateRef.current = state;
 
   // The good state is the durable copy; drafts never overwrite it.
   useEffect(() => {
-    saveGoodState(good);
+    if (!saveGoodState(good)) setStorageFailed(true);
   }, [good]);
 
   // Switching build loads that build's My rules. Loads and resets save their
@@ -231,6 +234,7 @@ export function useBuildSession(): BuildSession {
     good,
     dirty,
     notices,
+    storageFailed,
     update,
     setRules,
     load,

@@ -36,14 +36,16 @@ export function loadGoodState(): LoadedGoodState | null {
   }
 }
 
-export function saveGoodState(good: GoodState): void {
+export function saveGoodState(good: GoodState): boolean {
   try {
     localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({ state: good.state, customRules: good.customRules }),
     );
+    return true;
   } catch {
-    // Storage can be blocked or full; the in-memory state still works.
+    // Storage can be blocked or full; the caller surfaces this.
+    return false;
   }
 }
 

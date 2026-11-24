@@ -113,6 +113,20 @@ describe('good state', () => {
     ]);
   });
 
+  it('reports a blocked storage write', () => {
+    Object.defineProperty(globalThis, 'localStorage', {
+      configurable: true,
+      value: {
+        getItem: () => null,
+        setItem: () => {
+          throw new Error('quota');
+        },
+        removeItem: () => {},
+      },
+    });
+    expect(saveGoodState({ state: DEFAULT_STATE, customRules: [] })).toBe(false);
+  });
+
   it('forgets the saved build on clear', () => {
     saveGoodState({ state: DEFAULT_STATE, customRules: [] });
     clearGoodState();

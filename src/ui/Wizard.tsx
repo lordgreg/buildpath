@@ -123,6 +123,7 @@ export default function Wizard() {
     customRules,
     dirty,
     notices,
+    storageFailed,
     update,
     setRules,
     load,
@@ -158,6 +159,13 @@ export default function Wizard() {
     setNotice(notices.join(' '));
     clearNotices();
   }, [notices, clearNotices]);
+
+  useEffect(() => {
+    if (!storageFailed) return;
+    setNotice(
+      'This browser blocked local storage, so the build is not remembered after you close the tab. Download the filter to keep it.',
+    );
+  }, [storageFailed]);
 
   const baseFilter = useMemo(
     () =>
