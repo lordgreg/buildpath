@@ -1,4 +1,4 @@
-import { hasEmptyListCondition } from '../rules/sanitize.ts';
+import { hasEmptyListCondition } from './rule-lists.ts';
 import type { Color, Rule, Style } from './types.ts';
 
 const INDENT = '    ';
@@ -160,10 +160,6 @@ function ruleLines(rule: Rule): string[] {
   return lines;
 }
 
-/**
- * Serialises rules and reports each block's absolute 1-based line range in the
- * returned text. The game evaluates blocks top to bottom, first match wins.
- */
 /** A block the emitter left out because writing it would break the filter. */
 export interface RejectedRule {
   rule: Rule;
@@ -171,6 +167,10 @@ export interface RejectedRule {
   reason: string;
 }
 
+/**
+ * Serialises rules and reports each block's absolute 1-based line range in the
+ * returned text. The game evaluates blocks top to bottom, first match wins.
+ */
 export function emitRulesWithSpans(rules: readonly Rule[]): {
   text: string;
   spans: EmittedRuleSpan[];
@@ -181,8 +181,12 @@ export function emitRulesWithSpans(rules: readonly Rule[]): {
   rules.forEach((rule, index) => {
     if (rule.disabled) return;
     // An empty list matches nothing; writing the block without that line
-    // would match everything instead.
-    if (hasEmptyListCondition(rule)) return;
+    // would match everything instead. Custom rules are skipped earlier, so
+    // this reports a generator bug.
+    if (hasEmptyListCondition(rule)) {
+      rejected.push({ rule, index, reason: 'an empty list condition matches nothing' });
+      return;
+    }
     // Last line of defence: custom rules are cleaned in compileFilter, so this
     // only fires on a bug. One bad block must not make the game reject the
     // whole filter, and must not crash the builder either.

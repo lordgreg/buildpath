@@ -183,15 +183,6 @@ function isWellFormed(value: unknown): value is Rule {
 }
 
 /**
- * A list condition that is present but empty matches nothing. The emitter
- * cannot write an empty list, and leaving the line out would turn the block
- * into a catch-all, so such a rule is never emitted or matched.
- */
-export function hasEmptyListCondition(rule: Rule): boolean {
-  return LIST_KEYS.some((key) => rule[key]?.length === 0);
-}
-
-/**
  * Why a custom rule cannot be written as it stands, or null when it can. A
  * rule is never written with a condition removed or a value altered: that
  * would widen it or make the game reject the filter.

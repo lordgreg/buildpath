@@ -126,8 +126,9 @@ export default function FilterPreview({
           <p className="font-medium">Generator warning</p>
           <ul className="mt-1 list-inside list-disc">
             {warnings.slice(0, 5).map((warning) => (
-              <li key={`${warning.line}-${warning.message}`}>
-                line {warning.line}: {warning.message}
+              <li key={`${warning.line ?? ''}-${warning.message}`}>
+                {warning.line !== undefined && `line ${warning.line}: `}
+                {warning.message}
               </li>
             ))}
           </ul>

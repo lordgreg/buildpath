@@ -46,6 +46,16 @@ describe('emitRules', () => {
     expect(rejected.map((entry) => entry.index)).toEqual([0, 1]);
   });
 
+  it('reports a block left out for an empty list instead of widening it', () => {
+    const { text, rejected } = emitRulesWithSpans([
+      { action: 'Hide', baseTypes: [] },
+    ]);
+    expect(text).toBe('\n');
+    expect(rejected).toEqual([
+      expect.objectContaining({ index: 0, reason: expect.stringMatching(/empty/) }),
+    ]);
+  });
+
   it('supports ranges, booleans, continue and every style action', () => {
     const text = emitRules([
       {

@@ -335,7 +335,6 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
     baseTypeCount: compiled.baseTypes.length,
     warnings: [
       ...rejected.map((entry) => ({
-        line: 0,
         message: `Rule "${entry.rule.comment ?? entry.rule.id ?? entry.index + 1}" was left out: ${entry.reason}.`,
       })),
       ...validateFilter(text),

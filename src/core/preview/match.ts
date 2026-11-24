@@ -1,5 +1,5 @@
 import type { Rule } from '../filter/types.ts';
-import { hasEmptyListCondition } from '../rules/sanitize.ts';
+import { hasEmptyListCondition } from '../filter/rule-lists.ts';
 
 export type ItemRarity =
   | 'Normal'

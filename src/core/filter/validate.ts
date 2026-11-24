@@ -1,5 +1,6 @@
 export interface FilterIssue {
-  line: number;
+  /** 1-based line in the filter text, when the issue points at one. */
+  line?: number;
   message: string;
 }
 
