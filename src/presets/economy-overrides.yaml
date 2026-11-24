@@ -1,8 +1,22 @@
 schemaVersion: 1
 # Hand-written overrides win over fetched poe.ninja tiers.
 # 1 = loud, 2 = normal, 3 = low / hidden by stricter presets.
+#
+# These names are priced per unit, which understates what the stack is worth:
+# a Simulacrum Splinter is a fraction of a chaos on its own, but 300 of them are
+# a Simulacrum, and the same holds for the Timeless splinters. Keeping them at
+# tier 2 means strict still shows them; uber keeps cutting them.
 tiers:
-  currency: {}
-  fragment: {}
+  currency:
+    # A Stacked Deck costs a couple of chaos but is always worth clicking.
+    Stacked Deck: 2
+  fragment:
+    Crescent Splinter: 2
+    Simulacrum Splinter: 2
+    Timeless Eternal Empire Splinter: 2
+    Timeless Karui Splinter: 2
+    Timeless Maraketh Splinter: 2
+    Timeless Templar Splinter: 2
+    Timeless Vaal Splinter: 2
   divination: {}
   uniqueBase: {}
