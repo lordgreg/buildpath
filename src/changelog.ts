@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.38.0',
+    date: '2026-11-24',
+    title: 'A quieter, safer economy pipeline',
+    notes: [
+      'The daily economy refresh now sends a real User-Agent, times out, retries twice, and reuses the previous response when poe.ninja reports nothing changed. A malformed response leaves the last good snapshot in place.',
+      'A day without a tier change no longer produces a commit or a pull request: tier keys are sorted and the file is only written when something moved. Changes land in one rolling PR instead of a new one each day.',
+      'This release carries a fresh economy snapshot with the current league prices, so connected filters are reported as preset-stale once.',
+      'The behaviour-audit artifact now contains the whole build, so the downloaded page loads its scripts instead of showing an empty shell.',
+      'A test keeps CHANGELOG.md and the in-site changelog in step from 0.20.0 onwards.',
+    ],
+    commits: [],
+    compare: 'v0.37.0...v0.38.0',
+  },
+  {
     version: '0.37.0',
     date: '2026-11-24',
     title: 'Builder fixes across the rule editor and the folder',

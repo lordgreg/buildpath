@@ -34,6 +34,15 @@ describe('economy overrides', () => {
     expect(problems).toEqual([]);
   });
 
+  it('keeps tier keys sorted so the preset hash is stable', () => {
+    for (const category of CATEGORIES) {
+      const keys = Object.keys(
+        ECONOMY_TIERS[category as keyof typeof ECONOMY_TIERS],
+      );
+      expect(keys).toEqual([...keys].sort((a, b) => a.localeCompare(b)));
+    }
+  });
+
   it('is compiled into the preset data', () => {
     for (const category of CATEGORIES) {
       expect(Object.keys(ECONOMY_TIERS[category as keyof typeof ECONOMY_TIERS])

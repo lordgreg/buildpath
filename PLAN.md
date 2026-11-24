@@ -711,13 +711,19 @@ are reported and a render error shows a boundary instead of a blank page;
 folder listings read only the header; magic items and thousands separators
 parse; audit deep links decode.
 
-**Phase 5 - data pipeline and CI.** Mark synced filters stale after an
-economy-only deploy (hash of sorted tiers); validate poe.ninja responses and
-keep the last good snapshot; stable `economy.json` and one rolling PR; ETag and
-last body per endpoint in `actions/cache`, User-Agent from `package.json`,
-timeout and retry (2.3); least-privilege workflows; `meta:add` keeps existing
-fields; a test that `CHANGELOG.md` and `changelog.ts` agree; a runnable audit
-artifact.
+**Phase 5 - data pipeline and CI (0.38.0). Done.** The economy refresh identifies
+itself with the package version, uses a 15 s timeout with two retries, and
+caches the ETag and last body per endpoint in `.cache/economy`, persisted by
+`actions/cache`. Responses are validated before anything is computed, so a bad
+payload leaves the committed snapshot (the last good one) untouched. Tier keys
+are sorted and the file is only written when a tier moved, so a quiet day
+produces no diff. Results go to one rolling PR (`chore/economy`) that is
+force-updated instead of spawning a daily PR. `meta:add` keeps fields it is not
+told to change, the audit artifact uploads the whole build so it runs, and a
+test holds `CHANGELOG.md` and `src/changelog.ts` together from 0.20.0 on. Since
+the compiled preset hash includes the economy snapshot, an economy-only deploy
+flags every connected filter as preset-stale, which is what the sync panel
+already reports.
 
 **Phase 6 - polish.** Compress `demo-ground.png` (2 MB, also on the builder);
 `tests.html` noindex; labels on unlabeled inputs; a test that `src/core` never
