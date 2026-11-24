@@ -482,15 +482,20 @@ function paintRule(rule: Rule, palette: ThemePalette): Rule {
         palette.colors.unique,
         background,
       );
-    case 'custom':
-      return rule.rarity
-        ? withColors(
-            rule,
-            palette.rarity[rule.rarity],
-            palette.rarity[rule.rarity],
-            background,
-          )
-        : rule;
+    case 'custom': {
+      // A custom rule's own colours are the user's choice; the theme only fills
+      // what the rule leaves unset.
+      if (!rule.style) return rule;
+      const text =
+        rule.style.textColor ??
+        (rule.rarity ? palette.rarity[rule.rarity] : undefined);
+      const border = rule.style.borderColor ?? text;
+      const style = { ...rule.style };
+      if (text) style.textColor = text;
+      if (border) style.borderColor = border;
+      style.backgroundColor = rule.style.backgroundColor ?? background;
+      return { ...rule, style };
+    }
     default:
       if (rule.rarity) {
         const color = palette.rarity[rule.rarity];

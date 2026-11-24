@@ -217,6 +217,35 @@ describe('rarity theme', () => {
     expect(applyTheme([hide], 'rarity')[0]).toEqual(hide);
   });
 
+  it('keeps the colours a custom rule sets itself', () => {
+    const mine: Rule = {
+      action: 'Show',
+      section: 'custom',
+      rarity: 'Rare',
+      style: {
+        textColor: [10, 20, 30, 255],
+        borderColor: [40, 50, 60, 255],
+        fontSize: 40,
+      },
+    };
+    const painted = applyTheme([mine], 'dracula')[0]!.style!;
+    expect(painted.textColor).toEqual([10, 20, 30, 255]);
+    expect(painted.borderColor).toEqual([40, 50, 60, 255]);
+    expect(painted.backgroundColor).toBeDefined();
+  });
+
+  it('fills a custom rule colour from the theme when it is unset', () => {
+    const mine: Rule = {
+      action: 'Show',
+      section: 'custom',
+      rarity: 'Rare',
+      style: { fontSize: 40 },
+    };
+    const painted = applyTheme([mine], 'dracula')[0]!.style!;
+    expect(painted.textColor).toEqual(painted.borderColor);
+    expect(painted.textColor).not.toEqual([1, 2, 3, 255]);
+  });
+
   it('still applies contrast and muted', () => {
     expect(applyTheme([rareGear], 'contrast')[0]?.style).toMatchObject({
       textColor: COLORS.white,
