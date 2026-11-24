@@ -7,26 +7,20 @@ import {
   customRuleProblem,
   prepareCustomRules,
   shapeRules,
-  withoutUnknownBases,
 } from './sanitize.ts';
 
-describe('withoutUnknownBases', () => {
-  it('drops names the game no longer accepts and keeps the rest', () => {
-    const rule: Rule = {
-      action: 'Show',
-      baseTypes: ['Rawhide Gloves', 'Gauche Gloves', 'Sinistral Gloves'],
-    };
-    const [cleaned] = withoutUnknownBases([rule]);
-    expect(cleaned!.baseTypes).toEqual(['Rawhide Gloves']);
+describe('unknown base types', () => {
+  it('are dropped while the known ones stay', () => {
+    const { rules } = prepareCustomRules([
+      {
+        action: 'Show',
+        baseTypes: ['Rawhide Gloves', 'Gauche Gloves', 'Sinistral Gloves'],
+      },
+    ]);
+    expect(rules[0]!.baseTypes).toEqual(['Rawhide Gloves']);
   });
 
-  it('leaves a rule without base types alone', () => {
-    const rule: Rule = { action: 'Hide', classNames: ['Gloves'] };
-    const [cleaned] = withoutUnknownBases([rule]);
-    expect(cleaned).toBe(rule);
-  });
-
-  it('never emits a stale base in a generated filter', () => {
+  it('never reach a generated filter', () => {
     // This is the shape of a rule copied from an older preset.
     const filter = generateFilter({
       selection: { mode: 'family', familyId: 'minion' },
@@ -70,6 +64,98 @@ describe('customRuleProblem', () => {
         baseTypes: ['Rawhide Gloves', 'Serpent Wand'],
       }),
     ).toBeNull();
+  });
+});
+
+describe('custom rule values', () => {
+  it('disable a rule whose condition the game cannot read', () => {
+    const bad: unknown[] = [
+      { action: 'Hide', rarity: 'Legendary' },
+      { action: 'Hide', itemLevel: { min: 2.5 } },
+      { action: 'Hide', itemLevel: { min: -1 } },
+      { action: 'Hide', quality: { max: '\nShow' } },
+      { action: 'Hide', corrupted: 'true' },
+      { action: 'Hide', continue: 1 },
+      { action: 'Delete' },
+      { action: 'Hide', classNames: ['Rings\nShow'] },
+      { action: 'Hide', hasExplicitMod: ['   '] },
+      { action: 'Hide', baseTypes: ['Maelstr\u00f6m Staff'] },
+      { action: 'Hide', baseTypes: ['"O\' Eternal"'] },
+    ];
+    for (const rule of bad) {
+      expect(customRuleProblem(rule as Rule), JSON.stringify(rule)).not.toBeNull();
+    }
+    const { rules, skipped } = prepareCustomRules(bad as Rule[]);
+    expect(rules).toEqual([]);
+    expect(skipped).toHaveLength(bad.length);
+  });
+
+  it('drop unsafe names from a list instead of mangling them', () => {
+    const { rules } = prepareCustomRules([
+      {
+        action: 'Hide',
+        baseTypes: ['Maelstr\u00f6m Staff', 'Rawhide Gloves'],
+        classNames: ['Gloves', 'Rings\nShow', ''],
+      },
+    ]);
+    expect(rules[0]!.baseTypes).toEqual(['Rawhide Gloves']);
+    expect(rules[0]!.classNames).toEqual(['Gloves']);
+  });
+
+  it('keep only style lines the game accepts', () => {
+    const { rules } = prepareCustomRules([
+      {
+        action: 'Show',
+        rarity: 'Rare',
+        comment: 'caf\u00e9\nShow\tnow',
+        style: {
+          fontSize: 0,
+          textColor: [255, 0, 0],
+          borderColor: [300, 0, 0],
+          backgroundColor: [0, 0, '\n'] as unknown as [number, number, number],
+          alertSound: 'Boom' as never,
+          alertVolume: 999,
+          playEffect: 'Gray' as never,
+          minimapIcon: { size: 1, color: 'Grey', shape: 'Star' },
+        },
+      },
+    ]);
+    expect(rules[0]).toMatchObject({
+      action: 'Show',
+      rarity: 'Rare',
+      comment: 'cafShownow',
+      style: {
+        textColor: [255, 0, 0],
+        minimapIcon: { size: 1, color: 'Grey', shape: 'Star' },
+      },
+    });
+    expect(Object.keys(rules[0]!.style!)).toEqual(['textColor', 'minimapIcon']);
+  });
+
+  it('emit hostile rules as ASCII without extra blocks', () => {
+    const base = {
+      selection: { mode: 'family' as const, familyId: 'minion' as const },
+      phase: 'endgame' as const,
+      strictness: 'soft' as const,
+    };
+    const plain = generateFilter(base);
+    const hostile = generateFilter({
+      ...base,
+      customRules: [
+        { action: 'Show', rarity: 'Rare', comment: 'x\nShow\n# \u00fc' },
+        { action: 'Hide', classNames: ['Rings\nShow'] },
+        { action: 'Hide', itemLevel: { min: '1\nShow' as unknown as number } },
+      ],
+    });
+    expect(/^[\x0A\x20-\x7E]*$/.test(hostile.text)).toBe(true);
+    expect(hostile.lineSpans).toHaveLength(plain.lineSpans.length + 1);
+    expect(hostile.skippedCustomRules.map((entry) => entry.index)).toEqual([1, 2]);
+    expect(hostile.warnings).toEqual(plain.warnings);
+  });
+
+  it('keep intentional catch-alls', () => {
+    const { rules } = prepareCustomRules([{ action: 'Hide' }]);
+    expect(rules).toEqual([{ action: 'Hide' }]);
   });
 });
 

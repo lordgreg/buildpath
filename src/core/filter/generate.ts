@@ -316,7 +316,7 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
     '========================================================================',
   ];
 
-  const { text, spans } = emitFilterWithSpans(header, compiled.rules);
+  const { text, spans, rejected } = emitFilterWithSpans(header, compiled.rules);
 
   return {
     ...compiled,
@@ -333,7 +333,13 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
         ),
     ruleCount: compiled.rules.length,
     baseTypeCount: compiled.baseTypes.length,
-    warnings: validateFilter(text),
+    warnings: [
+      ...rejected.map((entry) => ({
+        line: 0,
+        message: `Rule "${entry.rule.comment ?? entry.rule.id ?? entry.index + 1}" was left out: ${entry.reason}.`,
+      })),
+      ...validateFilter(text),
+    ],
     lineSpans: spans.map((span) => ({
       index: span.index,
       id: span.rule.id,

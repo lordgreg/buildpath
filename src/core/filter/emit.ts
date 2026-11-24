@@ -4,7 +4,23 @@ import type { Color, Rule, Style } from './types.ts';
 const INDENT = '    ';
 
 function quote(value: string): string {
-  return `"${value.replaceAll('"', '')}"`;
+  return `"${value}"`;
+}
+
+/** Printable ASCII only; a quoted value must not hold a quote of its own. */
+function blockProblem(rule: Rule, lines: readonly string[]): string | null {
+  const values = [
+    ...(rule.classNames ?? []),
+    ...(rule.baseTypes ?? []),
+    ...(rule.hasExplicitMod ?? []),
+  ];
+  if (values.some((value) => value.includes('"'))) {
+    return 'a quoted value contains a quote';
+  }
+  if (lines.some((line) => !/^[\x20-\x7E]*$/.test(line))) {
+    return 'it contains characters a filter cannot hold';
+  }
+  return null;
 }
 
 function quoteList(values: readonly string[]): string {
@@ -151,17 +167,35 @@ function ruleLines(rule: Rule): string[] {
  * Serialises rules and reports each block's absolute 1-based line range in the
  * returned text. The game evaluates blocks top to bottom, first match wins.
  */
+/** A block the emitter left out because writing it would break the filter. */
+export interface RejectedRule {
+  rule: Rule;
+  index: number;
+  reason: string;
+}
+
 export function emitRulesWithSpans(rules: readonly Rule[]): {
   text: string;
   spans: EmittedRuleSpan[];
+  rejected: RejectedRule[];
 } {
   const blocks: { rule: Rule; index: number; lines: string[] }[] = [];
+  const rejected: RejectedRule[] = [];
   rules.forEach((rule, index) => {
     if (rule.disabled) return;
     // An empty list matches nothing; writing the block without that line
     // would match everything instead.
     if (hasEmptyListCondition(rule)) return;
-    blocks.push({ rule, index, lines: ruleLines(rule) });
+    const lines = ruleLines(rule);
+    // Last line of defence: custom rules are cleaned in compileFilter, so this
+    // only fires on a bug. One bad block must not make the game reject the
+    // whole filter, and must not crash the builder either.
+    const reason = blockProblem(rule, lines);
+    if (reason) {
+      rejected.push({ rule, index, reason });
+      return;
+    }
+    blocks.push({ rule, index, lines });
   });
 
   let text = '';
@@ -185,7 +219,7 @@ export function emitRulesWithSpans(rules: readonly Rule[]): {
   }
 
   text += '\n';
-  return { text, spans };
+  return { text, spans, rejected };
 }
 
 export function emitRules(rules: readonly Rule[]): string {
@@ -199,8 +233,8 @@ export function emitRules(rules: readonly Rule[]): string {
 export function emitFilterWithSpans(
   header: readonly string[],
   rules: readonly Rule[],
-): { text: string; spans: EmittedRuleSpan[] } {
-  const { text: rulesText, spans } = emitRulesWithSpans(rules);
+): { text: string; spans: EmittedRuleSpan[]; rejected: RejectedRule[] } {
+  const { text: rulesText, spans, rejected } = emitRulesWithSpans(rules);
   const headerText = header.map((line) => `# ${line}`).join('\n');
   // Header lines, then one blank line before the first block.
   const offset = header.length > 0 ? header.length + 1 : 0;
@@ -211,6 +245,7 @@ export function emitFilterWithSpans(
       startLine: span.startLine + offset,
       endLine: span.endLine + offset,
     })),
+    rejected,
   };
 }
 

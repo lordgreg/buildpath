@@ -1,11 +1,19 @@
 import known from '../data/known-base-types.json';
-import type { Rule } from '../filter/types.ts';
+import type {
+  MinimapColor,
+  MinimapShape,
+  NamedAlertSound,
+  Rarity,
+  Rule,
+  Style,
+} from '../filter/types.ts';
 
 const KNOWN_BASES = new Set(known.names);
 
 const LIST_KEYS = ['classNames', 'baseTypes', 'hasExplicitMod'] as const;
+type ListKey = (typeof LIST_KEYS)[number];
 
-const LIST_LABELS: Record<(typeof LIST_KEYS)[number], string> = {
+const LIST_LABELS: Record<ListKey, string> = {
   classNames: 'Classes',
   baseTypes: 'Base types',
   hasExplicitMod: 'Explicit mods',
@@ -22,77 +30,81 @@ const RANGE_KEYS = [
   'mapTier',
 ] as const;
 
+const RANGE_LABELS: Record<(typeof RANGE_KEYS)[number], string> = {
+  itemLevel: 'item level',
+  dropLevel: 'drop level',
+  areaLevel: 'area level',
+  stackSize: 'stack size',
+  quality: 'quality',
+  sockets: 'sockets',
+  linkedSockets: 'links',
+  mapTier: 'map tier',
+};
+
+/** Generous upper bound; gold stacks are the largest values in practice. */
+const RANGE_MAX = 1_000_000;
+
 const STRING_KEYS = ['id', 'section', 'comment', 'rarity', 'styleKind'] as const;
 const BOOLEAN_KEYS = ['disabled', 'continue', 'corrupted', 'identified'] as const;
 
-/**
- * Drops BaseType names the game no longer accepts.
- *
- * A stored custom rule can predate a data fix (for example a copied preset rule
- * that listed a base since removed from the game). The client refuses the whole
- * filter on the first unknown name, so such a name must never be emitted. Only
- * `baseTypes` is touched; every other condition is left exactly as written.
- */
-export function withoutUnknownBases(rules: readonly Rule[]): Rule[] {
-  return rules.map((rule) => {
-    if (!rule.baseTypes?.length) return rule;
-    const baseTypes = rule.baseTypes.filter((name) => KNOWN_BASES.has(name));
-    return baseTypes.length === rule.baseTypes.length
-      ? rule
-      : { ...rule, baseTypes };
-  });
-}
+const RARITIES = new Set<string>([
+  'Normal',
+  'Magic',
+  'Rare',
+  'Unique',
+] satisfies Rarity[]);
+
+const ICON_COLORS = new Set<string>([
+  'Red',
+  'Green',
+  'Blue',
+  'Brown',
+  'White',
+  'Yellow',
+  'Cyan',
+  'Grey',
+  'Orange',
+  'Pink',
+  'Purple',
+] satisfies MinimapColor[]);
+
+const ICON_SHAPES = new Set<string>([
+  'Circle',
+  'Diamond',
+  'Hexagon',
+  'Square',
+  'Star',
+  'Triangle',
+  'Kite',
+  'Moon',
+  'Pentagon',
+] satisfies MinimapShape[]);
+
+const NAMED_SOUNDS = new Set<string>([
+  'ShAlchemy',
+  'ShBlessed',
+  'ShChaos',
+  'ShDivine',
+  'ShExalted',
+  'ShFusing',
+  'ShGeneral',
+  'ShMirror',
+  'ShRegal',
+  'ShVaal',
+] satisfies NamedAlertSound[]);
 
 /**
- * A list condition that is present but empty matches nothing. The emitter
- * cannot write an empty list, and leaving the line out would turn the block
- * into a catch-all, so such a rule is never emitted or matched.
+ * A value the emitter can quote as written: printable ASCII without `"`.
+ * Anything else would be altered on the way out, and the game rejects the
+ * whole filter for a name it does not know exactly.
  */
-export function hasEmptyListCondition(rule: Rule): boolean {
-  return LIST_KEYS.some((key) => rule[key]?.length === 0);
+function isEmitSafe(value: string): boolean {
+  return /^[\x20-\x7E]+$/.test(value) && !value.includes('"') && value.trim() !== '';
 }
 
-/**
- * Why a custom rule cannot be written as it stands, or null when it can. A
- * rule is never written with a condition removed: that would widen it.
- */
-export function customRuleProblem(rule: Rule): string | null {
-  for (const key of LIST_KEYS) {
-    if (rule[key]?.length === 0) {
-      return `its ${LIST_LABELS[key]} list is empty. Add a value or delete the rule.`;
-    }
-  }
-  if (rule.baseTypes?.length && !rule.baseTypes.some((name) => KNOWN_BASES.has(name))) {
-    return `none of its base types are known (${rule.baseTypes.join(', ')}). Fix the names or delete the rule.`;
-  }
-  return null;
-}
-
-export interface SkippedRule {
-  /** Position in the list that was passed in. */
-  index: number;
-  reason: string;
-}
-
-/**
- * Custom rules ready to emit: unknown base names are dropped, and a rule left
- * with an empty list condition is skipped and reported instead of widened.
- */
-export function prepareCustomRules(rules: readonly Rule[]): {
-  rules: Rule[];
-  skipped: SkippedRule[];
-} {
-  const kept: Rule[] = [];
-  const skipped: SkippedRule[] = [];
-  rules.forEach((rule, index) => {
-    const problem = customRuleProblem(rule);
-    if (problem) {
-      skipped.push({ index, reason: problem });
-      return;
-    }
-    kept.push(...withoutUnknownBases([rule]));
-  });
-  return { rules: kept, skipped };
+function usableValues(key: ListKey, values: readonly string[]): string[] {
+  const safe = values.filter(isEmitSafe);
+  return key === 'baseTypes' ? safe.filter((name) => KNOWN_BASES.has(name)) : safe;
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
@@ -131,6 +143,149 @@ function isWellFormed(value: unknown): value is Rule {
   }
   if (value.style !== undefined && !isPlainObject(value.style)) return false;
   return true;
+}
+
+/**
+ * A list condition that is present but empty matches nothing. The emitter
+ * cannot write an empty list, and leaving the line out would turn the block
+ * into a catch-all, so such a rule is never emitted or matched.
+ */
+export function hasEmptyListCondition(rule: Rule): boolean {
+  return LIST_KEYS.some((key) => rule[key]?.length === 0);
+}
+
+/**
+ * Why a custom rule cannot be written as it stands, or null when it can. A
+ * rule is never written with a condition removed or a value altered: that
+ * would widen it or make the game reject the filter.
+ */
+export function customRuleProblem(rule: Rule): string | null {
+  if (!isWellFormed(rule)) {
+    return 'one of its fields is malformed. Delete the rule and add it again.';
+  }
+  if (rule.rarity !== undefined && !RARITIES.has(rule.rarity)) {
+    return `its rarity "${rule.rarity}" is not one the game knows.`;
+  }
+  for (const key of RANGE_KEYS) {
+    const range = rule[key];
+    if (!range) continue;
+    for (const value of [range.min, range.max]) {
+      if (
+        value !== undefined &&
+        !(Number.isInteger(value) && value >= 0 && value <= RANGE_MAX)
+      ) {
+        return `its ${RANGE_LABELS[key]} must be a whole number from 0 to ${RANGE_MAX}.`;
+      }
+    }
+  }
+  for (const key of LIST_KEYS) {
+    const values = rule[key];
+    if (!values || usableValues(key, values).length > 0) continue;
+    if (values.length === 0) {
+      return `its ${LIST_LABELS[key]} list is empty. Add a value or delete the rule.`;
+    }
+    if (key === 'baseTypes') {
+      return `none of its base types are known (${values.join(', ')}). Fix the names or delete the rule.`;
+    }
+    return `none of its ${LIST_LABELS[key]} values can be written (only plain ASCII without quotes). Fix them or delete the rule.`;
+  }
+  return null;
+}
+
+function isColor(value: unknown): boolean {
+  return (
+    Array.isArray(value) &&
+    (value.length === 3 || value.length === 4) &&
+    value.every(
+      (channel) => Number.isInteger(channel) && channel >= 0 && channel <= 255,
+    )
+  );
+}
+
+function isIntegerIn(value: unknown, min: number, max: number): value is number {
+  return Number.isInteger(value) && (value as number) >= min && (value as number) <= max;
+}
+
+/** Keeps only the style lines the game accepts; an invalid one is left out. */
+function cleanStyle(style: Record<string, unknown>): Style {
+  const clean: Record<string, unknown> = {};
+  if (isIntegerIn(style.fontSize, 18, 45)) clean.fontSize = style.fontSize;
+  for (const key of ['textColor', 'borderColor', 'backgroundColor'] as const) {
+    if (isColor(style[key])) clean[key] = style[key];
+  }
+  const sound = style.alertSound;
+  if (
+    isIntegerIn(sound, 1, 16) ||
+    sound === 'None' ||
+    (typeof sound === 'string' && NAMED_SOUNDS.has(sound))
+  ) {
+    clean.alertSound = sound;
+  }
+  if (isIntegerIn(style.alertVolume, 0, 300)) clean.alertVolume = style.alertVolume;
+  if (typeof style.playEffect === 'string' && ICON_COLORS.has(style.playEffect)) {
+    clean.playEffect = style.playEffect;
+  }
+  const icon = style.minimapIcon;
+  if (
+    isPlainObject(icon) &&
+    (icon.size === 0 || icon.size === 1 || icon.size === 2) &&
+    typeof icon.color === 'string' &&
+    ICON_COLORS.has(icon.color) &&
+    typeof icon.shape === 'string' &&
+    ICON_SHAPES.has(icon.shape)
+  ) {
+    clean.minimapIcon = { size: icon.size, color: icon.color, shape: icon.shape };
+  }
+  return clean as Style;
+}
+
+/** Comments are free text, so only they are repaired: unsafe characters go. */
+function cleanComment(comment: string): string | undefined {
+  const clean = comment.replace(/[^\x20-\x7E]/g, '').trim();
+  return clean || undefined;
+}
+
+function cleanRule(rule: Rule): Rule {
+  const next: Rule = { ...rule };
+  for (const key of LIST_KEYS) {
+    const values = next[key];
+    if (values) next[key] = usableValues(key, values);
+  }
+  if (next.comment !== undefined) {
+    const comment = cleanComment(next.comment);
+    if (comment === undefined) delete next.comment;
+    else next.comment = comment;
+  }
+  if (next.style) next.style = cleanStyle(next.style as Record<string, unknown>);
+  return next;
+}
+
+export interface SkippedRule {
+  /** Position in the list that was passed in. */
+  index: number;
+  reason: string;
+}
+
+/**
+ * Custom rules ready to emit. Unsafe or unknown list values are dropped, bad
+ * style lines and comment characters removed, and any rule that would be
+ * widened or rejected by the game is skipped and reported instead.
+ */
+export function prepareCustomRules(rules: readonly Rule[]): {
+  rules: Rule[];
+  skipped: SkippedRule[];
+} {
+  const kept: Rule[] = [];
+  const skipped: SkippedRule[] = [];
+  rules.forEach((rule, index) => {
+    const problem = customRuleProblem(rule);
+    if (problem) {
+      skipped.push({ index, reason: problem });
+      return;
+    }
+    kept.push(cleanRule(rule));
+  });
+  return { rules: kept, skipped };
 }
 
 /**

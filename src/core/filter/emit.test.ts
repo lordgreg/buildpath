@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { emitFilter, emitRules } from './emit.ts';
+import { emitFilter, emitRules, emitRulesWithSpans } from './emit.ts';
 import type { Rule } from './types.ts';
 
 describe('emitRules', () => {
@@ -29,11 +29,15 @@ describe('emitRules', () => {
     );
   });
 
-  it('strips quotes from values instead of producing broken syntax', () => {
-    const text = emitRules([
+  it('leaves out a block holding a value the game cannot read', () => {
+    const { text, rejected } = emitRulesWithSpans([
       { action: 'Show', baseTypes: ['The "Best" Base'], rarity: 'Unique' },
+      { action: 'Hide', comment: 'two\nShow', rarity: 'Normal' },
+      { action: 'Hide', classNames: ['Rings\nShow'] },
+      { action: 'Show', rarity: 'Rare' },
     ]);
-    expect(text).toContain('BaseType "The Best Base"');
+    expect(text).toBe('Show\n    Rarity Rare\n');
+    expect(rejected.map((entry) => entry.index)).toEqual([0, 1, 2]);
   });
 
   it('supports ranges, booleans, continue and every style action', () => {
