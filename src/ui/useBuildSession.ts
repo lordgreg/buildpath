@@ -3,7 +3,10 @@ import type { Rule } from '../core/filter/types.ts';
 import { coerceSelection } from '../meta/index.ts';
 import { buildHash } from './buildSnapshot.ts';
 import { loadGoodState, saveGoodState, type GoodState } from './goodState.ts';
-import { loadCustomRules, saveCustomRules } from './rules/storage.ts';
+import {
+  loadCustomRulesWithNotices,
+  saveCustomRules,
+} from './rules/storage.ts';
 import {
   asSelected,
   DEFAULT_STATE,
@@ -20,22 +23,26 @@ export interface BuildSession {
   customRules: Rule[];
   good: GoodState;
   dirty: boolean;
+  /** Class-name migrations from the last load, ready to show once. */
+  notices: string[];
   update: (patch: Partial<WizardState>) => void;
   setRules: (rules: Rule[]) => void;
   /** Adopt a build as both the live state and the new good state. */
-  load: (state: WizardState, rules: Rule[]) => void;
+  load: (state: WizardState, rules: Rule[], notices?: string[]) => void;
   /** Mark the current live build as the good state (e.g. after a download). */
   commit: (state: WizardState, rules: Rule[]) => void;
   /** Discard edits and go back to the good state. */
   reset: () => void;
   /** Start a brand-new, empty filter. */
   startNew: () => void;
+  clearNotices: () => void;
 }
 
 interface Resolved {
   state: WizardState;
   customRules: Rule[];
   good: GoodState;
+  notices: string[];
 }
 
 function readLiveHash(): string | null {
@@ -63,6 +70,7 @@ function resolveInitial(): Resolved {
       state: parsed,
       customRules: [],
       good: { state: parsed, customRules: [] },
+      notices: [],
     };
   }
 
@@ -70,23 +78,30 @@ function resolveInitial(): Resolved {
   const external = raw !== '' && readLiveHash() !== raw;
   if (external) {
     const parsed = parseWizardHash(hash);
-    const rules = loadCustomRules(ruleKey(parsed));
+    const { rules, notices } = loadCustomRulesWithNotices(ruleKey(parsed));
     return {
       state: parsed,
       customRules: rules,
       good: { state: parsed, customRules: rules },
+      notices,
     };
   }
 
   const stored = loadGoodState();
   if (stored) {
-    return { state: stored.state, customRules: stored.customRules, good: stored };
+    return {
+      state: stored.state,
+      customRules: stored.customRules,
+      good: stored,
+      notices: stored.notices,
+    };
   }
 
   return {
     state: DEFAULT_STATE,
     customRules: [],
     good: { state: DEFAULT_STATE, customRules: [] },
+    notices: [],
   };
 }
 
@@ -95,6 +110,7 @@ export function useBuildSession(): BuildSession {
   const [state, setState] = useState<WizardState>(initial.state);
   const [customRules, setCustomRules] = useState<Rule[]>(initial.customRules);
   const [good, setGood] = useState<GoodState>(initial.good);
+  const [notices, setNotices] = useState<string[]>(initial.notices);
   const lastKey = useRef<string | null>(null);
   const stateRef = useRef(state);
   stateRef.current = state;
@@ -114,7 +130,14 @@ export function useBuildSession(): BuildSession {
     }
     if (key === lastKey.current) return;
     lastKey.current = key;
-    setCustomRules(state.mode === 'start' ? [] : loadCustomRules(key));
+    if (state.mode === 'start') {
+      setCustomRules([]);
+      setNotices([]);
+      return;
+    }
+    const { rules, notices: migrationNotices } = loadCustomRulesWithNotices(key);
+    setCustomRules(rules);
+    setNotices(migrationNotices);
   }, [state]);
 
   // Mirror the live state into the URL and session storage for the loot
@@ -145,6 +168,7 @@ export function useBuildSession(): BuildSession {
       setState(stored.state);
       setCustomRules(stored.customRules);
       setGood(stored);
+      setNotices(stored.notices);
     };
     window.addEventListener('pageshow', onPageShow);
     return () => window.removeEventListener('pageshow', onPageShow);
@@ -164,12 +188,16 @@ export function useBuildSession(): BuildSession {
     if (current.mode !== 'start') saveCustomRules(ruleKey(current), rules);
   }, []);
 
-  const load = useCallback((nextState: WizardState, rules: Rule[]) => {
-    setState(nextState);
-    setCustomRules(rules);
-    if (nextState.mode !== 'start') saveCustomRules(ruleKey(nextState), rules);
-    setGood({ state: nextState, customRules: rules });
-  }, []);
+  const load = useCallback(
+    (nextState: WizardState, rules: Rule[], nextNotices: string[] = []) => {
+      setState(nextState);
+      setCustomRules(rules);
+      if (nextState.mode !== 'start') saveCustomRules(ruleKey(nextState), rules);
+      setGood({ state: nextState, customRules: rules });
+      setNotices(nextNotices);
+    },
+    [],
+  );
 
   const commit = useCallback((nextState: WizardState, rules: Rule[]) => {
     setGood({ state: nextState, customRules: rules });
@@ -187,7 +215,10 @@ export function useBuildSession(): BuildSession {
     setState(DEFAULT_STATE);
     setCustomRules([]);
     setGood({ state: DEFAULT_STATE, customRules: [] });
+    setNotices([]);
   }, []);
+
+  const clearNotices = useCallback(() => setNotices([]), []);
 
   const dirty = useMemo(
     () => buildHash(state, customRules) !== buildHash(good.state, good.customRules),
@@ -199,11 +230,13 @@ export function useBuildSession(): BuildSession {
     customRules,
     good,
     dirty,
+    notices,
     update,
     setRules,
     load,
     commit,
     reset,
     startNew,
+    clearNotices,
   };
 }

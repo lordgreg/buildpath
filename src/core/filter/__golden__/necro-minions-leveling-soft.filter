@@ -1,5 +1,5 @@
 # ========================================================================
-# FilterPath dev - filter format 1
+# FilterPath dev - filter format 2
 # Build-specific loot filter
 # Build: Necromancer Minions - Witch / Necromancer
 # Phase: Leveling - Soft
@@ -13,7 +13,7 @@
 
 # Quest items
 Show
-    Class "Quest Items"
+    Class == "Quest Items"
     SetFontSize 40
     SetTextColor 255 255 255 255
     SetBorderColor 217 178 106 255
@@ -23,7 +23,7 @@ Show
 
 # Labyrinth treasure key
 Show
-    BaseType "Treasure Key"
+    BaseType == "Treasure Key"
     SetFontSize 40
     SetTextColor 255 255 255 255
     SetBorderColor 217 178 106 255
@@ -41,82 +41,82 @@ Show
 
 # Gold Ring (normal) - excluded base
 Hide
-    BaseType "Gold Ring"
+    BaseType == "Gold Ring"
     Rarity Normal
 
 # Gold Ring (magic) - excluded base
 Hide
-    BaseType "Gold Ring"
+    BaseType == "Gold Ring"
     Rarity Magic
 
 # Gold Ring (rare) - excluded base
 Hide
-    BaseType "Gold Ring"
+    BaseType == "Gold Ring"
     Rarity Rare
 
 # Cloth Belt (normal) - excluded base
 Hide
-    BaseType "Cloth Belt"
+    BaseType == "Cloth Belt"
     Rarity Normal
 
 # Cloth Belt (magic) - excluded base
 Hide
-    BaseType "Cloth Belt"
+    BaseType == "Cloth Belt"
     Rarity Magic
 
 # Cloth Belt (rare) - excluded base
 Hide
-    BaseType "Cloth Belt"
+    BaseType == "Cloth Belt"
     Rarity Rare
 
 # Coral Amulet (normal) - excluded base
 Hide
-    BaseType "Coral Amulet"
+    BaseType == "Coral Amulet"
     Rarity Normal
 
 # Coral Amulet (magic) - excluded base
 Hide
-    BaseType "Coral Amulet"
+    BaseType == "Coral Amulet"
     Rarity Magic
 
 # Coral Amulet (rare) - excluded base
 Hide
-    BaseType "Coral Amulet"
+    BaseType == "Coral Amulet"
     Rarity Rare
 
 # Marble Amulet (normal) - excluded base
 Hide
-    BaseType "Marble Amulet"
+    BaseType == "Marble Amulet"
     Rarity Normal
 
 # Marble Amulet (magic) - excluded base
 Hide
-    BaseType "Marble Amulet"
+    BaseType == "Marble Amulet"
     Rarity Magic
 
 # Marble Amulet (rare) - excluded base
 Hide
-    BaseType "Marble Amulet"
+    BaseType == "Marble Amulet"
     Rarity Rare
 
 # Blue Pearl Amulet (normal) - excluded base
 Hide
-    BaseType "Blue Pearl Amulet"
+    BaseType == "Blue Pearl Amulet"
     Rarity Normal
 
 # Blue Pearl Amulet (magic) - excluded base
 Hide
-    BaseType "Blue Pearl Amulet"
+    BaseType == "Blue Pearl Amulet"
     Rarity Magic
 
 # Blue Pearl Amulet (rare) - excluded base
 Hide
-    BaseType "Blue Pearl Amulet"
+    BaseType == "Blue Pearl Amulet"
     Rarity Rare
 
 # helmet - rare
 Show
-    BaseType "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Necromancer Circlet" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Necromancer Circlet" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -128,7 +128,7 @@ Show
 
 # helmet - magic
 Show
-    BaseType "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Necromancer Circlet" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Necromancer Circlet" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -138,7 +138,7 @@ Show
 
 # 4+ links (helmet)
 Show
-    BaseType "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Necromancer Circlet" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Necromancer Circlet" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -148,7 +148,7 @@ Show
 
 # body - rare
 Show
-    BaseType "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Occultist's Vestment" "Ornate Ringmail" "Ringmail Coat" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Occultist's Vestment" "Ornate Ringmail" "Ringmail Coat" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Vaal Regalia" "Widowsilk Robe"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -160,7 +160,7 @@ Show
 
 # body - magic
 Show
-    BaseType "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Occultist's Vestment" "Ornate Ringmail" "Ringmail Coat" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Occultist's Vestment" "Ornate Ringmail" "Ringmail Coat" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Vaal Regalia" "Widowsilk Robe"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -170,7 +170,7 @@ Show
 
 # 4+ links (body)
 Show
-    BaseType "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Occultist's Vestment" "Ornate Ringmail" "Ringmail Coat" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Occultist's Vestment" "Ornate Ringmail" "Ringmail Coat" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Vaal Regalia" "Widowsilk Robe"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -180,7 +180,7 @@ Show
 
 # gloves - rare
 Show
-    BaseType "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Mesh Gloves" "Nexus Gloves" "Ringmail Gloves" "Riveted Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Mesh Gloves" "Nexus Gloves" "Ringmail Gloves" "Riveted Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Wool Gloves" "Zealot Gloves"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -192,7 +192,7 @@ Show
 
 # gloves - magic
 Show
-    BaseType "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Mesh Gloves" "Nexus Gloves" "Ringmail Gloves" "Riveted Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Mesh Gloves" "Nexus Gloves" "Ringmail Gloves" "Riveted Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Wool Gloves" "Zealot Gloves"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -202,7 +202,7 @@ Show
 
 # 4+ links (gloves)
 Show
-    BaseType "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Mesh Gloves" "Nexus Gloves" "Ringmail Gloves" "Riveted Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Mesh Gloves" "Nexus Gloves" "Ringmail Gloves" "Riveted Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Wool Gloves" "Zealot Gloves"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -212,7 +212,7 @@ Show
 
 # boots - rare
 Show
-    BaseType "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Mesh Boots" "Nightwind Slippers" "Ringmail Boots" "Riveted Boots" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Mesh Boots" "Nightwind Slippers" "Ringmail Boots" "Riveted Boots" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Wool Shoes" "Zealot Boots"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -224,7 +224,7 @@ Show
 
 # boots - magic
 Show
-    BaseType "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Mesh Boots" "Nightwind Slippers" "Ringmail Boots" "Riveted Boots" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Mesh Boots" "Nightwind Slippers" "Ringmail Boots" "Riveted Boots" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Wool Shoes" "Zealot Boots"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -234,7 +234,7 @@ Show
 
 # 4+ links (boots)
 Show
-    BaseType "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Mesh Boots" "Nightwind Slippers" "Ringmail Boots" "Riveted Boots" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Mesh Boots" "Nightwind Slippers" "Ringmail Boots" "Riveted Boots" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Wool Shoes" "Zealot Boots"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -244,7 +244,7 @@ Show
 
 # belt - rare
 Show
-    Class "Belts"
+    Class == "Belts"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -256,7 +256,7 @@ Show
 
 # belt - magic
 Show
-    Class "Belts"
+    Class == "Belts"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -266,7 +266,7 @@ Show
 
 # amulet - rare
 Show
-    Class "Amulets"
+    Class == "Amulets"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -278,7 +278,7 @@ Show
 
 # amulet - magic
 Show
-    Class "Amulets"
+    Class == "Amulets"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -288,7 +288,7 @@ Show
 
 # ring - rare
 Show
-    Class "Rings"
+    Class == "Rings"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -300,7 +300,7 @@ Show
 
 # ring - magic
 Show
-    Class "Rings"
+    Class == "Rings"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -310,7 +310,7 @@ Show
 
 # jewel - rare
 Show
-    BaseType "Cobalt Jewel"
+    BaseType == "Cobalt Jewel"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -322,7 +322,7 @@ Show
 
 # jewel - magic
 Show
-    BaseType "Cobalt Jewel"
+    BaseType == "Cobalt Jewel"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -332,7 +332,7 @@ Show
 
 # flask - rare
 Show
-    Class "Life Flasks" "Utility Flasks"
+    Class == "Life Flasks" "Utility Flasks"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -344,7 +344,7 @@ Show
 
 # flask - magic
 Show
-    Class "Life Flasks" "Utility Flasks"
+    Class == "Life Flasks" "Utility Flasks"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -354,7 +354,7 @@ Show
 
 # weapon - rare
 Show
-    BaseType "Calling Wand" "Convening Wand" "Convoking Wand"
+    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 45
@@ -366,7 +366,7 @@ Show
 
 # weapon - magic
 Show
-    BaseType "Calling Wand" "Convening Wand" "Convoking Wand"
+    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -376,7 +376,7 @@ Show
 
 # 4+ links (weapon)
 Show
-    BaseType "Calling Wand" "Convening Wand" "Convoking Wand"
+    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -386,7 +386,7 @@ Show
 
 # offhand - rare
 Show
-    BaseType "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
+    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 45
@@ -398,7 +398,7 @@ Show
 
 # offhand - magic
 Show
-    BaseType "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
+    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
     Rarity Magic
     ItemLevel >= 10
     SetFontSize 34
@@ -408,7 +408,7 @@ Show
 
 # 4+ links (offhand)
 Show
-    BaseType "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
+    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -445,7 +445,7 @@ Show
 
 # helmet - normal
 Show
-    BaseType "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Necromancer Circlet" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Necromancer Circlet" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
     Rarity Normal
     ItemLevel >= 0
     SetFontSize 34
@@ -455,7 +455,7 @@ Show
 
 # body - normal
 Show
-    BaseType "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Occultist's Vestment" "Ornate Ringmail" "Ringmail Coat" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Occultist's Vestment" "Ornate Ringmail" "Ringmail Coat" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Vaal Regalia" "Widowsilk Robe"
     Rarity Normal
     ItemLevel >= 0
     SetFontSize 34
@@ -465,7 +465,7 @@ Show
 
 # gloves - normal
 Show
-    BaseType "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Mesh Gloves" "Nexus Gloves" "Ringmail Gloves" "Riveted Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Mesh Gloves" "Nexus Gloves" "Ringmail Gloves" "Riveted Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Wool Gloves" "Zealot Gloves"
     Rarity Normal
     ItemLevel >= 0
     SetFontSize 34
@@ -475,7 +475,7 @@ Show
 
 # boots - normal
 Show
-    BaseType "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Mesh Boots" "Nightwind Slippers" "Ringmail Boots" "Riveted Boots" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Mesh Boots" "Nightwind Slippers" "Ringmail Boots" "Riveted Boots" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Wool Shoes" "Zealot Boots"
     Rarity Normal
     ItemLevel >= 0
     SetFontSize 34
@@ -485,7 +485,7 @@ Show
 
 # belt - normal
 Show
-    Class "Belts"
+    Class == "Belts"
     Rarity Normal
     ItemLevel >= 0
     SetFontSize 34
@@ -495,7 +495,7 @@ Show
 
 # amulet - normal
 Show
-    Class "Amulets"
+    Class == "Amulets"
     Rarity Normal
     ItemLevel >= 0
     SetFontSize 34
@@ -505,7 +505,7 @@ Show
 
 # ring - normal
 Show
-    Class "Rings"
+    Class == "Rings"
     Rarity Normal
     ItemLevel >= 0
     SetFontSize 34
@@ -515,7 +515,7 @@ Show
 
 # jewel - normal
 Show
-    BaseType "Cobalt Jewel"
+    BaseType == "Cobalt Jewel"
     Rarity Normal
     ItemLevel >= 0
     SetFontSize 34
@@ -525,7 +525,7 @@ Show
 
 # weapon - normal
 Show
-    BaseType "Calling Wand" "Convening Wand" "Convoking Wand"
+    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
     Rarity Normal
     ItemLevel >= 0
     SetFontSize 34
@@ -535,7 +535,7 @@ Show
 
 # offhand - normal
 Show
-    BaseType "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
+    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
     Rarity Normal
     ItemLevel >= 0
     SetFontSize 34
@@ -545,7 +545,7 @@ Show
 
 # Gems
 Show
-    Class "Skill Gems" "Support Gems"
+    Class == "Skill Gems" "Support Gems"
     SetFontSize 40
     SetTextColor 27 162 155 255
     SetBorderColor 27 162 155 255
@@ -554,7 +554,7 @@ Show
 
 # Gold - stacks of 10+
 Show
-    BaseType "Gold"
+    BaseType == "Gold"
     StackSize >= 10
     SetFontSize 34
     SetTextColor 217 178 106 255
@@ -563,11 +563,11 @@ Show
 
 # Gold - small stacks
 Hide
-    BaseType "Gold"
+    BaseType == "Gold"
 
 # Mirror of Kalandra - alert
 Show
-    BaseType "Mirror of Kalandra"
+    BaseType == "Mirror of Kalandra"
     SetFontSize 45
     SetTextColor 18 0 10 255
     SetBorderColor 18 0 10 255
@@ -578,7 +578,7 @@ Show
 
 # Divine Orb - alert
 Show
-    BaseType "Divine Orb"
+    BaseType == "Divine Orb"
     SetFontSize 45
     SetTextColor 18 0 10 255
     SetBorderColor 18 0 10 255
@@ -589,7 +589,7 @@ Show
 
 # Exalted Orb - alert
 Show
-    BaseType "Exalted Orb"
+    BaseType == "Exalted Orb"
     SetFontSize 45
     SetTextColor 217 178 106 255
     SetBorderColor 217 178 106 255
@@ -599,7 +599,7 @@ Show
 
 # Chaos Orb - alert
 Show
-    BaseType "Chaos Orb"
+    BaseType == "Chaos Orb"
     SetFontSize 40
     SetTextColor 217 178 106 255
     SetBorderColor 217 178 106 255
@@ -609,7 +609,7 @@ Show
 
 # Currency - tier 1
 Show
-    BaseType "Divine Orb" "Eldritch Chaos Orb" "Eldritch Exalted Orb" "Eldritch Orb of Annulment" "Exalted Orb" "Fracturing Orb" "Hinekora's Lock" "Mirror of Kalandra" "Sacred Orb"
+    BaseType == "Divine Orb" "Eldritch Chaos Orb" "Eldritch Exalted Orb" "Eldritch Orb of Annulment" "Exalted Orb" "Fracturing Orb" "Hinekora's Lock" "Mirror of Kalandra" "Sacred Orb"
     SetFontSize 45
     SetTextColor 217 178 106 255
     SetBorderColor 217 178 106 255
@@ -619,7 +619,7 @@ Show
 
 # Currency - tier 2
 Show
-    BaseType "Ancient Orb" "Blessed Orb" "Cartographer's Chisel" "Chaos Orb" "Chromatic Orb" "Enkindling Orb" "Gemcutter's Prism" "Glassblower's Bauble" "Instilling Orb" "Jeweller's Orb" "Orb of Alchemy" "Orb of Alteration" "Orb of Annulment" "Orb of Binding" "Orb of Chance" "Orb of Conflict" "Orb of Fusing" "Orb of Regret" "Orb of Scouring" "Orb of Unmaking" "Prime Regrading Lens" "Regal Orb" "Secondary Regrading Lens" "Tailoring Orb" "Tainted Orb of Fusing" "Tempering Orb" "Vaal Orb"
+    BaseType == "Ancient Orb" "Blessed Orb" "Cartographer's Chisel" "Chaos Orb" "Chromatic Orb" "Enkindling Orb" "Gemcutter's Prism" "Glassblower's Bauble" "Instilling Orb" "Jeweller's Orb" "Orb of Alchemy" "Orb of Alteration" "Orb of Annulment" "Orb of Binding" "Orb of Chance" "Orb of Conflict" "Orb of Fusing" "Orb of Regret" "Orb of Scouring" "Orb of Unmaking" "Prime Regrading Lens" "Regal Orb" "Secondary Regrading Lens" "Tailoring Orb" "Tainted Orb of Fusing" "Tempering Orb" "Vaal Orb"
     SetFontSize 40
     SetTextColor 217 178 106 255
     SetBorderColor 217 178 106 255
@@ -629,7 +629,7 @@ Show
 
 # Currency - tier 3
 Show
-    BaseType "Abrasive Catalyst" "Accelerating Catalyst" "Armourer's Scrap" "Blacksmith's Whetstone" "Fertile Catalyst" "Grand Eldritch Ember" "Grand Eldritch Ichor" "Greater Eldritch Ember" "Imbued Catalyst" "Intrinsic Catalyst" "Lesser Eldritch Ember" "Lesser Eldritch Ichor" "Noxious Catalyst" "Orb of Augmentation" "Orb of Transmutation" "Portal Scroll" "Primal Crystallised Lifeforce" "Prismatic Catalyst" "Ritual Vessel" "Scroll of Wisdom" "Stacked Deck" "Tainted Armourer's Scrap" "Tainted Blacksmith's Whetstone" "Tainted Chromatic Orb" "Tainted Jeweller's Orb" "Tainted Mythic Orb" "Tempering Catalyst" "Turbulent Catalyst" "Unstable Catalyst" "Vivid Crystallised Lifeforce" "Wild Crystallised Lifeforce"
+    BaseType == "Abrasive Catalyst" "Accelerating Catalyst" "Armourer's Scrap" "Blacksmith's Whetstone" "Fertile Catalyst" "Grand Eldritch Ember" "Grand Eldritch Ichor" "Greater Eldritch Ember" "Imbued Catalyst" "Intrinsic Catalyst" "Lesser Eldritch Ember" "Lesser Eldritch Ichor" "Noxious Catalyst" "Orb of Augmentation" "Orb of Transmutation" "Portal Scroll" "Primal Crystallised Lifeforce" "Prismatic Catalyst" "Ritual Vessel" "Scroll of Wisdom" "Stacked Deck" "Tainted Armourer's Scrap" "Tainted Blacksmith's Whetstone" "Tainted Chromatic Orb" "Tainted Jeweller's Orb" "Tainted Mythic Orb" "Tempering Catalyst" "Turbulent Catalyst" "Unstable Catalyst" "Vivid Crystallised Lifeforce" "Wild Crystallised Lifeforce"
     SetFontSize 34
     SetTextColor 217 178 106 255
     SetBorderColor 217 178 106 255
@@ -637,7 +637,7 @@ Show
 
 # Divination cards - tier 1
 Show
-    BaseType "Choking Guilt" "Desecrated Virtue" "Divine Justice" "House of Mirrors" "Love Through Ice" "Luminous Trove" "Rebirth and Renewal" "Seven Years Bad Luck" "Squandered Prosperity" "Succor of the Sinless" "The Apothecary" "The Demon" "The Doctor" "The Endless Darkness" "The Eye of Terror" "The Fiend" "The Immortal" "The Journey" "The Nurse" "The Price of Devotion" "The Progeny of Lunaris" "The Sephirot" "The Soul" "Unrequited Love" "Wealth and Power" "Winter's Embrace"
+    BaseType == "Choking Guilt" "Desecrated Virtue" "Divine Justice" "House of Mirrors" "Love Through Ice" "Luminous Trove" "Rebirth and Renewal" "Seven Years Bad Luck" "Squandered Prosperity" "Succor of the Sinless" "The Apothecary" "The Demon" "The Doctor" "The Endless Darkness" "The Eye of Terror" "The Fiend" "The Immortal" "The Journey" "The Nurse" "The Price of Devotion" "The Progeny of Lunaris" "The Sephirot" "The Soul" "Unrequited Love" "Wealth and Power" "Winter's Embrace"
     SetFontSize 45
     SetTextColor 176 196 222 255
     SetBorderColor 176 196 222 255
@@ -647,7 +647,7 @@ Show
 
 # Divination cards - tier 2
 Show
-    BaseType "A Fate Worse Than Death" "A Modest Request" "A Stone Perfected" "Akil's Prophecy" "Altered Perception" "Anarchy's Price" "Azyran's Reward" "Baited Expectations" "Beauty Through Death" "Bijoux" "Chasing Risk" "Costly Curio" "Darker Half" "Doryani's Epiphany" "Duality" "Eternal Bonds" "Fateful Meeting" "Friendship" "Further Invention" "Gemcutter's Mercy" "Gift of Asenath" "Home" "Judging Voices" "Lachrymal Necrosis" "Lethean Temptation" "Mawr Blaidd" "Monochrome" "Peaceful Moments" "Rebirth" "Remembrance" "Silence and Frost" "Something Dark" "Terrible Secret of Space" "The Admirer" "The Artist" "The Aspirant" "The Astromancer" "The Bitter Blossom" "The Bones" "The Breach" "The Chosen" "The Darkest Dream" "The Destination" "The Dragon's Heart" "The Dreamer" "The Eldritch Decay" "The Enlightened" "The Eternal War" "The Eye of the Dragon" "The Formless Sea" "The Forward Gaze" "The Garish Power" "The Greatest Intentions" "The Gulf" "The Heroic Shot" "The Hive of Knowledge" "The Hook" "The Last Supper" "The Leviathan" "The Mad King" "The Mayor" "The Messenger" "The One That Got Away" "The One With All" "The Patient" "The Price of Loyalty" "The Prince of Darkness" "The Queen" "The Samurai's Eye" "The Shieldbearer" "The Shortcut" "The Side Quest" "The Strategist" "The Thaumaturgist" "The Throne" "The Tinkerer's Table" "The Undaunted" "The Unexpected Prize" "The Vast" "The World Eater" "Tranquillity" "Treasure Hunter" "Turn the Other Cheek"
+    BaseType == "A Fate Worse Than Death" "A Modest Request" "A Stone Perfected" "Akil's Prophecy" "Altered Perception" "Anarchy's Price" "Azyran's Reward" "Baited Expectations" "Beauty Through Death" "Bijoux" "Chasing Risk" "Costly Curio" "Darker Half" "Doryani's Epiphany" "Duality" "Eternal Bonds" "Fateful Meeting" "Friendship" "Further Invention" "Gemcutter's Mercy" "Gift of Asenath" "Home" "Judging Voices" "Lachrymal Necrosis" "Lethean Temptation" "Mawr Blaidd" "Monochrome" "Peaceful Moments" "Rebirth" "Remembrance" "Silence and Frost" "Something Dark" "Terrible Secret of Space" "The Admirer" "The Artist" "The Aspirant" "The Astromancer" "The Bitter Blossom" "The Bones" "The Breach" "The Chosen" "The Darkest Dream" "The Destination" "The Dragon's Heart" "The Dreamer" "The Eldritch Decay" "The Enlightened" "The Eternal War" "The Eye of the Dragon" "The Formless Sea" "The Forward Gaze" "The Garish Power" "The Greatest Intentions" "The Gulf" "The Heroic Shot" "The Hive of Knowledge" "The Hook" "The Last Supper" "The Leviathan" "The Mad King" "The Mayor" "The Messenger" "The One That Got Away" "The One With All" "The Patient" "The Price of Loyalty" "The Prince of Darkness" "The Queen" "The Samurai's Eye" "The Shieldbearer" "The Shortcut" "The Side Quest" "The Strategist" "The Thaumaturgist" "The Throne" "The Tinkerer's Table" "The Undaunted" "The Unexpected Prize" "The Vast" "The World Eater" "Tranquillity" "Treasure Hunter" "Turn the Other Cheek"
     SetFontSize 34
     SetTextColor 176 196 222 255
     SetBorderColor 176 196 222 255
@@ -656,7 +656,7 @@ Show
 
 # Divination cards - tier 3
 Show
-    BaseType "A Dab of Ink" "A Familiar Call" "A Mother's Parting Gift" "A Note in the Wind" "A Sea of Blue" "Abandoned Wealth" "Acclimatisation" "Alluring Bounty" "Alone in the Darkness" "Arrogance of the Vaal" "Astral Protection" "Atziri's Arsenal" "Audacity" "Azure Rage" "Blind Venture" "Boon of Justice" "Boon of the First Ones" "Bowyer's Dream" "Broken Truce" "Brother's Stash" "Brotherhood in Exile" "Brush, Paint and Palette" "Call to the First Ones" "Chaotic Disposition" "Checkmate" "Council of Cats" "Cursed Words" "Dark Dreams" "Dark Temptation" "Deadly Joy" "Death" "Deathly Designs" "Dementophobia" "Demigod's Wager" "Desperate Crusade" "Destined to Crumble" "Dialla's Subjugation" "Disdain" "Doedre's Madness" "Draped in Dreams" "Dying Anguish" "Dying Light" "Earth Drinker" "Echoes of Love" "Emperor of Purity" "Emperor's Luck" "Endless Night" "Etched in Blood" "Forbidden Power" "From Bone to Ashes" "Gemcutter's Promise" "Gift of the Gemling Queen" "Glimmer of Hope" "Guardian's Challenge" "Harmony of Souls" "Haunting Shadows" "Heterochromia" "Hope" "Hubris" "Humility" "Hunter's Resolve" "Hunter's Reward" "Imperial Legacy" "Jack in the Box" "Justified Ambition" "Keeper's Corruption" "Left to Fate" "Light and Truth" "Lingering Remnants" "Loyalty" "Lucky Connections" "Lucky Deck" "Lysah's Respite" "Merciless Armament" "Misery in Darkness" "No Traces" "Prejudice" "Pride Before the Fall" "Pride of the First Ones" "Prometheus' Armoury" "Rain Tempter" "Rain of Chaos" "Rats" "Reckless Ambition" "Sambodhi's Wisdom" "Shard of Fate" "Society's Remorse" "Struck by Lightning" "The Academic" "The Adventuring Spirit" "The Archmage's Right Hand" "The Arena Champion" "The Army of Blood" "The Avenger" "The Awakened" "The Battle Born" "The Bear Woman" "The Beast" "The Betrayal" "The Blazing Fire" "The Blessing of Moosh" "The Body" "The Brittle Emperor" "The Cache" "The Cacophony" "The Calling" "The Carrion Crow" "The Cataclysm" "The Catalyst" "The Catch" "The Celestial Justicar" "The Celestial Stone" "The Chains that Bind" "The Coming Storm" "The Conduit" "The Craving" "The Cursed King" "The Damned" "The Dapper Prodigy" "The Dark Mage" "The Deceiver" "The Deep Ones" "The Doppelganger" "The Dragon" "The Dreamland" "The Drunken Aristocrat" "The Dungeon Master" "The Easy Stroll" "The Encroaching Darkness" "The Endurance" "The Enforcer" "The Enthusiasts" "The Escape" "The Ethereal" "The Explorer" "The Feast" "The Fishmonger" "The Fletcher" "The Flora's Gift" "The Fool" "The Forgotten Treasure" "The Fox" "The Fox in the Brambles" "The Gambler" "The Gemcutter" "The Gentleman" "The Golden Era" "The Hermit" "The Hoarder" "The Hunger" "The Innocent" "The Inoculated" "The Insatiable" "The Inventor" "The Jester" "The Journalist" "The King's Blade" "The King's Heart" "The Last One Standing" "The Lich" "The Life Thief" "The Lion" "The Long Watch" "The Lord in Black" "The Lord of Celebration" "The Lover" "The Magma Crab" "The Master Artisan" "The Mercenary" "The Metalsmith's Gift" "The Mind's Eyes" "The Mountain" "The Oath" "The Offering" "The Offspring" "The Old Man" "The Opulent" "The Penitent" "The Poet" "The Polymath" "The Porcupine" "The Price of Prescience" "The Price of Protection" "The Primordial" "The Professor" "The Rabid Rhoa" "The Realm" "The Risk" "The Rite of Elements" "The Road to Power" "The Ruthless Ceinture" "The Saint's Treasure" "The Scavenger" "The Scholar" "The Scout" "The Seeker" "The Shepherd's Sandals" "The Sigil" "The Siren" "The Skeleton" "The Spark and the Flame" "The Spoiled Prince" "The Stormcaller" "The Summoner" "The Sun" "The Surgeon" "The Survivalist" "The Tireless Extractor" "The Tower" "The Traitor" "The Transformation" "The Trial" "The Twilight Moon" "The Twins" "The Undisputed" "The Union" "The Valkyrie" "The Void" "The Warden" "The Warlord" "The Watcher" "The Web" "The White Knight" "The Whiteout" "The Wilted Rose" "The Wind" "The Witch" "The Wolf's Legacy" "The Wolf's Shadow" "The Wolverine" "The Wrath" "The Wretched" "Three Faces in the Dark" "Three Voices" "Thunderous Skies" "Time-Lost Relic" "Unchained" "Underground Forest" "Vanity" "Vinia's Token" "Void of the Elements" "Volatile Power"
+    BaseType == "A Dab of Ink" "A Familiar Call" "A Mother's Parting Gift" "A Note in the Wind" "A Sea of Blue" "Abandoned Wealth" "Acclimatisation" "Alluring Bounty" "Alone in the Darkness" "Arrogance of the Vaal" "Astral Protection" "Atziri's Arsenal" "Audacity" "Azure Rage" "Blind Venture" "Boon of Justice" "Boon of the First Ones" "Bowyer's Dream" "Broken Truce" "Brother's Stash" "Brotherhood in Exile" "Brush, Paint and Palette" "Call to the First Ones" "Chaotic Disposition" "Checkmate" "Council of Cats" "Cursed Words" "Dark Dreams" "Dark Temptation" "Deadly Joy" "Death" "Deathly Designs" "Dementophobia" "Demigod's Wager" "Desperate Crusade" "Destined to Crumble" "Dialla's Subjugation" "Disdain" "Doedre's Madness" "Draped in Dreams" "Dying Anguish" "Dying Light" "Earth Drinker" "Echoes of Love" "Emperor of Purity" "Emperor's Luck" "Endless Night" "Etched in Blood" "Forbidden Power" "From Bone to Ashes" "Gemcutter's Promise" "Gift of the Gemling Queen" "Glimmer of Hope" "Guardian's Challenge" "Harmony of Souls" "Haunting Shadows" "Heterochromia" "Hope" "Hubris" "Humility" "Hunter's Resolve" "Hunter's Reward" "Imperial Legacy" "Jack in the Box" "Justified Ambition" "Keeper's Corruption" "Left to Fate" "Light and Truth" "Lingering Remnants" "Loyalty" "Lucky Connections" "Lucky Deck" "Lysah's Respite" "Merciless Armament" "Misery in Darkness" "No Traces" "Prejudice" "Pride Before the Fall" "Pride of the First Ones" "Prometheus' Armoury" "Rain Tempter" "Rain of Chaos" "Rats" "Reckless Ambition" "Sambodhi's Wisdom" "Shard of Fate" "Society's Remorse" "Struck by Lightning" "The Academic" "The Adventuring Spirit" "The Archmage's Right Hand" "The Arena Champion" "The Army of Blood" "The Avenger" "The Awakened" "The Battle Born" "The Bear Woman" "The Beast" "The Betrayal" "The Blazing Fire" "The Blessing of Moosh" "The Body" "The Brittle Emperor" "The Cache" "The Cacophony" "The Calling" "The Carrion Crow" "The Cataclysm" "The Catalyst" "The Catch" "The Celestial Justicar" "The Celestial Stone" "The Chains that Bind" "The Coming Storm" "The Conduit" "The Craving" "The Cursed King" "The Damned" "The Dapper Prodigy" "The Dark Mage" "The Deceiver" "The Deep Ones" "The Doppelganger" "The Dragon" "The Dreamland" "The Drunken Aristocrat" "The Dungeon Master" "The Easy Stroll" "The Encroaching Darkness" "The Endurance" "The Enforcer" "The Enthusiasts" "The Escape" "The Ethereal" "The Explorer" "The Feast" "The Fishmonger" "The Fletcher" "The Flora's Gift" "The Fool" "The Forgotten Treasure" "The Fox" "The Fox in the Brambles" "The Gambler" "The Gemcutter" "The Gentleman" "The Golden Era" "The Hermit" "The Hoarder" "The Hunger" "The Innocent" "The Inoculated" "The Insatiable" "The Inventor" "The Jester" "The Journalist" "The King's Blade" "The King's Heart" "The Last One Standing" "The Lich" "The Life Thief" "The Lion" "The Long Watch" "The Lord in Black" "The Lord of Celebration" "The Lover" "The Magma Crab" "The Master Artisan" "The Mercenary" "The Metalsmith's Gift" "The Mind's Eyes" "The Mountain" "The Oath" "The Offering" "The Offspring" "The Old Man" "The Opulent" "The Penitent" "The Poet" "The Polymath" "The Porcupine" "The Price of Prescience" "The Price of Protection" "The Primordial" "The Professor" "The Rabid Rhoa" "The Realm" "The Risk" "The Rite of Elements" "The Road to Power" "The Ruthless Ceinture" "The Saint's Treasure" "The Scavenger" "The Scholar" "The Scout" "The Seeker" "The Shepherd's Sandals" "The Sigil" "The Siren" "The Skeleton" "The Spark and the Flame" "The Spoiled Prince" "The Stormcaller" "The Summoner" "The Sun" "The Surgeon" "The Survivalist" "The Tireless Extractor" "The Tower" "The Traitor" "The Transformation" "The Trial" "The Twilight Moon" "The Twins" "The Undisputed" "The Union" "The Valkyrie" "The Void" "The Warden" "The Warlord" "The Watcher" "The Web" "The White Knight" "The Whiteout" "The Wilted Rose" "The Wind" "The Witch" "The Wolf's Legacy" "The Wolf's Shadow" "The Wolverine" "The Wrath" "The Wretched" "Three Faces in the Dark" "Three Voices" "Thunderous Skies" "Time-Lost Relic" "Unchained" "Underground Forest" "Vanity" "Vinia's Token" "Void of the Elements" "Volatile Power"
     SetFontSize 34
     SetTextColor 176 196 222 255
     SetBorderColor 176 196 222 255
@@ -664,7 +664,7 @@ Show
 
 # Divination cards
 Show
-    Class "Divination Cards"
+    Class == "Divination Cards"
     SetFontSize 34
     SetTextColor 176 196 222 255
     SetBorderColor 176 196 222 255
@@ -672,7 +672,7 @@ Show
 
 # Map fragments - tier 1
 Show
-    BaseType "Gift to the Goddess"
+    BaseType == "Gift to the Goddess"
     SetFontSize 36
     SetTextColor 226 214 176 255
     SetBorderColor 226 214 176 255
@@ -680,7 +680,7 @@ Show
 
 # Map fragments - tier 2
 Show
-    BaseType "Fragment of Enslavement" "Fragment of Purification" "Fragment of the Hydra" "Timeless Eternal Emblem" "Timeless Templar Emblem" "Timeless Vaal Emblem"
+    BaseType == "Fragment of Enslavement" "Fragment of Purification" "Fragment of the Hydra" "Timeless Eternal Emblem" "Timeless Templar Emblem" "Timeless Vaal Emblem"
     SetFontSize 36
     SetTextColor 226 214 176 255
     SetBorderColor 226 214 176 255
@@ -688,7 +688,7 @@ Show
 
 # Map fragments - tier 3
 Show
-    BaseType "Al-Hezmin's Crest" "Baran's Crest" "Crescent Splinter" "Divine Vessel" "Drox's Crest" "Fragment of Constriction" "Fragment of Eradication" "Fragment of Shape" "Fragment of the Chimera" "Fragment of the Minotaur" "Fragment of the Phoenix" "Offering to the Goddess" "Sacred Blossom" "Simulacrum" "Simulacrum Splinter" "The Maven's Writ" "Timeless Eternal Empire Splinter" "Timeless Karui Emblem" "Timeless Karui Splinter" "Timeless Maraketh Emblem" "Timeless Maraketh Splinter" "Timeless Templar Splinter" "Timeless Vaal Splinter" "Veritania's Crest"
+    BaseType == "Al-Hezmin's Crest" "Baran's Crest" "Crescent Splinter" "Divine Vessel" "Drox's Crest" "Fragment of Constriction" "Fragment of Eradication" "Fragment of Shape" "Fragment of the Chimera" "Fragment of the Minotaur" "Fragment of the Phoenix" "Offering to the Goddess" "Sacred Blossom" "Simulacrum" "Simulacrum Splinter" "The Maven's Writ" "Timeless Eternal Empire Splinter" "Timeless Karui Emblem" "Timeless Karui Splinter" "Timeless Maraketh Emblem" "Timeless Maraketh Splinter" "Timeless Templar Splinter" "Timeless Vaal Splinter" "Veritania's Crest"
     SetFontSize 36
     SetTextColor 226 214 176 255
     SetBorderColor 226 214 176 255
@@ -696,7 +696,7 @@ Show
 
 # Map fragments
 Show
-    Class "Map Fragments"
+    Class == "Map Fragments"
     SetFontSize 36
     SetTextColor 217 178 106 255
     SetBorderColor 217 178 106 255
@@ -704,7 +704,7 @@ Show
 
 # Uniques - best jewels
 Show
-    BaseType "Cobalt Jewel" "Crimson Jewel" "Ghastly Eye Jewel" "Hypnotic Eye Jewel" "Large Cluster Jewel" "Murderous Eye Jewel" "Prismatic Jewel" "Searching Eye Jewel" "Timeless Jewel" "Viridian Jewel"
+    BaseType == "Cobalt Jewel" "Crimson Jewel" "Ghastly Eye Jewel" "Hypnotic Eye Jewel" "Large Cluster Jewel" "Murderous Eye Jewel" "Prismatic Jewel" "Searching Eye Jewel" "Timeless Jewel" "Viridian Jewel"
     Rarity Unique
     SetFontSize 40
     SetTextColor 255 166 0 255
@@ -715,7 +715,7 @@ Show
 
 # Uniques - high-value bases
 Show
-    BaseType "Amethyst Flask" "Amethyst Ring" "Assassin Bow" "Assassin's Boots" "Bismuth Flask" "Chain Gloves" "Cloth Belt" "Cobalt Jewel" "Crimson Jewel" "Crusader Plate" "Demon Dagger" "Despot Axe" "Elegant Round Shield" "Eye Gouger" "Foul Staff" "Ghastly Eye Jewel" "Gilded Sallet" "Girded Tower Shield" "Gladiator Plate" "Gold Flask" "Golden Mask" "Heavy Belt" "Hypnotic Eye Jewel" "Imperial Bow" "Infernal Sword" "Iron Flask" "Iron Ring" "Lacquered Garb" "Large Cluster Jewel" "Leather Belt" "Lion Sword" "Magistrate Crown" "Military Staff" "Murderous Eye Jewel" "Onyx Amulet" "Paua Amulet" "Prismatic Jewel" "Prismatic Ring" "Quartz Flask" "Raven Mask" "Ring" "Ruby Flask" "Sage's Robe" "Sapphire Ring" "Searching Eye Jewel" "Siege Axe" "Simple Robe" "Soldier Boots" "Spidersilk Robe" "Steel Kite Shield" "Studded Belt" "Sulphur Flask" "Timeless Jewel" "Titanium Spirit Shield" "Topaz Ring" "Triumphant Lamellar" "Two-Stone Ring" "Unset Amulet" "Vaal Axe" "Vaal Claw" "Vanguard Belt" "Viridian Jewel" "Wyrmscale Doublet"
+    BaseType == "Amethyst Flask" "Amethyst Ring" "Assassin Bow" "Assassin's Boots" "Bismuth Flask" "Chain Gloves" "Cloth Belt" "Cobalt Jewel" "Crimson Jewel" "Crusader Plate" "Demon Dagger" "Despot Axe" "Elegant Round Shield" "Eye Gouger" "Foul Staff" "Ghastly Eye Jewel" "Gilded Sallet" "Girded Tower Shield" "Gladiator Plate" "Gold Flask" "Golden Mask" "Heavy Belt" "Hypnotic Eye Jewel" "Imperial Bow" "Infernal Sword" "Iron Flask" "Iron Ring" "Lacquered Garb" "Large Cluster Jewel" "Leather Belt" "Lion Sword" "Magistrate Crown" "Military Staff" "Murderous Eye Jewel" "Onyx Amulet" "Paua Amulet" "Prismatic Jewel" "Prismatic Ring" "Quartz Flask" "Raven Mask" "Ring" "Ruby Flask" "Sage's Robe" "Sapphire Ring" "Searching Eye Jewel" "Siege Axe" "Simple Robe" "Soldier Boots" "Spidersilk Robe" "Steel Kite Shield" "Studded Belt" "Sulphur Flask" "Timeless Jewel" "Titanium Spirit Shield" "Topaz Ring" "Triumphant Lamellar" "Two-Stone Ring" "Unset Amulet" "Vaal Axe" "Vaal Claw" "Vanguard Belt" "Viridian Jewel" "Wyrmscale Doublet"
     Rarity Unique
     SetFontSize 45
     SetTextColor 255 166 0 255
@@ -726,7 +726,7 @@ Show
 
 # Uniques - jewels
 Show
-    Class "Jewels" "Abyss Jewels"
+    Class == "Jewels" "Abyss Jewels"
     Rarity Unique
     SetFontSize 40
     SetTextColor 255 166 0 255
@@ -747,37 +747,37 @@ Show
 
 # Magic gear - slots this build does not use
 Hide
-    Class "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
+    Class == "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
     Rarity Magic
 
 # Magic gear - below item level 10
 Hide
-    Class "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks" "Jewels" "Abyss Jewels"
+    Class == "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks" "Jewels" "Abyss Jewels"
     Rarity Magic
     ItemLevel <= 9
 
 # Normal gear - slots this build does not use
 Hide
-    Class "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
+    Class == "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
     Rarity Normal
 
 # Normal flasks
 Hide
-    Class "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
+    Class == "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
     Rarity Normal
 
 # Rare gear - slots this build does not use
 Hide
-    Class "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
+    Class == "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
     Rarity Rare
 
 # Gear - bases this build does not use
 Hide
-    Class "Body Armours" "Boots" "Gloves" "Helmets" "Jewels" "Shields" "Wands"
+    Class == "Body Armours" "Boots" "Gloves" "Helmets" "Jewels" "Shields" "Wands"
 
 # League drops - Viscera
 Show
-    Class "Viscera"
+    Class == "Viscera"
     SetFontSize 38
     SetTextColor 255 166 0 255
     SetBorderColor 255 166 0 255

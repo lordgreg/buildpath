@@ -134,7 +134,7 @@ describe('generateFilter', () => {
       version: '9.9.9',
     });
 
-    expect(filter.text).toContain('# FilterPath 9.9.9 - filter format 1');
+    expect(filter.text).toContain('# FilterPath 9.9.9 - filter format 2');
     expect(filter.text).toMatch(/^# Presets: [a-f0-9]+$/m);
     expect(filter.fileName).toBe(
       'filterpath-necro-minions-leveling-soft.filter',

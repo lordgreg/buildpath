@@ -3,19 +3,28 @@ import type { Color, Rule, Style } from './types.ts';
 
 const INDENT = '    ';
 
-/**
- * A few registry names carry their own quotes (`"The Nameless Play"`). The
- * game matches BaseType by substring, so the name without them still selects
- * the card.
- */
 function quote(value: string): string {
-  return `"${value.replaceAll('"', '')}"`;
+  return `"${value}"`;
 }
 
 /** Every emitted line must be printable ASCII. */
 function blockProblem(lines: readonly string[]): string | null {
   if (lines.some((line) => !/^[\x20-\x7E]*$/.test(line))) {
     return 'it contains characters a filter cannot hold';
+  }
+  return null;
+}
+
+/**
+ * A quoted name cannot carry its own quote. Exact matching makes stripping
+ * unsafe, so such a block is left out rather than silently changed.
+ */
+function listProblem(rule: Rule): string | null {
+  for (const key of ['classNames', 'baseTypes', 'hasExplicitMod'] as const) {
+    const values = rule[key];
+    if (values?.some((value) => value.includes('"'))) {
+      return 'it contains a name with a quote';
+    }
   }
   return null;
 }
@@ -91,10 +100,10 @@ function ruleLines(rule: Rule): string[] {
   lines.push(rule.action);
 
   if (rule.classNames?.length) {
-    lines.push(`${INDENT}Class ${quoteList(rule.classNames)}`);
+    lines.push(`${INDENT}Class == ${quoteList(rule.classNames)}`);
   }
   if (rule.baseTypes?.length) {
-    lines.push(`${INDENT}BaseType ${quoteList(rule.baseTypes)}`);
+    lines.push(`${INDENT}BaseType == ${quoteList(rule.baseTypes)}`);
   }
   if (rule.rarity) {
     lines.push(`${INDENT}Rarity ${rule.rarity}`);
@@ -185,6 +194,11 @@ export function emitRulesWithSpans(rules: readonly Rule[]): {
     // this reports a generator bug.
     if (hasEmptyListCondition(rule)) {
       rejected.push({ rule, index, reason: 'an empty list condition matches nothing' });
+      return;
+    }
+    const unsafeName = listProblem(rule);
+    if (unsafeName) {
+      rejected.push({ rule, index, reason: unsafeName });
       return;
     }
     // Last line of defence: custom rules are cleaned in compileFilter, so this

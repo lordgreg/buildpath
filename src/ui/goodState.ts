@@ -12,9 +12,14 @@ export interface GoodState {
   customRules: Rule[];
 }
 
+export interface LoadedGoodState extends GoodState {
+  /** Class-name migrations applied while reading the stored rules. */
+  notices: string[];
+}
+
 const STORAGE_KEY = 'filterpath.good.v1';
 
-export function loadGoodState(): GoodState | null {
+export function loadGoodState(): LoadedGoodState | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
@@ -24,8 +29,8 @@ export function loadGoodState(): GoodState | null {
     } | null;
     if (!parsed || typeof parsed !== 'object') return null;
     const state = coerceWizardState((parsed.state ?? {}) as Partial<WizardState>);
-    const customRules = shapeRules(parsed.customRules).rules;
-    return { state, customRules };
+    const shaped = shapeRules(parsed.customRules);
+    return { state, customRules: shaped.rules, notices: shaped.notices };
   } catch {
     return null;
   }
@@ -33,7 +38,10 @@ export function loadGoodState(): GoodState | null {
 
 export function saveGoodState(good: GoodState): void {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(good));
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ state: good.state, customRules: good.customRules }),
+    );
   } catch {
     // Storage can be blocked or full; the in-memory state still works.
   }

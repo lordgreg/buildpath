@@ -35,7 +35,10 @@ import ResumePanel from './save/ResumePanel.tsx';
 import FolderGuidance from './save/FolderGuidance.tsx';
 import { useFiltersFolder } from './save/useFiltersFolder.ts';
 import { discardLegacyBuilds, type SavedBuild } from './presets/storage.ts';
-import { discardLegacyClones, loadCustomRules } from './rules/storage.ts';
+import {
+  discardLegacyClones,
+  loadCustomRulesWithNotices,
+} from './rules/storage.ts';
 import { copyText, downloadFilter } from './download.ts';
 import { useBuildSession } from './useBuildSession.ts';
 import {
@@ -116,12 +119,14 @@ export default function Wizard() {
     state,
     customRules,
     dirty,
+    notices,
     update,
     setRules,
     load,
     commit,
     reset,
     startNew,
+    clearNotices,
   } = useBuildSession();
   const [copied, setCopied] = useState<Copied>(null);
   const [codeInput, setCodeInput] = useState('');
@@ -141,6 +146,12 @@ export default function Wizard() {
       ? 'Old whole-set clones and saved builds were discarded. Presets now regenerate; re-save your build to keep its My rules.'
       : null;
   });
+
+  useEffect(() => {
+    if (notices.length === 0) return;
+    setNotice(notices.join(' '));
+    clearNotices();
+  }, [notices, clearNotices]);
 
   const baseFilter = useMemo(
     () =>
@@ -326,14 +337,14 @@ export default function Wizard() {
 
   const loadBuild = (build: SavedBuild) => {
     const loaded = { ...coerceWizardState(build.state), name: build.name };
-    const { rules } = shapeRules(build.customRules ?? []);
-    load(loaded, rules);
-    setActiveBuildId(build.id);
-    setNotice(
+    const { rules, notices } = shapeRules(build.customRules ?? []);
+    load(loaded, rules, [
       build.presetVersion === PRESET_VERSION
         ? `Loaded ${build.name}.`
         : `Loaded ${build.name}. Presets were refreshed to the latest version.`,
-    );
+      ...notices,
+    ]);
+    setActiveBuildId(build.id);
   };
 
   /** Loads a FilterPath file from the connected folder back into the builder. */
@@ -343,9 +354,9 @@ export default function Wizard() {
       return;
     }
     const loaded = parseWizardHash(`#${file.selection}`);
-    load(loaded, loadCustomRules(ruleKey(loaded)));
+    const { rules, notices } = loadCustomRulesWithNotices(ruleKey(loaded));
+    load(loaded, rules, [`Loaded ${file.name}.`, ...notices]);
     setActiveBuildId(null);
-    setNotice(`Loaded ${file.name}.`);
   };
 
   const importCode = async (code: string): Promise<string | null> => {
@@ -354,21 +365,22 @@ export default function Wizard() {
       const importedState = payload.state
         ? coerceWizardState(payload.state as Partial<WizardState>)
         : state;
-      const { rules, dropped } = shapeRules(
+      const { rules, dropped, notices } = shapeRules(
         payload.customRules ?? payload.rules ?? [],
       );
-      load(importedState, rules);
-      setActiveBuildId(null);
-      const skipped =
-        dropped > 0
-          ? ` ${dropped} malformed rule${dropped === 1 ? ' was' : 's were'} skipped.`
-          : '';
-      setNotice(
-        (payload.presetVersion === PRESET_VERSION
+      const messages = [
+        payload.presetVersion === PRESET_VERSION
           ? 'Imported build. Save it if you want to keep it locally.'
-          : 'Imported build with the latest presets. Save it if you want to keep it locally.') +
-          skipped,
-      );
+          : 'Imported build with the latest presets. Save it if you want to keep it locally.',
+        ...(dropped > 0
+          ? [
+              `${dropped} malformed rule${dropped === 1 ? ' was' : 's were'} skipped.`,
+            ]
+          : []),
+        ...notices,
+      ];
+      load(importedState, rules, messages);
+      setActiveBuildId(null);
       return null;
     } catch (error) {
       return error instanceof Error ? error.message : 'Could not read that code';

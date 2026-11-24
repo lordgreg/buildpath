@@ -1,4 +1,7 @@
-import known from '../data/known-base-types.json';
+import {
+  EMIT_SAFE_BASE_TYPES,
+  EMIT_SAFE_CLASSES,
+} from '../data/emit-safe.ts';
 import type {
   MinimapColor,
   MinimapShape,
@@ -9,8 +12,7 @@ import type {
   Style,
   StyleKind,
 } from '../filter/types.ts';
-
-const KNOWN_BASES = new Set(known.names);
+import { migrateRuleClasses } from './class-migration.ts';
 
 const LIST_KEYS = ['classNames', 'baseTypes', 'hasExplicitMod'] as const;
 type ListKey = (typeof LIST_KEYS)[number];
@@ -128,20 +130,27 @@ const NAMED_SOUNDS = new Set<string>([
 ] satisfies NamedAlertSound[]);
 
 function isPrintable(value: string): boolean {
-  return /^[\x20-\x7E]+$/.test(value) && value.trim() !== '';
+  return (
+    /^[\x20-\x7E]+$/.test(value) &&
+    value.trim() !== '' &&
+    !value.includes('"')
+  );
 }
 
 /**
- * Values the emitter can write without changing what they select. Anything
- * else is dropped, never altered: the game rejects the whole filter for a name
- * it does not know. A known base type may carry its own quotes (the emitter
- * strips them and the game still finds the card); other values may not.
+ * Values the emitter can write exactly. Anything else is dropped, never
+ * altered: the game rejects the whole filter for a name it does not know, and a
+ * quoted name would change under `==`. Class names must be in the registry;
+ * base names must also survive the emitter's quote handling.
  */
 function usableValues(key: ListKey, values: readonly string[]): string[] {
-  const safe = values.filter(isPrintable);
-  return key === 'baseTypes'
-    ? safe.filter((name) => KNOWN_BASES.has(name))
-    : safe.filter((value) => !value.includes('"'));
+  if (key === 'baseTypes') {
+    return values.filter((value) => EMIT_SAFE_BASE_TYPES.has(value));
+  }
+  if (key === 'classNames') {
+    return values.filter((value) => EMIT_SAFE_CLASSES.has(value));
+  }
+  return values.filter(isPrintable).filter((value) => !value.includes('"'));
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
@@ -213,7 +222,10 @@ export function customRuleProblem(rule: Rule): string | null {
       return `its ${LIST_LABELS[key]} list is empty. Add a value or delete the rule.`;
     }
     if (key === 'baseTypes') {
-      return `none of its base types are known (${values.join(', ')}). Fix the names or delete the rule.`;
+      return `none of its base types are known and safe to write (${values.join(', ')}). Fix the names or delete the rule.`;
+    }
+    if (key === 'classNames') {
+      return `none of its Classes values are known classes (${values.join(', ')}). Fix them or delete the rule.`;
     }
     return `none of its ${LIST_LABELS[key]} values can be written (only plain ASCII without quotes). Fix them or delete the rule.`;
   }
@@ -327,9 +339,20 @@ export function prepareCustomRules(rules: readonly Rule[]): {
  * editor and generator never meet a string where a list belongs. Unknown base
  * names are kept for the editor to show; a rule with a malformed field is
  * dropped whole rather than repaired, since dropping one field could widen it.
+ * Legacy class names are migrated to exact registered names here, on the read
+ * path, so the editor and generator only ever see names the game accepts.
  */
-export function shapeRules(input: unknown): { rules: Rule[]; dropped: number } {
-  if (!Array.isArray(input)) return { rules: [], dropped: 0 };
+export function shapeRules(input: unknown): {
+  rules: Rule[];
+  dropped: number;
+  notices: string[];
+} {
+  if (!Array.isArray(input)) return { rules: [], dropped: 0, notices: [] };
   const rules = input.filter(isWellFormed);
-  return { rules, dropped: input.length - rules.length };
+  const migration = migrateRuleClasses(rules);
+  return {
+    rules: migration.rules,
+    dropped: input.length - rules.length,
+    notices: migration.notices,
+  };
 }

@@ -6,6 +6,10 @@ import {
 } from '../../meta/index.ts';
 import knownBaseTypes from '../data/known-base-types.json';
 import knownClasses from '../data/known-classes.json';
+import {
+  EMIT_SAFE_BASE_TYPES,
+  EMIT_SAFE_CLASSES,
+} from '../data/emit-safe.ts';
 import { allSelections } from './all-selections.ts';
 import { generateFilter } from './generate.ts';
 import { STRICTNESS_ORDER } from './presets.ts';
@@ -95,5 +99,29 @@ describe('generated filters across every selection', () => {
 
     expect([...unknownClasses]).toEqual([]);
     expect([...unknownBases]).toEqual([]);
+  });
+
+  it('only emit names the emitter can write exactly', () => {
+    const unsafe = new Set<string>();
+
+    for (const { label, selection } of allSelections()) {
+      for (const phase of PHASES) {
+        for (const strictness of STRICTNESS_ORDER) {
+          const where = `${label} ${phase}/${strictness}`;
+          const filter = generateFilter({ selection, phase, strictness });
+
+          for (const rule of filter.rules) {
+            for (const name of rule.classNames ?? []) {
+              if (!EMIT_SAFE_CLASSES.has(name)) unsafe.add(`${where}: class ${name}`);
+            }
+            for (const name of rule.baseTypes ?? []) {
+              if (!EMIT_SAFE_BASE_TYPES.has(name)) unsafe.add(`${where}: base ${name}`);
+            }
+          }
+        }
+      }
+    }
+
+    expect([...unsafe]).toEqual([]);
   });
 });

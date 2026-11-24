@@ -58,6 +58,44 @@ describe('good state', () => {
     ]);
   });
 
+  it('migrates legacy class names and reports them', () => {
+    localStorage.setItem(
+      'filterpath.good.v1',
+      JSON.stringify({
+        state: DEFAULT_STATE,
+        customRules: [
+          { action: 'Show', id: 'custom-1', classNames: ['Swords'] },
+        ],
+      }),
+    );
+    const loaded = loadGoodState();
+    expect(loaded?.customRules[0]?.classNames).toEqual([
+      'One Hand Swords',
+      'Thrusting One Hand Swords',
+      'Two Hand Swords',
+    ]);
+    expect(loaded?.notices).toHaveLength(1);
+    expect(loaded?.notices[0]).toContain('"Swords" was expanded');
+  });
+
+  it('disables a rule whose class names are all unknown', () => {
+    localStorage.setItem(
+      'filterpath.good.v1',
+      JSON.stringify({
+        state: DEFAULT_STATE,
+        customRules: [
+          { action: 'Show', id: 'custom-1', classNames: ['Not A Class'] },
+        ],
+      }),
+    );
+    const loaded = loadGoodState();
+    expect(loaded?.customRules[0]).toMatchObject({
+      classNames: ['Not A Class'],
+      disabled: true,
+    });
+    expect(loaded?.notices.join(' ')).toContain('was disabled');
+  });
+
   it('drops malformed rules', () => {
     localStorage.setItem(
       'filterpath.good.v1',

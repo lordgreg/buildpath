@@ -18,8 +18,8 @@ describe('emitRules', () => {
       [
         '# wand',
         'Show',
-        '    Class "Wands"',
-        '    BaseType "Convoking Wand"',
+        '    Class == "Wands"',
+        '    BaseType == "Convoking Wand"',
         '    Rarity Rare',
         '    ItemLevel >= 10',
         '    SetFontSize 40',
@@ -29,11 +29,13 @@ describe('emitRules', () => {
     );
   });
 
-  it('strips quotes from values instead of producing broken syntax', () => {
-    const text = emitRules([
+  it('leaves out a block whose name carries its own quote', () => {
+    const { text, rejected } = emitRulesWithSpans([
       { action: 'Show', baseTypes: ['The "Best" Base'], rarity: 'Unique' },
     ]);
-    expect(text).toContain('BaseType "The Best Base"');
+    expect(text).toBe('\n');
+    expect(rejected).toHaveLength(1);
+    expect(rejected[0]?.reason).toContain('quote');
   });
 
   it('leaves out a block holding text a filter cannot contain', () => {

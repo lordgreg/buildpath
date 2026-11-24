@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import {
   discardLegacyClones,
   loadCustomRules,
+  loadCustomRulesWithNotices,
   saveCustomRules,
 } from './storage.ts';
 
@@ -32,6 +33,20 @@ describe('custom rule storage', () => {
     expect(loadCustomRules('a')).toEqual(rules);
     expect(loadCustomRules('b')).toHaveLength(1);
     expect(loadCustomRules('missing')).toEqual([]);
+  });
+
+  it('reports class-name migrations when loading', () => {
+    saveCustomRules('a', [
+      { action: 'Show', id: 'custom-1', classNames: ['Swords'] },
+    ]);
+    const { rules, notices } = loadCustomRulesWithNotices('a');
+    expect(rules[0]?.classNames).toEqual([
+      'One Hand Swords',
+      'Thrusting One Hand Swords',
+      'Two Hand Swords',
+    ]);
+    expect(notices).toHaveLength(1);
+    expect(notices[0]).toContain('"Swords" was expanded');
   });
 
   it('drops malformed entries and empty keys', () => {

@@ -49,10 +49,18 @@ function writeAll(rules: Record<string, Rule[]>): void {
   }
 }
 
-export function loadCustomRules(key: string): Rule[] {
+export function loadCustomRulesWithNotices(key: string): {
+  rules: Rule[];
+  notices: string[];
+} {
   // Names the game has since dropped are kept so the editor can show them;
   // the generator leaves them out. Only malformed rules are discarded here.
-  return shapeRules(readAll()[key] ?? []).rules;
+  const shaped = shapeRules(readAll()[key] ?? []);
+  return { rules: shaped.rules, notices: shaped.notices };
+}
+
+export function loadCustomRules(key: string): Rule[] {
+  return loadCustomRulesWithNotices(key).rules;
 }
 
 export function saveCustomRules(key: string, rules: Rule[]): void {

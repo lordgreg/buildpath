@@ -320,7 +320,7 @@ describe('parse-back round trip', () => {
     expect(compiled.skippedCustomRules.map((entry) => entry.reason)).toEqual([
       expect.stringMatching(/Base types list is empty/),
       expect.stringMatching(/none of its base types are known/),
-      expect.stringMatching(/none of its Classes values can be written/),
+      expect.stringMatching(/none of its Classes values are known classes/),
     ]);
 
     const custom = compiled.rules.filter((rule) => rule.section === 'custom');

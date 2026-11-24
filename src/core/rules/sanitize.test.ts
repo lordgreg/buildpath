@@ -154,11 +154,12 @@ describe('custom rule values', () => {
     expect(hostile.warnings).toEqual(plain.warnings);
   });
 
-  it('keep a known card name that carries its own quotes', () => {
-    const { rules } = prepareCustomRules([
+  it('skips a known card name that carries its own quotes', () => {
+    const { rules, skipped } = prepareCustomRules([
       { action: 'Show', baseTypes: ['"The Nameless Play"'] },
     ]);
-    expect(rules[0]!.baseTypes).toEqual(['"The Nameless Play"']);
+    expect(rules).toEqual([]);
+    expect(skipped[0]?.reason).toContain('none of its base types are known');
   });
 
   it('keep intentional catch-alls', () => {
@@ -262,7 +263,11 @@ describe('empty list conditions', () => {
 describe('shapeRules', () => {
   it('keeps well-formed rules, unknown names included', () => {
     const rule = { action: 'Hide', baseTypes: ['Serpent Wand'] };
-    expect(shapeRules([rule])).toEqual({ rules: [rule], dropped: 0 });
+    expect(shapeRules([rule])).toEqual({
+      rules: [rule],
+      dropped: 0,
+      notices: [],
+    });
   });
 
   it('drops rules whose fields have the wrong type', () => {
@@ -284,7 +289,15 @@ describe('shapeRules', () => {
   });
 
   it('treats anything but an array as no rules', () => {
-    expect(shapeRules({ action: 'Show' })).toEqual({ rules: [], dropped: 0 });
-    expect(shapeRules(undefined)).toEqual({ rules: [], dropped: 0 });
+    expect(shapeRules({ action: 'Show' })).toEqual({
+      rules: [],
+      dropped: 0,
+      notices: [],
+    });
+    expect(shapeRules(undefined)).toEqual({
+      rules: [],
+      dropped: 0,
+      notices: [],
+    });
   });
 });
