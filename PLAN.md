@@ -725,11 +725,13 @@ the compiled preset hash includes the economy snapshot, an economy-only deploy
 flags every connected filter as preset-stale, which is what the sync panel
 already reports.
 
-**Phase 6 - polish.** Compress `demo-ground.png` (2 MB, also on the builder);
-`tests.html` noindex; labels on unlabeled inputs; a test that `src/core` never
-imports React; docs drift (README status, "no simulator", "Four modes",
-removed reference path field, `ui/download.ts`, `core/share`, four Vite
-entries, annotated tags).
+**Phase 6 - polish (0.39.0). Done.** The loot-simulator background went from a
+2 MB truecolour PNG to a 574 KB 128-colour palette (RMSE 1.3%) on both the
+simulator and the builder preview. `tests.html` is `noindex`, the build-code,
+build-name and audit-filter inputs carry aria-labels, and a test walks `src/core`
+and fails on any React import. The README now matches the app: status, features,
+layout with the four Vite entries, the verified-snapshot rule instead of the
+removed reference path field, and the release steps.
 
 **Backlog.** Full accessibility pass, simulator list view for mobile, split
 `Wizard.tsx` and `AdvancedRules.tsx`, start-screen import, live My rules sync to

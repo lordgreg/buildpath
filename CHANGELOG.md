@@ -2,6 +2,19 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.39.0 — 2026-11-24
+
+Polish: a lighter background, labelled inputs and honest docs.
+
+- The loot-simulator background is 574 KB instead of 2 MB, with the same look,
+  and the builder preview loads the lighter file too.
+- The build-code, build-name and audit-filter inputs now have labels for screen
+  readers, and the behaviour audit page is kept out of search results.
+- A test fails if anything in src/core imports React, so the framework-free
+  boundary is enforced rather than assumed.
+- The README describes the builder as it is: current status, the four Vite
+  entries, the verified-snapshot folder rule and the release steps.
+
 ## 0.38.0 — 2026-11-24
 
 A quieter, safer economy pipeline.

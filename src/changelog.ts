@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.39.0',
+    date: '2026-11-24',
+    title: 'Polish: a lighter background, labelled inputs and honest docs',
+    notes: [
+      'The loot-simulator background is 574 KB instead of 2 MB, with the same look, and the builder preview loads the lighter file too.',
+      'The build-code, build-name and audit-filter inputs now have labels for screen readers, and the behaviour audit page is kept out of search results.',
+      'A test fails if anything in src/core imports React, so the framework-free boundary is enforced rather than assumed.',
+      'The README describes the builder as it is: current status, the four Vite entries, the verified-snapshot folder rule and the release steps.',
+    ],
+    commits: [],
+    compare: 'v0.38.0...v0.39.0',
+  },
+  {
     version: '0.38.0',
     date: '2026-11-24',
     title: 'A quieter, safer economy pipeline',
