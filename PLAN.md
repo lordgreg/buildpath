@@ -678,22 +678,26 @@ Eyes) are in the registry; the golden diff is 64 newly admitted bases and no
 removals; the behaviour summary did not change. Every economy tier name is now
 asserted against the registry.
 
-**Phase 3 - preset coverage (0.35.0, does not wait for Phase 2).**
+**Phase 3 - preset coverage (0.36.0). Done.**
 
-- Show Empower/Enlighten/Enhance before the gem quality cutoff.
+- Show Empower/Enlighten/Enhance before the gem quality cutoff. **Done.**
 - Show Large/Medium/Small Cluster Jewels at every rarity (hidden in every build
-  today); abyss jewels per family (open question).
+  today); abyss jewels per family (open question). **Done:** caster Hypnotic,
+  minion Ghastly, melee Murderous, bow and hybrid Searching, at every rarity.
 - Unique maps: early `Show Class == "Maps" Rarity Unique` with unique style;
-  the theme honours `styleKind` (fragment repaint in its own commit).
+  the theme honours `styleKind`. **Done**; the fragment repaint stays open.
 - Levelling 4-links: highlight Normal/Magic, keep below-floor rares, keep the
-  build's base targeting, exclude uniques.
+  build's base targeting, exclude uniques. **Done.**
 - Never hide 6-links: loud gear rule for non-uniques; unique 6-links after the
-  top-tier unique Shows, before the low-tier Hide.
+  top-tier unique Shows, before the low-tier Hide. **Done.**
 - Economy overrides applied offline (`economy.json` stays raw, overrides
   compiled into `presets.json`, category membership checked) and reviewed
-  floors for per-unit stackables, Stacked Deck and endgame fragments.
+  floors for per-unit stackables, Stacked Deck and endgame fragments. **Done.**
 - Leveling gems gate on `AreaLevel` if gems carry no `ItemLevel` (verify).
-- Register the veiled category in the audit catalog.
+  **Not needed:** dropped gems carry an item level, so the gate stays on
+  `ItemLevel`.
+- Register the veiled category in the audit catalog. **Already done** with the
+  0.32.0 veiled rules.
 
 **Phase 4 - builder bugs.** Typing spaces/commas in rule conditions; Item test
 in emitted order; From Scratch message (always says "visible"), veiled

@@ -2,6 +2,25 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.36.0 — 2026-11-24
+
+Cluster jewels, unique maps and link safety.
+
+- Large, Medium and Small Cluster Jewels are shown at every rarity. They were
+  hidden by every preset, because the jewel slot only targets the build's own
+  jewel bases.
+- Abyss jewels are shown too, one eye per build family: Hypnotic for casters,
+  Ghastly for minions, Murderous for melee, Searching for bows and hybrids.
+- Unique maps are always shown with unique styling, whatever the map tier
+  cutoff, and Empower, Enlighten and Enhance are shown before any gem quality or
+  level gate.
+- A 4-link is now kept for normal, magic and rare items while leveling,
+  including below the item level floors, and a six-linked unique is never
+  hidden by the low-tier unique cutoff.
+- Per-unit stacks are priced fairly: the Simulacrum and Timeless splinters and
+  Stacked Deck stay visible in strict. Economy overrides are now merged when the
+  presets are compiled, so a typo in an override fails the build.
+
 ## 0.35.0 — 2026-11-24
 
 Current game data and economy names that actually emit.
