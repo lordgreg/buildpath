@@ -170,6 +170,9 @@ if (!indexEntry) {
 }
 
 const existing = snapshot.skills.find((skill) => skill.name === skillName);
+// Only the fields given on the command line change; everything else the entry
+// already carries is kept, so an edit cannot silently drop a note, a share or
+// a loadout override.
 const entry = {
   id: slug(skillName),
   name: skillName,
@@ -181,14 +184,29 @@ const entry = {
     : existing?.ascendancyShares
       ? { ascendancyShares: existing.ascendancyShares }
       : {}),
-  ...(share !== undefined ? { playShare: Number(share) } : {}),
-  leveling: !flag('no-leveling'),
-  ...(weapon ? { weapon: { itemClasses: [weapon] } } : {}),
+  ...(share !== undefined
+    ? { playShare: Number(share) }
+    : existing?.playShare !== undefined
+      ? { playShare: existing.playShare }
+      : {}),
+  leveling: flag('no-leveling')
+    ? false
+    : existing?.leveling !== undefined
+      ? existing.leveling
+      : true,
+  ...(weapon
+    ? { weapon: { itemClasses: [weapon] } }
+    : existing?.weapon
+      ? { weapon: existing.weapon }
+      : {}),
   ...(flag('two-handed')
     ? { offhand: null }
     : offhand
       ? { offhand: { itemClasses: [offhand] } }
-      : {}),
+      : existing?.offhand !== undefined
+        ? { offhand: existing.offhand }
+        : {}),
+  ...(existing?.note ? { note: existing.note } : {}),
 };
 
 const existingIndex = snapshot.skills.findIndex(

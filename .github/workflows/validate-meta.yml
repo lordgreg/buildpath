@@ -32,5 +32,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: behaviour-audit
-          path: dist/tests.html
+          # The whole build, so tests.html loads its own scripts and styles when
+          # the artifact is opened locally.
+          path: dist
           if-no-files-found: error
