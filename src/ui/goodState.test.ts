@@ -96,7 +96,7 @@ describe('good state', () => {
     expect(loaded?.notices.join(' ')).toContain('was disabled');
   });
 
-  it('drops malformed rules', () => {
+  it('repairs a malformed field instead of dropping the rule', () => {
     localStorage.setItem(
       'filterpath.good.v1',
       JSON.stringify({
@@ -108,6 +108,7 @@ describe('good state', () => {
       }),
     );
     expect(loadGoodState()?.customRules).toEqual([
+      { action: 'Hide', baseTypes: ['Leather Belt'] },
       { action: 'Show', baseTypes: ['Leather Belt'] },
     ]);
   });

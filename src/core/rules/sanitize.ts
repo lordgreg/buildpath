@@ -6,6 +6,7 @@ import type {
   MinimapColor,
   MinimapShape,
   NamedAlertSound,
+  Range,
   Rarity,
   Rule,
   RuleSection,
@@ -191,6 +192,125 @@ function isWellFormed(value: unknown): value is Rule {
   return true;
 }
 
+/** A rule kept from stored or imported data, possibly disabled. */
+export interface SanitizedRule {
+  rule: Rule;
+  /** Set when the rule is kept but disabled, because a condition is unusable. */
+  problem?: string;
+}
+
+/** Absent returns `undefined`; unusable returns `null`. */
+function coerceList(value: unknown): string[] | undefined | null {
+  if (value === undefined) return undefined;
+  if (typeof value === 'string') return value.trim() === '' ? [] : [value];
+  if (!Array.isArray(value)) return null;
+  return value.filter((entry): entry is string => typeof entry === 'string');
+}
+
+function coerceNumber(value: unknown): number | null {
+  if (typeof value === 'number') {
+    return Number.isFinite(value) ? value : null;
+  }
+  if (typeof value === 'string' && value.trim() !== '') {
+    const number = Number(value);
+    return Number.isFinite(number) ? number : null;
+  }
+  return null;
+}
+
+/** Absent returns `undefined`; unusable returns `null`. */
+function coerceRange(value: unknown): Range | undefined | null {
+  if (value === undefined) return undefined;
+  if (!isPlainObject(value)) return null;
+  const range: Range = {};
+  for (const key of ['min', 'max'] as const) {
+    const raw = value[key];
+    if (raw === undefined) continue;
+    const number = coerceNumber(raw);
+    if (number === null) return null;
+    range[key] = number;
+  }
+  return range;
+}
+
+/** Absent returns `undefined`; unusable returns `null`. */
+function coerceBoolean(value: unknown): boolean | undefined | null {
+  if (value === undefined) return undefined;
+  if (typeof value === 'boolean') return value;
+  if (value === 'true') return true;
+  if (value === 'false') return false;
+  return null;
+}
+
+/**
+ * Repairs the structure of one stored or imported rule. It never throws and
+ * returns null only for a value that is not a rule at all. A field it cannot
+ * repair is not silently removed: the rule is kept and disabled, so the editor
+ * shows it instead of the filter quietly changing what it selects.
+ */
+export function sanitizeRule(input: unknown): SanitizedRule | null {
+  if (!isPlainObject(input)) return null;
+  if (input.action !== 'Show' && input.action !== 'Hide') return null;
+
+  const draft: Record<string, unknown> = { action: input.action };
+  const problems: string[] = [];
+
+  for (const key of STRING_KEYS) {
+    const value = input[key];
+    if (value !== undefined && typeof value === 'string') draft[key] = value;
+  }
+
+  for (const key of LIST_KEYS) {
+    const values = coerceList(input[key]);
+    if (values === undefined) continue;
+    if (values === null) {
+      problems.push(`${LIST_LABELS[key]} is not a list of names`);
+      continue;
+    }
+    draft[key] = values;
+  }
+
+  const chips = coerceList(input.chips);
+  if (chips) draft.chips = chips;
+
+  for (const key of RANGE_KEYS) {
+    const range = coerceRange(input[key]);
+    if (range === undefined) continue;
+    if (range === null) {
+      problems.push(`${RANGE_LABELS[key]} is not a number`);
+      continue;
+    }
+    draft[key] = range;
+  }
+
+  for (const key of BOOLEAN_KEYS) {
+    const flag = coerceBoolean(input[key]);
+    if (flag === undefined) continue;
+    if (flag === null) {
+      problems.push(`${key} is not true or false`);
+      continue;
+    }
+    draft[key] = flag;
+  }
+
+  if (input.rarity !== undefined) {
+    if (typeof input.rarity === 'string') {
+      draft.rarity = input.rarity;
+    } else {
+      problems.push('rarity is not a name');
+    }
+  }
+
+  // A style is presentation, not a condition: an unreadable one is dropped.
+  if (isPlainObject(input.style)) {
+    draft.style = cleanStyle(input.style);
+  }
+
+  if (problems.length > 0) draft.disabled = true;
+  const rule = draft as unknown as Rule;
+  return { rule, ...(problems.length > 0 ? { problem: problems.join(', ') } : {}) };
+}
+
 /**
  * Why a custom rule cannot be written as it stands, or null when it can. A
  * rule is never written with a condition removed or a value altered: that
@@ -335,12 +455,13 @@ export function prepareCustomRules(rules: readonly Rule[]): {
 }
 
 /**
- * Keeps only structurally sound rules from stored or imported data, so the
- * editor and generator never meet a string where a list belongs. Unknown base
- * names are kept for the editor to show; a rule with a malformed field is
- * dropped whole rather than repaired, since dropping one field could widen it.
- * Legacy class names are migrated to exact registered names here, on the read
- * path, so the editor and generator only ever see names the game accepts.
+ * Keeps every rule that is a rule at all from stored or imported data. Each
+ * one is structurally repaired by `sanitizeRule`, so the editor and generator
+ * never meet a string where a list belongs. Unknown base names are kept for the
+ * editor to show; a value that is not a rule is dropped and counted, and a
+ * condition that cannot be repaired disables its rule with a notice rather than
+ * removing the condition. Legacy class names are migrated to exact registered
+ * names here, on the read path.
  */
 export function shapeRules(input: unknown): {
   rules: Rule[];
@@ -348,11 +469,29 @@ export function shapeRules(input: unknown): {
   notices: string[];
 } {
   if (!Array.isArray(input)) return { rules: [], dropped: 0, notices: [] };
-  const rules = input.filter(isWellFormed);
+
+  const rules: Rule[] = [];
+  const notices: string[] = [];
+  let dropped = 0;
+
+  for (const entry of input) {
+    const sanitized = sanitizeRule(entry);
+    if (!sanitized) {
+      dropped += 1;
+      continue;
+    }
+    if (sanitized.problem) {
+      notices.push(
+        `Rule "${sanitized.rule.comment?.trim() || sanitized.rule.id || 'custom rule'}" is disabled: ${sanitized.problem}.`,
+      );
+    }
+    rules.push(sanitized.rule);
+  }
+
   const migration = migrateRuleClasses(rules);
   return {
     rules: migration.rules,
-    dropped: input.length - rules.length,
-    notices: migration.notices,
+    dropped,
+    notices: [...notices, ...migration.notices],
   };
 }

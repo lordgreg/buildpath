@@ -270,8 +270,8 @@ describe('shapeRules', () => {
     });
   });
 
-  it('drops rules whose fields have the wrong type', () => {
-    const { rules, dropped } = shapeRules([
+  it('drops values that are not rules and repairs the rest', () => {
+    const { rules, dropped, notices } = shapeRules([
       null,
       'Show',
       { action: 'Delete' },
@@ -282,10 +282,54 @@ describe('shapeRules', () => {
       { action: 'Hide', style: 'loud' },
       { action: 'Show', classNames: ['Rings'], itemLevel: { min: 80 } },
     ]);
+
     expect(rules).toEqual([
+      { action: 'Hide', baseTypes: ['Serpent Wand'] },
+      { action: 'Hide', classNames: ['Rings'] },
+      { action: 'Hide', disabled: true },
+      { action: 'Hide', corrupted: true },
+      { action: 'Hide' },
       { action: 'Show', classNames: ['Rings'], itemLevel: { min: 80 } },
     ]);
-    expect(dropped).toBe(8);
+    expect(dropped).toBe(3);
+    expect(notices).toEqual([
+      expect.stringContaining('item level is not a number'),
+    ]);
+  });
+
+  it('never drops a condition it can read', () => {
+    const { rules, notices } = shapeRules([
+      {
+        action: 'Show',
+        rarity: 'Rare',
+        itemLevel: { min: '80', max: '90' },
+        quality: { min: '5' },
+        sockets: { min: '3' },
+        corrupted: 'false',
+        identified: 'true',
+        continue: 'true',
+        baseTypes: 'Leather Belt',
+        classNames: ['Rings', 3],
+        comment: 42,
+        extra: 'ignored',
+      },
+    ]);
+
+    expect(notices).toEqual([]);
+    expect(rules).toEqual([
+      {
+        action: 'Show',
+        rarity: 'Rare',
+        itemLevel: { min: 80, max: 90 },
+        quality: { min: 5 },
+        sockets: { min: 3 },
+        corrupted: false,
+        identified: true,
+        continue: true,
+        baseTypes: ['Leather Belt'],
+        classNames: ['Rings'],
+      },
+    ]);
   });
 
   it('treats anything but an array as no rules', () => {
