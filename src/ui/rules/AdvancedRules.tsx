@@ -8,6 +8,7 @@ import known from '../../core/data/known-base-types.json';
 import { evaluateRules } from '../../core/preview/match.ts';
 import { TEMPLATES } from '../../core/rules/templates.ts';
 import { rulesOverlap, templateIsCovered } from '../../core/rules/coverage.ts';
+import { emittedRuleOrder } from '../../core/rules/order.ts';
 import { focusTargetAt } from '../../core/rules/focus.ts';
 import { customRuleProblem } from '../../core/rules/sanitize.ts';
 import { hasEmptyListCondition } from '../../core/filter/rule-lists.ts';
@@ -786,7 +787,7 @@ export default function AdvancedRules({
       setTestResult('No item block found.');
       return;
     }
-    const result = evaluateRules([...customRules, ...baseRules], item);
+    const result = evaluateRules(emittedRuleOrder(baseRules, customRules), item);
     setTestResult(
       `${result.shown ? 'Shown' : 'Hidden'} by ${
         result.index >= 0 ? `rule #${result.index + 1}` : 'default'
