@@ -28,6 +28,8 @@ import { APP_VERSION } from '../version.ts';
 import { decodeShare, encodeShare } from '../core/share/codec.ts';
 import { shapeRules } from '../core/rules/sanitize.ts';
 import FilterPreview from './FilterPreview.tsx';
+import CollapseChevron from './CollapseChevron.tsx';
+import { usePersistedOpen } from './usePersistedOpen.ts';
 import ThemePreview from './demo/ThemePreview.tsx';
 import AdvancedRules, { type RulePrefill } from './rules/AdvancedRules.tsx';
 import SaveBuildPanel from './save/SaveBuildPanel.tsx';
@@ -135,6 +137,7 @@ export default function Wizard() {
   const [metaGrouping, setMetaGrouping] = useState<'family' | 'weight'>(
     'family',
   );
+  const [installOpen, setInstallOpen] = usePersistedOpen('install-open');
   const isStart = state.mode === 'start';
   const autoName = isStart ? '' : autoBuildName(asSelected(state));
   const folder = useFiltersFolder();
@@ -1164,9 +1167,16 @@ export default function Wizard() {
           </>
         )}
 
-        <details className="rounded-xl border border-ink-700 bg-ink-800/40 p-4 text-sm">
-          <summary className="cursor-pointer text-zinc-200">
-            How to install
+        <details
+          open={installOpen}
+          onToggle={(event) => setInstallOpen(event.currentTarget.open)}
+          className="rounded-xl border border-ink-700 bg-ink-800/40 p-4 text-sm"
+        >
+          <summary className="flex cursor-pointer flex-wrap items-center gap-x-3 gap-y-1">
+            <span className="flex items-center gap-2 text-sm font-medium text-white">
+              <CollapseChevron open={installOpen} />
+              How to install
+            </span>
           </summary>
           <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-xs leading-relaxed text-zinc-400">
             <li>Download the file.</li>
