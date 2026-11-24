@@ -8,6 +8,7 @@ import known from '../../core/data/known-base-types.json';
 import { evaluateRules } from '../../core/preview/match.ts';
 import { TEMPLATES } from '../../core/rules/templates.ts';
 import { rulesOverlap, templateIsCovered } from '../../core/rules/coverage.ts';
+import { focusTargetAt } from '../../core/rules/focus.ts';
 import { customRuleProblem } from '../../core/rules/sanitize.ts';
 import { hasEmptyListCondition } from '../../core/filter/rule-lists.ts';
 import {
@@ -502,10 +503,14 @@ export default function AdvancedRules({
   const [testText, setTestText] = useState('');
   const [testResult, setTestResult] = useState<string | null>(null);
   const [dragged, setDragged] = useState<number | null>(null);
-  const [highlightId, setHighlightId] = useState<string | null>(null);
+  const [highlightKey, setHighlightKey] = useState<string | null>(null);
+  // A deep link from the loot simulator waits here until the section is open:
+  // content inside a closed <details> cannot be scrolled to.
+  const [pendingFocus, setPendingFocus] = useState(
+    prefill !== undefined || focusIndex !== undefined,
+  );
   const editorRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Record<string, HTMLDetailsElement | null>>({});
-  const focusedRef = useRef(false);
 
   const scratch = baseRules.some((rule) => rule.id === 'scratch-base');
   const locked = groupRules(
@@ -531,45 +536,50 @@ export default function AdvancedRules({
     [customRules, presetRules],
   );
 
-  const jumpToRule = (rule: Rule) => {
-    if (!rule.id) return;
-    const custom = rule.section === 'custom';
-    if (!custom && rule.section) {
-      sectionRefs.current[rule.section]?.setAttribute('open', '');
-    }
-    setHighlightId(rule.id);
+  const reveal = (elementId: string, key: string) => {
+    setHighlightKey(key);
     requestAnimationFrame(() => {
       document
-        .getElementById(`${custom ? 'custom' : 'preset'}-rule-${rule.id}`)
+        .getElementById(elementId)
         ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
-    window.setTimeout(() => setHighlightId(null), 2500);
+    window.setTimeout(() => setHighlightKey(null), 2500);
+  };
+
+  const jumpToPresetRule = (rule: Rule) => {
+    if (!rule.id) return;
+    if (rule.section) sectionRefs.current[rule.section]?.setAttribute('open', '');
+    reveal(`preset-rule-${rule.id}`, `preset:${rule.id}`);
+  };
+
+  const jumpToCustomRule = (index: number) => {
+    const key = customRules[index]?.id ?? String(index);
+    reveal(`custom-rule-${key}`, `custom:${key}`);
   };
 
   // Deep link from the loot simulator: reveal the deciding rule, or seed the
-  // editor from the item that was pasted.
+  // editor from the item that was pasted. Opens the section first, then acts
+  // once it has rendered open.
   useEffect(() => {
-    if (focusedRef.current) return;
-    const customCount = customRules.length;
-    if (prefill || focusIndex !== undefined) setOpen(true);
+    if (!pendingFocus) return;
+    if (!open) {
+      setOpen(true);
+      return;
+    }
+    setPendingFocus(false);
     if (prefill) {
-      editorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      focusedRef.current = true;
+      requestAnimationFrame(() => {
+        editorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
       return;
     }
     if (focusIndex === undefined) return;
-    const target =
-      focusIndex < 1 + customCount
-        ? focusIndex === 0
-          ? baseRules[0]
-          : customRules[focusIndex - 1]
-        : baseRules[focusIndex - customCount];
-    if (!target) return;
-    focusedRef.current = true;
-    jumpToRule(target);
-    // Runs once for the deep link; later edits must not re-scroll.
+    const target = focusTargetAt(focusIndex, baseRules, customRules);
+    if (target?.kind === 'custom') jumpToCustomRule(target.index);
+    else if (target) jumpToPresetRule(target.rule);
+    // Runs for the deep link only; later edits must not re-scroll.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [open, pendingFocus]);
   const coveredTemplates = new Set(
     TEMPLATES.filter((template) => templateIsCovered(template, baseRules)).map(
       (template) => template.id,
@@ -1094,7 +1104,7 @@ export default function AdvancedRules({
                 onDrop={() => drop(index)}
                 className={cx(
                   'rounded-lg border bg-ink-900/50 p-2.5 transition-colors',
-                  highlightId === rule.id
+                  highlightKey === `custom:${rule.id ?? index}`
                     ? 'border-gold-400 ring-2 ring-gold-400/40'
                     : 'border-ink-700',
                   rule.disabled && 'opacity-50',
@@ -1174,7 +1184,7 @@ export default function AdvancedRules({
                     Overrides preset{' '}
                     <button
                       type="button"
-                      onClick={() => jumpToRule(overrides[index]![0]!)}
+                      onClick={() => jumpToPresetRule(overrides[index]![0]!)}
                       className="underline underline-offset-2 hover:text-amber-100"
                     >
                       {overrides[index]![0]!.comment ??
@@ -1286,7 +1296,7 @@ export default function AdvancedRules({
                         id={`preset-rule-${rule.id}`}
                         className={cx(
                           'flex items-start gap-2 rounded px-1 text-[11px] text-zinc-500 transition-colors',
-                          highlightId === rule.id &&
+                          highlightKey === `preset:${rule.id}` &&
                             'bg-gold-400/10 ring-1 ring-gold-400/40',
                         )}
                       >
