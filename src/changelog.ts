@@ -17,6 +17,16 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.34.1',
+    date: '2026-11-24',
+    title: 'Install help collapses like the other panels',
+    notes: [
+      'The "How to install" section now uses the same chevron as Advanced rules and Generated filter, and remembers whether you left it open.',
+    ],
+    commits: [],
+    compare: 'v0.34.0...v0.34.1',
+  },
+  {
     version: '0.34.0',
     date: '2026-11-24',
     title: 'Exact matching and safe folder updates',

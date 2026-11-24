@@ -2,6 +2,13 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.34.1 — 2026-11-24
+
+Install help collapses like the other panels.
+
+- The "How to install" section now uses the same chevron as Advanced rules and
+  Generated filter, and remembers whether you left it open.
+
 ## 0.34.0 — 2026-11-24
 
 Exact matching and safe folder updates.
