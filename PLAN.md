@@ -745,24 +745,25 @@ general editor), "create rule from item" in Item test (the simulator has it).
 
 ### Product decisions
 
-- `standard.yaml` is a seed duplicate of the Covens seed; decide whether to keep
-  it as a fallback or drop it.
-- The `defaultFamily` assigned to each of the three new ascendancies (Warden →
-  bow, Luminary and Reliquarian → caster) is a first guess; revisit it against
-  the league.
-- Behaviour audit: the Scion ladder currently has three entries (Ascendant,
-  Luminary, Reliquarian); confirm this is intended for the target league and
-  pin it in `ascendancies.expected.ts`.
-- Use `==` for every `Class` and `BaseType` (recommended: yes).
-- Move base data to the maintained RePoE fork pinned by SHA (recommended: yes,
-  as its own release).
-- Names that are not plain ASCII (`Maelström Staff`): drop from emission,
-  never transliterate (recommended: yes).
-- Levelling hides every white and every mana flask for every build: intended?
-- After a release every other build's file counts as outdated and can be
-  bulk-removed: keep, with the file list in the confirmation (recommended).
-- Abyss jewels per family: caster Hypnotic Eye, minion Ghastly Eye, melee
-  Murderous Eye, bow Searching Eye (recommended).
+All previously open product decisions are settled:
+
+- `standard.yaml` stays as the Standard fallback snapshot. It is an older,
+  smaller subset of the Covens seed (20 skills against 30); refreshing it is
+  routine capture work, not a code question.
+- The `defaultFamily` guesses are accepted: Warden → bow (a Ranger ascendancy),
+  Luminary and Reliquarian → caster (Scion has no inherent profile). The field
+  itself is required: ascendancy mode builds its whole gear profile from it.
+- The Scion ladder (Ascendant, Luminary, Reliquarian) is confirmed correct for
+  the target league and stays pinned in `ascendancies.expected.ts`.
+- `==` for every `Class` and `BaseType`: done in 0.34.0, confirmed in game.
+- Base data from the maintained RePoE fork pinned by SHA: done in 0.35.0.
+- Non-ASCII base names are dropped from emission, never transliterated: done.
+- Levelling keeps hiding white gear, and mana flasks now get the same slot
+  treatment as life flasks while levelling (0.40.0). Endgame still hides them.
+- Bulk removal of outdated filters lists every file in the confirmation: done
+  in 0.33.2.
+- Abyss jewels per family: caster Hypnotic, minion Ghastly, melee Murderous,
+  bow and hybrid Searching: done in 0.36.0.
 
 ### Manual validation
 

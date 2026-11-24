@@ -158,21 +158,41 @@ const VEILED_RULE: Rule = {
   },
 };
 
+const MANA_FLASK = 'Mana Flask';
+
+/**
+ * While leveling, a fresh character drinks mana flasks as much as life flasks,
+ * so they get the same slot treatment. Endgame profiles never use them.
+ */
+function withLevelingFlasks(archetype: Archetype, phase: Phase): Archetype {
+  if (phase !== 'leveling') return archetype;
+  const flask = archetype.slots.flask;
+  if (!flask || flask.itemClasses.includes(MANA_FLASK)) return archetype;
+  return {
+    ...archetype,
+    slots: {
+      ...archetype.slots,
+      flask: { ...flask, itemClasses: [...flask.itemClasses, MANA_FLASK] },
+    },
+  };
+}
+
 /**
  * Builds the rule list without serialising it. The preview matcher consumes
  * the same rules the filter is generated from, so they cannot drift.
  */
 export function compileFilter(config: FilterConfig): CompiledFilter {
-  const archetype = config.selection
+  const resolved = config.selection
     ? resolveBuild(config.selection)
     : getArchetype(config.archetypeId ?? '');
-  if (!archetype) {
+  if (!resolved) {
     throw new Error(
       config.archetypeId
         ? `Unknown archetype "${config.archetypeId}"`
         : 'Provide either a selection or an archetypeId',
     );
   }
+  const archetype = withLevelingFlasks(resolved, config.phase);
 
   const preset = getPreset(config.phase, config.strictness);
   const sections = normalizeSections(config.sections);
