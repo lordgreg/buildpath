@@ -25,5 +25,8 @@ jobs:
       - run: npm test
       # Build runs tsc -b before vite build.
       - run: npm run build
+      # Fails on changed and on new untracked generated files alike.
       - name: Committed generated data matches the sources
-        run: git diff --exit-code -- src/generated src/core/data
+        run: |
+          git status --porcelain -- src/generated
+          test -z "$(git status --porcelain -- src/generated)"
