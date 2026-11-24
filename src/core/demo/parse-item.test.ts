@@ -130,4 +130,29 @@ Take this to the Wickerman in a town or hideout to attach it.`);
   it('ignores text without an item class', () => {
     expect(parseItemText('hello world')).toEqual([]);
   });
+
+  it('reads thousands separators in numeric fields', () => {
+    const [item] = parseItemText(`Item Class: Stackable Currency
+Rarity: Currency
+Chaos Orb
+--------
+Stack Size: 1,234/5,000
+--------
+Item Level: 1,000`);
+    expect(item).toMatchObject({ stackSize: 1234, itemLevel: 1000 });
+  });
+
+  it('uses the base line of a magic item when it is present', () => {
+    const [item] = parseItemText(`Item Class: Rings
+Rarity: Magic
+Sorrow Twine
+Amethyst Ring
+--------
+Item Level: 70`);
+    expect(item).toMatchObject({
+      name: 'Sorrow Twine',
+      baseType: 'Amethyst Ring',
+      rarity: 'Magic',
+    });
+  });
 });

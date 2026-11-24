@@ -56,9 +56,18 @@ function parseSockets(value: string | undefined): {
   return { sockets, linkedSockets };
 }
 
+/** Numbers in a copied block may carry thousands separators. */
+function count(value: string | undefined): number | undefined {
+  if (!value) return undefined;
+  const parsed = Number.parseInt(value.replace(/[,\s]/g, ''), 10);
+  return Number.isFinite(parsed) ? parsed : undefined;
+}
+
 /**
  * Parses one or more copied item blocks from the game. Rare and unique items
- * use the second line as the base type; normal quality prefixes are stripped.
+ * use the second line as the base type, and a magic item pasted with its base
+ * line does the same; otherwise the name is the base, with a quality prefix
+ * stripped.
  */
 export function parseItemText(text: string): PreviewItem[] {
   const normalized = text.replace(/\r\n/g, '\n');
@@ -87,18 +96,16 @@ export function parseItemText(text: string): PreviewItem[] {
     const names = nameLines(lines);
     if (names.length === 0) continue;
 
-    const isRare = rarity === 'Rare' || rarity === 'Unique';
+    const named = rarity === 'Rare' || rarity === 'Unique' || rarity === 'Magic';
     const name = names[0]!;
     const baseType = (
-      isRare && names[1] ? names[1] : name.replace(/^Superior\s+/i, '')
+      named && names[1] ? names[1] : name.replace(/^Superior\s+/i, '')
     ).trim();
 
     const sockets = parseSockets(field(lines, 'Sockets'));
     const quality = field(lines, 'Quality');
     const stack = field(lines, 'Stack Size');
-    const stackSize = stack
-      ? Number.parseInt(stack.split('/')[0]!, 10)
-      : undefined;
+    const stackSize = stack ? count(stack.split('/')[0]) : undefined;
     const mapTier = field(lines, 'Map Tier');
     const explicitMods = lines
       .map((line) => EXPLICIT_MOD.exec(line)?.[1])
@@ -110,15 +117,11 @@ export function parseItemText(text: string): PreviewItem[] {
       itemClass,
       baseType,
       rarity,
-      itemLevel: Number(field(lines, 'Item Level') ?? 0),
+      itemLevel: count(field(lines, 'Item Level')) ?? 0,
       ...(sockets.sockets !== undefined ? sockets : {}),
-      ...(quality
-        ? { quality: Number(quality.replace(/[^\d]/g, '')) }
-        : {}),
-      ...(stackSize !== undefined && Number.isFinite(stackSize)
-        ? { stackSize }
-        : {}),
-      ...(mapTier ? { mapTier: Number(mapTier) } : {}),
+      ...(quality ? { quality: count(quality.replace(/[^\d,]/g, '')) } : {}),
+      ...(stackSize !== undefined ? { stackSize } : {}),
+      ...(mapTier ? { mapTier: count(mapTier) } : {}),
       ...(explicitMods.length ? { explicitMods } : {}),
       corrupted: lines.includes('Corrupted'),
       identified: !lines.includes('Unidentified'),
