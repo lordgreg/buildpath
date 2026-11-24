@@ -619,13 +619,15 @@ skipped instead of becoming catch-alls; custom rules validated fail-closed in
 `compileFilter`; MinimapIcon/PlayEffect colours per GGG; loot simulator links
 open Advanced rules and map the rule index correctly (`core/rules/focus.ts`).
 
-**Phase 1 - exact matching and safe sync (0.34.0).**
+**Phase 1 - exact matching and safe sync (0.34.0, code done; release waits on
+the in-game smoke test).**
 
 - Registries: reviewed `known-classes.json` (the game rejects unknown classes
   too) and an emit-safe name set; one all-selections test helper covering every
-  skill x ascendancy pair and both scratch starts.
+  skill x ascendancy pair and both scratch starts. **Done.**
 - Parse-back test: emitted text, parsed by `validate.ts`, must equal
   `compiled.rules` field by field for all selections and hostile custom rules.
+  **Done.**
 - Emit `Class ==` / `BaseType ==`. Without `==` the game matches substrings:
   `Hide BaseType "Gold"` hides unique Gold Flask, Golden Mask and Gold Ring;
   card hides `"Hope"`, `"Hubris"`, `"Death"` hide Mortal Hope, Hubris Circlet,
@@ -633,17 +635,22 @@ open Advanced rules and map the rule index correctly (`core/rules/focus.ts`).
   "Veil"` stays a contains-match. Legacy partial classes expand to every
   containing registry class with a notice; registered terms narrow (`Daggers`
   no longer matches `Rune Daggers`) and are flagged. Bump
-  `FILTER_FORMAT_VERSION`. Gate: in-game smoke test, incl. `Class ==
-  "Viscera"`.
+  `FILTER_FORMAT_VERSION`. **Done (format 2)**; the gate below is open.
 - Structural `sanitizeRule` on decode and storage read: coerce, never throw,
-  never drop a condition; bounded decompression; v1 codes keep working.
+  never drop a condition; bounded decompression; v1 codes keep working. **Done.**
 - Re-enable automatic folder writes from a verified per-file snapshot
   (selection, the exact My rules written, text hash) stored next to the
   directory handle: current file only, header must round-trip, skipped in
-  import sessions; ask before an import replaces existing My rules.
+  import sessions; ask before an import replaces existing My rules. **Done.**
 - Preview parity: currency, gems and cards count as `Rarity Normal`; missing
   sockets/links/quality are 0 and stack size 1 (done). `Continue` keeps earlier
   style still needs the in-game check before it is modelled.
+
+**Release gate for 0.34.0.** The exact-match syntax and format 2 are the first
+change the game can reject outright, so the release waits on one in-game smoke
+test: load a generated filter, confirm `Class == "Viscera"` and a
+`BaseType ==` list behave, and check that a `Hide BaseType == "Gold"` rule no
+longer hides Gold Flask, Golden Mask or Gold Ring.
 
 **Phase 2 - base data source (own release, needs a decision).** Move
 `extract:repoe` from the frozen `brather1ng/RePoE` (no pushes since 2022, no
