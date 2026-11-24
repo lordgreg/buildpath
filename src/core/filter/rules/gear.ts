@@ -172,14 +172,18 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
     }
 
     if (preset.gear.highlightLinks && SOCKET_SLOTS.has(slot)) {
-      rules.push({
-        action: 'Show',
-        comment: `4+ links (${slot})`,
-        ...target,
-        rarity: 'Normal',
-        linkedSockets: { min: 4 },
-        style: SLOT_STYLES.link,
-      });
+      // Links matter more than the item level floor, so every rarity the build
+      // can craft on keeps its highlight; uniques are handled separately.
+      for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
+        rules.push({
+          action: 'Show',
+          comment: `${slot} - ${rarity.toLowerCase()} 4+ links`,
+          ...target,
+          rarity,
+          linkedSockets: { min: 4 },
+          style: SLOT_STYLES.link,
+        });
+      }
     }
   }
 

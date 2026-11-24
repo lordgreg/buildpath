@@ -59,6 +59,17 @@ export function uniqueRules(preset: Preset): Rule[] {
     });
   }
 
+  // A six-linked unique is worth keeping even on a cheap base, so this runs
+  // before the low-tier hide below.
+  rules.push({
+    action: 'Show',
+    comment: 'Uniques - six links',
+    rarity: 'Unique',
+    linkedSockets: { min: 6 },
+    styleKind: 'unique',
+    style: SLOT_STYLES.unique,
+  });
+
   // Runs before the class and generic show rules so cheap bases actually stay
   // hidden. Normal and Strict keep every unique (cutoff 3 -> empty list).
   const lowTierBases = basesAboveTier(preset.uniques.maxVisibleTier);

@@ -5,7 +5,7 @@
 # Phase: Endgame - Uber
 # League: Covens
 # Presets: 1efbf3b2952f
-# Rules: 71 - Base types: 64
+# Rules: 72 - Base types: 64
 # Base data: RePoE 1d825f53356023dee0fbb3ec23d94057da8fe0ac (4f01123d)
 # Generated at https://lordgreg.github.io/filterpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -563,6 +563,17 @@ Show
     SetBorderColor 255 166 0 255
     SetBackgroundColor 58 11 46 255
     PlayAlertSound 6 300
+    MinimapIcon 1 Red Star
+
+# Uniques - six links
+Show
+    Rarity Unique
+    LinkedSockets >= 6
+    SetFontSize 40
+    SetTextColor 255 166 0 255
+    SetBorderColor 255 166 0 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 4 200
     MinimapIcon 1 Red Star
 
 # Uniques - low tier bases
