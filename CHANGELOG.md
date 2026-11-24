@@ -2,6 +2,35 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.34.0 — 2026-11-24
+
+Exact matching and safe folder updates.
+
+- Class and BaseType conditions now use exact matching. The game used to match
+  them as substrings, so a rule aimed at "Gold" also caught Golden Mask and Gold
+  Ring, "Hope" caught Mortal Hope, and "Ring" gave every unique ring the
+  top-tier alert. Filters carry filter format 2; existing filters are flagged as
+  outdated and one Save brings them to the new format.
+- A connected folder can update its outdated filter automatically again, but
+  only from a verified snapshot: the builder must still hold the same build and
+  My rules the file was written with, the file must still be the exact one
+  FilterPath wrote, and the new header must read back as expected. Anything else
+  is reported for you to check and save.
+- Older custom rules that used partial class names (such as "Swords") are
+  expanded to the real classes, and a class that now matches less than before is
+  flagged. A rule whose class names are all unknown is disabled instead of
+  silently widened.
+- Stored and imported rules are repaired rather than discarded: a single name
+  becomes a one-item list, numeric text becomes numbers, and a condition that
+  cannot be repaired disables just that rule. Share codes are size-limited on
+  both ends, so a hostile code cannot expand without bound. Existing build codes
+  keep working.
+- Importing a code over a build that already has My rules asks before replacing
+  them.
+- The item preview treats currency, gems and divination cards as normal-rarity
+  items and reports missing sockets, links, quality and stack size the way the
+  game does.
+
 ## 0.33.2 — 2026-11-24
 
 Loot simulator links open the right rule.
