@@ -235,6 +235,44 @@ describe('filter files', () => {
     expect(await readFilterText(handle, 'missing.filter')).toBeNull();
   });
 
+  it('reads only the start of a file to find its header', async () => {
+    // A full read of every filter in the folder is wasteful; the listing must
+    // slice the file instead.
+    const handle = {
+      kind: 'directory',
+      name: 'Path of Exile',
+      async *values() {
+        yield {
+          kind: 'file',
+          name: 'FilterPath.filter',
+          async getFile() {
+            return {
+              size: 100_000,
+              lastModified: 0,
+              async text() {
+                throw new Error('read the whole file');
+              },
+              slice(start: number, end?: number) {
+                return {
+                  async text() {
+                    return HEADER.slice(start, end);
+                  },
+                };
+              },
+            } as unknown as File;
+          },
+        };
+      },
+    } as unknown as FileSystemDirectoryHandle;
+
+    const listed = await listFilterFiles(handle);
+    expect(listed[0]).toMatchObject({
+      name: 'FilterPath.filter',
+      appVersion: '0.10.2',
+      presetVersion: 'abc123',
+    });
+  });
+
   it('parses the FilterPath header', () => {
     expect(parseFilterHeader(HEADER)).toEqual({
       appVersion: '0.10.2',

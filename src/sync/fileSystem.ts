@@ -256,6 +256,16 @@ export async function probeFilterDirectory(
   return { read: readable, write: 'ok' };
 }
 
+/** The header lives in the leading comments; 4 KB is far more than it needs. */
+const HEADER_BYTES = 4096;
+
+async function readLeadingText(file: File): Promise<string> {
+  // Reading only the start keeps the folder listing cheap for large filters.
+  return typeof file.slice === 'function'
+    ? file.slice(0, HEADER_BYTES).text()
+    : file.text();
+}
+
 export async function listFilterFiles(
   handle: FileSystemDirectoryHandle,
 ): Promise<FilterFileInfo[]> {
@@ -264,7 +274,7 @@ export async function listFilterFiles(
     if (entry.kind !== 'file') continue;
     if (!isFilterFileName(entry.name)) continue;
     const file = await (entry as FileSystemFileHandle).getFile();
-    const header = parseFilterHeader(await file.text());
+    const header = parseFilterHeader(await readLeadingText(file));
     files.push({
       name: entry.name,
       size: file.size,
