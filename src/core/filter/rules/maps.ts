@@ -50,6 +50,17 @@ function knownFragmentsAt(tier: number): string[] {
 export function mapRules(preset: Preset, phase: Phase): Rule[] {
   const rules: Rule[] = [];
 
+  // Unique maps are worth seeing whatever the tier cutoff, so this runs before
+  // every map hide and the band shows.
+  rules.push({
+    action: 'Show',
+    comment: 'Unique maps',
+    classNames: ['Maps'],
+    rarity: 'Unique',
+    styleKind: 'unique',
+    style: SLOT_STYLES.unique,
+  });
+
   if (phase === 'endgame' && preset.maps.minTier !== null) {
     const minTier = preset.maps.minTier;
 

@@ -29,6 +29,15 @@ export function gemRules(preset: Preset): Rule[] {
   // A block ANDs its conditions, so the quality and level gates become two Show
   // blocks (an OR) with one Hide fallback for gems that clear neither.
   const rules: Rule[] = [];
+
+  // The three experience gems are worth picking up at any quality or level.
+  rules.push({
+    action: 'Show',
+    comment: 'Gems - Empower, Enlighten, Enhance',
+    baseTypes: ['Empower Support', 'Enlighten Support', 'Enhance Support'],
+    ...gem,
+  });
+
   if (minQuality !== null) {
     rules.push({
       action: 'Show',

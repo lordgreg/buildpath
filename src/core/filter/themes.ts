@@ -449,6 +449,12 @@ function paintRule(rule: Rule, palette: ThemePalette): Rule {
       palette.veiled.background,
     );
   }
+  // A rule that asks for unique styling gets it in any section, e.g. unique
+  // maps inside the map rules.
+  if (rule.styleKind === 'unique') {
+    const background = backgroundFor(rule, palette);
+    return withColors(rule, palette.colors.unique, palette.colors.unique, background);
+  }
 
   const background = backgroundFor(rule, palette);
 
