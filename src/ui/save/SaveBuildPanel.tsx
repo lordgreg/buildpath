@@ -432,7 +432,7 @@ export default function SaveBuildPanel({
                   window.confirm(
                     `Remove ${staleFiles.length} outdated FilterPath filter${
                       staleFiles.length === 1 ? '' : 's'
-                    }? Their .bak copies go too.\n\n${staleFiles
+                    }? Their FilterPath .bak copies go too.\n\n${staleFiles
                       .map((file) => file.name)
                       .join('\n')}`,
                   )
@@ -485,7 +485,7 @@ export default function SaveBuildPanel({
                             onClick={() => {
                               if (
                                 window.confirm(
-                                  `Remove ${file.name} and its .bak copy from ${folder.handle?.name}?`,
+                                  `Remove ${file.name} and its FilterPath .bak copy from ${folder.handle?.name}?`,
                                 )
                               ) {
                                 void folder.remove([file.name]);

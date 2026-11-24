@@ -14,6 +14,8 @@ import {
   staleFilterPathFiles,
   writeFilter,
 } from './fileSystem.ts';
+import { generateFilter } from '../core/filter/generate.ts';
+import { PRESET_VERSION } from '../meta/index.ts';
 
 describe('isFilterPathFileName', () => {
   it('recognises the files FilterPath writes, and only those', () => {
@@ -155,6 +157,26 @@ describe('isOwnedFilterPathFile', () => {
   });
 });
 
+describe('generated filters', () => {
+  it('are recognised as FilterPath files by their own header', () => {
+    const filter = generateFilter({
+      selection: { mode: 'family', familyId: 'minion' },
+      phase: 'leveling',
+      strictness: 'soft',
+      version: '9.9.9',
+    });
+    const header = parseFilterHeader(filter.text);
+    expect(header).toMatchObject({
+      appVersion: '9.9.9',
+      presetVersion: PRESET_VERSION,
+      selection: expect.stringContaining('mode=family'),
+    });
+    expect(
+      isOwnedFilterPathFile({ name: filter.fileName, appVersion: header.appVersion }),
+    ).toBe(true);
+  });
+});
+
 describe('staleFilterPathFiles', () => {
   const file = (
     name: string,
@@ -176,6 +198,21 @@ describe('staleFilterPathFiles', () => {
         (entry) => entry.name,
       ),
     ).toEqual(['filterpath-old.filter']);
+  });
+
+  it('matches the current file whatever its letter case', () => {
+    const files = [file('FilterPath-Current.filter', '0.9.0', 'abc')];
+    expect(
+      staleFilterPathFiles(files, 'filterpath-current.filter', '1.0.0', 'abc'),
+    ).toEqual([]);
+  });
+
+  it('keeps a file from the same release whose preset hash differs', () => {
+    // Which of the two is newer cannot be told from the hash alone.
+    const files = [file('filterpath-x.filter', '1.0.0', 'other')];
+    expect(staleFilterPathFiles(files, 'filterpath-y.filter', '1.0.0', 'abc')).toEqual(
+      [],
+    );
   });
 });
 
@@ -282,6 +319,15 @@ describe('filter files', () => {
       'my original hand-made filter',
     );
     expect(files.get('filterpath-a.filter')).toBe(`${HEADER}mine`);
+  });
+
+  it('overwrites an empty backup', async () => {
+    const files = new Map([
+      ['filterpath-a.filter', `${HEADER}mine`],
+      ['filterpath-a.filter.bak', ''],
+    ]);
+    await writeFilter(directory(files), 'filterpath-a.filter', 'new');
+    expect(files.get('filterpath-a.filter.bak')).toBe(`${HEADER}mine`);
   });
 
   it('removes a filter and its backup, leaving other files alone', async () => {

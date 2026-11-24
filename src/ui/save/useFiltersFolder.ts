@@ -7,6 +7,7 @@ import {
   pickFiltersDirectory,
   probeFilterDirectory,
   removeFilterFile,
+  sameFileName,
   supportsDirectoryPicker,
   writeFilter,
   type FilterFileInfo,
@@ -186,7 +187,7 @@ export function useFiltersFolder(): FiltersFolder {
         }
         const currentFiles = await listFilterFiles(handle);
         setFiles(currentFiles);
-        const existing = currentFiles.find((file) => file.name === name);
+        const existing = currentFiles.find((file) => sameFileName(file.name, name));
         // Files FilterPath wrote keep a `.bak` and are safe to overwrite, so
         // they never prompt. Any other file with the same name still asks.
         if (
@@ -228,6 +229,12 @@ export function useFiltersFolder(): FiltersFolder {
       if (!handle || names.length === 0) return;
       setBusy(true);
       try {
+        const current = await ensurePermission(handle);
+        setPermission(current);
+        if (current !== 'granted') {
+          setStatus(`Folder write permission was not granted. ${writeHint(platform)}`);
+          return;
+        }
         // removeFilterFile re-checks each header, so a file FilterPath did not
         // write is skipped even if the listing was stale.
         let removed = 0;
@@ -251,7 +258,7 @@ export function useFiltersFolder(): FiltersFolder {
         setBusy(false);
       }
     },
-    [handle, refreshFiles],
+    [handle, platform, refreshFiles],
   );
 
   const forget = useCallback(async () => {

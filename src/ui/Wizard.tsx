@@ -7,6 +7,7 @@ import {
 } from '../core/filter/presets.ts';
 import {
   filterUpdateKind,
+  sameFileName,
   type FilterFileInfo,
 } from '../sync/fileSystem.ts';
 import { autoBuildName } from '../core/filter/name.ts';
@@ -283,8 +284,8 @@ export default function Wizard() {
   useEffect(() => {
     if (!filter) return;
     if (!folder.handle) return;
-    const existing = folder.files.find(
-      (file) => file.name === filter.fileName,
+    const existing = folder.files.find((file) =>
+      sameFileName(file.name, filter.fileName),
     );
     if (!existing) return;
 

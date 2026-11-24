@@ -66,7 +66,9 @@ export type FilterUpdateKind = 'presets' | 'version' | null;
 /**
  * Presets take precedence: an old preset hash means the rules are out of date.
  * Only files FilterPath wrote can be outdated, and never one written by a newer
- * or unrecognised release: an older open tab must not replace it.
+ * or unrecognised release: an older open tab must not replace it. A different
+ * preset hash within the same release cannot be ordered, so it is reported but
+ * never removed in bulk (see `staleFilterPathFiles`).
  */
 export function filterUpdateKind(
   file: Pick<FilterHeader, 'appVersion' | 'presetVersion'> &
@@ -111,7 +113,15 @@ export function isOwnedFilterPathFile(
   return isFilterPathFileName(file.name) && file.appVersion !== null;
 }
 
-/** Outdated FilterPath files that may be bulk-removed; never the current one. */
+export function sameFileName(a: string, b: string): boolean {
+  // Windows and macOS file systems ignore letter case.
+  return a.toLowerCase() === b.toLowerCase();
+}
+
+/**
+ * Outdated FilterPath files that may be bulk-removed: written by a strictly
+ * older release, and never the current file.
+ */
 export function staleFilterPathFiles<
   T extends Pick<
     FilterFileInfo,
@@ -125,8 +135,9 @@ export function staleFilterPathFiles<
 ): T[] {
   return files.filter(
     (file) =>
-      file.name !== currentName &&
+      !sameFileName(file.name, currentName) &&
       isOwnedFilterPathFile(file) &&
+      compareVersions(file.appVersion!, appVersion) === -1 &&
       filterUpdateKind(file, appVersion, presetVersion) !== null,
   );
 }
@@ -147,10 +158,11 @@ export class ForeignBackupError extends Error {
 async function readHeader(
   handle: FileSystemDirectoryHandle,
   name: string,
-): Promise<FilterHeader | null> {
+): Promise<(FilterHeader & { empty: boolean }) | null> {
   try {
     const file = await (await handle.getFileHandle(name)).getFile();
-    return parseFilterHeader(await file.text());
+    const text = await file.text();
+    return { ...parseFilterHeader(text), empty: text.trim() === '' };
   } catch (error) {
     if (error instanceof DOMException && error.name === 'NotFoundError') {
       return null;
@@ -250,8 +262,12 @@ export async function removeFilterFile(
     throw new Error(`${name} was not written by FilterPath; not removed.`);
   }
   await handle.removeEntry(name);
-  const backup = await readHeader(handle, backupName(name));
-  if (backup?.appVersion) await handle.removeEntry(backupName(name));
+  try {
+    const backup = await readHeader(handle, backupName(name));
+    if (backup?.appVersion) await handle.removeEntry(backupName(name));
+  } catch {
+    // The filter is gone; an unreadable backup is left where it is.
+  }
 }
 
 /**
@@ -271,7 +287,7 @@ export async function writeFilter(
     const file = await existing.getFile();
     const previous = await file.text();
     const previousBackup = await readHeader(handle, backupName(name));
-    if (previousBackup && !previousBackup.appVersion) {
+    if (previousBackup && !previousBackup.appVersion && !previousBackup.empty) {
       throw new ForeignBackupError(backupName(name));
     }
     backup = backupName(name);
