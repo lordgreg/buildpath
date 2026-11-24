@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.33.2 — 2026-11-24
+
+Loot simulator links open the right rule.
+
+- "Shown by rule #N" and "Create custom rule" in the loot simulator now work when
+  Advanced rules is collapsed: the section opens first, then the builder
+  scrolls to the rule or to the prefilled editor.
+- "Shown by rule #N" now opens the rule that actually decided the item. It
+  used to land one or two rules off once My rules were present, and counted
+  disabled or skipped My rules that the filter leaves out.
+
 ## 0.33.1 — 2026-11-24
 
 Safer folder sync and custom rules.

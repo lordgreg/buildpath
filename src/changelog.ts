@@ -17,6 +17,17 @@ export const REPO_URL = 'https://github.com/lordgreg/filterpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.33.2',
+    date: '2026-11-24',
+    title: 'Loot simulator links open the right rule',
+    notes: [
+      '"Shown by rule #N" and "Create custom rule" in the loot simulator now work when Advanced rules is collapsed: the section opens first, then the builder scrolls to the rule or to the prefilled editor.',
+      '"Shown by rule #N" now opens the rule that actually decided the item. It used to land one or two rules off once My rules were present, and counted disabled or skipped My rules that the filter leaves out.',
+    ],
+    commits: [],
+    compare: 'v0.33.1...v0.33.2',
+  },
+  {
     version: '0.33.1',
     date: '2026-11-24',
     title: 'Safer folder sync and custom rules',
