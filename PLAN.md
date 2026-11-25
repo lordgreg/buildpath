@@ -1,4 +1,4 @@
-# FilterPath — Plan
+# BuildPath — Plan
 
 Build-specific Path of Exile 1 loot filters in three clicks.
 
@@ -10,10 +10,10 @@ download a `.filter`. No account, no loot simulator, no hundred-item editor.
 ## 1. Positioning
 
 FilterBlade already has "Auto-Adjust for build", but it requires a PoE login
-and a character import, and it is a general filter editor. FilterPath competes
+and a character import, and it is a general filter editor. BuildPath competes
 on **time to a working filter**, not on features.
 
-| | FilterBlade | FilterPath |
+| | FilterBlade | BuildPath |
 |---|---|---|
 | Account required | yes, for build adjust and sync | no |
 | Input | character import or manual | 3 clicks |
@@ -116,7 +116,7 @@ dropdown only shows the file name.
   (Vite `define`); the UI shows the same value.
 - `FILTER_FORMAT_VERSION` in `src/core/filter/version.ts` tracks the emitted
   structure. Bump it when a consumer must notice a change.
-- Header: `# FilterPath <app version> - filter format <n>` plus
+- Header: `# BuildPath <app version> - filter format <n>` plus
   `# Presets: <preset hash>`.
 - File name: `filterpath-<name>-<phase>-<strictness>.filter`; the version is
   deliberately **not** in the name, so the in-game selection survives releases.
@@ -125,7 +125,7 @@ dropdown only shows the file name.
   outdated; Save rewrites it (keeping a `.bak`). An automatic rewrite happens
   only from a verified per-file snapshot stored next to the directory handle:
   the builder must still hold the exact selection and My rules the file was
-  written with, the file must still hash to what FilterPath wrote, and the
+  written with, the file must still hash to what BuildPath wrote, and the
   header must read back as expected. Anything else is reported for the user to
   check and save.
 - Saved builds and imported codes carry the preset hash at creation time; an
@@ -160,7 +160,7 @@ build instead of the user's filter.
 | RePoE missing `Fracturing Orb`, `Hinekora's Lock` | Reviewed supplement merged into the registry |
 | RePoE has no `int_shield` tag | Intersect broader tags with `Class` (e.g. `int_armour` + `Shields`) |
 | Non-ASCII text in comments is pointless risk | Filters are ASCII-only, asserted in tests |
-| Reported leaks (normal gloves, magic axe, low magic armour) | All four items were from an **online filter still selected** (`item_filter` in `production_Config.ini` pointed at `OnlineFilters/PVzj7BcL`), not FilterPath. Added matcher fixtures proving FilterPath hides them and surfaced the exact in-game name |
+| Reported leaks (normal gloves, magic axe, low magic armour) | All four items were from an **online filter still selected** (`item_filter` in `production_Config.ini` pointed at `OnlineFilters/PVzj7BcL`), not BuildPath. Added matcher fixtures proving BuildPath hides them and surfaced the exact in-game name |
 | Client caches the filter list after a file changes | Reopen the dropdown or restart; documented in install steps |
 | "changelog" did nothing | The link used a hash route inside an app that owns the hash. The changelog is now a separate `changelog.html` Vite entry |
 | Pages workflow used Node 20-era actions | Action majors kept current (`checkout@v7`, etc.) |
@@ -298,11 +298,11 @@ The preset is **locked and never cloned**. Users add rules on top of it.
   file is untouched; otherwise the panel reports it and Save rewrites it with
   the latest presets (keeping a `.bak`). See 2.5. Saved builds and imported
   codes with an older preset hash show a refresh notice.
-- **Stale cleanup** — when the connected folder holds stale FilterPath filters,
+- **Stale cleanup** — when the connected folder holds stale BuildPath filters,
   the sync panel offers a confirmed "Remove N outdated" action that deletes
   those files and their own `.bak` copies. Ownership means a `filterpath-` name
-  and a FilterPath header in the leading comment block; the current file, newer
-  or unrecognised versions, and a `.bak` FilterPath did not write are never
+  and a BuildPath header in the leading comment block; the current file, newer
+  or unrecognised versions, and a `.bak` BuildPath did not write are never
   touched, and neither are unrelated files.
 - **Saved builds** — loading marks a build as active; its row gets `Update`,
   which overwrites name, selection and My rules. Top-level Save creates a copy.
@@ -596,13 +596,13 @@ noisy).
 | Unknown `BaseType` aborts the whole filter | `known-base-types.json` + CI test + reviewed supplement/removal files |
 | Filter placed in a folder the game does not scan | Install docs with the Proton path; folder picker |
 | Online filters mistaken for local files | Docs call out `OnlineFilters/`; the site shows the exact in-game name |
-| A different filter stays selected and looks like a leak | Verify section 2.8; matcher fixtures prove FilterPath's behaviour |
+| A different filter stays selected and looks like a leak | Verify section 2.8; matcher fixtures prove BuildPath's behaviour |
 | poe.ninja schema drift | schema validation, keep-last-good, PR review |
 | Actions schedule delayed or disabled after inactivity | `workflow_dispatch`; economy drift only affects tiering |
 | Chromium-only folder sync | download fallback everywhere |
 | Stored directory handle loses permission | explicit re-request flow, no silent writes |
 | Flatpak browser cannot see the Proton prefix | manual download fallback, documented |
-| Versioned files accumulate in the filters folder | sync flags stale versions and writes `.bak`; removal is a deliberate, confirmed user action over listed FilterPath files only |
+| Versioned files accumulate in the filters folder | sync flags stale versions and writes `.bak`; removal is a deliberate, confirmed user action over listed BuildPath files only |
 | RePoE dataset changes | commit output, pin `REPOE_REF`, diff in review |
 | GGG policy changes | static, non-commercial, disclaimer, no internal endpoints |
 
@@ -628,7 +628,7 @@ that cannot be emitted safely is disabled with a notice, never written with a
 condition removed or a name altered.
 
 **Phase 0 - hotfix (done, 0.33.1 and 0.33.2).** CI on every PR with a
-generated-data drift check; folder sync only touches files FilterPath wrote;
+generated-data drift check; folder sync only touches files BuildPath wrote;
 automatic folder writes paused; empty or all-unknown list conditions are
 skipped instead of becoming catch-alls; custom rules validated fail-closed in
 `compileFilter`; MinimapIcon/PlayEffect colours per GGG; loot simulator links
@@ -663,7 +663,7 @@ the in-game smoke test).**
 
 **Release gate for 0.34.0 - passed.** Exact matching and format 2 are the first
 change the game can reject outright, so 0.34.0 shipped behind an in-game smoke
-test. FilterPath's maintainer has run the current filter in game with no issues,
+test. BuildPath's maintainer has run the current filter in game with no issues,
 which settles the whole-filter-rejection risk: the client accepts `Class ==` and
 `BaseType ==`. The narrower spot checks (`Class == "Viscera"` styling and a
 `Hide BaseType == "Gold"` rule leaving Gold Flask, Golden Mask and Gold Ring
@@ -787,6 +787,6 @@ All previously open product decisions are settled:
 
 ### Links
 
-- Builder: https://lordgreg.github.io/filterpath/
-- Loot simulator: https://lordgreg.github.io/filterpath/demo.html
-- Changelog: https://lordgreg.github.io/filterpath/changelog.html
+- Builder: https://lordgreg.github.io/buildpath/
+- Loot simulator: https://lordgreg.github.io/buildpath/demo.html
+- Changelog: https://lordgreg.github.io/buildpath/changelog.html

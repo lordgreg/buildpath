@@ -13,7 +13,7 @@ export interface Release {
   compare?: string;
 }
 
-export const REPO_URL = 'https://github.com/lordgreg/filterpath';
+export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {

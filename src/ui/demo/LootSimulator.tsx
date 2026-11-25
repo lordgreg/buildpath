@@ -489,7 +489,7 @@ export default function LootSimulator({
 
       <footer className="mt-8 border-t border-ink-700 pt-4 text-xs leading-relaxed text-zinc-500">
         <p>
-          Simulation only. Background is original FilterPath art. Labels
+          Simulation only. Background is original BuildPath art. Labels
           approximate the in-game filter and do not imply real stat rolls.
         </p>
         <p className="mt-1">

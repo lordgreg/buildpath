@@ -6,12 +6,12 @@ Onboarding for agents working in this repository. Read this first, then
 
 ## What this is
 
-FilterPath builds **build-specific Path of Exile 1 loot filters in three
+BuildPath builds **build-specific Path of Exile 1 loot filters in three
 clicks**. The user picks an archetype (family, ascendancy or meta build), a
 phase and a strictness, and downloads a valid `.filter`.
 
 - Generated entirely client-side; no account, no network calls at runtime.
-- Static site on GitHub Pages at project path `/filterpath/`.
+- Static site on GitHub Pages at project path `/buildpath/`.
 - Positioning, non-goals and the "why" behind every constraint live in
   [PLAN.md](./PLAN.md). Do not re-litigate recorded decisions.
 
@@ -19,7 +19,7 @@ phase and a strictness, and downloads a valid `.filter`.
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173/filterpath/
+npm run dev        # http://localhost:5173/buildpath/
 npm test           # runs presets:build, then vitest
 npm run build      # presets:build + tsc -b + vite build
 npm run typecheck  # tsc -b

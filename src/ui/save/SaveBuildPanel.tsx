@@ -56,7 +56,7 @@ export default function SaveBuildPanel({
   folder: FiltersFolder;
   onNameChange: (name: string) => void;
   onLoad: (build: SavedBuild) => void;
-  /** Loads a FilterPath filter from the connected folder into the builder. */
+  /** Loads a BuildPath filter from the connected folder into the builder. */
   onLoadFile: (file: FilterFileInfo) => void;
   onSaved: (build: SavedBuild) => void;
   onUpdated: (build: SavedBuild) => void;
@@ -453,9 +453,9 @@ export default function SaveBuildPanel({
               onClick={() => {
                 if (
                   window.confirm(
-                    `Remove ${staleFiles.length} outdated FilterPath filter${
+                    `Remove ${staleFiles.length} outdated BuildPath filter${
                       staleFiles.length === 1 ? '' : 's'
-                    }? Their FilterPath .bak copies go too.\n\n${staleFiles
+                    }? Their BuildPath .bak copies go too.\n\n${staleFiles
                       .map((file) => file.name)
                       .join('\n')}`,
                   )
@@ -508,7 +508,7 @@ export default function SaveBuildPanel({
                             onClick={() => {
                               if (
                                 window.confirm(
-                                  `Remove ${file.name} and its FilterPath .bak copy from ${folder.handle?.name}?`,
+                                  `Remove ${file.name} and its BuildPath .bak copy from ${folder.handle?.name}?`,
                                 )
                               ) {
                                 void folder.remove([file.name]);

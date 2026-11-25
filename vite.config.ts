@@ -11,7 +11,7 @@ const pkg = JSON.parse(
 ) as { version: string };
 
 export default defineConfig({
-  base: '/filterpath/',
+  base: '/buildpath/',
   plugins: [react(), tailwindcss()],
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),

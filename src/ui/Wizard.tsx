@@ -349,7 +349,7 @@ export default function Wizard() {
         }
         setNotice(
           `${filter.fileName} in ${folder.handle?.name} was made with ${
-            updateKind === 'presets' ? 'older presets' : 'an older FilterPath'
+            updateKind === 'presets' ? 'older presets' : 'an older BuildPath'
           }. Check the build, then Save to update it; the old file is kept as .bak.`,
         );
       })
@@ -403,7 +403,7 @@ export default function Wizard() {
     setActiveBuildId(build.id);
   };
 
-  /** Loads a FilterPath file from the connected folder back into the builder. */
+  /** Loads a BuildPath file from the connected folder back into the builder. */
   const loadFile = (file: FilterFileInfo) => {
     if (!file.selection) {
       setNotice(`${file.name} has no saved selection, so it cannot be loaded.`);
@@ -554,7 +554,7 @@ export default function Wizard() {
               title="Start a new filter"
               className="cursor-pointer transition-opacity hover:opacity-80"
             >
-              FilterPath
+              BuildPath
             </button>
           </h1>
           <p className="mt-2 max-w-xl text-sm text-zinc-400">
@@ -593,7 +593,7 @@ export default function Wizard() {
             audit
           </a>
           <a
-            href="https://github.com/lordgreg/filterpath"
+            href="https://github.com/lordgreg/buildpath"
             className="underline-offset-4 hover:text-zinc-300 hover:underline"
           >
             source
@@ -1192,7 +1192,7 @@ export default function Wizard() {
             <li>Put it in the game's filter folder (paths below).</li>
             <li>
               In game: Options → UI → Item Filter, then pick{' '}
-              <span className="text-zinc-300">FilterPath</span>.
+              <span className="text-zinc-300">BuildPath</span>.
             </li>
           </ol>
           <p className="mt-3 text-xs text-zinc-500">

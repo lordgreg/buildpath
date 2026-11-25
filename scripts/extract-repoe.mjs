@@ -58,7 +58,7 @@ const SKILLS_EXTRA = fileURLToPath(
   new URL('../src/meta/skill-names-extra.json', import.meta.url),
 );
 const GEMS_SOURCE = `${DATA_ROOT}/gems.json`;
-const USER_AGENT = 'FilterPath/0.1 (+https://github.com/lordgreg/filterpath)';
+const USER_AGENT = 'BuildPath/0.1 (+https://github.com/lordgreg/buildpath)';
 
 /** Reads a JSON array, treating a missing or malformed file as empty. */
 async function readJsonList(path) {

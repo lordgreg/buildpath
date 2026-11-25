@@ -331,7 +331,7 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
     `Presets: ${PRESET_VERSION}`,
     `Rules: ${compiled.rules.length} - Base types: ${compiled.baseTypes.length}`,
     `Base data: RePoE ${baseTypeMeta.ref} (${baseTypeMeta.sha256.slice(0, 8)})`,
-    'Generated at https://lordgreg.github.io/filterpath/',
+    'Generated at https://lordgreg.github.io/buildpath/',
     'Not affiliated with or endorsed by Grinding Gear Games.',
     '========================================================================',
   ];

@@ -25,7 +25,7 @@ const ATTEMPTS = 3;
 const pkg = JSON.parse(
   await readFile(resolve(ROOT, 'package.json'), 'utf8'),
 );
-const UA = `FilterPath/${pkg.version} (+https://github.com/lordgreg/filterpath)`;
+const UA = `BuildPath/${pkg.version} (+https://github.com/lordgreg/buildpath)`;
 
 const UNIQUE_TYPES = [
   'UniqueWeapon',

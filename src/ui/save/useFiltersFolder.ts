@@ -49,7 +49,7 @@ export interface WriteSource {
 }
 
 export interface WriteOptions {
-  /** Ask before overwriting a file FilterPath did not write. */
+  /** Ask before overwriting a file BuildPath did not write. */
   confirmOverwrite?: boolean;
   /** Records what was written, enabling a later verified rewrite. */
   source?: WriteSource;
@@ -83,7 +83,7 @@ export interface FiltersFolder {
   ) => Promise<WriteResult>;
   /** Rewrites an outdated filter only when the write is proven safe. */
   autoWrite: (input: AutoWriteInput) => Promise<AutoWriteResult>;
-  /** Removes FilterPath-written files (and their own `.bak` copies). */
+  /** Removes BuildPath-written files (and their own `.bak` copies). */
   remove: (names: string[]) => Promise<void>;
   forget: () => Promise<void>;
 }
@@ -224,7 +224,7 @@ export function useFiltersFolder(): FiltersFolder {
         const currentFiles = await listFilterFiles(handle);
         setFiles(currentFiles);
         const existing = currentFiles.find((file) => sameFileName(file.name, name));
-        // Files FilterPath wrote keep a `.bak` and are safe to overwrite, so
+        // Files BuildPath wrote keep a `.bak` and are safe to overwrite, so
         // they never prompt. Any other file with the same name still asks.
         if (
           existing &&
@@ -276,7 +276,7 @@ export function useFiltersFolder(): FiltersFolder {
   /**
    * Rewrites an outdated file without asking, but only when the stored
    * snapshot proves it is the same build and the file is still the one
-   * FilterPath wrote. Anything else is left alone for the user to check.
+   * BuildPath wrote. Anything else is left alone for the user to check.
    */
   const autoWrite = useCallback(
     async (input: AutoWriteInput): Promise<AutoWriteResult> => {
@@ -327,7 +327,7 @@ export function useFiltersFolder(): FiltersFolder {
           setStatus(`Folder write permission was not granted. ${writeHint(platform)}`);
           return;
         }
-        // removeFilterFile re-checks each header, so a file FilterPath did not
+        // removeFilterFile re-checks each header, so a file BuildPath did not
         // write is skipped even if the listing was stale.
         let removed = 0;
         for (const name of names) {
@@ -342,7 +342,7 @@ export function useFiltersFolder(): FiltersFolder {
         await refreshFiles(handle);
         setStatus(
           removed < names.length
-            ? `Removed ${removed} of ${names.length}; the rest were not FilterPath filters or could not be removed.`
+            ? `Removed ${removed} of ${names.length}; the rest were not BuildPath filters or could not be removed.`
             : names.length === 1
               ? `Removed ${names[0]}.`
               : `Removed ${names.length} old filters.`,

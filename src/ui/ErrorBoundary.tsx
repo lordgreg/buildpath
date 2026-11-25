@@ -21,7 +21,7 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
-    console.error('FilterPath crashed while rendering', error, info);
+    console.error('BuildPath crashed while rendering', error, info);
   }
 
   render() {
