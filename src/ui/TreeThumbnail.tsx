@@ -1,10 +1,8 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type {
-  MouseEvent as ReactMouseEvent,
-  PointerEvent as ReactPointerEvent,
-  RefObject,
-} from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from 'react';
 import type { TreeView } from '../core/builds/types.ts';
+import { boundsOf, fitView, focalPoint, panView, zoomView } from './treeView.ts';
+import type { View } from './treeView.ts';
 
 interface GeometryNode {
   id: number;
@@ -23,13 +21,6 @@ interface Geometry {
   edges: [number, number][];
 }
 
-interface View {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-}
-
 interface Tooltip {
   node: GeometryNode;
   x: number;
@@ -46,55 +37,33 @@ function loadGeometry(): Promise<Geometry> {
   return geometryPromise;
 }
 
-/** Never zoom past this fraction of the whole tree; below it you see a few nodes. */
-const MIN_FRACTION = 0.02;
-/** Node radius in CSS pixels, kept constant at every zoom level. */
-const NODE_PX = 4.2;
+/** Node radius in CSS pixels at the whole-tree view. */
+const NODE_PX = 2.4;
+/** Largest a node gets when you zoom in. */
+const NODE_MAX_PX = 7;
 /** Hit target radius in CSS pixels. */
 const HIT_PX = 7;
+/** How much bigger an allocated node is drawn than an unallocated one. */
+const TAKEN_SCALE = 1.35;
 
-function boundsOf(nodes: { x: number; y: number }[]): View {
-  if (nodes.length === 0) return { x: -1, y: -1, w: 2, h: 2 };
-  let minX = Infinity;
-  let minY = Infinity;
-  let maxX = -Infinity;
-  let maxY = -Infinity;
-  for (const node of nodes) {
-    if (node.x < minX) minX = node.x;
-    if (node.y < minY) minY = node.y;
-    if (node.x > maxX) maxX = node.x;
-    if (node.y > maxY) maxY = node.y;
-  }
-  const w = Math.max(maxX - minX, 1);
-  const h = Math.max(maxY - minY, 1);
-  const pad = Math.max(w, h) * 0.03;
-  return { x: minX - pad, y: minY - pad, w: w + pad * 2, h: h + pad * 2 };
-}
-
-/** Zooms to `width` tree units, keeping the point under (fx, fy) fixed. */
-function zoomView(current: View, width: number, fx: number, fy: number, full: View): View {
-  const clamped = Math.min(Math.max(width, full.w * MIN_FRACTION), full.w);
-  const next = clamped / current.w;
-  return {
-    x: current.x + (current.w - clamped) * fx,
-    y: current.y + (current.h - current.h * next) * fy,
-    w: clamped,
-    h: current.h * next,
-  };
-}
-
-/** Measures the SVG so node radius can be a fixed number of CSS pixels. */
-function useElementSize(ref: RefObject<SVGSVGElement | null>) {
+/**
+ * Measures the SVG so node radius can be a fixed number of CSS pixels.
+ *
+ * Takes the element, not a ref: the SVG only exists after the geometry
+ * loads, so a ref-based effect would run once against null and never see
+ * the element. A state-backed ref makes the element a dependency, so the
+ * observer attaches on the render that first draws it.
+ */
+function useElementSize(element: SVGSVGElement | null) {
   const [size, setSize] = useState({ w: 0, h: 0 });
-  useEffect(() => {
-    const element = ref.current;
+  useLayoutEffect(() => {
     if (!element) return;
     const update = () => setSize({ w: element.clientWidth, h: element.clientHeight });
     update();
     const observer = new ResizeObserver(update);
     observer.observe(element);
     return () => observer.disconnect();
-  }, [ref]);
+  }, [element]);
   return size;
 }
 
@@ -123,8 +92,8 @@ export default function TreeThumbnail({
   const [geometry, setGeometry] = useState<Geometry | null>(null);
   const [view, setView] = useState<View | null>(null);
   const [tooltip, setTooltip] = useState<Tooltip | null>(null);
-  const svgRef = useRef<SVGSVGElement | null>(null);
-  const size = useElementSize(svgRef);
+  const [svg, setSvg] = useState<SVGSVGElement | null>(null);
+  const size = useElementSize(svg);
   const drag = useRef<{ x: number; y: number } | null>(null);
   const down = useRef<{ x: number; y: number } | null>(null);
 
@@ -157,21 +126,28 @@ export default function TreeThumbnail({
     return map;
   }, [geometry]);
 
-  // Scale maps tree units to CSS pixels. Radius is then a constant pixel size.
+  // Scale maps tree units to CSS pixels. Nodes grow slowly with zoom so the
+  // whole constellation stays legible and a zoomed-in cluster stays readable.
   const scale =
     view && size.w > 0 && size.h > 0
       ? Math.min(size.w / view.w, size.h / view.h)
       : 0;
-  const radius = scale > 0 ? NODE_PX / scale : 0;
-  const notableRadius = radius * 1.55;
-  const hitRadius = scale > 0 ? HIT_PX / scale : 0;
-  const strokeWidth = scale > 0 ? 1 / scale : 1;
+  const fullScale = full && size.w > 0 && size.h > 0
+    ? Math.min(size.w / full.w, size.h / full.h)
+    : 0;
+  const zoom = fullScale > 0 ? Math.max(scale / fullScale, 1) : 1;
+  const radiusPx = Math.min(NODE_PX * Math.sqrt(zoom), NODE_MAX_PX);
+  const radius = scale > 0 ? radiusPx / scale : 0;
+  const notableRadius = radius * 1.5;
+  const hitRadius = scale > 0 ? Math.min(HIT_PX, radiusPx * 2.2) / scale : 0;
+  /** With non-scaling-stroke, stroke-width is CSS pixels, not tree units. */
+  const strokeWidth = 1;
 
   const staticLayer = useMemo(() => {
     if (!geometry) return null;
     return (
       <>
-        <g stroke="#2b3747" strokeWidth={strokeWidth} vectorEffect="non-scaling-stroke">
+        <g stroke="#25303d" strokeWidth={strokeWidth} vectorEffect="non-scaling-stroke">
           {geometry.edges.map(([from, to]) => {
             const a = points.get(from);
             const b = points.get(to);
@@ -183,14 +159,23 @@ export default function TreeThumbnail({
           {geometry.nodes.map((node) => {
             const isTaken = taken.has(node.id);
             const isNotable = takenNotable.has(node.id);
-            const r = isNotable ? notableRadius : node.notable ? notableRadius * 0.9 : radius;
+            const base = isNotable ? notableRadius : node.notable ? notableRadius * 0.9 : radius;
+            const r = isTaken ? base * TAKEN_SCALE : base;
             return (
               <circle
                 key={`g${node.id}`}
                 cx={node.x}
                 cy={node.y}
                 r={r}
-                fill={isTaken ? (isNotable ? '#e0c070' : '#c9b27a') : node.keystone ? '#2a2118' : '#1b2432'}
+                fill={
+                  isTaken
+                    ? isNotable
+                      ? '#e0c070'
+                      : '#c9b27a'
+                    : node.keystone
+                      ? '#2a2118'
+                      : 'none'
+                }
                 stroke={
                   isTaken
                     ? '#f0d898'
@@ -198,7 +183,7 @@ export default function TreeThumbnail({
                       ? '#4a7fb5'
                       : node.keystone
                         ? '#8a6d3b'
-                        : '#344254'
+                        : '#3a4a60'
                 }
                 strokeWidth={strokeWidth}
                 vectorEffect="non-scaling-stroke"
@@ -213,7 +198,7 @@ export default function TreeThumbnail({
   const takenLayer = useMemo(() => {
     if (!geometry) return null;
     return (
-      <g stroke="#b98a2e" strokeWidth={strokeWidth * 1.6} vectorEffect="non-scaling-stroke">
+      <g stroke="#b98a2e" strokeWidth={strokeWidth * 2} vectorEffect="non-scaling-stroke">
         {tree.edges.map(([from, to]) => {
           const a = points.get(from);
           const b = points.get(to);
@@ -248,6 +233,7 @@ export default function TreeThumbnail({
             cy={node.y}
             r={hitRadius}
             fill="transparent"
+            pointerEvents="all"
             data-node={node.id}
           />
         ))}
@@ -274,18 +260,17 @@ export default function TreeThumbnail({
         const dx = event.clientX - last.x;
         const dy = event.clientY - last.y;
         drag.current = { x: event.clientX, y: event.clientY };
-        setView((current) => {
-          if (!current) return current;
-          const unit = 1 / Math.max(scale, 0.0001);
-          return { ...current, x: current.x - dx * unit, y: current.y - dy * unit };
-        });
+        setTooltip(null);
+        setView((current) =>
+          current && full ? panView(current, dx, dy, scale, full) : current,
+        );
         return;
       }
       const hit = pick(event);
       if (hit) setTooltip(hit);
       else setTooltip(null);
     },
-    [pick, scale],
+    [pick, scale, full],
   );
 
   const onPointerDown = useCallback((event: ReactPointerEvent<SVGSVGElement>) => {
@@ -314,21 +299,21 @@ export default function TreeThumbnail({
 
   // Native listener so preventDefault works; React's wheel handler is passive.
   useEffect(() => {
-    const svg = svgRef.current;
     if (!svg || !full) return;
     const handler = (event: WheelEvent) => {
       event.preventDefault();
       const factor = Math.exp(event.deltaY * 0.0015);
       const rect = svg.getBoundingClientRect();
-      const fx = (event.clientX - rect.left) / rect.width;
-      const fy = (event.clientY - rect.top) / rect.height;
-      setView((current) =>
-        current ? zoomView(current, current.w * factor, fx, fy, full) : current,
-      );
+      setTooltip(null);
+      setView((current) => {
+        if (!current) return current;
+        const { fx, fy } = focalPoint(current, rect, event.clientX, event.clientY);
+        return zoomView(current, current.w * factor, fx, fy, full);
+      });
     };
     svg.addEventListener('wheel', handler, { passive: false });
     return () => svg.removeEventListener('wheel', handler);
-  }, [full]);
+  }, [svg, full]);
 
   if (!geometry || !view) {
     return <p className="text-sm text-zinc-500">Loading the tree…</p>;
@@ -340,11 +325,11 @@ export default function TreeThumbnail({
   return (
     <figure className="relative">
       <svg
-        ref={svgRef}
+        ref={setSvg}
         viewBox={`${view.x} ${view.y} ${view.w} ${view.h}`}
         role="img"
         aria-label={`Passive tree at ${label}: ${tree.nodes.length} points, ${tree.notables.length} notables`}
-        className="h-[34rem] w-full cursor-grab rounded-lg border border-ink-700 bg-[#0b0d12]"
+        className="h-[34rem] w-full cursor-grab touch-none select-none rounded-lg border border-ink-700 bg-[#0b0d12]"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -360,11 +345,12 @@ export default function TreeThumbnail({
       <div className="absolute right-3 top-3 flex gap-1">
         <button
           type="button"
-          onClick={() =>
+          onClick={() => {
+            setTooltip(null);
             setView((current) =>
               current ? zoomView(current, current.w * 1.35, 0.5, 0.5, full!) : current,
-            )
-          }
+            );
+          }}
           className="rounded border border-ink-600 bg-ink-900/80 px-2 py-1 text-xs text-zinc-300 hover:text-gold-300"
           aria-label="Zoom out"
         >
@@ -372,11 +358,12 @@ export default function TreeThumbnail({
         </button>
         <button
           type="button"
-          onClick={() =>
+          onClick={() => {
+            setTooltip(null);
             setView((current) =>
               current ? zoomView(current, current.w / 1.35, 0.5, 0.5, full!) : current,
-            )
-          }
+            );
+          }}
           className="rounded border border-ink-600 bg-ink-900/80 px-2 py-1 text-xs text-zinc-300 hover:text-gold-300"
           aria-label="Zoom in"
         >
@@ -385,15 +372,8 @@ export default function TreeThumbnail({
         <button
           type="button"
           onClick={() => {
-            const b = boundsOf(tree.nodes);
-            const width = Math.min(Math.max(b.w, full!.w * MIN_FRACTION), full!.w);
-            const next = width / b.w;
-            setView({
-              x: b.x + (b.w - width) / 2,
-              y: b.y + (b.h - b.h * next) / 2,
-              w: width,
-              h: b.h * next,
-            });
+            setTooltip(null);
+            setView((current) => (full ? fitView(tree.nodes, full) : current));
           }}
           className="rounded border border-ink-600 bg-ink-900/80 px-2 py-1 text-xs text-zinc-300 hover:text-gold-300"
         >
@@ -401,7 +381,10 @@ export default function TreeThumbnail({
         </button>
         <button
           type="button"
-          onClick={() => setView(full)}
+          onClick={() => {
+            setTooltip(null);
+            setView(full);
+          }}
           className="rounded border border-ink-600 bg-ink-900/80 px-2 py-1 text-xs text-zinc-300 hover:text-gold-300"
         >
           all
@@ -444,8 +427,9 @@ export default function TreeThumbnail({
 
       <figcaption className="mt-2 text-xs text-zinc-500">
         {tree.nodes.length} points and {tree.notables.length} notables at {label}. Hover a
-        node to read it, click to pin. Scroll to zoom, drag to pan; <span className="text-zinc-300">fit</span>{' '}
-        frames the points you took, <span className="text-zinc-300">all</span> shows the whole tree.
+        node to read it, click to pin. Scroll to zoom; drag pans once you are zoomed in.{' '}
+        <span className="text-zinc-300">fit</span> frames the points you took,{' '}
+        <span className="text-zinc-300">all</span> shows the whole tree.
       </figcaption>
     </figure>
   );

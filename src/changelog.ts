@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.53.1',
+    date: '2026-11-25',
+    title: 'The tree you can actually see',
+    notes: [
+      "0.53.0 shipped a passive tree with invisible nodes and panning that threw the whole constellation off-screen. The SVG was measured through a ref whose effect ran once while the element was still null, so the measured size stayed zero. Node radius and hit targets were zero, and only the edges drew.",
+      "Measurement now hangs off the element itself and runs before paint, so the first painted frame already has the right node radius. Nodes are rings at a fixed screen size that grows slowly with zoom, allocated nodes are larger, and the taken path is a heavier gold line.",
+      "Pan and zoom arithmetic moved into a pure module. The viewBox is clamped inside the constellation, so no drag or zoom-out can lose the tree; a drag before the SVG is measured is ignored instead of divided by a placeholder; and wheel zoom accounts for the letterboxing of a wide panel, so it stays under the cursor.",
+      "The whole-tree view is still the default. Drag pans once you are zoomed in, **fit** frames the taken points and **all** returns to the constellation.",
+      "562 tests, including the pan and zoom invariants that let 0.53.0 ship broken.",
+    ],
+    commits: [],
+    compare: 'v0.53.0...v0.53.1',
+  },
+  {
     version: '0.53.0',
     date: '2026-11-25',
     title: 'The tree opens whole, and gems tell the truth',
