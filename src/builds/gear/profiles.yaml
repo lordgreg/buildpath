@@ -75,3 +75,54 @@ profiles:
         ring1: { base: "Opal Ring", affixes: [life, added-lightning-attack, resist-fire, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-fire, resist-chaos] }
       jewels: { count: 6, base: "Viridian Jewel", affixes: [life, attack-speed, projectile-damage, crit-multi] }
+
+  # Melee: strength armour, a two-handed axe and no offhand. Boneshatter needs
+  # an axe or mace, so the one-hander-plus-shield default does not fit.
+  melee:
+    starting:
+      slots:
+        weapon: { base: "Stone Axe", affixes: [added-phys, attack-speed] }
+        body: { base: "Chestplate", affixes: [life] }
+        helmet: { base: "Cone Helmet", affixes: [life] }
+        gloves: { base: "Plated Gauntlets", affixes: [life] }
+        boots: { base: "Steel Greaves", affixes: [life, movement-speed] }
+    early:
+      slots:
+        weapon: { base: "Headsman Axe", affixes: [added-phys, attack-speed] }
+        body: { base: "Sun Plate", affixes: [life] }
+        helmet: { base: "Reaver Helmet", affixes: [life] }
+        gloves: { base: "Guarding Gauntlets", affixes: [life] }
+        boots: { base: "Antique Greaves", affixes: [life, movement-speed] }
+    ssf-start:
+      slots:
+        weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed] }
+        body: { base: "Glorious Plate", affixes: [life, resist-lightning, resist-cold] }
+        helmet: { base: "Eternal Burgonet", affixes: [life, resist-fire, resist-cold] }
+        gloves: { base: "Spiked Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Titan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
+        ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
+        ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
+      jewels: { count: 2, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+    ssf-week1:
+      slots:
+        weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed] }
+        body: { base: "Legion Plate", affixes: [life, resist-lightning, resist-cold] }
+        helmet: { base: "Conqueror's Helmet", affixes: [life, resist-fire, resist-cold] }
+        gloves: { base: "Precursor Gauntlets", affixes: [life, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Brimstone Treads", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
+        ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
+        ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+    trade:
+      slots:
+        weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed] }
+        body: { base: "Royal Plate", affixes: [life, resist-lightning, resist-cold] }
+        helmet: { base: "Giantslayer Helmet", affixes: [life, resist-fire, resist-cold] }
+        gloves: { base: "Leviathan Gauntlets", affixes: [life, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Leviathan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
+        ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
+        ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }

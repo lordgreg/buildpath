@@ -1,4 +1,4 @@
-import type { CharacterClass } from '../archetypes/types.ts';
+import type { CharacterClass, ItemSlot, SlotSpec } from '../archetypes/types.ts';
 import type { FamilyId } from '../../meta/types.ts';
 
 /** What a build seed compiles to on the site. */
@@ -19,6 +19,11 @@ export interface BuildIndexEntry {
   status: BuildStatus;
   /** Hash of the seed it was compiled from; changes when the seed changes. */
   seedHash: string;
+  /**
+   * Filter slots that override the family/ascendancy defaults (D15). A null
+   * slot removes the default, e.g. a two-handed build has no offhand.
+   */
+  filter?: { slots: Partial<Record<ItemSlot, SlotSpec | null>> };
 }
 
 export interface LevelingBracket {

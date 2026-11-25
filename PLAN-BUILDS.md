@@ -1,6 +1,6 @@
 # BuildPath — Plan
 
-> Revision 12. See §16 for the council reviews and what each round changed.
+> Revision 13. See §16 for the council reviews and what each round changed.
 
 Verified build guides, with the loot filter as one output instead of the whole
 product.
@@ -586,11 +586,14 @@ network call is the pinned PoB clone. Acceptance: nightly workflow green,
 deterministic ids and `seedHash` across two runs, and each seed either passes
 every checkpoint or is rejected with a named reason.
 
-**P2 status (in progress: two of three seeds).** `summon-skeletons-necromancer`
-(caster/minion) and `lightning-arrow-deadeye` (bow) both pass all six
-checkpoints. Gear is now profile-aware: `src/builds/gear/profiles.yaml` supplies
-the bases and affixes an archetype wears, while `budgets.yaml` stays the shared
-test condition, so "ssf-week1" means the same thing for every build.
+**P2 status (complete: three seeds, nightly verification).**
+`summon-skeletons-necromancer` (caster/minion), `lightning-arrow-deadeye` (bow)
+and `boneshatter-juggernaut` (two-handed melee) all pass every checkpoint. Gear
+is profile-aware: `src/builds/gear/profiles.yaml` supplies the bases and affixes
+an archetype wears, while `budgets.yaml` stays the shared test condition, so
+"ssf-week1" means the same thing for every build. `validate-builds.yml` runs the
+whole chain nightly and fails on any diff, which is the determinism acceptance:
+same inputs, same ids, same `seedHash`, same numbers.
 
 Findings that changed the pipeline, recorded so they are not re-learned:
 
@@ -611,6 +614,18 @@ Findings that changed the pipeline, recorded so they are not re-learned:
 - **The act DPS floors were minion-shaped.** 60 DPS at level 12 and 600 at 28
   only admitted builds with several bodies; a 3-link bow does 37 and 471. The
   floors are now 25 and 350, with both measurements recorded in `gates.yaml`.
+- **Every checkpoint fought a level-83 monster.** PoB's defaults put red-map
+  evasion (10k) in front of a level-12 character, because `enemyLevel` moves the
+  enemy's accuracy and life but not its evasion. Each checkpoint now carries its
+  own `enemyLevel`, and the oracle reads PoB's evasion table for the same level.
+- **A gem PoB does not know was dropped silently.** `Ancestral Protector` is in
+  RePoE's gem data but not in the pinned PoB's, so the gate measured a link the
+  page still listed. An unknown gem now fails the build.
+- **Keystones are declarable.** A seed may name a keystone (the Juggernaut takes
+  Resolute Technique); it is bought before the notable loop inside the same
+  point budget, and deferred with a warning where the level cannot afford it.
+- **D15 is implemented.** A seed may override filter slots, and a `null` slot
+  removes one: the two-handed build highlights two-handed axes and no shield.
 
 **P3 — repair, breadth pages, leveling derivation, ablation, calibration.**
 Acceptance: calibration green in both directions; the three P2 seeds keep
@@ -737,6 +752,16 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 13 — third seed, and the nightly
+
+`boneshatter-juggernaut` is the first melee build and the first seed to declare
+a keystone. It also exposed the last two silent mismatches between the page and
+the oracle: the enemy every checkpoint was measured against was a level-83
+monster, and a gem the pinned PoB does not know vanished from the XML while the
+page kept listing it. Both now fail loudly or are configured per checkpoint
+(§11 P2 status). `validate-builds.yml` runs nightly from here, so "the numbers
+still reproduce" is checked by CI rather than remembered.
 
 ### Revision 12 — second seed, and what it exposed
 

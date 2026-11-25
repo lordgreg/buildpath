@@ -1,0 +1,179 @@
+schemaVersion: 1
+id: boneshatter-juggernaut
+name: Boneshatter Juggernaut
+class: Marauder
+ascendancyId: juggernaut
+family: melee
+mainSkill: Boneshatter
+summary: >-
+  League-start melee build. Boneshatter trades a little life for stacks, so the
+  gear is armour and resistances, the axe is a rare with attack speed, and the
+  ascendancy makes the trauma survivable. No unique is required, which is what
+  a strength build needs on day one of a solo league.
+
+gearProfile: melee
+
+# The family default is a one-hander and a shield, but Boneshatter needs an axe
+# or mace and this build uses a two-hander. The filter follows the build (D15).
+filter:
+  slots:
+    weapon:
+      itemClasses: ["Two Hand Axe"]
+    offhand: null
+
+tree:
+  # Resolute Technique is the SSF answer to accuracy: a strength build cannot
+  # afford to miss, and the node is a short path from the Marauder start.
+  keystones:
+    - Resolute Technique
+  targets:
+    - increased physical damage
+    - increased maximum life
+    - increased attack speed
+    - increased armour
+    - increased melee damage
+
+leveling:
+  brackets:
+    - until: 12
+      skills:
+        - Cleave
+      skillGroups:
+        - slot: Body Armour
+          gems:
+            - Cleave
+            - Ruthless
+            - Faster Attacks
+        - slot: Weapon 1
+          gems:
+            - Leap Slam
+            - Enduring Cry
+        - slot: Helmet
+          gems:
+            - Decoy Totem
+        - slot: Boots
+          gems:
+            - Blood and Sand
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3, then medium." }
+        - { slot: mana, name: "Small Mana Flask", note: "Slam attacks are mana-hungry before leech." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+
+    - until: 28
+      skills:
+        - Boneshatter
+        - Enduring Cry
+      skillGroups:
+        - slot: Body Armour
+          gems:
+            - Boneshatter
+            - Melee Physical Damage
+            - Close Combat
+            - Faster Attacks
+        - slot: Weapon 1
+          gems:
+            - Leap Slam
+            - Enduring Cry
+        - slot: Helmet
+          gems:
+            - Decoy Totem
+            - Blood and Sand
+        - slot: Boots
+          gems:
+            - Determination
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24; medium is too small by now." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Granite Flask", note: "Armour is the defensive layer." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction, from level 27." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+
+    - until: 68
+      skills:
+        - Boneshatter
+        - Enduring Cry
+      skillGroups:
+        - slot: Body Armour
+          gems:
+            - Boneshatter
+            - Melee Physical Damage
+            - Brutality
+            - Pulverise
+            - Faster Attacks
+        - slot: Weapon 1
+          gems:
+            - Leap Slam
+            - Enduring Cry
+        - slot: Helmet
+          gems:
+            - Determination
+            - Blood and Sand
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems:
+            - Decoy Totem
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin suffix once it is available." }
+        - { slot: utility, name: "Basalt Flask", note: "The other half of the physical defence." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+
+    - until: 100
+      skills:
+        - Boneshatter
+        - Enduring Cry
+      skillGroups:
+        - slot: Body Armour
+          gems:
+            - Boneshatter
+            - Melee Physical Damage
+            - Brutality
+            - Pulverise
+            - Close Combat
+            - Faster Attacks
+        - slot: Weapon 1
+          gems:
+            - Leap Slam
+            - Enduring Cry
+        - slot: Helmet
+          gems:
+            - Determination
+            - Blood and Sand
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems:
+            - Decoy Totem
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Caps chaos resistance for pinnacle bosses." }
+
+ascendancyOrder:
+  - node: unflinching
+    lab: 1
+  - node: undeniable
+    lab: 2
+  - node: unbreakable
+    lab: 3
+  - node: unrelenting
+    lab: 4
+
+bandit: kill-all
+
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces physical damage taken, which is most of what kills a trauma stacker.
+
+uniques:
+  core: []
+  optional: []
