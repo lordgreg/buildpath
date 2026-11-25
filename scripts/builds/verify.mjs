@@ -202,7 +202,7 @@ function verifySeed(seed) {
     });
     // PoB reports one minion's damage; the build fights with all of them.
     const minionCount = metrics.dpsSource === 'minion' ? (seed.minionCount ?? 1) : 1;
-    const scaled = { ...metrics, dps: metrics.dps * minionCount };
+    const scaled = { ...metrics, dps: metrics.dps * minionCount, chaosResist: metrics.chaosResist };
     const gate = evaluateGate(id, scaled);
     const itemFailures = checkItemParsing(metrics, items);
     if (itemFailures.length > 0) {
@@ -240,6 +240,7 @@ function verifySeed(seed) {
           mods: item.text.split('\n').slice(-item.expectedMods),
           budget: checkpoint.budget,
           ilvl: budgets[checkpoint.budget].ilvl,
+          rarity: budgets[checkpoint.budget].rarity ?? 'RARE',
         })),
         ...jewels.map((jewel, index) => ({
           slot: `Jewel ${index + 1}`,
@@ -247,6 +248,7 @@ function verifySeed(seed) {
           mods: jewel.text.split('\n').slice(-jewel.expectedMods),
           budget: checkpoint.budget,
           ilvl: budgets[checkpoint.budget].ilvl,
+          rarity: budgets[checkpoint.budget].rarity ?? 'RARE',
         })),
       ],
       gems: groups.map((group) => ({

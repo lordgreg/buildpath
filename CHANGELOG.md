@@ -2,6 +2,17 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.49.0 — 2026-11-25
+
+The tree looks like a tree, and the gear like an inventory.
+
+- The passive tree is drawn on top of the whole tree, the way the game does it: the constellation faint in the background, taken nodes lit, links between them bright gold, jewel sockets ringed in blue. Node positions come from PoB, exported once to a 250 KB file the page loads on demand.
+- The gear section is an inventory sheet instead of a table: weapon and shield on the left, helmet, body, gloves and boots down the middle, rings, amulet and belt beside them, jewels below. Hovering a cell still shows the item.
+- Item names use the game colours: magic blue, rare yellow, with a matching border on the slot.
+- Boots always carry movement speed, and chaos resistance joins them once the budget reaches maps.
+- Gems now cover every armour slot, including the ones that are not damage: Convocation on the shield, Cast when Damage Taken with Immortal Call on the gloves, Flame Dash with Faster Casting and Arcane Surge on the boots, Flesh Offering with Generosity on the wand.
+- Pinnacle adds a chaos resistance floor of 75%, because those bosses hit with it.
+
 ## 0.48.0 — 2026-11-25
 
 Jewels: sockets on the tree, Ghastly Eyes in the gate.

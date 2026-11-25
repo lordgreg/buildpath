@@ -6,6 +6,7 @@ import type {
   GateResult,
 } from '../core/builds/types.ts';
 import { BUILD_VERSION, BUILDS } from '../meta/builds.ts';
+import InventoryPanel from './InventoryPanel.tsx';
 import TreeThumbnail from './TreeThumbnail.tsx';
 import { APP_VERSION } from '../version.ts';
 
@@ -34,20 +35,6 @@ function writeStep(id: string, step: string) {
   params.set('step', step);
   window.history.replaceState(null, '', `#${params.toString()}`);
 }
-
-/** Slots in the order a player reads them: gear first, then the edges. */
-const SLOT_ORDER = [
-  'Helmet',
-  'Amulet',
-  'Weapon 1',
-  'Shield',
-  'Body Armour',
-  'Gloves',
-  'Belt',
-  'Boots',
-  'Ring 1',
-  'Ring 2',
-];
 
 /** Flask column for a checkpoint: leveling, maps, or endgame. */
 function flaskStep(checkpoint: string): 'leveling' | 'maps' | 'endgame' {
@@ -315,48 +302,21 @@ export default function BuildPage() {
           </h2>
           <p className="mt-1 text-[11px] text-zinc-600">
             Budget gear, not hand-picked items: the gate was measured on exactly
-            these. Hover a slot for its mods.
+            these. Colours follow item rarity — blue magic, yellow rare. Hover a
+            slot for its mods.
           </p>
-          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
-            {[...gate.gear]
-              .sort((a, b) => SLOT_ORDER.indexOf(a.slot) - SLOT_ORDER.indexOf(b.slot))
-              .map((item) => (
-                <Tooltip
-                  key={item.slot}
-                  label={
-                    <>
-                      <strong className="block text-gold-200">{item.base}</strong>
-                      <span className="block text-zinc-500">
-                        item level {item.ilvl} · {item.budget}
-                      </span>
-                      <span className="mt-1 block">
-                        {item.mods.map((mod) => (
-                          <span key={mod} className="block text-[11px] text-zinc-300">
-                            {mod}
-                          </span>
-                        ))}
-                      </span>
-                    </>
-                  }
-                >
-                  <span className="w-full cursor-help rounded-lg border border-ink-600 bg-ink-900/60 p-2">
-                    <span className="block text-[10px] uppercase tracking-[0.14em] text-zinc-500">
-                      {item.slot}
-                    </span>
-                    <span className="mt-1 block text-xs text-gold-200">{item.base}</span>
-                    <span className="mt-1 block text-[10px] text-zinc-500">
-                      {item.mods.length} mods
-                    </span>
-                  </span>
-                </Tooltip>
-              ))}
+          <div className="mt-3">
+            <InventoryPanel gear={gate.gear} />
           </div>
         </section>
       )}
 
       {bracket && (
         <section aria-labelledby="leveling">
-          <h2 id="leveling" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+          <h2
+            id="leveling"
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+          >
             Leveling this step
           </h2>
           <p className="mt-2 text-sm text-zinc-300">
@@ -379,7 +339,10 @@ export default function BuildPage() {
             {bracket.until < 100 ? ', then move to the next step' : ' — the endgame step.'}
           </p>
           <p className="mt-2 text-xs leading-relaxed text-zinc-500">
-            <a href={`./index.html${builderHash}`} className="text-gold-300 underline underline-offset-2">
+            <a
+              href={`./index.html${builderHash}`}
+              className="text-gold-300 underline underline-offset-2"
+            >
               Open the leveling filter for this build
             </a>{' '}
             — it highlights this build&apos;s bases and hides the rest.
@@ -554,6 +517,7 @@ export default function BuildPage() {
               ['tree', 'Passive tree'],
               ['gear', 'Gear'],
               ['gems', 'Gems'],
+              ['leveling', 'Leveling this step'],
               ['flasks', 'Flasks'],
               ['ascendancy', 'Ascendancy'],
               ['pantheon', 'Pantheon'],

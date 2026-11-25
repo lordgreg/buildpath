@@ -71,6 +71,7 @@ export interface GearItem {
   mods: string[];
   budget: string;
   ilvl: number;
+  rarity?: 'NORMAL' | 'MAGIC' | 'RARE' | 'UNIQUE';
 }
 
 export interface GemLink {

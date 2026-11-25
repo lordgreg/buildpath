@@ -1,11 +1,26 @@
+import { useEffect, useState } from 'react';
 import type { TreeView } from '../core/builds/types.ts';
 
+interface Geometry {
+  version: string;
+  nodes: { id: number; x: number; y: number; notable: boolean; keystone: boolean; socket: boolean; name: string }[];
+  edges: [number, number][];
+}
+
+let geometryPromise: Promise<Geometry> | null = null;
+
+/** Loaded once, on demand: ~300 KB of coordinates that only this page needs. */
+function loadGeometry(): Promise<Geometry> {
+  geometryPromise ??= import('../generated/tree-geometry.json').then(
+    (module) => (module.default ?? module) as unknown as Geometry,
+  );
+  return geometryPromise;
+}
+
 /**
- * A thumbnail of an allocated passive tree.
- *
- * Positions come from the tree data (one point per group), not from a sprite
- * sheet, so it renders offline and stays small: a few hundred circles instead
- * of a megabyte of art. Notables are drawn larger and named in the caption.
+ * The allocated tree on top of the whole tree, the way the game shows it: the
+ * constellation faint in the background, taken nodes lit, links between taken
+ * nodes bright.
  */
 export default function TreeThumbnail({
   tree,
@@ -14,14 +29,28 @@ export default function TreeThumbnail({
   tree: TreeView;
   label: string;
 }) {
-  if (tree.nodes.length === 0) {
+  const [geometry, setGeometry] = useState<Geometry | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    void loadGeometry().then((loaded) => {
+      if (!cancelled) setGeometry(loaded);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (!geometry || tree.nodes.length === 0) {
     return (
-      <p className="text-xs text-zinc-500">No tree was planned for {label}.</p>
+      <p className="text-xs text-zinc-500">
+        {tree.nodes.length === 0 ? `No tree was planned for ${label}.` : 'Loading the tree…'}
+      </p>
     );
   }
 
-  const xs = tree.nodes.map((node) => node.x);
-  const ys = tree.nodes.map((node) => node.y);
+  const xs = geometry.nodes.map((node) => node.x);
+  const ys = geometry.nodes.map((node) => node.y);
   const minX = Math.min(...xs);
   const maxX = Math.max(...xs);
   const minY = Math.min(...ys);
@@ -34,7 +63,12 @@ export default function TreeThumbnail({
     y: ((y - minY) / spanY) * 96 + 2,
   });
   const points = new Map(
-    tree.nodes.map((node) => [node.id, project(node.x, node.y)]),
+    geometry.nodes.map((node) => [node.id, project(node.x, node.y)]),
+  );
+
+  const taken = new Set(tree.nodes.map((node) => node.id));
+  const takenNotable = new Set(
+    tree.nodes.filter((node) => node.notable).map((node) => node.id),
   );
 
   return (
@@ -43,41 +77,67 @@ export default function TreeThumbnail({
         viewBox="0 0 100 100"
         role="img"
         aria-label={`${label} passive tree: ${tree.nodes.length} points, ${tree.notables.length} notables`}
-        className="h-72 w-full rounded-lg border border-ink-700 bg-ink-800/40"
+        className="h-[26rem] w-full rounded-lg border border-ink-700 bg-[#0b0d12]"
       >
-        {tree.edges.map(([from, to]) => {
-          const a = points.get(from);
-          const b = points.get(to);
-          if (!a || !b) return null;
-          return (
-            <line
-              key={`${from}-${to}`}
-              x1={a.x}
-              y1={a.y}
-              x2={b.x}
-              y2={b.y}
-              stroke="currentColor"
-              className="text-ink-500"
-              strokeWidth="0.7"
-              vectorEffect="non-scaling-stroke"
-            />
-          );
-        })}
-        {tree.nodes.map((node) => {
-          const point = points.get(node.id);
-          if (!point) return null;
-          return (
-            <circle
-              key={node.id}
-              cx={point.x}
-              cy={point.y}
-              r={node.notable ? 1.6 : 0.9}
-              className={node.notable ? 'fill-gold-300' : 'fill-zinc-400'}
-            >
-              <title>{node.name || `node ${node.id}`}</title>
-            </circle>
-          );
-        })}
+        <g stroke="currentColor" className="text-ink-700" strokeWidth="0.3" vectorEffect="non-scaling-stroke">
+          {geometry.edges.map(([from, to]) => {
+            if (taken.has(from) && taken.has(to)) return null;
+            const a = points.get(from);
+            const b = points.get(to);
+            if (!a || !b) return null;
+            return <line key={`g${from}-${to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} />;
+          })}
+        </g>
+
+        <g className="fill-ink-600">
+          {geometry.nodes.map((node) => {
+            if (taken.has(node.id)) return null;
+            const point = points.get(node.id);
+            if (!point) return null;
+            return (
+              <circle
+                key={`n${node.id}`}
+                cx={point.x}
+                cy={point.y}
+                r={node.notable ? 0.75 : node.keystone ? 0.8 : 0.45}
+              />
+            );
+          })}
+        </g>
+
+        <g stroke="#e8c37a" strokeWidth="1.1" vectorEffect="non-scaling-stroke">
+          {geometry.edges
+            .filter(([from, to]) => taken.has(from) && taken.has(to))
+            .map(([from, to]) => {
+              const a = points.get(from);
+              const b = points.get(to);
+              if (!a || !b) return null;
+              return <line key={`t${from}-${to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} />;
+            })}
+        </g>
+
+        <g>
+          {geometry.nodes.map((node) => {
+            if (!taken.has(node.id)) return null;
+            const point = points.get(node.id);
+            if (!point) return null;
+            const big = takenNotable.has(node.id);
+            return (
+              <circle
+                key={`a${node.id}`}
+                cx={point.x}
+                cy={point.y}
+                r={big ? 1.5 : node.socket ? 1.2 : 0.85}
+                className={big ? 'fill-gold-300' : 'fill-zinc-200'}
+                stroke={node.socket ? '#8fb6ff' : undefined}
+                strokeWidth={node.socket ? 0.4 : undefined}
+                vectorEffect="non-scaling-stroke"
+              >
+                <title>{node.name || `node ${node.id}`}</title>
+              </circle>
+            );
+          })}
+        </g>
       </svg>
       <figcaption className="mt-2 text-[11px] leading-relaxed text-zinc-500">
         {tree.nodes.length} points, {tree.notables.length} notables —{' '}

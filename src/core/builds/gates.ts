@@ -5,6 +5,8 @@ export interface GateThresholds {
   resistanceFloor?: number;
   /** Set false where resistances cannot be capped yet (acts 1-4). */
   resists?: boolean;
+  /** Chaos resistance floor, where the content demands it (pinnacle). */
+  chaosResist?: number;
   life?: number;
   ehp?: number;
   maxHit?: number;
@@ -33,11 +35,16 @@ export function evaluateGate(
   const floor = thresholds.resistanceFloor ?? RESIST_FLOOR - resistanceGap;
 
   const checkResists = thresholds.resists !== false;
+  const chaosFloor = thresholds.chaosResist;
   const resistances: [keyof CheckpointMetrics, string][] = [
     ['fireResist', 'fire resistance'],
     ['coldResist', 'cold resistance'],
     ['lightningResist', 'lightning resistance'],
   ];
+  if (typeof chaosFloor === 'number' && checkResists) {
+    const value = Math.round(Number(metrics.chaosResist ?? -100));
+    if (value < chaosFloor) failures.push(`chaos resistance ${value}% < ${chaosFloor}%`);
+  }
   for (const [key, label] of checkResists ? resistances : []) {
     const value = Math.round(Number(metrics[key] ?? -100));
     if (value < floor) failures.push(`${label} ${value}% < ${floor}%`);
