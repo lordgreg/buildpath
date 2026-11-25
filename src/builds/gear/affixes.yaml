@@ -1,0 +1,39 @@
+# Reviewed affix catalogue for synthesised budget gear.
+#
+# Every line is validated by effect in the PoB oracle: a line PoB cannot parse
+# is dropped silently (S6), so the gate report asserts each item's parsed mod
+# count. Tiers are 1 (best) to 3 (worst); a budget picks the worst tier it
+# allows and the synthesiser emits the midpoint value.
+life:
+  mod: "+{v} to maximum Life"
+  tiers: { 1: 100, 2: 80, 3: 60 }
+resist-fire:
+  mod: "+{v}% to Fire Resistance"
+  tiers: { 1: 45, 2: 40, 3: 30 }
+resist-cold:
+  mod: "+{v}% to Cold Resistance"
+  tiers: { 1: 45, 2: 40, 3: 30 }
+resist-lightning:
+  mod: "+{v}% to Lightning Resistance"
+  tiers: { 1: 45, 2: 40, 3: 30 }
+resist-chaos:
+  mod: "+{v}% to Chaos Resistance"
+  tiers: { 1: 30, 2: 20, 3: 10 }
+energy-shield:
+  mod: "+{v} to maximum Energy Shield"
+  tiers: { 1: 80, 2: 55, 3: 35 }
+energy-shield-pct:
+  mod: "{v}% increased Energy Shield"
+  tiers: { 1: 60, 2: 40, 3: 25 }
+armour:
+  mod: "+{v} to Armour"
+  tiers: { 1: 300, 2: 200, 3: 120 }
+attribute-int:
+  mod: "+{v} to Intelligence"
+  tiers: { 1: 40, 2: 25, 3: 15 }
+minion-gem-level:
+  mod: "+{v} to Level of all Minion Skill Gems"
+  tiers: { 1: 1, 2: 1, 3: 1 }
+minion-life:
+  mod: "Minions have {v}% increased maximum Life"
+  tiers: { 1: 40, 2: 30, 3: 20 }

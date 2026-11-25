@@ -1,0 +1,44 @@
+# Checkpoints: what a build is measured at, and how much it has to work with.
+#
+# `points` is the passive-point budget. It is a reviewed per-patch table (D30),
+# never derived from a quest count at runtime, because that is what breaks every
+# league. Values are deliberately conservative.
+schemaVersion: 1
+treeVersion: "3_30"
+bossTarget: "Pinnacle boss (single target, no ailment help from another build)"
+checkpoints:
+  act5:
+    level: 20
+    points: 22
+    labs: 1
+    budget: leveling
+    gemLevel: 8
+    supportLevel: 4
+  act10:
+    level: 45
+    points: 55
+    labs: 2
+    budget: ssf-start
+    gemLevel: 16
+    supportLevel: 12
+  maps-early:
+    level: 80
+    points: 90
+    labs: 4
+    budget: ssf-start
+    gemLevel: 19
+    supportLevel: 18
+  maps-red:
+    level: 90
+    points: 105
+    labs: 4
+    budget: ssf-week1
+    gemLevel: 20
+    supportLevel: 20
+  pinnacle:
+    level: 96
+    points: 113
+    labs: 4
+    budget: trade
+    gemLevel: 21
+    supportLevel: 20

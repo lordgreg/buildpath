@@ -44,6 +44,22 @@ export interface UniqueRef {
 
 export type BuildBandit = 'kill-all' | 'oak' | 'kraityn' | 'alira';
 
+/** What the PoB oracle measured at one checkpoint. */
+export interface CheckpointMetrics {
+  dps: number;
+  dpsSource: 'player' | 'minion';
+  life: number;
+  energyShield: number;
+  ehp: number;
+  physicalMaxHit: number;
+  fireResist: number;
+  coldResist: number;
+  lightningResist: number;
+  chaosResist: number;
+  nodes: number;
+  ascendancy: number;
+}
+
 /**
  * A hand-curated build seed, compiled to JSON. The pipeline proves it against
  * Path of Building and either publishes it or rejects it; it never invents one.

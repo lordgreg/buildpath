@@ -1,0 +1,30 @@
+# Gate thresholds. Provisional until calibration exists (PLAN-BUILDS.md §8);
+# the page labels every number "uncalibrated" until P3 proves the gates against
+# must-pass and must-fail reference builds.
+schemaVersion: 1
+calibrated: false
+resistanceGap: 0        # all three elemental resistances must reach 75%
+checkpoints:
+  act5:
+    life: 1200
+    maxHit: 1000
+    dps: 300
+  act10:
+    life: 2200
+    maxHit: 2200
+    dps: 5000
+  maps-early:
+    life: 3000
+    ehp: 20000
+    maxHit: 8000
+    dps: 400000
+  maps-red:
+    life: 4000
+    ehp: 30000
+    maxHit: 12000
+    dps: 2000000
+  pinnacle:
+    life: 4500
+    ehp: 35000
+    maxHit: 14000
+    dps: 5000000

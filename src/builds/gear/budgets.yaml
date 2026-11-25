@@ -1,0 +1,65 @@
+# Gear budgets: constraints, not item lists (PLAN-BUILDS.md §7.7).
+#
+# `tier` is the worst affix tier a budget allows; the synthesiser emits the
+# midpoint of that tier. `links` caps the largest socket group, `ilvl` sets the
+# item level each item is generated at. Every base is checked against
+# known-base-types.json, so a renamed base fails the build instead of the gate.
+leveling:
+  tier: 3
+  ilvl: 45
+  links: 4
+  slots:
+    weapon: { base: "Driftwood Wand", affixes: [minion-gem-level] }
+    helmet: { base: "Hubris Circlet", affixes: [life, resist-fire] }
+    body: { base: "Vaal Regalia", affixes: [life, energy-shield-pct] }
+    gloves: { base: "Sorcerer Gloves", affixes: [life] }
+    boots: { base: "Sorcerer Boots", affixes: [life, resist-cold] }
+    belt: { base: "Chain Belt", affixes: [life] }
+    amulet: { base: "Onyx Amulet", affixes: [attribute-int] }
+    ring1: { base: "Opal Ring", affixes: [life, resist-lightning] }
+    ring2: { base: "Opal Ring", affixes: [life, resist-lightning] }
+ssf-start:
+  tier: 3
+  ilvl: 72
+  links: 5
+  slots:
+    weapon: { base: "Convoking Wand", affixes: [minion-gem-level, attribute-int] }
+    offhand: { base: "Chiming Spirit Shield", affixes: [life, energy-shield-pct] }
+    helmet: { base: "Hubris Circlet", affixes: [life, resist-fire, resist-cold] }
+    body: { base: "Vaal Regalia", affixes: [life, energy-shield-pct, resist-lightning] }
+    gloves: { base: "Sorcerer Gloves", affixes: [life, resist-fire] }
+    boots: { base: "Sorcerer Boots", affixes: [life, resist-cold, resist-lightning] }
+    belt: { base: "Chain Belt", affixes: [life, resist-chaos] }
+    amulet: { base: "Onyx Amulet", affixes: [attribute-int, life] }
+    ring1: { base: "Opal Ring", affixes: [life, resist-fire] }
+    ring2: { base: "Opal Ring", affixes: [life, resist-lightning] }
+ssf-week1:
+  tier: 2
+  ilvl: 82
+  links: 6
+  slots:
+    weapon: { base: "Convoking Wand", affixes: [minion-gem-level, attribute-int, minion-life] }
+    offhand: { base: "Chiming Spirit Shield", affixes: [life, energy-shield-pct, resist-chaos] }
+    helmet: { base: "Hubris Circlet", affixes: [life, resist-fire, resist-cold] }
+    body: { base: "Vaal Regalia", affixes: [life, energy-shield-pct, resist-lightning] }
+    gloves: { base: "Sorcerer Gloves", affixes: [life, resist-fire, minion-life] }
+    boots: { base: "Sorcerer Boots", affixes: [life, resist-cold, resist-lightning] }
+    belt: { base: "Chain Belt", affixes: [life, resist-chaos, energy-shield] }
+    amulet: { base: "Onyx Amulet", affixes: [attribute-int, life] }
+    ring1: { base: "Opal Ring", affixes: [life, resist-fire, energy-shield] }
+    ring2: { base: "Opal Ring", affixes: [life, resist-lightning, energy-shield] }
+trade:
+  tier: 1
+  ilvl: 86
+  links: 6
+  slots:
+    weapon: { base: "Convoking Wand", affixes: [minion-gem-level, attribute-int, minion-life] }
+    offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-chaos] }
+    helmet: { base: "Hubris Circlet", affixes: [life, energy-shield-pct, resist-fire] }
+    body: { base: "Vaal Regalia", affixes: [life, energy-shield-pct, resist-lightning] }
+    gloves: { base: "Sorcerer Gloves", affixes: [life, resist-fire, resist-cold] }
+    boots: { base: "Sorcerer Boots", affixes: [life, resist-cold, resist-lightning] }
+    belt: { base: "Chain Belt", affixes: [life, resist-chaos, energy-shield] }
+    amulet: { base: "Onyx Amulet", affixes: [attribute-int, life, energy-shield] }
+    ring1: { base: "Opal Ring", affixes: [life, resist-fire, energy-shield] }
+    ring2: { base: "Opal Ring", affixes: [life, resist-lightning, energy-shield] }
