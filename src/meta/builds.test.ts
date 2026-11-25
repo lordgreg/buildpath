@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { inflateSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'yaml';
 import { generateFilter } from '../core/filter/generate.ts';
@@ -267,6 +268,72 @@ describe('build mode', () => {
           expect(filter.text, label).not.toMatch(/[^\x09\x0a\x20-\x7e]/);
         }
       }
+    }
+  });
+});
+
+/**
+ * The published code is the evidence for R3, and the cheap half of that check
+ * runs here: the code must carry the XML the gate measured. Whether real PoB
+ * loads it is `npm run builds:check`, run by validate-builds.yml with the
+ * pinned checkout (it needs Lua, which `npm test` must not).
+ */
+describe('published PoB code', () => {
+  const compiled = BUILDS.map(
+    (entry) =>
+      JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        id: string;
+        class: string;
+        status: string;
+        pipeline?: { pobRef: string };
+        pob?: { ref: string; checkpoint: string; code: string };
+        gates?: Record<
+          string,
+          {
+            level: number;
+            tree: { nodes: { id: number }[] };
+            gear: { slot: string }[];
+            gems: { gems: { name: string }[] }[];
+          }
+        >;
+      },
+  );
+
+  function decode(code: string): string {
+    // PoB's import tab: url-safe base64 around zlib-deflated XML.
+    const standard = code.replaceAll('-', '+').replaceAll('_', '/');
+    return inflateSync(Buffer.from(standard, 'base64')).toString('utf8');
+  }
+
+  it('publishes one maps-red code per build (D24)', () => {
+    for (const build of compiled) {
+      expect(build.pob, build.id).toBeDefined();
+      expect(build.pob!.checkpoint, build.id).toBe('maps-red');
+      expect(build.pob!.ref, build.id).toBe(build.pipeline?.pobRef);
+      expect(build.pob!.code, build.id).toMatch(/^[A-Za-z0-9_-]+$/);
+    }
+  });
+
+  it('decodes to the tree, items and gems the gate report measured', () => {
+    for (const build of compiled) {
+      const gate = build.gates?.['maps-red'];
+      expect(gate, `${build.id} has no maps-red gate report`).toBeDefined();
+      const xml = decode(build.pob!.code);
+      expect(xml.startsWith('<?xml'), build.id).toBe(true);
+      expect(xml, build.id).toContain('<PathOfBuilding>');
+      expect(xml, build.id).toContain(`className="${build.class}"`);
+      expect(xml, build.id).toContain(`<Build level="${gate!.level}"`);
+
+      const specNodes = xml.match(/<Spec\b[^>]*\bnodes="([^"]*)"/)?.[1] ?? '';
+      expect(specNodes.split(',').filter(Boolean).length, build.id).toBe(
+        gate!.tree.nodes.length,
+      );
+      expect((xml.match(/<Item id=/g) ?? []).length, build.id).toBe(gate!.gear.length);
+      expect((xml.match(/<Gem /g) ?? []).length, build.id).toBe(
+        gate!.gems.reduce((sum, group) => sum + group.gems.length, 0),
+      );
     }
   });
 });

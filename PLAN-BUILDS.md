@@ -1,6 +1,6 @@
 # BuildPath — Plan
 
-> Revision 10. See §16 for the council reviews and what each round changed.
+> Revision 11. See §16 for the council reviews and what each round changed.
 
 Verified build guides, with the loot filter as one output instead of the whole
 product.
@@ -220,9 +220,13 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
 
 Rules:
 
-- **Checkpoints** are a closed enum: `act5 | act10 | maps-early | maps-red |
-  pinnacle`. **Guide steps** are display only: `act1…act10 | maps | boss`. They
-  are different concepts and must not share keys (§9).
+- **Checkpoints** are a closed enum defined by `src/builds/config/checkpoints.yaml`
+  (shipped: `until-12 | until-28 | until-68 | maps-early | maps-red |
+  pinnacle`). A checkpoint is a level bracket — level, passive points, labs,
+  gear budget and gem cap — so one key drives the gate report, the tree, the
+  gems and the gear. Earlier revisions split "gate checkpoints" from "guide
+  steps"; P1 shipped one enum, and the page uses the same key as its step. The
+  five-key `act5 | act10 | …` set never shipped (§16, revision 11).
 - `tree.checkpoints[cp]` is a **subset** of `tree.endgame`, asserted by test
   with valid topological order.
 - `gearSets` is keyed by the same checkpoint enum and names one `budget`; the
@@ -320,7 +324,10 @@ other section may be `auto-retry` (D1, D28).
   `runtime/lua` on `LUA_PATH`, `lua-utf8` on `LUA_CPATH`, one warm process, XML
   reload per evaluation. A tag is only acceptable once
   `Classes/CompareBuySimilar.lua` parses under stock LuaJIT — `v2.69.0` does
-  not, and a bump must re-check it.
+  not, and a bump must re-check it. The three-line fix is committed as
+  `scripts/builds/pob/luajit-compat.patch` and applied by
+  `validate-builds.yml`; `lua-utf8` is built there with luarocks, since Ubuntu
+  ships no package for it.
 - Loads a generated XML, reads `CombinedDPS`, `TotalEHP`,
   `PhysicalMaximumHitTaken`, `Life`, `EnergyShield`, resistances, mana cost and
   unreserved mana.
@@ -471,9 +478,9 @@ Numeric comparisons use an explicit tolerance (integers exact, percentages
 
 ## 9. The build page
 
-**Guide steps** (display) are `act1…act10 | maps | boss`, mapped onto the two
-filter phases (§10). **Gate checkpoints** (§7.1) are the machine-facing enum.
-The page never calls a guide step a "phase".
+**Guide steps** are the checkpoint keys (`until-12 | until-28 | until-68 |
+maps-early | maps-red | pinnacle`), mapped onto the two filter phases (§10). A
+step is a level bracket, not a filter phase; the page never calls one a "phase".
 
 | Ask | Where it lives |
 |---|---|
@@ -545,16 +552,33 @@ outcome is in §15 and the no-ladder decision in §7.4 stands.
 **P0.5 — rename.** Two `chore:`/`refactor:` commits, documented in §16 of the
 changelog.
 
-**P1 — walking skeleton.** One hand-built reference build end to end: `Build`
-type in `src/core/builds/`, `synthesize-gear.mjs`, `verify.mjs`, `gates.yaml`,
-per-checkpoint gate report, PoB code generation, `mode=build` filter,
-`build.html`, `src/builds/*.yaml` + schema + drift test. Acceptance: page numbers
-equal JSON numbers, filter identical for a fixed preset hash, goldens cover the
-new output, and every gate number is labelled **uncalibrated** on the page until
-P3. Repair, ablation and leveling derivation are deliberately absent from P1.
+**P1 — walking skeleton (landed in 0.54.0).** One hand-built reference build
+end to end: `Build` type in `src/core/builds/`, `synthesize-gear.mjs`,
+`verify.mjs`, `gates.yaml`, per-checkpoint gate report, PoB code generation,
+`mode=build` filter, `build.html`, `src/builds/*.yaml` + schema + drift test.
+Acceptance: page numbers equal JSON numbers, filter identical for a fixed preset
+hash, goldens cover the new output, and every gate number is labelled
+**uncalibrated** on the page until P3. Repair, ablation and leveling derivation
+are deliberately absent from P1.
 
 The drift test runs in a new `validate-builds.yml` job with the PoB cache, not in
 `npm test`: it needs Lua and minutes, and `npm test` must stay fast and offline.
+
+What shipped, where it differs from the text above:
+
+- The done criterion for R3 is two tests, not one: `npm test` decodes each
+  published code and compares its tree, items and gems with the gate report
+  (offline, milliseconds), and `npm run builds:check` loads it in the pinned PoB
+  inside `validate-builds.yml` (Lua, minutes).
+- The checkpoint set is the six in `src/builds/config/checkpoints.yaml`
+  (`until-12 | until-28 | until-68 | maps-early | maps-red | pinnacle`), not the
+  five-key enum in §7.1. A checkpoint is a level bracket — it carries the tree,
+  gems and gear a character can actually have — so separate act-5 and act-10
+  keys duplicated `until-68` without adding a measurement (§16, revision 11).
+- `synthesize-gear.mjs` never became its own script: gear synthesis lives in
+  `verify.mjs`, next to the oracle run that consumes it, because a set that is
+  not immediately measured has no reason to exist.
+
 
 **P2 — seeded catalogue.** Three hand-built seeds through the whole chain
 (synthesise → verify → gates → derive leveling → publish). No fetching: the only
@@ -687,6 +711,29 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 11 — P1 landed
+
+P1 shipped in 0.54.0. What that changed in this document:
+
+- **One artefact for R3, two checks.** `npm test` decodes every published code
+  and compares its tree, items and gems with the gate report; `npm run
+  builds:check` loads it in the pinned PoB inside `validate-builds.yml`. The
+  offline half is fast enough for the normal suite, the Lua half is not.
+- **The checkpoint enum is the shipped one.** `checkpoints.yaml` defines six
+  level brackets (`until-12`, `until-28`, `until-68`, `maps-early`, `maps-red`,
+  `pinnacle`), and a checkpoint carries its own level, points, labs, gear budget
+  and gem cap. The five-key `act5 | act10 | maps-early | maps-red | pinnacle`
+  enum and the separate display-only guide steps in revisions 1–10 are
+  superseded: act 5 and act 10 as separate machine checkpoints duplicated
+  `until-68` without measuring anything new.
+- **Gear synthesis stayed in `verify.mjs`.** A synthesised set has no purpose
+  outside the evaluation that consumes it, and a separate script invited the two
+  to drift.
+- **`checkedAt` follows D22 in code.** Re-verifying unchanged numbers no longer
+  rewrites the stamp, so the nightly job produces no diff.
+- Gate numbers are still uncalibrated (§14): P3's must-pass and must-fail sets
+  are what turn them into claims.
 
 ### Revision 10 — ladder dropped
 

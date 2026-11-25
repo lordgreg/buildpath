@@ -171,8 +171,9 @@ for (const file of files) {
     process.exit(1);
   }
   const seedHash = hashOf(seed);
-  // Verification writes gates and the pipeline stamp into the same file. Keep
-  // them when the seed has not changed, so compiling never destroys a report.
+  // Verification writes gates, the published PoB code and the pipeline stamp
+  // into the same file. Keep them when the seed has not changed, so compiling
+  // never destroys a report.
   const previousPath = resolve(outDir, `${seed.id}.json`);
   let carried = {};
   if (existsSync(previousPath)) {
@@ -181,6 +182,7 @@ for (const file of files) {
       carried = {
         status: previous.status ?? 'draft',
         gates: previous.gates,
+        ...(previous.pob ? { pob: previous.pob } : {}),
         ...(previous.pipeline ? { pipeline: previous.pipeline } : {}),
       };
     }

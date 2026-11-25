@@ -14,34 +14,12 @@
  */
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { deflateSync } from 'node:zlib';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
 import { evaluateGate as evaluateGatePure } from '../../src/core/builds/gates.ts';
-
-/**
- * LuaJIT needs lua-utf8 on its C path. Asking the operator to export it is how
- * the pipeline silently falls back to "PoB produced no output", so discover it
- * once here and pass it down.
- */
-function findUtf8Cpath() {
-  if (process.env.LUA_CPATH) return process.env.LUA_CPATH;
-  const candidates = [
-    '/nix/store',
-    '/usr/lib/x86_64-linux-gnu',
-    '/usr/lib64',
-    '/usr/local/lib',
-  ];
-  for (const base of candidates) {
-    if (!existsSync(base)) continue;
-    for (const entry of readdirSync(base)) {
-      if (!/luautf8|lua-utf8/i.test(entry)) continue;
-      const dir = resolve(base, entry, 'lib/lua/5.1');
-      if (existsSync(resolve(dir, 'lua-utf8.so'))) return `${dir}/?.so;;`;
-    }
-  }
-  return '';
-}
+import { findUtf8Cpath, LUA_PATH } from './pob/lua-env.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const seedsDir = resolve(root, 'src/builds');
@@ -98,10 +76,13 @@ function gemLevelFor(name, characterLevel, cap = 20) {
   return best;
 }
 
-/** Slot name as PoB writes it. */
+/**
+ * Slot name as PoB writes it. A shield or quiver lives in "Weapon 2"; "Shield"
+ * is a type, not a slot, so PoB silently ignored it when it was used here.
+ */
 const POB_SLOT = {
   weapon: 'Weapon 1',
-  offhand: 'Shield',
+  offhand: 'Weapon 2',
   helmet: 'Helmet',
   body: 'Body Armour',
   gloves: 'Gloves',
@@ -171,7 +152,7 @@ function synthesizeGear(budgetId) {
   return { items, jewels, budget };
 }
 
-function runOracle(spec) {
+function runOracle(spec, { xmlOut } = {}) {
   mkdirSync(scratchDir, { recursive: true });
   const specPath = resolve(scratchDir, `${spec.name}.spec.json`);
   writeFileSync(specPath, JSON.stringify(spec, null, 2));
@@ -180,7 +161,8 @@ function runOracle(spec) {
     env: {
       ...process.env,
       BUILD_SPEC: specPath,
-      LUA_PATH: './?.lua;../runtime/lua/?.lua;../runtime/lua/?/init.lua;;',
+      ...(xmlOut ? { BUILD_XML_OUT: xmlOut } : {}),
+      LUA_PATH,
       LUA_CPATH,
     },
     encoding: 'utf8',
@@ -223,9 +205,26 @@ function formatSlot(slot) {
   return slot;
 }
 
+/**
+ * The published PoB code is the `maps-red` XML, deflated and encoded exactly as
+ * PoB's own import tab does it (D19, D24). The same serialiser produces the XML
+ * the oracle loaded and the code the reader imports, so "what we tested" and
+ * "what you paste" cannot drift apart.
+ */
+function encodePobCode(xml) {
+  return deflateSync(Buffer.from(xml, 'utf8'))
+    .toString('base64')
+    .replaceAll('+', '-')
+    .replaceAll('/', '_');
+}
+
 function verifySeed(seed) {
   const report = {};
   let allPass = true;
+  // D24: one code, one named checkpoint. It is the gear set the page calls
+  // "what we tested", and the XML the gate for that checkpoint was measured on.
+  const codeCheckpoint = 'maps-red';
+  const codeXmlPath = resolve(scratchDir, `${seed.id}-${codeCheckpoint}.xml`);
   for (const [id, checkpoint] of Object.entries(checkpoints.checkpoints)) {
     const { items, jewels, budget } = synthesizeGear(checkpoint.budget);
     const bracket =
@@ -271,7 +270,7 @@ function verifySeed(seed) {
       jewels: jewels.map((jewel) => ({ text: jewel.text })),
       jewelCount: jewels.length,
       config: [],
-    });
+    }, { xmlOut: id === codeCheckpoint ? codeXmlPath : undefined });
     // PoB reports one minion's damage; the build fights with all of them.
     const minionCount = metrics.dpsSource === 'minion' ? (seed.minionCount ?? 1) : 1;
     const scaled = { ...metrics, dps: metrics.dps * minionCount, chaosResist: metrics.chaosResist };
@@ -345,7 +344,18 @@ function verifySeed(seed) {
     );
     if (!gate.pass) console.log(`  ${gate.failures.join('; ')}`);
   }
-  return { report, status: allPass ? 'verified' : 'draft' };
+  if (!existsSync(codeXmlPath)) {
+    throw new Error(`${seed.id}: the ${codeCheckpoint} oracle run wrote no XML`);
+  }
+  return {
+    report,
+    status: allPass ? 'verified' : 'draft',
+    pob: {
+      ref: process.env.POB_REF ?? 'v2.69.0',
+      checkpoint: codeCheckpoint,
+      code: encodePobCode(readFileSync(codeXmlPath, 'utf8')),
+    },
+  };
 }
 
 const files = readdirSync(seedsDir).filter((name) => name.endsWith('.yaml'));
@@ -358,14 +368,21 @@ for (const file of files) {
     (entry) => entry.id === seed.ascendancyId,
   );
   seed.ascendancyName = match?.name ?? seed.ascendancyId;
-  const { report, status } = verifySeed(seed);
+  const { report, status, pob } = verifySeed(seed);
+  // D22: a verification stamp only moves when a measured value moves, so a
+  // nightly re-run that proves the same numbers produces no diff and no PR.
+  const unchanged = JSON.stringify(build.gates) === JSON.stringify(report);
   build.gates = report;
+  build.pob = pob;
   build.status = status;
   build.pipeline = {
     pobRef: process.env.POB_REF ?? 'v2.69.0',
     treeVersion: checkpoints.treeVersion,
     calibrated: gates.calibrated === true,
-    checkedAt: new Date().toISOString(),
+    checkedAt:
+      unchanged && build.pipeline?.checkedAt
+        ? build.pipeline.checkedAt
+        : new Date().toISOString(),
   };
   writeFileSync(path, `${JSON.stringify(build, null, 2)}\n`);
   console.log(`${seed.id}: ${status}`);
