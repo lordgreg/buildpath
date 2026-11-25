@@ -68,9 +68,6 @@ local function allocatedCount()
   return n
 end
 
--- Breadth-first path from anywhere allocated to `target`, through unallocated
--- nodes. Returns the list of nodes to add, or nil when the target is reachable
--- only through the allocated set (already connected) or not at all.
 -- Paths may only run through ordinary passives: a keystone such as Chaos
 -- Inoculation sits on the way to places we want and would silently gut the
 -- build. Masteries and ascendancy nodes are never pathing material either.
@@ -83,84 +80,98 @@ local function traversable(id)
   return true
 end
 
-local function pathTo(target)
-  if allocated[target] then return {} end
-  if not traversable(target) and not allocated[target] then
-    local node = nodes[target] or nodes[tostring(target)]
-    if node and (node.isKeystone or node.isMastery) then return nil end
-  end
-  local parent, queue, head = {}, {}, 1
-  local seen = {}
+-- One multi-source breadth-first pass per iteration gives every reachable node
+-- its distance from the allocated set, so candidates can be compared by how
+-- much they cost to reach instead of in file order.
+local function distances()
+  local depth, parent, queue, head = {}, {}, {}, 1
   for id in pairs(allocated) do
-    for _, other in ipairs(neighbours[id] or {}) do
-      if not allocated[other] and not seen[other] and traversable(other) then
-        seen[other] = true
-        parent[other] = nil
-        queue[#queue + 1] = other
-      end
-    end
+    depth[id] = 0
+    queue[#queue + 1] = id
   end
   while head <= #queue do
     local id = queue[head]
     head = head + 1
-    if id == target then
-      local path = {}
-      local cursor = id
-      while cursor and not allocated[cursor] do
-        table.insert(path, 1, cursor)
-        cursor = parent[cursor]
-      end
-      return path
-    end
     for _, other in ipairs(neighbours[id] or {}) do
-      if not allocated[other] and not seen[other] and traversable(other) then
-        seen[other] = true
+      if depth[other] == nil and (allocated[other] or traversable(other)) then
+        depth[other] = depth[id] + 1
         parent[other] = id
         queue[#queue + 1] = other
       end
     end
   end
-  return nil
+  return depth, parent
 end
 
--- Candidates: notables first, then keystones, ranked by which target pattern
--- they satisfy (earlier patterns win), then by id for determinism.
+-- Candidate notables: which target pattern they satisfy sets their weight.
 local candidates = {}
 for id, node in pairs(nodes) do
-  local kind = node.isNotable and "notable" or (node.isKeystone and "keystone") or nil
-  if kind and not node.isAscendancyStart and not node.ascendancyName and not node.isMastery then
-    local text = statText(node)
+  if node.isNotable and not node.isAscendancyStart and not node.ascendancyName and not node.isMastery and not node.isKeystone then
+    local text = statText(node):lower()
     local priority
     for index, pattern in ipairs(spec.targets or {}) do
-      if text:lower():find(pattern:lower(), 1, true) then
+      if text:find(pattern:lower(), 1, true) then
         priority = index
         break
       end
     end
     if priority then
-      candidates[#candidates + 1] = { id = tonumber(id), priority = priority, kind = kind, name = node.name, seats = pathTo(id) }
+      candidates[#candidates + 1] = { id = tonumber(id), priority = priority, name = node.name }
     end
   end
 end
--- Stable, deterministic order: pattern priority, then notable before keystone,
--- then id. `pathTo` was computed before allocation so it is only a hint; real
--- paths are recomputed as the tree fills.
 table.sort(candidates, function(a, b)
   if a.priority ~= b.priority then return a.priority < b.priority end
-  if a.kind ~= b.kind then return a.kind < b.kind end
   return a.id < b.id
 end)
 
+-- Earlier patterns are worth more; the score is value per point spent, so a
+-- cheap minion notable beats a distant life notable and travel is not free.
+-- Minion damage is what the build is for; life keeps you alive but does not
+-- kill anything, so it is weighted below every minion pattern.
+local function weight(priority)
+  if priority == 1 then return 4.0 end
+  if priority == 2 then return 3.0 end
+  if priority == 3 then return 2.0 end
+  return 0.8
+end
+
 local budget = math.max(2, (spec.points or 100) - 1)
-local planned, skipped = {}, 0
-for _, candidate in ipairs(candidates) do
-  if allocatedCount() >= budget then break end
-  local path = pathTo(candidate.id)
-  if path and #path > 0 and allocatedCount() + #path <= budget then
+local planned, taken, skipped = {}, {}, 0
+while allocatedCount() < budget do
+  local depth, parent = distances()
+  local best, bestScore
+  for _, candidate in ipairs(candidates) do
+    if not taken[candidate.id] then
+      local cost = depth[candidate.id]
+      if cost == nil then
+        skipped = skipped + 1
+        taken[candidate.id] = true
+      elseif cost > 0 then
+        local score = weight(candidate.priority) / cost
+        if bestScore == nil or score > bestScore
+          or (score == bestScore and candidate.priority < best.priority) then
+          best, bestScore = candidate, score
+        end
+      else
+        taken[candidate.id] = true
+      end
+    end
+  end
+  if not best then break end
+  -- Walk back to the allocated set and buy the whole path if it fits.
+  local path = {}
+  local cursor = best.id
+  while cursor and not allocated[cursor] do
+    table.insert(path, 1, cursor)
+    cursor = parent[cursor]
+  end
+  if #path == 0 or allocatedCount() + #path > budget then
+    taken[best.id] = true
+  else
     for _, id in ipairs(path) do allocated[id] = true end
-    planned[#planned + 1] = candidate.name or candidate.id
-  elseif path == nil then
-    skipped = skipped + 1
+    taken[best.id] = true
+    planned[#planned + 1] = best.name or best.id
   end
 end
 

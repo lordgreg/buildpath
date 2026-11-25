@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.47.0',
+    date: '2026-11-25',
+    title: 'A tree planner that counts points, and early maps pass',
+    notes: [
+      "The tree planner picks by value per point instead of walking candidates in file order: one breadth-first pass per iteration gives every reachable notable its distance, and the score is the pattern weight divided by that cost. Minion damage weighs more than life, and life weighs less than travel is worth avoiding.",
+      "The wand carries minion damage at every budget from act 5 on, and the glove slot carries it from the first week \u2014 the two places a summoner actually gets it.",
+      "Brutality replaces Minion Speed in the links: the same six links, more damage, which is what the map steps were short of.",
+      "Four of six steps now pass: until 12, until 28, until 68 and early maps. Red maps are at 40k against an 80k floor and pinnacle at 51k against 150k, so the build stays a draft.",
+    ],
+    commits: [],
+    compare: 'v0.46.0...v0.47.0',
+  },
+  {
     version: '0.46.0',
     date: '2026-11-25',
     title: 'A guide you can read in order, with honest early gear',
