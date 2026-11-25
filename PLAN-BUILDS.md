@@ -1,6 +1,6 @@
 # BuildPath — Plan
 
-> Revision 8. See §16 for the council reviews and what each round changed.
+> Revision 9. See §16 for the council reviews and what each round changed.
 
 Verified build guides, with the loot filter as one output instead of the whole
 product.
@@ -650,7 +650,16 @@ rounding rule:
 
 ## 14. Open items
 
+- **Ladder distribution — maintainer decision (S5).** `/ladders` answers and
+  exposes only class/ascendancy, level and rank, but the Developer Docs sanction
+  only what is in the API Reference or Data Exports. If allowed, the site gets a
+  population heatmap ("what the ladder plays"), nothing more; if not, breadth is
+  gate-only pages with no popularity claim. Either way no character, tree or gem
+  data is reachable, so build *content* always comes from hand-curated seeds
+  plus the PoB oracle.
 - **Breadth depth** (D1): heatmap vs per-ascendancy pages — decide after 1.0.
+  S2 showed ascendancy names are in the ladder payload, so a heatmap is possible
+  if the decision above is yes.
 - **True third filter phase** (D10): ~18 new preset entries, goldens, audit
   expectations, filenames. Only if the two-phase mapping proves awkward.
 - **`src/core` extraction** (D13): after 1.0, only if a second site exists.
@@ -665,10 +674,11 @@ Filled in during P0. Empty means P0 has not run.
 | # | Result | Evidence | Decision |
 |---|---|---|---|
 | S1 | **pass** | PoB `v2.69.0` source loads headless under stock LuaJIT 2.1 and returns `CombinedDPS`, `Life`, `EnergyShield`, `TotalEHP`, `PhysicalMaximumHitTaken`, resists, mana. Three loads of one XML are byte-identical; median 0.141 s/eval in a warm process, so 8×5×200 projects to **21 min** (< 30 min target). Needs `lua-utf8` on `LUA_CPATH` and PoB's `runtime/lua` on `LUA_PATH`. `Classes/CompareBuySimilar.lua` at that tag has three Luau-syntax lines that make stock LuaJIT refuse to boot; a three-line patch fixes it (`spike/pob`). | Debug-only oracle, one warm process, XML reload per evaluation. Pin the tag only after that file is clean; check it on every PoB bump. |
-| S2 | | | |
-| S3 | | | |
-| S4 | | | |
-| S5 | | | |
+| S2 | **pass** | `api.pathofexile.com/ladders` (and the `www` host) answer unauthenticated: 200 entries per call, `total` 15000, headers `X-Rate-Limit-Policy: ladder-view`, `X-Rate-Limit-Ip: 5:5:10,10:10:30,15:10:300`. The `class` field carries **ascendancy** names (Ascendant, Pathfinder, Necromancer, Warden…) for ascended characters, so an ascendancy distribution needs no character data at all. A `public` flag is present on ~62% of entries. | Usable for distribution only; skills and trees are not in the payload. |
+| S3 | **fail** | `character-window/get-passive-skills?account=…&character=…` returns `{"error":{"code":6,"message":"Forbidden"}}` with a plain UA and with browser-ish headers. An application-level auth gate, not a bot block. | **D5 applies.** No session cookies, so no character trees, no skills, no ladder-derived builds. |
+| S4 | **blocked** | Nothing to map: S3 yields no character data. PoB itself already ships `loadBuildFromJSON`, which ingests the official character response, so the mapping costs nothing if access ever returns. | Not a design risk any more — just unreachable. |
+| S5 | **caution** | The Developer Docs limit sanctioned use to "resources defined in our API Reference or listed in our Data Exports" and forbid "any other internal website APIs". `/ladders` is on the official host with published rate-limit headers but is **not** in the reference; character endpoints require OAuth and "We are currently unable to process new applications". The UA format they ask for is OAuth-prefixed with a contact. | Maintainer decision (§14). If allowed: distribution only, ≤5 requests/5 s, cached daily, never a character call. |
+
 | S6 | **pass, with a correction** | Item text carries display mod lines, not mod ids. `+100 to maximum Life` applies exactly (100 vs 87 flat = +41 life through the build's increased-life); `+100 to maximum Nonsense` is dropped **silently** — same number of stat lines, one fewer parsed mod, gate computed on a weaker item. | Gates assert **parsed-mod count delta and stat delta per line** (§7.7 revised). No mod-id registry exists to lean on. |
 
 ## 16. Revision history
@@ -686,6 +696,20 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 9 — after the S2–S5 spikes
+
+- S2 passes: the ladder answers unauthenticated and its `class` field carries
+  ascendancy names, so a distribution heatmap needs no character data.
+- S3 fails: character trees return `Forbidden`. **D5 is in force** — no ladder
+  character data, therefore no mined builds and no mined skills.
+- S4 is unreachable and no longer a design risk: PoB's `loadBuildFromJSON`
+  already ingests the official character response.
+- S5 raises a policy question that is now the top open item: `/ladders` is on
+  the official host with published rate limits but is not in the API Reference.
+- Consequence for P2–P4: build *content* comes from hand-curated seeds plus the
+  PoB oracle, exactly as D1's escape hatch already allowed. The ladder's only
+  possible contribution is population counts.
 
 ### Revision 8 — after the S1 and S6 spikes
 
