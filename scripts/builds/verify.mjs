@@ -82,7 +82,7 @@ function synthesizeGear(budgetId) {
     }
     const lines = spec.affixes.map((key) => affixValue(key, budget.tier));
     const text = [
-      'Rarity: RARE',
+      `Rarity: ${budget.rarity ?? 'RARE'}`,
       `Synthesised ${slot}`,
       spec.base,
       // No `Unique ID` or `LevelReq` line: with either present PoB parses the

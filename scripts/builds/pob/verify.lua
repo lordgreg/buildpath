@@ -311,10 +311,19 @@ for index, item in ipairs(build.itemsTab.items or {}) do
   itemReport[index] = { slot = tostring(item.slotName or spec.items[index] and spec.items[index].slot or index), parsed = parsed }
 end
 
+-- Exact node positions: PoB derives them from the group centre plus the node's
+-- orbit radius and angle, so the thumbnail has the same shape as the real tree
+-- instead of one dot per cluster.
 local coords = {}
+for id, node in pairs((build.spec and build.spec.nodes) or {}) do
+  if node.x and node.y then coords[tonumber(id)] = { x = node.x, y = node.y } end
+end
 for _, group in ipairs(data.groups or {}) do
   for _, id in ipairs(group.nodes or {}) do
-    coords[tonumber(id)] = { x = group.x or 0, y = group.y or 0 }
+    local key = tonumber(id)
+    if coords[key] == nil then
+      coords[key] = { x = group.x or 0, y = group.y or 0 }
+    end
   end
 end
 

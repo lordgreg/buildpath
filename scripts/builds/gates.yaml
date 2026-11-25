@@ -9,14 +9,14 @@ calibrated: false
 resistanceFloor: 75
 checkpoints:
   until-12:
-    # Nothing is capped in act 1; the only thing that matters is staying alive.
-    resistanceFloor: 0
-    life: 350
+    # Nothing is capped in act 1, and the penalty leaves most players negative.
+    resists: false
+    life: 250
     dps: 300
   until-28:
-    # PoB applies the full -60% penalty at every level, so early gear cannot cap.
-    resistanceFloor: 0
-    life: 800
+    # Still not realistic to cap in act 3; defence is life and not standing still.
+    resists: false
+    life: 700
     dps: 1500
   until-68:
     life: 2000

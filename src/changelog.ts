@@ -17,6 +17,23 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.46.0',
+    date: '2026-11-25',
+    title: 'A guide you can read in order, with honest early gear',
+    notes: [
+      "The guide opens on the first step instead of the last, so you read it in the order you play it.",
+      "The passive tree thumbnail uses the real node positions \u2014 PoB derives each node from its group, orbit and angle \u2014 instead of one dot per cluster, and it sits on a lighter panel so the shape and links are visible.",
+      "A table of contents sits beside the article on wide screens and above it on phones: step, gate report, tree, gear, gems, flasks, ascendancy, pantheon. The links scroll without touching the build or step in the URL.",
+      "Ascendancy points are shown as four cards in the order you take them, each naming the lab and linking to its wiki page.",
+      "Pantheon is shown as the major and minor god you pick, with the bandit choice beside them.",
+      "Early gear is realistic now: acts 1-4 use magic items with one weak mod (25 life, 12% resistance) instead of budget rares with 60 life and 30% resistance, which nothing drops at level 12. Acts 5-10 get one or two mods.",
+      "Flasks while leveling are a small life flask, a small mana flask and the quicksilver you get from act 2 \u2014 not five utility flasks you cannot have.",
+      "Resistances are only judged from act 10 onwards; before that they are negative for everyone, and the gate said nothing useful by measuring it.",
+    ],
+    commits: [],
+    compare: 'v0.45.0...v0.46.0',
+  },
+  {
     version: '0.45.0',
     date: '2026-11-25',
     title: 'Steps are leveling brackets, and the step sticks',

@@ -70,6 +70,12 @@ function dps(value: number): string {
   return String(value);
 }
 
+function titleCase(slug: string): string {
+  return slug
+    .replaceAll('-', ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
 function statusLabel(status: BuildIndexEntry['status']): string {
   return status === 'verified' ? 'verified' : status === 'rejected' ? 'rejected' : 'draft';
 }
@@ -150,7 +156,7 @@ export default function BuildPage() {
   // The step drives every number on the page: tree, gear, gems, budgets.
   const step = gates.some(([key]) => key === stepOverride)
     ? stepOverride!
-    : (gates.at(-1)?.[0] ?? '');
+    : (gates[0]?.[0] ?? '');
   const gate = build.gates?.[step];
   const pipeline = build.pipeline;
   const builderHash = `#mode=build&build=${build.id}&phase=leveling&strictness=soft`;
@@ -163,7 +169,9 @@ export default function BuildPage() {
     ) ?? build.leveling.brackets.at(-1);
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-5xl flex-col gap-8 px-5 py-10 sm:px-8">
+    <div className="mx-auto min-h-dvh max-w-6xl px-5 py-10 sm:px-8">
+      <div className="lg:grid lg:grid-cols-[1fr_13rem] lg:gap-8">
+      <div className="flex flex-col gap-8">
       <header>
         <nav className="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
           <a href="./index.html" className="underline underline-offset-2 hover:text-zinc-300">
@@ -451,23 +459,67 @@ export default function BuildPage() {
 
       <section aria-labelledby="ascendancy">
         <h2 id="ascendancy" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-          Ascendancy, bandit, pantheon
+          Ascendancy
         </h2>
-        <ol className="mt-3 space-y-1 text-sm text-zinc-300">
-          {build.ascendancyOrder.map((point) => (
-            <li key={point.node}>
-              <span className="text-[11px] uppercase tracking-[0.16em] text-zinc-500">
-                lab {point.lab}
-              </span>{' '}
-              {point.node.replaceAll('-', ' ')}
+        <ol className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {build.ascendancyOrder.map((point, index) => (
+            <li
+              key={point.node}
+              className="rounded-lg border border-ink-700 bg-ink-900/40 p-3"
+            >
+              <span className="text-[10px] uppercase tracking-[0.14em] text-zinc-600">
+                point {index + 1}
+              </span>
+              <a
+                href={wikiUrl(titleCase(point.node))}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="mt-1 block text-sm text-zinc-200 underline-offset-2 hover:underline"
+              >
+                {titleCase(point.node)}
+              </a>
+              <span className="mt-1 block text-[10px] text-zinc-500">
+                {point.lab === 1 ? 'first lab' : `${point.lab}th lab`}
+              </span>
             </li>
           ))}
         </ol>
-        <p className="mt-3 text-sm text-zinc-400">
-          Bandit: <span className="text-zinc-200">{build.bandit}</span> · Pantheon:{' '}
-          <span className="text-zinc-200">
-            {build.pantheon.major} / {build.pantheon.minor}
-          </span>
+      </section>
+
+      <section aria-labelledby="pantheon">
+        <h2 id="pantheon" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+          Pantheon
+        </h2>
+        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+          <article className="rounded-lg border border-ink-700 bg-ink-900/40 p-3">
+            <span className="text-[10px] uppercase tracking-[0.14em] text-zinc-600">
+              major god
+            </span>
+            <a
+              href={wikiUrl(titleCase(build.pantheon.major))}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="mt-1 block text-sm text-zinc-200 underline-offset-2 hover:underline"
+            >
+              {titleCase(build.pantheon.major)}
+            </a>
+          </article>
+          <article className="rounded-lg border border-ink-700 bg-ink-900/40 p-3">
+            <span className="text-[10px] uppercase tracking-[0.14em] text-zinc-600">
+              minor god
+            </span>
+            <a
+              href={wikiUrl(titleCase(build.pantheon.minor))}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="mt-1 block text-sm text-zinc-200 underline-offset-2 hover:underline"
+            >
+              {titleCase(build.pantheon.minor)}
+            </a>
+          </article>
+        </div>
+        <p className="mt-2 text-sm text-zinc-400">
+          Bandit: <span className="text-zinc-200">{build.bandit}</span>
         </p>
         {build.pantheon.note && (
           <p className="mt-1 text-xs text-zinc-500">{build.pantheon.note}</p>
@@ -485,6 +537,45 @@ export default function BuildPage() {
           in any way.
         </p>
       </footer>
+      </div>
+
+      <aside className="order-first mb-6 lg:order-none lg:mb-0">
+        <nav
+          aria-label="On this page"
+          className="lg:sticky lg:top-8 lg:mt-2 text-xs text-zinc-500"
+        >
+          <p className="mb-2 text-[10px] uppercase tracking-[0.2em] text-zinc-600">
+            On this page
+          </p>
+          <ul className="flex flex-wrap gap-x-3 gap-y-1 lg:flex-col lg:gap-y-2">
+            {[
+              ['steps', 'Step'],
+              ['gates', 'Gate report'],
+              ['tree', 'Passive tree'],
+              ['gear', 'Gear'],
+              ['gems', 'Gems'],
+              ['flasks', 'Flasks'],
+              ['ascendancy', 'Ascendancy'],
+              ['pantheon', 'Pantheon'],
+            ].map(([anchor, label]) => (
+              <li key={anchor}>
+                <a
+                  href={`#${anchor}`}
+                  onClick={(event) => {
+                    // Hash links must not clobber the build/step state.
+                    event.preventDefault();
+                    document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  className="underline-offset-2 hover:text-zinc-300 hover:underline"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+      </div>
     </div>
   );
 }

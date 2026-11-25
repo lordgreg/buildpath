@@ -50,6 +50,14 @@ describe('gate evaluation', () => {
     expect(report.pass).toBe(true);
   });
 
+  it('skips resistances where they cannot be capped yet', () => {
+    const report = evaluateGate(
+      { ...base, fireResist: -48, coldResist: -48, lightningResist: -48 },
+      { resists: false, life: 250, dps: 300 },
+    );
+    expect(report.pass).toBe(true);
+  });
+
   it('respects a resistance gap', () => {
     const report = evaluateGate(
       { ...base, coldResist: 60 },

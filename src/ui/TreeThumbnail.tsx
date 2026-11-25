@@ -43,7 +43,7 @@ export default function TreeThumbnail({
         viewBox="0 0 100 100"
         role="img"
         aria-label={`${label} passive tree: ${tree.nodes.length} points, ${tree.notables.length} notables`}
-        className="h-64 w-full rounded-lg border border-ink-700 bg-ink-950/60"
+        className="h-72 w-full rounded-lg border border-ink-700 bg-ink-800/40"
       >
         {tree.edges.map(([from, to]) => {
           const a = points.get(from);
@@ -57,7 +57,7 @@ export default function TreeThumbnail({
               x2={b.x}
               y2={b.y}
               stroke="currentColor"
-              className="text-ink-600"
+              className="text-ink-500"
               strokeWidth="0.7"
               vectorEffect="non-scaling-stroke"
             />
@@ -72,7 +72,7 @@ export default function TreeThumbnail({
               cx={point.x}
               cy={point.y}
               r={node.notable ? 1.6 : 0.9}
-              className={node.notable ? 'fill-gold-400' : 'fill-zinc-500'}
+              className={node.notable ? 'fill-gold-300' : 'fill-zinc-400'}
             >
               <title>{node.name || `node ${node.id}`}</title>
             </circle>

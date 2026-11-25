@@ -1,8 +1,10 @@
 import type { CheckpointMetrics } from './types.ts';
 
 export interface GateThresholds {
-  /** Overrides the global floor: capping your resistances at level 12 is not a thing. */
+  /** Overrides the global floor. */
   resistanceFloor?: number;
+  /** Set false where resistances cannot be capped yet (acts 1-4). */
+  resists?: boolean;
   life?: number;
   ehp?: number;
   maxHit?: number;
@@ -30,12 +32,13 @@ export function evaluateGate(
   const failures: string[] = [];
   const floor = thresholds.resistanceFloor ?? RESIST_FLOOR - resistanceGap;
 
+  const checkResists = thresholds.resists !== false;
   const resistances: [keyof CheckpointMetrics, string][] = [
     ['fireResist', 'fire resistance'],
     ['coldResist', 'cold resistance'],
     ['lightningResist', 'lightning resistance'],
   ];
-  for (const [key, label] of resistances) {
+  for (const [key, label] of checkResists ? resistances : []) {
     const value = Math.round(Number(metrics[key] ?? -100));
     if (value < floor) failures.push(`${label} ${value}% < ${floor}%`);
   }
@@ -48,7 +51,7 @@ export function evaluateGate(
   ];
   for (const [metric, threshold, label] of floors) {
     const limit = thresholds[threshold];
-    if (limit === undefined) continue;
+    if (typeof limit !== 'number') continue;
     const value = Math.round(Number(metrics[metric] ?? 0));
     if (value < limit) {
       failures.push(
