@@ -175,11 +175,13 @@ leveling:
 ascendancyOrder:
   - node: mindless-aggression
     lab: 1
-  - node: unnatural-strength
+  - node: commander-of-darkness
     lab: 2
   - node: mistress-of-sacrifice
     lab: 3
-  - node: commander-of-darkness
+  # Not Unnatural Strength: PoB resolves a minion with Unholy Might to an empty
+  # skill list and reports 0 DPS, so a gate would measure a bug, not the build.
+  - node: bone-barrier
     lab: 4
 
 bandit: kill-all

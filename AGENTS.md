@@ -142,6 +142,8 @@ Related workflows:
 | Task | Start here |
 |---|---|
 | Change a preset / family / ascendancy | `src/presets/*.yaml` |
+| Budget gear / archetype gear profiles | `src/builds/gear/` (`budgets.yaml`, `profiles.yaml`, `affixes.yaml`) |
+| Gate thresholds, checkpoints, leveling budgets | `scripts/builds/gates.yaml`, `src/builds/config/checkpoints.yaml` |
 | Change filter output | `src/core/filter/` (esp. `generate.ts`, `emit.ts`) |
 | Custom rules, templates, share codes | `src/core/rules/` |
 | Rule matching / preview | `src/core/preview/match.ts` |

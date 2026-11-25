@@ -33,6 +33,7 @@ const luaScript = resolve(root, 'scripts/builds/pob/verify.lua');
 const readYaml = (path) => parse(readFileSync(path, 'utf8'));
 const affixes = readYaml(resolve(seedsDir, 'gear/affixes.yaml'));
 const budgets = readYaml(resolve(seedsDir, 'gear/budgets.yaml'));
+const profileDefs = readYaml(resolve(seedsDir, 'gear/profiles.yaml'));
 const checkpoints = readYaml(resolve(seedsDir, 'config/checkpoints.yaml'));
 const gates = readYaml(resolve(root, 'scripts/builds/gates.yaml'));
 const knownBases = new Set(
@@ -97,21 +98,43 @@ function affixValue(key, tier) {
   const affix = affixes[key];
   if (!affix) throw new Error(`unknown affix "${key}"`);
   const value = affix.tiers[tier] ?? affix.tiers[3];
+  // A roll with a range (`Adds {v} to {v2}`) is written as a pair; everything
+  // else is a single value.
+  if (Array.isArray(value)) {
+    const [low, high] = value;
+    return {
+      mod: affix.mod.replace('{v}', String(low)).replace('{v2}', String(high)),
+      value: high,
+    };
+  }
   return { mod: affix.mod.replace('{v}', String(value)), value };
 }
 
 /**
  * Budget constraints -> one concrete item per slot. Deterministic: the same
- * budget always produces the same text, so a gate report is reproducible.
+ * budget and profile always produce the same text, so a gate report is
+ * reproducible.
+ *
+ * The budget is the test condition and is shared; the profile is what the
+ * archetype wears under it (`gear/profiles.yaml`). A profile may override a
+ * slot or the jewel carry, and anything it leaves out stays as the budget's
+ * shared slot.
  */
-function synthesizeGear(budgetId) {
+function synthesizeGear(budgetId, profileId = 'caster') {
   const budget = budgets[budgetId];
   if (!budget) throw new Error(`unknown gear budget "${budgetId}"`);
+  const profiles = profileDefs.profiles ?? {};
+  if (!profiles[profileId]) {
+    throw new Error(`unknown gear profile "${profileId}" (see gear/profiles.yaml)`);
+  }
+  const override = profiles[profileId]?.[budgetId] ?? {};
+  const slots = { ...budget.slots, ...(override.slots ?? {}) };
+  const jewelSpec = override.jewels ?? budget.jewels ?? {};
   const items = [];
   // Only a body armour carries the build's links; putting six sockets on a wand
   // produces an item PoB refuses to parse.
   const bodySockets = Array.from({ length: budget.links }, () => 'B').join('-');
-  for (const [slot, spec] of Object.entries(budget.slots)) {
+  for (const [slot, spec] of Object.entries(slots)) {
     if (!knownBases.has(spec.base)) {
       throw new Error(`${budgetId}/${slot}: unknown base "${spec.base}"`);
     }
@@ -124,24 +147,28 @@ function synthesizeGear(budgetId) {
       // item but silently drops every explicit mod (S6), and a gate would then
       // measure a naked base type.
       `Item Level: ${budget.ilvl}`,
-      'Quality: 0',
+      `Quality: ${budget.quality ?? 0}`,
       ...(slot === 'body' ? [`Sockets: ${bodySockets}`] : []),
       'Implicits: 0',
       ...lines.map((line) => line.mod),
     ].join('\n');
     items.push({ slot: POB_SLOT[slot] ?? slot, text, expectedMods: lines.length });
   }
-  // Jewels: a Ghastly Eye carry, which is where a summoner gets its damage.
+  // Jewels are the carry slot: a summoner's Ghastly Eye, a ranger's Viridian.
   const jewels = [];
-  const jewelCount = budget.jewels?.count ?? 0;
-  const jewelAffixes = budget.jewels?.affixes ?? [];
+  const jewelCount = jewelSpec.count ?? 0;
+  const jewelAffixes = jewelSpec.affixes ?? [];
+  const jewelBase = jewelSpec.base ?? 'Ghastly Eye Jewel';
+  if (!knownBases.has(jewelBase)) {
+    throw new Error(`${budgetId}: unknown jewel base "${jewelBase}"`);
+  }
   for (let index = 0; index < jewelCount; index += 1) {
     const lines = jewelAffixes.map((key) => affixValue(key, budget.tier).mod);
     jewels.push({
       text: [
         'Rarity: RARE',
         `Synthesised jewel ${index + 1}`,
-        'Ghastly Eye Jewel',
+        jewelBase,
         `Item Level: ${budget.ilvl}`,
         'Implicits: 0',
         ...lines,
@@ -149,7 +176,26 @@ function synthesizeGear(budgetId) {
       expectedMods: lines.length,
     });
   }
-  return { items, jewels, budget };
+  return { items, jewels, budget, jewelBase };
+}
+
+/**
+ * The flasks the guide tells you to carry are part of the build, so the oracle
+ * equips them and PoB treats an equipped flask as active (the seed declares the
+ * uptime). Without this the gate measured a build the reader never plays.
+ */
+function synthesizeFlasks(flasks, budget) {
+  return (flasks ?? []).slice(0, 5).map((flask, index) => ({
+    slot: `Flask ${index + 1}`,
+    text: [
+      'Rarity: MAGIC',
+      `Synthesised ${flask.slot} flask`,
+      flask.name,
+      `Item Level: ${budget.ilvl}`,
+      `Quality: ${budget.quality ?? 0}`,
+      'Implicits: 0',
+    ].join('\n'),
+  }));
 }
 
 function runOracle(spec, { xmlOut } = {}) {
@@ -221,12 +267,17 @@ function encodePobCode(xml) {
 function verifySeed(seed) {
   const report = {};
   let allPass = true;
+  // The profile decides bases; the budget decides the test condition.
+  const profileId = seed.gearProfile ?? 'caster';
   // D24: one code, one named checkpoint. It is the gear set the page calls
   // "what we tested", and the XML the gate for that checkpoint was measured on.
   const codeCheckpoint = 'maps-red';
   const codeXmlPath = resolve(scratchDir, `${seed.id}-${codeCheckpoint}.xml`);
   for (const [id, checkpoint] of Object.entries(checkpoints.checkpoints)) {
-    const { items, jewels, budget } = synthesizeGear(checkpoint.budget);
+    const { items, jewels, budget, jewelBase } = synthesizeGear(
+      checkpoint.budget,
+      profileId,
+    );
     const bracket =
       seed.leveling.brackets.find((entry) => entry.until >= checkpoint.level) ??
       seed.leveling.brackets.at(-1);
@@ -268,9 +319,18 @@ function verifySeed(seed) {
       skillGroups: groups,
       items: items.map((item) => ({ slot: item.slot, text: item.text })),
       jewels: jewels.map((jewel) => ({ text: jewel.text })),
+      flasks: synthesizeFlasks(bracket.flasks, budget),
       jewelCount: jewels.length,
       config: [],
     }, { xmlOut: id === codeCheckpoint ? codeXmlPath : undefined });
+    // PoB silently drops a node it cannot allocate (cluster-only nodes used to
+    // do exactly that), so compare what it parsed with what the planner meant.
+    const expectedNodes = (metrics.tree?.nodes.length ?? 0) + (metrics.ascendancy ?? 0);
+    if (metrics.specNodes !== expectedNodes) {
+      throw new Error(
+        `${seed.id}/${id}: PoB allocated ${metrics.specNodes} nodes, the planner wrote ${expectedNodes}`,
+      );
+    }
     // PoB reports one minion's damage; the build fights with all of them.
     const minionCount = metrics.dpsSource === 'minion' ? (seed.minionCount ?? 1) : 1;
     const scaled = { ...metrics, dps: metrics.dps * minionCount, chaosResist: metrics.chaosResist };
@@ -317,7 +377,7 @@ function verifySeed(seed) {
         })),
         ...jewels.map((jewel, index) => ({
           slot: `Jewel ${index + 1}`,
-          base: 'Ghastly Eye Jewel',
+          base: jewelBase,
           mods: jewel.text.split('\n').slice(-jewel.expectedMods),
           budget: checkpoint.budget,
           ilvl: budgets[checkpoint.budget].ilvl,

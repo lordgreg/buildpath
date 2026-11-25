@@ -73,7 +73,7 @@ for (const file of files) {
     failed += 1;
     continue;
   }
-  if (!/^[A-Za-z0-9_-]+$/.test(code)) {
+  if (!/^[A-Za-z0-9_-]+={0,2}$/.test(code)) {
     problems.push('code is not url-safe base64');
   }
 
@@ -86,13 +86,16 @@ for (const file of files) {
   if (xml && !xml.startsWith('<?xml')) problems.push('decoded bytes are not XML');
   if (xml && !xml.includes('<PathOfBuilding>')) problems.push('XML has no <PathOfBuilding> root');
 
-  const expectedNodes = gate.tree.nodes.length;
+  // The code lists the normal tree plus the ascendancy nodes; the gate report
+  // keeps them apart because the page shows the tree without the ascendancy.
+  const expectedNodes = gate.tree.nodes.length + (gate.metrics?.ascendancy ?? 0);
   const expectedItems = gate.gear?.length ?? 0;
   const expectedGems = (gate.gems ?? []).reduce((sum, group) => sum + group.gems.length, 0);
   if (xml) {
     const specNodes = xml.match(/<Spec\b[^>]*\bnodes="([^"]*)"/)?.[1] ?? '';
     const allocated = specNodes.split(',').filter(Boolean).length;
-    const items = count(xml, '<Item id=');
+    const flaskSlots = count(xml, '<Slot name="Flask ');
+    const items = count(xml, '<Item id=') - flaskSlots;
     const gems = count(xml, '<Gem ');
     if (allocated !== expectedNodes) {
       problems.push(`XML has ${allocated} nodes, the ${build.pob.checkpoint} gate has ${expectedNodes}`);
@@ -102,6 +105,10 @@ for (const file of files) {
     }
     if (gems !== expectedGems) {
       problems.push(`XML has ${gems} gems, the ${build.pob.checkpoint} gate has ${expectedGems}`);
+    }
+    const expectedFlasks = gate.flasks?.length ?? 0;
+    if (flaskSlots !== expectedFlasks) {
+      problems.push(`XML has ${flaskSlots} flasks, the ${build.pob.checkpoint} gate has ${expectedFlasks}`);
     }
   }
 
@@ -126,10 +133,15 @@ for (const file of files) {
   if (xml && !line) {
     problems.push(`PoB did not load the code: ${(result?.stderr ?? '').trim().split('\n').at(-1)}`);
   } else if (line) {
-    const [nodes, items, gems] = line.slice('RESULT '.length).split(' ').map(Number);
+    const [nodes, items, gems, flasks] = line.slice('RESULT '.length).split(' ').map(Number);
     if (nodes !== expectedNodes) problems.push(`PoB loaded ${nodes} nodes, expected ${expectedNodes}`);
-    if (items !== expectedItems) problems.push(`PoB loaded ${items} items, expected ${expectedItems}`);
+    if (items - flasks !== expectedItems) {
+      problems.push(`PoB loaded ${items - flasks} items, expected ${expectedItems}`);
+    }
     if (gems !== expectedGems) problems.push(`PoB loaded ${gems} gems, expected ${expectedGems}`);
+    if (flasks !== (gate.flasks?.length ?? 0)) {
+      problems.push(`PoB loaded ${flasks} flasks, expected ${gate.flasks?.length ?? 0}`);
+    }
   }
 
   if (problems.length > 0) {

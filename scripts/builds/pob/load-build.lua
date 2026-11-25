@@ -23,12 +23,15 @@ loadBuildFromXML(xml, "round-trip")
 local allocated = 0
 for _ in pairs((build.spec and build.spec.allocNodes) or {}) do allocated = allocated + 1 end
 
-local items = 0
-for _ in pairs((build.itemsTab and build.itemsTab.items) or {}) do items = items + 1 end
+local items, flasks = 0, 0
+for _, item in ipairs((build.itemsTab and build.itemsTab.items) or {}) do
+  items = items + 1
+  if item.base and item.base.flask then flasks = flasks + 1 end
+end
 
 local gems = 0
 for _, group in ipairs((build.skillsTab and build.skillsTab.socketGroupList) or {}) do
   for _ in ipairs(group.gemList or {}) do gems = gems + 1 end
 end
 
-print(string.format("RESULT %d %d %d", allocated, items, gems))
+print(string.format("RESULT %d %d %d %d", allocated, items, gems, flasks))

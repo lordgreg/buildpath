@@ -1,6 +1,6 @@
 # BuildPath — Plan
 
-> Revision 11. See §16 for the council reviews and what each round changed.
+> Revision 12. See §16 for the council reviews and what each round changed.
 
 Verified build guides, with the loot filter as one output instead of the whole
 product.
@@ -586,6 +586,32 @@ network call is the pinned PoB clone. Acceptance: nightly workflow green,
 deterministic ids and `seedHash` across two runs, and each seed either passes
 every checkpoint or is rejected with a named reason.
 
+**P2 status (in progress: two of three seeds).** `summon-skeletons-necromancer`
+(caster/minion) and `lightning-arrow-deadeye` (bow) both pass all six
+checkpoints. Gear is now profile-aware: `src/builds/gear/profiles.yaml` supplies
+the bases and affixes an archetype wears, while `budgets.yaml` stays the shared
+test condition, so "ssf-week1" means the same thing for every build.
+
+Findings that changed the pipeline, recorded so they are not re-learned:
+
+- **Ascendancy points were counted but never applied.** The planner recorded
+  which notables the labs allow, but the XML omitted them, so every gate report
+  measured a build with no ascendancy at all. They are now emitted with the
+  small passives that connect them, and PoB's parsed node count is asserted
+  against the planner's.
+- **The planner walked into cluster-jewel-only nodes** (`Position Proxy`,
+  `Medium Jewel Socket`), which PoB drops silently. They are excluded, and any
+  future mismatch fails the build instead of shrinking the tree.
+- **PoB cannot compute a minion with Unholy Might headless**: the minion's skill
+  list comes back empty and DPS is 0. The summoner takes Bone Barrier instead of
+  Unnatural Strength; a gate must measure the build, not a tool bug.
+- **Flasks were listed but never equipped.** The guide's flasks are now in the
+  XML and active (declared uptime), because a build with its flasks is the build
+  the reader plays.
+- **The act DPS floors were minion-shaped.** 60 DPS at level 12 and 600 at 28
+  only admitted builds with several bodies; a 3-link bow does 37 and 471. The
+  floors are now 25 and 350, with both measurements recorded in `gates.yaml`.
+
 **P3 — repair, breadth pages, leveling derivation, ablation, calibration.**
 Acceptance: calibration green in both directions; the three P2 seeds keep
 passing; leveling path is a proven subset with valid order.
@@ -711,6 +737,28 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 12 — second seed, and what it exposed
+
+P2's first non-minion seed (`lightning-arrow-deadeye`) runs through the whole
+chain. Adding it exposed four measurement bugs that a single caster seed had
+hidden; all are fixed in the pipeline rather than worked around, and §11's P2
+status lists them. In the plan's own terms:
+
+- **D29 is now real.** Ascendancy points are emitted with their connecting
+  passives, so a lab budget in `checkpoints.yaml` actually limits what the gate
+  evaluates.
+- **D23 (budget vs profile).** `budgets.yaml` is the test condition; the new
+  `gear/profiles.yaml` is what an archetype wears under it. A second build
+  cannot silently re-gear itself a different test.
+- **§8's act gates** are survivability gates again in practice: the DPS floors
+  are low enough that a 3-link attack build passes, which the previous numbers
+  did not.
+- **Flasks** are evaluated, not merely listed, which settles the "declared
+  uptime" half of the config question: no other belt is assumed.
+
+Still open: three seeds are the P2 target; the catalogue has two. Repair,
+ablation, leveling derivation and calibration remain P3.
 
 ### Revision 11 — P1 landed
 

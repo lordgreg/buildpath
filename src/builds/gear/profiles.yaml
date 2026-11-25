@@ -1,0 +1,77 @@
+# Gear profiles: how a shared budget becomes concrete items for one archetype.
+#
+# `budgets.yaml` describes the test condition — tier, rarity, item level, links,
+# jewels — and is the same for every build, so "ssf-start" means one thing
+# everywhere. A profile supplies the bases and affixes that archetype would
+# actually wear for that condition. A slot the profile does not name falls back
+# to the budget's shared slot, which is why only the differences are written
+# down.
+#
+# Every base is checked against `known-base-types.json` and every affix against
+# `affixes.yaml`; a typo fails the build instead of the gate.
+schemaVersion: 1
+profiles:
+  # The shared slot table is the caster set: wand, spirit shield, ES armour.
+  caster: {}
+
+  # Bow: evasion bases, a physical bow with attack speed, and a quiver instead
+  # of a shield. Attack speed and projectile damage are what turn the same
+  # budget into a ranger's gear.
+  bow:
+    # Magic budgets allow one prefix and one suffix, so the early slots carry a
+    # damage roll and life; resists arrive with the rares below.
+    starting:
+      slots:
+        weapon: { base: "Long Bow", affixes: [added-lightning, attack-speed] }
+        offhand: { base: "Sharktooth Arrow Quiver", affixes: [life] }
+        body: { base: "Strapped Leather", affixes: [life] }
+        helmet: { base: "Tricorne", affixes: [life] }
+        gloves: { base: "Tinker Gloves", affixes: [life] }
+        boots: { base: "Goathide Boots", affixes: [life, movement-speed] }
+    early:
+      slots:
+        weapon: { base: "Sniper Bow", affixes: [added-lightning, attack-speed] }
+        offhand: { base: "Blazing Arrow Quiver", affixes: [life] }
+        body: { base: "Glorious Leather", affixes: [life] }
+        helmet: { base: "Hunter Hood", affixes: [life] }
+        gloves: { base: "Sharkskin Gloves", affixes: [life] }
+        boots: { base: "Sharkskin Boots", affixes: [life, movement-speed] }
+    # From here the gear is rare, and resists are capped by measurement: 135
+    # raw per element survives the act-10 penalty. The spare affixes go to
+    # damage, which is what a player does once resists are already capped.
+    ssf-start:
+      slots:
+        weapon: { base: "Spine Bow", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
+        offhand: { base: "Primal Arrow Quiver", affixes: [life, added-lightning-attack, resist-lightning] }
+        body: { base: "Assassin's Garb", affixes: [life, resist-lightning, resist-cold] }
+        helmet: { base: "Lion Pelt", affixes: [life, resist-fire, resist-cold] }
+        gloves: { base: "Gripped Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Slink Boots", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        amulet: { base: "Onyx Amulet", affixes: [life, added-lightning-attack, resist-lightning, resist-chaos] }
+        ring1: { base: "Opal Ring", affixes: [life, added-lightning-attack, resist-fire, resist-chaos] }
+        ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-fire, resist-chaos] }
+      jewels: { count: 2, base: "Viridian Jewel", affixes: [life, attack-speed, projectile-damage, crit-multi] }
+    ssf-week1:
+      slots:
+        weapon: { base: "Spine Bow", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
+        offhand: { base: "Artillery Quiver", affixes: [life, added-lightning-attack, resist-lightning] }
+        body: { base: "Astral Leather", affixes: [life, resist-lightning, resist-cold] }
+        helmet: { base: "Grizzly Pelt", affixes: [life, resist-fire, resist-cold] }
+        gloves: { base: "Harpyskin Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Stormrider Boots", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        amulet: { base: "Onyx Amulet", affixes: [life, added-lightning-attack, resist-lightning, resist-chaos] }
+        ring1: { base: "Opal Ring", affixes: [life, added-lightning-attack, resist-fire, resist-chaos] }
+        ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-fire, resist-chaos] }
+      jewels: { count: 6, base: "Viridian Jewel", affixes: [life, attack-speed, projectile-damage, crit-multi] }
+    trade:
+      slots:
+        weapon: { base: "Spine Bow", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
+        offhand: { base: "Artillery Quiver", affixes: [life, added-lightning-attack, resist-lightning] }
+        body: { base: "Syndicate's Garb", affixes: [life, resist-lightning, resist-cold] }
+        helmet: { base: "Majestic Pelt", affixes: [life, resist-fire, resist-cold] }
+        gloves: { base: "Velour Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Velour Boots", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        amulet: { base: "Onyx Amulet", affixes: [life, added-lightning-attack, resist-lightning, resist-chaos] }
+        ring1: { base: "Opal Ring", affixes: [life, added-lightning-attack, resist-fire, resist-chaos] }
+        ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-fire, resist-chaos] }
+      jewels: { count: 6, base: "Viridian Jewel", affixes: [life, attack-speed, projectile-damage, crit-multi] }

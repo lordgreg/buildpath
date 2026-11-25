@@ -43,6 +43,8 @@ function hashOf(value) {
 const gemLevels = JSON.parse(
   readFileSync(resolve(root, 'src/generated/gem-levels.json'), 'utf8'),
 ).gems;
+const gearProfiles =
+  parse(readFileSync(resolve(seedsDir, 'gear/profiles.yaml'), 'utf8')).profiles ?? {};
 const gemLevel1 = (name) => gemLevels[name]?.levels?.[1];
 const gemName = (gem) => (typeof gem === 'string' ? gem : gem.name);
 const baseItems = new Map(
@@ -158,6 +160,16 @@ for (const file of files) {
   const path = resolve(seedsDir, file);
   const seed = parse(readFileSync(path, 'utf8'));
   if (!validate(seed)) fail(file, validate.errors);
+  // A profile that does not exist would only fail in the oracle, which needs
+  // PoB; catch it where every build is compiled.
+  if (seed.gearProfile && !gearProfiles[seed.gearProfile]) {
+    fail(file, [
+      {
+        instancePath: '/gearProfile',
+        message: `unknown gear profile "${seed.gearProfile}" (see gear/profiles.yaml)`,
+      },
+    ]);
+  }
   checkBrackets(seed, file);
   checkAvailability(seed, file);
   if (`${seed.id}.yaml` !== file) {

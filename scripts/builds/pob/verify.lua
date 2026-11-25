@@ -77,7 +77,12 @@ local function traversable(id)
   if node.isKeystone or node.isMastery or node.ascendancyName or node.isAscendancyStart then
     return false
   end
-  -- Jewel sockets are ordinary passives you pay a point for.
+  -- Cluster jewels and their proxies live in the tree data but only exist when
+  -- the jewel is socketed. PoB drops them silently, so a planner that walked
+  -- into them would report points the character never has.
+  if node.isProxy then return false end
+  if node.isJewelSocket and node.name ~= "Basic Jewel Socket" then return false end
+  -- Basic jewel sockets are ordinary passives you pay a point for.
 
   return true
 end
@@ -129,13 +134,12 @@ end)
 
 -- Earlier patterns are worth more; the score is value per point spent, so a
 -- cheap minion notable beats a distant life notable and travel is not free.
--- Minion damage is what the build is for; life keeps you alive but does not
--- kill anything, so it is weighted below every minion pattern.
+-- The curve is graded rather than "first three matter": a seed lists more than
+-- three things it wants, and flattening everything past the third made the
+-- planner ignore attack speed or crit in favour of whatever was nearest.
+local WEIGHTS = { 4.0, 3.0, 2.2, 1.7, 1.3, 1.0, 0.8 }
 local function weight(priority)
-  if priority == 1 then return 4.0 end
-  if priority == 2 then return 3.0 end
-  if priority == 3 then return 2.0 end
-  return 0.8
+  return WEIGHTS[priority] or 0.6
 end
 
 local budget = math.max(2, (spec.points or 100) - 1)
@@ -152,7 +156,7 @@ if wantedSockets > 0 then
   local reachable = {}
   for id, node in pairs(nodes) do
     local key = tonumber(id)
-    if node.isJewelSocket and not allocated[key] and depth[key] then
+    if node.isJewelSocket and node.name == "Basic Jewel Socket" and not allocated[key] and depth[key] then
       reachable[#reachable + 1] = { id = key, cost = depth[key] }
     end
   end
@@ -216,6 +220,8 @@ end
 -- Jewel sockets are allocated before the notable loop, above.
 
 -- Ascendancy points: matched by name slug, granted by the labs the seed allows.
+-- A notable is only allocatable through the ascendancy's own small passives, and
+-- PoB drops an unconnected notable without saying so, so the path is bought too.
 local ascendNodes = {}
 if spec.ascendancyClass then
   local bySlug = {}
@@ -228,13 +234,47 @@ if spec.ascendancyClass then
   for id, node in pairs(nodes) do
     if node.isAscendancyStart and node.ascendancyName == spec.ascendancyClass then ascendStart = tonumber(id) end
   end
-  if ascendStart then ascendNodes[#ascendNodes + 1] = ascendStart end
+  local taken = {}
+  if ascendStart then taken[ascendStart] = true end
   for _, point in ipairs(spec.ascendancyPoints or {}) do
     if (point.lab or 1) <= (spec.labs or 4) then
-      local id = bySlug[slug(point.node)]
-      if id then ascendNodes[#ascendNodes + 1] = id end
+      local target = bySlug[slug(point.node)]
+      if target and not taken[target] then
+        -- Breadth-first inside the ascendancy subtree, starting from what is
+        -- already allocated, so the notable is reached through its own chain.
+        local parent, queue, head, seen, found = {}, {}, 1, {}, nil
+        for id in pairs(taken) do
+          seen[id] = true
+          queue[#queue + 1] = id
+        end
+        while head <= #queue and not found do
+          local current = queue[head]
+          head = head + 1
+          if current == target then found = current break end
+          local node = nodes[current] or nodes[tostring(current)]
+          for _, other in ipairs(node and node.out or {}) do
+            other = tonumber(other)
+            local nextNode = other and (nodes[other] or nodes[tostring(other)])
+            if other and not seen[other] and nextNode
+              and nextNode.ascendancyName == spec.ascendancyClass then
+              seen[other] = true
+              parent[other] = current
+              queue[#queue + 1] = other
+            end
+          end
+        end
+        if found then
+          local cursor = found
+          while cursor and not taken[cursor] do
+            taken[cursor] = true
+            cursor = parent[cursor]
+          end
+        end
+      end
     end
   end
+  for id in pairs(taken) do ascendNodes[#ascendNodes + 1] = id end
+  table.sort(ascendNodes)
 end
 
 -- Item text: one block per slot, already rendered by the Node synthesizer.
@@ -243,6 +283,14 @@ for _, item in ipairs(spec.items or {}) do
   itemBlocks[#itemBlocks + 1] = {
     slot = item.slot,
     text = item.text,
+  }
+end
+-- Flasks are items in their own slots; an equipped flask counts as active in
+-- PoB's calc, which is what "declared uptime" means here.
+for _, flask in ipairs(spec.flasks or {}) do
+  itemBlocks[#itemBlocks + 1] = {
+    slot = flask.slot,
+    text = flask.text,
   }
 end
 
@@ -267,6 +315,15 @@ local function gemXml(group, gem, level, quality, main)
     data.path, data.effectId or "", gem, level, quality, main and ' mainActiveSkill="1"' or ""
   )
 end
+
+-- The spec lists the normal tree plus the ascendancy nodes: counting points
+-- without emitting them measured a build with no ascendancy at all.
+local specNodeIds, seenSpec = {}, {}
+for id in pairs(allocated) do seenSpec[id] = true; specNodeIds[#specNodeIds + 1] = id end
+for _, id in ipairs(ascendNodes) do
+  if not seenSpec[id] then seenSpec[id] = true; specNodeIds[#specNodeIds + 1] = id end
+end
+table.sort(specNodeIds)
 
 local xml = {}
 local function add(text) xml[#xml + 1] = text end
@@ -295,8 +352,7 @@ end
 
 add(string.format('\t<Tree activeSpec="1">\n\t\t<Spec treeVersion="%s" classId="%d" ascendClassId="%d" nodes="%s"', spec.treeVersion, classIndex, ascendClassId, table.concat((function()
   local list = {}
-  for id in pairs(allocated) do list[#list + 1] = tostring(id) end
-  table.sort(list, function(a, b) return tonumber(a) < tonumber(b) end)
+  for _, id in ipairs(specNodeIds) do list[#list + 1] = tostring(id) end
   return list
 end)(), ",")))
 add('>\n')
@@ -328,7 +384,10 @@ for index, jewel in ipairs(spec.jewels or {}) do
 end
 for index, item in ipairs(itemBlocks) do
   add(string.format('\t\t<Item id="%d">\n%s\n\t\t</Item>\n', index, item.text))
-  slotMap[#slotMap + 1] = string.format('\t\t\t<Slot name="%s" itemId="%d"/>\n', item.slot, index)
+  -- Flasks carry an `active` flag on the slot; without it PoB equips the flask
+  -- but applies no buff, so a gate would measure a build nobody plays.
+  local active = item.slot:match('^Flask') and ' active="true"' or ''
+  slotMap[#slotMap + 1] = string.format('\t\t\t<Slot name="%s" itemId="%d"%s/>\n', item.slot, index, active)
 end
 -- Slots are only read from inside an ItemSet; a bare <Slot> is legacy and
 -- silently ignored, which would leave every item unequipped.
@@ -449,6 +508,7 @@ local result = {
   manaCost = output.ManaCost,
   manaUnreserved = output.ManaUnreserved,
   allocated = allocatedCount(),
+  specNodes = (function() local n = 0 for _ in pairs(build.spec.allocNodes or {}) do n = n + 1 end return n end)(),
   sockets = #socketIds,
   ascendancy = #ascendNodes,
   notables = #planned,

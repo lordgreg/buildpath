@@ -1,0 +1,6972 @@
+{
+  "schemaVersion": 1,
+  "id": "lightning-arrow-deadeye",
+  "name": "Lightning Arrow Deadeye",
+  "class": "Ranger",
+  "ascendancyId": "deadeye",
+  "family": "bow",
+  "mainSkill": "Lightning Arrow",
+  "summary": "League-start bow build. One skill in the body armour, a physical bow with attack speed, and gem levels carry the damage: nothing here needs a unique, so the same gear works on day one of a solo league. It is the second build the pipeline proves, and the first that is not a minion one.",
+  "gearProfile": "bow",
+  "tree": {
+    "targets": [
+      "increased damage with bows",
+      "increased projectile damage",
+      "increased maximum life",
+      "increased physical damage",
+      "increased attack speed",
+      "increased critical strike chance",
+      "critical strike multiplier",
+      "increased elemental damage"
+    ]
+  },
+  "leveling": {
+    "brackets": [
+      {
+        "until": 12,
+        "skills": [
+          "Lightning Arrow",
+          "Sniper's Mark"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Lightning Arrow",
+              "Added Lightning Damage",
+              "Faster Attacks"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Sniper's Mark",
+              "Flame Dash"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Precision"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Clarity"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Medium Life Flask",
+            "note": "Small until level 3, then medium."
+          },
+          {
+            "slot": "mana",
+            "name": "Small Mana Flask",
+            "note": "Lightning Arrow is mana-hungry before leech."
+          },
+          {
+            "slot": "utility",
+            "name": "Quicksilver Flask",
+            "note": "Act 2 quest reward."
+          }
+        ]
+      },
+      {
+        "until": 28,
+        "skills": [
+          "Lightning Arrow",
+          "Sniper's Mark",
+          "Herald of Thunder"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Lightning Arrow",
+              "Added Lightning Damage",
+              "Faster Attacks",
+              "Increased Critical Strikes"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Sniper's Mark",
+              "Herald of Thunder"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Precision",
+              "Flame Dash"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              "Frenzy"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Grace"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Giant Life Flask",
+            "note": "Drops from level 24; medium is too small by now."
+          },
+          {
+            "slot": "mana",
+            "name": "Greater Mana Flask",
+            "note": "Drops from level 12."
+          },
+          {
+            "slot": "utility",
+            "name": "Diamond Flask",
+            "note": "Lucky crits, from level 27."
+          },
+          {
+            "slot": "utility",
+            "name": "Quicksilver Flask",
+            "note": "Movement, not damage."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Chaos resistance from level 18."
+          }
+        ]
+      },
+      {
+        "until": 68,
+        "skills": [
+          "Lightning Arrow",
+          "Sniper's Mark",
+          "Herald of Thunder"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Lightning Arrow",
+              "Added Lightning Damage",
+              "Elemental Damage with Attacks",
+              "Increased Critical Strikes",
+              "Faster Attacks"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Sniper's Mark",
+              "Herald of Thunder"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Grace",
+              "Precision"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              {
+                "name": "Cast when Damage Taken",
+                "maxLevel": 5,
+                "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+              },
+              "Immortal Call"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Flame Dash"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Divine Life Flask",
+            "note": "Drops from level 60; instant prefix."
+          },
+          {
+            "slot": "mana",
+            "name": "Hallowed Mana Flask",
+            "note": "Drops from level 42."
+          },
+          {
+            "slot": "utility",
+            "name": "Diamond Flask",
+            "note": "Lucky crits; the biggest single damage flask."
+          },
+          {
+            "slot": "utility",
+            "name": "Silver Flask",
+            "note": "Onslaught: attack speed while it lasts."
+          },
+          {
+            "slot": "utility",
+            "name": "Quartz Flask",
+            "note": "Phasing to walk out of a pack."
+          }
+        ]
+      },
+      {
+        "until": 100,
+        "skills": [
+          "Lightning Arrow",
+          "Sniper's Mark",
+          "Herald of Thunder"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Lightning Arrow",
+              "Added Lightning Damage",
+              "Elemental Damage with Attacks",
+              "Increased Critical Strikes",
+              "Increased Critical Damage",
+              "Faster Attacks"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Sniper's Mark",
+              "Herald of Thunder"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Grace",
+              "Precision"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              {
+                "name": "Cast when Damage Taken",
+                "maxLevel": 5,
+                "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+              },
+              "Immortal Call"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Flame Dash"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Divine Life Flask",
+            "note": "Keep the instant prefix."
+          },
+          {
+            "slot": "mana",
+            "name": "Eternal Mana Flask",
+            "note": "Drops from level 65."
+          },
+          {
+            "slot": "utility",
+            "name": "Diamond Flask",
+            "note": "Lucky crits."
+          },
+          {
+            "slot": "utility",
+            "name": "Silver Flask",
+            "note": "Onslaught."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Caps chaos resistance for pinnacle bosses."
+          }
+        ]
+      }
+    ]
+  },
+  "ascendancyOrder": [
+    {
+      "node": "gathering-winds",
+      "lab": 1
+    },
+    {
+      "node": "far-shot",
+      "lab": 2
+    },
+    {
+      "node": "endless-munitions",
+      "lab": 3
+    },
+    {
+      "node": "focal-point",
+      "lab": 4
+    }
+  ],
+  "bandit": "kill-all",
+  "pantheon": {
+    "major": "brineking",
+    "minor": "gruthkul",
+    "note": "Brineking stops the stun lock that ends a dodge build; swap the minor to Ralakesh if bleeding is the problem."
+  },
+  "uniques": {
+    "core": [],
+    "optional": []
+  },
+  "status": "verified",
+  "gates": {
+    "until-12": {
+      "pass": true,
+      "level": 12,
+      "budget": "starting (3-link)",
+      "metrics": {
+        "dps": 37,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 408,
+        "energyShield": 0,
+        "ehp": 280,
+        "maxHit": 408,
+        "resists": [
+          -60,
+          -48,
+          -48
+        ],
+        "chaosResist": -60,
+        "nodes": 10,
+        "sockets": 0,
+        "ascendancy": 1
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            45035,
+            59370
+          ],
+          [
+            48099,
+            65210
+          ],
+          [
+            48099,
+            50338
+          ],
+          [
+            38662,
+            50338
+          ],
+          [
+            42964,
+            50338
+          ],
+          [
+            45035,
+            50459
+          ],
+          [
+            59370,
+            63795
+          ],
+          [
+            38662,
+            63795
+          ],
+          [
+            42964,
+            65224
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 38662,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 1060
+          },
+          {
+            "id": 42964,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 4764,
+            "y": 1639
+          },
+          {
+            "id": 45035,
+            "name": "Projectile Damage and Accuracy",
+            "notable": false,
+            "x": 3179,
+            "y": 1642
+          },
+          {
+            "id": 48099,
+            "name": "Life and Stun Avoidance",
+            "notable": false,
+            "x": 4461,
+            "y": 1989
+          },
+          {
+            "id": 50338,
+            "name": "Ballistics",
+            "notable": true,
+            "x": 4299,
+            "y": 1639
+          },
+          {
+            "id": 50459,
+            "name": "RANGER",
+            "notable": false,
+            "x": 2844,
+            "y": 1642
+          },
+          {
+            "id": 59370,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3375,
+            "y": 1305
+          },
+          {
+            "id": 63795,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3802,
+            "y": 1059
+          },
+          {
+            "id": 65210,
+            "name": "Heart of Oak",
+            "notable": true,
+            "x": 4542,
+            "y": 2130
+          },
+          {
+            "id": 65224,
+            "name": "Aspect of the Eagle",
+            "notable": true,
+            "x": 4926,
+            "y": 1639
+          }
+        ],
+        "notables": [
+          "Ballistics",
+          "Heart of Oak",
+          "Aspect of the Eagle"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Long Bow",
+          "mods": [
+            "Adds 3 to 40 Lightning Damage",
+            "5% increased Attack Speed"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Tricorne",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Strapped Leather",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Tinker Gloves",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Boots",
+          "base": "Goathide Boots",
+          "mods": [
+            "+25 to maximum Life",
+            "15% increased Movement Speed"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+12% to Lightning Resistance"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+12% to Cold Resistance"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Sharktooth Arrow Quiver",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Lightning Arrow",
+              "level": 1
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 2
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 2
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Sniper's Mark",
+              "level": 4
+            },
+            {
+              "name": "Flame Dash",
+              "level": 1
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Precision",
+              "level": 1
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Clarity",
+              "level": 1
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Medium Life Flask",
+          "note": "Small until level 3, then medium."
+        },
+        {
+          "slot": "mana",
+          "name": "Small Mana Flask",
+          "note": "Lightning Arrow is mana-hungry before leech."
+        },
+        {
+          "slot": "utility",
+          "name": "Quicksilver Flask",
+          "note": "Act 2 quest reward."
+        }
+      ]
+    },
+    "until-28": {
+      "pass": true,
+      "level": 28,
+      "budget": "early (4-link)",
+      "metrics": {
+        "dps": 544,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 1186,
+        "energyShield": 0,
+        "ehp": 1014,
+        "maxHit": 1186,
+        "resists": [
+          -60,
+          -30,
+          -30
+        ],
+        "chaosResist": -25,
+        "nodes": 29,
+        "sockets": 0,
+        "ascendancy": 3
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            930,
+            5408
+          ],
+          [
+            930,
+            29089
+          ],
+          [
+            5408,
+            63139
+          ],
+          [
+            9206,
+            41866
+          ],
+          [
+            12068,
+            47743
+          ],
+          [
+            3469,
+            16851
+          ],
+          [
+            12068,
+            16851
+          ],
+          [
+            9206,
+            19858
+          ],
+          [
+            29089,
+            46344
+          ],
+          [
+            32117,
+            65210
+          ],
+          [
+            37504,
+            41866
+          ],
+          [
+            41866,
+            60942
+          ],
+          [
+            45035,
+            59370
+          ],
+          [
+            36687,
+            46344
+          ],
+          [
+            48099,
+            65210
+          ],
+          [
+            48099,
+            50338
+          ],
+          [
+            38662,
+            50338
+          ],
+          [
+            42964,
+            50338
+          ],
+          [
+            45035,
+            50459
+          ],
+          [
+            32117,
+            54142
+          ],
+          [
+            59370,
+            63795
+          ],
+          [
+            60942,
+            61306
+          ],
+          [
+            61306,
+            63139
+          ],
+          [
+            54142,
+            61306
+          ],
+          [
+            38662,
+            63795
+          ],
+          [
+            60942,
+            64709
+          ],
+          [
+            3469,
+            64709
+          ],
+          [
+            42964,
+            65224
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 930,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 2365,
+            "y": 3814
+          },
+          {
+            "id": 3469,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4038,
+            "y": 5108
+          },
+          {
+            "id": 5408,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2273,
+            "y": 4084
+          },
+          {
+            "id": 9206,
+            "name": "Life",
+            "notable": false,
+            "x": 6697,
+            "y": 2613
+          },
+          {
+            "id": 12068,
+            "name": "Bow Damage and Attack Speed",
+            "notable": false,
+            "x": 4119,
+            "y": 4676
+          },
+          {
+            "id": 16851,
+            "name": "Bow Damage and Accuracy",
+            "notable": false,
+            "x": 4038,
+            "y": 4817
+          },
+          {
+            "id": 19858,
+            "name": "Herbalism",
+            "notable": true,
+            "x": 6837,
+            "y": 2856
+          },
+          {
+            "id": 29089,
+            "name": "Bow Damage and Evasion",
+            "notable": false,
+            "x": 2284,
+            "y": 3673
+          },
+          {
+            "id": 32117,
+            "name": "Life and Stun Avoidance",
+            "notable": false,
+            "x": 4461,
+            "y": 2270
+          },
+          {
+            "id": 36687,
+            "name": "Avatar of the Hunt",
+            "notable": true,
+            "x": 2527,
+            "y": 3533
+          },
+          {
+            "id": 37504,
+            "name": "Intuition",
+            "notable": true,
+            "x": 6000,
+            "y": 2612
+          },
+          {
+            "id": 38662,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 1060
+          },
+          {
+            "id": 41866,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6402,
+            "y": 2612
+          },
+          {
+            "id": 42964,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 4764,
+            "y": 1639
+          },
+          {
+            "id": 45035,
+            "name": "Projectile Damage and Accuracy",
+            "notable": false,
+            "x": 3179,
+            "y": 1642
+          },
+          {
+            "id": 46344,
+            "name": "Bow Damage and Evasion",
+            "notable": false,
+            "x": 2365,
+            "y": 3533
+          },
+          {
+            "id": 47743,
+            "name": "Farsight",
+            "notable": true,
+            "x": 4038,
+            "y": 4536
+          },
+          {
+            "id": 48099,
+            "name": "Life and Stun Avoidance",
+            "notable": false,
+            "x": 4461,
+            "y": 1989
+          },
+          {
+            "id": 50338,
+            "name": "Ballistics",
+            "notable": true,
+            "x": 4299,
+            "y": 1639
+          },
+          {
+            "id": 50459,
+            "name": "RANGER",
+            "notable": false,
+            "x": 2844,
+            "y": 1642
+          },
+          {
+            "id": 54142,
+            "name": "Finesse",
+            "notable": true,
+            "x": 4299,
+            "y": 2612
+          },
+          {
+            "id": 59370,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3375,
+            "y": 1305
+          },
+          {
+            "id": 60942,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5740,
+            "y": 3274
+          },
+          {
+            "id": 61306,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 3274
+          },
+          {
+            "id": 63139,
+            "name": "Strength",
+            "notable": false,
+            "x": 3307,
+            "y": 3672
+          },
+          {
+            "id": 63795,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3802,
+            "y": 1059
+          },
+          {
+            "id": 64709,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4884,
+            "y": 4207
+          },
+          {
+            "id": 65210,
+            "name": "Heart of Oak",
+            "notable": true,
+            "x": 4542,
+            "y": 2130
+          },
+          {
+            "id": 65224,
+            "name": "Aspect of the Eagle",
+            "notable": true,
+            "x": 4926,
+            "y": 1639
+          }
+        ],
+        "notables": [
+          "Herbalism",
+          "Avatar of the Hunt",
+          "Intuition",
+          "Farsight",
+          "Ballistics",
+          "Finesse",
+          "Heart of Oak",
+          "Aspect of the Eagle"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Sniper Bow",
+          "mods": [
+            "Adds 8 to 110 Lightning Damage",
+            "9% increased Attack Speed"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Hunter Hood",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Glorious Leather",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Sharkskin Gloves",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Boots",
+          "base": "Sharkskin Boots",
+          "mods": [
+            "+60 to maximum Life",
+            "20% increased Movement Speed"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Lightning Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+30% to Cold Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Blazing Arrow Quiver",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Lightning Arrow",
+              "level": 5
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 6
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 6
+            },
+            {
+              "name": "Increased Critical Strikes",
+              "level": 6
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Sniper's Mark",
+              "level": 8
+            },
+            {
+              "name": "Herald of Thunder",
+              "level": 4
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Precision",
+              "level": 5
+            },
+            {
+              "name": "Flame Dash",
+              "level": 5
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Frenzy",
+              "level": 4
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Grace",
+              "level": 2
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Giant Life Flask",
+          "note": "Drops from level 24; medium is too small by now."
+        },
+        {
+          "slot": "mana",
+          "name": "Greater Mana Flask",
+          "note": "Drops from level 12."
+        },
+        {
+          "slot": "utility",
+          "name": "Diamond Flask",
+          "note": "Lucky crits, from level 27."
+        },
+        {
+          "slot": "utility",
+          "name": "Quicksilver Flask",
+          "note": "Movement, not damage."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance from level 18."
+        }
+      ]
+    },
+    "until-68": {
+      "pass": true,
+      "level": 68,
+      "budget": "ssf-start (5-link)",
+      "metrics": {
+        "dps": 30900,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 3749,
+        "energyShield": 0,
+        "ehp": 16411,
+        "maxHit": 5680,
+        "resists": [
+          75,
+          75,
+          75
+        ],
+        "chaosResist": 20,
+        "nodes": 76,
+        "sockets": 2,
+        "ascendancy": 7
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            238,
+            10829
+          ],
+          [
+            238,
+            11497
+          ],
+          [
+            444,
+            61306
+          ],
+          [
+            930,
+            5408
+          ],
+          [
+            930,
+            29089
+          ],
+          [
+            1201,
+            31508
+          ],
+          [
+            1201,
+            7085
+          ],
+          [
+            3469,
+            34678
+          ],
+          [
+            4011,
+            9355
+          ],
+          [
+            5408,
+            63139
+          ],
+          [
+            5408,
+            11497
+          ],
+          [
+            4011,
+            5823
+          ],
+          [
+            5823,
+            30205
+          ],
+          [
+            6538,
+            38662
+          ],
+          [
+            8930,
+            42041
+          ],
+          [
+            8938,
+            49978
+          ],
+          [
+            9206,
+            41866
+          ],
+          [
+            9355,
+            49978
+          ],
+          [
+            5823,
+            9877
+          ],
+          [
+            10829,
+            32091
+          ],
+          [
+            10829,
+            18402
+          ],
+          [
+            11497,
+            34483
+          ],
+          [
+            5408,
+            11651
+          ],
+          [
+            6580,
+            11651
+          ],
+          [
+            12068,
+            47743
+          ],
+          [
+            12801,
+            45593
+          ],
+          [
+            8938,
+            12801
+          ],
+          [
+            3469,
+            16851
+          ],
+          [
+            12068,
+            16851
+          ],
+          [
+            17814,
+            60204
+          ],
+          [
+            17814,
+            32091
+          ],
+          [
+            8930,
+            18402
+          ],
+          [
+            15842,
+            18670
+          ],
+          [
+            18670,
+            37504
+          ],
+          [
+            19069,
+            34678
+          ],
+          [
+            9206,
+            19858
+          ],
+          [
+            24641,
+            25456
+          ],
+          [
+            24641,
+            48807
+          ],
+          [
+            9877,
+            25058
+          ],
+          [
+            29089,
+            46344
+          ],
+          [
+            30155,
+            60002
+          ],
+          [
+            30155,
+            48807
+          ],
+          [
+            30205,
+            33903
+          ],
+          [
+            32117,
+            65210
+          ],
+          [
+            33903,
+            54338
+          ],
+          [
+            37504,
+            41866
+          ],
+          [
+            37504,
+            45491
+          ],
+          [
+            39821,
+            52904
+          ],
+          [
+            33989,
+            39861
+          ],
+          [
+            41866,
+            60942
+          ],
+          [
+            45035,
+            59370
+          ],
+          [
+            7085,
+            45491
+          ],
+          [
+            1201,
+            45491
+          ],
+          [
+            45593,
+            53114
+          ],
+          [
+            36687,
+            46344
+          ],
+          [
+            25933,
+            48438
+          ],
+          [
+            25933,
+            48807
+          ],
+          [
+            6580,
+            48807
+          ],
+          [
+            6538,
+            49978
+          ],
+          [
+            39861,
+            49978
+          ],
+          [
+            38662,
+            50338
+          ],
+          [
+            42964,
+            50338
+          ],
+          [
+            39821,
+            50459
+          ],
+          [
+            45035,
+            50459
+          ],
+          [
+            444,
+            52904
+          ],
+          [
+            32117,
+            54142
+          ],
+          [
+            46408,
+            54338
+          ],
+          [
+            59370,
+            63795
+          ],
+          [
+            19506,
+            60204
+          ],
+          [
+            60942,
+            61306
+          ],
+          [
+            61306,
+            63139
+          ],
+          [
+            54142,
+            61306
+          ],
+          [
+            38662,
+            63795
+          ],
+          [
+            60942,
+            64709
+          ],
+          [
+            3469,
+            64709
+          ],
+          [
+            42964,
+            65224
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 238,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1896,
+            "y": 3400
+          },
+          {
+            "id": 444,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3415,
+            "y": 3274
+          },
+          {
+            "id": 930,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 2365,
+            "y": 3814
+          },
+          {
+            "id": 1201,
+            "name": "Attack Damage",
+            "notable": false,
+            "x": 5793,
+            "y": 1989
+          },
+          {
+            "id": 3469,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4038,
+            "y": 5108
+          },
+          {
+            "id": 4011,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4302,
+            "y": -1111
+          },
+          {
+            "id": 5408,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2273,
+            "y": 4084
+          },
+          {
+            "id": 5823,
+            "name": "Coordination",
+            "notable": true,
+            "x": 4560,
+            "y": -1604
+          },
+          {
+            "id": 6538,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 4299,
+            "y": 523
+          },
+          {
+            "id": 6580,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1173,
+            "y": 4529
+          },
+          {
+            "id": 7085,
+            "name": "Weapon Artistry",
+            "notable": true,
+            "x": 5550,
+            "y": 2130
+          },
+          {
+            "id": 8930,
+            "name": "Life and Flasks",
+            "notable": false,
+            "x": 1525,
+            "y": 1859
+          },
+          {
+            "id": 8938,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5110,
+            "y": 7
+          },
+          {
+            "id": 9206,
+            "name": "Life",
+            "notable": false,
+            "x": 6697,
+            "y": 2613
+          },
+          {
+            "id": 9355,
+            "name": "Strength",
+            "notable": false,
+            "x": 4301,
+            "y": -488
+          },
+          {
+            "id": 9877,
+            "name": "Life",
+            "notable": false,
+            "x": 4710,
+            "y": -1878
+          },
+          {
+            "id": 10829,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1024,
+            "y": 1859
+          },
+          {
+            "id": 11497,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2036,
+            "y": 3643
+          },
+          {
+            "id": 11651,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1734,
+            "y": 4299
+          },
+          {
+            "id": 12068,
+            "name": "Bow Damage and Attack Speed",
+            "notable": false,
+            "x": 4119,
+            "y": 4676
+          },
+          {
+            "id": 12801,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 5452,
+            "y": 270
+          },
+          {
+            "id": 15842,
+            "name": "One With Nature",
+            "notable": true,
+            "x": 5112,
+            "y": 2785
+          },
+          {
+            "id": 16851,
+            "name": "Bow Damage and Accuracy",
+            "notable": false,
+            "x": 4038,
+            "y": 4817
+          },
+          {
+            "id": 17814,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1249,
+            "y": 1113
+          },
+          {
+            "id": 18402,
+            "name": "Life and Flasks",
+            "notable": false,
+            "x": 1244,
+            "y": 1859
+          },
+          {
+            "id": 18670,
+            "name": "Weapon Elemental Damage",
+            "notable": false,
+            "x": 5252,
+            "y": 2704
+          },
+          {
+            "id": 19069,
+            "name": "Thick Skin",
+            "notable": true,
+            "x": 4259,
+            "y": 6173
+          },
+          {
+            "id": 19506,
+            "name": "Path of the Hunter",
+            "notable": true,
+            "x": 1126,
+            "y": 655
+          },
+          {
+            "id": 19858,
+            "name": "Herbalism",
+            "notable": true,
+            "x": 6837,
+            "y": 2856
+          },
+          {
+            "id": 24641,
+            "name": "Dual Wield Damage",
+            "notable": false,
+            "x": 367,
+            "y": 5073
+          },
+          {
+            "id": 25058,
+            "name": "Blood Siphon",
+            "notable": true,
+            "x": 4893,
+            "y": -2223
+          },
+          {
+            "id": 25456,
+            "name": "Dervish",
+            "notable": true,
+            "x": 124,
+            "y": 5214
+          },
+          {
+            "id": 25933,
+            "name": "Life",
+            "notable": false,
+            "x": 143,
+            "y": 4813
+          },
+          {
+            "id": 29089,
+            "name": "Bow Damage and Evasion",
+            "notable": false,
+            "x": 2284,
+            "y": 3673
+          },
+          {
+            "id": 30155,
+            "name": "Projectile Damage",
+            "notable": false,
+            "x": 649,
+            "y": 5251
+          },
+          {
+            "id": 30205,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": 5061,
+            "y": -1772
+          },
+          {
+            "id": 31508,
+            "name": "Aspect of the Lynx",
+            "notable": true,
+            "x": 6000,
+            "y": 1639
+          },
+          {
+            "id": 32091,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1416,
+            "y": 1158
+          },
+          {
+            "id": 32117,
+            "name": "Life and Stun Avoidance",
+            "notable": false,
+            "x": 4461,
+            "y": 2270
+          },
+          {
+            "id": 33903,
+            "name": "Will of Blades",
+            "notable": true,
+            "x": 5351,
+            "y": -1939
+          },
+          {
+            "id": 33989,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 3742,
+            "y": 228
+          },
+          {
+            "id": 34483,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 1815,
+            "y": 3703
+          },
+          {
+            "id": 34678,
+            "name": "Life and Elemental Ailment Avoidance",
+            "notable": false,
+            "x": 4038,
+            "y": 6232
+          },
+          {
+            "id": 36687,
+            "name": "Avatar of the Hunt",
+            "notable": true,
+            "x": 2527,
+            "y": 3533
+          },
+          {
+            "id": 37504,
+            "name": "Intuition",
+            "notable": true,
+            "x": 6000,
+            "y": 2612
+          },
+          {
+            "id": 38662,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 1060
+          },
+          {
+            "id": 39821,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 3012,
+            "y": 1933
+          },
+          {
+            "id": 39861,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3801,
+            "y": 7
+          },
+          {
+            "id": 41866,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6402,
+            "y": 2612
+          },
+          {
+            "id": 42041,
+            "name": "Profane Chemistry",
+            "notable": true,
+            "x": 1385,
+            "y": 2102
+          },
+          {
+            "id": 42964,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 4764,
+            "y": 1639
+          },
+          {
+            "id": 45035,
+            "name": "Projectile Damage and Accuracy",
+            "notable": false,
+            "x": 3179,
+            "y": 1642
+          },
+          {
+            "id": 45491,
+            "name": "Attack Damage",
+            "notable": false,
+            "x": 5793,
+            "y": 2270
+          },
+          {
+            "id": 45593,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 5311,
+            "y": 351
+          },
+          {
+            "id": 46344,
+            "name": "Bow Damage and Evasion",
+            "notable": false,
+            "x": 2365,
+            "y": 3533
+          },
+          {
+            "id": 46408,
+            "name": "Fangs of the Viper",
+            "notable": true,
+            "x": 6143,
+            "y": -1604
+          },
+          {
+            "id": 47743,
+            "name": "Farsight",
+            "notable": true,
+            "x": 4038,
+            "y": 4536
+          },
+          {
+            "id": 48438,
+            "name": "Bravery",
+            "notable": true,
+            "x": 2,
+            "y": 4894
+          },
+          {
+            "id": 48807,
+            "name": "Art of the Gladiator",
+            "notable": true,
+            "x": 653,
+            "y": 4732
+          },
+          {
+            "id": 49978,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4301,
+            "y": 7
+          },
+          {
+            "id": 50338,
+            "name": "Ballistics",
+            "notable": true,
+            "x": 4299,
+            "y": 1639
+          },
+          {
+            "id": 50459,
+            "name": "RANGER",
+            "notable": false,
+            "x": 2844,
+            "y": 1642
+          },
+          {
+            "id": 52904,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2842,
+            "y": 2281
+          },
+          {
+            "id": 53114,
+            "name": "Revenge of the Hunted",
+            "notable": true,
+            "x": 5311,
+            "y": 513
+          },
+          {
+            "id": 54142,
+            "name": "Finesse",
+            "notable": true,
+            "x": 4299,
+            "y": 2612
+          },
+          {
+            "id": 54338,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": 5642,
+            "y": -1772
+          },
+          {
+            "id": 59370,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3375,
+            "y": 1305
+          },
+          {
+            "id": 60002,
+            "name": "Fury Bolts",
+            "notable": true,
+            "x": 892,
+            "y": 5392
+          },
+          {
+            "id": 60204,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1126,
+            "y": 990
+          },
+          {
+            "id": 60942,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5740,
+            "y": 3274
+          },
+          {
+            "id": 61306,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 3274
+          },
+          {
+            "id": 63139,
+            "name": "Strength",
+            "notable": false,
+            "x": 3307,
+            "y": 3672
+          },
+          {
+            "id": 63795,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3802,
+            "y": 1059
+          },
+          {
+            "id": 64709,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4884,
+            "y": 4207
+          },
+          {
+            "id": 65210,
+            "name": "Heart of Oak",
+            "notable": true,
+            "x": 4542,
+            "y": 2130
+          },
+          {
+            "id": 65224,
+            "name": "Aspect of the Eagle",
+            "notable": true,
+            "x": 4926,
+            "y": 1639
+          }
+        ],
+        "notables": [
+          "Coordination",
+          "Weapon Artistry",
+          "One With Nature",
+          "Thick Skin",
+          "Path of the Hunter",
+          "Herbalism",
+          "Blood Siphon",
+          "Dervish",
+          "Aspect of the Lynx",
+          "Will of Blades",
+          "Avatar of the Hunt",
+          "Intuition",
+          "Profane Chemistry",
+          "Fangs of the Viper",
+          "Farsight",
+          "Bravery",
+          "Art of the Gladiator",
+          "Ballistics",
+          "Revenge of the Hunted",
+          "Finesse",
+          "Fury Bolts",
+          "Heart of Oak",
+          "Aspect of the Eagle"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Spine Bow",
+          "mods": [
+            "140% increased Physical Damage",
+            "Adds 30 to 60 Physical Damage",
+            "Adds 12 to 180 Lightning Damage",
+            "13% increased Attack Speed"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Primal Arrow Quiver",
+          "mods": [
+            "+80 to maximum Life",
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Lion Pelt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Assassin's Garb",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Gripped Gloves",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Slink Boots",
+          "mods": [
+            "25% increased Movement Speed",
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+80 to maximum Life",
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "+40% to Lightning Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "30% increased Projectile Damage",
+            "+25% to Critical Strike Multiplier"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "30% increased Projectile Damage",
+            "+25% to Critical Strike Multiplier"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Lightning Arrow",
+              "level": 19
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 19
+            },
+            {
+              "name": "Elemental Damage with Attacks",
+              "level": 19
+            },
+            {
+              "name": "Increased Critical Strikes",
+              "level": 19
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 19
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Sniper's Mark",
+              "level": 19
+            },
+            {
+              "name": "Herald of Thunder",
+              "level": 19
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Grace",
+              "level": 19
+            },
+            {
+              "name": "Precision",
+              "level": 19
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Cast when Damage Taken",
+              "level": 5,
+              "maxLevel": 5,
+              "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+            },
+            {
+              "name": "Immortal Call",
+              "level": 18
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 19
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Drops from level 60; instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Hallowed Mana Flask",
+          "note": "Drops from level 42."
+        },
+        {
+          "slot": "utility",
+          "name": "Diamond Flask",
+          "note": "Lucky crits; the biggest single damage flask."
+        },
+        {
+          "slot": "utility",
+          "name": "Silver Flask",
+          "note": "Onslaught: attack speed while it lasts."
+        },
+        {
+          "slot": "utility",
+          "name": "Quartz Flask",
+          "note": "Phasing to walk out of a pack."
+        }
+      ]
+    },
+    "maps-early": {
+      "pass": true,
+      "level": 80,
+      "budget": "ssf-start (5-link)",
+      "metrics": {
+        "dps": 76861,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 4552,
+        "energyShield": 0,
+        "ehp": 22295,
+        "maxHit": 7003,
+        "resists": [
+          75,
+          75,
+          75
+        ],
+        "chaosResist": 55,
+        "nodes": 89,
+        "sockets": 2,
+        "ascendancy": 9
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            238,
+            10829
+          ],
+          [
+            238,
+            11497
+          ],
+          [
+            444,
+            61306
+          ],
+          [
+            930,
+            5408
+          ],
+          [
+            930,
+            29089
+          ],
+          [
+            1201,
+            31508
+          ],
+          [
+            1201,
+            7085
+          ],
+          [
+            3469,
+            34678
+          ],
+          [
+            4011,
+            9355
+          ],
+          [
+            5408,
+            63139
+          ],
+          [
+            5408,
+            11497
+          ],
+          [
+            4011,
+            5823
+          ],
+          [
+            5823,
+            30205
+          ],
+          [
+            6538,
+            38662
+          ],
+          [
+            8930,
+            42041
+          ],
+          [
+            8938,
+            49978
+          ],
+          [
+            9206,
+            41866
+          ],
+          [
+            9355,
+            49978
+          ],
+          [
+            5823,
+            9877
+          ],
+          [
+            10829,
+            32091
+          ],
+          [
+            10829,
+            18402
+          ],
+          [
+            11497,
+            34483
+          ],
+          [
+            5408,
+            11651
+          ],
+          [
+            6580,
+            11651
+          ],
+          [
+            12068,
+            47743
+          ],
+          [
+            12801,
+            45593
+          ],
+          [
+            8938,
+            12801
+          ],
+          [
+            13885,
+            40362
+          ],
+          [
+            3469,
+            16851
+          ],
+          [
+            12068,
+            16851
+          ],
+          [
+            17814,
+            60204
+          ],
+          [
+            17814,
+            32091
+          ],
+          [
+            8930,
+            18402
+          ],
+          [
+            15842,
+            18670
+          ],
+          [
+            18670,
+            37504
+          ],
+          [
+            19069,
+            34678
+          ],
+          [
+            9206,
+            19858
+          ],
+          [
+            21575,
+            42686
+          ],
+          [
+            21835,
+            35894
+          ],
+          [
+            21835,
+            25058
+          ],
+          [
+            24641,
+            25456
+          ],
+          [
+            24641,
+            48807
+          ],
+          [
+            9877,
+            25058
+          ],
+          [
+            28754,
+            35283
+          ],
+          [
+            29089,
+            46344
+          ],
+          [
+            30155,
+            60002
+          ],
+          [
+            30155,
+            48807
+          ],
+          [
+            30205,
+            33903
+          ],
+          [
+            32117,
+            65210
+          ],
+          [
+            33903,
+            54338
+          ],
+          [
+            35283,
+            35894
+          ],
+          [
+            21575,
+            35894
+          ],
+          [
+            37504,
+            41866
+          ],
+          [
+            37504,
+            45491
+          ],
+          [
+            39821,
+            52904
+          ],
+          [
+            33989,
+            39861
+          ],
+          [
+            27788,
+            40362
+          ],
+          [
+            41866,
+            60942
+          ],
+          [
+            45035,
+            59370
+          ],
+          [
+            7085,
+            45491
+          ],
+          [
+            1201,
+            45491
+          ],
+          [
+            45593,
+            53114
+          ],
+          [
+            36687,
+            46344
+          ],
+          [
+            41989,
+            47362
+          ],
+          [
+            13885,
+            47362
+          ],
+          [
+            46408,
+            47362
+          ],
+          [
+            25933,
+            48438
+          ],
+          [
+            25933,
+            48807
+          ],
+          [
+            6580,
+            48807
+          ],
+          [
+            6538,
+            49978
+          ],
+          [
+            39861,
+            49978
+          ],
+          [
+            38662,
+            50338
+          ],
+          [
+            42964,
+            50338
+          ],
+          [
+            39821,
+            50459
+          ],
+          [
+            45035,
+            50459
+          ],
+          [
+            444,
+            52904
+          ],
+          [
+            32117,
+            54142
+          ],
+          [
+            46408,
+            54338
+          ],
+          [
+            30205,
+            58069
+          ],
+          [
+            58069,
+            60737
+          ],
+          [
+            59370,
+            63795
+          ],
+          [
+            19506,
+            60204
+          ],
+          [
+            60942,
+            61306
+          ],
+          [
+            61306,
+            63139
+          ],
+          [
+            54142,
+            61306
+          ],
+          [
+            38662,
+            63795
+          ],
+          [
+            60942,
+            64709
+          ],
+          [
+            3469,
+            64709
+          ],
+          [
+            42964,
+            65224
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 238,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1896,
+            "y": 3400
+          },
+          {
+            "id": 444,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3415,
+            "y": 3274
+          },
+          {
+            "id": 930,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 2365,
+            "y": 3814
+          },
+          {
+            "id": 1201,
+            "name": "Attack Damage",
+            "notable": false,
+            "x": 5793,
+            "y": 1989
+          },
+          {
+            "id": 3469,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4038,
+            "y": 5108
+          },
+          {
+            "id": 4011,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4302,
+            "y": -1111
+          },
+          {
+            "id": 5408,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2273,
+            "y": 4084
+          },
+          {
+            "id": 5823,
+            "name": "Coordination",
+            "notable": true,
+            "x": 4560,
+            "y": -1604
+          },
+          {
+            "id": 6538,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 4299,
+            "y": 523
+          },
+          {
+            "id": 6580,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1173,
+            "y": 4529
+          },
+          {
+            "id": 7085,
+            "name": "Weapon Artistry",
+            "notable": true,
+            "x": 5550,
+            "y": 2130
+          },
+          {
+            "id": 8930,
+            "name": "Life and Flasks",
+            "notable": false,
+            "x": 1525,
+            "y": 1859
+          },
+          {
+            "id": 8938,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5110,
+            "y": 7
+          },
+          {
+            "id": 9206,
+            "name": "Life",
+            "notable": false,
+            "x": 6697,
+            "y": 2613
+          },
+          {
+            "id": 9355,
+            "name": "Strength",
+            "notable": false,
+            "x": 4301,
+            "y": -488
+          },
+          {
+            "id": 9877,
+            "name": "Life",
+            "notable": false,
+            "x": 4710,
+            "y": -1878
+          },
+          {
+            "id": 10829,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1024,
+            "y": 1859
+          },
+          {
+            "id": 11497,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2036,
+            "y": 3643
+          },
+          {
+            "id": 11651,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1734,
+            "y": 4299
+          },
+          {
+            "id": 12068,
+            "name": "Bow Damage and Attack Speed",
+            "notable": false,
+            "x": 4119,
+            "y": 4676
+          },
+          {
+            "id": 12801,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 5452,
+            "y": 270
+          },
+          {
+            "id": 13885,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -1604
+          },
+          {
+            "id": 15842,
+            "name": "One With Nature",
+            "notable": true,
+            "x": 5112,
+            "y": 2785
+          },
+          {
+            "id": 16851,
+            "name": "Bow Damage and Accuracy",
+            "notable": false,
+            "x": 4038,
+            "y": 4817
+          },
+          {
+            "id": 17814,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1249,
+            "y": 1113
+          },
+          {
+            "id": 18402,
+            "name": "Life and Flasks",
+            "notable": false,
+            "x": 1244,
+            "y": 1859
+          },
+          {
+            "id": 18670,
+            "name": "Weapon Elemental Damage",
+            "notable": false,
+            "x": 5252,
+            "y": 2704
+          },
+          {
+            "id": 19069,
+            "name": "Thick Skin",
+            "notable": true,
+            "x": 4259,
+            "y": 6173
+          },
+          {
+            "id": 19506,
+            "name": "Path of the Hunter",
+            "notable": true,
+            "x": 1126,
+            "y": 655
+          },
+          {
+            "id": 19858,
+            "name": "Herbalism",
+            "notable": true,
+            "x": 6837,
+            "y": 2856
+          },
+          {
+            "id": 21575,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": 5061,
+            "y": -2701
+          },
+          {
+            "id": 21835,
+            "name": "Life",
+            "notable": false,
+            "x": 4704,
+            "y": -2583
+          },
+          {
+            "id": 24641,
+            "name": "Dual Wield Damage",
+            "notable": false,
+            "x": 367,
+            "y": 5073
+          },
+          {
+            "id": 25058,
+            "name": "Blood Siphon",
+            "notable": true,
+            "x": 4893,
+            "y": -2223
+          },
+          {
+            "id": 25456,
+            "name": "Dervish",
+            "notable": true,
+            "x": 124,
+            "y": 5214
+          },
+          {
+            "id": 25933,
+            "name": "Life",
+            "notable": false,
+            "x": 143,
+            "y": 4813
+          },
+          {
+            "id": 27788,
+            "name": "Blood Drinker",
+            "notable": true,
+            "x": 7006,
+            "y": -1664
+          },
+          {
+            "id": 28754,
+            "name": "Assassination",
+            "notable": true,
+            "x": 5351,
+            "y": -3204
+          },
+          {
+            "id": 29089,
+            "name": "Bow Damage and Evasion",
+            "notable": false,
+            "x": 2284,
+            "y": 3673
+          },
+          {
+            "id": 30155,
+            "name": "Projectile Damage",
+            "notable": false,
+            "x": 649,
+            "y": 5251
+          },
+          {
+            "id": 30205,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": 5061,
+            "y": -1772
+          },
+          {
+            "id": 31508,
+            "name": "Aspect of the Lynx",
+            "notable": true,
+            "x": 6000,
+            "y": 1639
+          },
+          {
+            "id": 32091,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1416,
+            "y": 1158
+          },
+          {
+            "id": 32117,
+            "name": "Life and Stun Avoidance",
+            "notable": false,
+            "x": 4461,
+            "y": 2270
+          },
+          {
+            "id": 33903,
+            "name": "Will of Blades",
+            "notable": true,
+            "x": 5351,
+            "y": -1939
+          },
+          {
+            "id": 33989,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 3742,
+            "y": 228
+          },
+          {
+            "id": 34483,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 1815,
+            "y": 3703
+          },
+          {
+            "id": 34678,
+            "name": "Life and Elemental Ailment Avoidance",
+            "notable": false,
+            "x": 4038,
+            "y": 6232
+          },
+          {
+            "id": 35283,
+            "name": "Critical Strike Chance",
+            "notable": false,
+            "x": 5061,
+            "y": -3036
+          },
+          {
+            "id": 35894,
+            "name": "Trickery",
+            "notable": true,
+            "x": 4558,
+            "y": -2869
+          },
+          {
+            "id": 36687,
+            "name": "Avatar of the Hunt",
+            "notable": true,
+            "x": 2527,
+            "y": 3533
+          },
+          {
+            "id": 37504,
+            "name": "Intuition",
+            "notable": true,
+            "x": 6000,
+            "y": 2612
+          },
+          {
+            "id": 38662,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 1060
+          },
+          {
+            "id": 39821,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 3012,
+            "y": 1933
+          },
+          {
+            "id": 39861,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3801,
+            "y": 7
+          },
+          {
+            "id": 40362,
+            "name": "Life",
+            "notable": false,
+            "x": 6785,
+            "y": -1604
+          },
+          {
+            "id": 41866,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6402,
+            "y": 2612
+          },
+          {
+            "id": 41989,
+            "name": "Resourcefulness",
+            "notable": true,
+            "x": 6072,
+            "y": -2223
+          },
+          {
+            "id": 42041,
+            "name": "Profane Chemistry",
+            "notable": true,
+            "x": 1385,
+            "y": 2102
+          },
+          {
+            "id": 42686,
+            "name": "Elemental Focus",
+            "notable": true,
+            "x": 5351,
+            "y": -2534
+          },
+          {
+            "id": 42964,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 4764,
+            "y": 1639
+          },
+          {
+            "id": 45035,
+            "name": "Projectile Damage and Accuracy",
+            "notable": false,
+            "x": 3179,
+            "y": 1642
+          },
+          {
+            "id": 45491,
+            "name": "Attack Damage",
+            "notable": false,
+            "x": 5793,
+            "y": 2270
+          },
+          {
+            "id": 45593,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 5311,
+            "y": 351
+          },
+          {
+            "id": 46344,
+            "name": "Bow Damage and Evasion",
+            "notable": false,
+            "x": 2365,
+            "y": 3533
+          },
+          {
+            "id": 46408,
+            "name": "Fangs of the Viper",
+            "notable": true,
+            "x": 6143,
+            "y": -1604
+          },
+          {
+            "id": 47362,
+            "name": "Life and Energy Shield on Kill",
+            "notable": false,
+            "x": 6259,
+            "y": -1878
+          },
+          {
+            "id": 47743,
+            "name": "Farsight",
+            "notable": true,
+            "x": 4038,
+            "y": 4536
+          },
+          {
+            "id": 48438,
+            "name": "Bravery",
+            "notable": true,
+            "x": 2,
+            "y": 4894
+          },
+          {
+            "id": 48807,
+            "name": "Art of the Gladiator",
+            "notable": true,
+            "x": 653,
+            "y": 4732
+          },
+          {
+            "id": 49978,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4301,
+            "y": 7
+          },
+          {
+            "id": 50338,
+            "name": "Ballistics",
+            "notable": true,
+            "x": 4299,
+            "y": 1639
+          },
+          {
+            "id": 50459,
+            "name": "RANGER",
+            "notable": false,
+            "x": 2844,
+            "y": 1642
+          },
+          {
+            "id": 52904,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2842,
+            "y": 2281
+          },
+          {
+            "id": 53114,
+            "name": "Revenge of the Hunted",
+            "notable": true,
+            "x": 5311,
+            "y": 513
+          },
+          {
+            "id": 54142,
+            "name": "Finesse",
+            "notable": true,
+            "x": 4299,
+            "y": 2612
+          },
+          {
+            "id": 54338,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": 5642,
+            "y": -1772
+          },
+          {
+            "id": 58069,
+            "name": "One Handed Damage",
+            "notable": false,
+            "x": 5189,
+            "y": -1604
+          },
+          {
+            "id": 59370,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3375,
+            "y": 1305
+          },
+          {
+            "id": 60002,
+            "name": "Fury Bolts",
+            "notable": true,
+            "x": 892,
+            "y": 5392
+          },
+          {
+            "id": 60204,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1126,
+            "y": 990
+          },
+          {
+            "id": 60737,
+            "name": "Sleight of Hand",
+            "notable": true,
+            "x": 5351,
+            "y": -1604
+          },
+          {
+            "id": 60942,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5740,
+            "y": 3274
+          },
+          {
+            "id": 61306,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 3274
+          },
+          {
+            "id": 63139,
+            "name": "Strength",
+            "notable": false,
+            "x": 3307,
+            "y": 3672
+          },
+          {
+            "id": 63795,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3802,
+            "y": 1059
+          },
+          {
+            "id": 64709,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4884,
+            "y": 4207
+          },
+          {
+            "id": 65210,
+            "name": "Heart of Oak",
+            "notable": true,
+            "x": 4542,
+            "y": 2130
+          },
+          {
+            "id": 65224,
+            "name": "Aspect of the Eagle",
+            "notable": true,
+            "x": 4926,
+            "y": 1639
+          }
+        ],
+        "notables": [
+          "Coordination",
+          "Weapon Artistry",
+          "One With Nature",
+          "Thick Skin",
+          "Path of the Hunter",
+          "Herbalism",
+          "Blood Siphon",
+          "Dervish",
+          "Blood Drinker",
+          "Assassination",
+          "Aspect of the Lynx",
+          "Will of Blades",
+          "Trickery",
+          "Avatar of the Hunt",
+          "Intuition",
+          "Resourcefulness",
+          "Profane Chemistry",
+          "Elemental Focus",
+          "Fangs of the Viper",
+          "Farsight",
+          "Bravery",
+          "Art of the Gladiator",
+          "Ballistics",
+          "Revenge of the Hunted",
+          "Finesse",
+          "Fury Bolts",
+          "Sleight of Hand",
+          "Heart of Oak",
+          "Aspect of the Eagle"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Spine Bow",
+          "mods": [
+            "140% increased Physical Damage",
+            "Adds 30 to 60 Physical Damage",
+            "Adds 12 to 180 Lightning Damage",
+            "13% increased Attack Speed"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Primal Arrow Quiver",
+          "mods": [
+            "+80 to maximum Life",
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Lion Pelt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Assassin's Garb",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Gripped Gloves",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Slink Boots",
+          "mods": [
+            "25% increased Movement Speed",
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+80 to maximum Life",
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "+40% to Lightning Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "30% increased Projectile Damage",
+            "+25% to Critical Strike Multiplier"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "30% increased Projectile Damage",
+            "+25% to Critical Strike Multiplier"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Lightning Arrow",
+              "level": 20
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 20
+            },
+            {
+              "name": "Elemental Damage with Attacks",
+              "level": 20
+            },
+            {
+              "name": "Increased Critical Strikes",
+              "level": 20
+            },
+            {
+              "name": "Increased Critical Damage",
+              "level": 20
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Sniper's Mark",
+              "level": 20
+            },
+            {
+              "name": "Herald of Thunder",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Grace",
+              "level": 20
+            },
+            {
+              "name": "Precision",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Cast when Damage Taken",
+              "level": 5,
+              "maxLevel": 5,
+              "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+            },
+            {
+              "name": "Immortal Call",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 20
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Eternal Mana Flask",
+          "note": "Drops from level 65."
+        },
+        {
+          "slot": "utility",
+          "name": "Diamond Flask",
+          "note": "Lucky crits."
+        },
+        {
+          "slot": "utility",
+          "name": "Silver Flask",
+          "note": "Onslaught."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Caps chaos resistance for pinnacle bosses."
+        }
+      ]
+    },
+    "maps-red": {
+      "pass": true,
+      "level": 90,
+      "budget": "ssf-week1 (6-link)",
+      "metrics": {
+        "dps": 110883,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 5888,
+        "energyShield": 0,
+        "ehp": 30656,
+        "maxHit": 9058,
+        "resists": [
+          75,
+          75,
+          75
+        ],
+        "chaosResist": 55,
+        "nodes": 104,
+        "sockets": 6,
+        "ascendancy": 9
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            238,
+            10829
+          ],
+          [
+            238,
+            11497
+          ],
+          [
+            444,
+            61306
+          ],
+          [
+            930,
+            5408
+          ],
+          [
+            930,
+            29089
+          ],
+          [
+            3469,
+            34678
+          ],
+          [
+            4011,
+            9355
+          ],
+          [
+            5408,
+            63139
+          ],
+          [
+            5408,
+            11497
+          ],
+          [
+            4011,
+            5823
+          ],
+          [
+            6538,
+            38662
+          ],
+          [
+            6580,
+            19711
+          ],
+          [
+            7112,
+            13885
+          ],
+          [
+            8566,
+            50041
+          ],
+          [
+            8930,
+            42041
+          ],
+          [
+            8938,
+            49978
+          ],
+          [
+            9206,
+            41866
+          ],
+          [
+            9355,
+            49978
+          ],
+          [
+            5823,
+            9877
+          ],
+          [
+            10829,
+            32091
+          ],
+          [
+            10829,
+            18402
+          ],
+          [
+            11497,
+            34483
+          ],
+          [
+            5408,
+            11651
+          ],
+          [
+            6580,
+            11651
+          ],
+          [
+            11859,
+            56001
+          ],
+          [
+            12068,
+            47743
+          ],
+          [
+            12801,
+            45593
+          ],
+          [
+            8938,
+            12801
+          ],
+          [
+            13885,
+            28012
+          ],
+          [
+            13885,
+            40362
+          ],
+          [
+            10829,
+            16167
+          ],
+          [
+            3469,
+            16851
+          ],
+          [
+            12068,
+            16851
+          ],
+          [
+            17814,
+            60204
+          ],
+          [
+            17814,
+            32091
+          ],
+          [
+            8930,
+            18402
+          ],
+          [
+            19069,
+            34678
+          ],
+          [
+            16167,
+            19144
+          ],
+          [
+            19144,
+            23122
+          ],
+          [
+            17201,
+            19711
+          ],
+          [
+            9206,
+            19858
+          ],
+          [
+            24641,
+            25456
+          ],
+          [
+            24641,
+            48807
+          ],
+          [
+            9877,
+            25058
+          ],
+          [
+            4011,
+            28012
+          ],
+          [
+            29089,
+            46344
+          ],
+          [
+            1325,
+            29933
+          ],
+          [
+            29933,
+            34031
+          ],
+          [
+            30155,
+            60002
+          ],
+          [
+            30155,
+            48807
+          ],
+          [
+            31683,
+            43162
+          ],
+          [
+            32117,
+            65210
+          ],
+          [
+            33903,
+            54338
+          ],
+          [
+            34666,
+            36972
+          ],
+          [
+            36972,
+            43303
+          ],
+          [
+            37504,
+            41866
+          ],
+          [
+            37504,
+            45491
+          ],
+          [
+            38348,
+            60735
+          ],
+          [
+            38348,
+            63843
+          ],
+          [
+            39821,
+            52904
+          ],
+          [
+            33989,
+            39861
+          ],
+          [
+            27788,
+            40362
+          ],
+          [
+            41866,
+            63843
+          ],
+          [
+            41866,
+            60942
+          ],
+          [
+            42623,
+            54338
+          ],
+          [
+            8566,
+            42720
+          ],
+          [
+            23122,
+            43162
+          ],
+          [
+            34031,
+            43303
+          ],
+          [
+            45035,
+            59370
+          ],
+          [
+            7085,
+            45491
+          ],
+          [
+            45593,
+            53114
+          ],
+          [
+            36687,
+            46344
+          ],
+          [
+            28012,
+            46408
+          ],
+          [
+            41989,
+            47362
+          ],
+          [
+            13885,
+            47362
+          ],
+          [
+            46408,
+            47362
+          ],
+          [
+            25933,
+            48438
+          ],
+          [
+            25933,
+            48807
+          ],
+          [
+            6580,
+            48807
+          ],
+          [
+            6538,
+            49978
+          ],
+          [
+            39861,
+            49978
+          ],
+          [
+            19711,
+            50041
+          ],
+          [
+            38662,
+            50338
+          ],
+          [
+            42964,
+            50338
+          ],
+          [
+            39821,
+            50459
+          ],
+          [
+            45035,
+            50459
+          ],
+          [
+            444,
+            52904
+          ],
+          [
+            53213,
+            61834
+          ],
+          [
+            7112,
+            53213
+          ],
+          [
+            11859,
+            54127
+          ],
+          [
+            32117,
+            54142
+          ],
+          [
+            46408,
+            54338
+          ],
+          [
+            17201,
+            56001
+          ],
+          [
+            34031,
+            56001
+          ],
+          [
+            59370,
+            63795
+          ],
+          [
+            19506,
+            60204
+          ],
+          [
+            42623,
+            60737
+          ],
+          [
+            60942,
+            61306
+          ],
+          [
+            61306,
+            63139
+          ],
+          [
+            54142,
+            61306
+          ],
+          [
+            38662,
+            63795
+          ],
+          [
+            60942,
+            64709
+          ],
+          [
+            3469,
+            64709
+          ],
+          [
+            42964,
+            65224
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 238,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1896,
+            "y": 3400
+          },
+          {
+            "id": 444,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3415,
+            "y": 3274
+          },
+          {
+            "id": 930,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 2365,
+            "y": 3814
+          },
+          {
+            "id": 1325,
+            "name": "Golem's Blood",
+            "notable": true,
+            "x": -1221,
+            "y": 6702
+          },
+          {
+            "id": 3469,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4038,
+            "y": 5108
+          },
+          {
+            "id": 4011,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4302,
+            "y": -1111
+          },
+          {
+            "id": 5408,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2273,
+            "y": 4084
+          },
+          {
+            "id": 5823,
+            "name": "Coordination",
+            "notable": true,
+            "x": 4560,
+            "y": -1604
+          },
+          {
+            "id": 6538,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 4299,
+            "y": 523
+          },
+          {
+            "id": 6580,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1173,
+            "y": 4529
+          },
+          {
+            "id": 7085,
+            "name": "Weapon Artistry",
+            "notable": true,
+            "x": 5550,
+            "y": 2130
+          },
+          {
+            "id": 7112,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -2223
+          },
+          {
+            "id": 8566,
+            "name": "Physical Bow Damage and Stun Threshold",
+            "notable": false,
+            "x": 1849,
+            "y": 5552
+          },
+          {
+            "id": 8930,
+            "name": "Life and Flasks",
+            "notable": false,
+            "x": 1525,
+            "y": 1859
+          },
+          {
+            "id": 8938,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5110,
+            "y": 7
+          },
+          {
+            "id": 9206,
+            "name": "Life",
+            "notable": false,
+            "x": 6697,
+            "y": 2613
+          },
+          {
+            "id": 9355,
+            "name": "Strength",
+            "notable": false,
+            "x": 4301,
+            "y": -488
+          },
+          {
+            "id": 9877,
+            "name": "Life",
+            "notable": false,
+            "x": 4710,
+            "y": -1878
+          },
+          {
+            "id": 10829,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1024,
+            "y": 1859
+          },
+          {
+            "id": 11497,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2036,
+            "y": 3643
+          },
+          {
+            "id": 11651,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1734,
+            "y": 4299
+          },
+          {
+            "id": 11859,
+            "name": "Strength",
+            "notable": false,
+            "x": 6,
+            "y": 6035
+          },
+          {
+            "id": 12068,
+            "name": "Bow Damage and Attack Speed",
+            "notable": false,
+            "x": 4119,
+            "y": 4676
+          },
+          {
+            "id": 12801,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 5452,
+            "y": 270
+          },
+          {
+            "id": 13885,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -1604
+          },
+          {
+            "id": 16167,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 597,
+            "y": 1612
+          },
+          {
+            "id": 16851,
+            "name": "Bow Damage and Accuracy",
+            "notable": false,
+            "x": 4038,
+            "y": 4817
+          },
+          {
+            "id": 17201,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 650,
+            "y": 5870
+          },
+          {
+            "id": 17814,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1249,
+            "y": 1113
+          },
+          {
+            "id": 18402,
+            "name": "Life and Flasks",
+            "notable": false,
+            "x": 1244,
+            "y": 1859
+          },
+          {
+            "id": 19069,
+            "name": "Thick Skin",
+            "notable": true,
+            "x": 4259,
+            "y": 6173
+          },
+          {
+            "id": 19144,
+            "name": "Sentinel",
+            "notable": true,
+            "x": 3,
+            "y": 1612
+          },
+          {
+            "id": 19506,
+            "name": "Path of the Hunter",
+            "notable": true,
+            "x": 1126,
+            "y": 655
+          },
+          {
+            "id": 19711,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1480,
+            "y": 5870
+          },
+          {
+            "id": 19858,
+            "name": "Herbalism",
+            "notable": true,
+            "x": 6837,
+            "y": 2856
+          },
+          {
+            "id": 23122,
+            "name": "Projectile Damage",
+            "notable": false,
+            "x": 84,
+            "y": 1040
+          },
+          {
+            "id": 24641,
+            "name": "Dual Wield Damage",
+            "notable": false,
+            "x": 367,
+            "y": 5073
+          },
+          {
+            "id": 25058,
+            "name": "Blood Siphon",
+            "notable": true,
+            "x": 4893,
+            "y": -2223
+          },
+          {
+            "id": 25456,
+            "name": "Dervish",
+            "notable": true,
+            "x": 124,
+            "y": 5214
+          },
+          {
+            "id": 25933,
+            "name": "Life",
+            "notable": false,
+            "x": 143,
+            "y": 4813
+          },
+          {
+            "id": 27788,
+            "name": "Blood Drinker",
+            "notable": true,
+            "x": 7006,
+            "y": -1664
+          },
+          {
+            "id": 28012,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5914,
+            "y": -1111
+          },
+          {
+            "id": 29089,
+            "name": "Bow Damage and Evasion",
+            "notable": false,
+            "x": 2284,
+            "y": 3673
+          },
+          {
+            "id": 29933,
+            "name": "Life",
+            "notable": false,
+            "x": -978,
+            "y": 6562
+          },
+          {
+            "id": 30155,
+            "name": "Projectile Damage",
+            "notable": false,
+            "x": 649,
+            "y": 5251
+          },
+          {
+            "id": 31683,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 3,
+            "y": 900
+          },
+          {
+            "id": 32091,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1416,
+            "y": 1158
+          },
+          {
+            "id": 32117,
+            "name": "Life and Stun Avoidance",
+            "notable": false,
+            "x": 4461,
+            "y": 2270
+          },
+          {
+            "id": 33903,
+            "name": "Will of Blades",
+            "notable": true,
+            "x": 5351,
+            "y": -1939
+          },
+          {
+            "id": 33989,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 3742,
+            "y": 228
+          },
+          {
+            "id": 34031,
+            "name": "Strength",
+            "notable": false,
+            "x": -647,
+            "y": 5870
+          },
+          {
+            "id": 34483,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 1815,
+            "y": 3703
+          },
+          {
+            "id": 34666,
+            "name": "Destroyer",
+            "notable": true,
+            "x": -889,
+            "y": 5392
+          },
+          {
+            "id": 34678,
+            "name": "Life and Elemental Ailment Avoidance",
+            "notable": false,
+            "x": 4038,
+            "y": 6232
+          },
+          {
+            "id": 36687,
+            "name": "Avatar of the Hunt",
+            "notable": true,
+            "x": 2527,
+            "y": 3533
+          },
+          {
+            "id": 36972,
+            "name": "Two Handed Attack Speed",
+            "notable": false,
+            "x": -808,
+            "y": 5532
+          },
+          {
+            "id": 37504,
+            "name": "Intuition",
+            "notable": true,
+            "x": 6000,
+            "y": 2612
+          },
+          {
+            "id": 38348,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6694,
+            "y": 2050
+          },
+          {
+            "id": 38662,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 1060
+          },
+          {
+            "id": 39821,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 3012,
+            "y": 1933
+          },
+          {
+            "id": 39861,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3801,
+            "y": 7
+          },
+          {
+            "id": 40362,
+            "name": "Life",
+            "notable": false,
+            "x": 6785,
+            "y": -1604
+          },
+          {
+            "id": 41866,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6402,
+            "y": 2612
+          },
+          {
+            "id": 41989,
+            "name": "Resourcefulness",
+            "notable": true,
+            "x": 6072,
+            "y": -2223
+          },
+          {
+            "id": 42041,
+            "name": "Profane Chemistry",
+            "notable": true,
+            "x": 1385,
+            "y": 2102
+          },
+          {
+            "id": 42623,
+            "name": "One Handed Damage",
+            "notable": false,
+            "x": 5513,
+            "y": -1604
+          },
+          {
+            "id": 42720,
+            "name": "Heavy Draw",
+            "notable": true,
+            "x": 2044,
+            "y": 5471
+          },
+          {
+            "id": 42964,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 4764,
+            "y": 1639
+          },
+          {
+            "id": 43162,
+            "name": "Projectile Damage",
+            "notable": false,
+            "x": 165,
+            "y": 900
+          },
+          {
+            "id": 43303,
+            "name": "Two Handed Melee Damage",
+            "notable": false,
+            "x": -646,
+            "y": 5532
+          },
+          {
+            "id": 45035,
+            "name": "Projectile Damage and Accuracy",
+            "notable": false,
+            "x": 3179,
+            "y": 1642
+          },
+          {
+            "id": 45491,
+            "name": "Attack Damage",
+            "notable": false,
+            "x": 5793,
+            "y": 2270
+          },
+          {
+            "id": 45593,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 5311,
+            "y": 351
+          },
+          {
+            "id": 46344,
+            "name": "Bow Damage and Evasion",
+            "notable": false,
+            "x": 2365,
+            "y": 3533
+          },
+          {
+            "id": 46408,
+            "name": "Fangs of the Viper",
+            "notable": true,
+            "x": 6143,
+            "y": -1604
+          },
+          {
+            "id": 47362,
+            "name": "Life and Energy Shield on Kill",
+            "notable": false,
+            "x": 6259,
+            "y": -1878
+          },
+          {
+            "id": 47743,
+            "name": "Farsight",
+            "notable": true,
+            "x": 4038,
+            "y": 4536
+          },
+          {
+            "id": 48438,
+            "name": "Bravery",
+            "notable": true,
+            "x": 2,
+            "y": 4894
+          },
+          {
+            "id": 48807,
+            "name": "Art of the Gladiator",
+            "notable": true,
+            "x": 653,
+            "y": 4732
+          },
+          {
+            "id": 49978,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4301,
+            "y": 7
+          },
+          {
+            "id": 50041,
+            "name": "Physical Bow Damage",
+            "notable": false,
+            "x": 1628,
+            "y": 5611
+          },
+          {
+            "id": 50338,
+            "name": "Ballistics",
+            "notable": true,
+            "x": 4299,
+            "y": 1639
+          },
+          {
+            "id": 50459,
+            "name": "RANGER",
+            "notable": false,
+            "x": 2844,
+            "y": 1642
+          },
+          {
+            "id": 52904,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2842,
+            "y": 2281
+          },
+          {
+            "id": 53114,
+            "name": "Revenge of the Hunted",
+            "notable": true,
+            "x": 5311,
+            "y": 513
+          },
+          {
+            "id": 53213,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6590,
+            "y": -2223
+          },
+          {
+            "id": 54127,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 6,
+            "y": 6370
+          },
+          {
+            "id": 54142,
+            "name": "Finesse",
+            "notable": true,
+            "x": 4299,
+            "y": 2612
+          },
+          {
+            "id": 54338,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": 5642,
+            "y": -1772
+          },
+          {
+            "id": 56001,
+            "name": "Strength",
+            "notable": false,
+            "x": 3,
+            "y": 5870
+          },
+          {
+            "id": 59370,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3375,
+            "y": 1305
+          },
+          {
+            "id": 60002,
+            "name": "Fury Bolts",
+            "notable": true,
+            "x": 892,
+            "y": 5392
+          },
+          {
+            "id": 60204,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1126,
+            "y": 990
+          },
+          {
+            "id": 60735,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 6834,
+            "y": 1969
+          },
+          {
+            "id": 60737,
+            "name": "Sleight of Hand",
+            "notable": true,
+            "x": 5351,
+            "y": -1604
+          },
+          {
+            "id": 60942,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5740,
+            "y": 3274
+          },
+          {
+            "id": 61306,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 3274
+          },
+          {
+            "id": 61834,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 6925,
+            "y": -2223
+          },
+          {
+            "id": 63139,
+            "name": "Strength",
+            "notable": false,
+            "x": 3307,
+            "y": 3672
+          },
+          {
+            "id": 63795,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3802,
+            "y": 1059
+          },
+          {
+            "id": 63843,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6402,
+            "y": 2130
+          },
+          {
+            "id": 64709,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4884,
+            "y": 4207
+          },
+          {
+            "id": 65210,
+            "name": "Heart of Oak",
+            "notable": true,
+            "x": 4542,
+            "y": 2130
+          },
+          {
+            "id": 65224,
+            "name": "Aspect of the Eagle",
+            "notable": true,
+            "x": 4926,
+            "y": 1639
+          }
+        ],
+        "notables": [
+          "Golem's Blood",
+          "Coordination",
+          "Weapon Artistry",
+          "Thick Skin",
+          "Sentinel",
+          "Path of the Hunter",
+          "Herbalism",
+          "Blood Siphon",
+          "Dervish",
+          "Blood Drinker",
+          "Will of Blades",
+          "Destroyer",
+          "Avatar of the Hunt",
+          "Intuition",
+          "Resourcefulness",
+          "Profane Chemistry",
+          "Heavy Draw",
+          "Fangs of the Viper",
+          "Farsight",
+          "Bravery",
+          "Art of the Gladiator",
+          "Ballistics",
+          "Revenge of the Hunted",
+          "Finesse",
+          "Fury Bolts",
+          "Sleight of Hand",
+          "Heart of Oak",
+          "Aspect of the Eagle"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Spine Bow",
+          "mods": [
+            "140% increased Physical Damage",
+            "Adds 30 to 60 Physical Damage",
+            "Adds 12 to 180 Lightning Damage",
+            "13% increased Attack Speed"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Artillery Quiver",
+          "mods": [
+            "+80 to maximum Life",
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Grizzly Pelt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Astral Leather",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Harpyskin Gloves",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Stormrider Boots",
+          "mods": [
+            "25% increased Movement Speed",
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+80 to maximum Life",
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "+40% to Lightning Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "30% increased Projectile Damage",
+            "+25% to Critical Strike Multiplier"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "30% increased Projectile Damage",
+            "+25% to Critical Strike Multiplier"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 3",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "30% increased Projectile Damage",
+            "+25% to Critical Strike Multiplier"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 4",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "30% increased Projectile Damage",
+            "+25% to Critical Strike Multiplier"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 5",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "30% increased Projectile Damage",
+            "+25% to Critical Strike Multiplier"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 6",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "30% increased Projectile Damage",
+            "+25% to Critical Strike Multiplier"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Lightning Arrow",
+              "level": 20
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 20
+            },
+            {
+              "name": "Elemental Damage with Attacks",
+              "level": 20
+            },
+            {
+              "name": "Increased Critical Strikes",
+              "level": 20
+            },
+            {
+              "name": "Increased Critical Damage",
+              "level": 20
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Sniper's Mark",
+              "level": 20
+            },
+            {
+              "name": "Herald of Thunder",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Grace",
+              "level": 20
+            },
+            {
+              "name": "Precision",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Cast when Damage Taken",
+              "level": 5,
+              "maxLevel": 5,
+              "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+            },
+            {
+              "name": "Immortal Call",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 20
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Eternal Mana Flask",
+          "note": "Drops from level 65."
+        },
+        {
+          "slot": "utility",
+          "name": "Diamond Flask",
+          "note": "Lucky crits."
+        },
+        {
+          "slot": "utility",
+          "name": "Silver Flask",
+          "note": "Onslaught."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Caps chaos resistance for pinnacle bosses."
+        }
+      ]
+    },
+    "pinnacle": {
+      "pass": true,
+      "level": 96,
+      "budget": "trade (6-link)",
+      "metrics": {
+        "dps": 203979,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 7605,
+        "energyShield": 0,
+        "ehp": 43184,
+        "maxHit": 11714,
+        "resists": [
+          75,
+          75,
+          75
+        ],
+        "chaosResist": 75,
+        "nodes": 111,
+        "sockets": 6,
+        "ascendancy": 9
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            238,
+            10829
+          ],
+          [
+            238,
+            11497
+          ],
+          [
+            444,
+            61306
+          ],
+          [
+            930,
+            5408
+          ],
+          [
+            930,
+            29089
+          ],
+          [
+            3469,
+            34678
+          ],
+          [
+            4011,
+            9355
+          ],
+          [
+            5408,
+            63139
+          ],
+          [
+            5408,
+            11497
+          ],
+          [
+            4011,
+            5823
+          ],
+          [
+            6538,
+            38662
+          ],
+          [
+            6580,
+            19711
+          ],
+          [
+            7112,
+            13885
+          ],
+          [
+            8566,
+            50041
+          ],
+          [
+            8930,
+            42041
+          ],
+          [
+            8938,
+            49978
+          ],
+          [
+            9206,
+            41866
+          ],
+          [
+            9355,
+            49978
+          ],
+          [
+            5823,
+            9877
+          ],
+          [
+            10829,
+            32091
+          ],
+          [
+            10829,
+            18402
+          ],
+          [
+            11497,
+            34483
+          ],
+          [
+            5408,
+            11651
+          ],
+          [
+            6580,
+            11651
+          ],
+          [
+            11859,
+            56001
+          ],
+          [
+            12068,
+            47743
+          ],
+          [
+            12801,
+            45593
+          ],
+          [
+            8938,
+            12801
+          ],
+          [
+            13885,
+            28012
+          ],
+          [
+            13885,
+            40362
+          ],
+          [
+            10829,
+            16167
+          ],
+          [
+            3469,
+            16851
+          ],
+          [
+            12068,
+            16851
+          ],
+          [
+            17814,
+            60204
+          ],
+          [
+            17814,
+            32091
+          ],
+          [
+            8930,
+            18402
+          ],
+          [
+            19069,
+            34678
+          ],
+          [
+            16167,
+            19144
+          ],
+          [
+            19144,
+            23122
+          ],
+          [
+            17201,
+            19711
+          ],
+          [
+            9206,
+            19858
+          ],
+          [
+            19939,
+            65167
+          ],
+          [
+            12702,
+            19939
+          ],
+          [
+            24641,
+            25456
+          ],
+          [
+            24641,
+            48807
+          ],
+          [
+            9877,
+            25058
+          ],
+          [
+            4011,
+            28012
+          ],
+          [
+            19144,
+            28330
+          ],
+          [
+            29089,
+            46344
+          ],
+          [
+            1325,
+            29933
+          ],
+          [
+            29933,
+            34031
+          ],
+          [
+            30155,
+            60002
+          ],
+          [
+            30155,
+            48807
+          ],
+          [
+            31683,
+            43162
+          ],
+          [
+            32117,
+            65210
+          ],
+          [
+            33903,
+            54338
+          ],
+          [
+            34666,
+            36972
+          ],
+          [
+            36972,
+            43303
+          ],
+          [
+            37504,
+            41866
+          ],
+          [
+            37504,
+            45491
+          ],
+          [
+            38348,
+            60735
+          ],
+          [
+            38348,
+            63843
+          ],
+          [
+            39821,
+            52904
+          ],
+          [
+            33989,
+            39861
+          ],
+          [
+            27788,
+            40362
+          ],
+          [
+            41866,
+            63843
+          ],
+          [
+            41866,
+            60942
+          ],
+          [
+            42623,
+            54338
+          ],
+          [
+            8566,
+            42720
+          ],
+          [
+            23122,
+            43162
+          ],
+          [
+            34031,
+            43303
+          ],
+          [
+            45035,
+            59370
+          ],
+          [
+            7085,
+            45491
+          ],
+          [
+            45593,
+            53114
+          ],
+          [
+            36687,
+            46344
+          ],
+          [
+            28012,
+            46408
+          ],
+          [
+            28330,
+            46578
+          ],
+          [
+            13714,
+            46578
+          ],
+          [
+            41989,
+            47362
+          ],
+          [
+            13885,
+            47362
+          ],
+          [
+            46408,
+            47362
+          ],
+          [
+            25933,
+            48438
+          ],
+          [
+            25933,
+            48807
+          ],
+          [
+            6580,
+            48807
+          ],
+          [
+            6538,
+            49978
+          ],
+          [
+            39861,
+            49978
+          ],
+          [
+            19711,
+            50041
+          ],
+          [
+            38662,
+            50338
+          ],
+          [
+            42964,
+            50338
+          ],
+          [
+            39821,
+            50459
+          ],
+          [
+            45035,
+            50459
+          ],
+          [
+            444,
+            52904
+          ],
+          [
+            53213,
+            61834
+          ],
+          [
+            7112,
+            53213
+          ],
+          [
+            11859,
+            54127
+          ],
+          [
+            32117,
+            54142
+          ],
+          [
+            46408,
+            54338
+          ],
+          [
+            13714,
+            55485
+          ],
+          [
+            17201,
+            56001
+          ],
+          [
+            34031,
+            56001
+          ],
+          [
+            59370,
+            63795
+          ],
+          [
+            19506,
+            60204
+          ],
+          [
+            42623,
+            60737
+          ],
+          [
+            60942,
+            61306
+          ],
+          [
+            61306,
+            63139
+          ],
+          [
+            54142,
+            61306
+          ],
+          [
+            38662,
+            63795
+          ],
+          [
+            60942,
+            64709
+          ],
+          [
+            3469,
+            64709
+          ],
+          [
+            13714,
+            65167
+          ],
+          [
+            42964,
+            65224
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 238,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1896,
+            "y": 3400
+          },
+          {
+            "id": 444,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3415,
+            "y": 3274
+          },
+          {
+            "id": 930,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 2365,
+            "y": 3814
+          },
+          {
+            "id": 1325,
+            "name": "Golem's Blood",
+            "notable": true,
+            "x": -1221,
+            "y": 6702
+          },
+          {
+            "id": 3469,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4038,
+            "y": 5108
+          },
+          {
+            "id": 4011,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4302,
+            "y": -1111
+          },
+          {
+            "id": 5408,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2273,
+            "y": 4084
+          },
+          {
+            "id": 5823,
+            "name": "Coordination",
+            "notable": true,
+            "x": 4560,
+            "y": -1604
+          },
+          {
+            "id": 6538,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 4299,
+            "y": 523
+          },
+          {
+            "id": 6580,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1173,
+            "y": 4529
+          },
+          {
+            "id": 7085,
+            "name": "Weapon Artistry",
+            "notable": true,
+            "x": 5550,
+            "y": 2130
+          },
+          {
+            "id": 7112,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -2223
+          },
+          {
+            "id": 8566,
+            "name": "Physical Bow Damage and Stun Threshold",
+            "notable": false,
+            "x": 1849,
+            "y": 5552
+          },
+          {
+            "id": 8930,
+            "name": "Life and Flasks",
+            "notable": false,
+            "x": 1525,
+            "y": 1859
+          },
+          {
+            "id": 8938,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5110,
+            "y": 7
+          },
+          {
+            "id": 9206,
+            "name": "Life",
+            "notable": false,
+            "x": 6697,
+            "y": 2613
+          },
+          {
+            "id": 9355,
+            "name": "Strength",
+            "notable": false,
+            "x": 4301,
+            "y": -488
+          },
+          {
+            "id": 9877,
+            "name": "Life",
+            "notable": false,
+            "x": 4710,
+            "y": -1878
+          },
+          {
+            "id": 10829,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1024,
+            "y": 1859
+          },
+          {
+            "id": 11497,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2036,
+            "y": 3643
+          },
+          {
+            "id": 11651,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1734,
+            "y": 4299
+          },
+          {
+            "id": 11859,
+            "name": "Strength",
+            "notable": false,
+            "x": 6,
+            "y": 6035
+          },
+          {
+            "id": 12068,
+            "name": "Bow Damage and Attack Speed",
+            "notable": false,
+            "x": 4119,
+            "y": 4676
+          },
+          {
+            "id": 12702,
+            "name": "Path of the Warrior",
+            "notable": true,
+            "x": -1113,
+            "y": 651
+          },
+          {
+            "id": 12801,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 5452,
+            "y": 270
+          },
+          {
+            "id": 13714,
+            "name": "Life",
+            "notable": false,
+            "x": -1403,
+            "y": 1154
+          },
+          {
+            "id": 13885,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -1604
+          },
+          {
+            "id": 16167,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 597,
+            "y": 1612
+          },
+          {
+            "id": 16851,
+            "name": "Bow Damage and Accuracy",
+            "notable": false,
+            "x": 4038,
+            "y": 4817
+          },
+          {
+            "id": 17201,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 650,
+            "y": 5870
+          },
+          {
+            "id": 17814,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1249,
+            "y": 1113
+          },
+          {
+            "id": 18402,
+            "name": "Life and Flasks",
+            "notable": false,
+            "x": 1244,
+            "y": 1859
+          },
+          {
+            "id": 19069,
+            "name": "Thick Skin",
+            "notable": true,
+            "x": 4259,
+            "y": 6173
+          },
+          {
+            "id": 19144,
+            "name": "Sentinel",
+            "notable": true,
+            "x": 3,
+            "y": 1612
+          },
+          {
+            "id": 19506,
+            "name": "Path of the Hunter",
+            "notable": true,
+            "x": 1126,
+            "y": 655
+          },
+          {
+            "id": 19711,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1480,
+            "y": 5870
+          },
+          {
+            "id": 19858,
+            "name": "Herbalism",
+            "notable": true,
+            "x": 6837,
+            "y": 2856
+          },
+          {
+            "id": 19939,
+            "name": "Life",
+            "notable": false,
+            "x": -1113,
+            "y": 986
+          },
+          {
+            "id": 23122,
+            "name": "Projectile Damage",
+            "notable": false,
+            "x": 84,
+            "y": 1040
+          },
+          {
+            "id": 24641,
+            "name": "Dual Wield Damage",
+            "notable": false,
+            "x": 367,
+            "y": 5073
+          },
+          {
+            "id": 25058,
+            "name": "Blood Siphon",
+            "notable": true,
+            "x": 4893,
+            "y": -2223
+          },
+          {
+            "id": 25456,
+            "name": "Dervish",
+            "notable": true,
+            "x": 124,
+            "y": 5214
+          },
+          {
+            "id": 25933,
+            "name": "Life",
+            "notable": false,
+            "x": 143,
+            "y": 4813
+          },
+          {
+            "id": 27788,
+            "name": "Blood Drinker",
+            "notable": true,
+            "x": 7006,
+            "y": -1664
+          },
+          {
+            "id": 28012,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5914,
+            "y": -1111
+          },
+          {
+            "id": 28330,
+            "name": "Strength",
+            "notable": false,
+            "x": -591,
+            "y": 1612
+          },
+          {
+            "id": 29089,
+            "name": "Bow Damage and Evasion",
+            "notable": false,
+            "x": 2284,
+            "y": 3673
+          },
+          {
+            "id": 29933,
+            "name": "Life",
+            "notable": false,
+            "x": -978,
+            "y": 6562
+          },
+          {
+            "id": 30155,
+            "name": "Projectile Damage",
+            "notable": false,
+            "x": 649,
+            "y": 5251
+          },
+          {
+            "id": 31683,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 3,
+            "y": 900
+          },
+          {
+            "id": 32091,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1416,
+            "y": 1158
+          },
+          {
+            "id": 32117,
+            "name": "Life and Stun Avoidance",
+            "notable": false,
+            "x": 4461,
+            "y": 2270
+          },
+          {
+            "id": 33903,
+            "name": "Will of Blades",
+            "notable": true,
+            "x": 5351,
+            "y": -1939
+          },
+          {
+            "id": 33989,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 3742,
+            "y": 228
+          },
+          {
+            "id": 34031,
+            "name": "Strength",
+            "notable": false,
+            "x": -647,
+            "y": 5870
+          },
+          {
+            "id": 34483,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 1815,
+            "y": 3703
+          },
+          {
+            "id": 34666,
+            "name": "Destroyer",
+            "notable": true,
+            "x": -889,
+            "y": 5392
+          },
+          {
+            "id": 34678,
+            "name": "Life and Elemental Ailment Avoidance",
+            "notable": false,
+            "x": 4038,
+            "y": 6232
+          },
+          {
+            "id": 36687,
+            "name": "Avatar of the Hunt",
+            "notable": true,
+            "x": 2527,
+            "y": 3533
+          },
+          {
+            "id": 36972,
+            "name": "Two Handed Attack Speed",
+            "notable": false,
+            "x": -808,
+            "y": 5532
+          },
+          {
+            "id": 37504,
+            "name": "Intuition",
+            "notable": true,
+            "x": 6000,
+            "y": 2612
+          },
+          {
+            "id": 38348,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6694,
+            "y": 2050
+          },
+          {
+            "id": 38662,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 1060
+          },
+          {
+            "id": 39821,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 3012,
+            "y": 1933
+          },
+          {
+            "id": 39861,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3801,
+            "y": 7
+          },
+          {
+            "id": 40362,
+            "name": "Life",
+            "notable": false,
+            "x": 6785,
+            "y": -1604
+          },
+          {
+            "id": 41866,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6402,
+            "y": 2612
+          },
+          {
+            "id": 41989,
+            "name": "Resourcefulness",
+            "notable": true,
+            "x": 6072,
+            "y": -2223
+          },
+          {
+            "id": 42041,
+            "name": "Profane Chemistry",
+            "notable": true,
+            "x": 1385,
+            "y": 2102
+          },
+          {
+            "id": 42623,
+            "name": "One Handed Damage",
+            "notable": false,
+            "x": 5513,
+            "y": -1604
+          },
+          {
+            "id": 42720,
+            "name": "Heavy Draw",
+            "notable": true,
+            "x": 2044,
+            "y": 5471
+          },
+          {
+            "id": 42964,
+            "name": "Bow Damage",
+            "notable": false,
+            "x": 4764,
+            "y": 1639
+          },
+          {
+            "id": 43162,
+            "name": "Projectile Damage",
+            "notable": false,
+            "x": 165,
+            "y": 900
+          },
+          {
+            "id": 43303,
+            "name": "Two Handed Melee Damage",
+            "notable": false,
+            "x": -646,
+            "y": 5532
+          },
+          {
+            "id": 45035,
+            "name": "Projectile Damage and Accuracy",
+            "notable": false,
+            "x": 3179,
+            "y": 1642
+          },
+          {
+            "id": 45491,
+            "name": "Attack Damage",
+            "notable": false,
+            "x": 5793,
+            "y": 2270
+          },
+          {
+            "id": 45593,
+            "name": "Evasion and Life",
+            "notable": false,
+            "x": 5311,
+            "y": 351
+          },
+          {
+            "id": 46344,
+            "name": "Bow Damage and Evasion",
+            "notable": false,
+            "x": 2365,
+            "y": 3533
+          },
+          {
+            "id": 46408,
+            "name": "Fangs of the Viper",
+            "notable": true,
+            "x": 6143,
+            "y": -1604
+          },
+          {
+            "id": 46578,
+            "name": "Strength",
+            "notable": false,
+            "x": -1018,
+            "y": 1859
+          },
+          {
+            "id": 47362,
+            "name": "Life and Energy Shield on Kill",
+            "notable": false,
+            "x": 6259,
+            "y": -1878
+          },
+          {
+            "id": 47743,
+            "name": "Farsight",
+            "notable": true,
+            "x": 4038,
+            "y": 4536
+          },
+          {
+            "id": 48438,
+            "name": "Bravery",
+            "notable": true,
+            "x": 2,
+            "y": 4894
+          },
+          {
+            "id": 48807,
+            "name": "Art of the Gladiator",
+            "notable": true,
+            "x": 653,
+            "y": 4732
+          },
+          {
+            "id": 49978,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4301,
+            "y": 7
+          },
+          {
+            "id": 50041,
+            "name": "Physical Bow Damage",
+            "notable": false,
+            "x": 1628,
+            "y": 5611
+          },
+          {
+            "id": 50338,
+            "name": "Ballistics",
+            "notable": true,
+            "x": 4299,
+            "y": 1639
+          },
+          {
+            "id": 50459,
+            "name": "RANGER",
+            "notable": false,
+            "x": 2844,
+            "y": 1642
+          },
+          {
+            "id": 52904,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2842,
+            "y": 2281
+          },
+          {
+            "id": 53114,
+            "name": "Revenge of the Hunted",
+            "notable": true,
+            "x": 5311,
+            "y": 513
+          },
+          {
+            "id": 53213,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6590,
+            "y": -2223
+          },
+          {
+            "id": 54127,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 6,
+            "y": 6370
+          },
+          {
+            "id": 54142,
+            "name": "Finesse",
+            "notable": true,
+            "x": 4299,
+            "y": 2612
+          },
+          {
+            "id": 54338,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": 5642,
+            "y": -1772
+          },
+          {
+            "id": 55485,
+            "name": "Constitution",
+            "notable": true,
+            "x": -1693,
+            "y": 986
+          },
+          {
+            "id": 56001,
+            "name": "Strength",
+            "notable": false,
+            "x": 3,
+            "y": 5870
+          },
+          {
+            "id": 59370,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3375,
+            "y": 1305
+          },
+          {
+            "id": 60002,
+            "name": "Fury Bolts",
+            "notable": true,
+            "x": 892,
+            "y": 5392
+          },
+          {
+            "id": 60204,
+            "name": "Evasion and Spell Suppression",
+            "notable": false,
+            "x": 1126,
+            "y": 990
+          },
+          {
+            "id": 60735,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 6834,
+            "y": 1969
+          },
+          {
+            "id": 60737,
+            "name": "Sleight of Hand",
+            "notable": true,
+            "x": 5351,
+            "y": -1604
+          },
+          {
+            "id": 60942,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5740,
+            "y": 3274
+          },
+          {
+            "id": 61306,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4299,
+            "y": 3274
+          },
+          {
+            "id": 61834,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 6925,
+            "y": -2223
+          },
+          {
+            "id": 63139,
+            "name": "Strength",
+            "notable": false,
+            "x": 3307,
+            "y": 3672
+          },
+          {
+            "id": 63795,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3802,
+            "y": 1059
+          },
+          {
+            "id": 63843,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6402,
+            "y": 2130
+          },
+          {
+            "id": 64709,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4884,
+            "y": 4207
+          },
+          {
+            "id": 65167,
+            "name": "Life",
+            "notable": false,
+            "x": -1235,
+            "y": 1109
+          },
+          {
+            "id": 65210,
+            "name": "Heart of Oak",
+            "notable": true,
+            "x": 4542,
+            "y": 2130
+          },
+          {
+            "id": 65224,
+            "name": "Aspect of the Eagle",
+            "notable": true,
+            "x": 4926,
+            "y": 1639
+          }
+        ],
+        "notables": [
+          "Golem's Blood",
+          "Coordination",
+          "Weapon Artistry",
+          "Path of the Warrior",
+          "Thick Skin",
+          "Sentinel",
+          "Path of the Hunter",
+          "Herbalism",
+          "Blood Siphon",
+          "Dervish",
+          "Blood Drinker",
+          "Will of Blades",
+          "Destroyer",
+          "Avatar of the Hunt",
+          "Intuition",
+          "Resourcefulness",
+          "Profane Chemistry",
+          "Heavy Draw",
+          "Fangs of the Viper",
+          "Farsight",
+          "Bravery",
+          "Art of the Gladiator",
+          "Ballistics",
+          "Revenge of the Hunted",
+          "Finesse",
+          "Constitution",
+          "Fury Bolts",
+          "Sleight of Hand",
+          "Heart of Oak",
+          "Aspect of the Eagle"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Spine Bow",
+          "mods": [
+            "170% increased Physical Damage",
+            "Adds 40 to 80 Physical Damage",
+            "Adds 15 to 250 Lightning Damage",
+            "17% increased Attack Speed"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Artillery Quiver",
+          "mods": [
+            "+100 to maximum Life",
+            "Adds 10 to 100 Lightning Damage to Attacks",
+            "+45% to Lightning Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Majestic Pelt",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Fire Resistance",
+            "+45% to Cold Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Syndicate's Garb",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Lightning Resistance",
+            "+45% to Cold Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Velour Gloves",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "+45% to Cold Resistance",
+            "+45% to Fire Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Velour Boots",
+          "mods": [
+            "30% increased Movement Speed",
+            "+100 to maximum Life",
+            "+45% to Cold Resistance",
+            "+45% to Lightning Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Fire Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+100 to maximum Life",
+            "Adds 10 to 100 Lightning Damage to Attacks",
+            "+45% to Lightning Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+100 to maximum Life",
+            "Adds 10 to 100 Lightning Damage to Attacks",
+            "+45% to Fire Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Cold Resistance",
+            "+45% to Fire Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "40% increased Projectile Damage",
+            "+35% to Critical Strike Multiplier"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "40% increased Projectile Damage",
+            "+35% to Critical Strike Multiplier"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 3",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "40% increased Projectile Damage",
+            "+35% to Critical Strike Multiplier"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 4",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "40% increased Projectile Damage",
+            "+35% to Critical Strike Multiplier"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 5",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "40% increased Projectile Damage",
+            "+35% to Critical Strike Multiplier"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 6",
+          "base": "Viridian Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "40% increased Projectile Damage",
+            "+35% to Critical Strike Multiplier"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Lightning Arrow",
+              "level": 21
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 21
+            },
+            {
+              "name": "Elemental Damage with Attacks",
+              "level": 21
+            },
+            {
+              "name": "Increased Critical Strikes",
+              "level": 21
+            },
+            {
+              "name": "Increased Critical Damage",
+              "level": 21
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Sniper's Mark",
+              "level": 21
+            },
+            {
+              "name": "Herald of Thunder",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Grace",
+              "level": 21
+            },
+            {
+              "name": "Precision",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Cast when Damage Taken",
+              "level": 5,
+              "maxLevel": 5,
+              "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+            },
+            {
+              "name": "Immortal Call",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 21
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Eternal Mana Flask",
+          "note": "Drops from level 65."
+        },
+        {
+          "slot": "utility",
+          "name": "Diamond Flask",
+          "note": "Lucky crits."
+        },
+        {
+          "slot": "utility",
+          "name": "Silver Flask",
+          "note": "Onslaught."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Caps chaos resistance for pinnacle bosses."
+        }
+      ]
+    }
+  },
+  "pob": {
+    "ref": "v2.69.0",
+    "checkpoint": "maps-red",
+    "code": "eJzVWltv2zoSfq5-BSHgYB86Z8O7qCLugZM2aRbNaU_cbXefFoxF26x18Up0UvfXLyj5Iqe-Iu2mhQGBGn7DmW94H_n0jy9Ziu5MWdki74Tk7zhEJu8Xic2HnfCfHy5-V-EfL4PT99qN3g3Opjb1NS-DZ6d1GaXmzqSdMMYhcrocGvdx0RT7Dw5RP9VV9afOTCe80fnQlCHSVd_kyfmq4pXRiZmZEGXa5r2iPzbusiymk05IQnSr88S6TvhnkZsQTXTuRqbIr_Xnorwskk54W9rcjG0-bFXafF45LKduNJ6mIbqz5v66SEwnPO--Pe-FnsBJzcCXPpTGIN139s70JqbvDb8Mnj079S_Ilca0SLEFq6ukE9I1Ol6CQ5QXiak6IWUKOOcQMwyEUQGMyxg4JgQExwoE5wyEogykYAqkUBgirAREhFBQQkpQXlfFTEFMsYSYCQGxiiIgWNEYCOFxBIRIQYAQJWIgFEsFhCpMgDClBBBJZAREKo-JqJdHinAgimMKJMYyBhITzoHEAksgcUQIkFgJBZQRSoFyyQlQrrgCKrCXCy4kUBEzBlRiGQGNIqXAm6VAVRwLoDFWMdDYYxgmQgAjUjFgFMcEGCUkAsZizPxTxcA4ZgQY5x7DpZT-GSlgUqoImIwjCiwSmANTjCtgSkoKLFaU-KckwDGTFDhRUgInvk1OMSfAqaQMOI0oBk5jyYEz4pGMYQZcYCaAC0Z8mccEuBAxAy4Z58Cl7yke1S1HEWfAFff9qhSOgMdxpEBgb0VgxnyZixgEjTEHwbCSIBghvkwJA8EJjfyTUxC8xkuMCQiphAQRswiDiBWLQGKMKUhMMQeJIybqp5fHnIIkDEuQRDEOkhEWg2RRLEAyxRlIjqkCySMcgxSUYP-kvB7Rz06b-VXVL4u3esT6wVt3RYisM5l_JTI82QL0_dQCRtuAtfMtoNoGrGPTAsZbW_S0V0CKt_rox1sLSObA05NWDE5P_ByvVwO_CPhCb2zTtKmsi8jk-jY1SSd05dSEqEoL1wnPimSGumVWTMtm4eo2y4fXWKwfz04vTYaGjf1r43SinT65ciarTi79o0ZfmuytHY5cbvNhtyyL-xBVXn6sUq6z-eq1rEHzqvkiTXGI_jvVqXWztRdv6ZUZ6GnqwodsN1A7OYpbbzqZFKXrJolJlo690pkemn1EG81Lk21WXhGu69GK9gLxE_B-nZrM5E6njU-frBt1ndP9cXUw-09GT4r8QUNt-suqOXF0b90ILc38BFG4yvul0ZVJzkvrbF-nPVfasTk8BtsbWIVhiUELEFqifsYYHDkJturvjMBPNBUudOVMeezob2u1uTbyHzrKTxsG-7aCZn4i8vh9oJfbiSmra12OD9wE3pfFZ9N3NjWfjB7nplqbEU17f6tQ0-JTjoE3ptRp8m7wYTTNE38NOIjeN1orbk0VKgZoWfl0Q-CNSTPjHj8ALkvd37sirGNXEZkLnrKX35emb_1N6eDhu8SveLSET9ejl2lx5zeOR0_pZiE715X7NDJ5sxx_0GOzN0TLFdDrvlvXXAXLV6L7kckXe_8cMY-ceIJBcJVlRel0eq7T9MBxsK7S2tDmctRUPN1wOCsK9x1Gw0WqM_NKV6MD49LCt3Y-L0SN9IdGZF6qFimSj9bco69Fkf2rznP40r-XpbeNJyxcXqY83L_UvObpFV_uGbfMsPh3ZJu75svgRpfWzV6gm-7N66A38-mcyvrjzGdzb1JEgo-2tInVOfqHFwS1dm34BVI0uMomqe1bV71AOHiuMHIFyvQXm00z9NYOTEDYb8guz0jN0QH1JsYkAcPtqtW2Op9WwXMqfvPtPThaoutp6uwktaasQ-c9ekAs2k-M_pLE1H5i7JckFu8nxn9FYhTvJyZ-SWJkPzH5KxLbyeu-vncEvYnNDTor7h8y-qvZA14gitfZEb7u72hWte6KQTdJKsTqAEi8uZZQX0sU_ibpsitMWzpvF8diMBjpPAm6pbNpasoZ-mtq70x5MNdNPVlTUF4ciW8IePH8Uhk894FyRQtz4_1yOu-bLWzYLjaj-poQXJb269d0ht6b1D2KyMK_C1uatmsL-XmRJvtd5rtcvi2SWdCtXKlT9NZoN9od-3lq9QU6-335O5zHxjgfR0bsIjOsD_XBG11OZtXY5qg55T-qD3aM922eb-u2zYx2Hoxu_bk06LmizEqbmBLVB9WDCfl1aeX8dXFXJxIX7u_oqW2UjpgpO89Ft35qnI-0zdHZD5sldM5lpItqv787jzs6m6bGBe_y2RfUbcpPv0IdSXDnsae0-ZAE7yY6RTc2H_5_2T2y58jOc49nRr8Ts2Nn_LFE2ueB6-7l1fkak9QODBqkuhoHr-ydPxV4p9BFLTmU1hbLdKflTOd6bvm1M2WuU3TtRd_FNNtpeuqsb23JW2dFnnwfw_wIwz2b3pny-9gVR9jtZsaNZpV7rOWecfMTJ3LWpaaVN5hWpmf6RZ40ie76-j7QaWUWn5TTwtXpiXYqfPkhd5E8-hZFWx9nN6AWOdUFhm3ArH2FXQD5BuAinbfAiI2N1TmeBURugpi05VG0AdEs_iuM2oDxy0w7RvE2TCtCBG8A1X2-Fm0SzhMt8yzPNp12y_RAnfYHf3agTutLPeEH6rT_LyA26TRDt2dcnWqq00u-dF7kA1v_NelkUTw9efi_pf8Bh62UAQ=="
+  },
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "calibrated": false,
+    "checkedAt": "2026-11-25T23:36:31.130Z"
+  },
+  "gemInfo": {
+    "Added Lightning Damage": {
+      "requiredLevel": 8,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": false,
+      "color": "b"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "quest": null,
+      "free": false,
+      "color": "r"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": false,
+      "color": "b"
+    },
+    "Elemental Damage with Attacks": {
+      "requiredLevel": 18,
+      "quest": {
+        "act": 2,
+        "quest": "Sharp and Cruel",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Ranger",
+          "Scion",
+          "Templar"
+        ]
+      },
+      "free": true,
+      "color": "r"
+    },
+    "Faster Attacks": {
+      "requiredLevel": 8,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Ranger",
+          "Scion",
+          "Shadow"
+        ]
+      },
+      "free": true,
+      "color": "g"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": false,
+      "color": "b"
+    },
+    "Frenzy": {
+      "requiredLevel": 16,
+      "quest": {
+        "act": 2,
+        "quest": "Intruders in Black",
+        "classes": [
+          "Duelist",
+          "Ranger",
+          "Scion"
+        ]
+      },
+      "free": true,
+      "color": "g"
+    },
+    "Grace": {
+      "requiredLevel": 24,
+      "quest": {
+        "act": 3,
+        "quest": "Lost in Love",
+        "classes": [
+          "Duelist",
+          "Ranger"
+        ]
+      },
+      "free": true,
+      "color": "g"
+    },
+    "Herald of Thunder": {
+      "requiredLevel": 16,
+      "quest": {
+        "act": 2,
+        "quest": "Intruders in Black",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Ranger",
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "quest": null,
+      "free": false,
+      "color": "r"
+    },
+    "Increased Critical Damage": {
+      "requiredLevel": 18,
+      "quest": null,
+      "free": false,
+      "color": "b"
+    },
+    "Increased Critical Strikes": {
+      "requiredLevel": 8,
+      "quest": null,
+      "free": false,
+      "color": "b"
+    },
+    "Lightning Arrow": {
+      "requiredLevel": 12,
+      "quest": {
+        "act": 1,
+        "quest": "The Siren's Cadence",
+        "classes": [
+          "Ranger"
+        ]
+      },
+      "free": true,
+      "color": "g"
+    },
+    "Precision": {
+      "requiredLevel": 10,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Duelist",
+          "Ranger",
+          "Scion",
+          "Shadow"
+        ]
+      },
+      "free": true,
+      "color": "g"
+    },
+    "Sniper's Mark": {
+      "requiredLevel": 4,
+      "quest": {
+        "act": 1,
+        "quest": "Breaking Some Eggs",
+        "classes": [
+          "Duelist",
+          "Ranger"
+        ]
+      },
+      "free": true,
+      "color": "g"
+    }
+  },
+  "seedHash": "847605c7c63c"
+}
