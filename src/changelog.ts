@@ -17,6 +17,23 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.56.0',
+    date: '2026-11-26',
+    title: 'The first bow build, and the numbers it corrected',
+    notes: [
+      "The catalogue has a second build: **Lightning Arrow Deadeye**, a bow/ranger build with no required uniques. It passes every step, from a level-12 bow to pinnacle bosses (110.9k single-target at red maps, 204k at pinnacle), and it is the first build the pipeline proves that is not a minion one.",
+      "Gear is now split into a condition and a costume. `budgets.yaml` stays the shared test — tier, item level, links, jewels — so \"ssf-week1\" means one thing for every build. The new `profiles.yaml` supplies the bases and affixes an archetype actually wears: evasion armour, a bow, a quiver, attack speed and added damage. A second class is possible now without letting a build quietly pick an easier test.",
+      "**Ascendancy points were counted but never applied.** The pipeline recorded which notables the labs allow and gated on that count, but never wrote them into the Path of Building XML, so every gate report measured a build with no ascendancy at all. They are now emitted with the small passives that connect them. The summoner's red-map damage rose from 183k to 239k and account-wide numbers moved everywhere.",
+      "The tree planner walked into cluster-jewel-only nodes — `Position Proxy`, `Medium Jewel Socket` — which PoB drops without saying so. A gate could therefore report points the character never had. They are excluded, and PoB's parsed node count is now asserted against the planner's, so a future mismatch fails the build instead of shrinking the tree.",
+      "Flasks were listed in the guide but never equipped, so a gate measured a build without them. They are now in the XML and active, which is what declared uptime means here. For the Deadeye that is worth about 20% of its damage.",
+      "The act damage floors were minion-shaped: 60 DPS at level 12 and 600 at 28 only admitted builds with several bodies. A three-link bow does 37 and 471, so the floors are now 25 and 350, with both measurements recorded next to them.",
+      "The summoner's ascendancy order changes: PoB resolves a minion with Unholy Might to an empty skill list and reports 0 DPS, so **Bone Barrier** replaces Unnatural Strength. A gate must measure the build, not a tool bug.",
+      "576 tests.",
+    ],
+    commits: [],
+    compare: 'v0.55.0...v0.56.0',
+  },
+  {
     version: '0.55.0',
     date: '2026-11-26',
     title: 'The filter knows where you are',
