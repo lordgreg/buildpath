@@ -71,6 +71,79 @@ describe('compiled build seeds', () => {
   });
 });
 
+describe('published build data', () => {
+  const compiled = BUILDS.map(
+    (entry) =>
+      JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        skillGroups: { slot: string; gems: string[] }[];
+        flasks?: Record<string, { name: string; slot: string }[]>;
+        gates?: Record<
+          string,
+          {
+            pass: boolean;
+            level: number;
+            metrics: { dps: number; life: number; resists: number[] };
+            failures: string[];
+            tree?: { nodes: { id: number; x: number; y: number }[]; edges: [number, number][]; notables: string[] };
+          }
+        >;
+        status: string;
+      },
+  );
+
+  it('gives every skill group a gear slot and at least one gem', () => {
+    for (const build of compiled) {
+      expect(build.skillGroups.length).toBeGreaterThan(0);
+      for (const group of build.skillGroups) {
+        expect(group.slot.trim(), group.slot).not.toBe('');
+        expect(group.gems.length, group.slot).toBeGreaterThan(0);
+      }
+      const slots = build.skillGroups.map((group) => group.slot);
+      expect(new Set(slots).size, 'one group per slot').toBe(slots.length);
+    }
+  });
+
+  it('lists flasks for every step it claims to cover', () => {
+    for (const build of compiled) {
+      if (!build.flasks) continue;
+      for (const step of ['leveling', 'maps', 'endgame'] as const) {
+        const flasks = build.flasks[step];
+        if (!flasks) continue;
+        expect(flasks.length, step).toBeGreaterThan(0);
+        // A build needs a life flask at every step; utility flasks are optional.
+        expect(flasks.some((flask) => flask.slot === 'life'), step).toBe(true);
+      }
+    }
+  });
+
+  it('carries a tree view and named failures for every measured checkpoint', () => {
+    for (const build of compiled) {
+      if (!build.gates) continue;
+      for (const [checkpoint, gate] of Object.entries(build.gates)) {
+        expect(gate.pass, checkpoint).toBe(gate.failures.length === 0);
+        expect(gate.tree?.nodes.length ?? 0, checkpoint).toBeGreaterThan(10);
+        expect(gate.tree?.notables.length ?? 0, checkpoint).toBeGreaterThan(0);
+        // Edges may only join nodes that are in the view.
+        const ids = new Set((gate.tree?.nodes ?? []).map((node) => node.id));
+        for (const [from, to] of gate.tree?.edges ?? []) {
+          expect(ids.has(from) && ids.has(to), `${checkpoint} edge`).toBe(true);
+        }
+      }
+    }
+  });
+
+  it('publishes a build as verified only when it passes everything', () => {
+    for (const build of compiled) {
+      if (build.status !== 'verified') continue;
+      for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
+        expect(gate.pass, `${build.status} ${checkpoint}`).toBe(true);
+      }
+    }
+  });
+});
+
 describe('build mode', () => {
   it('coerces to a known build and keeps its ascendancy and family', () => {
     const selection = coerceSelection({ mode: 'build' });

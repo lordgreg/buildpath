@@ -305,8 +305,49 @@ for index, item in ipairs(build.itemsTab.items or {}) do
   itemReport[index] = { slot = tostring(item.slotName or spec.items[index] and spec.items[index].slot or index), parsed = parsed }
 end
 
+local coords = {}
+for _, group in ipairs(data.groups or {}) do
+  for _, id in ipairs(group.nodes or {}) do
+    coords[tonumber(id)] = { x = group.x or 0, y = group.y or 0 }
+  end
+end
+
+local allocatedIds, notableList, edgeList = {}, {}, {}
+for id in pairs(allocated) do allocatedIds[#allocatedIds + 1] = id end
+table.sort(allocatedIds)
+local allocatedSet = {}
+for _, id in ipairs(allocatedIds) do
+  allocatedSet[id] = true
+  local node = nodes[id] or nodes[tostring(id)]
+  if node and node.isNotable and not node.ascendancyName then
+    notableList[#notableList + 1] = node.name or tostring(id)
+  end
+end
+for _, id in ipairs(allocatedIds) do
+  local node = nodes[id] or nodes[tostring(id)]
+  for _, other in ipairs(node and node.out or {}) do
+    other = tonumber(other)
+    if other and allocatedSet[other] and id < other then
+      edgeList[#edgeList + 1] = { id, other }
+    end
+  end
+end
+local treeNodes = {}
+for _, id in ipairs(allocatedIds) do
+  local point = coords[id]
+  local node = nodes[id] or nodes[tostring(id)]
+  treeNodes[#treeNodes + 1] = {
+    id = id,
+    x = math.floor((point and point.x or 0) + 0.5),
+    y = math.floor((point and point.y or 0) + 0.5),
+    notable = (node and node.isNotable and not node.ascendancyName) or false,
+    name = node and node.name or "",
+  }
+end
+
 local result = {
   items = itemReport,
+  tree = { nodes = treeNodes, edges = edgeList, notables = notableList },
   dpsSource = dpsSource,
   minionDps = minionDps,
   minionLife = minion and minion.output and minion.output.Life or nil,

@@ -74,6 +74,7 @@ export interface GateResult {
     minionCount?: number;
     resists: number[];
   };
+  tree?: TreeView;
   failures: string[];
 }
 
@@ -89,6 +90,26 @@ export interface SkillGroup {
   gems: string[];
 }
 
+export interface FlaskChoice {
+  slot: 'life' | 'utility';
+  name: string;
+  note?: string;
+}
+
+export interface TreePoint {
+  id: number;
+  x: number;
+  y: number;
+  notable: boolean;
+  name: string;
+}
+
+export interface TreeView {
+  nodes: TreePoint[];
+  edges: [number, number][];
+  notables: string[];
+}
+
 export interface Build extends BuildIndexEntry {
   schemaVersion: 1;
   skillGroups: SkillGroup[];
@@ -100,4 +121,5 @@ export interface Build extends BuildIndexEntry {
   bandit: BuildBandit;
   pantheon: { major: string; minor: string; note?: string };
   uniques: { core: UniqueRef[]; optional: UniqueRef[] };
+  flasks?: { leveling?: FlaskChoice[]; maps?: FlaskChoice[]; endgame?: FlaskChoice[] };
 }

@@ -210,6 +210,7 @@ function verifySeed(seed) {
         ascendancy: metrics.ascendancy,
       },
       failures: gate.failures,
+      tree: metrics.tree ?? undefined,
     };
     console.log(
       `${seed.id} ${id}: ${gate.pass ? 'pass' : 'FAIL'} ` +

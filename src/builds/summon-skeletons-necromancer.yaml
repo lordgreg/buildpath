@@ -44,6 +44,13 @@ tree:
     - maximum life
 
 skillGroups:
+  - slot: Weapon 1
+    gems:
+      - Desecrate
+      - Flesh Offering
+  - slot: Shield
+    gems:
+      - Clarity
   - slot: Body Armour
     gems:
       - Summon Skeletons
@@ -62,6 +69,24 @@ ascendancyOrder:
     lab: 3
   - node: commander-of-darkness
     lab: 4
+
+flasks:
+  leveling:
+    - { slot: life, name: "Small Life Flask", note: "Upgrade to Divine as soon as one drops." }
+    - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
+    - { slot: utility, name: "Mana Flask", note: "Skeletons are expensive early." }
+  maps:
+    - { slot: life, name: "Divine Life Flask", note: "Instant recovery on the prefix." }
+    - { slot: utility, name: "Quicksilver Flask", note: "Adrenaline suffix when you can craft it." }
+    - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+    - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance while it is short." }
+    - { slot: utility, name: "Quartz Flask", note: "Phasing, so your minions block the doorway instead of you." }
+  endgame:
+    - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+    - { slot: utility, name: "Quicksilver Flask", note: "Adrenaline." }
+    - { slot: utility, name: "Granite Flask", note: "Iron Skin suffix." }
+    - { slot: utility, name: "Jade Flask", note: "Evasion against attack-based bosses." }
+    - { slot: utility, name: "Amethyst Flask", note: "Swap for a damage flask once chaos resistance is capped." }
 
 bandit: kill-all
 

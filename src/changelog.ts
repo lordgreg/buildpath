@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.43.0',
+    date: '2026-11-25',
+    title: 'The guide gets a tree, per-slot gems and flasks',
+    notes: [
+      "The guide now shows the passive tree: one plan per checkpoint, drawn from the tree data itself (allocated nodes, their links and the notables), pruned from the endgame tree. Switch checkpoints to see what you have at that point in the game.",
+      "Gems are listed per gear slot \u2014 body armour, weapon, shield \u2014 instead of one flat list, so you know what goes where.",
+      "Flasks are listed per step: leveling, maps and endgame, with the suffix or craft that matters at each step.",
+      "The checkpoint table stays the gate report: level, budget, damage, life, EHP, max hit and resistances, with every failure named.",
+      "Build data now carries per-slot gems, flasks and tree views, all compiled from the seed YAML and checked by tests: a group per slot, a life flask at every step, a tree view for every measured checkpoint.",
+    ],
+    commits: [],
+    compare: 'v0.42.0...v0.43.0',
+  },
+  {
     version: '0.42.0',
     date: '2026-11-25',
     title: 'Build guides, with a gate report behind every number',

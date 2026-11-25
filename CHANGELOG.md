@@ -2,6 +2,16 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.43.0 — 2026-11-25
+
+The guide gets a tree, per-slot gems and flasks.
+
+- The guide now shows the passive tree: one plan per checkpoint, drawn from the tree data itself (allocated nodes, their links and the notables), pruned from the endgame tree. Switch checkpoints to see what you have at that point in the game.
+- Gems are listed per gear slot — body armour, weapon, shield — instead of one flat list, so you know what goes where.
+- Flasks are listed per step: leveling, maps and endgame, with the suffix or craft that matters at each step.
+- The checkpoint table stays the gate report: level, budget, damage, life, EHP, max hit and resistances, with every failure named.
+- Build data now carries per-slot gems, flasks and tree views, all compiled from the seed YAML and checked by tests: a group per slot, a life flask at every step, a tree view for every measured checkpoint.
+
 ## 0.42.0 — 2026-11-25
 
 Build guides, with a gate report behind every number.
