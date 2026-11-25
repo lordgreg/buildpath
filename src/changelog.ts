@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.45.0',
+    date: '2026-11-25',
+    title: 'Steps are leveling brackets, and the step sticks',
+    notes: [
+      "A step is now a leveling bracket: until level 12, until 28, until 68, then early maps, red maps and pinnacle. The separate leveling block is gone \u2014 each step shows the gems you level with, the gear, the tree, the flasks and the measured numbers together.",
+      "The step you pick is written to the URL and restored on refresh, so a rewarded link opens on the same step.",
+      "Tooltips open above their anchor. Hanging below the last row made the page grow and produced scrollbars, which hid the tooltip entirely.",
+      "Resistances are judged per step. Path of Building applies the full -60% penalty at every level, so a level 12 character cannot cap resistances and the early steps no longer fail for something nobody does.",
+      "The build now passes until level 12, until 28 and until 68. It still misses damage in maps, so it stays a draft with the failures named.",
+    ],
+    commits: [],
+    compare: 'v0.44.0...v0.45.0',
+  },
+  {
     version: '0.44.0',
     date: '2026-11-25',
     title: 'A step-driven guide: tree, gear, gems and flasks that change together',
