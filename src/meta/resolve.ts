@@ -177,8 +177,16 @@ export function resolveGuideBuild(selection: BuildSelection): Archetype {
   const build = getBuildEntry(selection.buildId ?? '');
   if (!build) throw new Error(`Unknown build "${selection.buildId}"`);
   const base = resolveAscendancy(build.ascendancyId);
+  // D15: the build's own slots win over the ascendancy's defaults, and a null
+  // slot removes one (a two-handed build has no shield to highlight).
+  const slots: Archetype['slots'] = { ...base.slots };
+  for (const [slot, spec] of Object.entries(build.filter?.slots ?? {})) {
+    if (spec === null) delete slots[slot as keyof Archetype['slots']];
+    else slots[slot as keyof Archetype['slots']] = spec;
+  }
   return {
     ...base,
+    slots,
     id: build.id,
     name: build.name,
     summary: build.summary,

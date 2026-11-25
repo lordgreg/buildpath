@@ -1,0 +1,6819 @@
+{
+  "schemaVersion": 1,
+  "id": "boneshatter-juggernaut",
+  "name": "Boneshatter Juggernaut",
+  "class": "Marauder",
+  "ascendancyId": "juggernaut",
+  "family": "melee",
+  "mainSkill": "Boneshatter",
+  "summary": "League-start melee build. Boneshatter trades a little life for stacks, so the gear is armour and resistances, the axe is a rare with attack speed, and the ascendancy makes the trauma survivable. No unique is required, which is what a strength build needs on day one of a solo league.",
+  "gearProfile": "melee",
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Two Hand Axe"
+        ]
+      },
+      "offhand": null
+    }
+  },
+  "tree": {
+    "keystones": [
+      "Resolute Technique"
+    ],
+    "targets": [
+      "increased physical damage",
+      "increased maximum life",
+      "increased attack speed",
+      "increased armour",
+      "increased melee damage"
+    ]
+  },
+  "leveling": {
+    "brackets": [
+      {
+        "until": 12,
+        "skills": [
+          "Cleave"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Cleave",
+              "Ruthless",
+              "Faster Attacks"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Leap Slam",
+              "Enduring Cry"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Decoy Totem"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Blood and Sand"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Medium Life Flask",
+            "note": "Small until level 3, then medium."
+          },
+          {
+            "slot": "mana",
+            "name": "Small Mana Flask",
+            "note": "Slam attacks are mana-hungry before leech."
+          },
+          {
+            "slot": "utility",
+            "name": "Quicksilver Flask",
+            "note": "Act 2 quest reward."
+          }
+        ]
+      },
+      {
+        "until": 28,
+        "skills": [
+          "Boneshatter",
+          "Enduring Cry"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Boneshatter",
+              "Melee Physical Damage",
+              "Close Combat",
+              "Faster Attacks"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Leap Slam",
+              "Enduring Cry"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Decoy Totem",
+              "Blood and Sand"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Determination"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Giant Life Flask",
+            "note": "Drops from level 24; medium is too small by now."
+          },
+          {
+            "slot": "mana",
+            "name": "Greater Mana Flask",
+            "note": "Drops from level 12."
+          },
+          {
+            "slot": "utility",
+            "name": "Granite Flask",
+            "note": "Armour is the defensive layer."
+          },
+          {
+            "slot": "utility",
+            "name": "Basalt Flask",
+            "note": "Physical damage reduction, from level 27."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Chaos resistance from level 18."
+          }
+        ]
+      },
+      {
+        "until": 68,
+        "skills": [
+          "Boneshatter",
+          "Enduring Cry"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Boneshatter",
+              "Melee Physical Damage",
+              "Brutality",
+              "Pulverise",
+              "Faster Attacks"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Leap Slam",
+              "Enduring Cry"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Determination",
+              "Blood and Sand"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              {
+                "name": "Cast when Damage Taken",
+                "maxLevel": 5,
+                "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+              },
+              "Immortal Call"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Decoy Totem"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Divine Life Flask",
+            "note": "Drops from level 60; instant prefix."
+          },
+          {
+            "slot": "mana",
+            "name": "Hallowed Mana Flask",
+            "note": "Drops from level 42."
+          },
+          {
+            "slot": "utility",
+            "name": "Granite Flask",
+            "note": "Iron Skin suffix once it is available."
+          },
+          {
+            "slot": "utility",
+            "name": "Basalt Flask",
+            "note": "The other half of the physical defence."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Chaos resistance until it is capped."
+          }
+        ]
+      },
+      {
+        "until": 100,
+        "skills": [
+          "Boneshatter",
+          "Enduring Cry"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Boneshatter",
+              "Melee Physical Damage",
+              "Brutality",
+              "Pulverise",
+              "Close Combat",
+              "Faster Attacks"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Leap Slam",
+              "Enduring Cry"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Determination",
+              "Blood and Sand"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              {
+                "name": "Cast when Damage Taken",
+                "maxLevel": 5,
+                "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+              },
+              "Immortal Call"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Decoy Totem"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Divine Life Flask",
+            "note": "Keep the instant prefix."
+          },
+          {
+            "slot": "mana",
+            "name": "Eternal Mana Flask",
+            "note": "Drops from level 65."
+          },
+          {
+            "slot": "utility",
+            "name": "Granite Flask",
+            "note": "Iron Skin."
+          },
+          {
+            "slot": "utility",
+            "name": "Basalt Flask",
+            "note": "Physical damage reduction."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Caps chaos resistance for pinnacle bosses."
+          }
+        ]
+      }
+    ]
+  },
+  "ascendancyOrder": [
+    {
+      "node": "unflinching",
+      "lab": 1
+    },
+    {
+      "node": "undeniable",
+      "lab": 2
+    },
+    {
+      "node": "unbreakable",
+      "lab": 3
+    },
+    {
+      "node": "unrelenting",
+      "lab": 4
+    }
+  ],
+  "bandit": "kill-all",
+  "pantheon": {
+    "major": "lunaris",
+    "minor": "gruthkul",
+    "note": "Gruthkul reduces physical damage taken, which is most of what kills a trauma stacker."
+  },
+  "uniques": {
+    "core": [],
+    "optional": []
+  },
+  "status": "verified",
+  "gates": {
+    "until-12": {
+      "pass": true,
+      "level": 12,
+      "budget": "starting (3-link)",
+      "metrics": {
+        "dps": 36,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 488,
+        "energyShield": 0,
+        "ehp": 335,
+        "maxHit": 530,
+        "resists": [
+          -60,
+          -48,
+          -48
+        ],
+        "chaosResist": -60,
+        "nodes": 11,
+        "sockets": 0,
+        "ascendancy": 1
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            2454,
+            38777
+          ],
+          [
+            9511,
+            23881
+          ],
+          [
+            2454,
+            14606
+          ],
+          [
+            20551,
+            58449
+          ],
+          [
+            23881,
+            26523
+          ],
+          [
+            9511,
+            31628
+          ],
+          [
+            38777,
+            58449
+          ],
+          [
+            31628,
+            47175
+          ],
+          [
+            26523,
+            58449
+          ],
+          [
+            20551,
+            61198
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 2454,
+            "name": "Two Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1628
+          },
+          {
+            "id": 9511,
+            "name": "Strength",
+            "notable": false,
+            "x": -3482,
+            "y": 1368
+          },
+          {
+            "id": 14606,
+            "name": "Butchery",
+            "notable": true,
+            "x": -5362,
+            "y": 1460
+          },
+          {
+            "id": 20551,
+            "name": "Life",
+            "notable": false,
+            "x": -4355,
+            "y": 2284
+          },
+          {
+            "id": 23881,
+            "name": "Strength",
+            "notable": false,
+            "x": -3729,
+            "y": 1302
+          },
+          {
+            "id": 26523,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 1302
+          },
+          {
+            "id": 31628,
+            "name": "Melee Damage and Life",
+            "notable": false,
+            "x": -3159,
+            "y": 1642
+          },
+          {
+            "id": 38777,
+            "name": "Melee Damage",
+            "notable": false,
+            "x": -5027,
+            "y": 1795
+          },
+          {
+            "id": 47175,
+            "name": "MARAUDER",
+            "notable": false,
+            "x": -2824,
+            "y": 1642
+          },
+          {
+            "id": 58449,
+            "name": "Born to Fight",
+            "notable": true,
+            "x": -4436,
+            "y": 1795
+          },
+          {
+            "id": 61198,
+            "name": "Heart of the Warrior",
+            "notable": true,
+            "x": -4274,
+            "y": 2424
+          }
+        ],
+        "notables": [
+          "Butchery",
+          "Born to Fight",
+          "Heart of the Warrior"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Stone Axe",
+          "mods": [
+            "Adds 8 to 16 Physical Damage",
+            "5% increased Attack Speed"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Cone Helmet",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Chestplate",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Plated Gauntlets",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Boots",
+          "base": "Steel Greaves",
+          "mods": [
+            "+25 to maximum Life",
+            "15% increased Movement Speed"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+12% to Lightning Resistance"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+12% to Cold Resistance"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Cleave",
+              "level": 5
+            },
+            {
+              "name": "Ruthless",
+              "level": 5
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 2
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Leap Slam",
+              "level": 1
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 1
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Decoy Totem",
+              "level": 4
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Blood and Sand",
+              "level": 2
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Medium Life Flask",
+          "note": "Small until level 3, then medium."
+        },
+        {
+          "slot": "mana",
+          "name": "Small Mana Flask",
+          "note": "Slam attacks are mana-hungry before leech."
+        },
+        {
+          "slot": "utility",
+          "name": "Quicksilver Flask",
+          "note": "Act 2 quest reward."
+        }
+      ]
+    },
+    "until-28": {
+      "pass": true,
+      "level": 28,
+      "budget": "early (4-link)",
+      "metrics": {
+        "dps": 601,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 1065,
+        "energyShield": 0,
+        "ehp": 840,
+        "maxHit": 1703,
+        "resists": [
+          -60,
+          -30,
+          -30
+        ],
+        "chaosResist": -25,
+        "nodes": 27,
+        "sockets": 0,
+        "ascendancy": 3
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            1572,
+            47421
+          ],
+          [
+            2454,
+            38777
+          ],
+          [
+            9511,
+            23881
+          ],
+          [
+            6446,
+            10221
+          ],
+          [
+            10221,
+            24155
+          ],
+          [
+            10282,
+            35663
+          ],
+          [
+            2454,
+            14606
+          ],
+          [
+            20551,
+            58449
+          ],
+          [
+            23881,
+            26523
+          ],
+          [
+            24155,
+            50225
+          ],
+          [
+            6446,
+            26523
+          ],
+          [
+            29353,
+            50570
+          ],
+          [
+            9511,
+            31628
+          ],
+          [
+            31961,
+            63282
+          ],
+          [
+            10282,
+            38777
+          ],
+          [
+            38777,
+            58449
+          ],
+          [
+            31628,
+            47175
+          ],
+          [
+            26564,
+            47421
+          ],
+          [
+            50225,
+            55772
+          ],
+          [
+            10221,
+            50422
+          ],
+          [
+            50422,
+            50570
+          ],
+          [
+            1572,
+            55854
+          ],
+          [
+            50570,
+            55854
+          ],
+          [
+            26523,
+            58449
+          ],
+          [
+            20551,
+            61198
+          ],
+          [
+            29353,
+            63282
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1572,
+            "name": "Physical Damage Over Time Multiplier",
+            "notable": false,
+            "x": -6608,
+            "y": 389
+          },
+          {
+            "id": 2454,
+            "name": "Two Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1628
+          },
+          {
+            "id": 6446,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 1302
+          },
+          {
+            "id": 9511,
+            "name": "Strength",
+            "notable": false,
+            "x": -3482,
+            "y": 1368
+          },
+          {
+            "id": 10221,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 687
+          },
+          {
+            "id": 10282,
+            "name": "One Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1963
+          },
+          {
+            "id": 14606,
+            "name": "Butchery",
+            "notable": true,
+            "x": -5362,
+            "y": 1460
+          },
+          {
+            "id": 20551,
+            "name": "Life",
+            "notable": false,
+            "x": -4355,
+            "y": 2284
+          },
+          {
+            "id": 23881,
+            "name": "Strength",
+            "notable": false,
+            "x": -3729,
+            "y": 1302
+          },
+          {
+            "id": 24155,
+            "name": "Mace Critical Strike Chance",
+            "notable": false,
+            "x": -5323,
+            "y": 884
+          },
+          {
+            "id": 26523,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 1302
+          },
+          {
+            "id": 26564,
+            "name": "Vanquisher",
+            "notable": true,
+            "x": -6748,
+            "y": 632
+          },
+          {
+            "id": 29353,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 7
+          },
+          {
+            "id": 31628,
+            "name": "Melee Damage and Life",
+            "notable": false,
+            "x": -3159,
+            "y": 1642
+          },
+          {
+            "id": 31961,
+            "name": "Resolute Technique",
+            "notable": false,
+            "x": -7952,
+            "y": 488
+          },
+          {
+            "id": 35663,
+            "name": "Strong Arm",
+            "notable": true,
+            "x": -5362,
+            "y": 2130
+          },
+          {
+            "id": 38777,
+            "name": "Melee Damage",
+            "notable": false,
+            "x": -5027,
+            "y": 1795
+          },
+          {
+            "id": 47175,
+            "name": "MARAUDER",
+            "notable": false,
+            "x": -2824,
+            "y": 1642
+          },
+          {
+            "id": 47421,
+            "name": "Physical Damage Over Time Multiplier",
+            "notable": false,
+            "x": -6608,
+            "y": 551
+          },
+          {
+            "id": 50225,
+            "name": "Mace Critical Strike Multiplier",
+            "notable": false,
+            "x": -5323,
+            "y": 1164
+          },
+          {
+            "id": 50422,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 7
+          },
+          {
+            "id": 50570,
+            "name": "Strength",
+            "notable": false,
+            "x": -6748,
+            "y": 7
+          },
+          {
+            "id": 55772,
+            "name": "Blacksmith's Clout",
+            "notable": true,
+            "x": -5161,
+            "y": 1164
+          },
+          {
+            "id": 55854,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -6748,
+            "y": 308
+          },
+          {
+            "id": 58449,
+            "name": "Born to Fight",
+            "notable": true,
+            "x": -4436,
+            "y": 1795
+          },
+          {
+            "id": 61198,
+            "name": "Heart of the Warrior",
+            "notable": true,
+            "x": -4274,
+            "y": 2424
+          },
+          {
+            "id": 63282,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 650
+          }
+        ],
+        "notables": [
+          "Butchery",
+          "Vanquisher",
+          "Strong Arm",
+          "Blacksmith's Clout",
+          "Born to Fight",
+          "Heart of the Warrior"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Headsman Axe",
+          "mods": [
+            "Adds 20 to 40 Physical Damage",
+            "9% increased Attack Speed"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Reaver Helmet",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Sun Plate",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Guarding Gauntlets",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Boots",
+          "base": "Antique Greaves",
+          "mods": [
+            "+60 to maximum Life",
+            "20% increased Movement Speed"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Lightning Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+30% to Cold Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Boneshatter",
+              "level": 1
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 3
+            },
+            {
+              "name": "Close Combat",
+              "level": 3
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 6
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Leap Slam",
+              "level": 5
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 5
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Decoy Totem",
+              "level": 8
+            },
+            {
+              "name": "Blood and Sand",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Determination",
+              "level": 2
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Giant Life Flask",
+          "note": "Drops from level 24; medium is too small by now."
+        },
+        {
+          "slot": "mana",
+          "name": "Greater Mana Flask",
+          "note": "Drops from level 12."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Armour is the defensive layer."
+        },
+        {
+          "slot": "utility",
+          "name": "Basalt Flask",
+          "note": "Physical damage reduction, from level 27."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance from level 18."
+        }
+      ]
+    },
+    "until-68": {
+      "pass": true,
+      "level": 68,
+      "budget": "ssf-start (5-link)",
+      "metrics": {
+        "dps": 62960,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 3286,
+        "energyShield": 0,
+        "ehp": 16933,
+        "maxHit": 7617,
+        "resists": [
+          76,
+          75,
+          75
+        ],
+        "chaosResist": 66,
+        "nodes": 76,
+        "sockets": 2,
+        "ascendancy": 7
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            1572,
+            47421
+          ],
+          [
+            2454,
+            38777
+          ],
+          [
+            3167,
+            6359
+          ],
+          [
+            3644,
+            14930
+          ],
+          [
+            4336,
+            62042
+          ],
+          [
+            3644,
+            5233
+          ],
+          [
+            6113,
+            9976
+          ],
+          [
+            6289,
+            48287
+          ],
+          [
+            6359,
+            21413
+          ],
+          [
+            6712,
+            36949
+          ],
+          [
+            6712,
+            23027
+          ],
+          [
+            4336,
+            7082
+          ],
+          [
+            5233,
+            7082
+          ],
+          [
+            9511,
+            23881
+          ],
+          [
+            4940,
+            9976
+          ],
+          [
+            6446,
+            10221
+          ],
+          [
+            10221,
+            24155
+          ],
+          [
+            10282,
+            35663
+          ],
+          [
+            12407,
+            57953
+          ],
+          [
+            2454,
+            14606
+          ],
+          [
+            15405,
+            33631
+          ],
+          [
+            8500,
+            16703
+          ],
+          [
+            16703,
+            57266
+          ],
+          [
+            6113,
+            20018
+          ],
+          [
+            20551,
+            58449
+          ],
+          [
+            20966,
+            46127
+          ],
+          [
+            20966,
+            59928
+          ],
+          [
+            12407,
+            23038
+          ],
+          [
+            23881,
+            26523
+          ],
+          [
+            24155,
+            50225
+          ],
+          [
+            25367,
+            55166
+          ],
+          [
+            20018,
+            25682
+          ],
+          [
+            25682,
+            63723
+          ],
+          [
+            6446,
+            26523
+          ],
+          [
+            26725,
+            62429
+          ],
+          [
+            29353,
+            50570
+          ],
+          [
+            30380,
+            59928
+          ],
+          [
+            9511,
+            31628
+          ],
+          [
+            31961,
+            63282
+          ],
+          [
+            33287,
+            55676
+          ],
+          [
+            5126,
+            35992
+          ],
+          [
+            10282,
+            38777
+          ],
+          [
+            38777,
+            58449
+          ],
+          [
+            38023,
+            40645
+          ],
+          [
+            35992,
+            43822
+          ],
+          [
+            14930,
+            43822
+          ],
+          [
+            29353,
+            44202
+          ],
+          [
+            23027,
+            44202
+          ],
+          [
+            8500,
+            46127
+          ],
+          [
+            31628,
+            47175
+          ],
+          [
+            26564,
+            47421
+          ],
+          [
+            14930,
+            48287
+          ],
+          [
+            7082,
+            49415
+          ],
+          [
+            25682,
+            49571
+          ],
+          [
+            50225,
+            55772
+          ],
+          [
+            10221,
+            50422
+          ],
+          [
+            50422,
+            50862
+          ],
+          [
+            50422,
+            50570
+          ],
+          [
+            15405,
+            50862
+          ],
+          [
+            3167,
+            50862
+          ],
+          [
+            30380,
+            53118
+          ],
+          [
+            49415,
+            55166
+          ],
+          [
+            5233,
+            55676
+          ],
+          [
+            1572,
+            55854
+          ],
+          [
+            50570,
+            55854
+          ],
+          [
+            38023,
+            57266
+          ],
+          [
+            49571,
+            57953
+          ],
+          [
+            26523,
+            58449
+          ],
+          [
+            59928,
+            63723
+          ],
+          [
+            20551,
+            61198
+          ],
+          [
+            33082,
+            62042
+          ],
+          [
+            62429,
+            63723
+          ],
+          [
+            29353,
+            63282
+          ],
+          [
+            59928,
+            63282
+          ],
+          [
+            5233,
+            63723
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1572,
+            "name": "Physical Damage Over Time Multiplier",
+            "notable": false,
+            "x": -6608,
+            "y": 389
+          },
+          {
+            "id": 2454,
+            "name": "Two Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1628
+          },
+          {
+            "id": 3167,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -4656,
+            "y": -189
+          },
+          {
+            "id": 3644,
+            "name": "Strength",
+            "notable": false,
+            "x": -6469,
+            "y": 4905
+          },
+          {
+            "id": 4336,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -8149,
+            "y": 3424
+          },
+          {
+            "id": 4940,
+            "name": "Cleaving",
+            "notable": true,
+            "x": -8453,
+            "y": 2134
+          },
+          {
+            "id": 5126,
+            "name": "Spinecruncher",
+            "notable": true,
+            "x": -5461,
+            "y": 5365
+          },
+          {
+            "id": 5233,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 3505
+          },
+          {
+            "id": 6113,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8118,
+            "y": 2134
+          },
+          {
+            "id": 6289,
+            "name": "Bloodless",
+            "notable": true,
+            "x": -4864,
+            "y": 5286
+          },
+          {
+            "id": 6359,
+            "name": "Armour and Life",
+            "notable": false,
+            "x": -4656,
+            "y": -470
+          },
+          {
+            "id": 6446,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 1302
+          },
+          {
+            "id": 6712,
+            "name": "Life",
+            "notable": false,
+            "x": -6902,
+            "y": -1435
+          },
+          {
+            "id": 7082,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -7954,
+            "y": 3505
+          },
+          {
+            "id": 8500,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -8194,
+            "y": 1482
+          },
+          {
+            "id": 9511,
+            "name": "Strength",
+            "notable": false,
+            "x": -3482,
+            "y": 1368
+          },
+          {
+            "id": 9976,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8285,
+            "y": 2089
+          },
+          {
+            "id": 10221,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 687
+          },
+          {
+            "id": 10282,
+            "name": "One Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1963
+          },
+          {
+            "id": 12407,
+            "name": "Axe Damage and Attack Speed",
+            "notable": false,
+            "x": -8285,
+            "y": 2759
+          },
+          {
+            "id": 14606,
+            "name": "Butchery",
+            "notable": true,
+            "x": -5362,
+            "y": 1460
+          },
+          {
+            "id": 14930,
+            "name": "Strength",
+            "notable": false,
+            "x": -5461,
+            "y": 6072
+          },
+          {
+            "id": 15405,
+            "name": "Strength",
+            "notable": false,
+            "x": -3936,
+            "y": 7
+          },
+          {
+            "id": 16703,
+            "name": "Skull Cracking",
+            "notable": true,
+            "x": -8403,
+            "y": 1510
+          },
+          {
+            "id": 20018,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8145,
+            "y": 2343
+          },
+          {
+            "id": 20551,
+            "name": "Life",
+            "notable": false,
+            "x": -4355,
+            "y": 2284
+          },
+          {
+            "id": 20966,
+            "name": "Mace Damage",
+            "notable": false,
+            "x": -7951,
+            "y": 1342
+          },
+          {
+            "id": 21413,
+            "name": "Combat Stamina",
+            "notable": true,
+            "x": -4818,
+            "y": -470
+          },
+          {
+            "id": 23027,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": -1435
+          },
+          {
+            "id": 23038,
+            "name": "Slaughter",
+            "notable": true,
+            "x": -8453,
+            "y": 2714
+          },
+          {
+            "id": 23881,
+            "name": "Strength",
+            "notable": false,
+            "x": -3729,
+            "y": 1302
+          },
+          {
+            "id": 24155,
+            "name": "Mace Critical Strike Chance",
+            "notable": false,
+            "x": -5323,
+            "y": 884
+          },
+          {
+            "id": 25367,
+            "name": "Blade Master",
+            "notable": true,
+            "x": -8775,
+            "y": 3590
+          },
+          {
+            "id": 25682,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -7950,
+            "y": 2424
+          },
+          {
+            "id": 26523,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 1302
+          },
+          {
+            "id": 26564,
+            "name": "Vanquisher",
+            "notable": true,
+            "x": -6748,
+            "y": 632
+          },
+          {
+            "id": 26725,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -6915,
+            "y": 2584
+          },
+          {
+            "id": 29353,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 7
+          },
+          {
+            "id": 30380,
+            "name": "Life and Elemental Resistances",
+            "notable": false,
+            "x": -7077,
+            "y": 1795
+          },
+          {
+            "id": 31628,
+            "name": "Melee Damage and Life",
+            "notable": false,
+            "x": -3159,
+            "y": 1642
+          },
+          {
+            "id": 31961,
+            "name": "Resolute Technique",
+            "notable": false,
+            "x": -7952,
+            "y": 488
+          },
+          {
+            "id": 33082,
+            "name": "Razor's Edge",
+            "notable": true,
+            "x": -8775,
+            "y": 3419
+          },
+          {
+            "id": 33287,
+            "name": "Juggernaut",
+            "notable": true,
+            "x": -7064,
+            "y": 3008
+          },
+          {
+            "id": 33631,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -3876,
+            "y": -214
+          },
+          {
+            "id": 35663,
+            "name": "Strong Arm",
+            "notable": true,
+            "x": -5362,
+            "y": 2130
+          },
+          {
+            "id": 35992,
+            "name": "Mace Damage and Reduced Enemy Stun Threshold",
+            "notable": false,
+            "x": -5623,
+            "y": 5527
+          },
+          {
+            "id": 36949,
+            "name": "Devotion",
+            "notable": true,
+            "x": -6902,
+            "y": -1716
+          },
+          {
+            "id": 38023,
+            "name": "Mace Damage and Reduced Enemy Stun Threshold",
+            "notable": false,
+            "x": -8598,
+            "y": 1257
+          },
+          {
+            "id": 38777,
+            "name": "Melee Damage",
+            "notable": false,
+            "x": -5027,
+            "y": 1795
+          },
+          {
+            "id": 40645,
+            "name": "Bone Breaker",
+            "notable": true,
+            "x": -8403,
+            "y": 1175
+          },
+          {
+            "id": 43822,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -5461,
+            "y": 5689
+          },
+          {
+            "id": 44202,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": -735
+          },
+          {
+            "id": 46127,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -8032,
+            "y": 1482
+          },
+          {
+            "id": 47175,
+            "name": "MARAUDER",
+            "notable": false,
+            "x": -2824,
+            "y": 1642
+          },
+          {
+            "id": 47421,
+            "name": "Physical Damage Over Time Multiplier",
+            "notable": false,
+            "x": -6608,
+            "y": 551
+          },
+          {
+            "id": 48287,
+            "name": "Life",
+            "notable": false,
+            "x": -4923,
+            "y": 5507
+          },
+          {
+            "id": 49415,
+            "name": "Sword Damage and Attack Speed",
+            "notable": false,
+            "x": -8149,
+            "y": 3586
+          },
+          {
+            "id": 49571,
+            "name": "Axe Damage and Attack Speed",
+            "notable": false,
+            "x": -8145,
+            "y": 2505
+          },
+          {
+            "id": 50225,
+            "name": "Mace Critical Strike Multiplier",
+            "notable": false,
+            "x": -5323,
+            "y": 1164
+          },
+          {
+            "id": 50422,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 7
+          },
+          {
+            "id": 50570,
+            "name": "Strength",
+            "notable": false,
+            "x": -6748,
+            "y": 7
+          },
+          {
+            "id": 50862,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 7
+          },
+          {
+            "id": 53118,
+            "name": "Barbarism",
+            "notable": true,
+            "x": -6915,
+            "y": 1957
+          },
+          {
+            "id": 55166,
+            "name": "Sword Damage and Attack Speed",
+            "notable": false,
+            "x": -8430,
+            "y": 3586
+          },
+          {
+            "id": 55676,
+            "name": "Life and Armour",
+            "notable": false,
+            "x": -7123,
+            "y": 3229
+          },
+          {
+            "id": 55772,
+            "name": "Blacksmith's Clout",
+            "notable": true,
+            "x": -5161,
+            "y": 1164
+          },
+          {
+            "id": 55854,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -6748,
+            "y": 308
+          },
+          {
+            "id": 57266,
+            "name": "Mace Damage and Reduced Enemy Stun Threshold",
+            "notable": false,
+            "x": -8598,
+            "y": 1428
+          },
+          {
+            "id": 57953,
+            "name": "Axe Damage and Attack Speed",
+            "notable": false,
+            "x": -8118,
+            "y": 2714
+          },
+          {
+            "id": 58449,
+            "name": "Born to Fight",
+            "notable": true,
+            "x": -4436,
+            "y": 1795
+          },
+          {
+            "id": 59928,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 1342
+          },
+          {
+            "id": 61198,
+            "name": "Heart of the Warrior",
+            "notable": true,
+            "x": -4274,
+            "y": 2424
+          },
+          {
+            "id": 62042,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -8430,
+            "y": 3424
+          },
+          {
+            "id": 62429,
+            "name": "Strength",
+            "notable": false,
+            "x": -7056,
+            "y": 2503
+          },
+          {
+            "id": 63282,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 650
+          },
+          {
+            "id": 63723,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 2424
+          }
+        ],
+        "notables": [
+          "Cleaving",
+          "Spinecruncher",
+          "Bloodless",
+          "Butchery",
+          "Skull Cracking",
+          "Combat Stamina",
+          "Slaughter",
+          "Blade Master",
+          "Vanquisher",
+          "Razor's Edge",
+          "Juggernaut",
+          "Strong Arm",
+          "Devotion",
+          "Bone Breaker",
+          "Barbarism",
+          "Blacksmith's Clout",
+          "Born to Fight",
+          "Heart of the Warrior"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Apex Cleaver",
+          "mods": [
+            "140% increased Physical Damage",
+            "Adds 30 to 60 Physical Damage",
+            "13% increased Attack Speed"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Chiming Spirit Shield",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Eternal Burgonet",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Glorious Plate",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Spiked Gloves",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Titan Greaves",
+          "mods": [
+            "25% increased Movement Speed",
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Lightning Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "14% increased Physical Damage"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "14% increased Physical Damage"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Boneshatter",
+              "level": 19
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 19
+            },
+            {
+              "name": "Brutality",
+              "level": 18
+            },
+            {
+              "name": "Pulverise",
+              "level": 19
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 19
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Leap Slam",
+              "level": 19
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 19
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Determination",
+              "level": 19
+            },
+            {
+              "name": "Blood and Sand",
+              "level": 5
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Cast when Damage Taken",
+              "level": 5,
+              "maxLevel": 5,
+              "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+            },
+            {
+              "name": "Immortal Call",
+              "level": 18
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Decoy Totem",
+              "level": 19
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Drops from level 60; instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Hallowed Mana Flask",
+          "note": "Drops from level 42."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Iron Skin suffix once it is available."
+        },
+        {
+          "slot": "utility",
+          "name": "Basalt Flask",
+          "note": "The other half of the physical defence."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance until it is capped."
+        }
+      ]
+    },
+    "maps-early": {
+      "pass": true,
+      "level": 80,
+      "budget": "ssf-start (5-link)",
+      "metrics": {
+        "dps": 131762,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 4131,
+        "energyShield": 0,
+        "ehp": 21779,
+        "maxHit": 9214,
+        "resists": [
+          76,
+          75,
+          75
+        ],
+        "chaosResist": 66,
+        "nodes": 87,
+        "sockets": 2,
+        "ascendancy": 7
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            1572,
+            47421
+          ],
+          [
+            2454,
+            38777
+          ],
+          [
+            3167,
+            6359
+          ],
+          [
+            3644,
+            14930
+          ],
+          [
+            4336,
+            62042
+          ],
+          [
+            3644,
+            5233
+          ],
+          [
+            6113,
+            9976
+          ],
+          [
+            6289,
+            48287
+          ],
+          [
+            6359,
+            21413
+          ],
+          [
+            6712,
+            36949
+          ],
+          [
+            6712,
+            23027
+          ],
+          [
+            4336,
+            7082
+          ],
+          [
+            5233,
+            7082
+          ],
+          [
+            9511,
+            23881
+          ],
+          [
+            4940,
+            9976
+          ],
+          [
+            6446,
+            10221
+          ],
+          [
+            10221,
+            24155
+          ],
+          [
+            10282,
+            35663
+          ],
+          [
+            12407,
+            57953
+          ],
+          [
+            2454,
+            14606
+          ],
+          [
+            15073,
+            62021
+          ],
+          [
+            12702,
+            15073
+          ],
+          [
+            15405,
+            33631
+          ],
+          [
+            8500,
+            16703
+          ],
+          [
+            16703,
+            57266
+          ],
+          [
+            16775,
+            34207
+          ],
+          [
+            6113,
+            20018
+          ],
+          [
+            20551,
+            58449
+          ],
+          [
+            20966,
+            46127
+          ],
+          [
+            20966,
+            59928
+          ],
+          [
+            12407,
+            23038
+          ],
+          [
+            23881,
+            26523
+          ],
+          [
+            24155,
+            50225
+          ],
+          [
+            25367,
+            55166
+          ],
+          [
+            20018,
+            25682
+          ],
+          [
+            25682,
+            63723
+          ],
+          [
+            6446,
+            26523
+          ],
+          [
+            26725,
+            62429
+          ],
+          [
+            29353,
+            50570
+          ],
+          [
+            30380,
+            59928
+          ],
+          [
+            9511,
+            31628
+          ],
+          [
+            31961,
+            63282
+          ],
+          [
+            33287,
+            55676
+          ],
+          [
+            33740,
+            46910
+          ],
+          [
+            15405,
+            33740
+          ],
+          [
+            34207,
+            59306
+          ],
+          [
+            5126,
+            35992
+          ],
+          [
+            10282,
+            38777
+          ],
+          [
+            38777,
+            58449
+          ],
+          [
+            38023,
+            40645
+          ],
+          [
+            35992,
+            43822
+          ],
+          [
+            14930,
+            43822
+          ],
+          [
+            29353,
+            44202
+          ],
+          [
+            23027,
+            44202
+          ],
+          [
+            8500,
+            46127
+          ],
+          [
+            16775,
+            46910
+          ],
+          [
+            46910,
+            65034
+          ],
+          [
+            31628,
+            47175
+          ],
+          [
+            26564,
+            47421
+          ],
+          [
+            14930,
+            48287
+          ],
+          [
+            7082,
+            49415
+          ],
+          [
+            25682,
+            49571
+          ],
+          [
+            50225,
+            55772
+          ],
+          [
+            10221,
+            50422
+          ],
+          [
+            50422,
+            50862
+          ],
+          [
+            50422,
+            50570
+          ],
+          [
+            15405,
+            50862
+          ],
+          [
+            3167,
+            50862
+          ],
+          [
+            30380,
+            53118
+          ],
+          [
+            49415,
+            55166
+          ],
+          [
+            55485,
+            65034
+          ],
+          [
+            5233,
+            55676
+          ],
+          [
+            1572,
+            55854
+          ],
+          [
+            50570,
+            55854
+          ],
+          [
+            38023,
+            57266
+          ],
+          [
+            49571,
+            57953
+          ],
+          [
+            26523,
+            58449
+          ],
+          [
+            28878,
+            59306
+          ],
+          [
+            59928,
+            63723
+          ],
+          [
+            20551,
+            61198
+          ],
+          [
+            33082,
+            62042
+          ],
+          [
+            62429,
+            63723
+          ],
+          [
+            29353,
+            63282
+          ],
+          [
+            59928,
+            63282
+          ],
+          [
+            5233,
+            63723
+          ],
+          [
+            62021,
+            65034
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1572,
+            "name": "Physical Damage Over Time Multiplier",
+            "notable": false,
+            "x": -6608,
+            "y": 389
+          },
+          {
+            "id": 2454,
+            "name": "Two Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1628
+          },
+          {
+            "id": 3167,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -4656,
+            "y": -189
+          },
+          {
+            "id": 3644,
+            "name": "Strength",
+            "notable": false,
+            "x": -6469,
+            "y": 4905
+          },
+          {
+            "id": 4336,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -8149,
+            "y": 3424
+          },
+          {
+            "id": 4940,
+            "name": "Cleaving",
+            "notable": true,
+            "x": -8453,
+            "y": 2134
+          },
+          {
+            "id": 5126,
+            "name": "Spinecruncher",
+            "notable": true,
+            "x": -5461,
+            "y": 5365
+          },
+          {
+            "id": 5233,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 3505
+          },
+          {
+            "id": 6113,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8118,
+            "y": 2134
+          },
+          {
+            "id": 6289,
+            "name": "Bloodless",
+            "notable": true,
+            "x": -4864,
+            "y": 5286
+          },
+          {
+            "id": 6359,
+            "name": "Armour and Life",
+            "notable": false,
+            "x": -4656,
+            "y": -470
+          },
+          {
+            "id": 6446,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 1302
+          },
+          {
+            "id": 6712,
+            "name": "Life",
+            "notable": false,
+            "x": -6902,
+            "y": -1435
+          },
+          {
+            "id": 7082,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -7954,
+            "y": 3505
+          },
+          {
+            "id": 8500,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -8194,
+            "y": 1482
+          },
+          {
+            "id": 9511,
+            "name": "Strength",
+            "notable": false,
+            "x": -3482,
+            "y": 1368
+          },
+          {
+            "id": 9976,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8285,
+            "y": 2089
+          },
+          {
+            "id": 10221,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 687
+          },
+          {
+            "id": 10282,
+            "name": "One Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1963
+          },
+          {
+            "id": 12407,
+            "name": "Axe Damage and Attack Speed",
+            "notable": false,
+            "x": -8285,
+            "y": 2759
+          },
+          {
+            "id": 12702,
+            "name": "Path of the Warrior",
+            "notable": true,
+            "x": -1113,
+            "y": 651
+          },
+          {
+            "id": 14606,
+            "name": "Butchery",
+            "notable": true,
+            "x": -5362,
+            "y": 1460
+          },
+          {
+            "id": 14930,
+            "name": "Strength",
+            "notable": false,
+            "x": -5461,
+            "y": 6072
+          },
+          {
+            "id": 15073,
+            "name": "Life",
+            "notable": false,
+            "x": -1403,
+            "y": 484
+          },
+          {
+            "id": 15405,
+            "name": "Strength",
+            "notable": false,
+            "x": -3936,
+            "y": 7
+          },
+          {
+            "id": 16703,
+            "name": "Skull Cracking",
+            "notable": true,
+            "x": -8403,
+            "y": 1510
+          },
+          {
+            "id": 16775,
+            "name": "Strength",
+            "notable": false,
+            "x": -1604,
+            "y": -240
+          },
+          {
+            "id": 20018,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8145,
+            "y": 2343
+          },
+          {
+            "id": 20551,
+            "name": "Life",
+            "notable": false,
+            "x": -4355,
+            "y": 2284
+          },
+          {
+            "id": 20966,
+            "name": "Mace Damage",
+            "notable": false,
+            "x": -7951,
+            "y": 1342
+          },
+          {
+            "id": 21413,
+            "name": "Combat Stamina",
+            "notable": true,
+            "x": -4818,
+            "y": -470
+          },
+          {
+            "id": 23027,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": -1435
+          },
+          {
+            "id": 23038,
+            "name": "Slaughter",
+            "notable": true,
+            "x": -8453,
+            "y": 2714
+          },
+          {
+            "id": 23881,
+            "name": "Strength",
+            "notable": false,
+            "x": -3729,
+            "y": 1302
+          },
+          {
+            "id": 24155,
+            "name": "Mace Critical Strike Chance",
+            "notable": false,
+            "x": -5323,
+            "y": 884
+          },
+          {
+            "id": 25367,
+            "name": "Blade Master",
+            "notable": true,
+            "x": -8775,
+            "y": 3590
+          },
+          {
+            "id": 25682,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -7950,
+            "y": 2424
+          },
+          {
+            "id": 26523,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 1302
+          },
+          {
+            "id": 26564,
+            "name": "Vanquisher",
+            "notable": true,
+            "x": -6748,
+            "y": 632
+          },
+          {
+            "id": 26725,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -6915,
+            "y": 2584
+          },
+          {
+            "id": 28878,
+            "name": "Relentless",
+            "notable": true,
+            "x": -2044,
+            "y": -554
+          },
+          {
+            "id": 29353,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 7
+          },
+          {
+            "id": 30380,
+            "name": "Life and Elemental Resistances",
+            "notable": false,
+            "x": -7077,
+            "y": 1795
+          },
+          {
+            "id": 31628,
+            "name": "Melee Damage and Life",
+            "notable": false,
+            "x": -3159,
+            "y": 1642
+          },
+          {
+            "id": 31961,
+            "name": "Resolute Technique",
+            "notable": false,
+            "x": -7952,
+            "y": 488
+          },
+          {
+            "id": 33082,
+            "name": "Razor's Edge",
+            "notable": true,
+            "x": -8775,
+            "y": 3419
+          },
+          {
+            "id": 33287,
+            "name": "Juggernaut",
+            "notable": true,
+            "x": -7064,
+            "y": 3008
+          },
+          {
+            "id": 33631,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -3876,
+            "y": -214
+          },
+          {
+            "id": 33740,
+            "name": "Strength",
+            "notable": false,
+            "x": -3655,
+            "y": 7
+          },
+          {
+            "id": 34207,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -1763,
+            "y": -554
+          },
+          {
+            "id": 35663,
+            "name": "Strong Arm",
+            "notable": true,
+            "x": -5362,
+            "y": 2130
+          },
+          {
+            "id": 35992,
+            "name": "Mace Damage and Reduced Enemy Stun Threshold",
+            "notable": false,
+            "x": -5623,
+            "y": 5527
+          },
+          {
+            "id": 36949,
+            "name": "Devotion",
+            "notable": true,
+            "x": -6902,
+            "y": -1716
+          },
+          {
+            "id": 38023,
+            "name": "Mace Damage and Reduced Enemy Stun Threshold",
+            "notable": false,
+            "x": -8598,
+            "y": 1257
+          },
+          {
+            "id": 38777,
+            "name": "Melee Damage",
+            "notable": false,
+            "x": -5027,
+            "y": 1795
+          },
+          {
+            "id": 40645,
+            "name": "Bone Breaker",
+            "notable": true,
+            "x": -8403,
+            "y": 1175
+          },
+          {
+            "id": 43822,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -5461,
+            "y": 5689
+          },
+          {
+            "id": 44202,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": -735
+          },
+          {
+            "id": 46127,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -8032,
+            "y": 1482
+          },
+          {
+            "id": 46910,
+            "name": "Strength",
+            "notable": false,
+            "x": -2031,
+            "y": 7
+          },
+          {
+            "id": 47175,
+            "name": "MARAUDER",
+            "notable": false,
+            "x": -2824,
+            "y": 1642
+          },
+          {
+            "id": 47421,
+            "name": "Physical Damage Over Time Multiplier",
+            "notable": false,
+            "x": -6608,
+            "y": 551
+          },
+          {
+            "id": 48287,
+            "name": "Life",
+            "notable": false,
+            "x": -4923,
+            "y": 5507
+          },
+          {
+            "id": 49415,
+            "name": "Sword Damage and Attack Speed",
+            "notable": false,
+            "x": -8149,
+            "y": 3586
+          },
+          {
+            "id": 49571,
+            "name": "Axe Damage and Attack Speed",
+            "notable": false,
+            "x": -8145,
+            "y": 2505
+          },
+          {
+            "id": 50225,
+            "name": "Mace Critical Strike Multiplier",
+            "notable": false,
+            "x": -5323,
+            "y": 1164
+          },
+          {
+            "id": 50422,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 7
+          },
+          {
+            "id": 50570,
+            "name": "Strength",
+            "notable": false,
+            "x": -6748,
+            "y": 7
+          },
+          {
+            "id": 50862,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 7
+          },
+          {
+            "id": 53118,
+            "name": "Barbarism",
+            "notable": true,
+            "x": -6915,
+            "y": 1957
+          },
+          {
+            "id": 55166,
+            "name": "Sword Damage and Attack Speed",
+            "notable": false,
+            "x": -8430,
+            "y": 3586
+          },
+          {
+            "id": 55485,
+            "name": "Constitution",
+            "notable": true,
+            "x": -1693,
+            "y": 986
+          },
+          {
+            "id": 55676,
+            "name": "Life and Armour",
+            "notable": false,
+            "x": -7123,
+            "y": 3229
+          },
+          {
+            "id": 55772,
+            "name": "Blacksmith's Clout",
+            "notable": true,
+            "x": -5161,
+            "y": 1164
+          },
+          {
+            "id": 55854,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -6748,
+            "y": 308
+          },
+          {
+            "id": 57266,
+            "name": "Mace Damage and Reduced Enemy Stun Threshold",
+            "notable": false,
+            "x": -8598,
+            "y": 1428
+          },
+          {
+            "id": 57953,
+            "name": "Axe Damage and Attack Speed",
+            "notable": false,
+            "x": -8118,
+            "y": 2714
+          },
+          {
+            "id": 58449,
+            "name": "Born to Fight",
+            "notable": true,
+            "x": -4436,
+            "y": 1795
+          },
+          {
+            "id": 59306,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -1903,
+            "y": -473
+          },
+          {
+            "id": 59928,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 1342
+          },
+          {
+            "id": 61198,
+            "name": "Heart of the Warrior",
+            "notable": true,
+            "x": -4274,
+            "y": 2424
+          },
+          {
+            "id": 62021,
+            "name": "Life",
+            "notable": false,
+            "x": -1570,
+            "y": 529
+          },
+          {
+            "id": 62042,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -8430,
+            "y": 3424
+          },
+          {
+            "id": 62429,
+            "name": "Strength",
+            "notable": false,
+            "x": -7056,
+            "y": 2503
+          },
+          {
+            "id": 63282,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 650
+          },
+          {
+            "id": 63723,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 2424
+          },
+          {
+            "id": 65034,
+            "name": "Life",
+            "notable": false,
+            "x": -1693,
+            "y": 651
+          }
+        ],
+        "notables": [
+          "Cleaving",
+          "Spinecruncher",
+          "Bloodless",
+          "Path of the Warrior",
+          "Butchery",
+          "Skull Cracking",
+          "Combat Stamina",
+          "Slaughter",
+          "Blade Master",
+          "Vanquisher",
+          "Relentless",
+          "Razor's Edge",
+          "Juggernaut",
+          "Strong Arm",
+          "Devotion",
+          "Bone Breaker",
+          "Barbarism",
+          "Constitution",
+          "Blacksmith's Clout",
+          "Born to Fight",
+          "Heart of the Warrior"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Apex Cleaver",
+          "mods": [
+            "140% increased Physical Damage",
+            "Adds 30 to 60 Physical Damage",
+            "13% increased Attack Speed"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Chiming Spirit Shield",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Eternal Burgonet",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Glorious Plate",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Spiked Gloves",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Titan Greaves",
+          "mods": [
+            "25% increased Movement Speed",
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Lightning Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "14% increased Physical Damage"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "14% increased Physical Damage"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Boneshatter",
+              "level": 20
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 20
+            },
+            {
+              "name": "Brutality",
+              "level": 20
+            },
+            {
+              "name": "Pulverise",
+              "level": 20
+            },
+            {
+              "name": "Close Combat",
+              "level": 20
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Leap Slam",
+              "level": 20
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Determination",
+              "level": 20
+            },
+            {
+              "name": "Blood and Sand",
+              "level": 11
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Cast when Damage Taken",
+              "level": 5,
+              "maxLevel": 5,
+              "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+            },
+            {
+              "name": "Immortal Call",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Decoy Totem",
+              "level": 20
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Eternal Mana Flask",
+          "note": "Drops from level 65."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Iron Skin."
+        },
+        {
+          "slot": "utility",
+          "name": "Basalt Flask",
+          "note": "Physical damage reduction."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Caps chaos resistance for pinnacle bosses."
+        }
+      ]
+    },
+    "maps-red": {
+      "pass": true,
+      "level": 90,
+      "budget": "ssf-week1 (6-link)",
+      "metrics": {
+        "dps": 244012,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 4711,
+        "energyShield": 0,
+        "ehp": 25843,
+        "maxHit": 10687,
+        "resists": [
+          76,
+          75,
+          75
+        ],
+        "chaosResist": 66,
+        "nodes": 102,
+        "sockets": 6,
+        "ascendancy": 7
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            1572,
+            47421
+          ],
+          [
+            2454,
+            38777
+          ],
+          [
+            3167,
+            6359
+          ],
+          [
+            4336,
+            62042
+          ],
+          [
+            6113,
+            9976
+          ],
+          [
+            6359,
+            21413
+          ],
+          [
+            6712,
+            36949
+          ],
+          [
+            6712,
+            23027
+          ],
+          [
+            6981,
+            36543
+          ],
+          [
+            4336,
+            7082
+          ],
+          [
+            5233,
+            7082
+          ],
+          [
+            7388,
+            36634
+          ],
+          [
+            9511,
+            23881
+          ],
+          [
+            4940,
+            9976
+          ],
+          [
+            6446,
+            10221
+          ],
+          [
+            10221,
+            24155
+          ],
+          [
+            10282,
+            35663
+          ],
+          [
+            10490,
+            47251
+          ],
+          [
+            2454,
+            14606
+          ],
+          [
+            15073,
+            62021
+          ],
+          [
+            12702,
+            15073
+          ],
+          [
+            15163,
+            30547
+          ],
+          [
+            15163,
+            40645
+          ],
+          [
+            15405,
+            33631
+          ],
+          [
+            15438,
+            49412
+          ],
+          [
+            15438,
+            28728
+          ],
+          [
+            8500,
+            16703
+          ],
+          [
+            16775,
+            34207
+          ],
+          [
+            6113,
+            20018
+          ],
+          [
+            20551,
+            58449
+          ],
+          [
+            20966,
+            46127
+          ],
+          [
+            20966,
+            59928
+          ],
+          [
+            23881,
+            26523
+          ],
+          [
+            24155,
+            50225
+          ],
+          [
+            25367,
+            55166
+          ],
+          [
+            20018,
+            25682
+          ],
+          [
+            25682,
+            63723
+          ],
+          [
+            26196,
+            34171
+          ],
+          [
+            6446,
+            26523
+          ],
+          [
+            26725,
+            62429
+          ],
+          [
+            26740,
+            63976
+          ],
+          [
+            27140,
+            27301
+          ],
+          [
+            28728,
+            35436
+          ],
+          [
+            29353,
+            50570
+          ],
+          [
+            30380,
+            59928
+          ],
+          [
+            20966,
+            30547
+          ],
+          [
+            31080,
+            43374
+          ],
+          [
+            9511,
+            31628
+          ],
+          [
+            31961,
+            63282
+          ],
+          [
+            33287,
+            55676
+          ],
+          [
+            10490,
+            33479
+          ],
+          [
+            33740,
+            46910
+          ],
+          [
+            15405,
+            33740
+          ],
+          [
+            34171,
+            60472
+          ],
+          [
+            34207,
+            59306
+          ],
+          [
+            36543,
+            49412
+          ],
+          [
+            10282,
+            38777
+          ],
+          [
+            38777,
+            58449
+          ],
+          [
+            29353,
+            44202
+          ],
+          [
+            23027,
+            44202
+          ],
+          [
+            8500,
+            46127
+          ],
+          [
+            16775,
+            46910
+          ],
+          [
+            46910,
+            65034
+          ],
+          [
+            31628,
+            47175
+          ],
+          [
+            47175,
+            50904
+          ],
+          [
+            7388,
+            47251
+          ],
+          [
+            26564,
+            47421
+          ],
+          [
+            43374,
+            49178
+          ],
+          [
+            28475,
+            49178
+          ],
+          [
+            31080,
+            49412
+          ],
+          [
+            7082,
+            49415
+          ],
+          [
+            50225,
+            55772
+          ],
+          [
+            10221,
+            50422
+          ],
+          [
+            50422,
+            50862
+          ],
+          [
+            50422,
+            50570
+          ],
+          [
+            15405,
+            50862
+          ],
+          [
+            3167,
+            50862
+          ],
+          [
+            6981,
+            50904
+          ],
+          [
+            30380,
+            53118
+          ],
+          [
+            49415,
+            55166
+          ],
+          [
+            55485,
+            65034
+          ],
+          [
+            5233,
+            55676
+          ],
+          [
+            1572,
+            55854
+          ],
+          [
+            50570,
+            55854
+          ],
+          [
+            26740,
+            55906
+          ],
+          [
+            6230,
+            55906
+          ],
+          [
+            26523,
+            58449
+          ],
+          [
+            28878,
+            59306
+          ],
+          [
+            59928,
+            63723
+          ],
+          [
+            23027,
+            60472
+          ],
+          [
+            20551,
+            61198
+          ],
+          [
+            33082,
+            62042
+          ],
+          [
+            62429,
+            63723
+          ],
+          [
+            29353,
+            63282
+          ],
+          [
+            59928,
+            63282
+          ],
+          [
+            5233,
+            63723
+          ],
+          [
+            33479,
+            63976
+          ],
+          [
+            16775,
+            63976
+          ],
+          [
+            27140,
+            64816
+          ],
+          [
+            43374,
+            64816
+          ],
+          [
+            62021,
+            65034
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1572,
+            "name": "Physical Damage Over Time Multiplier",
+            "notable": false,
+            "x": -6608,
+            "y": 389
+          },
+          {
+            "id": 2454,
+            "name": "Two Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1628
+          },
+          {
+            "id": 3167,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -4656,
+            "y": -189
+          },
+          {
+            "id": 4336,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -8149,
+            "y": 3424
+          },
+          {
+            "id": 4940,
+            "name": "Cleaving",
+            "notable": true,
+            "x": -8453,
+            "y": 2134
+          },
+          {
+            "id": 5233,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 3505
+          },
+          {
+            "id": 6113,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8118,
+            "y": 2134
+          },
+          {
+            "id": 6230,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -770,
+            "y": -437
+          },
+          {
+            "id": 6359,
+            "name": "Armour and Life",
+            "notable": false,
+            "x": -4656,
+            "y": -470
+          },
+          {
+            "id": 6446,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 1302
+          },
+          {
+            "id": 6712,
+            "name": "Life",
+            "notable": false,
+            "x": -6902,
+            "y": -1435
+          },
+          {
+            "id": 6981,
+            "name": "Strength",
+            "notable": false,
+            "x": -2992,
+            "y": 3067
+          },
+          {
+            "id": 7082,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -7954,
+            "y": 3505
+          },
+          {
+            "id": 7388,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2202,
+            "y": -3694
+          },
+          {
+            "id": 8500,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -8194,
+            "y": 1482
+          },
+          {
+            "id": 9511,
+            "name": "Strength",
+            "notable": false,
+            "x": -3482,
+            "y": 1368
+          },
+          {
+            "id": 9976,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8285,
+            "y": 2089
+          },
+          {
+            "id": 10221,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 687
+          },
+          {
+            "id": 10282,
+            "name": "One Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1963
+          },
+          {
+            "id": 10490,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1815
+          },
+          {
+            "id": 12702,
+            "name": "Path of the Warrior",
+            "notable": true,
+            "x": -1113,
+            "y": 651
+          },
+          {
+            "id": 14606,
+            "name": "Butchery",
+            "notable": true,
+            "x": -5362,
+            "y": 1460
+          },
+          {
+            "id": 15073,
+            "name": "Life",
+            "notable": false,
+            "x": -1403,
+            "y": 484
+          },
+          {
+            "id": 15163,
+            "name": "Mace Damage and Area of Effect",
+            "notable": false,
+            "x": -8194,
+            "y": 1202
+          },
+          {
+            "id": 15405,
+            "name": "Strength",
+            "notable": false,
+            "x": -3936,
+            "y": 7
+          },
+          {
+            "id": 15438,
+            "name": "Two Handed Melee Damage and Stun Duration",
+            "notable": false,
+            "x": -4295,
+            "y": 3804
+          },
+          {
+            "id": 16703,
+            "name": "Skull Cracking",
+            "notable": true,
+            "x": -8403,
+            "y": 1510
+          },
+          {
+            "id": 16775,
+            "name": "Strength",
+            "notable": false,
+            "x": -1604,
+            "y": -240
+          },
+          {
+            "id": 20018,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8145,
+            "y": 2343
+          },
+          {
+            "id": 20551,
+            "name": "Life",
+            "notable": false,
+            "x": -4355,
+            "y": 2284
+          },
+          {
+            "id": 20966,
+            "name": "Mace Damage",
+            "notable": false,
+            "x": -7951,
+            "y": 1342
+          },
+          {
+            "id": 21413,
+            "name": "Combat Stamina",
+            "notable": true,
+            "x": -4818,
+            "y": -470
+          },
+          {
+            "id": 23027,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": -1435
+          },
+          {
+            "id": 23881,
+            "name": "Strength",
+            "notable": false,
+            "x": -3729,
+            "y": 1302
+          },
+          {
+            "id": 24155,
+            "name": "Mace Critical Strike Chance",
+            "notable": false,
+            "x": -5323,
+            "y": 884
+          },
+          {
+            "id": 25367,
+            "name": "Blade Master",
+            "notable": true,
+            "x": -8775,
+            "y": 3590
+          },
+          {
+            "id": 25682,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -7950,
+            "y": 2424
+          },
+          {
+            "id": 26196,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -6902,
+            "y": -2419
+          },
+          {
+            "id": 26523,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 1302
+          },
+          {
+            "id": 26564,
+            "name": "Vanquisher",
+            "notable": true,
+            "x": -6748,
+            "y": 632
+          },
+          {
+            "id": 26725,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -6915,
+            "y": 2584
+          },
+          {
+            "id": 26740,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -932,
+            "y": -437
+          },
+          {
+            "id": 27140,
+            "name": "Two Handed Melee Damage and Leech",
+            "notable": false,
+            "x": -2527,
+            "y": 3780
+          },
+          {
+            "id": 27301,
+            "name": "Martial Experience",
+            "notable": true,
+            "x": -2689,
+            "y": 3618
+          },
+          {
+            "id": 28475,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -2287,
+            "y": 3616
+          },
+          {
+            "id": 28728,
+            "name": "Two Handed Melee Damage and Ignore Physical Damage Reduction",
+            "notable": false,
+            "x": -4354,
+            "y": 4025
+          },
+          {
+            "id": 28878,
+            "name": "Relentless",
+            "notable": true,
+            "x": -2044,
+            "y": -554
+          },
+          {
+            "id": 29353,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 7
+          },
+          {
+            "id": 30380,
+            "name": "Life and Elemental Resistances",
+            "notable": false,
+            "x": -7077,
+            "y": 1795
+          },
+          {
+            "id": 30547,
+            "name": "Mace Damage and Area of Effect",
+            "notable": false,
+            "x": -8032,
+            "y": 1202
+          },
+          {
+            "id": 31080,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -3145,
+            "y": 3968
+          },
+          {
+            "id": 31628,
+            "name": "Melee Damage and Life",
+            "notable": false,
+            "x": -3159,
+            "y": 1642
+          },
+          {
+            "id": 31961,
+            "name": "Resolute Technique",
+            "notable": false,
+            "x": -7952,
+            "y": 488
+          },
+          {
+            "id": 33082,
+            "name": "Razor's Edge",
+            "notable": true,
+            "x": -8775,
+            "y": 3419
+          },
+          {
+            "id": 33287,
+            "name": "Juggernaut",
+            "notable": true,
+            "x": -7064,
+            "y": 3008
+          },
+          {
+            "id": 33479,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1322
+          },
+          {
+            "id": 33631,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -3876,
+            "y": -214
+          },
+          {
+            "id": 33740,
+            "name": "Strength",
+            "notable": false,
+            "x": -3655,
+            "y": 7
+          },
+          {
+            "id": 34171,
+            "name": "Strength",
+            "notable": false,
+            "x": -7237,
+            "y": -2419
+          },
+          {
+            "id": 34207,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -1763,
+            "y": -554
+          },
+          {
+            "id": 35436,
+            "name": "Kinetic Impacts",
+            "notable": true,
+            "x": -4133,
+            "y": 4085
+          },
+          {
+            "id": 35663,
+            "name": "Strong Arm",
+            "notable": true,
+            "x": -5362,
+            "y": 2130
+          },
+          {
+            "id": 36543,
+            "name": "Strength",
+            "notable": false,
+            "x": -3485,
+            "y": 3560
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
+          },
+          {
+            "id": 36949,
+            "name": "Devotion",
+            "notable": true,
+            "x": -6902,
+            "y": -1716
+          },
+          {
+            "id": 38777,
+            "name": "Melee Damage",
+            "notable": false,
+            "x": -5027,
+            "y": 1795
+          },
+          {
+            "id": 40645,
+            "name": "Bone Breaker",
+            "notable": true,
+            "x": -8403,
+            "y": 1175
+          },
+          {
+            "id": 43374,
+            "name": "Strength",
+            "notable": false,
+            "x": -2375,
+            "y": 4211
+          },
+          {
+            "id": 44202,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": -735
+          },
+          {
+            "id": 46127,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -8032,
+            "y": 1482
+          },
+          {
+            "id": 46910,
+            "name": "Strength",
+            "notable": false,
+            "x": -2031,
+            "y": 7
+          },
+          {
+            "id": 47175,
+            "name": "MARAUDER",
+            "notable": false,
+            "x": -2824,
+            "y": 1642
+          },
+          {
+            "id": 47251,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2062,
+            "y": -3451
+          },
+          {
+            "id": 47421,
+            "name": "Physical Damage Over Time Multiplier",
+            "notable": false,
+            "x": -6608,
+            "y": 551
+          },
+          {
+            "id": 49178,
+            "name": "Strength",
+            "notable": false,
+            "x": -2125,
+            "y": 3778
+          },
+          {
+            "id": 49412,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 3560
+          },
+          {
+            "id": 49415,
+            "name": "Sword Damage and Attack Speed",
+            "notable": false,
+            "x": -8149,
+            "y": 3586
+          },
+          {
+            "id": 50225,
+            "name": "Mace Critical Strike Multiplier",
+            "notable": false,
+            "x": -5323,
+            "y": 1164
+          },
+          {
+            "id": 50422,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 7
+          },
+          {
+            "id": 50570,
+            "name": "Strength",
+            "notable": false,
+            "x": -6748,
+            "y": 7
+          },
+          {
+            "id": 50862,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 7
+          },
+          {
+            "id": 50904,
+            "name": "Life and Armour",
+            "notable": false,
+            "x": -2992,
+            "y": 1933
+          },
+          {
+            "id": 53118,
+            "name": "Barbarism",
+            "notable": true,
+            "x": -6915,
+            "y": 1957
+          },
+          {
+            "id": 55166,
+            "name": "Sword Damage and Attack Speed",
+            "notable": false,
+            "x": -8430,
+            "y": 3586
+          },
+          {
+            "id": 55485,
+            "name": "Constitution",
+            "notable": true,
+            "x": -1693,
+            "y": 986
+          },
+          {
+            "id": 55676,
+            "name": "Life and Armour",
+            "notable": false,
+            "x": -7123,
+            "y": 3229
+          },
+          {
+            "id": 55772,
+            "name": "Blacksmith's Clout",
+            "notable": true,
+            "x": -5161,
+            "y": 1164
+          },
+          {
+            "id": 55854,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -6748,
+            "y": 308
+          },
+          {
+            "id": 55906,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -851,
+            "y": -297
+          },
+          {
+            "id": 58449,
+            "name": "Born to Fight",
+            "notable": true,
+            "x": -4436,
+            "y": 1795
+          },
+          {
+            "id": 59306,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -1903,
+            "y": -473
+          },
+          {
+            "id": 59928,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 1342
+          },
+          {
+            "id": 60472,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": -2419
+          },
+          {
+            "id": 61198,
+            "name": "Heart of the Warrior",
+            "notable": true,
+            "x": -4274,
+            "y": 2424
+          },
+          {
+            "id": 62021,
+            "name": "Life",
+            "notable": false,
+            "x": -1570,
+            "y": 529
+          },
+          {
+            "id": 62042,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -8430,
+            "y": 3424
+          },
+          {
+            "id": 62429,
+            "name": "Strength",
+            "notable": false,
+            "x": -7056,
+            "y": 2503
+          },
+          {
+            "id": 63282,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 650
+          },
+          {
+            "id": 63723,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 2424
+          },
+          {
+            "id": 63976,
+            "name": "Shaper",
+            "notable": true,
+            "x": -1359,
+            "y": -780
+          },
+          {
+            "id": 64816,
+            "name": "Two Handed Melee Damage and Leech",
+            "notable": false,
+            "x": -2608,
+            "y": 3920
+          },
+          {
+            "id": 65034,
+            "name": "Life",
+            "notable": false,
+            "x": -1693,
+            "y": 651
+          }
+        ],
+        "notables": [
+          "Cleaving",
+          "Path of the Warrior",
+          "Butchery",
+          "Skull Cracking",
+          "Combat Stamina",
+          "Blade Master",
+          "Vanquisher",
+          "Martial Experience",
+          "Relentless",
+          "Razor's Edge",
+          "Juggernaut",
+          "Kinetic Impacts",
+          "Strong Arm",
+          "Devotion",
+          "Bone Breaker",
+          "Barbarism",
+          "Constitution",
+          "Blacksmith's Clout",
+          "Born to Fight",
+          "Heart of the Warrior",
+          "Shaper"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Apex Cleaver",
+          "mods": [
+            "140% increased Physical Damage",
+            "Adds 30 to 60 Physical Damage",
+            "13% increased Attack Speed"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Chiming Spirit Shield",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Conqueror's Helmet",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Legion Plate",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Precursor Gauntlets",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Brimstone Treads",
+          "mods": [
+            "25% increased Movement Speed",
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Lightning Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "14% increased Physical Damage"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "14% increased Physical Damage"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 3",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "14% increased Physical Damage"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 4",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "14% increased Physical Damage"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 5",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "14% increased Physical Damage"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 6",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "14% increased Physical Damage"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Boneshatter",
+              "level": 20
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 20
+            },
+            {
+              "name": "Brutality",
+              "level": 20
+            },
+            {
+              "name": "Pulverise",
+              "level": 20
+            },
+            {
+              "name": "Close Combat",
+              "level": 20
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Leap Slam",
+              "level": 20
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Determination",
+              "level": 20
+            },
+            {
+              "name": "Blood and Sand",
+              "level": 16
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Cast when Damage Taken",
+              "level": 5,
+              "maxLevel": 5,
+              "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+            },
+            {
+              "name": "Immortal Call",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Decoy Totem",
+              "level": 20
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Eternal Mana Flask",
+          "note": "Drops from level 65."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Iron Skin."
+        },
+        {
+          "slot": "utility",
+          "name": "Basalt Flask",
+          "note": "Physical damage reduction."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Caps chaos resistance for pinnacle bosses."
+        }
+      ]
+    },
+    "pinnacle": {
+      "pass": true,
+      "level": 96,
+      "budget": "trade (6-link)",
+      "metrics": {
+        "dps": 453478,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 5392,
+        "energyShield": 0,
+        "ehp": 31453,
+        "maxHit": 12200,
+        "resists": [
+          76,
+          75,
+          75
+        ],
+        "chaosResist": 75,
+        "nodes": 111,
+        "sockets": 6,
+        "ascendancy": 7
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            1572,
+            47421
+          ],
+          [
+            2454,
+            38777
+          ],
+          [
+            3167,
+            6359
+          ],
+          [
+            3644,
+            14930
+          ],
+          [
+            4336,
+            62042
+          ],
+          [
+            3644,
+            5233
+          ],
+          [
+            6113,
+            9976
+          ],
+          [
+            6359,
+            21413
+          ],
+          [
+            6712,
+            36949
+          ],
+          [
+            6712,
+            23027
+          ],
+          [
+            6981,
+            36543
+          ],
+          [
+            4336,
+            7082
+          ],
+          [
+            5233,
+            7082
+          ],
+          [
+            7388,
+            36634
+          ],
+          [
+            9511,
+            23881
+          ],
+          [
+            4940,
+            9976
+          ],
+          [
+            6446,
+            10221
+          ],
+          [
+            10221,
+            24155
+          ],
+          [
+            10282,
+            35663
+          ],
+          [
+            10490,
+            47251
+          ],
+          [
+            12407,
+            57953
+          ],
+          [
+            2454,
+            14606
+          ],
+          [
+            15073,
+            62021
+          ],
+          [
+            12702,
+            15073
+          ],
+          [
+            15163,
+            30547
+          ],
+          [
+            15163,
+            40645
+          ],
+          [
+            15405,
+            33631
+          ],
+          [
+            15438,
+            49412
+          ],
+          [
+            15438,
+            28728
+          ],
+          [
+            8500,
+            16703
+          ],
+          [
+            16775,
+            34207
+          ],
+          [
+            6113,
+            20018
+          ],
+          [
+            20551,
+            58449
+          ],
+          [
+            20966,
+            46127
+          ],
+          [
+            20966,
+            59928
+          ],
+          [
+            12407,
+            23038
+          ],
+          [
+            23881,
+            26523
+          ],
+          [
+            24155,
+            50225
+          ],
+          [
+            25367,
+            55166
+          ],
+          [
+            20018,
+            25682
+          ],
+          [
+            25682,
+            63723
+          ],
+          [
+            26196,
+            34171
+          ],
+          [
+            6446,
+            26523
+          ],
+          [
+            26725,
+            62429
+          ],
+          [
+            26740,
+            63976
+          ],
+          [
+            27140,
+            27301
+          ],
+          [
+            28728,
+            35436
+          ],
+          [
+            29353,
+            50570
+          ],
+          [
+            30380,
+            59928
+          ],
+          [
+            20966,
+            30547
+          ],
+          [
+            31080,
+            43374
+          ],
+          [
+            9511,
+            31628
+          ],
+          [
+            31961,
+            63282
+          ],
+          [
+            33287,
+            55676
+          ],
+          [
+            10490,
+            33479
+          ],
+          [
+            33740,
+            46910
+          ],
+          [
+            15405,
+            33740
+          ],
+          [
+            34171,
+            60472
+          ],
+          [
+            34207,
+            59306
+          ],
+          [
+            5126,
+            35992
+          ],
+          [
+            36543,
+            49412
+          ],
+          [
+            10282,
+            38777
+          ],
+          [
+            38777,
+            58449
+          ],
+          [
+            35992,
+            43822
+          ],
+          [
+            14930,
+            43822
+          ],
+          [
+            29353,
+            44202
+          ],
+          [
+            23027,
+            44202
+          ],
+          [
+            8500,
+            46127
+          ],
+          [
+            16775,
+            46910
+          ],
+          [
+            46910,
+            65034
+          ],
+          [
+            31628,
+            47175
+          ],
+          [
+            47175,
+            50904
+          ],
+          [
+            7388,
+            47251
+          ],
+          [
+            26564,
+            47421
+          ],
+          [
+            43374,
+            49178
+          ],
+          [
+            28475,
+            49178
+          ],
+          [
+            31080,
+            49412
+          ],
+          [
+            7082,
+            49415
+          ],
+          [
+            25682,
+            49571
+          ],
+          [
+            50225,
+            55772
+          ],
+          [
+            10221,
+            50422
+          ],
+          [
+            50422,
+            50862
+          ],
+          [
+            50422,
+            50570
+          ],
+          [
+            15405,
+            50862
+          ],
+          [
+            3167,
+            50862
+          ],
+          [
+            6981,
+            50904
+          ],
+          [
+            30380,
+            53118
+          ],
+          [
+            49415,
+            55166
+          ],
+          [
+            55485,
+            65034
+          ],
+          [
+            5233,
+            55676
+          ],
+          [
+            1572,
+            55854
+          ],
+          [
+            50570,
+            55854
+          ],
+          [
+            26740,
+            55906
+          ],
+          [
+            6230,
+            55906
+          ],
+          [
+            49571,
+            57953
+          ],
+          [
+            26523,
+            58449
+          ],
+          [
+            28878,
+            59306
+          ],
+          [
+            59928,
+            63723
+          ],
+          [
+            23027,
+            60472
+          ],
+          [
+            20551,
+            61198
+          ],
+          [
+            33082,
+            62042
+          ],
+          [
+            62429,
+            63723
+          ],
+          [
+            29353,
+            63282
+          ],
+          [
+            59928,
+            63282
+          ],
+          [
+            5233,
+            63723
+          ],
+          [
+            33479,
+            63976
+          ],
+          [
+            16775,
+            63976
+          ],
+          [
+            27140,
+            64816
+          ],
+          [
+            43374,
+            64816
+          ],
+          [
+            62021,
+            65034
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1572,
+            "name": "Physical Damage Over Time Multiplier",
+            "notable": false,
+            "x": -6608,
+            "y": 389
+          },
+          {
+            "id": 2454,
+            "name": "Two Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1628
+          },
+          {
+            "id": 3167,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -4656,
+            "y": -189
+          },
+          {
+            "id": 3644,
+            "name": "Strength",
+            "notable": false,
+            "x": -6469,
+            "y": 4905
+          },
+          {
+            "id": 4336,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -8149,
+            "y": 3424
+          },
+          {
+            "id": 4940,
+            "name": "Cleaving",
+            "notable": true,
+            "x": -8453,
+            "y": 2134
+          },
+          {
+            "id": 5126,
+            "name": "Spinecruncher",
+            "notable": true,
+            "x": -5461,
+            "y": 5365
+          },
+          {
+            "id": 5233,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 3505
+          },
+          {
+            "id": 6113,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8118,
+            "y": 2134
+          },
+          {
+            "id": 6230,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -770,
+            "y": -437
+          },
+          {
+            "id": 6359,
+            "name": "Armour and Life",
+            "notable": false,
+            "x": -4656,
+            "y": -470
+          },
+          {
+            "id": 6446,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 1302
+          },
+          {
+            "id": 6712,
+            "name": "Life",
+            "notable": false,
+            "x": -6902,
+            "y": -1435
+          },
+          {
+            "id": 6981,
+            "name": "Strength",
+            "notable": false,
+            "x": -2992,
+            "y": 3067
+          },
+          {
+            "id": 7082,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -7954,
+            "y": 3505
+          },
+          {
+            "id": 7388,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2202,
+            "y": -3694
+          },
+          {
+            "id": 8500,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -8194,
+            "y": 1482
+          },
+          {
+            "id": 9511,
+            "name": "Strength",
+            "notable": false,
+            "x": -3482,
+            "y": 1368
+          },
+          {
+            "id": 9976,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8285,
+            "y": 2089
+          },
+          {
+            "id": 10221,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 687
+          },
+          {
+            "id": 10282,
+            "name": "One Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1963
+          },
+          {
+            "id": 10490,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1815
+          },
+          {
+            "id": 12407,
+            "name": "Axe Damage and Attack Speed",
+            "notable": false,
+            "x": -8285,
+            "y": 2759
+          },
+          {
+            "id": 12702,
+            "name": "Path of the Warrior",
+            "notable": true,
+            "x": -1113,
+            "y": 651
+          },
+          {
+            "id": 14606,
+            "name": "Butchery",
+            "notable": true,
+            "x": -5362,
+            "y": 1460
+          },
+          {
+            "id": 14930,
+            "name": "Strength",
+            "notable": false,
+            "x": -5461,
+            "y": 6072
+          },
+          {
+            "id": 15073,
+            "name": "Life",
+            "notable": false,
+            "x": -1403,
+            "y": 484
+          },
+          {
+            "id": 15163,
+            "name": "Mace Damage and Area of Effect",
+            "notable": false,
+            "x": -8194,
+            "y": 1202
+          },
+          {
+            "id": 15405,
+            "name": "Strength",
+            "notable": false,
+            "x": -3936,
+            "y": 7
+          },
+          {
+            "id": 15438,
+            "name": "Two Handed Melee Damage and Stun Duration",
+            "notable": false,
+            "x": -4295,
+            "y": 3804
+          },
+          {
+            "id": 16703,
+            "name": "Skull Cracking",
+            "notable": true,
+            "x": -8403,
+            "y": 1510
+          },
+          {
+            "id": 16775,
+            "name": "Strength",
+            "notable": false,
+            "x": -1604,
+            "y": -240
+          },
+          {
+            "id": 20018,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -8145,
+            "y": 2343
+          },
+          {
+            "id": 20551,
+            "name": "Life",
+            "notable": false,
+            "x": -4355,
+            "y": 2284
+          },
+          {
+            "id": 20966,
+            "name": "Mace Damage",
+            "notable": false,
+            "x": -7951,
+            "y": 1342
+          },
+          {
+            "id": 21413,
+            "name": "Combat Stamina",
+            "notable": true,
+            "x": -4818,
+            "y": -470
+          },
+          {
+            "id": 23027,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": -1435
+          },
+          {
+            "id": 23038,
+            "name": "Slaughter",
+            "notable": true,
+            "x": -8453,
+            "y": 2714
+          },
+          {
+            "id": 23881,
+            "name": "Strength",
+            "notable": false,
+            "x": -3729,
+            "y": 1302
+          },
+          {
+            "id": 24155,
+            "name": "Mace Critical Strike Chance",
+            "notable": false,
+            "x": -5323,
+            "y": 884
+          },
+          {
+            "id": 25367,
+            "name": "Blade Master",
+            "notable": true,
+            "x": -8775,
+            "y": 3590
+          },
+          {
+            "id": 25682,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -7950,
+            "y": 2424
+          },
+          {
+            "id": 26196,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -6902,
+            "y": -2419
+          },
+          {
+            "id": 26523,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 1302
+          },
+          {
+            "id": 26564,
+            "name": "Vanquisher",
+            "notable": true,
+            "x": -6748,
+            "y": 632
+          },
+          {
+            "id": 26725,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -6915,
+            "y": 2584
+          },
+          {
+            "id": 26740,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -932,
+            "y": -437
+          },
+          {
+            "id": 27140,
+            "name": "Two Handed Melee Damage and Leech",
+            "notable": false,
+            "x": -2527,
+            "y": 3780
+          },
+          {
+            "id": 27301,
+            "name": "Martial Experience",
+            "notable": true,
+            "x": -2689,
+            "y": 3618
+          },
+          {
+            "id": 28475,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -2287,
+            "y": 3616
+          },
+          {
+            "id": 28728,
+            "name": "Two Handed Melee Damage and Ignore Physical Damage Reduction",
+            "notable": false,
+            "x": -4354,
+            "y": 4025
+          },
+          {
+            "id": 28878,
+            "name": "Relentless",
+            "notable": true,
+            "x": -2044,
+            "y": -554
+          },
+          {
+            "id": 29353,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 7
+          },
+          {
+            "id": 30380,
+            "name": "Life and Elemental Resistances",
+            "notable": false,
+            "x": -7077,
+            "y": 1795
+          },
+          {
+            "id": 30547,
+            "name": "Mace Damage and Area of Effect",
+            "notable": false,
+            "x": -8032,
+            "y": 1202
+          },
+          {
+            "id": 31080,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -3145,
+            "y": 3968
+          },
+          {
+            "id": 31628,
+            "name": "Melee Damage and Life",
+            "notable": false,
+            "x": -3159,
+            "y": 1642
+          },
+          {
+            "id": 31961,
+            "name": "Resolute Technique",
+            "notable": false,
+            "x": -7952,
+            "y": 488
+          },
+          {
+            "id": 33082,
+            "name": "Razor's Edge",
+            "notable": true,
+            "x": -8775,
+            "y": 3419
+          },
+          {
+            "id": 33287,
+            "name": "Juggernaut",
+            "notable": true,
+            "x": -7064,
+            "y": 3008
+          },
+          {
+            "id": 33479,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1322
+          },
+          {
+            "id": 33631,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -3876,
+            "y": -214
+          },
+          {
+            "id": 33740,
+            "name": "Strength",
+            "notable": false,
+            "x": -3655,
+            "y": 7
+          },
+          {
+            "id": 34171,
+            "name": "Strength",
+            "notable": false,
+            "x": -7237,
+            "y": -2419
+          },
+          {
+            "id": 34207,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -1763,
+            "y": -554
+          },
+          {
+            "id": 35436,
+            "name": "Kinetic Impacts",
+            "notable": true,
+            "x": -4133,
+            "y": 4085
+          },
+          {
+            "id": 35663,
+            "name": "Strong Arm",
+            "notable": true,
+            "x": -5362,
+            "y": 2130
+          },
+          {
+            "id": 35992,
+            "name": "Mace Damage and Reduced Enemy Stun Threshold",
+            "notable": false,
+            "x": -5623,
+            "y": 5527
+          },
+          {
+            "id": 36543,
+            "name": "Strength",
+            "notable": false,
+            "x": -3485,
+            "y": 3560
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
+          },
+          {
+            "id": 36949,
+            "name": "Devotion",
+            "notable": true,
+            "x": -6902,
+            "y": -1716
+          },
+          {
+            "id": 38777,
+            "name": "Melee Damage",
+            "notable": false,
+            "x": -5027,
+            "y": 1795
+          },
+          {
+            "id": 40645,
+            "name": "Bone Breaker",
+            "notable": true,
+            "x": -8403,
+            "y": 1175
+          },
+          {
+            "id": 43374,
+            "name": "Strength",
+            "notable": false,
+            "x": -2375,
+            "y": 4211
+          },
+          {
+            "id": 43822,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -5461,
+            "y": 5689
+          },
+          {
+            "id": 44202,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": -735
+          },
+          {
+            "id": 46127,
+            "name": "Mace Damage and Stun Duration",
+            "notable": false,
+            "x": -8032,
+            "y": 1482
+          },
+          {
+            "id": 46910,
+            "name": "Strength",
+            "notable": false,
+            "x": -2031,
+            "y": 7
+          },
+          {
+            "id": 47175,
+            "name": "MARAUDER",
+            "notable": false,
+            "x": -2824,
+            "y": 1642
+          },
+          {
+            "id": 47251,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2062,
+            "y": -3451
+          },
+          {
+            "id": 47421,
+            "name": "Physical Damage Over Time Multiplier",
+            "notable": false,
+            "x": -6608,
+            "y": 551
+          },
+          {
+            "id": 49178,
+            "name": "Strength",
+            "notable": false,
+            "x": -2125,
+            "y": 3778
+          },
+          {
+            "id": 49412,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 3560
+          },
+          {
+            "id": 49415,
+            "name": "Sword Damage and Attack Speed",
+            "notable": false,
+            "x": -8149,
+            "y": 3586
+          },
+          {
+            "id": 49571,
+            "name": "Axe Damage and Attack Speed",
+            "notable": false,
+            "x": -8145,
+            "y": 2505
+          },
+          {
+            "id": 50225,
+            "name": "Mace Critical Strike Multiplier",
+            "notable": false,
+            "x": -5323,
+            "y": 1164
+          },
+          {
+            "id": 50422,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 7
+          },
+          {
+            "id": 50570,
+            "name": "Strength",
+            "notable": false,
+            "x": -6748,
+            "y": 7
+          },
+          {
+            "id": 50862,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 7
+          },
+          {
+            "id": 50904,
+            "name": "Life and Armour",
+            "notable": false,
+            "x": -2992,
+            "y": 1933
+          },
+          {
+            "id": 53118,
+            "name": "Barbarism",
+            "notable": true,
+            "x": -6915,
+            "y": 1957
+          },
+          {
+            "id": 55166,
+            "name": "Sword Damage and Attack Speed",
+            "notable": false,
+            "x": -8430,
+            "y": 3586
+          },
+          {
+            "id": 55485,
+            "name": "Constitution",
+            "notable": true,
+            "x": -1693,
+            "y": 986
+          },
+          {
+            "id": 55676,
+            "name": "Life and Armour",
+            "notable": false,
+            "x": -7123,
+            "y": 3229
+          },
+          {
+            "id": 55772,
+            "name": "Blacksmith's Clout",
+            "notable": true,
+            "x": -5161,
+            "y": 1164
+          },
+          {
+            "id": 55854,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -6748,
+            "y": 308
+          },
+          {
+            "id": 55906,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -851,
+            "y": -297
+          },
+          {
+            "id": 57953,
+            "name": "Axe Damage and Attack Speed",
+            "notable": false,
+            "x": -8118,
+            "y": 2714
+          },
+          {
+            "id": 58449,
+            "name": "Born to Fight",
+            "notable": true,
+            "x": -4436,
+            "y": 1795
+          },
+          {
+            "id": 59306,
+            "name": "Physical Damage",
+            "notable": false,
+            "x": -1903,
+            "y": -473
+          },
+          {
+            "id": 59928,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 1342
+          },
+          {
+            "id": 60472,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": -2419
+          },
+          {
+            "id": 61198,
+            "name": "Heart of the Warrior",
+            "notable": true,
+            "x": -4274,
+            "y": 2424
+          },
+          {
+            "id": 62021,
+            "name": "Life",
+            "notable": false,
+            "x": -1570,
+            "y": 529
+          },
+          {
+            "id": 62042,
+            "name": "Sword Damage",
+            "notable": false,
+            "x": -8430,
+            "y": 3424
+          },
+          {
+            "id": 62429,
+            "name": "Strength",
+            "notable": false,
+            "x": -7056,
+            "y": 2503
+          },
+          {
+            "id": 63282,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 650
+          },
+          {
+            "id": 63723,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 2424
+          },
+          {
+            "id": 63976,
+            "name": "Shaper",
+            "notable": true,
+            "x": -1359,
+            "y": -780
+          },
+          {
+            "id": 64816,
+            "name": "Two Handed Melee Damage and Leech",
+            "notable": false,
+            "x": -2608,
+            "y": 3920
+          },
+          {
+            "id": 65034,
+            "name": "Life",
+            "notable": false,
+            "x": -1693,
+            "y": 651
+          }
+        ],
+        "notables": [
+          "Cleaving",
+          "Spinecruncher",
+          "Path of the Warrior",
+          "Butchery",
+          "Skull Cracking",
+          "Combat Stamina",
+          "Slaughter",
+          "Blade Master",
+          "Vanquisher",
+          "Martial Experience",
+          "Relentless",
+          "Razor's Edge",
+          "Juggernaut",
+          "Kinetic Impacts",
+          "Strong Arm",
+          "Devotion",
+          "Bone Breaker",
+          "Barbarism",
+          "Constitution",
+          "Blacksmith's Clout",
+          "Born to Fight",
+          "Heart of the Warrior",
+          "Shaper"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Apex Cleaver",
+          "mods": [
+            "170% increased Physical Damage",
+            "Adds 40 to 80 Physical Damage",
+            "17% increased Attack Speed"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Chiming Spirit Shield",
+          "mods": [
+            "60% increased Energy Shield",
+            "+100 to maximum Life",
+            "+45% to Cold Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Giantslayer Helmet",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Fire Resistance",
+            "+45% to Cold Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Royal Plate",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Lightning Resistance",
+            "+45% to Cold Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Leviathan Gauntlets",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "+45% to Cold Resistance",
+            "+45% to Fire Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Leviathan Greaves",
+          "mods": [
+            "30% increased Movement Speed",
+            "+100 to maximum Life",
+            "+45% to Cold Resistance",
+            "+45% to Lightning Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Fire Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Lightning Resistance",
+            "+45% to Fire Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Fire Resistance",
+            "+45% to Lightning Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Cold Resistance",
+            "+45% to Lightning Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "16% increased Physical Damage"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "16% increased Physical Damage"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 3",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "16% increased Physical Damage"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 4",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "16% increased Physical Damage"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 5",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "16% increased Physical Damage"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 6",
+          "base": "Crimson Jewel",
+          "mods": [
+            "+100 to maximum Life",
+            "17% increased Attack Speed",
+            "16% increased Physical Damage"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Boneshatter",
+              "level": 21
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 21
+            },
+            {
+              "name": "Brutality",
+              "level": 21
+            },
+            {
+              "name": "Pulverise",
+              "level": 21
+            },
+            {
+              "name": "Close Combat",
+              "level": 21
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Leap Slam",
+              "level": 21
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Determination",
+              "level": 21
+            },
+            {
+              "name": "Blood and Sand",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Cast when Damage Taken",
+              "level": 5,
+              "maxLevel": 5,
+              "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+            },
+            {
+              "name": "Immortal Call",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Decoy Totem",
+              "level": 21
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Eternal Mana Flask",
+          "note": "Drops from level 65."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Iron Skin."
+        },
+        {
+          "slot": "utility",
+          "name": "Basalt Flask",
+          "note": "Physical damage reduction."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Caps chaos resistance for pinnacle bosses."
+        }
+      ]
+    }
+  },
+  "pob": {
+    "ref": "v2.69.0",
+    "checkpoint": "maps-red",
+    "code": "eJzNWl9v2zgSf64_BSHgcA_LvfA_pcLuwnHbbBfJNhf3du-eDow1sbWRSK9EpfV9-gMlK1ZS23Eu6TUIMKCGM5z5ccjxaJThT1-KHN1AWWXOjiL6NxIhsDOXZnY-iv7x6f2PcfTTm8Hw3PjFx6vjOsvDzJvBq2EzRjncQD6KEhIhb8o5-N-6pfi_SYRmuamqX00Bo-jMlKZOoYyQqWZg08lm6pd6PofSmtpHqDCZnbrZNfiT0tXLUUQjdGlsmvlR9KuzEKGlsX4Bzp6ZP1x54tJRlNfWlFnVm8rsempe1n5xXecRusng85lLYRRNxqeTaRQwHDUgwuhTCYDMzGc3MF3CLJh9M3j1ahgekC8Berh4B-xD2rjXwxM4JELWpVCNIio1w1RzgZmQAnOqNBacKywSQbBknGNFKceKcYIVlwlWQiisNGVYJTHFmsQMax7HOJaE4ERSipNEK0wJYzTQmGFKREIwZZowTIUiClNJNMdUUhWoIDJQHmOqNOGBaomp1kpiRgiNMSNSUsxIohRmVFCOGSdMY8bjmGImqJSYSa40ZlLFDDNFE4WZkowHqgRmSjMZqCCYadpQTihmsdASs1izGLM41jFmCZccc8JjgjmRQmNOSRhTxWLMaaIo5oxSiTkP6DlnscacC51gzhWnmPNghQuqKeaCEY25FFxhLpXimCspAlVcYK4SkWAea62xIErIsPtaYCEYYYEmGgtFWaAJJVhoqiUWmkmKhRaMYpFQyQPVcQgaZQ2VWBLGAhWMYUmkJliSWIVxQgSWNEliLDmlgcZUYSmpClTEEkupdBhrzbCUsRRYyoQoLGMhEiwTHsZJwmKsiNAsHJEkxooRRgMVDCsmWIIVD9FXXDOOFQ-nQolgS0nCRXN6Xw3bm1Q1D91TczrDQW22M0KZh6I5ySo62i7YRLcnqHcL0kT1BOOdguFc9ASTXYLhamzkGNkl1wS8J0jXgsOj3hYMj8J1bi5-uO9hML3O8rydbIYIrLnMIR1FvqwhQlXu_Cg6dukKjcvC1WWbocZtpggaXap4NTyBAs1b-2fgTWq8OfrgoaiOTgJppE-gOHYWqoXxPuTCKjAfpWFNsU5Rd9jrRMxIhP6sTZ751Z2HYOItXJk699F9jFsAHT0K0bReLl3pzyAHOF-sqmxm8remMHN4CGCreALFVt0N1GYadfOoE3gBoI_L2jfGDoba0-jFcsN8AaDO6_wGyqw6PH49jQ2oHvMFgJrkroKJKy6NPxjWHZ0NsIaNOv4LwPbeVB7Ksfdmdl0djK6v1YfX8tHtct8A4LBF8FDi_R3M0llEn551T8Esp7kpDky5G_HNtgQeapnfM-TvbFqXmZ1PygdzzjaNDZ6OjRr-9wvyz5AX4J8e4rfgoSwya3zm7IFbc09nszn3Jr5nwI9z59KxTafGpodWDHdUej8zgY-MTVE7s4ZF1f896Ce5u4Hq6UHvkrup_O8LsG1l8Mlcw4MnYJPkTeU_3tXspXpTefR5AXZddKC1xHrn5Hc4Dx-KwpXe5BOT5weeh7sqG3QdH7UT3y8HHDvnn-E0vIWZW31yHg7N832F_uWfuRVas7_ppqxHVdeD-C2Dz-g_zhX_bBoJYfSv29Fp6wmPbl9hgnh4aJCt-xdhPAV_28IIzyhrX_DeDC5MmfnVa3Qxvng3mK5Cv6TKKkjRH_AZckQHkzIrKmfRL-F50Cg3dl-jmA0-FMs8m2W-eo3I4IeYIO9QYb5kRV2g0-wKBpT_BWV2VoIJa7YVBJouAdIBFf2pe7V8synB2D2X9cMusxfmcvywy_yFuZw87LJ4WS4z8rDL8oW5TB92Wb0sl_d6_LmpzQfjJXxBkxzMDZT3_f17myJfI0bu-k4F2efNOE0rxBt4inw1uwfkjp3fB8NdXS2MTQeTRVaEYni6zMrMo-kigzw9GNC2YPwQQHqH3mcloItgzhs72_AnLk_7_O3O833OL5rSeTBx9s8aSlf-tUJtNf0CHBf7HL906WpwCvPMWXSeGw_7HF638F6j4x9v_w5HcZrNF96G0P7PUOQ-KPOmkh2clzCry8qV6MTU1ufgqycFYc8p3-X8rrhtB7W3GrgM9djgOCQj7yygTyWY9HBATPadP3M3UID1nft7grUL0tYgbse1t2S4hNwPJguTWXQcht_kmrA1loVx1cP-7q0XTFHn4Acf7eoLGrfj53B57514Ip69xUToN9DBx6XJ0UVm5980TW0H-TgwdG-dEdCwZ0bzqBvwWDT9H_Sz8cmHyR04eXYF6Co31fXgbXaTWWg8Q-8bzqHYdlhmey0Xxpq15Xc-fArO0VlgPYtpvtd07bOw2tr6SWls5p8Js3iE4WNTmdw_j135CLvjAvxiVT3Z8hT8umREPvM59F6K6wqmMHM2bbu5zbvplckr6D5S5s43L9_9fu_tp8GuOfK1FOt979si1bUVOxm-RebOh71OUGwR7NpVnYzculjTw-hE1DYRyHse6S0SbZLfyMRbZEKu6e9Rskumt0OUbBFqYn5nt8O_MzRdhHULY5dOf2V2oA7v6fADdXrfdKk4UKf_YVlu02mP7hR800dpeidhNHH2Kpu3J9ou625RsFCsmisRIVsXl1COonh9mL4WfHdjqraVvBbVsWq3fnjUGRge3f93mv8CQIYVnQ=="
+  },
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "calibrated": false,
+    "checkedAt": "2026-11-25T23:57:02.643Z"
+  },
+  "gemInfo": {
+    "Blood and Sand": {
+      "requiredLevel": 4,
+      "quest": {
+        "act": 1,
+        "quest": "Breaking Some Eggs",
+        "classes": [
+          "Duelist"
+        ]
+      },
+      "free": false,
+      "color": "r"
+    },
+    "Boneshatter": {
+      "requiredLevel": 28,
+      "quest": null,
+      "free": false,
+      "color": "r"
+    },
+    "Brutality": {
+      "requiredLevel": 38,
+      "quest": {
+        "act": 4,
+        "quest": "The Eternal Nightmare",
+        "classes": [
+          "Marauder"
+        ]
+      },
+      "free": true,
+      "color": "r"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "quest": null,
+      "free": false,
+      "color": "r"
+    },
+    "Cleave": {
+      "requiredLevel": 1,
+      "quest": {
+        "act": 1,
+        "quest": "Enemy at the Gate",
+        "classes": [
+          "Duelist"
+        ]
+      },
+      "free": false,
+      "color": "r"
+    },
+    "Close Combat": {
+      "requiredLevel": 18,
+      "quest": {
+        "act": 2,
+        "quest": "Sharp and Cruel",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Ranger"
+        ]
+      },
+      "free": true,
+      "color": "g"
+    },
+    "Decoy Totem": {
+      "requiredLevel": 4,
+      "quest": {
+        "act": 1,
+        "quest": "Breaking Some Eggs",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Scion"
+        ]
+      },
+      "free": true,
+      "color": "r"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "quest": {
+        "act": 3,
+        "quest": "Lost in Love",
+        "classes": [
+          "Marauder"
+        ]
+      },
+      "free": true,
+      "color": "r"
+    },
+    "Enduring Cry": {
+      "requiredLevel": 10,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Duelist",
+          "Marauder"
+        ]
+      },
+      "free": true,
+      "color": "r"
+    },
+    "Faster Attacks": {
+      "requiredLevel": 8,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Ranger",
+          "Scion",
+          "Shadow"
+        ]
+      },
+      "free": true,
+      "color": "g"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "quest": null,
+      "free": false,
+      "color": "r"
+    },
+    "Leap Slam": {
+      "requiredLevel": 10,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Scion",
+          "Templar"
+        ]
+      },
+      "free": true,
+      "color": "r"
+    },
+    "Melee Physical Damage": {
+      "requiredLevel": 18,
+      "quest": {
+        "act": 2,
+        "quest": "Sharp and Cruel",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Scion",
+          "Shadow",
+          "Templar"
+        ]
+      },
+      "free": true,
+      "color": "r"
+    },
+    "Pulverise": {
+      "requiredLevel": 31,
+      "quest": {
+        "act": 3,
+        "quest": "A Fixture of Fate",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Templar"
+        ]
+      },
+      "free": true,
+      "color": "r"
+    },
+    "Ruthless": {
+      "requiredLevel": 1,
+      "quest": {
+        "act": 1,
+        "quest": "Mercy Mission",
+        "classes": [
+          "Duelist",
+          "Scion",
+          "Templar"
+        ]
+      },
+      "free": false,
+      "color": "r"
+    }
+  },
+  "seedHash": "cb207c7644b1"
+}

@@ -235,6 +235,7 @@ const index = {
     summary: build.summary,
     status: build.status,
     seedHash: build.seedHash,
+    ...(build.filter ? { filter: build.filter } : {}),
   })),
 };
 

@@ -1,9 +1,11 @@
 name: Validate builds
 
-# The PoB drift test (PLAN-BUILDS.md §11 P1). It needs LuaJIT and a pinned PoB
+# The PoB drift test (PLAN-BUILDS.md §11). It needs LuaJIT and a pinned PoB
 # checkout, so it stays out of `npm test` and `ci.yml`: those must stay fast and
-# offline. A change to any input of the build pipeline re-runs it, and the weekly
-# schedule re-proves the committed reports without fetching anything new.
+# offline. A change to any input of the build pipeline re-runs it, and the
+# nightly schedule (D12) re-proves the committed reports without fetching
+# anything new. A green nightly run is P2's acceptance: same inputs, same
+# numbers, no diff.
 
 on:
   pull_request:
@@ -16,7 +18,9 @@ on:
       - 'package.json'
       - '.github/workflows/validate-builds.yml'
   schedule:
-    - cron: '17 4 * * 1'
+    # Nightly, per D12. The run must leave src/generated/builds untouched; if a
+    # number moves, the drift step fails and a human re-verifies and commits.
+    - cron: '17 4 * * *'
   workflow_dispatch:
 
 permissions:

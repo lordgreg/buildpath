@@ -247,6 +247,25 @@ describe('build mode', () => {
     ).toBe(false);
   });
 
+  it('applies each seed filter slot over the ascendancy defaults (D15)', () => {
+    for (const entry of BUILDS) {
+      const full = JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as { filter?: { slots: Record<string, { itemClasses: string[] } | null> } };
+      if (!full.filter?.slots) continue;
+      const archetype = resolveSelection({ mode: 'build', buildId: entry.id });
+      for (const [slot, spec] of Object.entries(full.filter.slots)) {
+        const key = slot as keyof typeof archetype.slots;
+        if (spec === null) {
+          // A two-handed build has no offhand to highlight.
+          expect(archetype.slots[key], `${entry.id}/${slot}`).toBeUndefined();
+        } else {
+          expect(archetype.slots[key], `${entry.id}/${slot}`).toEqual(spec);
+        }
+      }
+    }
+  });
+
   it('resolves to a valid archetype and a build-named filter', () => {
     for (const entry of BUILDS) {
       const selection = { mode: 'build' as const, buildId: entry.id };

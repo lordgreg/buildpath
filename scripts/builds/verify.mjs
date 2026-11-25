@@ -44,6 +44,22 @@ const knownBases = new Set(
 const gemLevels = JSON.parse(
   readFileSync(resolve(root, 'src/generated/gem-levels.json'), 'utf8'),
 ).gems;
+/**
+ * PoB's config defaults put a level-83 monster in front of every checkpoint,
+ * including a level-12 one: `enemyLevel` moves the enemy's accuracy and life,
+ * but evasion is a separate input that stays at 10k. Read the oracle's own
+ * table so the early gates face the monster a character that level fights.
+ */
+const monsterEvasion = (() => {
+  const path = resolve(pobDir, 'Data/Misc.lua');
+  if (!existsSync(path)) return [];
+  const match = readFileSync(path, 'utf8').match(/monsterEvasionTable = \{([^}]*)\}/);
+  if (!match) return [];
+  return match[1]
+    .split(',')
+    .map((value) => Number(value.trim()))
+    .filter((value) => Number.isFinite(value));
+})();
 
 if (!existsSync(luaScript)) throw new Error('missing verify.lua');
 if (!existsSync(resolve(pobDir, 'HeadlessWrapper.lua'))) {
@@ -315,13 +331,22 @@ function verifySeed(seed) {
       bandit: seed.bandit === 'kill-all' ? 'None' : seed.bandit,
       pantheon: seed.pantheon,
       targets: seed.tree?.targets ?? [],
+      keystones: seed.tree?.keystones ?? [],
       ascendancyPoints: seed.ascendancyOrder,
       skillGroups: groups,
       items: items.map((item) => ({ slot: item.slot, text: item.text })),
       jewels: jewels.map((jewel) => ({ text: jewel.text })),
       flasks: synthesizeFlasks(bracket.flasks, budget),
       jewelCount: jewels.length,
-      config: [],
+      config: [
+        { name: 'enemyLevel', value: `number="${checkpoint.enemyLevel ?? 83}"` },
+        ...(monsterEvasion[(checkpoint.enemyLevel ?? 83) - 1]
+          ? [{
+              name: 'enemyEvasion',
+              value: `number="${monsterEvasion[(checkpoint.enemyLevel ?? 83) - 1]}"`,
+            }]
+          : []),
+      ],
     }, { xmlOut: id === codeCheckpoint ? codeXmlPath : undefined });
     // PoB silently drops a node it cannot allocate (cluster-only nodes used to
     // do exactly that), so compare what it parsed with what the planner meant.

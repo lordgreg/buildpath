@@ -8,6 +8,8 @@
 #
 # `points` is a reviewed per-patch leveling budget (D30), not a quest count.
 # `labs` is how many ascendancy labs are reachable by that checkpoint.
+# `enemyLevel` is what the gate measures against: PoB defaults to level 83, which
+# would ask a level-12 character to hit a red-map monster.
 schemaVersion: 1
 treeVersion: "3_30"
 checkpoints:
@@ -18,6 +20,7 @@ checkpoints:
     budget: starting
     gemLevelCap: 20
     gemQuality: 0
+    enemyLevel: 13
   until-28:
     level: 28
     points: 30
@@ -25,6 +28,7 @@ checkpoints:
     budget: early
     gemLevelCap: 20
     gemQuality: 0
+    enemyLevel: 28
   until-68:
     level: 68
     points: 78
@@ -32,6 +36,7 @@ checkpoints:
     budget: ssf-start
     gemLevelCap: 20
     gemQuality: 10
+    enemyLevel: 68
   maps-early:
     level: 80
     points: 90
@@ -39,6 +44,7 @@ checkpoints:
     budget: ssf-start
     gemLevelCap: 20
     gemQuality: 20
+    enemyLevel: 75
   maps-red:
     level: 90
     points: 105
@@ -46,6 +52,7 @@ checkpoints:
     budget: ssf-week1
     gemLevelCap: 20
     gemQuality: 20
+    enemyLevel: 83
   pinnacle:
     level: 96
     points: 113
@@ -53,3 +60,4 @@ checkpoints:
     budget: trade
     gemLevelCap: 21
     gemQuality: 20
+    enemyLevel: 84

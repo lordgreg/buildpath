@@ -145,6 +145,65 @@ end
 local budget = math.max(2, (spec.points or 100) - 1)
 local planned, taken, skipped = {}, {}, 0
 
+-- Keystones the seed declares are bought first. A build that takes Resolute
+-- Technique must have it, not "if the greedy loop happens to reach it": the
+-- whole point of the node is that every attack hits. The path is bought like
+-- any other, so the point budget still decides whether the seed is legal.
+-- Keystones are not traversable, so the search allows the target itself.
+local function pathTo(target)
+  local parent, queue, head, seen = {}, {}, 1, {}
+  for id in pairs(allocated) do
+    seen[id] = true
+    queue[#queue + 1] = id
+  end
+  while head <= #queue do
+    local current = queue[head]
+    head = head + 1
+    if current == target then break end
+    for _, other in ipairs(neighbours[current] or {}) do
+      other = tonumber(other)
+      if other and not seen[other] then
+        local nextNode = nodes[other] or nodes[tostring(other)]
+        if nextNode and (traversable(other) or other == target) then
+          seen[other] = true
+          parent[other] = current
+          queue[#queue + 1] = other
+        end
+      end
+    end
+  end
+  if not seen[target] then return nil end
+  local path, cursor = {}, target
+  while cursor and not allocated[cursor] do
+    table.insert(path, 1, cursor)
+    cursor = parent[cursor]
+  end
+  return path
+end
+
+for _, name in ipairs(spec.keystones or {}) do
+  local target
+  for id, node in pairs(nodes) do
+    if node.isKeystone and slug(node.name) == slug(name) then
+      target = tonumber(id)
+      break
+    end
+  end
+  if not target then error("unknown keystone: " .. tostring(name)) end
+  if not allocated[target] then
+    local path = pathTo(target)
+    if not path then error("keystone " .. name .. " is unreachable from the class start") end
+    if allocatedCount() + #path > budget then
+      -- A level-12 character cannot have taken a keystone ten points away.
+      -- Defer it to the checkpoint whose budget can afford it, and say so.
+      print("WARN " .. name .. " deferred: " .. #path .. " points do not fit this checkpoint")
+    else
+      for _, id in ipairs(path) do allocated[id] = true end
+      planned[#planned + 1] = name
+    end
+  end
+end
+
 -- Jewel sockets first. They cost one point each and carry a Ghastly Eye, which
 -- is worth more than most notables. Allocating them *after* the notable loop
 -- left no budget for them, so the jewels were listed in the gear but never
@@ -309,7 +368,11 @@ end
 
 local function gemXml(group, gem, level, quality, main)
   local data = gemData[gem]
-  if not data then return nil end
+  if not data then
+    -- PoB silently drops a gem it does not know, and the gate then measures a
+    -- different build from the one the page lists. Fail instead.
+    error("PoB has no gem data for \"" .. tostring(gem) .. "\"")
+  end
   return string.format(
     '\t\t\t<Gem gemId="%s" skillId="%s" nameSpec="%s" level="%d" quality="%d" qualityId="Default" enabled="true"%s/>\n',
     data.path, data.effectId or "", gem, level, quality, main and ' mainActiveSkill="1"' or ""
