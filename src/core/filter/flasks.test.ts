@@ -12,6 +12,7 @@ function flask(name: string, rarity: PreviewItem['rarity'], itemLevel = 60): Pre
     baseType: name,
     rarity,
     itemLevel,
+    areaLevel: 60,
     identified: true,
   };
 }

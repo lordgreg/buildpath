@@ -17,7 +17,7 @@ describe('composed presets', () => {
     const normal = getPreset('endgame', 'soft');
     expect(normal.gear).toMatchObject({
       rareMinItemLevel: 80,
-      normalMinItemLevel: 68,
+      normalMinItemLevel: 84,
       magicMinItemLevel: 75,
       highlightLinks: true,
     });
@@ -66,6 +66,58 @@ describe('composed presets', () => {
     expect(getPreset('leveling', 'uber').gear.magicMinItemLevel).toBe(85);
   });
 
+  it('gates leveling gear on the area level', () => {
+    const stages = getPreset('leveling', 'soft').gearStages;
+    expect(
+      stages.map((stage) => [stage.areaLevel.min, stage.areaLevel.max ?? null]),
+    ).toEqual([
+      [1, 9],
+      [10, 19],
+      [20, 67],
+      [68, null],
+    ]);
+    expect(stages[0]).toMatchObject({
+      normalMinItemLevel: 0,
+      magicMinItemLevel: 0,
+    });
+    expect(stages[1]).toMatchObject({
+      normalMinItemLevel: null,
+      normalMinSockets: 4,
+      magicMinItemLevel: 0,
+    });
+    expect(stages[2]).toMatchObject({
+      normalMinItemLevel: null,
+      normalMinSockets: 4,
+      magicMinItemLevel: null,
+    });
+    expect(getPreset('endgame', 'soft').gearStages).toEqual([]);
+  });
+
+  it('gates the endgame map cutoff on the area level', () => {
+    expect(getPreset('endgame', 'soft').maps).toMatchObject({
+      minTier: 1,
+      cutoffAreaLevel: null,
+    });
+    expect(getPreset('endgame', 'strict').maps).toMatchObject({
+      minTier: 11,
+      cutoffAreaLevel: 78,
+    });
+    expect(getPreset('endgame', 'uber').maps).toMatchObject({
+      minTier: 15,
+      cutoffAreaLevel: 82,
+    });
+    for (const strictness of ['soft', 'strict', 'uber'] as const) {
+      expect(getPreset('leveling', strictness).maps.minTier).toBeNull();
+    }
+  });
+
+  it('keeps decent scroll stacks in leveling strict tiers', () => {
+    expect(getPreset('leveling', 'soft').currency.scrollMinStack).toBeNull();
+    expect(getPreset('leveling', 'strict').currency.scrollMinStack).toBe(3);
+    expect(getPreset('leveling', 'uber').currency.scrollMinStack).toBe(3);
+    expect(getPreset('endgame', 'strict').currency.scrollMinStack).toBeNull();
+  });
+
   it('gates leveling gems and silences them', () => {
     expect(getPreset('leveling', 'soft').gems).toMatchObject({
       minQuality: null,
@@ -85,9 +137,10 @@ describe('composed presets', () => {
   });
 
   it('raises the white and blue floors with strictness', () => {
+    // Whites are the crafting-base band: 84 soft, 86 strict and uber.
     const whites: Record<string, [number, number, number]> = {
-      leveling: [0, 68, 75],
-      endgame: [68, 75, 80],
+      leveling: [84, 86, 86],
+      endgame: [84, 86, 86],
     };
     const blues: Record<string, [number, number, number]> = {
       leveling: [10, 80, 85],

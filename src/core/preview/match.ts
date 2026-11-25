@@ -27,6 +27,8 @@ export interface PreviewItem {
   areaLevel?: number;
   sockets?: number;
   linkedSockets?: number;
+  /** Colours of each linked group, e.g. ["RGB", "B"]. */
+  socketGroups?: string[];
   quality?: number;
   stackSize?: number;
   mapTier?: number;
@@ -97,6 +99,16 @@ export function ruleMatches(rule: Rule, item: PreviewItem): boolean {
   if (!inRange(item.quality ?? 0, rule.quality)) return false;
   if (!inRange(item.sockets ?? 0, rule.sockets)) return false;
   if (!inRange(item.linkedSockets ?? 0, rule.linkedSockets)) return false;
+  if (rule.socketGroup) {
+    const wanted = rule.socketGroup.toUpperCase();
+    const groups = (item.socketGroups ?? []).map((group) =>
+      group.toUpperCase(),
+    );
+    // `SocketGroup "RGB"` means one linked group holding all three colours.
+    if (!groups.some((group) => [...wanted].every((c) => group.includes(c)))) {
+      return false;
+    }
+  }
   if (!inRange(item.mapTier, rule.mapTier)) return false;
 
   if (

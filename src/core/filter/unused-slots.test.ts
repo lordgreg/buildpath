@@ -156,7 +156,7 @@ const selection = { mode: 'family', familyId: 'minion' } as const;
 
 describe('unused-slot rares', () => {
   it('hides a rare sceptre in the minion preset at every phase and strictness', () => {
-    const [item] = parseItemText(SCEPTRE);
+    const [item] = parseItemText(SCEPTRE, { areaLevel: 45 });
     expect(item?.itemClass).toBe('Sceptres');
     expect(item?.baseType).toBe('Shadow Sceptre');
 
@@ -173,7 +173,7 @@ describe('unused-slot rares', () => {
   });
 
   it('hides a rare one-hand sword in the minion preset at every phase and strictness', () => {
-    const [item] = parseItemText(SWORD);
+    const [item] = parseItemText(SWORD, { areaLevel: 45 });
     expect(item?.itemClass).toBe('One Hand Swords');
     expect(item?.baseType).toBe('Baselard');
 
@@ -194,7 +194,7 @@ describe('unused-slot rares', () => {
       ['str helmet', REAVER_HELMET],
       ['str/dex body armour', HUSSAR_BRIGANDINE],
     ] as const) {
-      const [item] = parseItemText(text);
+      const [item] = parseItemText(text, { areaLevel: 45 });
       expect(item, label).toBeTruthy();
       for (const phase of ['leveling', 'endgame'] as const) {
         for (const strictness of ['soft', 'strict', 'uber'] as const) {
@@ -210,7 +210,7 @@ describe('unused-slot rares', () => {
   });
 
   it('hides a normal 4-link two-hand sword in the minion preset', () => {
-    const [item] = parseItemText(FOOTMAN_SWORD);
+    const [item] = parseItemText(FOOTMAN_SWORD, { areaLevel: 45 });
     expect(item?.itemClass).toBe('Two Hand Swords');
     expect(item?.linkedSockets).toBe(4);
 
@@ -227,7 +227,7 @@ describe('unused-slot rares', () => {
   });
 
   it('hides a rare thrusting sword in the minion preset', () => {
-    const [item] = parseItemText(BURNISHED_FOIL);
+    const [item] = parseItemText(BURNISHED_FOIL, { areaLevel: 45 });
     expect(item?.itemClass).toBe('Thrusting One Hand Swords');
     expect(item?.baseType).toBe('Burnished Foil');
 
@@ -244,7 +244,7 @@ describe('unused-slot rares', () => {
   });
 
   it('keeps a magic int helmet visible while leveling', () => {
-    const [item] = parseItemText(HUBRIS_CIRCLET);
+    const [item] = parseItemText(HUBRIS_CIRCLET, { areaLevel: 15 });
     const filter = generateFilter({
       selection,
       phase: 'leveling',
@@ -254,7 +254,7 @@ describe('unused-slot rares', () => {
   });
 
   it('keeps a rare wand visible while leveling', () => {
-    const [item] = parseItemText(WAND);
+    const [item] = parseItemText(WAND, { areaLevel: 45 });
     const filter = generateFilter({
       selection,
       phase: 'leveling',

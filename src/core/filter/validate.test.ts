@@ -55,6 +55,15 @@ describe('validateFilter', () => {
     expect(issues[0]?.message).toContain('between 0 and 255');
   });
 
+  it('accepts a linked socket group and rejects other colours', () => {
+    expect(
+      validateFilter('Show\n    Rarity Magic\n    SocketGroup "RGB"'),
+    ).toEqual([]);
+    const issues = validateFilter('Show\n    Rarity Magic\n    SocketGroup "XYZ"');
+    expect(issues).toHaveLength(1);
+    expect(issues[0]?.message).toContain('socket group');
+  });
+
   it('rejects a bad minimap icon', () => {
     const issues = validateFilter(
       'Show\n    Rarity Rare\n    MinimapIcon 5 Orange Donut',

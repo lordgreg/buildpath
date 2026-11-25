@@ -1,7 +1,7 @@
 import type { Archetype, ItemSlot, SlotSpec } from '../../archetypes/types.ts';
 import { resolveSlotBases } from '../../data/resolve.ts';
 import { toFilterClass } from '../classes.ts';
-import type { Preset } from '../presets.ts';
+import type { GearStage, Phase, Preset } from '../presets.ts';
 import { SLOT_STYLES, type Rule, type Style, type StyleKind } from '../types.ts';
 
 const WEAPON_SLOTS = new Set<ItemSlot>(['weapon', 'offhand']);
@@ -120,8 +120,85 @@ export function usedFilterClasses(archetype: Archetype): Set<string> {
   return classes;
 }
 
-export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
+/** `area 1-9`, `area 68+`; used in rule comments so the pane explains itself. */
+function areaLabel(area: { min: number; max?: number }): string {
+  return area.max === undefined
+    ? `area ${area.min}+`
+    : `area ${area.min}-${area.max}`;
+}
+
+interface AreaBand {
+  areaLevel?: { min: number; max?: number };
+  value: number | null;
+}
+
+/**
+ * Consecutive stages with the same gate collapse into one band, so two areas
+ * that behave alike cost one block rather than two. The last stage is open
+ * ended, so merging it removes the upper bound.
+ */
+function mergeBands(
+  stages: readonly GearStage[],
+  pick: (stage: GearStage) => number | null,
+): AreaBand[] {
+  const bands: AreaBand[] = [];
+  for (const stage of stages) {
+    const value = pick(stage);
+    const last = bands.at(-1);
+    if (last && last.value === value && last.areaLevel) {
+      last.areaLevel = {
+        min: last.areaLevel.min,
+        ...(stage.areaLevel.max !== undefined
+          ? { max: stage.areaLevel.max }
+          : {}),
+      };
+      continue;
+    }
+    bands.push({ areaLevel: { ...stage.areaLevel }, value });
+  }
+  return bands;
+}
+
+function slotTarget(spec: SlotSpec): Pick<Rule, 'baseTypes' | 'classNames'> {
+  const bases = baseTypesFor(spec);
+  return bases.length > 0
+    ? { baseTypes: bases }
+    : { classNames: filterClassesFor(spec) };
+}
+
+export function gearRules(
+  archetype: Archetype,
+  preset: Preset,
+  phase: Phase,
+): Rule[] {
   const rules: Rule[] = [...jewelCoverageRules(archetype)];
+  const isLeveling = phase === 'leveling' && preset.gearStages.length > 0;
+  const stages = isLeveling ? preset.gearStages : [];
+
+  const magicBands: AreaBand[] = isLeveling
+    ? mergeBands(stages, (stage) => stage.magicMinItemLevel)
+    : [{ value: preset.gear.magicMinItemLevel }];
+  const normalBands: AreaBand[] = isLeveling
+    ? mergeBands(stages, (stage) => stage.normalMinItemLevel)
+    : [{ value: preset.gear.normalMinItemLevel }];
+
+  const socketStages = stages.filter(
+    (stage) => stage.normalMinSockets !== undefined,
+  );
+  const socketArea = socketStages.length
+    ? {
+        min: socketStages[0]!.areaLevel.min,
+        ...(socketStages.at(-1)!.areaLevel.max !== undefined
+          ? { max: socketStages.at(-1)!.areaLevel.max! }
+          : {}),
+      }
+    : null;
+  const socketCount = socketStages[0]?.normalMinSockets;
+
+  const areaOf = (band: AreaBand) =>
+    isLeveling && band.areaLevel ? { areaLevel: band.areaLevel } : {};
+  const suffixOf = (band: AreaBand) =>
+    isLeveling && band.areaLevel ? ` (${areaLabel(band.areaLevel)})` : '';
 
   const excludedBases = new Set([
     ...(preset.gear.hiddenBases ?? []),
@@ -138,13 +215,10 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
     }
   }
 
-  for (const [slot, spec] of Object.entries(archetype.slots) as [
-    ItemSlot,
-    SlotSpec,
-  ][]) {
-    const bases = baseTypesFor(spec);
-    const classNames = bases.length > 0 ? undefined : filterClassesFor(spec);
-    const target = bases.length > 0 ? { baseTypes: bases } : { classNames };
+  const slots = Object.entries(archetype.slots) as [ItemSlot, SlotSpec][];
+
+  // Rare floors do not change by area, so they need no band.
+  for (const [slot, spec] of slots) {
     const rareMinItemLevel = ACCESSORY_SLOTS.has(slot)
       ? Math.min(preset.gear.rareMinItemLevel, ACCESSORY_ITEM_LEVEL)
       : preset.gear.rareMinItemLevel;
@@ -152,39 +226,79 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
     rules.push({
       action: 'Show',
       comment: `${slot} - rare`,
-      ...target,
+      ...slotTarget(spec),
       rarity: 'Rare',
       itemLevel: { min: rareMinItemLevel },
       ...(categoryFor(slot) ? { styleKind: categoryFor(slot) } : {}),
       style: slotStyle(slot),
     });
+  }
 
-    if (preset.gear.magicMinItemLevel !== null) {
+  for (const band of magicBands) {
+    if (band.value === null && !isLeveling) continue;
+    for (const [slot, spec] of slots) {
+      const floor = band.value === null ? 0 : band.value;
+      // With the magic link gate on, only gear that is never a link target
+      // (rings, amulets, belts, jewels, flasks) keeps a floor of its own.
+      if (band.value === null && !ACCESSORY_SLOTS.has(slot)) continue;
       rules.push({
         action: 'Show',
-        comment: `${slot} - magic`,
-        ...target,
+        comment: `${slot} - magic${suffixOf(band)}`,
+        ...slotTarget(spec),
+        ...areaOf(band),
         rarity: 'Magic',
-        itemLevel: { min: preset.gear.magicMinItemLevel },
+        itemLevel: { min: floor },
         ...(categoryFor(slot) ? { styleKind: categoryFor(slot) } : {}),
         style: quiet(slotStyle(slot)),
       });
     }
+  }
 
-    if (preset.gear.highlightLinks && SOCKET_SLOTS.has(slot)) {
-      // Links matter more than the item level floor, so every rarity the build
-      // can craft on keeps its highlight; uniques are handled separately.
+  if (preset.gear.highlightLinks) {
+    // Links matter more than the item level floor, so every rarity the build
+    // can craft on keeps its highlight; uniques are handled apart.
+    for (const [slot, spec] of slots) {
+      if (!SOCKET_SLOTS.has(slot)) continue;
       for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
         rules.push({
           action: 'Show',
           comment: `${slot} - ${rarity.toLowerCase()} 4+ links`,
-          ...target,
+          ...slotTarget(spec),
           rarity,
           linkedSockets: { min: 4 },
           style: SLOT_STYLES.link,
         });
       }
     }
+  }
+
+  if (isLeveling) {
+    for (const [slot, spec] of slots) {
+      if (!SOCKET_SLOTS.has(slot)) continue;
+      // A linked R-G-B group is a chromatic orb; worth a look all game.
+      rules.push({
+        action: 'Show',
+        comment: `${slot} - magic RGB links`,
+        ...slotTarget(spec),
+        rarity: 'Magic',
+        socketGroup: 'RGB',
+        style: SLOT_STYLES.link,
+      });
+    }
+  }
+
+  // White flasks are the only flasks a new character owns; keep them through
+  // the early acts, then let the junk rules hide them.
+  if (isLeveling && archetype.slots.flask) {
+    rules.push({
+      action: 'Show',
+      comment: 'flask - normal (area 1-29)',
+      ...slotTarget(archetype.slots.flask),
+      areaLevel: { min: 1, max: 29 },
+      rarity: 'Normal',
+      styleKind: 'flask',
+      style: quiet(slotStyle('flask')),
+    });
   }
 
   for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
@@ -197,24 +311,39 @@ export function gearRules(archetype: Archetype, preset: Preset): Rule[] {
     });
   }
 
+  // Four-socket whites run after the six-socket rules so a six-socket keeps
+  // the louder link highlight, and before the white floors so a 4-socket item
+  // below the crafting band still shows.
+  if (isLeveling && socketArea && socketCount !== undefined) {
+    for (const [slot, spec] of slots) {
+      if (!SOCKET_SLOTS.has(slot)) continue;
+      rules.push({
+        action: 'Show',
+        comment: `${slot} - normal ${socketCount}+ sockets (${areaLabel(socketArea)})`,
+        ...slotTarget(spec),
+        areaLevel: socketArea,
+        rarity: 'Normal',
+        sockets: { min: socketCount },
+        ...(categoryFor(slot) ? { styleKind: categoryFor(slot) } : {}),
+        style: quiet(slotStyle(slot)),
+      });
+    }
+  }
+
   // White base floors run after the 6-socket rules so a six-socket still wins
   // the link highlight, and skip flasks: a normal flask is never a crafting
   // base, so the junk rules hide it.
-  if (preset.gear.normalMinItemLevel !== null) {
-    for (const [slot, spec] of Object.entries(archetype.slots) as [
-      ItemSlot,
-      SlotSpec,
-    ][]) {
+  for (const band of normalBands) {
+    if (band.value === null) continue;
+    for (const [slot, spec] of slots) {
       if (slot === 'flask') continue;
-      const bases = baseTypesFor(spec);
-      const classNames = bases.length > 0 ? undefined : filterClassesFor(spec);
-      const target = bases.length > 0 ? { baseTypes: bases } : { classNames };
       rules.push({
         action: 'Show',
-        comment: `${slot} - normal`,
-        ...target,
+        comment: `${slot} - normal${suffixOf(band)}`,
+        ...slotTarget(spec),
+        ...areaOf(band),
         rarity: 'Normal',
-        itemLevel: { min: preset.gear.normalMinItemLevel },
+        itemLevel: { min: band.value },
         ...(categoryFor(slot) ? { styleKind: categoryFor(slot) } : {}),
         style: quiet(slotStyle(slot)),
       });

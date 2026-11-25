@@ -2,6 +2,18 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.55.0 — 2026-11-26
+
+The filter knows where you are.
+
+- Leveling filters now tighten by **area level** instead of making you re-download at every act. One file shows every build-relevant drop in areas 1-9, keeps magic and four-socket whites through 19, and from area 20 shows magic only when it is a 4-link or a linked R-G-B group — plus accessories, which stay worth an identify. From area 68 the white floor becomes the crafting band, so an ilvl 70 two-socket white body armour no longer shows at level 76.
+- Endgame whites are the crafting band alone: ilvl 84 on Soft, 86 on Strict and Uber, plus anything with a 4-link or 6 sockets. Below that band, a white item needs links to appear.
+- The Strict and Uber map cutoffs now wait for their own area. T11 maps are area 78 and T15 are 82 (area is 67 + tier), so a level 76 character running T1-T3 keeps every map they can actually use instead of losing T1-T10 to Strict. Soft still shows every tier.
+- Leveling Strict and Uber hide single Scrolls of Wisdom and Portal Scrolls but show stacks of three or more; Soft is unchanged.
+- White flasks show through area 29, because early characters have nothing else. The item tester gained an **Area level** field: a pasted item carries no area, and the leveling stages match on it.
+- The rule model learned `SocketGroup`, so the chromatic-recipe rule is a real condition, and the audit catalog gained stage fixtures (white 2-link at area 68, 4-socket white, RGB magic, early map drop, scroll stacks).
+- 576 tests.
+
 ## 0.54.0 — 2026-11-26
 
 The build page hands you its proof.

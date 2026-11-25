@@ -5,7 +5,7 @@
 # Phase: Endgame - Uber
 # League: Covens
 # Presets: de5857697151
-# Rules: 74 - Base types: 64
+# Rules: 73 - Base types: 64
 # Base data: RePoE 1d825f53356023dee0fbb3ec23d94057da8fe0ac (4f01123d)
 # Generated at https://lordgreg.github.io/buildpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -60,16 +60,6 @@ Show
     PlayAlertSound 2 220
     MinimapIcon 1 Cyan Diamond
 
-# helmet - magic
-Show
-    BaseType == "Barbute Helmet" "Close Helmet" "Cone Helmet" "Conqueror's Helmet" "Eternal Burgonet" "Ezomyte Burgonet" "General's Helmet" "Giantslayer Helmet" "Gladiator Helmet" "Iron Hat" "Reaver Helmet" "Royal Burgonet" "Samnite Helmet" "Siege Helmet"
-    Rarity Magic
-    ItemLevel >= 85
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # body - rare
 Show
     BaseType == "Arena Plate" "Astral Plate" "Battle Plate" "Bronze Plate" "Chestplate" "Colosseum Plate" "Copper Plate" "Crusader Plate" "Full Plate" "Gladiator Plate" "Glorious Plate" "Golden Plate" "Legion Plate" "Lordly Plate" "Majestic Plate" "Plate Vest" "Royal Plate" "Sun Plate" "Titan Plate" "War Plate"
@@ -81,16 +71,6 @@ Show
     SetBackgroundColor 0 0 0 255
     PlayAlertSound 2 220
     MinimapIcon 1 Cyan Diamond
-
-# body - magic
-Show
-    BaseType == "Arena Plate" "Astral Plate" "Battle Plate" "Bronze Plate" "Chestplate" "Colosseum Plate" "Copper Plate" "Crusader Plate" "Full Plate" "Gladiator Plate" "Glorious Plate" "Golden Plate" "Legion Plate" "Lordly Plate" "Majestic Plate" "Plate Vest" "Royal Plate" "Sun Plate" "Titan Plate" "War Plate"
-    Rarity Magic
-    ItemLevel >= 85
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
 
 # gloves - rare
 Show
@@ -104,16 +84,6 @@ Show
     PlayAlertSound 2 220
     MinimapIcon 1 Cyan Diamond
 
-# gloves - magic
-Show
-    BaseType == "Ancient Gauntlets" "Antique Gauntlets" "Bronze Gauntlets" "Goliath Gauntlets" "Guarding Gauntlets" "Iron Gauntlets" "Leviathan Gauntlets" "Plated Gauntlets" "Precursor Gauntlets" "Preserving Gauntlets" "Spiked Gloves" "Steel Gauntlets" "Thwarting Gauntlets" "Titan Gauntlets" "Vaal Gauntlets"
-    Rarity Magic
-    ItemLevel >= 85
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # boots - rare
 Show
     BaseType == "Ancient Greaves" "Antique Greaves" "Basemetal Treads" "Brimstone Treads" "Darksteel Treads" "Goliath Greaves" "Iron Greaves" "Leviathan Greaves" "Plated Greaves" "Precursor Greaves" "Reinforced Greaves" "Steel Greaves" "Titan Greaves" "Vaal Greaves"
@@ -125,16 +95,6 @@ Show
     SetBackgroundColor 0 0 0 255
     PlayAlertSound 2 220
     MinimapIcon 1 Cyan Diamond
-
-# boots - magic
-Show
-    BaseType == "Ancient Greaves" "Antique Greaves" "Basemetal Treads" "Brimstone Treads" "Darksteel Treads" "Goliath Greaves" "Iron Greaves" "Leviathan Greaves" "Plated Greaves" "Precursor Greaves" "Reinforced Greaves" "Steel Greaves" "Titan Greaves" "Vaal Greaves"
-    Rarity Magic
-    ItemLevel >= 85
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
 
 # belt - rare
 Show
@@ -148,16 +108,6 @@ Show
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
 
-# belt - magic
-Show
-    Class == "Belts"
-    Rarity Magic
-    ItemLevel >= 85
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # amulet - rare
 Show
     Class == "Amulets"
@@ -169,16 +119,6 @@ Show
     SetBackgroundColor 0 0 0 255
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
-
-# amulet - magic
-Show
-    Class == "Amulets"
-    Rarity Magic
-    ItemLevel >= 85
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
 
 # ring - rare
 Show
@@ -192,16 +132,6 @@ Show
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
 
-# ring - magic
-Show
-    Class == "Rings"
-    Rarity Magic
-    ItemLevel >= 85
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # jewel - rare
 Show
     BaseType == "Crimson Jewel"
@@ -213,16 +143,6 @@ Show
     SetBackgroundColor 20 26 58 255
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
-
-# jewel - magic
-Show
-    BaseType == "Crimson Jewel"
-    Rarity Magic
-    ItemLevel >= 85
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 20 26 58 255
 
 # flask - rare
 Show
@@ -236,16 +156,6 @@ Show
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
 
-# flask - magic
-Show
-    Class == "Life Flasks" "Utility Flasks"
-    Rarity Magic
-    ItemLevel >= 85
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 6 42 26 255
-
 # weapon - rare
 Show
     Class == "Two Hand Axes"
@@ -257,6 +167,96 @@ Show
     SetBackgroundColor 0 0 0 255
     PlayAlertSound 1 300
     MinimapIcon 1 Yellow Star
+
+# helmet - magic
+Show
+    BaseType == "Barbute Helmet" "Close Helmet" "Cone Helmet" "Conqueror's Helmet" "Eternal Burgonet" "Ezomyte Burgonet" "General's Helmet" "Giantslayer Helmet" "Gladiator Helmet" "Iron Hat" "Reaver Helmet" "Royal Burgonet" "Samnite Helmet" "Siege Helmet"
+    Rarity Magic
+    ItemLevel >= 85
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# body - magic
+Show
+    BaseType == "Arena Plate" "Astral Plate" "Battle Plate" "Bronze Plate" "Chestplate" "Colosseum Plate" "Copper Plate" "Crusader Plate" "Full Plate" "Gladiator Plate" "Glorious Plate" "Golden Plate" "Legion Plate" "Lordly Plate" "Majestic Plate" "Plate Vest" "Royal Plate" "Sun Plate" "Titan Plate" "War Plate"
+    Rarity Magic
+    ItemLevel >= 85
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# gloves - magic
+Show
+    BaseType == "Ancient Gauntlets" "Antique Gauntlets" "Bronze Gauntlets" "Goliath Gauntlets" "Guarding Gauntlets" "Iron Gauntlets" "Leviathan Gauntlets" "Plated Gauntlets" "Precursor Gauntlets" "Preserving Gauntlets" "Spiked Gloves" "Steel Gauntlets" "Thwarting Gauntlets" "Titan Gauntlets" "Vaal Gauntlets"
+    Rarity Magic
+    ItemLevel >= 85
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# boots - magic
+Show
+    BaseType == "Ancient Greaves" "Antique Greaves" "Basemetal Treads" "Brimstone Treads" "Darksteel Treads" "Goliath Greaves" "Iron Greaves" "Leviathan Greaves" "Plated Greaves" "Precursor Greaves" "Reinforced Greaves" "Steel Greaves" "Titan Greaves" "Vaal Greaves"
+    Rarity Magic
+    ItemLevel >= 85
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# belt - magic
+Show
+    Class == "Belts"
+    Rarity Magic
+    ItemLevel >= 85
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# amulet - magic
+Show
+    Class == "Amulets"
+    Rarity Magic
+    ItemLevel >= 85
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# ring - magic
+Show
+    Class == "Rings"
+    Rarity Magic
+    ItemLevel >= 85
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# jewel - magic
+Show
+    BaseType == "Crimson Jewel"
+    Rarity Magic
+    ItemLevel >= 85
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 20 26 58 255
+
+# flask - magic
+Show
+    Class == "Life Flasks" "Utility Flasks"
+    Rarity Magic
+    ItemLevel >= 85
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 6 42 26 255
 
 # weapon - magic
 Show
@@ -299,7 +299,7 @@ Show
 Show
     BaseType == "Barbute Helmet" "Close Helmet" "Cone Helmet" "Conqueror's Helmet" "Eternal Burgonet" "Ezomyte Burgonet" "General's Helmet" "Giantslayer Helmet" "Gladiator Helmet" "Iron Hat" "Reaver Helmet" "Royal Burgonet" "Samnite Helmet" "Siege Helmet"
     Rarity Normal
-    ItemLevel >= 80
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -309,7 +309,7 @@ Show
 Show
     BaseType == "Arena Plate" "Astral Plate" "Battle Plate" "Bronze Plate" "Chestplate" "Colosseum Plate" "Copper Plate" "Crusader Plate" "Full Plate" "Gladiator Plate" "Glorious Plate" "Golden Plate" "Legion Plate" "Lordly Plate" "Majestic Plate" "Plate Vest" "Royal Plate" "Sun Plate" "Titan Plate" "War Plate"
     Rarity Normal
-    ItemLevel >= 80
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -319,7 +319,7 @@ Show
 Show
     BaseType == "Ancient Gauntlets" "Antique Gauntlets" "Bronze Gauntlets" "Goliath Gauntlets" "Guarding Gauntlets" "Iron Gauntlets" "Leviathan Gauntlets" "Plated Gauntlets" "Precursor Gauntlets" "Preserving Gauntlets" "Spiked Gloves" "Steel Gauntlets" "Thwarting Gauntlets" "Titan Gauntlets" "Vaal Gauntlets"
     Rarity Normal
-    ItemLevel >= 80
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -329,7 +329,7 @@ Show
 Show
     BaseType == "Ancient Greaves" "Antique Greaves" "Basemetal Treads" "Brimstone Treads" "Darksteel Treads" "Goliath Greaves" "Iron Greaves" "Leviathan Greaves" "Plated Greaves" "Precursor Greaves" "Reinforced Greaves" "Steel Greaves" "Titan Greaves" "Vaal Greaves"
     Rarity Normal
-    ItemLevel >= 80
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -339,7 +339,7 @@ Show
 Show
     Class == "Belts"
     Rarity Normal
-    ItemLevel >= 80
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -349,7 +349,7 @@ Show
 Show
     Class == "Amulets"
     Rarity Normal
-    ItemLevel >= 80
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -359,7 +359,7 @@ Show
 Show
     Class == "Rings"
     Rarity Normal
-    ItemLevel >= 80
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -369,7 +369,7 @@ Show
 Show
     BaseType == "Crimson Jewel"
     Rarity Normal
-    ItemLevel >= 80
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -379,7 +379,7 @@ Show
 Show
     Class == "Two Hand Axes"
     Rarity Normal
-    ItemLevel >= 80
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -537,9 +537,21 @@ Show
     SetBackgroundColor 0 0 0 255
     MinimapIcon 1 Blue Circle
 
+# Maps - tier 15-10
+Show
+    Class == "Maps"
+    AreaLevel <= 81
+    MapTier >= 15
+    MapTier <= 10
+    SetFontSize 30
+    SetTextColor 226 214 176 255
+    SetBorderColor 226 214 176 255
+    SetBackgroundColor 0 0 0 255
+
 # Maps - below tier cutoff
 Hide
     Class == "Maps"
+    AreaLevel >= 82
 
 # Map fragments - tier 1
 Show
@@ -624,31 +636,19 @@ Show
     PlayAlertSound 4 200
     MinimapIcon 1 Red Star
 
-# Magic gear - slots this build does not use
+# Magic gear - not kept by the preset
 Hide
-    Class == "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
+    Class == "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Jewels" "Abyss Jewels"
     Rarity Magic
 
-# Magic gear - below item level 85
+# Magic gear - flask classes this build does not use
 Hide
-    Class == "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks" "Jewels" "Abyss Jewels"
+    Class == "Mana Flasks" "Hybrid Flasks"
     Rarity Magic
-    ItemLevel <= 84
 
-# Normal gear - slots this build does not use
-Hide
-    Class == "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
-    Rarity Normal
-
-# Normal gear - below item level 80
+# Normal gear - not kept by the preset
 Hide
     Class == "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks" "Jewels" "Abyss Jewels"
-    Rarity Normal
-    ItemLevel <= 79
-
-# Normal flasks
-Hide
-    Class == "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
     Rarity Normal
 
 # Rare gear - below item level 86

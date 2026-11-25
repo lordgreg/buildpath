@@ -102,6 +102,7 @@ const RARITIES = new Set([
 
 const QUOTED_LIST = /^(?:"[^"]*")(?:\s+"[^"]*")*$/;
 const QUOTED = /^"[^"]*"$/;
+const SOCKET_GROUP = /^"[RGBWrgbw-]+"$/;
 const EXACT_PREFIX = /^==\s+/;
 
 /** `Class == "A"` and `Class "A"` name the same list. */
@@ -215,7 +216,9 @@ function validateCondition(keyword: string, value: string): string | null {
       }
       return null;
     case 'SocketGroup':
-      if (!QUOTED.test(value)) return 'expects a quoted socket group';
+      if (!SOCKET_GROUP.test(value)) {
+        return 'expects a quoted socket group of R, G, B and W sockets';
+      }
       return null;
     case 'Corrupted':
     case 'Identified':
@@ -458,6 +461,9 @@ function parseCondition(
       return;
     case 'HasExplicitMod':
       rule.hasExplicitMod = parseQuotedList(value);
+      return;
+    case 'SocketGroup':
+      rule.socketGroup = value.replace(/^"|"$/g, '').toUpperCase();
       return;
     case 'Rarity':
       if (

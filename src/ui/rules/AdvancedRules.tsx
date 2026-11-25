@@ -540,6 +540,7 @@ export default function AdvancedRules({
   const [search, setSearch] = useState('');
   const [message, setMessage] = useState<string | null>(null);
   const [testText, setTestText] = useState('');
+  const [testAreaLevel, setTestAreaLevel] = useState(68);
   const [testResult, setTestResult] = useState<string | null>(null);
   const [dragged, setDragged] = useState<number | null>(null);
   const [highlightKey, setHighlightKey] = useState<string | null>(null);
@@ -782,7 +783,7 @@ export default function AdvancedRules({
   });
 
   const testItem = () => {
-    const [item] = parseItemText(testText);
+    const [item] = parseItemText(testText, { areaLevel: testAreaLevel });
     if (!item) {
       setTestResult('No item block found.');
       return;
@@ -1268,6 +1269,22 @@ export default function AdvancedRules({
               placeholder="Paste an item block"
               className="mt-1 h-20 w-full rounded border border-ink-600 bg-ink-950 p-2 font-mono text-[10px] text-zinc-300"
             />
+            <label className="mt-1 flex items-center gap-2 text-[10px] text-zinc-500">
+              Area level
+              <input
+                type="number"
+                min={1}
+                max={100}
+                value={testAreaLevel}
+                onChange={(event) =>
+                  setTestAreaLevel(Number(event.target.value) || 1)
+                }
+                className="w-16 rounded border border-ink-600 bg-ink-950 px-1 py-0.5 font-mono text-[10px] text-zinc-300"
+              />
+              <span className="text-zinc-600">
+                leveling stages tighten on this
+              </span>
+            </label>
             <button
               type="button"
               onClick={testItem}

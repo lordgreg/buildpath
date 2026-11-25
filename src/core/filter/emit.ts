@@ -143,6 +143,9 @@ function ruleLines(rule: Rule): string[] {
       lines.push(INDENT + line);
     }
   }
+  if (rule.socketGroup) {
+    lines.push(`${INDENT}SocketGroup "${rule.socketGroup}"`);
+  }
   if (rule.mapTier) {
     for (const line of range('MapTier', rule.mapTier)) {
       lines.push(INDENT + line);

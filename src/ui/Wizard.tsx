@@ -55,8 +55,8 @@ import {
 } from './wizardState.ts';
 
 const PHASES: { id: Phase; label: string; hint: string }[] = [
-  { id: 'leveling', label: 'Leveling', hint: 'Acts and early maps' },
-  { id: 'endgame', label: 'Endgame', hint: 'Geared character' },
+  { id: 'leveling', label: 'Leveling', hint: 'Acts, tightens by area level' },
+  { id: 'endgame', label: 'Endgame', hint: 'Geared character, maps T1+' },
 ];
 
 const MODES: { id: BuildMode; label: string; hint: string }[] = [

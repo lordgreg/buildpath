@@ -50,10 +50,10 @@ describe('reported leaks', () => {
     }
   });
 
-  it('shows a normal glove on a matching base at the loosest leveling tier', () => {
+  it('shows a normal glove on a matching base in the first leveling stage', () => {
     const result = evaluateRules(
       rulesFor('deadeye-lightning-arrow', 'leveling', 'soft'),
-      item('report-normal-gloves'),
+      { ...item('report-normal-gloves'), areaLevel: 5 },
     );
     expect(result.shown, result.reason).toBe(true);
   });
@@ -75,7 +75,7 @@ describe('reported leaks', () => {
     }
   });
 
-  it('hides low-level magic armour in strict leveling', () => {
+  it('hides unlinked magic armour in the mid leveling stage', () => {
     const rules = rulesFor('pathfinder-toxic-rain', 'leveling', 'strict');
     for (const id of ['report-magic-vest', 'report-magic-mitts']) {
       const result = evaluateRules(rules, item(id));
@@ -83,12 +83,35 @@ describe('reported leaks', () => {
     }
   });
 
-  it('shows low-level magic armour for a matching build in normal leveling', () => {
+  it('shows low-level magic armour in the early leveling stage', () => {
     const rules = rulesFor('pathfinder-toxic-rain', 'leveling', 'soft');
     for (const id of ['report-magic-vest', 'report-magic-mitts']) {
-      const result = evaluateRules(rules, item(id));
+      const result = evaluateRules(rules, {
+        ...item(id),
+        areaLevel: 15,
+      });
       expect(result.shown, `${id}: ${result.reason}`).toBe(true);
     }
+  });
+
+  it('keeps linked RGB magic armour in the mid leveling stage', () => {
+    const rules = rulesFor('necro-minions', 'leveling', 'strict');
+    const result = evaluateRules(rules, item('magic-rgb'));
+    expect(result.shown, result.reason).toBe(true);
+  });
+
+  it('judges the same white item by the area it dropped in', () => {
+    const rules = rulesFor('deadeye-lightning-arrow', 'leveling', 'soft');
+    const early = evaluateRules(rules, {
+      ...item('report-normal-gloves'),
+      areaLevel: 5,
+    });
+    const mid = evaluateRules(rules, {
+      ...item('report-normal-gloves'),
+      areaLevel: 30,
+    });
+    expect(early.shown, early.reason).toBe(true);
+    expect(mid.shown, mid.reason).toBe(false);
   });
 });
 
@@ -168,6 +191,21 @@ describe('preview matcher', () => {
         { action: 'Show', baseTypes: ['Silken Vest'] },
         itemA,
       ),
+    ).toBe(false);
+  });
+
+  it('matches a socket group that holds every wanted colour', () => {
+    expect(
+      ruleMatches({ action: 'Show', socketGroup: 'RGB' }, item('magic-rgb')),
+    ).toBe(true);
+    expect(
+      ruleMatches({ action: 'Show', socketGroup: 'RGB' }, {
+        ...item('magic-rgb'),
+        socketGroups: ['RG'],
+      }),
+    ).toBe(false);
+    expect(
+      ruleMatches({ action: 'Show', socketGroup: 'RGBW' }, item('magic-rgb')),
     ).toBe(false);
   });
 

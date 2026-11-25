@@ -40,6 +40,7 @@ function nameLines(lines: string[]): string[] {
 function parseSockets(value: string | undefined): {
   sockets?: number;
   linkedSockets?: number;
+  socketGroups?: string[];
 } {
   if (!value) return {};
   const groups = value
@@ -48,12 +49,14 @@ function parseSockets(value: string | undefined): {
     .filter(Boolean);
   let sockets = 0;
   let linkedSockets = 0;
+  const socketGroups: string[] = [];
   for (const group of groups) {
     const links = group.split('-').filter(Boolean);
     sockets += links.length;
     linkedSockets = Math.max(linkedSockets, links.length);
+    socketGroups.push(links.join('').toUpperCase());
   }
-  return { sockets, linkedSockets };
+  return { sockets, linkedSockets, socketGroups };
 }
 
 /** Numbers in a copied block may carry thousands separators. */
@@ -68,8 +71,14 @@ function count(value: string | undefined): number | undefined {
  * use the second line as the base type, and a magic item pasted with its base
  * line does the same; otherwise the name is the base, with a quality prefix
  * stripped.
+ *
+ * A pasted item carries no area level, but leveling stages match on it. The
+ * caller supplies the area it dropped in; omit it for endgame filters.
  */
-export function parseItemText(text: string): PreviewItem[] {
+export function parseItemText(
+  text: string,
+  options: { areaLevel?: number } = {},
+): PreviewItem[] {
   const normalized = text.replace(/\r\n/g, '\n');
   const blocks = normalized
     .split(/\n\s*\n(?=Item Class:)/i)
@@ -118,6 +127,9 @@ export function parseItemText(text: string): PreviewItem[] {
       baseType,
       rarity,
       itemLevel: count(field(lines, 'Item Level')) ?? 0,
+      ...(options.areaLevel !== undefined
+        ? { areaLevel: options.areaLevel }
+        : {}),
       ...(sockets.sockets !== undefined ? sockets : {}),
       ...(quality ? { quality: count(quality.replace(/[^\d,]/g, '')) } : {}),
       ...(stackSize !== undefined ? { stackSize } : {}),
