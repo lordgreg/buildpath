@@ -801,6 +801,17 @@ export default function Wizard() {
                   publishes. The filter highlights the bases that build wants,
                   including its leveling steps.
                 </p>
+                {state.buildId && (
+                  <p className="mt-2 text-xs text-zinc-500">
+                    <a
+                      href={`./build.html#build=${state.buildId}`}
+                      className="text-gold-300 underline underline-offset-2"
+                    >
+                      Read the guide
+                    </a>{' '}
+                    — gate report, leveling, ascendancy order and pantheon.
+                  </p>
+                )}
                 <div className="mt-3 grid gap-2 sm:grid-cols-2">
                   {BUILDS.map((entry) => (
                     <OptionButton

@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.42.0',
+    date: '2026-11-25',
+    title: 'Build guides, with a gate report behind every number',
+    notes: [
+      "A build guide page exists: `build.html#build=<id>` shows the gate report, leveling brackets, ascendancy order with labs, bandit, pantheon and the build-specific filter link. Every number on it comes from the committed build JSON.",
+      "The gate report is real. Path of Building runs headless in CI: for each checkpoint it plans a tree from the seed, assembles the build with synthesised budget gear, measures damage, life, EHP, max hit and resistances, and compares them against thresholds in `gates.yaml`. Failures are named, never summarised as \"failed\".",
+      "Gear is synthesised from budget constraints rather than hand-written items, and every item line is checked: PoB drops an unparseable line without saying so, so the pipeline asserts how many mods it parsed per item.",
+      "The Summon Skeletons Necromancer seed is published as a **draft**: it passes act 10 and misses damage at the map checkpoints. That is the honest state until gates are calibrated and repair exists.",
+      "PoB is a development and CI dependency only. Nothing from it ships to the browser.",
+    ],
+    commits: [],
+    compare: 'v0.41.0...v0.42.0',
+  },
+  {
     version: '0.41.0',
     date: '2026-11-25',
     title: 'BuildPath, and the first verified build seed',

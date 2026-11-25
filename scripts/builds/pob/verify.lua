@@ -195,20 +195,25 @@ for _, item in ipairs(spec.items or {}) do
   }
 end
 
-local gemPath = {}
+-- PoB resolves a gem by its metadata path plus its granted-effect id; without
+-- the effect id a <Gem> loads as an inert entry with no gemData, so supports
+-- silently do nothing and the gate measures an unsupported skill.
+local gemData = {}
 do
   local gems = dofile("Data/Gems.lua")
   for path, gem in pairs(gems) do
-    if gem.name and not gemPath[gem.name] then gemPath[gem.name] = path end
+    if gem.name and not gemData[gem.name] then
+      gemData[gem.name] = { path = path, effectId = gem.gameId or gem.grantedEffectId }
+    end
   end
 end
 
 local function gemXml(group, gem, level, quality, main)
-  local path = gemPath[gem]
-  if not path then return nil end
+  local data = gemData[gem]
+  if not data then return nil end
   return string.format(
-    '\t\t\t<Gem gemId="%s" nameSpec="%s" level="%d" quality="%d" enabled="true"%s/>\n',
-    path, gem, level, quality, main and ' mainActiveSkill="1"' or ""
+    '\t\t\t<Gem gemId="%s" skillId="%s" nameSpec="%s" level="%d" quality="%d" qualityId="Default" enabled="true"%s/>\n',
+    data.path, data.effectId or "", gem, level, quality, main and ' mainActiveSkill="1"' or ""
   )
 end
 
@@ -289,7 +294,19 @@ local minionDps = minion and minion.output and minion.output.CombinedDPS or 0
 local dps, dpsSource = playerDps, "player"
 if minionDps > playerDps then dps, dpsSource = minionDps, "minion" end
 
+-- Per-item parse count: the Node side asserts this against what it synthesised,
+-- because PoB drops unparseable lines without saying so (S6).
+local itemReport = {}
+for index, item in ipairs(build.itemsTab.items or {}) do
+  local parsed = 0
+  for _, line in ipairs(item.explicitModLines or {}) do
+    if line.modList and #line.modList > 0 then parsed = parsed + 1 end
+  end
+  itemReport[index] = { slot = tostring(item.slotName or spec.items[index] and spec.items[index].slot or index), parsed = parsed }
+end
+
 local result = {
+  items = itemReport,
   dpsSource = dpsSource,
   minionDps = minionDps,
   minionLife = minion and minion.output and minion.output.Life or nil,
@@ -326,6 +343,16 @@ if os.getenv("BUILD_DEBUG") then
     print(string.format("DEBUG item slot=%s base=%s mods=%d", tostring(item.slotName), tostring(item.baseName), mods))
   end
   local group = build.skillsTab and build.skillsTab.socketGroupList and build.skillsTab.socketGroupList[1]
+  if group then
+    for _, gem in ipairs(group.gemList or {}) do
+      print(string.format("DEBUG gem %s lvl=%s enabled=%s supports=%s", tostring(gem.nameSpec), tostring(gem.level), tostring(gem.enabled), tostring(gem.gemData and gem.gemData.support or false)))
+    end
+    if env and env.minion and env.minion.activeSkillList then
+      for _, skill in ipairs(env.minion.activeSkillList) do
+        print("DEBUG minion skill " .. tostring(skill.activeSkillId) .. " " .. tostring(skill.name))
+      end
+    end
+  end
   if group then
     print(string.format("DEBUG group slot=%s gems=%d label=%s", tostring(group.slot), #(group.gemList or {}), tostring(group.displayLabel)))
   end

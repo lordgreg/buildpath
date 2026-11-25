@@ -64,8 +64,37 @@ export interface CheckpointMetrics {
  * A hand-curated build seed, compiled to JSON. The pipeline proves it against
  * Path of Building and either publishes it or rejects it; it never invents one.
  */
+/** What the PoB oracle measured at one checkpoint, as published. */
+export interface GateResult {
+  pass: boolean;
+  level: number;
+  budget: string;
+  metrics: Omit<CheckpointMetrics, 'physicalMaxHit' | 'fireResist' | 'coldResist' | 'lightningResist'> & {
+    maxHit: number;
+    minionCount?: number;
+    resists: number[];
+  };
+  failures: string[];
+}
+
+export interface BuildPipelineInfo {
+  pobRef: string;
+  treeVersion: string;
+  calibrated: boolean;
+  checkedAt: string;
+}
+
+export interface SkillGroup {
+  slot: string;
+  gems: string[];
+}
+
 export interface Build extends BuildIndexEntry {
   schemaVersion: 1;
+  skillGroups: SkillGroup[];
+  minionCount?: number;
+  gates?: Record<string, GateResult>;
+  pipeline?: BuildPipelineInfo;
   leveling: { brackets: LevelingBracket[] };
   ascendancyOrder: AscendancyPoint[];
   bandit: BuildBandit;

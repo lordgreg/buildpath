@@ -85,11 +85,12 @@ function synthesizeGear(budgetId) {
       'Rarity: RARE',
       `Synthesised ${slot}`,
       spec.base,
-      `Unique ID: synth-${budgetId}-${slot}`,
+      // No `Unique ID` or `LevelReq` line: with either present PoB parses the
+      // item but silently drops every explicit mod (S6), and a gate would then
+      // measure a naked base type.
       `Item Level: ${budget.ilvl}`,
       'Quality: 0',
       ...(slot === 'body' ? [`Sockets: ${bodySockets}`] : []),
-      'LevelReq: 1',
       'Implicits: 0',
       ...lines.map((line) => line.mod),
     ].join('\n');
@@ -125,7 +126,28 @@ function runOracle(spec) {
 }
 
 function evaluateGate(checkpointId, metrics) {
-  return evaluateGatePure(metrics, gates.checkpoints[checkpointId], gates.resistanceGap ?? 0);
+  return evaluateGatePure(metrics, gates.checkpoints[checkpointId], 0);
+}
+
+/** PoB drops unparseable item lines silently, so compare against what we wrote. */
+function checkItemParsing(metrics, items) {
+  const failures = [];
+  const reported = metrics.items ?? [];
+  for (const item of items) {
+    const slotKey = formatSlot(item.slot);
+    const found = reported.find((entry) => entry.slot === slotKey);
+    const parsed = found?.parsed ?? 0;
+    if (parsed < item.expectedMods) {
+      failures.push(
+        `${slotKey}: PoB parsed ${parsed} of ${item.expectedMods} mods`,
+      );
+    }
+  }
+  return failures;
+}
+
+function formatSlot(slot) {
+  return slot;
 }
 
 function verifySeed(seed) {
@@ -157,14 +179,23 @@ function verifySeed(seed) {
       items: items.map((item) => ({ slot: item.slot, text: item.text })),
       config: [],
     });
-    const gate = evaluateGate(id, metrics);
+    // PoB reports one minion's damage; the build fights with all of them.
+    const minionCount = metrics.dpsSource === 'minion' ? (seed.minionCount ?? 1) : 1;
+    const scaled = { ...metrics, dps: metrics.dps * minionCount };
+    const gate = evaluateGate(id, scaled);
+    const itemFailures = checkItemParsing(metrics, items);
+    if (itemFailures.length > 0) {
+      gate.pass = false;
+      gate.failures.push(...itemFailures);
+    }
     allPass = allPass && gate.pass;
     report[id] = {
       pass: gate.pass,
       level: checkpoint.level,
       budget: budget.links ? `${checkpoint.budget} (${budget.links}-link)` : checkpoint.budget,
       metrics: {
-        dps: Math.round(metrics.dps),
+        dps: Math.round(scaled.dps),
+        minionCount,
         dpsSource: metrics.dpsSource,
         life: Math.round(metrics.life),
         energyShield: Math.round(metrics.energyShield ?? 0),
@@ -182,7 +213,7 @@ function verifySeed(seed) {
     };
     console.log(
       `${seed.id} ${id}: ${gate.pass ? 'pass' : 'FAIL'} ` +
-        `dps=${Math.round(metrics.dps).toLocaleString('en-US')} ` +
+        `dps=${Math.round(scaled.dps).toLocaleString("en-US")} ` +
         `life=${Math.round(metrics.life)} ehp=${Math.round(metrics.ehp)} ` +
         `hit=${Math.round(metrics.physicalMaxHit)} ` +
         `res=${[metrics.fireResist, metrics.coldResist, metrics.lightningResist].map((v) => Math.round(v)).join('/')}`,

@@ -23,6 +23,7 @@ export default defineConfig({
         changelog: resolve(root, 'changelog.html'),
         demo: resolve(root, 'demo.html'),
         tests: resolve(root, 'tests.html'),
+        build: resolve(root, 'build.html'),
       },
     },
   },
