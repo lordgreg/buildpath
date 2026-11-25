@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to FilterPath. The same data powers the in-site changelog.
+All notable changes to BuildPath. The same data powers the in-site changelog.
 
 ## 0.51.0 — 2026-11-25
 
