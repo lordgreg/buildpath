@@ -1,6 +1,6 @@
 # BuildPath — Plan
 
-> Revision 9. See §16 for the council reviews and what each round changed.
+> Revision 10. See §16 for the council reviews and what each round changed.
 
 Verified build guides, with the loot filter as one output instead of the whole
 product.
@@ -34,7 +34,7 @@ Three sources of truth, each doing only what it is good at:
 | Source | Answers | Trust |
 |---|---|---|
 | Game data (PoB `TreeData`/`Gems`, RePoE), diffed per PoB tag | What changed, what is legal | Machine, exact |
-| Ladder (public ladder API, character trees) | What actually works, incl. SSF; ascendancy order, links, gear | Evidence, not opinion |
+| Hand-curated seeds (`src/builds/*.yaml`), informed by reading public build pages by hand | Which build is worth proving, and its leveling/skill intent | Editorial, gated by the oracle |
 | PoB headless (Lua calc engine in CI) | Does *this* build hit the numbers | Oracle, reproducible |
 | A model | Why, when to respec, what to press | Draft only, human-signed prose |
 
@@ -60,8 +60,8 @@ Checked while picking a name; all three do part of this already.
 - **Exile Helper** — PoB's engine server-side, PoB code import/export.
 
 What none of them do: reproducibility and evidence as the product (pinned
-patch, gate report, ladder provenance, committed build JSON), and no account,
-no backend, no runtime network. The differentiator is **"every number is
+patch, gate report, committed build JSON), and no account, no backend, no
+runtime network. The differentiator is **"every number is
 machine-derived and reproducible"**, not "AI writes guides". The README must
 say that, not the reverse.
 
@@ -69,18 +69,18 @@ say that, not the reverse.
 
 | # | Decision |
 |---|---|
-| D1 | Breadth tier: ladder heatmap first; full per-ascendancy pages only where a gate-passing build exists. Revisit after 1.0. |
+| D1 | Breadth tier: per-ascendancy pages only where a gate-passing build exists. No popularity claims anywhere, because there is no population data (S2–S5). |
 | D2 | "Best possible" = passes published gates, PoB code attached. No subjective verdict. |
 | D3 | Machine gates publish; humans review prose only. |
-| D4 | Spike the public ladder API and re-open PLAN.md §2.3 with evidence. |
-| D5 | No session cookies, ever. If character trees need one, ladder ingest is dropped. |
+| D4 | Spike the public ladder API and re-open PLAN.md §2.3 with evidence. **Closed:** the spike ran (S2–S5) and the recorded decision stands — no ladder ingest of any kind. |
+| D5 | No session cookies, ever. Triggered in P0: character trees answer `Forbidden`, so there is no ladder ingest. |
 | D6 | PoB pinned as a **CI-only** oracle (Lua). Never in the browser, never a runtime dependency. |
 | D7 | Patch facts come from PoB `TreeData`/`Gems` diffs between tags, not from prose changelogs. |
 | D8 | SSF is the pass/fail gate for every flagship; trade is a badge on upgrade paths. |
 | D9 | Pantheon: one recommended default plus a one-line situational note. |
 | D10 | Filter phases stay `leveling \| endgame` × `soft \| strict \| uber`. A true third phase is backlog. |
 | D11 | Rename to **BuildPath**. Repo and directory already renamed; the code-side rename is two queued commits. |
-| D12 | Nightly ladder refresh; publisher enforces a 72h age gate per league; weekly re-verification. |
+| D12 | Nightly **verification** refresh (patch facts + gates, no fetching from pathofexile.com); publisher enforces a 72h age gate per league; weekly re-verification. |
 | D13 | Site: rebrand in place at the existing Pages deploy. No second repo until 1.0, then revisit `src/core` extraction. |
 | D14 | Build data: reviewed YAML seeds (`src/builds/`) + pipeline output committed as JSON. |
 | D15 | Filter gains `mode=build`; a build's `SlotSpec`s override family/ascendancy. Reuses the existing resolve/emit path. |
@@ -94,8 +94,9 @@ say that, not the reverse.
 | D23 | Gear at each checkpoint is **synthesised** from a reviewed budget file plus per-build overrides, never hand-written per build. Unknown mod ids fail the build (§7.7). |
 | D24 | The published PoB code is the `maps-red` gear set, and the page says so. One code, one named checkpoint. |
 | D25 | `factsHash` covers a **declared** input list per guide section, not every resolvable path. |
-| D26 | One build per (main skill, ascendancy). Clusters competing for the same pair are resolved by size; the rest are dropped, never published as near-duplicates. |
+| D26 | One build per (main skill, ascendancy). A second seed for a pair is rejected, never published as a near-duplicate under a suffixed id. |
 | D27 | The game patch identity comes from the PoB tag. While PoB has no tag for the live patch, nothing is verified and the site says **"waiting for PoB"** rather than verifying against last patch's data. |
+| D31 | **No pathofexile.com API calls, ever** — not in CI, not in the browser, not once. Build content is hand-curated; the oracle is PoB; the only network calls in the repo remain the existing RePoE export and poe.ninja economy refresh. |
 | D28 | Prose is drafted at most twice, then either signed or published as `auto-retry`; breadth pages are `auto-breadth`. A build publishes when its `summary` is `signed` or `auto-breadth`. Every section records its sign-off. |
 | D29 | Ascendancy points are explicit per lab: `ascendancyOrder` entries carry `{ node, lab }`, and each checkpoint assumes the labs reachable by that act. |
 | D30 | Leveling point budgets are a reviewed per-patch YAML, never derived from quest count at runtime. |
@@ -125,12 +126,11 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
 - **R9** Filters stay ASCII-only, deterministic, LF. Unchanged.
 - **R10** A stale build is delisted, not silently kept. Staleness = patch hash
   moved and the build was not re-verified.
-- **R11** Ladder ingest uses the official API only, never HTML scraping, with a
-  descriptive User-Agent, ≤5 req/s, keep-last-good on errors, and a cached
-  ETag per endpoint (same discipline as `refresh-economy.mjs`).
-- **R12** A repaired build is never presented as ladder-provenance. Mined and
-  repaired trees are shown separately, and repair beyond its bound rejects the
-  build (§7.5).
+- **R11** No request to `pathofexile.com` or `api.pathofexile.com` from this
+  project, in any form, at build time or run time (D31).
+- **R12** A repaired build never passes itself off as the seed it started from:
+  the seed and the repaired tree are both shown, and repair beyond its bound
+  rejects the build (§7.5).
 
 ## 6. Non-goals
 
@@ -155,8 +155,8 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
   "pob": { "ref": "2.51.0", "luaJIT": "2.1", "code": "eNq…" },
   "verifiedAt": "2026-12-01T00:00:00Z",
   "provenance": {
-    "source": "ladder", "league": "covens",
-    "sampleSize": 42, "seedHash": "…",
+    "source": "seed", "league": "covens",
+    "seedHash": "…",
     "tags": { "depth": "softcore", "ssf": true }
   },
   "class": "Ranger",
@@ -244,8 +244,8 @@ Rules:
 - `pob.code` is the XML of the `maps-red` gear set (D24), so the code a reader
   imports matches the checkpoint the page calls "what we tested".
 - `id` is unique across the catalogue: exactly one build per (main skill,
-  ascendancy). Competing clusters resolve by size and the losers are **dropped**,
-  never published as near-duplicates under a suffixed id (D26).
+  ascendancy). A second seed for the same pair is rejected, never published as a
+  near-duplicate under a suffixed id (D26).
 - `ascendancyOrder` entries carry the lab that grants them. The `act5` checkpoint
   assumes lab 1 (2 points), `act10` assumes labs 1–2 (4 points), so a gate never
   evaluates a tree with ascendancy points the player cannot have (D29).
@@ -264,11 +264,11 @@ Rules:
 ### 7.2 Pipeline
 
 ```
-PoB tag diff ──► patch facts (gems, tree, mods)      → src/generated/patch-facts.json
-ladder API ───► characters ─► normalize ─► cluster   → .cache/ladder/*
+PoB tag diff ──► patch facts (gems, tree, mods)   → src/generated/patch-facts.json
+hand-curated seeds (src/builds/*.yaml) — editorial input, reviewed by PR
                                    │
                                    ▼
-                             build seeds ─► PoB oracle ─► verify ─► repair ─► gates
+                    seed ─► PoB oracle ─► verify ─► repair ─► gates
                                    │
                                    ▼
               src/generated/builds/index.json + builds/<id>.json (committed)
@@ -281,21 +281,20 @@ ladder API ───► characters ─► normalize ─► cluster   → .cache/
 | Script | Job |
 |---|---|
 | `scripts/builds/patch-facts.mjs` | Diff PoB `TreeData`/`Gems` between two pinned tags; write the fact set. |
-| `scripts/builds/fetch-ladder.mjs` | Ladder pages + character trees, ETag-cached, keep-last-good. |
-| `scripts/builds/cluster.mjs` | Group characters per §7.5; emit seeds with `sampleSize` and `seedHash`. |
 | `scripts/builds/verify.mjs` | Seed → per-checkpoint PoB evaluation, gate evaluation, leave-one-out ablation. |
 | `scripts/builds/repair.mjs` | Bounded deterministic hill-climb (§7.5). |
 | `scripts/builds/derive-leveling.mjs` | Reverse-topological pruning of `endgame` to the reviewed point budget per step (`src/builds/leveling-points.yaml`, D30). |
-| `scripts/builds/synthesize-gear.mjs` | Budget constraints → concrete items with patch-validated mod ids (§7.7). |
+| `scripts/builds/synthesize-gear.mjs` | Budget constraints → concrete items, each line validated by effect (§7.7). |
 | `scripts/builds/write-guide.mjs` | Facts → prose with placeholders; then the claim checks run. |
 
 `builds:refresh` chains them for the nightly workflow; each is runnable alone so
-a failure has a name. Patch facts are consumed by three things: the gate
+a failure has a name. Nothing in the chain touches the network except the pinned
+PoB clone (D31). Patch facts are consumed by three things: the gate
 evaluator (tree/gem validity), the registry checks (R8), and prose facts. They
 also drive delisting (R10).
 
 `builds/index.json` is the only file `builds.html` loads: `id`, name,
-ascendancy, main skill, patch, status, `verifiedAt`, tags, `sampleSize` — about
+ascendancy, main skill, patch, status, `verifiedAt`, tags — about
 1 KB per build, capped at 40 published builds. When more than 40 are admissible
 the kept set is deterministic: flagships first, then descending gate margin
 (`min over checkpoints of measured/threshold`), then id ascending.
@@ -340,19 +339,23 @@ other section may be `auto-retry` (D1, D28).
   and the measured rate in §15. Failure of (c) never cancels the feature, it
   changes how much repair search is affordable.
 
-### 7.4 Ladder ingest
+### 7.4 Why there is no ladder ingest
 
-- Endpoints: public ladder list (one request per league/depth, gives class,
-  level, rank — enough for the ascendancy heatmap), then per-character passive
-  trees.
-- A **character → PoB XML** mapping is the load-bearing joint: items, tree,
-  gems, jewel sockets. It gets its own spike (§11, S4); the design dies there if
-  it does not survive.
-- **Cancel criterion (P0):** if character trees require a session cookie, D5
-  applies and ladder ingest is dropped. Then P2–P4 collapse into hand-built
-  builds only, breadth falls back to gate-only skeleton pages labelled
-  `no ladder evidence`, and that decision is recorded in P0 before P1 starts.
-- Record the operative API-terms clauses here before any cron exists.
+Decided in P0 and meant to stop the question being re-opened. Evidence in §15.
+
+- Character trees answer `{"error":{"code":6,"message":"Forbidden"}}` without a
+  session. A session means cookies, which D5 forbids outright — and only ~62% of
+  ladder entries are even public.
+- What remains reachable is the ladder *list*: rank, level, ascendancy name and
+  account. No skills, no tree, no gear. It cannot produce or verify a build.
+- The list sits on the official host with published rate-limit headers, but the
+  Developer Docs sanction only resources in the API Reference or Data Exports,
+  and `/ladders` is in neither. A site whose pitch is "nothing to hide" should
+  not carry a standing gray area for a popularity widget.
+- So: no ladder calls at all (D31). Build content is hand-curated seeds plus the
+  PoB oracle; breadth is gate-only pages with **no popularity claim**. PLAN.md
+  §2.3's original conclusion — curated matrix plus lawful data sources — stands,
+  now with measurements behind it.
 
 ### 7.5 Determinism, identity and repair
 
@@ -363,21 +366,15 @@ the failure mode that erodes trust in a catalogue.
 `lightning-arrow-deadeye`. Stable across runs, leagues and renames, so a
 published `build.html#build=…` link keeps working until 1.0.
 
-**Main skill** — the skill gem with the highest level in the character's largest
-linked group; ties broken by (gem level, then alphabetical gem id).
+**Main skill** — declared in the seed YAML, and validated against
+`src/meta/skill-names.json` so a typo cannot become a build. One build per
+(main skill, ascendancy) (D26).
 
-**Clustering** — group characters by (class, main skill). Within a group, cluster
-by Jaccard similarity of allocated node sets at threshold 0.8. Deterministic
-order: cluster size desc, then minimum ladder rank asc, then lexicographic
-ascendancy id. The cluster winner is the medoid — the character with the highest
-mean similarity to its cluster.
+**Seeds** — `src/builds/<id>.yaml` is the editorial input: main skill,
+ascendancy, intended links and gear budget per checkpoint, leveling brackets and
+prose. It is reviewed by PR like any preset. The pipeline never invents a seed;
+it proves, repairs within bounds, and either passes or rejects it.
 
-**Sample threshold** — a cluster needs ≥ 15 characters at level ≥ 85 in the
-league, else no seed (no build published from thin air). The sample is capped at
-the top 200 characters by rank before clustering, which bounds the O(n²) work.
-Sparse coverage is expected: on an SSF-only ladder several ascendancies will have
-no admissible sample, so the heatmap shows "no admissible sample", never a zero
-that reads as "nobody plays it".
 
 **Repair** — bounded and deterministic: seeded RNG, candidate order from
 `TreeData` id asc; allowed moves are a single node swap, a single support swap,
@@ -385,7 +382,7 @@ and a change of candidate base within the same budget line (never a
 hand-written item — D23). Every move is recorded in `repair.added/removed`.
 Candidate destinations are **unallocated nodes only**. Bound:
 `nodeDelta ≤ 10` and `≤ 8%` of allocated points. Status `within-bound` publishes;
-`exceeded` rejects the build (R12). The page always shows mined vs repaired, so
+`exceeded` rejects the build (R12). The page always shows seed vs repaired, so
 a reader can see what the optimiser changed.
 
 Stop rule: repair halts at the first evaluation where every checkpoint passes,
@@ -458,13 +455,12 @@ recalc, record `ablationDrop`. Full subset search is 2ⁿ and is out of scope.
 
 **Calibration runs in both directions** — the gates' own regression test:
 
-- **10 must-pass builds** mined from the ladder, **re-geared per checkpoint by
-  the same synthesiser** (§7.7). They cover `maps-early`, `maps-red` and
-  `pinnacle`: mined characters have endgame trees, so their act checkpoints
-  cannot be evaluated until leveling derivation exists (P3). The act checkpoints
-  are covered by the must-fail set and by the P1 reference build. A failure
-  means the gate is too strict; re-gearing is what stops a trade-geared build
-  from trivially clearing an `ssf-start` gate.
+- **10 must-pass builds**: hand-built references that a competent player would
+  ship, **re-geared per checkpoint by the same synthesiser** (§7.7). They cover
+  `maps-early`, `maps-red` and `pinnacle`; the act checkpoints are covered by the
+  must-fail set plus the P1 reference build, because their leveling trees arrive
+  with derivation (P3). A failure means the gate is too strict; re-gearing is
+  what stops a trade-geared build from trivially clearing an `ssf-start` gate.
 - **10 must-fail builds** (uncapped res at `maps-red`, `act10` tree at T16,
   no sustain, 4-link at T16, no defensive layer, zero-damage-link swap, and so
   on). A pass means the gate is too loose — the failure that actually publishes
@@ -513,7 +509,8 @@ Stale or failed builds render a banner and are excluded from `builds.html`
 Rename to BuildPath (D11, D13): repo and directory done; `base`,
 `package.json`, workflows, docs and favicon still to land. One Pages deploy.
 
-- `builds.html` — league selector, flagships first, ladder heatmap below.
+- `builds.html` — league selector, flagships first, then breadth pages. No
+  popularity widget: there is no population data (D1, §7.4).
 - `build.html#build=<id>&step=<act1…act10|maps|boss>` — the page above. Hash
   routes, same no-router rule as the builder; `step` only ever holds a guide
   step value, never a checkpoint id.
@@ -542,8 +539,8 @@ pass/fail note in §15:
 | S6 | Synthesised gear | a budget-synthesised set loads in PoB with the expected mods applied per item; a bogus mod id fails the build |
 
 If S1 (a) or (b) fails: stop and re-plan. If only S1 (c) fails: apply the
-fallback ladder in §7.3 and record the measured rate. If S3 fails: D5,
-hand-built only, breadth labelled.
+fallback ladder in §7.3 and record the measured rate. S2–S5 already ran; their
+outcome is in §15 and the no-ladder decision in §7.4 stands.
 
 **P0.5 — rename.** Two `chore:`/`refactor:` commits, documented in §16 of the
 changelog.
@@ -554,19 +551,20 @@ per-checkpoint gate report, PoB code generation, `mode=build` filter,
 `build.html`, `src/builds/*.yaml` + schema + drift test. Acceptance: page numbers
 equal JSON numbers, filter identical for a fixed preset hash, goldens cover the
 new output, and every gate number is labelled **uncalibrated** on the page until
-P3. Repair, ablation, clustering and leveling derivation are deliberately
-absent from P1.
+P3. Repair, ablation and leveling derivation are deliberately absent from P1.
 
 The drift test runs in a new `validate-builds.yml` job with the PoB cache, not in
 `npm test`: it needs Lua and minutes, and `npm test` must stay fast and offline.
 
-**P2 — ladder ingest + clustering.** Read-only ladder page (heatmap, no claims).
-Acceptance: nightly cron, cached, keep-last-good, no cookie, deterministic ids
-across two runs.
+**P2 — seeded catalogue.** Three hand-built seeds through the whole chain
+(synthesise → verify → gates → derive leveling → publish). No fetching: the only
+network call is the pinned PoB clone. Acceptance: nightly workflow green,
+deterministic ids and `seedHash` across two runs, and each seed either passes
+every checkpoint or is rejected with a named reason.
 
-**P3 — repair, mined builds, leveling derivation, ablation, calibration.**
-Acceptance: calibration green in both directions; 3 mined builds pass all
-checkpoints; leveling path is a proven subset with valid order.
+**P3 — repair, breadth pages, leveling derivation, ablation, calibration.**
+Acceptance: calibration green in both directions; the three P2 seeds keep
+passing; leveling path is a proven subset with valid order.
 
 **P4 — prose + flagships.** 6–8 flagship builds, placeholder checks, breadth
 pages where a gate-passing build exists (D1). Acceptance: R1–R4 enforced by
@@ -596,7 +594,8 @@ Acceptance: a patch bump delists every unverified build and the site says so.
 - PoB lag: with no PoB tag for the live patch, the catalogue renders the
   "waiting for PoB" state and publishes nothing (D27).
 - Filter: existing golden/audit suites extend to `mode=build`.
-- Ladder: fixture-driven, schema-validated, keep-last-good on malformed payload.
+- Seeds: every `src/builds/*.yaml` validates against the schema and resolves to
+  exactly one build; an orphan seed or an orphan generated build fails the build.
 - Calibration: 10 must-pass and 10 must-fail.
 
 ### 12.2 The prose claim check (R1)
@@ -635,12 +634,11 @@ rounding rule:
 |---|---|
 | PoB oracle not usable headless | S1 cancel criterion; re-plan before P1 |
 | Character → PoB mapping lossy | S4 spike; round-trip assertion |
-| Ladder trees cookie-gated | D5: drop ingest, gate-only breadth labelled as such |
 | Model prose drifts from facts | placeholders + `factsHash` (R1) |
 | Gates too strict / too loose | calibration in both directions |
-| Optimiser overfits or drifts | bounded repair, `nodeDelta`, mined-vs-repaired view (R12) |
+| Optimiser overfits or drifts | bounded repair, `nodeDelta`, seed-vs-repaired view (R12) |
 | "Best build" expectation | gate report + reproduction steps on every page |
-| Ladder sample biased (depth, HC, SSF) | record league/depth/size in `provenance`; never present as "the meta" |
+| Seeds reflect the maintainer's taste, not the meta | gates decide publication; no page claims popularity (D1); breadth only where a build passes |
 | League launch breaks everything | 72h gate (R4), delist on patch bump, keep-last-good |
 | Two filters for one build | one object; builder `mode=build` reads the same JSON |
 | PoB licence / vendoring | CI-only clone at a pinned tag; no PoB code in `src/` or the bundle |
@@ -650,16 +648,9 @@ rounding rule:
 
 ## 14. Open items
 
-- **Ladder distribution — maintainer decision (S5).** `/ladders` answers and
-  exposes only class/ascendancy, level and rank, but the Developer Docs sanction
-  only what is in the API Reference or Data Exports. If allowed, the site gets a
-  population heatmap ("what the ladder plays"), nothing more; if not, breadth is
-  gate-only pages with no popularity claim. Either way no character, tree or gem
-  data is reachable, so build *content* always comes from hand-curated seeds
-  plus the PoB oracle.
-- **Breadth depth** (D1): heatmap vs per-ascendancy pages — decide after 1.0.
-  S2 showed ascendancy names are in the ladder payload, so a heatmap is possible
-  if the decision above is yes.
+- **Breadth depth** (D1): how many per-ascendancy pages to publish — decide
+  after 1.0, on the evidence of which ones pass gates. No popularity data
+  exists, so no plan depends on it.
 - **True third filter phase** (D10): ~18 new preset entries, goldens, audit
   expectations, filenames. Only if the two-phase mapping proves awkward.
 - **`src/core` extraction** (D13): after 1.0, only if a second site exists.
@@ -677,7 +668,7 @@ Filled in during P0. Empty means P0 has not run.
 | S2 | **pass** | `api.pathofexile.com/ladders` (and the `www` host) answer unauthenticated: 200 entries per call, `total` 15000, headers `X-Rate-Limit-Policy: ladder-view`, `X-Rate-Limit-Ip: 5:5:10,10:10:30,15:10:300`. The `class` field carries **ascendancy** names (Ascendant, Pathfinder, Necromancer, Warden…) for ascended characters, so an ascendancy distribution needs no character data at all. A `public` flag is present on ~62% of entries. | Usable for distribution only; skills and trees are not in the payload. |
 | S3 | **fail** | `character-window/get-passive-skills?account=…&character=…` returns `{"error":{"code":6,"message":"Forbidden"}}` with a plain UA and with browser-ish headers. An application-level auth gate, not a bot block. | **D5 applies.** No session cookies, so no character trees, no skills, no ladder-derived builds. |
 | S4 | **blocked** | Nothing to map: S3 yields no character data. PoB itself already ships `loadBuildFromJSON`, which ingests the official character response, so the mapping costs nothing if access ever returns. | Not a design risk any more — just unreachable. |
-| S5 | **caution** | The Developer Docs limit sanctioned use to "resources defined in our API Reference or listed in our Data Exports" and forbid "any other internal website APIs". `/ladders` is on the official host with published rate-limit headers but is **not** in the reference; character endpoints require OAuth and "We are currently unable to process new applications". The UA format they ask for is OAuth-prefixed with a contact. | Maintainer decision (§14). If allowed: distribution only, ≤5 requests/5 s, cached daily, never a character call. |
+| S5 | **caution (decided: drop)** | The Developer Docs limit sanctioned use to "resources defined in our API Reference or listed in our Data Exports" and forbid "any other internal website APIs". `/ladders` is on the official host with published rate-limit headers but is **not** in the reference; character endpoints require OAuth and "We are currently unable to process new applications". The UA format they ask for is OAuth-prefixed with a contact. | Maintainer decision (§14). If allowed: distribution only, ≤5 requests/5 s, cached daily, never a character call. |
 
 | S6 | **pass, with a correction** | Item text carries display mod lines, not mod ids. `+100 to maximum Life` applies exactly (100 vs 87 flat = +41 life through the build's increased-life); `+100 to maximum Nonsense` is dropped **silently** — same number of stat lines, one fewer parsed mod, gate computed on a weaker item. | Gates assert **parsed-mod count delta and stat delta per line** (§7.7 revised). No mod-id registry exists to lean on. |
 
@@ -696,6 +687,19 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 10 — ladder dropped
+
+Maintainer decision after S2–S5: **no ladder ingest of any kind** (D31).
+
+- §2's evidence row is now hand-curated seeds; §7.4 became "why there is no
+  ladder ingest", with the measurements, so it is not re-opened.
+- Clustering, sample thresholds and the ladder pipeline stage are gone. Seeds are
+  reviewed YAML; the pipeline proves, repairs within bounds, and accepts or
+  rejects.
+- P2 is now "seeded catalogue", calibration uses hand-built must-pass builds,
+  and no page claims popularity.
+- R11 became "no request to pathofexile.com, ever".
 
 ### Revision 9 — after the S2–S5 spikes
 
