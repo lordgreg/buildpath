@@ -77,10 +77,14 @@ describe('published build data', () => {
       JSON.parse(
         readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
       ) as {
+        class: string;
         leveling: {
           brackets: {
             until: number;
-            skillGroups?: { slot: string; gems: string[] }[];
+            skillGroups?: {
+              slot: string;
+              gems: (string | { name: string; maxLevel?: number; note?: string })[];
+            }[];
             flasks?: { name: string; slot: string }[];
           }[];
         };
@@ -93,9 +97,13 @@ describe('published build data', () => {
             failures: string[];
             tree?: { nodes: { id: number; x: number; y: number }[]; edges: [number, number][]; notables: string[] };
             gear?: { slot: string; base: string; mods: string[]; ilvl: number }[];
-            gems?: { slot: string; gems: { name: string; level: number }[] }[];
+            gems?: {
+              slot: string;
+              gems: { name: string; level: number; maxLevel?: number }[];
+            }[];
           }
         >;
+        gemInfo?: Record<string, { color?: string | null }>;
         status: string;
       },
   );
@@ -149,6 +157,64 @@ describe('published build data', () => {
         const ids = new Set((gate.tree?.nodes ?? []).map((node) => node.id));
         for (const [from, to] of gate.tree?.edges ?? []) {
           expect(ids.has(from) && ids.has(to), `${checkpoint} edge`).toBe(true);
+        }
+      }
+    }
+  });
+
+  it('draws every gate tree as one connected constellation', () => {
+    for (const build of compiled) {
+      for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
+        const nodes = gate.tree?.nodes ?? [];
+        const edges = gate.tree?.edges ?? [];
+        if (nodes.length < 2) continue;
+        const parent = new Map(nodes.map((node) => [node.id, node.id]));
+        const find = (id: number): number => {
+          let root = id;
+          while (parent.get(root) !== root) root = parent.get(root)!;
+          while (parent.get(id) !== root) {
+            const next = parent.get(id)!;
+            parent.set(id, root);
+            id = next;
+          }
+          return root;
+        };
+        for (const [from, to] of edges) {
+          const a = find(from);
+          const b = find(to);
+          if (a !== b) parent.set(a, b);
+        }
+        const roots = new Set(nodes.map((node) => find(node.id)));
+        expect(
+          roots.size,
+          `${checkpoint}: ${nodes.length} nodes, ${edges.length} edges`,
+        ).toBe(1);
+      }
+    }
+  });
+
+  it('names a colour for every gem the guide shows', () => {
+    for (const build of compiled) {
+      const info = build.gemInfo ?? {};
+      for (const bracket of build.leveling.brackets) {
+        for (const group of bracket.skillGroups ?? []) {
+          for (const gem of group.gems) {
+            const name = typeof gem === 'string' ? gem : gem.name;
+            expect(info[name]?.color, `${build.class}: ${name} has no colour`).toBeTruthy();
+          }
+        }
+      }
+    }
+  });
+
+  it('caps gems the seed says must not be levelled', () => {
+    for (const build of compiled) {
+      for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
+        for (const group of gate.gems ?? []) {
+          for (const gem of group.gems) {
+            if (gem.maxLevel === undefined) continue;
+            expect(gem.level, `${checkpoint} ${gem.name}`).toBeLessThanOrEqual(gem.maxLevel);
+          }
         }
       }
     }
@@ -214,7 +280,14 @@ describe('leveling availability', () => {
   const gemLevels = JSON.parse(
     readFileSync(resolve(root, 'src/generated/gem-levels.json'), 'utf8'),
   ) as {
-    gems: Record<string, { levels: Record<string, number>; quest?: { act: number; classes: string[] } | null }>;
+    gems: Record<
+      string,
+      {
+        levels: Record<string, number>;
+        quest?: { act: number; classes: string[] } | null;
+        color?: 'r' | 'g' | 'b' | 'w' | null;
+      }
+    >;
   };
   const baseItems = new Map(
     (
@@ -232,7 +305,10 @@ describe('leveling availability', () => {
         leveling: {
           brackets: {
             until: number;
-            skillGroups?: { slot: string; gems: string[] }[];
+            skillGroups?: {
+              slot: string;
+              gems: (string | { name: string; maxLevel?: number; note?: string })[];
+            }[];
             flasks?: { name: string; slot: string }[];
           }[];
         };
@@ -244,11 +320,12 @@ describe('leveling availability', () => {
       for (const bracket of build.leveling.brackets) {
         for (const group of bracket.skillGroups ?? []) {
           for (const gem of group.gems) {
-            const entry = gemLevels.gems[gem];
-            expect(entry, `${build.class}: unknown gem "${gem}"`).toBeDefined();
+            const name = typeof gem === 'string' ? gem : gem.name;
+            const entry = gemLevels.gems[name];
+            expect(entry, `${build.class}: unknown gem "${name}"`).toBeDefined();
             expect(
               entry!.levels['1'],
-              `${build.class}: ${gem} needs level ${entry!.levels['1']}, listed at until ${bracket.until}`,
+              `${build.class}: ${name} needs level ${entry!.levels['1']}, listed at until ${bracket.until}`,
             ).toBeLessThanOrEqual(bracket.until);
           }
         }
@@ -261,13 +338,15 @@ describe('leveling availability', () => {
       for (const bracket of build.leveling.brackets) {
         for (const group of bracket.skillGroups ?? []) {
           for (const gem of group.gems) {
-            const entry = gemLevels.gems[gem]!;
+            const name = typeof gem === 'string' ? gem : gem.name;
+            const entry = gemLevels.gems[name]!;
+            expect(entry, `${build.class}: unknown gem "${name}"`).toBeDefined();
             if (entry.quest) {
               // A quest reward only exists for the classes that quest rewards;
               // every other class buys it from the same act's vendor.
               expect(
                 Array.isArray(entry.quest.classes),
-                `${build.class}: ${gem} quest has no class list`,
+                `${build.class}: ${name} quest has no class list`,
               ).toBe(true);
             }
           }

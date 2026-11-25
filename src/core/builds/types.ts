@@ -38,6 +38,8 @@ export interface GemAvailability {
   quest: { act: number | null; quest: string | null; classes: string[] } | null;
   /** True when this class gets it as a free quest reward. */
   free: boolean;
+  /** Gem colour from RePoE: r=strength, g=dexterity, b=intelligence, w=universal. */
+  color?: 'r' | 'g' | 'b' | 'w' | null;
 }
 
 export interface AscendancyPoint {
@@ -91,6 +93,9 @@ export interface GemLink {
   name: string;
   level: number;
   quality?: number;
+  /** A cap the seed imposes; the UI warns when the gem should not be levelled. */
+  maxLevel?: number;
+  note?: string;
 }
 
 export interface GemGroup {
@@ -124,7 +129,7 @@ export interface BuildPipelineInfo {
 
 export interface SkillGroup {
   slot: string;
-  gems: string[];
+  gems: (string | { name: string; maxLevel?: number; note?: string })[];
 }
 
 export interface FlaskChoice {

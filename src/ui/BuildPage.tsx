@@ -47,6 +47,18 @@ function wikiUrl(name: string): string {
   return `https://www.poewiki.net/wiki/${encodeURIComponent(name.replaceAll(' ', '_'))}`;
 }
 
+/** PoE gem colours: strength red, dexterity green, intelligence blue, universal white. */
+const GEM_COLOURS: Record<string, string> = {
+  r: '#ff8a8a',
+  g: '#8fe08f',
+  b: '#8fb4ff',
+  w: '#e6e6e6',
+};
+
+function gemColour(colour: string | null | undefined): string {
+  return GEM_COLOURS[colour ?? 'w'] ?? GEM_COLOURS.w;
+}
+
 function n(value: number): string {
   return value.toLocaleString('en-US');
 }
@@ -384,6 +396,17 @@ export default function BuildPage() {
                                 <span className="block text-zinc-500">
                                   level {gem.level} · {index === 0 ? 'main skill' : 'support'}
                                 </span>
+                                {gem.level > 20 && (
+                                  <span className="mt-1 block text-amber-300">
+                                    Vaaled: level 21+ requires a Vaal Orb.
+                                  </span>
+                                )}
+                                {gem.maxLevel && (
+                                  <span className="mt-1 block text-amber-300">
+                                    Do not level above {gem.maxLevel}.
+                                    {gem.note ? ` ${gem.note}` : ''}
+                                  </span>
+                                )}
                                 {build.gemInfo?.[gem.name] && (
                                   <span className="mt-1 block text-zinc-500">
                                     {build.gemInfo[gem.name].quest
@@ -405,12 +428,23 @@ export default function BuildPage() {
                               rel="noreferrer noopener"
                               className={
                                 index === 0
-                                  ? 'text-white underline-offset-2 hover:underline'
-                                  : 'text-zinc-300 underline-offset-2 hover:underline'
+                                  ? 'font-semibold underline-offset-2 hover:underline'
+                                  : 'underline-offset-2 hover:underline'
                               }
+                              style={{ color: gemColour(build.gemInfo?.[gem.name]?.color) }}
                             >
                               {gem.name}
                               <span className="ml-1 text-[10px] text-zinc-500">{gem.level}</span>
+                              {gem.level > 20 && (
+                                <span className="ml-1 rounded bg-amber-500/20 px-1 text-[9px] uppercase tracking-wide text-amber-300">
+                                  Vaaled
+                                </span>
+                              )}
+                              {gem.maxLevel && (
+                                <span className="ml-1 text-[9px] text-amber-300">
+                                  max {gem.maxLevel}
+                                </span>
+                              )}
                             </a>
                           </Tooltip>
                         </span>

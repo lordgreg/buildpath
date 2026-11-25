@@ -233,14 +233,24 @@ function verifySeed(seed) {
       seed.leveling.brackets.at(-1);
     const groups = (bracket.skillGroups ?? []).map((group) => ({
       slot: group.slot,
-      gems: group.gems.map((name) => {
-        const level = gemLevelFor(name, checkpoint.level, checkpoint.gemLevelCap ?? 20);
+      gems: group.gems.map((gem) => {
+        const name = typeof gem === 'string' ? gem : gem.name;
+        const maxLevel = typeof gem === 'string' ? undefined : gem.maxLevel;
+        const note = typeof gem === 'string' ? undefined : gem.note;
+        const cap = Math.min(checkpoint.gemLevelCap ?? 20, maxLevel ?? 40);
+        const level = gemLevelFor(name, checkpoint.level, cap);
         if (level === null) {
           throw new Error(
             `${seed.id}/${bracket.until}: unknown gem "${name}" in ${group.slot}`,
           );
         }
-        return { name, level, quality: checkpoint.gemQuality ?? 0 };
+        return {
+          name,
+          level,
+          quality: checkpoint.gemQuality ?? 0,
+          ...(maxLevel ? { maxLevel } : {}),
+          ...(note ? { note } : {}),
+        };
       }),
     }));
     const metrics = runOracle({
@@ -317,7 +327,12 @@ function verifySeed(seed) {
       ],
       gems: groups.map((group) => ({
         slot: group.slot,
-        gems: group.gems.map((gem) => ({ name: gem.name, level: gem.level })),
+        gems: group.gems.map((gem) => ({
+          name: gem.name,
+          level: gem.level,
+          ...(gem.maxLevel ? { maxLevel: gem.maxLevel } : {}),
+          ...(gem.note ? { note: gem.note } : {}),
+        })),
       })),
       flasks: bracket.flasks ?? [],
     };

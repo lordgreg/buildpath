@@ -44,6 +44,7 @@ const gemLevels = JSON.parse(
   readFileSync(resolve(root, 'src/generated/gem-levels.json'), 'utf8'),
 ).gems;
 const gemLevel1 = (name) => gemLevels[name]?.levels?.[1];
+const gemName = (gem) => (typeof gem === 'string' ? gem : gem.name);
 const baseItems = new Map(
   JSON.parse(
     readFileSync(resolve(root, 'src/core/data/base-types.json'), 'utf8'),
@@ -58,16 +59,17 @@ function checkAvailability(seed, file) {
   for (const bracket of seed.leveling.brackets) {
     for (const group of bracket.skillGroups ?? []) {
       for (const gem of group.gems) {
-        const required = gemLevel1(gem);
+        const name = gemName(gem);
+        const required = gemLevel1(name);
         if (required === undefined) {
           console.error(
-            `build seed invalid: ${file}\n  unknown gem "${gem}" in ${bracket.until}/${group.slot}`,
+            `build seed invalid: ${file}\n  unknown gem "${name}" in ${bracket.until}/${group.slot}`,
           );
           process.exit(1);
         }
         if (required > bracket.until) {
           console.error(
-            `build seed invalid: ${file}\n  ${gem} needs level ${required}, but ${bracket.until} lists it`,
+            `build seed invalid: ${file}\n  ${name} needs level ${required}, but ${bracket.until} lists it`,
           );
           process.exit(1);
         }
@@ -121,9 +123,9 @@ function describeGems(seed) {
   const names = new Set();
   for (const bracket of seed.leveling.brackets) {
     for (const group of bracket.skillGroups ?? []) {
-      for (const gem of group.gems) names.add(gem);
+      for (const gem of group.gems) names.add(gemName(gem));
     }
-    for (const gem of bracket.skills ?? []) names.add(gem);
+    for (const gem of bracket.skills ?? []) names.add(gemName(gem));
   }
   const info = {};
   for (const name of [...names].sort()) {
@@ -136,6 +138,7 @@ function describeGems(seed) {
         ? { act: quest.act, quest: quest.quest, classes: quest.classes }
         : null,
       free: quest ? quest.classes.includes(seed.class) : false,
+      color: entry.color ?? null,
     };
   }
   return info;

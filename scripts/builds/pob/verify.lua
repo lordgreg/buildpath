@@ -400,12 +400,20 @@ for _, id in ipairs(allocatedIds) do
     notableList[#notableList + 1] = node.name or tostring(id)
   end
 end
+-- `out` is directional: an edge may be listed on only one of its two nodes.
+-- Recording it only when the lower id holds it drops the other half, which
+-- left the taken path visibly disconnected (6 edges for 10 nodes).
+local seenEdges = {}
 for _, id in ipairs(allocatedIds) do
   local node = nodes[id] or nodes[tostring(id)]
   for _, other in ipairs(node and node.out or {}) do
     other = tonumber(other)
-    if other and allocatedSet[other] and id < other then
-      edgeList[#edgeList + 1] = { id, other }
+    if other and allocatedSet[other] then
+      local key = id < other and (id .. ":" .. other) or (other .. ":" .. id)
+      if not seenEdges[key] then
+        seenEdges[key] = true
+        edgeList[#edgeList + 1] = { math.min(id, other), math.max(id, other) }
+      end
     end
   end
 end

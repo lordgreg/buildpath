@@ -75,7 +75,7 @@ for (const [id, gem] of Object.entries(gems)) {
       }
     : null;
 
-  out[name] = { levels, quest };
+  out[name] = { levels, quest, color: gem.color ?? null };
 }
 
 const names = Object.keys(out).sort();

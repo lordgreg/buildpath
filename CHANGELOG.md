@@ -2,6 +2,17 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.53.0 — 2026-11-25
+
+The tree opens whole, and gems tell the truth.
+
+- The passive tree now opens on the whole constellation, the way the game does. Node radius is a fixed number of screen pixels at every zoom, so the nodes never turn into blobs when the view covers a handful of points; **fit** frames the points you took and **all** returns to the whole tree.
+- Hovering a node shows its name, type and stats, and clicking pins the tooltip for touch. Hit targets are delegated to the SVG, so 2,500 nodes do not each need a listener. Mastery nodes say they are a choice instead of claiming no stats exist.
+- The allocated tree was drawn with gaps. The oracle recorded an edge only when `id < other`, but PoB's `out` is directional, so six of the ten act-1 links were dropped; the geometry had them all along. Every gate tree is now one connected constellation, and a test walks the graph to keep it that way.
+- Gem names are coloured by their poewiki colour: red for strength, green for dexterity, blue for intelligence, white for universal. A level-21 gem carries a **Vaaled** badge, because 21 needs a Vaal Orb.
+- Gems that must not be levelled past a cap now say so. Cast when Damage Taken carries **max 5**, in the seed, the compiled build and the tooltip, so the guide stops recommending a level that would break the trigger.
+- 545 tests.
+
 ## 0.52.1 — 2026-11-25
 
 The tree no longer crashes the page.
