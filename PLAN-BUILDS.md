@@ -1,6 +1,6 @@
 # BuildPath — Plan
 
-> Revision 7. See §16 for the council reviews and what each round changed.
+> Revision 8. See §16 for the council reviews and what each round changed.
 
 Verified build guides, with the loot filter as one output instead of the whole
 product.
@@ -317,7 +317,11 @@ other section may be `auto-retry` (D1, D28).
 
 - Pinned to a PoB release tag (`POB_REF`) and a pinned runner image; cloned into
   `.cache/pob`, run with LuaJIT 5.1. Never bundled, never shipped, never
-  referenced from `src/`.
+  referenced from `src/`. S1 (§15) gives the working recipe: PoB's
+  `runtime/lua` on `LUA_PATH`, `lua-utf8` on `LUA_CPATH`, one warm process, XML
+  reload per evaluation. A tag is only acceptable once
+  `Classes/CompareBuySimilar.lua` parses under stock LuaJIT — `v2.69.0` does
+  not, and a bump must re-check it.
 - Loads a generated XML, reads `CombinedDPS`, `TotalEHP`,
   `PhysicalMaximumHitTaken`, `Life`, `EnergyShield`, resistances, mana cost and
   unreserved mana.
@@ -420,16 +424,17 @@ hand-writing five item sets per build does not scale to 19 ascendancies.
   type picked deterministically from the budget's candidates (lowest ilvl, then
   alphabetical), affixes chosen by a reviewed priority list per slot and family,
   rolls at the midpoint of the allowed tier.
-- **Mod ids resolve against the pinned PoB `Mods` data and an unknown id fails
-  the build.** This is `known-base-types.json` discipline: PoB silently drops an
-  unknown mod id, and gates computed on a naked item are exactly the class of
-  failure this repo already built a registry to prevent.
+- **Every synthesised line is validated by effect, not by name.** PoB item text
+  carries display mod lines (`+100 to maximum Life`), not mod ids, and it drops
+  a line it cannot parse **silently** (S6, §15). So for each line the pipeline
+  asserts (a) the item's parsed-mod count rises by exactly one and (b) the stat
+  the line claims moves by the expected amount. Either check failing fails the
+  build. This is `known-base-types.json` discipline: the game and the oracle
+  both fail silently, so we fail loudly.
 - Deterministic: seeded by `(buildId, checkpoint)`; no RNG, no network.
 - Every synthesised item is rendered on the page as the "budget gear" table, so
   a reader can see what the gate assumed and disagree with it.
-- Spike **S6** (§11) is the proof: a synthesised set loads in PoB with the
-  expected number of mods applied per item, and a deliberately bogus mod id
-  fails the build.
+- Spike **S6** (§11) is the proof; it ran in P0 and passed (§15).
 
 ## 8. Gates
 
@@ -659,12 +664,12 @@ Filled in during P0. Empty means P0 has not run.
 
 | # | Result | Evidence | Decision |
 |---|---|---|---|
-| S1 | | | |
+| S1 | **pass** | PoB `v2.69.0` source loads headless under stock LuaJIT 2.1 and returns `CombinedDPS`, `Life`, `EnergyShield`, `TotalEHP`, `PhysicalMaximumHitTaken`, resists, mana. Three loads of one XML are byte-identical; median 0.141 s/eval in a warm process, so 8×5×200 projects to **21 min** (< 30 min target). Needs `lua-utf8` on `LUA_CPATH` and PoB's `runtime/lua` on `LUA_PATH`. `Classes/CompareBuySimilar.lua` at that tag has three Luau-syntax lines that make stock LuaJIT refuse to boot; a three-line patch fixes it (`spike/pob`). | Debug-only oracle, one warm process, XML reload per evaluation. Pin the tag only after that file is clean; check it on every PoB bump. |
 | S2 | | | |
 | S3 | | | |
 | S4 | | | |
 | S5 | | | |
-| S6 | | | |
+| S6 | **pass, with a correction** | Item text carries display mod lines, not mod ids. `+100 to maximum Life` applies exactly (100 vs 87 flat = +41 life through the build's increased-life); `+100 to maximum Nonsense` is dropped **silently** — same number of stat lines, one fewer parsed mod, gate computed on a weaker item. | Gates assert **parsed-mod count delta and stat delta per line** (§7.7 revised). No mod-id registry exists to lean on. |
 
 ## 16. Revision history
 
@@ -681,6 +686,17 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 8 — after the S1 and S6 spikes
+
+- S1 and S6 ran and passed; results, numbers and the working PoB recipe are in
+  §15, with reproduction steps on `spike/pob-oracle`.
+- §7.7 corrected: PoB item text carries display mod lines, not mod ids, and
+  silently drops what it cannot parse. Synthesis is validated by **parsed-mod
+  count and stat delta per line**, not by an id registry.
+- §7.3 records the pinning prerequisite: PoB `v2.69.0` ships three Luau-syntax
+  lines that make stock LuaJIT refuse to boot, so a tag is only pinnable once
+  that file parses.
 
 ### Revision 7 — after round 6
 
