@@ -8,6 +8,7 @@ import {
 import { coerceThemeId, type ThemeId } from '../core/filter/themes.ts';
 import { configKey } from '../core/rules/key.ts';
 import { getAscendancy } from '../meta/ascendancies.ts';
+import { getBuildEntry } from '../meta/builds.ts';
 import { getSkill } from '../meta/index.ts';
 import {
   coerceSelection,
@@ -35,6 +36,7 @@ export interface WizardState {
   ascendancyId: string;
   leagueId: string;
   skillId: string;
+  buildId: string;
   scratchStart: 'hide' | 'show';
   phase: Phase;
   strictness: Strictness;
@@ -53,6 +55,7 @@ export const DEFAULT_STATE: WizardState = {
   ascendancyId: DEFAULT_ASCENDANCY,
   leagueId: CURRENT_LEAGUE_ID,
   skillId: DEFAULT_SKILL,
+  buildId: '',
   scratchStart: 'hide',
   phase: 'leveling',
   strictness: 'soft',
@@ -64,20 +67,30 @@ const PHASES: Phase[] = ['leveling', 'endgame'];
 
 function fill(selection: BuildSelection): Pick<
   WizardState,
-  'mode' | 'familyId' | 'ascendancyId' | 'leagueId' | 'skillId' | 'scratchStart'
+  | 'mode'
+  | 'familyId'
+  | 'ascendancyId'
+  | 'leagueId'
+  | 'skillId'
+  | 'buildId'
+  | 'scratchStart'
 > {
+  const build = selection.buildId ? getBuildEntry(selection.buildId) : undefined;
   const skill = getSkill(
     selection.leagueId ?? CURRENT_LEAGUE_ID,
     selection.skillId ?? DEFAULT_SKILL,
   );
   return {
     mode: selection.mode,
+    buildId: selection.buildId ?? '',
     familyId:
+      build?.family ??
       selection.familyId ??
       (selection.ascendancyId
         ? getAscendancy(selection.ascendancyId).defaultFamily
         : skill?.family ?? DEFAULT_FAMILY),
     ascendancyId:
+      build?.ascendancyId ??
       selection.ascendancyId ??
       (selection.familyId === 'minion'
         ? 'necromancer'
@@ -101,6 +114,7 @@ export function coerceWizardState(input: Partial<WizardState>): WizardState {
     mode !== 'family' &&
     mode !== 'ascendancy' &&
     mode !== 'meta' &&
+    mode !== 'build' &&
     mode !== 'scratch'
   ) {
     return { ...DEFAULT_STATE, name, phase, strictness, theme };
@@ -112,6 +126,7 @@ export function coerceWizardState(input: Partial<WizardState>): WizardState {
     ascendancyId: input.ascendancyId,
     leagueId: input.leagueId,
     skillId: input.skillId,
+    buildId: input.buildId,
     scratchStart: input.scratchStart,
   });
 
@@ -154,11 +169,12 @@ export function parseWizardHash(hash: string): WizardState {
   if (modeParam === 'start') return { ...DEFAULT_STATE, ...common };
 
   const hasSkill = params.get('skill') !== null;
+  const hasBuild = params.get('build') !== null;
   const hasFamily = params.get('family') !== null;
   const hasAscendancy = params.get('ascendancy') !== null;
 
   // An empty hash opens the empty builder, not the old family default.
-  if (modeParam === null && !hasSkill && !hasFamily && !hasAscendancy) {
+  if (modeParam === null && !hasSkill && !hasFamily && !hasAscendancy && !hasBuild) {
     return { ...DEFAULT_STATE, ...common };
   }
 
@@ -166,9 +182,12 @@ export function parseWizardHash(hash: string): WizardState {
     modeParam === 'family' ||
     modeParam === 'ascendancy' ||
     modeParam === 'meta' ||
+    modeParam === 'build' ||
     modeParam === 'scratch'
       ? modeParam
-      : hasSkill
+      : hasBuild
+        ? 'build'
+        : hasSkill
         ? 'meta'
         : hasAscendancy && !hasFamily
           ? 'ascendancy'
@@ -180,6 +199,7 @@ export function parseWizardHash(hash: string): WizardState {
     ascendancyId: params.get('ascendancy') ?? undefined,
     leagueId: params.get('league') ?? undefined,
     skillId: params.get('skill') ?? undefined,
+    buildId: params.get('build') ?? undefined,
     scratchStart:
       params.get('scratchStart') === 'show' ? 'show' : 'hide',
   });

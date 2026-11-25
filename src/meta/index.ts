@@ -1,5 +1,6 @@
 import presets from '../generated/presets.json';
 import { ASCENDANCIES } from './ascendancies.ts';
+import { BUILDS, getBuildEntry, isBuildId } from './builds.ts';
 import { FAMILIES } from './families.ts';
 import type {
   Ascendancy,
@@ -98,6 +99,8 @@ export function defaultSelection(): BuildSelection {
 export function isValidSelection(selection: BuildSelection): boolean {
   if (selection.mode === 'scratch') return true;
 
+  if (selection.mode === 'build') return isBuildId(selection.buildId);
+
   if (selection.mode === 'family') {
     return FAMILIES.some((family) => family.id === selection.familyId);
   }
@@ -129,6 +132,17 @@ export function coerceSelection(
   if (input.mode === 'family') {
     const family = FAMILIES.find((entry) => entry.id === input.familyId);
     return { mode: 'family', familyId: family?.id ?? 'minion' };
+  }
+
+  if (input.mode === 'build') {
+    const build = getBuildEntry(input.buildId ?? '') ?? BUILDS[0];
+    if (!build) throw new Error('No build seeds are compiled');
+    return {
+      mode: 'build',
+      buildId: build.id,
+      ascendancyId: build.ascendancyId,
+      familyId: build.family,
+    };
   }
 
   if (input.mode === 'scratch') {

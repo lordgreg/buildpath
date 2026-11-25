@@ -1,7 +1,7 @@
 import { getArchetype } from '../archetypes/index.ts';
 import type { Archetype } from '../archetypes/types.ts';
 import { PRESET_VERSION } from '../../meta/index.ts';
-import { resolveBuild } from '../../meta/resolve.ts';
+import { resolveSelection } from '../../meta/resolve.ts';
 import type { BuildSelection } from '../../meta/types.ts';
 import { baseTypeMeta } from '../data/base-types.ts';
 import { prepareCustomRules, type SkippedRule } from '../rules/sanitize.ts';
@@ -183,7 +183,7 @@ function withLevelingFlasks(archetype: Archetype, phase: Phase): Archetype {
  */
 export function compileFilter(config: FilterConfig): CompiledFilter {
   const resolved = config.selection
-    ? resolveBuild(config.selection)
+    ? resolveSelection(config.selection)
     : getArchetype(config.archetypeId ?? '');
   if (!resolved) {
     throw new Error(

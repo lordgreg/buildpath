@@ -26,6 +26,8 @@ export function autoBuildName(selection: BuildSelection): string {
       const ascendancy = slugify(selection.ascendancyId ?? '');
       return ascendancy ? `${skill}-${ascendancy}` : skill;
     }
+    case 'build':
+      return slugify(selection.buildId ?? 'build');
     case 'scratch':
       return 'custom';
   }

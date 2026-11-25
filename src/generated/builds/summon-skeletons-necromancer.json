@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "id": "summon-skeletons-necromancer",
+  "name": "Summon Skeletons Necromancer",
+  "class": "Witch",
+  "ascendancyId": "necromancer",
+  "family": "minion",
+  "mainSkill": "Summon Skeletons",
+  "summary": "League-start minion build. Skeletons do the damage, so a bad weapon is not a brick: cap your resistances, keep your minions alive, and the damage arrives with the gem levels. No required uniques, which is why it is the first build the pipeline proves.",
+  "leveling": {
+    "brackets": [
+      {
+        "until": 12,
+        "skills": [
+          "Raise Zombie",
+          "Summon Skeletons"
+        ]
+      },
+      {
+        "until": 28,
+        "skills": [
+          "Summon Skeletons",
+          "Summon Raging Spirit",
+          "Raise Zombie"
+        ]
+      },
+      {
+        "until": 68,
+        "skills": [
+          "Summon Skeletons",
+          "Summon Raging Spirit",
+          "Flesh Offering"
+        ]
+      },
+      {
+        "until": 100,
+        "skills": [
+          "Summon Skeletons",
+          "Flesh Offering",
+          "Desecrate"
+        ]
+      }
+    ]
+  },
+  "ascendancyOrder": [
+    {
+      "node": "mindless-aggression",
+      "lab": 1
+    },
+    {
+      "node": "unnatural-strength",
+      "lab": 2
+    },
+    {
+      "node": "mistress-of-sacrifice",
+      "lab": 3
+    },
+    {
+      "node": "commander-of-darkness",
+      "lab": 4
+    }
+  ],
+  "bandit": "kill-all",
+  "pantheon": {
+    "major": "lunaris",
+    "minor": "gruthkul",
+    "note": "Swap the major to Solaris for pinnacle bosses with physical slams."
+  },
+  "uniques": {
+    "core": [],
+    "optional": []
+  },
+  "status": "draft",
+  "seedHash": "951cf8a629aa"
+}

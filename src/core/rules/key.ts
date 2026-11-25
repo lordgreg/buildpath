@@ -16,6 +16,10 @@ export function configKey(selection: BuildSelection): string {
     return `ascendancy:${selection.ascendancyId ?? 'necromancer'}`;
   }
 
+  if (selection.mode === 'build') {
+    return `build:${selection.buildId ?? ''}`;
+  }
+
   return [
     'meta',
     selection.leagueId ?? '',

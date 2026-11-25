@@ -2,6 +2,16 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.41.0 — 2026-11-25
+
+BuildPath, and the first verified build seed.
+
+- Renamed to BuildPath. The site now builds for `/buildpath/`, the repo, the package and every user-facing string follow, and generated filters are named `buildpath-*.filter` with a `# BuildPath` header. Filters written before the rename are still recognised, reported as outdated and offered for cleanup, never treated as foreign files.
+- Selecting a filter is required once more, because the in-game dropdown entry changed. With no users yet that is the cheapest it will ever be.
+- A new fourth mode, **By verified build**, picks a build seed instead of a gear family. A seed names the class, ascendancy, main skill, leveling gems, ascendancy order, bandit and pantheon, and the filter it generates is named after the build.
+- Seeds are hand-written YAML under `src/builds/`, validated against a JSON Schema at build time and compiled to committed JSON, so the browser never parses YAML. A drift test fails if the committed JSON and the YAML disagree, and a second seed for the same skill and ascendancy is rejected.
+- The first seed is a Summon Skeletons Necromancer, chosen because it needs no uniques and gets its damage from gem levels. It compiles as a draft until the Path of Building gate report exists.
+
 ## 0.40.0 — 2026-11-24
 
 Mana flasks while leveling.

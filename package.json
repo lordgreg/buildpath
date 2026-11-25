@@ -1,20 +1,21 @@
 {
   "name": "buildpath",
   "private": true,
-  "version": "0.40.0",
+  "version": "0.41.0",
   "type": "module",
   "description": "Build-specific Path of Exile loot filters in three clicks.",
   "scripts": {
     "dev": "vite",
-    "build": "npm run presets:build && tsc -b && vite build",
+    "build": "npm run presets:build && npm run builds:build && tsc -b && vite build",
     "preview": "vite preview",
-    "test": "npm run presets:build && vitest run",
+    "test": "npm run presets:build && npm run builds:build && vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc -b",
     "presets:build": "node scripts/build-presets.mjs",
     "economy:refresh": "node scripts/refresh-economy.mjs",
     "meta:add": "node scripts/meta-add.mjs",
-    "extract:repoe": "node scripts/extract-repoe.mjs"
+    "extract:repoe": "node scripts/extract-repoe.mjs",
+    "builds:build": "node scripts/builds/compile-builds.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",

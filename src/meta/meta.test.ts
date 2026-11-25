@@ -19,7 +19,7 @@ import {
   LEAGUE_INDEX,
   legacySelection,
 } from './index.ts';
-import { resolveBuild } from './resolve.ts';
+import { resolveSelection } from './resolve.ts';
 import catalog from './skill-names.json';
 import skillNamesExtra from './skill-names-extra.json';
 import type { BuildSelection, FamilyId } from './types.ts';
@@ -233,13 +233,13 @@ describe('selection', () => {
   });
 });
 
-describe('resolveBuild', () => {
+describe('resolveSelection', () => {
   const resolve = (
     familyId: FamilyId,
     skillId: string,
     ascendancyId: string,
   ) =>
-    resolveBuild({
+    resolveSelection({
       mode: 'meta',
       leagueId: LEAGUE_INDEX.current,
       familyId,
@@ -289,7 +289,7 @@ describe('resolveBuild', () => {
     const snapshot = getSnapshot(LEAGUE_INDEX.current);
     for (const skill of snapshot.skills) {
       const ascendancy = getAscendanciesForSkill(skill)[0]!;
-      const build = resolveBuild({
+      const build = resolveSelection({
         mode: 'meta',
         leagueId: LEAGUE_INDEX.current,
         familyId: skill.family,

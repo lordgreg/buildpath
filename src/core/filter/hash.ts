@@ -30,6 +30,8 @@ export function buildHashParams(input: BuildHashInput): string {
     params.set('family', selection.familyId ?? 'minion');
   } else if (selection.mode === 'ascendancy') {
     params.set('ascendancy', selection.ascendancyId ?? 'necromancer');
+  } else if (selection.mode === 'build') {
+    params.set('build', selection.buildId ?? '');
   } else {
     params.set('league', selection.leagueId ?? '');
     params.set('family', selection.familyId ?? '');

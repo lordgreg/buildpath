@@ -15,7 +15,7 @@ import {
   LEAGUE_INDEX,
   PRESET_VERSION,
 } from './index.ts';
-import { resolveBuild } from './resolve.ts';
+import { resolveSelection } from './resolve.ts';
 
 const PHASES: Phase[] = ['leveling', 'endgame'];
 const STRICTNESS: Strictness[] = ['soft', 'strict', 'uber'];
@@ -50,7 +50,7 @@ describe('generated presets', () => {
 
 describe('family mode', () => {
   it('resolves a family without a class or skill', () => {
-    const build = resolveBuild({ mode: 'family', familyId: 'minion' });
+    const build = resolveSelection({ mode: 'family', familyId: 'minion' });
     expect(build.name).toBe('Minion');
     expect(build.class).toBeUndefined();
     expect(build.ascendancy).toBeUndefined();
@@ -69,7 +69,7 @@ describe('family mode', () => {
         familyId: family.id,
       });
       expect(isValidSelection(selection), family.id).toBe(true);
-      const build = resolveBuild(selection);
+      const build = resolveSelection(selection);
       expect(validateArchetype(build), family.id).toEqual([]);
 
       for (const phase of PHASES) {
@@ -99,7 +99,7 @@ describe('family mode', () => {
 
 describe('ascendancy mode', () => {
   it('uses the ascendancy default loadout', () => {
-    const juggernaut = resolveBuild({
+    const juggernaut = resolveSelection({
       mode: 'ascendancy',
       ascendancyId: 'juggernaut',
     });
@@ -108,7 +108,7 @@ describe('ascendancy mode', () => {
     expect(juggernaut.slots.weapon?.itemClasses).toEqual(['Two Hand Axe']);
     expect(juggernaut.slots.offhand).toBeUndefined();
 
-    const necromancer = resolveBuild({
+    const necromancer = resolveSelection({
       mode: 'ascendancy',
       ascendancyId: 'necromancer',
     });
@@ -117,7 +117,7 @@ describe('ascendancy mode', () => {
       'weapon_can_roll_minion_modifiers',
     );
 
-    const deadeye = resolveBuild({
+    const deadeye = resolveSelection({
       mode: 'ascendancy',
       ascendancyId: 'deadeye',
     });
@@ -132,7 +132,7 @@ describe('ascendancy mode', () => {
         ascendancyId: ascendancy.id,
       });
       expect(isValidSelection(selection), ascendancy.id).toBe(true);
-      const build = resolveBuild(selection);
+      const build = resolveSelection(selection);
       expect(validateArchetype(build), ascendancy.id).toEqual([]);
 
       for (const [slot, spec] of Object.entries(build.slots)) {

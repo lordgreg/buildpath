@@ -5,6 +5,7 @@ import type {
   SlotSpec,
 } from '../core/archetypes/types.ts';
 import { getAscendancy } from './ascendancies.ts';
+import { getBuildEntry } from './builds.ts';
 import { getFamily } from './families.ts';
 import {
   CURRENT_LEAGUE_ID,
@@ -167,7 +168,26 @@ export function resolveScratch(selection: BuildSelection): Archetype {
   };
 }
 
-export function resolveBuild(selection: BuildSelection): Archetype {
+/**
+ * A build seed's own gear profile. It starts from the ascendancy's default
+ * loadout, so a seed only has to describe how it differs (P1b adds the real
+ * per-slot specs from the verified gear sets).
+ */
+export function resolveGuideBuild(selection: BuildSelection): Archetype {
+  const build = getBuildEntry(selection.buildId ?? '');
+  if (!build) throw new Error(`Unknown build "${selection.buildId}"`);
+  const base = resolveAscendancy(build.ascendancyId);
+  return {
+    ...base,
+    id: build.id,
+    name: build.name,
+    summary: build.summary,
+    leveling: true,
+    skills: [build.mainSkill],
+  };
+}
+
+export function resolveSelection(selection: BuildSelection): Archetype {
   if (!isValidSelection(selection)) {
     throw new Error(
       `Invalid selection: ${selection.mode}/${selection.familyId ?? selection.ascendancyId ?? selection.skillId}`,
@@ -177,6 +197,8 @@ export function resolveBuild(selection: BuildSelection): Archetype {
   switch (selection.mode) {
     case 'scratch':
       return resolveScratch(selection);
+    case 'build':
+      return resolveGuideBuild(selection);
     case 'family':
       return resolveFamily(selection.familyId!);
     case 'ascendancy':

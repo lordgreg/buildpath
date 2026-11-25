@@ -13,6 +13,7 @@ import {
 import { autoBuildName } from '../core/filter/name.ts';
 import { THEMES } from '../core/filter/themes.ts';
 import { ASCENDANCIES, getAscendancy } from '../meta/ascendancies.ts';
+import { BUILDS, getBuildEntry } from '../meta/builds.ts';
 import { FAMILIES, getFamily } from '../meta/families.ts';
 import {
   getAscendanciesForSkill,
@@ -62,6 +63,7 @@ const MODES: { id: BuildMode; label: string; hint: string }[] = [
   { id: 'family', label: 'By family', hint: 'Basic gear profile' },
   { id: 'ascendancy', label: 'By ascendancy', hint: 'Class default loadout' },
   { id: 'meta', label: 'By meta build', hint: 'Curated meta seed' },
+  { id: 'build', label: 'By verified build', hint: 'A build with its own seed' },
   { id: 'scratch', label: 'From scratch', hint: 'Blank filter, your rules' },
 ];
 
@@ -214,6 +216,7 @@ export default function Wizard() {
   const seed = snapshot.provenance === 'seed';
   const family = getFamily(state.familyId);
   const ascendancy = getAscendancy(state.ascendancyId);
+  const buildEntry = getBuildEntry(state.buildId);
   const familySkills = getSkills(state.leagueId, state.familyId);
   const skill =
     getSkill(state.leagueId, state.skillId) ?? familySkills[0] ?? null;
@@ -513,7 +516,9 @@ export default function Wizard() {
     ? 'New filter'
     : state.mode === 'meta' && skill
       ? `${ascendancy.name} ${skill.name}`
-      : (filter?.archetype.name ?? '');
+      : state.mode === 'build' && buildEntry
+        ? buildEntry.name
+        : (filter?.archetype.name ?? '');
   const eyebrow = isStart
     ? 'New filter'
     : state.mode === 'scratch'
@@ -522,7 +527,9 @@ export default function Wizard() {
         ? 'Family preset'
         : state.mode === 'ascendancy'
           ? `${ascendancy.class} / Ascendancy`
-          : `${ascendancy.class} / ${family.name}`;
+          : state.mode === 'build'
+            ? `${ascendancy.class} / Verified build`
+            : `${ascendancy.class} / ${family.name}`;
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-6xl flex-col px-5 py-8 pb-28 sm:px-8 sm:py-12 lg:pb-12">
@@ -778,6 +785,34 @@ export default function Wizard() {
                     </div>
                   );
                 })}
+              </section>
+            )}
+
+            {state.mode === 'build' && (
+              <section aria-labelledby="build-heading">
+                <h2
+                  id="build-heading"
+                  className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+                >
+                  Verified build
+                </h2>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-500">
+                  Each seed is proven against Path of Building before it
+                  publishes. The filter highlights the bases that build wants,
+                  including its leveling steps.
+                </p>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {BUILDS.map((entry) => (
+                    <OptionButton
+                      key={entry.id}
+                      compact
+                      selected={entry.id === state.buildId}
+                      onClick={() => update({ buildId: entry.id })}
+                      title={entry.name}
+                      subtitle={`${entry.class} / ${entry.mainSkill}`}
+                    />
+                  ))}
+                </div>
               </section>
             )}
 

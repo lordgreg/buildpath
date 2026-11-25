@@ -46,6 +46,32 @@ describe('wizard hash', () => {
     expect(Object.values(state.sections).every(Boolean)).toBe(true);
   });
 
+  it('round-trips a verified build selection', () => {
+    const state = coerceWizardState({
+      mode: 'build',
+      buildId: 'summon-skeletons-necromancer',
+    });
+    expect(state.mode).toBe('build');
+    expect(state.buildId).toBe('summon-skeletons-necromancer');
+    // The build decides the ascendancy and family, so a bare build link works.
+    expect(state.ascendancyId).toBe('necromancer');
+    expect(state.familyId).toBe('minion');
+    expect(ruleKey(state)).toBe('build:summon-skeletons-necromancer');
+
+    const hash = wizardHash(state);
+    expect(hash).toContain('mode=build');
+    expect(hash).toContain('build=summon-skeletons-necromancer');
+    const parsed = parseWizardHash(`#${hash}`);
+    expect(parsed.mode).toBe('build');
+    expect(parsed.buildId).toBe('summon-skeletons-necromancer');
+  });
+
+  it('falls back to the first seed for an unknown build id', () => {
+    const state = coerceWizardState({ mode: 'build', buildId: 'nope' });
+    expect(state.mode).toBe('build');
+    expect(state.buildId).toBe('summon-skeletons-necromancer');
+  });
+
   it('trims the imported build name', () => {
     const state = coerceWizardState({ name: '  My Vortex  ' });
     expect(state.name).toBe('My Vortex');
