@@ -5,8 +5,9 @@
 --
 -- Output: { version, nodes: [{id,x,y,notable,keystone,socket,name,stats?}], edges: [[a,b]] }
 --
--- `stats` is only written for notables and keystones: those are the nodes a
--- player actually reads, and copying every node's text would triple the file.
+-- `stats` is written for every node, not just notables: a small passive's
+-- "+10 to Intelligence" is exactly what a player clicks to read, and a tooltip
+-- that says "no stats recorded" on most of the tree is a broken tooltip.
 
 dofile("HeadlessWrapper.lua")
 
@@ -36,13 +37,11 @@ for id, node in pairs(data.nodes) do
       socket = gnode.isJewelSocket and true or false,
       name = gnode.name or "",
     }
-    if entry.notable or entry.keystone then
-      local stats = (data.nodes[id] or {}).stats or gnode.stats
-      if stats and #stats > 0 then
-        local lines = {}
-        for _, line in ipairs(stats) do lines[#lines + 1] = line end
-        entry.stats = lines
-      end
+    local stats = (data.nodes[id] or {}).stats or gnode.stats
+    if stats and #stats > 0 then
+      local lines = {}
+      for _, line in ipairs(stats) do lines[#lines + 1] = line end
+      entry.stats = lines
     end
     nodes[#nodes + 1] = entry
     for _, other in ipairs(node.out or {}) do

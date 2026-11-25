@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from 'react';
 import type { TreeView } from '../core/builds/types.ts';
 
@@ -34,7 +34,7 @@ interface Tooltip {
 
 let geometryPromise: Promise<Geometry> | null = null;
 
-/** Loaded once, on demand: the full tree is ~300 KB the builder never needs. */
+/** Loaded once, on demand: the full tree is ~450 KB the builder never needs. */
 function loadGeometry(): Promise<Geometry> {
   geometryPromise ??= import('../generated/tree-geometry.json').then(
     (module) => (module.default ?? module) as unknown as Geometry,
@@ -42,30 +42,47 @@ function loadGeometry(): Promise<Geometry> {
   return geometryPromise;
 }
 
-/** Smallest viewBox width in tree units; below this the tree is unreadable. */
-const MIN_WIDTH = 900;
+/** Tightest view width; below this a single node fills the panel. */
+const MIN_WIDTH = 320;
+/** Smallest view width when fitting a short tree, so 4 nodes don't fill the screen. */
+const FIT_MIN_WIDTH = 1100;
 
-function boundsOf(nodes: GeometryNode[]): View {
+function boundsOf(nodes: { x: number; y: number }[]): View {
   let minX = Infinity;
   let minY = Infinity;
   let maxX = -Infinity;
   let maxY = -Infinity;
   for (const node of nodes) {
     if (node.x < minX) minX = node.x;
-    if (node.y < minY) minY = node.y;
     if (node.x > maxX) maxX = node.x;
+    if (node.y < minY) minY = node.y;
     if (node.y > maxY) maxY = node.y;
   }
-  const pad = Math.max(maxX - minX, maxY - minY) * 0.04;
-  const w = maxX - minX + pad * 2;
-  const h = maxY - minY + pad * 2;
-  return { x: minX - pad, y: minY - pad, w, h };
+  const span = Math.max(maxX - minX, maxY - minY, 1);
+  const pad = span * 0.12;
+  return {
+    x: minX - pad,
+    y: minY - pad,
+    w: span + pad * 2,
+    h: span + pad * 2,
+  };
+}
+
+function fitBounds(nodes: { x: number; y: number }[]): View {
+  const view = boundsOf(nodes);
+  if (view.w >= FIT_MIN_WIDTH) return view;
+  const grow = (FIT_MIN_WIDTH - view.w) / 2;
+  return { x: view.x - grow, y: view.y - grow, w: view.w + grow * 2, h: view.h + grow * 2 };
 }
 
 /**
- * The allocated tree drawn over the full constellation, the way the game shows
- * it. Wheel zooms toward the cursor, drag pans, and clicking a node opens its
- * stats — a thumbnail cannot answer "which node is that?" without both.
+ * The allocated tree drawn over the full constellation, the way the game does.
+ *
+ * Two things matter more than the drawing:
+ *  - it opens fitted to the nodes you actually took, because the whole tree at
+ *    once renders ten allocated dots at two pixels each;
+ *  - hit targets are capped below the node spacing, so clicking opens the node
+ *    under the cursor instead of its neighbour.
  */
 export default function TreeThumbnail({
   tree,
@@ -78,30 +95,29 @@ export default function TreeThumbnail({
   const [view, setView] = useState<View | null>(null);
   const [tooltip, setTooltip] = useState<Tooltip | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
-  const drag = useRef<{ x: number; y: number; moved: boolean } | null>(null);
-  const suppressClick = useRef(false);
+  const drag = useRef<{ x: number; y: number } | null>(null);
+  const moved = useRef(false);
 
   useEffect(() => {
     let cancelled = false;
     void loadGeometry().then((loaded) => {
       if (cancelled) return;
       setGeometry(loaded);
-      setView(boundsOf(loaded.nodes));
+      setView(fitBounds(tree.nodes));
     });
     return () => {
       cancelled = true;
     };
-  }, []);
+    // The tree changes per step; refit when it does.
+  }, [tree]);
 
   const full = useMemo(() => (geometry ? boundsOf(geometry.nodes) : null), [geometry]);
+  const fit = useMemo(() => fitBounds(tree.nodes), [tree]);
 
-  const taken = useMemo(
-    () => new Set(tree.nodes.map((node) => node.id)),
-    [tree.nodes],
-  );
+  const taken = useMemo(() => new Set(tree.nodes.map((node) => node.id)), [tree]);
   const takenNotable = useMemo(
     () => new Set(tree.nodes.filter((node) => node.notable).map((node) => node.id)),
-    [tree.nodes],
+    [tree],
   );
 
   const points = useMemo(() => {
@@ -110,99 +126,180 @@ export default function TreeThumbnail({
     return map;
   }, [geometry]);
 
-  // Wheel must be a native listener to preventDefault without a passive warning.
+  const openNode = useCallback((node: GeometryNode, event: ReactMouseEvent) => {
+    if (moved.current) {
+      moved.current = false;
+      return;
+    }
+    event.stopPropagation();
+    setTooltip({ node, x: event.clientX, y: event.clientY });
+  }, []);
+
+  // Wheel zooms toward the cursor. Native listener so preventDefault works.
   useEffect(() => {
     const svg = svgRef.current;
-    if (!svg || !view) return;
+    if (!svg) return;
     const onWheel = (event: WheelEvent) => {
       event.preventDefault();
       const rect = svg.getBoundingClientRect();
       const factor = Math.exp(event.deltaY * 0.0015);
+      const fx = (event.clientX - rect.left) / rect.width;
+      const fy = (event.clientY - rect.top) / rect.height;
       setView((current) => {
         if (!current) return current;
-        const nextW = Math.min(Math.max(current.w * factor, MIN_WIDTH), full?.w ?? current.w);
-        const nextH = (nextW / current.w) * current.h;
-        const fx = (event.clientX - rect.left) / rect.width;
-        const fy = (event.clientY - rect.top) / rect.height;
+        const w = Math.min(Math.max(current.w * factor, MIN_WIDTH), full?.w ?? current.w);
+        const scale = w / current.w;
         return {
-          x: current.x + current.w * fx - nextW * fx,
-          y: current.y + current.h * fy - nextH * fy,
-          w: nextW,
-          h: nextH,
+          x: current.x + (current.w - w) * fx,
+          y: current.y + (current.h - current.h * scale) * fy,
+          w,
+          h: current.h * scale,
         };
       });
     };
     svg.addEventListener('wheel', onWheel, { passive: false });
     return () => svg.removeEventListener('wheel', onWheel);
-  }, [view, full]);
+  }, [full]);
 
-  if (!geometry || !view || !full) {
+  if (!geometry || !view) {
     return (
       <p className="text-xs text-zinc-500">
-        {tree.nodes.length === 0 ? `No tree was planned for ${label}.` : 'Loading the tree…'}
+        {tree.nodes.length === 0 ? 'No tree was planned for this step.' : 'Loading the tree…'}
       </p>
     );
   }
 
-  const span = Math.max(full.w, full.h);
-  const radius = span * 0.0028;
-  const notableRadius = span * 0.0042;
-  const hitRadius = span * 0.011;
+  const span = Math.max(full!.w, full!.h);
+  const radius = span * 0.0032;
+  const notableRadius = span * 0.0052;
+  // Median node spacing is ~162 units. A hit radius of 80 never overlaps a
+  // neighbour, so a click lands on the node under the cursor.
+  const hitRadius = Math.min(span * 0.011, 80);
 
   const zoomBy = (factor: number) => {
     setView((current) => {
       if (!current) return current;
-      const nextW = Math.min(Math.max(current.w * factor, MIN_WIDTH), full.w);
-      const nextH = (nextW / current.w) * current.h;
+      const w = Math.min(Math.max(current.w * factor, MIN_WIDTH), full!.w);
+      const scale = w / current.w;
       return {
-        x: current.x + (current.w - nextW) / 2,
-        y: current.y + (current.h - nextH) / 2,
-        w: nextW,
-        h: nextH,
+        x: current.x + (current.w - w) / 2,
+        y: current.y + (current.h - current.h * scale) / 2,
+        w,
+        h: current.h * scale,
       };
     });
   };
 
   const onPointerDown = (event: ReactPointerEvent<SVGSVGElement>) => {
-    drag.current = { x: event.clientX, y: event.clientY, moved: false };
+    drag.current = { x: event.clientX, y: event.clientY };
+    moved.current = false;
     event.currentTarget.setPointerCapture(event.pointerId);
   };
-
   const onPointerMove = (event: ReactPointerEvent<SVGSVGElement>) => {
     const start = drag.current;
     if (!start) return;
     const dx = event.clientX - start.x;
     const dy = event.clientY - start.y;
-    if (Math.abs(dx) + Math.abs(dy) > 3) start.moved = true;
+    if (Math.abs(dx) + Math.abs(dy) > 4) moved.current = true;
+    drag.current = { x: event.clientX, y: event.clientY };
     const rect = event.currentTarget.getBoundingClientRect();
-    setView((current) =>
-      current
-        ? {
-            ...current,
-            x: current.x - (dx / rect.width) * current.w,
-            y: current.y - (dy / rect.height) * current.h,
-          }
-        : current,
-    );
-    drag.current = { x: event.clientX, y: event.clientY, moved: start.moved };
+    setView((current) => {
+      if (!current) return current;
+      const unit = current.w / rect.width;
+      return { ...current, x: current.x - dx * unit, y: current.y - dy * unit };
+    });
   };
-
   const onPointerUp = () => {
-    suppressClick.current = drag.current?.moved ?? false;
     drag.current = null;
   };
 
-  const openNode = (node: GeometryNode, event: ReactMouseEvent) => {
-    if (suppressClick.current) {
-      suppressClick.current = false;
-      return;
-    }
-    event.stopPropagation();
-    setTooltip({ node, x: event.clientX, y: event.clientY });
-  };
+  const tooltipLeft = Math.min(tooltip ? tooltip.x + 14 : 0, window.innerWidth - 300);
+  const tooltipTop = Math.min(tooltip ? tooltip.y + 14 : 0, window.innerHeight - 240);
 
-  const tooltipLeft = tooltip ? Math.min(tooltip.x + 14, window.innerWidth - 300) : 0;
-  const tooltipTop = tooltip ? Math.min(tooltip.y + 14, window.innerHeight - 220) : 0;
+  // Static layers are memoised: panning changes the viewBox only, so React must
+  // not rebuild 2,500 nodes and 2,900 edges on every pointer move.
+  const staticLayer = useMemo(() => {
+    if (!geometry) return null;
+    return (
+      <>
+        <g stroke="currentColor" strokeWidth={0.7} vectorEffect="non-scaling-stroke" className="text-ink-700">
+          {geometry.edges.map(([from, to]) => {
+            const a = points.get(from);
+            const b = points.get(to);
+            if (!a || !b) return null;
+            return <line key={`e${from}-${to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} />;
+          })}
+        </g>
+        <g className="fill-ink-600">
+          {geometry.nodes.map((node) => (
+            <circle
+              key={`g${node.id}`}
+              cx={node.x}
+              cy={node.y}
+              r={node.notable ? radius * 1.15 : radius * 0.7}
+              className={node.keystone ? 'fill-zinc-500' : undefined}
+            />
+          ))}
+        </g>
+      </>
+    );
+  }, [geometry, points, radius]);
+
+  const takenLayer = useMemo(() => {
+    if (!geometry) return null;
+    return (
+      <>
+        <g stroke="#b98a2e" strokeWidth={1.4} vectorEffect="non-scaling-stroke">
+          {tree.edges.map(([from, to]) => {
+            const a = points.get(from);
+            const b = points.get(to);
+            if (!a || !b) return null;
+            return <line key={`t${from}-${to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} />;
+          })}
+        </g>
+        {geometry.nodes.map((node) => {
+          if (!taken.has(node.id)) return null;
+          const isNotable = takenNotable.has(node.id);
+          return (
+            <circle
+              key={`a${node.id}`}
+              cx={node.x}
+              cy={node.y}
+              r={isNotable ? notableRadius : radius}
+              className={isNotable ? 'fill-gold-300' : 'fill-zinc-100'}
+              stroke={node.socket ? '#7aa2f7' : undefined}
+              strokeWidth={node.socket ? 1.6 : undefined}
+              vectorEffect="non-scaling-stroke"
+            />
+          );
+        })}
+      </>
+    );
+  }, [geometry, points, tree, taken, takenNotable, radius, notableRadius]);
+
+  const hitLayer = useMemo(() => {
+    if (!geometry) return null;
+    return (
+      <g>
+        {geometry.nodes.map((node) => (
+          <circle
+            key={`h${node.id}`}
+            cx={node.x}
+            cy={node.y}
+            r={hitRadius}
+            fill="transparent"
+            className="cursor-pointer"
+            onClick={(event) => openNode(node, event)}
+          >
+            <title>
+              {node.name || `node ${node.id}`}
+              {node.stats?.length ? ` — ${node.stats[0]}` : ''}
+            </title>
+          </circle>
+        ))}
+      </g>
+    );
+  }, [geometry, hitRadius, openNode]);
 
   return (
     <figure>
@@ -211,99 +308,17 @@ export default function TreeThumbnail({
           ref={svgRef}
           viewBox={`${view.x} ${view.y} ${view.w} ${view.h}`}
           role="img"
-          aria-label={`${label} passive tree: ${tree.nodes.length} points, ${tree.notables.length} notables`}
-          className="h-[32rem] w-full cursor-grab touch-none rounded-lg border border-ink-700 bg-[#0b0d12] active:cursor-grabbing"
+          aria-label={`Passive tree at ${label}: ${tree.nodes.length} points, ${tree.notables.length} notables`}
+          className="h-[34rem] w-full cursor-grab touch-none rounded-lg border border-ink-700 bg-[#0b0d12] active:cursor-grabbing"
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerLeave={onPointerUp}
           onClick={() => setTooltip(null)}
         >
-          <g stroke="currentColor" className="text-ink-700" strokeWidth={0.7} vectorEffect="non-scaling-stroke">
-            {geometry.edges.map(([from, to]) => {
-              const a = points.get(from);
-              const b = points.get(to);
-              if (!a || !b) return null;
-              return <line key={`e${from}-${to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} />;
-            })}
-          </g>
-
-          <g className="fill-ink-600">
-            {geometry.nodes.map((node) => {
-              const point = points.get(node.id);
-              if (!point) return null;
-              return (
-                <circle
-                  key={`g${node.id}`}
-                  cx={point.x}
-                  cy={point.y}
-                  r={node.notable ? radius * 1.2 : radius * 0.7}
-                />
-              );
-            })}
-          </g>
-
-          <g stroke="#b98a2e" strokeWidth={1.2} vectorEffect="non-scaling-stroke">
-            {tree.edges.map(([from, to]) => {
-              const a = points.get(from);
-              const b = points.get(to);
-              if (!a || !b) return null;
-              return <line key={`t${from}-${to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} />;
-            })}
-          </g>
-
-          <g className="fill-ink-600">
-            {geometry.nodes.map((node) => {
-              if (taken.has(node.id)) return null;
-              return (
-                <circle
-                  key={`n${node.id}`}
-                  cx={node.x}
-                  cy={node.y}
-                  r={node.notable ? notableRadius : radius}
-                  className={node.keystone ? 'fill-zinc-500' : undefined}
-                />
-              );
-            })}
-          </g>
-
-          <g>
-            {geometry.nodes.map((node) => {
-              const takenNode = taken.has(node.id);
-              const isNotable = takenNotable.has(node.id);
-              const className = takenNode
-                ? isNotable
-                  ? 'fill-gold-300'
-                  : 'fill-zinc-200'
-                : 'fill-transparent';
-              return (
-                <g key={`a${node.id}`}>
-                  <circle
-                    cx={node.x}
-                    cy={node.y}
-                    r={takenNode ? (isNotable ? notableRadius : radius) : radius}
-                    className={className}
-                    stroke={node.socket && takenNode ? '#7aa2f7' : undefined}
-                    strokeWidth={node.socket && takenNode ? 1.4 : undefined}
-                    vectorEffect="non-scaling-stroke"
-                  />
-                  <circle
-                    cx={node.x}
-                    cy={node.y}
-                    r={hitRadius}
-                    fill="transparent"
-                    className="cursor-pointer"
-                    onClick={(event) => openNode(node, event)}
-                  >
-                    <title>
-                      {node.name || `node ${node.id}`}
-                      {node.stats?.length ? ` — ${node.stats[0]}` : ''}
-                    </title>
-                  </circle>
-                </g>
-              );
-            })}
-          </g>
+          {staticLayer}
+          {takenLayer}
+          {hitLayer}
         </svg>
 
         <div className="absolute right-2 top-2 flex gap-1">
@@ -325,11 +340,19 @@ export default function TreeThumbnail({
           </button>
           <button
             type="button"
+            onClick={() => setView(fit)}
+            className="rounded border border-ink-700 bg-ink-900/90 px-2 py-1 text-xs text-zinc-300 hover:text-gold-300"
+            title="Fit the nodes you took"
+          >
+            fit
+          </button>
+          <button
+            type="button"
             onClick={() => setView(full)}
             className="rounded border border-ink-700 bg-ink-900/90 px-2 py-1 text-xs text-zinc-300 hover:text-gold-300"
-            aria-label="Reset view"
+            title="Show the whole tree"
           >
-            reset
+            all
           </button>
         </div>
 
@@ -376,9 +399,10 @@ export default function TreeThumbnail({
       </div>
 
       <figcaption className="mt-2 text-[11px] leading-relaxed text-zinc-500">
-        {tree.nodes.length} points, {tree.notables.length} notables. Wheel zooms, drag
-        pans, click a node for its stats. Gold are notables, blue rings are jewel
-        sockets; bright nodes are allocated at {label}.
+        {tree.nodes.length} points, {tree.notables.length} notables at {label}. Wheel zooms,
+        drag pans, click any node for its stats. Gold are notables, blue rings are jewel
+        sockets; bright nodes are allocated. <span className="text-zinc-400">fit</span> shows
+        only what you took, <span className="text-zinc-400">all</span> shows the whole tree.
       </figcaption>
     </figure>
   );
