@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.52.1',
+    date: '2026-11-25',
+    title: 'The tree no longer crashes the page',
+    notes: [
+      "The build page crashed with React error #310 as soon as the passive tree finished loading. The tree component returned early while the geometry was still fetching, then reached three memoised layers on the next render, so the second render had more hooks than the first.",
+      "Every hook now runs before the early return. A source-level test pins the invariant, so a future refactor cannot put a hook behind a conditional again.",
+      "This was a regression in 0.51.0, introduced when the memoised layers were added to make panning smooth.",
+      "542 tests.",
+    ],
+    commits: [],
+    compare: 'v0.52.0...v0.52.1',
+  },
+  {
     version: '0.52.0',
     date: '2026-11-25',
     title: 'The first verified build',
