@@ -2,6 +2,17 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.52.0 — 2026-11-25
+
+The first verified build.
+
+- The build is now published as **verified**, not draft: every checkpoint passes its gates. Maps-red damage went from 65k to 184k and pinnacle from 92k to 304k.
+- The reason was a real bug. Jewel sockets were allocated after the notable loop had already spent the whole budget, so the six Ghastly Eyes in the gear list were never socketed and contributed nothing. The gate was measuring a character wearing no jewels.
+- Sockets are now allocated first, then notables fill the rest. That changes the tree, which cost cold resistance, so the amulet carries a cold roll to keep all three elements capped.
+- The gate report now publishes chaos resistance and the socket count, so the page shows what was actually measured.
+- Gates are still labelled uncalibrated: they pass for this build, but the threshold set has not yet been proved against known-good and known-bad reference builds.
+- 541 tests.
+
 ## 0.51.0 — 2026-11-25
 
 A tree you can actually read, and flasks that fit the step.
