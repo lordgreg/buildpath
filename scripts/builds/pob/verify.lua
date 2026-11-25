@@ -140,6 +140,42 @@ end
 
 local budget = math.max(2, (spec.points or 100) - 1)
 local planned, taken, skipped = {}, {}, 0
+
+-- Jewel sockets first. They cost one point each and carry a Ghastly Eye, which
+-- is worth more than most notables. Allocating them *after* the notable loop
+-- left no budget for them, so the jewels were listed in the gear but never
+-- socketed and contributed nothing.
+local socketIds, socketsTaken = {}, 0
+local wantedSockets = math.min(spec.jewelCount or 0, 8)
+if wantedSockets > 0 then
+  local depth, parent = distances()
+  local reachable = {}
+  for id, node in pairs(nodes) do
+    local key = tonumber(id)
+    if node.isJewelSocket and not allocated[key] and depth[key] then
+      reachable[#reachable + 1] = { id = key, cost = depth[key] }
+    end
+  end
+  table.sort(reachable, function(a, b)
+    if a.cost ~= b.cost then return a.cost < b.cost end
+    return a.id < b.id
+  end)
+  for _, socket in ipairs(reachable) do
+    if socketsTaken >= wantedSockets or allocatedCount() >= budget then break end
+    local path = {}
+    local cursor = socket.id
+    while cursor and not allocated[cursor] do
+      table.insert(path, 1, cursor)
+      cursor = parent[cursor]
+    end
+    if #path > 0 and allocatedCount() + #path <= budget then
+      for _, id in ipairs(path) do allocated[id] = true end
+      socketIds[#socketIds + 1] = socket.id
+      socketsTaken = socketsTaken + 1
+    end
+  end
+end
+
 while allocatedCount() < budget do
   local depth, parent = distances()
   local best, bestScore
@@ -177,37 +213,7 @@ while allocatedCount() < budget do
   end
 end
 
--- Jewel sockets: one point each, so they compete with notables for the budget.
-local socketIds, socketsTaken = {}, 0
-local wantedSockets = math.min(spec.jewelCount or 0, 8)
-if wantedSockets > 0 then
-  local depth, parent = distances()
-  local reachable = {}
-  for id, node in pairs(nodes) do
-    local key = tonumber(id)
-    if node.isJewelSocket and not allocated[key] and depth[key] then
-      reachable[#reachable + 1] = { id = key, cost = depth[key] }
-    end
-  end
-  table.sort(reachable, function(a, b)
-    if a.cost ~= b.cost then return a.cost < b.cost end
-    return a.id < b.id
-  end)
-  for _, socket in ipairs(reachable) do
-    if socketsTaken >= wantedSockets or allocatedCount() >= budget then break end
-    local path = {}
-    local cursor = socket.id
-    while cursor and not allocated[cursor] do
-      table.insert(path, 1, cursor)
-      cursor = parent[cursor]
-    end
-    if #path > 0 and allocatedCount() + #path <= budget then
-      for _, id in ipairs(path) do allocated[id] = true end
-      socketIds[#socketIds + 1] = socket.id
-      socketsTaken = socketsTaken + 1
-    end
-  end
-end
+-- Jewel sockets are allocated before the notable loop, above.
 
 -- Ascendancy points: matched by name slug, granted by the labs the seed allows.
 local ascendNodes = {}
@@ -435,6 +441,7 @@ local result = {
   manaCost = output.ManaCost,
   manaUnreserved = output.ManaUnreserved,
   allocated = allocatedCount(),
+  sockets = #socketIds,
   ascendancy = #ascendNodes,
   notables = #planned,
   skipped = skipped,

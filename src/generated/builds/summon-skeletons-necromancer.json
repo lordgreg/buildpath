@@ -354,7 +354,7 @@
     "core": [],
     "optional": []
   },
-  "status": "draft",
+  "status": "verified",
   "gates": {
     "until-12": {
       "pass": true,
@@ -373,7 +373,9 @@
           -48,
           -48
         ],
+        "chaosResist": -60,
         "nodes": 10,
+        "sockets": 0,
         "ascendancy": 1
       },
       "failures": [],
@@ -674,7 +676,9 @@
           -22,
           -22
         ],
+        "chaosResist": -60,
         "nodes": 29,
+        "sockets": 0,
         "ascendancy": 2
       },
       "failures": [],
@@ -1157,19 +1161,21 @@
       "level": 68,
       "budget": "ssf-start (5-link)",
       "metrics": {
-        "dps": 26441,
+        "dps": 47969,
         "minionCount": 6,
         "dpsSource": "minion",
-        "life": 3927,
-        "energyShield": 745,
-        "ehp": 12160,
-        "maxHit": 7079,
+        "life": 3347,
+        "energyShield": 1125,
+        "ehp": 11783,
+        "maxHit": 6776,
         "resists": [
-          76,
+          75,
           75,
           75
         ],
+        "chaosResist": -12,
         "nodes": 77,
+        "sockets": 2,
         "ascendancy": 4
       },
       "failures": [],
@@ -1184,24 +1190,24 @@
             49254
           ],
           [
-            1325,
-            31471
+            1767,
+            41989
           ],
           [
-            3167,
-            6359
+            1767,
+            58244
           ],
           [
-            3644,
-            14930
+            2292,
+            27203
+          ],
+          [
+            3656,
+            58244
           ],
           [
             4397,
             36542
-          ],
-          [
-            4397,
-            11420
           ],
           [
             4397,
@@ -1216,32 +1222,32 @@
             58218
           ],
           [
-            6289,
-            48287
+            7388,
+            60398
           ],
           [
-            6359,
-            21413
+            7388,
+            36634
           ],
           [
-            6712,
-            36949
+            8948,
+            27659
           ],
           [
-            6712,
-            23027
+            10031,
+            15064
           ],
           [
             10575,
             40508
           ],
           [
-            10904,
-            36915
+            10575,
+            29199
           ],
           [
-            11420,
-            48362
+            10904,
+            36915
           ],
           [
             13009,
@@ -1256,12 +1262,24 @@
             39648
           ],
           [
+            18865,
+            55247
+          ],
+          [
             19103,
             35260
           ],
           [
-            24914,
-            61262
+            21678,
+            32210
+          ],
+          [
+            21835,
+            35894
+          ],
+          [
+            21835,
+            25058
           ],
           [
             26270,
@@ -1269,23 +1287,15 @@
           ],
           [
             27611,
-            60554
+            32024
           ],
           [
-            29353,
-            50570
-          ],
-          [
-            30380,
-            59928
+            27659,
+            37671
           ],
           [
             31875,
             60398
-          ],
-          [
-            33287,
-            55676
           ],
           [
             35958,
@@ -1296,16 +1306,20 @@
             57264
           ],
           [
-            50422,
-            50862
+            37671,
+            61320
+          ],
+          [
+            49047,
+            61982
           ],
           [
             54447,
             57264
           ],
           [
-            59928,
-            63723
+            55247,
+            63799
           ]
         ],
         "nodes": [
@@ -1324,25 +1338,25 @@
             "y": -2709
           },
           {
-            "id": 1325,
-            "name": "Golem's Blood",
-            "notable": true,
-            "x": -1221,
-            "y": 6702
+            "id": 1767,
+            "name": "Life and Energy Shield on Kill",
+            "notable": false,
+            "x": 6264,
+            "y": -2583
           },
           {
-            "id": 3167,
-            "name": "Life Regeneration",
+            "id": 2292,
+            "name": "Mana and Life",
             "notable": false,
-            "x": -4656,
-            "y": -189
+            "x": 136,
+            "y": -4582
           },
           {
-            "id": 3644,
-            "name": "Strength",
+            "id": 3656,
+            "name": "Intelligence",
             "notable": false,
-            "x": -6469,
-            "y": 4905
+            "x": 5914,
+            "y": -3362
           },
           {
             "id": 4177,
@@ -1359,13 +1373,6 @@
             "y": -4501
           },
           {
-            "id": 5233,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 3505
-          },
-          {
             "id": 5743,
             "name": "Life and Energy Shield",
             "notable": false,
@@ -1373,25 +1380,11 @@
             "y": -4783
           },
           {
-            "id": 6289,
-            "name": "Bloodless",
-            "notable": true,
-            "x": -4864,
-            "y": 5286
-          },
-          {
-            "id": 6359,
-            "name": "Armour and Life",
+            "id": 7388,
+            "name": "Intelligence",
             "notable": false,
-            "x": -4656,
-            "y": -470
-          },
-          {
-            "id": 6712,
-            "name": "Life",
-            "notable": false,
-            "x": -6902,
-            "y": -1435
+            "x": -2202,
+            "y": -3694
           },
           {
             "id": 7688,
@@ -1408,6 +1401,20 @@
             "y": -6039
           },
           {
+            "id": 8948,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1370,
+            "y": -4501
+          },
+          {
+            "id": 10031,
+            "name": "Life",
+            "notable": false,
+            "x": -6659,
+            "y": -1576
+          },
+          {
             "id": 10575,
             "name": "Intelligence",
             "notable": false,
@@ -1422,13 +1429,6 @@
             "y": -4087
           },
           {
-            "id": 11420,
-            "name": "Arcanist's Dominion",
-            "notable": true,
-            "x": -850,
-            "y": -4501
-          },
-          {
             "id": 13009,
             "name": "Dexterity",
             "notable": false,
@@ -1436,18 +1436,18 @@
             "y": -3777
           },
           {
-            "id": 14930,
-            "name": "Strength",
-            "notable": false,
-            "x": -5461,
-            "y": 6072
-          },
-          {
             "id": 15046,
             "name": "Redemption",
             "notable": true,
             "x": -8288,
             "y": -3870
+          },
+          {
+            "id": 15064,
+            "name": "Strength",
+            "notable": false,
+            "x": -6152,
+            "y": -1898
           },
           {
             "id": 15081,
@@ -1471,11 +1471,32 @@
             "y": -3732
           },
           {
+            "id": 18865,
+            "name": "Melding",
+            "notable": true,
+            "x": 2584,
+            "y": -3575
+          },
+          {
             "id": 19103,
             "name": "Righteous Army",
             "notable": true,
             "x": -7786,
             "y": -4160
+          },
+          {
+            "id": 20546,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 4301,
+            "y": -3362
+          },
+          {
+            "id": 21301,
+            "name": "Strength",
+            "notable": false,
+            "x": 3415,
+            "y": -3704
           },
           {
             "id": 21330,
@@ -1485,11 +1506,18 @@
             "y": -3592
           },
           {
-            "id": 21413,
-            "name": "Combat Stamina",
-            "notable": true,
-            "x": -4818,
-            "y": -470
+            "id": 21678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 903,
+            "y": -3707
+          },
+          {
+            "id": 21835,
+            "name": "Life",
+            "notable": false,
+            "x": 4704,
+            "y": -2583
           },
           {
             "id": 21958,
@@ -1506,25 +1534,11 @@
             "y": -4631
           },
           {
-            "id": 23027,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": -1435
-          },
-          {
-            "id": 24083,
-            "name": "Strength",
-            "notable": false,
-            "x": -967,
-            "y": 7475
-          },
-          {
-            "id": 24914,
-            "name": "Strength",
-            "notable": false,
-            "x": -2784,
-            "y": 7475
+            "id": 25058,
+            "name": "Blood Siphon",
+            "notable": true,
+            "x": 4893,
+            "y": -2223
           },
           {
             "id": 25332,
@@ -1562,6 +1576,20 @@
             "y": -5347
           },
           {
+            "id": 27659,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1752,
+            "y": -4352
+          },
+          {
+            "id": 27929,
+            "name": "Deep Wisdom",
+            "notable": true,
+            "x": 842,
+            "y": -4501
+          },
+          {
             "id": 29106,
             "name": "Minion Damage and Attack and Cast Speed",
             "notable": false,
@@ -1569,25 +1597,11 @@
             "y": -3579
           },
           {
-            "id": 29353,
-            "name": "Strength",
+            "id": 29199,
+            "name": "Intelligence",
             "notable": false,
-            "x": -7672,
-            "y": 7
-          },
-          {
-            "id": 30380,
-            "name": "Life and Elemental Resistances",
-            "notable": false,
-            "x": -7077,
-            "y": 1795
-          },
-          {
-            "id": 31471,
-            "name": "Life",
-            "notable": false,
-            "x": -978,
-            "y": 6842
+            "x": -6144,
+            "y": -2419
           },
           {
             "id": 31875,
@@ -1597,11 +1611,18 @@
             "y": -4359
           },
           {
-            "id": 33287,
-            "name": "Juggernaut",
-            "notable": true,
-            "x": -7064,
-            "y": 3008
+            "id": 32024,
+            "name": "Minion Life",
+            "notable": false,
+            "x": 165,
+            "y": -4965
+          },
+          {
+            "id": 32210,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1275,
+            "y": -4150
           },
           {
             "id": 33755,
@@ -1609,13 +1630,6 @@
             "notable": false,
             "x": -1352,
             "y": -6605
-          },
-          {
-            "id": 34400,
-            "name": "Strength",
-            "notable": false,
-            "x": -4260,
-            "y": 7475
           },
           {
             "id": 34880,
@@ -1632,6 +1646,13 @@
             "y": -4297
           },
           {
+            "id": 35894,
+            "name": "Trickery",
+            "notable": true,
+            "x": 4558,
+            "y": -2869
+          },
+          {
             "id": 35958,
             "name": "Faith and Steel",
             "notable": true,
@@ -1644,6 +1665,13 @@
             "notable": false,
             "x": -1278,
             "y": -4150
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
           },
           {
             "id": 36915,
@@ -1667,6 +1695,13 @@
             "y": -3707
           },
           {
+            "id": 37671,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2406,
+            "y": -4102
+          },
+          {
             "id": 39648,
             "name": "Mana Regeneration and Life",
             "notable": false,
@@ -1688,6 +1723,13 @@
             "y": -3702
           },
           {
+            "id": 41263,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 2317,
+            "y": -3508
+          },
+          {
             "id": 41472,
             "name": "Discipline and Training",
             "notable": true,
@@ -1695,11 +1737,11 @@
             "y": -2419
           },
           {
-            "id": 44202,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": -735
+            "id": 41989,
+            "name": "Resourcefulness",
+            "notable": true,
+            "x": 6072,
+            "y": -2223
           },
           {
             "id": 46897,
@@ -1709,18 +1751,18 @@
             "y": -3405
           },
           {
-            "id": 48287,
-            "name": "Life",
+            "id": 48778,
+            "name": "Intelligence",
             "notable": false,
-            "x": -4923,
-            "y": 5507
+            "x": 2155,
+            "y": -3670
           },
           {
-            "id": 48362,
-            "name": "Mana and Life",
+            "id": 49047,
+            "name": "Minion Life and Chaos Resistance",
             "notable": false,
-            "x": -144,
-            "y": -4582
+            "x": 1914,
+            "y": -4642
           },
           {
             "id": 49254,
@@ -1730,32 +1772,11 @@
             "y": -2999
           },
           {
-            "id": 50422,
-            "name": "Strength",
+            "id": 51517,
+            "name": "Minion Life and Chaos Resistance",
             "notable": false,
-            "x": -5659,
-            "y": 7
-          },
-          {
-            "id": 50570,
-            "name": "Strength",
-            "notable": false,
-            "x": -6748,
-            "y": 7
-          },
-          {
-            "id": 50862,
-            "name": "Strength",
-            "notable": false,
-            "x": -4436,
-            "y": 7
-          },
-          {
-            "id": 53118,
-            "name": "Barbarism",
-            "notable": true,
-            "x": -6915,
-            "y": 1957
+            "x": 1752,
+            "y": -4642
           },
           {
             "id": 54447,
@@ -1765,11 +1786,18 @@
             "y": -3180
           },
           {
-            "id": 55676,
-            "name": "Life and Armour",
+            "id": 55247,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -7123,
-            "y": 3229
+            "x": 2805,
+            "y": -3515
+          },
+          {
+            "id": 57226,
+            "name": "Energy Shield and Mana",
+            "notable": false,
+            "x": 163,
+            "y": -3470
           },
           {
             "id": 57264,
@@ -1786,18 +1814,18 @@
             "y": -4724
           },
           {
+            "id": 58244,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 6407,
+            "y": -2869
+          },
+          {
             "id": 58402,
             "name": "Intelligence",
             "notable": false,
             "x": -5651,
             "y": -3443
-          },
-          {
-            "id": 59928,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 1342
           },
           {
             "id": 60398,
@@ -1807,39 +1835,25 @@
             "y": -4127
           },
           {
-            "id": 60472,
-            "name": "Strength",
+            "id": 61320,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -7672,
-            "y": -2419
+            "x": 2643,
+            "y": -3796
           },
           {
-            "id": 60554,
-            "name": "Minion Damage",
-            "notable": false,
-            "x": -173,
-            "y": -4965
+            "id": 61982,
+            "name": "Grave Intentions",
+            "notable": true,
+            "x": 1833,
+            "y": -4944
           },
           {
-            "id": 61262,
-            "name": "Strength",
+            "id": 63799,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -1920,
-            "y": 7475
-          },
-          {
-            "id": 63282,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 650
-          },
-          {
-            "id": 63723,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 2424
+            "x": 2864,
+            "y": -3737
           },
           {
             "id": 64210,
@@ -1850,26 +1864,26 @@
           }
         ],
         "notables": [
-          "Golem's Blood",
           "Spiritual Aid",
-          "Bloodless",
           "Enduring Bond",
-          "Arcanist's Dominion",
           "Redemption",
+          "Melding",
           "Righteous Army",
           "Quick Recovery",
-          "Combat Stamina",
           "Cruel Preparation",
+          "Blood Siphon",
           "Heart and Soul",
           "Lord of the Dead",
-          "Juggernaut",
+          "Deep Wisdom",
+          "Trickery",
           "Faith and Steel",
           "Sacrifice",
           "Devotion",
           "Discipline and Training",
+          "Resourcefulness",
           "Retribution",
-          "Barbarism",
-          "Purity of Flesh"
+          "Purity of Flesh",
+          "Grave Intentions"
         ]
       },
       "gear": [
@@ -1962,7 +1976,8 @@
           "mods": [
             "+25 to Intelligence",
             "+80 to maximum Life",
-            "+40% to Lightning Resistance"
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -2144,19 +2159,21 @@
       "level": 80,
       "budget": "ssf-start (5-link)",
       "metrics": {
-        "dps": 70718,
+        "dps": 67095,
         "minionCount": 6,
         "dpsSource": "minion",
-        "life": 4734,
-        "energyShield": 745,
-        "ehp": 14417,
-        "maxHit": 8429,
+        "life": 4352,
+        "energyShield": 1312,
+        "ehp": 15091,
+        "maxHit": 8714,
         "resists": [
-          76,
+          75,
           75,
           75
         ],
-        "nodes": 89,
+        "chaosResist": -12,
+        "nodes": 87,
+        "sockets": 2,
         "ascendancy": 5
       },
       "failures": [],
@@ -2171,24 +2188,36 @@
             49254
           ],
           [
-            1325,
-            31471
+            1767,
+            41989
           ],
           [
-            3167,
-            6359
+            1767,
+            58244
           ],
           [
-            3644,
-            14930
+            1822,
+            38190
+          ],
+          [
+            1822,
+            4502
+          ],
+          [
+            2292,
+            27203
+          ],
+          [
+            3656,
+            58244
+          ],
+          [
+            3656,
+            33783
           ],
           [
             4397,
             36542
-          ],
-          [
-            4397,
-            11420
           ],
           [
             4397,
@@ -2203,44 +2232,44 @@
             58218
           ],
           [
-            6289,
-            48287
+            7112,
+            13885
           ],
           [
-            6359,
-            21413
+            7388,
+            60398
           ],
           [
-            6712,
-            36949
+            7388,
+            36634
           ],
           [
-            6712,
-            23027
+            8948,
+            27659
+          ],
+          [
+            10031,
+            15064
           ],
           [
             10575,
             40508
           ],
           [
-            10904,
-            36915
+            10575,
+            29199
           ],
           [
-            11420,
-            48362
+            10904,
+            36915
           ],
           [
             13009,
             60398
           ],
           [
-            15405,
-            33631
-          ],
-          [
-            16775,
-            34207
+            13885,
+            40362
           ],
           [
             17735,
@@ -2251,20 +2280,24 @@
             39648
           ],
           [
+            18865,
+            55247
+          ],
+          [
             19103,
             35260
           ],
           [
-            19609,
-            45803
+            21678,
+            32210
           ],
           [
-            24914,
-            61262
+            21835,
+            35894
           ],
           [
-            26196,
-            34171
+            21835,
+            25058
           ],
           [
             26270,
@@ -2272,31 +2305,15 @@
           ],
           [
             27611,
-            60554
+            32024
           ],
           [
-            29353,
-            50570
-          ],
-          [
-            30380,
-            59928
+            27659,
+            37671
           ],
           [
             31875,
             60398
-          ],
-          [
-            33287,
-            55676
-          ],
-          [
-            33740,
-            46910
-          ],
-          [
-            34171,
-            60472
           ],
           [
             35958,
@@ -2307,24 +2324,24 @@
             57264
           ],
           [
-            46910,
-            65034
+            37671,
+            61320
           ],
           [
-            50422,
-            50862
+            38190,
+            61653
+          ],
+          [
+            49047,
+            61982
           ],
           [
             54447,
             57264
           ],
           [
-            55485,
-            65034
-          ],
-          [
-            59928,
-            63723
+            55247,
+            63799
           ]
         ],
         "nodes": [
@@ -2343,25 +2360,32 @@
             "y": -2709
           },
           {
-            "id": 1325,
-            "name": "Golem's Blood",
-            "notable": true,
-            "x": -1221,
-            "y": 6702
+            "id": 1767,
+            "name": "Life and Energy Shield on Kill",
+            "notable": false,
+            "x": 6264,
+            "y": -2583
           },
           {
-            "id": 3167,
-            "name": "Life Regeneration",
+            "id": 1822,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -4656,
-            "y": -189
+            "x": 6086,
+            "y": -4755
           },
           {
-            "id": 3644,
-            "name": "Strength",
+            "id": 2292,
+            "name": "Mana and Life",
             "notable": false,
-            "x": -6469,
-            "y": 4905
+            "x": 136,
+            "y": -4582
+          },
+          {
+            "id": 3656,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 5914,
+            "y": -3362
           },
           {
             "id": 4177,
@@ -2378,11 +2402,11 @@
             "y": -4501
           },
           {
-            "id": 5233,
-            "name": "Strength",
+            "id": 4502,
+            "name": "Intelligence",
             "notable": false,
-            "x": -7672,
-            "y": 3505
+            "x": 5535,
+            "y": -4755
           },
           {
             "id": 5743,
@@ -2392,25 +2416,18 @@
             "y": -4783
           },
           {
-            "id": 6289,
-            "name": "Bloodless",
-            "notable": true,
-            "x": -4864,
-            "y": 5286
+            "id": 7112,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -2223
           },
           {
-            "id": 6359,
-            "name": "Armour and Life",
+            "id": 7388,
+            "name": "Intelligence",
             "notable": false,
-            "x": -4656,
-            "y": -470
-          },
-          {
-            "id": 6712,
-            "name": "Life",
-            "notable": false,
-            "x": -6902,
-            "y": -1435
+            "x": -2202,
+            "y": -3694
           },
           {
             "id": 7688,
@@ -2427,6 +2444,20 @@
             "y": -6039
           },
           {
+            "id": 8948,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1370,
+            "y": -4501
+          },
+          {
+            "id": 10031,
+            "name": "Life",
+            "notable": false,
+            "x": -6659,
+            "y": -1576
+          },
+          {
             "id": 10575,
             "name": "Intelligence",
             "notable": false,
@@ -2441,13 +2472,6 @@
             "y": -4087
           },
           {
-            "id": 11420,
-            "name": "Arcanist's Dominion",
-            "notable": true,
-            "x": -850,
-            "y": -4501
-          },
-          {
             "id": 13009,
             "name": "Dexterity",
             "notable": false,
@@ -2455,11 +2479,11 @@
             "y": -3777
           },
           {
-            "id": 14930,
-            "name": "Strength",
+            "id": 13885,
+            "name": "Dexterity",
             "notable": false,
-            "x": -5461,
-            "y": 6072
+            "x": 6407,
+            "y": -1604
           },
           {
             "id": 15046,
@@ -2469,25 +2493,18 @@
             "y": -3870
           },
           {
+            "id": 15064,
+            "name": "Strength",
+            "notable": false,
+            "x": -6152,
+            "y": -1898
+          },
+          {
             "id": 15081,
             "name": "Minion Damage and Duration",
             "notable": false,
             "x": -1942,
             "y": -4631
-          },
-          {
-            "id": 15405,
-            "name": "Strength",
-            "notable": false,
-            "x": -3936,
-            "y": 7
-          },
-          {
-            "id": 16775,
-            "name": "Strength",
-            "notable": false,
-            "x": -1604,
-            "y": -240
           },
           {
             "id": 17735,
@@ -2504,6 +2521,20 @@
             "y": -3732
           },
           {
+            "id": 18769,
+            "name": "Written in Blood",
+            "notable": true,
+            "x": 6027,
+            "y": -4976
+          },
+          {
+            "id": 18865,
+            "name": "Melding",
+            "notable": true,
+            "x": 2584,
+            "y": -3575
+          },
+          {
             "id": 19103,
             "name": "Righteous Army",
             "notable": true,
@@ -2511,11 +2542,18 @@
             "y": -4160
           },
           {
-            "id": 19609,
-            "name": "Physical Damage Over Time Multiplier",
+            "id": 20546,
+            "name": "Intelligence",
             "notable": false,
-            "x": -1763,
-            "y": -716
+            "x": 4301,
+            "y": -3362
+          },
+          {
+            "id": 21301,
+            "name": "Strength",
+            "notable": false,
+            "x": 3415,
+            "y": -3704
           },
           {
             "id": 21330,
@@ -2525,11 +2563,18 @@
             "y": -3592
           },
           {
-            "id": 21413,
-            "name": "Combat Stamina",
-            "notable": true,
-            "x": -4818,
-            "y": -470
+            "id": 21678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 903,
+            "y": -3707
+          },
+          {
+            "id": 21835,
+            "name": "Life",
+            "notable": false,
+            "x": 4704,
+            "y": -2583
           },
           {
             "id": 21958,
@@ -2546,25 +2591,11 @@
             "y": -4631
           },
           {
-            "id": 23027,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": -1435
-          },
-          {
-            "id": 24083,
-            "name": "Strength",
-            "notable": false,
-            "x": -967,
-            "y": 7475
-          },
-          {
-            "id": 24914,
-            "name": "Strength",
-            "notable": false,
-            "x": -2784,
-            "y": 7475
+            "id": 25058,
+            "name": "Blood Siphon",
+            "notable": true,
+            "x": 4893,
+            "y": -2223
           },
           {
             "id": 25332,
@@ -2572,13 +2603,6 @@
             "notable": false,
             "x": -7953,
             "y": -3535
-          },
-          {
-            "id": 26196,
-            "name": "Basic Jewel Socket",
-            "notable": false,
-            "x": -6902,
-            "y": -2419
           },
           {
             "id": 26270,
@@ -2609,6 +2633,27 @@
             "y": -5347
           },
           {
+            "id": 27659,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1752,
+            "y": -4352
+          },
+          {
+            "id": 27788,
+            "name": "Blood Drinker",
+            "notable": true,
+            "x": 7006,
+            "y": -1664
+          },
+          {
+            "id": 27929,
+            "name": "Deep Wisdom",
+            "notable": true,
+            "x": 842,
+            "y": -4501
+          },
+          {
             "id": 29106,
             "name": "Minion Damage and Attack and Cast Speed",
             "notable": false,
@@ -2616,25 +2661,11 @@
             "y": -3579
           },
           {
-            "id": 29353,
-            "name": "Strength",
+            "id": 29199,
+            "name": "Intelligence",
             "notable": false,
-            "x": -7672,
-            "y": 7
-          },
-          {
-            "id": 30380,
-            "name": "Life and Elemental Resistances",
-            "notable": false,
-            "x": -7077,
-            "y": 1795
-          },
-          {
-            "id": 31471,
-            "name": "Life",
-            "notable": false,
-            "x": -978,
-            "y": 6842
+            "x": -6144,
+            "y": -2419
           },
           {
             "id": 31875,
@@ -2644,25 +2675,18 @@
             "y": -4359
           },
           {
-            "id": 33287,
-            "name": "Juggernaut",
-            "notable": true,
-            "x": -7064,
-            "y": 3008
+            "id": 32024,
+            "name": "Minion Life",
+            "notable": false,
+            "x": 165,
+            "y": -4965
           },
           {
-            "id": 33631,
-            "name": "Basic Jewel Socket",
+            "id": 32210,
+            "name": "Intelligence",
             "notable": false,
-            "x": -3876,
-            "y": -214
-          },
-          {
-            "id": 33740,
-            "name": "Strength",
-            "notable": false,
-            "x": -3655,
-            "y": 7
+            "x": 1275,
+            "y": -4150
           },
           {
             "id": 33755,
@@ -2672,25 +2696,11 @@
             "y": -6605
           },
           {
-            "id": 34171,
-            "name": "Strength",
+            "id": 33783,
+            "name": "Intelligence",
             "notable": false,
-            "x": -7237,
-            "y": -2419
-          },
-          {
-            "id": 34207,
-            "name": "Physical Damage",
-            "notable": false,
-            "x": -1763,
-            "y": -554
-          },
-          {
-            "id": 34400,
-            "name": "Strength",
-            "notable": false,
-            "x": -4260,
-            "y": 7475
+            "x": 5782,
+            "y": -4328
           },
           {
             "id": 34880,
@@ -2707,6 +2717,13 @@
             "y": -4297
           },
           {
+            "id": 35894,
+            "name": "Trickery",
+            "notable": true,
+            "x": 4558,
+            "y": -2869
+          },
+          {
             "id": 35958,
             "name": "Faith and Steel",
             "notable": true,
@@ -2719,6 +2736,13 @@
             "notable": false,
             "x": -1278,
             "y": -4150
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
           },
           {
             "id": 36915,
@@ -2742,11 +2766,32 @@
             "y": -3707
           },
           {
+            "id": 37671,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2406,
+            "y": -4102
+          },
+          {
+            "id": 38190,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 6307,
+            "y": -4814
+          },
+          {
             "id": 39648,
             "name": "Mana Regeneration and Life",
             "notable": false,
             "x": -2548,
             "y": -3873
+          },
+          {
+            "id": 40362,
+            "name": "Life",
+            "notable": false,
+            "x": 6785,
+            "y": -1604
           },
           {
             "id": 40508,
@@ -2763,6 +2808,13 @@
             "y": -3702
           },
           {
+            "id": 41263,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 2317,
+            "y": -3508
+          },
+          {
             "id": 41472,
             "name": "Discipline and Training",
             "notable": true,
@@ -2770,18 +2822,11 @@
             "y": -2419
           },
           {
-            "id": 44202,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": -735
-          },
-          {
-            "id": 45803,
-            "name": "Veteran Soldier",
+            "id": 41989,
+            "name": "Resourcefulness",
             "notable": true,
-            "x": -1903,
-            "y": -797
+            "x": 6072,
+            "y": -2223
           },
           {
             "id": 46897,
@@ -2791,25 +2836,18 @@
             "y": -3405
           },
           {
-            "id": 46910,
-            "name": "Strength",
+            "id": 48778,
+            "name": "Intelligence",
             "notable": false,
-            "x": -2031,
-            "y": 7
+            "x": 2155,
+            "y": -3670
           },
           {
-            "id": 48287,
-            "name": "Life",
+            "id": 49047,
+            "name": "Minion Life and Chaos Resistance",
             "notable": false,
-            "x": -4923,
-            "y": 5507
-          },
-          {
-            "id": 48362,
-            "name": "Mana and Life",
-            "notable": false,
-            "x": -144,
-            "y": -4582
+            "x": 1914,
+            "y": -4642
           },
           {
             "id": 49254,
@@ -2819,32 +2857,11 @@
             "y": -2999
           },
           {
-            "id": 50422,
-            "name": "Strength",
+            "id": 51517,
+            "name": "Minion Life and Chaos Resistance",
             "notable": false,
-            "x": -5659,
-            "y": 7
-          },
-          {
-            "id": 50570,
-            "name": "Strength",
-            "notable": false,
-            "x": -6748,
-            "y": 7
-          },
-          {
-            "id": 50862,
-            "name": "Strength",
-            "notable": false,
-            "x": -4436,
-            "y": 7
-          },
-          {
-            "id": 53118,
-            "name": "Barbarism",
-            "notable": true,
-            "x": -6915,
-            "y": 1957
+            "x": 1752,
+            "y": -4642
           },
           {
             "id": 54447,
@@ -2854,18 +2871,18 @@
             "y": -3180
           },
           {
-            "id": 55485,
-            "name": "Constitution",
-            "notable": true,
-            "x": -1693,
-            "y": 986
+            "id": 55247,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 2805,
+            "y": -3515
           },
           {
-            "id": 55676,
-            "name": "Life and Armour",
+            "id": 57226,
+            "name": "Energy Shield and Mana",
             "notable": false,
-            "x": -7123,
-            "y": 3229
+            "x": 163,
+            "y": -3470
           },
           {
             "id": 57264,
@@ -2882,18 +2899,18 @@
             "y": -4724
           },
           {
+            "id": 58244,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 6407,
+            "y": -2869
+          },
+          {
             "id": 58402,
             "name": "Intelligence",
             "notable": false,
             "x": -5651,
             "y": -3443
-          },
-          {
-            "id": 59928,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 1342
           },
           {
             "id": 60398,
@@ -2903,39 +2920,32 @@
             "y": -4127
           },
           {
-            "id": 60472,
-            "name": "Strength",
+            "id": 61320,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -7672,
-            "y": -2419
+            "x": 2643,
+            "y": -3796
           },
           {
-            "id": 60554,
-            "name": "Minion Damage",
+            "id": 61653,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -173,
-            "y": -4965
+            "x": 6248,
+            "y": -5035
           },
           {
-            "id": 61262,
-            "name": "Strength",
-            "notable": false,
-            "x": -1920,
-            "y": 7475
+            "id": 61982,
+            "name": "Grave Intentions",
+            "notable": true,
+            "x": 1833,
+            "y": -4944
           },
           {
-            "id": 63282,
-            "name": "Strength",
+            "id": 63799,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -7672,
-            "y": 650
-          },
-          {
-            "id": 63723,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 2424
+            "x": 2864,
+            "y": -3737
           },
           {
             "id": 64210,
@@ -2943,38 +2953,31 @@
             "notable": false,
             "x": -6747,
             "y": -5005
-          },
-          {
-            "id": 65034,
-            "name": "Life",
-            "notable": false,
-            "x": -1693,
-            "y": 651
           }
         ],
         "notables": [
-          "Golem's Blood",
           "Spiritual Aid",
-          "Bloodless",
           "Enduring Bond",
-          "Arcanist's Dominion",
           "Redemption",
+          "Written in Blood",
+          "Melding",
           "Righteous Army",
           "Quick Recovery",
-          "Combat Stamina",
           "Cruel Preparation",
+          "Blood Siphon",
           "Heart and Soul",
           "Lord of the Dead",
-          "Juggernaut",
+          "Blood Drinker",
+          "Deep Wisdom",
+          "Trickery",
           "Faith and Steel",
           "Sacrifice",
           "Devotion",
           "Discipline and Training",
-          "Veteran Soldier",
+          "Resourcefulness",
           "Retribution",
-          "Barbarism",
-          "Constitution",
-          "Purity of Flesh"
+          "Purity of Flesh",
+          "Grave Intentions"
         ]
       },
       "gear": [
@@ -3067,7 +3070,8 @@
           "mods": [
             "+25 to Intelligence",
             "+80 to maximum Life",
-            "+40% to Lightning Resistance"
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -3245,33 +3249,33 @@
       ]
     },
     "maps-red": {
-      "pass": false,
+      "pass": true,
       "level": 90,
       "budget": "ssf-week1 (6-link)",
       "metrics": {
-        "dps": 65207,
+        "dps": 184223,
         "minionCount": 6,
         "dpsSource": "minion",
-        "life": 6904,
-        "energyShield": 736,
-        "ehp": 20102,
-        "maxHit": 11754,
+        "life": 5937,
+        "energyShield": 1254,
+        "ehp": 19163,
+        "maxHit": 11063,
         "resists": [
-          76,
+          75,
           75,
           75
         ],
-        "nodes": 104,
+        "chaosResist": -12,
+        "nodes": 100,
+        "sockets": 6,
         "ascendancy": 5
       },
-      "failures": [
-        "damage 65,207 < 80,000"
-      ],
+      "failures": [],
       "tree": {
         "edges": [
           [
-            476,
-            24865
+            1031,
+            19635
           ],
           [
             1203,
@@ -3282,28 +3286,24 @@
             49254
           ],
           [
-            1325,
-            31471
+            1767,
+            41989
           ],
           [
-            3167,
-            6359
+            1767,
+            58244
           ],
           [
-            3533,
-            11088
+            2292,
+            27203
           ],
           [
-            3644,
-            14930
+            3656,
+            58244
           ],
           [
             4397,
             36542
-          ],
-          [
-            4397,
-            11420
           ],
           [
             4397,
@@ -3318,48 +3318,44 @@
             58218
           ],
           [
-            6289,
-            48287
+            7112,
+            13885
           ],
           [
-            6359,
-            21413
+            7388,
+            60398
           ],
           [
-            6712,
-            36949
+            7388,
+            36634
           ],
           [
-            6712,
-            23027
+            7444,
+            64210
           ],
           [
-            7374,
-            44967
+            8948,
+            27659
+          ],
+          [
+            10031,
+            15064
           ],
           [
             10575,
-            40508
+            29199
           ],
           [
             10904,
             36915
           ],
           [
-            11420,
-            48362
-          ],
-          [
             13009,
             60398
           ],
           [
-            15405,
-            33631
-          ],
-          [
-            16775,
-            34207
+            13885,
+            40362
           ],
           [
             17735,
@@ -3370,98 +3366,95 @@
             39648
           ],
           [
+            18865,
+            55247
+          ],
+          [
             19103,
             35260
           ],
           [
-            19609,
-            45803
+            20987,
+            52502
           ],
           [
-            20551,
-            58449
+            21033,
+            21984
           ],
           [
-            24865,
-            34031
+            21678,
+            32210
           ],
           [
-            24914,
-            61262
+            21835,
+            35894
+          ],
+          [
+            21835,
+            25058
+          ],
+          [
+            26196,
+            37999
           ],
           [
             26270,
             41190
           ],
           [
-            27611,
-            60554
+            27415,
+            32710
           ],
           [
-            29353,
-            50570
-          ],
-          [
-            29933,
-            34031
-          ],
-          [
-            30380,
-            59928
+            27659,
+            37671
           ],
           [
             31875,
             60398
           ],
           [
-            33287,
-            55676
+            36678,
+            42760
           ],
           [
-            33740,
-            46910
+            36858,
+            60440
           ],
           [
-            35958,
-            46897
+            36858,
+            61653
           ],
           [
             37569,
             57264
           ],
           [
-            44967,
-            50422
+            37671,
+            61320
           ],
           [
-            46910,
-            65034
+            42760,
+            55332
           ],
           [
-            50422,
-            50862
+            49047,
+            61982
+          ],
+          [
+            49605,
+            60440
           ],
           [
             54447,
             57264
           ],
           [
-            55485,
-            65034
-          ],
-          [
-            59928,
-            63723
+            55247,
+            63799
           ]
         ],
         "nodes": [
-          {
-            "id": 476,
-            "name": "Strength",
-            "notable": false,
-            "x": -1235,
-            "y": 4563
-          },
           {
             "id": 1031,
             "name": "Intelligence",
@@ -3477,32 +3470,25 @@
             "y": -2709
           },
           {
-            "id": 1325,
-            "name": "Golem's Blood",
-            "notable": true,
-            "x": -1221,
-            "y": 6702
+            "id": 1767,
+            "name": "Life and Energy Shield on Kill",
+            "notable": false,
+            "x": 6264,
+            "y": -2583
           },
           {
-            "id": 3167,
-            "name": "Life Regeneration",
+            "id": 2292,
+            "name": "Mana and Life",
             "notable": false,
-            "x": -4656,
-            "y": -189
+            "x": 136,
+            "y": -4582
           },
           {
-            "id": 3533,
-            "name": "Life and Cost Efficiency",
+            "id": 3656,
+            "name": "Intelligence",
             "notable": false,
-            "x": -6216,
-            "y": -219
-          },
-          {
-            "id": 3644,
-            "name": "Strength",
-            "notable": false,
-            "x": -6469,
-            "y": 4905
+            "x": 5914,
+            "y": -3362
           },
           {
             "id": 4177,
@@ -3519,13 +3505,6 @@
             "y": -4501
           },
           {
-            "id": 5233,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 3505
-          },
-          {
             "id": 5743,
             "name": "Life and Energy Shield",
             "notable": false,
@@ -3533,32 +3512,25 @@
             "y": -4783
           },
           {
-            "id": 6289,
-            "name": "Bloodless",
-            "notable": true,
-            "x": -4864,
-            "y": 5286
+            "id": 7112,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -2223
           },
           {
-            "id": 6359,
-            "name": "Armour and Life",
+            "id": 7388,
+            "name": "Intelligence",
             "notable": false,
-            "x": -4656,
-            "y": -470
+            "x": -2202,
+            "y": -3694
           },
           {
-            "id": 6712,
-            "name": "Life",
+            "id": 7444,
+            "name": "Intelligence",
             "notable": false,
-            "x": -6902,
-            "y": -1435
-          },
-          {
-            "id": 7374,
-            "name": "Life and Cost Efficiency",
-            "notable": false,
-            "x": -5935,
-            "y": -381
+            "x": -6151,
+            "y": -6038
           },
           {
             "id": 7688,
@@ -3575,6 +3547,27 @@
             "y": -6039
           },
           {
+            "id": 7960,
+            "name": "Large Jewel Socket",
+            "notable": false,
+            "x": -4324,
+            "y": -7616
+          },
+          {
+            "id": 8948,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1370,
+            "y": -4501
+          },
+          {
+            "id": 10031,
+            "name": "Life",
+            "notable": false,
+            "x": -6659,
+            "y": -1576
+          },
+          {
             "id": 10575,
             "name": "Intelligence",
             "notable": false,
@@ -3589,20 +3582,6 @@
             "y": -4087
           },
           {
-            "id": 11088,
-            "name": "Life and Cost Efficiency",
-            "notable": false,
-            "x": -6157,
-            "y": -440
-          },
-          {
-            "id": 11420,
-            "name": "Arcanist's Dominion",
-            "notable": true,
-            "x": -850,
-            "y": -4501
-          },
-          {
             "id": 13009,
             "name": "Dexterity",
             "notable": false,
@@ -3610,11 +3589,18 @@
             "y": -3777
           },
           {
-            "id": 14930,
-            "name": "Strength",
+            "id": 13885,
+            "name": "Dexterity",
             "notable": false,
-            "x": -5461,
-            "y": 6072
+            "x": 6407,
+            "y": -1604
+          },
+          {
+            "id": 14021,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2563,
+            "y": -6462
           },
           {
             "id": 15046,
@@ -3624,25 +3610,18 @@
             "y": -3870
           },
           {
+            "id": 15064,
+            "name": "Strength",
+            "notable": false,
+            "x": -6152,
+            "y": -1898
+          },
+          {
             "id": 15081,
             "name": "Minion Damage and Duration",
             "notable": false,
             "x": -1942,
             "y": -4631
-          },
-          {
-            "id": 15405,
-            "name": "Strength",
-            "notable": false,
-            "x": -3936,
-            "y": 7
-          },
-          {
-            "id": 16775,
-            "name": "Strength",
-            "notable": false,
-            "x": -1604,
-            "y": -240
           },
           {
             "id": 17735,
@@ -3659,11 +3638,18 @@
             "y": -3732
           },
           {
-            "id": 18302,
-            "name": "Life",
-            "notable": false,
-            "x": -138,
-            "y": 4813
+            "id": 18769,
+            "name": "Written in Blood",
+            "notable": true,
+            "x": 6027,
+            "y": -4976
+          },
+          {
+            "id": 18865,
+            "name": "Melding",
+            "notable": true,
+            "x": 2584,
+            "y": -3575
           },
           {
             "id": 19103,
@@ -3673,18 +3659,39 @@
             "y": -4160
           },
           {
-            "id": 19609,
-            "name": "Physical Damage Over Time Multiplier",
+            "id": 19635,
+            "name": "Intelligence",
             "notable": false,
-            "x": -1763,
-            "y": -716
+            "x": -4,
+            "y": -6040
           },
           {
-            "id": 20551,
-            "name": "Life",
+            "id": 20546,
+            "name": "Intelligence",
             "notable": false,
-            "x": -4355,
-            "y": 2284
+            "x": 4301,
+            "y": -3362
+          },
+          {
+            "id": 20987,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -4395,
+            "y": -7493
+          },
+          {
+            "id": 21033,
+            "name": "Mana",
+            "notable": false,
+            "x": 4432,
+            "y": -7616
+          },
+          {
+            "id": 21301,
+            "name": "Strength",
+            "notable": false,
+            "x": 3415,
+            "y": -3704
           },
           {
             "id": 21330,
@@ -3694,11 +3701,18 @@
             "y": -3592
           },
           {
-            "id": 21413,
-            "name": "Combat Stamina",
-            "notable": true,
-            "x": -4818,
-            "y": -470
+            "id": 21678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 903,
+            "y": -3707
+          },
+          {
+            "id": 21835,
+            "name": "Life",
+            "notable": false,
+            "x": 4704,
+            "y": -2583
           },
           {
             "id": 21958,
@@ -3708,6 +3722,13 @@
             "y": -6767
           },
           {
+            "id": 21984,
+            "name": "Large Jewel Socket",
+            "notable": false,
+            "x": 4503,
+            "y": -7493
+          },
+          {
             "id": 22062,
             "name": "Minion Damage and Duration",
             "notable": false,
@@ -3715,32 +3736,18 @@
             "y": -4631
           },
           {
-            "id": 23027,
-            "name": "Strength",
+            "id": 22618,
+            "name": "Mana",
             "notable": false,
-            "x": -7672,
-            "y": -1435
+            "x": 4361,
+            "y": -7493
           },
           {
-            "id": 24083,
-            "name": "Strength",
-            "notable": false,
-            "x": -967,
-            "y": 7475
-          },
-          {
-            "id": 24865,
-            "name": "Strength",
-            "notable": false,
-            "x": -1546,
-            "y": 5868
-          },
-          {
-            "id": 24914,
-            "name": "Strength",
-            "notable": false,
-            "x": -2784,
-            "y": 7475
+            "id": 25058,
+            "name": "Blood Siphon",
+            "notable": true,
+            "x": 4893,
+            "y": -2223
           },
           {
             "id": 25332,
@@ -3748,6 +3755,13 @@
             "notable": false,
             "x": -7953,
             "y": -3535
+          },
+          {
+            "id": 26196,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -6902,
+            "y": -2419
           },
           {
             "id": 26270,
@@ -3764,18 +3778,18 @@
             "y": -3870
           },
           {
-            "id": 26523,
-            "name": "Strength",
-            "notable": false,
-            "x": -4436,
-            "y": 1302
-          },
-          {
             "id": 27203,
             "name": "Heart and Soul",
             "notable": true,
             "x": -4,
             "y": -4663
+          },
+          {
+            "id": 27415,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2983,
+            "y": -5106
           },
           {
             "id": 27611,
@@ -3785,6 +3799,27 @@
             "y": -5347
           },
           {
+            "id": 27659,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1752,
+            "y": -4352
+          },
+          {
+            "id": 27788,
+            "name": "Blood Drinker",
+            "notable": true,
+            "x": 7006,
+            "y": -1664
+          },
+          {
+            "id": 27929,
+            "name": "Deep Wisdom",
+            "notable": true,
+            "x": 842,
+            "y": -4501
+          },
+          {
             "id": 29106,
             "name": "Minion Damage and Attack and Cast Speed",
             "notable": false,
@@ -3792,32 +3827,11 @@
             "y": -3579
           },
           {
-            "id": 29353,
-            "name": "Strength",
+            "id": 29199,
+            "name": "Intelligence",
             "notable": false,
-            "x": -7672,
-            "y": 7
-          },
-          {
-            "id": 29933,
-            "name": "Life",
-            "notable": false,
-            "x": -978,
-            "y": 6562
-          },
-          {
-            "id": 30380,
-            "name": "Life and Elemental Resistances",
-            "notable": false,
-            "x": -7077,
-            "y": 1795
-          },
-          {
-            "id": 31471,
-            "name": "Life",
-            "notable": false,
-            "x": -978,
-            "y": 6842
+            "x": -6144,
+            "y": -2419
           },
           {
             "id": 31875,
@@ -3827,25 +3841,18 @@
             "y": -4359
           },
           {
-            "id": 33287,
-            "name": "Juggernaut",
-            "notable": true,
-            "x": -7064,
-            "y": 3008
+            "id": 32210,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1275,
+            "y": -4150
           },
           {
-            "id": 33631,
-            "name": "Basic Jewel Socket",
+            "id": 32710,
+            "name": "Intelligence",
             "notable": false,
-            "x": -3876,
-            "y": -214
-          },
-          {
-            "id": 33740,
-            "name": "Strength",
-            "notable": false,
-            "x": -3655,
-            "y": 7
+            "x": 3363,
+            "y": -5764
           },
           {
             "id": 33755,
@@ -3853,34 +3860,6 @@
             "notable": false,
             "x": -1352,
             "y": -6605
-          },
-          {
-            "id": 34009,
-            "name": "Master of the Arena",
-            "notable": true,
-            "x": -647,
-            "y": 4732
-          },
-          {
-            "id": 34031,
-            "name": "Strength",
-            "notable": false,
-            "x": -647,
-            "y": 5870
-          },
-          {
-            "id": 34207,
-            "name": "Physical Damage",
-            "notable": false,
-            "x": -1763,
-            "y": -554
-          },
-          {
-            "id": 34400,
-            "name": "Strength",
-            "notable": false,
-            "x": -4260,
-            "y": 7475
           },
           {
             "id": 34880,
@@ -3897,11 +3876,11 @@
             "y": -4297
           },
           {
-            "id": 35958,
-            "name": "Faith and Steel",
+            "id": 35894,
+            "name": "Trickery",
             "notable": true,
-            "x": -6902,
-            "y": -3125
+            "x": 4558,
+            "y": -2869
           },
           {
             "id": 36542,
@@ -3909,6 +3888,27 @@
             "notable": false,
             "x": -1278,
             "y": -4150
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
+          },
+          {
+            "id": 36678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4247,
+            "y": -7238
+          },
+          {
+            "id": 36858,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 6711,
+            "y": -5797
           },
           {
             "id": 36915,
@@ -3932,6 +3932,20 @@
             "y": -3707
           },
           {
+            "id": 37671,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2406,
+            "y": -4102
+          },
+          {
+            "id": 37999,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6567,
+            "y": -2419
+          },
+          {
             "id": 39648,
             "name": "Mana Regeneration and Life",
             "notable": false,
@@ -3939,11 +3953,11 @@
             "y": -3873
           },
           {
-            "id": 40508,
-            "name": "Armour and Energy Shield",
+            "id": 40362,
+            "name": "Life",
             "notable": false,
-            "x": -6659,
-            "y": -3265
+            "x": 6785,
+            "y": -1604
           },
           {
             "id": 41190,
@@ -3953,6 +3967,13 @@
             "y": -3702
           },
           {
+            "id": 41263,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 2317,
+            "y": -3508
+          },
+          {
             "id": 41472,
             "name": "Discipline and Training",
             "notable": true,
@@ -3960,67 +3981,32 @@
             "y": -2419
           },
           {
-            "id": 44202,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": -735
+            "id": 41989,
+            "name": "Resourcefulness",
+            "notable": true,
+            "x": 6072,
+            "y": -2223
           },
           {
-            "id": 44606,
+            "id": 42760,
             "name": "Intelligence",
             "notable": false,
-            "x": -4436,
-            "y": 687
+            "x": -3396,
+            "y": -5762
           },
           {
-            "id": 44967,
-            "name": "Strength",
+            "id": 48778,
+            "name": "Intelligence",
             "notable": false,
-            "x": -5659,
-            "y": -381
+            "x": 2155,
+            "y": -3670
           },
           {
-            "id": 45803,
-            "name": "Veteran Soldier",
-            "notable": true,
-            "x": -1903,
-            "y": -797
-          },
-          {
-            "id": 46897,
-            "name": "Armour and Energy Shield",
+            "id": 49047,
+            "name": "Minion Life and Chaos Resistance",
             "notable": false,
-            "x": -6902,
-            "y": -3405
-          },
-          {
-            "id": 46910,
-            "name": "Strength",
-            "notable": false,
-            "x": -2031,
-            "y": 7
-          },
-          {
-            "id": 48287,
-            "name": "Life",
-            "notable": false,
-            "x": -4923,
-            "y": 5507
-          },
-          {
-            "id": 48362,
-            "name": "Mana and Life",
-            "notable": false,
-            "x": -144,
-            "y": -4582
-          },
-          {
-            "id": 48438,
-            "name": "Bravery",
-            "notable": true,
-            "x": 2,
-            "y": 4894
+            "x": 1914,
+            "y": -4642
           },
           {
             "id": 49254,
@@ -4030,32 +4016,32 @@
             "y": -2999
           },
           {
-            "id": 50422,
-            "name": "Strength",
+            "id": 49605,
+            "name": "Intelligence",
             "notable": false,
-            "x": -5659,
-            "y": 7
+            "x": 4216,
+            "y": -7242
           },
           {
-            "id": 50570,
-            "name": "Strength",
+            "id": 51517,
+            "name": "Minion Life and Chaos Resistance",
             "notable": false,
-            "x": -6748,
-            "y": 7
+            "x": 1752,
+            "y": -4642
           },
           {
-            "id": 50862,
-            "name": "Strength",
+            "id": 52502,
+            "name": "Elemental Damage",
             "notable": false,
-            "x": -4436,
-            "y": 7
+            "x": -4466,
+            "y": -7616
           },
           {
-            "id": 53118,
-            "name": "Barbarism",
-            "notable": true,
-            "x": -6915,
-            "y": 1957
+            "id": 53279,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 77,
+            "y": -6627
           },
           {
             "id": 54447,
@@ -4065,18 +4051,25 @@
             "y": -3180
           },
           {
-            "id": 55485,
-            "name": "Constitution",
-            "notable": true,
-            "x": -1693,
-            "y": 986
+            "id": 55247,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 2805,
+            "y": -3515
           },
           {
-            "id": 55676,
-            "name": "Life and Armour",
+            "id": 55332,
+            "name": "Intelligence",
             "notable": false,
-            "x": -7123,
-            "y": 3229
+            "x": -3161,
+            "y": -6214
+          },
+          {
+            "id": 57226,
+            "name": "Energy Shield and Mana",
+            "notable": false,
+            "x": 163,
+            "y": -3470
           },
           {
             "id": 57264,
@@ -4093,25 +4086,18 @@
             "y": -4724
           },
           {
+            "id": 58244,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 6407,
+            "y": -2869
+          },
+          {
             "id": 58402,
             "name": "Intelligence",
             "notable": false,
             "x": -5651,
             "y": -3443
-          },
-          {
-            "id": 58449,
-            "name": "Born to Fight",
-            "notable": true,
-            "x": -4436,
-            "y": 1795
-          },
-          {
-            "id": 59928,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 1342
           },
           {
             "id": 60398,
@@ -4121,46 +4107,46 @@
             "y": -4127
           },
           {
-            "id": 60472,
-            "name": "Strength",
+            "id": 60440,
+            "name": "Intelligence",
             "notable": false,
-            "x": -7672,
-            "y": -2419
+            "x": 5486,
+            "y": -6504
           },
           {
-            "id": 60554,
-            "name": "Minion Damage",
+            "id": 61320,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -173,
-            "y": -4965
+            "x": 2643,
+            "y": -3796
           },
           {
-            "id": 61198,
-            "name": "Heart of the Warrior",
+            "id": 61419,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 158,
+            "y": -6767
+          },
+          {
+            "id": 61653,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 6248,
+            "y": -5035
+          },
+          {
+            "id": 61982,
+            "name": "Grave Intentions",
             "notable": true,
-            "x": -4274,
-            "y": 2424
+            "x": 1833,
+            "y": -4944
           },
           {
-            "id": 61262,
-            "name": "Strength",
+            "id": 63799,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -1920,
-            "y": 7475
-          },
-          {
-            "id": 63282,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 650
-          },
-          {
-            "id": 63723,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 2424
+            "x": 2864,
+            "y": -3737
           },
           {
             "id": 64210,
@@ -4168,50 +4154,30 @@
             "notable": false,
             "x": -6747,
             "y": -5005
-          },
-          {
-            "id": 65034,
-            "name": "Life",
-            "notable": false,
-            "x": -1693,
-            "y": 651
-          },
-          {
-            "id": 65108,
-            "name": "Tireless",
-            "notable": true,
-            "x": -5995,
-            "y": -160
           }
         ],
         "notables": [
-          "Golem's Blood",
           "Spiritual Aid",
-          "Bloodless",
           "Enduring Bond",
-          "Arcanist's Dominion",
           "Redemption",
+          "Written in Blood",
+          "Melding",
           "Righteous Army",
           "Quick Recovery",
-          "Combat Stamina",
           "Cruel Preparation",
+          "Blood Siphon",
           "Heart and Soul",
           "Lord of the Dead",
-          "Juggernaut",
-          "Master of the Arena",
-          "Faith and Steel",
+          "Blood Drinker",
+          "Deep Wisdom",
+          "Trickery",
           "Sacrifice",
           "Devotion",
           "Discipline and Training",
-          "Veteran Soldier",
-          "Bravery",
+          "Resourcefulness",
           "Retribution",
-          "Barbarism",
-          "Constitution",
           "Purity of Flesh",
-          "Born to Fight",
-          "Heart of the Warrior",
-          "Tireless"
+          "Grave Intentions"
         ]
       },
       "gear": [
@@ -4305,7 +4271,8 @@
           "mods": [
             "+25 to Intelligence",
             "+80 to maximum Life",
-            "+40% to Lightning Resistance"
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -4533,33 +4500,33 @@
       ]
     },
     "pinnacle": {
-      "pass": false,
+      "pass": true,
       "level": 96,
       "budget": "trade (6-link)",
       "metrics": {
-        "dps": 92314,
+        "dps": 303541,
         "minionCount": 6,
         "dpsSource": "minion",
-        "life": 7075,
-        "energyShield": 853,
-        "ehp": 26632,
-        "maxHit": 12197,
+        "life": 5634,
+        "energyShield": 1325,
+        "ehp": 23631,
+        "maxHit": 10706,
         "resists": [
-          76,
+          75,
           75,
           75
         ],
-        "nodes": 111,
+        "chaosResist": 75,
+        "nodes": 112,
+        "sockets": 6,
         "ascendancy": 5
       },
-      "failures": [
-        "damage 92,314 < 150,000"
-      ],
+      "failures": [],
       "tree": {
         "edges": [
           [
-            476,
-            24865
+            1031,
+            19635
           ],
           [
             1203,
@@ -4570,28 +4537,32 @@
             49254
           ],
           [
-            1325,
-            31471
+            1767,
+            41989
+          ],
+          [
+            1767,
+            58244
+          ],
+          [
+            2292,
+            27203
+          ],
+          [
+            2913,
+            50862
           ],
           [
             3167,
             6359
           ],
           [
-            3533,
-            11088
-          ],
-          [
-            3644,
-            14930
+            3656,
+            58244
           ],
           [
             4397,
             36542
-          ],
-          [
-            4397,
-            11420
           ],
           [
             4397,
@@ -4606,52 +4577,48 @@
             58218
           ],
           [
-            6289,
-            48287
-          ],
-          [
             6359,
             21413
           ],
           [
-            6712,
-            36949
+            7112,
+            13885
           ],
           [
-            6712,
-            23027
+            7388,
+            60398
           ],
           [
-            7374,
-            44967
+            7388,
+            36634
+          ],
+          [
+            7444,
+            64210
           ],
           [
             8948,
             27659
           ],
           [
+            10031,
+            15064
+          ],
+          [
             10575,
-            40508
+            29199
           ],
           [
             10904,
             36915
           ],
           [
-            11420,
-            48362
-          ],
-          [
             13009,
             60398
           ],
           [
-            15405,
-            33631
-          ],
-          [
-            16775,
-            34207
+            13885,
+            40362
           ],
           [
             17735,
@@ -4662,72 +4629,80 @@
             39648
           ],
           [
+            18865,
+            55247
+          ],
+          [
             19103,
             35260
           ],
           [
-            19609,
-            45803
+            20987,
+            52502
           ],
           [
-            20551,
-            58449
+            21033,
+            21984
           ],
           [
-            24865,
-            34031
+            21678,
+            32210
           ],
           [
-            24914,
-            61262
+            21835,
+            35894
+          ],
+          [
+            21835,
+            25058
+          ],
+          [
+            26196,
+            37999
           ],
           [
             26270,
             41190
           ],
           [
-            27611,
-            32024
+            27415,
+            32710
           ],
           [
-            27611,
-            60554
-          ],
-          [
-            29353,
-            50570
-          ],
-          [
-            29933,
-            34031
-          ],
-          [
-            30380,
-            59928
+            27659,
+            37671
           ],
           [
             31875,
             60398
           ],
           [
-            33287,
-            55676
-          ],
-          [
             33740,
             46910
           ],
           [
-            35958,
-            46897
+            36678,
+            42760
+          ],
+          [
+            36858,
+            60440
+          ],
+          [
+            36858,
+            61653
           ],
           [
             37569,
             57264
           ],
           [
-            44967,
-            50422
+            37671,
+            61320
+          ],
+          [
+            42760,
+            55332
           ],
           [
             46910,
@@ -4738,30 +4713,23 @@
             61982
           ],
           [
-            50422,
-            50862
+            49605,
+            60440
           ],
           [
             54447,
             57264
           ],
           [
-            55485,
-            65034
+            55247,
+            63799
           ],
           [
-            59928,
-            63723
+            55485,
+            65034
           ]
         ],
         "nodes": [
-          {
-            "id": 476,
-            "name": "Strength",
-            "notable": false,
-            "x": -1235,
-            "y": 4563
-          },
           {
             "id": 1031,
             "name": "Intelligence",
@@ -4777,11 +4745,25 @@
             "y": -2709
           },
           {
-            "id": 1325,
-            "name": "Golem's Blood",
-            "notable": true,
-            "x": -1221,
-            "y": 6702
+            "id": 1767,
+            "name": "Life and Energy Shield on Kill",
+            "notable": false,
+            "x": 6264,
+            "y": -2583
+          },
+          {
+            "id": 2292,
+            "name": "Mana and Life",
+            "notable": false,
+            "x": 136,
+            "y": -4582
+          },
+          {
+            "id": 2913,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -4436,
+            "y": -709
           },
           {
             "id": 3167,
@@ -4791,18 +4773,11 @@
             "y": -189
           },
           {
-            "id": 3533,
-            "name": "Life and Cost Efficiency",
+            "id": 3656,
+            "name": "Intelligence",
             "notable": false,
-            "x": -6216,
-            "y": -219
-          },
-          {
-            "id": 3644,
-            "name": "Strength",
-            "notable": false,
-            "x": -6469,
-            "y": 4905
+            "x": 5914,
+            "y": -3362
           },
           {
             "id": 4177,
@@ -4819,25 +4794,11 @@
             "y": -4501
           },
           {
-            "id": 5233,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 3505
-          },
-          {
             "id": 5743,
             "name": "Life and Energy Shield",
             "notable": false,
             "x": -6327,
             "y": -4783
-          },
-          {
-            "id": 6289,
-            "name": "Bloodless",
-            "notable": true,
-            "x": -4864,
-            "y": 5286
           },
           {
             "id": 6359,
@@ -4847,18 +4808,25 @@
             "y": -470
           },
           {
-            "id": 6712,
-            "name": "Life",
+            "id": 7112,
+            "name": "Dexterity",
             "notable": false,
-            "x": -6902,
-            "y": -1435
+            "x": 6407,
+            "y": -2223
           },
           {
-            "id": 7374,
-            "name": "Life and Cost Efficiency",
+            "id": 7388,
+            "name": "Intelligence",
             "notable": false,
-            "x": -5935,
-            "y": -381
+            "x": -2202,
+            "y": -3694
+          },
+          {
+            "id": 7444,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6151,
+            "y": -6038
           },
           {
             "id": 7688,
@@ -4875,11 +4843,25 @@
             "y": -6039
           },
           {
+            "id": 7960,
+            "name": "Large Jewel Socket",
+            "notable": false,
+            "x": -4324,
+            "y": -7616
+          },
+          {
             "id": 8948,
             "name": "Intelligence",
             "notable": false,
             "x": 1370,
             "y": -4501
+          },
+          {
+            "id": 10031,
+            "name": "Life",
+            "notable": false,
+            "x": -6659,
+            "y": -1576
           },
           {
             "id": 10575,
@@ -4896,20 +4878,6 @@
             "y": -4087
           },
           {
-            "id": 11088,
-            "name": "Life and Cost Efficiency",
-            "notable": false,
-            "x": -6157,
-            "y": -440
-          },
-          {
-            "id": 11420,
-            "name": "Arcanist's Dominion",
-            "notable": true,
-            "x": -850,
-            "y": -4501
-          },
-          {
             "id": 13009,
             "name": "Dexterity",
             "notable": false,
@@ -4917,11 +4885,18 @@
             "y": -3777
           },
           {
-            "id": 14930,
-            "name": "Strength",
+            "id": 13885,
+            "name": "Dexterity",
             "notable": false,
-            "x": -5461,
-            "y": 6072
+            "x": 6407,
+            "y": -1604
+          },
+          {
+            "id": 14021,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2563,
+            "y": -6462
           },
           {
             "id": 15046,
@@ -4929,6 +4904,13 @@
             "notable": true,
             "x": -8288,
             "y": -3870
+          },
+          {
+            "id": 15064,
+            "name": "Strength",
+            "notable": false,
+            "x": -6152,
+            "y": -1898
           },
           {
             "id": 15081,
@@ -4945,13 +4927,6 @@
             "y": 7
           },
           {
-            "id": 16775,
-            "name": "Strength",
-            "notable": false,
-            "x": -1604,
-            "y": -240
-          },
-          {
             "id": 17735,
             "name": "Intelligence",
             "notable": false,
@@ -4966,11 +4941,18 @@
             "y": -3732
           },
           {
-            "id": 18302,
-            "name": "Life",
-            "notable": false,
-            "x": -138,
-            "y": 4813
+            "id": 18769,
+            "name": "Written in Blood",
+            "notable": true,
+            "x": 6027,
+            "y": -4976
+          },
+          {
+            "id": 18865,
+            "name": "Melding",
+            "notable": true,
+            "x": 2584,
+            "y": -3575
           },
           {
             "id": 19103,
@@ -4980,18 +4962,39 @@
             "y": -4160
           },
           {
-            "id": 19609,
-            "name": "Physical Damage Over Time Multiplier",
+            "id": 19635,
+            "name": "Intelligence",
             "notable": false,
-            "x": -1763,
-            "y": -716
+            "x": -4,
+            "y": -6040
           },
           {
-            "id": 20551,
-            "name": "Life",
+            "id": 20546,
+            "name": "Intelligence",
             "notable": false,
-            "x": -4355,
-            "y": 2284
+            "x": 4301,
+            "y": -3362
+          },
+          {
+            "id": 20987,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -4395,
+            "y": -7493
+          },
+          {
+            "id": 21033,
+            "name": "Mana",
+            "notable": false,
+            "x": 4432,
+            "y": -7616
+          },
+          {
+            "id": 21301,
+            "name": "Strength",
+            "notable": false,
+            "x": 3415,
+            "y": -3704
           },
           {
             "id": 21330,
@@ -5008,11 +5011,32 @@
             "y": -470
           },
           {
+            "id": 21678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 903,
+            "y": -3707
+          },
+          {
+            "id": 21835,
+            "name": "Life",
+            "notable": false,
+            "x": 4704,
+            "y": -2583
+          },
+          {
             "id": 21958,
             "name": "Cruel Preparation",
             "notable": true,
             "x": -1514,
             "y": -6767
+          },
+          {
+            "id": 21984,
+            "name": "Large Jewel Socket",
+            "notable": false,
+            "x": 4503,
+            "y": -7493
           },
           {
             "id": 22062,
@@ -5022,32 +5046,18 @@
             "y": -4631
           },
           {
-            "id": 23027,
-            "name": "Strength",
+            "id": 22618,
+            "name": "Mana",
             "notable": false,
-            "x": -7672,
-            "y": -1435
+            "x": 4361,
+            "y": -7493
           },
           {
-            "id": 24083,
-            "name": "Strength",
-            "notable": false,
-            "x": -967,
-            "y": 7475
-          },
-          {
-            "id": 24865,
-            "name": "Strength",
-            "notable": false,
-            "x": -1546,
-            "y": 5868
-          },
-          {
-            "id": 24914,
-            "name": "Strength",
-            "notable": false,
-            "x": -2784,
-            "y": 7475
+            "id": 25058,
+            "name": "Blood Siphon",
+            "notable": true,
+            "x": 4893,
+            "y": -2223
           },
           {
             "id": 25332,
@@ -5055,6 +5065,13 @@
             "notable": false,
             "x": -7953,
             "y": -3535
+          },
+          {
+            "id": 26196,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -6902,
+            "y": -2419
           },
           {
             "id": 26270,
@@ -5071,18 +5088,18 @@
             "y": -3870
           },
           {
-            "id": 26523,
-            "name": "Strength",
-            "notable": false,
-            "x": -4436,
-            "y": 1302
-          },
-          {
             "id": 27203,
             "name": "Heart and Soul",
             "notable": true,
             "x": -4,
             "y": -4663
+          },
+          {
+            "id": 27415,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2983,
+            "y": -5106
           },
           {
             "id": 27611,
@@ -5099,6 +5116,13 @@
             "y": -4352
           },
           {
+            "id": 27788,
+            "name": "Blood Drinker",
+            "notable": true,
+            "x": 7006,
+            "y": -1664
+          },
+          {
             "id": 27929,
             "name": "Deep Wisdom",
             "notable": true,
@@ -5113,32 +5137,11 @@
             "y": -3579
           },
           {
-            "id": 29353,
-            "name": "Strength",
+            "id": 29199,
+            "name": "Intelligence",
             "notable": false,
-            "x": -7672,
-            "y": 7
-          },
-          {
-            "id": 29933,
-            "name": "Life",
-            "notable": false,
-            "x": -978,
-            "y": 6562
-          },
-          {
-            "id": 30380,
-            "name": "Life and Elemental Resistances",
-            "notable": false,
-            "x": -7077,
-            "y": 1795
-          },
-          {
-            "id": 31471,
-            "name": "Life",
-            "notable": false,
-            "x": -978,
-            "y": 6842
+            "x": -6144,
+            "y": -2419
           },
           {
             "id": 31875,
@@ -5148,25 +5151,25 @@
             "y": -4359
           },
           {
-            "id": 32024,
-            "name": "Minion Life",
+            "id": 31931,
+            "name": "Strength",
             "notable": false,
-            "x": 165,
-            "y": -4965
+            "x": -5659,
+            "y": -1405
           },
           {
-            "id": 33287,
-            "name": "Juggernaut",
-            "notable": true,
-            "x": -7064,
-            "y": 3008
+            "id": 32210,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1275,
+            "y": -4150
           },
           {
-            "id": 33631,
-            "name": "Basic Jewel Socket",
+            "id": 32710,
+            "name": "Intelligence",
             "notable": false,
-            "x": -3876,
-            "y": -214
+            "x": 3363,
+            "y": -5764
           },
           {
             "id": 33740,
@@ -5183,34 +5186,6 @@
             "y": -6605
           },
           {
-            "id": 34009,
-            "name": "Master of the Arena",
-            "notable": true,
-            "x": -647,
-            "y": 4732
-          },
-          {
-            "id": 34031,
-            "name": "Strength",
-            "notable": false,
-            "x": -647,
-            "y": 5870
-          },
-          {
-            "id": 34207,
-            "name": "Physical Damage",
-            "notable": false,
-            "x": -1763,
-            "y": -554
-          },
-          {
-            "id": 34400,
-            "name": "Strength",
-            "notable": false,
-            "x": -4260,
-            "y": 7475
-          },
-          {
             "id": 34880,
             "name": "Minion Life",
             "notable": false,
@@ -5225,11 +5200,11 @@
             "y": -4297
           },
           {
-            "id": 35958,
-            "name": "Faith and Steel",
+            "id": 35894,
+            "name": "Trickery",
             "notable": true,
-            "x": -6902,
-            "y": -3125
+            "x": 4558,
+            "y": -2869
           },
           {
             "id": 36542,
@@ -5237,6 +5212,27 @@
             "notable": false,
             "x": -1278,
             "y": -4150
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
+          },
+          {
+            "id": 36678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4247,
+            "y": -7238
+          },
+          {
+            "id": 36858,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 6711,
+            "y": -5797
           },
           {
             "id": 36915,
@@ -5260,6 +5256,20 @@
             "y": -3707
           },
           {
+            "id": 37671,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2406,
+            "y": -4102
+          },
+          {
+            "id": 37999,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6567,
+            "y": -2419
+          },
+          {
             "id": 39648,
             "name": "Mana Regeneration and Life",
             "notable": false,
@@ -5267,11 +5277,11 @@
             "y": -3873
           },
           {
-            "id": 40508,
-            "name": "Armour and Energy Shield",
+            "id": 40362,
+            "name": "Life",
             "notable": false,
-            "x": -6659,
-            "y": -3265
+            "x": 6785,
+            "y": -1604
           },
           {
             "id": 41190,
@@ -5281,6 +5291,13 @@
             "y": -3702
           },
           {
+            "id": 41263,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 2317,
+            "y": -3508
+          },
+          {
             "id": 41472,
             "name": "Discipline and Training",
             "notable": true,
@@ -5288,39 +5305,25 @@
             "y": -2419
           },
           {
-            "id": 44202,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": -735
+            "id": 41989,
+            "name": "Resourcefulness",
+            "notable": true,
+            "x": 6072,
+            "y": -2223
           },
           {
-            "id": 44606,
+            "id": 42760,
             "name": "Intelligence",
             "notable": false,
-            "x": -4436,
-            "y": 687
+            "x": -3396,
+            "y": -5762
           },
           {
-            "id": 44967,
+            "id": 44908,
             "name": "Strength",
             "notable": false,
-            "x": -5659,
-            "y": -381
-          },
-          {
-            "id": 45803,
-            "name": "Veteran Soldier",
-            "notable": true,
-            "x": -1903,
-            "y": -797
-          },
-          {
-            "id": 46897,
-            "name": "Armour and Energy Shield",
-            "notable": false,
-            "x": -6902,
-            "y": -3405
+            "x": -4436,
+            "y": -1405
           },
           {
             "id": 46910,
@@ -5330,25 +5333,11 @@
             "y": 7
           },
           {
-            "id": 48287,
-            "name": "Life",
+            "id": 48778,
+            "name": "Intelligence",
             "notable": false,
-            "x": -4923,
-            "y": 5507
-          },
-          {
-            "id": 48362,
-            "name": "Mana and Life",
-            "notable": false,
-            "x": -144,
-            "y": -4582
-          },
-          {
-            "id": 48438,
-            "name": "Bravery",
-            "notable": true,
-            "x": 2,
-            "y": 4894
+            "x": 2155,
+            "y": -3670
           },
           {
             "id": 49047,
@@ -5365,18 +5354,11 @@
             "y": -2999
           },
           {
-            "id": 50422,
-            "name": "Strength",
+            "id": 49605,
+            "name": "Intelligence",
             "notable": false,
-            "x": -5659,
-            "y": 7
-          },
-          {
-            "id": 50570,
-            "name": "Strength",
-            "notable": false,
-            "x": -6748,
-            "y": 7
+            "x": 4216,
+            "y": -7242
           },
           {
             "id": 50862,
@@ -5393,11 +5375,18 @@
             "y": -4642
           },
           {
-            "id": 53118,
-            "name": "Barbarism",
-            "notable": true,
-            "x": -6915,
-            "y": 1957
+            "id": 52502,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -4466,
+            "y": -7616
+          },
+          {
+            "id": 53279,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 77,
+            "y": -6627
           },
           {
             "id": 54447,
@@ -5407,6 +5396,20 @@
             "y": -3180
           },
           {
+            "id": 55247,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 2805,
+            "y": -3515
+          },
+          {
+            "id": 55332,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -3161,
+            "y": -6214
+          },
+          {
             "id": 55485,
             "name": "Constitution",
             "notable": true,
@@ -5414,11 +5417,11 @@
             "y": 986
           },
           {
-            "id": 55676,
-            "name": "Life and Armour",
+            "id": 57226,
+            "name": "Energy Shield and Mana",
             "notable": false,
-            "x": -7123,
-            "y": 3229
+            "x": 163,
+            "y": -3470
           },
           {
             "id": 57264,
@@ -5435,25 +5438,18 @@
             "y": -4724
           },
           {
+            "id": 58244,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 6407,
+            "y": -2869
+          },
+          {
             "id": 58402,
             "name": "Intelligence",
             "notable": false,
             "x": -5651,
             "y": -3443
-          },
-          {
-            "id": 58449,
-            "name": "Born to Fight",
-            "notable": true,
-            "x": -4436,
-            "y": 1795
-          },
-          {
-            "id": 59928,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 1342
           },
           {
             "id": 60398,
@@ -5463,32 +5459,32 @@
             "y": -4127
           },
           {
-            "id": 60472,
-            "name": "Strength",
+            "id": 60440,
+            "name": "Intelligence",
             "notable": false,
-            "x": -7672,
-            "y": -2419
+            "x": 5486,
+            "y": -6504
           },
           {
-            "id": 60554,
-            "name": "Minion Damage",
+            "id": 61320,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -173,
-            "y": -4965
+            "x": 2643,
+            "y": -3796
           },
           {
-            "id": 61198,
-            "name": "Heart of the Warrior",
-            "notable": true,
-            "x": -4274,
-            "y": 2424
+            "id": 61419,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 158,
+            "y": -6767
           },
           {
-            "id": 61262,
-            "name": "Strength",
+            "id": 61653,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -1920,
-            "y": 7475
+            "x": 6248,
+            "y": -5035
           },
           {
             "id": 61982,
@@ -5498,18 +5494,11 @@
             "y": -4944
           },
           {
-            "id": 63282,
-            "name": "Strength",
+            "id": 63799,
+            "name": "Life and Energy Shield",
             "notable": false,
-            "x": -7672,
-            "y": 650
-          },
-          {
-            "id": 63723,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 2424
+            "x": 2864,
+            "y": -3737
           },
           {
             "id": 64210,
@@ -5524,45 +5513,32 @@
             "notable": false,
             "x": -1693,
             "y": 651
-          },
-          {
-            "id": 65108,
-            "name": "Tireless",
-            "notable": true,
-            "x": -5995,
-            "y": -160
           }
         ],
         "notables": [
-          "Golem's Blood",
           "Spiritual Aid",
-          "Bloodless",
           "Enduring Bond",
-          "Arcanist's Dominion",
           "Redemption",
+          "Written in Blood",
+          "Melding",
           "Righteous Army",
           "Quick Recovery",
           "Combat Stamina",
           "Cruel Preparation",
+          "Blood Siphon",
           "Heart and Soul",
           "Lord of the Dead",
+          "Blood Drinker",
           "Deep Wisdom",
-          "Juggernaut",
-          "Master of the Arena",
-          "Faith and Steel",
+          "Trickery",
           "Sacrifice",
           "Devotion",
           "Discipline and Training",
-          "Veteran Soldier",
-          "Bravery",
+          "Resourcefulness",
           "Retribution",
-          "Barbarism",
           "Constitution",
           "Purity of Flesh",
-          "Born to Fight",
-          "Heart of the Warrior",
-          "Grave Intentions",
-          "Tireless"
+          "Grave Intentions"
         ]
       },
       "gear": [
@@ -5891,7 +5867,7 @@
     "pobRef": "v2.69.0",
     "treeVersion": "3_30",
     "calibrated": false,
-    "checkedAt": "2026-11-25T19:48:19.996Z"
+    "checkedAt": "2026-11-25T20:03:05.420Z"
   },
   "gemInfo": {
     "Arcane Surge": {

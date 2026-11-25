@@ -109,6 +109,7 @@ export interface GateResult {
     maxHit: number;
     minionCount?: number;
     resists: number[];
+    sockets?: number;
   };
   tree?: TreeView;
   failures: string[];
