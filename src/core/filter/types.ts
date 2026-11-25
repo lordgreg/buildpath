@@ -129,6 +129,8 @@ export interface Rule {
   quality?: Range;
   sockets?: Range;
   linkedSockets?: Range;
+  /** Linked socket colours, e.g. "RGB" for the chromatic-orb recipe. */
+  socketGroup?: string;
   mapTier?: Range;
   corrupted?: boolean;
   identified?: boolean;

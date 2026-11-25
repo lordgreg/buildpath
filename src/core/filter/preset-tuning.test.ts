@@ -20,6 +20,7 @@ function item(
     baseType,
     rarity,
     itemLevel: 100,
+    areaLevel: 83,
     sockets: 1,
     linkedSockets: 1,
     identified: true,

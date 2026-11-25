@@ -47,6 +47,10 @@ Consequences:
   Use it only where verified; `keyMods` is documentation, not a rule source.
 - "Minion wand" means *bases tagged `weapon_can_roll_minion_modifiers`*, not
   "wands that rolled a minion mod".
+- There is no character-level condition either. Leveling stages key on
+  `AreaLevel` — the area the item dropped in — and the endgame map cutoff waits
+  until the area of its own tier (T11 is 78), so progression is inferred from
+  the drop instead of the character sheet.
 
 ### 2.2 OAuth is frozen; sync means the filesystem
 

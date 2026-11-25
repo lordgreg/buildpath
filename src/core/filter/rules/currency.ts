@@ -168,6 +168,24 @@ const NAMED_ALERTS: {
 export function currencyRules(preset: Preset): Rule[] {
   const rules: Rule[] = [];
 
+  // Leveling strictness hides the vendor scrolls with the rest of tier 3, but
+  // a stack worth carrying is still shown.
+  if (preset.currency.scrollMinStack !== null) {
+    rules.push({
+      action: 'Hide',
+      comment: `Scrolls - stacks below ${preset.currency.scrollMinStack}`,
+      baseTypes: ['Scroll of Wisdom', 'Portal Scroll'],
+      stackSize: { max: preset.currency.scrollMinStack - 1 },
+    });
+    rules.push({
+      action: 'Show',
+      comment: `Scrolls - stacks of ${preset.currency.scrollMinStack}+`,
+      baseTypes: ['Scroll of Wisdom', 'Portal Scroll'],
+      stackSize: { min: preset.currency.scrollMinStack },
+      style: SLOT_STYLES.currencyLow,
+    });
+  }
+
   // Gold is auto-collected, so hiding a pile only removes the ground label.
   // Show piles at or above the preset threshold; hide the rest. RePoE does not
   // ship gold, so "Gold" is a reviewed entry in base-types-extra.json.

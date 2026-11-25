@@ -49,7 +49,14 @@ const RANGE_LABELS: Record<(typeof RANGE_KEYS)[number], string> = {
 /** Generous upper bound; gold stacks are the largest values in practice. */
 const RANGE_MAX = 1_000_000;
 
-const STRING_KEYS = ['id', 'section', 'comment', 'rarity', 'styleKind'] as const;
+const STRING_KEYS = [
+  'id',
+  'section',
+  'comment',
+  'rarity',
+  'styleKind',
+  'socketGroup',
+] as const;
 const BOOLEAN_KEYS = ['disabled', 'continue', 'corrupted', 'identified'] as const;
 
 const RARITIES = new Set<string>([
@@ -173,6 +180,12 @@ function isWellFormed(value: unknown): value is Rule {
   for (const key of STRING_KEYS) {
     if (value[key] !== undefined && typeof value[key] !== 'string') return false;
   }
+  if (
+    value.socketGroup !== undefined &&
+    !/^[RGBWrgbw]+$/.test(value.socketGroup as string)
+  ) {
+    return false;
+  }
   for (const key of BOOLEAN_KEYS) {
     if (value[key] !== undefined && typeof value[key] !== 'boolean') return false;
   }
@@ -258,6 +271,9 @@ export function sanitizeRule(input: unknown): SanitizedRule | null {
   for (const key of STRING_KEYS) {
     const value = input[key];
     if (value !== undefined && typeof value === 'string') draft[key] = value;
+  }
+  if (typeof draft.socketGroup === 'string') {
+    draft.socketGroup = draft.socketGroup.trim().toUpperCase();
   }
 
   for (const key of LIST_KEYS) {

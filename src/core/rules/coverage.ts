@@ -70,6 +70,9 @@ export function ruleCovers(cover: Rule, target: Rule): boolean {
     if (!target.hasExplicitMod?.length) return false;
     if (!modsCover(cover.hasExplicitMod, target.hasExplicitMod)) return false;
   }
+  if (cover.socketGroup) {
+    if (cover.socketGroup !== target.socketGroup) return false;
+  }
 
   if (cover.classNames) {
     if (!target.classNames) return false;

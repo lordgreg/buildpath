@@ -18,6 +18,15 @@ import {
   usedFilterClasses,
 } from './rules/gear.ts';
 
+/** Slots that stay worth identifying while the magic link gate is on. */
+const MAGIC_ALWAYS = new Set<string>([
+  'Rings',
+  'Amulets',
+  'Belts',
+  'Jewels',
+  ...FLASK_CLASSES,
+]);
+
 const SOCKETABLE = new Set([
   'Bows',
   'Claws',
@@ -99,6 +108,8 @@ function item(
     baseType: base.name,
     rarity,
     itemLevel: 100,
+    // Map-area fixture: the last leveling stage is the relevant one.
+    areaLevel: 100,
     sockets: 1,
     linkedSockets: 1,
     identified: true,
@@ -167,10 +178,16 @@ describe('preset coverage audit', () => {
           const filter = generateFilter({ selection, phase, strictness });
           const { allowed, unused, unrestricted } = coverage(filter.archetype);
           const highlight = filter.preset.gear.highlightLinks;
-          const magicVisible = filter.preset.gear.magicMinItemLevel !== null;
-          const normalVisible = filter.preset.gear.normalMinItemLevel !== null;
+          const stage = filter.preset.gearStages.at(-1);
+          const magicFloor = stage
+            ? stage.magicMinItemLevel
+            : filter.preset.gear.magicMinItemLevel;
+          const normalFloor = stage
+            ? stage.normalMinItemLevel
+            : filter.preset.gear.normalMinItemLevel;
           // Fixtures are ilvl 100, above every floor, so a build base shows
           // whenever whites are on for the preset.
+          const normalVisible = normalFloor !== null;
           const normalShown = normalVisible || highlight;
           const where = `${label} ${phase}/${strictness}`;
 
@@ -241,7 +258,7 @@ describe('preset coverage audit', () => {
               );
               check(
                 item(allowedBase, 'Magic'),
-                magicVisible,
+                magicFloor !== null || MAGIC_ALWAYS.has(className),
                 `${className} allowed magic`,
               );
               check(

@@ -57,7 +57,17 @@ function item(
   rarity: PreviewItem['rarity'],
   extra: Partial<PreviewItem> = {},
 ): PreviewItem {
-  return { id, name: baseType, itemClass, baseType, rarity, itemLevel: 86, ...extra };
+  return {
+    id,
+    name: baseType,
+    itemClass,
+    baseType,
+    rarity,
+    itemLevel: 86,
+    // Endgame fixtures; stage cases override this with their campaign area.
+    areaLevel: 83,
+    ...extra,
+  };
 }
 
 function currency(id: string, label: string, name: string): AuditCase {
@@ -89,6 +99,17 @@ function gemShown(preset: Preset, quality: number, itemLevel: number): boolean {
   );
 }
 
+/**
+ * Leveling strictness keeps scrolls from a decent stack instead of showing
+ * every single one; elsewhere the tier cutoff decides.
+ */
+function scrollShown(preset: Preset, stackSize: number): boolean {
+  if (preset.currency.scrollMinStack !== null) {
+    return stackSize >= preset.currency.scrollMinStack;
+  }
+  return 3 <= preset.currency.maxVisibleTier;
+}
+
 /** Gold is auto-collected; only piles at or above the preset threshold show. */
 function gold(stackSize: number): AuditCase {
   const id = `gold-${stackSize}`;
@@ -116,6 +137,28 @@ export const AUDIT_CASES: AuditCase[] = [
   currency('currency-transmute', 'Orb of Transmutation', 'Orb of Transmutation'),
   currency('currency-wisdom', 'Scroll of Wisdom', 'Scroll of Wisdom'),
   currency('currency-portal', 'Portal Scroll', 'Portal Scroll'),
+  {
+    id: 'currency-wisdom-stack-2',
+    label: 'Scroll of Wisdom x2',
+    category: 'currency',
+    note: 'stack 2',
+    item: item('currency-wisdom-stack-2', 'Stackable Currency', 'Scroll of Wisdom', 'Currency', {
+      itemLevel: 1,
+      stackSize: 2,
+    }),
+    expect: ({ preset }) => scrollShown(preset, 2),
+  },
+  {
+    id: 'currency-wisdom-stack-3',
+    label: 'Scroll of Wisdom x3',
+    category: 'currency',
+    note: 'stack 3',
+    item: item('currency-wisdom-stack-3', 'Stackable Currency', 'Scroll of Wisdom', 'Currency', {
+      itemLevel: 1,
+      stackSize: 3,
+    }),
+    expect: ({ preset }) => scrollShown(preset, 3),
+  },
 
   // Gold: piles below the preset threshold are hidden at every phase.
   gold(1),
@@ -194,13 +237,26 @@ export const AUDIT_CASES: AuditCase[] = [
     id: 'map-mid',
     label: 'Beach Map',
     category: 'map',
-    note: 'tier 5',
+    note: 'tier 5, area 83',
     item: item('map-mid', 'Maps', 'Beach Map', 'Normal', {
       itemLevel: 68,
       mapTier: 5,
     }),
     expect: ({ phase, preset }) =>
       phase === 'leveling' || preset.maps.minTier === null || 5 >= preset.maps.minTier,
+  },
+  {
+    id: 'map-mid-early',
+    label: 'Beach Map',
+    category: 'map',
+    note: 'tier 5, area 69',
+    item: item('map-mid-early', 'Maps', 'Beach Map', 'Normal', {
+      itemLevel: 68,
+      areaLevel: 69,
+      mapTier: 5,
+    }),
+    // The tier cutoff waits for the area it gates (T11 areas are 78).
+    expect: () => true,
   },
 
   // Gems: a gem shows when no gate is set, or when it clears the quality or
@@ -386,6 +442,91 @@ export const AUDIT_CASES: AuditCase[] = [
       itemLevel: 20,
       sockets: 4,
       linkedSockets: 4,
+    }),
+  },
+
+  // Leveling stages: the same item is judged by the area it dropped in.
+  {
+    id: 'gear-white-2link',
+    label: 'Necromancer Silks (normal, 2 links)',
+    category: 'gear-normal',
+    note: 'ilvl 70, area 68',
+    item: item('gear-white-2link', 'Body Armours', 'Necromancer Silks', 'Normal', {
+      itemLevel: 70,
+      areaLevel: 68,
+      sockets: 2,
+      linkedSockets: 2,
+    }),
+  },
+  {
+    id: 'gear-white-4socket',
+    label: 'Silken Vest (normal, 4 sockets)',
+    category: 'gear-normal',
+    note: 'area 20',
+    item: item('gear-white-4socket', 'Body Armours', 'Silken Vest', 'Normal', {
+      itemLevel: 20,
+      areaLevel: 20,
+      sockets: 4,
+      linkedSockets: 1,
+    }),
+  },
+  {
+    id: 'gear-white-crafting',
+    label: 'Vaal Regalia (normal, ilvl 85)',
+    category: 'gear-normal',
+    note: 'crafting band',
+    item: item('gear-white-crafting', 'Body Armours', 'Vaal Regalia', 'Normal', {
+      itemLevel: 85,
+      sockets: 2,
+      linkedSockets: 1,
+    }),
+  },
+  {
+    id: 'gear-magic-rgb',
+    label: 'Silken Vest (magic, linked RGB)',
+    category: 'gear-magic',
+    note: 'area 40',
+    item: item('gear-magic-rgb', 'Body Armours', 'Silken Vest', 'Magic', {
+      itemLevel: 40,
+      areaLevel: 40,
+      sockets: 3,
+      linkedSockets: 3,
+      socketGroups: ['RGB'],
+      identified: false,
+    }),
+  },
+  {
+    id: 'gear-magic-4link',
+    label: 'Silken Vest (magic, 4-link)',
+    category: 'gear-magic',
+    note: 'area 40',
+    item: item('gear-magic-4link', 'Body Armours', 'Silken Vest', 'Magic', {
+      itemLevel: 40,
+      areaLevel: 40,
+      sockets: 4,
+      linkedSockets: 4,
+      identified: false,
+    }),
+  },
+  {
+    id: 'gear-magic-ring-early',
+    label: 'Iron Ring (magic, area 40)',
+    category: 'gear-magic',
+    note: 'accessories stay worth an identify',
+    item: item('gear-magic-ring-early', 'Rings', 'Iron Ring', 'Magic', {
+      itemLevel: 20,
+      areaLevel: 40,
+      identified: false,
+    }),
+  },
+  {
+    id: 'flask-normal-early',
+    label: 'Divine Life Flask (normal, area 15)',
+    category: 'flask',
+    note: 'only flasks a new character owns',
+    item: item('flask-normal-early', 'Life Flasks', 'Divine Life Flask', 'Normal', {
+      itemLevel: 15,
+      areaLevel: 15,
     }),
   },
 

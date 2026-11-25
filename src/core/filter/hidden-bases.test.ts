@@ -28,6 +28,7 @@ function item(
     baseType,
     rarity,
     itemLevel,
+    areaLevel: 45,
     identified: true,
   };
 }
@@ -109,6 +110,7 @@ function belt(
     baseType,
     rarity,
     itemLevel,
+    areaLevel: 45,
     identified: true,
   };
 }

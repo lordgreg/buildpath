@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { evaluateRules, type PreviewItem } from '../preview/match.ts';
 import { generateFilter } from './generate.ts';
+import type { Phase, Strictness } from './presets.ts';
 
 const selection = {
   mode: 'ascendancy' as const,
@@ -11,52 +12,85 @@ function item(
   name: string,
   itemClass: string,
   itemLevel: number,
+  extra: Partial<PreviewItem> = {},
 ): PreviewItem {
   return {
-    id: name,
+    id: `${name}-${itemLevel}`,
     name,
     itemClass,
     baseType: name,
     rarity: 'Magic',
     itemLevel,
+    areaLevel: 45,
     identified: true,
+    ...extra,
   };
 }
 
 function shownAt(
   sample: PreviewItem,
-  phase: 'leveling' | 'endgame',
-  strictness: 'soft' | 'strict' | 'uber',
+  phase: Phase,
+  strictness: Strictness,
 ): boolean {
   const filter = generateFilter({ selection, phase, strictness });
   return evaluateRules(filter.rules, sample).shown;
 }
 
-describe('leveling strict magic floor', () => {
-  it('hides the reported magic ring at leveling strict', () => {
+describe('leveling magic stages', () => {
+  it('shows every magic item in the first two stages', () => {
+    for (const strictness of ['soft', 'strict', 'uber'] as const) {
+      const early = item('Silken Vest', 'Body Armours', 15, { areaLevel: 15 });
+      expect(shownAt(early, 'leveling', strictness), strictness).toBe(true);
+    }
+  });
+
+  it('hides unlinked magic armour from area 20 on', () => {
+    const vest = item('Silken Vest', 'Body Armours', 45);
+    for (const strictness of ['soft', 'strict', 'uber'] as const) {
+      expect(shownAt(vest, 'leveling', strictness), strictness).toBe(false);
+    }
+  });
+
+  it('keeps a 4-link or linked RGB magic item', () => {
+    const fourLink = item('Silken Vest', 'Body Armours', 45, {
+      sockets: 4,
+      linkedSockets: 4,
+    });
+    const rgb = item('Silken Vest', 'Body Armours', 45, {
+      sockets: 3,
+      linkedSockets: 3,
+      socketGroups: ['RGB'],
+    });
+    for (const strictness of ['soft', 'strict', 'uber'] as const) {
+      expect(shownAt(fourLink, 'leveling', strictness), `4L ${strictness}`).toBe(
+        true,
+      );
+      expect(shownAt(rgb, 'leveling', strictness), `RGB ${strictness}`).toBe(
+        true,
+      );
+    }
+  });
+
+  it('keeps magic accessories worth an identify', () => {
     const ring = item('Topaz Ring', 'Rings', 43);
-    expect(shownAt(ring, 'leveling', 'soft')).toBe(true);
-    expect(shownAt(ring, 'leveling', 'strict')).toBe(false);
-    expect(shownAt(ring, 'leveling', 'uber')).toBe(false);
-    expect(shownAt(ring, 'endgame', 'soft')).toBe(false);
-    expect(shownAt(ring, 'endgame', 'strict')).toBe(false);
-    expect(shownAt(ring, 'endgame', 'uber')).toBe(false);
+    for (const strictness of ['soft', 'strict', 'uber'] as const) {
+      expect(shownAt(ring, 'leveling', strictness), strictness).toBe(true);
+    }
   });
 
-  it('shows an allowed base at ilvl 80+ only', () => {
-    const high = item('Hubris Circlet', 'Helmets', 80);
-    const low = item('Hubris Circlet', 'Helmets', 79);
-    expect(shownAt(high, 'leveling', 'strict')).toBe(true);
-    expect(shownAt(low, 'leveling', 'strict')).toBe(false);
+  it('does not revive a wrong base with the link gate', () => {
+    const strengthHelmet = item('Reaver Helmet', 'Helmets', 45, {
+      rarity: 'Rare',
+    });
+    expect(shownAt(strengthHelmet, 'leveling', 'soft')).toBe(false);
   });
+});
 
-  it('does not revive wrong bases at ilvl 80+', () => {
-    const strengthHelmet = item('Reaver Helmet', 'Helmets', 80);
-    expect(shownAt(strengthHelmet, 'leveling', 'strict')).toBe(false);
-  });
-
-  it('allows an ilvl 80+ magic ring because rings are an allowed base', () => {
+describe('endgame magic floor', () => {
+  it('keeps the existing item level floor', () => {
+    const lowRing = item('Topaz Ring', 'Rings', 43);
     const highRing = item('Topaz Ring', 'Rings', 80);
-    expect(shownAt(highRing, 'leveling', 'strict')).toBe(true);
+    expect(shownAt(lowRing, 'endgame', 'soft')).toBe(false);
+    expect(shownAt(highRing, 'endgame', 'soft')).toBe(true);
   });
 });

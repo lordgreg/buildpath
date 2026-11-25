@@ -12,6 +12,7 @@ export const REPORTED_LEAKS: PreviewItem[] = [
     baseType: 'Rawhide Gloves',
     rarity: 'Normal',
     itemLevel: 14,
+    areaLevel: 30,
     quality: 17,
     sockets: 3,
     linkedSockets: 3,
@@ -23,6 +24,7 @@ export const REPORTED_LEAKS: PreviewItem[] = [
     baseType: 'Boarding Axe',
     rarity: 'Magic',
     itemLevel: 15,
+    areaLevel: 30,
     sockets: 2,
     linkedSockets: 1,
     identified: false,
@@ -34,6 +36,7 @@ export const REPORTED_LEAKS: PreviewItem[] = [
     baseType: 'Oiled Vest',
     rarity: 'Magic',
     itemLevel: 16,
+    areaLevel: 30,
     sockets: 2,
     linkedSockets: 2,
     identified: false,
@@ -45,6 +48,7 @@ export const REPORTED_LEAKS: PreviewItem[] = [
     baseType: 'Wrapped Mitts',
     rarity: 'Magic',
     itemLevel: 15,
+    areaLevel: 30,
     sockets: 1,
     linkedSockets: 1,
     identified: false,
@@ -60,6 +64,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Amethyst Ring',
     rarity: 'Rare',
     itemLevel: 86,
+    areaLevel: 83,
     identified: true,
   },
   {
@@ -69,6 +74,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Hubris Circlet',
     rarity: 'Rare',
     itemLevel: 85,
+    areaLevel: 83,
     identified: true,
   },
   {
@@ -78,6 +84,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Convoking Wand',
     rarity: 'Rare',
     itemLevel: 84,
+    areaLevel: 83,
     identified: true,
   },
   {
@@ -87,6 +94,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Silken Vest',
     rarity: 'Normal',
     itemLevel: 20,
+    areaLevel: 20,
     sockets: 4,
     linkedSockets: 4,
   },
@@ -97,6 +105,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Vaal Regalia',
     rarity: 'Normal',
     itemLevel: 70,
+    areaLevel: 70,
     sockets: 6,
     linkedSockets: 1,
   },
@@ -161,6 +170,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Leather Belt',
     rarity: 'Unique',
     itemLevel: 70,
+    areaLevel: 70,
     identified: false,
   },
   {
@@ -179,6 +189,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Strand Map',
     rarity: 'Normal',
     itemLevel: 83,
+    areaLevel: 83,
     mapTier: 16,
   },
   {
@@ -188,6 +199,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Two-Toned Boots',
     rarity: 'Rare',
     itemLevel: 86,
+    areaLevel: 83,
     identified: true,
   },
   {
@@ -197,6 +209,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Fingerless Silk Gloves',
     rarity: 'Rare',
     itemLevel: 86,
+    areaLevel: 83,
     identified: true,
   },
   {
@@ -206,6 +219,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Onyx Amulet',
     rarity: 'Rare',
     itemLevel: 86,
+    areaLevel: 83,
     identified: true,
   },
   {
@@ -215,6 +229,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Cobalt Jewel',
     rarity: 'Rare',
     itemLevel: 86,
+    areaLevel: 83,
     identified: true,
   },
   {
@@ -224,6 +239,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Reaver Claymore',
     rarity: 'Rare',
     itemLevel: 86,
+    areaLevel: 83,
     identified: true,
   },
   {
@@ -233,6 +249,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Iron Ring',
     rarity: 'Magic',
     itemLevel: 20,
+    areaLevel: 20,
     identified: false,
   },
   {
@@ -242,6 +259,20 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Silken Vest',
     rarity: 'Magic',
     itemLevel: 16,
+    areaLevel: 20,
+    identified: false,
+  },
+  {
+    id: 'magic-rgb',
+    name: 'Silken Vest',
+    itemClass: 'Body Armours',
+    baseType: 'Silken Vest',
+    rarity: 'Magic',
+    itemLevel: 40,
+    areaLevel: 40,
+    sockets: 3,
+    linkedSockets: 3,
+    socketGroups: ['RGB'],
     identified: false,
   },
   {
@@ -251,6 +282,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Iron Hat',
     rarity: 'Normal',
     itemLevel: 8,
+    areaLevel: 8,
     sockets: 2,
     linkedSockets: 1,
   },
@@ -261,6 +293,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Rough Leather Boots',
     rarity: 'Normal',
     itemLevel: 4,
+    areaLevel: 4,
   },
   {
     id: 'normal-axe',
@@ -269,6 +302,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Boarding Axe',
     rarity: 'Normal',
     itemLevel: 15,
+    areaLevel: 15,
   },
   {
     id: 'currency-chaos',
@@ -329,6 +363,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Beach Map',
     rarity: 'Normal',
     itemLevel: 68,
+    areaLevel: 68,
     mapTier: 5,
   },
   {
@@ -338,6 +373,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Diamond Flask',
     rarity: 'Magic',
     itemLevel: 70,
+    areaLevel: 70,
     quality: 20,
   },
   {
@@ -347,6 +383,7 @@ export const SAMPLE_ITEMS: PreviewItem[] = [
     baseType: 'Prismatic Jewel',
     rarity: 'Unique',
     itemLevel: 80,
+    areaLevel: 83,
     identified: true,
   },
   {

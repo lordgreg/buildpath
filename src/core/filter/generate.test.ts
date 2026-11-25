@@ -163,6 +163,32 @@ describe('generateFilter', () => {
     ).not.toContain('# Selection:');
   });
 
+  it('keeps the rule count within a reviewable budget', () => {
+    for (const archetype of archetypes) {
+      for (const strictness of STRICTNESS) {
+        const leveling = generateFilter({
+          archetypeId: archetype.id,
+          phase: 'leveling',
+          strictness,
+        });
+        expect(
+          leveling.ruleCount,
+          `${archetype.id}/leveling/${strictness}`,
+        ).toBeLessThan(160);
+
+        const endgame = generateFilter({
+          archetypeId: archetype.id,
+          phase: 'endgame',
+          strictness,
+        });
+        expect(
+          endgame.ruleCount,
+          `${archetype.id}/endgame/${strictness}`,
+        ).toBeLessThan(120);
+      }
+    }
+  });
+
   it('resolves a known archetype for the UI', () => {
     expect(getArchetype('slayer-cyclone')?.ascendancy).toBe('Slayer');
   });

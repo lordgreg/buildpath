@@ -34,72 +34,30 @@ export function junkRules(archetype: Archetype, preset: Preset): Rule[] {
   }
   for (const name of unrestricted) restricted.delete(name);
 
-  if (preset.gear.magicMinItemLevel === null) {
+  // The gear rules run first and fully define what the preset keeps at the
+  // item's area level. Anything they did not match is noise, whatever its
+  // item level: the floors live in the stages now, not in this file.
+  rules.push({
+    action: 'Hide',
+    comment: 'Magic gear - not kept by the preset',
+    classNames: magicEquipment,
+    rarity: 'Magic',
+  });
+  if (unusedFlasks.length > 0) {
     rules.push({
       action: 'Hide',
-      comment: 'Magic gear',
-      classNames: magicEquipment,
+      comment: 'Magic gear - flask classes this build does not use',
+      classNames: unusedFlasks,
       rarity: 'Magic',
-    });
-    if (unusedFlasks.length > 0) {
-      rules.push({
-        action: 'Hide',
-        comment: 'Magic gear - flask classes this build does not use',
-        classNames: unusedFlasks,
-        rarity: 'Magic',
-      });
-    }
-  } else {
-    if (unused.length > 0) {
-      rules.push({
-        action: 'Hide',
-        comment: 'Magic gear - slots this build does not use',
-        classNames: unused,
-        rarity: 'Magic',
-      });
-    }
-    rules.push({
-      action: 'Hide',
-      comment: `Magic gear - below item level ${preset.gear.magicMinItemLevel}`,
-      classNames: allEquipment,
-      rarity: 'Magic',
-      itemLevel: { max: preset.gear.magicMinItemLevel - 1 },
     });
   }
 
-  if (preset.gear.normalMinItemLevel === null) {
-    rules.push({
-      action: 'Hide',
-      comment: 'Normal gear',
-      classNames: allEquipment,
-      rarity: 'Normal',
-    });
-  } else {
-    if (unused.length > 0) {
-      rules.push({
-        action: 'Hide',
-        comment: 'Normal gear - slots this build does not use',
-        classNames: unused,
-        rarity: 'Normal',
-      });
-    }
-    if (preset.gear.normalMinItemLevel > 0) {
-      rules.push({
-        action: 'Hide',
-        comment: `Normal gear - below item level ${preset.gear.normalMinItemLevel}`,
-        classNames: allEquipment,
-        rarity: 'Normal',
-        itemLevel: { max: preset.gear.normalMinItemLevel - 1 },
-      });
-    }
-    // Flasks are exempt from the white floor (see gear.ts); hide them here.
-    rules.push({
-      action: 'Hide',
-      comment: 'Normal flasks',
-      classNames: [...FLASK_CLASSES],
-      rarity: 'Normal',
-    });
-  }
+  rules.push({
+    action: 'Hide',
+    comment: 'Normal gear - not kept by the preset',
+    classNames: allEquipment,
+    rarity: 'Normal',
+  });
 
   if (preset.gear.rareMinItemLevel > 1) {
     rules.push({

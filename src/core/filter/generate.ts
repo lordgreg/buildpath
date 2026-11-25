@@ -267,7 +267,7 @@ export function compileFilter(config: FilterConfig): CompiledFilter {
     }
   };
 
-  if (sections.gear) add('gear', gearRules(archetype, preset));
+  if (sections.gear) add('gear', gearRules(archetype, preset, config.phase));
   if (sections.gems) add('gems', gemRules(preset));
   if (sections.currency) add('currency', currencyRules(preset));
   if (sections.maps) add('maps', mapRules(preset, config.phase));
@@ -315,6 +315,11 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
       : [
           `Phase: ${config.phase === 'leveling' ? 'Leveling' : 'Endgame'} - ${STRICTNESS_LABELS_PUBLIC[config.strictness]}`,
         ]),
+    ...(config.phase === 'leveling' && !scratch
+      ? [
+          'Leveling stages: area 1-9 all, 10-19 4-socket whites, 20-67 4-links/RGB, 68+ crafting bases',
+        ]
+      : []),
     // Lets the folder lister load a BuildPath file back into the builder.
     ...(config.selection
       ? [

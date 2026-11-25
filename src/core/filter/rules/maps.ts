@@ -63,6 +63,12 @@ export function mapRules(preset: Preset, phase: Phase): Rule[] {
 
   if (phase === 'endgame' && preset.maps.minTier !== null) {
     const minTier = preset.maps.minTier;
+    const cutoff = preset.maps.cutoffAreaLevel;
+    // Below the cutoff area the low band still shows, so Strict and Uber do not
+    // strand a character who has not reached their tier yet.
+    const lowArea =
+      cutoff === null ? {} : { areaLevel: { max: cutoff - 1 } };
+    const cutoffArea = cutoff === null ? {} : { areaLevel: { min: cutoff } };
 
     for (const band of MAP_BANDS) {
       if (minTier > band.min) continue;
@@ -79,11 +85,12 @@ export function mapRules(preset: Preset, phase: Phase): Rule[] {
       });
     }
 
-    if (minTier < 11) {
+    if (minTier < 11 || cutoff !== null) {
       rules.push({
         action: 'Show',
         comment: `Maps - tier ${minTier}-10`,
         classNames: ['Maps'],
+        ...(cutoff !== null ? lowArea : {}),
         mapTier: { min: minTier, max: 10 },
         styleKind: 'map',
         style: { textColor: COLORS.grey, borderColor: COLORS.blue, fontSize: 30 },
@@ -95,6 +102,7 @@ export function mapRules(preset: Preset, phase: Phase): Rule[] {
         action: 'Hide',
         comment: 'Maps - below tier cutoff',
         classNames: ['Maps'],
+        ...cutoffArea,
       });
     }
   }
