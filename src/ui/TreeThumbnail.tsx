@@ -10,7 +10,7 @@ interface GeometryNode {
   keystone: boolean;
   socket: boolean;
   name: string;
-  stats?: string[];
+  stats: string[];
 }
 
 interface Geometry {
@@ -34,10 +34,10 @@ interface Tooltip {
 
 let geometryPromise: Promise<Geometry> | null = null;
 
-/** Loaded once, on demand: the full tree is ~450 KB the builder never needs. */
+/** Loaded once, lazily: the full tree is ~450 KB the builder never needs. */
 function loadGeometry(): Promise<Geometry> {
   geometryPromise ??= import('../generated/tree-geometry.json').then(
-    (module) => (module.default ?? module) as unknown as Geometry,
+    (module) => module.default as unknown as Geometry,
   );
   return geometryPromise;
 }
@@ -54,35 +54,42 @@ function boundsOf(nodes: { x: number; y: number }[]): View {
   let maxY = -Infinity;
   for (const node of nodes) {
     if (node.x < minX) minX = node.x;
-    if (node.x > maxX) maxX = node.x;
     if (node.y < minY) minY = node.y;
+    if (node.x > maxX) maxX = node.x;
     if (node.y > maxY) maxY = node.y;
   }
-  const span = Math.max(maxX - minX, maxY - minY, 1);
-  const pad = span * 0.12;
-  return {
-    x: minX - pad,
-    y: minY - pad,
-    w: span + pad * 2,
-    h: span + pad * 2,
-  };
+  const w = Math.max(maxX - minX, 1);
+  const h = Math.max(maxY - minY, 1);
+  const pad = Math.max(w, h) * 0.12;
+  return { x: minX - pad, y: minY - pad, w: w + pad * 2, h: h + pad * 2 };
 }
 
 function fitBounds(nodes: { x: number; y: number }[]): View {
   const view = boundsOf(nodes);
   if (view.w >= FIT_MIN_WIDTH) return view;
-  const grow = (FIT_MIN_WIDTH - view.w) / 2;
-  return { x: view.x - grow, y: view.y - grow, w: view.w + grow * 2, h: view.h + grow * 2 };
+  const scale = FIT_MIN_WIDTH / view.w;
+  const w = view.w * scale;
+  const h = view.h * scale;
+  return {
+    x: view.x - (w - view.w) / 2,
+    y: view.y - (h - view.h) / 2,
+    w,
+    h,
+  };
 }
 
 /**
  * The allocated tree drawn over the full constellation, the way the game does.
  *
- * Two things matter more than the drawing:
- *  - it opens fitted to the nodes you actually took, because the whole tree at
- *    once renders ten allocated dots at two pixels each;
+ * Two things matter beyond the drawing:
+ *  - it opens fitted to the nodes you took, because the whole tree renders ten
+ *    allocated dots at two pixels each;
  *  - hit targets are capped below the node spacing, so clicking opens the node
- *    under the cursor instead of its neighbour.
+ *    under the cursor rather than its neighbour.
+ *
+ * Every hook runs on every render. The geometry arrives asynchronously, so the
+ * first render has none; an early return placed above the useMemos would change
+ * the hook count on the next render and React throws #310.
  */
 export default function TreeThumbnail({
   tree,
@@ -135,86 +142,11 @@ export default function TreeThumbnail({
     setTooltip({ node, x: event.clientX, y: event.clientY });
   }, []);
 
-  // Wheel zooms toward the cursor. Native listener so preventDefault works.
-  useEffect(() => {
-    const svg = svgRef.current;
-    if (!svg) return;
-    const onWheel = (event: WheelEvent) => {
-      event.preventDefault();
-      const rect = svg.getBoundingClientRect();
-      const factor = Math.exp(event.deltaY * 0.0015);
-      const fx = (event.clientX - rect.left) / rect.width;
-      const fy = (event.clientY - rect.top) / rect.height;
-      setView((current) => {
-        if (!current) return current;
-        const w = Math.min(Math.max(current.w * factor, MIN_WIDTH), full?.w ?? current.w);
-        const scale = w / current.w;
-        return {
-          x: current.x + (current.w - w) * fx,
-          y: current.y + (current.h - current.h * scale) * fy,
-          w,
-          h: current.h * scale,
-        };
-      });
-    };
-    svg.addEventListener('wheel', onWheel, { passive: false });
-    return () => svg.removeEventListener('wheel', onWheel);
-  }, [full]);
-
-  if (!geometry || !view) {
-    return (
-      <p className="text-xs text-zinc-500">
-        {tree.nodes.length === 0 ? 'No tree was planned for this step.' : 'Loading the tree…'}
-      </p>
-    );
-  }
-
-  const span = Math.max(full!.w, full!.h);
+  const span = full ? Math.max(full.w, full.h) : 0;
   const radius = span * 0.0032;
   const notableRadius = span * 0.0052;
-  // Median node spacing is ~162 units. A hit radius of 80 never overlaps a
-  // neighbour, so a click lands on the node under the cursor.
+  // Median node spacing is ~162 units; 80 never overlaps a neighbour.
   const hitRadius = Math.min(span * 0.011, 80);
-
-  const zoomBy = (factor: number) => {
-    setView((current) => {
-      if (!current) return current;
-      const w = Math.min(Math.max(current.w * factor, MIN_WIDTH), full!.w);
-      const scale = w / current.w;
-      return {
-        x: current.x + (current.w - w) / 2,
-        y: current.y + (current.h - current.h * scale) / 2,
-        w,
-        h: current.h * scale,
-      };
-    });
-  };
-
-  const onPointerDown = (event: ReactPointerEvent<SVGSVGElement>) => {
-    drag.current = { x: event.clientX, y: event.clientY };
-    moved.current = false;
-    event.currentTarget.setPointerCapture(event.pointerId);
-  };
-  const onPointerMove = (event: ReactPointerEvent<SVGSVGElement>) => {
-    const start = drag.current;
-    if (!start) return;
-    const dx = event.clientX - start.x;
-    const dy = event.clientY - start.y;
-    if (Math.abs(dx) + Math.abs(dy) > 4) moved.current = true;
-    drag.current = { x: event.clientX, y: event.clientY };
-    const rect = event.currentTarget.getBoundingClientRect();
-    setView((current) => {
-      if (!current) return current;
-      const unit = current.w / rect.width;
-      return { ...current, x: current.x - dx * unit, y: current.y - dy * unit };
-    });
-  };
-  const onPointerUp = () => {
-    drag.current = null;
-  };
-
-  const tooltipLeft = Math.min(tooltip ? tooltip.x + 14 : 0, window.innerWidth - 300);
-  const tooltipTop = Math.min(tooltip ? tooltip.y + 14 : 0, window.innerHeight - 240);
 
   // Static layers are memoised: panning changes the viewBox only, so React must
   // not rebuild 2,500 nodes and 2,900 edges on every pointer move.
@@ -293,13 +225,90 @@ export default function TreeThumbnail({
           >
             <title>
               {node.name || `node ${node.id}`}
-              {node.stats?.length ? ` — ${node.stats[0]}` : ''}
+              {node.stats?.[0] ? ` — ${node.stats[0]}` : ''}
             </title>
           </circle>
         ))}
       </g>
     );
   }, [geometry, hitRadius, openNode]);
+
+  // Wheel zooms toward the cursor. Native listener so preventDefault works.
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const onWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      const rect = svg.getBoundingClientRect();
+      const factor = Math.exp(event.deltaY * 0.0015);
+      const fx = (event.clientX - rect.left) / rect.width;
+      const fy = (event.clientY - rect.top) / rect.height;
+      setView((current) => {
+        if (!current) return current;
+        const width = Math.min(
+          Math.max(current.w * factor, MIN_WIDTH),
+          full?.w ?? current.w,
+        );
+        const scale = width / current.w;
+        return {
+          x: current.x + (current.w - width) * fx,
+          y: current.y + (current.h - current.h * scale) * fy,
+          w: width,
+          h: current.h * scale,
+        };
+      });
+    };
+    svg.addEventListener('wheel', onWheel, { passive: false });
+    return () => svg.removeEventListener('wheel', onWheel);
+  }, [full]);
+
+  if (!geometry || !view) {
+    return (
+      <p className="text-xs text-zinc-500">
+        {tree.nodes.length === 0 ? 'No tree was planned for this step.' : 'Loading the tree…'}
+      </p>
+    );
+  }
+
+  const zoomBy = (factor: number) => {
+    setView((current) => {
+      if (!current) return current;
+      const width = Math.min(Math.max(current.w * factor, MIN_WIDTH), full!.w);
+      const scale = width / current.w;
+      return {
+        x: current.x + (current.w - width) / 2,
+        y: current.y + (current.h - current.h * scale) / 2,
+        w: width,
+        h: current.h * scale,
+      };
+    });
+  };
+
+  const onPointerDown = (event: ReactPointerEvent<SVGSVGElement>) => {
+    drag.current = { x: event.clientX, y: event.clientY };
+    moved.current = false;
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+  const onPointerMove = (event: ReactPointerEvent<SVGSVGElement>) => {
+    const start = drag.current;
+    if (!start) return;
+    const dx = event.clientX - start.x;
+    const dy = event.clientY - start.y;
+    if (Math.abs(dx) + Math.abs(dy) > 4) moved.current = true;
+    drag.current = { x: event.clientX, y: event.clientY };
+    const rect = event.currentTarget.getBoundingClientRect();
+    setView((current) => {
+      if (!current) return current;
+      const unit = current.w / rect.width;
+      return { ...current, x: current.x - dx * unit, y: current.y - dy * unit };
+    });
+  };
+  const onPointerUp = () => {
+    drag.current = null;
+  };
+
+  const tooltipLeft = Math.min(tooltip ? tooltip.x + 14 : 0, window.innerWidth - 300);
+  const tooltipTop = Math.min(tooltip ? tooltip.y + 14 : 0, window.innerHeight - 240);
 
   return (
     <figure>
