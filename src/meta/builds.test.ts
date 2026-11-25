@@ -77,8 +77,13 @@ describe('published build data', () => {
       JSON.parse(
         readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
       ) as {
-        skillGroups: { slot: string; gems: string[] }[];
-        flasks?: Record<string, { name: string; slot: string }[]>;
+        leveling: {
+          brackets: {
+            until: number;
+            skillGroups?: { slot: string; gems: string[] }[];
+            flasks?: { name: string; slot: string }[];
+          }[];
+        };
         gates?: Record<
           string,
           {
@@ -95,27 +100,29 @@ describe('published build data', () => {
       },
   );
 
-  it('gives every skill group a gear slot and at least one gem', () => {
+  it('gives every leveling bracket a gear slot and at least one gem', () => {
     for (const build of compiled) {
-      expect(build.skillGroups.length).toBeGreaterThan(0);
-      for (const group of build.skillGroups) {
-        expect(group.slot.trim(), group.slot).not.toBe('');
-        expect(group.gems.length, group.slot).toBeGreaterThan(0);
+      expect(build.leveling.brackets.length).toBeGreaterThan(0);
+      for (const bracket of build.leveling.brackets) {
+        const groups = bracket.skillGroups ?? [];
+        expect(groups.length, `until ${bracket.until}`).toBeGreaterThan(0);
+        for (const group of groups) {
+          expect(group.slot.trim(), group.slot).not.toBe('');
+          expect(group.gems.length, group.slot).toBeGreaterThan(0);
+        }
+        const slots = groups.map((group) => group.slot);
+        expect(new Set(slots).size, 'one group per slot').toBe(slots.length);
       }
-      const slots = build.skillGroups.map((group) => group.slot);
-      expect(new Set(slots).size, 'one group per slot').toBe(slots.length);
     }
   });
 
-  it('lists flasks for every step it claims to cover', () => {
+  it('lists realistic flasks for every leveling bracket', () => {
     for (const build of compiled) {
-      if (!build.flasks) continue;
-      for (const step of ['leveling', 'maps', 'endgame'] as const) {
-        const flasks = build.flasks[step];
-        if (!flasks) continue;
-        expect(flasks.length, step).toBeGreaterThan(0);
+      for (const bracket of build.leveling.brackets) {
+        const flasks = bracket.flasks ?? [];
+        expect(flasks.length, `until ${bracket.until}`).toBeGreaterThan(0);
         // A build needs a life flask at every step; utility flasks are optional.
-        expect(flasks.some((flask) => flask.slot === 'life'), step).toBe(true);
+        expect(flasks.some((flask) => flask.slot === 'life'), `until ${bracket.until}`).toBe(true);
       }
     }
   });

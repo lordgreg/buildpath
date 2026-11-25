@@ -25,6 +25,19 @@ export interface LevelingBracket {
   /** Level bracket upper bound; the last bracket ends at 100. */
   until: number;
   skills: string[];
+  /** Gems and their slots while leveling; the guide renders this per step. */
+  skillGroups?: SkillGroup[];
+  flasks?: FlaskChoice[];
+}
+
+/** Where a gem comes from for this build's class. */
+export interface GemAvailability {
+  /** Character level needed to use the gem at all. */
+  requiredLevel: number;
+  /** The quest that grants it, when it is a quest gem. */
+  quest: { act: number | null; quest: string | null; classes: string[] } | null;
+  /** True when this class gets it as a free quest reward. */
+  free: boolean;
 }
 
 export interface AscendancyPoint {
@@ -77,6 +90,7 @@ export interface GearItem {
 export interface GemLink {
   name: string;
   level: number;
+  quality?: number;
 }
 
 export interface GemGroup {
@@ -90,6 +104,7 @@ export interface GateResult {
   budget: string;
   gear?: GearItem[];
   gems?: GemGroup[];
+  flasks?: FlaskChoice[];
   metrics: Omit<CheckpointMetrics, 'physicalMaxHit' | 'fireResist' | 'coldResist' | 'lightningResist'> & {
     maxHit: number;
     minionCount?: number;
@@ -135,6 +150,8 @@ export interface Build extends BuildIndexEntry {
   schemaVersion: 1;
   skillGroups: SkillGroup[];
   minionCount?: number;
+  /** Per-gem quest/level provenance, compiled from RePoE's gem data. */
+  gemInfo?: Record<string, GemAvailability>;
   gates?: Record<string, GateResult>;
   pipeline?: BuildPipelineInfo;
   leveling: { brackets: LevelingBracket[] };

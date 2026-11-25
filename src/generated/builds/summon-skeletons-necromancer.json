@@ -7,41 +7,6 @@
   "family": "minion",
   "mainSkill": "Summon Skeletons",
   "summary": "League-start minion build. Skeletons do the damage, so a bad weapon is not a brick: cap your resistances, keep your minions alive, and the damage arrives with the gem levels. No required uniques, which is why it is the first build the pipeline proves.",
-  "leveling": {
-    "brackets": [
-      {
-        "until": 12,
-        "skills": [
-          "Raise Zombie",
-          "Summon Skeletons"
-        ]
-      },
-      {
-        "until": 28,
-        "skills": [
-          "Summon Skeletons",
-          "Summon Raging Spirit",
-          "Raise Zombie"
-        ]
-      },
-      {
-        "until": 68,
-        "skills": [
-          "Summon Skeletons",
-          "Summon Raging Spirit",
-          "Flesh Offering"
-        ]
-      },
-      {
-        "until": 100,
-        "skills": [
-          "Summon Skeletons",
-          "Flesh Offering",
-          "Desecrate"
-        ]
-      }
-    ]
-  },
   "minionCount": 6,
   "tree": {
     "targets": [
@@ -52,54 +17,300 @@
       "maximum life"
     ]
   },
-  "skillGroups": [
-    {
-      "slot": "Weapon 1",
-      "gems": [
-        "Flesh Offering",
-        "Generosity"
-      ]
-    },
-    {
-      "slot": "Shield",
-      "gems": [
-        "Clarity",
-        "Convocation"
-      ]
-    },
-    {
-      "slot": "Helmet",
-      "gems": [
-        "Desecrate"
-      ]
-    },
-    {
-      "slot": "Gloves",
-      "gems": [
-        "Cast when Damage Taken",
-        "Immortal Call"
-      ]
-    },
-    {
-      "slot": "Boots",
-      "gems": [
-        "Flame Dash",
-        "Faster Casting",
-        "Arcane Surge"
-      ]
-    },
-    {
-      "slot": "Body Armour",
-      "gems": [
-        "Summon Skeletons",
-        "Minion Damage",
-        "Multistrike",
-        "Melee Physical Damage",
-        "Brutality",
-        "Feeding Frenzy"
-      ]
-    }
-  ],
+  "leveling": {
+    "brackets": [
+      {
+        "until": 12,
+        "skills": [
+          "Raise Zombie",
+          "Summon Skeletons"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Summon Skeletons",
+              "Minion Damage"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Summon Raging Spirit"
+            ]
+          },
+          {
+            "slot": "Shield",
+            "gems": [
+              "Clarity"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Flesh Offering"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              "Raise Zombie"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Flame Dash",
+              "Arcane Surge"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Medium Life Flask",
+            "note": "Small until level 3, then medium."
+          },
+          {
+            "slot": "utility",
+            "name": "Small Mana Flask",
+            "note": "Skeletons are expensive early."
+          },
+          {
+            "slot": "utility",
+            "name": "Quicksilver Flask",
+            "note": "Act 2 quest reward."
+          }
+        ]
+      },
+      {
+        "until": 28,
+        "skills": [
+          "Summon Skeletons",
+          "Summon Raging Spirit",
+          "Flesh Offering"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Summon Skeletons",
+              "Minion Damage",
+              "Melee Physical Damage",
+              "Minion Speed"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Flesh Offering",
+              "Desecrate"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Summon Raging Spirit"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              "Raise Zombie"
+            ]
+          },
+          {
+            "slot": "Shield",
+            "gems": [
+              "Clarity",
+              "Convocation"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Flame Dash",
+              "Faster Casting",
+              "Arcane Surge"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Medium Life Flask",
+            "note": "Divine needs level 60."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Chaos resistance from level 18."
+          },
+          {
+            "slot": "utility",
+            "name": "Quicksilver Flask",
+            "note": "Movement, not damage."
+          }
+        ]
+      },
+      {
+        "until": 68,
+        "skills": [
+          "Summon Skeletons",
+          "Flesh Offering",
+          "Desecrate"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Summon Skeletons",
+              "Minion Damage",
+              "Multistrike",
+              "Melee Physical Damage",
+              "Brutality",
+              "Feeding Frenzy"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Flesh Offering",
+              "Generosity"
+            ]
+          },
+          {
+            "slot": "Shield",
+            "gems": [
+              "Clarity",
+              "Convocation"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Desecrate"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              "Cast when Damage Taken",
+              "Immortal Call"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Flame Dash",
+              "Faster Casting",
+              "Arcane Surge"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Divine Life Flask",
+            "note": "Drops from level 60; instant prefix."
+          },
+          {
+            "slot": "utility",
+            "name": "Granite Flask",
+            "note": "Armour against physical hits."
+          },
+          {
+            "slot": "utility",
+            "name": "Quartz Flask",
+            "note": "Phasing through your own minions."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Chaos resistance until it is capped."
+          }
+        ]
+      },
+      {
+        "until": 100,
+        "skills": [
+          "Summon Skeletons",
+          "Flesh Offering",
+          "Desecrate"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Summon Skeletons",
+              "Minion Damage",
+              "Multistrike",
+              "Melee Physical Damage",
+              "Brutality",
+              "Feeding Frenzy"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Flesh Offering",
+              "Generosity"
+            ]
+          },
+          {
+            "slot": "Shield",
+            "gems": [
+              "Clarity",
+              "Convocation"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Desecrate"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              "Cast when Damage Taken",
+              "Immortal Call"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Flame Dash",
+              "Faster Casting",
+              "Arcane Surge"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Divine Life Flask",
+            "note": "Keep the instant prefix."
+          },
+          {
+            "slot": "utility",
+            "name": "Granite Flask",
+            "note": "Iron Skin suffix."
+          },
+          {
+            "slot": "utility",
+            "name": "Jade Flask",
+            "note": "Evasion against attack-based bosses."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Swap for a damage flask once chaos is capped."
+          }
+        ]
+      }
+    ]
+  },
   "ascendancyOrder": [
     {
       "node": "mindless-aggression",
@@ -118,79 +329,6 @@
       "lab": 4
     }
   ],
-  "flasks": {
-    "leveling": [
-      {
-        "slot": "life",
-        "name": "Small Life Flask",
-        "note": "Whatever drops. Replace it as it falls behind, do not reroll it."
-      },
-      {
-        "slot": "utility",
-        "name": "Small Mana Flask",
-        "note": "You will need it: skeletons are expensive early."
-      },
-      {
-        "slot": "utility",
-        "name": "Quicksilver Flask",
-        "note": "Act 2 quest reward. Until then, walk."
-      }
-    ],
-    "maps": [
-      {
-        "slot": "life",
-        "name": "Divine Life Flask",
-        "note": "Instant recovery on the prefix."
-      },
-      {
-        "slot": "utility",
-        "name": "Quicksilver Flask",
-        "note": "Adrenaline suffix when you can craft it."
-      },
-      {
-        "slot": "utility",
-        "name": "Granite Flask",
-        "note": "Armour against physical hits."
-      },
-      {
-        "slot": "utility",
-        "name": "Amethyst Flask",
-        "note": "Chaos resistance while it is short."
-      },
-      {
-        "slot": "utility",
-        "name": "Quartz Flask",
-        "note": "Phasing, so your minions block the doorway instead of you."
-      }
-    ],
-    "endgame": [
-      {
-        "slot": "life",
-        "name": "Divine Life Flask",
-        "note": "Keep the instant prefix."
-      },
-      {
-        "slot": "utility",
-        "name": "Quicksilver Flask",
-        "note": "Adrenaline."
-      },
-      {
-        "slot": "utility",
-        "name": "Granite Flask",
-        "note": "Iron Skin suffix."
-      },
-      {
-        "slot": "utility",
-        "name": "Jade Flask",
-        "note": "Evasion against attack-based bosses."
-      },
-      {
-        "slot": "utility",
-        "name": "Amethyst Flask",
-        "note": "Swap for a damage flask once chaos resistance is capped."
-      }
-    ]
-  },
   "bandit": "kill-all",
   "pantheon": {
     "major": "lunaris",
@@ -208,13 +346,13 @@
       "level": 12,
       "budget": "starting (3-link)",
       "metrics": {
-        "dps": 364,
+        "dps": 99,
         "minionCount": 6,
         "dpsSource": "minion",
         "life": 355,
         "energyShield": 437,
-        "ehp": 714,
-        "maxHit": 1056,
+        "ehp": 555,
+        "maxHit": 792,
         "resists": [
           -48,
           -48,
@@ -374,7 +512,8 @@
           "slot": "Boots",
           "base": "Sorcerer Boots",
           "mods": [
-            "+25 to maximum Life"
+            "+25 to maximum Life",
+            "15% increased Movement Speed"
           ],
           "budget": "starting",
           "ilvl": 12,
@@ -423,15 +562,24 @@
       ],
       "gems": [
         {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Summon Skeletons",
+              "level": 1
+            },
+            {
+              "name": "Minion Damage",
+              "level": 2
+            }
+          ]
+        },
+        {
           "slot": "Weapon 1",
           "gems": [
             {
-              "name": "Flesh Offering",
+              "name": "Summon Raging Spirit",
               "level": 4
-            },
-            {
-              "name": "Generosity",
-              "level": 1
             }
           ]
         },
@@ -440,10 +588,6 @@
           "gems": [
             {
               "name": "Clarity",
-              "level": 4
-            },
-            {
-              "name": "Convocation",
               "level": 1
             }
           ]
@@ -452,8 +596,8 @@
           "slot": "Helmet",
           "gems": [
             {
-              "name": "Desecrate",
-              "level": 4
+              "name": "Flesh Offering",
+              "level": 1
             }
           ]
         },
@@ -461,12 +605,8 @@
           "slot": "Gloves",
           "gems": [
             {
-              "name": "Cast when Damage Taken",
-              "level": 4
-            },
-            {
-              "name": "Immortal Call",
-              "level": 1
+              "name": "Raise Zombie",
+              "level": 5
             }
           ]
         },
@@ -475,46 +615,30 @@
           "gems": [
             {
               "name": "Flame Dash",
-              "level": 4
-            },
-            {
-              "name": "Faster Casting",
               "level": 1
             },
             {
               "name": "Arcane Surge",
-              "level": 1
+              "level": 5
             }
           ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Medium Life Flask",
+          "note": "Small until level 3, then medium."
         },
         {
-          "slot": "Body Armour",
-          "gems": [
-            {
-              "name": "Summon Skeletons",
-              "level": 4
-            },
-            {
-              "name": "Minion Damage",
-              "level": 1
-            },
-            {
-              "name": "Multistrike",
-              "level": 1
-            },
-            {
-              "name": "Melee Physical Damage",
-              "level": 1
-            },
-            {
-              "name": "Brutality",
-              "level": 1
-            },
-            {
-              "name": "Feeding Frenzy",
-              "level": 1
-            }
-          ]
+          "slot": "utility",
+          "name": "Small Mana Flask",
+          "note": "Skeletons are expensive early."
+        },
+        {
+          "slot": "utility",
+          "name": "Quicksilver Flask",
+          "note": "Act 2 quest reward."
         }
       ]
     },
@@ -523,13 +647,13 @@
       "level": 28,
       "budget": "early (4-link)",
       "metrics": {
-        "dps": 2267,
+        "dps": 781,
         "minionCount": 6,
         "dpsSource": "minion",
         "life": 1076,
         "energyShield": 608,
-        "ehp": 1774,
-        "maxHit": 2307,
+        "ehp": 1352,
+        "maxHit": 1684,
         "resists": [
           -22,
           -22,
@@ -908,15 +1032,54 @@
       ],
       "gems": [
         {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Summon Skeletons",
+              "level": 5
+            },
+            {
+              "name": "Minion Damage",
+              "level": 6
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 3
+            },
+            {
+              "name": "Minion Speed",
+              "level": 3
+            }
+          ]
+        },
+        {
           "slot": "Weapon 1",
           "gems": [
             {
               "name": "Flesh Offering",
-              "level": 9
+              "level": 5
             },
             {
-              "name": "Generosity",
-              "level": 5
+              "name": "Desecrate",
+              "level": 4
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Summon Raging Spirit",
+              "level": 8
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Raise Zombie",
+              "level": 9
             }
           ]
         },
@@ -925,33 +1088,11 @@
           "gems": [
             {
               "name": "Clarity",
-              "level": 9
+              "level": 5
             },
             {
               "name": "Convocation",
-              "level": 5
-            }
-          ]
-        },
-        {
-          "slot": "Helmet",
-          "gems": [
-            {
-              "name": "Desecrate",
-              "level": 9
-            }
-          ]
-        },
-        {
-          "slot": "Gloves",
-          "gems": [
-            {
-              "name": "Cast when Damage Taken",
-              "level": 9
-            },
-            {
-              "name": "Immortal Call",
-              "level": 5
+              "level": 2
             }
           ]
         },
@@ -960,46 +1101,34 @@
           "gems": [
             {
               "name": "Flame Dash",
-              "level": 9
+              "level": 5
             },
             {
               "name": "Faster Casting",
-              "level": 5
+              "level": 3
             },
             {
               "name": "Arcane Surge",
-              "level": 5
+              "level": 9
             }
           ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Medium Life Flask",
+          "note": "Divine needs level 60."
         },
         {
-          "slot": "Body Armour",
-          "gems": [
-            {
-              "name": "Summon Skeletons",
-              "level": 9
-            },
-            {
-              "name": "Minion Damage",
-              "level": 5
-            },
-            {
-              "name": "Multistrike",
-              "level": 5
-            },
-            {
-              "name": "Melee Physical Damage",
-              "level": 5
-            },
-            {
-              "name": "Brutality",
-              "level": 5
-            },
-            {
-              "name": "Feeding Frenzy",
-              "level": 5
-            }
-          ]
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance from level 18."
+        },
+        {
+          "slot": "utility",
+          "name": "Quicksilver Flask",
+          "note": "Movement, not damage."
         }
       ]
     },
@@ -1008,13 +1137,13 @@
       "level": 68,
       "budget": "ssf-start (5-link)",
       "metrics": {
-        "dps": 11211,
+        "dps": 26441,
         "minionCount": 6,
         "dpsSource": "minion",
         "life": 3927,
         "energyShield": 745,
-        "ehp": 11776,
-        "maxHit": 6771,
+        "ehp": 12160,
+        "maxHit": 7079,
         "resists": [
           76,
           75,
@@ -1868,15 +1997,44 @@
       ],
       "gems": [
         {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Summon Skeletons",
+              "level": 19
+            },
+            {
+              "name": "Minion Damage",
+              "level": 19
+            },
+            {
+              "name": "Multistrike",
+              "level": 18
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 19
+            },
+            {
+              "name": "Brutality",
+              "level": 18
+            },
+            {
+              "name": "Feeding Frenzy",
+              "level": 19
+            }
+          ]
+        },
+        {
           "slot": "Weapon 1",
           "gems": [
             {
               "name": "Flesh Offering",
-              "level": 16
+              "level": 19
             },
             {
               "name": "Generosity",
-              "level": 12
+              "level": 19
             }
           ]
         },
@@ -1885,11 +2043,11 @@
           "gems": [
             {
               "name": "Clarity",
-              "level": 16
+              "level": 19
             },
             {
               "name": "Convocation",
-              "level": 12
+              "level": 19
             }
           ]
         },
@@ -1898,7 +2056,7 @@
           "gems": [
             {
               "name": "Desecrate",
-              "level": 16
+              "level": 19
             }
           ]
         },
@@ -1907,11 +2065,11 @@
           "gems": [
             {
               "name": "Cast when Damage Taken",
-              "level": 16
+              "level": 18
             },
             {
               "name": "Immortal Call",
-              "level": 12
+              "level": 18
             }
           ]
         },
@@ -1920,46 +2078,39 @@
           "gems": [
             {
               "name": "Flame Dash",
-              "level": 16
+              "level": 19
             },
             {
               "name": "Faster Casting",
-              "level": 12
+              "level": 19
             },
             {
               "name": "Arcane Surge",
-              "level": 12
+              "level": 19
             }
           ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Drops from level 60; instant prefix."
         },
         {
-          "slot": "Body Armour",
-          "gems": [
-            {
-              "name": "Summon Skeletons",
-              "level": 16
-            },
-            {
-              "name": "Minion Damage",
-              "level": 12
-            },
-            {
-              "name": "Multistrike",
-              "level": 12
-            },
-            {
-              "name": "Melee Physical Damage",
-              "level": 12
-            },
-            {
-              "name": "Brutality",
-              "level": 12
-            },
-            {
-              "name": "Feeding Frenzy",
-              "level": 12
-            }
-          ]
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Armour against physical hits."
+        },
+        {
+          "slot": "utility",
+          "name": "Quartz Flask",
+          "note": "Phasing through your own minions."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance until it is capped."
         }
       ]
     },
@@ -1968,13 +2119,13 @@
       "level": 80,
       "budget": "ssf-start (5-link)",
       "metrics": {
-        "dps": 46150,
+        "dps": 70718,
         "minionCount": 6,
         "dpsSource": "minion",
         "life": 4734,
         "energyShield": 745,
-        "ehp": 14262,
-        "maxHit": 8302,
+        "ehp": 14417,
+        "maxHit": 8429,
         "resists": [
           76,
           75,
@@ -2946,15 +3097,44 @@
       ],
       "gems": [
         {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Summon Skeletons",
+              "level": 20
+            },
+            {
+              "name": "Minion Damage",
+              "level": 20
+            },
+            {
+              "name": "Multistrike",
+              "level": 20
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 20
+            },
+            {
+              "name": "Brutality",
+              "level": 20
+            },
+            {
+              "name": "Feeding Frenzy",
+              "level": 20
+            }
+          ]
+        },
+        {
           "slot": "Weapon 1",
           "gems": [
             {
               "name": "Flesh Offering",
-              "level": 19
+              "level": 20
             },
             {
               "name": "Generosity",
-              "level": 18
+              "level": 20
             }
           ]
         },
@@ -2963,11 +3143,11 @@
           "gems": [
             {
               "name": "Clarity",
-              "level": 19
+              "level": 20
             },
             {
               "name": "Convocation",
-              "level": 18
+              "level": 20
             }
           ]
         },
@@ -2976,7 +3156,7 @@
           "gems": [
             {
               "name": "Desecrate",
-              "level": 19
+              "level": 20
             }
           ]
         },
@@ -2985,11 +3165,11 @@
           "gems": [
             {
               "name": "Cast when Damage Taken",
-              "level": 19
+              "level": 20
             },
             {
               "name": "Immortal Call",
-              "level": 18
+              "level": 20
             }
           ]
         },
@@ -2998,46 +3178,39 @@
           "gems": [
             {
               "name": "Flame Dash",
-              "level": 19
+              "level": 20
             },
             {
               "name": "Faster Casting",
-              "level": 18
+              "level": 20
             },
             {
               "name": "Arcane Surge",
-              "level": 18
+              "level": 20
             }
           ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
         },
         {
-          "slot": "Body Armour",
-          "gems": [
-            {
-              "name": "Summon Skeletons",
-              "level": 19
-            },
-            {
-              "name": "Minion Damage",
-              "level": 18
-            },
-            {
-              "name": "Multistrike",
-              "level": 18
-            },
-            {
-              "name": "Melee Physical Damage",
-              "level": 18
-            },
-            {
-              "name": "Brutality",
-              "level": 18
-            },
-            {
-              "name": "Feeding Frenzy",
-              "level": 18
-            }
-          ]
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Iron Skin suffix."
+        },
+        {
+          "slot": "utility",
+          "name": "Jade Flask",
+          "note": "Evasion against attack-based bosses."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Swap for a damage flask once chaos is capped."
         }
       ]
     },
@@ -3046,7 +3219,7 @@
       "level": 90,
       "budget": "ssf-week1 (6-link)",
       "metrics": {
-        "dps": 56396,
+        "dps": 65207,
         "minionCount": 6,
         "dpsSource": "minion",
         "life": 6904,
@@ -3062,7 +3235,7 @@
         "ascendancy": 5
       },
       "failures": [
-        "damage 56,396 < 80,000"
+        "damage 65,207 < 80,000"
       ],
       "tree": {
         "edges": [
@@ -4207,6 +4380,35 @@
       ],
       "gems": [
         {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Summon Skeletons",
+              "level": 20
+            },
+            {
+              "name": "Minion Damage",
+              "level": 20
+            },
+            {
+              "name": "Multistrike",
+              "level": 20
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 20
+            },
+            {
+              "name": "Brutality",
+              "level": 20
+            },
+            {
+              "name": "Feeding Frenzy",
+              "level": 20
+            }
+          ]
+        },
+        {
           "slot": "Weapon 1",
           "gems": [
             {
@@ -4270,35 +4472,28 @@
               "level": 20
             }
           ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
         },
         {
-          "slot": "Body Armour",
-          "gems": [
-            {
-              "name": "Summon Skeletons",
-              "level": 20
-            },
-            {
-              "name": "Minion Damage",
-              "level": 20
-            },
-            {
-              "name": "Multistrike",
-              "level": 20
-            },
-            {
-              "name": "Melee Physical Damage",
-              "level": 20
-            },
-            {
-              "name": "Brutality",
-              "level": 20
-            },
-            {
-              "name": "Feeding Frenzy",
-              "level": 20
-            }
-          ]
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Iron Skin suffix."
+        },
+        {
+          "slot": "utility",
+          "name": "Jade Flask",
+          "note": "Evasion against attack-based bosses."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Swap for a damage flask once chaos is capped."
         }
       ]
     },
@@ -4307,12 +4502,12 @@
       "level": 96,
       "budget": "trade (6-link)",
       "metrics": {
-        "dps": 76733,
+        "dps": 92314,
         "minionCount": 6,
         "dpsSource": "minion",
         "life": 7075,
         "energyShield": 853,
-        "ehp": 21927,
+        "ehp": 26632,
         "maxHit": 12197,
         "resists": [
           76,
@@ -4323,8 +4518,7 @@
         "ascendancy": 5
       },
       "failures": [
-        "chaos resistance 8% < 75%",
-        "damage 76,733 < 150,000"
+        "damage 92,314 < 150,000"
       ],
       "tree": {
         "edges": [
@@ -5427,7 +5621,8 @@
           "mods": [
             "+40 to Intelligence",
             "+100 to maximum Life",
-            "+45% to Lightning Resistance"
+            "+45% to Lightning Resistance",
+            "+30% to Chaos Resistance"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -5439,7 +5634,8 @@
           "mods": [
             "+100 to maximum Life",
             "+45% to Fire Resistance",
-            "+45% to Lightning Resistance"
+            "+45% to Lightning Resistance",
+            "+30% to Chaos Resistance"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -5451,7 +5647,8 @@
           "mods": [
             "+100 to maximum Life",
             "+45% to Cold Resistance",
-            "+45% to Lightning Resistance"
+            "+45% to Lightning Resistance",
+            "+30% to Chaos Resistance"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -5532,6 +5729,35 @@
       ],
       "gems": [
         {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Summon Skeletons",
+              "level": 21
+            },
+            {
+              "name": "Minion Damage",
+              "level": 21
+            },
+            {
+              "name": "Multistrike",
+              "level": 21
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 21
+            },
+            {
+              "name": "Brutality",
+              "level": 21
+            },
+            {
+              "name": "Feeding Frenzy",
+              "level": 21
+            }
+          ]
+        },
+        {
           "slot": "Weapon 1",
           "gems": [
             {
@@ -5540,7 +5766,7 @@
             },
             {
               "name": "Generosity",
-              "level": 20
+              "level": 21
             }
           ]
         },
@@ -5553,7 +5779,7 @@
             },
             {
               "name": "Convocation",
-              "level": 20
+              "level": 21
             }
           ]
         },
@@ -5575,7 +5801,7 @@
             },
             {
               "name": "Immortal Call",
-              "level": 20
+              "level": 21
             }
           ]
         },
@@ -5588,42 +5814,35 @@
             },
             {
               "name": "Faster Casting",
-              "level": 20
-            },
-            {
-              "name": "Arcane Surge",
-              "level": 20
-            }
-          ]
-        },
-        {
-          "slot": "Body Armour",
-          "gems": [
-            {
-              "name": "Summon Skeletons",
               "level": 21
             },
             {
-              "name": "Minion Damage",
-              "level": 20
-            },
-            {
-              "name": "Multistrike",
-              "level": 20
-            },
-            {
-              "name": "Melee Physical Damage",
-              "level": 20
-            },
-            {
-              "name": "Brutality",
-              "level": 20
-            },
-            {
-              "name": "Feeding Frenzy",
-              "level": 20
+              "name": "Arcane Surge",
+              "level": 21
             }
           ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Iron Skin suffix."
+        },
+        {
+          "slot": "utility",
+          "name": "Jade Flask",
+          "note": "Evasion against attack-based bosses."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Swap for a damage flask once chaos is capped."
         }
       ]
     }
@@ -5632,7 +5851,216 @@
     "pobRef": "v2.69.0",
     "treeVersion": "3_30",
     "calibrated": false,
-    "checkedAt": "2026-11-25T18:37:03.419Z"
+    "checkedAt": "2026-11-25T19:23:04.225Z"
   },
-  "seedHash": "3c9fbee82d83"
+  "gemInfo": {
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "quest": {
+        "act": 1,
+        "quest": "Mercy Mission",
+        "classes": [
+          "Scion",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Brutality": {
+      "requiredLevel": 38,
+      "quest": {
+        "act": 4,
+        "quest": "The Eternal Nightmare",
+        "classes": [
+          "Marauder"
+        ]
+      },
+      "free": false
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "quest": null,
+      "free": false
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Convocation": {
+      "requiredLevel": 24,
+      "quest": null,
+      "free": false
+    },
+    "Desecrate": {
+      "requiredLevel": 16,
+      "quest": {
+        "act": 2,
+        "quest": "Intruders in Black",
+        "classes": [
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Faster Casting": {
+      "requiredLevel": 18,
+      "quest": {
+        "act": 2,
+        "quest": "Sharp and Cruel",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Feeding Frenzy": {
+      "requiredLevel": 31,
+      "quest": {
+        "act": 3,
+        "quest": "A Fixture of Fate",
+        "classes": [
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Flesh Offering": {
+      "requiredLevel": 12,
+      "quest": {
+        "act": 1,
+        "quest": "The Siren's Cadence",
+        "classes": [
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Generosity": {
+      "requiredLevel": 31,
+      "quest": null,
+      "free": false
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "quest": null,
+      "free": false
+    },
+    "Melee Physical Damage": {
+      "requiredLevel": 18,
+      "quest": {
+        "act": 2,
+        "quest": "Sharp and Cruel",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Scion",
+          "Shadow",
+          "Templar"
+        ]
+      },
+      "free": false
+    },
+    "Minion Damage": {
+      "requiredLevel": 8,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Minion Speed": {
+      "requiredLevel": 18,
+      "quest": {
+        "act": 2,
+        "quest": "Sharp and Cruel",
+        "classes": [
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Multistrike": {
+      "requiredLevel": 38,
+      "quest": {
+        "act": 4,
+        "quest": "The Eternal Nightmare",
+        "classes": [
+          "Duelist",
+          "Marauder",
+          "Ranger",
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Raise Zombie": {
+      "requiredLevel": 1,
+      "quest": {
+        "act": 1,
+        "quest": "Enemy at the Gate",
+        "classes": [
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Summon Raging Spirit": {
+      "requiredLevel": 4,
+      "quest": {
+        "act": 1,
+        "quest": "Breaking Some Eggs",
+        "classes": [
+          "Witch"
+        ]
+      },
+      "free": true
+    },
+    "Summon Skeletons": {
+      "requiredLevel": 10,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Witch"
+        ]
+      },
+      "free": true
+    }
+  },
+  "seedHash": "69690ed124cd"
 }

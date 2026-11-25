@@ -13,15 +13,42 @@
  * Not shipped: PoB is a dev/CI dependency only (PLAN-BUILDS.md D6).
  */
 import { spawnSync } from 'node:child_process';
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
 import { evaluateGate as evaluateGatePure } from '../../src/core/builds/gates.ts';
 
+/**
+ * LuaJIT needs lua-utf8 on its C path. Asking the operator to export it is how
+ * the pipeline silently falls back to "PoB produced no output", so discover it
+ * once here and pass it down.
+ */
+function findUtf8Cpath() {
+  if (process.env.LUA_CPATH) return process.env.LUA_CPATH;
+  const candidates = [
+    '/nix/store',
+    '/usr/lib/x86_64-linux-gnu',
+    '/usr/lib64',
+    '/usr/local/lib',
+  ];
+  for (const base of candidates) {
+    if (!existsSync(base)) continue;
+    for (const entry of readdirSync(base)) {
+      if (!/luautf8|lua-utf8/i.test(entry)) continue;
+      const dir = resolve(base, entry, 'lib/lua/5.1');
+      if (existsSync(resolve(dir, 'lua-utf8.so'))) return `${dir}/?.so;;`;
+    }
+  }
+  return '';
+}
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const seedsDir = resolve(root, 'src/builds');
 const outDir = resolve(root, 'src/generated/builds');
+// Scratch space for the per-run spec. `.cache/` is gitignored, so a crashed run
+// never leaves a spec file in the committed data directory.
+const scratchDir = resolve(root, '.cache/builds');
 const pobDir = resolve(root, process.env.POB_DIR ?? '.cache/pob/src');
 const luaScript = resolve(root, 'scripts/builds/pob/verify.lua');
 
@@ -35,6 +62,9 @@ const knownBases = new Set(
     readFileSync(resolve(root, 'src/core/data/known-base-types.json'), 'utf8'),
   ).names ?? [],
 );
+const gemLevels = JSON.parse(
+  readFileSync(resolve(root, 'src/generated/gem-levels.json'), 'utf8'),
+).gems;
 
 if (!existsSync(luaScript)) throw new Error('missing verify.lua');
 if (!existsSync(resolve(pobDir, 'HeadlessWrapper.lua'))) {
@@ -42,6 +72,30 @@ if (!existsSync(resolve(pobDir, 'HeadlessWrapper.lua'))) {
     `PoB not found at ${pobDir}. Clone the pinned tag there, or set POB_DIR.`,
   );
   process.exit(1);
+}
+
+const LUA_CPATH = findUtf8Cpath();
+if (!LUA_CPATH) {
+  console.error(
+    'lua-utf8 was not found. Install it (e.g. luajitPackages.luautf8) or set LUA_CPATH.',
+  );
+  process.exit(1);
+}
+
+/**
+ * The highest gem level a character of `characterLevel` can hold, capped by
+ * the checkpoint. A level-12 Witch cannot hold a level-2 Summon Skeletons
+ * (that needs 13), so the answer comes from the gem's own table, not a guess.
+ */
+function gemLevelFor(name, characterLevel, cap = 20) {
+  const table = gemLevels[name]?.levels;
+  if (!table) return null;
+  let best = 0;
+  for (const [level, required] of Object.entries(table)) {
+    const gemLevel = Number(level);
+    if (gemLevel <= cap && required <= characterLevel) best = Math.max(best, gemLevel);
+  }
+  return best;
 }
 
 /** Slot name as PoB writes it. */
@@ -118,7 +172,8 @@ function synthesizeGear(budgetId) {
 }
 
 function runOracle(spec) {
-  const specPath = resolve(outDir, '.spec.json');
+  mkdirSync(scratchDir, { recursive: true });
+  const specPath = resolve(scratchDir, `${spec.name}.spec.json`);
   writeFileSync(specPath, JSON.stringify(spec, null, 2));
   const result = spawnSync('luajit', [luaScript], {
     cwd: pobDir,
@@ -126,7 +181,7 @@ function runOracle(spec) {
       ...process.env,
       BUILD_SPEC: specPath,
       LUA_PATH: './?.lua;../runtime/lua/?.lua;../runtime/lua/?/init.lua;;',
-      LUA_CPATH: process.env.LUA_CPATH ?? '',
+      LUA_CPATH,
     },
     encoding: 'utf8',
     maxBuffer: 32 * 1024 * 1024,
@@ -173,13 +228,20 @@ function verifySeed(seed) {
   let allPass = true;
   for (const [id, checkpoint] of Object.entries(checkpoints.checkpoints)) {
     const { items, jewels, budget } = synthesizeGear(checkpoint.budget);
-    const groups = (seed.skillGroups ?? []).map((group) => ({
+    const bracket =
+      seed.leveling.brackets.find((entry) => entry.until >= checkpoint.level) ??
+      seed.leveling.brackets.at(-1);
+    const groups = (bracket.skillGroups ?? []).map((group) => ({
       slot: group.slot,
-      gems: group.gems.map((name, index) => ({
-        name,
-        level: index === 0 ? checkpoint.gemLevel : checkpoint.supportLevel,
-        quality: index === 0 ? 20 : 0,
-      })),
+      gems: group.gems.map((name) => {
+        const level = gemLevelFor(name, checkpoint.level, checkpoint.gemLevelCap ?? 20);
+        if (level === null) {
+          throw new Error(
+            `${seed.id}/${bracket.until}: unknown gem "${name}" in ${group.slot}`,
+          );
+        }
+        return { name, level, quality: checkpoint.gemQuality ?? 0 };
+      }),
     }));
     const metrics = runOracle({
       name: `${seed.id}-${id}`,
@@ -255,6 +317,7 @@ function verifySeed(seed) {
         slot: group.slot,
         gems: group.gems.map((gem) => ({ name: gem.name, level: gem.level })),
       })),
+      flasks: bracket.flasks ?? [],
     };
     console.log(
       `${seed.id} ${id}: ${gate.pass ? 'pass' : 'FAIL'} ` +

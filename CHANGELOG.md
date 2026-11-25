@@ -2,6 +2,18 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.50.0 — 2026-11-25
+
+A tree you can read, and gems you can actually hold.
+
+- The passive tree is interactive: wheel zooms, drag pans, and clicking a node shows its stats. The tree is drawn over the full constellation, so a 10-node act-1 plan is visible in context instead of floating in a black box.
+- Gem levels are now derived from each gem's own required-level table rather than hand-written. A level-12 step holds level-1 Summon Skeletons because that is what the game allows; the pipeline refuses a step whose gems could not be held yet.
+- Every gear slot carries gems at every step, including the non-damage ones: mobility on the boots, offering on the wand, guard skills on the gloves.
+- Hovering a gem shows where it comes from: a quest reward for the class, or a quest unlock, with a link to its wiki page.
+- Flasks are validated against the base-type drop levels. Early steps use a medium life flask, a small mana flask and the act-2 quicksilver, not endgame flasks.
+- Boots always carry movement speed, and chaos resistance joins them at maps. Pinnacle gates on capped chaos resistance.
+- 537 tests.
+
 ## 0.49.0 — 2026-11-25
 
 The tree looks like a tree, and the gear like an inventory.

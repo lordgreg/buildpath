@@ -21,7 +21,8 @@ starting:
     helmet: { base: "Hubris Circlet", affixes: [life] }
     body: { base: "Vaal Regalia", affixes: [life] }
     gloves: { base: "Sorcerer Gloves", affixes: [resist-fire] }
-    boots: { base: "Sorcerer Boots", affixes: [life] }
+    # Boots always carry movement speed; walking speed is a defensive stat.
+    boots: { base: "Sorcerer Boots", affixes: [life, movement-speed] }
     belt: { base: "Chain Belt", affixes: [life] }
     amulet: { base: "Onyx Amulet", affixes: [resist-lightning] }
     ring1: { base: "Opal Ring", affixes: [life] }
@@ -103,6 +104,8 @@ trade:
     gloves: { base: "Sorcerer Gloves", affixes: [life, resist-fire, resist-cold] }
     boots: { base: "Sorcerer Boots", affixes: [movement-speed, resist-chaos, resist-lightning] }
     belt: { base: "Chain Belt", affixes: [life, resist-fire, resist-chaos] }
-    amulet: { base: "Onyx Amulet", affixes: [attribute-int, life, resist-lightning] }
-    ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning] }
-    ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning] }
+    # PoB applies the same -60% resistance penalty to chaos as to the elements,
+    # so "chaos capped" means ~135% raw. Spread over five slots, not two.
+    amulet: { base: "Onyx Amulet", affixes: [attribute-int, life, resist-lightning, resist-chaos] }
+    ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
+    ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }

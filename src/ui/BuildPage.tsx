@@ -71,23 +71,28 @@ function Tooltip({
   children,
   label,
   placement = 'above',
+  align = 'left',
 }: {
   children: React.ReactNode;
   label: React.ReactNode;
   placement?: 'above' | 'below';
+  align?: 'left' | 'right';
 }) {
   // Rendered above by default: a tooltip hanging below the last row made the
   // page grow, which produced scrollbars and pushed the tooltip out of view.
+  // `align` keeps a tooltip in the right-hand table column from overflowing the
+  // viewport, which is what produced the horizontal scrollbar on the last gem.
   const position =
     placement === 'above'
       ? 'bottom-full mb-1'
       : 'top-full mt-1';
+  const side = align === 'right' ? 'right-0' : 'left-0';
   return (
     <span className="group relative inline-flex">
       {children}
       <span
         role="tooltip"
-        className={`pointer-events-none absolute left-0 z-30 hidden w-64 max-w-[70vw] rounded-md border border-ink-600 bg-ink-950/95 p-2 text-left text-[11px] leading-snug text-zinc-300 shadow-xl group-hover:block group-focus-within:block ${position}`}
+        className={`pointer-events-none absolute ${side} z-30 hidden w-64 max-w-[calc(100vw-2rem)] rounded-md border border-ink-600 bg-ink-950/95 p-2 text-left text-[11px] leading-snug text-zinc-300 shadow-xl group-hover:block group-focus-within:block ${position}`}
       >
         {label}
       </span>
@@ -147,7 +152,7 @@ export default function BuildPage() {
   const gate = build.gates?.[step];
   const pipeline = build.pipeline;
   const builderHash = `#mode=build&build=${build.id}&phase=leveling&strictness=soft`;
-  const showFlasks = build.flasks?.[flaskStep(step)];
+  const showFlasks = gate?.flasks ?? build.flasks?.[flaskStep(step)];
   // A guide step is a leveling bracket: show the gems you level with at that
   // step, so there is no separate "leveling" section repeating the same thing.
   const bracket =
@@ -372,12 +377,22 @@ export default function BuildPage() {
                         <span key={gem.name}>
                           {index > 0 && <span className="text-zinc-600"> · </span>}
                           <Tooltip
+                            align="right"
                             label={
                               <>
                                 <strong className="block text-gold-200">{gem.name}</strong>
                                 <span className="block text-zinc-500">
                                   level {gem.level} · {index === 0 ? 'main skill' : 'support'}
                                 </span>
+                                {build.gemInfo?.[gem.name] && (
+                                  <span className="mt-1 block text-zinc-500">
+                                    {build.gemInfo[gem.name].quest
+                                      ? build.gemInfo[gem.name].free
+                                        ? `Quest reward · ${build.gemInfo[gem.name].quest?.quest}`
+                                        : `Vendor after ${build.gemInfo[gem.name].quest?.quest}`
+                                      : `Unlocks at character level ${build.gemInfo[gem.name].requiredLevel}`}
+                                  </span>
+                                )}
                                 <span className="mt-1 block text-zinc-500">
                                   click for the wiki page
                                 </span>

@@ -1,9 +1,13 @@
 # Checkpoints: what a build is measured at, and how much it has to work with.
 #
-# The leveling entries line up with the seed's leveling brackets, so a guide
-# step *is* a bracket: "until level 28" shows the gems and gear you have at 28.
-# `points` is a reviewed per-patch budget (D30), never derived from a quest
-# count at runtime, because that is what breaks every league.
+# A guide step *is* a checkpoint. `level` is the character level; gem levels are
+# derived from the gem's own required-level table (src/generated/gem-levels.json)
+# so a step can never claim a gem level the character cannot hold. `gemLevelCap`
+# only limits how far the derivation may go — 21 is a corrupted gem, which is a
+# trade item, not something you level into.
+#
+# `points` is a reviewed per-patch leveling budget (D30), not a quest count.
+# `labs` is how many ascendancy labs are reachable by that checkpoint.
 schemaVersion: 1
 treeVersion: "3_30"
 checkpoints:
@@ -12,40 +16,40 @@ checkpoints:
     points: 12
     labs: 0
     budget: starting
-    gemLevel: 4
-    supportLevel: 1
+    gemLevelCap: 20
+    gemQuality: 0
   until-28:
     level: 28
     points: 30
     labs: 1
     budget: early
-    gemLevel: 9
-    supportLevel: 5
+    gemLevelCap: 20
+    gemQuality: 0
   until-68:
     level: 68
     points: 78
     labs: 3
     budget: ssf-start
-    gemLevel: 16
-    supportLevel: 12
+    gemLevelCap: 20
+    gemQuality: 10
   maps-early:
     level: 80
     points: 90
     labs: 4
     budget: ssf-start
-    gemLevel: 19
-    supportLevel: 18
+    gemLevelCap: 20
+    gemQuality: 20
   maps-red:
     level: 90
     points: 105
     labs: 4
     budget: ssf-week1
-    gemLevel: 20
-    supportLevel: 20
+    gemLevelCap: 20
+    gemQuality: 20
   pinnacle:
     level: 96
     points: 113
     labs: 4
     budget: trade
-    gemLevel: 21
-    supportLevel: 20
+    gemLevelCap: 21
+    gemQuality: 20

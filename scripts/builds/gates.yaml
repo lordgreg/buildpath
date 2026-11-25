@@ -10,14 +10,16 @@ resistanceFloor: 75
 checkpoints:
   until-12:
     # Nothing is capped in act 1, and the penalty leaves most players negative.
+    # Damage floors follow the gems a level-12 character can actually hold
+    # (level 1-2, not level 4), so they are much lower than the endgame gates.
     resists: false
     life: 250
-    dps: 300
+    dps: 60
   until-28:
     # Still not realistic to cap in act 3; defence is life and not standing still.
     resists: false
     life: 700
-    dps: 1500
+    dps: 600
   until-68:
     life: 2000
     maxHit: 2000

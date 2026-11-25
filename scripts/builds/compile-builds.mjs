@@ -40,6 +40,57 @@ function hashOf(value) {
     .slice(0, 12);
 }
 
+const gemLevels = JSON.parse(
+  readFileSync(resolve(root, 'src/generated/gem-levels.json'), 'utf8'),
+).gems;
+const gemLevel1 = (name) => gemLevels[name]?.levels?.[1];
+const baseItems = new Map(
+  JSON.parse(
+    readFileSync(resolve(root, 'src/core/data/base-types.json'), 'utf8'),
+  ).items.map((item) => [item.name, item]),
+);
+
+/**
+ * A bracket is a promise about what you can have at that level, so nothing may
+ * name a gem or flask that the game does not let you use yet.
+ */
+function checkAvailability(seed, file) {
+  for (const bracket of seed.leveling.brackets) {
+    for (const group of bracket.skillGroups ?? []) {
+      for (const gem of group.gems) {
+        const required = gemLevel1(gem);
+        if (required === undefined) {
+          console.error(
+            `build seed invalid: ${file}\n  unknown gem "${gem}" in ${bracket.until}/${group.slot}`,
+          );
+          process.exit(1);
+        }
+        if (required > bracket.until) {
+          console.error(
+            `build seed invalid: ${file}\n  ${gem} needs level ${required}, but ${bracket.until} lists it`,
+          );
+          process.exit(1);
+        }
+      }
+    }
+    for (const flask of bracket.flasks ?? []) {
+      const base = baseItems.get(flask.name);
+      if (!base) {
+        console.error(
+          `build seed invalid: ${file}\n  unknown flask "${flask.name}" in ${bracket.until}`,
+        );
+        process.exit(1);
+      }
+      if ((base.dropLevel ?? 1) > bracket.until) {
+        console.error(
+          `build seed invalid: ${file}\n  ${flask.name} drops from level ${base.dropLevel}, but ${bracket.until} lists it`,
+        );
+        process.exit(1);
+      }
+    }
+  }
+}
+
 /** Declared leveling brackets must be ordered, unique and end at 100. */
 function checkBrackets(seed, file) {
   const brackets = seed.leveling.brackets;
@@ -61,6 +112,35 @@ function checkBrackets(seed, file) {
   }
 }
 
+/**
+ * Where each gem comes from for this class: a free quest reward, or the same
+ * quest's vendor pool. The distinction matters to a new player ("do I have to
+ * buy this?") and it is already in the data, so the guide carries it.
+ */
+function describeGems(seed) {
+  const names = new Set();
+  for (const bracket of seed.leveling.brackets) {
+    for (const group of bracket.skillGroups ?? []) {
+      for (const gem of group.gems) names.add(gem);
+    }
+    for (const gem of bracket.skills ?? []) names.add(gem);
+  }
+  const info = {};
+  for (const name of [...names].sort()) {
+    const entry = gemLevels[name];
+    if (!entry) continue;
+    const quest = entry.quest ?? null;
+    info[name] = {
+      requiredLevel: entry.levels[1],
+      quest: quest
+        ? { act: quest.act, quest: quest.quest, classes: quest.classes }
+        : null,
+      free: quest ? quest.classes.includes(seed.class) : false,
+    };
+  }
+  return info;
+}
+
 const files = readdirSync(seedsDir)
   .filter((name) => name.endsWith('.yaml'))
   .sort();
@@ -76,6 +156,7 @@ for (const file of files) {
   const seed = parse(readFileSync(path, 'utf8'));
   if (!validate(seed)) fail(file, validate.errors);
   checkBrackets(seed, file);
+  checkAvailability(seed, file);
   if (`${seed.id}.yaml` !== file) {
     console.error(
       `build seed invalid: ${file}\n  id "${seed.id}" must match the file name`,
@@ -105,6 +186,7 @@ for (const file of files) {
     ...seed,
     ...carried,
     ...(carried.gates ? {} : { status: 'draft' }),
+    gemInfo: describeGems(seed),
     seedHash,
   });
 }

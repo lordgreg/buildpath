@@ -11,28 +11,6 @@ summary: >-
   with the gem levels. No required uniques, which is why it is the first build
   the pipeline proves.
 
-leveling:
-  brackets:
-    - until: 12
-      skills:
-        - Raise Zombie
-        - Summon Skeletons
-    - until: 28
-      skills:
-        - Summon Skeletons
-        - Summon Raging Spirit
-        - Raise Zombie
-    - until: 68
-      skills:
-        - Summon Skeletons
-        - Summon Raging Spirit
-        - Flesh Offering
-    - until: 100
-      skills:
-        - Summon Skeletons
-        - Flesh Offering
-        - Desecrate
-
 minionCount: 6
 
 tree:
@@ -43,35 +21,153 @@ tree:
     - minions have increased attack speed
     - maximum life
 
-skillGroups:
-  - slot: Weapon 1
-    gems:
-      - Flesh Offering
-      - Generosity
-  - slot: Shield
-    gems:
-      - Clarity
-      - Convocation
-  - slot: Helmet
-    gems:
-      - Desecrate
-  - slot: Gloves
-    gems:
-      - Cast when Damage Taken
-      - Immortal Call
-  - slot: Boots
-    gems:
-      - Flame Dash
-      - Faster Casting
-      - Arcane Surge
-  - slot: Body Armour
-    gems:
-      - Summon Skeletons
-      - Minion Damage
-      - Multistrike
-      - Melee Physical Damage
-      - Brutality
-      - Feeding Frenzy
+leveling:
+  brackets:
+    - until: 12
+      skills:
+        - Raise Zombie
+        - Summon Skeletons
+      skillGroups:
+        - slot: Body Armour
+          gems:
+            - Summon Skeletons
+            - Minion Damage
+        - slot: Weapon 1
+          gems:
+            - Summon Raging Spirit
+        - slot: Shield
+          gems:
+            - Clarity
+        - slot: Helmet
+          gems:
+            - Flesh Offering
+        - slot: Gloves
+          gems:
+            - Raise Zombie
+        - slot: Boots
+          gems:
+            - Flame Dash
+            - Arcane Surge
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3, then medium." }
+        - { slot: utility, name: "Small Mana Flask", note: "Skeletons are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+
+    - until: 28
+      skills:
+        - Summon Skeletons
+        - Summon Raging Spirit
+        - Flesh Offering
+      skillGroups:
+        - slot: Body Armour
+          gems:
+            - Summon Skeletons
+            - Minion Damage
+            - Melee Physical Damage
+            - Minion Speed
+        - slot: Weapon 1
+          gems:
+            - Flesh Offering
+            - Desecrate
+        - slot: Helmet
+          gems:
+            - Summon Raging Spirit
+        - slot: Gloves
+          gems:
+            - Raise Zombie
+        - slot: Shield
+          gems:
+            - Clarity
+            - Convocation
+        - slot: Boots
+          gems:
+            - Flame Dash
+            - Faster Casting
+            - Arcane Surge
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Divine needs level 60." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
+
+    - until: 68
+      skills:
+        - Summon Skeletons
+        - Flesh Offering
+        - Desecrate
+      skillGroups:
+        - slot: Body Armour
+          gems:
+            - Summon Skeletons
+            - Minion Damage
+            - Multistrike
+            - Melee Physical Damage
+            - Brutality
+            - Feeding Frenzy
+        - slot: Weapon 1
+          gems:
+            - Flesh Offering
+            - Generosity
+        - slot: Shield
+          gems:
+            - Clarity
+            - Convocation
+        - slot: Helmet
+          gems:
+            - Desecrate
+        - slot: Gloves
+          gems:
+            - Cast when Damage Taken
+            - Immortal Call
+        - slot: Boots
+          gems:
+            - Flame Dash
+            - Faster Casting
+            - Arcane Surge
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing through your own minions." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+
+    - until: 100
+      skills:
+        - Summon Skeletons
+        - Flesh Offering
+        - Desecrate
+      skillGroups:
+        - slot: Body Armour
+          gems:
+            - Summon Skeletons
+            - Minion Damage
+            - Multistrike
+            - Melee Physical Damage
+            - Brutality
+            - Feeding Frenzy
+        - slot: Weapon 1
+          gems:
+            - Flesh Offering
+            - Generosity
+        - slot: Shield
+          gems:
+            - Clarity
+            - Convocation
+        - slot: Helmet
+          gems:
+            - Desecrate
+        - slot: Gloves
+          gems:
+            - Cast when Damage Taken
+            - Immortal Call
+        - slot: Boots
+          gems:
+            - Flame Dash
+            - Faster Casting
+            - Arcane Surge
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin suffix." }
+        - { slot: utility, name: "Jade Flask", note: "Evasion against attack-based bosses." }
+        - { slot: utility, name: "Amethyst Flask", note: "Swap for a damage flask once chaos is capped." }
 
 ascendancyOrder:
   - node: mindless-aggression
@@ -82,24 +178,6 @@ ascendancyOrder:
     lab: 3
   - node: commander-of-darkness
     lab: 4
-
-flasks:
-  leveling:
-    - { slot: life, name: "Small Life Flask", note: "Whatever drops. Replace it as it falls behind, do not reroll it." }
-    - { slot: utility, name: "Small Mana Flask", note: "You will need it: skeletons are expensive early." }
-    - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward. Until then, walk." }
-  maps:
-    - { slot: life, name: "Divine Life Flask", note: "Instant recovery on the prefix." }
-    - { slot: utility, name: "Quicksilver Flask", note: "Adrenaline suffix when you can craft it." }
-    - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
-    - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance while it is short." }
-    - { slot: utility, name: "Quartz Flask", note: "Phasing, so your minions block the doorway instead of you." }
-  endgame:
-    - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-    - { slot: utility, name: "Quicksilver Flask", note: "Adrenaline." }
-    - { slot: utility, name: "Granite Flask", note: "Iron Skin suffix." }
-    - { slot: utility, name: "Jade Flask", note: "Evasion against attack-based bosses." }
-    - { slot: utility, name: "Amethyst Flask", note: "Swap for a damage flask once chaos resistance is capped." }
 
 bandit: kill-all
 
