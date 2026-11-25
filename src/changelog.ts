@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.48.0',
+    date: '2026-11-25',
+    title: 'Jewels: sockets on the tree, Ghastly Eyes in the gate',
+    notes: [
+      "Jewels are part of the gate now. The oracle allocates jewel sockets on the tree \u2014 each costs a point, so they compete with notables \u2014 and sockets them with the jewels the budget allows.",
+      "Budget jewels are Ghastly Eye jewels with one minion damage prefix and one minion attack speed suffix, because those are different affix groups. Two damage lines on one jewel is not an item that exists.",
+      "The guide lists the jewels with the rest of the gear, so you can see what the gate was measured with.",
+      "Early maps improve to 45k damage from 38k, red maps to 55k and pinnacle to 75k. Red maps and pinnacle still miss their floors, so the build stays a draft.",
+    ],
+    commits: [],
+    compare: 'v0.47.0...v0.48.0',
+  },
+  {
     version: '0.47.0',
     date: '2026-11-25',
     title: 'A tree planner that counts points, and early maps pass',

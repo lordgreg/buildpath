@@ -77,6 +77,8 @@ local function traversable(id)
   if node.isKeystone or node.isMastery or node.ascendancyName or node.isAscendancyStart then
     return false
   end
+  -- Jewel sockets are ordinary passives you pay a point for.
+
   return true
 end
 
@@ -175,6 +177,38 @@ while allocatedCount() < budget do
   end
 end
 
+-- Jewel sockets: one point each, so they compete with notables for the budget.
+local socketIds, socketsTaken = {}, 0
+local wantedSockets = math.min(spec.jewelCount or 0, 8)
+if wantedSockets > 0 then
+  local depth, parent = distances()
+  local reachable = {}
+  for id, node in pairs(nodes) do
+    local key = tonumber(id)
+    if node.isJewelSocket and not allocated[key] and depth[key] then
+      reachable[#reachable + 1] = { id = key, cost = depth[key] }
+    end
+  end
+  table.sort(reachable, function(a, b)
+    if a.cost ~= b.cost then return a.cost < b.cost end
+    return a.id < b.id
+  end)
+  for _, socket in ipairs(reachable) do
+    if socketsTaken >= wantedSockets or allocatedCount() >= budget then break end
+    local path = {}
+    local cursor = socket.id
+    while cursor and not allocated[cursor] do
+      table.insert(path, 1, cursor)
+      cursor = parent[cursor]
+    end
+    if #path > 0 and allocatedCount() + #path <= budget then
+      for _, id in ipairs(path) do allocated[id] = true end
+      socketIds[#socketIds + 1] = socket.id
+      socketsTaken = socketsTaken + 1
+    end
+  end
+end
+
 -- Ascendancy points: matched by name slug, granted by the labs the seed allows.
 local ascendNodes = {}
 if spec.ascendancyClass then
@@ -259,7 +293,15 @@ add(string.format('\t<Tree activeSpec="1">\n\t\t<Spec treeVersion="%s" classId="
   table.sort(list, function(a, b) return tonumber(a) < tonumber(b) end)
   return list
 end)(), ",")))
-add('>\n\t\t</Spec>\n\t</Tree>\n')
+add('>\n')
+if #socketIds > 0 then
+  add('\t\t\t<Sockets>\n')
+  for index, nodeId in ipairs(socketIds) do
+    add(string.format('\t\t\t\t<Socket nodeId="%d" itemId="%d"/>\n', nodeId, #itemBlocks + index))
+  end
+  add('\t\t\t</Sockets>\n')
+end
+add('\t\t</Spec>\n\t</Tree>\n')
 
 add('\t<Skills>\n')
 for _, group in ipairs(spec.skillGroups or {}) do
@@ -275,6 +317,9 @@ add('\t</Skills>\n')
 add('\t<TreeView zoomX="0" zoomY="0" zoomLevel="3">\n\t</TreeView>\n')
 add('\t<Items activeItemSet="1">\n')
 local slotMap = {}
+for index, jewel in ipairs(spec.jewels or {}) do
+  add(string.format('\t\t<Item id="%d">\n%s\n\t\t</Item>\n', #itemBlocks + index, jewel.text))
+end
 for index, item in ipairs(itemBlocks) do
   add(string.format('\t\t<Item id="%d">\n%s\n\t\t</Item>\n', index, item.text))
   slotMap[#slotMap + 1] = string.format('\t\t\t<Slot name="%s" itemId="%d"/>\n', item.slot, index)

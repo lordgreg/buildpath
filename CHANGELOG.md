@@ -2,6 +2,15 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.48.0 — 2026-11-25
+
+Jewels: sockets on the tree, Ghastly Eyes in the gate.
+
+- Jewels are part of the gate now. The oracle allocates jewel sockets on the tree — each costs a point, so they compete with notables — and sockets them with the jewels the budget allows.
+- Budget jewels are Ghastly Eye jewels with one minion damage prefix and one minion attack speed suffix, because those are different affix groups. Two damage lines on one jewel is not an item that exists.
+- The guide lists the jewels with the rest of the gear, so you can see what the gate was measured with.
+- Early maps improve to 45k damage from 38k, red maps to 55k and pinnacle to 75k. Red maps and pinnacle still miss their floors, so the build stays a draft.
+
 ## 0.47.0 — 2026-11-25
 
 A tree planner that counts points, and early maps pass.

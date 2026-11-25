@@ -96,7 +96,25 @@ function synthesizeGear(budgetId) {
     ].join('\n');
     items.push({ slot: POB_SLOT[slot] ?? slot, text, expectedMods: lines.length });
   }
-  return { items, budget };
+  // Jewels: a Ghastly Eye carry, which is where a summoner gets its damage.
+  const jewels = [];
+  const jewelCount = budget.jewels?.count ?? 0;
+  const jewelAffixes = budget.jewels?.affixes ?? [];
+  for (let index = 0; index < jewelCount; index += 1) {
+    const lines = jewelAffixes.map((key) => affixValue(key, budget.tier).mod);
+    jewels.push({
+      text: [
+        'Rarity: RARE',
+        `Synthesised jewel ${index + 1}`,
+        'Ghastly Eye Jewel',
+        `Item Level: ${budget.ilvl}`,
+        'Implicits: 0',
+        ...lines,
+      ].join('\n'),
+      expectedMods: lines.length,
+    });
+  }
+  return { items, jewels, budget };
 }
 
 function runOracle(spec) {
@@ -154,7 +172,7 @@ function verifySeed(seed) {
   const report = {};
   let allPass = true;
   for (const [id, checkpoint] of Object.entries(checkpoints.checkpoints)) {
-    const { items, budget } = synthesizeGear(checkpoint.budget);
+    const { items, jewels, budget } = synthesizeGear(checkpoint.budget);
     const groups = (seed.skillGroups ?? []).map((group) => ({
       slot: group.slot,
       gems: group.gems.map((name, index) => ({
@@ -178,6 +196,8 @@ function verifySeed(seed) {
       ascendancyPoints: seed.ascendancyOrder,
       skillGroups: groups,
       items: items.map((item) => ({ slot: item.slot, text: item.text })),
+      jewels: jewels.map((jewel) => ({ text: jewel.text })),
+      jewelCount: jewels.length,
       config: [],
     });
     // PoB reports one minion's damage; the build fights with all of them.
@@ -213,13 +233,22 @@ function verifySeed(seed) {
       failures: gate.failures,
       tree: metrics.tree ?? undefined,
       // The guide shows what the gate measured against, not a different set.
-      gear: items.map((item) => ({
-        slot: item.slot,
-        base: item.text.split('\n')[2],
-        mods: item.text.split('\n').slice(-item.expectedMods),
-        budget: checkpoint.budget,
-        ilvl: budgets[checkpoint.budget].ilvl,
-      })),
+      gear: [
+        ...items.map((item) => ({
+          slot: item.slot,
+          base: item.text.split('\n')[2],
+          mods: item.text.split('\n').slice(-item.expectedMods),
+          budget: checkpoint.budget,
+          ilvl: budgets[checkpoint.budget].ilvl,
+        })),
+        ...jewels.map((jewel, index) => ({
+          slot: `Jewel ${index + 1}`,
+          base: 'Ghastly Eye Jewel',
+          mods: jewel.text.split('\n').slice(-jewel.expectedMods),
+          budget: checkpoint.budget,
+          ilvl: budgets[checkpoint.budget].ilvl,
+        })),
+      ],
       gems: groups.map((group) => ({
         slot: group.slot,
         gems: group.gems.map((gem) => ({ name: gem.name, level: gem.level })),
