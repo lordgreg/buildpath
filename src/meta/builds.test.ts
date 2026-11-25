@@ -87,6 +87,8 @@ describe('published build data', () => {
             metrics: { dps: number; life: number; resists: number[] };
             failures: string[];
             tree?: { nodes: { id: number; x: number; y: number }[]; edges: [number, number][]; notables: string[] };
+            gear?: { slot: string; base: string; mods: string[]; ilvl: number }[];
+            gems?: { slot: string; gems: { name: string; level: number }[] }[];
           }
         >;
         status: string;
@@ -125,6 +127,17 @@ describe('published build data', () => {
         expect(gate.pass, checkpoint).toBe(gate.failures.length === 0);
         expect(gate.tree?.nodes.length ?? 0, checkpoint).toBeGreaterThan(10);
         expect(gate.tree?.notables.length ?? 0, checkpoint).toBeGreaterThan(0);
+        // The guide shows the gear and gems the gate was measured against.
+        expect(gate.gear?.length ?? 0, checkpoint).toBeGreaterThan(5);
+        for (const item of gate.gear ?? []) {
+          expect(item.base.trim(), item.slot).not.toBe('');
+          expect(item.mods.length, item.slot).toBeGreaterThan(0);
+        }
+        expect(gate.gems?.length ?? 0, checkpoint).toBeGreaterThan(0);
+        for (const group of gate.gems ?? []) {
+          expect(group.gems.length, group.slot).toBeGreaterThan(0);
+          expect(group.gems[0]!.level, group.slot).toBeGreaterThan(0);
+        }
         // Edges may only join nodes that are in the view.
         const ids = new Set((gate.tree?.nodes ?? []).map((node) => node.id));
         for (const [from, to] of gate.tree?.edges ?? []) {

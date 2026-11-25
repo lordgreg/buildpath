@@ -65,10 +65,30 @@ export interface CheckpointMetrics {
  * Path of Building and either publishes it or rejects it; it never invents one.
  */
 /** What the PoB oracle measured at one checkpoint, as published. */
+export interface GearItem {
+  slot: string;
+  base: string;
+  mods: string[];
+  budget: string;
+  ilvl: number;
+}
+
+export interface GemLink {
+  name: string;
+  level: number;
+}
+
+export interface GemGroup {
+  slot: string;
+  gems: GemLink[];
+}
+
 export interface GateResult {
   pass: boolean;
   level: number;
   budget: string;
+  gear?: GearItem[];
+  gems?: GemGroup[];
   metrics: Omit<CheckpointMetrics, 'physicalMaxHit' | 'fireResist' | 'coldResist' | 'lightningResist'> & {
     maxHit: number;
     minionCount?: number;

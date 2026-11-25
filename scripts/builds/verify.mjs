@@ -168,6 +168,7 @@ function verifySeed(seed) {
       treeVersion: checkpoints.treeVersion,
       className: seed.class,
       ascendancyClass: seed.ascendancyName,
+      mainSkill: seed.mainSkill,
       level: checkpoint.level,
       points: checkpoint.points,
       labs: checkpoint.labs,
@@ -211,6 +212,18 @@ function verifySeed(seed) {
       },
       failures: gate.failures,
       tree: metrics.tree ?? undefined,
+      // The guide shows what the gate measured against, not a different set.
+      gear: items.map((item) => ({
+        slot: item.slot,
+        base: item.text.split('\n')[2],
+        mods: item.text.split('\n').slice(-item.expectedMods),
+        budget: checkpoint.budget,
+        ilvl: budgets[checkpoint.budget].ilvl,
+      })),
+      gems: groups.map((group) => ({
+        slot: group.slot,
+        gems: group.gems.map((gem) => ({ name: gem.name, level: gem.level })),
+      })),
     };
     console.log(
       `${seed.id} ${id}: ${gate.pass ? 'pass' : 'FAIL'} ` +

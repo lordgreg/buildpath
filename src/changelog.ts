@@ -17,6 +17,21 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.44.0',
+    date: '2026-11-25',
+    title: 'A step-driven guide: tree, gear, gems and flasks that change together',
+    notes: [
+      "Fixed a bug that hid the tree and the gate report: compiling the seeds rewrote the generated build JSON and dropped the verification results. Compiling now keeps the gate report when the seed has not changed, so a rebuild can no longer erase a measurement.",
+      "Fixed the damage figure: PoB calculated whatever skill group came first, so adding a utility group (Desecrate, Flesh Offering) made the build look like it did 705 damage. The oracle now points PoB at the group that holds the main skill.",
+      "The guide is driven by a step picker. Choosing act 5, act 10, early maps, red maps or pinnacle changes the tree, the gems with their levels, the gear and the measured numbers together, because they all come from that checkpoint.",
+      "Gear is shown as a slot grid where the items belong, with a tooltip on hover: base type, item level, budget and every mod. It is the same synthesised gear the gate was measured on, not a different list.",
+      "Gems are grouped per gear slot with levels, a tooltip naming the main skill or support, and a link to the wiki page for each gem.",
+      "Flasks follow the step: leveling flasks while leveling, map flasks in maps, endgame flasks at pinnacle, each with the note that matters.",
+    ],
+    commits: [],
+    compare: 'v0.43.0...v0.44.0',
+  },
+  {
     version: '0.43.0',
     date: '2026-11-25',
     title: 'The guide gets a tree, per-slot gems and flasks',

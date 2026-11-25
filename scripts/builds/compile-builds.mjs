@@ -8,7 +8,7 @@
  * then a build compiles as `draft`.
  */
 import { createHash } from 'node:crypto';
-import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
@@ -86,10 +86,26 @@ for (const file of files) {
     console.error(`build seed invalid: ${file}\n  duplicate id "${seed.id}"`);
     process.exit(1);
   }
+  const seedHash = hashOf(seed);
+  // Verification writes gates and the pipeline stamp into the same file. Keep
+  // them when the seed has not changed, so compiling never destroys a report.
+  const previousPath = resolve(outDir, `${seed.id}.json`);
+  let carried = {};
+  if (existsSync(previousPath)) {
+    const previous = JSON.parse(readFileSync(previousPath, 'utf8'));
+    if (previous.seedHash === seedHash && previous.gates) {
+      carried = {
+        status: previous.status ?? 'draft',
+        gates: previous.gates,
+        ...(previous.pipeline ? { pipeline: previous.pipeline } : {}),
+      };
+    }
+  }
   builds.push({
     ...seed,
-    status: 'draft',
-    seedHash: hashOf(seed),
+    ...carried,
+    ...(carried.gates ? {} : { status: 'draft' }),
+    seedHash,
   });
 }
 

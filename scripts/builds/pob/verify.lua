@@ -221,9 +221,15 @@ local xml = {}
 local function add(text) xml[#xml + 1] = text end
 
 add('<?xml version="1.0" encoding="UTF-8"?>\n<PathOfBuilding>\n')
+local mainGroup = 1
+for index, group in ipairs(spec.skillGroups or {}) do
+  local first = group.gems and group.gems[1]
+  if first and spec.mainSkill and first.name == spec.mainSkill then mainGroup = index end
+end
+
 add(string.format(
-  '\t<Build level="%d" targetVersion="3_0" className="%s" ascendClassName="%s" mainSocketGroup="1" bandit="%s" pantheonMajorGod="%s" pantheonMinorGod="%s" viewMode="CALCS">\n',
-  spec.level or 90, spec.className, spec.ascendancyClass or "", spec.bandit or "None",
+  '\t<Build level="%d" targetVersion="3_0" className="%s" ascendClassName="%s" mainSocketGroup="%d" bandit="%s" pantheonMajorGod="%s" pantheonMinorGod="%s" viewMode="CALCS">\n',
+  spec.level or 90, spec.className, spec.ascendancyClass or "", mainGroup, spec.bandit or "None",
   spec.pantheon and spec.pantheon.major or "None", spec.pantheon and spec.pantheon.minor or "None"
 ))
 add('\t</Build>\n')

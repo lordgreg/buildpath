@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type {
   Build,
   BuildIndexEntry,
+  FlaskChoice,
   GateResult,
 } from '../core/builds/types.ts';
 import { BUILD_VERSION, BUILDS } from '../meta/builds.ts';
@@ -14,21 +15,38 @@ const builds = import.meta.glob<{ default: Build }>(
 );
 
 function buildById(id: string): Build | undefined {
-  const key = `../generated/builds/${id}.json`;
-  return builds[key]?.default;
+  return builds[`../generated/builds/${id}.json`]?.default;
 }
 
 function currentId(): string {
   const params = new URLSearchParams(window.location.hash.replace(/^#/, ''));
   const wanted = params.get('build');
-  if (wanted && buildById(wanted)) return wanted;
-  return BUILDS[0]?.id ?? '';
+  return wanted && buildById(wanted) ? wanted : (BUILDS[0]?.id ?? '');
 }
 
-function statusLabel(status: BuildIndexEntry['status']): string {
-  if (status === 'verified') return 'verified';
-  if (status === 'rejected') return 'rejected';
-  return 'draft';
+/** Slots in the order a player reads them: gear first, then the edges. */
+const SLOT_ORDER = [
+  'Helmet',
+  'Amulet',
+  'Weapon 1',
+  'Shield',
+  'Body Armour',
+  'Gloves',
+  'Belt',
+  'Boots',
+  'Ring 1',
+  'Ring 2',
+];
+
+/** Flask column for a checkpoint: leveling, maps, or endgame. */
+function flaskStep(checkpoint: string): 'leveling' | 'maps' | 'endgame' {
+  if (checkpoint === 'act5' || checkpoint === 'act10') return 'leveling';
+  if (checkpoint === 'pinnacle') return 'endgame';
+  return 'maps';
+}
+
+function wikiUrl(name: string): string {
+  return `https://www.poewiki.net/wiki/${encodeURIComponent(name.replaceAll(' ', '_'))}`;
 }
 
 function n(value: number): string {
@@ -41,9 +59,44 @@ function dps(value: number): string {
   return String(value);
 }
 
+function statusLabel(status: BuildIndexEntry['status']): string {
+  return status === 'verified' ? 'verified' : status === 'rejected' ? 'rejected' : 'draft';
+}
+
+function Tooltip({ children, label }: { children: React.ReactNode; label: React.ReactNode }) {
+  return (
+    <span className="group relative inline-flex">
+      {children}
+      <span
+        role="tooltip"
+        className="pointer-events-none absolute left-0 top-full z-20 mt-1 hidden w-64 rounded-md border border-ink-600 bg-ink-950/95 p-2 text-left text-[11px] leading-snug text-zinc-300 shadow-xl group-hover:block group-focus-within:block"
+      >
+        {label}
+      </span>
+    </span>
+  );
+}
+
+function Flasks({ flasks }: { flasks: FlaskChoice[] }) {
+  return (
+    <ul className="mt-2 space-y-1 text-sm text-zinc-300">
+      {flasks.map((flask) => (
+        <li key={flask.name}>
+          <span className="text-[10px] uppercase tracking-[0.14em] text-zinc-600">
+            {flask.slot}
+          </span>{' '}
+          <Tooltip label={flask.note ?? flask.name}>
+            <span className="border-b border-dotted border-zinc-600">{flask.name}</span>
+          </Tooltip>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function BuildPage() {
   const [id, setId] = useState(currentId);
-  const [treeStep, setTreeStep] = useState<string | null>(null);
+  const [stepOverride, setStepOverride] = useState<string | null>(null);
 
   useEffect(() => {
     const onHash = () => setId(currentId());
@@ -64,11 +117,15 @@ export default function BuildPage() {
 
   const gates = Object.entries(build.gates ?? {}) as [string, GateResult][];
   const passed = gates.filter(([, gate]) => gate.pass).length;
+  // The step drives every number on the page: tree, gear, gems, budgets.
+  const step = stepOverride ?? gates.at(-1)?.[0] ?? '';
+  const gate = build.gates?.[step];
   const pipeline = build.pipeline;
   const builderHash = `#mode=build&build=${build.id}&phase=leveling&strictness=soft`;
+  const showFlasks = build.flasks?.[flaskStep(step)];
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-4xl flex-col gap-8 px-5 py-10 sm:px-8">
+    <div className="mx-auto flex min-h-dvh max-w-5xl flex-col gap-8 px-5 py-10 sm:px-8">
       <header>
         <nav className="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
           <a href="./index.html" className="underline underline-offset-2 hover:text-zinc-300">
@@ -111,106 +168,212 @@ export default function BuildPage() {
         </p>
       )}
 
-      <section aria-labelledby="gates">
-        <h2 id="gates" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-          Gate report
+      <section aria-labelledby="steps">
+        <h2 id="steps" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+          Step
         </h2>
-        <p className="mt-1 text-[11px] text-zinc-600">
-          {pipeline?.calibrated ? 'Calibrated gates' : 'Gates are not calibrated yet'} ·
-          PoB {pipeline?.pobRef ?? 'unknown'} · tree {pipeline?.treeVersion ?? 'unknown'}
+        <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">
+          Everything below follows the step you pick: tree, gems, gear and the
+          numbers the gate measured.
         </p>
-        <div className="mt-3 grid gap-2 sm:grid-cols-2">
-          {gates.map(([checkpoint, gate]) => (
-            <article
+        <div className="mt-2 flex flex-wrap gap-1">
+          {gates.map(([checkpoint]) => (
+            <button
               key={checkpoint}
+              type="button"
+              aria-pressed={checkpoint === step}
+              onClick={() => setStepOverride(checkpoint)}
               className={
-                gate.pass
-                  ? 'rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3'
-                  : 'rounded-lg border border-rose-500/30 bg-rose-500/5 p-3'
+                checkpoint === step
+                  ? 'rounded border border-gold-400 bg-gold-400/10 px-2 py-1 text-[11px] text-gold-200'
+                  : 'rounded border border-ink-700 bg-ink-800/40 px-2 py-1 text-[11px] text-zinc-400 hover:border-ink-500'
               }
             >
-              <div className="flex items-baseline justify-between gap-2">
-                <h3 className="text-sm font-medium text-white">{checkpoint}</h3>
-                <span className="text-[11px] text-zinc-400">
-                  level {gate.level} · {gate.budget}
-                </span>
-              </div>
-              <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-[11px] text-zinc-400">
-                <div>
-                  <dt className="inline text-zinc-500">damage </dt>
-                  <dd className="inline">{dps(gate.metrics.dps)}</dd>
-                </div>
-                <div>
-                  <dt className="inline text-zinc-500">life </dt>
-                  <dd className="inline">{n(gate.metrics.life)}</dd>
-                </div>
-                <div>
-                  <dt className="inline text-zinc-500">EHP </dt>
-                  <dd className="inline">{n(gate.metrics.ehp)}</dd>
-                </div>
-                <div>
-                  <dt className="inline text-zinc-500">max hit </dt>
-                  <dd className="inline">{n(gate.metrics.maxHit)}</dd>
-                </div>
-                <div className="col-span-2">
-                  <dt className="inline text-zinc-500">resists </dt>
-                  <dd className="inline">
-                    {gate.metrics.resists.map((value: number) => `${value}%`).join(' / ')}
-                  </dd>
-                </div>
-              </dl>
-              {gate.failures.length > 0 && (
-                <ul className="mt-2 list-disc pl-4 text-[11px] text-rose-200">
-                  {gate.failures.map((failure) => (
-                    <li key={failure}>{failure}</li>
-                  ))}
-                </ul>
-              )}
-            </article>
+              {checkpoint}
+              <span className="ml-1 text-zinc-500">lv {build.gates?.[checkpoint]?.level}</span>
+            </button>
           ))}
         </div>
       </section>
 
-      <section aria-labelledby="tree">
-        <h2 id="tree" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-          Passive tree
-        </h2>
-        <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">
-          One plan per checkpoint, pruned from the endgame tree. Respec at act 10
-          if you follow the map spec instead of the act spec.
-        </p>
-        <div className="mt-2 flex flex-wrap gap-1">
-          {gates
-            .filter(([, gate]) => gate.tree)
-            .map(([checkpoint]) => (
-              <button
-                key={checkpoint}
-                type="button"
-                aria-pressed={(treeStep ?? checkpoint) === checkpoint}
-                onClick={() => setTreeStep(checkpoint)}
-                className={
-                  (treeStep ?? checkpoint) === checkpoint
-                    ? 'rounded border border-gold-400 bg-gold-400/10 px-2 py-1 text-[11px] text-gold-200'
-                    : 'rounded border border-ink-700 bg-ink-800/40 px-2 py-1 text-[11px] text-zinc-400 hover:border-ink-500'
-                }
-              >
-                {checkpoint}
-              </button>
-            ))}
-        </div>
-        {(() => {
-          const entries = gates.filter(([, gate]) => gate.tree);
-          if (entries.length === 0) return null;
-          const [checkpoint, gate] = entries.find(
-            ([key]) => key === (treeStep ?? entries[entries.length - 1]![0]),
-          )!;
-          return (
-            <div className="mt-3">
-              <TreeThumbnail tree={gate.tree!} label={checkpoint} />
-            </div>
-          );
-        })()}
-      </section>
+      {gate && (
+        <section aria-labelledby="gates">
+          <h2 id="gates" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            Gate report
+          </h2>
+          <p className="mt-1 text-[11px] text-zinc-600">
+            {pipeline?.calibrated ? 'Calibrated gates' : 'Gates are not calibrated yet'} · PoB{' '}
+            {pipeline?.pobRef ?? 'unknown'} · tree {pipeline?.treeVersion ?? 'unknown'}
+          </p>
+          <article
+            className={
+              gate.pass
+                ? 'mt-3 rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3'
+                : 'mt-3 rounded-lg border border-rose-500/30 bg-rose-500/5 p-3'
+            }
+          >
+            <p className="text-[11px] text-zinc-400">
+              level {gate.level} · {gate.budget}
+            </p>
+            <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-zinc-300 sm:grid-cols-5">
+              <div>
+                <dt className="text-zinc-500">damage</dt>
+                <dd>{dps(gate.metrics.dps)}</dd>
+              </div>
+              <div>
+                <dt className="text-zinc-500">life</dt>
+                <dd>{n(gate.metrics.life)}</dd>
+              </div>
+              <div>
+                <dt className="text-zinc-500">EHP</dt>
+                <dd>{n(gate.metrics.ehp)}</dd>
+              </div>
+              <div>
+                <dt className="text-zinc-500">max hit</dt>
+                <dd>{n(gate.metrics.maxHit)}</dd>
+              </div>
+              <div>
+                <dt className="text-zinc-500">resists</dt>
+                <dd>{gate.metrics.resists.map((value: number) => `${value}%`).join(' / ')}</dd>
+              </div>
+            </dl>
+            {gate.failures.length > 0 && (
+              <ul className="mt-2 list-disc pl-4 text-[11px] text-rose-200">
+                {gate.failures.map((failure) => (
+                  <li key={failure}>{failure}</li>
+                ))}
+              </ul>
+            )}
+          </article>
+        </section>
+      )}
+
+      {gate?.tree && (
+        <section aria-labelledby="tree">
+          <h2 id="tree" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            Passive tree at {step}
+          </h2>
+          <div className="mt-3">
+            <TreeThumbnail tree={gate.tree} label={step} />
+          </div>
+        </section>
+      )}
+
+      {gate?.gear && (
+        <section aria-labelledby="gear">
+          <h2 id="gear" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            Gear at {step}
+          </h2>
+          <p className="mt-1 text-[11px] text-zinc-600">
+            Budget gear, not hand-picked items: the gate was measured on exactly
+            these. Hover a slot for its mods.
+          </p>
+          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+            {[...gate.gear]
+              .sort((a, b) => SLOT_ORDER.indexOf(a.slot) - SLOT_ORDER.indexOf(b.slot))
+              .map((item) => (
+                <Tooltip
+                  key={item.slot}
+                  label={
+                    <>
+                      <strong className="block text-gold-200">{item.base}</strong>
+                      <span className="block text-zinc-500">
+                        item level {item.ilvl} · {item.budget}
+                      </span>
+                      <span className="mt-1 block">
+                        {item.mods.map((mod) => (
+                          <span key={mod} className="block text-[11px] text-zinc-300">
+                            {mod}
+                          </span>
+                        ))}
+                      </span>
+                    </>
+                  }
+                >
+                  <span className="w-full cursor-help rounded-lg border border-ink-600 bg-ink-900/60 p-2">
+                    <span className="block text-[10px] uppercase tracking-[0.14em] text-zinc-500">
+                      {item.slot}
+                    </span>
+                    <span className="mt-1 block text-xs text-gold-200">{item.base}</span>
+                    <span className="mt-1 block text-[10px] text-zinc-500">
+                      {item.mods.length} mods
+                    </span>
+                  </span>
+                </Tooltip>
+              ))}
+          </div>
+        </section>
+      )}
+
+      {gate?.gems && (
+        <section aria-labelledby="gems">
+          <h2 id="gems" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            Gems at {step}
+          </h2>
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full text-left text-sm text-zinc-300">
+              <thead>
+                <tr className="text-[11px] uppercase tracking-[0.16em] text-zinc-500">
+                  <th className="py-1 pr-4 font-normal">Gear slot</th>
+                  <th className="py-1 font-normal">Gems, main first</th>
+                </tr>
+              </thead>
+              <tbody>
+                {gate.gems.map((group) => (
+                  <tr key={group.slot} className="border-t border-ink-700 align-top">
+                    <td className="py-2 pr-4 whitespace-nowrap text-zinc-400">{group.slot}</td>
+                    <td className="py-2">
+                      {group.gems.map((gem, index) => (
+                        <span key={gem.name}>
+                          {index > 0 && <span className="text-zinc-600"> · </span>}
+                          <Tooltip
+                            label={
+                              <>
+                                <strong className="block text-gold-200">{gem.name}</strong>
+                                <span className="block text-zinc-500">
+                                  level {gem.level} · {index === 0 ? 'main skill' : 'support'}
+                                </span>
+                                <span className="mt-1 block text-zinc-500">
+                                  click for the wiki page
+                                </span>
+                              </>
+                            }
+                          >
+                            <a
+                              href={wikiUrl(gem.name)}
+                              target="_blank"
+                              rel="noreferrer noopener"
+                              className={
+                                index === 0
+                                  ? 'text-white underline-offset-2 hover:underline'
+                                  : 'text-zinc-300 underline-offset-2 hover:underline'
+                              }
+                            >
+                              {gem.name}
+                              <span className="ml-1 text-[10px] text-zinc-500">{gem.level}</span>
+                            </a>
+                          </Tooltip>
+                        </span>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {showFlasks && (
+        <section aria-labelledby="flasks">
+          <h2 id="flasks" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            Flasks at {step}
+          </h2>
+          <div className="mt-3 max-w-sm rounded-lg border border-ink-700 bg-ink-900/40 p-3">
+            <Flasks flasks={showFlasks} />
+          </div>
+        </section>
+      )}
 
       <section aria-labelledby="leveling">
         <h2 id="leveling" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -222,7 +385,21 @@ export default function BuildPage() {
               <span className="text-[11px] uppercase tracking-[0.16em] text-zinc-500">
                 until level {bracket.until}
               </span>
-              <p className="mt-1 text-sm text-zinc-300">{bracket.skills.join(' · ')}</p>
+              <p className="mt-1 text-sm text-zinc-300">
+                {bracket.skills.map((skill, index) => (
+                  <span key={skill}>
+                    {index > 0 && <span className="text-zinc-600"> · </span>}
+                    <a
+                      href={wikiUrl(skill)}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="underline-offset-2 hover:underline"
+                    >
+                      {skill}
+                    </a>
+                  </span>
+                ))}
+              </p>
             </li>
           ))}
         </ul>
@@ -258,77 +435,6 @@ export default function BuildPage() {
           <p className="mt-1 text-xs text-zinc-500">{build.pantheon.note}</p>
         )}
       </section>
-
-      <section aria-labelledby="gems">
-        <h2 id="gems" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-          Links
-        </h2>
-        <div className="mt-3 overflow-x-auto">
-          <table className="w-full text-left text-sm text-zinc-300">
-            <thead>
-              <tr className="text-[11px] uppercase tracking-[0.16em] text-zinc-500">
-                <th className="py-1 pr-4 font-normal">Gear slot</th>
-                <th className="py-1 font-normal">Gems</th>
-              </tr>
-            </thead>
-            <tbody>
-              {build.skillGroups.map((group) => (
-                <tr key={group.slot} className="border-t border-ink-700 align-top">
-                  <td className="py-2 pr-4 whitespace-nowrap text-zinc-400">{group.slot}</td>
-                  <td className="py-2">
-                    {group.gems.map((gem, index) => (
-                      <span key={gem}>
-                        {index > 0 && <span className="text-zinc-600"> · </span>}
-                        <span className={index === 0 ? 'text-white' : undefined}>{gem}</span>
-                      </span>
-                    ))}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="mt-2 text-[11px] text-zinc-600">
-          Levels per checkpoint are in the gate report above: the main gem and
-          its supports scale together with the budget.
-        </p>
-      </section>
-
-      {build.flasks && (
-        <section aria-labelledby="flasks">
-          <h2 id="flasks" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            Flasks
-          </h2>
-          <div className="mt-3 grid gap-2 sm:grid-cols-3">
-            {(['leveling', 'maps', 'endgame'] as const).map((step) => {
-              const flasks = build.flasks?.[step];
-              if (!flasks) return null;
-              return (
-                <article key={step} className="rounded-lg border border-ink-700 bg-ink-900/40 p-3">
-                  <h3 className="text-[11px] uppercase tracking-[0.16em] text-zinc-500">
-                    {step}
-                  </h3>
-                  <ul className="mt-2 space-y-1 text-sm text-zinc-300">
-                    {flasks.map((flask) => (
-                      <li key={flask.name}>
-                        <span className="text-[10px] uppercase tracking-[0.14em] text-zinc-600">
-                          {flask.slot}
-                        </span>{' '}
-                        {flask.name}
-                        {flask.note && (
-                          <span className="block text-[11px] leading-tight text-zinc-500">
-                            {flask.note}
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-      )}
 
       <footer className="mt-auto border-t border-ink-700 pt-4 text-[11px] leading-relaxed text-zinc-600">
         <p>
