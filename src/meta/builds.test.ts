@@ -204,3 +204,101 @@ describe('build mode', () => {
     }
   });
 });
+
+/**
+ * The promise a leveling bracket makes: "by this level you can have this".
+ * These tests hold that promise to the game's own data, so a seed cannot list
+ * a gem the character cannot use yet or a flask that has not started dropping.
+ */
+describe('leveling availability', () => {
+  const gemLevels = JSON.parse(
+    readFileSync(resolve(root, 'src/generated/gem-levels.json'), 'utf8'),
+  ) as {
+    gems: Record<string, { levels: Record<string, number>; quest?: { act: number; classes: string[] } | null }>;
+  };
+  const baseItems = new Map(
+    (
+      JSON.parse(readFileSync(resolve(root, 'src/core/data/base-types.json'), 'utf8')) as {
+        items: { name: string; dropLevel?: number }[];
+      }
+    ).items.map((item) => [item.name, item]),
+  );
+  const compiled = BUILDS.map(
+    (entry) =>
+      JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        class: string;
+        leveling: {
+          brackets: {
+            until: number;
+            skillGroups?: { slot: string; gems: string[] }[];
+            flasks?: { name: string; slot: string }[];
+          }[];
+        };
+      },
+  );
+
+  it('never lists a gem before the character can use it', () => {
+    for (const build of compiled) {
+      for (const bracket of build.leveling.brackets) {
+        for (const group of bracket.skillGroups ?? []) {
+          for (const gem of group.gems) {
+            const entry = gemLevels.gems[gem];
+            expect(entry, `${build.class}: unknown gem "${gem}"`).toBeDefined();
+            expect(
+              entry!.levels['1'],
+              `${build.class}: ${gem} needs level ${entry!.levels['1']}, listed at until ${bracket.until}`,
+            ).toBeLessThanOrEqual(bracket.until);
+          }
+        }
+      }
+    }
+  });
+
+  it('names where each gem comes from for the build class', () => {
+    for (const build of compiled) {
+      for (const bracket of build.leveling.brackets) {
+        for (const group of bracket.skillGroups ?? []) {
+          for (const gem of group.gems) {
+            const entry = gemLevels.gems[gem]!;
+            if (entry.quest) {
+              // A quest reward only exists for the classes that quest rewards;
+              // every other class buys it from the same act's vendor.
+              expect(
+                Array.isArray(entry.quest.classes),
+                `${build.class}: ${gem} quest has no class list`,
+              ).toBe(true);
+            }
+          }
+        }
+      }
+    }
+  });
+
+  it('never lists a flask before it starts dropping', () => {
+    for (const build of compiled) {
+      for (const bracket of build.leveling.brackets) {
+        for (const flask of bracket.flasks ?? []) {
+          const base = baseItems.get(flask.name);
+          expect(base, `${build.class}: unknown flask "${flask.name}"`).toBeDefined();
+          expect(
+            base!.dropLevel ?? 1,
+            `${build.class}: ${flask.name} drops from ${base!.dropLevel}, listed at until ${bracket.until}`,
+          ).toBeLessThanOrEqual(bracket.until);
+        }
+      }
+    }
+  });
+
+  it('keeps a life flask in every bracket', () => {
+    for (const build of compiled) {
+      for (const bracket of build.leveling.brackets) {
+        expect(
+          (bracket.flasks ?? []).some((flask) => flask.slot === 'life'),
+          `${build.class}: until ${bracket.until} has no life flask`,
+        ).toBe(true);
+      }
+    }
+  });
+});

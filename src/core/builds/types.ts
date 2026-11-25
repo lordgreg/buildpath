@@ -127,7 +127,7 @@ export interface SkillGroup {
 }
 
 export interface FlaskChoice {
-  slot: 'life' | 'utility';
+  slot: 'life' | 'mana' | 'utility';
   name: string;
   note?: string;
 }

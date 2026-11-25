@@ -180,7 +180,7 @@
         "additionalProperties": false,
         "required": ["slot", "name"],
         "properties": {
-          "slot": { "enum": ["life", "utility"] },
+          "slot": { "enum": ["life", "mana", "utility"] },
           "name": { "type": "string", "minLength": 3 },
           "note": { "type": "string" }
         }
