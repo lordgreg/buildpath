@@ -187,6 +187,11 @@
       "maximum": 30,
       "description": "Minions whose damage the DPS figure represents. PoB reports one minion."
     },
+    "gearProfile": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Which entry in src/builds/gear/profiles.yaml supplies the bases. Defaults to `caster`, the budget's shared slot table."
+    },
     "tree": {
       "type": "object",
       "additionalProperties": false,

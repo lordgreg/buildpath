@@ -47,3 +47,39 @@ minion-attack-speed:
 minion-life:
   mod: "Minions have {v}% increased maximum Life"
   tiers: { 1: 40, 2: 30, 3: 20, 4: 10 }
+# Attack builds: a local weapon roll and the global speed/damage rolls that
+# make an unremarkable rare hit hard enough to clear a map. `added-lightning` is
+# a range, so it is written as a pair (low, high).
+phys-pct:
+  mod: "{v}% increased Physical Damage"
+  tiers: { 1: 170, 2: 140, 3: 110, 4: 60 }
+added-phys:
+  mod: "Adds {v} to {v2} Physical Damage"
+  tiers:
+    1: [40, 80]
+    2: [30, 60]
+    3: [20, 40]
+    4: [8, 16]
+added-lightning:
+  mod: "Adds {v} to {v2} Lightning Damage"
+  tiers:
+    1: [15, 250]
+    2: [12, 180]
+    3: [8, 110]
+    4: [3, 40]
+attack-speed:
+  mod: "{v}% increased Attack Speed"
+  tiers: { 1: 17, 2: 13, 3: 9, 4: 5 }
+added-lightning-attack:
+  mod: "Adds {v} to {v2} Lightning Damage to Attacks"
+  tiers:
+    1: [10, 100]
+    2: [8, 75]
+    3: [5, 50]
+    4: [2, 20]
+projectile-damage:
+  mod: "{v}% increased Projectile Damage"
+  tiers: { 1: 40, 2: 30, 3: 22, 4: 12 }
+crit-multi:
+  mod: "+{v}% to Critical Strike Multiplier"
+  tiers: { 1: 35, 2: 25, 3: 18, 4: 12 }

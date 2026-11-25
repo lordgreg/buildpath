@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { BUILDS } from '../meta/builds.ts';
 import {
   coerceWizardState,
   DEFAULT_STATE,
@@ -69,7 +70,9 @@ describe('wizard hash', () => {
   it('falls back to the first seed for an unknown build id', () => {
     const state = coerceWizardState({ mode: 'build', buildId: 'nope' });
     expect(state.mode).toBe('build');
-    expect(state.buildId).toBe('summon-skeletons-necromancer');
+    // The catalogue's first entry, not a hardcoded build: adding a seed must not
+    // break the fallback.
+    expect(state.buildId).toBe(BUILDS[0]!.id);
   });
 
   it('trims the imported build name', () => {

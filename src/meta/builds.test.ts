@@ -296,6 +296,8 @@ describe('published PoB code', () => {
             tree: { nodes: { id: number }[] };
             gear: { slot: string }[];
             gems: { gems: { name: string }[] }[];
+            flasks?: { slot: string; name: string }[];
+            metrics: { ascendancy: number };
           }
         >;
       },
@@ -312,7 +314,7 @@ describe('published PoB code', () => {
       expect(build.pob, build.id).toBeDefined();
       expect(build.pob!.checkpoint, build.id).toBe('maps-red');
       expect(build.pob!.ref, build.id).toBe(build.pipeline?.pobRef);
-      expect(build.pob!.code, build.id).toMatch(/^[A-Za-z0-9_-]+$/);
+      expect(build.pob!.code, build.id).toMatch(/^[A-Za-z0-9_-]+={0,2}$/);
     }
   });
 
@@ -328,9 +330,14 @@ describe('published PoB code', () => {
 
       const specNodes = xml.match(/<Spec\b[^>]*\bnodes="([^"]*)"/)?.[1] ?? '';
       expect(specNodes.split(',').filter(Boolean).length, build.id).toBe(
-        gate!.tree.nodes.length,
+        gate!.tree.nodes.length + gate!.metrics.ascendancy,
       );
-      expect((xml.match(/<Item id=/g) ?? []).length, build.id).toBe(gate!.gear.length);
+      // Flasks are items in their own slots, shown in their own section.
+      const flaskSlots = (xml.match(/<Slot name="Flask /g) ?? []).length;
+      expect((xml.match(/<Item id=/g) ?? []).length - flaskSlots, build.id).toBe(
+        gate!.gear.length,
+      );
+      expect(flaskSlots, build.id).toBe(gate!.flasks?.length ?? 0);
       expect((xml.match(/<Gem /g) ?? []).length, build.id).toBe(
         gate!.gems.reduce((sum, group) => sum + group.gems.length, 0),
       );
