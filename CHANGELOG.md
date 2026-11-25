@@ -2,6 +2,18 @@
 
 All notable changes to FilterPath. The same data powers the in-site changelog.
 
+## 0.51.0 — 2026-11-25
+
+A tree you can actually read, and flasks that fit the step.
+
+- The passive tree opens fitted to the nodes the build took, so a 10-node act-1 plan fills the panel instead of being two-pixel dots in a 20,000-unit constellation. `fit` and `all` switch between the two views.
+- Clicking works. Hit targets were wider than the gap between nodes, so a click often opened the neighbour's tooltip; they are now capped below the median node spacing.
+- Every node has stats, not just notables: 2,100 of 2,501 nodes answer a click instead of saying "no stats recorded".
+- Panning no longer rebuilds 2,500 nodes and 2,879 links on every mouse move, so dragging stays smooth.
+- Flasks are sized to each step: medium life at level 12, giant life and greater mana at 28, divine life and hallowed mana at 68, eternal mana at maps. Mana gets its own slot instead of being folded into utility.
+- Four new tests hold every bracket to the game's own data: no gem before its required level, no flask before its drop level, a life flask at every step, and a named source for every gem.
+- 541 tests.
+
 ## 0.50.0 — 2026-11-25
 
 A tree you can read, and gems you can actually hold.
