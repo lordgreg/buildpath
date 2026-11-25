@@ -52,7 +52,7 @@ jobs:
             build-essential luajit liblua5.1-0-dev luarocks
           sudo luarocks --lua-version=5.1 --lua-dir=/usr install luautf8 0.3.0-1
       - name: Cache the pinned PoB checkout
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: .cache/pob
           key: pob-${{ env.POB_REF }}-${{ runner.os }}
