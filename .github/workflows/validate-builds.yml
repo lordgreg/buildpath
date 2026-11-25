@@ -1,0 +1,82 @@
+name: Validate builds
+
+# The PoB drift test (PLAN-BUILDS.md §11 P1). It needs LuaJIT and a pinned PoB
+# checkout, so it stays out of `npm test` and `ci.yml`: those must stay fast and
+# offline. A change to any input of the build pipeline re-runs it, and the weekly
+# schedule re-proves the committed reports without fetching anything new.
+
+on:
+  pull_request:
+    paths:
+      - 'src/builds/**'
+      - 'src/generated/builds/**'
+      - 'src/core/builds/**'
+      - 'src/meta/builds.ts'
+      - 'scripts/builds/**'
+      - 'package.json'
+      - '.github/workflows/validate-builds.yml'
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-builds-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Pinned oracle. A bump must re-check CompareBuySimilar.lua (§7.3).
+  POB_REF: v2.69.0
+  POB_DIR: .cache/pob/src
+  # luarocks installs here; the oracle discovers LUA_CPATH from the environment.
+  LUA_CPATH: /usr/local/lib/lua/5.1/?.so;;
+
+jobs:
+  oracle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install LuaJIT and lua-utf8
+        # PoB is 5.1 Lua and hard-requires the luautf8 module; Ubuntu has no
+        # package for it, so it is built once here.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential luajit liblua5.1-0-dev luarocks
+          sudo luarocks --lua-version=5.1 --lua-dir=/usr install luautf8 0.3.0-1
+      - name: Cache the pinned PoB checkout
+        uses: actions/cache@v4
+        with:
+          path: .cache/pob
+          key: pob-${{ env.POB_REF }}-${{ runner.os }}
+      - name: Clone the pinned PoB tag
+        run: |
+          if [ ! -d .cache/pob/.git ]; then
+            rm -rf .cache/pob
+            git clone --depth 1 --branch "$POB_REF" \
+              https://github.com/PathOfBuildingCommunity/PathOfBuilding.git .cache/pob
+          fi
+          # Three Luau lines make stock LuaJIT refuse to boot at this tag.
+          if git -C .cache/pob apply --reverse --check "$GITHUB_WORKSPACE/scripts/builds/pob/luajit-compat.patch" 2>/dev/null; then
+            echo "compat patch already applied"
+          else
+            git -C .cache/pob apply "$GITHUB_WORKSPACE/scripts/builds/pob/luajit-compat.patch"
+          fi
+      - run: npm ci
+      - name: Compile seeds, prove them against PoB, prove the codes load
+        run: |
+          npm run builds:build
+          npm run builds:verify
+          npm run builds:check
+      - name: Committed build data matches the pipeline
+        # A report that only exists on the runner is not evidence (D22, P2).
+        run: |
+          git status --porcelain -- src/generated/builds
+          test -z "$(git status --porcelain -- src/generated/builds)"
