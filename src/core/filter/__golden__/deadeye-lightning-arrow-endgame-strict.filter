@@ -5,7 +5,7 @@
 # Phase: Endgame - Strict
 # League: Covens
 # Presets: de5857697151
-# Rules: 78 - Base types: 63
+# Rules: 77 - Base types: 63
 # Base data: RePoE 1d825f53356023dee0fbb3ec23d94057da8fe0ac (4f01123d)
 # Generated at https://lordgreg.github.io/buildpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -60,16 +60,6 @@ Show
     PlayAlertSound 2 220
     MinimapIcon 1 Cyan Diamond
 
-# helmet - magic
-Show
-    BaseType == "Dire Pelt" "Grizzly Pelt" "Hunter Hood" "Leather Cap" "Leather Hood" "Lion Pelt" "Majestic Pelt" "Noble Tricorne" "Silken Hood" "Sinner Tricorne" "Tricorne" "Ursine Pelt" "Wolf Pelt"
-    Rarity Magic
-    ItemLevel >= 80
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # body - rare
 Show
     BaseType == "Assassin's Garb" "Astral Leather" "Buckskin Tunic" "Coronal Leather" "Cutthroat's Garb" "Destiny Leather" "Eelskin Tunic" "Exquisite Leather" "Frontier Leather" "Full Leather" "Glorious Leather" "Shabby Jerkin" "Sharkskin Tunic" "Strapped Leather" "Sun Leather" "Supreme Leather" "Syndicate's Garb" "Thief's Garb" "Wild Leather" "Zodiac Leather"
@@ -81,16 +71,6 @@ Show
     SetBackgroundColor 0 0 0 255
     PlayAlertSound 2 220
     MinimapIcon 1 Cyan Diamond
-
-# body - magic
-Show
-    BaseType == "Assassin's Garb" "Astral Leather" "Buckskin Tunic" "Coronal Leather" "Cutthroat's Garb" "Destiny Leather" "Eelskin Tunic" "Exquisite Leather" "Frontier Leather" "Full Leather" "Glorious Leather" "Shabby Jerkin" "Sharkskin Tunic" "Strapped Leather" "Sun Leather" "Supreme Leather" "Syndicate's Garb" "Thief's Garb" "Wild Leather" "Zodiac Leather"
-    Rarity Magic
-    ItemLevel >= 80
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
 
 # gloves - rare
 Show
@@ -104,16 +84,6 @@ Show
     PlayAlertSound 2 220
     MinimapIcon 1 Cyan Diamond
 
-# gloves - magic
-Show
-    BaseType == "Apprentice Gloves" "Deerskin Gloves" "Eelskin Gloves" "Goathide Gloves" "Gripped Gloves" "Harpyskin Gloves" "Nubuck Gloves" "Rawhide Gloves" "Shagreen Gloves" "Sharkskin Gloves" "Slink Gloves" "Stealth Gloves" "Tinker Gloves" "Trapsetter Gloves" "Velour Gloves"
-    Rarity Magic
-    ItemLevel >= 80
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # boots - rare
 Show
     BaseType == "Cloudwhisper Boots" "Deerskin Boots" "Eelskin Boots" "Goathide Boots" "Harpyskin Boots" "Nubuck Boots" "Rawhide Boots" "Shagreen Boots" "Sharkskin Boots" "Slink Boots" "Stealth Boots" "Stormrider Boots" "Velour Boots" "Windbreak Boots"
@@ -125,16 +95,6 @@ Show
     SetBackgroundColor 0 0 0 255
     PlayAlertSound 2 220
     MinimapIcon 1 Cyan Diamond
-
-# boots - magic
-Show
-    BaseType == "Cloudwhisper Boots" "Deerskin Boots" "Eelskin Boots" "Goathide Boots" "Harpyskin Boots" "Nubuck Boots" "Rawhide Boots" "Shagreen Boots" "Sharkskin Boots" "Slink Boots" "Stealth Boots" "Stormrider Boots" "Velour Boots" "Windbreak Boots"
-    Rarity Magic
-    ItemLevel >= 80
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
 
 # belt - rare
 Show
@@ -148,16 +108,6 @@ Show
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
 
-# belt - magic
-Show
-    Class == "Belts"
-    Rarity Magic
-    ItemLevel >= 80
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # amulet - rare
 Show
     Class == "Amulets"
@@ -169,16 +119,6 @@ Show
     SetBackgroundColor 0 0 0 255
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
-
-# amulet - magic
-Show
-    Class == "Amulets"
-    Rarity Magic
-    ItemLevel >= 80
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
 
 # ring - rare
 Show
@@ -192,16 +132,6 @@ Show
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
 
-# ring - magic
-Show
-    Class == "Rings"
-    Rarity Magic
-    ItemLevel >= 80
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # jewel - rare
 Show
     BaseType == "Viridian Jewel"
@@ -213,16 +143,6 @@ Show
     SetBackgroundColor 20 26 58 255
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
-
-# jewel - magic
-Show
-    BaseType == "Viridian Jewel"
-    Rarity Magic
-    ItemLevel >= 80
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 20 26 58 255
 
 # flask - rare
 Show
@@ -236,16 +156,6 @@ Show
     PlayAlertSound 3 150
     MinimapIcon 1 Green Hexagon
 
-# flask - magic
-Show
-    Class == "Life Flasks" "Utility Flasks"
-    Rarity Magic
-    ItemLevel >= 80
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 6 42 26 255
-
 # weapon - rare
 Show
     Class == "Bows"
@@ -258,16 +168,6 @@ Show
     PlayAlertSound 1 300
     MinimapIcon 1 Yellow Star
 
-# weapon - magic
-Show
-    Class == "Bows"
-    Rarity Magic
-    ItemLevel >= 80
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # offhand - rare
 Show
     Class == "Quivers"
@@ -279,6 +179,106 @@ Show
     SetBackgroundColor 0 0 0 255
     PlayAlertSound 1 300
     MinimapIcon 1 Yellow Star
+
+# helmet - magic
+Show
+    BaseType == "Dire Pelt" "Grizzly Pelt" "Hunter Hood" "Leather Cap" "Leather Hood" "Lion Pelt" "Majestic Pelt" "Noble Tricorne" "Silken Hood" "Sinner Tricorne" "Tricorne" "Ursine Pelt" "Wolf Pelt"
+    Rarity Magic
+    ItemLevel >= 80
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# body - magic
+Show
+    BaseType == "Assassin's Garb" "Astral Leather" "Buckskin Tunic" "Coronal Leather" "Cutthroat's Garb" "Destiny Leather" "Eelskin Tunic" "Exquisite Leather" "Frontier Leather" "Full Leather" "Glorious Leather" "Shabby Jerkin" "Sharkskin Tunic" "Strapped Leather" "Sun Leather" "Supreme Leather" "Syndicate's Garb" "Thief's Garb" "Wild Leather" "Zodiac Leather"
+    Rarity Magic
+    ItemLevel >= 80
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# gloves - magic
+Show
+    BaseType == "Apprentice Gloves" "Deerskin Gloves" "Eelskin Gloves" "Goathide Gloves" "Gripped Gloves" "Harpyskin Gloves" "Nubuck Gloves" "Rawhide Gloves" "Shagreen Gloves" "Sharkskin Gloves" "Slink Gloves" "Stealth Gloves" "Tinker Gloves" "Trapsetter Gloves" "Velour Gloves"
+    Rarity Magic
+    ItemLevel >= 80
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# boots - magic
+Show
+    BaseType == "Cloudwhisper Boots" "Deerskin Boots" "Eelskin Boots" "Goathide Boots" "Harpyskin Boots" "Nubuck Boots" "Rawhide Boots" "Shagreen Boots" "Sharkskin Boots" "Slink Boots" "Stealth Boots" "Stormrider Boots" "Velour Boots" "Windbreak Boots"
+    Rarity Magic
+    ItemLevel >= 80
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# belt - magic
+Show
+    Class == "Belts"
+    Rarity Magic
+    ItemLevel >= 80
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# amulet - magic
+Show
+    Class == "Amulets"
+    Rarity Magic
+    ItemLevel >= 80
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# ring - magic
+Show
+    Class == "Rings"
+    Rarity Magic
+    ItemLevel >= 80
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# jewel - magic
+Show
+    BaseType == "Viridian Jewel"
+    Rarity Magic
+    ItemLevel >= 80
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 20 26 58 255
+
+# flask - magic
+Show
+    Class == "Life Flasks" "Utility Flasks"
+    Rarity Magic
+    ItemLevel >= 80
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 6 42 26 255
+
+# weapon - magic
+Show
+    Class == "Bows"
+    Rarity Magic
+    ItemLevel >= 80
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
 
 # offhand - magic
 Show
@@ -321,7 +321,7 @@ Show
 Show
     BaseType == "Dire Pelt" "Grizzly Pelt" "Hunter Hood" "Leather Cap" "Leather Hood" "Lion Pelt" "Majestic Pelt" "Noble Tricorne" "Silken Hood" "Sinner Tricorne" "Tricorne" "Ursine Pelt" "Wolf Pelt"
     Rarity Normal
-    ItemLevel >= 75
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -331,7 +331,7 @@ Show
 Show
     BaseType == "Assassin's Garb" "Astral Leather" "Buckskin Tunic" "Coronal Leather" "Cutthroat's Garb" "Destiny Leather" "Eelskin Tunic" "Exquisite Leather" "Frontier Leather" "Full Leather" "Glorious Leather" "Shabby Jerkin" "Sharkskin Tunic" "Strapped Leather" "Sun Leather" "Supreme Leather" "Syndicate's Garb" "Thief's Garb" "Wild Leather" "Zodiac Leather"
     Rarity Normal
-    ItemLevel >= 75
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -341,7 +341,7 @@ Show
 Show
     BaseType == "Apprentice Gloves" "Deerskin Gloves" "Eelskin Gloves" "Goathide Gloves" "Gripped Gloves" "Harpyskin Gloves" "Nubuck Gloves" "Rawhide Gloves" "Shagreen Gloves" "Sharkskin Gloves" "Slink Gloves" "Stealth Gloves" "Tinker Gloves" "Trapsetter Gloves" "Velour Gloves"
     Rarity Normal
-    ItemLevel >= 75
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -351,7 +351,7 @@ Show
 Show
     BaseType == "Cloudwhisper Boots" "Deerskin Boots" "Eelskin Boots" "Goathide Boots" "Harpyskin Boots" "Nubuck Boots" "Rawhide Boots" "Shagreen Boots" "Sharkskin Boots" "Slink Boots" "Stealth Boots" "Stormrider Boots" "Velour Boots" "Windbreak Boots"
     Rarity Normal
-    ItemLevel >= 75
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -361,7 +361,7 @@ Show
 Show
     Class == "Belts"
     Rarity Normal
-    ItemLevel >= 75
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -371,7 +371,7 @@ Show
 Show
     Class == "Amulets"
     Rarity Normal
-    ItemLevel >= 75
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -381,7 +381,7 @@ Show
 Show
     Class == "Rings"
     Rarity Normal
-    ItemLevel >= 75
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -391,7 +391,7 @@ Show
 Show
     BaseType == "Viridian Jewel"
     Rarity Normal
-    ItemLevel >= 75
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -401,7 +401,7 @@ Show
 Show
     Class == "Bows"
     Rarity Normal
-    ItemLevel >= 75
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -411,7 +411,7 @@ Show
 Show
     Class == "Quivers"
     Rarity Normal
-    ItemLevel >= 75
+    ItemLevel >= 86
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -594,9 +594,21 @@ Show
     SetBorderColor 226 214 176 255
     SetBackgroundColor 0 0 0 255
 
+# Maps - tier 11-10
+Show
+    Class == "Maps"
+    AreaLevel <= 77
+    MapTier >= 11
+    MapTier <= 10
+    SetFontSize 30
+    SetTextColor 226 214 176 255
+    SetBorderColor 226 214 176 255
+    SetBackgroundColor 0 0 0 255
+
 # Maps - below tier cutoff
 Hide
     Class == "Maps"
+    AreaLevel >= 78
 
 # Map fragments - tier 1
 Show
@@ -680,31 +692,19 @@ Show
     PlayAlertSound 4 200
     MinimapIcon 1 Red Star
 
-# Magic gear - slots this build does not use
+# Magic gear - not kept by the preset
 Hide
-    Class == "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
+    Class == "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Jewels" "Abyss Jewels"
     Rarity Magic
 
-# Magic gear - below item level 80
+# Magic gear - flask classes this build does not use
 Hide
-    Class == "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks" "Jewels" "Abyss Jewels"
+    Class == "Mana Flasks" "Hybrid Flasks"
     Rarity Magic
-    ItemLevel <= 79
 
-# Normal gear - slots this build does not use
-Hide
-    Class == "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Mana Flasks" "Hybrid Flasks" "Abyss Jewels"
-    Rarity Normal
-
-# Normal gear - below item level 75
+# Normal gear - not kept by the preset
 Hide
     Class == "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks" "Jewels" "Abyss Jewels"
-    Rarity Normal
-    ItemLevel <= 74
-
-# Normal flasks
-Hide
-    Class == "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
     Rarity Normal
 
 # Rare gear - below item level 83

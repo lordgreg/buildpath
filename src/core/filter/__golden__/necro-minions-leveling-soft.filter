@@ -3,9 +3,10 @@
 # Build-specific loot filter
 # Build: Necromancer Minions - Witch / Necromancer
 # Phase: Leveling - Soft
+# Leveling stages: area 1-9 all, 10-19 4-socket whites, 20-67 4-links/RGB, 68+ crafting bases
 # League: Covens
 # Presets: de5857697151
-# Rules: 103 - Base types: 129
+# Rules: 130 - Base types: 129
 # Base data: RePoE 1d825f53356023dee0fbb3ec23d94057da8fe0ac (4f01123d)
 # Generated at https://lordgreg.github.io/buildpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -135,15 +136,312 @@ Show
     PlayAlertSound 2 220
     MinimapIcon 1 Cyan Diamond
 
-# helmet - magic
+# body - rare
+Show
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    Rarity Rare
+    ItemLevel >= 1
+    SetFontSize 40
+    SetTextColor 255 255 119 255
+    SetBorderColor 255 255 119 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 2 220
+    MinimapIcon 1 Cyan Diamond
+
+# gloves - rare
+Show
+    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    Rarity Rare
+    ItemLevel >= 1
+    SetFontSize 40
+    SetTextColor 255 255 119 255
+    SetBorderColor 255 255 119 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 2 220
+    MinimapIcon 1 Cyan Diamond
+
+# boots - rare
+Show
+    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    Rarity Rare
+    ItemLevel >= 1
+    SetFontSize 40
+    SetTextColor 255 255 119 255
+    SetBorderColor 255 255 119 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 2 220
+    MinimapIcon 1 Cyan Diamond
+
+# belt - rare
+Show
+    Class == "Belts"
+    Rarity Rare
+    ItemLevel >= 1
+    SetFontSize 40
+    SetTextColor 255 255 119 255
+    SetBorderColor 255 255 119 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 3 150
+    MinimapIcon 1 Green Hexagon
+
+# amulet - rare
+Show
+    Class == "Amulets"
+    Rarity Rare
+    ItemLevel >= 1
+    SetFontSize 40
+    SetTextColor 255 255 119 255
+    SetBorderColor 255 255 119 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 3 150
+    MinimapIcon 1 Green Hexagon
+
+# ring - rare
+Show
+    Class == "Rings"
+    Rarity Rare
+    ItemLevel >= 1
+    SetFontSize 40
+    SetTextColor 255 255 119 255
+    SetBorderColor 255 255 119 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 3 150
+    MinimapIcon 1 Green Hexagon
+
+# jewel - rare
+Show
+    BaseType == "Cobalt Jewel"
+    Rarity Rare
+    ItemLevel >= 1
+    SetFontSize 40
+    SetTextColor 255 255 119 255
+    SetBorderColor 255 255 119 255
+    SetBackgroundColor 20 26 58 255
+    PlayAlertSound 3 150
+    MinimapIcon 1 Green Hexagon
+
+# flask - rare
+Show
+    Class == "Life Flasks" "Utility Flasks" "Mana Flasks"
+    Rarity Rare
+    ItemLevel >= 1
+    SetFontSize 40
+    SetTextColor 255 255 119 255
+    SetBorderColor 255 255 119 255
+    SetBackgroundColor 6 42 26 255
+    PlayAlertSound 3 150
+    MinimapIcon 1 Green Hexagon
+
+# weapon - rare
+Show
+    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Rarity Rare
+    ItemLevel >= 1
+    SetFontSize 45
+    SetTextColor 255 255 119 255
+    SetBorderColor 255 255 119 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 1 300
+    MinimapIcon 1 Yellow Star
+
+# offhand - rare
+Show
+    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
+    Rarity Rare
+    ItemLevel >= 1
+    SetFontSize 45
+    SetTextColor 255 255 119 255
+    SetBorderColor 255 255 119 255
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 1 300
+    MinimapIcon 1 Yellow Star
+
+# helmet - magic (area 1-19)
 Show
     BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
     Rarity Magic
-    ItemLevel >= 10
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
     SetFontSize 34
     SetTextColor 120 180 255 255
     SetBorderColor 120 180 255 255
     SetBackgroundColor 0 0 0 255
+
+# body - magic (area 1-19)
+Show
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# gloves - magic (area 1-19)
+Show
+    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# boots - magic (area 1-19)
+Show
+    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# belt - magic (area 1-19)
+Show
+    Class == "Belts"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# amulet - magic (area 1-19)
+Show
+    Class == "Amulets"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# ring - magic (area 1-19)
+Show
+    Class == "Rings"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# jewel - magic (area 1-19)
+Show
+    BaseType == "Cobalt Jewel"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 20 26 58 255
+
+# flask - magic (area 1-19)
+Show
+    Class == "Life Flasks" "Utility Flasks" "Mana Flasks"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 6 42 26 255
+
+# weapon - magic (area 1-19)
+Show
+    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# offhand - magic (area 1-19)
+Show
+    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 19
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# belt - magic (area 20+)
+Show
+    Class == "Belts"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 20
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# amulet - magic (area 20+)
+Show
+    Class == "Amulets"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 20
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# ring - magic (area 20+)
+Show
+    Class == "Rings"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 20
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# jewel - magic (area 20+)
+Show
+    BaseType == "Cobalt Jewel"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 20
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 20 26 58 255
+
+# flask - magic (area 20+)
+Show
+    Class == "Life Flasks" "Utility Flasks" "Mana Flasks"
+    Rarity Magic
+    ItemLevel >= 0
+    AreaLevel >= 20
+    SetFontSize 34
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 6 42 26 255
 
 # helmet - normal 4+ links
 Show
@@ -173,28 +471,6 @@ Show
     SetFontSize 38
     SetTextColor 255 255 119 255
     SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-
-# body - rare
-Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
-    Rarity Rare
-    ItemLevel >= 1
-    SetFontSize 40
-    SetTextColor 255 255 119 255
-    SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-    PlayAlertSound 2 220
-    MinimapIcon 1 Cyan Diamond
-
-# body - magic
-Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
-    Rarity Magic
-    ItemLevel >= 10
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
     SetBackgroundColor 0 0 0 255
 
 # body - normal 4+ links
@@ -227,28 +503,6 @@ Show
     SetBorderColor 255 255 119 255
     SetBackgroundColor 0 0 0 255
 
-# gloves - rare
-Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
-    Rarity Rare
-    ItemLevel >= 1
-    SetFontSize 40
-    SetTextColor 255 255 119 255
-    SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-    PlayAlertSound 2 220
-    MinimapIcon 1 Cyan Diamond
-
-# gloves - magic
-Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
-    Rarity Magic
-    ItemLevel >= 10
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # gloves - normal 4+ links
 Show
     BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
@@ -277,28 +531,6 @@ Show
     SetFontSize 38
     SetTextColor 255 255 119 255
     SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-
-# boots - rare
-Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
-    Rarity Rare
-    ItemLevel >= 1
-    SetFontSize 40
-    SetTextColor 255 255 119 255
-    SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-    PlayAlertSound 2 220
-    MinimapIcon 1 Cyan Diamond
-
-# boots - magic
-Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
-    Rarity Magic
-    ItemLevel >= 10
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
     SetBackgroundColor 0 0 0 255
 
 # boots - normal 4+ links
@@ -331,138 +563,6 @@ Show
     SetBorderColor 255 255 119 255
     SetBackgroundColor 0 0 0 255
 
-# belt - rare
-Show
-    Class == "Belts"
-    Rarity Rare
-    ItemLevel >= 1
-    SetFontSize 40
-    SetTextColor 255 255 119 255
-    SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-    PlayAlertSound 3 150
-    MinimapIcon 1 Green Hexagon
-
-# belt - magic
-Show
-    Class == "Belts"
-    Rarity Magic
-    ItemLevel >= 10
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
-# amulet - rare
-Show
-    Class == "Amulets"
-    Rarity Rare
-    ItemLevel >= 1
-    SetFontSize 40
-    SetTextColor 255 255 119 255
-    SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-    PlayAlertSound 3 150
-    MinimapIcon 1 Green Hexagon
-
-# amulet - magic
-Show
-    Class == "Amulets"
-    Rarity Magic
-    ItemLevel >= 10
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
-# ring - rare
-Show
-    Class == "Rings"
-    Rarity Rare
-    ItemLevel >= 1
-    SetFontSize 40
-    SetTextColor 255 255 119 255
-    SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-    PlayAlertSound 3 150
-    MinimapIcon 1 Green Hexagon
-
-# ring - magic
-Show
-    Class == "Rings"
-    Rarity Magic
-    ItemLevel >= 10
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
-# jewel - rare
-Show
-    BaseType == "Cobalt Jewel"
-    Rarity Rare
-    ItemLevel >= 1
-    SetFontSize 40
-    SetTextColor 255 255 119 255
-    SetBorderColor 255 255 119 255
-    SetBackgroundColor 20 26 58 255
-    PlayAlertSound 3 150
-    MinimapIcon 1 Green Hexagon
-
-# jewel - magic
-Show
-    BaseType == "Cobalt Jewel"
-    Rarity Magic
-    ItemLevel >= 10
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 20 26 58 255
-
-# flask - rare
-Show
-    Class == "Life Flasks" "Utility Flasks" "Mana Flasks"
-    Rarity Rare
-    ItemLevel >= 1
-    SetFontSize 40
-    SetTextColor 255 255 119 255
-    SetBorderColor 255 255 119 255
-    SetBackgroundColor 6 42 26 255
-    PlayAlertSound 3 150
-    MinimapIcon 1 Green Hexagon
-
-# flask - magic
-Show
-    Class == "Life Flasks" "Utility Flasks" "Mana Flasks"
-    Rarity Magic
-    ItemLevel >= 10
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 6 42 26 255
-
-# weapon - rare
-Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
-    Rarity Rare
-    ItemLevel >= 1
-    SetFontSize 45
-    SetTextColor 255 255 119 255
-    SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-    PlayAlertSound 1 300
-    MinimapIcon 1 Yellow Star
-
-# weapon - magic
-Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
-    Rarity Magic
-    ItemLevel >= 10
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
-    SetBackgroundColor 0 0 0 255
-
 # weapon - normal 4+ links
 Show
     BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
@@ -491,28 +591,6 @@ Show
     SetFontSize 38
     SetTextColor 255 255 119 255
     SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-
-# offhand - rare
-Show
-    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
-    Rarity Rare
-    ItemLevel >= 1
-    SetFontSize 45
-    SetTextColor 255 255 119 255
-    SetBorderColor 255 255 119 255
-    SetBackgroundColor 0 0 0 255
-    PlayAlertSound 1 300
-    MinimapIcon 1 Yellow Star
-
-# offhand - magic
-Show
-    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
-    Rarity Magic
-    ItemLevel >= 10
-    SetFontSize 34
-    SetTextColor 120 180 255 255
-    SetBorderColor 120 180 255 255
     SetBackgroundColor 0 0 0 255
 
 # offhand - normal 4+ links
@@ -545,6 +623,77 @@ Show
     SetBorderColor 255 255 119 255
     SetBackgroundColor 0 0 0 255
 
+# helmet - magic RGB links
+Show
+    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    Rarity Magic
+    SocketGroup "RGB"
+    SetFontSize 38
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# body - magic RGB links
+Show
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    Rarity Magic
+    SocketGroup "RGB"
+    SetFontSize 38
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# gloves - magic RGB links
+Show
+    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    Rarity Magic
+    SocketGroup "RGB"
+    SetFontSize 38
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# boots - magic RGB links
+Show
+    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    Rarity Magic
+    SocketGroup "RGB"
+    SetFontSize 38
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# weapon - magic RGB links
+Show
+    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Rarity Magic
+    SocketGroup "RGB"
+    SetFontSize 38
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# offhand - magic RGB links
+Show
+    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
+    Rarity Magic
+    SocketGroup "RGB"
+    SetFontSize 38
+    SetTextColor 120 180 255 255
+    SetBorderColor 120 180 255 255
+    SetBackgroundColor 0 0 0 255
+
+# flask - normal (area 1-29)
+Show
+    Class == "Life Flasks" "Utility Flasks" "Mana Flasks"
+    Rarity Normal
+    AreaLevel >= 1
+    AreaLevel <= 29
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 6 42 26 255
+
 # Six sockets - normal
 Show
     Rarity Normal
@@ -572,101 +721,297 @@ Show
     SetBorderColor 255 255 119 255
     SetBackgroundColor 0 0 0 255
 
-# helmet - normal
+# helmet - normal 4+ sockets (area 10+)
+Show
+    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    Rarity Normal
+    AreaLevel >= 10
+    Sockets >= 4
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# body - normal 4+ sockets (area 10+)
+Show
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    Rarity Normal
+    AreaLevel >= 10
+    Sockets >= 4
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# gloves - normal 4+ sockets (area 10+)
+Show
+    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    Rarity Normal
+    AreaLevel >= 10
+    Sockets >= 4
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# boots - normal 4+ sockets (area 10+)
+Show
+    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    Rarity Normal
+    AreaLevel >= 10
+    Sockets >= 4
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# weapon - normal 4+ sockets (area 10+)
+Show
+    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Rarity Normal
+    AreaLevel >= 10
+    Sockets >= 4
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# offhand - normal 4+ sockets (area 10+)
+Show
+    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
+    Rarity Normal
+    AreaLevel >= 10
+    Sockets >= 4
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# helmet - normal (area 1-9)
 Show
     BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
     Rarity Normal
     ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 9
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
     SetBackgroundColor 0 0 0 255
 
-# body - normal
+# body - normal (area 1-9)
 Show
     BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
     Rarity Normal
     ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 9
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
     SetBackgroundColor 0 0 0 255
 
-# gloves - normal
+# gloves - normal (area 1-9)
 Show
     BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
     Rarity Normal
     ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 9
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
     SetBackgroundColor 0 0 0 255
 
-# boots - normal
+# boots - normal (area 1-9)
 Show
     BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
     Rarity Normal
     ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 9
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
     SetBackgroundColor 0 0 0 255
 
-# belt - normal
+# belt - normal (area 1-9)
 Show
     Class == "Belts"
     Rarity Normal
     ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 9
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
     SetBackgroundColor 0 0 0 255
 
-# amulet - normal
+# amulet - normal (area 1-9)
 Show
     Class == "Amulets"
     Rarity Normal
     ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 9
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
     SetBackgroundColor 0 0 0 255
 
-# ring - normal
+# ring - normal (area 1-9)
 Show
     Class == "Rings"
     Rarity Normal
     ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 9
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
     SetBackgroundColor 0 0 0 255
 
-# jewel - normal
+# jewel - normal (area 1-9)
 Show
     BaseType == "Cobalt Jewel"
     Rarity Normal
     ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 9
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
     SetBackgroundColor 20 26 58 255
 
-# weapon - normal
+# weapon - normal (area 1-9)
 Show
     BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
     Rarity Normal
     ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 9
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
     SetBackgroundColor 0 0 0 255
 
-# offhand - normal
+# offhand - normal (area 1-9)
 Show
     BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
     Rarity Normal
     ItemLevel >= 0
+    AreaLevel >= 1
+    AreaLevel <= 9
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# helmet - normal (area 68+)
+Show
+    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    Rarity Normal
+    ItemLevel >= 84
+    AreaLevel >= 68
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# body - normal (area 68+)
+Show
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    Rarity Normal
+    ItemLevel >= 84
+    AreaLevel >= 68
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# gloves - normal (area 68+)
+Show
+    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    Rarity Normal
+    ItemLevel >= 84
+    AreaLevel >= 68
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# boots - normal (area 68+)
+Show
+    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    Rarity Normal
+    ItemLevel >= 84
+    AreaLevel >= 68
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# belt - normal (area 68+)
+Show
+    Class == "Belts"
+    Rarity Normal
+    ItemLevel >= 84
+    AreaLevel >= 68
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# amulet - normal (area 68+)
+Show
+    Class == "Amulets"
+    Rarity Normal
+    ItemLevel >= 84
+    AreaLevel >= 68
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# ring - normal (area 68+)
+Show
+    Class == "Rings"
+    Rarity Normal
+    ItemLevel >= 84
+    AreaLevel >= 68
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# jewel - normal (area 68+)
+Show
+    BaseType == "Cobalt Jewel"
+    Rarity Normal
+    ItemLevel >= 84
+    AreaLevel >= 68
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 20 26 58 255
+
+# weapon - normal (area 68+)
+Show
+    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Rarity Normal
+    ItemLevel >= 84
+    AreaLevel >= 68
+    SetFontSize 34
+    SetTextColor 255 255 255 255
+    SetBorderColor 255 255 255 255
+    SetBackgroundColor 0 0 0 255
+
+# offhand - normal (area 68+)
+Show
+    BaseType == "Bone Spirit Shield" "Fossilised Spirit Shield" "Ivory Spirit Shield"
+    Rarity Normal
+    ItemLevel >= 84
+    AreaLevel >= 68
     SetFontSize 34
     SetTextColor 255 255 255 255
     SetBorderColor 255 255 255 255
@@ -896,25 +1241,19 @@ Show
     PlayAlertSound 4 200
     MinimapIcon 1 Red Star
 
-# Magic gear - slots this build does not use
+# Magic gear - not kept by the preset
 Hide
-    Class == "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Hybrid Flasks" "Abyss Jewels"
+    Class == "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Jewels" "Abyss Jewels"
     Rarity Magic
 
-# Magic gear - below item level 10
+# Magic gear - flask classes this build does not use
+Hide
+    Class == "Hybrid Flasks"
+    Rarity Magic
+
+# Normal gear - not kept by the preset
 Hide
     Class == "Amulets" "Belts" "Body Armours" "Boots" "Bows" "Claws" "Daggers" "Gloves" "Helmets" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rings" "Rune Daggers" "Sceptres" "Shields" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Wands" "Warstaves" "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks" "Jewels" "Abyss Jewels"
-    Rarity Magic
-    ItemLevel <= 9
-
-# Normal gear - slots this build does not use
-Hide
-    Class == "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Hybrid Flasks" "Abyss Jewels"
-    Rarity Normal
-
-# Normal flasks
-Hide
-    Class == "Life Flasks" "Mana Flasks" "Hybrid Flasks" "Utility Flasks"
     Rarity Normal
 
 # Rare gear - slots this build does not use

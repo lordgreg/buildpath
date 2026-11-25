@@ -12,7 +12,7 @@ The filter knows where you are.
 - Leveling Strict and Uber hide single Scrolls of Wisdom and Portal Scrolls but show stacks of three or more; Soft is unchanged.
 - White flasks show through area 29, because early characters have nothing else. The item tester gained an **Area level** field: a pasted item carries no area, and the leveling stages match on it.
 - The rule model learned `SocketGroup`, so the chromatic-recipe rule is a real condition, and the audit catalog gained stage fixtures (white 2-link at area 68, 4-socket white, RGB magic, early map drop, scroll stacks).
-- 534 tests.
+- 576 tests.
 
 ## 0.54.0 — 2026-11-26
 
