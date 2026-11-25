@@ -1,23 +1,30 @@
 # Checkpoints: what a build is measured at, and how much it has to work with.
 #
-# `points` is the passive-point budget. It is a reviewed per-patch table (D30),
-# never derived from a quest count at runtime, because that is what breaks every
-# league. Values are deliberately conservative.
+# The leveling entries line up with the seed's leveling brackets, so a guide
+# step *is* a bracket: "until level 28" shows the gems and gear you have at 28.
+# `points` is a reviewed per-patch budget (D30), never derived from a quest
+# count at runtime, because that is what breaks every league.
 schemaVersion: 1
 treeVersion: "3_30"
-bossTarget: "Pinnacle boss (single target, no ailment help from another build)"
 checkpoints:
-  act5:
-    level: 20
-    points: 22
+  until-12:
+    level: 12
+    points: 12
+    labs: 0
+    budget: leveling
+    gemLevel: 4
+    supportLevel: 1
+  until-28:
+    level: 28
+    points: 30
     labs: 1
     budget: leveling
-    gemLevel: 8
-    supportLevel: 4
-  act10:
-    level: 45
-    points: 55
-    labs: 2
+    gemLevel: 9
+    supportLevel: 5
+  until-68:
+    level: 68
+    points: 78
+    labs: 3
     budget: ssf-start
     gemLevel: 16
     supportLevel: 12

@@ -18,10 +18,21 @@ function buildById(id: string): Build | undefined {
   return builds[`../generated/builds/${id}.json`]?.default;
 }
 
+function hashParam(name: string): string | null {
+  return new URLSearchParams(window.location.hash.replace(/^#/, '')).get(name);
+}
+
 function currentId(): string {
-  const params = new URLSearchParams(window.location.hash.replace(/^#/, ''));
-  const wanted = params.get('build');
+  const wanted = hashParam('build');
   return wanted && buildById(wanted) ? wanted : (BUILDS[0]?.id ?? '');
+}
+
+/** Keeps the step in the hash so a refresh lands on the same step, shareably. */
+function writeStep(id: string, step: string) {
+  const params = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+  params.set('build', id);
+  params.set('step', step);
+  window.history.replaceState(null, '', `#${params.toString()}`);
 }
 
 /** Slots in the order a player reads them: gear first, then the edges. */
@@ -63,13 +74,27 @@ function statusLabel(status: BuildIndexEntry['status']): string {
   return status === 'verified' ? 'verified' : status === 'rejected' ? 'rejected' : 'draft';
 }
 
-function Tooltip({ children, label }: { children: React.ReactNode; label: React.ReactNode }) {
+function Tooltip({
+  children,
+  label,
+  placement = 'above',
+}: {
+  children: React.ReactNode;
+  label: React.ReactNode;
+  placement?: 'above' | 'below';
+}) {
+  // Rendered above by default: a tooltip hanging below the last row made the
+  // page grow, which produced scrollbars and pushed the tooltip out of view.
+  const position =
+    placement === 'above'
+      ? 'bottom-full mb-1'
+      : 'top-full mt-1';
   return (
     <span className="group relative inline-flex">
       {children}
       <span
         role="tooltip"
-        className="pointer-events-none absolute left-0 top-full z-20 mt-1 hidden w-64 rounded-md border border-ink-600 bg-ink-950/95 p-2 text-left text-[11px] leading-snug text-zinc-300 shadow-xl group-hover:block group-focus-within:block"
+        className={`pointer-events-none absolute left-0 z-30 hidden w-64 max-w-[70vw] rounded-md border border-ink-600 bg-ink-950/95 p-2 text-left text-[11px] leading-snug text-zinc-300 shadow-xl group-hover:block group-focus-within:block ${position}`}
       >
         {label}
       </span>
@@ -96,10 +121,15 @@ function Flasks({ flasks }: { flasks: FlaskChoice[] }) {
 
 export default function BuildPage() {
   const [id, setId] = useState(currentId);
-  const [stepOverride, setStepOverride] = useState<string | null>(null);
+  const [stepOverride, setStepOverride] = useState<string | null>(
+    () => hashParam('step'),
+  );
 
   useEffect(() => {
-    const onHash = () => setId(currentId());
+    const onHash = () => {
+      setId(currentId());
+      setStepOverride(hashParam('step'));
+    };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
@@ -118,11 +148,19 @@ export default function BuildPage() {
   const gates = Object.entries(build.gates ?? {}) as [string, GateResult][];
   const passed = gates.filter(([, gate]) => gate.pass).length;
   // The step drives every number on the page: tree, gear, gems, budgets.
-  const step = stepOverride ?? gates.at(-1)?.[0] ?? '';
+  const step = gates.some(([key]) => key === stepOverride)
+    ? stepOverride!
+    : (gates.at(-1)?.[0] ?? '');
   const gate = build.gates?.[step];
   const pipeline = build.pipeline;
   const builderHash = `#mode=build&build=${build.id}&phase=leveling&strictness=soft`;
   const showFlasks = build.flasks?.[flaskStep(step)];
+  // A guide step is a leveling bracket: show the gems you level with at that
+  // step, so there is no separate "leveling" section repeating the same thing.
+  const bracket =
+    build.leveling.brackets.find(
+      (entry) => gate !== undefined && entry.until >= gate.level,
+    ) ?? build.leveling.brackets.at(-1);
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-5xl flex-col gap-8 px-5 py-10 sm:px-8">
@@ -182,7 +220,10 @@ export default function BuildPage() {
               key={checkpoint}
               type="button"
               aria-pressed={checkpoint === step}
-              onClick={() => setStepOverride(checkpoint)}
+              onClick={() => {
+                setStepOverride(checkpoint);
+                writeStep(build.id, checkpoint);
+              }}
               className={
                 checkpoint === step
                   ? 'rounded border border-gold-400 bg-gold-400/10 px-2 py-1 text-[11px] text-gold-200'
@@ -305,12 +346,45 @@ export default function BuildPage() {
         </section>
       )}
 
+      {bracket && (
+        <section aria-labelledby="leveling">
+          <h2 id="leveling" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            Leveling this step
+          </h2>
+          <p className="mt-2 text-sm text-zinc-300">
+            {bracket.skills.map((skill, index) => (
+              <span key={skill}>
+                {index > 0 && <span className="text-zinc-600"> · </span>}
+                <a
+                  href={wikiUrl(skill)}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="underline-offset-2 hover:underline"
+                >
+                  {skill}
+                </a>
+              </span>
+            ))}
+          </p>
+          <p className="mt-2 text-[11px] leading-relaxed text-zinc-600">
+            Play these until level {bracket.until}
+            {bracket.until < 100 ? ', then move to the next step' : ' — the endgame step.'}
+          </p>
+          <p className="mt-2 text-xs leading-relaxed text-zinc-500">
+            <a href={`./index.html${builderHash}`} className="text-gold-300 underline underline-offset-2">
+              Open the leveling filter for this build
+            </a>{' '}
+            — it highlights this build&apos;s bases and hides the rest.
+          </p>
+        </section>
+      )}
+
       {gate?.gems && (
         <section aria-labelledby="gems">
           <h2 id="gems" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
             Gems at {step}
           </h2>
-          <div className="mt-3 overflow-x-auto">
+          <div className="mt-3">
             <table className="w-full text-left text-sm text-zinc-300">
               <thead>
                 <tr className="text-[11px] uppercase tracking-[0.16em] text-zinc-500">
@@ -374,42 +448,6 @@ export default function BuildPage() {
           </div>
         </section>
       )}
-
-      <section aria-labelledby="leveling">
-        <h2 id="leveling" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-          Leveling
-        </h2>
-        <ul className="mt-3 space-y-2">
-          {build.leveling.brackets.map((bracket) => (
-            <li key={bracket.until} className="rounded-lg border border-ink-700 bg-ink-900/40 px-3 py-2">
-              <span className="text-[11px] uppercase tracking-[0.16em] text-zinc-500">
-                until level {bracket.until}
-              </span>
-              <p className="mt-1 text-sm text-zinc-300">
-                {bracket.skills.map((skill, index) => (
-                  <span key={skill}>
-                    {index > 0 && <span className="text-zinc-600"> · </span>}
-                    <a
-                      href={wikiUrl(skill)}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="underline-offset-2 hover:underline"
-                    >
-                      {skill}
-                    </a>
-                  </span>
-                ))}
-              </p>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-3 text-xs leading-relaxed text-zinc-500">
-          <a href={`./index.html${builderHash}`} className="text-gold-300 underline underline-offset-2">
-            Open the leveling filter for this build
-          </a>{' '}
-          — it highlights this build&apos;s bases and hides the rest.
-        </p>
-      </section>
 
       <section aria-labelledby="ascendancy">
         <h2 id="ascendancy" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">

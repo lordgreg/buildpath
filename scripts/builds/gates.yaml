@@ -1,19 +1,27 @@
-# Gate thresholds: what a player needs at each checkpoint.
+# Gate thresholds: what a player needs at each step.
 #
 # `calibrated: false` until P3 proves these against must-pass and must-fail
 # reference builds (PLAN-BUILDS.md §8). Until then every page that shows a
 # number also says "uncalibrated".
 schemaVersion: 1
 calibrated: false
-# Elemental resistances must reach 75% after the game's per-act penalty.
+# Elemental resistances must reach this after the game's per-act penalty.
 resistanceFloor: 75
 checkpoints:
-  act5:
-    life: 700
-    dps: 150
-  act10:
-    life: 1500
-    dps: 1000
+  until-12:
+    # Nothing is capped in act 1; the only thing that matters is staying alive.
+    resistanceFloor: 0
+    life: 350
+    dps: 300
+  until-28:
+    # PoB applies the full -60% penalty at every level, so early gear cannot cap.
+    resistanceFloor: 0
+    life: 800
+    dps: 1500
+  until-68:
+    life: 2000
+    maxHit: 2000
+    dps: 8000
   maps-early:
     life: 3000
     ehp: 8000

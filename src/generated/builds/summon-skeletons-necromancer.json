@@ -181,54 +181,32 @@
   },
   "status": "draft",
   "gates": {
-    "act5": {
-      "pass": false,
-      "level": 20,
+    "until-12": {
+      "pass": true,
+      "level": 12,
       "budget": "leveling (4-link)",
       "metrics": {
-        "dps": 1442,
+        "dps": 385,
         "minionCount": 6,
         "dpsSource": "minion",
-        "life": 770,
-        "energyShield": 513,
-        "ehp": 1895,
-        "maxHit": 1283,
+        "life": 674,
+        "energyShield": 481,
+        "ehp": 1706,
+        "maxHit": 1155,
         "resists": [
           75,
           30,
           75
         ],
-        "nodes": 21,
-        "ascendancy": 2
+        "nodes": 9,
+        "ascendancy": 1
       },
-      "failures": [
-        "cold resistance 30% < 75%"
-      ],
+      "failures": [],
       "tree": {
         "edges": [
           [
-            4177,
-            38989
-          ],
-          [
             4397,
             36542
-          ],
-          [
-            7444,
-            64210
-          ],
-          [
-            15046,
-            38989
-          ],
-          [
-            31875,
-            60398
-          ],
-          [
-            36678,
-            42760
           ],
           [
             37569,
@@ -241,13 +219,6 @@
         ],
         "nodes": [
           {
-            "id": 4177,
-            "name": "Spiritual Aid",
-            "notable": true,
-            "x": -7953,
-            "y": -3870
-          },
-          {
             "id": 4397,
             "name": "Intelligence",
             "notable": false,
@@ -255,25 +226,11 @@
             "y": -4501
           },
           {
-            "id": 7444,
-            "name": "Intelligence",
-            "notable": false,
-            "x": -6151,
-            "y": -6038
-          },
-          {
             "id": 7688,
             "name": "Enduring Bond",
             "notable": true,
             "x": -1861,
             "y": -4771
-          },
-          {
-            "id": 15046,
-            "name": "Redemption",
-            "notable": true,
-            "x": -7953,
-            "y": -3870
           },
           {
             "id": 15081,
@@ -290,27 +247,6 @@
             "y": -4771
           },
           {
-            "id": 25332,
-            "name": "Minion Damage and Attack and Cast Speed",
-            "notable": false,
-            "x": -7953,
-            "y": -3870
-          },
-          {
-            "id": 26270,
-            "name": "Intelligence",
-            "notable": false,
-            "x": -7672,
-            "y": -3404
-          },
-          {
-            "id": 29106,
-            "name": "Minion Damage and Attack and Cast Speed",
-            "notable": false,
-            "x": -7953,
-            "y": -3870
-          },
-          {
             "id": 31875,
             "name": "Strength",
             "notable": false,
@@ -325,39 +261,11 @@
             "y": -4439
           },
           {
-            "id": 36678,
-            "name": "Intelligence",
-            "notable": false,
-            "x": -4247,
-            "y": -7238
-          },
-          {
             "id": 37569,
             "name": "Intelligence",
             "notable": false,
             "x": -483,
             "y": -4439
-          },
-          {
-            "id": 38989,
-            "name": "Minion Damage",
-            "notable": false,
-            "x": -7953,
-            "y": -3870
-          },
-          {
-            "id": 42760,
-            "name": "Intelligence",
-            "notable": false,
-            "x": -2563,
-            "y": -5616
-          },
-          {
-            "id": 46340,
-            "name": "Intelligence",
-            "notable": false,
-            "x": -2957,
-            "y": -5002
           },
           {
             "id": 54447,
@@ -372,26 +280,10 @@
             "notable": false,
             "x": -4,
             "y": -3180
-          },
-          {
-            "id": 60398,
-            "name": "Intelligence",
-            "notable": false,
-            "x": -2452,
-            "y": -4127
-          },
-          {
-            "id": 64210,
-            "name": "Intelligence",
-            "notable": false,
-            "x": -6747,
-            "y": -5005
           }
         ],
         "notables": [
-          "Spiritual Aid",
-          "Enduring Bond",
-          "Redemption"
+          "Enduring Bond"
         ]
       },
       "gear": [
@@ -497,11 +389,11 @@
           "gems": [
             {
               "name": "Desecrate",
-              "level": 8
+              "level": 4
             },
             {
               "name": "Flesh Offering",
-              "level": 4
+              "level": 1
             }
           ]
         },
@@ -510,7 +402,7 @@
           "gems": [
             {
               "name": "Clarity",
-              "level": 8
+              "level": 4
             }
           ]
         },
@@ -519,67 +411,55 @@
           "gems": [
             {
               "name": "Summon Skeletons",
-              "level": 8
+              "level": 4
             },
             {
               "name": "Minion Damage",
-              "level": 4
+              "level": 1
             },
             {
               "name": "Multistrike",
-              "level": 4
+              "level": 1
             },
             {
               "name": "Melee Physical Damage",
-              "level": 4
+              "level": 1
             },
             {
               "name": "Feeding Frenzy",
-              "level": 4
+              "level": 1
             },
             {
               "name": "Minion Speed",
-              "level": 4
+              "level": 1
             }
           ]
         }
       ]
     },
-    "act10": {
+    "until-28": {
       "pass": true,
-      "level": 45,
-      "budget": "ssf-start (5-link)",
+      "level": 28,
+      "budget": "leveling (4-link)",
       "metrics": {
-        "dps": 9856,
+        "dps": 2374,
         "minionCount": 6,
         "dpsSource": "minion",
-        "life": 2088,
-        "energyShield": 590,
-        "ehp": 4835,
-        "maxHit": 2678,
+        "life": 871,
+        "energyShield": 531,
+        "ehp": 2071,
+        "maxHit": 1402,
         "resists": [
           75,
-          75,
+          30,
           75
         ],
-        "nodes": 53,
-        "ascendancy": 3
+        "nodes": 28,
+        "ascendancy": 2
       },
       "failures": [],
       "tree": {
         "edges": [
-          [
-            1325,
-            31471
-          ],
-          [
-            3644,
-            14930
-          ],
-          [
-            4177,
-            38989
-          ],
           [
             4397,
             36542
@@ -589,32 +469,12 @@
             11420
           ],
           [
-            6289,
-            48287
-          ],
-          [
             7444,
             64210
           ],
           [
-            11420,
-            48362
-          ],
-          [
             13009,
             60398
-          ],
-          [
-            15046,
-            38989
-          ],
-          [
-            17821,
-            39648
-          ],
-          [
-            24914,
-            61262
           ],
           [
             26270,
@@ -639,54 +499,15 @@
           [
             54447,
             57264
-          ],
-          [
-            59928,
-            63723
           ]
         ],
         "nodes": [
-          {
-            "id": 1325,
-            "name": "Golem's Blood",
-            "notable": true,
-            "x": -1059,
-            "y": 6702
-          },
-          {
-            "id": 3644,
-            "name": "Strength",
-            "notable": false,
-            "x": -6469,
-            "y": 4905
-          },
-          {
-            "id": 4177,
-            "name": "Spiritual Aid",
-            "notable": true,
-            "x": -7953,
-            "y": -3870
-          },
           {
             "id": 4397,
             "name": "Intelligence",
             "notable": false,
             "x": -1378,
             "y": -4501
-          },
-          {
-            "id": 5233,
-            "name": "Strength",
-            "notable": false,
-            "x": -7672,
-            "y": 3505
-          },
-          {
-            "id": 6289,
-            "name": "Bloodless",
-            "notable": true,
-            "x": -4783,
-            "y": 5426
           },
           {
             "id": 7444,
@@ -717,13 +538,6 @@
             "y": -3777
           },
           {
-            "id": 14930,
-            "name": "Strength",
-            "notable": false,
-            "x": -5461,
-            "y": 6072
-          },
-          {
             "id": 15046,
             "name": "Redemption",
             "notable": true,
@@ -745,6 +559,614 @@
             "y": -3443
           },
           {
+            "id": 19103,
+            "name": "Righteous Army",
+            "notable": true,
+            "x": -7953,
+            "y": -3870
+          },
+          {
+            "id": 22062,
+            "name": "Minion Damage and Duration",
+            "notable": false,
+            "x": -1861,
+            "y": -4771
+          },
+          {
+            "id": 25332,
+            "name": "Minion Damage and Attack and Cast Speed",
+            "notable": false,
+            "x": -7953,
+            "y": -3870
+          },
+          {
+            "id": 26270,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -7672,
+            "y": -3404
+          },
+          {
+            "id": 26481,
+            "name": "Minion Damage and Life",
+            "notable": false,
+            "x": -7953,
+            "y": -3870
+          },
+          {
+            "id": 27611,
+            "name": "Lord of the Dead",
+            "notable": true,
+            "x": -4,
+            "y": -4501
+          },
+          {
+            "id": 29106,
+            "name": "Minion Damage and Attack and Cast Speed",
+            "notable": false,
+            "x": -7953,
+            "y": -3870
+          },
+          {
+            "id": 31875,
+            "name": "Strength",
+            "notable": false,
+            "x": -1780,
+            "y": -4359
+          },
+          {
+            "id": 36542,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -483,
+            "y": -4439
+          },
+          {
+            "id": 36678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4247,
+            "y": -7238
+          },
+          {
+            "id": 37569,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -483,
+            "y": -4439
+          },
+          {
+            "id": 41190,
+            "name": "Minion Damage and Life",
+            "notable": false,
+            "x": -7953,
+            "y": -3870
+          },
+          {
+            "id": 42760,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2563,
+            "y": -5616
+          },
+          {
+            "id": 46340,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2957,
+            "y": -5002
+          },
+          {
+            "id": 49254,
+            "name": "Retribution",
+            "notable": true,
+            "x": -4436,
+            "y": -2999
+          },
+          {
+            "id": 54447,
+            "name": "WITCH",
+            "notable": false,
+            "x": -4,
+            "y": -3180
+          },
+          {
+            "id": 57264,
+            "name": "Spell Damage and Mana",
+            "notable": false,
+            "x": -4,
+            "y": -3180
+          },
+          {
+            "id": 60398,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2452,
+            "y": -4127
+          },
+          {
+            "id": 60554,
+            "name": "Minion Damage",
+            "notable": false,
+            "x": -4,
+            "y": -4501
+          },
+          {
+            "id": 64210,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6747,
+            "y": -5005
+          }
+        ],
+        "notables": [
+          "Enduring Bond",
+          "Arcanist's Dominion",
+          "Redemption",
+          "Righteous Army",
+          "Lord of the Dead",
+          "Retribution"
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Driftwood Wand",
+          "mods": [
+            "+1 to Level of all Minion Skill Gems"
+          ],
+          "budget": "leveling",
+          "ilvl": 45
+        },
+        {
+          "slot": "Helmet",
+          "base": "Hubris Circlet",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Fire Resistance",
+            "+30% to Cold Resistance"
+          ],
+          "budget": "leveling",
+          "ilvl": 45
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Vaal Regalia",
+          "mods": [
+            "+60 to maximum Life",
+            "25% increased Energy Shield"
+          ],
+          "budget": "leveling",
+          "ilvl": 45
+        },
+        {
+          "slot": "Gloves",
+          "base": "Sorcerer Gloves",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Fire Resistance"
+          ],
+          "budget": "leveling",
+          "ilvl": 45
+        },
+        {
+          "slot": "Boots",
+          "base": "Sorcerer Boots",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Cold Resistance",
+            "+30% to Lightning Resistance"
+          ],
+          "budget": "leveling",
+          "ilvl": 45
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Fire Resistance",
+            "+30% to Lightning Resistance"
+          ],
+          "budget": "leveling",
+          "ilvl": 45
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+30% to Lightning Resistance",
+            "+30% to Fire Resistance",
+            "+60 to maximum Life"
+          ],
+          "budget": "leveling",
+          "ilvl": 45
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Cold Resistance",
+            "+30% to Lightning Resistance"
+          ],
+          "budget": "leveling",
+          "ilvl": 45
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Lightning Resistance",
+            "+30% to Fire Resistance"
+          ],
+          "budget": "leveling",
+          "ilvl": 45
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Desecrate",
+              "level": 9
+            },
+            {
+              "name": "Flesh Offering",
+              "level": 5
+            }
+          ]
+        },
+        {
+          "slot": "Shield",
+          "gems": [
+            {
+              "name": "Clarity",
+              "level": 9
+            }
+          ]
+        },
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Summon Skeletons",
+              "level": 9
+            },
+            {
+              "name": "Minion Damage",
+              "level": 5
+            },
+            {
+              "name": "Multistrike",
+              "level": 5
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 5
+            },
+            {
+              "name": "Feeding Frenzy",
+              "level": 5
+            },
+            {
+              "name": "Minion Speed",
+              "level": 5
+            }
+          ]
+        }
+      ]
+    },
+    "until-68": {
+      "pass": true,
+      "level": 68,
+      "budget": "ssf-start (5-link)",
+      "metrics": {
+        "dps": 9856,
+        "minionCount": 6,
+        "dpsSource": "minion",
+        "life": 3220,
+        "energyShield": 958,
+        "ehp": 7544,
+        "maxHit": 4178,
+        "resists": [
+          75,
+          75,
+          75
+        ],
+        "nodes": 77,
+        "ascendancy": 4
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            1325,
+            31471
+          ],
+          [
+            1822,
+            38190
+          ],
+          [
+            1822,
+            4502
+          ],
+          [
+            3469,
+            23471
+          ],
+          [
+            3469,
+            34678
+          ],
+          [
+            3644,
+            14930
+          ],
+          [
+            4177,
+            38989
+          ],
+          [
+            4397,
+            36542
+          ],
+          [
+            4397,
+            11420
+          ],
+          [
+            5237,
+            6363
+          ],
+          [
+            6289,
+            48287
+          ],
+          [
+            7444,
+            64210
+          ],
+          [
+            8544,
+            29937
+          ],
+          [
+            13009,
+            60398
+          ],
+          [
+            15046,
+            38989
+          ],
+          [
+            16544,
+            24083
+          ],
+          [
+            17821,
+            39648
+          ],
+          [
+            18865,
+            55247
+          ],
+          [
+            19069,
+            34678
+          ],
+          [
+            24914,
+            61262
+          ],
+          [
+            26270,
+            41190
+          ],
+          [
+            27415,
+            32710
+          ],
+          [
+            27611,
+            60554
+          ],
+          [
+            31875,
+            60398
+          ],
+          [
+            36678,
+            42760
+          ],
+          [
+            37569,
+            57264
+          ],
+          [
+            37671,
+            61320
+          ],
+          [
+            38176,
+            49651
+          ],
+          [
+            38190,
+            61653
+          ],
+          [
+            54447,
+            57264
+          ],
+          [
+            55247,
+            63799
+          ],
+          [
+            59928,
+            63723
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1325,
+            "name": "Golem's Blood",
+            "notable": true,
+            "x": -1059,
+            "y": 6702
+          },
+          {
+            "id": 1822,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 6167,
+            "y": -4895
+          },
+          {
+            "id": 3469,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4038,
+            "y": 5108
+          },
+          {
+            "id": 3644,
+            "name": "Strength",
+            "notable": false,
+            "x": -6469,
+            "y": 4905
+          },
+          {
+            "id": 4177,
+            "name": "Spiritual Aid",
+            "notable": true,
+            "x": -7953,
+            "y": -3870
+          },
+          {
+            "id": 4397,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1378,
+            "y": -4501
+          },
+          {
+            "id": 4502,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 5289,
+            "y": -4328
+          },
+          {
+            "id": 5233,
+            "name": "Strength",
+            "notable": false,
+            "x": -7672,
+            "y": 3505
+          },
+          {
+            "id": 5237,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4260,
+            "y": 7475
+          },
+          {
+            "id": 6289,
+            "name": "Bloodless",
+            "notable": true,
+            "x": -4783,
+            "y": 5426
+          },
+          {
+            "id": 6363,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 2808,
+            "y": 7475
+          },
+          {
+            "id": 7444,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6151,
+            "y": -6038
+          },
+          {
+            "id": 7688,
+            "name": "Enduring Bond",
+            "notable": true,
+            "x": -1861,
+            "y": -4771
+          },
+          {
+            "id": 8544,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 902,
+            "y": 7475
+          },
+          {
+            "id": 11420,
+            "name": "Arcanist's Dominion",
+            "notable": true,
+            "x": -4,
+            "y": -4501
+          },
+          {
+            "id": 11551,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1064,
+            "y": -5547
+          },
+          {
+            "id": 13009,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -3446,
+            "y": -3777
+          },
+          {
+            "id": 14930,
+            "name": "Strength",
+            "notable": false,
+            "x": -5461,
+            "y": 6072
+          },
+          {
+            "id": 15046,
+            "name": "Redemption",
+            "notable": true,
+            "x": -7953,
+            "y": -3870
+          },
+          {
+            "id": 15081,
+            "name": "Minion Damage and Duration",
+            "notable": false,
+            "x": -1861,
+            "y": -4771
+          },
+          {
+            "id": 16544,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3,
+            "y": 7475
+          },
+          {
+            "id": 17735,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4436,
+            "y": -3443
+          },
+          {
             "id": 17821,
             "name": "Mana Regeneration and Life",
             "notable": false,
@@ -752,11 +1174,39 @@
             "y": -3732
           },
           {
+            "id": 18769,
+            "name": "Written in Blood",
+            "notable": true,
+            "x": 6167,
+            "y": -4895
+          },
+          {
+            "id": 18865,
+            "name": "Melding",
+            "notable": true,
+            "x": 2724,
+            "y": -3656
+          },
+          {
+            "id": 19069,
+            "name": "Thick Skin",
+            "notable": true,
+            "x": 4178,
+            "y": 6313
+          },
+          {
             "id": 19103,
             "name": "Righteous Army",
             "notable": true,
             "x": -7953,
             "y": -3870
+          },
+          {
+            "id": 19635,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4,
+            "y": -5547
           },
           {
             "id": 21330,
@@ -778,6 +1228,13 @@
             "notable": false,
             "x": -7672,
             "y": -1435
+          },
+          {
+            "id": 23471,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 3340,
+            "y": 5024
           },
           {
             "id": 24083,
@@ -815,11 +1272,11 @@
             "y": -3870
           },
           {
-            "id": 27203,
-            "name": "Heart and Soul",
-            "notable": true,
-            "x": -4,
-            "y": -4501
+            "id": 27415,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2983,
+            "y": -5106
           },
           {
             "id": 27611,
@@ -843,6 +1300,13 @@
             "y": 7
           },
           {
+            "id": 29937,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1848,
+            "y": 7475
+          },
+          {
             "id": 31471,
             "name": "Life",
             "notable": false,
@@ -857,11 +1321,25 @@
             "y": -4359
           },
           {
+            "id": 32710,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2530,
+            "y": -5617
+          },
+          {
             "id": 34400,
             "name": "Strength",
             "notable": false,
             "x": -4260,
             "y": 7475
+          },
+          {
+            "id": 34678,
+            "name": "Life and Elemental Ailment Avoidance",
+            "notable": false,
+            "x": 4178,
+            "y": 6313
           },
           {
             "id": 36542,
@@ -885,6 +1363,27 @@
             "y": -4439
           },
           {
+            "id": 37671,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2406,
+            "y": -4102
+          },
+          {
+            "id": 38176,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2530,
+            "y": -5617
+          },
+          {
+            "id": 38190,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 6167,
+            "y": -4895
+          },
+          {
             "id": 38989,
             "name": "Minion Damage",
             "notable": false,
@@ -904,6 +1403,13 @@
             "notable": false,
             "x": -7953,
             "y": -3870
+          },
+          {
+            "id": 41635,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2530,
+            "y": -5617
           },
           {
             "id": 42760,
@@ -934,13 +1440,6 @@
             "y": 5426
           },
           {
-            "id": 48362,
-            "name": "Mana and Life",
-            "notable": false,
-            "x": -4,
-            "y": -4501
-          },
-          {
             "id": 49254,
             "name": "Retribution",
             "notable": true,
@@ -948,11 +1447,25 @@
             "y": -2999
           },
           {
+            "id": 49651,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2530,
+            "y": -5617
+          },
+          {
             "id": 54447,
             "name": "WITCH",
             "notable": false,
             "x": -4,
             "y": -3180
+          },
+          {
+            "id": 55247,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 2724,
+            "y": -3656
           },
           {
             "id": 57264,
@@ -997,6 +1510,20 @@
             "y": 7475
           },
           {
+            "id": 61320,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 2724,
+            "y": -3656
+          },
+          {
+            "id": 61653,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 6167,
+            "y": -4895
+          },
+          {
             "id": 63282,
             "name": "Strength",
             "notable": false,
@@ -1009,6 +1536,13 @@
             "notable": false,
             "x": -7672,
             "y": 2424
+          },
+          {
+            "id": 63799,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": 2724,
+            "y": -3656
           },
           {
             "id": 64210,
@@ -1025,9 +1559,11 @@
           "Enduring Bond",
           "Arcanist's Dominion",
           "Redemption",
+          "Written in Blood",
+          "Melding",
+          "Thick Skin",
           "Righteous Army",
           "Quick Recovery",
-          "Heart and Soul",
           "Lord of the Dead",
           "Retribution"
         ]
@@ -4524,7 +5060,7 @@
     "pobRef": "v2.69.0",
     "treeVersion": "3_30",
     "calibrated": false,
-    "checkedAt": "2026-11-25T17:33:45.865Z"
+    "checkedAt": "2026-11-25T17:43:23.271Z"
   },
   "seedHash": "f7b15329177b"
 }

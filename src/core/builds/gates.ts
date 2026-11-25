@@ -1,6 +1,8 @@
 import type { CheckpointMetrics } from './types.ts';
 
 export interface GateThresholds {
+  /** Overrides the global floor: capping your resistances at level 12 is not a thing. */
+  resistanceFloor?: number;
   life?: number;
   ehp?: number;
   maxHit?: number;
@@ -26,7 +28,7 @@ export function evaluateGate(
   resistanceGap = 0,
 ): GateReport {
   const failures: string[] = [];
-  const floor = RESIST_FLOOR - resistanceGap;
+  const floor = thresholds.resistanceFloor ?? RESIST_FLOOR - resistanceGap;
 
   const resistances: [keyof CheckpointMetrics, string][] = [
     ['fireResist', 'fire resistance'],
