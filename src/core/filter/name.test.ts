@@ -44,7 +44,7 @@ describe('filter naming', () => {
         phase: 'leveling',
         strictness: 'soft',
       }),
-    ).toBe('filterpath-minion-leveling-soft.filter');
+    ).toBe('buildpath-minion-leveling-soft.filter');
 
     expect(
       buildFileName({
@@ -53,7 +53,7 @@ describe('filter naming', () => {
         strictness: 'uber',
         name: 'My LA',
       }),
-    ).toBe('filterpath-my-la-endgame-uber.filter');
+    ).toBe('buildpath-my-la-endgame-uber.filter');
   });
 
   it('collapses phase and strictness for from-scratch filters', () => {
@@ -63,7 +63,7 @@ describe('filter naming', () => {
         phase: 'leveling',
         strictness: 'soft',
       }),
-    ).toBe('filterpath-custom-hide-all.filter');
+    ).toBe('buildpath-custom-hide-all.filter');
 
     expect(
       buildFileName({
@@ -72,6 +72,6 @@ describe('filter naming', () => {
         strictness: 'strict',
         name: 'Show me loot',
       }),
-    ).toBe('filterpath-show-me-loot-show-all.filter');
+    ).toBe('buildpath-show-me-loot-show-all.filter');
   });
 });

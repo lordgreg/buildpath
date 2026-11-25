@@ -338,7 +338,7 @@ describe('selection filters', () => {
           expect(validateFilter(filter.text), label).toEqual([]);
           expect(filter.warnings, label).toEqual([]);
           expect(filter.fileName, label).toMatch(
-            /^filterpath-[a-z0-9-]+-(leveling|endgame)-(soft|strict|uber)\.filter$/,
+            /^buildpath-[a-z0-9-]+-(leveling|endgame)-(soft|strict|uber)\.filter$/,
           );
           expect(filter.text, label).not.toMatch(/[^\x09\x0a\x20-\x7e]/);
 
@@ -363,7 +363,7 @@ describe('selection filters', () => {
       strictness: 'soft',
     });
     expect(filter.fileName).toBe(
-      'filterpath-necro-minions-leveling-soft.filter',
+      'buildpath-necro-minions-leveling-soft.filter',
     );
   });
 });

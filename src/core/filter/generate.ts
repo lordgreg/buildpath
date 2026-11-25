@@ -299,7 +299,7 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
 
   const header = [
     '========================================================================',
-    `FilterPath ${compiled.version} - filter format ${FILTER_FORMAT_VERSION}`,
+    `BuildPath ${compiled.version} - filter format ${FILTER_FORMAT_VERSION}`,
     'Build-specific loot filter',
     `Build: ${compiled.archetype.name}${
       compiled.archetype.class
@@ -315,7 +315,7 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
       : [
           `Phase: ${config.phase === 'leveling' ? 'Leveling' : 'Endgame'} - ${STRICTNESS_LABELS_PUBLIC[config.strictness]}`,
         ]),
-    // Lets the folder lister load a FilterPath file back into the builder.
+    // Lets the folder lister load a BuildPath file back into the builder.
     ...(config.selection
       ? [
           `Selection: ${buildHashParams({
@@ -349,7 +349,7 @@ export function generateFilter(config: FilterConfig): GeneratedFilter {
           name: config.buildName,
         })
       : filterNameFor(
-          `filterpath-${compiled.archetype.id}-${config.phase}-${config.strictness}`,
+          `buildpath-${compiled.archetype.id}-${config.phase}-${config.strictness}`,
         ),
     ruleCount: compiled.rules.length,
     baseTypeCount: compiled.baseTypes.length,

@@ -5,27 +5,35 @@ import {
   filterUpdateKind,
   ForeignBackupError,
   isFilterFileName,
-  isFilterPathFileName,
-  isOwnedFilterPathFile,
+  isOwnedFilterFile,
+  isOwnedFilterName,
   listFilterFiles,
   parseFilterHeader,
   probeFilterDirectory,
   readFilterHeader,
   readFilterText,
   removeFilterFile,
-  staleFilterPathFiles,
+  staleFilterFiles,
   writeFilter,
 } from './fileSystem.ts';
 import { generateFilter } from '../core/filter/generate.ts';
 import { PRESET_VERSION } from '../meta/index.ts';
 
-describe('isFilterPathFileName', () => {
-  it('recognises the files FilterPath writes, and only those', () => {
-    expect(isFilterPathFileName('filterpath-minion-leveling-soft.filter')).toBe(
+describe('isOwnedFilterName', () => {
+  it('recognises the files BuildPath writes, and only those', () => {
+    expect(isOwnedFilterName('buildpath-minion-leveling-soft.filter')).toBe(
       true,
     );
-    expect(isFilterPathFileName('FilterPath-custom.filter')).toBe(true);
-    expect(isFilterPathFileName('neversink.filter')).toBe(false);
+    expect(isOwnedFilterName('BuildPath-custom.filter')).toBe(true);
+    expect(isOwnedFilterName('neversink.filter')).toBe(false);
+  });
+
+  it('still recognises files written before the rename', () => {
+    // Filters named filterpath-* may already be in a player's folder.
+    expect(isOwnedFilterName('filterpath-minion-leveling-soft.filter')).toBe(
+      true,
+    );
+    expect(isOwnedFilterName('FilterPath-custom.filter')).toBe(true);
   });
 });
 
@@ -72,7 +80,7 @@ function directory(files: Map<string, string>) {
 }
 
 const HEADER = `# ========================================================================
-# FilterPath 0.10.2 - filter format 1
+# BuildPath 0.10.2 - filter format 1
 # Build: Necromancer Summon Skeletons - Witch / Necromancer
 # League: Covens
 # Presets: abc123
@@ -110,7 +118,7 @@ describe('filter updates', () => {
     ).toBe('presets');
   });
 
-  it('never marks a file FilterPath did not write as outdated', () => {
+  it('never marks a file BuildPath did not write as outdated', () => {
     expect(
       filterUpdateKind(
         { appVersion: null, presetVersion: null },
@@ -145,22 +153,22 @@ describe('filter updates', () => {
   });
 });
 
-describe('isOwnedFilterPathFile', () => {
-  it('needs both the FilterPath name and a FilterPath header', () => {
+describe('isOwnedFilterFile', () => {
+  it('needs both the BuildPath name and a BuildPath header', () => {
     expect(
-      isOwnedFilterPathFile({ name: 'filterpath-x.filter', appVersion: '1.0.0' }),
+      isOwnedFilterFile({ name: 'buildpath-x.filter', appVersion: '1.0.0' }),
     ).toBe(true);
     expect(
-      isOwnedFilterPathFile({ name: 'filterpath-x.filter', appVersion: null }),
+      isOwnedFilterFile({ name: 'buildpath-x.filter', appVersion: null }),
     ).toBe(false);
     expect(
-      isOwnedFilterPathFile({ name: 'neversink.filter', appVersion: '1.0.0' }),
+      isOwnedFilterFile({ name: 'neversink.filter', appVersion: '1.0.0' }),
     ).toBe(false);
   });
 });
 
 describe('generated filters', () => {
-  it('are recognised as FilterPath files by their own header', () => {
+  it('are recognised as BuildPath files by their own header', () => {
     const filter = generateFilter({
       selection: { mode: 'family', familyId: 'minion' },
       phase: 'leveling',
@@ -174,45 +182,45 @@ describe('generated filters', () => {
       selection: expect.stringContaining('mode=family'),
     });
     expect(
-      isOwnedFilterPathFile({ name: filter.fileName, appVersion: header.appVersion }),
+      isOwnedFilterFile({ name: filter.fileName, appVersion: header.appVersion }),
     ).toBe(true);
   });
 });
 
-describe('staleFilterPathFiles', () => {
+describe('staleFilterFiles', () => {
   const file = (
     name: string,
     appVersion: string | null,
     presetVersion: string | null,
   ) => ({ name, appVersion, presetVersion, formatVersion: appVersion ? 1 : null });
 
-  it('lists only outdated FilterPath files other than the current one', () => {
+  it('lists only outdated BuildPath files other than the current one', () => {
     const files = [
-      file('filterpath-old.filter', '0.9.0', 'abc'),
-      file('filterpath-current.filter', '0.9.0', 'abc'),
-      file('filterpath-fresh.filter', '1.0.0', 'abc'),
-      file('filterpath-newer.filter', '2.0.0', 'zzz'),
-      file('filterpath-foreign.filter', null, null),
+      file('buildpath-old.filter', '0.9.0', 'abc'),
+      file('buildpath-current.filter', '0.9.0', 'abc'),
+      file('buildpath-fresh.filter', '1.0.0', 'abc'),
+      file('buildpath-newer.filter', '2.0.0', 'zzz'),
+      file('buildpath-foreign.filter', null, null),
       file('neversink.filter', null, null),
     ];
     expect(
-      staleFilterPathFiles(files, 'filterpath-current.filter', '1.0.0', 'abc').map(
+      staleFilterFiles(files, 'buildpath-current.filter', '1.0.0', 'abc').map(
         (entry) => entry.name,
       ),
-    ).toEqual(['filterpath-old.filter']);
+    ).toEqual(['buildpath-old.filter']);
   });
 
   it('matches the current file whatever its letter case', () => {
-    const files = [file('FilterPath-Current.filter', '0.9.0', 'abc')];
+    const files = [file('BuildPath-Current.filter', '0.9.0', 'abc')];
     expect(
-      staleFilterPathFiles(files, 'filterpath-current.filter', '1.0.0', 'abc'),
+      staleFilterFiles(files, 'buildpath-current.filter', '1.0.0', 'abc'),
     ).toEqual([]);
   });
 
   it('keeps a file from the same release whose preset hash differs', () => {
     // Which of the two is newer cannot be told from the hash alone.
-    const files = [file('filterpath-x.filter', '1.0.0', 'other')];
-    expect(staleFilterPathFiles(files, 'filterpath-y.filter', '1.0.0', 'abc')).toEqual(
+    const files = [file('buildpath-x.filter', '1.0.0', 'other')];
+    expect(staleFilterFiles(files, 'buildpath-y.filter', '1.0.0', 'abc')).toEqual(
       [],
     );
   });
@@ -220,17 +228,17 @@ describe('staleFilterPathFiles', () => {
 
 describe('filter files', () => {
   it('reads a file header and text, and reports a missing file', async () => {
-    const files = new Map([['FilterPath.filter', HEADER]]);
+    const files = new Map([['BuildPath.filter', HEADER]]);
     const handle = directory(files);
 
-    expect(await readFilterHeader(handle, 'FilterPath.filter')).toEqual({
+    expect(await readFilterHeader(handle, 'BuildPath.filter')).toEqual({
       appVersion: '0.10.2',
       formatVersion: 1,
       presetVersion: 'abc123',
       build: 'Necromancer Summon Skeletons - Witch / Necromancer',
       selection: null,
     });
-    expect(await readFilterText(handle, 'FilterPath.filter')).toBe(HEADER);
+    expect(await readFilterText(handle, 'BuildPath.filter')).toBe(HEADER);
     expect(await readFilterHeader(handle, 'missing.filter')).toBeNull();
     expect(await readFilterText(handle, 'missing.filter')).toBeNull();
   });
@@ -244,7 +252,7 @@ describe('filter files', () => {
       async *values() {
         yield {
           kind: 'file',
-          name: 'FilterPath.filter',
+          name: 'BuildPath.filter',
           async getFile() {
             return {
               size: 100_000,
@@ -267,13 +275,13 @@ describe('filter files', () => {
 
     const listed = await listFilterFiles(handle);
     expect(listed[0]).toMatchObject({
-      name: 'FilterPath.filter',
+      name: 'BuildPath.filter',
       appVersion: '0.10.2',
       presetVersion: 'abc123',
     });
   });
 
-  it('parses the FilterPath header', () => {
+  it('parses the BuildPath header', () => {
     expect(parseFilterHeader(HEADER)).toEqual({
       appVersion: '0.10.2',
       formatVersion: 1,
@@ -290,8 +298,14 @@ describe('filter files', () => {
     });
   });
 
+  it('parses a header written before the rename', () => {
+    expect(
+      parseFilterHeader('# FilterPath 0.40.0 - filter format 2').appVersion,
+    ).toBe('0.40.0');
+  });
+
   it('reads the header only from the leading comment block', () => {
-    const foreign = `# NeverSink's filter\n\nShow\n# FilterPath 1.0.0 - filter format 1\n# Presets: abc\n`;
+    const foreign = `# NeverSink's filter\n\nShow\n# BuildPath 1.0.0 - filter format 1\n# Presets: abc\n`;
     expect(parseFilterHeader(foreign)).toMatchObject({
       appVersion: null,
       presetVersion: null,
@@ -310,110 +324,110 @@ describe('filter files', () => {
   });
 
   it('recognises filter names and backups', () => {
-    expect(isFilterFileName('FilterPath.filter')).toBe(true);
-    expect(isFilterFileName('FilterPath.filter.bak')).toBe(false);
+    expect(isFilterFileName('BuildPath.filter')).toBe(true);
+    expect(isFilterFileName('BuildPath.filter.bak')).toBe(false);
     expect(backupName('a.filter')).toBe('a.filter.bak');
   });
 
   it('lists only filter files with their versions', async () => {
     const files = new Map([
-      ['FilterPath-old.filter', HEADER],
+      ['BuildPath-old.filter', HEADER],
       ['notes.txt', 'ignore'],
     ]);
     const listed = await listFilterFiles(directory(files));
     expect(listed).toHaveLength(1);
     expect(listed[0]).toMatchObject({
-      name: 'FilterPath-old.filter',
+      name: 'BuildPath-old.filter',
       appVersion: '0.10.2',
       formatVersion: 1,
     });
   });
 
   it('backs up the previous contents before overwriting', async () => {
-    const files = new Map([['FilterPath.filter', 'old text']]);
+    const files = new Map([['BuildPath.filter', 'old text']]);
     const result = await writeFilter(
       directory(files),
-      'FilterPath.filter',
+      'BuildPath.filter',
       'new text',
     );
-    expect(result.backup).toBe('FilterPath.filter.bak');
-    expect(files.get('FilterPath.filter.bak')).toBe('old text');
-    expect(files.get('FilterPath.filter')).toBe('new text');
+    expect(result.backup).toBe('BuildPath.filter.bak');
+    expect(files.get('BuildPath.filter.bak')).toBe('old text');
+    expect(files.get('BuildPath.filter')).toBe('new text');
   });
 
   it('creates a new filter without a backup', async () => {
     const files = new Map([['other.filter', 'keep me']]);
     const result = await writeFilter(
       directory(files),
-      'FilterPath.filter',
+      'BuildPath.filter',
       'new text',
     );
     expect(result.backup).toBeNull();
-    expect(files.get('FilterPath.filter')).toBe('new text');
+    expect(files.get('BuildPath.filter')).toBe('new text');
     expect(files.get('other.filter')).toBe('keep me');
   });
 
-  it('backs up over an earlier FilterPath backup', async () => {
+  it('backs up over an earlier BuildPath backup', async () => {
     const files = new Map([
-      ['filterpath-a.filter', `${HEADER}new`],
-      ['filterpath-a.filter.bak', `${HEADER}old`],
+      ['buildpath-a.filter', `${HEADER}new`],
+      ['buildpath-a.filter.bak', `${HEADER}old`],
     ]);
-    await writeFilter(directory(files), 'filterpath-a.filter', 'newest');
-    expect(files.get('filterpath-a.filter.bak')).toBe(`${HEADER}new`);
-    expect(files.get('filterpath-a.filter')).toBe('newest');
+    await writeFilter(directory(files), 'buildpath-a.filter', 'newest');
+    expect(files.get('buildpath-a.filter.bak')).toBe(`${HEADER}new`);
+    expect(files.get('buildpath-a.filter')).toBe('newest');
   });
 
-  it('refuses to overwrite a backup FilterPath did not write', async () => {
+  it('refuses to overwrite a backup BuildPath did not write', async () => {
     const files = new Map([
-      ['filterpath-a.filter', `${HEADER}mine`],
-      ['filterpath-a.filter.bak', 'my original hand-made filter'],
+      ['buildpath-a.filter', `${HEADER}mine`],
+      ['buildpath-a.filter.bak', 'my original hand-made filter'],
     ]);
     await expect(
-      writeFilter(directory(files), 'filterpath-a.filter', 'new'),
+      writeFilter(directory(files), 'buildpath-a.filter', 'new'),
     ).rejects.toBeInstanceOf(ForeignBackupError);
-    expect(files.get('filterpath-a.filter.bak')).toBe(
+    expect(files.get('buildpath-a.filter.bak')).toBe(
       'my original hand-made filter',
     );
-    expect(files.get('filterpath-a.filter')).toBe(`${HEADER}mine`);
+    expect(files.get('buildpath-a.filter')).toBe(`${HEADER}mine`);
   });
 
   it('overwrites an empty backup', async () => {
     const files = new Map([
-      ['filterpath-a.filter', `${HEADER}mine`],
-      ['filterpath-a.filter.bak', ''],
+      ['buildpath-a.filter', `${HEADER}mine`],
+      ['buildpath-a.filter.bak', ''],
     ]);
-    await writeFilter(directory(files), 'filterpath-a.filter', 'new');
-    expect(files.get('filterpath-a.filter.bak')).toBe(`${HEADER}mine`);
+    await writeFilter(directory(files), 'buildpath-a.filter', 'new');
+    expect(files.get('buildpath-a.filter.bak')).toBe(`${HEADER}mine`);
   });
 
   it('removes a filter and its backup, leaving other files alone', async () => {
     const files = new Map([
-      ['filterpath-a.filter', `${HEADER}current`],
-      ['filterpath-a.filter.bak', `${HEADER}previous`],
+      ['buildpath-a.filter', `${HEADER}current`],
+      ['buildpath-a.filter.bak', `${HEADER}previous`],
       ['other.filter', 'keep me'],
     ]);
-    await removeFilterFile(directory(files), 'filterpath-a.filter');
-    expect(files.has('filterpath-a.filter')).toBe(false);
-    expect(files.has('filterpath-a.filter.bak')).toBe(false);
+    await removeFilterFile(directory(files), 'buildpath-a.filter');
+    expect(files.has('buildpath-a.filter')).toBe(false);
+    expect(files.has('buildpath-a.filter.bak')).toBe(false);
     expect(files.get('other.filter')).toBe('keep me');
   });
 
-  it('refuses to remove a file FilterPath did not write', async () => {
-    const files = new Map([['filterpath-x.filter', 'a foreign filter']]);
+  it('refuses to remove a file BuildPath did not write', async () => {
+    const files = new Map([['buildpath-x.filter', 'a foreign filter']]);
     await expect(
-      removeFilterFile(directory(files), 'filterpath-x.filter'),
+      removeFilterFile(directory(files), 'buildpath-x.filter'),
     ).rejects.toThrow();
-    expect(files.get('filterpath-x.filter')).toBe('a foreign filter');
+    expect(files.get('buildpath-x.filter')).toBe('a foreign filter');
   });
 
-  it('keeps a backup FilterPath did not write when removing', async () => {
+  it('keeps a backup BuildPath did not write when removing', async () => {
     const files = new Map([
-      ['filterpath-a.filter', `${HEADER}current`],
-      ['filterpath-a.filter.bak', 'my original hand-made filter'],
+      ['buildpath-a.filter', `${HEADER}current`],
+      ['buildpath-a.filter.bak', 'my original hand-made filter'],
     ]);
-    await removeFilterFile(directory(files), 'filterpath-a.filter');
-    expect(files.has('filterpath-a.filter')).toBe(false);
-    expect(files.get('filterpath-a.filter.bak')).toBe(
+    await removeFilterFile(directory(files), 'buildpath-a.filter');
+    expect(files.has('buildpath-a.filter')).toBe(false);
+    expect(files.get('buildpath-a.filter.bak')).toBe(
       'my original hand-made filter',
     );
   });

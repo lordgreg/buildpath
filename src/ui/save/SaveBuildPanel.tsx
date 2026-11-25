@@ -3,8 +3,8 @@ import type { Rule } from '../../core/filter/types.ts';
 import { PRESET_VERSION } from '../../meta/index.ts';
 import {
   filterUpdateKind,
-  isOwnedFilterPathFile,
-  staleFilterPathFiles,
+  isOwnedFilterFile,
+  staleFilterFiles,
   type FilterFileInfo,
 } from '../../sync/fileSystem.ts';
 import { copyText, downloadFilter } from '../download.ts';
@@ -90,7 +90,7 @@ export default function SaveBuildPanel({
         : platform === 'mac'
           ? 'macOS'
           : 'OS unknown';
-  const staleFiles = staleFilterPathFiles(
+  const staleFiles = staleFilterFiles(
     folder.files,
     fileName,
     appVersion,
@@ -502,7 +502,7 @@ export default function SaveBuildPanel({
                             Load
                           </button>
                         )}
-                        {isOwnedFilterPathFile(file) && (
+                        {isOwnedFilterFile(file) && (
                           <button
                             type="button"
                             onClick={() => {

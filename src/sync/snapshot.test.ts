@@ -27,7 +27,7 @@ const RULES: Rule[] = [
 
 function request(overrides: Partial<AutoWriteRequest> = {}): AutoWriteRequest {
   return {
-    fileName: 'filterpath-minion-leveling-soft.filter',
+    fileName: 'buildpath-minion-leveling-soft.filter',
     text: 'new text',
     selection: { mode: 'family', familyId: 'minion' },
     rules: RULES,
@@ -43,7 +43,7 @@ function request(overrides: Partial<AutoWriteRequest> = {}): AutoWriteRequest {
 function snapshot(overrides: Partial<WriteSnapshot> = {}): WriteSnapshot {
   return {
     ...snapshotFor({
-      fileName: 'filterpath-minion-leveling-soft.filter',
+      fileName: 'buildpath-minion-leveling-soft.filter',
       selection: { mode: 'family', familyId: 'minion' },
       rules: RULES,
       text: 'old text',

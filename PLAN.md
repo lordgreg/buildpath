@@ -118,7 +118,7 @@ dropdown only shows the file name.
   structure. Bump it when a consumer must notice a change.
 - Header: `# BuildPath <app version> - filter format <n>` plus
   `# Presets: <preset hash>`.
-- File name: `filterpath-<name>-<phase>-<strictness>.filter`; the version is
+- File name: `buildpath-<name>-<phase>-<strictness>.filter`; the version is
   deliberately **not** in the name, so the in-game selection survives releases.
 - The header is the source of truth for staleness. Directory sync reads the
   preset hash and app version of the current file and tells the user it is
@@ -171,7 +171,7 @@ build instead of the user's filter.
 The dropdown mixes local files and online filters, so "the filter loaded" does
 not prove the right one is selected.
 
-- The selected local filter appears as `filterpath-...filter` in the in-game
+- The selected local filter appears as `buildpath-...filter` in the in-game
   dropdown; the header, not the filename, carries the version and preset hash.
 - Online filters live in `OnlineFilters/` under
   `Documents/My Games/Path of Exile` and use opaque IDs. `item_filter=<id>` in
@@ -215,9 +215,9 @@ Common:
 
 - Phase and strictness apply in every mode; sections are always included.
 - File names are stable across releases:
-  - `filterpath-family-<family>-<lev|end>-<strictness>.filter`
-  - `filterpath-<ascendancy>-<lev|end>-<strictness>.filter`
-  - `filterpath-<skill>-<ascendancy>-<lev|end>-<strictness>.filter`
+  - `buildpath-family-<family>-<lev|end>-<strictness>.filter`
+  - `buildpath-<ascendancy>-<lev|end>-<strictness>.filter`
+  - `buildpath-<skill>-<ascendancy>-<lev|end>-<strictness>.filter`
 - URL: `#mode=family|ascendancy|meta&...`.
 - Old cascade links and the 12 interim links resolve to the closest mode.
 
@@ -277,7 +277,7 @@ The preset is **locked and never cloned**. Users add rules on top of it.
 - **One identity** — the builder and the loot simulator show the exact filename
   being edited. The build name travels in the share hash, so the loot simulator
   never shows a stale filter.
-- **Filename pattern** — `filterpath-<name>-<phase>-<strictness>.filter`. The
+- **Filename pattern** — `buildpath-<name>-<phase>-<strictness>.filter`. The
   version and preset hash live in the header. From Scratch collapses
   phase/strictness into `hide-all` or `show-all`.
 - **Automatic name** — an empty name resolves from the selection: family id,
@@ -300,7 +300,7 @@ The preset is **locked and never cloned**. Users add rules on top of it.
   codes with an older preset hash show a refresh notice.
 - **Stale cleanup** — when the connected folder holds stale BuildPath filters,
   the sync panel offers a confirmed "Remove N outdated" action that deletes
-  those files and their own `.bak` copies. Ownership means a `filterpath-` name
+  those files and their own `.bak` copies. Ownership means a `buildpath-` name
   and a BuildPath header in the leading comment block; the current file, newer
   or unrecognised versions, and a `.bak` BuildPath did not write are never
   touched, and neither are unrelated files.

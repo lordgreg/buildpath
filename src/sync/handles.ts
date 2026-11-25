@@ -73,7 +73,7 @@ async function readSnapshots(): Promise<SnapshotMap> {
   }
 }
 
-/** What FilterPath last wrote to this file, if it is still remembered. */
+/** What BuildPath last wrote to this file, if it is still remembered. */
 export async function loadWriteSnapshot(
   fileName: string,
 ): Promise<WriteSnapshot | null> {

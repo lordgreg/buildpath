@@ -62,7 +62,7 @@ describe('generateFilter', () => {
           expect(filter.text, label).toContain('Show');
           expect(filter.text, label).toContain(archetype.name);
           expect(filter.fileName, label).toMatch(
-            /^filterpath-[a-z0-9-]+-(leveling|endgame)-(soft|strict|uber)\.filter$/,
+            /^buildpath-[a-z0-9-]+-(leveling|endgame)-(soft|strict|uber)\.filter$/,
           );
           // The game client reads filters as plain text; keep it ASCII.
           expect(filter.text, label).not.toMatch(/[^\x09\x0a\x20-\x7e]/);
@@ -134,10 +134,10 @@ describe('generateFilter', () => {
       version: '9.9.9',
     });
 
-    expect(filter.text).toContain('# FilterPath 9.9.9 - filter format 2');
+    expect(filter.text).toContain('# BuildPath 9.9.9 - filter format 2');
     expect(filter.text).toMatch(/^# Presets: [a-f0-9]+$/m);
     expect(filter.fileName).toBe(
-      'filterpath-necro-minions-leveling-soft.filter',
+      'buildpath-necro-minions-leveling-soft.filter',
     );
   });
 

@@ -101,7 +101,7 @@ describe('from scratch', () => {
     expect(filter.text).toContain('# From scratch - hide everything');
     expect(filter.text).not.toContain('# helmet - rare');
     expect(filter.fileName).toBe(
-      'filterpath-custom-hide-all.filter',
+      'buildpath-custom-hide-all.filter',
     );
   });
 

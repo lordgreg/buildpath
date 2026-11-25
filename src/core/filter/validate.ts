@@ -745,7 +745,7 @@ export function filterNameFor(name: string): string {
     .replace(/\.{2,}/g, '.')
     .replace(/^[.\s]+|[.\s]+$/g, '')
     .trim();
-  if (!base) return 'FilterPath.filter';
+  if (!base) return 'BuildPath.filter';
   return base.endsWith('.filter') ? base : `${base}.filter`;
 }
 

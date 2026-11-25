@@ -1198,7 +1198,7 @@ export default function Wizard() {
           <p className="mt-3 text-xs text-zinc-500">
             Online filters synced to your PoE account appear in the same
             dropdown but are separate files. The entry starts with{' '}
-            <span className="text-zinc-300">filterpath-</span>.
+            <span className="text-zinc-300">buildpath-</span>.
           </p>
           <p className="mt-2 text-xs text-zinc-500">
             Seeing items that should be hidden? Check which filter is selected;

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import {
   ensurePermission,
   ForeignBackupError,
-  isOwnedFilterPathFile,
+  isOwnedFilterFile,
   listFilterFiles,
   pickFiltersDirectory,
   probeFilterDirectory,
@@ -229,7 +229,7 @@ export function useFiltersFolder(): FiltersFolder {
         if (
           existing &&
           confirmOverwrite &&
-          !isOwnedFilterPathFile(existing) &&
+          !isOwnedFilterFile(existing) &&
           !window.confirm(
             `Overwrite ${name}? The previous version is kept as ${name}.bak.`,
           )

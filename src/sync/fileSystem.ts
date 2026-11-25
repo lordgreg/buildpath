@@ -21,7 +21,7 @@ export interface FilterHeader {
 }
 
 /**
- * The comment block at the very top of the file. A FilterPath header only
+ * The comment block at the very top of the file. A BuildPath header only
  * counts there, so a foreign filter that quotes one further down is not ours.
  */
 function leadingComments(text: string): string {
@@ -35,7 +35,8 @@ function leadingComments(text: string): string {
 
 export function parseFilterHeader(text: string): FilterHeader {
   const header = leadingComments(text);
-  const version = /^# FilterPath (\S+) - filter format (\d+)\s*$/m.exec(header);
+  const version =
+    /^# (?:BuildPath|FilterPath) (\S+) - filter format (\d+)\s*$/m.exec(header);
   const build = /^# Build: (.+)$/m.exec(header);
   const presets = /^# Presets: (.+)$/m.exec(header);
   const selection = /^# Selection: (.+)$/m.exec(header);
@@ -65,10 +66,10 @@ export type FilterUpdateKind = 'presets' | 'version' | null;
 
 /**
  * Presets take precedence: an old preset hash means the rules are out of date.
- * Only files FilterPath wrote can be outdated, and never one written by a newer
+ * Only files BuildPath wrote can be outdated, and never one written by a newer
  * or unrecognised release: an older open tab must not replace it. A different
  * preset hash within the same release cannot be ordered, so it is reported but
- * never removed in bulk (see `staleFilterPathFiles`).
+ * never removed in bulk (see `staleFilterFiles`).
  */
 export function filterUpdateKind(
   file: Pick<FilterHeader, 'appVersion' | 'presetVersion'> &
@@ -96,21 +97,21 @@ export function isFilterFileName(name: string): boolean {
 }
 
 /**
- * Files named like FilterPath's own. The name alone does not prove FilterPath
- * wrote the file; use `isOwnedFilterPathFile` before deleting or overwriting.
+ * Files named like BuildPath's own. The name alone does not prove BuildPath
+ * wrote the file; use `isOwnedFilterFile` before deleting or overwriting.
  */
-export function isFilterPathFileName(name: string): boolean {
-  return /^filterpath-/i.test(name);
+export function isOwnedFilterName(name: string): boolean {
+  return /^(?:buildpath|filterpath)-/i.test(name);
 }
 
 /**
- * A file FilterPath wrote: its name and its leading header both say so. Only
+ * A file BuildPath wrote: its name and its leading header both say so. Only
  * these are overwritten without asking or offered for removal.
  */
-export function isOwnedFilterPathFile(
+export function isOwnedFilterFile(
   file: Pick<FilterFileInfo, 'name' | 'appVersion'>,
 ): boolean {
-  return isFilterPathFileName(file.name) && file.appVersion !== null;
+  return isOwnedFilterName(file.name) && file.appVersion !== null;
 }
 
 export function sameFileName(a: string, b: string): boolean {
@@ -119,10 +120,10 @@ export function sameFileName(a: string, b: string): boolean {
 }
 
 /**
- * Outdated FilterPath files that may be bulk-removed: written by a strictly
+ * Outdated BuildPath files that may be bulk-removed: written by a strictly
  * older release, and never the current file.
  */
-export function staleFilterPathFiles<
+export function staleFilterFiles<
   T extends Pick<
     FilterFileInfo,
     'name' | 'appVersion' | 'presetVersion' | 'formatVersion'
@@ -136,19 +137,19 @@ export function staleFilterPathFiles<
   return files.filter(
     (file) =>
       !sameFileName(file.name, currentName) &&
-      isOwnedFilterPathFile(file) &&
+      isOwnedFilterFile(file) &&
       compareVersions(file.appVersion!, appVersion) === -1 &&
       filterUpdateKind(file, appVersion, presetVersion) !== null,
   );
 }
 
-/** The `.bak` next to a filter holds a file FilterPath did not write. */
+/** The `.bak` next to a filter holds a file BuildPath did not write. */
 export class ForeignBackupError extends Error {
   readonly backup: string;
 
   constructor(backup: string) {
     super(
-      `${backup} holds a filter FilterPath did not write. Move or rename it, then try again.`,
+      `${backup} holds a filter BuildPath did not write. Move or rename it, then try again.`,
     );
     this.name = 'ForeignBackupError';
     this.backup = backup;
@@ -238,11 +239,11 @@ export async function probeFilterDirectory(
     readable = false;
   }
 
-  const probeName = `.filterpath-write-test-${Date.now()}`;
+  const probeName = `.buildpath-write-test-${Date.now()}`;
   try {
     const file = await handle.getFileHandle(probeName, { create: true });
     const stream = await file.createWritable();
-    await stream.write('FilterPath write test');
+    await stream.write('BuildPath write test');
     await stream.close();
   } catch {
     return { read: readable, write: readable ? 'read-only' : 'error' };
@@ -286,8 +287,8 @@ export async function listFilterFiles(
 }
 
 /**
- * Removes one FilterPath file and its `.bak` copy. Throws, touching nothing,
- * when the file's header shows FilterPath did not write it; a `.bak` FilterPath
+ * Removes one BuildPath file and its `.bak` copy. Throws, touching nothing,
+ * when the file's header shows BuildPath did not write it; a `.bak` BuildPath
  * did not write is left in place.
  */
 export async function removeFilterFile(
@@ -295,8 +296,11 @@ export async function removeFilterFile(
   name: string,
 ): Promise<void> {
   const header = await readHeader(handle, name);
-  if (!header || !isOwnedFilterPathFile({ name, appVersion: header.appVersion })) {
-    throw new Error(`${name} was not written by FilterPath; not removed.`);
+  if (
+    !header ||
+    !isOwnedFilterFile({ name, appVersion: header.appVersion })
+  ) {
+    throw new Error(`${name} was not written by BuildPath; not removed.`);
   }
   await handle.removeEntry(name);
   try {
@@ -310,7 +314,7 @@ export async function removeFilterFile(
 /**
  * Writes a filter, keeping a single `<name>.bak` copy of the previous contents.
  * Never deletes or touches other files, and never overwrites a `.bak` that
- * FilterPath did not write (throws `ForeignBackupError` instead).
+ * BuildPath did not write (throws `ForeignBackupError` instead).
  */
 export async function writeFilter(
   handle: FileSystemDirectoryHandle,

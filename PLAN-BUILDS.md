@@ -5,7 +5,7 @@
 Verified build guides, with the loot filter as one output instead of the whole
 product.
 
-FilterPath proved that a static, account-free site can generate a correct,
+BuildPath inherits a static, account-free site can generate a correct,
 build-specific `.filter`. This plan turns the same engine inside out: a **build**
 becomes the primary object, and the guide, the PoB code and the filter are all
 renderings of it.
@@ -275,7 +275,7 @@ ladder API ───► characters ─► normalize ─► cluster   → .cache/
                                    │
                  model prose (placeholders) ─► guide.* with factsHash
                                    ▼
-                     builds.html / build.html  +  filterpath-<build>-*.filter
+                     builds.html / build.html  +  buildpath-<build>-*.filter
 ```
 
 | Script | Job |

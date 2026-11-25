@@ -39,7 +39,7 @@ export function resolveBuildName(
 }
 
 /**
- * `filterpath-<name>-<phase>-<strictness>.filter`. The version lives in the
+ * `buildpath-<name>-<phase>-<strictness>.filter`. The version lives in the
  * header, so the filename stays stable across releases. From-scratch filters
  * have no phase or strictness, so both collapse into hide-all/show-all.
  */
@@ -54,8 +54,8 @@ export function buildFileName(input: {
   if (input.selection.mode === 'scratch') {
     const start =
       input.selection.scratchStart === 'show' ? 'show-all' : 'hide-all';
-    return `filterpath-${name}-${start}.filter`;
+    return `buildpath-${name}-${start}.filter`;
   }
 
-  return `filterpath-${name}-${input.phase}-${input.strictness}.filter`;
+  return `buildpath-${name}-${input.phase}-${input.strictness}.filter`;
 }

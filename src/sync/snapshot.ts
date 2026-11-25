@@ -3,7 +3,7 @@ import type { BuildSelection } from '../meta/types.ts';
 import type { FilterHeader } from './fileSystem.ts';
 
 /**
- * What FilterPath wrote to one file, kept next to the directory handle. It
+ * What BuildPath wrote to one file, kept next to the directory handle. It
  * records the exact state the file came from, so an automatic rewrite can only
  * happen when the builder still holds that state and the file is untouched.
  */
@@ -140,7 +140,7 @@ export interface AutoWriteFiles {
 /**
  * Rewrites an outdated filter, but only when the write is proven to be the same
  * build: the stored snapshot matches the live selection and My rules, the file
- * on disk is byte-for-byte what FilterPath wrote, and the new header reads back
+ * on disk is byte-for-byte what BuildPath wrote, and the new header reads back
  * as expected. Anything else leaves the file alone.
  */
 export async function autoWriteVerified(

@@ -34,7 +34,7 @@ builds API.
 - Chromium folder writing with OS-aware path hints, a read/write check and `.bak` backups
 - Brave users get the `brave://flags/#file-system-access-api` step directly in the panel
 - Stable file name and version/preset hash in the header, e.g.
-  `filterpath-minion-leveling-soft.filter`; names are optional and derived
+  `buildpath-minion-leveling-soft.filter`; names are optional and derived
   from the selection when empty
 - A connected filter is rewritten automatically only when a stored snapshot
   proves it is the same build and the file is untouched; otherwise the panel

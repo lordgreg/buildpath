@@ -107,7 +107,7 @@ describe('parseFilter', () => {
   it('drops header comments and keeps the first block comment', () => {
     const text = [
       '# ========================================================================',
-      '# FilterPath 0.33.2',
+      '# BuildPath 0.33.2',
       '# ========================================================================',
       '',
       '# first',

@@ -91,14 +91,14 @@ describe('validateFilter', () => {
 
 describe('filterNameFor', () => {
   it('keeps a safe name', () => {
-    expect(filterNameFor('FilterPath-necro-minions-leveling-normal')).toBe(
-      'FilterPath-necro-minions-leveling-normal.filter',
+    expect(filterNameFor('BuildPath-necro-minions-leveling-normal')).toBe(
+      'BuildPath-necro-minions-leveling-normal.filter',
     );
   });
 
   it('keeps a versioned name', () => {
-    expect(filterNameFor('FilterPath-v0.2.0-necro-minions-leveling-normal')).toBe(
-      'FilterPath-v0.2.0-necro-minions-leveling-normal.filter',
+    expect(filterNameFor('BuildPath-v0.2.0-necro-minions-leveling-normal')).toBe(
+      'BuildPath-v0.2.0-necro-minions-leveling-normal.filter',
     );
   });
 
@@ -106,7 +106,7 @@ describe('filterNameFor', () => {
     expect(filterNameFor('../../evil:name*')).toBe('evilname.filter');
   });
 
-  it('falls back to FilterPath', () => {
-    expect(filterNameFor('***')).toBe('FilterPath.filter');
+  it('falls back to BuildPath', () => {
+    expect(filterNameFor('***')).toBe('BuildPath.filter');
   });
 });
