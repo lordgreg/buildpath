@@ -2,6 +2,16 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.64.0 — 2026-11-26
+
+The paste follows the step.
+
+- The breadth list now names each build instead of showing `Juggernaut` twice with no context: each link keeps the build name and the ascendancy as a muted suffix.
+- `auto-retry` is explained where it appears: signed means reviewed, auto-retry means generated from declared facts and passing checks but not signed, stale means the facts moved after sign-off and the section is not published.
+- The pobb.in link now follows the step picker. Verification writes a code for every checkpoint, the release publisher creates one paste per step, and the page links the selected step. Gear, gems and the passive tree therefore match the level you are reading, not always the maps-red build. The canonical maps-red `.pob` asset remains for the published evidence.
+- The publisher retries pobb.in rate limits; this release creates 36 step pastes across six builds.
+- 622 tests.
+
 ## 0.63.0 — 2026-11-26
 
 Patch facts, delisting and the league window.
