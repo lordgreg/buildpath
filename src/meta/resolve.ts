@@ -66,6 +66,9 @@ export function resolveFamily(familyId: string): Archetype {
     ...(family.excludedBases
       ? { excludedBases: family.excludedBases }
       : {}),
+    ...(family.excludedMagicBases
+      ? { excludedMagicBases: family.excludedMagicBases }
+      : {}),
     leveling: true,
     verifiedFor: verifiedFor(),
     familyId: family.id,
@@ -91,6 +94,8 @@ export function resolveAscendancy(ascendancyId: string): Archetype {
         : family.offhand;
   const weapon = ascendancy.weapon ?? family.weapon;
   const excludedBases = ascendancy.excludedBases ?? family.excludedBases;
+  const excludedMagicBases =
+    ascendancy.excludedMagicBases ?? family.excludedMagicBases;
 
   return {
     id: ascendancy.id,
@@ -98,6 +103,7 @@ export function resolveAscendancy(ascendancyId: string): Archetype {
     class: ascendancy.class,
     ascendancy: ascendancy.name,
     ...(excludedBases ? { excludedBases } : {}),
+    ...(excludedMagicBases ? { excludedMagicBases } : {}),
     summary: `Default ${family.name.toLowerCase()} loadout: ${loadoutLabel(weapon, offhand)}.`,
     leveling: true,
     verifiedFor: verifiedFor(),
@@ -128,6 +134,8 @@ export function resolveMeta(selection: BuildSelection): Archetype {
         : family.offhand;
   const weapon = skill.weapon ?? family.weapon;
   const excludedBases = ascendancy.excludedBases ?? family.excludedBases;
+  const excludedMagicBases =
+    ascendancy.excludedMagicBases ?? family.excludedMagicBases;
 
   return {
     id: `${ascendancy.id}-${skill.id}`,
@@ -135,6 +143,7 @@ export function resolveMeta(selection: BuildSelection): Archetype {
     class: ascendancy.class,
     ascendancy: ascendancy.name,
     ...(excludedBases ? { excludedBases } : {}),
+    ...(excludedMagicBases ? { excludedMagicBases } : {}),
     summary: `${family.name} profile for ${skill.name}: ${loadoutLabel(weapon, offhand)}.`,
     leveling: skill.leveling,
     verifiedFor: getSnapshot(leagueId).league.name,

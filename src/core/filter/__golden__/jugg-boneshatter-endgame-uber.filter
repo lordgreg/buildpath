@@ -4,8 +4,8 @@
 # Build: Boneshatter Juggernaut - Marauder / Juggernaut
 # Phase: Endgame - Uber
 # League: Covens
-# Presets: 4ff57b13c4e6
-# Rules: 73 - Base types: 64
+# Presets: 796364c6795e
+# Rules: 78 - Base types: 64
 # Base data: RePoE 1d825f53356023dee0fbb3ec23d94057da8fe0ac (4f01123d)
 # Generated at https://lordgreg.github.io/buildpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -47,6 +47,31 @@ Show
     SetBorderColor 120 230 140 255
     SetBackgroundColor 20 26 58 255
     MinimapIcon 1 Green Hexagon
+
+# Chain Belt (normal) - excluded base
+Hide
+    BaseType == "Chain Belt"
+    Rarity Normal
+
+# Chain Belt (magic) - excluded base
+Hide
+    BaseType == "Chain Belt"
+    Rarity Magic
+
+# Chain Belt (rare) - excluded base
+Hide
+    BaseType == "Chain Belt"
+    Rarity Rare
+
+# Paua Ring (normal) - excluded base, rare kept
+Hide
+    BaseType == "Paua Ring"
+    Rarity Normal
+
+# Paua Ring (magic) - excluded base, rare kept
+Hide
+    BaseType == "Paua Ring"
+    Rarity Magic
 
 # helmet - rare
 Show

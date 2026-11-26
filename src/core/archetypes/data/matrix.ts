@@ -123,6 +123,8 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Two-handed mace trauma stacking with enough armour to ignore it.',
     leveling: true,
     verifiedFor: 'Covens',
+    excludedBases: ['Chain Belt'],
+    excludedMagicBases: ['Paua Ring'],
     slots: {
       ...armour(['str_armour']),
       ...jewellery('strjewel'),

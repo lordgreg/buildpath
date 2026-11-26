@@ -175,6 +175,7 @@ function ring(
   baseType: string,
   rarity: PreviewItem['rarity'],
   itemLevel = 49,
+  areaLevel?: number,
 ): PreviewItem {
   return {
     id: `${baseType}-${rarity}`,
@@ -183,6 +184,7 @@ function ring(
     baseType,
     rarity,
     itemLevel,
+    ...(areaLevel !== undefined ? { areaLevel } : {}),
     identified: true,
   };
 }
@@ -506,5 +508,83 @@ describe('minion Iron Ring exclusion', () => {
       const found = evaluateRules(filter.rules, ring('Iron Ring', 'Unique'));
       expect(found.shown, selection.mode).toBe(true);
     }
+  });
+});
+
+describe('melee accessory bases', () => {
+  const MELEE_SELECTIONS = [
+    { mode: 'family' as const, familyId: 'melee' as const },
+    { mode: 'ascendancy' as const, ascendancyId: 'juggernaut' },
+    { mode: 'build' as const, buildId: 'boneshatter-juggernaut' },
+  ];
+
+  it('hides Chain Belts at every rarity for melee builds', () => {
+    for (const selection of MELEE_SELECTIONS) {
+      for (const phase of ['leveling', 'endgame'] as const) {
+        for (const strictness of ['soft', 'strict', 'uber'] as const) {
+          for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
+            const filter = generateFilter({ selection, phase, strictness });
+            const found = evaluateRules(filter.rules, belt('Chain Belt', rarity));
+            expect(
+              found.shown,
+              `${selection.mode}/${phase}/${strictness}/${rarity}`,
+            ).toBe(false);
+            expect(found.reason).toContain('excluded base');
+          }
+        }
+      }
+    }
+  });
+
+  it('hides normal and magic Paua Rings but keeps rare ones', () => {
+    for (const selection of MELEE_SELECTIONS) {
+      for (const strictness of ['soft', 'strict', 'uber'] as const) {
+        const filter = generateFilter({
+          selection,
+          phase: 'leveling',
+          strictness,
+        });
+        for (const rarity of ['Normal', 'Magic'] as const) {
+          const found = evaluateRules(
+            filter.rules,
+            ring('Paua Ring', rarity, 13, 13),
+          );
+          expect(
+            found.shown,
+            `${selection.mode}/${strictness}/${rarity}`,
+          ).toBe(false);
+          expect(found.reason).toContain('excluded base');
+        }
+        const rare = evaluateRules(
+          filter.rules,
+          ring('Paua Ring', 'Rare', 30, 30),
+        );
+        expect(rare.shown, `${selection.mode}/${strictness}/Rare`).toBe(true);
+      }
+    }
+  });
+
+  it('keeps unique Paua Rings such as Doedre\'s Damning visible', () => {
+    for (const selection of MELEE_SELECTIONS) {
+      const filter = generateFilter({
+        selection,
+        phase: 'leveling',
+        strictness: 'soft',
+      });
+      const found = evaluateRules(filter.rules, ring('Paua Ring', 'Unique'));
+      expect(found.shown, selection.mode).toBe(true);
+    }
+  });
+
+  it('leaves other melee ring bases visible', () => {
+    const filter = generateFilter({
+      selection: { mode: 'family', familyId: 'melee' },
+      phase: 'leveling',
+      strictness: 'soft',
+    });
+    const magic = evaluateRules(filter.rules, ring('Amethyst Ring', 'Magic', 13, 13));
+    expect(magic.shown, 'Magic').toBe(true);
+    const rare = evaluateRules(filter.rules, ring('Amethyst Ring', 'Rare', 49));
+    expect(rare.shown, 'Rare').toBe(true);
   });
 });

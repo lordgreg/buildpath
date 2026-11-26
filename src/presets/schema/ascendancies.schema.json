@@ -58,6 +58,10 @@
             "type": "array",
             "items": { "type": "string", "minLength": 1 }
           },
+          "excludedMagicBases": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
           "weapon": { "$ref": "#/definitions/slot" },
           "offhand": {
             "anyOf": [{ "$ref": "#/definitions/slot" }, { "type": "null" }]

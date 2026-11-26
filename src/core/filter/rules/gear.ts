@@ -215,6 +215,20 @@ export function gearRules(
     }
   }
 
+  // A caster base can still be worth a rare identification (life and resists
+  // do not care about the implicit), so hide only the normal and magic drops.
+  const excludedMagicBases = new Set(archetype.excludedMagicBases ?? []);
+  for (const base of excludedMagicBases) {
+    for (const rarity of ['Normal', 'Magic'] as const) {
+      rules.push({
+        action: 'Hide',
+        comment: `${base} (${rarity.toLowerCase()}) - excluded base, rare kept`,
+        baseTypes: [base],
+        rarity,
+      });
+    }
+  }
+
   const slots = Object.entries(archetype.slots) as [ItemSlot, SlotSpec][];
 
   // Rare floors do not change by area, so they need no band.

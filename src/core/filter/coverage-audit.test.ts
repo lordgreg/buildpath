@@ -117,10 +117,13 @@ function item(
   };
 }
 
-function firstBase(className: string): BaseType | undefined {
-  return [...(basesByClass.get(className) ?? [])].sort((a, b) =>
-    a.name.localeCompare(b.name),
-  )[0];
+function firstBase(
+  className: string,
+  exclude: Set<string> = new Set(),
+): BaseType | undefined {
+  return [...(basesByClass.get(className) ?? [])]
+    .filter((base) => !exclude.has(base.name))
+    .sort((a, b) => a.name.localeCompare(b.name))[0];
 }
 
 function disallowedBase(
@@ -223,9 +226,34 @@ describe('preset coverage audit', () => {
             }
           }
 
+          const excludedAll = new Set([
+            ...(filter.archetype.excludedBases ?? []),
+            ...(filter.archetype.excludedMagicBases ?? []),
+          ]);
+
+          // Excluded bases are deliberate holes: all rarities for a dead base,
+          // or only the normal/magic drops when a rare is still worth an id.
+          for (const name of filter.archetype.excludedBases ?? []) {
+            const base = baseByName.get(name);
+            if (!base) continue;
+            for (const rarity of ['Rare', 'Magic', 'Normal'] as const) {
+              check(item(base, rarity), false, `${name} excluded ${rarity}`);
+            }
+          }
+          for (const name of filter.archetype.excludedMagicBases ?? []) {
+            const base = baseByName.get(name);
+            if (!base) continue;
+            const className = toFilterClass(base.itemClass);
+            const keptRare =
+              unrestricted.has(className) || allowed.get(className)?.has(name);
+            check(item(base, 'Rare'), !!keptRare, `${name} rare kept`);
+            check(item(base, 'Magic'), false, `${name} magic excluded`);
+            check(item(base, 'Normal'), false, `${name} normal excluded`);
+          }
+
           const flasks = new Set<string>(FLASK_CLASSES);
           for (const className of unrestricted) {
-            const base = firstBase(className);
+            const base = firstBase(className, excludedAll);
             if (!base) continue;
             check(item(base, 'Rare'), true, `${className} unrestricted rare`);
             check(

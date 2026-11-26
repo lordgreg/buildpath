@@ -51,6 +51,8 @@ export interface Archetype {
   summary: string;
   /** Bases this build never wants, e.g. a belt implicit the build cannot use. */
   excludedBases?: string[];
+  /** Bases hidden at normal and magic rarity, but kept rare (e.g. a caster ring). */
+  excludedMagicBases?: string[];
   /** Whether the archetype is playable from act 1 without twink gear. */
   leveling: boolean;
   /** League the gear mapping was last checked against, e.g. "Covens". */
