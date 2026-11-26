@@ -17,6 +17,22 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.66.0',
+    date: '2026-11-26',
+    title: 'Thirteen builds, ratings and a Dad profile',
+    notes: [
+      "Seven new builds: **Arc Elementalist**, **Arc Totem Hierophant**, **Spectre Necromancer** (with four Slave Driver spectres), **Essence Drain Occultist**, **Righteous Fire Chieftain**, **Stone Golem Elementalist** and **Flicker Strike Slayer**. The catalogue now has thirteen builds across eight ascendancies.",
+      "Each build has four **ratings out of ten** — tankiness, single target, map clear and cost — and a derived **C/B/A/S/S+ medal**. S+ is reserved for near-perfection on every axis. The catalogue shows the medal; the guide shows the bars and the numbers.",
+      "**Dad** is now a real tag and a reviewed gate profile. Low-APM, DoT and totem builds keep the defensive gates but may use a lower damage floor; the page labels the profile so the exception is never silent.",
+      "The oracle now measures **DoT** through `TotalDot`/`TotalDPS`, not only the hit in `CombinedDPS`. Essence Drain and Righteous Fire were previously judged on a hit-only number and looked broken.",
+      "Signing is a command: `npm run builds:sign -- --build <id> --section summary --by \"name\"`, then `npm run builds:build`. Signed sections publish; unsigned breadth summaries use `auto-breadth`; flagships need a signed summary.",
+      "The economy refresh workflow now commits the regenerated `presets.json` with the new tiers instead of failing on the expected diff.",
+      "634 tests, 78 must-pass calibration observations, ten must-fail cases and one ablation probe.",
+    ],
+    commits: [],
+    compare: 'v0.65.0...v0.66.0',
+  },
+  {
     version: '0.65.0',
     date: '2026-11-26',
     title: 'Builds first',
