@@ -142,6 +142,76 @@ describe('compiled build seeds', () => {
     }
   });
 
+  it('gives every guide goals, gear targets and crafting at every step', () => {
+    const checkpoints = [
+      'until-12',
+      'until-28',
+      'until-68',
+      'maps-early',
+      'maps-red',
+      'pinnacle',
+    ];
+    for (const entry of BUILDS) {
+      const full = JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        stepPlans?: Record<string, {
+          goals: string[];
+          lookFor: { slot: string; mods: string[]; note?: string }[];
+          crafting?: { slot: string; mods: string[]; note?: string }[];
+        }>;
+      };
+      expect(full.stepPlans, `${entry.id} stepPlans`).toBeDefined();
+      expect(Object.keys(full.stepPlans ?? {}).sort(), `${entry.id} checkpoints`).toEqual(
+        [...checkpoints].sort(),
+      );
+      for (const checkpoint of checkpoints) {
+        const plan = full.stepPlans?.[checkpoint];
+        expect(plan, `${entry.id} ${checkpoint}`).toBeDefined();
+        expect(plan?.goals.length, `${entry.id} ${checkpoint} goals`).toBeGreaterThan(0);
+        expect(plan?.lookFor.length, `${entry.id} ${checkpoint} lookFor`).toBeGreaterThan(0);
+        for (const item of [...(plan?.lookFor ?? []), ...(plan?.crafting ?? [])]) {
+          expect(item.slot, `${entry.id} ${checkpoint} slot`).toBeTruthy();
+          expect(item.mods.length, `${entry.id} ${checkpoint} mods`).toBeGreaterThan(0);
+          for (const mod of item.mods) {
+            expect(mod.trim().length, `${entry.id} ${checkpoint} mod`).toBeGreaterThan(0);
+          }
+        }
+      }
+    }
+  });
+
+  it('keeps every step-plan profile complete', () => {
+    const config = parse(
+      readFileSync(resolve(seedsDir, 'config/step-plans.yaml'), 'utf8'),
+    ) as {
+      profiles: Record<string, Record<string, {
+        goals: string[];
+        lookFor: { slot: string; mods: string[] }[];
+        crafting?: { slot: string; mods: string[] }[];
+      }>>;
+    };
+    for (const [profile, plan] of Object.entries(config.profiles)) {
+      for (const checkpoint of [
+        'until-12',
+        'until-28',
+        'until-68',
+        'maps-early',
+        'maps-red',
+        'pinnacle',
+      ]) {
+        const step = plan[checkpoint];
+        expect(step, `${profile} ${checkpoint}`).toBeDefined();
+        expect(step.goals.length, `${profile} ${checkpoint} goals`).toBeGreaterThan(0);
+        expect(step.lookFor.length, `${profile} ${checkpoint} lookFor`).toBeGreaterThan(0);
+        for (const item of [...(step.lookFor ?? []), ...(step.crafting ?? [])]) {
+          expect(item.slot, `${profile} ${checkpoint} slot`).toBeTruthy();
+          expect(item.mods.length, `${profile} ${checkpoint} mods`).toBeGreaterThan(0);
+        }
+      }
+    }
+  });
+
   it('keeps the committed index in step with the seeds', () => {
     // The drift guard: a committed index that no longer matches the seeds means
     // someone edited YAML without running `npm run builds:build`.

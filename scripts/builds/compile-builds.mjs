@@ -63,6 +63,12 @@ const league = parse(
 const viscera = parse(
   readFileSync(resolve(seedsDir, 'config/viscera.yaml'), 'utf8'),
 );
+const stepPlanConfig = parse(
+  readFileSync(resolve(seedsDir, 'config/step-plans.yaml'), 'utf8'),
+);
+const checkpointIds = Object.keys(
+  parse(readFileSync(resolve(seedsDir, 'config/checkpoints.yaml'), 'utf8')).checkpoints ?? {},
+);
 const visceraByName = new Map(
   (viscera.items ?? []).map((item) => [item.name, item]),
 );
@@ -273,6 +279,57 @@ function resolveWickerman(seed, file) {
 }
 
 /**
+ * Resolve the per-checkpoint step plan: goals, gear targets and crafting. The
+ * seed names a profile; every checkpoint in checkpoints.yaml must be covered.
+ */
+function resolveStepPlans(seed, file) {
+  const profileId = seed.stepPlan;
+  const profile = stepPlanConfig.profiles?.[profileId];
+  if (!profile) {
+    console.error(
+      `build seed invalid: ${file}\n  unknown stepPlan profile "${profileId}" (see config/step-plans.yaml)`,
+    );
+    process.exit(1);
+  }
+  const plans = {};
+  for (const checkpoint of checkpointIds) {
+    const plan = profile[checkpoint];
+    if (!plan) {
+      console.error(
+        `build seed invalid: ${file}\n  stepPlan profile "${profileId}" is missing ${checkpoint}`,
+      );
+      process.exit(1);
+    }
+    if (!Array.isArray(plan.goals) || plan.goals.length === 0) {
+      console.error(
+        `build seed invalid: ${file}\n  stepPlan ${profileId}/${checkpoint} has no goals`,
+      );
+      process.exit(1);
+    }
+    if (!Array.isArray(plan.lookFor) || plan.lookFor.length === 0) {
+      console.error(
+        `build seed invalid: ${file}\n  stepPlan ${profileId}/${checkpoint} has no lookFor`,
+      );
+      process.exit(1);
+    }
+    for (const entry of [...plan.lookFor, ...(plan.crafting ?? [])]) {
+      if (!entry.slot || !Array.isArray(entry.mods) || entry.mods.length === 0) {
+        console.error(
+          `build seed invalid: ${file}\n  stepPlan ${profileId}/${checkpoint} has a slot without mods`,
+        );
+        process.exit(1);
+      }
+    }
+    plans[checkpoint] = {
+      goals: plan.goals,
+      lookFor: plan.lookFor,
+      ...(plan.crafting?.length ? { crafting: plan.crafting } : {}),
+    };
+  }
+  return plans;
+}
+
+/**
  * Where each gem comes from for this class: a free quest reward, or the same
  * quest's vendor pool. The distinction matters to a new player ("do I have to
  * buy this?") and it is already in the data, so the guide carries it.
@@ -338,6 +395,7 @@ for (const file of files) {
   checkAvailability(seed, file);
   checkSeason(seed, file);
   const wickerman = resolveWickerman(seed, file);
+  const stepPlans = resolveStepPlans(seed, file);
   if (`${seed.id}.yaml` !== file) {
     console.error(
       `build seed invalid: ${file}\n  id "${seed.id}" must match the file name`,
@@ -356,6 +414,7 @@ for (const file of files) {
     season: seedSeason,
     changelog: seedChangelog,
     wickerman: seedWickerman,
+    stepPlan: seedStepPlan,
     ...mechanics
   } = seed;
   const seedHash = hashOf(mechanics);
@@ -389,6 +448,7 @@ for (const file of files) {
       seasonName: leaguesById.get(entry.season)?.name ?? entry.season,
     })),
     wickerman,
+    stepPlans,
     gemInfo: describeGems(seed),
     seedHash,
   });

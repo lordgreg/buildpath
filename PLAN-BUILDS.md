@@ -544,8 +544,14 @@ Stale or failed builds render a banner and are excluded from `builds.html`
    stops matching, the build is delisted, and the section must be re-drafted and
    re-signed before it returns. Nothing renders stale prose with new numbers.
 
-### 9.2 Covens Wickerman and gem quality
+### 9.2 Covens Wickerman, step plans and gem quality
 
+- Every seed declares a `stepPlan` profile. `src/builds/config/step-plans.yaml`
+  resolves, for every checkpoint, the **goals** for that step, the **attributes
+  to look for** by slot, and the **crafting** recipes that are actually
+  available. The compiler validates that every checkpoint is covered and that
+  every slot has at least one modifier; the page renders it under the step
+  picker.
 - Every seed declares a `wickerman.profile`. `src/builds/config/viscera.yaml`
   holds the reviewed Viscera registry and maps each profile to the best item for
   the leveling, maps and bossing phases, one item for each of the four slots

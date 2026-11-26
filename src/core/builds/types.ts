@@ -73,6 +73,29 @@ export interface BuildWickerman {
   steps: Record<WickermanStepId, WickermanSlots>;
 }
 
+/** A slot and the modifiers to look for at one checkpoint. */
+export interface StepPlanLookFor {
+  slot: string;
+  mods: string[];
+  note?: string;
+}
+
+/** A crafting recipe worth using at one checkpoint. */
+export interface StepPlanCrafting {
+  slot: string;
+  mods: string[];
+  note?: string;
+}
+
+/** One checkpoint's goals, gear targets and crafting advice. */
+export interface StepPlan {
+  goals: string[];
+  lookFor: StepPlanLookFor[];
+  crafting?: StepPlanCrafting[];
+}
+
+export type BuildStepPlans = Record<string, StepPlan>;
+
 export interface BuildIndexEntry {
   id: string;
   name: string;
@@ -364,4 +387,6 @@ export interface Build extends BuildIndexEntry {
   guide?: BuildGuide;
   /** Covens league Wickerman recommendations, resolved from the seed profile. */
   wickerman?: BuildWickerman;
+  /** Per-checkpoint goals, gear targets and crafting, resolved from the seed profile. */
+  stepPlans?: BuildStepPlans;
 }

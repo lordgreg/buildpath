@@ -11,6 +11,7 @@ import RatingPanel from './RatingPanel.tsx';
 import SiteHeader from './SiteHeader.tsx';
 import TreeThumbnail from './TreeThumbnail.tsx';
 import WickermanPanel, { wickermanPhase } from './WickermanPanel.tsx';
+import StepPlanPanel from './StepPlanPanel.tsx';
 import { copyText } from './download.ts';
 import { APP_VERSION } from '../version.ts';
 
@@ -546,6 +547,24 @@ export default function BuildPage() {
         </div>
       </section>
 
+      {build.stepPlans?.[step] && (
+        <section aria-labelledby="step-plan">
+          <h2
+            id="step-plan"
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+          >
+            Step plan
+          </h2>
+          <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">
+            What to prioritise at this step, the modifiers worth paying for on
+            each slot, and the crafting recipes that are actually available now.
+          </p>
+          <div className="mt-2">
+            <StepPlanPanel plan={build.stepPlans[step]} step={step} />
+          </div>
+        </section>
+      )}
+
       {gate && (
         <section aria-labelledby="gates">
           <h2 id="gates" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -1060,6 +1079,7 @@ export default function BuildPage() {
               ['ratings', 'Ratings'],
               ['guide', 'Guide'],
               ['steps', 'Step'],
+              ['step-plan', 'Step plan'],
               ['gates', 'Gate report'],
               ['pob', 'Path of Building'],
               ['filter', 'Filter'],

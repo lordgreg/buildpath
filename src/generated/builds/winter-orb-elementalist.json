@@ -7825,6 +7825,256 @@
       }
     }
   },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Winter Orb; a spell damage wand and a 3-link are enough.",
+        "Life, resistances and movement speed carry Act 1."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "A magic wand is enough."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "3-link."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Keep moving."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Add Added Cold Damage and Controlled Destruction to Winter Orb.",
+        "Herald of Ice and Hatred are the damage auras."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Cold damage"
+          ],
+          "note": "Rare wand or sceptre."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Defensive shield."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cast speed"
+          ],
+          "note": "Bench cast speed on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Six-link Winter Orb and reach 2,000 life; cap elemental resistances.",
+        "The 6-link and gem levels are the damage step."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "The 6-link is the damage step."
+        },
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Cold damage"
+          ],
+          "note": "Do not drop cast speed."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Cast speed"
+          ],
+          "note": "Life first, cast speed second."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link and upgrade the wand.",
+        "Reach 3,000 life and cap resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Cold damage"
+          ],
+          "note": "The wand is the damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Fix resists on rings."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cold damage"
+          ],
+          "note": "Bench elemental damage on a free prefix."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Critical strike or Elemental Overload is the red-map damage upgrade."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Critical strike chance"
+          ],
+          "note": "Crit wand."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Crit multi."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 Winter Orb and awakened elemental supports."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Cold Skill Gems",
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "+1 elemental gems is the endgame goal."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "+1 to Level of all Cold Skill Gems",
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Amulet carries gem levels."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Keep life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
   "gemInfo": {
     "Added Cold Damage": {
       "requiredLevel": 8,

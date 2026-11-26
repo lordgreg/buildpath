@@ -25,7 +25,8 @@
     "pantheon",
     "season",
     "changelog",
-    "wickerman"
+    "wickerman",
+    "stepPlan"
   ],
   "properties": {
     "schemaVersion": {
@@ -113,6 +114,11 @@
           "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
         }
       }
+    },
+    "stepPlan": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Profile in src/builds/config/step-plans.yaml; resolves goals, gear targets and crafting for every checkpoint."
     },
     "flagship": {
       "type": "boolean",

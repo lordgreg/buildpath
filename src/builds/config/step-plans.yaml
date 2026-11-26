@@ -1,0 +1,1704 @@
+# Per-checkpoint step plans: goals, attributes to look for, and crafting.
+# Keyed by build profile; every profile covers all six checkpoints.
+schemaVersion: 1
+profiles:
+  absolution:
+    until-12:
+      goals:
+        - "Level with Absolution; life and a 3-link matter more than minion damage in Act 1."
+        - "Keep the weapon current, but do not spend currency on a rare yet."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Minion gem levels", "Cast speed"]
+          note: "A +1 minion wand is the first real upgrade."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "A 3-link is enough."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Movement speed is defence while leveling."
+    until-28:
+      goals:
+        - "Swap to Absolution and add Minion Damage; the minions start carrying packs."
+        - "Take the first two labs when they unlock; the relics are a large damage step."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Gem levels beat added damage for minions."
+        - slot: "Shield"
+          mods: ["Life", "Elemental resistances"]
+          note: "Stay defensive; the minions do the damage."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life"]
+          note: "Any minion jewel is useful."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage on a free suffix."
+    until-68:
+      goals:
+        - "Six-link Absolution and reach 2,000 life; cap elemental resistances first."
+        - "The 6-link is the largest damage step; do not skip it for a rare chest."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Do not replace a +1 wand with a rare without it."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the sentinels alive through bosses."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance; do not chase minion mods on the chest."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start saving for the 6-link body."
+        - "Cap resistances and reach 3,000 life before red maps."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "The wand is the stable damage slot."
+        - slot: "Body Armour"
+          mods: ["5-link", "Life", "Elemental resistances"]
+          note: "5-link now, 6-link next."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances", "Minion Damage"]
+          note: "Rings fix resists cheaply."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage if the wand has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link the main skill and move to 20% quality gems from this step."
+        - "Reach 4,500 life and 6,000 physical max hit; the minions do not tank for you."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "This is the last slot to downgrade for defence."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the red-map damage gate."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the sentinels alive through bosses."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage; keep a spare before corrupting."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life before pinnacle bosses."
+        - "Use 21/20 Absolution and awakened minion supports; defence stays the priority."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "A +2 minion wand is the endgame goal."
+        - slot: "Amulet"
+          mods: ["+1 to Level of all Minion Skill Gems", "Life", "Chaos resistance"]
+          note: "Use the amulet to fix chaos resistance."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the sentinels alive through bosses."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance if the amulet has a free suffix."
+  animate-weapon:
+    until-12:
+      goals:
+        - "Level with Animate Weapon; life and a 3-link matter more than minion damage in Act 1."
+        - "Keep the weapon current, but do not spend currency on a rare yet."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Minion gem levels", "Cast speed"]
+          note: "A +1 minion wand is the first real upgrade."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "A 3-link is enough."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Movement speed is defence while leveling."
+    until-28:
+      goals:
+        - "Swap to Animate Weapon and add Minion Damage; the minions start carrying packs."
+        - "Keep Flesh Offering and Desecrate for the offering buff."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Gem levels beat added damage for minions."
+        - slot: "Shield"
+          mods: ["Life", "Elemental resistances"]
+          note: "Stay defensive; the minions do the damage."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life"]
+          note: "Any minion jewel is useful."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage on a free suffix."
+    until-68:
+      goals:
+        - "Six-link Animate Weapon and reach 2,000 life; cap elemental resistances first."
+        - "The 6-link is the largest damage step; do not skip it for a rare chest."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Do not replace a +1 wand with a rare without it."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life is not optional for Animate Weapon."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance; do not chase minion mods on the chest."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start saving for the 6-link body."
+        - "Cap resistances and reach 3,000 life before red maps."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "The wand is the stable damage slot."
+        - slot: "Body Armour"
+          mods: ["5-link", "Life", "Elemental resistances"]
+          note: "5-link now, 6-link next."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances", "Minion Damage"]
+          note: "Rings fix resists cheaply."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage if the wand has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link the main skill and move to 20% quality gems from this step."
+        - "Reach 4,500 life and 6,000 physical max hit; the minions do not tank for you."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "This is the last slot to downgrade for defence."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the red-map damage gate."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life is not optional for Animate Weapon."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage; keep a spare before corrupting."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life before pinnacle bosses."
+        - "Use 21/20 Animate Weapon and awakened minion supports; defence stays the priority."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "A +2 minion wand is the endgame goal."
+        - slot: "Amulet"
+          mods: ["+1 to Level of all Minion Skill Gems", "Life", "Chaos resistance"]
+          note: "Use the amulet to fix chaos resistance."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life is not optional for Animate Weapon."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance if the amulet has a free suffix."
+  spectre:
+    until-12:
+      goals:
+        - "Level with Raise Spectre; life and a 3-link matter more than minion damage in Act 1."
+        - "Keep the weapon current, but do not spend currency on a rare yet."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Minion gem levels", "Cast speed"]
+          note: "A +1 minion wand is the first real upgrade."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "A 3-link is enough."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Movement speed is defence while leveling."
+    until-28:
+      goals:
+        - "Swap to Raise Spectre and add Minion Damage; the minions start carrying packs."
+        - "Desecrate the right corpse and keep four spectres alive."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Gem levels beat added damage for minions."
+        - slot: "Shield"
+          mods: ["Life", "Elemental resistances"]
+          note: "Stay defensive; the minions do the damage."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life"]
+          note: "Any minion jewel is useful."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage on a free suffix."
+    until-68:
+      goals:
+        - "Six-link Raise Spectre and reach 2,000 life; cap elemental resistances first."
+        - "The 6-link is the largest damage step; do not skip it for a rare chest."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Do not replace a +1 wand with a rare without it."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the spectres alive between packs."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance; do not chase minion mods on the chest."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start saving for the 6-link body."
+        - "Cap resistances and reach 3,000 life before red maps."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "The wand is the stable damage slot."
+        - slot: "Body Armour"
+          mods: ["5-link", "Life", "Elemental resistances"]
+          note: "5-link now, 6-link next."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances", "Minion Damage"]
+          note: "Rings fix resists cheaply."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage if the wand has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link the main skill and move to 20% quality gems from this step."
+        - "Reach 4,500 life and 6,000 physical max hit; the minions do not tank for you."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "This is the last slot to downgrade for defence."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the red-map damage gate."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the spectres alive between packs."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage; keep a spare before corrupting."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life before pinnacle bosses."
+        - "Use 21/20 Raise Spectre and awakened minion supports; defence stays the priority."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "A +2 minion wand is the endgame goal."
+        - slot: "Amulet"
+          mods: ["+1 to Level of all Minion Skill Gems", "Life", "Chaos resistance"]
+          note: "Use the amulet to fix chaos resistance."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the spectres alive between packs."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance if the amulet has a free suffix."
+  stone-golem:
+    until-12:
+      goals:
+        - "Level with Summon Stone Golem; life and a 3-link matter more than minion damage in Act 1."
+        - "Keep the weapon current, but do not spend currency on a rare yet."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Minion gem levels", "Cast speed"]
+          note: "A +1 minion wand is the first real upgrade."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "A 3-link is enough."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Movement speed is defence while leveling."
+    until-28:
+      goals:
+        - "Swap to Summon Stone Golem and add Minion Damage; the minions start carrying packs."
+        - "Take Golem Commander when the first lab allows it."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Gem levels beat added damage for minions."
+        - slot: "Shield"
+          mods: ["Life", "Elemental resistances"]
+          note: "Stay defensive; the minions do the damage."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life"]
+          note: "Any minion jewel is useful."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage on a free suffix."
+    until-68:
+      goals:
+        - "Six-link Summon Stone Golem and reach 2,000 life; cap elemental resistances first."
+        - "The 6-link is the largest damage step; do not skip it for a rare chest."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Do not replace a +1 wand with a rare without it."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the golems alive."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance; do not chase minion mods on the chest."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start saving for the 6-link body."
+        - "Cap resistances and reach 3,000 life before red maps."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "The wand is the stable damage slot."
+        - slot: "Body Armour"
+          mods: ["5-link", "Life", "Elemental resistances"]
+          note: "5-link now, 6-link next."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances", "Minion Damage"]
+          note: "Rings fix resists cheaply."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage if the wand has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link the main skill and move to 20% quality gems from this step."
+        - "Reach 4,500 life and 6,000 physical max hit; the minions do not tank for you."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "This is the last slot to downgrade for defence."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the red-map damage gate."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the golems alive."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage; keep a spare before corrupting."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life before pinnacle bosses."
+        - "Use 21/20 Summon Stone Golem and awakened minion supports; defence stays the priority."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "A +2 minion wand is the endgame goal."
+        - slot: "Amulet"
+          mods: ["+1 to Level of all Minion Skill Gems", "Life", "Chaos resistance"]
+          note: "Use the amulet to fix chaos resistance."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the golems alive."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance if the amulet has a free suffix."
+  srs:
+    until-12:
+      goals:
+        - "Level with Summon Raging Spirit; life and a 3-link matter more than minion damage in Act 1."
+        - "Keep the weapon current, but do not spend currency on a rare yet."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Minion gem levels", "Cast speed"]
+          note: "A +1 minion wand is the first real upgrade."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "A 3-link is enough."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Movement speed is defence while leveling."
+    until-28:
+      goals:
+        - "Swap to Summon Raging Spirit and add Minion Damage; the minions start carrying packs."
+        - "Keep Flesh Offering and Desecrate for the offering buff."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Gem levels beat added damage for minions."
+        - slot: "Shield"
+          mods: ["Life", "Elemental resistances"]
+          note: "Stay defensive; the minions do the damage."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life"]
+          note: "Any minion jewel is useful."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage on a free suffix."
+    until-68:
+      goals:
+        - "Six-link Summon Raging Spirit and reach 2,000 life; cap elemental resistances first."
+        - "The 6-link is the largest damage step; do not skip it for a rare chest."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Do not replace a +1 wand with a rare without it."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life is less important than minion damage for SRS."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance; do not chase minion mods on the chest."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start saving for the 6-link body."
+        - "Cap resistances and reach 3,000 life before red maps."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "The wand is the stable damage slot."
+        - slot: "Body Armour"
+          mods: ["5-link", "Life", "Elemental resistances"]
+          note: "5-link now, 6-link next."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances", "Minion Damage"]
+          note: "Rings fix resists cheaply."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage if the wand has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link the main skill and move to 20% quality gems from this step."
+        - "Reach 4,500 life and 6,000 physical max hit; the minions do not tank for you."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "This is the last slot to downgrade for defence."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the red-map damage gate."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life is less important than minion damage for SRS."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage; keep a spare before corrupting."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life before pinnacle bosses."
+        - "Use 21/20 Summon Raging Spirit and awakened minion supports; defence stays the priority."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "A +2 minion wand is the endgame goal."
+        - slot: "Amulet"
+          mods: ["+1 to Level of all Minion Skill Gems", "Life", "Chaos resistance"]
+          note: "Use the amulet to fix chaos resistance."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life is less important than minion damage for SRS."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance if the amulet has a free suffix."
+  skeletons:
+    until-12:
+      goals:
+        - "Level with Raise Zombie and Summon Skeletons; the skeletons are the damage and the zombies are the shield."
+        - "Life and a 3-link matter more than minion damage in Act 1."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Minion gem levels", "Cast speed"]
+          note: "A +1 minion wand is the first real upgrade."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "A 3-link is enough."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Movement speed is defence while leveling."
+    until-28:
+      goals:
+        - "Swap to Summon Skeletons and add Minion Damage; the minions start carrying packs."
+        - "Keep Flesh Offering and Desecrate for the offering buff."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Gem levels beat added damage for minions."
+        - slot: "Shield"
+          mods: ["Life", "Elemental resistances"]
+          note: "Stay defensive; the minions do the damage."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life"]
+          note: "Any minion jewel is useful."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage on a free suffix."
+    until-68:
+      goals:
+        - "Six-link Summon Skeletons and reach 2,000 life; cap elemental resistances first."
+        - "The 6-link is the largest damage step; do not skip it for a rare chest."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "Do not replace a +1 wand with a rare without it."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the skeletons alive."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance; do not chase minion mods on the chest."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start saving for the 6-link body."
+        - "Cap resistances and reach 3,000 life before red maps."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "The wand is the stable damage slot."
+        - slot: "Body Armour"
+          mods: ["5-link", "Life", "Elemental resistances"]
+          note: "5-link now, 6-link next."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances", "Minion Damage"]
+          note: "Rings fix resists cheaply."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage if the wand has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link the main skill and move to 20% quality gems from this step."
+        - "Reach 4,500 life and 6,000 physical max hit; the minions do not tank for you."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "This is the last slot to downgrade for defence."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the red-map damage gate."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the skeletons alive."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Minion Damage"]
+          note: "Bench minion damage; keep a spare before corrupting."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life before pinnacle bosses."
+        - "Use 21/20 Summon Skeletons and awakened minion supports; defence stays the priority."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Minion Skill Gems", "Minion Damage", "Cast speed"]
+          note: "A +2 minion wand is the endgame goal."
+        - slot: "Amulet"
+          mods: ["+1 to Level of all Minion Skill Gems", "Life", "Chaos resistance"]
+          note: "Use the amulet to fix chaos resistance."
+        - slot: "Jewels"
+          mods: ["Minion Damage", "Minion Life", "Life"]
+          note: "Minion life keeps the skeletons alive."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance if the amulet has a free suffix."
+  arc:
+    until-12:
+      goals:
+        - "Level with Arc; a spell damage wand and a 3-link are enough."
+        - "Life, resistances and movement speed carry Act 1."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed"]
+          note: "A magic wand is enough."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "3-link."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Keep moving."
+    until-28:
+      goals:
+        - "Add Added Lightning Damage and Controlled Destruction to Arc."
+        - "Start capping fire, cold and lightning resistance."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Lightning damage"]
+          note: "Rare wand or sceptre."
+        - slot: "Shield"
+          mods: ["Life", "Elemental resistances"]
+          note: "Defensive shield."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Cast speed"]
+          note: "Bench cast speed on a free suffix."
+    until-68:
+      goals:
+        - "Six-link Arc and reach 2,000 life; cap elemental resistances."
+        - "The 6-link and gem levels are the damage step."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Lightning damage"]
+          note: "Do not drop cast speed."
+        - slot: "Jewels"
+          mods: ["Life", "Cast speed"]
+          note: "Life first, cast speed second."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start the 6-link and upgrade the wand."
+        - "Reach 3,000 life and cap resistances."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Lightning damage"]
+          note: "The wand is the damage slot."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Start the 6-link."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances"]
+          note: "Fix resists on rings."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Lightning damage"]
+          note: "Bench elemental damage on a free prefix."
+    maps-red:
+      goals:
+        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
+        - "Critical strike or Elemental Overload is the red-map damage upgrade."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Critical strike chance"]
+          note: "Crit wand."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link."
+        - slot: "Jewels"
+          mods: ["Critical strike multiplier", "Life"]
+          note: "Crit multi."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Critical strike multiplier"]
+          note: "Bench crit multi."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life."
+        - "Use 21/20 Arc and awakened elemental supports."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Lightning Skill Gems", "Spell damage", "Cast speed"]
+          note: "+1 elemental gems is the endgame goal."
+        - slot: "Amulet"
+          mods: ["+1 to Level of all Lightning Skill Gems", "Critical strike multiplier", "Life"]
+          note: "Amulet carries gem levels."
+        - slot: "Jewels"
+          mods: ["Critical strike multiplier", "Life"]
+          note: "Keep life."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
+  arc-totem:
+    until-12:
+      goals:
+        - "Level with Rolling Magma; life and a 3-link first."
+        - "Do not buy totem gear before the main skill is online."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed"]
+          note: "Magic wand."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "3-link."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Keep moving."
+    until-28:
+      goals:
+        - "Add Spell Totem and Added Lightning Damage to Arc."
+        - "Cap resistances; totem placement speed is a luxury."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Lightning damage"]
+          note: "Rare sceptre."
+        - slot: "Shield"
+          mods: ["Life", "Elemental resistances"]
+          note: "Defensive shield."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Cast speed"]
+          note: "Bench cast speed."
+    until-68:
+      goals:
+        - "Six-link Arc totem and 2,000 life; cap resistances."
+        - "Add Lightning Penetration and Controlled Destruction."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Lightning damage"]
+          note: "The sceptre is the damage slot."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link."
+        - slot: "Jewels"
+          mods: ["Life", "Cast speed"]
+          note: "Life first."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start the 6-link."
+        - "Reach 3,000 life and cap resistances."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Lightning damage"]
+          note: "Rare sceptre."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Start the 6-link."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances"]
+          note: "Fix resists."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Lightning damage"]
+          note: "Bench elemental damage."
+    maps-red:
+      goals:
+        - "Six-link, 20% quality gems, 4,500 life."
+        - "Totem placement speed and crit are the damage upgrades."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Critical strike chance"]
+          note: "Crit sceptre."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link."
+        - slot: "Jewels"
+          mods: ["Critical strike multiplier", "Life"]
+          note: "Crit multi."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Critical strike multiplier"]
+          note: "Bench crit multi."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life."
+        - "Use 21/20 Arc and awakened supports."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Lightning Skill Gems", "Spell damage", "Cast speed"]
+          note: "+1 elemental gems."
+        - slot: "Amulet"
+          mods: ["+1 to Level of all Lightning Skill Gems", "Critical strike multiplier", "Life"]
+          note: "Amulet carries gem levels."
+        - slot: "Jewels"
+          mods: ["Critical strike multiplier", "Life"]
+          note: "Keep life."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
+  boneshatter:
+    until-12:
+      goals:
+        - "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops."
+        - "Use Boneshatter as soon as it is available; do not chase attack speed over raw damage."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Highest physical DPS", "Attack speed"]
+          note: "A rare axe is better than any unique here."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "A 3-link is enough."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Movement speed is defence while leveling."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Attack speed"]
+          note: "Bench attack speed if the axe has a free suffix."
+    until-28:
+      goals:
+        - "Swap to Boneshatter; keep Enduring Cry on a movement or left-click bind."
+        - "The trauma stacks are the damage; do not stand in the hit."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "The weapon is the build."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link is enough."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances"]
+          note: "Fix resists before damage."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Physical damage %"]
+          note: "Bench physical damage % on a free prefix."
+    until-68:
+      goals:
+        - "Six-link Boneshatter and reach 2,000 life; cap elemental resistances."
+        - "Take the labs when they unlock; the ascendancy is a large defence step."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "Do not replace a good rare with a worse unique."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed"]
+          note: "Life is the defence; armour is the mitigation."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start the 6-link and upgrade the weapon."
+        - "Reach 3,000 life and cap resistances."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "The weapon is still the main damage slot."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Start the 6-link."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed"]
+          note: "Life is the defence; armour is the mitigation."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Attack speed"]
+          note: "Bench attack speed if the weapon has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
+        - "Do not stand in the hit; the build is not a tank even with armour."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "Upgrade the weapon before the jewellery."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link is the red-map gate."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed"]
+          note: "Life is the defence; armour is the mitigation."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Physical damage %"]
+          note: "Bench physical damage %."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life."
+        - "Use 21/20 Boneshatter and awakened supports; keep the defensive flasks."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "The endgame weapon is the last big purchase."
+        - slot: "Amulet"
+          mods: ["Life", "Chaos resistance", "Critical strike multiplier"]
+          note: "Fix chaos resistance on the amulet."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed", "Critical strike multiplier"]
+          note: "Life is the defence; armour is the mitigation."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
+  cyclone:
+    until-12:
+      goals:
+        - "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops."
+        - "Use Cyclone as soon as it is available; do not chase attack speed over raw damage."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Highest physical DPS", "Attack speed"]
+          note: "A rare axe is better than any unique here."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "A 3-link is enough."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Movement speed is defence while leveling."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Attack speed"]
+          note: "Bench attack speed if the axe has a free suffix."
+    until-28:
+      goals:
+        - "Swap to Cyclone; keep Enduring Cry on a movement or left-click bind."
+        - "Cyclone is channeled; area and movement speed matter."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "The weapon is the build."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link is enough."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances"]
+          note: "Fix resists before damage."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Physical damage %"]
+          note: "Bench physical damage % on a free prefix."
+    until-68:
+      goals:
+        - "Six-link Cyclone and reach 2,000 life; cap elemental resistances."
+        - "Take the labs when they unlock; the ascendancy is a large defence step."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "Do not replace a good rare with a worse unique."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed"]
+          note: "Life is the defence; armour is the mitigation."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start the 6-link and upgrade the weapon."
+        - "Reach 3,000 life and cap resistances."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "The weapon is still the main damage slot."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Start the 6-link."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed"]
+          note: "Life is the defence; armour is the mitigation."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Attack speed"]
+          note: "Bench attack speed if the weapon has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
+        - "Do not stand in the hit; the build is not a tank even with armour."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "Upgrade the weapon before the jewellery."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link is the red-map gate."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed"]
+          note: "Life is the defence; armour is the mitigation."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Physical damage %"]
+          note: "Bench physical damage %."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life."
+        - "Use 21/20 Cyclone and awakened supports; keep the defensive flasks."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "The endgame weapon is the last big purchase."
+        - slot: "Amulet"
+          mods: ["Life", "Chaos resistance", "Critical strike multiplier"]
+          note: "Fix chaos resistance on the amulet."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed", "Critical strike multiplier"]
+          note: "Life is the defence; armour is the mitigation."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
+  essence-drain:
+    until-12:
+      goals:
+        - "Level with Essence Drain and Contagion; life and a 3-link first."
+        - "Do not chase chaos damage before resistances."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed"]
+          note: "Magic wand."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "3-link."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Keep moving."
+    until-28:
+      goals:
+        - "Add Efficacy and Controlled Destruction to Essence Drain."
+        - "Cap resistances and keep Despair on the boss."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Chaos damage", "Spell damage", "Cast speed"]
+          note: "Rare wand."
+        - slot: "Shield"
+          mods: ["Life", "Elemental resistances"]
+          note: "Defensive shield."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Chaos damage"]
+          note: "Bench chaos damage."
+    until-68:
+      goals:
+        - "Six-link Essence Drain and reach 2,000 life; cap resistances."
+        - "Void Sphere and Wither are utility, not damage links."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link."
+        - slot: "Weapon"
+          mods: ["Chaos damage", "Spell damage", "Cast speed"]
+          note: "The wand is the damage slot."
+        - slot: "Jewels"
+          mods: ["Life", "Chaos damage"]
+          note: "Life first."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start the 6-link."
+        - "Reach 3,000 life and cap resistances."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Chaos damage", "Spell damage", "Cast speed"]
+          note: "Rare wand."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Start the 6-link."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances"]
+          note: "Fix resists."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Chaos damage"]
+          note: "Bench chaos damage."
+    maps-red:
+      goals:
+        - "Six-link, 20% quality gems, 4,500 life."
+        - "Chaos damage over time multiplier is the red-map upgrade."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Chaos damage", "Damage over time multiplier", "Cast speed"]
+          note: "Chaos wand."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link."
+        - slot: "Jewels"
+          mods: ["Life", "Chaos damage"]
+          note: "Chaos damage."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Chaos damage"]
+          note: "Bench chaos damage."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life."
+        - "Use 21/20 Essence Drain and awakened chaos supports."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Chaos damage", "Damage over time multiplier", "Cast speed"]
+          note: "Endgame wand."
+        - slot: "Amulet"
+          mods: ["Life", "Chaos resistance", "Chaos damage"]
+          note: "Fix chaos resistance."
+        - slot: "Jewels"
+          mods: ["Life", "Chaos damage"]
+          note: "Keep life."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
+  flicker:
+    until-12:
+      goals:
+        - "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops."
+        - "Use Flicker Strike as soon as it is available; do not chase attack speed over raw damage."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Highest physical DPS", "Attack speed"]
+          note: "A rare axe is better than any unique here."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "A 3-link is enough."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Movement speed is defence while leveling."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Attack speed"]
+          note: "Bench attack speed if the axe has a free suffix."
+    until-28:
+      goals:
+        - "Swap to Flicker Strike; keep Enduring Cry on a movement or left-click bind."
+        - "Keep Blood Rage up; frenzy charge downtime stops the build."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "The weapon is the build."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link is enough."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances"]
+          note: "Fix resists before damage."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Physical damage %"]
+          note: "Bench physical damage % on a free prefix."
+    until-68:
+      goals:
+        - "Six-link Flicker Strike and reach 2,000 life; cap elemental resistances."
+        - "Take the labs when they unlock; the ascendancy is a large defence step."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Critical strike chance"]
+          note: "Do not replace a good rare with a worse unique."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed"]
+          note: "Life and leech are the defence."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start the 6-link and upgrade the weapon."
+        - "Reach 3,000 life and cap resistances."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Critical strike chance"]
+          note: "The weapon is still the main damage slot."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Start the 6-link."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed"]
+          note: "Life and leech are the defence."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Attack speed"]
+          note: "Bench attack speed if the weapon has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
+        - "Do not stand in the hit; the build is not a tank even with armour."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Critical strike chance"]
+          note: "Upgrade the weapon before the jewellery."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link is the red-map gate."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed"]
+          note: "Life and leech are the defence."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Physical damage %"]
+          note: "Bench physical damage %."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life."
+        - "Use 21/20 Flicker Strike and awakened supports; keep the defensive flasks."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Critical strike chance"]
+          note: "The endgame weapon is the last big purchase."
+        - slot: "Amulet"
+          mods: ["Life", "Chaos resistance", "Critical strike multiplier"]
+          note: "Fix chaos resistance on the amulet."
+        - slot: "Jewels"
+          mods: ["Life", "Attack speed", "Critical strike multiplier"]
+          note: "Life and leech are the defence."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
+  ice-shot:
+    until-12:
+      goals:
+        - "Level with Ice Shot; a physical bow with attack speed is the first upgrade."
+        - "Life, a 3-link and movement speed carry Act 1."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed"]
+          note: "A magic bow is enough in Act 1."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "3-link."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Keep moving."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Attack speed"]
+          note: "Bench attack speed if the bow has a free suffix."
+    until-28:
+      goals:
+        - "Add Added Cold Damage and Faster Attacks to Ice Shot."
+        - "Herald of Ice and Hatred are the damage auras."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed", "Critical strike chance"]
+          note: "A rare bow is the damage slot."
+        - slot: "Quiver"
+          mods: ["Life", "Elemental resistances", "Critical strike multiplier"]
+          note: "Quiver is cheap damage and defence."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link."
+      crafting:
+        - slot: "Quiver"
+          mods: ["Critical strike multiplier"]
+          note: "Bench crit multi on a free suffix."
+    until-68:
+      goals:
+        - "Six-link Ice Shot and reach 2,000 life; cap elemental resistances."
+        - "The bow and quiver carry the damage; do not over-invest in armour."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed", "Critical strike chance"]
+          note: "A rare bow is still the main slot."
+        - slot: "Jewels"
+          mods: ["Life", "Critical strike multiplier"]
+          note: "Crit multi is the damage stat."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start the 6-link and upgrade the bow."
+        - "Reach 3,000 life and cap resistances."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed", "Critical strike chance"]
+          note: "The bow is the damage slot."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Start the 6-link."
+        - slot: "Quiver"
+          mods: ["Life", "Critical strike multiplier", "Elemental resistances"]
+          note: "Quiver fixes resists and damage."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Critical strike chance"]
+          note: "Bench crit chance if the bow has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
+        - "Critical strike multiplier is the red-map damage upgrade."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed", "Critical strike chance"]
+          note: "Upgrade the bow before the quiver."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link is the gate."
+        - slot: "Jewels"
+          mods: ["Life", "Critical strike multiplier"]
+          note: "Crit multi."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Critical strike multiplier"]
+          note: "Bench crit multi on a free suffix."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life."
+        - "Use 21/20 Ice Shot and awakened elemental supports."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed", "Critical strike chance"]
+          note: "The endgame bow is the last big purchase."
+        - slot: "Amulet"
+          mods: ["Life", "Chaos resistance", "Critical strike multiplier"]
+          note: "Fix chaos resistance here."
+        - slot: "Jewels"
+          mods: ["Life", "Critical strike multiplier"]
+          note: "Keep life on every jewel."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
+  lightning-arrow:
+    until-12:
+      goals:
+        - "Level with Lightning Arrow; a physical bow with attack speed is the first upgrade."
+        - "Life, a 3-link and movement speed carry Act 1."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed"]
+          note: "A magic bow is enough in Act 1."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "3-link."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Keep moving."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Attack speed"]
+          note: "Bench attack speed if the bow has a free suffix."
+    until-28:
+      goals:
+        - "Add Added Lightning Damage and Faster Attacks to Lightning Arrow."
+        - "Herald of Thunder and Grace are the core auras."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed", "Critical strike chance"]
+          note: "A rare bow is the damage slot."
+        - slot: "Quiver"
+          mods: ["Life", "Elemental resistances", "Critical strike multiplier"]
+          note: "Quiver is cheap damage and defence."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link."
+      crafting:
+        - slot: "Quiver"
+          mods: ["Critical strike multiplier"]
+          note: "Bench crit multi on a free suffix."
+    until-68:
+      goals:
+        - "Six-link Lightning Arrow and reach 2,000 life; cap elemental resistances."
+        - "The bow and quiver carry the damage; do not over-invest in armour."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed", "Critical strike chance"]
+          note: "A rare bow is still the main slot."
+        - slot: "Jewels"
+          mods: ["Life", "Critical strike multiplier"]
+          note: "Crit multi is the damage stat."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start the 6-link and upgrade the bow."
+        - "Reach 3,000 life and cap resistances."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed", "Critical strike chance"]
+          note: "The bow is the damage slot."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Start the 6-link."
+        - slot: "Quiver"
+          mods: ["Life", "Critical strike multiplier", "Elemental resistances"]
+          note: "Quiver fixes resists and damage."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Critical strike chance"]
+          note: "Bench crit chance if the bow has a free suffix."
+    maps-red:
+      goals:
+        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
+        - "Critical strike multiplier is the red-map damage upgrade."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed", "Critical strike chance"]
+          note: "Upgrade the bow before the quiver."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link is the gate."
+        - slot: "Jewels"
+          mods: ["Life", "Critical strike multiplier"]
+          note: "Crit multi."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Critical strike multiplier"]
+          note: "Bench crit multi on a free suffix."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life."
+        - "Use 21/20 Lightning Arrow and awakened elemental supports."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical DPS", "Attack speed", "Critical strike chance"]
+          note: "The endgame bow is the last big purchase."
+        - slot: "Amulet"
+          mods: ["Life", "Chaos resistance", "Critical strike multiplier"]
+          note: "Fix chaos resistance here."
+        - slot: "Jewels"
+          mods: ["Life", "Critical strike multiplier"]
+          note: "Keep life on every jewel."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
+  righteous-fire:
+    until-12:
+      goals:
+        - "Level with Rolling Magma; life, fire resistance and a 3-link first."
+        - "Do not switch to Righteous Fire until the fire resistance and regen are ready."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Fire damage", "Cast speed"]
+          note: "Magic sceptre."
+        - slot: "Body Armour"
+          mods: ["Life", "Fire resistance"]
+          note: "3-link."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Keep moving."
+    until-28:
+      goals:
+        - "Swap to Righteous Fire with Lifetap, Elemental Focus, Controlled Destruction."
+        - "Cap fire resistance and keep a life flask for the degen."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Fire damage", "Damage over time multiplier"]
+          note: "Rare sceptre."
+        - slot: "Shield"
+          mods: ["Life", "Fire resistance"]
+          note: "Defensive shield."
+        - slot: "Body Armour"
+          mods: ["Life", "Fire resistance"]
+          note: "4-link."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Fire damage"]
+          note: "Bench fire damage."
+    until-68:
+      goals:
+        - "Six-link Righteous Fire and reach 2,000 life; cap all resistances."
+        - "Armour and life regeneration are the defence, not block."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Fire resistance"]
+          note: "6-link."
+        - slot: "Weapon"
+          mods: ["Fire damage", "Damage over time multiplier"]
+          note: "Sceptre is the damage slot."
+        - slot: "Jewels"
+          mods: ["Life", "Fire damage"]
+          note: "Life first."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Fire resistance"]
+          note: "Craft the missing resistance."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start the 6-link."
+        - "Reach 3,000 life, cap resistances and keep armour."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Fire damage", "Damage over time multiplier"]
+          note: "Rare sceptre."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Fire resistance"]
+          note: "Start the 6-link."
+        - slot: "Rings"
+          mods: ["Life", "Fire resistance"]
+          note: "Fix resists."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Fire damage"]
+          note: "Bench fire damage."
+    maps-red:
+      goals:
+        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
+        - "Maximum fire resistance and armour are the red-map upgrades."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Fire damage", "Damage over time multiplier"]
+          note: "Sceptre."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Fire resistance"]
+          note: "6-link."
+        - slot: "Jewels"
+          mods: ["Life", "Fire damage"]
+          note: "Life."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Fire resistance"]
+          note: "Craft the missing resistance."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life."
+        - "Use 21/20 Righteous Fire and awakened burning supports."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Fire damage", "Damage over time multiplier"]
+          note: "Endgame sceptre."
+        - slot: "Amulet"
+          mods: ["Life", "Chaos resistance", "Fire damage"]
+          note: "Fix chaos resistance."
+        - slot: "Jewels"
+          mods: ["Life", "Fire damage"]
+          note: "Keep life."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
+  winter-orb:
+    until-12:
+      goals:
+        - "Level with Winter Orb; a spell damage wand and a 3-link are enough."
+        - "Life, resistances and movement speed carry Act 1."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed"]
+          note: "A magic wand is enough."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "3-link."
+        - slot: "Boots"
+          mods: ["Movement speed", "Life"]
+          note: "Keep moving."
+    until-28:
+      goals:
+        - "Add Added Cold Damage and Controlled Destruction to Winter Orb."
+        - "Herald of Ice and Hatred are the damage auras."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Cold damage"]
+          note: "Rare wand or sceptre."
+        - slot: "Shield"
+          mods: ["Life", "Elemental resistances"]
+          note: "Defensive shield."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Cast speed"]
+          note: "Bench cast speed on a free suffix."
+    until-68:
+      goals:
+        - "Six-link Winter Orb and reach 2,000 life; cap elemental resistances."
+        - "The 6-link and gem levels are the damage step."
+      lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "The 6-link is the damage step."
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Cold damage"]
+          note: "Do not drop cast speed."
+        - slot: "Jewels"
+          mods: ["Life", "Cast speed"]
+          note: "Life first, cast speed second."
+      crafting:
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "Craft the missing resistance."
+    maps-early:
+      goals:
+        - "A 5-link clears white maps; start the 6-link and upgrade the wand."
+        - "Reach 3,000 life and cap resistances."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Cold damage"]
+          note: "The wand is the damage slot."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Start the 6-link."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances"]
+          note: "Fix resists on rings."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Cold damage"]
+          note: "Bench elemental damage on a free prefix."
+    maps-red:
+      goals:
+        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
+        - "Critical strike or Elemental Overload is the red-map damage upgrade."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Spell damage", "Cast speed", "Critical strike chance"]
+          note: "Crit wand."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "6-link."
+        - slot: "Jewels"
+          mods: ["Critical strike multiplier", "Life"]
+          note: "Crit multi."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Critical strike multiplier"]
+          note: "Bench crit multi."
+    pinnacle:
+      goals:
+        - "Cap chaos resistance at 75% and reach 5,000 life."
+        - "Use 21/20 Winter Orb and awakened elemental supports."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["+1 to Level of all Cold Skill Gems", "Spell damage", "Cast speed"]
+          note: "+1 elemental gems is the endgame goal."
+        - slot: "Amulet"
+          mods: ["+1 to Level of all Cold Skill Gems", "Critical strike multiplier", "Life"]
+          note: "Amulet carries gem levels."
+        - slot: "Jewels"
+          mods: ["Critical strike multiplier", "Life"]
+          note: "Keep life."
+      crafting:
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
