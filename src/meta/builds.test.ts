@@ -576,6 +576,37 @@ describe('bounded repair', () => {
   });
 });
 
+describe('catalogue chips', () => {
+  for (const entry of BUILDS) {
+    it(`${entry.id} chips describe the build, not the same ladder`, () => {
+      expect(entry.chips?.length, entry.id).toBeGreaterThanOrEqual(3);
+      expect(entry.chips?.some((chip) => chip.kind === 'ssf'), entry.id).toBe(true);
+      expect(entry.chips?.some((chip) => chip.kind === 'playstyle'), entry.id).toBe(true);
+      const labels = entry.chips?.map((chip) => chip.label) ?? [];
+      expect(new Set(labels).size, entry.id).toBe(labels.length);
+
+      const build = JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        gates?: Record<
+          string,
+          { pass: boolean; metrics: { maxHit: number; ehp: number; chaosResist: number } }
+        >;
+      };
+      const red = build.gates?.['maps-red'];
+      const pinnacle = build.gates?.['pinnacle'];
+      const measuredHc =
+        Boolean(red?.pass && pinnacle?.pass) &&
+        red!.metrics.maxHit >= 10000 &&
+        pinnacle!.metrics.maxHit >= 10000 &&
+        red!.metrics.ehp >= 25000 &&
+        pinnacle!.metrics.ehp >= 30000 &&
+        pinnacle!.metrics.chaosResist >= 75;
+      expect(labels.includes('HC-ready'), `${entry.id} HC-ready`).toBe(measuredHc);
+    });
+  }
+});
+
 describe('gate calibration', () => {
   const calibration = JSON.parse(
     readFileSync(resolve(root, 'src/generated/builds/calibration.json'), 'utf8'),

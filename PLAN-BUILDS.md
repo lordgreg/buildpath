@@ -832,6 +832,24 @@ AGENTS.md and PLAN.md.
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
 
+### Revision 17 — chips, imports and the landing question
+
+- **Catalogue chips are derived, not decorative.** SSF is the publication gate;
+  playstyle comes from the family; HC-ready is only claimed when the measured
+  defensive thresholds at red maps and pinnacle are met. The per-checkpoint dots
+  were identical on every card and are replaced by a small pass count.
+- **pobb.in renders the tree.** Importers read the standard pathofexile.com tree
+  URL from the `<Spec>`; the exporter now injects the URL PoB itself saves. The
+  XML still does not make a request from BuildPath — it carries the same link a
+  desktop export does.
+- **The ascendancy cards explain themselves.** Each lab card shows the point
+  order and the notable's effect lines, so the circle tooltip is optional.
+- **Landing question — recommendation:** make the build catalogue the landing
+  page **after P4 raises it to 6–8 flagships**, not now. The catalogue is the
+  product thesis, but three builds is too thin to be the front door; until then
+  the filter builder remains the complete flow and the header already makes the
+  catalogue one click away.
+
 ### Revision 16 — the second pass
 
 - **Inventory geometry follows the screen.** Gloves and boots sit next to the

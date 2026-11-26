@@ -235,6 +235,55 @@ for (const build of builds) {
   pairs.set(key, build.id);
 }
 
+/**
+ * Catalogue chips. SSF is the gate for every published build; the playstyle
+ * comes from the family; HC-ready is only claimed when the measured defensive
+ * thresholds at red maps and pinnacle are met.
+ */
+function chipsFor(build) {
+  const chips = [];
+  if (build.status === 'verified') {
+    chips.push({
+      label: 'SSF',
+      kind: 'ssf',
+      title: 'Verified against self-found budgets with no required unique.',
+    });
+  }
+  const playstyle =
+    { minion: 'Minion', melee: 'Melee', bow: 'Ranged', caster: 'Caster', hybrid: 'Hybrid' }[
+      build.family
+    ];
+  if (playstyle) chips.push({ label: playstyle, kind: 'playstyle' });
+  const red = build.gates?.['maps-red'];
+  const pinnacle = build.gates?.['pinnacle'];
+  if (
+    red?.pass &&
+    pinnacle?.pass &&
+    red.metrics.maxHit >= 10000 &&
+    pinnacle.metrics.maxHit >= 10000 &&
+    red.metrics.ehp >= 25000 &&
+    pinnacle.metrics.ehp >= 30000 &&
+    pinnacle.metrics.chaosResist >= 75
+  ) {
+    chips.push({
+      label: 'HC-ready',
+      kind: 'defence',
+      title:
+        'Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee.',
+    });
+  }
+  const note =
+    build.family === 'bow'
+      ? { label: 'Fast clear', kind: 'note', title: 'A single arrow clears packs at range.' }
+      : build.family === 'melee'
+        ? { label: 'Tanky', kind: 'note', title: 'Armour, endurance charges and Juggernaut recovery.' }
+        : build.family === 'minion'
+          ? { label: 'Minion army', kind: 'note', title: 'Minions take the hits while you position.' }
+          : null;
+  if (note) chips.push(note);
+  return chips;
+}
+
 const version = hashOf(builds.map((build) => [build.id, build.seedHash]));
 const index = {
   version,
@@ -249,6 +298,7 @@ const index = {
     status: build.status,
     seedHash: build.seedHash,
     ...(build.pipeline ? { calibrated: build.pipeline.calibrated } : {}),
+    chips: chipsFor(build),
     // The catalogue page reads the index only (no per-build fetch), so each
     // checkpoint's pass flag and damage travel with it.
     ...(build.gates

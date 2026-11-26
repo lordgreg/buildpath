@@ -749,6 +749,28 @@ if #statsXml > 0 then
     print("WARN could not inject build stats into the XML")
   end
 end
+
+-- Importers such as pobb.in only render a passive tree when the Spec carries
+-- the standard pathofexile.com tree URL. This is a link written into the
+-- exported XML, not a request from BuildPath; the URL is what PoB itself saves.
+local ok, treeUrl = pcall(function()
+  return build.spec:EncodeURL("https://www.pathofexile.com/passive-skill-tree/")
+end)
+if ok and treeUrl then
+  local injected = buildXml:gsub(
+    "(<Spec[^>]*>)",
+    "%1\n\t\t\t<URL>\n\t\t\t\t" .. treeUrl .. "\n\t\t\t</URL>",
+    1
+  )
+  if injected ~= buildXml then
+    buildXml = injected
+  else
+    print("WARN could not inject the passive tree URL into the XML")
+  end
+else
+  print("WARN could not encode the passive tree URL")
+end
+
 if os.getenv("BUILD_XML_OUT") then
   local out = assert(io.open(os.getenv("BUILD_XML_OUT"), "w"))
   out:write(buildXml)

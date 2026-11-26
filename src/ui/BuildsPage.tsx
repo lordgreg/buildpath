@@ -1,16 +1,17 @@
-import type { BuildIndexEntry, BuildStepSummary } from '../core/builds/types.ts';
+import type {
+  BuildChip,
+  BuildIndexEntry,
+  BuildStepSummary,
+} from '../core/builds/types.ts';
 import { BUILDS, BUILD_VERSION } from '../meta/builds.ts';
 import { APP_VERSION } from '../version.ts';
 import SiteHeader from './SiteHeader.tsx';
 
-/** Human labels for the machine-facing checkpoint ids. */
-const STEP_LABEL: Record<string, string> = {
-  'until-12': 'lv 12',
-  'until-28': 'lv 28',
-  'until-68': 'lv 68',
-  'maps-early': 'early maps',
-  'maps-red': 'red maps',
-  pinnacle: 'pinnacle',
+const CHIP_STYLE: Record<BuildChip['kind'], string> = {
+  ssf: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300',
+  defence: 'border-sky-500/30 bg-sky-500/10 text-sky-300',
+  playstyle: 'border-gold-400/40 bg-gold-400/10 text-gold-200',
+  note: 'border-ink-600 bg-ink-900/70 text-zinc-400',
 };
 
 function dps(value: number): string {
@@ -29,25 +30,20 @@ function step(entry: BuildIndexEntry, id: string): BuildStepSummary | undefined 
   return entry.steps?.find((candidate) => candidate.id === id);
 }
 
-function StepStrip({ steps }: { steps: BuildStepSummary[] }) {
+function ChipRow({ chips }: { chips: BuildChip[] }) {
   return (
-    <ol className="mt-3 flex flex-wrap gap-1.5">
-      {steps.map((step) => (
-        <li key={step.id}>
+    <ul className="mt-3 flex flex-wrap gap-1.5">
+      {chips.map((chip) => (
+        <li key={`${chip.kind}-${chip.label}`}>
           <span
-            title={`${step.id}: ${step.pass ? 'passes' : 'fails'} at level ${step.level} · ${dps(step.dps)} DPS`}
-            className={
-              step.pass
-                ? 'inline-flex items-center gap-1 rounded border border-emerald-500/30 bg-emerald-500/5 px-1.5 py-0.5 text-[10px] text-emerald-300'
-                : 'inline-flex items-center gap-1 rounded border border-rose-500/30 bg-rose-500/5 px-1.5 py-0.5 text-[10px] text-rose-300'
-            }
+            title={chip.title}
+            className={`inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] uppercase tracking-wide ${CHIP_STYLE[chip.kind]}`}
           >
-            <span aria-hidden>{step.pass ? '●' : '○'}</span>
-            {STEP_LABEL[step.id] ?? step.id}
+            {chip.label}
           </span>
         </li>
       ))}
-    </ol>
+    </ul>
   );
 }
 
@@ -84,7 +80,13 @@ function BuildCard({ build }: { build: BuildIndexEntry }) {
 
       <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-400">{build.summary}</p>
 
-      {build.steps && <StepStrip steps={build.steps} />}
+      {build.chips && <ChipRow chips={build.chips} />}
+      {build.steps && (
+        <p className="mt-2 text-[10px] text-zinc-600">
+          {build.steps.filter((entry) => entry.pass).length}/{build.steps.length} checkpoints
+          passed
+        </p>
+      )}
 
       <dl className="mt-3 grid grid-cols-2 gap-2 border-t border-ink-700 pt-3 text-xs">
         <div>

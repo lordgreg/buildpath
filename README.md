@@ -6,7 +6,7 @@ Pick a family, an ascendancy or a meta build, then a phase and strictness, and
 download a valid `.filter` that highlights the bases your build actually wants
 and hides the rest. No account; everything is generated in your browser.
 
-**Status:** v0.60.0 — verified build guides whose every number is
+**Status:** v0.61.0 — verified build guides whose every number is
 machine-derived and reproducible. A build is a seed plus a pinned Path of
 Building measurement, a calibrated gate report, one endgame tree pruned into
 each leveling step, a published PoB code and the filter generated from the same
@@ -25,12 +25,17 @@ builds API.
 - Required jewels are pinned to their passive-tree sockets; click a jewel to
   zoom to and pulse its socket
 - Endgame armour carries measured Eldritch Ember and Ichor implicits
-- The full ascendancy graph with every node, lab timing under it, a pantheon
-  wheel, a separate bandit section, and weighted pros/cons on every build
+- The full ascendancy graph with every node, lab timing and effect lines under
+  it, a pantheon wheel, a separate bandit section, and weighted pros/cons on
+  every build
+- Catalogue chips that describe the build: SSF, playstyle, measured HC-ready,
+  and a defining trait instead of the same six checkpoint dots
 - Compact Metric / Measured / Gate tables with the actual checkpoint thresholds
 - Gem tooltips explain what each gem does and whether 20% quality is worth it
 - A Filter section that opens the build-specific builder at the right phase
-- One-click build link through pobb.in, backed by a committed `.pob` asset
+- One-click build link through pobb.in, with Gear, Gems and Tree rendered there
+- A release step that publishes the measured code to pobb.in and commits the
+  link map; the copy button remains for desktop PoB
 - Generated 16:9 build header art
 - Gates calibrated in both directions against must-pass and must-fail references
 - Bounded repair: a failing step may swap one tree node, with a published

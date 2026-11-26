@@ -104,21 +104,34 @@ export default function AscendancyPanel({
 
       <div className="mt-4 grid gap-2 sm:grid-cols-2">
         {LAB_MILESTONES.map((milestone) => {
-          const points = selected.filter((point) => point.lab === milestone.lab);
+          const point = selected.find((entry) => entry.lab === milestone.lab);
+          const pointIndex = point ? selected.indexOf(point) + 1 : null;
+          const node = point
+            ? ascendancy.nodes.find((entry) => entry.id === point.node)
+            : undefined;
           return (
             <div
               key={milestone.lab}
               className="flex flex-col rounded-lg border border-ink-700 bg-ink-900/40 px-3 py-2"
             >
               <div className="flex items-baseline justify-between gap-2">
-                <span className="text-[11px] font-medium text-zinc-300">{milestone.name}</span>
-                <span className="text-[10px] text-zinc-600">level ~{milestone.level}</span>
+                <span className="text-[10px] uppercase tracking-[0.14em] text-gold-300">
+                  {pointIndex ? `point ${pointIndex}` : milestone.name}
+                </span>
+                <span className="text-[10px] text-zinc-600">
+                  {milestone.name} · level ~{milestone.level}
+                </span>
               </div>
-              <span className="mt-0.5 text-[10px] text-zinc-500">
-                {points.length > 0
-                  ? points.map((point) => point.node.replaceAll('-', ' ')).join(' · ')
-                  : 'No notable taken yet'}
+              <span className="mt-0.5 text-[11px] font-medium text-zinc-300">
+                {node ? node.name : 'No notable taken yet'}
               </span>
+              {node && (
+                <ul className="mt-1 space-y-0.5 text-[10px] leading-snug text-zinc-500">
+                  {node.effect.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           );
         })}

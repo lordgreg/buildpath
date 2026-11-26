@@ -16,6 +16,13 @@ export interface BuildStepSummary {
   dps: number;
 }
 
+/** A short catalogue badge, e.g. SSF, Minion, HC-ready. */
+export interface BuildChip {
+  label: string;
+  kind: 'ssf' | 'defence' | 'playstyle' | 'note';
+  title?: string;
+}
+
 export interface BuildIndexEntry {
   id: string;
   name: string;
@@ -29,6 +36,8 @@ export interface BuildIndexEntry {
   seedHash: string;
   /** Gate results per checkpoint, so `builds.html` needs only the index. */
   steps?: BuildStepSummary[];
+  /** Differentiators for the catalogue: SSF, playstyle, measured defence. */
+  chips?: BuildChip[];
   /** True when the committed calibration report covers the current gates. */
   calibrated?: boolean;
   /**
