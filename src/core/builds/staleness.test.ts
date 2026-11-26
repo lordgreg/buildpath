@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { evaluateStaleness, leagueWindowOpen } from './staleness.ts';
+import {
+  applyBuildStaleness,
+  evaluateStaleness,
+  leagueWindowOpen,
+} from './staleness.ts';
 
 describe('league window', () => {
   it('keeps the first 72 hours closed', () => {
@@ -32,5 +36,14 @@ describe('patch staleness', () => {
 
   it('keeps a matching build current', () => {
     expect(evaluateStaleness({ patchHash: 'abc123' }, current).status).toBe('current');
+  });
+
+  it('delists the whole catalogue when the patch hash moves', () => {
+    const builds = [
+      { status: 'verified', pipeline: { patchHash: 'old' } },
+      { status: 'verified', pipeline: { patchHash: 'old' } },
+    ];
+    applyBuildStaleness(builds, current);
+    expect(builds.map((build) => build.status)).toEqual(['stale', 'stale']);
   });
 });

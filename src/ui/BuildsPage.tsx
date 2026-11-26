@@ -71,7 +71,9 @@ function BuildCard({ build }: { build: BuildIndexEntry }) {
           className={
             build.status === 'verified'
               ? 'shrink-0 rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-emerald-300'
-              : 'shrink-0 rounded border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-amber-300'
+              : build.status === 'stale'
+                ? 'shrink-0 rounded border border-rose-500/40 bg-rose-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-rose-300'
+                : 'shrink-0 rounded border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-amber-300'
           }
         >
           {build.status}
@@ -125,6 +127,7 @@ export default function BuildsPage() {
   // A build that has not passed every checkpoint is not in the catalogue (R10);
   // its own page still shows the named failures.
   const published = BUILDS.filter((build) => build.status === 'verified');
+  const stale = BUILDS.filter((build) => build.status === 'stale');
   const hidden = BUILDS.length - published.length;
   const calibrated = published.filter((build) => build.calibrated).length;
   const families = [...new Set(published.map((build) => build.family))].sort();
@@ -153,9 +156,14 @@ export default function BuildsPage() {
 
       {hidden > 0 && (
         <p className="mt-4 rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-xs leading-relaxed text-amber-200">
-          {hidden} build{hidden === 1 ? '' : 's'} failed verification and{' '}
-          {hidden === 1 ? 'is' : 'are'} not listed. The report still names every
-          failed gate on the build&apos;s own page.
+          {stale.length > 0
+            ? `${stale.length} build${stale.length === 1 ? '' : 's'} ${
+                stale.length === 1 ? 'is' : 'are'
+              } stale or waiting for a PoB patch and ${stale.length === 1 ? 'is' : 'are'} delisted.`
+            : `${hidden} build${hidden === 1 ? '' : 's'} failed verification and ${
+                hidden === 1 ? 'is' : 'are'
+              } not listed.`}{' '}
+          The build&apos;s own page still explains why.
         </p>
       )}
 

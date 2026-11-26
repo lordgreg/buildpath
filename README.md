@@ -6,7 +6,7 @@ Pick a family, an ascendancy or a meta build, then a phase and strictness, and
 download a valid `.filter` that highlights the bases your build actually wants
 and hides the rest. No account; everything is generated in your browser.
 
-**Status:** v0.62.0 — verified build guides whose every number is
+**Status:** v0.63.0 — verified build guides whose every number is
 machine-derived and reproducible. A build is a seed plus a pinned Path of
 Building measurement, a calibrated gate report, one endgame tree pruned into
 each leveling step, a published PoB code and the filter generated from the same
@@ -41,6 +41,10 @@ builds API.
 - Generated 16:9 build header art
 - Gates calibrated in both directions against 36 must-pass observations and ten
   must-fail mutations
+- Patch-fact hashes delist every build when the pinned tree or gem data moves;
+  the league's first 72 hours publish nothing
+- Per-phase, build-specific filters at every strictness, generated from the
+  same build JSON
 - Bounded repair: a failing step may swap one tree node, with a published
   `nodeDelta` and seed-vs-repaired view
 - Lab timing is explicit: normal ~33, cruel ~55, merciless ~68, eternal ~75

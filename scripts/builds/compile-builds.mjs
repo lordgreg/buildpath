@@ -15,7 +15,10 @@ import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import { parse } from 'yaml';
 import { resolveGuide } from './guide.mjs';
-import { leagueWindowOpen } from '../../src/core/builds/staleness.ts';
+import {
+  applyBuildStaleness,
+  leagueWindowOpen,
+} from '../../src/core/builds/staleness.ts';
 
 const root = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const seedsDir = resolve(root, 'src/builds');
@@ -57,6 +60,10 @@ const league = parse(
   readFileSync(resolve(seedsDir, 'config/league.yaml'), 'utf8'),
 );
 const leagueOpen = leagueWindowOpen(new Date(), league.startsAt);
+const patchFactsPath = resolve(root, 'src/generated/patch-facts.json');
+const patchFacts = existsSync(patchFactsPath)
+  ? JSON.parse(readFileSync(patchFactsPath, 'utf8'))
+  : undefined;
 const gemLevel1 = (name) => gemLevels[name]?.levels?.[1];
 const gemName = (gem) => (typeof gem === 'string' ? gem : gem.name);
 const baseItems = new Map(
@@ -219,6 +226,7 @@ for (const file of files) {
       carried = {
         status: previous.status ?? 'draft',
         gates: previous.gates,
+        ...(previous.patch ? { patch: previous.patch } : {}),
         ...(previous.tree ? { tree: previous.tree } : {}),
         ...(previous.pob ? { pob: previous.pob } : {}),
         ...(previous.pipeline ? { pipeline: previous.pipeline } : {}),
@@ -265,9 +273,18 @@ for (const build of builds) {
   if (guide.summary.status === 'stale') build.status = 'draft';
 }
 
+// R10: a build whose patch fact set moved is delisted, not silently kept.
+applyBuildStaleness(builds, patchFacts);
+
 // R4: the league's first 72 hours publish nothing.
 if (!leagueOpen) {
-  for (const build of builds) build.status = 'draft';
+  for (const build of builds) {
+    build.status = 'stale';
+    build.stale = {
+      status: 'waiting-for-pob',
+      reason: 'The league is still inside its first 72 hours.',
+    };
+  }
 }
 
 /**
@@ -333,6 +350,7 @@ const index = {
     status: build.status,
     seedHash: build.seedHash,
     ...(build.pipeline ? { calibrated: build.pipeline.calibrated } : {}),
+    ...(build.stale ? { stale: build.stale } : {}),
     chips: chipsFor(build),
     // The catalogue page reads the index only (no per-build fetch), so each
     // checkpoint's pass flag and damage travel with it.

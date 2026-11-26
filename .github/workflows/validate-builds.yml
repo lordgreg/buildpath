@@ -76,6 +76,7 @@ jobs:
       - run: npm ci
       - name: Compile seeds, calibrate the gates, prove the seeds, prove the codes load
         run: |
+          npm run builds:patch-facts
           npm run builds:build
           npm run builds:calibrate
           npm run builds:verify
@@ -83,5 +84,5 @@ jobs:
       - name: Committed build data matches the pipeline
         # A report that only exists on the runner is not evidence (D22, P2).
         run: |
-          git status --porcelain -- src/generated/builds
-          test -z "$(git status --porcelain -- src/generated/builds)"
+          git status --porcelain -- src/generated
+          test -z "$(git status --porcelain -- src/generated)"

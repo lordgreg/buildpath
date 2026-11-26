@@ -336,6 +336,9 @@ const calibrationPath = resolve(outDir, 'calibration.json');
 const calibration = existsSync(calibrationPath)
   ? JSON.parse(readFileSync(calibrationPath, 'utf8'))
   : null;
+const patchFacts = JSON.parse(
+  readFileSync(resolve(root, 'src/generated/patch-facts.json'), 'utf8'),
+);
 const calibrated =
   gates.calibrated === true &&
   calibration?.verified === true &&
@@ -359,6 +362,7 @@ for (const file of files) {
   build.gates = report;
   build.tree = tree;
   build.pob = pob;
+  build.patch = patchFacts.patch;
   build.status = status;
   const { guide, errors: guideErrors } = resolveGuide(build, seed.guide, {
     previous: build.guide,
@@ -377,6 +381,7 @@ for (const file of files) {
   build.pipeline = {
     pobRef: process.env.POB_REF ?? 'v2.69.0',
     treeVersion: checkpoints.treeVersion,
+    patchHash: patchFacts.patchHash,
     calibrated,
     checkedAt:
       unchanged && build.pipeline?.checkedAt

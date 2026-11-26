@@ -712,6 +712,26 @@ tests, human sign-off on prose only.
 **P5 — per-phase filters, staleness delisting, league workflow, changelog.**
 Acceptance: a patch bump delists every unverified build and the site says so.
 
+**P5 status (complete: patch facts, delisting, league window).**
+
+- **Per-phase filters** remain one build object: `mode=build` generates
+  leveling and endgame filters at all strictness levels, the build page links
+  the four guide-mapped combinations, and the test suite generates and validates
+  every combination for every build.
+- **Patch facts** live in `src/generated/patch-facts.json`: the pinned PoB tag,
+  game patch, tree version and content hashes of `TreeData` and `Gems`.
+  `builds:patch-facts` regenerates them in CI; `builds:verify` records the hash
+  on every build.
+- **Staleness delists.** `applyBuildStaleness` compares each build's recorded
+  hash with the current fact set. A moved hash (or a missing fact set) sets
+  `status: stale`, removes the build from the catalogue, and its own page says
+  why. `npm test` keeps every published build on the current fact set.
+- **League workflow** reads the reviewed start from `config/league.yaml`; the
+  first 72 hours publish nothing, and the catalogue reports stale/waiting
+  builds instead of silently keeping them.
+- **Changelog** stays in both `src/changelog.ts` and `CHANGELOG.md`; the
+  release workflow builds the GitHub Release from the matching section.
+
 ## 12. Testing
 
 ### 12.1 Behaviour
@@ -853,6 +873,23 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 19 — P5 landed
+
+- **Patch facts are a committed artefact.** `patch-facts.json` hashes the pinned
+  tree and gem data. `builds:patch-facts` regenerates it, the validate workflow
+  runs it, and every build records the hash it was verified against.
+- **Delisting is mechanical.** `applyBuildStaleness` marks a build stale when
+  the hash moves or when no fact set exists for the live patch. The catalogue
+  filters to verified builds and names the stale/waiting count; the individual
+  page explains the reason.
+- **The league window is reviewed data.** `config/league.yaml` supplies the
+  start; the first 72 hours publish nothing.
+- **Filters stay per-phase.** The builder's `mode=build` covers leveling and
+  endgame at every strictness; the build page links the four guide-mapped
+  combinations and the tests generate all of them.
+- **No pathofexile.com call** was added. The patch facts are local content
+  hashes of the pinned PoB checkout.
 
 ### Revision 18 — P4 landed
 

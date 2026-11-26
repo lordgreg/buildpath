@@ -1,9 +1,10 @@
 import type { CharacterClass, ItemSlot, SlotSpec } from '../archetypes/types.ts';
 import type { BuildGuide } from './guide.ts';
+import type { Staleness } from './staleness.ts';
 import type { FamilyId } from '../../meta/types.ts';
 
 /** What a build seed compiles to on the site. */
-export type BuildStatus = 'draft' | 'verified' | 'rejected';
+export type BuildStatus = 'draft' | 'verified' | 'rejected' | 'stale';
 
 /**
  * The list entry `builds.html` and the builder read. Everything here is small:
@@ -41,6 +42,8 @@ export interface BuildIndexEntry {
   chips?: BuildChip[];
   /** True when the committed calibration report covers the current gates. */
   calibrated?: boolean;
+  /** Staleness / waiting state, when the build is delisted (R10). */
+  stale?: Staleness;
   /**
    * Filter slots that override the family/ascendancy defaults (D15). A null
    * slot removes the default, e.g. a two-handed build has no offhand.
@@ -191,6 +194,8 @@ export interface GateResult {
 export interface BuildPipelineInfo {
   pobRef: string;
   treeVersion: string;
+  /** Content hash of the patch facts this build was verified against. */
+  patchHash?: string;
   calibrated: boolean;
   checkedAt: string;
 }
@@ -267,6 +272,10 @@ export interface Build extends BuildIndexEntry {
   pantheon: { major: string; minor: string; note?: string };
   uniques: { core: UniqueRef[]; optional: UniqueRef[] };
   flasks?: { leveling?: FlaskChoice[]; maps?: FlaskChoice[]; endgame?: FlaskChoice[] };
+  /** The game patch the build was verified against. */
+  patch?: string;
+  /** Staleness / waiting state, when the build is delisted (R10). */
+  stale?: Staleness;
   /** Resolved, checked prose. The seed YAML is the authoring home. */
   guide?: BuildGuide;
 }

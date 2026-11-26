@@ -40,6 +40,7 @@ Build pipeline (needs a pinned PoB checkout at `.cache/pob/src` and LuaJIT +
 
 ```bash
 npm run builds:build      # validate src/builds/*.yaml -> src/generated/builds/
+npm run builds:patch-facts # content hashes of the pinned tree and gem data
 npm run builds:calibrate  # must-pass + must-fail gates, committed report
 npm run builds:verify     # PoB gates per checkpoint + the published PoB code
 npm run builds:publish-pobs # release only: create pobb.in pastes and link map
@@ -125,9 +126,10 @@ scripts/       YAML compiler and data extractors
 
 1. Bump `package.json` version.
 2. Add the release to **both** `src/changelog.ts` and `CHANGELOG.md`.
-3. Run `builds:calibrate`, `builds:verify` and then `builds:publish-pobs`
-   (network: it creates a public pobb.in paste per build). Commit the updated
-   `builds/pob-links.json`; the test fails if a link's code hash is stale.
+3. Run `builds:patch-facts`, `builds:calibrate`, `builds:verify` and then
+   `builds:publish-pobs` (network: it creates a public pobb.in paste per build).
+   Commit the updated `patch-facts.json` and `builds/pob-links.json`; tests fail
+   if a link's code hash or a build's patch hash is stale.
 4. Commit, tag `v<version>`, then push the commit **and the tag**
    (`git push origin master --follow-tags`). An unpushed tag is invisible to
    GitHub.

@@ -116,7 +116,13 @@ function dps(value: number): string {
 }
 
 function statusLabel(status: BuildIndexEntry['status']): string {
-  return status === 'verified' ? 'verified' : status === 'rejected' ? 'rejected' : 'draft';
+  return status === 'verified'
+    ? 'verified'
+    : status === 'rejected'
+      ? 'rejected'
+      : status === 'stale'
+        ? 'stale'
+        : 'draft';
 }
 
 const GUIDE_LABEL: Record<(typeof GUIDE_SECTIONS)[number], string> = {
@@ -360,7 +366,9 @@ export default function BuildPage() {
             className={
               build.status === 'verified'
                 ? 'rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-xs text-emerald-300'
-                : 'rounded border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-xs text-amber-300'
+                : build.status === 'stale'
+                  ? 'rounded border border-rose-500/40 bg-rose-500/10 px-2 py-1 text-xs text-rose-300'
+                  : 'rounded border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-xs text-amber-300'
             }
           >
             {statusLabel(build.status)} · {passed}/{gates.length} checkpoints
@@ -435,12 +443,18 @@ export default function BuildPage() {
         </section>
       )}
 
-      {build.status !== 'verified' && (
-        <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-xs leading-relaxed text-amber-200">
-          This build does not pass its gates yet, so it is not published as a
-          guide. The numbers below are what Path of Building measured; the
-          failures are named rather than hidden.
+      {build.stale ? (
+        <p className="rounded-lg border border-rose-500/30 bg-rose-500/5 px-3 py-2 text-xs leading-relaxed text-rose-200">
+          This build is delisted ({build.stale.status}): {build.stale.reason}
         </p>
+      ) : (
+        build.status !== 'verified' && (
+          <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-xs leading-relaxed text-amber-200">
+            This build does not pass its gates yet, so it is not published as a
+            guide. The numbers below are what Path of Building measured; the
+            failures are named rather than hidden.
+          </p>
+        )
       )}
 
       <section aria-labelledby="steps">

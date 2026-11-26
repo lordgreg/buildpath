@@ -40,6 +40,32 @@ export type Staleness =
  * A build is current only when its recorded patch hash matches the current
  * fact set. A missing fact set is "waiting for PoB"; a hash that moved is stale.
  */
+export interface StalenessBuild {
+  status: string;
+  pipeline?: { patchHash?: string };
+  stale?: Staleness;
+}
+
+/**
+ * Applies the patch fact set to a catalogue. A moved hash (or a missing PoB
+ * fact set) delists the build; the old evidence is preserved on its own page.
+ */
+export function applyBuildStaleness<T extends StalenessBuild>(
+  builds: T[],
+  current: PatchFacts | undefined,
+): T[] {
+  for (const build of builds) {
+    const stale = evaluateStaleness(build.pipeline, current);
+    if (stale.status === 'current') {
+      delete build.stale;
+    } else {
+      build.stale = stale;
+      build.status = 'stale';
+    }
+  }
+  return builds;
+}
+
 export function evaluateStaleness(
   build: { patchHash?: string } | undefined,
   current: PatchFacts | undefined,

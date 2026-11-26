@@ -577,6 +577,36 @@ describe('bounded repair', () => {
   });
 });
 
+describe('patch staleness', () => {
+  const facts = JSON.parse(
+    readFileSync(resolve(root, 'src/generated/patch-facts.json'), 'utf8'),
+  ) as { patchHash: string; patch: string; pobRef: string };
+
+  it('keeps every published build on the current patch fact set', () => {
+    for (const entry of BUILDS) {
+      const build = JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        id: string;
+        status: string;
+        patch?: string;
+        stale?: unknown;
+        pipeline?: { patchHash?: string; pobRef?: string };
+      };
+      expect(build.pipeline?.patchHash, build.id).toBe(facts.patchHash);
+      expect(build.pipeline?.pobRef, build.id).toBe(facts.pobRef);
+      expect(build.patch, build.id).toBe(facts.patch);
+      expect(build.status, build.id).toBe('verified');
+      expect(build.stale, build.id).toBeUndefined();
+    }
+  });
+
+  it('exposes the fact set the next PoB bump will be compared against', () => {
+    expect(facts.patchHash.length).toBe(16);
+    expect(facts.patch).toMatch(/^\d+\.\d+\.\d+$/);
+  });
+});
+
 describe('guide prose', () => {
   const compiled = BUILDS.map(
     (entry) =>
