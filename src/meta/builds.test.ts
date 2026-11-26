@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { inflateSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'yaml';
+import { getGuidePath, validateProseDigits } from '../core/builds/guide.ts';
 import { generateFilter } from '../core/filter/generate.ts';
 import { validateArchetype } from '../core/archetypes/validate.ts';
 import { validateFilter } from '../core/filter/validate.ts';
@@ -571,6 +572,60 @@ describe('bounded repair', () => {
         expect(gate.repair!.nodeDelta, `${build.id}/${checkpoint}`).toBeGreaterThanOrEqual(0);
         expect(gate.repair!.nodeDelta, `${build.id}/${checkpoint}`).toBeLessThanOrEqual(10);
         expect(gate.repair!.status, `${build.id}/${checkpoint}`).toBe('within-bound');
+      }
+    }
+  });
+});
+
+describe('guide prose', () => {
+  const compiled = BUILDS.map(
+    (entry) =>
+      JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        id: string;
+        guide?: Record<
+          string,
+          {
+            text: string;
+            status: string;
+            facts: string[];
+            factsHash: string;
+            signed: { by: string; at: string } | null;
+          }
+        >;
+      },
+  );
+
+  function factsHash(build: unknown, facts: string[]): string {
+    const declared = [...facts].sort().map((path) => [path, getGuidePath(build, path)]);
+    return createHash('sha256').update(JSON.stringify(declared)).digest('hex').slice(0, 16);
+  }
+
+  it('resolves, hashes and signs every published guide section', () => {
+    for (const build of compiled) {
+      expect(build.guide, `${build.id} has no guide`).toBeDefined();
+      for (const id of ['summary', 'leveling', 'maps', 'bossing']) {
+        const section = build.guide![id];
+        expect(section, `${build.id}/${id}`).toBeDefined();
+        expect(section.text, `${build.id}/${id} placeholder`).not.toContain('{{');
+        expect(section.factsHash, `${build.id}/${id}`).toBe(factsHash(build, section.facts));
+        expect(section.factsHash.length, `${build.id}/${id}`).toBe(16);
+      }
+      expect(['signed', 'auto-breadth']).toContain(build.guide!.summary.status);
+      if (build.guide!.summary.status === 'signed') {
+        expect(build.guide!.summary.signed?.by, build.id).toBeTruthy();
+      }
+    }
+  });
+
+  it('keeps raw prose free of numbers outside the closed token set', () => {
+    for (const entry of BUILDS) {
+      const seed = parse(
+        readFileSync(resolve(root, `src/builds/${entry.id}.yaml`), 'utf8'),
+      ) as { guide: Record<string, { text: string }> };
+      for (const [id, section] of Object.entries(seed.guide)) {
+        expect(validateProseDigits(section.text), `${entry.id}/${id}`).toEqual([]);
       }
     }
   });

@@ -6,7 +6,7 @@ Pick a family, an ascendancy or a meta build, then a phase and strictness, and
 download a valid `.filter` that highlights the bases your build actually wants
 and hides the rest. No account; everything is generated in your browser.
 
-**Status:** v0.61.0 — verified build guides whose every number is
+**Status:** v0.62.0 — verified build guides whose every number is
 machine-derived and reproducible. A build is a seed plus a pinned Path of
 Building measurement, a calibrated gate report, one endgame tree pruned into
 each leveling step, a published PoB code and the filter generated from the same
@@ -19,6 +19,8 @@ builds API.
 
 - Verified build guides: six checkpoints, a gate report for each, the PoB code
   the gate measured, and a filter generated from the same build
+- Six published builds across three ascendancies, each with checked prose:
+  placeholders only, a facts hash and a signed summary
 - Gear drawn as an inventory sheet: weapon and offhand on the sides, armour,
   rings, belt, boots and five flasks in their game positions, with mods shown
   inline and faint slot glyphs behind empty space
@@ -37,7 +39,8 @@ builds API.
 - A release step that publishes the measured code to pobb.in and commits the
   link map; the copy button remains for desktop PoB
 - Generated 16:9 build header art
-- Gates calibrated in both directions against must-pass and must-fail references
+- Gates calibrated in both directions against 36 must-pass observations and ten
+  must-fail mutations
 - Bounded repair: a failing step may swap one tree node, with a published
   `nodeDelta` and seed-vs-repaired view
 - Lab timing is explicit: normal ~33, cruel ~55, merciless ~68, eternal ~75

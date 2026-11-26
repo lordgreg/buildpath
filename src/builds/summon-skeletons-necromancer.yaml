@@ -26,6 +26,39 @@ cons:
   - { weight: 2, text: "Many gems compete for slots and links." }
   - { weight: 1, text: "Leveling with skeletons is clunky before the first minion notables." }
 
+guide:
+  summary:
+    text: >-
+      Summon Skeletons Necromancer is a league-start minion build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.pinnacle.metrics.dps|dps}} at
+      pinnacle. Gem levels and minion supports carry the damage, the skeletons
+      take the hits, and no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    signed: { by: maintainer, at: "2026-11-26T00:00:00Z" }
+  leveling:
+    text: >-
+      Level with skeletons and a minion damage support, then keep the swarm
+      between you and the pack. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and {{gates.until-12.metrics.dps|dps}} damage;
+      the second measures {{gates.until-28.metrics.dps|dps}}. A mana flask covers the
+      expensive early summons.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep the skeletons
+      between you and the pack, cap elemental resistances, and let the filter
+      hide the rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Refresh the skeletons
+      before the burst, keep Flesh Offering up, and move when the boss turns.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+
 minionCount: 6
 
 tree:

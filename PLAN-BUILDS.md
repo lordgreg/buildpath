@@ -687,6 +687,28 @@ passing; leveling path is a proven subset with valid order.
 pages where a gate-passing build exists (D1). Acceptance: R1–R4 enforced by
 tests, human sign-off on prose only.
 
+**P4 status (complete: six builds, checked prose).**
+
+- Six published builds, all gate-verified at every checkpoint: the original
+  Juggernaut, Deadeye and Necromancer plus **Cyclone Juggernaut**,
+  **Ice Shot Deadeye** and **Summon Raging Spirit Necromancer**. The catalogue
+  now has two builds in each of the three ascendancies; the breadth section is
+  still gate-driven, not popularity-driven.
+- Every seed carries four prose sections (`summary | leveling | maps |
+  bossing`). Prose states numbers only through `{{path|format}}` placeholders;
+  the formats are the closed set in §12.2, and a raw digit outside the token
+  set fails the build.
+- `factsHash` covers the declared facts per section, and the page shows the
+  hash and sign-off. A summary signed by the maintainer is required to publish;
+  the other sections may be `auto-retry`. The compiler re-resolves prose after
+  verification, so a gate move changes the hash and marks a signed section
+  stale rather than silently rewriting it.
+- R1–R4 are tests: placeholder/token checks, gate report for every checkpoint,
+  PoB code round-trip, and the 72-hour league window. The league window is read
+  from `src/builds/config/league.yaml` and currently open.
+- The six builds each have generated 16:9 header art and a working pobb.in
+  paste with Gear, Gems and Tree.
+
 **P5 — per-phase filters, staleness delisting, league workflow, changelog.**
 Acceptance: a patch bump delists every unverified build and the site says so.
 
@@ -831,6 +853,25 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 18 — P4 landed
+
+- **Six builds.** Cyclone Juggernaut, Ice Shot Deadeye and Summon Raging Spirit
+  Necromancer were added to the original three. All six pass every checkpoint;
+  the calibration's must-pass set is now 36 observations (six builds × six
+  checkpoints) plus the ten must-fail cases.
+- **Prose is checked, not trusted.** Guide text lives in the seed and stores
+  only placeholders for numbers. `src/core/builds/guide.ts` owns the closed
+  format set, placeholder resolution and the raw-digit check; the compiler
+  computes `factsHash` from the declared facts and stores the resolved text.
+- **Sign-off is visible.** Each section has a status badge; a signed summary
+  is required for publication, while unsigned sections may be `auto-retry`.
+  The page shows the facts hash and signer.
+- **R4 is a real gate.** `leagueWindowOpen` reads the reviewed league start
+  from `config/league.yaml`; the first 72 hours publish nothing.
+- **The landing decision stands:** keep the filter builder as the entry point
+  until P4's six builds become a stronger catalogue, then flip it at the
+  planned P4.5 step.
 
 ### Revision 17 — chips, imports and the landing question
 

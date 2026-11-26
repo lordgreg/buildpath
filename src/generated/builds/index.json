@@ -1,5 +1,5 @@
 {
-  "version": "3c0f78379d46",
+  "version": "ebbb755d6393",
   "builds": [
     {
       "id": "boneshatter-juggernaut",
@@ -83,6 +83,138 @@
       }
     },
     {
+      "id": "cyclone-juggernaut",
+      "name": "Cyclone Juggernaut",
+      "class": "Marauder",
+      "ascendancyId": "juggernaut",
+      "family": "melee",
+      "mainSkill": "Cyclone",
+      "summary": "Two-handed Cyclone on the Juggernaut shell. The axe and the budget armour are the damage and defence; the ascendancy supplies endurance charges, recovery and stun immunity. No required unique.",
+      "status": "verified",
+      "seedHash": "daf16ae8c56b",
+      "calibrated": true,
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Melee",
+          "kind": "playstyle"
+        },
+        {
+          "label": "Tanky",
+          "kind": "note",
+          "title": "Armour, endurance charges and Juggernaut recovery."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 26
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 530
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 64950
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 125659
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 254190
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 519188
+        }
+      ]
+    },
+    {
+      "id": "ice-shot-deadeye",
+      "name": "Ice Shot Deadeye",
+      "class": "Ranger",
+      "ascendancyId": "deadeye",
+      "family": "bow",
+      "mainSkill": "Ice Shot",
+      "summary": "Cold bow build with the same league-start shell as Lightning Arrow. Ice Shot converts physical damage to cold, freezes the first pack, and turns a rare bow into the main damage slot. No required unique.",
+      "status": "verified",
+      "seedHash": "054ed2dffe86",
+      "calibrated": true,
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Ranged",
+          "kind": "playstyle"
+        },
+        {
+          "label": "Fast clear",
+          "kind": "note",
+          "title": "A single arrow clears packs at range."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 81
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 735
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 36013
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 78463
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 192951
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 374089
+        }
+      ]
+    },
+    {
       "id": "lightning-arrow-deadeye",
       "name": "Lightning Arrow Deadeye",
       "class": "Ranger",
@@ -145,6 +277,77 @@
           "pass": true,
           "level": 96,
           "dps": 261068
+        }
+      ]
+    },
+    {
+      "id": "summon-raging-spirit-necromancer",
+      "name": "Summon Raging Spirit Necromancer",
+      "class": "Witch",
+      "ascendancyId": "necromancer",
+      "family": "minion",
+      "mainSkill": "Summon Raging Spirit",
+      "summary": "League-start minion build that trades skeletons for a swarm of raging spirits. The spirits are temporary, aggressive and scale with minion damage, so the same budget caster gear that proves the skeleton build proves this one. No required unique.",
+      "status": "verified",
+      "seedHash": "ecc4e4d37fb2",
+      "calibrated": true,
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Minion",
+          "kind": "playstyle"
+        },
+        {
+          "label": "HC-ready",
+          "kind": "defence",
+          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        },
+        {
+          "label": "Minion army",
+          "kind": "note",
+          "title": "Minions take the hits while you position."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 337
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 1205
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 58734
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 59740
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 140154
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 205073
         }
       ]
     },

@@ -1,0 +1,159 @@
+schemaVersion: 1
+id: summon-raging-spirit-necromancer
+name: Summon Raging Spirit Necromancer
+class: Witch
+ascendancyId: necromancer
+family: minion
+mainSkill: Summon Raging Spirit
+summary: >-
+  League-start minion build that trades skeletons for a swarm of raging
+  spirits. The spirits are temporary, aggressive and scale with minion damage,
+  so the same budget caster gear that proves the skeleton build proves this one.
+  No required unique.
+
+pros:
+  - { weight: 3, text: "No required unique; gem levels and minion stats carry the damage." }
+  - { weight: 3, text: "The spirits seek enemies on their own, so clear does not need precise aiming." }
+  - { weight: 2, text: "Aggressive minions keep damage uptime high while you move." }
+  - { weight: 2, text: "Uses the same caster budget as the skeleton build, so gear is easy to reuse." }
+  - { weight: 2, text: "A strong boss setup once the spirits are stacked." }
+  - { weight: 1, text: "Offering and corpse setup rewards planning but is not mandatory early." }
+cons:
+  - { weight: 3, text: "The spirits expire, so damage falls off if you stop casting." }
+  - { weight: 3, text: "You are fragile when the minion wall breaks or you are caught alone." }
+  - { weight: 2, text: "Clear speed is slower than a bow build." }
+  - { weight: 2, text: "Many gems compete for slots and links." }
+  - { weight: 2, text: "Minion AI can waste the swarm on a single tanky rare." }
+  - { weight: 1, text: "Leveling is clunky before the first minion notables." }
+
+guide:
+  summary:
+    text: >-
+      Summon Raging Spirit Necromancer is a league-start minion build that
+      measures {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. The spirits seek enemies on their
+      own, the caster gear is shared with the skeleton build, and no unique is
+      required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    signed: { by: maintainer, at: "2026-11-26T00:00:00Z" }
+  leveling:
+    text: >-
+      Level with raging spirits and a minion damage support; they are available
+      early and keep moving while you do. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and {{gates.until-12.metrics.dps|dps}} damage;
+      the second measures {{gates.until-28.metrics.dps|dps}}. A mana flask covers the
+      repeated casts.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep the spirits between
+      you and the pack, cap elemental resistances, and let the filter hide the
+      rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Refresh the swarm before
+      the burst, keep Flesh Offering up, and recast after every phase change.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+
+minionCount: 10
+
+tree:
+  targets:
+    - minions deal increased damage
+    - minions have increased attack speed
+    - minions have increased maximum life
+    - increased maximum life
+    - increased skill effect duration
+    - increased fire damage
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Summon Raging Spirit]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Summon Raging Spirit, Minion Damage, Added Fire Damage]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Raise Zombie]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Spirits are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Summon Raging Spirit]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Summon Raging Spirit, Minion Damage, Melee Physical Damage, Minion Speed]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Desecrate]
+        - slot: Helmet
+          gems: [Clarity, Convocation]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement." }
+    - until: 68
+      skills: [Summon Raging Spirit]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Summon Raging Spirit, Minion Damage, Melee Physical Damage, Multistrike, Feeding Frenzy, Minion Speed]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Generosity]
+        - slot: Helmet
+          gems: [Desecrate]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement." }
+    - until: 100
+      skills: [Summon Raging Spirit]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Summon Raging Spirit, Minion Damage, Melee Physical Damage, Multistrike, Feeding Frenzy, Minion Life]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Generosity]
+        - slot: Helmet
+          gems: [Desecrate]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement." }
+
+ascendancyOrder:
+  - { node: mindless-aggression, lab: 1 }
+  - { node: commander-of-darkness, lab: 2 }
+  - { node: mistress-of-sacrifice, lab: 3 }
+  - { node: bone-barrier, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch a caster in a bad position.
+uniques:
+  core: []
+  optional: []

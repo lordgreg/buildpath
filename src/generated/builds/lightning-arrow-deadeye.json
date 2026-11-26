@@ -8015,5 +8015,55 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "d0d12849425e"
+  "seedHash": "d0d12849425e",
+  "guide": {
+    "summary": {
+      "text": "Lightning Arrow Deadeye is a fast bow build that measures 141.5k at red maps and 261.1k at pinnacle. A rare bow, added lightning and critical strikes carry the damage; no unique is required.",
+      "status": "signed",
+      "signed": {
+        "by": "maintainer",
+        "at": "2026-11-26T00:00:00Z"
+      },
+      "facts": [
+        "mainSkill",
+        "ascendancyId",
+        "gates.maps-red.metrics.dps",
+        "gates.pinnacle.metrics.dps"
+      ],
+      "factsHash": "90fd59049b38b2e4"
+    },
+    "leveling": {
+      "text": "Level with Lightning Arrow and added lightning, then add the critical supports as they unlock. The first checkpoint measures 383 life and 75 damage; the second measures 454. Keep a mana flask until leech and reduced cost are online.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.until-12.metrics.life",
+        "gates.until-12.metrics.dps",
+        "gates.until-28.metrics.dps"
+      ],
+      "factsHash": "37043ad25419c7f4"
+    },
+    "maps": {
+      "text": "At red maps the build measures 141.5k damage, 30792 effective life and 8729 physical max hit. Keep the bow current, cap the elemental resistances, and let the filter hide the rest.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.maps-red.metrics.dps",
+        "gates.maps-red.metrics.ehp",
+        "gates.maps-red.metrics.maxHit"
+      ],
+      "factsHash": "2c038eafc287a471"
+    },
+    "bossing": {
+      "text": "Pinnacle measures 261.1k damage with 45206 effective life and 11714 physical max hit. Keep the mark up, fire from outside slam range, and do not treat evasion as a guarantee.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.pinnacle.metrics.dps",
+        "gates.pinnacle.metrics.ehp",
+        "gates.pinnacle.metrics.maxHit"
+      ],
+      "factsHash": "72e94ee0e7ee217c"
+    }
+  }
 }

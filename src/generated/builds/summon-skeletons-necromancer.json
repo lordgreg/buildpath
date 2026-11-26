@@ -8164,5 +8164,55 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "9d57ac78c245"
+  "seedHash": "9d57ac78c245",
+  "guide": {
+    "summary": {
+      "text": "Summon Skeletons Necromancer is a league-start minion build that measures 214.3k at red maps and 413.1k at pinnacle. Gem levels and minion supports carry the damage, the skeletons take the hits, and no unique is required.",
+      "status": "signed",
+      "signed": {
+        "by": "maintainer",
+        "at": "2026-11-26T00:00:00Z"
+      },
+      "facts": [
+        "mainSkill",
+        "ascendancyId",
+        "gates.maps-red.metrics.dps",
+        "gates.pinnacle.metrics.dps"
+      ],
+      "factsHash": "f7b7d10613813681"
+    },
+    "leveling": {
+      "text": "Level with skeletons and a minion damage support, then keep the swarm between you and the pack. The first checkpoint measures 344 life and 75 damage; the second measures 367. A mana flask covers the expensive early summons.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.until-12.metrics.life",
+        "gates.until-12.metrics.dps",
+        "gates.until-28.metrics.dps"
+      ],
+      "factsHash": "7c7a19e349341043"
+    },
+    "maps": {
+      "text": "At red maps the build measures 214.3k damage, 30193 effective life and 13117 physical max hit. Keep the skeletons between you and the pack, cap elemental resistances, and let the filter hide the rest.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.maps-red.metrics.dps",
+        "gates.maps-red.metrics.ehp",
+        "gates.maps-red.metrics.maxHit"
+      ],
+      "factsHash": "3f1aada11b330d3a"
+    },
+    "bossing": {
+      "text": "Pinnacle measures 413.1k damage with 35096 effective life and 12601 physical max hit. Refresh the skeletons before the burst, keep Flesh Offering up, and move when the boss turns.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.pinnacle.metrics.dps",
+        "gates.pinnacle.metrics.ehp",
+        "gates.pinnacle.metrics.maxHit"
+      ],
+      "factsHash": "64a835e65f0e215f"
+    }
+  }
 }

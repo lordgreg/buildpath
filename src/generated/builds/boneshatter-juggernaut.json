@@ -7935,5 +7935,55 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "acc671370109"
+  "seedHash": "acc671370109",
+  "guide": {
+    "summary": {
+      "text": "Boneshatter Juggernaut is a two-handed melee build that measures 276.1k at red maps and 524.5k at pinnacle. The rare axe and armour carry the damage and defence, the ascendancy makes the trauma survivable, and no unique is required.",
+      "status": "signed",
+      "signed": {
+        "by": "maintainer",
+        "at": "2026-11-26T00:00:00Z"
+      },
+      "facts": [
+        "mainSkill",
+        "ascendancyId",
+        "gates.maps-red.metrics.dps",
+        "gates.pinnacle.metrics.dps"
+      ],
+      "factsHash": "f90e61b35b9f70d0"
+    },
+    "leveling": {
+      "text": "Level with Cleave and the usual strength supports until Boneshatter is available, then switch to the two-handed axe. The first checkpoint measures 420 life and 30 damage; the second measures 477. Keep a life flask and a mana flask equipped until leech takes over.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.until-12.metrics.life",
+        "gates.until-12.metrics.dps",
+        "gates.until-28.metrics.dps"
+      ],
+      "factsHash": "7fb368b974acce5b"
+    },
+    "maps": {
+      "text": "At red maps the build measures 276.1k damage, 26753 effective life and 11079 physical max hit. Cap the elemental resistances, keep the axe current, and let the filter hide the rest.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.maps-red.metrics.dps",
+        "gates.maps-red.metrics.ehp",
+        "gates.maps-red.metrics.maxHit"
+      ],
+      "factsHash": "5383b093aab5b87b"
+    },
+    "bossing": {
+      "text": "Pinnacle measures 524.5k damage with 32432 effective life and 12678 physical max hit. Use Enduring Cry before the burst and keep the trauma stacks running while you move out of the biggest slams.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.pinnacle.metrics.dps",
+        "gates.pinnacle.metrics.ehp",
+        "gates.pinnacle.metrics.maxHit"
+      ],
+      "factsHash": "cbc6ee35a6c1e19d"
+    }
+  }
 }

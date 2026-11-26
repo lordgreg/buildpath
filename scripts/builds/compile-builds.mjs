@@ -14,6 +14,8 @@ import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import { parse } from 'yaml';
+import { resolveGuide } from './guide.mjs';
+import { leagueWindowOpen } from '../../src/core/builds/staleness.ts';
 
 const root = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const seedsDir = resolve(root, 'src/builds');
@@ -51,6 +53,10 @@ const pantheon = parse(
 const ascendanciesFull = parse(
   readFileSync(resolve(seedsDir, 'config/ascendancies-full.yaml'), 'utf8'),
 );
+const league = parse(
+  readFileSync(resolve(seedsDir, 'config/league.yaml'), 'utf8'),
+);
+const leagueOpen = leagueWindowOpen(new Date(), league.startsAt);
 const gemLevel1 = (name) => gemLevels[name]?.levels?.[1];
 const gemName = (gem) => (typeof gem === 'string' ? gem : gem.name);
 const baseItems = new Map(
@@ -168,6 +174,8 @@ if (files.length === 0) {
 }
 
 const builds = [];
+const seedById = new Map();
+const previousById = new Map();
 for (const file of files) {
   const path = resolve(seedsDir, file);
   const seed = parse(readFileSync(path, 'utf8'));
@@ -194,7 +202,11 @@ for (const file of files) {
     console.error(`build seed invalid: ${file}\n  duplicate id "${seed.id}"`);
     process.exit(1);
   }
-  const seedHash = hashOf(seed);
+  // Prose edits must not force a re-verification, so the mechanics hash leaves
+  // the guide out. The guide gets its own facts hash when it is resolved.
+  const { guide: seedGuide, ...mechanics } = seed;
+  const seedHash = hashOf(mechanics);
+  seedById.set(seed.id, seed);
   // Verification writes gates, the published PoB code and the pipeline stamp
   // into the same file. Keep them when the seed has not changed, so compiling
   // never destroys a report.
@@ -202,6 +214,7 @@ for (const file of files) {
   let carried = {};
   if (existsSync(previousPath)) {
     const previous = JSON.parse(readFileSync(previousPath, 'utf8'));
+    previousById.set(seed.id, previous);
     if (previous.seedHash === seedHash && previous.gates) {
       carried = {
         status: previous.status ?? 'draft',
@@ -213,7 +226,7 @@ for (const file of files) {
     }
   }
   builds.push({
-    ...seed,
+    ...mechanics,
     ...carried,
     ...(carried.gates ? {} : { status: 'draft' }),
     gemInfo: describeGems(seed),
@@ -233,6 +246,28 @@ for (const build of builds) {
     process.exit(1);
   }
   pairs.set(key, build.id);
+}
+
+// Resolve prose only when the build has a gate report to resolve against. A
+// new seed compiles as a draft; `builds:verify` writes the gates and then
+// resolves the guide. An existing build re-resolves on every compile.
+for (const build of builds) {
+  if (!build.gates) continue;
+  const seed = seedById.get(build.id);
+  const { guide, errors } = resolveGuide(build, seed.guide, {
+    previous: previousById.get(build.id)?.guide,
+  });
+  if (errors.length > 0) {
+    console.error(`guide invalid: ${build.id}\n  ${errors.join('\n  ')}`);
+    process.exit(1);
+  }
+  build.guide = guide;
+  if (guide.summary.status === 'stale') build.status = 'draft';
+}
+
+// R4: the league's first 72 hours publish nothing.
+if (!leagueOpen) {
+  for (const build of builds) build.status = 'draft';
 }
 
 /**

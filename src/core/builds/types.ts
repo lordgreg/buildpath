@@ -1,4 +1,5 @@
 import type { CharacterClass, ItemSlot, SlotSpec } from '../archetypes/types.ts';
+import type { BuildGuide } from './guide.ts';
 import type { FamilyId } from '../../meta/types.ts';
 
 /** What a build seed compiles to on the site. */
@@ -266,4 +267,6 @@ export interface Build extends BuildIndexEntry {
   pantheon: { major: string; minor: string; note?: string };
   uniques: { core: UniqueRef[]; optional: UniqueRef[] };
   flasks?: { leveling?: FlaskChoice[]; maps?: FlaskChoice[]; endgame?: FlaskChoice[] };
+  /** Resolved, checked prose. The seed YAML is the authoring home. */
+  guide?: BuildGuide;
 }

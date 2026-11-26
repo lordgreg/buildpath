@@ -42,6 +42,25 @@ ascendancies:
       - { id: occupying-force, name: "Occupying Force", notable: true, effect: ["Mirage Archers are not attached to you", "+2 to maximum number of Summoned Mirage Archers", "Cannot Summon Mirage Archers while near your Mirage Archers"] }
       - { id: wind-ward, name: "Wind Ward", notable: true, effect: ["4% less Damage taken per Gale Force", "Lose all Gale Force when Hit"] }
 
+  guardian:
+    name: Guardian
+    class: Templar
+    nodes:
+      - { id: armour-and-energy-shield-block-recovery, name: "Armour and Energy Shield, Block Recovery", notable: false, effect: ["30% increased Block Recovery", "14% increased Armour", "5% increased maximum Energy Shield"] }
+      - { id: time-of-need, name: "Time of Need", notable: true, effect: ["Every 4 seconds, remove Curses and Ailments from you", "Every 4 seconds, Regenerate 100% of Life over one second"] }
+      - { id: radiant-faith, name: "Radiant Faith", notable: true, effect: ["Grants Armour equal to 25% of your Reserved Mana to you and Allies within 6 metres", "Grants maximum Energy Shield equal to 10% of your Reserved Mana to you and Allies within 6 metres"] }
+      - { id: bastion-of-hope, name: "Bastion of Hope", notable: true, effect: ["If you've Attacked Recently, you and Allies within 6 metres have +25% Chance to Block Attack Damage", "If you've Cast a Spell Recently, you and Allies within 6 metres have +25% Chance to Block Spell Damage"] }
+      - { id: armour-and-energy-shield-life-regeneration, name: "Armour and Energy Shield, Life Regeneration", notable: false, effect: ["14% increased Armour", "5% increased maximum Energy Shield", "Regenerate 0.5% of Life per second"] }
+      - { id: armour-and-energy-shield-aura-effect, name: "Armour and Energy Shield, Aura Effect", notable: false, effect: ["14% increased Armour", "5% increased maximum Energy Shield", "5% increased effect of Non-Curse Auras from your Skills"] }
+      - { id: armour-and-energy-shield-shrine-buff-effect, name: "Armour and Energy Shield, Shrine Buff Effect", notable: false, effect: ["14% increased Armour", "5% increased maximum Energy Shield", "10% increased Effect of Shrine Buffs on you"] }
+      - { id: harmony-of-purpose, name: "Harmony of Purpose", notable: true, effect: ["Gain a random Shrine buff every 10 seconds", "Random Shrine buffs have a base duration of 20 seconds"] }
+      - { id: unwavering-faith, name: "Unwavering Faith", notable: true, effect: ["50% increased Reservation Efficiency of Skills"] }
+      - { id: armour-and-energy-shield-minion-damage, name: "Armour and Energy Shield, Minion Damage", notable: false, effect: ["14% increased Armour", "5% increased maximum Energy Shield", "Minions deal 10% increased Damage"] }
+      - { id: radiant-crusade, name: "Radiant Crusade", notable: true, effect: ["20% of Damage from Hits is taken from your Sentinel of Radiance's Life before you", "Grants Level 20 Summon Sentinel of Radiance"] }
+      - { id: unwavering-crusade, name: "Unwavering Crusade", notable: true, effect: ["Grants Level 20 Summon Elemental Relic", "25% chance to Trigger Level 20 Summon Elemental Relic when you or Allies within 6 metres Kill an Enemy, or Hit a Rare or Unique Enemy"] }
+      - { id: hallowing-flame-effect, name: "Hallowing Flame Effect", notable: false, effect: ["20% increased magnitude of Hallowing Flame you inflict"] }
+      - { id: marshal-of-divinity, name: "Marshal of Divinity", notable: true, effect: ["Inflict Hallowing Flame on Melee Hit", "You can inflict +1 Hallowing Flames on Enemies", "Gain 10% of Physical Damage as Extra Lightning Damage for each of your Hallowing Flames removed by an allied hit recently, up to 80%"] }
+
   juggernaut:
     name: Juggernaut
     class: Marauder

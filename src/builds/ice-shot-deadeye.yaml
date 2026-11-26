@@ -1,0 +1,159 @@
+schemaVersion: 1
+id: ice-shot-deadeye
+name: Ice Shot Deadeye
+class: Ranger
+ascendancyId: deadeye
+family: bow
+mainSkill: Ice Shot
+summary: >-
+  Cold bow build with the same league-start shell as Lightning Arrow. Ice Shot
+  converts physical damage to cold, freezes the first pack, and turns a rare
+  bow into the main damage slot. No required unique.
+
+pros:
+  - { weight: 3, text: "Fast clear with freeze and shatter; a single arrow covers a pack." }
+  - { weight: 3, text: "No required unique; the rare bow is the whole damage slot." }
+  - { weight: 2, text: "Freeze is a real defensive layer while you learn map layouts." }
+  - { weight: 2, text: "Critical strikes and added cold scale cleanly into red maps." }
+  - { weight: 2, text: "Ranged play keeps you out of most retaliation range." }
+  - { weight: 1, text: "Gear upgrades are easy to compare because one weapon carries the damage." }
+cons:
+  - { weight: 3, text: "Evasion is the defensive layer; a bad streak of hits ends the map." }
+  - { weight: 3, text: "Single-target needs investment beyond the clear setup." }
+  - { weight: 2, text: "Critical gear is expensive relative to a plain resistance set." }
+  - { weight: 2, text: "Cold penetration is a separate upgrade from raw damage." }
+  - { weight: 1, text: "Mana is tight before leech and reduced cost are online." }
+  - { weight: 1, text: "No built-in sustain; leech or life flasks have to cover it." }
+
+guide:
+  summary:
+    text: >-
+      Ice Shot Deadeye is a cold bow build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.pinnacle.metrics.dps|dps}} at
+      pinnacle. Freeze is the defensive layer, the rare bow is the damage slot,
+      and no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    signed: { by: maintainer, at: "2026-11-26T00:00:00Z" }
+  leveling:
+    text: >-
+      Level with Ice Shot and added cold, then add the critical supports as
+      they unlock. The first checkpoint measures {{gates.until-12.metrics.life|int}}
+      life and {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}. Keep a mana flask until leech and reduced cost
+      are online.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Freeze the first pack,
+      keep the bow current, and cap the elemental resistances.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Keep the mark up and fire
+      from outside the boss's slam range; the freeze is a bonus, not a plan.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+
+gearProfile: bow
+
+tree:
+  targets:
+    - increased cold damage
+    - increased damage with bows
+    - increased projectile damage
+    - increased maximum life
+    - increased attack speed
+    - increased critical strike chance
+    - critical strike multiplier
+    - increased elemental damage
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Ice Shot, Sniper's Mark]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Ice Shot, Added Cold Damage, Faster Attacks]
+        - slot: Weapon 1
+          gems: [Sniper's Mark, Flame Dash]
+        - slot: Helmet
+          gems: [Precision]
+        - slot: Boots
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3, then medium." }
+        - { slot: mana, name: "Small Mana Flask", note: "Ice Shot is mana-hungry before leech." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Ice Shot, Sniper's Mark, Herald of Ice]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Ice Shot, Added Cold Damage, Faster Attacks, Increased Critical Strikes]
+        - slot: Weapon 1
+          gems: [Sniper's Mark, Herald of Ice]
+        - slot: Helmet
+          gems: [Precision, Hatred]
+        - slot: Boots
+          gems: [Grace]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Diamond Flask", note: "Lucky crits, from level 27." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+    - until: 68
+      skills: [Ice Shot, Sniper's Mark, Herald of Ice]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Ice Shot, Added Cold Damage, Elemental Damage with Attacks, Increased Critical Strikes, Faster Attacks]
+        - slot: Weapon 1
+          gems: [Sniper's Mark, Herald of Ice]
+        - slot: Helmet
+          gems: [Grace, Precision]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+        - slot: Boots
+          gems: [Flame Dash]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Diamond Flask", note: "Lucky crits." }
+        - { slot: utility, name: "Silver Flask", note: "Onslaught." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
+    - until: 100
+      skills: [Ice Shot, Sniper's Mark, Herald of Ice]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Ice Shot, Added Cold Damage, Elemental Damage with Attacks, Increased Critical Strikes, Increased Critical Damage, Faster Attacks]
+        - slot: Weapon 1
+          gems: [Sniper's Mark, Herald of Ice]
+        - slot: Helmet
+          gems: [Grace, Precision]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+        - slot: Boots
+          gems: [Flame Dash]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Diamond Flask", note: "Lucky crits." }
+        - { slot: utility, name: "Silver Flask", note: "Onslaught." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+ascendancyOrder:
+  - { node: gathering-winds, lab: 1 }
+  - { node: far-shot, lab: 2 }
+  - { node: endless-munitions, lab: 3 }
+  - { node: focal-point, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: brineking
+  minor: gruthkul
+  note: Brineking stops the stun lock that ends a dodge build.
+uniques:
+  core: []
+  optional: []

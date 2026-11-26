@@ -1,0 +1,160 @@
+schemaVersion: 1
+id: cyclone-juggernaut
+name: Cyclone Juggernaut
+class: Marauder
+ascendancyId: juggernaut
+family: melee
+mainSkill: Cyclone
+summary: >-
+  Two-handed Cyclone on the Juggernaut shell. The axe and the budget armour are
+  the damage and defence; the ascendancy supplies endurance charges, recovery
+  and stun immunity. No required unique.
+
+pros:
+  - { weight: 3, text: "Very tanky through armour, endurance charges and Juggernaut recovery." }
+  - { weight: 3, text: "No required unique; a rare two-handed axe is the damage slot." }
+  - { weight: 2, text: "Cyclone hits while moving, so clear and defence happen together." }
+  - { weight: 2, text: "Strong single-target once the axe and attack speed are online." }
+  - { weight: 2, text: "Endurance charges make the mitigation forgiving while learning fights." }
+  - { weight: 1, text: "A comfortable lab runner for the first two labyrinths." }
+cons:
+  - { weight: 3, text: "Melee range means you eat mechanics a ranged build can walk away from." }
+  - { weight: 3, text: "Attack speed is both damage and survival, so slow weapons feel bad." }
+  - { weight: 2, text: "Clear speed is slower than a bow or a minion build." }
+  - { weight: 2, text: "Cyclone locks your movement into the spin." }
+  - { weight: 1, text: "Mana is tight before leech and reduced cost are solved." }
+  - { weight: 1, text: "Resolute Technique gives up critical strikes entirely." }
+
+guide:
+  summary:
+    text: >-
+      Cyclone Juggernaut is a two-handed melee build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.pinnacle.metrics.dps|dps}} at
+      pinnacle. Armour, endurance charges and the ascendancy carry the defence;
+      the rare axe carries the damage, and no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    signed: { by: maintainer, at: "2026-11-26T00:00:00Z" }
+  leveling:
+    text: >-
+      Level with Cleave until Cyclone unlocks, then switch to the two-handed
+      axe and keep spinning. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and {{gates.until-12.metrics.dps|dps}} damage;
+      the second measures {{gates.until-28.metrics.dps|dps}}. Enduring Cry and a mana
+      flask cover the early sustain.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep the axe current,
+      cap elemental resistances, and use the filter to hide the rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Hold the spin through
+      small hits, then move out of the telegraphed slams instead of trying to
+      out-armour them.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+
+gearProfile: melee
+
+tree:
+  keystones:
+    - Resolute Technique
+  targets:
+    - increased physical damage
+    - increased attack speed
+    - increased maximum life
+    - increased armour
+    - increased area of effect
+    - increased melee damage
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Cleave]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Cleave, Ruthless, Faster Attacks]
+        - slot: Weapon 1
+          gems: [Leap Slam, Enduring Cry]
+        - slot: Helmet
+          gems: [Decoy Totem]
+        - slot: Boots
+          gems: [Blood and Sand]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Slam attacks are mana-hungry." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Cyclone]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Cyclone, Melee Physical Damage, Close Combat, Faster Attacks]
+        - slot: Weapon 1
+          gems: [Leap Slam, Enduring Cry]
+        - slot: Helmet
+          gems: [Decoy Totem, Blood and Sand]
+        - slot: Boots
+          gems: [Determination]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Granite Flask", note: "Armour is the defensive layer." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 68
+      skills: [Cyclone]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Cyclone, Melee Physical Damage, Brutality, Pulverise, Faster Attacks]
+        - slot: Weapon 1
+          gems: [Leap Slam, Enduring Cry]
+        - slot: Helmet
+          gems: [Determination, Blood and Sand]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+        - slot: Boots
+          gems: [Decoy Totem]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin suffix." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 100
+      skills: [Cyclone]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Cyclone, Melee Physical Damage, Brutality, Pulverise, Close Combat, Faster Attacks]
+        - slot: Weapon 1
+          gems: [Leap Slam, Enduring Cry]
+        - slot: Helmet
+          gems: [Determination, Blood and Sand]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+        - slot: Boots
+          gems: [Decoy Totem]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+ascendancyOrder:
+  - { node: unflinching, lab: 1 }
+  - { node: undeniable, lab: 2 }
+  - { node: unbreakable, lab: 3 }
+  - { node: unrelenting, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces physical damage taken, which is most of what kills a melee build.
+uniques:
+  core: []
+  optional: []

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Build, BuildIndexEntry, GateResult } from '../core/builds/types.ts';
 import { BUILD_VERSION, BUILDS } from '../meta/builds.ts';
+import { GUIDE_SECTIONS, type GuideSection } from '../core/builds/guide.ts';
 import { BANDITS } from '../meta/pantheon.ts';
 import { getPobLink } from '../meta/pob-links.ts';
 import AscendancyPanel from './AscendancyPanel.tsx';
@@ -116,6 +117,57 @@ function dps(value: number): string {
 
 function statusLabel(status: BuildIndexEntry['status']): string {
   return status === 'verified' ? 'verified' : status === 'rejected' ? 'rejected' : 'draft';
+}
+
+const GUIDE_LABEL: Record<(typeof GUIDE_SECTIONS)[number], string> = {
+  summary: 'Summary',
+  leveling: 'Leveling',
+  maps: 'Maps',
+  bossing: 'Bossing',
+};
+
+function GuideStatus({ section }: { section: GuideSection }) {
+  const colour =
+    section.status === 'signed'
+      ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
+      : section.status === 'auto-breadth'
+        ? 'border-gold-400/40 bg-gold-400/10 text-gold-200'
+        : section.status === 'stale'
+          ? 'border-rose-500/40 bg-rose-500/10 text-rose-300'
+          : 'border-amber-500/40 bg-amber-500/10 text-amber-300';
+  return (
+    <span className={`rounded border px-1.5 py-0.5 text-[9px] uppercase tracking-wide ${colour}`}>
+      {section.status}
+    </span>
+  );
+}
+
+function GuideBlock({
+  id,
+  section,
+}: {
+  id: (typeof GUIDE_SECTIONS)[number];
+  section: GuideSection;
+}) {
+  return (
+    <article className="rounded-lg border border-ink-700 bg-ink-900/40 p-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h3 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-400">
+          {GUIDE_LABEL[id]}
+        </h3>
+        <GuideStatus section={section} />
+      </div>
+      <div className="mt-1.5 space-y-1.5 text-xs leading-relaxed text-zinc-400">
+        {section.text.split(/\n{2,}/).map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
+      <p className="mt-2 text-[9px] text-zinc-700">
+        facts {section.factsHash}
+        {section.signed ? ` · signed ${section.signed.by}` : ''}
+      </p>
+    </article>
+  );
 }
 
 function tradeoffClass(kind: 'pro' | 'con', weight: number): string {
@@ -364,6 +416,24 @@ export default function BuildPage() {
           Stronger colour is a bigger factor. Weighted by the guide, not by a popularity poll.
         </p>
       </header>
+
+      {build.guide && (
+        <section aria-labelledby="guide">
+          <h2 id="guide" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            Guide
+          </h2>
+          <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">
+            Prose states numbers only through checked placeholders. A signed
+            summary is required to publish; the other sections may be unsigned
+            retries.
+          </p>
+          <div className="mt-3 grid gap-3 md:grid-cols-2">
+            {GUIDE_SECTIONS.map((id) => (
+              <GuideBlock key={id} id={id} section={build.guide![id]} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {build.status !== 'verified' && (
         <p className="rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-xs leading-relaxed text-amber-200">
@@ -806,6 +876,7 @@ export default function BuildPage() {
           </p>
           <ul className="flex flex-wrap gap-x-3 gap-y-1 lg:flex-col lg:gap-y-2">
             {[
+              ['guide', 'Guide'],
               ['steps', 'Step'],
               ['gates', 'Gate report'],
               ['pob', 'Path of Building'],

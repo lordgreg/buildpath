@@ -16,6 +16,7 @@
     "summary",
     "pros",
     "cons",
+    "guide",
     "leveling",
     "tree",
     "ascendancyOrder",
@@ -363,6 +364,7 @@
     "guide": {
       "type": "object",
       "additionalProperties": false,
+      "required": ["summary", "leveling", "maps", "bossing"],
       "properties": {
         "summary": {
           "$ref": "#/$defs/section"

@@ -26,6 +26,40 @@ cons:
   - { weight: 1, text: "Mana is tight before leech and reduced cost are solved." }
   - { weight: 1, text: "Resolute Technique gives up critical strikes entirely." }
 
+guide:
+  summary:
+    text: >-
+      Boneshatter Juggernaut is a two-handed melee build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.pinnacle.metrics.dps|dps}} at
+      pinnacle. The rare axe and armour carry the damage and defence, the
+      ascendancy makes the trauma survivable, and no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    signed: { by: maintainer, at: "2026-11-26T00:00:00Z" }
+  leveling:
+    text: >-
+      Level with Cleave and the usual strength supports until Boneshatter is
+      available, then switch to the two-handed axe. The first checkpoint
+      measures {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}. Keep a life flask and a mana flask equipped
+      until leech takes over.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Cap the elemental
+      resistances, keep the axe current, and let the filter hide the rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Use Enduring Cry before
+      the burst and keep the trauma stacks running while you move out of the
+      biggest slams.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+
 gearProfile: melee
 
 # The family default is a one-hander and a shield, but Boneshatter needs an axe

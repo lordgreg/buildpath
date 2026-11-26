@@ -21,6 +21,7 @@ import {
   repairScore,
   seededShuffle,
 } from '../../src/core/builds/repair.ts';
+import { resolveGuide } from './guide.mjs';
 import {
   assertNodeCount,
   buildCheckpointSpec,
@@ -359,6 +360,14 @@ for (const file of files) {
   build.tree = tree;
   build.pob = pob;
   build.status = status;
+  const { guide, errors: guideErrors } = resolveGuide(build, seed.guide, {
+    previous: build.guide,
+  });
+  if (guideErrors.length > 0) {
+    throw new Error(`${seed.id}: guide invalid\n  ${guideErrors.join('\n  ')}`);
+  }
+  build.guide = guide;
+  if (guide.summary.status === 'stale') build.status = 'draft';
   // A one-click pob.cool link needs a URL whose body is the code, not our JSON.
   // This is the same published code the copy button shows; it is not an XML
   // download, and it keeps the reader on the pinned PoB version.

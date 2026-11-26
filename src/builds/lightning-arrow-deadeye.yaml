@@ -26,6 +26,38 @@ cons:
   - { weight: 1, text: "Mana is tight before leech and reduced cost are online." }
   - { weight: 1, text: "No built-in sustain; leech or life flasks have to cover it." }
 
+guide:
+  summary:
+    text: >-
+      Lightning Arrow Deadeye is a fast bow build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.pinnacle.metrics.dps|dps}} at
+      pinnacle. A rare bow, added lightning and critical strikes carry the
+      damage; no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    signed: { by: maintainer, at: "2026-11-26T00:00:00Z" }
+  leveling:
+    text: >-
+      Level with Lightning Arrow and added lightning, then add the critical
+      supports as they unlock. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and {{gates.until-12.metrics.dps|dps}} damage;
+      the second measures {{gates.until-28.metrics.dps|dps}}. Keep a mana flask until
+      leech and reduced cost are online.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep the bow current,
+      cap the elemental resistances, and let the filter hide the rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Keep the mark up, fire
+      from outside slam range, and do not treat evasion as a guarantee.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+
 gearProfile: bow
 
 tree:
