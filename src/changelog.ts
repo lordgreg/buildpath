@@ -17,6 +17,22 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.70.0',
+    date: '2026-11-26',
+    title: 'The Wickerman, and quality earns its place at red maps',
+    notes: [
+      "Every build guide now has a **Wickerman** section for the Covens league mechanic. It shows the four Viscera slots — head, torso, upper limb and lower limb — and follows the selected guide step, so leveling, mapping and bossing each have their own set.",
+      "A reviewed [`viscera.yaml`](./src/builds/config/viscera.yaml) carries 36 best-in-slot Viscera with tier effects, source and area. Eleven archetype profiles cover all sixteen builds; the compiler rejects an item that does not exist, does not fit the slot, or does not have the named tier.",
+      "The picks are tailored: Spectre Necromancer takes **Nightmarish Wings of Catarina** for +1 maximum Spectres, Flicker Slayer takes **Eater of Worlds' Head** for frenzy charges on crit, and Righteous Fire takes **Goatman's Horn** with **Searing Exarch's Descry**.",
+      "**Gem quality and Vaal levels are now endgame investments.** They are measured and shown only at `maps-red` and `pinnacle`; `until-68` and `maps-early` use 0% quality and uncorrupted gems. A guide built around a Vaal gem can opt in earlier with `gemQualityFrom: leveling`.",
+      "The checkpoint config is part of the calibration hash, so moving quality, gem caps, levels or budgets invalidates the report. Calibration is green at 96 must-pass observations, ten must-fail mutations and one ablation probe; the Dad maps-early damage floor moves to 4,500 because the minion builds without quality gems honestly measure 4,770 and 4,793.",
+      "32 pobb.in pastes were refreshed for the changed early-map and level-68 codes.",
+      "653 tests.",
+    ],
+    commits: [],
+    compare: 'v0.69.0...v0.70.0',
+  },
+  {
     version: '0.69.0',
     date: '2026-11-26',
     title: 'Season tags and a changelog on every guide',
