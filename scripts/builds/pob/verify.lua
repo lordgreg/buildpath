@@ -220,15 +220,24 @@ local function distances()
 end
 
 -- Candidate notables: which target pattern they satisfy sets their weight.
+-- The Node side computes `notablePriorities` from the committed tree geometry
+-- and the build's equipped weapon, so a one-hand or mace notable never becomes
+-- a candidate for a two-hand axe build. Older specs without the map still use
+-- the text match so the oracle stays runnable on its own.
 local candidates = {}
+local priorityMap = spec.notablePriorities
 for id, node in pairs(nodes) do
   if node.isNotable and not node.isAscendancyStart and not node.ascendancyName and not node.isMastery and not node.isKeystone then
-    local text = statText(node):lower()
     local priority
-    for index, pattern in ipairs(spec.targets or {}) do
-      if text:find(pattern:lower(), 1, true) then
-        priority = index
-        break
+    if priorityMap then
+      priority = tonumber(priorityMap[tostring(id)])
+    else
+      local text = statText(node):lower()
+      for index, pattern in ipairs(spec.targets or {}) do
+        if text:find(pattern:lower(), 1, true) then
+          priority = index
+          break
+        end
       end
     end
     if priority then

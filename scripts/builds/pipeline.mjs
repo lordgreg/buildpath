@@ -18,6 +18,10 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
 import { evaluateGate as evaluateGatePure } from '../../src/core/builds/gates.ts';
+import {
+  notableTargetPriorities,
+  weaponTraitsFor,
+} from '../../src/core/builds/tree-targets.ts';
 import { findUtf8Cpath, LUA_PATH } from './pob/lua-env.mjs';
 
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -62,6 +66,11 @@ export const knownBases = new Set(
   JSON.parse(
     readFileSync(resolve(root, 'src/core/data/known-base-types.json'), 'utf8'),
   ).names ?? [],
+);
+const baseTypesByName = new Map(
+  JSON.parse(
+    readFileSync(resolve(root, 'src/core/data/base-types.json'), 'utf8'),
+  ).items.map((item) => [item.name, item]),
 );
 export const gemLevels = JSON.parse(
   readFileSync(resolve(root, 'src/generated/gem-levels.json'), 'utf8'),
@@ -220,6 +229,7 @@ export function synthesizeGear(budgetId, profileId = 'caster', options = {}) {
     ].join('\n');
     items.push({
       slot: POB_SLOT[slot] ?? slot,
+      base: spec.base,
       text,
       expectedMods: lines.length,
       expectedImplicits: implicits.length,
@@ -360,6 +370,77 @@ export function ascendancyName(seed) {
   return match?.name ?? seed.ascendancyId;
 }
 
+let planNodes;
+/** The committed tree geometry is the planner's node/stat source. */
+function planTreeNodes() {
+  if (!planNodes) {
+    const geometry = JSON.parse(
+      readFileSync(resolve(root, 'src/generated/tree-geometry.json'), 'utf8'),
+    );
+    if (geometry.version !== checkpoints.treeVersion) {
+      throw new Error(
+        `tree-geometry.json is ${geometry.version}, checkpoints.yaml wants ` +
+          `${checkpoints.treeVersion}; regenerate the tree geometry before planning`,
+      );
+    }
+    planNodes = geometry.nodes;
+  }
+  return planNodes;
+}
+
+/** The base item in a slot, or the core unique that replaced it. */
+function equippedBase(seed, gear, slot) {
+  const item = gear.items.find((entry) => entry.slot === slot);
+  if (item) {
+    const base = baseTypesByName.get(item.base);
+    if (!base) throw new Error(`unknown base "${item.base}" in ${slot}`);
+    return base;
+  }
+  const unique = (seed.uniques?.core ?? []).find(
+    (entry) => (POB_SLOT[entry.slot] ?? entry.slot) === slot,
+  );
+  if (!unique) return undefined;
+  const base = baseTypesByName.get(unique.baseType);
+  if (!base) throw new Error(`unknown unique base "${unique.baseType}" in ${slot}`);
+  return base;
+}
+
+/**
+ * What the gear and the targets let the tree use. The planner drops notables
+ * whose weapon-specific stats the character can never use (a one-hand notable
+ * on a two-hander, a mace notable on an axe); Resolute Technique kills
+ * accuracy and critical-strike lines; a build that does not target minions
+ * cannot use "Minions have ..." lines.
+ */
+function planScopeFor(seed, gear, targets) {
+  return {
+    traits: weaponTraitsFor(
+      equippedBase(seed, gear, 'Weapon 1'),
+      equippedBase(seed, gear, 'Weapon 2'),
+    ),
+    resoluteTechnique: (seed.tree?.keystones ?? []).some(
+      (name) => name.trim().toLowerCase() === 'resolute technique',
+    ),
+    minions: targets.some((target) => target.toLowerCase().includes('minion')),
+  };
+}
+
+const priorityCache = new Map();
+function notablePrioritiesFor(targets, scope) {
+  const key = JSON.stringify({
+    targets,
+    traits: scope.traits,
+    resoluteTechnique: scope.resoluteTechnique,
+    minions: scope.minions,
+  });
+  let priorities = priorityCache.get(key);
+  if (!priorities) {
+    priorities = notableTargetPriorities(planTreeNodes(), targets, scope);
+    priorityCache.set(key, priorities);
+  }
+  return priorities;
+}
+
 /**
  * Build the oracle spec for one checkpoint. Every caller (verify, calibration,
  * repair) goes through this, so a mutation is the only difference between a
@@ -375,6 +456,7 @@ export function buildCheckpointSpec(seed, checkpointId, options = {}) {
   const points = options.points ?? checkpoint.points;
   const labs = options.labs ?? checkpoint.labs;
   const bracket = bracketFor(seed, level);
+  const targets = options.targets ?? seed.tree?.targets ?? [];
 
   const maxJewels = options.maxJewels ?? Infinity;
   const eldritch =
@@ -428,6 +510,7 @@ export function buildCheckpointSpec(seed, checkpointId, options = {}) {
   if (options.dropMainGroup) groups.splice(0, groups.length);
 
   const flasks = options.dropFlasks ? [] : synthesizeFlasks(bracket.flasks, gear.budget);
+  const scope = planScopeFor(seed, gear, targets);
 
   const spec = {
     name: options.name ?? `${seed.id}-${checkpointId}`,
@@ -440,8 +523,12 @@ export function buildCheckpointSpec(seed, checkpointId, options = {}) {
     labs,
     bandit: seed.bandit === 'kill-all' ? 'None' : seed.bandit,
     pantheon: seed.pantheon,
-    targets: options.targets ?? seed.tree?.targets ?? [],
+    targets,
     keystones: options.keystones ?? seed.tree?.keystones ?? [],
+    weaponTraits: scope.traits,
+    resoluteTechnique: scope.resoluteTechnique,
+    minions: scope.minions,
+    notablePriorities: notablePrioritiesFor(targets, scope),
     ascendancyPoints: seed.ascendancyOrder,
     spectres: seed.spectres ?? [],
     skillGroups: groups,
