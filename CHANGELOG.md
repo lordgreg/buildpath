@@ -2,6 +2,15 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.73.0 — 2026-11-26
+
+Melee leveling filters drop caster bases.
+
+- **Boneshatter Juggernaut's leveling filter** now hides Chain Belts and normal/magic Paua Rings. Chain Belt's energy-shield implicit is dead on a strength armour build; Paua Ring is a caster base, but a rare can still roll life and resists, so **rare Paua Rings stay visible**.
+- A new `excludedMagicBases` preset field hides normal and magic drops of a base while keeping rare ones. `excludedBases` still hides every rarity.
+- The legacy Boneshatter archetype and the melee family both carry the rule, and the coverage audit now checks deliberate exclusions instead of treating them as holes.
+- 659 tests.
+
 ## 0.72.0 — 2026-11-26
 
 Boneshatter Juggernaut reaches S+.

@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.73.0',
+    date: '2026-11-26',
+    title: 'Melee leveling filters drop caster bases',
+    notes: [
+      "**Boneshatter Juggernaut's leveling filter** now hides Chain Belts and normal/magic Paua Rings. Chain Belt's energy-shield implicit is dead on a strength armour build; Paua Ring is a caster base, but a rare can still roll life and resists, so **rare Paua Rings stay visible**.",
+      "A new `excludedMagicBases` preset field hides normal and magic drops of a base while keeping rare ones. `excludedBases` still hides every rarity.",
+      "The legacy Boneshatter archetype and the melee family both carry the rule, and the coverage audit now checks deliberate exclusions instead of treating them as holes.",
+      "659 tests.",
+    ],
+    commits: [],
+    compare: 'v0.72.0...v0.73.0',
+  },
+  {
     version: '0.72.0',
     date: '2026-11-26',
     title: 'Boneshatter Juggernaut reaches S+',
