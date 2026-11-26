@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.65.0',
+    date: '2026-11-26',
+    title: 'Builds first',
+    notes: [
+      "The site now lands on the **build catalogue**. The filter builder moved to `filter.html`, the shared header puts Builds before Filter, and old `index.html#<state>` links are forwarded to the builder so existing share links keep working. `builds.html` remains as a catalogue alias.",
+      "Breadth links now use build names, so two Juggernaut builds read as `Boneshatter Juggernaut` and `Cyclone Juggernaut` instead of two identical labels.",
+      "The landing page is the six-build catalogue with gate proof, chips and the breadth section. The filter builder, loot simulator, audit and changelog are one nav click away.",
+      "624 tests, including entrypoint tests that pin the landing redirect and the two page entries.",
+    ],
+    commits: [],
+    compare: 'v0.64.0...v0.65.0',
+  },
+  {
     version: '0.64.0',
     date: '2026-11-26',
     title: 'The paste follows the step',
