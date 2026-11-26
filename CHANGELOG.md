@@ -2,6 +2,16 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.61.0 — 2026-11-26
+
+Chips, trees and ascendancy details.
+
+- The catalogue cards now describe the build instead of repeating the same six checkpoint dots: **SSF**, **Melee / Ranged / Minion**, **HC-ready** only where the measured defensive thresholds are met, and a defining trait (Tanky, Fast clear, Minion army). The full checkpoint pass count stays as a small line.
+- The pobb.in paste now shows the passive tree. The published XML carries the standard pathofexile.com tree URL that importers use to render it, so Gear, Gems and Tree all appear. New pastes were published; the link map and code hashes are committed.
+- The boxes under the ascendancy circle now show the point order and the notable's actual effect lines, so the circle tooltip is optional rather than required.
+- The release publisher is documented as a release step (`builds:publish-pobs`), not part of nightly verification.
+- 606 tests. Gates, trees and measured numbers are unchanged; calibration is still green.
+
 ## 0.60.0 — 2026-11-26
 
 The full ascendancy and a build link that opens.
