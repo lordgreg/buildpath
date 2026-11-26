@@ -1,10 +1,10 @@
 # Gate thresholds: what a player needs at each step.
 #
-# `calibrated: false` until P3 proves these against must-pass and must-fail
-# reference builds (PLAN-BUILDS.md §8). Until then every page that shows a
-# number also says "uncalibrated".
+# `calibrated: true` once P3's must-pass and must-fail sets pass in both
+# directions (PLAN-BUILDS.md §8). The verifier also checks that the committed
+# calibration report matches these thresholds, so the flag alone is not enough.
 schemaVersion: 1
-calibrated: false
+calibrated: true
 # Elemental resistances must reach this after the game's per-act penalty.
 resistanceFloor: 75
 checkpoints:

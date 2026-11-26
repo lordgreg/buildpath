@@ -1,0 +1,104 @@
+# Gate calibration: the regression test for the gates themselves
+# (PLAN-BUILDS.md §8). A must-pass failure means a gate is too strict; a
+# must-fail pass means it is too loose, which is the direction that actually
+# publishes bad builds.
+#
+# Must-pass is the three P2 seeds at every checkpoint, re-geared by the same
+# synthesiser the verifier uses. That is 18 observations, above the ten the
+# plan asks for, and it covers the act checkpoints as well as maps and pinnacle.
+#
+# Must-fail is declarative: each case mutates one input to the same pipeline, so
+# the failure is caused by the named defect and not by a hand-written item.
+schemaVersion: 1
+
+mustPass:
+  seeds: all
+  checkpoints: all
+
+mustFail:
+  - id: uncapped-resists-at-red-maps
+    seed: lightning-arrow-deadeye
+    checkpoint: maps-red
+    mutate:
+      stripAffixes: [resist-fire, resist-cold, resist-lightning]
+    failures: ["resistance"]
+
+  - id: no-life-gear-at-red-maps
+    seed: boneshatter-juggernaut
+    checkpoint: maps-red
+    mutate:
+      stripAffixes: [life]
+    failures: ["life"]
+
+  - id: four-link-at-red-maps
+    seed: lightning-arrow-deadeye
+    checkpoint: maps-red
+    mutate:
+      links: 4
+      maxGroupGems: 4
+    failures: ["damage"]
+
+  - id: underlevelled-tree-at-red-maps
+    seed: lightning-arrow-deadeye
+    checkpoint: maps-red
+    mutate:
+      points: 78
+    failures: ["life"]
+
+  - id: start-tree-at-red-maps
+    seed: lightning-arrow-deadeye
+    checkpoint: maps-red
+    mutate:
+      points: 1
+    failures: ["life", "damage"]
+
+  - id: no-main-skill-at-red-maps
+    seed: lightning-arrow-deadeye
+    checkpoint: maps-red
+    mutate:
+      dropMainGroup: true
+    failures: ["damage"]
+
+  - id: no-support-gems-at-red-maps
+    seed: lightning-arrow-deadeye
+    checkpoint: maps-red
+    mutate:
+      dropGems:
+        [Added Lightning Damage, Elemental Damage with Attacks, Increased Critical Strikes, Increased Critical Damage, Faster Attacks]
+    failures: ["damage"]
+
+  - id: no-defensive-layer-at-red-maps
+    seed: lightning-arrow-deadeye
+    checkpoint: maps-red
+    mutate:
+      dropGems: [Grace]
+      dropSlots: [body, helmet, gloves, boots]
+    failures: ["effective life pool"]
+
+  - id: uncapped-chaos-at-pinnacle
+    seed: lightning-arrow-deadeye
+    checkpoint: pinnacle
+    mutate:
+      stripAffixes: [resist-chaos]
+    failures: ["chaos resistance"]
+
+  - id: starting-gear-at-pinnacle
+    seed: lightning-arrow-deadeye
+    checkpoint: pinnacle
+    mutate:
+      budgetId: starting
+    failures: ["life", "damage"]
+
+# P3 ablation proof: the same pipeline that measures a seed resolves a core
+# unique from PoB's own data, then removes it and measures the rare equivalent.
+# The three P2 seeds declare no core uniques, so this is where the leave-one-out
+# path is exercised until a P4 flagship needs it.
+uniqueProbe:
+  - id: ryslathas-coil-ablates
+    seed: boneshatter-juggernaut
+    checkpoint: maps-red
+    unique:
+      name: Ryslatha's Coil
+      slot: Belt
+      kind: belt
+      links: 0

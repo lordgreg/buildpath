@@ -119,8 +119,12 @@ function BuildCard({ build }: { build: BuildIndexEntry }) {
 }
 
 export default function BuildsPage() {
-  const published = BUILDS.filter((build) => build.status !== 'rejected');
+  // A build that has not passed every checkpoint is not in the catalogue (R10);
+  // its own page still shows the named failures.
+  const published = BUILDS.filter((build) => build.status === 'verified');
   const hidden = BUILDS.length - published.length;
+  const calibrated = published.filter((build) => build.calibrated).length;
+  const families = [...new Set(published.map((build) => build.family))].sort();
 
   return (
     <div className="mx-auto min-h-dvh max-w-6xl px-5 py-10 sm:px-8">
@@ -156,7 +160,7 @@ export default function BuildsPage() {
             </p>
           </div>
           <span className="rounded border border-ink-600 px-2 py-1 text-[11px] text-zinc-500">
-            {published.length} verified
+            {published.length} verified · {calibrated} calibrated
           </span>
         </div>
       </header>
@@ -181,6 +185,41 @@ export default function BuildsPage() {
         </div>
       )}
 
+      {published.length > 0 && (
+        <section className="mt-8 rounded-xl border border-ink-700 bg-ink-900/30 p-4">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            Breadth
+          </h2>
+          <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">
+            Every ascendancy below has a build that passes its published gates.
+            Nothing is listed because it is popular: there is no population data,
+            so breadth is evidence, not a rank.
+          </p>
+          <dl className="mt-3 grid gap-3 sm:grid-cols-2">
+            {families.map((family) => (
+              <div key={family}>
+                <dt className="text-[10px] uppercase tracking-[0.14em] text-zinc-600">
+                  {family}
+                </dt>
+                <dd className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-sm">
+                  {published
+                    .filter((build) => build.family === family)
+                    .map((build) => (
+                      <a
+                        key={build.id}
+                        href={`./build.html#build=${build.id}`}
+                        className="text-zinc-300 underline-offset-2 hover:text-white hover:underline"
+                      >
+                        {titleCase(build.ascendancyId)}
+                      </a>
+                    ))}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
+
       <section className="mt-8 rounded-xl border border-ink-700 bg-ink-900/30 p-4">
         <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
           What a listed build means
@@ -188,7 +227,9 @@ export default function BuildsPage() {
         <ul className="mt-2 space-y-1 text-sm leading-relaxed text-zinc-400">
           <li>
             The numbers are what the pinned Path of Building engine returned for
-            the gear and gems shown, at the enemy level of that step.
+            the gear and gems shown, at the enemy level of that step. The
+            thresholds themselves are calibrated against must-pass and must-fail
+            references before a build is called calibrated.
           </li>
           <li>
             Each build publishes its PoB code; importing it gives you the same

@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -258,6 +259,173 @@ describe('published build data', () => {
       for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
         expect(gate.pass, `${build.status} ${checkpoint}`).toBe(true);
       }
+    }
+  });
+});
+
+describe('leveling tree derivation', () => {
+  const compiled = BUILDS.map(
+    (entry) =>
+      JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        id: string;
+        tree?: { endgame: number[]; checkpoints: Record<string, number[]> };
+        gates?: Record<
+          string,
+          {
+            tree?: { nodes: { id: number }[]; edges: [number, number][]; start?: number };
+          }
+        >;
+      },
+  );
+
+  it('makes every checkpoint a subset of the endgame tree', () => {
+    for (const build of compiled) {
+      expect(build.tree, `${build.id} has no derived tree`).toBeDefined();
+      const endgame = new Set(build.tree!.endgame);
+      for (const [checkpoint, nodes] of Object.entries(build.tree!.checkpoints)) {
+        for (const id of nodes) {
+          expect(endgame.has(id), `${build.id}/${checkpoint}: node ${id} is not in endgame`).toBe(
+            true,
+          );
+        }
+        const reported = (build.gates?.[checkpoint]?.tree?.nodes ?? []).map((node) => node.id);
+        expect([...nodes].sort((a, b) => a - b), `${build.id}/${checkpoint}`).toEqual(
+          reported.sort((a, b) => a - b),
+        );
+      }
+    }
+  });
+
+  it('draws every checkpoint as a valid order from the class start', () => {
+    for (const build of compiled) {
+      for (const [checkpoint, nodes] of Object.entries(build.tree!.checkpoints)) {
+        const tree = build.gates?.[checkpoint]?.tree;
+        expect(tree?.start, `${build.id}/${checkpoint} has no start node`).toBeDefined();
+        const edges = new Map<number, number[]>();
+        for (const [from, to] of tree!.edges) {
+          edges.set(from, [...(edges.get(from) ?? []), to]);
+          edges.set(to, [...(edges.get(to) ?? []), from]);
+        }
+        const seen = new Set<number>([tree!.start!]);
+        const queue = [tree!.start!];
+        while (queue.length > 0) {
+          const id = queue.shift()!;
+          for (const next of edges.get(id) ?? []) {
+            if (!seen.has(next)) {
+              seen.add(next);
+              queue.push(next);
+            }
+          }
+        }
+        expect(seen.size, `${build.id}/${checkpoint}: ${seen.size} of ${nodes.length}`).toBe(
+          nodes.length,
+        );
+      }
+    }
+  });
+});
+
+describe('bounded repair', () => {
+  const compiled = BUILDS.map(
+    (entry) =>
+      JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        id: string;
+        gates?: Record<
+          string,
+          {
+            repair?: {
+              added: number[];
+              removed: number[];
+              evals: number;
+              nodeDelta: number;
+              status: string;
+            };
+          }
+        >;
+      },
+  );
+
+  it('records a bounded, reproducible repair decision at every checkpoint', () => {
+    for (const build of compiled) {
+      for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
+        expect(gate.repair, `${build.id}/${checkpoint}`).toBeDefined();
+        expect(gate.repair!.evals, `${build.id}/${checkpoint}`).toBeGreaterThan(0);
+        expect(gate.repair!.evals, `${build.id}/${checkpoint}`).toBeLessThanOrEqual(200);
+        expect(gate.repair!.nodeDelta, `${build.id}/${checkpoint}`).toBeGreaterThanOrEqual(0);
+        expect(gate.repair!.nodeDelta, `${build.id}/${checkpoint}`).toBeLessThanOrEqual(10);
+        expect(gate.repair!.status, `${build.id}/${checkpoint}`).toBe('within-bound');
+      }
+    }
+  });
+});
+
+describe('gate calibration', () => {
+  const calibration = JSON.parse(
+    readFileSync(resolve(root, 'src/generated/builds/calibration.json'), 'utf8'),
+  ) as {
+    gatesHash: string;
+    verified: boolean;
+    mustPass: { id: string; pass: boolean }[];
+    mustFail: {
+      id: string;
+      pass: boolean;
+      expectedFailures: string[];
+      causedByExpectedDefect: boolean;
+    }[];
+    uniqueProbe: { id: string; parsedMods: number; ablationDrop: number | null }[];
+  };
+  const gateConfig = parse(
+    readFileSync(resolve(root, 'scripts/builds/gates.yaml'), 'utf8'),
+  ) as {
+    calibrated: boolean;
+    resistanceFloor: number;
+    checkpoints: Record<string, unknown>;
+  };
+
+  it('publishes a green report for the current thresholds', () => {
+    const hash = createHash('sha256')
+      .update(
+        JSON.stringify({
+          resistanceFloor: gateConfig.resistanceFloor,
+          checkpoints: gateConfig.checkpoints,
+        }),
+      )
+      .digest('hex')
+      .slice(0, 12);
+    expect(calibration.gatesHash).toBe(hash);
+    expect(calibration.verified).toBe(true);
+    expect(gateConfig.calibrated).toBe(true);
+  });
+
+  it('proves the gates in both directions', () => {
+    expect(calibration.mustPass.length).toBeGreaterThanOrEqual(10);
+    expect(calibration.mustFail.length).toBeGreaterThanOrEqual(10);
+    expect(calibration.mustPass.filter((entry) => !entry.pass)).toEqual([]);
+    expect(calibration.mustFail.filter((entry) => entry.pass)).toEqual([]);
+    for (const entry of calibration.mustFail) {
+      expect(entry.causedByExpectedDefect, entry.id).toBe(true);
+      expect(entry.expectedFailures.length, entry.id).toBeGreaterThan(0);
+    }
+  });
+
+  it('proves leave-one-out ablation resolves a real unique', () => {
+    expect(calibration.uniqueProbe.length).toBeGreaterThanOrEqual(1);
+    for (const entry of calibration.uniqueProbe) {
+      expect(entry.parsedMods, entry.id).toBeGreaterThan(0);
+      expect(entry.ablationDrop, entry.id).not.toBeNull();
+    }
+  });
+
+  it('marks every published build calibrated from that report', () => {
+    for (const entry of BUILDS) {
+      const build = JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as { pipeline?: { calibrated: boolean } };
+      expect(build.pipeline?.calibrated, entry.id).toBe(true);
     }
   });
 });

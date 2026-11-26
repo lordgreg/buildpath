@@ -62,16 +62,125 @@ end
 assert(startNode, "no start node for " .. spec.className)
 
 local allocated = { [startNode] = true }
-local function allocatedCount()
+local function allocatedCount(set)
+  set = set or allocated
   local n = 0
-  for _ in pairs(allocated) do n = n + 1 end
+  for _ in pairs(set) do n = n + 1 end
   return n
+end
+
+local function sortedIds(set)
+  local ids = {}
+  for id in pairs(set) do ids[#ids + 1] = id end
+  table.sort(ids)
+  return ids
+end
+
+-- BFS rooted at the class start. The passive tree has cycles, so a node's
+-- "children" here are the nodes it first reaches: pruning only removes a node
+-- when the rooted BFS has nothing below it, which is what keeps the remaining
+-- tree connected and in a valid allocation order.
+local function rootedTree(set)
+  local parent, depth, queue, head = {}, {}, {}, 1
+  depth[startNode] = 0
+  queue[1] = startNode
+  while head <= #queue do
+    local id = queue[head]
+    head = head + 1
+    for _, other in ipairs(neighbours[id] or {}) do
+      other = tonumber(other)
+      if other and set[other] and depth[other] == nil then
+        depth[other] = depth[id] + 1
+        parent[other] = id
+        queue[#queue + 1] = other
+      end
+    end
+  end
+  return parent, depth
+end
+
+-- Deepest leaves first: the last points a character bought are the first it
+-- gives up. Ties use id ascending, so the same seed always prunes the same way.
+-- Protected sockets are skipped while any unprotected leaf remains.
+local function pruneAllocated(target, protected)
+  target = math.max(1, target or allocatedCount())
+  while allocatedCount() > target do
+    local parent, depth = rootedTree(allocated)
+    local hasChild = {}
+    for id, p in pairs(parent) do hasChild[p] = true end
+    local fallback, fallbackDepth, fallbackId
+    local best, bestDepth, bestId
+    for id in pairs(allocated) do
+      if id ~= startNode and not hasChild[id] then
+        local d = depth[id] or 0
+        if not protected[id] then
+          if not best or d > bestDepth or (d == bestDepth and id < bestId) then
+            best, bestDepth, bestId = id, d, id
+          end
+        elseif not fallback or d > fallbackDepth or (d == fallbackDepth and id < fallbackId) then
+          fallback, fallbackDepth, fallbackId = id, d, id
+        end
+      end
+    end
+    local doomed = best or fallback
+    if not doomed then break end
+    allocated[doomed] = nil
+  end
+end
+
+-- Forward declaration: repair candidates filter through `traversable`, which
+-- is defined below with the planner's path rules.
+local traversable
+
+-- A repair swap may only use a node the endgame plan already bought. That
+-- keeps every checkpoint a subset of the endgame tree (R12, §7.5) and means a
+-- repair changes which points were taken, never which tree was planned.
+local function repairCandidates(endgameSet)
+  local parent, depth = rootedTree(allocated)
+  local hasChild, removable, addable = {}, {}, {}
+  for id, p in pairs(parent) do hasChild[p] = true end
+  for _, id in ipairs(sortedIds(allocated)) do
+    if id ~= startNode and not hasChild[id] then
+      local node = nodes[id] or nodes[tostring(id)]
+      removable[#removable + 1] = {
+        id = id,
+        name = node and node.name or "",
+        notable = (node and node.isNotable) or false,
+        depth = depth[id] or 0,
+      }
+    end
+  end
+  local adjacent = {}
+  for _, id in ipairs(sortedIds(allocated)) do
+    for _, other in ipairs(neighbours[id] or {}) do
+      other = tonumber(other)
+      if other and endgameSet[other] and not allocated[other] then
+        adjacent[other] = adjacent[other] or {}
+        adjacent[other][#adjacent[other] + 1] = id
+      end
+    end
+  end
+  for _, id in ipairs(sortedIds(adjacent)) do
+    local node = nodes[id] or nodes[tostring(id)]
+    if node and traversable(id) and not node.isKeystone then
+      addable[#addable + 1] = {
+        id = id,
+        name = node.name or "",
+        notable = node.isNotable or false,
+        depth = depth[id] or 0,
+        -- If every route into this node is the leaf we are removing, the swap
+        -- would leave it disconnected. The Node side skips those.
+        via = adjacent[id],
+      }
+    end
+  end
+  return { removable = removable, addable = addable }
 end
 
 -- Paths may only run through ordinary passives: a keystone such as Chaos
 -- Inoculation sits on the way to places we want and would silently gut the
 -- build. Masteries and ascendancy nodes are never pathing material either.
-local function traversable(id)
+traversable = function(id)
   local node = nodes[id] or nodes[tostring(id)]
   if not node then return false end
   if node.isKeystone or node.isMastery or node.ascendancyName or node.isAscendancyStart then
@@ -181,99 +290,154 @@ local function pathTo(target)
   return path
 end
 
-for _, name in ipairs(spec.keystones or {}) do
-  local target
-  for id, node in pairs(nodes) do
-    if node.isKeystone and slug(node.name) == slug(name) then
-      target = tonumber(id)
-      break
-    end
-  end
-  if not target then error("unknown keystone: " .. tostring(name)) end
-  if not allocated[target] then
-    local path = pathTo(target)
-    if not path then error("keystone " .. name .. " is unreachable from the class start") end
-    if allocatedCount() + #path > budget then
-      -- A level-12 character cannot have taken a keystone ten points away.
-      -- Defer it to the checkpoint whose budget can afford it, and say so.
-      print("WARN " .. name .. " deferred: " .. #path .. " points do not fit this checkpoint")
-    else
-      for _, id in ipairs(path) do allocated[id] = true end
-      planned[#planned + 1] = name
-    end
-  end
-end
-
--- Jewel sockets first. They cost one point each and carry a Ghastly Eye, which
--- is worth more than most notables. Allocating them *after* the notable loop
--- left no budget for them, so the jewels were listed in the gear but never
--- socketed and contributed nothing.
 local socketIds, socketsTaken = {}, 0
-local wantedSockets = math.min(spec.jewelCount or 0, 8)
-if wantedSockets > 0 then
-  local depth, parent = distances()
-  local reachable = {}
-  for id, node in pairs(nodes) do
-    local key = tonumber(id)
-    if node.isJewelSocket and node.name == "Basic Jewel Socket" and not allocated[key] and depth[key] then
-      reachable[#reachable + 1] = { id = key, cost = depth[key] }
+local endgameSet = {}
+
+if spec.endgameNodes or spec.allocatedNodes then
+  -- A checkpoint is a pruned subset of one endgame plan, not a separately
+  -- planned tree. That makes "what you have at level 12" provably a prefix of
+  -- "what you have at pinnacle" instead of two greedy searches that only look
+  -- similar. A repair evaluation passes `allocatedNodes` instead, so it tests
+  -- one concrete repaired tree without re-planning anything.
+  local source = spec.allocatedNodes or spec.endgameNodes
+  allocated = {}
+  for _, id in ipairs(source) do
+    id = tonumber(id)
+    if id then allocated[id] = true end
+  end
+  allocated[startNode] = true
+  for _, id in ipairs(spec.endgameNodes or source) do
+    id = tonumber(id)
+    if id then endgameSet[id] = true end
+  end
+  endgameSet[startNode] = true
+  if spec.pruneTo and not spec.allocatedNodes then
+    -- Keep the sockets this checkpoint's gear actually uses, closest first.
+    local _, depth = rootedTree(allocated)
+    local sockets = {}
+    for id in pairs(allocated) do
+      local node = nodes[id] or nodes[tostring(id)]
+      if node and node.isJewelSocket and node.name == "Basic Jewel Socket" then
+        sockets[#sockets + 1] = { id = id, depth = depth[id] or 0 }
+      end
+    end
+    table.sort(sockets, function(a, b)
+      if a.depth ~= b.depth then return a.depth < b.depth end
+      return a.id < b.id
+    end)
+    local protected = {}
+    for index = 1, math.min(spec.jewelCount or 0, #sockets) do
+      protected[sockets[index].id] = true
+    end
+    pruneAllocated(spec.pruneTo, protected)
+  end
+  for id in pairs(allocated) do
+    local node = nodes[id] or nodes[tostring(id)]
+    if node and node.isJewelSocket and node.name == "Basic Jewel Socket" then
+      socketIds[#socketIds + 1] = id
     end
   end
-  table.sort(reachable, function(a, b)
-    if a.cost ~= b.cost then return a.cost < b.cost end
-    return a.id < b.id
-  end)
-  for _, socket in ipairs(reachable) do
-    if socketsTaken >= wantedSockets or allocatedCount() >= budget then break end
+  table.sort(socketIds)
+  local wanted = math.min(spec.jewelCount or 0, #socketIds)
+  local trimmed = {}
+  for index = 1, wanted do trimmed[index] = socketIds[index] end
+  socketIds = trimmed
+  socketsTaken = #socketIds
+else
+  for _, name in ipairs(spec.keystones or {}) do
+    local target
+    for id, node in pairs(nodes) do
+      if node.isKeystone and slug(node.name) == slug(name) then
+        target = tonumber(id)
+        break
+      end
+    end
+    if not target then error("unknown keystone: " .. tostring(name)) end
+    if not allocated[target] then
+      local path = pathTo(target)
+      if not path then error("keystone " .. name .. " is unreachable from the class start") end
+      if allocatedCount() + #path > budget then
+        -- A level-12 character cannot have taken a keystone ten points away.
+        -- Defer it to the checkpoint whose budget can afford it, and say so.
+        print("WARN " .. name .. " deferred: " .. #path .. " points do not fit this checkpoint")
+      else
+        for _, id in ipairs(path) do allocated[id] = true end
+        planned[#planned + 1] = name
+      end
+    end
+  end
+
+  -- Jewel sockets first. They cost one point each and carry a Ghastly Eye, which
+  -- is worth more than most notables. Allocating them *after* the notable loop
+  -- left no budget for them, so the jewels were listed in the gear but never
+  -- socketed and contributed nothing.
+  local wantedSockets = math.min(spec.jewelCount or 0, 8)
+  if wantedSockets > 0 then
+    local depth, parent = distances()
+    local reachable = {}
+    for id, node in pairs(nodes) do
+      local key = tonumber(id)
+      if node.isJewelSocket and node.name == "Basic Jewel Socket" and not allocated[key] and depth[key] then
+        reachable[#reachable + 1] = { id = key, cost = depth[key] }
+      end
+    end
+    table.sort(reachable, function(a, b)
+      if a.cost ~= b.cost then return a.cost < b.cost end
+      return a.id < b.id
+    end)
+    for _, socket in ipairs(reachable) do
+      if socketsTaken >= wantedSockets or allocatedCount() >= budget then break end
+      local path = {}
+      local cursor = socket.id
+      while cursor and not allocated[cursor] do
+        table.insert(path, 1, cursor)
+        cursor = parent[cursor]
+      end
+      if #path > 0 and allocatedCount() + #path <= budget then
+        for _, id in ipairs(path) do allocated[id] = true end
+        socketIds[#socketIds + 1] = socket.id
+        socketsTaken = socketsTaken + 1
+      end
+    end
+  end
+
+  while allocatedCount() < budget do
+    local depth, parent = distances()
+    local best, bestScore
+    for _, candidate in ipairs(candidates) do
+      if not taken[candidate.id] then
+        local cost = depth[candidate.id]
+        if cost == nil then
+          skipped = skipped + 1
+          taken[candidate.id] = true
+        elseif cost > 0 then
+          local score = weight(candidate.priority) / cost
+          if bestScore == nil or score > bestScore
+            or (score == bestScore and candidate.priority < best.priority) then
+            best, bestScore = candidate, score
+          end
+        else
+          taken[candidate.id] = true
+        end
+      end
+    end
+    if not best then break end
+    -- Walk back to the allocated set and buy the whole path if it fits.
     local path = {}
-    local cursor = socket.id
+    local cursor = best.id
     while cursor and not allocated[cursor] do
       table.insert(path, 1, cursor)
       cursor = parent[cursor]
     end
-    if #path > 0 and allocatedCount() + #path <= budget then
+    if #path == 0 or allocatedCount() + #path > budget then
+      taken[best.id] = true
+    else
       for _, id in ipairs(path) do allocated[id] = true end
-      socketIds[#socketIds + 1] = socket.id
-      socketsTaken = socketsTaken + 1
+      taken[best.id] = true
+      planned[#planned + 1] = best.name or best.id
     end
   end
-end
-
-while allocatedCount() < budget do
-  local depth, parent = distances()
-  local best, bestScore
-  for _, candidate in ipairs(candidates) do
-    if not taken[candidate.id] then
-      local cost = depth[candidate.id]
-      if cost == nil then
-        skipped = skipped + 1
-        taken[candidate.id] = true
-      elseif cost > 0 then
-        local score = weight(candidate.priority) / cost
-        if bestScore == nil or score > bestScore
-          or (score == bestScore and candidate.priority < best.priority) then
-          best, bestScore = candidate, score
-        end
-      else
-        taken[candidate.id] = true
-      end
-    end
-  end
-  if not best then break end
-  -- Walk back to the allocated set and buy the whole path if it fits.
-  local path = {}
-  local cursor = best.id
-  while cursor and not allocated[cursor] do
-    table.insert(path, 1, cursor)
-    cursor = parent[cursor]
-  end
-  if #path == 0 or allocatedCount() + #path > budget then
-    taken[best.id] = true
-  else
-    for _, id in ipairs(path) do allocated[id] = true end
-    taken[best.id] = true
-    planned[#planned + 1] = best.name or best.id
-  end
+  endgameSet = allocated
 end
 
 -- Jewel sockets are allocated before the notable loop, above.
@@ -336,12 +500,71 @@ if spec.ascendancyClass then
   table.sort(ascendNodes)
 end
 
+-- The endgame plan is the input to every checkpoint's derivation. Returning it
+-- without loading PoB keeps planning cheap: one extra fast process per build,
+-- not one extra full evaluation.
+local endgameIds = sortedIds(endgameSet)
+if spec.planOnly then
+  local plan = {
+    endgame = endgameIds,
+    startNode = startNode,
+    ascendancy = #ascendNodes,
+    sockets = #socketIds,
+  }
+  print("RESULT " .. dkjson.encode(plan))
+  return
+end
+
+-- Core uniques are resolved from PoB's own data, not from hand-written mod
+-- lines. The raw text uses PoB's variant syntax and roll ranges; the item
+-- parser resolves both, so a typo cannot silently weaken the item (S6).
+local UNIQUE_FILES = {
+  weapon = { 'axe', 'bow', 'claw', 'dagger', 'mace', 'staff', 'sword', 'wand' },
+  offhand = { 'shield', 'quiver' },
+  body = { 'body' },
+  helmet = { 'helmet' },
+  gloves = { 'gloves' },
+  boots = { 'boots' },
+  belt = { 'belt' },
+  amulet = { 'amulet' },
+  ring = { 'ring' },
+  flask = { 'flask' },
+  jewel = { 'jewel' },
+}
+local uniqueCache = {}
+local function uniqueRaw(name, kind, links)
+  local files = UNIQUE_FILES[kind] or UNIQUE_FILES.body
+  for _, file in ipairs(files) do
+    if uniqueCache[file] == nil then
+      uniqueCache[file] = dofile('Data/Uniques/' .. file .. '.lua')
+    end
+    for _, raw in ipairs(uniqueCache[file]) do
+      local first = raw:match('^([^\n]+)')
+      if first == name then
+        local firstLine, baseLine, rest = raw:match('^([^\n]+)\n([^\n]+)\n(.*)$')
+        local header = firstLine .. '\n' .. baseLine .. '\nItem Level: 82\nQuality: 0\n'
+        if links and links > 0 and (kind == 'body' or kind == 'weapon' or kind == 'offhand') then
+          header = header .. 'Sockets: ' .. string.rep('B', links, '-') .. '\n'
+        end
+        return 'Rarity: UNIQUE\n' .. header .. rest
+      end
+    end
+  end
+  error('PoB has no unique data for "' .. tostring(name) .. '" (' .. tostring(kind) .. ')')
+end
+
 -- Item text: one block per slot, already rendered by the Node synthesizer.
 local itemBlocks = {}
 for _, item in ipairs(spec.items or {}) do
   itemBlocks[#itemBlocks + 1] = {
     slot = item.slot,
     text = item.text,
+  }
+end
+for _, unique in ipairs(spec.uniques or {}) do
+  itemBlocks[#itemBlocks + 1] = {
+    slot = unique.slot,
+    text = uniqueRaw(unique.name, unique.kind or unique.slot, unique.links),
   }
 end
 -- Flasks are items in their own slots; an equipped flask counts as active in
@@ -442,10 +665,18 @@ add('\t</Skills>\n')
 add('\t<TreeView zoomX="0" zoomY="0" zoomLevel="3">\n\t</TreeView>\n')
 add('\t<Items activeItemSet="1">\n')
 local slotMap = {}
+local itemTextById = {}
 for index, jewel in ipairs(spec.jewels or {}) do
-  add(string.format('\t\t<Item id="%d">\n%s\n\t\t</Item>\n', #itemBlocks + index, jewel.text))
+  -- Pruning can leave fewer sockets than the budget carries. Only the jewels
+  -- that are actually socketed belong in the imported build; an unsocketed
+  -- jewel would appear in the gear list but contribute nothing.
+  if index > #socketIds then break end
+  local itemId = #itemBlocks + index
+  itemTextById[itemId] = { slot = 'Jewel ' .. index, text = jewel.text }
+  add(string.format('\t\t<Item id="%d">\n%s\n\t\t</Item>\n', itemId, jewel.text))
 end
 for index, item in ipairs(itemBlocks) do
+  itemTextById[index] = item
   add(string.format('\t\t<Item id="%d">\n%s\n\t\t</Item>\n', index, item.text))
   -- Flasks carry an `active` flag on the slot; without it PoB equips the flask
   -- but applies no buff, so a gate would measure a build nobody plays.
@@ -488,11 +719,22 @@ if minionDps > playerDps then dps, dpsSource = minionDps, "minion" end
 -- because PoB drops unparseable lines without saying so (S6).
 local itemReport = {}
 for index, item in ipairs(build.itemsTab.items or {}) do
-  local parsed = 0
+  local parsed, mods = 0, {}
   for _, line in ipairs(item.explicitModLines or {}) do
-    if line.modList and #line.modList > 0 then parsed = parsed + 1 end
+    if line.modList and #line.modList > 0 then
+      parsed = parsed + 1
+      if line.line then mods[#mods + 1] = line.line end
+    end
   end
-  itemReport[index] = { slot = tostring(item.slotName or spec.items[index] and spec.items[index].slot or index), parsed = parsed }
+  local block = itemTextById[tonumber(item.id)] or {}
+  itemReport[index] = {
+    id = tonumber(item.id),
+    slot = block.slot or tostring(item.slotName or index),
+    base = block.text and block.text:match('^[^\n]*\n[^\n]*\n([^\n]*)') or item.baseName,
+    text = block.text,
+    mods = mods,
+    parsed = parsed,
+  }
 end
 
 -- Exact node positions: PoB derives them from the group centre plus the node's
@@ -554,7 +796,10 @@ end
 
 local result = {
   items = itemReport,
-  tree = { nodes = treeNodes, edges = edgeList, notables = notableList },
+  tree = { nodes = treeNodes, edges = edgeList, notables = notableList, start = startNode },
+  startNode = startNode,
+  endgame = endgameIds,
+  repair = spec.repairInfo and repairCandidates(endgameSet) or nil,
   dpsSource = dpsSource,
   minionDps = minionDps,
   minionLife = minion and minion.output and minion.output.Life or nil,

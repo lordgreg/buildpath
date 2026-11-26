@@ -29,6 +29,8 @@ export interface BuildIndexEntry {
   seedHash: string;
   /** Gate results per checkpoint, so `builds.html` needs only the index. */
   steps?: BuildStepSummary[];
+  /** True when the committed calibration report covers the current gates. */
+  calibrated?: boolean;
   /**
    * Filter slots that override the family/ascendancy defaults (D15). A null
    * slot removes the default, e.g. a two-handed build has no offhand.
@@ -118,6 +120,19 @@ export interface GemGroup {
   gems: GemLink[];
 }
 
+/**
+ * What bounded repair changed at one checkpoint (PLAN-BUILDS.md §7.5, R12).
+ * `seedTree` is the tree before repair, so the page can show both.
+ */
+export interface GateRepair {
+  added: number[];
+  removed: number[];
+  evals: number;
+  nodeDelta: number;
+  status: 'within-bound' | 'exceeded';
+  seedTree?: TreeView;
+}
+
 export interface GateResult {
   pass: boolean;
   level: number;
@@ -132,6 +147,7 @@ export interface GateResult {
     sockets?: number;
   };
   tree?: TreeView;
+  repair?: GateRepair;
   failures: string[];
 }
 
@@ -165,6 +181,19 @@ export interface TreeView {
   nodes: TreePoint[];
   edges: [number, number][];
   notables: string[];
+  /** The class start node, so a test can prove a valid allocation order. */
+  start?: number;
+}
+
+/**
+ * One endgame plan, with every checkpoint as a pruned subset. A checkpoint tree
+ * is therefore always a legal prefix of the tree the build ends on.
+ */
+export interface BuildTree {
+  endgame: number[];
+  checkpoints: Record<string, number[]>;
+  /** Initial tree before bounded repair, when repair touched a checkpoint. */
+  seed?: Record<string, number[]>;
 }
 
 export interface Build extends BuildIndexEntry {
@@ -174,6 +203,7 @@ export interface Build extends BuildIndexEntry {
   /** Per-gem quest/level provenance, compiled from RePoE's gem data. */
   gemInfo?: Record<string, GemAvailability>;
   gates?: Record<string, GateResult>;
+  tree?: BuildTree;
   pipeline?: BuildPipelineInfo;
   /**
    * The published Path of Building code (D19). It is the `checkpoint` gear set

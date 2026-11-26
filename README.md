@@ -6,14 +6,20 @@ Pick a family, an ascendancy or a meta build, then a phase and strictness, and
 download a valid `.filter` that highlights the bases your build actually wants
 and hides the rest. No account; everything is generated in your browser.
 
-**Status:** v0.39.0 — exact `Class`/`BaseType` matching (filter format 2),
-exact-match legacy migration, guarded folder updates from verified snapshots,
-the current game data (3.30 export), cluster jewels, unique maps and safer links.
-Remaining work is polish; real meta capture is blocked by poe.ninja's closed
-builds API.
+**Status:** v0.57.0 — verified build guides whose every number is
+machine-derived and reproducible. A build is a seed plus a pinned Path of
+Building measurement, a calibrated gate report, one endgame tree pruned into
+each leveling step, a published PoB code and the filter generated from the same
+object. The current game data is the 3.30 export; real meta capture is blocked
+by poe.ninja's closed builds API.
 
 ## Features
 
+- Verified build guides: six checkpoints, a gate report for each, the PoB code
+  the gate measured, and a filter generated from the same build
+- Gates calibrated in both directions against must-pass and must-fail references
+- Bounded repair: a failing step may swap one tree node, with a published
+  `nodeDelta` and seed-vs-repaired view
 - Four independent modes: by family, by ascendancy, by meta build, or from scratch
 - Per-league meta snapshots, skills grouped by family or by seed weight
 - Soft / Strict / Uber (hidden in From Scratch mode)
@@ -45,6 +51,7 @@ builds API.
 [in-site changelog](https://lordgreg.github.io/buildpath/changelog.html).
 
 **Live:** https://lordgreg.github.io/buildpath/
+**Builds:** https://lordgreg.github.io/buildpath/builds.html
 **Loot simulator:** https://lordgreg.github.io/buildpath/demo.html
 **Behaviour audit:** https://lordgreg.github.io/buildpath/tests.html
 
@@ -62,6 +69,16 @@ npm install
 npm run dev      # http://localhost:5173/buildpath/
 npm test
 npm run build
+```
+
+Build data needs the pinned Path of Building checkout at `.cache/pob/src`,
+LuaJIT and `lua-utf8` (the same setup `validate-builds.yml` uses):
+
+```bash
+npm run builds:build       # YAML seeds -> committed JSON
+npm run builds:calibrate   # must-pass + must-fail gate calibration
+npm run builds:verify      # prove every seed against the PoB oracle
+npm run builds:check       # load every published PoB code in PoB
 ```
 
 ## Refresh presets and base data
@@ -94,18 +111,21 @@ src/core/                  framework-free, no React imports
   rules/                   custom rules, keys, templates, coverage, share codes
   share/                   build-code encode and decode
   demo/                    pasted-item parser
+  builds/                  build types, gates, repair, calibration evidence
   generated/               compiled presets + raw economy snapshot (committed)
-src/meta/                  accessors over the compiled presets
+src/builds/                 reviewed build seeds + gear/checkpoint/calibration YAML
+src/meta/                  accessors over the compiled presets and builds
 src/presets/               YAML sources and JSON schemas
-src/ui/                    wizard, loot simulator, audit page, URL state
+src/ui/                    wizard, build pages, loot simulator, audit page
   download.ts              download and clipboard helpers
 src/sync/                  folder picker, directory handles, write snapshots
 src/changelog.ts           release and commit data for the site
-scripts/                   preset compiler, data extractors, economy refresh
+scripts/                   preset compiler, data extractors, build pipeline
 ```
 
-Four Vite entries: `index.html` (builder), `demo.html` (loot simulator),
-`changelog.html` (release history) and `tests.html` (behaviour audit).
+Six Vite entries: `index.html` (builder), `builds.html` (catalogue),
+`build.html` (guide), `demo.html` (loot simulator), `changelog.html` (release
+history) and `tests.html` (behaviour audit).
 
 See [PLAN.md](./PLAN.md) for the design and constraints.
 

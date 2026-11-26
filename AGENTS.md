@@ -39,12 +39,13 @@ Build pipeline (needs a pinned PoB checkout at `.cache/pob/src` and LuaJIT +
 `lua-utf8`; never part of `npm test`):
 
 ```bash
-npm run builds:build     # validate src/builds/*.yaml -> src/generated/builds/
-npm run builds:verify    # PoB gates per checkpoint + the published PoB code
-npm run builds:check     # every published code loads in PoB with the same counts
+npm run builds:build      # validate src/builds/*.yaml -> src/generated/builds/
+npm run builds:calibrate  # must-pass + must-fail gates, committed report
+npm run builds:verify     # PoB gates per checkpoint + the published PoB code
+npm run builds:check      # every published code loads in PoB with the same counts
 ```
 
-`validate-builds.yml` runs all three in CI; `builds:build` is also chained into
+`validate-builds.yml` runs all four in CI; `builds:build` is also chained into
 `npm test` and `npm run build`, so committed build JSON can never go stale.
 
 `npm test` and `npm run build` both run `presets:build` first, so the compiled

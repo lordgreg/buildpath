@@ -194,6 +194,7 @@ for (const file of files) {
       carried = {
         status: previous.status ?? 'draft',
         gates: previous.gates,
+        ...(previous.tree ? { tree: previous.tree } : {}),
         ...(previous.pob ? { pob: previous.pob } : {}),
         ...(previous.pipeline ? { pipeline: previous.pipeline } : {}),
       };
@@ -235,6 +236,7 @@ const index = {
     summary: build.summary,
     status: build.status,
     seedHash: build.seedHash,
+    ...(build.pipeline ? { calibrated: build.pipeline.calibrated } : {}),
     // The catalogue page reads the index only (no per-build fetch), so each
     // checkpoint's pass flag and damage travel with it.
     ...(build.gates
@@ -251,8 +253,15 @@ const index = {
   })),
 };
 
+// The calibration report is evidence, not a generated build file: compiling a
+// seed must not delete it. `npm run builds:calibrate` owns it.
+const calibrationPath = resolve(outDir, 'calibration.json');
+const calibration = existsSync(calibrationPath)
+  ? readFileSync(calibrationPath, 'utf8')
+  : null;
 rmSync(outDir, { recursive: true, force: true });
 mkdirSync(outDir, { recursive: true });
+if (calibration) writeFileSync(calibrationPath, calibration);
 writeFileSync(resolve(outDir, 'index.json'), `${JSON.stringify(index, null, 2)}\n`);
 for (const build of builds) {
   writeFileSync(

@@ -39,7 +39,9 @@ function writeStep(id: string, step: string) {
 
 /** Flask column for a checkpoint: leveling, maps, or endgame. */
 function flaskStep(checkpoint: string): 'leveling' | 'maps' | 'endgame' {
-  if (checkpoint === 'act5' || checkpoint === 'act10') return 'leveling';
+  if (checkpoint === 'until-12' || checkpoint === 'until-28' || checkpoint === 'until-68') {
+    return 'leveling';
+  }
   if (checkpoint === 'pinnacle') return 'endgame';
   return 'maps';
 }
@@ -368,6 +370,31 @@ export default function BuildPage() {
 
       {build.pob && <PobCode pob={build.pob} />}
 
+      {gate?.repair && gate.repair.nodeDelta > 0 && (
+        <section aria-labelledby="repair">
+          <h2
+            id="repair"
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+          >
+            Seed vs repaired
+          </h2>
+          <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">
+            Bounded repair changed {gate.repair.nodeDelta} node
+            {gate.repair.nodeDelta === 1 ? '' : 's'} at this step in{' '}
+            {gate.repair.evals} Path of Building evaluation
+            {gate.repair.evals === 1 ? '' : 's'} ({gate.repair.status}). The
+            seed tree is shown next to the tree the gate measured, so nothing is
+            passed off as the original.
+          </p>
+          <div className="mt-3 grid gap-3 md:grid-cols-2">
+            {gate.repair.seedTree && (
+              <TreeThumbnail tree={gate.repair.seedTree} label={`${step} seed`} />
+            )}
+            {gate.tree && <TreeThumbnail tree={gate.tree} label={`${step} repaired`} />}
+          </div>
+        </section>
+      )}
+
       {gate?.tree && (
         <section aria-labelledby="tree">
           <h2 id="tree" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -631,6 +658,9 @@ export default function BuildPage() {
               ['steps', 'Step'],
               ['gates', 'Gate report'],
               ['pob', 'Path of Building'],
+              ...(gate?.repair && gate.repair.nodeDelta > 0
+                ? ([['repair', 'Seed vs repaired']] as [string, string][])
+                : []),
               ['tree', 'Passive tree'],
               ['gear', 'Gear'],
               ['gems', 'Gems'],

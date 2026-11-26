@@ -634,6 +634,49 @@ Findings that changed the pipeline, recorded so they are not re-learned:
 Acceptance: calibration green in both directions; the three P2 seeds keep
 passing; leveling path is a proven subset with valid order.
 
+**P3 status (complete: one endgame plan, bounded repair, calibrated gates).**
+
+- **Leveling derivation is real.** `verify.mjs` plans the endgame once at the
+  pinnacle budget, then derives every checkpoint by pruning deepest leaves from
+  that tree. Required jewel sockets are protected while any unprotected leaf
+  remains. The result is written to `tree.endgame` and `tree.checkpoints`, and a
+  test proves every checkpoint is a subset of the endgame, drawn from the class
+  start, with a valid allocation order. The old per-checkpoint greedy plans are
+  gone.
+- **Repair exists and is bounded.** A failing checkpoint swaps one removable
+  leaf for one adjacent node that the endgame plan already bought, so a repair
+  never leaves the planned tree. Candidate order is a seeded shuffle (seed id +
+  checkpoint), every candidate is measured by PoB, and the loop stops at the
+  first all-pass evaluation or 200 evaluations. `nodeDelta` is the number of
+  distinct nodes touched and must stay under `min(10, 8% of allocated points)`;
+  the record lives in `gates[cp].repair`. The published seeds pass without
+  repair, so their record is zero changes and one evaluation, not a silent
+  unverified tree. `src/core/builds/repair.ts` holds the pure bound, score and
+  shuffle, tested without Lua.
+- **Ablation resolves real uniques.** The oracle loads a core unique from PoB's
+  own `Data/Uniques` tables, so the mods are the engine's, not hand-written. A
+  leave-one-out probe in calibration measures **Ryslatha's Coil** on the
+  Juggernaut: the unique is worth 10.7% of red-map damage, and removing it gives
+  the rare-equivalent measurement. The three P2 seeds declare no core uniques;
+  the probe is what proves the path until a P4 flagship needs one.
+- **Calibration is green in both directions.** `calibrate.mjs` runs 18
+  must-pass observations (the three seeds at all six checkpoints, re-geared by
+  the same synthesiser) and 10 must-fail mutations (uncapped resistances, no
+  life, a 4-link, an act-10 tree at T16, a start-only tree, no main skill, no
+  support gems, no defensive layer, uncapped chaos at pinnacle, starting gear at
+  pinnacle). The report is committed as `builds/calibration.json`, hashed over
+  the thresholds, and `verify.mjs` only marks a build calibrated when that hash
+  matches. `gates.yaml` is now `calibrated: true`.
+- **Breadth is a page condition, not a popularity claim.** `builds.html` lists
+  only verified builds, groups them by family, and names each ascendancy that
+  has a passing build. Failed or stale builds are hidden from the catalogue and
+  still show their failures on their own page (R10). The catalogue now carries
+  the calibrated flag in the index.
+- **One pipeline.** Gear synthesis, gem levels, the oracle call, item parsing
+  and PoB-code encoding moved to `scripts/builds/pipeline.mjs`; the verifier and
+  the calibration runner import the same functions, so a fixture cannot be
+  measured by a different pipeline from a published seed.
+
 **P4 — prose + flagships.** 6–8 flagship builds, placeholder checks, breadth
 pages where a gate-passing build exists (D1). Acceptance: R1–R4 enforced by
 tests, human sign-off on prose only.
@@ -647,7 +690,14 @@ Acceptance: a patch bump delists every unverified build and the site says so.
 
 - Gate report golden per build, with the pinned PoB ref, LuaJIT version and
   runner image recorded in the golden's header; numeric tolerance explicit.
-- Tree subset test: every checkpoint ⊆ `endgame`, topological order valid.
+- Tree subset test: every checkpoint ⊆ `endgame`, connected from the class
+  start, with a valid allocation order.
+- Repair record test: every checkpoint publishes `evals`, `nodeDelta` and a
+  `within-bound`/`exceeded` status; the pure bound, score and seeded shuffle are
+  tested without Lua.
+- Calibration test: the committed report's hash matches the current thresholds,
+  every must-pass passes, every must-fail fails for its named defect, and the
+  unique-ablation probe parses real mods and records a drop.
 - PoB round-trip: JSON → XML → code → PoB parse → same tree, links, item count.
 - Registry tests: gems, bases, ascendancies, pantheon ids and bandit ids all
   exist in the reviewed registries; no unique name in any emitted `BaseType`.
@@ -724,7 +774,9 @@ rounding rule:
 - **`src/core` extraction** (D13): after 1.0, only if a second site exists.
 - **Per-act quest-reward gem data** (D16): dropped from v1; revisit if the
   bracket list proves too coarse.
-- **Gate numbers**: §8 defaults are a starting point, tuned by calibration.
+- **Gate numbers**: the §8 defaults are calibrated as of revision 14. Further
+  tuning is a calibration run (must-pass and must-fail), not an open design
+  question.
 
 ## 15. Spike results
 
@@ -755,6 +807,34 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 14 — P3 landed
+
+P3 shipped the parts that turn measurements into claims.
+
+- **One endgame tree, pruned per checkpoint.** The planner no longer searches
+  separately at level 12 and level 96. A checkpoint is a connected, ordered
+  subset of the pinnacle plan, and tests assert the subset and order. Protected
+  jewel sockets keep the gear the budget names actually socketed after pruning.
+- **Repair is bounded and visible.** Single swaps only, candidates restricted to
+  the endgame plan, seeded order, 200 evaluations, `nodeDelta` under 10 and 8%.
+  The seeds pass without repair; the empty record is still written so "no repair
+  was needed" is distinguishable from "repair was not run".
+- **Calibration is the gate's own regression test.** 18 must-pass and 10
+  must-fail cases, plus a unique ablation probe, are committed as
+  `builds/calibration.json`. The report hashes the thresholds, so changing a
+  floor without re-running calibration drops every build back to uncalibrated.
+- **The P2 seeds keep every checkpoint.** Their measured numbers moved with the
+  derived trees (for example the Deadeye's red-map DPS is 120.3k against a
+  104-node tree), and all 18 checkpoint observations remain passing. The gates
+  were not weakened to get there.
+- **Ablation is proved before a seed needs it.** PoB resolves the unique's real
+  mods from its own data; the Juggernaut's Ryslatha's Coil is worth 10.7% of
+  red-map damage. No P2 seed declares a core unique, so this is a calibration
+  probe rather than a published page number.
+- The plan's `src/builds/leveling-points.yaml` did not ship as a separate file:
+  the point budget lives in `config/checkpoints.yaml`, next to the level, labs,
+  budget and enemy level that the same checkpoint drives. One table, one source.
 
 ### Revision 13 — third seed, and the nightly
 
