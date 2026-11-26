@@ -146,6 +146,54 @@ function checkAvailability(seed, file) {
   }
 }
 
+/**
+ * A swap is editorial advice, but it still may not name a gem the character
+ * cannot hold at `fromLevel`, and it must replace a gem the build actually
+ * levels with.
+ */
+function checkSwaps(seed, file) {
+  const swaps = seed.leveling.swaps ?? [];
+  if (swaps.length === 0) return;
+  const bracketGems = new Set();
+  for (const bracket of seed.leveling.brackets) {
+    for (const skill of bracket.skills ?? []) bracketGems.add(gemName(skill));
+    for (const group of bracket.skillGroups ?? []) {
+      for (const gem of group.gems) bracketGems.add(gemName(gem));
+    }
+  }
+  for (const swap of swaps) {
+    const required = gemLevel1(swap.gem);
+    if (required === undefined) {
+      console.error(`build seed invalid: ${file}\n  unknown swap gem "${swap.gem}"`);
+      process.exit(1);
+    }
+    if (required > swap.fromLevel) {
+      console.error(
+        `build seed invalid: ${file}\n  swap gem ${swap.gem} needs level ${required}, but fromLevel is ${swap.fromLevel}`,
+      );
+      process.exit(1);
+    }
+    if (!seed.leveling.brackets.some((bracket) => bracket.until >= swap.fromLevel)) {
+      console.error(
+        `build seed invalid: ${file}\n  swap gem ${swap.gem} starts at ${swap.fromLevel}, after the last bracket`,
+      );
+      process.exit(1);
+    }
+    if (swap.untilLevel !== undefined && swap.untilLevel <= swap.fromLevel) {
+      console.error(
+        `build seed invalid: ${file}\n  swap gem ${swap.gem} must end after it starts (${swap.fromLevel}–${swap.untilLevel})`,
+      );
+      process.exit(1);
+    }
+    if (swap.replaces !== undefined && !bracketGems.has(swap.replaces)) {
+      console.error(
+        `build seed invalid: ${file}\n  swap gem ${swap.gem} replaces "${swap.replaces}", which the build never lists`,
+      );
+      process.exit(1);
+    }
+  }
+}
+
 /** Declared leveling brackets must be ordered, unique and end at 100. */
 function checkBrackets(seed, file) {
   const brackets = seed.leveling.brackets;
@@ -393,6 +441,7 @@ for (const file of files) {
   }
   checkBrackets(seed, file);
   checkAvailability(seed, file);
+  checkSwaps(seed, file);
   checkSeason(seed, file);
   const wickerman = resolveWickerman(seed, file);
   const stepPlans = resolveStepPlans(seed, file);
@@ -417,7 +466,11 @@ for (const file of files) {
     stepPlan: seedStepPlan,
     ...mechanics
   } = seed;
-  const seedHash = hashOf(mechanics);
+  // A swap is advice about what to use between checkpoints; it never changes
+  // what PoB measured, so it stays out of the hash like the guide prose.
+  const hashedLeveling = { ...mechanics.leveling };
+  delete hashedLeveling.swaps;
+  const seedHash = hashOf({ ...mechanics, leveling: hashedLeveling });
   seedById.set(seed.id, seed);
   // Verification writes gates, the published PoB code and the pipeline stamp
   // into the same file. Keep them when the seed has not changed, so compiling

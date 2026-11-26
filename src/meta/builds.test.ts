@@ -289,10 +289,19 @@ describe('published build data', () => {
       JSON.parse(
         readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
       ) as {
+        id: string;
         class: string;
         leveling: {
+          swaps?: {
+            gem: string;
+            fromLevel: number;
+            untilLevel?: number;
+            replaces?: string;
+            note?: string;
+          }[];
           brackets: {
             until: number;
+            skills: string[];
             skillGroups?: {
               slot: string;
               gems: (string | { name: string; maxLevel?: number; note?: string })[];
@@ -484,6 +493,59 @@ describe('published build data', () => {
         }
       }
     }
+  });
+
+  it('keeps leveling swaps legal and tied to the build', () => {
+    const gemLevels = JSON.parse(
+      readFileSync(resolve(root, 'src/generated/gem-levels.json'), 'utf8'),
+    ).gems as Record<string, { levels: Record<string, number> }>;
+    for (const build of compiled) {
+      for (const swap of build.leveling.swaps ?? []) {
+        const entry = gemLevels[swap.gem];
+        expect(entry, `${build.class}: unknown swap gem "${swap.gem}"`).toBeDefined();
+        expect(
+          swap.fromLevel,
+          `${build.class}: ${swap.gem} needs level ${entry!.levels['1']}, swapped at ${swap.fromLevel}`,
+        ).toBeGreaterThanOrEqual(entry!.levels['1']);
+        expect(
+          build.leveling.brackets.some((bracket) => bracket.until >= swap.fromLevel),
+          `${build.class}: ${swap.gem} starts after the last bracket`,
+        ).toBe(true);
+        if (swap.untilLevel !== undefined) {
+          expect(swap.untilLevel, `${build.class}: ${swap.gem} swap order`).toBeGreaterThan(
+            swap.fromLevel,
+          );
+          expect(swap.untilLevel).toBeLessThanOrEqual(100);
+        }
+        if (swap.replaces) {
+          const listed = build.leveling.brackets.some(
+            (bracket) =>
+              bracket.skills.includes(swap.replaces!) ||
+              (bracket.skillGroups ?? []).some((group) =>
+                group.gems.some(
+                  (gem) => (typeof gem === 'string' ? gem : gem.name) === swap.replaces,
+                ),
+              ),
+          );
+          expect(
+            listed,
+            `${build.class}: ${swap.gem} replaces "${swap.replaces}", which the build never lists`,
+          ).toBe(true);
+        }
+      }
+    }
+  });
+
+  it('tells Boneshatter players to use Sunder before the main skill unlocks', () => {
+    const build = compiled.find((entry) => entry.id === 'boneshatter-juggernaut');
+    expect(build, 'boneshatter-juggernaut').toBeDefined();
+    expect(build!.leveling.swaps).toContainEqual({
+      gem: 'Sunder',
+      fromLevel: 12,
+      untilLevel: 28,
+      replaces: 'Cleave',
+      note: expect.any(String),
+    });
   });
 
   it('names a colour for every gem the guide shows', () => {

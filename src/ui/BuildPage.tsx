@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { Build, BuildIndexEntry, GateResult } from '../core/builds/types.ts';
 import { BUILD_VERSION, BUILDS } from '../meta/builds.ts';
 import { GUIDE_SECTIONS, type GuideSection } from '../core/builds/guide.ts';
+import { activeSwaps } from '../core/builds/leveling.ts';
 import { BANDITS } from '../meta/pantheon.ts';
 import { getPobLink } from '../meta/pob-links.ts';
 import AscendancyPanel from './AscendancyPanel.tsx';
@@ -355,10 +356,12 @@ export default function BuildPage() {
     step === 'maps-red' || step === 'pinnacle' || build.gemQualityFrom === 'leveling';
   // A guide step is a leveling bracket: show the gems you level with at that
   // step, so there is no separate "leveling" section repeating the same thing.
-  const bracket =
-    build.leveling.brackets.find(
-      (entry) => gate !== undefined && entry.until >= gate.level,
-    ) ?? build.leveling.brackets.at(-1);
+  const bracketIndex = build.leveling.brackets.findIndex(
+    (entry) => gate !== undefined && entry.until >= gate.level,
+  );
+  const resolvedBracket = bracketIndex >= 0 ? bracketIndex : build.leveling.brackets.length - 1;
+  const bracket = build.leveling.brackets[resolvedBracket];
+  const swaps = activeSwaps(build.leveling.swaps, build.leveling.brackets, resolvedBracket);
 
   return (
     <div className="min-h-dvh">
@@ -746,6 +749,62 @@ export default function BuildPage() {
             Play these until level {bracket.until}
             {bracket.until < 100 ? ', then move to the next step' : ' — the endgame step.'}
           </p>
+          {swaps.length > 0 && (
+            <ul className="mt-3 space-y-1.5 text-xs leading-relaxed">
+              {swaps.map((swap) => {
+                const info = build.gemInfo?.[swap.gem];
+                const atBoundary = swap.fromLevel === bracket.until;
+                return (
+                  <li
+                    key={swap.gem}
+                    className="rounded border border-ink-700/70 bg-ink-900/40 px-2.5 py-2 text-zinc-400"
+                  >
+                    <span className="text-zinc-300">
+                      {atBoundary ? 'At' : 'Since'} level {swap.fromLevel}:{' '}
+                      {swap.replaces ? (
+                        <>
+                          swap{' '}
+                          <a
+                            href={wikiUrl(swap.replaces)}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            className="underline-offset-2 hover:underline"
+                          >
+                            {swap.replaces}
+                          </a>{' '}
+                          for{' '}
+                        </>
+                      ) : (
+                        <>add{' '}</>
+                      )}
+                      <a
+                        href={wikiUrl(swap.gem)}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="font-semibold underline-offset-2 hover:underline"
+                        style={{ color: gemColour(info?.color) }}
+                      >
+                        {swap.gem}
+                      </a>
+                    </span>
+                    {info && (
+                      <span className="text-zinc-600">
+                        {' '}·{' '}
+                        {info.quest
+                          ? info.free
+                            ? `Quest reward · ${info.quest.quest}`
+                            : `Vendor after ${info.quest.quest}`
+                          : `Unlocks at character level ${info.requiredLevel}`}
+                      </span>
+                    )}
+                    {swap.note && (
+                      <span className="mt-1 block text-[11px] text-zinc-500">{swap.note}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
           <p className="mt-2 text-xs leading-relaxed text-zinc-500">
             <a
               href={`./filter.html${builderHash}`}

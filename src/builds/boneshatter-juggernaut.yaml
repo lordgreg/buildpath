@@ -60,8 +60,9 @@ guide:
     signed: { by: "maintainer", at: "2026-11-26T21:51:11.217Z" }
   leveling:
     text: >-
-      Level with Cleave and Added Fire Damage until Boneshatter unlocks, then
-      switch to the two-handed axe. The first checkpoint measures
+      Level with Cleave and Added Fire Damage until Sunder is available, then
+      use Sunder until Boneshatter unlocks and switch to the two-handed axe. The
+      first checkpoint measures
       {{gates.until-12.metrics.life|int}} life and
       {{gates.until-12.metrics.dps|dps}} damage; the second measures
       {{gates.until-28.metrics.dps|dps}} with a self-cast Vulnerability. The mana
@@ -115,6 +116,15 @@ tree:
     - two handed
 
 leveling:
+  # Sunder is a free Marauder reward at level 12 and hits far harder than
+  # Cleave; Boneshatter only unlocks at 28. This is advice between checkpoints,
+  # not a measured step, so it stays out of the seed hash.
+  swaps:
+    - gem: Sunder
+      fromLevel: 12
+      untilLevel: 28
+      replaces: Cleave
+      note: "Sunder clears packs and hits single targets harder than Cleave until Boneshatter unlocks."
   brackets:
     - until: 12
       skills:

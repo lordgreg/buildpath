@@ -133,6 +133,22 @@ export interface BuildIndexEntry {
   filter?: { slots: Partial<Record<ItemSlot, SlotSpec | null>> };
 }
 
+/**
+ * A mid-bracket gem change, e.g. Sunder from 12 until Boneshatter at 28. It is
+ * editorial advice, not a measured checkpoint, so it stays out of `seedHash`.
+ */
+export interface LevelingSwap {
+  /** The gem to use from `fromLevel`. */
+  gem: string;
+  /** Character level at which the swap becomes available. */
+  fromLevel: number;
+  /** Exclusive end: the level where the next skill takes over. */
+  untilLevel?: number;
+  /** The gem this one replaces while it is used. */
+  replaces?: string;
+  note?: string;
+}
+
 export interface LevelingBracket {
   /** Level bracket upper bound; the last bracket ends at 100. */
   until: number;
@@ -359,7 +375,7 @@ export interface Build extends BuildIndexEntry {
   };
   pros: BuildTradeoff[];
   cons: BuildTradeoff[];
-  leveling: { brackets: LevelingBracket[] };
+  leveling: { swaps?: LevelingSwap[]; brackets: LevelingBracket[] };
   ascendancyOrder: AscendancyPoint[];
   bandit: BuildBandit;
   pantheon: { major: string; minor: string; note?: string };
