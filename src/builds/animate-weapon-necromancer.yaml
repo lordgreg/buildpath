@@ -1,0 +1,175 @@
+schemaVersion: 1
+id: animate-weapon-necromancer
+name: Animate Weapon Necromancer
+class: Witch
+ascendancyId: necromancer
+family: minion
+mainSkill: Animate Weapon
+flagship: false
+gateProfile: dad
+summary: >-
+  Animate Weapon turns the weapons a map drops into a temporary melee army.
+  Each cast adds another animated blade, so the build snowballs through a map
+  and then carries the same swarm into the boss room. It needs no unique, only
+  weapons on the ground and a Necromancer shell to keep them alive.
+
+pros:
+  - { weight: 3, text: "Every weapon drop becomes another soldier, which is unlike any other minion build." }
+  - { weight: 3, text: "Damage scales with minion notables and gem levels, not with your own gear." }
+  - { weight: 2, text: "The swarm takes the hits, so your positioning is forgiving." }
+  - { weight: 2, text: "No required unique; the build works from the first dropped weapon." }
+  - { weight: 2, text: "A strong single-target army once the blades are stacked." }
+  - { weight: 1, text: "The same caster gear serves any later Necromancer build." }
+cons:
+  - { weight: 3, text: "The army needs weapons on the ground, so the first pack of a map is the slowest." }
+  - { weight: 3, text: "Animated weapons expire, and a boss phase can outlast them." }
+  - { weight: 2, text: "Minion AI spreads the swarm and can leave a straggler behind." }
+  - { weight: 2, text: "Clear speed is slower than a bow or a well-geared melee mapper." }
+  - { weight: 1, text: "Fewer links early means the blade count matters more than the tooltip." }
+
+ratings:
+  tankiness: 5
+  singleTarget: 9
+  clear: 6
+  cost: 8
+
+gearProfile: caster
+minionCount: 8
+
+tree:
+  targets:
+    - minions deal increased damage
+    - minion damage
+    - minions have increased attack speed
+    - minions have increased maximum life
+    - maximum life
+    - skill effect duration
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Animate Weapon, Summon Skeletons]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Animate Weapon, Minion Damage]
+        - slot: Weapon 1
+          gems: [Summon Skeletons]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Animating is expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Animate Weapon, Flesh Offering, Desecrate]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Animate Weapon, Minion Damage, Melee Physical Damage, Minion Speed]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Desecrate]
+        - slot: Shield
+          gems: [Determination, Convocation]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
+    - until: 68
+      skills: [Animate Weapon, Flesh Offering, Desecrate]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Animate Weapon, Minion Damage, Melee Physical Damage, Multistrike, Feeding Frenzy, Brutality]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Desecrate]
+        - slot: Shield
+          gems: [Determination, Convocation]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing through your own minions." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    - until: 100
+      skills: [Animate Weapon, Flesh Offering, Desecrate]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Animate Weapon, Minion Damage, Melee Physical Damage, Multistrike, Feeding Frenzy, Brutality]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Desecrate]
+        - slot: Shield
+          gems: [Determination, Convocation]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing through your own minions." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance for pinnacle bosses." }
+
+ascendancyOrder:
+  - { node: mindless-aggression, lab: 1 }
+  - { node: commander-of-darkness, lab: 2 }
+  - { node: mistress-of-sacrifice, lab: 3 }
+  - { node: bone-barrier, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch a summoner in a bad position.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Animate Weapon Necromancer turns dropped weapons into a temporary melee
+      army that snowballs through a map. It measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle, and needs no unique.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Summon Skeletons until the first weapons drop, then animate
+      every blade you find. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Animate the first
+      pack's weapons, then keep the swarm moving with Flesh Offering.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Stack the blades
+      before the burst, refresh Flesh Offering, and recast Animate Weapon when
+      the oldest blades expire.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]

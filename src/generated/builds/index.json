@@ -1,6 +1,162 @@
 {
-  "version": "aec8ce43464d",
+  "version": "413630fe58c9",
   "builds": [
+    {
+      "id": "absolution-guardian",
+      "name": "Absolution Guardian",
+      "class": "Templar",
+      "ascendancyId": "guardian",
+      "family": "minion",
+      "mainSkill": "Absolution",
+      "summary": "Absolution turns a single cast into a squad of lightning sentinels that keep attacking while you move. The Guardian shell supplies the defences and the relic army, so the build is a relaxed mapper that still has a real boss rotation, and it needs no unique.",
+      "status": "verified",
+      "seedHash": "012125206e81",
+      "calibrated": true,
+      "ratings": {
+        "tankiness": 7,
+        "singleTarget": 8,
+        "clear": 6,
+        "cost": 8
+      },
+      "medal": "A",
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Minion",
+          "kind": "playstyle"
+        },
+        {
+          "label": "HC-ready",
+          "kind": "defence",
+          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        },
+        {
+          "label": "Minion army",
+          "kind": "note",
+          "title": "Minions take the hits while you position."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 39
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 149
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 8193
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 12940
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 91571
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 59216
+        }
+      ]
+    },
+    {
+      "id": "animate-weapon-necromancer",
+      "name": "Animate Weapon Necromancer",
+      "class": "Witch",
+      "ascendancyId": "necromancer",
+      "family": "minion",
+      "mainSkill": "Animate Weapon",
+      "summary": "Animate Weapon turns the weapons a map drops into a temporary melee army. Each cast adds another animated blade, so the build snowballs through a map and then carries the same swarm into the boss room. It needs no unique, only weapons on the ground and a Necromancer shell to keep them alive.",
+      "status": "verified",
+      "seedHash": "9ef2155b5805",
+      "calibrated": true,
+      "ratings": {
+        "tankiness": 5,
+        "singleTarget": 9,
+        "clear": 6,
+        "cost": 8
+      },
+      "medal": "A",
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Minion",
+          "kind": "playstyle"
+        },
+        {
+          "label": "HC-ready",
+          "kind": "defence",
+          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        },
+        {
+          "label": "Minion army",
+          "kind": "note",
+          "title": "Minions take the hits while you position."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 131
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 507
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 10705
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 11970
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 30847
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 47388
+        }
+      ]
+    },
     {
       "id": "arc-elementalist",
       "name": "Arc Elementalist",
@@ -1002,6 +1158,79 @@
           "pass": true,
           "level": 96,
           "dps": 413053
+        }
+      ]
+    },
+    {
+      "id": "winter-orb-elementalist",
+      "name": "Winter Orb Elementalist",
+      "class": "Witch",
+      "ascendancyId": "elementalist",
+      "family": "caster",
+      "mainSkill": "Winter Orb",
+      "summary": "Winter Orb is a channel-and-run cold skill: hold the button until the orb is charged, then move while it keeps firing. The Elementalist shell adds chill, exposure and a lightning-free damage package, so the build maps with almost no aiming and no required unique.",
+      "status": "verified",
+      "seedHash": "fdd631a029aa",
+      "calibrated": true,
+      "ratings": {
+        "tankiness": 5,
+        "singleTarget": 7,
+        "clear": 8,
+        "cost": 7
+      },
+      "medal": "A",
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Caster",
+          "kind": "playstyle"
+        },
+        {
+          "label": "HC-ready",
+          "kind": "defence",
+          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 73
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 698
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 26972
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 36610
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 44537
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 59813
         }
       ]
     }

@@ -1,0 +1,173 @@
+schemaVersion: 1
+id: absolution-guardian
+name: Absolution Guardian
+class: Templar
+ascendancyId: guardian
+family: minion
+mainSkill: Absolution
+flagship: false
+gateProfile: dad
+summary: >-
+  Absolution turns a single cast into a squad of lightning sentinels that keep
+  attacking while you move. The Guardian shell supplies the defences and the
+  relic army, so the build is a relaxed mapper that still has a real boss
+  rotation, and it needs no unique.
+
+pros:
+  - { weight: 3, text: "The sentinels fight for you, so you can dodge while the damage continues." }
+  - { weight: 3, text: "Guardian defences and relics make the build forgiving to learn." }
+  - { weight: 2, text: "No required unique; the damage comes from gem levels and minion notables." }
+  - { weight: 2, text: "Absolution clears packs while the sentinels spread to the next group." }
+  - { weight: 2, text: "The same caster gear works for a later minion or spell build." }
+  - { weight: 1, text: "A relaxed league starter for a player who dislikes aiming." }
+cons:
+  - { weight: 3, text: "Sentinel AI decides part of the fight; they can lag behind a fast player." }
+  - { weight: 3, text: "Single-target needs the sentinels alive and positioned before the burst." }
+  - { weight: 2, text: "Recasting Absolution is a damage loss when a pack dies too quickly." }
+  - { weight: 2, text: "The build is slower than a bow or a well-geared melee mapper." }
+  - { weight: 1, text: "Elemental reflect maps remain a hard no." }
+
+ratings:
+  tankiness: 7
+  singleTarget: 8
+  clear: 6
+  cost: 8
+
+gearProfile: caster
+minionCount: 3
+
+tree:
+  targets:
+    - minions deal increased damage
+    - minion damage
+    - minions have increased attack speed
+    - increased lightning damage
+    - maximum life
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Absolution, Holy Flame Totem]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Absolution, Added Lightning Damage]
+        - slot: Weapon 1
+          gems: [Holy Flame Totem]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Sentinels are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Absolution, Holy Flame Totem]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Absolution, Added Lightning Damage, Minion Damage, Elemental Focus]
+        - slot: Weapon 1
+          gems: [Holy Flame Totem]
+        - slot: Shield
+          gems: [Determination, Convocation]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
+    - until: 68
+      skills: [Absolution, Convocation, Desecrate]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Absolution, Added Lightning Damage, Minion Damage, Elemental Focus, Controlled Destruction, Lightning Penetration]
+        - slot: Weapon 1
+          gems: [Convocation, Clarity]
+        - slot: Shield
+          gems: [Determination]
+        - slot: Helmet
+          gems: [Desecrate]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing through the sentinels." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    - until: 100
+      skills: [Absolution, Convocation, Desecrate]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Absolution, Added Lightning Damage, Minion Damage, Elemental Focus, Predator, Lightning Penetration]
+        - slot: Weapon 1
+          gems: [Convocation, Clarity]
+        - slot: Shield
+          gems: [Determination]
+        - slot: Helmet
+          gems: [Desecrate]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing through the sentinels." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance for pinnacle bosses." }
+
+ascendancyOrder:
+  - { node: time-of-need, lab: 1 }
+  - { node: radiant-crusade, lab: 2 }
+  - { node: bastion-of-hope, lab: 3 }
+  - { node: unwavering-crusade, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch a caster in a bad position.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Absolution Guardian turns one cast into a squad of lightning sentinels
+      that keep attacking while you move. It measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle, and needs no unique.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Holy Flame Totem until Absolution is available, then keep the
+      sentinels between you and the pack. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep the sentinels
+      refreshed ahead of the pack and let the filter hide the rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Recast Absolution
+      before the burst, keep Convocation ready, and move when the slam lands.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]

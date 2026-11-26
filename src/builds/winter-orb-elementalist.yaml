@@ -1,0 +1,172 @@
+schemaVersion: 1
+id: winter-orb-elementalist
+name: Winter Orb Elementalist
+class: Witch
+ascendancyId: elementalist
+family: caster
+mainSkill: Winter Orb
+flagship: false
+gateProfile: dad
+summary: >-
+  Winter Orb is a channel-and-run cold skill: hold the button until the orb is
+  charged, then move while it keeps firing. The Elementalist shell adds chill,
+  exposure and a lightning-free damage package, so the build maps with almost no
+  aiming and no required unique.
+
+pros:
+  - { weight: 3, text: "Damage continues while you move, so dodging costs little uptime." }
+  - { weight: 3, text: "Chill and freeze make packs and boss adds much less dangerous." }
+  - { weight: 2, text: "No required unique; spell damage and gem levels carry the build." }
+  - { weight: 2, text: "The cold package leaves the gear slots free for life and resistances." }
+  - { weight: 2, text: "A strong visual contrast to the usual self-cast projectile builds." }
+  - { weight: 1, text: "The same spell gear can pivot to another cold spell later." }
+cons:
+  - { weight: 3, text: "Channeling the orb roots you for the first moment of every pack." }
+  - { weight: 3, text: "Single-target is a sustained channel, not a burst window." }
+  - { weight: 2, text: "Cold-resistant bosses slow the fight noticeably." }
+  - { weight: 2, text: "Mana is tight until reduced cost and regeneration are online." }
+  - { weight: 1, text: "Elemental reflect maps are a hard no." }
+
+ratings:
+  tankiness: 5
+  singleTarget: 7
+  clear: 8
+  cost: 7
+
+gearProfile: spell
+tree:
+  targets:
+    - increased maximum life
+    - increased cold damage
+    - increased spell damage
+    - increased cast speed
+    - increased maximum mana
+    - increased elemental damage
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Freezing Pulse, Frost Bomb]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Freezing Pulse, Added Cold Damage]
+        - slot: Weapon 1
+          gems: [Frost Bomb]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Frostblink, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Winter Orb, Frost Bomb]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Winter Orb, Added Cold Damage, Controlled Destruction, Elemental Focus]
+        - slot: Weapon 1
+          gems: [Frost Bomb, Frostblink]
+        - slot: Shield
+          gems: [Hatred, Clarity]
+        - slot: Helmet
+          gems: [Herald of Ice]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
+    - until: 68
+      skills: [Winter Orb, Frost Bomb, Frostblink]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Winter Orb, Added Cold Damage, Controlled Destruction, Elemental Focus, Cold Penetration, Hypothermia]
+        - slot: Weapon 1
+          gems: [Frost Bomb, Frostblink]
+        - slot: Shield
+          gems: [Hatred, Determination]
+        - slot: Helmet
+          gems: [Herald of Ice, Clarity]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing through the pack." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    - until: 100
+      skills: [Winter Orb, Frost Bomb, Frostblink]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Winter Orb, Added Cold Damage, Controlled Destruction, Elemental Focus, Cold Penetration, Hypothermia]
+        - slot: Weapon 1
+          gems: [Frost Bomb, Frostblink]
+        - slot: Shield
+          gems: [Hatred, Determination]
+        - slot: Helmet
+          gems: [Herald of Ice, Clarity]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing through the pack." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance for pinnacle bosses." }
+
+ascendancyOrder:
+  - { node: shaper-of-winter, lab: 1 }
+  - { node: heart-of-destruction, lab: 2 }
+  - { node: mastermind-of-discord, lab: 3 }
+  - { node: bastion-of-elements, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch a channeling caster.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Winter Orb Elementalist channels a floating orb that keeps firing while
+      you move. It measures {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle, and needs no unique.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Freezing Pulse, then switch to Winter Orb as soon as it is
+      available. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Charge the orb for
+      a moment, then move through the pack while it fires.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Keep the orb
+      charged, apply exposure, and move out of the slam instead of holding the
+      channel.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
