@@ -2,6 +2,19 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.57.0 — 2026-11-26
+
+The gates prove themselves.
+
+- The passive tree is now one build, not six searches. The pipeline plans the **endgame tree once**, then derives every guide step by pruning the deepest leaves. A test proves each step is a subset of the endgame tree, connected from the class start and in a valid allocation order. Required jewel sockets are protected while any other leaf can be dropped, so the jewellery the budget names is still socketed.
+- **Bounded repair** exists. A failing checkpoint can swap one leaf for one adjacent node the endgame plan already bought, with a seeded candidate order, at most 200 Path of Building evaluations, and a hard `nodeDelta` bound of ten nodes and eight percent. The record on every gate says how many evaluations ran and which nodes moved; the page shows the seed tree next to the repaired one. The three seeds pass without repair, so their record is an honest zero rather than a missing field.
+- The gates are **calibrated in both directions**. Eighteen must-pass observations (three seeds at six checkpoints, re-geared by the same synthesiser) and ten must-fail mutations — uncapped resistances, no life, a 4-link, an act-10 tree at T16, a start-only tree, no main skill, no supports, no defensive layer, uncapped chaos at pinnacle, starting gear at pinnacle — now run as `npm run builds:calibrate`. The report is committed and hashed over the thresholds; changing a floor without re-running calibration drops every build back to uncalibrated.
+- **Ablation** resolves a core unique from Path of Building's own data, then removes it and measures the rare equivalent. The calibration probe is Ryslatha's Coil on the Juggernaut: the unique is worth 10.7% of red-map damage. No P2 seed declares a core unique, so this is evidence for the machinery, not a page claim.
+- The catalogue lists only **verified** builds, groups them by family and ascendancy, and shows how many were calibrated. A failed or stale build is still reachable by its own link, where its named failures are shown, but it does not appear in the list.
+- The build pipeline is one implementation again: gear synthesis, gem levels, the oracle call, item parsing and code encoding live in `scripts/builds/pipeline.mjs`, shared by the verifier and the calibration runner. A fixture cannot be measured by a different pipeline from a published seed.
+- The derived trees moved the measured numbers — the Deadeye now has a 104-node red-map tree at 120.3k DPS — and all 18 checkpoint observations still pass. No gate was weakened to get there.
+- 588 tests.
+
 ## 0.56.0 — 2026-11-26
 
 The first bow build, and the numbers it corrected.
