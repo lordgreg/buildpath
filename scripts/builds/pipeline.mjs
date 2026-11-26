@@ -193,6 +193,10 @@ export function synthesizeGear(budgetId, profileId = 'caster', options = {}) {
   const bodySockets = Array.from({ length: links }, () => 'B').join('-');
   for (const [slot, spec] of Object.entries(slots)) {
     if (dropSlots.has(slot)) continue;
+    // A profile may remove a slot the shared budget carries. A two-handed
+    // build has no offhand, and inheriting the caster's spirit shield would
+    // measure (and publish) an item the character cannot wear.
+    if (spec === null) continue;
     if (!knownBases.has(spec.base)) {
       throw new Error(`${budgetId}/${slot}: unknown base "${spec.base}"`);
     }

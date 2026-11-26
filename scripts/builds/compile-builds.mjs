@@ -563,7 +563,7 @@ function chipsFor(build) {
       : build.family === 'melee'
         ? build.mainSkill === 'Flicker Strike'
           ? { label: 'Fast clear', kind: 'note', title: 'Flicker teleports through the pack.' }
-          : { label: 'Tanky', kind: 'note', title: 'Armour, endurance charges and Juggernaut recovery.' }
+          : { label: 'Tanky', kind: 'note', title: 'Armour, endurance charges and Juggernaut defences.' }
         : build.family === 'minion'
           ? { label: 'Minion army', kind: 'note', title: 'Minions take the hits while you position.' }
           : null;

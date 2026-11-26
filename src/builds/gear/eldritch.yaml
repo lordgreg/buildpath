@@ -66,6 +66,39 @@ profiles:
         - { currency: ember, mod: "10% increased Movement Speed" }
         - { currency: ichor, mod: "Gain 6% of Physical Damage as Extra Fire Damage" }
 
+  # Boneshatter uses the same physical-melee implicits as the shared melee
+  # profile, except the boots ichor: Brutality makes the melee profile's extra
+  # fire roll dead, so the fork takes Avoid Elemental Ailments instead. A
+  # profile without an entry here falls back to the caster set, which would
+  # quietly replace physical damage with minion modifiers.
+  melee-boneshatter:
+    ssf-week1:
+      body:
+        - { currency: ember, mod: "(24-26)% increased Global Physical Damage" }
+        - { currency: ichor, mod: "Determination has (28-30)% increased Aura Effect" }
+      helmet:
+        - { currency: ember, mod: "(31-32)% increased Mana Cost Efficiency" }
+        - { currency: ichor, mod: "(23-25)% increased Attack Damage" }
+      gloves:
+        - { currency: ember, mod: "11% increased Attack Speed" }
+        - { currency: ichor, mod: "0.5% of Physical Damage Leeched as Life" }
+      boots:
+        - { currency: ember, mod: "8% increased Movement Speed" }
+        - { currency: ichor, mod: "24% chance to Avoid Elemental Ailments" }
+    trade:
+      body:
+        - { currency: ember, mod: "(29-30)% increased Global Physical Damage" }
+        - { currency: ichor, mod: "Determination has (34-36)% increased Aura Effect" }
+      helmet:
+        - { currency: ember, mod: "(35-36)% increased Mana Cost Efficiency" }
+        - { currency: ichor, mod: "(28-29)% increased Attack Damage" }
+      gloves:
+        - { currency: ember, mod: "13% increased Attack Speed" }
+        - { currency: ichor, mod: "0.7% of Physical Damage Leeched as Life" }
+      boots:
+        - { currency: ember, mod: "10% increased Movement Speed" }
+        - { currency: ichor, mod: "30% chance to Avoid Elemental Ailments" }
+
   caster:
     ssf-week1:
       body:

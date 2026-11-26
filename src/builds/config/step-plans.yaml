@@ -845,8 +845,8 @@ profiles:
   boneshatter:
     until-12:
       goals:
+        - "Level with Cleave and Added Fire Damage; Boneshatter unlocks at 28, so do not buy for it yet."
         - "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops."
-        - "Use Boneshatter as soon as it is available; do not chase attack speed over raw damage."
       lookFor:
         - slot: "Weapon"
           mods: ["Highest physical DPS", "Attack speed"]
@@ -863,8 +863,9 @@ profiles:
           note: "Bench attack speed if the axe has a free suffix."
     until-28:
       goals:
-        - "Swap to Boneshatter; keep Enduring Cry on a movement or left-click bind."
+        - "Swap to Boneshatter and self-cast Vulnerability; keep Enduring Cry on a movement or left-click bind."
         - "The trauma stacks are the damage; do not stand in the hit."
+        - "Keep a mana flask: the magic axe cannot carry leech, and the auras already reserve most of the bar."
       lookFor:
         - slot: "Weapon"
           mods: ["Physical damage %", "Added physical damage", "Attack speed"]
@@ -881,17 +882,17 @@ profiles:
           note: "Bench physical damage % on a free prefix."
     until-68:
       goals:
-        - "Six-link Boneshatter and reach 2,000 life; cap elemental resistances."
-        - "Take the labs when they unlock; the ascendancy is a large defence step."
+        - "5-link Boneshatter and reach 2,000 life; the 6-link is the maps-red step, not this one."
+        - "Take the labs when they unlock; Unbreakable is the normal-lab defence step."
       lookFor:
         - slot: "Body Armour"
-          mods: ["6-link", "Life", "Elemental resistances"]
-          note: "The 6-link is the damage step."
+          mods: ["5-link", "Life", "Elemental resistances"]
+          note: "The 5-link is enough for the campaign; do not pay for a 6-link yet."
         - slot: "Weapon"
           mods: ["Physical damage %", "Added physical damage", "Attack speed"]
           note: "Do not replace a good rare with a worse unique."
         - slot: "Jewels"
-          mods: ["Life", "Attack speed"]
+          mods: ["Life", "Attack speed", "Physical damage"]
           note: "Life is the defence; armour is the mitigation."
       crafting:
         - slot: "Body Armour"
@@ -900,16 +901,16 @@ profiles:
     maps-early:
       goals:
         - "A 5-link clears white maps; start the 6-link and upgrade the weapon."
-        - "Reach 3,000 life and cap resistances."
+        - "Reach 3,000 life, cap resistances and fit Herald of Purity with Determination."
       lookFor:
         - slot: "Weapon"
-          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
-          note: "The weapon is still the main damage slot."
+          mods: ["Physical damage %", "Added physical damage", "Attack speed", "Mana leech"]
+          note: "Mana leech is what pays for attacks under the reservation auras."
         - slot: "Body Armour"
           mods: ["6-link", "Life", "Elemental resistances"]
           note: "Start the 6-link."
         - slot: "Jewels"
-          mods: ["Life", "Attack speed"]
+          mods: ["Life", "Attack speed", "Physical damage"]
           note: "Life is the defence; armour is the mitigation."
       crafting:
         - slot: "Weapon"
@@ -917,17 +918,18 @@ profiles:
           note: "Bench attack speed if the weapon has a free suffix."
     maps-red:
       goals:
-        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
-        - "Do not stand in the hit; the build is not a tank even with armour."
+        - "Six-link, 20% quality gems, 5,500 life and 12,500 max hit."
+        - "Herald of Purity is the damage aura and a level-capped Vulnerability rides on Cast when Damage Taken."
+        - "Swap Close Combat for Melee Splash on pack-heavy maps; keep Close Combat for bosses."
       lookFor:
         - slot: "Weapon"
-          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
-          note: "Upgrade the weapon before the jewellery."
+          mods: ["Physical damage %", "Added physical damage", "Attack speed", "Mana leech"]
+          note: "Upgrade the weapon before the jewellery; mana leech keeps the reservation playable."
         - slot: "Body Armour"
-          mods: ["6-link", "Life", "Elemental resistances"]
-          note: "6-link is the red-map gate."
+          mods: ["6-link", "Life", "Armour", "Elemental resistances"]
+          note: "6-link is the red-map gate; armour is the other half of max hit."
         - slot: "Jewels"
-          mods: ["Life", "Attack speed"]
+          mods: ["Life", "Attack speed", "Physical damage"]
           note: "Life is the defence; armour is the mitigation."
       crafting:
         - slot: "Weapon"
@@ -935,17 +937,17 @@ profiles:
           note: "Bench physical damage %."
     pinnacle:
       goals:
-        - "Cap chaos resistance at 75% and reach 5,000 life."
-        - "Use 21/20 Boneshatter and awakened supports; keep the defensive flasks."
+        - "Cap chaos resistance at 75% and reach 7,000 life."
+        - "Keep Herald of Purity and Vulnerability up; the measured pinnacle uses 21/20 gems, and 20/20 is the budget version."
       lookFor:
         - slot: "Weapon"
-          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
-          note: "The endgame weapon is the last big purchase."
+          mods: ["Physical damage %", "Added physical damage", "Attack speed", "Mana leech"]
+          note: "The endgame weapon is the last big purchase; do not drop mana leech."
         - slot: "Amulet"
-          mods: ["Life", "Chaos resistance", "Critical strike multiplier"]
+          mods: ["Life", "Chaos resistance", "Physical damage"]
           note: "Fix chaos resistance on the amulet."
         - slot: "Jewels"
-          mods: ["Life", "Attack speed", "Critical strike multiplier"]
+          mods: ["Life", "Attack speed", "Physical damage"]
           note: "Life is the defence; armour is the mitigation."
       crafting:
         - slot: "Amulet"

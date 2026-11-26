@@ -73,6 +73,10 @@ function makeReport({ seed, checkpointId, checkpoint, metrics, scaled, gate, gea
         Math.round(metrics.lightningResist),
       ],
       chaosResist: Math.round(metrics.chaosResist ?? -100),
+      // Persist the reservation check: high DPS on a character with 0 mana is
+      // not a build. A cost of 0 means the skill pays life (Lifetap/Blood Magic).
+      manaUnreserved: Math.round(metrics.manaUnreserved ?? 0),
+      manaCost: Math.round(metrics.manaCost ?? 0),
       nodes: metrics.allocated,
       sockets: metrics.sockets ?? 0,
       ascendancy: metrics.ascendancy,

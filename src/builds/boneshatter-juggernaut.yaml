@@ -12,13 +12,18 @@ mainSkill: Boneshatter
 summary: >-
   League-start melee build. Boneshatter trades a little life for stacks, so the
   gear is armour and resistances, the axe is a rare with attack speed, and the
-  ascendancy makes the trauma survivable. No unique is required, which is what
-  a strength build needs on day one of a solo league.
+  ascendancy makes the trauma survivable. Herald of Purity and Vulnerability turn the axe
+  into damage, and no unique is required, which is what a strength build needs
+  on day one of a solo league.
 
 dad: true
+# The Dad chip is a playstyle label, not a lower bar. This build is measured on
+# the standard floors because a hit build can clear them; the Dad damage floor
+# would hide how far the measured DPS is above the gate.
+gateProfile: standard
 
 pros:
-  - { weight: 3, text: "Very tanky: armour, endurance charges and Juggernaut recovery." }
+  - { weight: 3, text: "Very tanky: armour, endurance charges and Juggernaut damage reduction." }
   - { weight: 3, text: "No required unique; a rare two-handed axe is the whole damage slot." }
   - { weight: 2, text: "Strong single-target once trauma stacks are running." }
   - { weight: 2, text: "Cheap to gear because accuracy is solved by Resolute Technique." }
@@ -33,46 +38,56 @@ cons:
   - { weight: 1, text: "Resolute Technique gives up critical strikes entirely." }
 
 ratings:
-  tankiness: 9
-  singleTarget: 9
-  clear: 7
-  cost: 8
+  # Tankiness and single target are 10s on the measured gates: pinnacle sits
+  # near 830k DPS with 7.2k life, 41.5k EHP and 15.8k physical max hit. Clear is
+  # 9 because Pulverise plus a Melee Splash swap clears packs, but it is still
+  # slower than a bow. Cost is 9: no unique, Resolute Technique and bench-craft
+  # rares; the endgame axe, jewels, 21/20 gems and Perfect eldritch implicits
+  # are the real bill.
+  tankiness: 10
+  singleTarget: 10
+  clear: 9
+  cost: 9
 
 guide:
   summary:
     text: >-
       Boneshatter Juggernaut is a two-handed melee build that measures
       {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.pinnacle.metrics.dps|dps}} at
-      pinnacle. The rare axe and armour carry the damage and defence, the
+      pinnacle. The rare axe, armour rolls and Herald of Purity carry the damage, the
       ascendancy makes the trauma survivable, and no unique is required.
     facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
-    signed: { by: maintainer, at: "2026-11-26T00:00:00Z" }
+    signed: { by: "maintainer", at: "2026-11-26T21:51:11.217Z" }
   leveling:
     text: >-
-      Level with Cleave and the usual strength supports until Boneshatter is
-      available, then switch to the two-handed axe. The first checkpoint
-      measures {{gates.until-12.metrics.life|int}} life and
+      Level with Cleave and Added Fire Damage until Boneshatter unlocks, then
+      switch to the two-handed axe. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
       {{gates.until-12.metrics.dps|dps}} damage; the second measures
-      {{gates.until-28.metrics.dps|dps}}. Keep a life flask and a mana flask equipped
-      until leech takes over.
+      {{gates.until-28.metrics.dps|dps}} with a self-cast Vulnerability. The mana
+      flask covers you until the rare axe carries leech; the Silver Flask comes
+      with that axe.
     facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
   maps:
     text: >-
       At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
       {{gates.maps-red.metrics.ehp|int}} effective life and
-      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Cap the elemental
-      resistances, keep the axe current, and let the filter hide the rest.
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Herald of Purity is
+      the damage aura and a level-capped Vulnerability rides on Cast when Damage
+      Taken; the axe's mana leech keeps the quarter-full mana bar up. Cap the
+      elemental resistances, keep the axe current, and swap Close Combat for
+      Melee Splash when you want faster packs.
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
   bossing:
     text: >-
       Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
       {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Use Enduring Cry before
-      the burst and keep the trauma stacks running while you move out of the
-      biggest slams.
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Use Enduring Cry
+      before the burst, keep Vulnerability up, and keep the trauma stacks running
+      while you move out of the biggest slams.
     facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
 
-gearProfile: melee
+gearProfile: melee-boneshatter
 
 # The family default is a one-hander and a shield, but Boneshatter needs an axe
 # or mace and this build uses a two-hander. The filter follows the build (D15).
@@ -87,12 +102,17 @@ tree:
   # afford to miss, and the node is a short path from the Marauder start.
   keystones:
     - Resolute Technique
+  # Axe-scoped patterns come first so points land on two-handed axe notables
+  # instead of the one-hand and mace nodes the generic phrases also match. Life
+  # and armour are weighted ahead of damage: the build is already far above the
+  # damage gates, and the tankiness rating is the one that needs the margin.
   targets:
-    - increased physical damage
+    - with axes
     - increased maximum life
-    - increased attack speed
+    - increased physical damage
     - increased armour
-    - increased melee damage
+    - increased attack speed
+    - two handed
 
 leveling:
   brackets:
@@ -103,7 +123,7 @@ leveling:
         - slot: Body Armour
           gems:
             - Cleave
-            - Ruthless
+            - Added Fire Damage
             - Faster Attacks
         - slot: Weapon 1
           gems:
@@ -129,7 +149,7 @@ leveling:
           gems:
             - Boneshatter
             - Melee Physical Damage
-            - Close Combat
+            - Added Fire Damage
             - Faster Attacks
         - slot: Weapon 1
           gems:
@@ -142,9 +162,12 @@ leveling:
         - slot: Boots
           gems:
             - Determination
+        - slot: Gloves
+          gems:
+            - { name: Vulnerability, note: "Self-cast until Cast when Damage Taken is available at 38." }
       flasks:
         - { slot: life, name: "Giant Life Flask", note: "Drops from level 24; medium is too small by now." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12; the magic axe cannot carry leech yet." }
         - { slot: utility, name: "Granite Flask", note: "Armour is the defensive layer." }
         - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction, from level 27." }
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
@@ -167,21 +190,60 @@ leveling:
             - Enduring Cry
         - slot: Helmet
           gems:
+            - Herald of Purity
             - Determination
-            - Blood and Sand
         - slot: Gloves
           gems:
             - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
-            - Immortal Call
+            - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
+            - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
         - slot: Boots
           gems:
             - Decoy Totem
       flasks:
         - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Silver Flask", note: "Onslaught is the damage flask now that leech covers mana." }
         - { slot: utility, name: "Granite Flask", note: "Iron Skin suffix once it is available." }
         - { slot: utility, name: "Basalt Flask", note: "The other half of the physical defence." }
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+
+    # White maps still run the 5-link the ssf-start budget actually has. The
+    # 6-link is the maps-red step; a bracket with six gems at level 80 would
+    # measure a link the character does not own.
+    - until: 80
+      skills:
+        - Boneshatter
+        - Enduring Cry
+      skillGroups:
+        - slot: Body Armour
+          gems:
+            - Boneshatter
+            - Melee Physical Damage
+            - Brutality
+            - Pulverise
+            - Faster Attacks
+        - slot: Weapon 1
+          gems:
+            - Leap Slam
+            - Enduring Cry
+        - slot: Helmet
+          gems:
+            - Herald of Purity
+            - Determination
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
+            - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
+        - slot: Boots
+          gems:
+            - Decoy Totem
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: utility, name: "Silver Flask", note: "Onslaught is the damage flask." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
 
     - until: 100
       skills:
@@ -202,28 +264,32 @@ leveling:
             - Enduring Cry
         - slot: Helmet
           gems:
+            - Herald of Purity
             - Determination
-            - Blood and Sand
         - slot: Gloves
           gems:
             - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
-            - Immortal Call
+            - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
+            - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
         - slot: Boots
           gems:
             - Decoy Totem
       flasks:
         - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Silver Flask", note: "Onslaught: attack speed and movement." }
         - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
         - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
         - { slot: utility, name: "Amethyst Flask", note: "Caps chaos resistance for pinnacle bosses." }
 
 ascendancyOrder:
+  # Unbreakable is the normal-lab defensive step; Undeniable still earns its
+  # point through attack speed, not accuracy, because Resolute Technique makes
+  # the accuracy half irrelevant.
   - node: unflinching
     lab: 1
-  - node: undeniable
-    lab: 2
   - node: unbreakable
+    lab: 2
+  - node: undeniable
     lab: 3
   - node: unrelenting
     lab: 4
@@ -243,3 +309,15 @@ changelog:
     date: "2026-11-26"
     notes:
       - "First guide for the Covens league."
+      - "The two-handed gear profile no longer inherits a shield; armour rolls and a chaos belt raise life, EHP and max hit at every map checkpoint."
+      - "Weapon-scoped tree targets stop points going to one-hand and mace-crit notables under Resolute Technique."
+      - "Herald of Purity, Vulnerability, Added Fire Damage and a Silver Flask raise measured DPS across the leveling and map steps; re-rated S+."
+      - "The weapon carries mana leech so the Herald of Purity and Determination reservation is playable; CWDT stays level 5 and the triggered gems are capped to it."
+      - "A mana flask covers the 28-67 stretch before the rare axe can carry leech; the gate report now publishes unreserved mana and mana cost at every step."
+      - "Small armour slots use the glove/boot armour scale and a Leather Belt; the Melee Splash swap is part of the maps-red plan, not a hidden rating claim."
+      - "Step plans stop recommending crit multi on a Resolute Technique build and stop calling the 5-link a 6-link."
+
+
+
+
+

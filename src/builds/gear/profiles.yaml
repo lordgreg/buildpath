@@ -140,6 +140,66 @@ profiles:
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
       jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
 
+  # Boneshatter wears the melee shell but leans into the two-handed identity:
+  # no offhand at all, and the armour bases carry an armour roll on top of life
+  # and resists. The belt keeps chaos resistance, so the pinnacle chaos gate is
+  # still met. Herald of Purity and Determination leave a quarter of the mana
+  # bar free, and the weapon's mana leech pays for the attacks.
+  melee-boneshatter:
+    starting:
+      slots:
+        weapon: { base: "Stone Axe", affixes: [added-phys, attack-speed] }
+        body: { base: "Chestplate", affixes: [life] }
+        helmet: { base: "Cone Helmet", affixes: [life] }
+        gloves: { base: "Plated Gauntlets", affixes: [life] }
+        boots: { base: "Steel Greaves", affixes: [life, movement-speed] }
+    early:
+      slots:
+        weapon: { base: "Headsman Axe", affixes: [added-phys, attack-speed] }
+        body: { base: "Sun Plate", affixes: [life] }
+        helmet: { base: "Reaver Helmet", affixes: [life] }
+        gloves: { base: "Guarding Gauntlets", affixes: [life] }
+        boots: { base: "Antique Greaves", affixes: [life, movement-speed] }
+    ssf-start:
+      slots:
+        weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
+        offhand: null
+        body: { base: "Glorious Plate", affixes: [life, armour, resist-lightning, resist-cold] }
+        helmet: { base: "Eternal Burgonet", affixes: [life, armour, resist-fire, resist-cold] }
+        gloves: { base: "Spiked Gloves", affixes: [life, armour-small, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Titan Greaves", affixes: [movement-speed, life, armour-small, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, armour-small, resist-fire, resist-chaos] }
+        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
+        ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
+        ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
+      jewels: { count: 2, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+    ssf-week1:
+      slots:
+        weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
+        offhand: null
+        body: { base: "Legion Plate", affixes: [life, armour, resist-lightning, resist-cold] }
+        helmet: { base: "Conqueror's Helmet", affixes: [life, armour, resist-fire, resist-cold] }
+        gloves: { base: "Precursor Gauntlets", affixes: [life, armour-small, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Brimstone Treads", affixes: [movement-speed, life, armour-small, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, armour-small, resist-fire, resist-chaos] }
+        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
+        ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
+        ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+    trade:
+      slots:
+        weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
+        offhand: null
+        body: { base: "Royal Plate", affixes: [life, armour, resist-lightning, resist-cold] }
+        helmet: { base: "Giantslayer Helmet", affixes: [life, armour, resist-fire, resist-cold] }
+        gloves: { base: "Leviathan Gauntlets", affixes: [life, armour-small, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Leviathan Greaves", affixes: [movement-speed, life, armour-small, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, armour-small, resist-fire, resist-chaos] }
+        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
+        ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
+        ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+
   # Elemental spell casters: Arc, Arc totems, and the same shell for a fire
   # caster. The shared caster body slots already carry life and resistances.
   spell:

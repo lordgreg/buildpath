@@ -200,6 +200,9 @@ export interface CheckpointMetrics {
   coldResist: number;
   lightningResist: number;
   chaosResist: number;
+  /** Mana left after reservations; 0 means the character cannot pay a mana cost. */
+  manaUnreserved?: number;
+  manaCost?: number;
   nodes: number;
   ascendancy: number;
 }

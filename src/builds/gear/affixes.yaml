@@ -2,7 +2,7 @@
 #
 # Every line is validated by effect in the PoB oracle: a line PoB cannot parse
 # is dropped silently (S6), so the gate report asserts each item's parsed mod
-# count. Tiers are 1 (best) to 3 (worst); a budget picks the worst tier it
+# count. Tiers are 1 (best) to 4 (worst); a budget picks the worst tier it
 # allows and the synthesiser emits the midpoint value.
 life:
   mod: "+{v} to maximum Life"
@@ -29,6 +29,11 @@ energy-shield-pct:
 armour:
   mod: "+{v} to Armour"
   tiers: { 1: 300, 2: 200, 3: 120 }
+# Gloves, boots and belts carry smaller flat-armour rolls than a body armour.
+# Sharing the body table would hand a pair of gloves a 300-armour roll.
+armour-small:
+  mod: "+{v} to Armour"
+  tiers: { 1: 115, 2: 80, 3: 50, 4: 30 }
 attribute-int:
   mod: "+{v} to Intelligence"
   tiers: { 1: 40, 2: 25, 3: 15, 4: 8 }
@@ -70,6 +75,11 @@ added-lightning:
 attack-speed:
   mod: "{v}% increased Attack Speed"
   tiers: { 1: 17, 2: 13, 3: 9, 4: 5 }
+# Physical attack leech is a weapon suffix. It is what pays for attacks once a
+# reservation aura leaves only a quarter of the mana bar free.
+mana-leech:
+  mod: "{v}% of Physical Attack Damage Leeched as Mana"
+  tiers: { 1: 0.4, 2: 0.3, 3: 0.2, 4: 0.1 }
 added-lightning-attack:
   mod: "Adds {v} to {v2} Lightning Damage to Attacks"
   tiers:
