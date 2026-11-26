@@ -2,6 +2,17 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.62.0 — 2026-11-26
+
+Six builds, prose that cites its sources.
+
+- The catalogue now has **six verified builds**: Cyclone Juggernaut, Ice Shot Deadeye and Summon Raging Spirit Necromancer join the original three. Every one passes all six checkpoints; the calibration must-pass set is now 36 observations plus the ten must-fail cases.
+- Every build carries four prose sections. Numbers exist only as `{{path|format}}` placeholders from a closed format set; a raw digit outside the allowed tokens fails the build. The page renders the resolved text, the declared facts hash and the sign-off.
+- A signed summary is required to publish. The remaining sections may be unsigned `auto-retry` drafts, which the page labels. If a declared fact moves after sign-off, the section becomes `stale` instead of rendering new numbers over old prose.
+- R4 is enforced with the reviewed league window: the first 72 hours publish nothing. R1–R3 are covered by the guide, gate-report and PoB-code tests.
+- Each new build has generated 16:9 header art and a working pobb.in paste with Gear, Gems and Tree.
+- 619 tests.
+
 ## 0.61.0 — 2026-11-26
 
 Chips, trees and ascendancy details.
