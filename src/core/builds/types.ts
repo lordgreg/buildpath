@@ -44,6 +44,35 @@ export interface BuildChangelogEntry {
   notes: string[];
 }
 
+/** The four Viscera slots on the Covens Wickerman. */
+export const WICKERMAN_SLOTS = ['head', 'torso', 'upperLimb', 'lowerLimb'] as const;
+export type WickermanSlot = (typeof WICKERMAN_SLOTS)[number];
+
+/** Guide phases the Wickerman recommendations are authored for. */
+export const WICKERMAN_STEPS = ['leveling', 'maps', 'bossing'] as const;
+export type WickermanStepId = (typeof WICKERMAN_STEPS)[number];
+
+/** Viscera upgrade tiers; fixed/uber items have no low/med/high band. */
+export type VisceraTier = 'low' | 'med' | 'high' | 'queen' | 'fixed' | 'uber';
+
+/** One resolved Viscera recommendation for a slot and phase. */
+export interface WickermanPick {
+  name: string;
+  tier: VisceraTier;
+  effect: string;
+  source: string;
+  area: string;
+  note?: string;
+}
+
+export type WickermanSlots = Record<WickermanSlot, WickermanPick>;
+
+/** The resolved Covens Wickerman section on a build page. */
+export interface BuildWickerman {
+  profile: string;
+  steps: Record<WickermanStepId, WickermanSlots>;
+}
+
 export interface BuildIndexEntry {
   id: string;
   name: string;
@@ -312,6 +341,11 @@ export interface Build extends BuildIndexEntry {
   flasks?: { leveling?: FlaskChoice[]; maps?: FlaskChoice[]; endgame?: FlaskChoice[] };
   /** The game patch the build was verified against. */
   patch?: string;
+  /**
+   * A build whose guide is about a Vaal gem from the start may show and measure
+   * 20% quality before maps-red. Defaults to endgame-only quality.
+   */
+  gemQualityFrom?: 'leveling';
   /** Every guide update, newest first when rendered. */
   changelog?: BuildChangelogEntry[];
   /** Staleness / waiting state, when the build is delisted (R10). */
@@ -328,4 +362,6 @@ export interface Build extends BuildIndexEntry {
   config?: { name: string; value: string }[];
   /** Resolved, checked prose. The seed YAML is the authoring home. */
   guide?: BuildGuide;
+  /** Covens league Wickerman recommendations, resolved from the seed profile. */
+  wickerman?: BuildWickerman;
 }

@@ -37,7 +37,9 @@ checkpoints:
     labs: 3
     budget: ssf-start
     gemLevelCap: 20
-    gemQuality: 10
+    # Quality and Vaal Orbs are an endgame consideration. A character in act 10
+    # is not assumed to have 20% gems, and a build is not measured on them.
+    gemQuality: 0
     enemyLevel: 68
   maps-early:
     level: 80
@@ -45,7 +47,9 @@ checkpoints:
     labs: 4
     budget: ssf-start
     gemLevelCap: 20
-    gemQuality: 20
+    # The first pass through white maps still runs on the gems you levelled.
+    # 20% quality and corrupted 21/20 gems start at maps-red.
+    gemQuality: 0
     enemyLevel: 75
   maps-red:
     level: 90

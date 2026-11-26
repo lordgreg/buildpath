@@ -60,6 +60,14 @@ const ascendanciesFull = parse(
 const league = parse(
   readFileSync(resolve(seedsDir, 'config/league.yaml'), 'utf8'),
 );
+const viscera = parse(
+  readFileSync(resolve(seedsDir, 'config/viscera.yaml'), 'utf8'),
+);
+const visceraByName = new Map(
+  (viscera.items ?? []).map((item) => [item.name, item]),
+);
+const WICKERMAN_STEPS = ['leveling', 'maps', 'bossing'];
+const WICKERMAN_SLOTS = ['head', 'torso', 'upperLimb', 'lowerLimb'];
 // Season tags are display names from the reviewed league registry, never the
 // raw id, so the catalogue reads "Covens" rather than "covens".
 const leaguesIndex = parse(
@@ -200,6 +208,71 @@ function checkSeason(seed, file) {
 }
 
 /**
+ * Resolve the Covens Wickerman section. A profile is an archetype's best
+ * Viscera per phase; the build only names the profile. Every pick must exist,
+ * match the slot and have the named tier, so a typo cannot publish an item the
+ * game does not have.
+ */
+function resolveWickerman(seed, file) {
+  const profileId = seed.wickerman?.profile;
+  const profile = viscera.profiles?.[profileId];
+  if (!profile) {
+    console.error(
+      `build seed invalid: ${file}\n  unknown wickerman profile "${profileId}" (see config/viscera.yaml)`,
+    );
+    process.exit(1);
+  }
+  const steps = {};
+  for (const step of WICKERMAN_STEPS) {
+    const picks = profile[step];
+    if (!picks) {
+      console.error(`build seed invalid: ${file}\n  wickerman profile "${profileId}" is missing ${step}`);
+      process.exit(1);
+    }
+    const slotPicks = {};
+    for (const slot of WICKERMAN_SLOTS) {
+      const pick = picks[slot];
+      if (!pick) {
+        console.error(
+          `build seed invalid: ${file}\n  wickerman ${profileId}/${step} is missing ${slot}`,
+        );
+        process.exit(1);
+      }
+      const item = visceraByName.get(pick.item);
+      if (!item) {
+        console.error(
+          `build seed invalid: ${file}\n  wickerman item "${pick.item}" is not in config/viscera.yaml`,
+        );
+        process.exit(1);
+      }
+      if (item.slot !== slot) {
+        console.error(
+          `build seed invalid: ${file}\n  wickerman item "${pick.item}" is ${item.slot}, not ${slot}`,
+        );
+        process.exit(1);
+      }
+      const effect = item.tiers?.[pick.tier];
+      if (!effect) {
+        console.error(
+          `build seed invalid: ${file}\n  wickerman item "${pick.item}" has no ${pick.tier} tier`,
+        );
+        process.exit(1);
+      }
+      slotPicks[slot] = {
+        name: item.name,
+        tier: pick.tier,
+        effect,
+        source: item.source,
+        area: item.area,
+        ...(pick.note ? { note: pick.note } : {}),
+      };
+    }
+    steps[step] = slotPicks;
+  }
+  return { profile: profileId, steps };
+}
+
+/**
  * Where each gem comes from for this class: a free quest reward, or the same
  * quest's vendor pool. The distinction matters to a new player ("do I have to
  * buy this?") and it is already in the data, so the guide carries it.
@@ -264,6 +337,7 @@ for (const file of files) {
   checkBrackets(seed, file);
   checkAvailability(seed, file);
   checkSeason(seed, file);
+  const wickerman = resolveWickerman(seed, file);
   if (`${seed.id}.yaml` !== file) {
     console.error(
       `build seed invalid: ${file}\n  id "${seed.id}" must match the file name`,
@@ -281,6 +355,7 @@ for (const file of files) {
     guide: seedGuide,
     season: seedSeason,
     changelog: seedChangelog,
+    wickerman: seedWickerman,
     ...mechanics
   } = seed;
   const seedHash = hashOf(mechanics);
@@ -313,6 +388,7 @@ for (const file of files) {
       ...entry,
       seasonName: leaguesById.get(entry.season)?.name ?? entry.season,
     })),
+    wickerman,
     gemInfo: describeGems(seed),
     seedHash,
   });

@@ -544,6 +544,22 @@ Stale or failed builds render a banner and are excluded from `builds.html`
    stops matching, the build is delisted, and the section must be re-drafted and
    re-signed before it returns. Nothing renders stale prose with new numbers.
 
+### 9.2 Covens Wickerman and gem quality
+
+- Every seed declares a `wickerman.profile`. `src/builds/config/viscera.yaml`
+  holds the reviewed Viscera registry and maps each profile to the best item for
+  the leveling, maps and bossing phases, one item for each of the four slots
+  (head, torso, upper limb, lower limb). The compiler validates the item name,
+  its slot and the named tier, then resolves effect, source and area into the
+  build JSON; the page renders the four slots for the selected step's phase.
+- **Gem quality and Vaal corruption are endgame investments.** They are measured
+  and shown only at `maps-red` and `pinnacle`; earlier checkpoints use 0%
+  quality and an uncorrupted level cap. A guide built around a Vaal gem may set
+  `gemQualityFrom: leveling`, which is the only exception.
+- `gateThresholdsHash` covers the checkpoint config as well as the gate
+  thresholds, so changing quality, gem caps, levels or budgets invalidates the
+  calibration report and forces a re-run.
+
 ## 10. Site
 
 Rename to BuildPath (D11, D13) is landed: the repository, `package.json`, all

@@ -11,6 +11,7 @@ import { generateFilter } from '../core/filter/generate.ts';
 import { validateArchetype } from '../core/archetypes/validate.ts';
 import { validateFilter } from '../core/filter/validate.ts';
 import { STRICTNESS_ORDER } from '../core/filter/presets.ts';
+import { WICKERMAN_SLOTS, WICKERMAN_STEPS } from '../core/builds/types.ts';
 import { BUILDS, BUILD_VERSION, getBuildEntry, isBuildId } from './builds.ts';
 import { coerceSelection, isValidSelection } from './index.ts';
 import { resolveSelection } from './resolve.ts';
@@ -59,6 +60,85 @@ describe('compiled build seeds', () => {
       const newest = changelog.at(-1)!;
       expect(newest.season, `${entry.id} newest season`).toBe(entry.season?.id);
       expect(newest.seasonName, `${entry.id} newest season name`).toBe(entry.season?.name);
+    }
+  });
+
+  it('gives every guide a Covens Wickerman section', () => {
+    for (const entry of BUILDS) {
+      const full = JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        wickerman?: {
+          profile: string;
+          steps: Record<string, Record<string, {
+            name: string;
+            tier: string;
+            effect: string;
+            source: string;
+            area: string;
+          }>>;
+        };
+      };
+      expect(full.wickerman, `${entry.id} wickerman`).toBeDefined();
+      expect(full.wickerman?.profile, `${entry.id} profile`).toBeTruthy();
+      for (const phase of WICKERMAN_STEPS) {
+        for (const slot of WICKERMAN_SLOTS) {
+          const pick = full.wickerman?.steps[phase]?.[slot];
+          expect(pick, `${entry.id} ${phase}/${slot}`).toBeDefined();
+          expect(pick?.name, `${entry.id} ${phase}/${slot} name`).toBeTruthy();
+          expect(pick?.effect, `${entry.id} ${phase}/${slot} effect`).toBeTruthy();
+          expect(pick?.source, `${entry.id} ${phase}/${slot} source`).toBeTruthy();
+          expect(pick?.area, `${entry.id} ${phase}/${slot} area`).toBeTruthy();
+          expect(
+            ['low', 'med', 'high', 'queen', 'fixed', 'uber'],
+            `${entry.id} ${phase}/${slot} tier`,
+          ).toContain(pick?.tier);
+        }
+      }
+    }
+  });
+
+  it('keeps every Viscera profile complete and slot-correct', () => {
+    const viscera = parse(
+      readFileSync(resolve(seedsDir, 'config/viscera.yaml'), 'utf8'),
+    ) as {
+      items: { name: string; slot: string; tiers: Record<string, string> }[];
+      profiles: Record<string, Record<string, Record<string, { item: string; tier: string }>>>;
+    };
+    const items = new Map(viscera.items.map((item) => [item.name, item]));
+    for (const [profile, steps] of Object.entries(viscera.profiles)) {
+      for (const phase of WICKERMAN_STEPS) {
+        for (const slot of WICKERMAN_SLOTS) {
+          const pick = steps[phase]?.[slot];
+          expect(pick, `${profile} ${phase}/${slot}`).toBeDefined();
+          const item = items.get(pick.item);
+          expect(item, `${profile} ${phase}/${slot} item`).toBeDefined();
+          expect(item?.slot, `${profile} ${phase}/${slot} slot`).toBe(slot);
+          expect(item?.tiers[pick.tier], `${profile} ${phase}/${slot} tier`).toBeTruthy();
+        }
+      }
+    }
+  });
+
+  it('assumes gem quality and Vaal levels only from maps-red', () => {
+    for (const entry of BUILDS) {
+      const seed = parse(
+        readFileSync(resolve(seedsDir, `${entry.id}.yaml`), 'utf8'),
+      ) as { gemQualityFrom?: string };
+      const full = JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        gates?: Record<string, { gems?: { gems: { name: string; quality?: number }[] }[] }>;
+      };
+      for (const [checkpoint, gate] of Object.entries(full.gates ?? {})) {
+        const endgame = checkpoint === 'maps-red' || checkpoint === 'pinnacle';
+        const expected = endgame || seed.gemQualityFrom === 'leveling' ? 20 : 0;
+        for (const group of gate.gems ?? []) {
+          for (const gem of group.gems) {
+            expect(gem.quality ?? 0, `${entry.id} ${checkpoint} ${gem.name}`).toBe(expected);
+          }
+        }
+      }
     }
   });
 
@@ -756,6 +836,9 @@ describe('gate calibration', () => {
     checkpoints: Record<string, unknown>;
     profiles?: Record<string, unknown>;
   };
+  const checkpointConfig = parse(
+    readFileSync(resolve(root, 'src/builds/config/checkpoints.yaml'), 'utf8'),
+  ) as Record<string, unknown>;
 
   it('publishes a green report for the current thresholds', () => {
     const hash = createHash('sha256')
@@ -764,6 +847,7 @@ describe('gate calibration', () => {
           resistanceFloor: gateConfig.resistanceFloor,
           checkpoints: gateConfig.checkpoints,
           profiles: gateConfig.profiles ?? {},
+          checkpointConfig,
         }),
       )
       .digest('hex')

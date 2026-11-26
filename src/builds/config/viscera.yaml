@@ -1,0 +1,901 @@
+# Covens of Umbra league mechanic: the Wickerman and its four Viscera slots.
+# Source: Maxroll Wickerman Viscera Guide, poe.how, poewiki and poedb.
+# Effects are transcribed from the reviewed Maxroll tables; profiles map an
+# archetype to the best item for each guide phase.
+schemaVersion: 1
+
+items:
+  - name: "Bandit Rogue's Head"
+    slot: head
+    source: "Kraityn"
+    area: "Act 2"
+    tiers:
+      low: "(4-6)% increased Attack and Cast Speed"
+      med: "(8-10)% increased Attack and Cast Speed"
+      high: "(3-4)% increased Action Speed"
+
+  - name: "Goatman's Horn"
+    slot: head
+    source: "Ungulath"
+    area: "Act 1"
+    tiers:
+      low: "(8-12)% increased Area of Effect"
+      med: "(15-20)% increased Area of Effect"
+      high: "Area Skills have (6-8)% chance to deal Double Damage"
+
+  - name: "Severed Rhoa Head"
+    slot: head
+    source: "Oozeback"
+    area: "Act 1"
+    tiers:
+      low: "(10-15)% increased Chaos Damage"
+      med: "(20-30)% increased Chaos Damage"
+      high: "Every second, inflict Withered on Enemies within 6 metres for 5 seconds"
+
+  - name: "Totemic Visage"
+    slot: head
+    source: "Kuduku"
+    area: "Act 1"
+    tiers:
+      low: "(10-15)% chance to Shock"
+      med: "(20-30)% chance to Shock"
+      high: "(10-12)% more Maximum Lightning Damage"
+      queen: "(10-12)% more Maximum Lightning Damage"
+
+  - name: "Cutthroat's Head"
+    slot: head
+    source: "Calaf"
+    area: "Act 2"
+    tiers:
+      low: "(10-15)% increased Global Physical Damage"
+      med: "(20-30)% increased Global Physical Damage"
+      high: "Hits have (30-50)% chance to ignore Enemy Physical Damage Reduction"
+
+  - name: "Chimera's Head"
+    slot: head
+    source: "Chimera"
+    area: "Pinnacle / Map Boss"
+    challenge: true
+    tiers:
+      fixed: "Minions deal (35-50)% increased Damage if you've Hit Recently"
+
+  - name: "Eater of Worlds' Head"
+    slot: head
+    source: "Eater of Worlds"
+    area: "Pinnacle / Map Boss"
+    tiers:
+      fixed: "(10-15)% chance to gain a Frenzy Charge for each Enemy you hit with a Critical Strike"
+      uber: "+(5-10)% to Quality of all Skill Gems"
+
+  - name: "Gelid Fangs"
+    slot: head
+    source: "Chill of the Mountain"
+    area: "Act 9"
+    tiers:
+      low: "Damage Penetrates (3-4)% Cold Resistance"
+      med: "Damage Penetrates (6-8)% Cold Resistance"
+      high: "Hits have (10-15)% chance to treat Enemy Monster Cold Resistance values as inverted"
+
+  - name: "Hydra's Head"
+    slot: head
+    source: "Hydra"
+    area: "Pinnacle / Map Boss"
+    challenge: true
+    tiers:
+      fixed: "Arrows Pierce all Targets after Forking"
+
+  - name: "Incarnation of Dread's Head"
+    slot: head
+    source: "Incarnation of Dread"
+    area: "Pinnacle / Map Boss"
+    tiers:
+      fixed: "Minions gain added Resistances equal to (20-30)% of your Resistances"
+      uber: "Gain a random Shrine Buff for (1-4) seconds when you Kill a Rare or Unique Enemy"
+
+  - name: "Necromancer's Mask"
+    slot: head
+    source: "Bone Sculptor"
+    area: "Act 7"
+    tiers:
+      low: "Offering Skills have (10-15)% increased Duration"
+      med: "Offering Skills have (20-30)% increased Duration"
+      high: "Offerings you create also grant (15-20)% increased Damage"
+
+  - name: "Elemental Essence"
+    slot: torso
+    source: "Stranglecharm"
+    area: "Act 1"
+    tiers:
+      low: "+(14-18)% to Cold Resistance"
+      med: "+(22-28)% to Cold Resistance"
+      high: "+(2-3)% to maximum Cold Resistance"
+
+  - name: "Molten Core"
+    slot: torso
+    source: "Hatebeat"
+    area: "Act 3"
+    tiers:
+      low: "+(14-18)% to Fire Resistance"
+      med: "+(22-28)% to Fire Resistance"
+      high: "+(2-3)% to maximum Fire Resistance"
+
+  - name: "Bonestalker's Ribcage"
+    slot: torso
+    source: "Boneshaper"
+    area: "Act 2"
+    tiers:
+      low: "(4-5)% reduced Physical Damage taken over time"
+      med: "(6-7)% reduced Physical Damage taken over time"
+      high: "(4-6)% additional Physical Damage Reduction"
+
+  - name: "Ornate Torso"
+    slot: torso
+    source: "Greust"
+    area: "Act 7"
+    tiers:
+      low: "Minions have (10-15)% increased maximum Life"
+      med: "Minions have (20-30)% increased maximum Life"
+      high: "(3-5)% of Damage from Hits is taken from your Damagable Minions' Life before you"
+
+  - name: "Arachnid Egg Sac"
+    slot: torso
+    source: "Ryslatha"
+    area: "Act 6"
+    tiers:
+      low: "Minions created Recently have (5-7)% increased Attack and Cast Speed"
+      med: "Minions created Recently have (8-12)% increased Attack and Cast Speed"
+      high: "Minions created Recently have Onslaught"
+
+  - name: "Searing Exarch's Descry"
+    slot: torso
+    source: "Searing Exarch"
+    area: "Pinnacle / Map Boss"
+    tiers:
+      fixed: "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage"
+      uber: "+(3-5) to maximum Fortification"
+
+  - name: "Severed Stinger"
+    slot: torso
+    source: "Fidelitas"
+    area: "Act 2"
+    tiers:
+      low: "Damage Penetrates (3-4)% Lightning Resistance"
+      med: "Damage Penetrates (6-8)% Lightning Resistance"
+      high: "Hits have (10-15)% chance to treat Enemy Monster Lightning Resistance values as inverted"
+
+  - name: "Chaos Golem's Core"
+    slot: torso
+    source: "Muruk"
+    area: "Act 9"
+    tiers:
+      low: "(4-5)% reduced Chaos Damage taken over time"
+      med: "(6-7)% reduced Chaos Damage taken over time"
+      high: "(8-10)% of Physical Damage over Time taken as Chaos Damage"
+
+  - name: "Nightmarish Wings of Catarina"
+    slot: torso
+    source: "Nightmare of Catarina"
+    area: "Pinnacle / Map Boss"
+    challenge: true
+    tiers:
+      fixed: "+1 to maximum number of Spectres"
+
+  - name: "Warden's Arm"
+    slot: upperLimb
+    source: "Brutus"
+    area: "Act 1"
+    tiers:
+      low: "+(30-50) to maximum Life"
+      med: "+(60-80) to maximum Life"
+      high: "(5-7)% more Maximum Life"
+      queen: "(5-7)% more Maximum Life"
+
+  - name: "Skeletal Archer's Arm"
+    slot: upperLimb
+    source: "Ironpoint"
+    area: "Act 1"
+    tiers:
+      low: "Projectiles deal (8-12)% increased Damage with Hits and Ailments for each Enemy Pierced"
+      med: "Projectiles deal (15-20)% increased Damage with Hits and Ailments for each Enemy Pierced"
+      high: "Projectiles Pierce (2-3) additional Targets"
+
+  - name: "Crustacean's Claw"
+    slot: upperLimb
+    source: "Dweller"
+    area: "Act 1"
+    tiers:
+      low: "Adds (2-4) to (5-7) Physical Damage to Attacks"
+      med: "Adds (8-12) to (15-18) Physical Damage to Attacks"
+      high: "(10-12)% more Maximum Physical Attack Damage"
+      queen: "(10-12)% more Maximum Physical Attack Damage"
+
+  - name: "Sea Witch's Tentacle"
+    slot: lowerLimb
+    source: "Brood Princess"
+    area: "Act 1"
+    tiers:
+      low: "Minions deal (10-15)% increased Damage"
+      med: "Minions deal (20-30)% increased Damage"
+      high: "Minions have (8-12)% chance to deal Double Damage"
+
+  - name: "Flaming Goat Hoof"
+    slot: lowerLimb
+    source: "Abberath"
+    area: "Act 6"
+    tiers:
+      low: "(10-15)% increased Fire Damage"
+      med: "(20-30)% increased Fire Damage"
+      high: "1% increased Fire Damage per 20 Strength"
+
+  - name: "Siren's Tentacle"
+    slot: lowerLimb
+    source: "Merveil"
+    area: "Act 1"
+    tiers:
+      low: "(10-15)% increased Effect of Cold Ailments"
+      med: "(20-30)% increased Effect of Cold Ailments"
+      high: "+5% to Maximum Effect of Chill"
+
+  - name: "Skeleton Wheel"
+    slot: lowerLimb
+    source: "Fleetfreak"
+    area: "Act 6"
+    tiers:
+      low: "(5-7)% increased Attack and Cast Speed if you've used a Movement Skill Recently"
+      med: "(10-12)% increased Attack and Cast Speed if you've used a Movement Skill Recently"
+      high: "+1 to Level of all Movement Skill Gems"
+
+  - name: "Skeletal Tail"
+    slot: lowerLimb
+    source: "Skeletal Abomination"
+    area: "Act 5"
+    tiers:
+      low: "(10-15)% increased Projectile Damage"
+      med: "(20-30)% increased Projectile Damage"
+      high: "Projectiles Pierce, Fork or Chain an additional time at random"
+
+  - name: "Galvanic Tentacle"
+    slot: lowerLimb
+    source: "Amarissa"
+    area: "Act 1"
+    tiers:
+      low: "+(14-18)% to Lightning Resistance"
+      med: "+(22-28)% to Lightning Resistance"
+      high: "+(2-3)% to maximum Lightning Resistance"
+
+  - name: "Carved Haunches"
+    slot: lowerLimb
+    source: "Torchoak Grove"
+    area: "Act 4"
+    tiers:
+      low: "(10-15)% increased Totem Placement speed"
+      med: "(20-30)% increased Totem Placement speed"
+      high: "Skills that Summon a Totem have (16-24)% chance to Summon two Totems instead of one"
+
+  - name: "Captain's Leg"
+    slot: lowerLimb
+    source: "Guard Captain"
+    area: "Act 3"
+    tiers:
+      low: "(3-4)% increased Movement Speed"
+      med: "(5-6)% increased Movement Speed"
+      high: "Ignore all Movement Penalties from Armour"
+
+  - name: "Pocked Leg"
+    slot: lowerLimb
+    source: "Pikerivet"
+    area: "Act 4"
+    tiers:
+      low: "(20-30)% increased Armour from Equipped Helmet and Gloves"
+      med: "(35-50)% increased Armour from Equipped Helmet and Gloves"
+      high: "(35-50)% increased Armour from Equipped Helmet, Body Armour, Gloves, and Boots"
+
+  - name: "Lithic Haunches"
+    slot: lowerLimb
+    source: "Boulderback"
+    area: "Act 9"
+    tiers:
+      low: "(7-10)% chance to Defend with 200% of Armour"
+      med: "(12-16)% chance to Defend with 200% of Armour"
+      high: "(10-15)% chance to Avoid Physical Damage from Hits"
+
+  - name: "Coagulated Essence"
+    slot: lowerLimb
+    source: "Coagulation of Gore"
+    area: "Act 9"
+    tiers:
+      low: "(20-30)% increased Damage while Bleeding"
+      med: "(35-50)% increased Damage while Bleeding"
+      high: "(30-40)% increased Damage while in Blood Stance"
+
+  - name: "Armoured Leg"
+    slot: lowerLimb
+    source: "Hector Titucius"
+    area: "Act 8"
+    tiers:
+      low: "+(8-12)% chance to Block Projectile Attack Damage"
+      med: "+(15-20)% chance to Block Projectile Attack Damage"
+      high: "Chance to Block Projectile Attack Damage is Lucky"
+
+  - name: "Skeletal Beast Leg"
+    slot: lowerLimb
+    source: "Tyrannursus Maximus"
+    area: "Act 3"
+    tiers:
+      low: "(18-24)% chance to Avoid Bleeding"
+      med: "(30-40)% chance to Avoid Bleeding"
+      high: "Moving while Bleeding doesn't cause you to take extra Damage"
+
+profiles:
+  minion:
+    leveling:
+      head:
+        item: "Bandit Rogue's Head"
+        tier: low
+        note: "Attack and cast speed for summoning."
+      torso:
+        item: "Elemental Essence"
+        tier: low
+        note: "Cold resistance while gearing."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: low
+        note: "Life for you and your minions to hide behind."
+      lowerLimb:
+        item: "Sea Witch's Tentacle"
+        tier: low
+        note: "Minion damage from Act 1."
+    maps:
+      head:
+        item: "Bandit Rogue's Head"
+        tier: med
+        note: "Keep the summoning speed."
+      torso:
+        item: "Ornate Torso"
+        tier: med
+        note: "Minion life; the aura stays on after they die."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: med
+        note: "Life before damage scaling."
+      lowerLimb:
+        item: "Sea Witch's Tentacle"
+        tier: med
+        note: "The default minion damage leg."
+    bossing:
+      head:
+        item: "Chimera's Head"
+        tier: fixed
+        note: "Swap to this only if you hit recently; otherwise keep Bandit Rogue's Head."
+      torso:
+        item: "Ornate Torso"
+        tier: high
+        note: "Damage from hits is taken from your minions first."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: high
+        note: "More maximum life is the best defensive arm."
+      lowerLimb:
+        item: "Sea Witch's Tentacle"
+        tier: high
+        note: "Minions have a chance to deal double damage."
+  minion-spectre:
+    leveling:
+      head:
+        item: "Bandit Rogue's Head"
+        tier: low
+        note: "Cast speed for raising spectres."
+      torso:
+        item: "Elemental Essence"
+        tier: low
+        note: "Cold resistance while gearing."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: low
+        note: "Life while the spectres take aggro."
+      lowerLimb:
+        item: "Sea Witch's Tentacle"
+        tier: low
+        note: "Minion damage from Act 1."
+    maps:
+      head:
+        item: "Bandit Rogue's Head"
+        tier: med
+        note: "Cast speed for re-raising spectres."
+      torso:
+        item: "Ornate Torso"
+        tier: med
+        note: "Minion life keeps the spectres alive."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: med
+        note: "Life before damage scaling."
+      lowerLimb:
+        item: "Sea Witch's Tentacle"
+        tier: med
+        note: "The default minion damage leg."
+    bossing:
+      head:
+        item: "Chimera's Head"
+        tier: fixed
+        note: "Minion damage if you have hit recently."
+      torso:
+        item: "Nightmarish Wings of Catarina"
+        tier: fixed
+        note: "+1 to maximum Spectres is the whole slot."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: high
+        note: "More maximum life."
+      lowerLimb:
+        item: "Sea Witch's Tentacle"
+        tier: high
+        note: "Minions have a chance to deal double damage."
+  fire-dot:
+    leveling:
+      head:
+        item: "Goatman's Horn"
+        tier: low
+        note: "Area for the fire aura and Fire Trap."
+      torso:
+        item: "Molten Core"
+        tier: low
+        note: "Fire resistance and a little maximum fire resistance."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: low
+        note: "Life for a build that stands in packs."
+      lowerLimb:
+        item: "Flaming Goat Hoof"
+        tier: low
+        note: "Fire damage from Act 6."
+    maps:
+      head:
+        item: "Goatman's Horn"
+        tier: med
+        note: "More area is more overlap."
+      torso:
+        item: "Searing Exarch's Descry"
+        tier: fixed
+        note: "Physical, cold and lightning hits become fire."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: med
+        note: "Life before damage scaling."
+      lowerLimb:
+        item: "Flaming Goat Hoof"
+        tier: med
+        note: "Fire damage for the aura."
+    bossing:
+      head:
+        item: "Goatman's Horn"
+        tier: high
+        note: "Area skills can deal double damage."
+      torso:
+        item: "Searing Exarch's Descry"
+        tier: fixed
+        note: "The best defensive torso for a fire build."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: high
+        note: "More maximum life."
+      lowerLimb:
+        item: "Flaming Goat Hoof"
+        tier: high
+        note: "Fire damage per Strength."
+  cold-spell:
+    leveling:
+      head:
+        item: "Bandit Rogue's Head"
+        tier: low
+        note: "Cast speed while channeling Winter Orb."
+      torso:
+        item: "Elemental Essence"
+        tier: low
+        note: "Cold resistance."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: low
+        note: "Life while channeling."
+      lowerLimb:
+        item: "Siren's Tentacle"
+        tier: low
+        note: "Cold ailment effect."
+    maps:
+      head:
+        item: "Gelid Fangs"
+        tier: med
+        note: "Cold penetration is the damage stat."
+      torso:
+        item: "Elemental Essence"
+        tier: med
+        note: "Cold resistance while gearing."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: med
+        note: "Life before damage scaling."
+      lowerLimb:
+        item: "Siren's Tentacle"
+        tier: med
+        note: "Chill effect keeps packs in the orb."
+    bossing:
+      head:
+        item: "Gelid Fangs"
+        tier: high
+        note: "Hits can treat cold resistance as inverted."
+      torso:
+        item: "Elemental Essence"
+        tier: high
+        note: "Maximum cold resistance."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: high
+        note: "More maximum life."
+      lowerLimb:
+        item: "Siren's Tentacle"
+        tier: high
+        note: "Maximum chill effect."
+  cold-bow:
+    leveling:
+      head:
+        item: "Bandit Rogue's Head"
+        tier: low
+        note: "Attack speed for the bow."
+      torso:
+        item: "Elemental Essence"
+        tier: low
+        note: "Cold resistance."
+      upperLimb:
+        item: "Skeletal Archer's Arm"
+        tier: low
+        note: "Projectile damage per pierce."
+      lowerLimb:
+        item: "Skeleton Wheel"
+        tier: low
+        note: "Attack speed after a movement skill."
+    maps:
+      head:
+        item: "Gelid Fangs"
+        tier: med
+        note: "Cold penetration for Ice Shot."
+      torso:
+        item: "Elemental Essence"
+        tier: med
+        note: "Cold resistance while gearing."
+      upperLimb:
+        item: "Skeletal Archer's Arm"
+        tier: med
+        note: "Projectile damage per pierce."
+      lowerLimb:
+        item: "Skeletal Tail"
+        tier: med
+        note: "Projectile damage."
+    bossing:
+      head:
+        item: "Hydra's Head"
+        tier: fixed
+        note: "Arrows pierce all targets after forking."
+      torso:
+        item: "Elemental Essence"
+        tier: high
+        note: "Maximum cold resistance."
+      upperLimb:
+        item: "Skeletal Archer's Arm"
+        tier: high
+        note: "Projectiles pierce additional targets."
+      lowerLimb:
+        item: "Skeletal Tail"
+        tier: high
+        note: "An extra pierce, fork or chain at random."
+  lightning-spell:
+    leveling:
+      head:
+        item: "Totemic Visage"
+        tier: low
+        note: "Shock chance for Arc."
+      torso:
+        item: "Severed Stinger"
+        tier: low
+        note: "Lightning penetration."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: low
+        note: "Life while casting."
+      lowerLimb:
+        item: "Galvanic Tentacle"
+        tier: low
+        note: "Lightning resistance."
+    maps:
+      head:
+        item: "Totemic Visage"
+        tier: med
+        note: "More shock chance."
+      torso:
+        item: "Severed Stinger"
+        tier: med
+        note: "Lightning penetration."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: med
+        note: "Life before damage scaling."
+      lowerLimb:
+        item: "Skeleton Wheel"
+        tier: med
+        note: "Cast speed after a movement skill."
+    bossing:
+      head:
+        item: "Totemic Visage"
+        tier: high
+        note: "More maximum lightning damage."
+      torso:
+        item: "Severed Stinger"
+        tier: high
+        note: "Hits can treat lightning resistance as inverted."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: high
+        note: "More maximum life."
+      lowerLimb:
+        item: "Galvanic Tentacle"
+        tier: high
+        note: "Maximum lightning resistance."
+  lightning-totem:
+    leveling:
+      head:
+        item: "Totemic Visage"
+        tier: low
+        note: "Shock chance for the totems."
+      torso:
+        item: "Severed Stinger"
+        tier: low
+        note: "Lightning penetration."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: low
+        note: "Life while placing totems."
+      lowerLimb:
+        item: "Carved Haunches"
+        tier: low
+        note: "Totem placement speed."
+    maps:
+      head:
+        item: "Totemic Visage"
+        tier: med
+        note: "More shock chance."
+      torso:
+        item: "Severed Stinger"
+        tier: med
+        note: "Lightning penetration."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: med
+        note: "Life before damage scaling."
+      lowerLimb:
+        item: "Carved Haunches"
+        tier: med
+        note: "Faster totem placement."
+    bossing:
+      head:
+        item: "Totemic Visage"
+        tier: high
+        note: "More maximum lightning damage."
+      torso:
+        item: "Severed Stinger"
+        tier: high
+        note: "Hits can treat lightning resistance as inverted."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: high
+        note: "More maximum life."
+      lowerLimb:
+        item: "Carved Haunches"
+        tier: high
+        note: "Chance to summon two totems instead of one."
+  lightning-bow:
+    leveling:
+      head:
+        item: "Bandit Rogue's Head"
+        tier: low
+        note: "Attack speed for Lightning Arrow."
+      torso:
+        item: "Elemental Essence"
+        tier: low
+        note: "Cold resistance while gearing."
+      upperLimb:
+        item: "Skeletal Archer's Arm"
+        tier: low
+        note: "Projectile damage per pierce."
+      lowerLimb:
+        item: "Skeleton Wheel"
+        tier: low
+        note: "Attack speed after a movement skill."
+    maps:
+      head:
+        item: "Bandit Rogue's Head"
+        tier: med
+        note: "Attack speed for the bow."
+      torso:
+        item: "Severed Stinger"
+        tier: med
+        note: "Lightning penetration."
+      upperLimb:
+        item: "Skeletal Archer's Arm"
+        tier: med
+        note: "Projectile damage per pierce."
+      lowerLimb:
+        item: "Skeletal Tail"
+        tier: med
+        note: "Projectile damage."
+    bossing:
+      head:
+        item: "Totemic Visage"
+        tier: high
+        note: "More maximum lightning damage."
+      torso:
+        item: "Severed Stinger"
+        tier: high
+        note: "Hits can treat lightning resistance as inverted."
+      upperLimb:
+        item: "Skeletal Archer's Arm"
+        tier: high
+        note: "Projectiles pierce additional targets."
+      lowerLimb:
+        item: "Skeletal Tail"
+        tier: high
+        note: "An extra pierce, fork or chain at random."
+  chaos-dot:
+    leveling:
+      head:
+        item: "Severed Rhoa Head"
+        tier: low
+        note: "Chaos damage for Essence Drain."
+      torso:
+        item: "Chaos Golem's Core"
+        tier: low
+        note: "Chaos damage over time reduction."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: low
+        note: "Life while the DoT works."
+      lowerLimb:
+        item: "Skeletal Tail"
+        tier: low
+        note: "Projectile damage for the ED projectile."
+    maps:
+      head:
+        item: "Severed Rhoa Head"
+        tier: med
+        note: "More chaos damage."
+      torso:
+        item: "Chaos Golem's Core"
+        tier: med
+        note: "Chaos DoT reduction."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: med
+        note: "Life before damage scaling."
+      lowerLimb:
+        item: "Skeletal Tail"
+        tier: med
+        note: "Projectile damage."
+    bossing:
+      head:
+        item: "Severed Rhoa Head"
+        tier: high
+        note: "Withers enemies around you every second."
+      torso:
+        item: "Chaos Golem's Core"
+        tier: high
+        note: "Physical DoT is taken as chaos, which you resist."
+      upperLimb:
+        item: "Warden's Arm"
+        tier: high
+        note: "More maximum life."
+      lowerLimb:
+        item: "Skeletal Tail"
+        tier: high
+        note: "An extra pierce, fork or chain at random."
+  physical-melee:
+    leveling:
+      head:
+        item: "Cutthroat's Head"
+        tier: low
+        note: "Global physical damage."
+      torso:
+        item: "Bonestalker's Ribcage"
+        tier: low
+        note: "Physical DoT reduction for Boneshatter."
+      upperLimb:
+        item: "Crustacean's Claw"
+        tier: low
+        note: "Flat physical damage to attacks."
+      lowerLimb:
+        item: "Captain's Leg"
+        tier: low
+        note: "Movement speed."
+    maps:
+      head:
+        item: "Cutthroat's Head"
+        tier: med
+        note: "More global physical damage."
+      torso:
+        item: "Bonestalker's Ribcage"
+        tier: med
+        note: "Physical DoT reduction."
+      upperLimb:
+        item: "Crustacean's Claw"
+        tier: med
+        note: "Flat physical damage to attacks."
+      lowerLimb:
+        item: "Pocked Leg"
+        tier: med
+        note: "Armour from helmet and gloves."
+    bossing:
+      head:
+        item: "Cutthroat's Head"
+        tier: high
+        note: "Hits can ignore enemy physical damage reduction."
+      torso:
+        item: "Searing Exarch's Descry"
+        tier: fixed
+        note: "Physical hits are taken as fire, which you can resist."
+      upperLimb:
+        item: "Crustacean's Claw"
+        tier: high
+        note: "More maximum physical attack damage."
+      lowerLimb:
+        item: "Lithic Haunches"
+        tier: high
+        note: "Chance to avoid physical damage from hits."
+  physical-flicker:
+    leveling:
+      head:
+        item: "Cutthroat's Head"
+        tier: low
+        note: "Global physical damage."
+      torso:
+        item: "Bonestalker's Ribcage"
+        tier: low
+        note: "Physical DoT reduction."
+      upperLimb:
+        item: "Crustacean's Claw"
+        tier: low
+        note: "Flat physical damage to attacks."
+      lowerLimb:
+        item: "Captain's Leg"
+        tier: low
+        note: "Movement speed while learning the flicker chain."
+    maps:
+      head:
+        item: "Cutthroat's Head"
+        tier: med
+        note: "More global physical damage."
+      torso:
+        item: "Bonestalker's Ribcage"
+        tier: med
+        note: "Physical DoT reduction."
+      upperLimb:
+        item: "Crustacean's Claw"
+        tier: med
+        note: "Flat physical damage to attacks."
+      lowerLimb:
+        item: "Pocked Leg"
+        tier: med
+        note: "Armour from helmet and gloves."
+    bossing:
+      head:
+        item: "Eater of Worlds' Head"
+        tier: fixed
+        note: "Frenzy charges on critical hits keep the chain alive."
+      torso:
+        item: "Searing Exarch's Descry"
+        tier: fixed
+        note: "Physical hits are taken as fire."
+      upperLimb:
+        item: "Crustacean's Claw"
+        tier: high
+        note: "More maximum physical attack damage."
+      lowerLimb:
+        item: "Lithic Haunches"
+        tier: high
+        note: "Chance to avoid physical damage from hits."

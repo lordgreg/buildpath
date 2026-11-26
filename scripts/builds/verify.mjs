@@ -110,6 +110,7 @@ function makeReport({ seed, checkpointId, checkpoint, metrics, scaled, gate, gea
       gems: group.gems.map((gem) => ({
         name: gem.name,
         level: gem.level,
+        ...(gem.quality ? { quality: gem.quality } : {}),
         ...(gem.maxLevel ? { maxLevel: gem.maxLevel } : {}),
         ...(gem.note ? { note: gem.note } : {}),
       })),

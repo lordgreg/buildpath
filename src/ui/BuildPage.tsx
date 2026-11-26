@@ -10,6 +10,7 @@ import PantheonPanel from './PantheonPanel.tsx';
 import RatingPanel from './RatingPanel.tsx';
 import SiteHeader from './SiteHeader.tsx';
 import TreeThumbnail from './TreeThumbnail.tsx';
+import WickermanPanel, { wickermanPhase } from './WickermanPanel.tsx';
 import { copyText } from './download.ts';
 import { APP_VERSION } from '../version.ts';
 
@@ -347,6 +348,10 @@ export default function BuildPage() {
     { label: 'Bossing · Uber', href: `#mode=build&build=${build.id}&phase=endgame&strictness=uber` },
   ];
   const showFlasks = gate?.flasks ?? build.flasks?.[flaskStep(step)];
+  // Quality and Vaal corruption are endgame investments. The only exception is
+  // a guide that is explicitly built around a Vaal gem from the start.
+  const showGemQuality =
+    step === 'maps-red' || step === 'pinnacle' || build.gemQualityFrom === 'leveling';
   // A guide step is a leveling bracket: show the gems you level with at that
   // step, so there is no separate "leveling" section repeating the same thing.
   const bracket =
@@ -739,6 +744,12 @@ export default function BuildPage() {
           <h2 id="gems" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
             Gems at {step}
           </h2>
+          {!showGemQuality && (
+            <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">
+              Quality and Vaal corruption are not assumed at this step; they are
+              endgame investments from red maps on.
+            </p>
+          )}
           <div className="mt-3">
             <table className="w-full text-left text-sm text-zinc-300">
               <thead>
@@ -761,7 +772,9 @@ export default function BuildPage() {
                               <>
                                 <strong className="block text-gold-200">{gem.name}</strong>
                                 <span className="block text-zinc-500">
-                                  level {gem.level} · {index === 0 ? 'main skill' : 'support'}
+                                  level {gem.level}
+                                  {gem.quality ? ` · ${gem.quality}% quality` : ''} ·{' '}
+                                  {index === 0 ? 'main skill' : 'support'}
                                 </span>
                                 {build.gemInfo?.[gem.name]?.description && (
                                   <span className="mt-1 block leading-snug text-zinc-400">
@@ -790,14 +803,16 @@ export default function BuildPage() {
                                     Tags: {build.gemInfo[gem.name].tags?.join(', ')}
                                   </span>
                                 ) : null}
-                                <span className="mt-1 block text-zinc-500">
-                                  {build.gemInfo?.[gem.name]?.qualityWorth === 'none'
-                                    ? '20% quality: no effect.'
-                                    : build.gemInfo?.[gem.name]?.qualityEffect
-                                      ? `20% quality: ${build.gemInfo[gem.name].qualityEffect}`
-                                      : '20% quality: optional.'}
-                                </span>
-                                {gem.level > 20 && (
+                                {showGemQuality && (
+                                  <span className="mt-1 block text-zinc-500">
+                                    {build.gemInfo?.[gem.name]?.qualityWorth === 'none'
+                                      ? '20% quality: no effect.'
+                                      : build.gemInfo?.[gem.name]?.qualityEffect
+                                        ? `20% quality: ${build.gemInfo[gem.name].qualityEffect}`
+                                        : '20% quality: optional.'}
+                                  </span>
+                                )}
+                                {showGemQuality && gem.level > 20 && (
                                   <span className="mt-1 block text-amber-300">
                                     Vaaled: level 21+ requires a Vaal Orb.
                                   </span>
@@ -836,7 +851,7 @@ export default function BuildPage() {
                             >
                               {gem.name}
                               <span className="ml-1 text-[10px] text-zinc-500">{gem.level}</span>
-                              {gem.level > 20 && (
+                              {showGemQuality && gem.level > 20 && (
                                 <span className="ml-1 rounded bg-amber-500/20 px-1 text-[9px] uppercase tracking-wide text-amber-300">
                                   Vaaled
                                 </span>
@@ -846,21 +861,24 @@ export default function BuildPage() {
                                   max {gem.maxLevel}
                                 </span>
                               )}
-                              {build.gemInfo?.[gem.name]?.qualityWorth === 'recommended' && (
-                                <span className="ml-1 rounded bg-emerald-500/20 px-1 text-[9px] uppercase tracking-wide text-emerald-300">
-                                  20q
-                                </span>
-                              )}
-                              {build.gemInfo?.[gem.name]?.qualityWorth === 'optional' && (
-                                <span className="ml-1 rounded bg-ink-700 px-1 text-[9px] uppercase tracking-wide text-zinc-400">
-                                  20q?
-                                </span>
-                              )}
-                              {build.gemInfo?.[gem.name]?.qualityWorth === 'none' && (
-                                <span className="ml-1 rounded bg-zinc-700/40 px-1 text-[9px] uppercase tracking-wide text-zinc-500">
-                                  no 20q
-                                </span>
-                              )}
+                              {showGemQuality &&
+                                build.gemInfo?.[gem.name]?.qualityWorth === 'recommended' && (
+                                  <span className="ml-1 rounded bg-emerald-500/20 px-1 text-[9px] uppercase tracking-wide text-emerald-300">
+                                    20q
+                                  </span>
+                                )}
+                              {showGemQuality &&
+                                build.gemInfo?.[gem.name]?.qualityWorth === 'optional' && (
+                                  <span className="ml-1 rounded bg-ink-700 px-1 text-[9px] uppercase tracking-wide text-zinc-400">
+                                    20q?
+                                  </span>
+                                )}
+                              {showGemQuality &&
+                                build.gemInfo?.[gem.name]?.qualityWorth === 'none' && (
+                                  <span className="ml-1 rounded bg-zinc-700/40 px-1 text-[9px] uppercase tracking-wide text-zinc-500">
+                                    no 20q
+                                  </span>
+                                )}
                             </a>
                           </Tooltip>
                         </span>
@@ -929,6 +947,25 @@ export default function BuildPage() {
           ))}
         </div>
       </section>
+
+      {build.wickerman && (
+        <section aria-labelledby="wickerman">
+          <h2
+            id="wickerman"
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+          >
+            Wickerman
+          </h2>
+          <p className="mt-1 max-w-2xl text-[11px] leading-relaxed text-zinc-600">
+            The Covens league mechanic. Four Viscera slots give permanent
+            benefits; the recommendation follows the selected step, so the
+            leveling, mapping and bossing sets are all shown on the same guide.
+          </p>
+          <div className="mt-3">
+            <WickermanPanel wickerman={build.wickerman} phase={wickermanPhase(step)} />
+          </div>
+        </section>
+      )}
 
       {build.changelog && build.changelog.length > 0 && (
         <section aria-labelledby="changelog">
@@ -1036,6 +1073,7 @@ export default function BuildPage() {
               ['ascendancy', 'Ascendancy'],
               ['pantheon', 'Pantheon'],
               ['bandit', 'Bandit'],
+              ['wickerman', 'Wickerman'],
               ['changelog', 'Build changelog'],
             ].map(([anchor, label]) => (
               <li key={anchor}>

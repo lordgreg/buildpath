@@ -40,6 +40,11 @@ export const gates = readYaml(resolve(root, 'scripts/builds/gates.yaml'));
  * Hash only the thresholds, never the `calibrated` flag: flipping the flag is
  * the result of a green calibration, not a reason to invalidate its report.
  */
+/**
+ * Hash the thresholds and the checkpoint inputs they are measured against.
+ * Quality, gem caps, levels and budgets are part of the test condition: moving
+ * them changes a must-pass result, so the calibration report must invalidate.
+ */
 export function gateThresholdsHash() {
   return createHash('sha256')
     .update(
@@ -47,6 +52,7 @@ export function gateThresholdsHash() {
         resistanceFloor: gates.resistanceFloor,
         checkpoints: gates.checkpoints,
         profiles: gates.profiles ?? {},
+        checkpointConfig: checkpoints,
       }),
     )
     .digest('hex')
@@ -384,6 +390,8 @@ export function buildCheckpointSpec(seed, checkpointId, options = {}) {
     gear.items = gear.items.filter((item) => !uniqueSlots.has(item.slot));
   }
   const dropped = new Set(options.dropGems ?? []);
+  const gemQuality =
+    seed.gemQualityFrom === 'leveling' ? 20 : (checkpoint.gemQuality ?? 0);
   const groups = (bracket.skillGroups ?? [])
     .map((group) => ({
       slot: group.slot,
@@ -402,7 +410,7 @@ export function buildCheckpointSpec(seed, checkpointId, options = {}) {
           return {
             name,
             level: gemLevel,
-            quality: checkpoint.gemQuality ?? 0,
+            quality: gemQuality,
             ...(maxLevel ? { maxLevel } : {}),
             ...(note ? { note } : {}),
           };

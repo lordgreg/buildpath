@@ -24,7 +24,8 @@
     "bandit",
     "pantheon",
     "season",
-    "changelog"
+    "changelog",
+    "wickerman"
   ],
   "properties": {
     "schemaVersion": {
@@ -101,6 +102,18 @@
         }
       }
     },
+    "wickerman": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile"],
+      "description": "Covens league Wickerman profile; resolves the four Viscera slots for leveling, maps and bossing.",
+      "properties": {
+        "profile": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        }
+      }
+    },
     "flagship": {
       "type": "boolean",
       "description": "A flagship requires a signed summary. A non-flagship breadth page may publish with auto-breadth."
@@ -115,6 +128,10 @@
     "dad": {
       "type": "boolean",
       "description": "Tanky, low-APM, forgiving build, tagged Dad in the catalogue."
+    },
+    "gemQualityFrom": {
+      "enum": ["leveling"],
+      "description": "Show and measure 20% gem quality from the first checkpoint only for a guide built around a Vaal gem. Defaults to maps-red."
     },
     "spectres": {
       "type": "array",
