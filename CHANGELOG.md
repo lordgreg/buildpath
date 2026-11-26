@@ -2,6 +2,17 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.67.0 — 2026-11-26
+
+Sentinels, channeling and animated weapons.
+
+- Three new builds: **Absolution Guardian** (a lightning sentinel army with Guardian relics), **Winter Orb Elementalist** (channel-and-move cold projectiles) and **Animate Weapon Necromancer** (dropped weapons become a temporary melee swarm). The catalogue is now sixteen builds across nine ascendancies, with Guardian joining the roster.
+- All three publish on the reviewed **Dad** gate profile: the damage floor is lower, the defensive gates are unchanged, and the page labels the profile so the exception is never silent.
+- Each build carries its own original 16:9 header illustration and a per-step pobb.in paste, so the pasted tree, gear and gems follow the step picker.
+- `builds:publish-pobs` now reuses the existing paste for any step whose PoB code has not moved, so a release creates pastes only for new or changed steps instead of churning the whole catalogue.
+- `PLAN-BUILDS.md` is reconciled with the shipped 0.66.0 state: the six checkpoint ids everywhere, `gates.yaml` as the only threshold source, calibration stated as a formula, the scripts that actually shipped, and status blocks for P6 and P7.
+- 637 tests, 96 must-pass calibration observations, ten must-fail cases and one ablation probe.
+
 ## 0.66.0 — 2026-11-26
 
 Thirteen builds, ratings and a Dad profile.
