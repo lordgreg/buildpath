@@ -15,6 +15,7 @@ import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import { parse } from 'yaml';
 import { resolveGuide } from './guide.mjs';
+import { medalFor } from '../../src/core/builds/ratings.ts';
 import {
   applyBuildStaleness,
   leagueWindowOpen,
@@ -264,13 +265,20 @@ for (const build of builds) {
   const seed = seedById.get(build.id);
   const { guide, errors } = resolveGuide(build, seed.guide, {
     previous: previousById.get(build.id)?.guide,
+    flagship: seed.flagship !== false,
   });
   if (errors.length > 0) {
     console.error(`guide invalid: ${build.id}\n  ${errors.join('\n  ')}`);
     process.exit(1);
   }
   build.guide = guide;
-  if (guide.summary.status === 'stale') build.status = 'draft';
+  if (!['signed', 'auto-breadth'].includes(guide.summary.status)) {
+    build.status = 'draft';
+  }
+}
+
+for (const build of builds) {
+  build.medal = medalFor(build.ratings);
 }
 
 // R10: a build whose patch fact set moved is delisted, not silently kept.
@@ -324,11 +332,20 @@ function chipsFor(build) {
         'Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee.',
     });
   }
+  if (build.dad) {
+    chips.push({
+      label: 'Dad',
+      kind: 'note',
+      title: 'Tanky, low-APM and forgiving; a good build to learn the league with.',
+    });
+  }
   const note =
     build.family === 'bow'
       ? { label: 'Fast clear', kind: 'note', title: 'A single arrow clears packs at range.' }
       : build.family === 'melee'
-        ? { label: 'Tanky', kind: 'note', title: 'Armour, endurance charges and Juggernaut recovery.' }
+        ? build.mainSkill === 'Flicker Strike'
+          ? { label: 'Fast clear', kind: 'note', title: 'Flicker teleports through the pack.' }
+          : { label: 'Tanky', kind: 'note', title: 'Armour, endurance charges and Juggernaut recovery.' }
         : build.family === 'minion'
           ? { label: 'Minion army', kind: 'note', title: 'Minions take the hits while you position.' }
           : null;
@@ -351,6 +368,8 @@ const index = {
     seedHash: build.seedHash,
     ...(build.pipeline ? { calibrated: build.pipeline.calibrated } : {}),
     ...(build.stale ? { stale: build.stale } : {}),
+    ...(build.ratings ? { ratings: build.ratings } : {}),
+    ...(build.medal ? { medal: build.medal } : {}),
     chips: chipsFor(build),
     // The catalogue page reads the index only (no per-build fetch), so each
     // checkpoint's pass flag and damage travel with it.

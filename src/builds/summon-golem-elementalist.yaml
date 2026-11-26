@@ -1,0 +1,160 @@
+schemaVersion: 1
+id: summon-golem-elementalist
+name: Stone Golem Elementalist
+class: Witch
+ascendancyId: elementalist
+family: minion
+mainSkill: Summon Stone Golem
+flagship: false
+gateProfile: dad
+dad: true
+minionCount: 3
+summary: >-
+  Golem Elementalist with a small Stone Golem pack. The golems are permanent,
+  aggressive and easy to keep alive; the same caster gear as the Witch minion
+  builds carries them. No required unique, low APM and a good Dad build.
+
+pros:
+  - { weight: 3, text: "Golems are permanent and keep attacking while you move." }
+  - { weight: 3, text: "No required unique; minion gem levels and supports carry the damage." }
+  - { weight: 3, text: "Low APM and forgiving, which is what a Dad build needs." }
+  - { weight: 2, text: "The same caster gear as the skeleton and spectre builds." }
+  - { weight: 2, text: "Elementalist golem passives make the pack durable." }
+  - { weight: 1, text: "A simple first minion build if you prefer fewer buttons." }
+cons:
+  - { weight: 3, text: "Golem damage is lower than a dedicated skeleton or spectre build." }
+  - { weight: 3, text: "You are fragile when the golems are dead or far away." }
+  - { weight: 2, text: "Clear speed is slower than a bow build." }
+  - { weight: 2, text: "The golem gem is not available until the middle of the campaign." }
+  - { weight: 1, text: "Many gems compete for slots and links." }
+  - { weight: 1, text: "Golem AI can spread damage away from the target you want." }
+
+ratings:
+  tankiness: 6
+  singleTarget: 6
+  clear: 5
+  cost: 9
+
+gearProfile: caster
+
+tree:
+  targets:
+    - minions deal increased damage
+    - minions have increased attack speed
+    - minions have increased maximum life
+    - increased maximum life
+    - increased elemental damage
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Summon Skeletons]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Summon Skeletons, Minion Damage, Added Fire Damage]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Skeletons are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Summon Skeletons]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Summon Skeletons, Minion Damage, Minion Speed, Minion Life]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Desecrate]
+        - slot: Helmet
+          gems: [Clarity, Convocation]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 68
+      skills: [Summon Stone Golem]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Summon Stone Golem, Minion Damage, Minion Life, Minion Speed, Feeding Frenzy, Elemental Focus]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Generosity]
+        - slot: Helmet
+          gems: [Desecrate]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 100
+      skills: [Summon Stone Golem]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Summon Stone Golem, Minion Damage, Minion Life, Minion Speed, Feeding Frenzy, Elemental Focus]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Generosity]
+        - slot: Helmet
+          gems: [Desecrate]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+ascendancyOrder:
+  - { node: liege-of-the-primordial, lab: 1 }
+  - { node: mastermind-of-discord, lab: 2 }
+  - { node: heart-of-destruction, lab: 3 }
+  - { node: bastion-of-elements, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch a caster in a bad position.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Stone Golem Elementalist is a low-APM minion build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. The golems are permanent
+      and no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with skeletons until the golem gem unlocks, then bring the Stone
+      Golems with you. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep the golems
+      between you and the pack, cap the resistances, and let the filter hide the
+      rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Refresh the golems
+      before the burst and keep Flesh Offering up.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]

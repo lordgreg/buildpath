@@ -30,6 +30,7 @@ import {
   encodePobCode,
   evaluateGate,
   gates,
+  gateThresholds,
   gateThresholdsHash,
   outDir,
   readYaml,
@@ -56,7 +57,8 @@ function makeReport({ seed, checkpointId, checkpoint, metrics, scaled, gate, gea
     budget: gear.budget.links
       ? `${checkpoint.budget} (${gear.budget.links}-link)`
       : checkpoint.budget,
-    thresholds: gates.checkpoints[checkpointId] ?? {},
+    gateProfile: seed.gateProfile ?? 'standard',
+    thresholds: gateThresholds(checkpointId, seed.gateProfile ?? 'standard'),
     metrics: {
       dps: Math.round(scaled.dps),
       minionCount: scaled.minionCount,
@@ -134,7 +136,7 @@ function evaluateTree({ seed, checkpointId, checkpoint, plan, nodes, pruneTo, xm
       : undefined,
   };
   const scaled = scaledMetrics(seed, metrics);
-  const gate = evaluateGate(checkpointId, scaled);
+  const gate = evaluateGate(checkpointId, scaled, seed.gateProfile ?? 'standard');
   const itemFailures = checkItemParsing(metrics, gear.items);
   const uniqueFailures = (spec.uniques ?? []).flatMap((unique) => {
     const reported = (metrics.items ?? []).find((item) => item.slot === unique.slot);
@@ -381,12 +383,15 @@ for (const file of files) {
   build.status = status;
   const { guide, errors: guideErrors } = resolveGuide(build, seed.guide, {
     previous: build.guide,
+    flagship: seed.flagship !== false,
   });
   if (guideErrors.length > 0) {
     throw new Error(`${seed.id}: guide invalid\n  ${guideErrors.join('\n  ')}`);
   }
   build.guide = guide;
-  if (guide.summary.status === 'stale') build.status = 'draft';
+  if (!['signed', 'auto-breadth'].includes(guide.summary.status)) {
+    build.status = 'draft';
+  }
   // A one-click pob.cool link needs a URL whose body is the code, not our JSON.
   // This is the same published code the copy button shows; it is not an XML
   // download, and it keeps the reader on the pinned PoB version.

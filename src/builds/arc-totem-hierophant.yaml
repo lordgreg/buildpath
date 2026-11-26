@@ -1,0 +1,152 @@
+schemaVersion: 1
+id: arc-totem-hierophant
+name: Arc Totem Hierophant
+class: Templar
+ascendancyId: hierophant
+family: caster
+mainSkill: Arc
+flagship: false
+gateProfile: dad
+dad: true
+summary: >-
+  Arc on Spell Totem, with the Hierophant mana and totem package behind it. The
+  totems cast while you move, so the build is easier on the hands than a
+  self-cast Arc and still scales with the same spell gear. No required unique.
+
+pros:
+  - { weight: 3, text: "Totems cast while you move, so positioning is less punishing." }
+  - { weight: 3, text: "No required unique; spell damage and gem levels carry the build." }
+  - { weight: 2, text: "Hierophant mana recovery makes the totem cost sustainable." }
+  - { weight: 2, text: "Arc clears packs without precise aiming." }
+  - { weight: 2, text: "A comfortable first mapping build for a new league." }
+  - { weight: 1, text: "The same spell sceptre and shield serve self-cast and totem versions." }
+cons:
+  - { weight: 3, text: "Totem placement and uptime are a second thing to manage." }
+  - { weight: 3, text: "Single-target needs both totems alive through the whole fight." }
+  - { weight: 2, text: "Clear speed is slower than a bow or a well-geared melee build." }
+  - { weight: 2, text: "Mana is tight before the Hierophant package is online." }
+  - { weight: 1, text: "Totems can be killed by area damage." }
+  - { weight: 1, text: "The build wants a six-link for its best damage." }
+
+ratings:
+  tankiness: 6
+  singleTarget: 5
+  clear: 6
+  cost: 8
+
+gearProfile: spell
+
+tree:
+  targets:
+    - increased lightning damage
+    - totem damage
+    - increased cast speed
+    - increased maximum life
+    - increased maximum mana
+    - increased elemental damage
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Rolling Magma]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Rolling Magma, Added Lightning Damage, Arcane Surge]
+        - slot: Weapon 1
+          gems: [Flame Dash]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Arc]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Arc, Spell Totem, Added Lightning Damage, Faster Casting]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 68
+      skills: [Arc]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Arc, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction, Elemental Focus]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Determination]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 100
+      skills: [Arc]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Arc, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction, Elemental Focus]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Determination]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+ascendancyOrder:
+  - { node: pursuit-of-faith, lab: 1 }
+  - { node: ritual-of-awakening, lab: 2 }
+  - { node: divine-guidance, lab: 3 }
+  - { node: sanctuary-of-thought, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch a stationary caster.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Arc Totem Hierophant is a spell-totem build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. The totems cast while you
+      position, and no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Rolling Magma, then switch to Arc and Spell Totem when both are
+      available. The first checkpoint measures {{gates.until-12.metrics.life|int}}
+      life and {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep both totems
+      down, cap the elemental resistances, and let the filter hide the rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Place the totems
+      before the burst and be ready to replace them after every phase.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]

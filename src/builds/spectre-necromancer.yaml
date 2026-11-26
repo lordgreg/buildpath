@@ -1,0 +1,164 @@
+schemaVersion: 1
+id: spectre-necromancer
+name: Spectre Necromancer
+class: Witch
+ascendancyId: necromancer
+family: minion
+mainSkill: Raise Spectre
+flagship: false
+gateProfile: dad
+dad: true
+spectres:
+  - Metadata/Monsters/TemplarSlaveDriver/TemplarSlaveDriver
+minionCount: 4
+summary: >-
+  Necromancer with a specific spectre: four Slave Drivers from the Templar
+  Courts. The spectres do the damage, the gear is the same caster shell as the
+  skeleton build, and no unique is required. A deliberately low-APM Dad build.
+
+pros:
+  - { weight: 3, text: "The spectres keep attacking while you move; low APM and forgiving." }
+  - { weight: 3, text: "No required unique; gem levels and minion supports carry the damage." }
+  - { weight: 3, text: "The same caster gear as the skeleton and raging-spirit builds." }
+  - { weight: 2, text: "Slave Drivers are a known, easy-to-read spectre package." }
+  - { weight: 2, text: "A good Dad build: tanky minions and a simple rotation." }
+  - { weight: 1, text: "The spectre setup is portable between characters with the same links." }
+cons:
+  - { weight: 3, text: "You have to acquire and keep the specific spectres." }
+  - { weight: 3, text: "You are fragile when the minion wall breaks or you are caught alone." }
+  - { weight: 2, text: "Clear speed is slower than a bow build." }
+  - { weight: 2, text: "Spectre AI can spread damage away from the target you want." }
+  - { weight: 1, text: "Many gems compete for slots and links." }
+  - { weight: 1, text: "The first spectre setup needs a visit to the right zone." }
+
+ratings:
+  tankiness: 6
+  singleTarget: 6
+  clear: 5
+  cost: 9
+
+gearProfile: caster
+
+tree:
+  targets:
+    - minions deal increased damage
+    - minions have increased attack speed
+    - minions have increased maximum life
+    - increased maximum life
+    - increased skill effect duration
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Summon Skeletons]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Summon Skeletons, Minion Damage, Added Fire Damage]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Raise Zombie]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Skeletons are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Raise Spectre]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Raise Spectre, Minion Damage, Minion Speed, Minion Life]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Desecrate]
+        - slot: Helmet
+          gems: [Clarity, Convocation]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 68
+      skills: [Raise Spectre]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Raise Spectre, Minion Damage, Minion Life, Minion Speed, Feeding Frenzy, Elemental Focus]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Generosity]
+        - slot: Helmet
+          gems: [Desecrate]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 100
+      skills: [Raise Spectre]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Raise Spectre, Minion Damage, Minion Life, Minion Speed, Feeding Frenzy, Elemental Focus]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Generosity]
+        - slot: Helmet
+          gems: [Desecrate]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+ascendancyOrder:
+  - { node: mindless-aggression, lab: 1 }
+  - { node: commander-of-darkness, lab: 2 }
+  - { node: bone-barrier, lab: 3 }
+  - { node: mistress-of-sacrifice, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch a caster in a bad position.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Spectre Necromancer is a low-APM minion build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle with four Slave Driver
+      spectres. No unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with skeletons until Raise Spectre unlocks, then bring the Slave
+      Drivers with you. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep the spectres
+      between you and the pack, cap the elemental resistances, and let the
+      filter hide the rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Refresh the
+      spectres before the burst and keep Flesh Offering up.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]

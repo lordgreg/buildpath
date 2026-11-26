@@ -1,0 +1,152 @@
+schemaVersion: 1
+id: essence-drain-occultist
+name: Essence Drain Occultist
+class: Witch
+ascendancyId: occultist
+family: caster
+mainSkill: Essence Drain
+flagship: false
+gateProfile: dad
+dad: true
+summary: >-
+  Chaos damage over time on the Occultist shell. Essence Drain and Contagion
+  spread through a pack, Wither and Despair amplify the damage, and the build
+  spends most of its time moving. No required unique.
+
+pros:
+  - { weight: 3, text: "Damage over time keeps working while you move." }
+  - { weight: 3, text: "No required unique; spell damage and chaos scaling carry the build." }
+  - { weight: 2, text: "Contagion turns one kill into a pack-wide clear." }
+  - { weight: 2, text: "Occultist curses and Withering Presence improve the boss fight." }
+  - { weight: 2, text: "A safe caster for players who dislike standing still." }
+  - { weight: 1, text: "The same spell sceptre and shield as the Arc builds." }
+cons:
+  - { weight: 3, text: "Damage is delayed; you have to wait for the DoT to finish." }
+  - { weight: 3, text: "Single-target needs Wither and curse uptime." }
+  - { weight: 2, text: "Clear speed is slower than a hit-based bow build." }
+  - { weight: 2, text: "Chaos resistance is hard to cap without specific gear." }
+  - { weight: 1, text: "The build wants a six-link for its best damage." }
+  - { weight: 1, text: "Contagion spread can feel awkward in open layouts." }
+
+ratings:
+  tankiness: 5
+  singleTarget: 6
+  clear: 7
+  cost: 8
+
+gearProfile: chaos
+
+tree:
+  targets:
+    - increased chaos damage
+    - damage over time
+    - increased spell damage
+    - increased cast speed
+    - increased maximum life
+    - increased energy shield
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Essence Drain]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Essence Drain, Efficacy, Arcane Surge]
+        - slot: Weapon 1
+          gems: [Contagion, Flame Dash]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Essence Drain]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Essence Drain, Efficacy, Controlled Destruction, Faster Casting]
+        - slot: Weapon 1
+          gems: [Contagion, Flame Dash]
+        - slot: Helmet
+          gems: [Clarity, Despair]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 68
+      skills: [Essence Drain]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Essence Drain, Efficacy, Controlled Destruction, Swift Affliction, Void Sphere, Faster Casting]
+        - slot: Weapon 1
+          gems: [Contagion, Flame Dash]
+        - slot: Helmet
+          gems: [Clarity, Despair]
+        - slot: Boots
+          gems: [Wither]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 100
+      skills: [Essence Drain]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Essence Drain, Efficacy, Controlled Destruction, Swift Affliction, Void Sphere, Faster Casting]
+        - slot: Weapon 1
+          gems: [Contagion, Flame Dash]
+        - slot: Helmet
+          gems: [Clarity, Despair]
+        - slot: Boots
+          gems: [Wither]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+ascendancyOrder:
+  - { node: void-beacon, lab: 1 }
+  - { node: withering-presence, lab: 2 }
+  - { node: profane-bloom, lab: 3 }
+  - { node: vile-bastion, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch a caster in a bad position.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Essence Drain Occultist is a chaos damage-over-time build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. The damage keeps working
+      while you move, and no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Essence Drain and Contagion, then add the DoT supports as they
+      unlock. The first checkpoint measures {{gates.until-12.metrics.life|int}}
+      life and {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Spread
+      Contagion, keep Wither on the rare, and cap the resistances.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Apply Despair and
+      Wither before the burst, then keep moving while the DoT works.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]

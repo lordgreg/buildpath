@@ -1,0 +1,7747 @@
+{
+  "schemaVersion": 1,
+  "id": "arc-elementalist",
+  "name": "Arc Elementalist",
+  "class": "Witch",
+  "ascendancyId": "elementalist",
+  "family": "caster",
+  "mainSkill": "Arc",
+  "flagship": false,
+  "gateProfile": "dad",
+  "summary": "Self-cast Arc on the Elementalist shell. Arc clears packs without aiming, the exposure and shock package turns lightning into a real single-target tool, and the gear is the same spell sceptre and shield the totem build uses. No required unique.",
+  "pros": [
+    {
+      "weight": 3,
+      "text": "Arc clears packs without precise aiming."
+    },
+    {
+      "weight": 3,
+      "text": "No required unique; spell damage and gem levels carry the build."
+    },
+    {
+      "weight": 2,
+      "text": "Elementalist exposure and shock improve the boss fight."
+    },
+    {
+      "weight": 2,
+      "text": "The same spell gear works for the totem and self-cast versions."
+    },
+    {
+      "weight": 2,
+      "text": "A simple first caster for a new league."
+    },
+    {
+      "weight": 1,
+      "text": "The build can pivot to a different lightning spell without new gear."
+    }
+  ],
+  "cons": [
+    {
+      "weight": 3,
+      "text": "Self-casting means you stand still for the damage."
+    },
+    {
+      "weight": 3,
+      "text": "Single-target needs the shock and exposure window."
+    },
+    {
+      "weight": 2,
+      "text": "Clear speed is slower than a bow or a well-geared melee build."
+    },
+    {
+      "weight": 2,
+      "text": "Mana is tight before leech and reduced cost are online."
+    },
+    {
+      "weight": 1,
+      "text": "Elemental reflect maps are a hard no."
+    },
+    {
+      "weight": 1,
+      "text": "A six-link is a large damage step."
+    }
+  ],
+  "ratings": {
+    "tankiness": 4,
+    "singleTarget": 6,
+    "clear": 8,
+    "cost": 8
+  },
+  "gearProfile": "spell",
+  "tree": {
+    "endgame": [
+      1031,
+      1767,
+      3656,
+      4011,
+      4184,
+      4397,
+      5823,
+      5875,
+      6230,
+      6764,
+      7112,
+      7388,
+      7555,
+      7938,
+      8948,
+      9432,
+      9788,
+      9877,
+      10031,
+      10490,
+      10575,
+      10904,
+      11420,
+      12189,
+      12379,
+      13009,
+      13885,
+      14021,
+      15064,
+      17735,
+      17821,
+      18033,
+      19635,
+      19679,
+      20546,
+      21262,
+      21301,
+      21330,
+      21389,
+      21678,
+      21958,
+      24362,
+      24824,
+      25058,
+      26196,
+      26740,
+      27203,
+      27415,
+      27611,
+      27659,
+      27788,
+      28012,
+      29199,
+      30225,
+      30370,
+      31619,
+      31875,
+      32210,
+      32455,
+      33435,
+      33479,
+      33545,
+      33755,
+      34157,
+      34661,
+      36542,
+      36634,
+      36915,
+      36949,
+      37569,
+      37671,
+      37999,
+      39648,
+      39743,
+      40362,
+      40366,
+      40776,
+      41263,
+      41472,
+      41989,
+      42668,
+      43689,
+      44183,
+      44799,
+      44955,
+      46092,
+      46340,
+      47251,
+      48362,
+      48778,
+      51804,
+      51923,
+      52742,
+      53213,
+      53279,
+      54447,
+      54657,
+      54694,
+      55906,
+      57226,
+      57264,
+      57457,
+      58244,
+      58402,
+      58763,
+      59070,
+      60388,
+      60398,
+      61419,
+      61834,
+      63963,
+      63976
+    ],
+    "checkpoints": {
+      "until-12": [
+        4397,
+        8948,
+        21678,
+        27659,
+        31875,
+        32210,
+        36542,
+        37569,
+        54447,
+        57226,
+        57264
+      ],
+      "until-28": [
+        1031,
+        4184,
+        4397,
+        7938,
+        8948,
+        11420,
+        14021,
+        21678,
+        27659,
+        30225,
+        31875,
+        32210,
+        33755,
+        34157,
+        34661,
+        36542,
+        37569,
+        37671,
+        39648,
+        44955,
+        46340,
+        48362,
+        48778,
+        54447,
+        54657,
+        57226,
+        57264,
+        60388,
+        60398
+      ],
+      "until-68": [
+        1031,
+        3656,
+        4184,
+        4397,
+        5875,
+        6764,
+        7388,
+        7555,
+        7938,
+        8948,
+        9432,
+        9788,
+        10490,
+        10575,
+        11420,
+        12189,
+        12379,
+        13009,
+        14021,
+        17735,
+        17821,
+        18033,
+        19635,
+        20546,
+        21262,
+        21301,
+        21330,
+        21678,
+        21958,
+        24362,
+        24824,
+        27203,
+        27415,
+        27611,
+        27659,
+        29199,
+        30225,
+        30370,
+        31619,
+        31875,
+        32210,
+        33479,
+        33545,
+        33755,
+        34157,
+        34661,
+        36542,
+        36634,
+        37569,
+        37671,
+        39648,
+        39743,
+        40366,
+        40776,
+        41263,
+        44183,
+        44955,
+        46092,
+        46340,
+        47251,
+        48362,
+        48778,
+        51804,
+        51923,
+        52742,
+        53279,
+        54447,
+        54657,
+        57226,
+        57264,
+        57457,
+        58244,
+        58402,
+        60388,
+        60398,
+        61419,
+        63976
+      ],
+      "maps-early": [
+        1031,
+        1767,
+        3656,
+        4184,
+        4397,
+        5875,
+        6764,
+        7112,
+        7388,
+        7555,
+        7938,
+        8948,
+        9432,
+        9788,
+        10490,
+        10575,
+        11420,
+        12189,
+        12379,
+        13009,
+        14021,
+        17735,
+        17821,
+        18033,
+        19635,
+        19679,
+        20546,
+        21262,
+        21301,
+        21330,
+        21678,
+        21958,
+        24362,
+        24824,
+        26740,
+        27203,
+        27415,
+        27611,
+        27659,
+        29199,
+        30225,
+        30370,
+        31619,
+        31875,
+        32210,
+        33435,
+        33479,
+        33545,
+        33755,
+        34157,
+        34661,
+        36542,
+        36634,
+        37569,
+        37671,
+        37999,
+        39648,
+        39743,
+        40366,
+        40776,
+        41263,
+        41989,
+        42668,
+        44183,
+        44955,
+        46092,
+        46340,
+        47251,
+        48362,
+        48778,
+        51804,
+        51923,
+        52742,
+        53213,
+        53279,
+        54447,
+        54657,
+        54694,
+        57226,
+        57264,
+        57457,
+        58244,
+        58402,
+        58763,
+        59070,
+        60388,
+        60398,
+        61419,
+        63976
+      ],
+      "maps-red": [
+        1031,
+        1767,
+        3656,
+        4184,
+        4397,
+        5875,
+        6230,
+        6764,
+        7112,
+        7388,
+        7555,
+        7938,
+        8948,
+        9432,
+        9788,
+        10031,
+        10490,
+        10575,
+        10904,
+        11420,
+        12189,
+        12379,
+        13009,
+        13885,
+        14021,
+        15064,
+        17735,
+        17821,
+        18033,
+        19635,
+        19679,
+        20546,
+        21262,
+        21301,
+        21330,
+        21389,
+        21678,
+        21958,
+        24362,
+        24824,
+        26196,
+        26740,
+        27203,
+        27415,
+        27611,
+        27659,
+        28012,
+        29199,
+        30225,
+        30370,
+        31619,
+        31875,
+        32210,
+        33435,
+        33479,
+        33545,
+        33755,
+        34157,
+        34661,
+        36542,
+        36634,
+        37569,
+        37671,
+        37999,
+        39648,
+        39743,
+        40362,
+        40366,
+        40776,
+        41263,
+        41472,
+        41989,
+        42668,
+        43689,
+        44183,
+        44799,
+        44955,
+        46092,
+        46340,
+        47251,
+        48362,
+        48778,
+        51804,
+        51923,
+        52742,
+        53213,
+        53279,
+        54447,
+        54657,
+        54694,
+        55906,
+        57226,
+        57264,
+        57457,
+        58244,
+        58402,
+        58763,
+        59070,
+        60388,
+        60398,
+        61419,
+        61834,
+        63963,
+        63976
+      ],
+      "pinnacle": [
+        1031,
+        1767,
+        3656,
+        4011,
+        4184,
+        4397,
+        5823,
+        5875,
+        6230,
+        6764,
+        7112,
+        7388,
+        7555,
+        7938,
+        8948,
+        9432,
+        9788,
+        9877,
+        10031,
+        10490,
+        10575,
+        10904,
+        11420,
+        12189,
+        12379,
+        13009,
+        13885,
+        14021,
+        15064,
+        17735,
+        17821,
+        18033,
+        19635,
+        19679,
+        20546,
+        21262,
+        21301,
+        21330,
+        21389,
+        21678,
+        21958,
+        24362,
+        24824,
+        25058,
+        26196,
+        26740,
+        27203,
+        27415,
+        27611,
+        27659,
+        27788,
+        28012,
+        29199,
+        30225,
+        30370,
+        31619,
+        31875,
+        32210,
+        32455,
+        33435,
+        33479,
+        33545,
+        33755,
+        34157,
+        34661,
+        36542,
+        36634,
+        36915,
+        36949,
+        37569,
+        37671,
+        37999,
+        39648,
+        39743,
+        40362,
+        40366,
+        40776,
+        41263,
+        41472,
+        41989,
+        42668,
+        43689,
+        44183,
+        44799,
+        44955,
+        46092,
+        46340,
+        47251,
+        48362,
+        48778,
+        51804,
+        51923,
+        52742,
+        53213,
+        53279,
+        54447,
+        54657,
+        54694,
+        55906,
+        57226,
+        57264,
+        57457,
+        58244,
+        58402,
+        58763,
+        59070,
+        60388,
+        60398,
+        61419,
+        61834,
+        63963,
+        63976
+      ]
+    }
+  },
+  "leveling": {
+    "brackets": [
+      {
+        "until": 12,
+        "skills": [
+          "Rolling Magma"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Rolling Magma",
+              "Added Lightning Damage",
+              "Arcane Surge"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Flame Dash"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Clarity"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Medium Life Flask",
+            "note": "Small until level 3."
+          },
+          {
+            "slot": "mana",
+            "name": "Small Mana Flask",
+            "note": "Spells are expensive early."
+          },
+          {
+            "slot": "utility",
+            "name": "Quicksilver Flask",
+            "note": "Act 2 quest reward."
+          }
+        ]
+      },
+      {
+        "until": 28,
+        "skills": [
+          "Arc"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Arc",
+              "Added Lightning Damage",
+              "Faster Casting",
+              "Elemental Focus"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Flame Dash",
+              "Arcane Surge"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Clarity"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Giant Life Flask",
+            "note": "Drops from level 24."
+          },
+          {
+            "slot": "mana",
+            "name": "Greater Mana Flask",
+            "note": "Drops from level 12."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Chaos resistance."
+          }
+        ]
+      },
+      {
+        "until": 68,
+        "skills": [
+          "Arc"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Arc",
+              "Added Lightning Damage",
+              "Lightning Penetration",
+              "Controlled Destruction",
+              "Elemental Focus",
+              "Faster Casting"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Flame Dash",
+              "Arcane Surge"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Clarity"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Determination"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Divine Life Flask",
+            "note": "Instant prefix."
+          },
+          {
+            "slot": "mana",
+            "name": "Hallowed Mana Flask",
+            "note": "Drops from level 42."
+          },
+          {
+            "slot": "utility",
+            "name": "Granite Flask",
+            "note": "Armour."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Chaos resistance."
+          }
+        ]
+      },
+      {
+        "until": 100,
+        "skills": [
+          "Arc"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Arc",
+              "Added Lightning Damage",
+              "Lightning Penetration",
+              "Controlled Destruction",
+              "Elemental Focus",
+              "Faster Casting"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Flame Dash",
+              "Arcane Surge"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Clarity"
+            ]
+          },
+          {
+            "slot": "Boots",
+            "gems": [
+              "Determination"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Divine Life Flask",
+            "note": "Keep the instant prefix."
+          },
+          {
+            "slot": "mana",
+            "name": "Eternal Mana Flask",
+            "note": "Drops from level 65."
+          },
+          {
+            "slot": "utility",
+            "name": "Granite Flask",
+            "note": "Armour."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Chaos resistance."
+          }
+        ]
+      }
+    ]
+  },
+  "ascendancyOrder": [
+    {
+      "node": "shaper-of-storms",
+      "lab": 1
+    },
+    {
+      "node": "heart-of-destruction",
+      "lab": 2
+    },
+    {
+      "node": "mastermind-of-discord",
+      "lab": 3
+    },
+    {
+      "node": "bastion-of-elements",
+      "lab": 4
+    }
+  ],
+  "bandit": "kill-all",
+  "pantheon": {
+    "major": "lunaris",
+    "minor": "gruthkul",
+    "note": "Gruthkul reduces the physical hits that catch a caster in a bad position."
+  },
+  "uniques": {
+    "core": [],
+    "optional": []
+  },
+  "status": "verified",
+  "gates": {
+    "until-12": {
+      "pass": true,
+      "level": 12,
+      "budget": "starting (3-link)",
+      "gateProfile": "dad",
+      "thresholds": {
+        "resists": false,
+        "life": 250,
+        "dps": 15
+      },
+      "metrics": {
+        "dps": 49,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 344,
+        "energyShield": 465,
+        "ehp": 637,
+        "maxHit": 809,
+        "resists": [
+          -48,
+          -48,
+          -48
+        ],
+        "chaosResist": -60,
+        "nodes": 11,
+        "sockets": 0,
+        "ascendancy": 1
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            4397,
+            36542
+          ],
+          [
+            8948,
+            27659
+          ],
+          [
+            21678,
+            32210
+          ],
+          [
+            4397,
+            31875
+          ],
+          [
+            8948,
+            32210
+          ],
+          [
+            36542,
+            37569
+          ],
+          [
+            37569,
+            57264
+          ],
+          [
+            54447,
+            57264
+          ],
+          [
+            21678,
+            57226
+          ],
+          [
+            54447,
+            57226
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 4397,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1378,
+            "y": -4501
+          },
+          {
+            "id": 8948,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1370,
+            "y": -4501
+          },
+          {
+            "id": 21678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 903,
+            "y": -3707
+          },
+          {
+            "id": 27659,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1752,
+            "y": -4352
+          },
+          {
+            "id": 31875,
+            "name": "Strength",
+            "notable": false,
+            "x": -1780,
+            "y": -4359
+          },
+          {
+            "id": 32210,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1275,
+            "y": -4150
+          },
+          {
+            "id": 36542,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1278,
+            "y": -4150
+          },
+          {
+            "id": 37569,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -906,
+            "y": -3707
+          },
+          {
+            "id": 54447,
+            "name": "WITCH",
+            "notable": false,
+            "x": -4,
+            "y": -3180
+          },
+          {
+            "id": 57226,
+            "name": "Energy Shield and Mana",
+            "notable": false,
+            "x": 163,
+            "y": -3470
+          },
+          {
+            "id": 57264,
+            "name": "Spell Damage and Mana",
+            "notable": false,
+            "x": -172,
+            "y": -3470
+          }
+        ],
+        "notables": [],
+        "start": 54447,
+        "jewels": []
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Driftwood Wand",
+          "mods": [
+            "30% increased Spell Damage"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Hubris Circlet",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Vaal Regalia",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Sorcerer Gloves",
+          "mods": [
+            "+12% to Fire Resistance"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Boots",
+          "base": "Sorcerer Boots",
+          "mods": [
+            "+25 to maximum Life",
+            "15% increased Movement Speed"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+12% to Lightning Resistance"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+12% to Cold Resistance"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Twig Spirit Shield",
+          "mods": [
+            "+25 to maximum Life"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Rolling Magma",
+              "level": 5
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 2
+            },
+            {
+              "name": "Arcane Surge",
+              "level": 5
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 1
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Clarity",
+              "level": 1
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Medium Life Flask",
+          "note": "Small until level 3."
+        },
+        {
+          "slot": "mana",
+          "name": "Small Mana Flask",
+          "note": "Spells are expensive early."
+        },
+        {
+          "slot": "utility",
+          "name": "Quicksilver Flask",
+          "note": "Act 2 quest reward."
+        }
+      ],
+      "repair": {
+        "added": [],
+        "removed": [],
+        "evals": 1,
+        "nodeDelta": 0,
+        "status": "within-bound"
+      }
+    },
+    "until-28": {
+      "pass": true,
+      "level": 28,
+      "budget": "early (4-link)",
+      "gateProfile": "dad",
+      "thresholds": {
+        "resists": false,
+        "life": 600,
+        "dps": 75
+      },
+      "metrics": {
+        "dps": 512,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 996,
+        "energyShield": 569,
+        "ehp": 1529,
+        "maxHit": 1565,
+        "resists": [
+          -15,
+          -15,
+          -15
+        ],
+        "chaosResist": -25,
+        "nodes": 29,
+        "sockets": 0,
+        "ascendancy": 1
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            4184,
+            34661
+          ],
+          [
+            4184,
+            11420
+          ],
+          [
+            4397,
+            36542
+          ],
+          [
+            4397,
+            11420
+          ],
+          [
+            4397,
+            7938
+          ],
+          [
+            1031,
+            7938
+          ],
+          [
+            7938,
+            34157
+          ],
+          [
+            8948,
+            27659
+          ],
+          [
+            11420,
+            48362
+          ],
+          [
+            7938,
+            14021
+          ],
+          [
+            21678,
+            32210
+          ],
+          [
+            27659,
+            37671
+          ],
+          [
+            4184,
+            30225
+          ],
+          [
+            4397,
+            31875
+          ],
+          [
+            31875,
+            60398
+          ],
+          [
+            8948,
+            32210
+          ],
+          [
+            1031,
+            33755
+          ],
+          [
+            36542,
+            37569
+          ],
+          [
+            37569,
+            57264
+          ],
+          [
+            4184,
+            44955
+          ],
+          [
+            37671,
+            48778
+          ],
+          [
+            54447,
+            57264
+          ],
+          [
+            34157,
+            54657
+          ],
+          [
+            21678,
+            57226
+          ],
+          [
+            54447,
+            57226
+          ],
+          [
+            1031,
+            60388
+          ],
+          [
+            39648,
+            60398
+          ],
+          [
+            46340,
+            60398
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1031,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1072,
+            "y": -6041
+          },
+          {
+            "id": 4184,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -1073,
+            "y": -5026
+          },
+          {
+            "id": 4397,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1378,
+            "y": -4501
+          },
+          {
+            "id": 7938,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1830,
+            "y": -6039
+          },
+          {
+            "id": 8948,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1370,
+            "y": -4501
+          },
+          {
+            "id": 11420,
+            "name": "Arcanist's Dominion",
+            "notable": true,
+            "x": -850,
+            "y": -4501
+          },
+          {
+            "id": 14021,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2563,
+            "y": -6462
+          },
+          {
+            "id": 21678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 903,
+            "y": -3707
+          },
+          {
+            "id": 27659,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1752,
+            "y": -4352
+          },
+          {
+            "id": 30225,
+            "name": "Lightning Walker",
+            "notable": true,
+            "x": -1073,
+            "y": -5361
+          },
+          {
+            "id": 31875,
+            "name": "Strength",
+            "notable": false,
+            "x": -1780,
+            "y": -4359
+          },
+          {
+            "id": 32210,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1275,
+            "y": -4150
+          },
+          {
+            "id": 33755,
+            "name": "Life",
+            "notable": false,
+            "x": -1352,
+            "y": -6605
+          },
+          {
+            "id": 34157,
+            "name": "Cast Speed",
+            "notable": false,
+            "x": -1718,
+            "y": -6202
+          },
+          {
+            "id": 34661,
+            "name": "Fire Walker",
+            "notable": true,
+            "x": -1408,
+            "y": -5361
+          },
+          {
+            "id": 36542,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1278,
+            "y": -4150
+          },
+          {
+            "id": 37569,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -906,
+            "y": -3707
+          },
+          {
+            "id": 37671,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2406,
+            "y": -4102
+          },
+          {
+            "id": 39648,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2548,
+            "y": -3873
+          },
+          {
+            "id": 44955,
+            "name": "Frost Walker",
+            "notable": true,
+            "x": -738,
+            "y": -5361
+          },
+          {
+            "id": 46340,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2957,
+            "y": -5002
+          },
+          {
+            "id": 48362,
+            "name": "Mana and Life",
+            "notable": false,
+            "x": -144,
+            "y": -4582
+          },
+          {
+            "id": 48778,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2155,
+            "y": -3670
+          },
+          {
+            "id": 54447,
+            "name": "WITCH",
+            "notable": false,
+            "x": -4,
+            "y": -3180
+          },
+          {
+            "id": 54657,
+            "name": "Cast Speed",
+            "notable": false,
+            "x": -1497,
+            "y": -6262
+          },
+          {
+            "id": 57226,
+            "name": "Energy Shield and Mana",
+            "notable": false,
+            "x": 163,
+            "y": -3470
+          },
+          {
+            "id": 57264,
+            "name": "Spell Damage and Mana",
+            "notable": false,
+            "x": -172,
+            "y": -3470
+          },
+          {
+            "id": 60388,
+            "name": "Mana",
+            "notable": false,
+            "x": -812,
+            "y": -6605
+          },
+          {
+            "id": 60398,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2452,
+            "y": -4127
+          }
+        ],
+        "notables": [
+          "Arcanist's Dominion",
+          "Lightning Walker",
+          "Fire Walker",
+          "Frost Walker"
+        ],
+        "start": 54447,
+        "jewels": []
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Driftwood Wand",
+          "mods": [
+            "50% increased Spell Damage",
+            "9% increased Cast Speed"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Hubris Circlet",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Fire Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Vaal Regalia",
+          "mods": [
+            "+60 to maximum Life",
+            "25% increased Energy Shield"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Sorcerer Gloves",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Boots",
+          "base": "Sorcerer Boots",
+          "mods": [
+            "+60 to maximum Life",
+            "20% increased Movement Speed"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Lightning Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+30% to Cold Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Yew Spirit Shield",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Arc",
+              "level": 5
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 6
+            },
+            {
+              "name": "Faster Casting",
+              "level": 3
+            },
+            {
+              "name": "Elemental Focus",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 5
+            },
+            {
+              "name": "Arcane Surge",
+              "level": 9
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Clarity",
+              "level": 5
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Giant Life Flask",
+          "note": "Drops from level 24."
+        },
+        {
+          "slot": "mana",
+          "name": "Greater Mana Flask",
+          "note": "Drops from level 12."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance."
+        }
+      ],
+      "repair": {
+        "added": [],
+        "removed": [],
+        "evals": 1,
+        "nodeDelta": 0,
+        "status": "within-bound"
+      }
+    },
+    "until-68": {
+      "pass": true,
+      "level": 68,
+      "budget": "ssf-start (5-link)",
+      "gateProfile": "dad",
+      "thresholds": {
+        "life": 1800,
+        "maxHit": 1800,
+        "dps": 4000
+      },
+      "metrics": {
+        "dps": 44710,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 2176,
+        "energyShield": 845,
+        "ehp": 7623,
+        "maxHit": 3624,
+        "resists": [
+          75,
+          75,
+          75
+        ],
+        "chaosResist": 15,
+        "nodes": 77,
+        "sockets": 2,
+        "ascendancy": 7
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            1031,
+            19635
+          ],
+          [
+            3656,
+            58244
+          ],
+          [
+            4184,
+            34661
+          ],
+          [
+            4184,
+            11420
+          ],
+          [
+            4397,
+            36542
+          ],
+          [
+            4397,
+            11420
+          ],
+          [
+            4397,
+            7938
+          ],
+          [
+            5875,
+            9788
+          ],
+          [
+            6764,
+            40366
+          ],
+          [
+            7388,
+            60398
+          ],
+          [
+            7388,
+            36634
+          ],
+          [
+            1031,
+            7938
+          ],
+          [
+            7938,
+            34157
+          ],
+          [
+            8948,
+            27659
+          ],
+          [
+            10490,
+            47251
+          ],
+          [
+            10575,
+            29199
+          ],
+          [
+            11420,
+            48362
+          ],
+          [
+            5875,
+            12189
+          ],
+          [
+            12189,
+            37671
+          ],
+          [
+            12379,
+            44183
+          ],
+          [
+            12379,
+            14021
+          ],
+          [
+            13009,
+            60398
+          ],
+          [
+            7938,
+            14021
+          ],
+          [
+            13009,
+            17735
+          ],
+          [
+            17735,
+            58402
+          ],
+          [
+            17821,
+            39648
+          ],
+          [
+            18033,
+            46092
+          ],
+          [
+            3656,
+            20546
+          ],
+          [
+            10575,
+            21262
+          ],
+          [
+            20546,
+            21301
+          ],
+          [
+            17821,
+            21330
+          ],
+          [
+            21678,
+            32210
+          ],
+          [
+            24362,
+            60388
+          ],
+          [
+            6764,
+            24824
+          ],
+          [
+            27415,
+            57457
+          ],
+          [
+            19635,
+            27611
+          ],
+          [
+            27659,
+            37671
+          ],
+          [
+            4184,
+            30225
+          ],
+          [
+            30370,
+            51804
+          ],
+          [
+            31619,
+            57457
+          ],
+          [
+            4397,
+            31875
+          ],
+          [
+            31875,
+            60398
+          ],
+          [
+            8948,
+            32210
+          ],
+          [
+            10490,
+            33479
+          ],
+          [
+            18033,
+            33545
+          ],
+          [
+            1031,
+            33755
+          ],
+          [
+            21958,
+            33755
+          ],
+          [
+            36542,
+            37569
+          ],
+          [
+            37569,
+            57264
+          ],
+          [
+            21301,
+            37671
+          ],
+          [
+            27415,
+            37671
+          ],
+          [
+            31619,
+            39743
+          ],
+          [
+            7555,
+            44183
+          ],
+          [
+            4184,
+            44955
+          ],
+          [
+            46092,
+            51923
+          ],
+          [
+            30370,
+            46340
+          ],
+          [
+            7388,
+            47251
+          ],
+          [
+            27203,
+            48362
+          ],
+          [
+            37671,
+            48778
+          ],
+          [
+            41263,
+            48778
+          ],
+          [
+            51804,
+            52742
+          ],
+          [
+            48778,
+            51923
+          ],
+          [
+            19635,
+            53279
+          ],
+          [
+            54447,
+            57264
+          ],
+          [
+            34157,
+            54657
+          ],
+          [
+            9432,
+            54657
+          ],
+          [
+            21678,
+            57226
+          ],
+          [
+            54447,
+            57226
+          ],
+          [
+            10575,
+            58402
+          ],
+          [
+            6764,
+            58402
+          ],
+          [
+            40776,
+            58402
+          ],
+          [
+            1031,
+            60388
+          ],
+          [
+            39648,
+            60398
+          ],
+          [
+            46340,
+            60398
+          ],
+          [
+            53279,
+            61419
+          ],
+          [
+            33479,
+            63976
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1031,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1072,
+            "y": -6041
+          },
+          {
+            "id": 3656,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 5914,
+            "y": -3362
+          },
+          {
+            "id": 4184,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -1073,
+            "y": -5026
+          },
+          {
+            "id": 4397,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1378,
+            "y": -4501
+          },
+          {
+            "id": 5875,
+            "name": "Cast Speed and Spell Critical Strike Chance",
+            "notable": false,
+            "x": 2244,
+            "y": -4377
+          },
+          {
+            "id": 6764,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5255,
+            "y": -4615
+          },
+          {
+            "id": 7388,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2202,
+            "y": -3694
+          },
+          {
+            "id": 7555,
+            "name": "Crackling Speed",
+            "notable": true,
+            "x": -2202,
+            "y": -6837
+          },
+          {
+            "id": 7938,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1830,
+            "y": -6039
+          },
+          {
+            "id": 8948,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1370,
+            "y": -4501
+          },
+          {
+            "id": 9432,
+            "name": "Mental Rapidity",
+            "notable": true,
+            "x": -1556,
+            "y": -6483
+          },
+          {
+            "id": 9788,
+            "name": "Nimbleness",
+            "notable": true,
+            "x": 2325,
+            "y": -4680
+          },
+          {
+            "id": 10490,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1815
+          },
+          {
+            "id": 10575,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6144,
+            "y": -2950
+          },
+          {
+            "id": 11420,
+            "name": "Arcanist's Dominion",
+            "notable": true,
+            "x": -850,
+            "y": -4501
+          },
+          {
+            "id": 12189,
+            "name": "Cast Speed and Spell Critical Strike Chance",
+            "notable": false,
+            "x": 2406,
+            "y": -4377
+          },
+          {
+            "id": 12379,
+            "name": "Lightning Damage and Cast Speed",
+            "notable": false,
+            "x": -2283,
+            "y": -6535
+          },
+          {
+            "id": 13009,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -3446,
+            "y": -3777
+          },
+          {
+            "id": 14021,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2563,
+            "y": -6462
+          },
+          {
+            "id": 17735,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4436,
+            "y": -3443
+          },
+          {
+            "id": 17821,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2791,
+            "y": -3732
+          },
+          {
+            "id": 18033,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1083,
+            "y": -1322
+          },
+          {
+            "id": 19635,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4,
+            "y": -6040
+          },
+          {
+            "id": 20546,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 4301,
+            "y": -3362
+          },
+          {
+            "id": 21262,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -5536,
+            "y": -2586
+          },
+          {
+            "id": 21301,
+            "name": "Strength",
+            "notable": false,
+            "x": 3415,
+            "y": -3704
+          },
+          {
+            "id": 21330,
+            "name": "Quick Recovery",
+            "notable": true,
+            "x": -2548,
+            "y": -3592
+          },
+          {
+            "id": 21678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 903,
+            "y": -3707
+          },
+          {
+            "id": 21958,
+            "name": "Cruel Preparation",
+            "notable": true,
+            "x": -1514,
+            "y": -6767
+          },
+          {
+            "id": 24362,
+            "name": "Deep Thoughts",
+            "notable": true,
+            "x": -650,
+            "y": -6767
+          },
+          {
+            "id": 24824,
+            "name": "Minion Attack and Cast Speed",
+            "notable": false,
+            "x": -4968,
+            "y": -4226
+          },
+          {
+            "id": 27203,
+            "name": "Heart and Soul",
+            "notable": true,
+            "x": -4,
+            "y": -4663
+          },
+          {
+            "id": 27415,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2983,
+            "y": -5106
+          },
+          {
+            "id": 27611,
+            "name": "Lord of the Dead",
+            "notable": true,
+            "x": -4,
+            "y": -5347
+          },
+          {
+            "id": 27659,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1752,
+            "y": -4352
+          },
+          {
+            "id": 29199,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6144,
+            "y": -2419
+          },
+          {
+            "id": 30225,
+            "name": "Lightning Walker",
+            "notable": true,
+            "x": -1073,
+            "y": -5361
+          },
+          {
+            "id": 30370,
+            "name": "Spell Damage Over Time",
+            "notable": false,
+            "x": -2957,
+            "y": -4684
+          },
+          {
+            "id": 31619,
+            "name": "Dual Wield Spell Damage and Spell Block",
+            "notable": false,
+            "x": 3123,
+            "y": -4640
+          },
+          {
+            "id": 31875,
+            "name": "Strength",
+            "notable": false,
+            "x": -1780,
+            "y": -4359
+          },
+          {
+            "id": 32210,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1275,
+            "y": -4150
+          },
+          {
+            "id": 33479,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1322
+          },
+          {
+            "id": 33545,
+            "name": "Harrier",
+            "notable": true,
+            "x": 1363,
+            "y": -778
+          },
+          {
+            "id": 33755,
+            "name": "Life",
+            "notable": false,
+            "x": -1352,
+            "y": -6605
+          },
+          {
+            "id": 34157,
+            "name": "Cast Speed",
+            "notable": false,
+            "x": -1718,
+            "y": -6202
+          },
+          {
+            "id": 34661,
+            "name": "Fire Walker",
+            "notable": true,
+            "x": -1408,
+            "y": -5361
+          },
+          {
+            "id": 36542,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1278,
+            "y": -4150
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
+          },
+          {
+            "id": 37569,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -906,
+            "y": -3707
+          },
+          {
+            "id": 37671,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2406,
+            "y": -4102
+          },
+          {
+            "id": 39648,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2548,
+            "y": -3873
+          },
+          {
+            "id": 39743,
+            "name": "Dark Arts",
+            "notable": true,
+            "x": 3123,
+            "y": -4478
+          },
+          {
+            "id": 40366,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5016,
+            "y": -4956
+          },
+          {
+            "id": 40776,
+            "name": "Brand Damage",
+            "notable": false,
+            "x": -6154,
+            "y": -3443
+          },
+          {
+            "id": 41263,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 2317,
+            "y": -3508
+          },
+          {
+            "id": 44183,
+            "name": "Lightning Damage and Cast Speed",
+            "notable": false,
+            "x": -2121,
+            "y": -6535
+          },
+          {
+            "id": 44955,
+            "name": "Frost Walker",
+            "notable": true,
+            "x": -738,
+            "y": -5361
+          },
+          {
+            "id": 46092,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1083,
+            "y": -1815
+          },
+          {
+            "id": 46340,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2957,
+            "y": -5002
+          },
+          {
+            "id": 47251,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2062,
+            "y": -3451
+          },
+          {
+            "id": 48362,
+            "name": "Mana and Life",
+            "notable": false,
+            "x": -144,
+            "y": -4582
+          },
+          {
+            "id": 48778,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2155,
+            "y": -3670
+          },
+          {
+            "id": 51804,
+            "name": "Spell Damage Over Time",
+            "notable": false,
+            "x": -3038,
+            "y": -4382
+          },
+          {
+            "id": 51923,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2015,
+            "y": -3427
+          },
+          {
+            "id": 52742,
+            "name": "Hasty Demise",
+            "notable": true,
+            "x": -3119,
+            "y": -4684
+          },
+          {
+            "id": 53279,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 77,
+            "y": -6627
+          },
+          {
+            "id": 54447,
+            "name": "WITCH",
+            "notable": false,
+            "x": -4,
+            "y": -3180
+          },
+          {
+            "id": 54657,
+            "name": "Cast Speed",
+            "notable": false,
+            "x": -1497,
+            "y": -6262
+          },
+          {
+            "id": 57226,
+            "name": "Energy Shield and Mana",
+            "notable": false,
+            "x": 163,
+            "y": -3470
+          },
+          {
+            "id": 57264,
+            "name": "Spell Damage and Mana",
+            "notable": false,
+            "x": -172,
+            "y": -3470
+          },
+          {
+            "id": 57457,
+            "name": "Dual Wield Attack and Cast Speed",
+            "notable": false,
+            "x": 2983,
+            "y": -4721
+          },
+          {
+            "id": 58244,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 6407,
+            "y": -2869
+          },
+          {
+            "id": 58402,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5651,
+            "y": -3443
+          },
+          {
+            "id": 60388,
+            "name": "Mana",
+            "notable": false,
+            "x": -812,
+            "y": -6605
+          },
+          {
+            "id": 60398,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2452,
+            "y": -4127
+          },
+          {
+            "id": 61419,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 158,
+            "y": -6767
+          },
+          {
+            "id": 63976,
+            "name": "Shaper",
+            "notable": true,
+            "x": -1359,
+            "y": -780
+          }
+        ],
+        "notables": [
+          "Crackling Speed",
+          "Mental Rapidity",
+          "Nimbleness",
+          "Arcanist's Dominion",
+          "Quick Recovery",
+          "Cruel Preparation",
+          "Deep Thoughts",
+          "Heart and Soul",
+          "Lord of the Dead",
+          "Lightning Walker",
+          "Harrier",
+          "Fire Walker",
+          "Dark Arts",
+          "Frost Walker",
+          "Hasty Demise",
+          "Shaper"
+        ],
+        "start": 54447,
+        "jewels": [
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 1",
+            "node": 36634
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 2",
+            "node": 41263
+          }
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Opal Sceptre",
+          "mods": [
+            "65% increased Spell Damage",
+            "12% increased Cast Speed",
+            "40% increased Lightning Damage"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Chiming Spirit Shield",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Hubris Circlet",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Vaal Regalia",
+          "mods": [
+            "+80 to maximum Life",
+            "40% increased Energy Shield",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Sorcerer Gloves",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Sorcerer Boots",
+          "mods": [
+            "25% increased Movement Speed",
+            "+20% to Chaos Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+25 to Intelligence",
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 55% increased Damage",
+            "Minions have 14% increased Attack Speed"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 55% increased Damage",
+            "Minions have 14% increased Attack Speed"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Arc",
+              "level": 19
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 19
+            },
+            {
+              "name": "Lightning Penetration",
+              "level": 19
+            },
+            {
+              "name": "Controlled Destruction",
+              "level": 19
+            },
+            {
+              "name": "Elemental Focus",
+              "level": 19
+            },
+            {
+              "name": "Faster Casting",
+              "level": 19
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 19
+            },
+            {
+              "name": "Arcane Surge",
+              "level": 19
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Clarity",
+              "level": 19
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Determination",
+              "level": 19
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Hallowed Mana Flask",
+          "note": "Drops from level 42."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Armour."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance."
+        }
+      ],
+      "repair": {
+        "added": [],
+        "removed": [],
+        "evals": 1,
+        "nodeDelta": 0,
+        "status": "within-bound"
+      }
+    },
+    "maps-early": {
+      "pass": true,
+      "level": 80,
+      "budget": "ssf-start (5-link)",
+      "gateProfile": "dad",
+      "thresholds": {
+        "life": 2400,
+        "ehp": 8000,
+        "maxHit": 3500,
+        "dps": 5000
+      },
+      "metrics": {
+        "dps": 63719,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 2473,
+        "energyShield": 916,
+        "ehp": 13179,
+        "maxHit": 4023,
+        "resists": [
+          75,
+          75,
+          75
+        ],
+        "chaosResist": 15,
+        "nodes": 89,
+        "sockets": 2,
+        "ascendancy": 9
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            1031,
+            19635
+          ],
+          [
+            1767,
+            41989
+          ],
+          [
+            1767,
+            58244
+          ],
+          [
+            3656,
+            58244
+          ],
+          [
+            4184,
+            34661
+          ],
+          [
+            4184,
+            11420
+          ],
+          [
+            4397,
+            36542
+          ],
+          [
+            4397,
+            11420
+          ],
+          [
+            4397,
+            7938
+          ],
+          [
+            5875,
+            9788
+          ],
+          [
+            6764,
+            40366
+          ],
+          [
+            7388,
+            60398
+          ],
+          [
+            7388,
+            36634
+          ],
+          [
+            1031,
+            7938
+          ],
+          [
+            7938,
+            34157
+          ],
+          [
+            8948,
+            27659
+          ],
+          [
+            10490,
+            47251
+          ],
+          [
+            10575,
+            29199
+          ],
+          [
+            11420,
+            48362
+          ],
+          [
+            5875,
+            12189
+          ],
+          [
+            12189,
+            37671
+          ],
+          [
+            12379,
+            44183
+          ],
+          [
+            12379,
+            14021
+          ],
+          [
+            13009,
+            60398
+          ],
+          [
+            7938,
+            14021
+          ],
+          [
+            13009,
+            17735
+          ],
+          [
+            17735,
+            58402
+          ],
+          [
+            17821,
+            39648
+          ],
+          [
+            18033,
+            46092
+          ],
+          [
+            19679,
+            59070
+          ],
+          [
+            3656,
+            20546
+          ],
+          [
+            21262,
+            54694
+          ],
+          [
+            10575,
+            21262
+          ],
+          [
+            20546,
+            21301
+          ],
+          [
+            17821,
+            21330
+          ],
+          [
+            21678,
+            32210
+          ],
+          [
+            24362,
+            60388
+          ],
+          [
+            6764,
+            24824
+          ],
+          [
+            24824,
+            42668
+          ],
+          [
+            26740,
+            63976
+          ],
+          [
+            27415,
+            57457
+          ],
+          [
+            19635,
+            27611
+          ],
+          [
+            27659,
+            37671
+          ],
+          [
+            4184,
+            30225
+          ],
+          [
+            30370,
+            51804
+          ],
+          [
+            31619,
+            57457
+          ],
+          [
+            4397,
+            31875
+          ],
+          [
+            31875,
+            60398
+          ],
+          [
+            8948,
+            32210
+          ],
+          [
+            21262,
+            33435
+          ],
+          [
+            10490,
+            33479
+          ],
+          [
+            18033,
+            33545
+          ],
+          [
+            1031,
+            33755
+          ],
+          [
+            21958,
+            33755
+          ],
+          [
+            36542,
+            37569
+          ],
+          [
+            37569,
+            57264
+          ],
+          [
+            21301,
+            37671
+          ],
+          [
+            27415,
+            37671
+          ],
+          [
+            29199,
+            37999
+          ],
+          [
+            31619,
+            39743
+          ],
+          [
+            40366,
+            58763
+          ],
+          [
+            19679,
+            40776
+          ],
+          [
+            7555,
+            44183
+          ],
+          [
+            4184,
+            44955
+          ],
+          [
+            46092,
+            51923
+          ],
+          [
+            30370,
+            46340
+          ],
+          [
+            7388,
+            47251
+          ],
+          [
+            27203,
+            48362
+          ],
+          [
+            37671,
+            48778
+          ],
+          [
+            41263,
+            48778
+          ],
+          [
+            51804,
+            52742
+          ],
+          [
+            48778,
+            51923
+          ],
+          [
+            7112,
+            53213
+          ],
+          [
+            19635,
+            53279
+          ],
+          [
+            54447,
+            57264
+          ],
+          [
+            34157,
+            54657
+          ],
+          [
+            9432,
+            54657
+          ],
+          [
+            21678,
+            57226
+          ],
+          [
+            54447,
+            57226
+          ],
+          [
+            7112,
+            58244
+          ],
+          [
+            10575,
+            58402
+          ],
+          [
+            6764,
+            58402
+          ],
+          [
+            40776,
+            58402
+          ],
+          [
+            1031,
+            60388
+          ],
+          [
+            39648,
+            60398
+          ],
+          [
+            46340,
+            60398
+          ],
+          [
+            53279,
+            61419
+          ],
+          [
+            33479,
+            63976
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1031,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1072,
+            "y": -6041
+          },
+          {
+            "id": 1767,
+            "name": "Life and Energy Shield on Kill",
+            "notable": false,
+            "x": 6264,
+            "y": -2583
+          },
+          {
+            "id": 3656,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 5914,
+            "y": -3362
+          },
+          {
+            "id": 4184,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -1073,
+            "y": -5026
+          },
+          {
+            "id": 4397,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1378,
+            "y": -4501
+          },
+          {
+            "id": 5875,
+            "name": "Cast Speed and Spell Critical Strike Chance",
+            "notable": false,
+            "x": 2244,
+            "y": -4377
+          },
+          {
+            "id": 6764,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5255,
+            "y": -4615
+          },
+          {
+            "id": 7112,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -2223
+          },
+          {
+            "id": 7388,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2202,
+            "y": -3694
+          },
+          {
+            "id": 7555,
+            "name": "Crackling Speed",
+            "notable": true,
+            "x": -2202,
+            "y": -6837
+          },
+          {
+            "id": 7938,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1830,
+            "y": -6039
+          },
+          {
+            "id": 8948,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1370,
+            "y": -4501
+          },
+          {
+            "id": 9432,
+            "name": "Mental Rapidity",
+            "notable": true,
+            "x": -1556,
+            "y": -6483
+          },
+          {
+            "id": 9788,
+            "name": "Nimbleness",
+            "notable": true,
+            "x": 2325,
+            "y": -4680
+          },
+          {
+            "id": 10490,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1815
+          },
+          {
+            "id": 10575,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6144,
+            "y": -2950
+          },
+          {
+            "id": 11420,
+            "name": "Arcanist's Dominion",
+            "notable": true,
+            "x": -850,
+            "y": -4501
+          },
+          {
+            "id": 12189,
+            "name": "Cast Speed and Spell Critical Strike Chance",
+            "notable": false,
+            "x": 2406,
+            "y": -4377
+          },
+          {
+            "id": 12379,
+            "name": "Lightning Damage and Cast Speed",
+            "notable": false,
+            "x": -2283,
+            "y": -6535
+          },
+          {
+            "id": 13009,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -3446,
+            "y": -3777
+          },
+          {
+            "id": 14021,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2563,
+            "y": -6462
+          },
+          {
+            "id": 17735,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4436,
+            "y": -3443
+          },
+          {
+            "id": 17821,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2791,
+            "y": -3732
+          },
+          {
+            "id": 18033,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1083,
+            "y": -1322
+          },
+          {
+            "id": 19635,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4,
+            "y": -6040
+          },
+          {
+            "id": 19679,
+            "name": "Brand Range and Brand Recall Cooldown Recovery",
+            "notable": false,
+            "x": -6073,
+            "y": -3583
+          },
+          {
+            "id": 20546,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 4301,
+            "y": -3362
+          },
+          {
+            "id": 21262,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -5536,
+            "y": -2586
+          },
+          {
+            "id": 21301,
+            "name": "Strength",
+            "notable": false,
+            "x": 3415,
+            "y": -3704
+          },
+          {
+            "id": 21330,
+            "name": "Quick Recovery",
+            "notable": true,
+            "x": -2548,
+            "y": -3592
+          },
+          {
+            "id": 21678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 903,
+            "y": -3707
+          },
+          {
+            "id": 21958,
+            "name": "Cruel Preparation",
+            "notable": true,
+            "x": -1514,
+            "y": -6767
+          },
+          {
+            "id": 24362,
+            "name": "Deep Thoughts",
+            "notable": true,
+            "x": -650,
+            "y": -6767
+          },
+          {
+            "id": 24824,
+            "name": "Minion Attack and Cast Speed",
+            "notable": false,
+            "x": -4968,
+            "y": -4226
+          },
+          {
+            "id": 26740,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -932,
+            "y": -437
+          },
+          {
+            "id": 27203,
+            "name": "Heart and Soul",
+            "notable": true,
+            "x": -4,
+            "y": -4663
+          },
+          {
+            "id": 27415,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2983,
+            "y": -5106
+          },
+          {
+            "id": 27611,
+            "name": "Lord of the Dead",
+            "notable": true,
+            "x": -4,
+            "y": -5347
+          },
+          {
+            "id": 27659,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1752,
+            "y": -4352
+          },
+          {
+            "id": 29199,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6144,
+            "y": -2419
+          },
+          {
+            "id": 30225,
+            "name": "Lightning Walker",
+            "notable": true,
+            "x": -1073,
+            "y": -5361
+          },
+          {
+            "id": 30370,
+            "name": "Spell Damage Over Time",
+            "notable": false,
+            "x": -2957,
+            "y": -4684
+          },
+          {
+            "id": 31619,
+            "name": "Dual Wield Spell Damage and Spell Block",
+            "notable": false,
+            "x": 3123,
+            "y": -4640
+          },
+          {
+            "id": 31875,
+            "name": "Strength",
+            "notable": false,
+            "x": -1780,
+            "y": -4359
+          },
+          {
+            "id": 32210,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1275,
+            "y": -4150
+          },
+          {
+            "id": 33435,
+            "name": "Holy Dominion",
+            "notable": true,
+            "x": -5245,
+            "y": -2419
+          },
+          {
+            "id": 33479,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1322
+          },
+          {
+            "id": 33545,
+            "name": "Harrier",
+            "notable": true,
+            "x": 1363,
+            "y": -778
+          },
+          {
+            "id": 33755,
+            "name": "Life",
+            "notable": false,
+            "x": -1352,
+            "y": -6605
+          },
+          {
+            "id": 34157,
+            "name": "Cast Speed",
+            "notable": false,
+            "x": -1718,
+            "y": -6202
+          },
+          {
+            "id": 34661,
+            "name": "Fire Walker",
+            "notable": true,
+            "x": -1408,
+            "y": -5361
+          },
+          {
+            "id": 36542,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1278,
+            "y": -4150
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
+          },
+          {
+            "id": 37569,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -906,
+            "y": -3707
+          },
+          {
+            "id": 37671,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2406,
+            "y": -4102
+          },
+          {
+            "id": 37999,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6567,
+            "y": -2419
+          },
+          {
+            "id": 39648,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2548,
+            "y": -3873
+          },
+          {
+            "id": 39743,
+            "name": "Dark Arts",
+            "notable": true,
+            "x": 3123,
+            "y": -4478
+          },
+          {
+            "id": 40366,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5016,
+            "y": -4956
+          },
+          {
+            "id": 40776,
+            "name": "Brand Damage",
+            "notable": false,
+            "x": -6154,
+            "y": -3443
+          },
+          {
+            "id": 41263,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 2317,
+            "y": -3508
+          },
+          {
+            "id": 41989,
+            "name": "Resourcefulness",
+            "notable": true,
+            "x": 6072,
+            "y": -2223
+          },
+          {
+            "id": 42668,
+            "name": "Minion Attack and Cast Speed",
+            "notable": false,
+            "x": -4725,
+            "y": -4086
+          },
+          {
+            "id": 44183,
+            "name": "Lightning Damage and Cast Speed",
+            "notable": false,
+            "x": -2121,
+            "y": -6535
+          },
+          {
+            "id": 44955,
+            "name": "Frost Walker",
+            "notable": true,
+            "x": -738,
+            "y": -5361
+          },
+          {
+            "id": 46092,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1083,
+            "y": -1815
+          },
+          {
+            "id": 46340,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2957,
+            "y": -5002
+          },
+          {
+            "id": 47251,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2062,
+            "y": -3451
+          },
+          {
+            "id": 48362,
+            "name": "Mana and Life",
+            "notable": false,
+            "x": -144,
+            "y": -4582
+          },
+          {
+            "id": 48778,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2155,
+            "y": -3670
+          },
+          {
+            "id": 51804,
+            "name": "Spell Damage Over Time",
+            "notable": false,
+            "x": -3038,
+            "y": -4382
+          },
+          {
+            "id": 51923,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2015,
+            "y": -3427
+          },
+          {
+            "id": 52742,
+            "name": "Hasty Demise",
+            "notable": true,
+            "x": -3119,
+            "y": -4684
+          },
+          {
+            "id": 53213,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6590,
+            "y": -2223
+          },
+          {
+            "id": 53279,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 77,
+            "y": -6627
+          },
+          {
+            "id": 54447,
+            "name": "WITCH",
+            "notable": false,
+            "x": -4,
+            "y": -3180
+          },
+          {
+            "id": 54657,
+            "name": "Cast Speed",
+            "notable": false,
+            "x": -1497,
+            "y": -6262
+          },
+          {
+            "id": 54694,
+            "name": "Light of Divinity",
+            "notable": true,
+            "x": -5245,
+            "y": -2754
+          },
+          {
+            "id": 57226,
+            "name": "Energy Shield and Mana",
+            "notable": false,
+            "x": 163,
+            "y": -3470
+          },
+          {
+            "id": 57264,
+            "name": "Spell Damage and Mana",
+            "notable": false,
+            "x": -172,
+            "y": -3470
+          },
+          {
+            "id": 57457,
+            "name": "Dual Wield Attack and Cast Speed",
+            "notable": false,
+            "x": 2983,
+            "y": -4721
+          },
+          {
+            "id": 58244,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 6407,
+            "y": -2869
+          },
+          {
+            "id": 58402,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5651,
+            "y": -3443
+          },
+          {
+            "id": 58763,
+            "name": "Cold and Lightning Damage",
+            "notable": false,
+            "x": -4436,
+            "y": -4956
+          },
+          {
+            "id": 59070,
+            "name": "Brand Range and Brand Recall Cooldown Recovery",
+            "notable": false,
+            "x": -6154,
+            "y": -3724
+          },
+          {
+            "id": 60388,
+            "name": "Mana",
+            "notable": false,
+            "x": -812,
+            "y": -6605
+          },
+          {
+            "id": 60398,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2452,
+            "y": -4127
+          },
+          {
+            "id": 61419,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 158,
+            "y": -6767
+          },
+          {
+            "id": 63976,
+            "name": "Shaper",
+            "notable": true,
+            "x": -1359,
+            "y": -780
+          }
+        ],
+        "notables": [
+          "Crackling Speed",
+          "Mental Rapidity",
+          "Nimbleness",
+          "Arcanist's Dominion",
+          "Quick Recovery",
+          "Cruel Preparation",
+          "Deep Thoughts",
+          "Heart and Soul",
+          "Lord of the Dead",
+          "Lightning Walker",
+          "Holy Dominion",
+          "Harrier",
+          "Fire Walker",
+          "Dark Arts",
+          "Resourcefulness",
+          "Frost Walker",
+          "Hasty Demise",
+          "Light of Divinity",
+          "Shaper"
+        ],
+        "start": 54447,
+        "jewels": [
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 1",
+            "node": 36634
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 2",
+            "node": 41263
+          }
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Opal Sceptre",
+          "mods": [
+            "65% increased Spell Damage",
+            "12% increased Cast Speed",
+            "40% increased Lightning Damage"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Chiming Spirit Shield",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Hubris Circlet",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Vaal Regalia",
+          "mods": [
+            "+80 to maximum Life",
+            "40% increased Energy Shield",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Sorcerer Gloves",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Sorcerer Boots",
+          "mods": [
+            "25% increased Movement Speed",
+            "+20% to Chaos Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+25 to Intelligence",
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 55% increased Damage",
+            "Minions have 14% increased Attack Speed"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 55% increased Damage",
+            "Minions have 14% increased Attack Speed"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Arc",
+              "level": 20
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 20
+            },
+            {
+              "name": "Lightning Penetration",
+              "level": 20
+            },
+            {
+              "name": "Controlled Destruction",
+              "level": 20
+            },
+            {
+              "name": "Elemental Focus",
+              "level": 20
+            },
+            {
+              "name": "Faster Casting",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 20
+            },
+            {
+              "name": "Arcane Surge",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Clarity",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Determination",
+              "level": 20
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Eternal Mana Flask",
+          "note": "Drops from level 65."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Armour."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance."
+        }
+      ],
+      "repair": {
+        "added": [],
+        "removed": [],
+        "evals": 1,
+        "nodeDelta": 0,
+        "status": "within-bound"
+      }
+    },
+    "maps-red": {
+      "pass": true,
+      "level": 90,
+      "budget": "ssf-week1 (6-link)",
+      "gateProfile": "dad",
+      "thresholds": {
+        "life": 3500,
+        "ehp": 9000,
+        "maxHit": 4500,
+        "dps": 6000
+      },
+      "metrics": {
+        "dps": 66306,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 4061,
+        "energyShield": 998,
+        "ehp": 18364,
+        "maxHit": 5724,
+        "resists": [
+          75,
+          75,
+          75
+        ],
+        "chaosResist": 15,
+        "nodes": 104,
+        "sockets": 6,
+        "ascendancy": 9
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            1031,
+            19635
+          ],
+          [
+            1767,
+            41989
+          ],
+          [
+            1767,
+            58244
+          ],
+          [
+            3656,
+            58244
+          ],
+          [
+            4184,
+            34661
+          ],
+          [
+            4184,
+            11420
+          ],
+          [
+            4397,
+            36542
+          ],
+          [
+            4397,
+            11420
+          ],
+          [
+            4397,
+            7938
+          ],
+          [
+            5875,
+            9788
+          ],
+          [
+            6764,
+            40366
+          ],
+          [
+            7112,
+            13885
+          ],
+          [
+            7388,
+            60398
+          ],
+          [
+            7388,
+            36634
+          ],
+          [
+            1031,
+            7938
+          ],
+          [
+            7938,
+            34157
+          ],
+          [
+            8948,
+            27659
+          ],
+          [
+            10031,
+            15064
+          ],
+          [
+            10490,
+            47251
+          ],
+          [
+            10575,
+            29199
+          ],
+          [
+            11420,
+            48362
+          ],
+          [
+            5875,
+            12189
+          ],
+          [
+            12189,
+            37671
+          ],
+          [
+            12379,
+            44183
+          ],
+          [
+            12379,
+            14021
+          ],
+          [
+            13009,
+            60398
+          ],
+          [
+            13885,
+            28012
+          ],
+          [
+            13885,
+            40362
+          ],
+          [
+            7938,
+            14021
+          ],
+          [
+            13009,
+            17735
+          ],
+          [
+            17735,
+            58402
+          ],
+          [
+            17821,
+            39648
+          ],
+          [
+            18033,
+            46092
+          ],
+          [
+            19679,
+            59070
+          ],
+          [
+            3656,
+            20546
+          ],
+          [
+            21262,
+            54694
+          ],
+          [
+            10575,
+            21262
+          ],
+          [
+            20546,
+            21301
+          ],
+          [
+            17821,
+            21330
+          ],
+          [
+            21678,
+            32210
+          ],
+          [
+            24362,
+            60388
+          ],
+          [
+            6764,
+            24824
+          ],
+          [
+            24824,
+            42668
+          ],
+          [
+            26196,
+            37999
+          ],
+          [
+            26740,
+            63976
+          ],
+          [
+            27415,
+            57457
+          ],
+          [
+            19635,
+            27611
+          ],
+          [
+            27659,
+            37671
+          ],
+          [
+            15064,
+            29199
+          ],
+          [
+            4184,
+            30225
+          ],
+          [
+            30370,
+            51804
+          ],
+          [
+            31619,
+            57457
+          ],
+          [
+            4397,
+            31875
+          ],
+          [
+            31875,
+            60398
+          ],
+          [
+            8948,
+            32210
+          ],
+          [
+            21262,
+            33435
+          ],
+          [
+            10490,
+            33479
+          ],
+          [
+            18033,
+            33545
+          ],
+          [
+            1031,
+            33755
+          ],
+          [
+            21958,
+            33755
+          ],
+          [
+            36542,
+            37569
+          ],
+          [
+            37569,
+            57264
+          ],
+          [
+            21301,
+            37671
+          ],
+          [
+            27415,
+            37671
+          ],
+          [
+            29199,
+            37999
+          ],
+          [
+            31619,
+            39743
+          ],
+          [
+            40366,
+            58763
+          ],
+          [
+            19679,
+            40776
+          ],
+          [
+            41472,
+            44799
+          ],
+          [
+            10904,
+            42668
+          ],
+          [
+            42668,
+            43689
+          ],
+          [
+            7555,
+            44183
+          ],
+          [
+            44799,
+            54694
+          ],
+          [
+            33435,
+            44799
+          ],
+          [
+            4184,
+            44955
+          ],
+          [
+            46092,
+            51923
+          ],
+          [
+            30370,
+            46340
+          ],
+          [
+            7388,
+            47251
+          ],
+          [
+            27203,
+            48362
+          ],
+          [
+            37671,
+            48778
+          ],
+          [
+            41263,
+            48778
+          ],
+          [
+            51804,
+            52742
+          ],
+          [
+            48778,
+            51923
+          ],
+          [
+            53213,
+            61834
+          ],
+          [
+            7112,
+            53213
+          ],
+          [
+            19635,
+            53279
+          ],
+          [
+            54447,
+            57264
+          ],
+          [
+            34157,
+            54657
+          ],
+          [
+            9432,
+            54657
+          ],
+          [
+            26740,
+            55906
+          ],
+          [
+            6230,
+            55906
+          ],
+          [
+            21678,
+            57226
+          ],
+          [
+            54447,
+            57226
+          ],
+          [
+            7112,
+            58244
+          ],
+          [
+            10575,
+            58402
+          ],
+          [
+            6764,
+            58402
+          ],
+          [
+            40776,
+            58402
+          ],
+          [
+            58763,
+            63963
+          ],
+          [
+            21389,
+            59070
+          ],
+          [
+            1031,
+            60388
+          ],
+          [
+            39648,
+            60398
+          ],
+          [
+            46340,
+            60398
+          ],
+          [
+            53279,
+            61419
+          ],
+          [
+            33479,
+            63976
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1031,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1072,
+            "y": -6041
+          },
+          {
+            "id": 1767,
+            "name": "Life and Energy Shield on Kill",
+            "notable": false,
+            "x": 6264,
+            "y": -2583
+          },
+          {
+            "id": 3656,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 5914,
+            "y": -3362
+          },
+          {
+            "id": 4184,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -1073,
+            "y": -5026
+          },
+          {
+            "id": 4397,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1378,
+            "y": -4501
+          },
+          {
+            "id": 5875,
+            "name": "Cast Speed and Spell Critical Strike Chance",
+            "notable": false,
+            "x": 2244,
+            "y": -4377
+          },
+          {
+            "id": 6230,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -770,
+            "y": -437
+          },
+          {
+            "id": 6764,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5255,
+            "y": -4615
+          },
+          {
+            "id": 7112,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -2223
+          },
+          {
+            "id": 7388,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2202,
+            "y": -3694
+          },
+          {
+            "id": 7555,
+            "name": "Crackling Speed",
+            "notable": true,
+            "x": -2202,
+            "y": -6837
+          },
+          {
+            "id": 7938,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1830,
+            "y": -6039
+          },
+          {
+            "id": 8948,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1370,
+            "y": -4501
+          },
+          {
+            "id": 9432,
+            "name": "Mental Rapidity",
+            "notable": true,
+            "x": -1556,
+            "y": -6483
+          },
+          {
+            "id": 9788,
+            "name": "Nimbleness",
+            "notable": true,
+            "x": 2325,
+            "y": -4680
+          },
+          {
+            "id": 10031,
+            "name": "Life",
+            "notable": false,
+            "x": -6659,
+            "y": -1576
+          },
+          {
+            "id": 10490,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1815
+          },
+          {
+            "id": 10575,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6144,
+            "y": -2950
+          },
+          {
+            "id": 10904,
+            "name": "Minion Life",
+            "notable": false,
+            "x": -4517,
+            "y": -4087
+          },
+          {
+            "id": 11420,
+            "name": "Arcanist's Dominion",
+            "notable": true,
+            "x": -850,
+            "y": -4501
+          },
+          {
+            "id": 12189,
+            "name": "Cast Speed and Spell Critical Strike Chance",
+            "notable": false,
+            "x": 2406,
+            "y": -4377
+          },
+          {
+            "id": 12379,
+            "name": "Lightning Damage and Cast Speed",
+            "notable": false,
+            "x": -2283,
+            "y": -6535
+          },
+          {
+            "id": 13009,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -3446,
+            "y": -3777
+          },
+          {
+            "id": 13885,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -1604
+          },
+          {
+            "id": 14021,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2563,
+            "y": -6462
+          },
+          {
+            "id": 15064,
+            "name": "Strength",
+            "notable": false,
+            "x": -6152,
+            "y": -1898
+          },
+          {
+            "id": 17735,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4436,
+            "y": -3443
+          },
+          {
+            "id": 17821,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2791,
+            "y": -3732
+          },
+          {
+            "id": 18033,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1083,
+            "y": -1322
+          },
+          {
+            "id": 19635,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4,
+            "y": -6040
+          },
+          {
+            "id": 19679,
+            "name": "Brand Range and Brand Recall Cooldown Recovery",
+            "notable": false,
+            "x": -6073,
+            "y": -3583
+          },
+          {
+            "id": 20546,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 4301,
+            "y": -3362
+          },
+          {
+            "id": 21262,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -5536,
+            "y": -2586
+          },
+          {
+            "id": 21301,
+            "name": "Strength",
+            "notable": false,
+            "x": 3415,
+            "y": -3704
+          },
+          {
+            "id": 21330,
+            "name": "Quick Recovery",
+            "notable": true,
+            "x": -2548,
+            "y": -3592
+          },
+          {
+            "id": 21389,
+            "name": "Runesmith",
+            "notable": true,
+            "x": -6316,
+            "y": -3724
+          },
+          {
+            "id": 21678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 903,
+            "y": -3707
+          },
+          {
+            "id": 21958,
+            "name": "Cruel Preparation",
+            "notable": true,
+            "x": -1514,
+            "y": -6767
+          },
+          {
+            "id": 24362,
+            "name": "Deep Thoughts",
+            "notable": true,
+            "x": -650,
+            "y": -6767
+          },
+          {
+            "id": 24824,
+            "name": "Minion Attack and Cast Speed",
+            "notable": false,
+            "x": -4968,
+            "y": -4226
+          },
+          {
+            "id": 26196,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -6902,
+            "y": -2419
+          },
+          {
+            "id": 26740,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -932,
+            "y": -437
+          },
+          {
+            "id": 27203,
+            "name": "Heart and Soul",
+            "notable": true,
+            "x": -4,
+            "y": -4663
+          },
+          {
+            "id": 27415,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2983,
+            "y": -5106
+          },
+          {
+            "id": 27611,
+            "name": "Lord of the Dead",
+            "notable": true,
+            "x": -4,
+            "y": -5347
+          },
+          {
+            "id": 27659,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1752,
+            "y": -4352
+          },
+          {
+            "id": 28012,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5914,
+            "y": -1111
+          },
+          {
+            "id": 29199,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6144,
+            "y": -2419
+          },
+          {
+            "id": 30225,
+            "name": "Lightning Walker",
+            "notable": true,
+            "x": -1073,
+            "y": -5361
+          },
+          {
+            "id": 30370,
+            "name": "Spell Damage Over Time",
+            "notable": false,
+            "x": -2957,
+            "y": -4684
+          },
+          {
+            "id": 31619,
+            "name": "Dual Wield Spell Damage and Spell Block",
+            "notable": false,
+            "x": 3123,
+            "y": -4640
+          },
+          {
+            "id": 31875,
+            "name": "Strength",
+            "notable": false,
+            "x": -1780,
+            "y": -4359
+          },
+          {
+            "id": 32210,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1275,
+            "y": -4150
+          },
+          {
+            "id": 33435,
+            "name": "Holy Dominion",
+            "notable": true,
+            "x": -5245,
+            "y": -2419
+          },
+          {
+            "id": 33479,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1322
+          },
+          {
+            "id": 33545,
+            "name": "Harrier",
+            "notable": true,
+            "x": 1363,
+            "y": -778
+          },
+          {
+            "id": 33755,
+            "name": "Life",
+            "notable": false,
+            "x": -1352,
+            "y": -6605
+          },
+          {
+            "id": 34157,
+            "name": "Cast Speed",
+            "notable": false,
+            "x": -1718,
+            "y": -6202
+          },
+          {
+            "id": 34661,
+            "name": "Fire Walker",
+            "notable": true,
+            "x": -1408,
+            "y": -5361
+          },
+          {
+            "id": 36542,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1278,
+            "y": -4150
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
+          },
+          {
+            "id": 37569,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -906,
+            "y": -3707
+          },
+          {
+            "id": 37671,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2406,
+            "y": -4102
+          },
+          {
+            "id": 37999,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6567,
+            "y": -2419
+          },
+          {
+            "id": 39648,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2548,
+            "y": -3873
+          },
+          {
+            "id": 39743,
+            "name": "Dark Arts",
+            "notable": true,
+            "x": 3123,
+            "y": -4478
+          },
+          {
+            "id": 40362,
+            "name": "Life",
+            "notable": false,
+            "x": 6785,
+            "y": -1604
+          },
+          {
+            "id": 40366,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5016,
+            "y": -4956
+          },
+          {
+            "id": 40776,
+            "name": "Brand Damage",
+            "notable": false,
+            "x": -6154,
+            "y": -3443
+          },
+          {
+            "id": 41263,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 2317,
+            "y": -3508
+          },
+          {
+            "id": 41472,
+            "name": "Discipline and Training",
+            "notable": true,
+            "x": -4771,
+            "y": -2419
+          },
+          {
+            "id": 41989,
+            "name": "Resourcefulness",
+            "notable": true,
+            "x": 6072,
+            "y": -2223
+          },
+          {
+            "id": 42668,
+            "name": "Minion Attack and Cast Speed",
+            "notable": false,
+            "x": -4725,
+            "y": -4086
+          },
+          {
+            "id": 43689,
+            "name": "Spiritual Command",
+            "notable": true,
+            "x": -4806,
+            "y": -3945
+          },
+          {
+            "id": 44183,
+            "name": "Lightning Damage and Cast Speed",
+            "notable": false,
+            "x": -2121,
+            "y": -6535
+          },
+          {
+            "id": 44799,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -4955,
+            "y": -2586
+          },
+          {
+            "id": 44955,
+            "name": "Frost Walker",
+            "notable": true,
+            "x": -738,
+            "y": -5361
+          },
+          {
+            "id": 46092,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1083,
+            "y": -1815
+          },
+          {
+            "id": 46340,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2957,
+            "y": -5002
+          },
+          {
+            "id": 47251,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2062,
+            "y": -3451
+          },
+          {
+            "id": 48362,
+            "name": "Mana and Life",
+            "notable": false,
+            "x": -144,
+            "y": -4582
+          },
+          {
+            "id": 48778,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2155,
+            "y": -3670
+          },
+          {
+            "id": 51804,
+            "name": "Spell Damage Over Time",
+            "notable": false,
+            "x": -3038,
+            "y": -4382
+          },
+          {
+            "id": 51923,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2015,
+            "y": -3427
+          },
+          {
+            "id": 52742,
+            "name": "Hasty Demise",
+            "notable": true,
+            "x": -3119,
+            "y": -4684
+          },
+          {
+            "id": 53213,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6590,
+            "y": -2223
+          },
+          {
+            "id": 53279,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 77,
+            "y": -6627
+          },
+          {
+            "id": 54447,
+            "name": "WITCH",
+            "notable": false,
+            "x": -4,
+            "y": -3180
+          },
+          {
+            "id": 54657,
+            "name": "Cast Speed",
+            "notable": false,
+            "x": -1497,
+            "y": -6262
+          },
+          {
+            "id": 54694,
+            "name": "Light of Divinity",
+            "notable": true,
+            "x": -5245,
+            "y": -2754
+          },
+          {
+            "id": 55906,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -851,
+            "y": -297
+          },
+          {
+            "id": 57226,
+            "name": "Energy Shield and Mana",
+            "notable": false,
+            "x": 163,
+            "y": -3470
+          },
+          {
+            "id": 57264,
+            "name": "Spell Damage and Mana",
+            "notable": false,
+            "x": -172,
+            "y": -3470
+          },
+          {
+            "id": 57457,
+            "name": "Dual Wield Attack and Cast Speed",
+            "notable": false,
+            "x": 2983,
+            "y": -4721
+          },
+          {
+            "id": 58244,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 6407,
+            "y": -2869
+          },
+          {
+            "id": 58402,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5651,
+            "y": -3443
+          },
+          {
+            "id": 58763,
+            "name": "Cold and Lightning Damage",
+            "notable": false,
+            "x": -4436,
+            "y": -4956
+          },
+          {
+            "id": 59070,
+            "name": "Brand Range and Brand Recall Cooldown Recovery",
+            "notable": false,
+            "x": -6154,
+            "y": -3724
+          },
+          {
+            "id": 60388,
+            "name": "Mana",
+            "notable": false,
+            "x": -812,
+            "y": -6605
+          },
+          {
+            "id": 60398,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2452,
+            "y": -4127
+          },
+          {
+            "id": 61419,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 158,
+            "y": -6767
+          },
+          {
+            "id": 61834,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 6925,
+            "y": -2223
+          },
+          {
+            "id": 63963,
+            "name": "Cold Damage",
+            "notable": false,
+            "x": -4517,
+            "y": -4816
+          },
+          {
+            "id": 63976,
+            "name": "Shaper",
+            "notable": true,
+            "x": -1359,
+            "y": -780
+          }
+        ],
+        "notables": [
+          "Crackling Speed",
+          "Mental Rapidity",
+          "Nimbleness",
+          "Arcanist's Dominion",
+          "Quick Recovery",
+          "Runesmith",
+          "Cruel Preparation",
+          "Deep Thoughts",
+          "Heart and Soul",
+          "Lord of the Dead",
+          "Lightning Walker",
+          "Holy Dominion",
+          "Harrier",
+          "Fire Walker",
+          "Dark Arts",
+          "Discipline and Training",
+          "Resourcefulness",
+          "Spiritual Command",
+          "Frost Walker",
+          "Hasty Demise",
+          "Light of Divinity",
+          "Shaper"
+        ],
+        "start": 54447,
+        "jewels": [
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 1",
+            "node": 6230
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 2",
+            "node": 26196
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 3",
+            "node": 36634
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 4",
+            "node": 41263
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 5",
+            "node": 61419
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 6",
+            "node": 61834
+          }
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Opal Sceptre",
+          "mods": [
+            "65% increased Spell Damage",
+            "12% increased Cast Speed",
+            "40% increased Lightning Damage"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Chiming Spirit Shield",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Hubris Circlet",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "Minions have (23-25)% increased maximum Life"
+            },
+            {
+              "currency": "ichor",
+              "mod": "10% increased Mana Reservation Efficiency of Skills"
+            }
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Vaal Regalia",
+          "mods": [
+            "+80 to maximum Life",
+            "40% increased Energy Shield",
+            "+40% to Lightning Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "(19-20)% increased effect of Offerings"
+            },
+            {
+              "currency": "ichor",
+              "mod": "+(11-12)% to all Elemental Resistances"
+            }
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Sorcerer Gloves",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "Minions deal (23-25)% increased Damage"
+            },
+            {
+              "currency": "ichor",
+              "mod": "+8% chance to Suppress Spell Damage"
+            }
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Sorcerer Boots",
+          "mods": [
+            "25% increased Movement Speed",
+            "+80 to maximum Life",
+            "+20% to Chaos Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "8% increased Movement Speed"
+            },
+            {
+              "currency": "ichor",
+              "mod": "10% increased Life Regeneration rate"
+            }
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+20% to Chaos Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+25 to Intelligence",
+            "+80 to maximum Life",
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Fire Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 55% increased Damage",
+            "Minions have 14% increased Attack Speed",
+            "+80 to maximum Life"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 55% increased Damage",
+            "Minions have 14% increased Attack Speed",
+            "+80 to maximum Life"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 3",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 55% increased Damage",
+            "Minions have 14% increased Attack Speed",
+            "+80 to maximum Life"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 4",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 55% increased Damage",
+            "Minions have 14% increased Attack Speed",
+            "+80 to maximum Life"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 5",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 55% increased Damage",
+            "Minions have 14% increased Attack Speed",
+            "+80 to maximum Life"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 6",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 55% increased Damage",
+            "Minions have 14% increased Attack Speed",
+            "+80 to maximum Life"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Arc",
+              "level": 20
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 20
+            },
+            {
+              "name": "Lightning Penetration",
+              "level": 20
+            },
+            {
+              "name": "Controlled Destruction",
+              "level": 20
+            },
+            {
+              "name": "Elemental Focus",
+              "level": 20
+            },
+            {
+              "name": "Faster Casting",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 20
+            },
+            {
+              "name": "Arcane Surge",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Clarity",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Determination",
+              "level": 20
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Eternal Mana Flask",
+          "note": "Drops from level 65."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Armour."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance."
+        }
+      ],
+      "repair": {
+        "added": [],
+        "removed": [],
+        "evals": 1,
+        "nodeDelta": 0,
+        "status": "within-bound"
+      }
+    },
+    "pinnacle": {
+      "pass": true,
+      "level": 96,
+      "budget": "trade (6-link)",
+      "gateProfile": "dad",
+      "thresholds": {
+        "chaosResist": 0,
+        "life": 3500,
+        "ehp": 12000,
+        "maxHit": 4500,
+        "dps": 8000
+      },
+      "metrics": {
+        "dps": 92642,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 4237,
+        "energyShield": 1143,
+        "ehp": 23368,
+        "maxHit": 6065,
+        "resists": [
+          75,
+          75,
+          75
+        ],
+        "chaosResist": 75,
+        "nodes": 112,
+        "sockets": 6,
+        "ascendancy": 9
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            1031,
+            19635
+          ],
+          [
+            1767,
+            41989
+          ],
+          [
+            1767,
+            58244
+          ],
+          [
+            3656,
+            58244
+          ],
+          [
+            4184,
+            34661
+          ],
+          [
+            4184,
+            11420
+          ],
+          [
+            4397,
+            36542
+          ],
+          [
+            4397,
+            11420
+          ],
+          [
+            4397,
+            7938
+          ],
+          [
+            4011,
+            5823
+          ],
+          [
+            5875,
+            9788
+          ],
+          [
+            6764,
+            40366
+          ],
+          [
+            7112,
+            13885
+          ],
+          [
+            7388,
+            60398
+          ],
+          [
+            7388,
+            36634
+          ],
+          [
+            1031,
+            7938
+          ],
+          [
+            7938,
+            34157
+          ],
+          [
+            8948,
+            27659
+          ],
+          [
+            5823,
+            9877
+          ],
+          [
+            10031,
+            15064
+          ],
+          [
+            10490,
+            47251
+          ],
+          [
+            10575,
+            29199
+          ],
+          [
+            10904,
+            36915
+          ],
+          [
+            11420,
+            48362
+          ],
+          [
+            5875,
+            12189
+          ],
+          [
+            12189,
+            37671
+          ],
+          [
+            12379,
+            44183
+          ],
+          [
+            12379,
+            14021
+          ],
+          [
+            13009,
+            60398
+          ],
+          [
+            13885,
+            28012
+          ],
+          [
+            13885,
+            40362
+          ],
+          [
+            7938,
+            14021
+          ],
+          [
+            13009,
+            17735
+          ],
+          [
+            17735,
+            58402
+          ],
+          [
+            17821,
+            39648
+          ],
+          [
+            18033,
+            46092
+          ],
+          [
+            19679,
+            59070
+          ],
+          [
+            3656,
+            20546
+          ],
+          [
+            21262,
+            54694
+          ],
+          [
+            10575,
+            21262
+          ],
+          [
+            20546,
+            21301
+          ],
+          [
+            17821,
+            21330
+          ],
+          [
+            21678,
+            32210
+          ],
+          [
+            24362,
+            60388
+          ],
+          [
+            6764,
+            24824
+          ],
+          [
+            24824,
+            42668
+          ],
+          [
+            9877,
+            25058
+          ],
+          [
+            26196,
+            37999
+          ],
+          [
+            26740,
+            63976
+          ],
+          [
+            27415,
+            57457
+          ],
+          [
+            19635,
+            27611
+          ],
+          [
+            27659,
+            37671
+          ],
+          [
+            4011,
+            28012
+          ],
+          [
+            15064,
+            29199
+          ],
+          [
+            4184,
+            30225
+          ],
+          [
+            30370,
+            51804
+          ],
+          [
+            31619,
+            57457
+          ],
+          [
+            4397,
+            31875
+          ],
+          [
+            31875,
+            60398
+          ],
+          [
+            8948,
+            32210
+          ],
+          [
+            32455,
+            63963
+          ],
+          [
+            21262,
+            33435
+          ],
+          [
+            10490,
+            33479
+          ],
+          [
+            18033,
+            33545
+          ],
+          [
+            1031,
+            33755
+          ],
+          [
+            21958,
+            33755
+          ],
+          [
+            10031,
+            36949
+          ],
+          [
+            36542,
+            37569
+          ],
+          [
+            37569,
+            57264
+          ],
+          [
+            21301,
+            37671
+          ],
+          [
+            27415,
+            37671
+          ],
+          [
+            29199,
+            37999
+          ],
+          [
+            31619,
+            39743
+          ],
+          [
+            27788,
+            40362
+          ],
+          [
+            40366,
+            58763
+          ],
+          [
+            19679,
+            40776
+          ],
+          [
+            41472,
+            44799
+          ],
+          [
+            10904,
+            42668
+          ],
+          [
+            42668,
+            43689
+          ],
+          [
+            7555,
+            44183
+          ],
+          [
+            44799,
+            54694
+          ],
+          [
+            33435,
+            44799
+          ],
+          [
+            4184,
+            44955
+          ],
+          [
+            46092,
+            51923
+          ],
+          [
+            30370,
+            46340
+          ],
+          [
+            7388,
+            47251
+          ],
+          [
+            27203,
+            48362
+          ],
+          [
+            37671,
+            48778
+          ],
+          [
+            41263,
+            48778
+          ],
+          [
+            51804,
+            52742
+          ],
+          [
+            48778,
+            51923
+          ],
+          [
+            53213,
+            61834
+          ],
+          [
+            7112,
+            53213
+          ],
+          [
+            19635,
+            53279
+          ],
+          [
+            54447,
+            57264
+          ],
+          [
+            34157,
+            54657
+          ],
+          [
+            9432,
+            54657
+          ],
+          [
+            26740,
+            55906
+          ],
+          [
+            6230,
+            55906
+          ],
+          [
+            21678,
+            57226
+          ],
+          [
+            54447,
+            57226
+          ],
+          [
+            7112,
+            58244
+          ],
+          [
+            10575,
+            58402
+          ],
+          [
+            6764,
+            58402
+          ],
+          [
+            40776,
+            58402
+          ],
+          [
+            58763,
+            63963
+          ],
+          [
+            21389,
+            59070
+          ],
+          [
+            1031,
+            60388
+          ],
+          [
+            39648,
+            60398
+          ],
+          [
+            46340,
+            60398
+          ],
+          [
+            53279,
+            61419
+          ],
+          [
+            33479,
+            63976
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 1031,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1072,
+            "y": -6041
+          },
+          {
+            "id": 1767,
+            "name": "Life and Energy Shield on Kill",
+            "notable": false,
+            "x": 6264,
+            "y": -2583
+          },
+          {
+            "id": 3656,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 5914,
+            "y": -3362
+          },
+          {
+            "id": 4011,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 4302,
+            "y": -1111
+          },
+          {
+            "id": 4184,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -1073,
+            "y": -5026
+          },
+          {
+            "id": 4397,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1378,
+            "y": -4501
+          },
+          {
+            "id": 5823,
+            "name": "Coordination",
+            "notable": true,
+            "x": 4560,
+            "y": -1604
+          },
+          {
+            "id": 5875,
+            "name": "Cast Speed and Spell Critical Strike Chance",
+            "notable": false,
+            "x": 2244,
+            "y": -4377
+          },
+          {
+            "id": 6230,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -770,
+            "y": -437
+          },
+          {
+            "id": 6764,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5255,
+            "y": -4615
+          },
+          {
+            "id": 7112,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -2223
+          },
+          {
+            "id": 7388,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2202,
+            "y": -3694
+          },
+          {
+            "id": 7555,
+            "name": "Crackling Speed",
+            "notable": true,
+            "x": -2202,
+            "y": -6837
+          },
+          {
+            "id": 7938,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1830,
+            "y": -6039
+          },
+          {
+            "id": 8948,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1370,
+            "y": -4501
+          },
+          {
+            "id": 9432,
+            "name": "Mental Rapidity",
+            "notable": true,
+            "x": -1556,
+            "y": -6483
+          },
+          {
+            "id": 9788,
+            "name": "Nimbleness",
+            "notable": true,
+            "x": 2325,
+            "y": -4680
+          },
+          {
+            "id": 9877,
+            "name": "Life",
+            "notable": false,
+            "x": 4710,
+            "y": -1878
+          },
+          {
+            "id": 10031,
+            "name": "Life",
+            "notable": false,
+            "x": -6659,
+            "y": -1576
+          },
+          {
+            "id": 10490,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1815
+          },
+          {
+            "id": 10575,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6144,
+            "y": -2950
+          },
+          {
+            "id": 10904,
+            "name": "Minion Life",
+            "notable": false,
+            "x": -4517,
+            "y": -4087
+          },
+          {
+            "id": 11420,
+            "name": "Arcanist's Dominion",
+            "notable": true,
+            "x": -850,
+            "y": -4501
+          },
+          {
+            "id": 12189,
+            "name": "Cast Speed and Spell Critical Strike Chance",
+            "notable": false,
+            "x": 2406,
+            "y": -4377
+          },
+          {
+            "id": 12379,
+            "name": "Lightning Damage and Cast Speed",
+            "notable": false,
+            "x": -2283,
+            "y": -6535
+          },
+          {
+            "id": 13009,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -3446,
+            "y": -3777
+          },
+          {
+            "id": 13885,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6407,
+            "y": -1604
+          },
+          {
+            "id": 14021,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2563,
+            "y": -6462
+          },
+          {
+            "id": 15064,
+            "name": "Strength",
+            "notable": false,
+            "x": -6152,
+            "y": -1898
+          },
+          {
+            "id": 17735,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4436,
+            "y": -3443
+          },
+          {
+            "id": 17821,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2791,
+            "y": -3732
+          },
+          {
+            "id": 18033,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1083,
+            "y": -1322
+          },
+          {
+            "id": 19635,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4,
+            "y": -6040
+          },
+          {
+            "id": 19679,
+            "name": "Brand Range and Brand Recall Cooldown Recovery",
+            "notable": false,
+            "x": -6073,
+            "y": -3583
+          },
+          {
+            "id": 20546,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 4301,
+            "y": -3362
+          },
+          {
+            "id": 21262,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -5536,
+            "y": -2586
+          },
+          {
+            "id": 21301,
+            "name": "Strength",
+            "notable": false,
+            "x": 3415,
+            "y": -3704
+          },
+          {
+            "id": 21330,
+            "name": "Quick Recovery",
+            "notable": true,
+            "x": -2548,
+            "y": -3592
+          },
+          {
+            "id": 21389,
+            "name": "Runesmith",
+            "notable": true,
+            "x": -6316,
+            "y": -3724
+          },
+          {
+            "id": 21678,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 903,
+            "y": -3707
+          },
+          {
+            "id": 21958,
+            "name": "Cruel Preparation",
+            "notable": true,
+            "x": -1514,
+            "y": -6767
+          },
+          {
+            "id": 24362,
+            "name": "Deep Thoughts",
+            "notable": true,
+            "x": -650,
+            "y": -6767
+          },
+          {
+            "id": 24824,
+            "name": "Minion Attack and Cast Speed",
+            "notable": false,
+            "x": -4968,
+            "y": -4226
+          },
+          {
+            "id": 25058,
+            "name": "Blood Siphon",
+            "notable": true,
+            "x": 4893,
+            "y": -2223
+          },
+          {
+            "id": 26196,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -6902,
+            "y": -2419
+          },
+          {
+            "id": 26740,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -932,
+            "y": -437
+          },
+          {
+            "id": 27203,
+            "name": "Heart and Soul",
+            "notable": true,
+            "x": -4,
+            "y": -4663
+          },
+          {
+            "id": 27415,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2983,
+            "y": -5106
+          },
+          {
+            "id": 27611,
+            "name": "Lord of the Dead",
+            "notable": true,
+            "x": -4,
+            "y": -5347
+          },
+          {
+            "id": 27659,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 1752,
+            "y": -4352
+          },
+          {
+            "id": 27788,
+            "name": "Blood Drinker",
+            "notable": true,
+            "x": 7006,
+            "y": -1664
+          },
+          {
+            "id": 28012,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 5914,
+            "y": -1111
+          },
+          {
+            "id": 29199,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6144,
+            "y": -2419
+          },
+          {
+            "id": 30225,
+            "name": "Lightning Walker",
+            "notable": true,
+            "x": -1073,
+            "y": -5361
+          },
+          {
+            "id": 30370,
+            "name": "Spell Damage Over Time",
+            "notable": false,
+            "x": -2957,
+            "y": -4684
+          },
+          {
+            "id": 31619,
+            "name": "Dual Wield Spell Damage and Spell Block",
+            "notable": false,
+            "x": 3123,
+            "y": -4640
+          },
+          {
+            "id": 31875,
+            "name": "Strength",
+            "notable": false,
+            "x": -1780,
+            "y": -4359
+          },
+          {
+            "id": 32210,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1275,
+            "y": -4150
+          },
+          {
+            "id": 32455,
+            "name": "Storm Weaver",
+            "notable": true,
+            "x": -4274,
+            "y": -4675
+          },
+          {
+            "id": 33435,
+            "name": "Holy Dominion",
+            "notable": true,
+            "x": -5245,
+            "y": -2419
+          },
+          {
+            "id": 33479,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1117,
+            "y": -1322
+          },
+          {
+            "id": 33545,
+            "name": "Harrier",
+            "notable": true,
+            "x": 1363,
+            "y": -778
+          },
+          {
+            "id": 33755,
+            "name": "Life",
+            "notable": false,
+            "x": -1352,
+            "y": -6605
+          },
+          {
+            "id": 34157,
+            "name": "Cast Speed",
+            "notable": false,
+            "x": -1718,
+            "y": -6202
+          },
+          {
+            "id": 34661,
+            "name": "Fire Walker",
+            "notable": true,
+            "x": -1408,
+            "y": -5361
+          },
+          {
+            "id": 36542,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -1278,
+            "y": -4150
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
+          },
+          {
+            "id": 36915,
+            "name": "Sacrifice",
+            "notable": true,
+            "x": -4274,
+            "y": -4227
+          },
+          {
+            "id": 36949,
+            "name": "Devotion",
+            "notable": true,
+            "x": -6902,
+            "y": -1716
+          },
+          {
+            "id": 37569,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -906,
+            "y": -3707
+          },
+          {
+            "id": 37671,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2406,
+            "y": -4102
+          },
+          {
+            "id": 37999,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6567,
+            "y": -2419
+          },
+          {
+            "id": 39648,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2548,
+            "y": -3873
+          },
+          {
+            "id": 39743,
+            "name": "Dark Arts",
+            "notable": true,
+            "x": 3123,
+            "y": -4478
+          },
+          {
+            "id": 40362,
+            "name": "Life",
+            "notable": false,
+            "x": 6785,
+            "y": -1604
+          },
+          {
+            "id": 40366,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5016,
+            "y": -4956
+          },
+          {
+            "id": 40776,
+            "name": "Brand Damage",
+            "notable": false,
+            "x": -6154,
+            "y": -3443
+          },
+          {
+            "id": 41263,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 2317,
+            "y": -3508
+          },
+          {
+            "id": 41472,
+            "name": "Discipline and Training",
+            "notable": true,
+            "x": -4771,
+            "y": -2419
+          },
+          {
+            "id": 41989,
+            "name": "Resourcefulness",
+            "notable": true,
+            "x": 6072,
+            "y": -2223
+          },
+          {
+            "id": 42668,
+            "name": "Minion Attack and Cast Speed",
+            "notable": false,
+            "x": -4725,
+            "y": -4086
+          },
+          {
+            "id": 43689,
+            "name": "Spiritual Command",
+            "notable": true,
+            "x": -4806,
+            "y": -3945
+          },
+          {
+            "id": 44183,
+            "name": "Lightning Damage and Cast Speed",
+            "notable": false,
+            "x": -2121,
+            "y": -6535
+          },
+          {
+            "id": 44799,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -4955,
+            "y": -2586
+          },
+          {
+            "id": 44955,
+            "name": "Frost Walker",
+            "notable": true,
+            "x": -738,
+            "y": -5361
+          },
+          {
+            "id": 46092,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 1083,
+            "y": -1815
+          },
+          {
+            "id": 46340,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2957,
+            "y": -5002
+          },
+          {
+            "id": 47251,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2062,
+            "y": -3451
+          },
+          {
+            "id": 48362,
+            "name": "Mana and Life",
+            "notable": false,
+            "x": -144,
+            "y": -4582
+          },
+          {
+            "id": 48778,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2155,
+            "y": -3670
+          },
+          {
+            "id": 51804,
+            "name": "Spell Damage Over Time",
+            "notable": false,
+            "x": -3038,
+            "y": -4382
+          },
+          {
+            "id": 51923,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 2015,
+            "y": -3427
+          },
+          {
+            "id": 52742,
+            "name": "Hasty Demise",
+            "notable": true,
+            "x": -3119,
+            "y": -4684
+          },
+          {
+            "id": 53213,
+            "name": "Dexterity",
+            "notable": false,
+            "x": 6590,
+            "y": -2223
+          },
+          {
+            "id": 53279,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 77,
+            "y": -6627
+          },
+          {
+            "id": 54447,
+            "name": "WITCH",
+            "notable": false,
+            "x": -4,
+            "y": -3180
+          },
+          {
+            "id": 54657,
+            "name": "Cast Speed",
+            "notable": false,
+            "x": -1497,
+            "y": -6262
+          },
+          {
+            "id": 54694,
+            "name": "Light of Divinity",
+            "notable": true,
+            "x": -5245,
+            "y": -2754
+          },
+          {
+            "id": 55906,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -851,
+            "y": -297
+          },
+          {
+            "id": 57226,
+            "name": "Energy Shield and Mana",
+            "notable": false,
+            "x": 163,
+            "y": -3470
+          },
+          {
+            "id": 57264,
+            "name": "Spell Damage and Mana",
+            "notable": false,
+            "x": -172,
+            "y": -3470
+          },
+          {
+            "id": 57457,
+            "name": "Dual Wield Attack and Cast Speed",
+            "notable": false,
+            "x": 2983,
+            "y": -4721
+          },
+          {
+            "id": 58244,
+            "name": "Intelligence",
+            "notable": false,
+            "x": 6407,
+            "y": -2869
+          },
+          {
+            "id": 58402,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5651,
+            "y": -3443
+          },
+          {
+            "id": 58763,
+            "name": "Cold and Lightning Damage",
+            "notable": false,
+            "x": -4436,
+            "y": -4956
+          },
+          {
+            "id": 59070,
+            "name": "Brand Range and Brand Recall Cooldown Recovery",
+            "notable": false,
+            "x": -6154,
+            "y": -3724
+          },
+          {
+            "id": 60388,
+            "name": "Mana",
+            "notable": false,
+            "x": -812,
+            "y": -6605
+          },
+          {
+            "id": 60398,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2452,
+            "y": -4127
+          },
+          {
+            "id": 61419,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 158,
+            "y": -6767
+          },
+          {
+            "id": 61834,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": 6925,
+            "y": -2223
+          },
+          {
+            "id": 63963,
+            "name": "Cold Damage",
+            "notable": false,
+            "x": -4517,
+            "y": -4816
+          },
+          {
+            "id": 63976,
+            "name": "Shaper",
+            "notable": true,
+            "x": -1359,
+            "y": -780
+          }
+        ],
+        "notables": [
+          "Coordination",
+          "Crackling Speed",
+          "Mental Rapidity",
+          "Nimbleness",
+          "Arcanist's Dominion",
+          "Quick Recovery",
+          "Runesmith",
+          "Cruel Preparation",
+          "Deep Thoughts",
+          "Blood Siphon",
+          "Heart and Soul",
+          "Lord of the Dead",
+          "Blood Drinker",
+          "Lightning Walker",
+          "Storm Weaver",
+          "Holy Dominion",
+          "Harrier",
+          "Fire Walker",
+          "Sacrifice",
+          "Devotion",
+          "Dark Arts",
+          "Discipline and Training",
+          "Resourcefulness",
+          "Spiritual Command",
+          "Frost Walker",
+          "Hasty Demise",
+          "Light of Divinity",
+          "Shaper"
+        ],
+        "start": 54447,
+        "jewels": [
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 1",
+            "node": 6230
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 2",
+            "node": 26196
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 3",
+            "node": 36634
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 4",
+            "node": 41263
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 5",
+            "node": 61419
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 6",
+            "node": 61834
+          }
+        ]
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Void Sceptre",
+          "mods": [
+            "80% increased Spell Damage",
+            "15% increased Cast Speed",
+            "50% increased Lightning Damage"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Chiming Spirit Shield",
+          "mods": [
+            "60% increased Energy Shield",
+            "+100 to maximum Life",
+            "+45% to Cold Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Hubris Circlet",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Fire Resistance",
+            "+45% to Cold Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "Minions have (28-29)% increased maximum Life"
+            },
+            {
+              "currency": "ichor",
+              "mod": "12% increased Mana Reservation Efficiency of Skills"
+            }
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Vaal Regalia",
+          "mods": [
+            "+100 to maximum Life",
+            "60% increased Energy Shield",
+            "+45% to Lightning Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "(23-24)% increased effect of Offerings"
+            },
+            {
+              "currency": "ichor",
+              "mod": "+(15-16)% to all Elemental Resistances"
+            }
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Sorcerer Gloves",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Fire Resistance",
+            "+45% to Cold Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "Minions deal (28-29)% increased Damage"
+            },
+            {
+              "currency": "ichor",
+              "mod": "+10% chance to Suppress Spell Damage"
+            }
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Boots",
+          "base": "Sorcerer Boots",
+          "mods": [
+            "30% increased Movement Speed",
+            "+30% to Chaos Resistance",
+            "+45% to Lightning Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "10% increased Movement Speed"
+            },
+            {
+              "currency": "ichor",
+              "mod": "12% increased Life Regeneration rate"
+            }
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Fire Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+40 to Intelligence",
+            "+100 to maximum Life",
+            "+45% to Lightning Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Fire Resistance",
+            "+45% to Lightning Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+100 to maximum Life",
+            "+45% to Cold Resistance",
+            "+45% to Lightning Resistance",
+            "+30% to Chaos Resistance"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 1",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 70% increased Damage",
+            "Minions have 18% increased Attack Speed",
+            "Minions have 40% increased maximum Life"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 2",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 70% increased Damage",
+            "Minions have 18% increased Attack Speed",
+            "Minions have 40% increased maximum Life"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 3",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 70% increased Damage",
+            "Minions have 18% increased Attack Speed",
+            "Minions have 40% increased maximum Life"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 4",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 70% increased Damage",
+            "Minions have 18% increased Attack Speed",
+            "Minions have 40% increased maximum Life"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 5",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 70% increased Damage",
+            "Minions have 18% increased Attack Speed",
+            "Minions have 40% increased maximum Life"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        },
+        {
+          "slot": "Jewel 6",
+          "base": "Ghastly Eye Jewel",
+          "mods": [
+            "Minions deal 70% increased Damage",
+            "Minions have 18% increased Attack Speed",
+            "Minions have 40% increased maximum Life"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "RARE"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Arc",
+              "level": 21
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 21
+            },
+            {
+              "name": "Lightning Penetration",
+              "level": 21
+            },
+            {
+              "name": "Controlled Destruction",
+              "level": 21
+            },
+            {
+              "name": "Elemental Focus",
+              "level": 21
+            },
+            {
+              "name": "Faster Casting",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 21
+            },
+            {
+              "name": "Arcane Surge",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Clarity",
+              "level": 21
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Determination",
+              "level": 21
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Divine Life Flask",
+          "note": "Keep the instant prefix."
+        },
+        {
+          "slot": "mana",
+          "name": "Eternal Mana Flask",
+          "note": "Drops from level 65."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Armour."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance."
+        }
+      ],
+      "repair": {
+        "added": [],
+        "removed": [],
+        "evals": 1,
+        "nodeDelta": 0,
+        "status": "within-bound"
+      }
+    }
+  },
+  "patch": "3.30.0",
+  "pob": {
+    "ref": "v2.69.0",
+    "checkpoint": "maps-red",
+    "code": "eJzVWmlv27gW_Vz_CkLAAPNQuuFOqYg7cJy1TZo0TtrXfiloibbZaHEl2qn76x8oeZEztuO8TjEtDBBcDsl7Li8vySvv__UticFE54XJ0paHXyAP6DTMIpMOWt7tzXHT9_561di_UnZ42T8Ym9i1vGo82y_zINYTHbe8AHnAqnyg7fv5UPQz8kAYq6J4qxLd8j4YGw49oIpQp1FnWX8U60SnVsWmsB5IlEm7WXin7UmejUctD3ugp9LI2Jb3Nku1B0YqtUOdpRfqS5afZFHLi8epyk1RazLprGmQj-3wbhx7YGL0_UUW6ZbXaZ93ut6rxrNn-1exmuq8a5UFhVW25XWypGdSHR1edT0wUfFYtzwhKBIvMEWIMW9vfb-bzKr4qZ3OTV8vOjAk8CbgUarzwbQ7NDqOFh2CwN8qzdHp1QKLfSrYC8YoElTQjfNcDaeFCVV8ob6ZZJycGnuj7nS6GIZLspHMscn1tS7KRZzBJd8E7mRxtDP43AyGNjXpYPfhhyorHqDxRvSFSlUnq0EDtA16m-a60PlEL5eC4Y0q7Y50Hfii0t_-Xrl7XO4m1xqo0JqJ7o506Ay-HMkVgM21rm0oOt9RZ1HLoyt7ydUgD6RZpIuWhxHFEEshIRVcQIZ9BhkNJGQBlpD7kkOBOIGCUASFFAxKjAmU1Peh5JxDGVAf-gHzYcAogYH0fYhROSpiAYIYcckhRgFiEGNGEMQE-wHEhMoAOrN3qe9ziBkiGGKOBINYIEIhlpJyiKXv6n1EKcQBDzjEgaBlKgNIEGcCEkwEgQRThF1KkUv9ABIspA8JDrgPCaMOw3zCIBE4EJAIyRAkElEfEkkQhUQyzCGRAmOX8gASH2ECSYCDAFJECIcUUYkgxQIHkGKnIUoIRpBSRrlLZQAp5czlJeeQMswlpEwI7JTMCKRCUAapxNilXASQSiExpDJwswSC-ZAGklHIkJPZpQIyJKVbISIoZJhJAhkO_AAyIoQPGRUuz7BPIWMycPmAc8gECghkgjIEmSQcQ-aXY_pS-pBjHzHIcUAo5EQyAjklmLpUBpAzxiTkTPAyDRjkPEACcokDCbkkxOWJYJBL5jA-YQxynyHiTEdQyP0g8CEPkERQIGc0AtHAhwITHkCBGXapTxkUNBDUpVKUZv1s__b6vMw8G1o7Kl7u7d3f378YKTvM-vqbifWLMEv2RqoozEQ3izsTx023C_ba7Xb7YHDR7t2_Oz0Yh5fdg4OPR1108_a69_1YvPv4fjgqTvxBSA_I4en9mQk6Nx9ff7lPz6dfxJtb_2vSmYbnHN1_-H5-_fYLIt9u8o_Xt9Fxevvp282ZvSjQ9_7t0eubw_gC3-LXN1_ed8fvw0_9N8kh-xRfZ9FJotXd2_yYTHq9trW907OraHhMsnR82D97G6DsTW9Q6MPOx6ve8AM5_fRRNL98-_quOTo_uJvq2x7PB8n3ZvR1RMYpMsNzcdYetT8k-Zuvo_y1Hn8WzZ5tT_HBubmZXH5tmmIUTu3V5UHxOUIHn98Pog8JSc77vaj5hsrDQagvj3jnPDbNT4TnMueXk7FEk4n4fPKmGU24aLfbpcL35hrfr87VolL_rFR6DOc8nCvwgLE6caW5t_w7rtxjNaDYBCy3Qw0oNwFL268B_U3A0rBqwGAz0K9PTWb-_Nn-Xk0F-3vOxZbO2Plgl-k6c6sayyzQqerFOmp5Nh9rDxRxZlveQRZNQTtPsnFe3Vfalfd2Pebu-9n-iU7AoJr_QlsVKav2zqxOir0Tl5ToE52089ADpZnvhExVMjsmyuLs9kWQB76OVWzsdKXghjzUfTWOrfeQyxrB954keXc8GmW5bUeRjhZH9KFK1EA_xqjq6Tit7Vwj6drBAgDmiF-A90KoK51qmytrsnRn3us7L3kvGa8AfgHanSy1eRbHOjrUhc3H4ZN4b-i9JL4EgBXEL8B88U45zsJxsTPlh92WXBctYNb0C5A8VoXVeUcV1qSDnTkue9X5VbVgMdhPoLdfyf-Yx_6g1ShLAf5xd30cq0QfqmK4o9Ou4WuKcZWgqv0F1rydhyrV3XH-FMdd77NyKKlUg1n9v7fgpzpOtP3x5e7EKjd2uuNiL9A1fzav-vd0cZBltvhxVRxqq_PEpDsddOv7LNXyoOGnKmeWK-aP7fdG34PvWZb8t3wxu9zHRe68koR6i3uhg7tCSW_2UHf5rraLt7orA1Ndm181rsslfwmu29dHje7UhaQKU-gIfNH3Oga4cTJUhY2n4GiqwWtX1ygHKOd-CXzSOEtGsQmNLV4C1LgwqcnSAkRaxYDzP4BJw1wrN2B1HVoghmqiAWZ1RNtaFd6BMgrReO4jYDOQVNEd4MJPpabc7A94iMd5kN-Bh3ycB_0dePiP82C_A4_gcR78N-BB0OM8xG_AA2-jcV_emhqXIxWDbqhHNtcPCbyrHPRLQNAqGbEif3ek43jOApN6k7sdzsRmqN7w8NG3aSW2Mcj6_aFKo0ZnaBI3UndkcmNBFUjfmcs6dT53wtoMuKg3qCLNKg2X9S7AXa9fLzzdJvywvMM0Tse93BSgY_Iw1nZHocmqrfxJaJPw_9TVu8IGr2jeBbmd7DqflOczOOr3TWh0Gk5B1gfVafoTtcK2aaWXRdPGe6VicK0HKjZqm0Zm0Z6X4KC5-K2q6U8cNAla0Yzu93VoHdPLfl_nJh0Ujed_YtzE5D8lCxXHYPl2W9JZr5NVq66-5MwtcK6Xpa0_qpytF4xBnE100ehmeahznYOTqvxUmyk90BqbmW3E5_4fIBw6GZ3s7k2Q66JY3eQ_zzq23kx67q675F9efXem769sgmxSrvDMN-EHvqnvGAx0qqvQDMiV1Q3Ct4ywViNkxtx9r3qc-tbLTE_HttEZKpOCA5f9Kd7tafJuvbSoZOz82WU6_QbaVX5nkQl3UpylVsexGehStC001m6vp1nd1nuL8xG4OievTTr4qQfLE1wF3npJcUKTf1joh7r8f4SuX0ku2idnnRWpY7fz-rEq7hqHZmJSXe3F47JmVwobZiZbZ07cqVjNfGR1nqq4Oij_kanp1qnH1rjRZrOf5Co19h_izJ4wcTvRdjgt7I_O3NV2dvkE1thY1x7340J3dZilURWxK9_YfRUXehar6MaZLcMI9Zje4nvQPPz1dxSpfQxag5qHi-YYugaz8tVnDmRrgNWhu8TwtYOVMZk5RKyD6LgmkVyDqLzmEuOvwbitXddRsAlT0xBGa0Dlmq9oG3uzaMgsFLOpT31ksmOf-udAumOf-rdGtq5PZYZdbcvYThnPcblOlvbNoLLOdDSeD6pTnUxL8_ZAOk56Om95_sww_g48mqiiinHNoNIXaPZXj_kE-3sP_0T1P59CsW8=",
+    "byStep": {
+      "until-12": "eJzFWG1z4jYQ_hx-hUYz96kQ8BsvGXwdIAnJTLjk4uSu_dRR7MWokSUqyRD66zuSDTg3QJJL2n5hVvKzu8-uVtKK_q9PGUMLkIoKHmLnuIUR8FgklKchvr87b3Txr59r_RuiZ9fTYU6Z-fK5dtS3MmKwABZix8VIE5mC_rY25f3RwihmRKkvJIMQf6c6nmFEVAw8GW3nzxhkwDVhVGmMMkJ5JOJH0GMp8nmIHYweCE-oDvEXwQGjOeF6BoJPyJ9CjkUSYpZzIqmqfKK8_JTKXM8ec4bRgsJyIhII8WhwNYrw59rRUf-GkRXISBONlCY6xCORPVAOyelNhNGCsBxC7PeO3ZbvdoOO47vdNm7uVr0TmrCf0LuiU9joeL6_D3fGQaaraEaBJVsf7eAgn7OLmw227XWOW13X7waO43U7-_RuZitFY8Im5IlmeXZB9R15BL4x02319qmeUwm3oOxCluiG392HHgmWvB59RdOZ5pSnb3AwI0L9CG-39sEnhJORqGD3xmmQ91yCArmA7WI4wV7b0RyqwGNbEkH5a5X6TbuhjHQnARCJNV1ANIfY7AFr1QyQlgCVPeatN9llEmLv2fYyMy2MuEhAhdj3ep16t-d360675Xp112l3unW30w56dc_pdoK657pOq-61A9-te52g3asHvu936kHHddvmt-1bHkf9-9srKxzNtJ6rk2ZzuVwez4meiSk8UQbHsciac6IUXUBDPVLGGoZ2czAYDIbpZDCanenLxe29zJZX08svvZZoNx7VxZTqxnIwGITWSbP00m-auG2GTGKMEBmTqsiJERFw8sAgCbGWOWCkmNAhHopkhQYyE7kszpVBkVKjsc7pUX8MGUohM8magCYJ0aR5qSFTzbH5segxZLeCMcrTCUkzgpGN6SUVi72WDxhxkpUrWZpBpZ3y9Aww-isnjOqVXbFSNvZPYUpypvGPEe4Ip_mmeKJ8PhdSD5IEks3WOiUZSeGl8ArNMWS7lbfB2u9oA0BrRBm1-_9FLWPCIcrlW4Kt6lRitNOonP_w9ewX1F8q9e9A5oIj5_11fs5IBqdEzV5Z5BX8Nil2EhWz6wbhv07JBbAM9PsTMmJEUr16ZTo26G0yNlP_YiZKSa1vj28UluhvIbLfrA8j_b6RrgoeHt6cqQZuBjag8uYxcgR6c_mYMaJJMb61IZ2gyWB8OapFK9N2KaogQUtbibVTSad6KUSCvhOe1Kyy9XuCHLf2tYj5BLVql9mc0ZhqZQZe6xOiPJZAjKloDoyVh4aN1lh5zsU9yGVmS6B2kT9IqtCIypiBfi2XX9wAaYGyogtCpkvbQ8I7SOJBJKvaN0IYuoWUMEoOECgaX3WCho1hY_izfPyDfFImFqBqkZAxSJBoXIxfmxXH_WRomE4PFa0V4fE-JsELmRG6QmRoh-9YHSeoVs9ELOy7AtnWaw_B9mGCwHRtNCOUo6ERP7xyOgfdkyw39XrNV09oUMhvXKXt1fviUnUPUpGUp07tem6qmPL04zPRe9G9-xPuyzSYh8bLGXBaBzmI6XRmjrK7JU1RNKeSalQ8xj4-G87hM5bRKaApI-qxNoGElrbQuZ15JZk9jg8fqBnhpHQcZYQxZB5CH-L38Bmaa2qMla6_5jR-VJQtQL7TdwS6vNKQpppB5QrOFUQQC54UrZW9CaeEKSi7h4gJbS_5avNFddFPbNrSCmrdj6wx7g7MsxfLGujtABaH9hbj7zQmdAUS7IIAqzBq70AU584W09mBMVuyGn13H8bdYno7MGUeKyintQNml_xZth1c9ixlw7RPp2rZfaWOV9HxdukUJRWBtt2U7aCMNBJ8StOi0vg8XxsFDtnKVipGPM8eQFq7zd3AswUx7_wt1PN65Z8Fa_v95o__zP0DNqA5qw==",
+      "until-28": "eJzFWG1v2zYQ_hz_CkLAPk2J9f4S2B0UJ3GyJW0apem6LwMjnWUuFOmRlFPv1w-UZFspbMddghUGjCP53PE5Ho88avDL15KiOQhJOBsa9pFlIGAZzwkrhsanu_PDyPjlXW9wg9X0w-SkIlSPvOsdDGoZUZgDHRpOZCCFRQHqfmnK_dMyUEaxlO9xCUPjM1HZ1EBYZsDy0br_jEIJTGFKpDJQiQlLefYIaix4NRsatoEeMMuJGhrvOQMDzTBTU-DsGv_FxZjnQ4NWDAsiO0OEtUOFqNT0saIGmhN4uuY5DI1RcjVKjXe9g4PBDcULEKnCCkmF1dAY8fKBMMhPb1IDzTGtYGj4tnPkhJZv9Dfr3HGF6fcoXJEJrMBxHGzDnTEQxSKdEqD52ngQ7yRydnGzwtq-Ex35sRU4rudt17uZLiTJML3GX0lZlRdE3eFHYB0zwVZfzomAW5B17Fr4ob0VPeI03x99RYqpYoQV3zHBFHP5LdzZCr_GDI94B7sb-okJkCDmsA6HE0XbNNIZdIFHzfoP-nXiaOlOACCcKTKHdAaZ3uu1Jd1ASgB0csldJtNlPjTcZ2mkeywDMZ6DHBq25dqmZ0ee6blxaIaxG5lR7EWmbXuOZdqe5dimHViOazp2EEamEwZ-bLqW4_ima0ehb7qOY1um64a-b7qe7Yem6wWBbbqB7zmmG_pBbLphENqmGwdeZHpe7PumF7ieZXqRGzimF4VhZPqe54Wm7wV-aPqh4wT6P_DMwHKjSP_HUe3wweDT7VUtHEyVmsnjfv_p6elohtWUT-AroXCU8bI_w1KSORzKR0LpoV6ffpIkyUlxnVwkHy_Ozovbq9todDn_KNnpw_n9b74cuV9uJ5fvY4vfPEw_Oxd_fAkOH-X47ldfFMKv7JOrf_6ec3Ff5Ie_ueGp8D_MqyRJhjWpfstq0NcBqUOnI6aFVFOQTbC0iIDhBwr50FCiAgNJytXQOOH5AiWi5JVoDrakibXWWAb7YDCGEhVQ6iheg8I5Vrh_qaCU_bH-q9FjKBORGah2fS8kw2W7qepme0z7Bvq7wpSoRb1lWlkbPIUJrqgyvvVkA-3-d_FOq9mMC5XkOeSrhD7FJS7gJX8aTe3RRuWOi3ocrQBoiWi9Dn6Y1-dYKhAjLBVhxd7urrW6Tja9aGWsdc79Yc6tLu5znlVyb---VVt7uBpB7dCbuzhofHgpcT8DnnGG7Ndn7TnFJZxiOd0zdzv4TuR1J2p6f3wiiwwzSCvxPfnb1Xl2MmEGqO1vPYv_72BfAC1BvT7UI4oFUYs9A71Cr5dj1fXmMV6vRCvJZflxT-AJ_cN5-Xs9h5a-rKSrZfqt7j4N143aobZ00XIKalW96DYiedO-rV06RtfJ-HLUSxe6PpdEQo6e6hzrnQoyUU-c5-gzZnmvVq7nPUae3_vY-HyMrN5lOaMkI0rqhm_9hAjLBGBtKp0Bpe2h34u7I_qwRHUdVq-Ctv6co7OT47TeGr2L6kEQiUZEZBTUvhx_DiykOCqbohrpor_3s2v9pDt11YyaMhWzDLaQc3eSe-D5onePMUW3UGBK8A5izYtKHqOTw_r3MlPH765j8xJBzVNkC1tvJ9uC8jnIXspFBgIEGjftV6zlZhb-C2vGVYfESd18BQfn2T685vP6Atu544LdBIGq3miKCUMnWnzz9Ql3To_LSu_wD2zxFSWN_OYMop0MBGGF3fsw09uasOItkm1dF76YcfGL3Jz_wK3loR-_L1OwrZ0c-GQy1QflF3hC6YwIopZZ-eaBsncf4JRMAE0olo-9McFM1abQed2xJ5ct8-4-lEvM8HJeAVjXxPpt_iYz7z5xK0W0sXbypAQ1XUj1yolTUO1tiRRRFDq3eyUhhYyzvKlH60t2gqmEtjBJKVd1_dCtWIlqSpVVeddBLUudJcbZgHn2aF0C3Q3A5gRfY7yNxrjqQPxNEKAdRsEGRHMQrTHhBozOx6730TaMs8bEGzDtOnZQtrUBVof82WrbRlsOtbXYNp2uZWdPHbej427SabZUCqou1OriTEsjziakaHYam1VLo8CgXNQ71UCsKh9A1N9v-5uBZ3Osv0GtoVH7wXLQX9of9L_9OvwvNCsIlQ==",
+      "until-68": "eJzNWVlv2zgXfY5_BSHgexqmFheJUmF34Dhb27hN4qSdzsuAsa5tNhTlSrQT99d_oORFyTiuM51ikgACl3PJcy7Jy8Wt3-9TjWaQFyozbY-88j0EZpAlyoza3vXV8X7k_f6m0TqXdvxxeDBV2tW8aey1yjTSMAPd9sLIQ1bmI7Cflk2xv3wPDbQsig8yhbb3WdnB2EOyGIBJuuvyIw0pGCu1KqyHUqlMPxvcgj3Js-mk7REP3UiTKNv2PmQGPDSRxo4hMz35NctPsqTt6amRuSpqVcosqkb51I5vp9pDMwV3vSyBttftnHX73pvG3l7rXMs55H0rLSqstG2vm6U3ykByeN730EzqKbQ9zgXxX1EuhIhJzLzmZtOrzEr9D-zO1BBWNpSI8CngkYF8NO-PFehkZRDxYCuho9PzFVaElL6KQhFQ6hNCnrI7H88LNZC6J-9VOk1Plb2St2BWzbCQ8qdsj1UOl1CUQ7ns9UmC3UwnO4PP1GhsjTKj3Zsfy6x4hCZPonvSyG5Wg0ZiG_Ta5FBAPoP1UFAWP2XRn0ANyF9REq7-qm5azXI9udRVDoDkwKoZ9CcwcEugbNVlkM0BakuMLdfY26TtsQery5X4HjJZAkXbIz4jmIVBiDmJOOYsFjiIRIBDEXIsWBRhEQQBFjGLcBTzCMecURyLKMLE57GPiR-IABPCqY8JJVGMCWUixoT5fowJ9ynBJPQpw0QIFmAiIlcS-YxhEgdxgEkcsgBTP-AhpoSGFFPCfOK-zMeUhCLClMRBhClnrpZHlGMqfBZhKqjPMBWcBJiKkBD3DWJMYxLHmPmUBpj5TPiYkZDEmBEnjlFKfMwYFzFmLOABZkwEAWacBAIzHoalUzjFLAwZx0wQ4r5BGGMmQkEwi0MeYRYLzjD3WRhi7gvhvEhDhjknkfvGQYB56McU85BxH3NBA4J55FTwSIgIByTyOQ5ITBkOqOAUB4yKGAecc4EDHgYCB4K4URGUhu4bchwI7sojyjkOIu5THERxHOHQdwMW-sylCQ1iHBJOYhyyWITlbNlrXV-elYm9sbWT4nWzeXd392oi7Tgbwr3S8GqQpc2JLAo1g_3iVmm97yZXs9PpdA5Gvc716OL08HZ08fngyB7PevLm4Pvg9Etv2FFn_rsPo_S8-zV8fx0Vpruf9I6LuX91c3x5nRyb6z_vr97aXkEOutd3wdWHTx_6n94Hn-519O3L-Xhi0smhvE9ySu_OBqOYHv0hFfAP0Yix_qiAw-6X85vxZ3r655dw_-v9t4v9ydnB7Rwkf1f8ZWQ47L8_muXvYJaKi5696PNb8f3bLMvf_9HLr76Pbi5O488HjLKhsvt3_PT06_jjhQrMTR58nE2FP5uFf5ms0-m0Syc1l15qVZtOUblskSsXT7my3OzwkLKQuuwyivwdWE6LGnARzPdazVr7raZbyuWid2vdJfrO_1VlmURg5I2GpO3ZfAoeKnRm295BlsxRJ0-zaV7tlJ0qSjiLZZjYa51AikZV_z2wMpFWNt9aSIvmifuU6BNIO_nAQ-W474Q0Ml2EozK72PdJ7KFvU6mVnbsYs8q4Jg9hKKfaeo-1bCDefBbz_nQyyXLbSRJIVtvCoUzlCH6kqLJ0mjYa10S6erQCoCXiBehekToHAzaXVmVmZ92bjde614ofAF6A7G5mbJ5pDckhFDafDp6l-wnrtfA1AD1AvADlqxPycTaYFjtLfmy21rqqQYuqFyDyWBYW8q4srDKjnTWurer6qlK0auwXyGtV_H8UsT-DnGQGkZ8P18dapnAoi_GOQbuGrznGFaKq9AWMeScfSAP9af6cwF23ebApSQNoUf7fDfgp6BTszw93V8tc2fmOg71C1-LZsui_88VBltni511xCBbyVJmdNrrNNmu3PKr4pc5ZpIrlpe6Tgjv0PcvSP8qbmUt9WaXOKibMW50LHdxlSnmLC6FL98Gu7oQuj1R1JH3TuCyH_DW67FweNfpz9xhSqAIS9BXuQCPSOBnLwuo5OpoDeufKGmUDZd-vkaCNt-lEq4GyxWvkN3rKqMwUKAGpURD8DykzyEG6Bqvj0AoxljNAhNcRHWvl4BaVN9_SK66nR5zDH3OmL43zNsp3ZbRvfJxIjfoDmNgcHpO9qCbWa0T8h8TDB1z7E9B6yZjQepXb1RYUuV-veHxYfUIB3aYgGw7H0iSN7lilrqX-ROXKourRaWctv0U-shlKqwck5F64Gr85sjZD7oUIVa8y0gzW5e4xqF6-mTzbRn5cxt7G6fQmVwXqqnygwb4A0nwb6ZssmTc-SanRJYykVnIb4cUl8jU62F_8_1jDw0lSPSIuB3SpYz11fihma5wZ6WwGRaOf5QPIIUcnVf6_H4KtkebG7VNr0uW2tTNn-mDd9rJZebReLNDf6IKke4rcxP4ZjhdbJYC2je5YKoMOXPKXePwpMZv5Rtv4ynTq1uZHM79HnSq9M2UaOBZvjQWt1QhKaltkbHTx82ZPvE1KrsyIVDH_UpnRL53sz5guxP8Rafovk37sy39Cur699jonb7sPWGs1BDTUsrhtHKqZMlASQMdlya4SnuiZbu05lUYuej6VWmd3bq27sn-lb7a176lVrrVF9ye5NMr-S6L5MzrupGDH88L-bM99sIuTFLLKaqidsKcF9GGQmaS6NpcH3aHUBSwuDH2d2fIsX79Yr95al3fQv6PoGkU3oJZ3tiWGbcA8eHpdAvkGYLXlrTHBxsbKi9ESEm6CgK4xEhsQVdhcY6INGLe26z6Kn8LUPET8DaByzB94m3iLK8niPvSUTb1luqNN_QWd7WhTf57nm2yqadgHW16wykuVS3UzM1SjanaayXTZKBhI5-X09pCZpjeQlz9yNzcDj2ayqC6aCygXix8DW81lB63m49_Q_w_PT92X",
+      "maps-early": "eJzNWdtu27gWfY6_ghBwnoapeRMpFXEHtnOdydVO0-l5GTASY7ORKI9EOXG__oCSL0rquM5pi0kCEBS5NrnWJrl58d7vj2kCpiovdGY6Hn6HPKBMlMXajDrex-vD3cD7_UNr71La8cVdr9SJq_nQ2tmr8iBRU5V0vAB5wMp8pOzNoin6N_JAlMiiOJep6niftI3GHpBFpEzcX5UfJCpVxspEF9YDqdRmmEX3yh7lWTnpeNgDt9LE2na888woD0yksWOVmTP5JcuPsrjjJaWRuS4aVdrMq0Z5acf3ZeKBqVYPZ1msOl6_e9ofeh9aOzt7l4mcqXxopQWFlbbj9bP0VhsV718OPTCVSak6HqcCB-94yDDDoddeb3idWZm82upU36mlBWGCvgQ8MCofzYZjrZJ4aRBivpHOwfHlEospFsG7ACOf-oi-SOhyPCt0JJMz-ajTMj3W9lreK7NshiHyIsdDnauBKqphnMOF_xK4nyXx1uBTPRpbo81o--bHMiueofGL6DNpZD9rQEO0CfrR5KpQ-VSthoIELw7FcKIaQPaOYr78E5XRXrtaSy53nSsFZGT1VA0nKnLTv2rVfQCbK9VYXnSxvk7ijkefrCxXgjxgslgVHQ8jiiEWXEDKfQ4ZDhhkNBSQhVhAPxA-5MgnkAvOoMCYQEGDAArf96EIaQCDkAUwZJTAUAQBxIiFCGLkCx9izAiCmOAghJhQEUJMEQohZohgiDkiFGIhqA-xCFxJgCiFOPRDH-KQ0yoVISTIZxwSTDiBBFOEXUoRJJiLABIc-gEkjLpaFhAGCRcMQSIQDSARBFFIBMM-JIJj7FI_hCTEYQgpIsSHFFGBIMUch5BiJ5kSghGklFHfpSKElPrM5YXvQ8qwLyBlnGPnNUYg5ZwySAXGLvV5CKngAkMqQtdLyFkAaSgYhQxRziFDQjhnE04hw2EQQkY4DyBjOKCQsdD3IeMoJJBxyhBkgvgYssBpZIEQAfRxgBj0cUgo9IlgBPqUYOpSEUKfMSagz7hfpSGDvsChgL4ghLuUuxLmagPCGPQDhogbbU6hH4RhAP0QCQQ5coPNEQ0DyDHxQ8hdyIKchoJXs29n7-PgtMrsjK2dFO_b7YeHh3cTacfZnXrUiXoXZWl7IotCT9Vuca-TZNdN1na32-32Rmfdz92r414ZXQx7vc8HQ3R9Prj9esiv5G1venJ8_hCPHoP-yfTqnvQ_B39eZpPr2Sw69dHDp6-ng_Pi5nCAPsUDc3im0ezr9Xl4dZWcXXz8enP9MRmWN9F_7_5M95k8HkxMOtmXj3FOyMNpNArJwV9SK3YejCgdjiZl_5Gd_TEKy8Pbz3HyJeeXR5N9fl8cXf_hD6Zp2b-99ElpkB6f8qvDyT-zIuG7t7Y7w71TfT29-GdXF5NoZi8vesXfMer9fTOKP6WU0Dttdx_Y8fGX8cWV9j9P07iUu3z3OhdleCp2pz7vdruVI9sLT-7Vm1xRu3X-VS3YajW7ueYBbVXqPheR61tgNb0awHkU2tlrN9rfa7vwUQUaF19cZujGqK6sskAZeZuouOPZvFQeKJLMdrxeFs9AN0-zMq935m4dmZzFIjTt7B2pFIzq_s-UlbG0sn1iVVq0j1xSoY9U2s0jD1RzYyukkek8BFaf83MGQR74p5SJtrMnH67JfXUny8R6z7WsId5-FfNhOZlkue3GsYqXW9G-TOVIfU9Rbek0rTVuiHT1YAkAC8Qb0L0kdamMsrm0OjNb615vvNK9UvwE8AZk9zNj8yxJVLyvCpuX0at0v2C9Er4CgCeIN6B8eSI_zKKy2Fryc7OV1mUNmFe9AZGHsrAq78vCajPaWuPKqqmvLgXLxn6BvL2a__ci9iclJ5kB-MfD9WEiU7Uvi_GWQbuBbzjGFYK69A2MeTePpFHDMn9N4G7aPNmUpFFgXv7vDfixSlJlf3y4-4nMtZ1tOdhLdCOeLYr-PV_0sswWP-6KfWVVnmqz1Ua33mbllmcVv9Q581yxuEjeaPUAvmZZ-ld1G3S5z8vcac2EestzoYO7j0re_BLq8kNll_dQ9w10fST90BpUQ_4eDLqDg9Zw5h5fCl2oGHxRDyoBuHU0loVNZuBgpsAfrqxVNVD1_R4I0jpJJ4mOtC3eA9Q600ZnpgCxkgnw_f8AbaJcSddgfRxaIsZyqgBmTUTXWhndg-q2XXnF9fSMM_8-Z_LWOG-i_FBF-9bFRCZgGKmJzdVzslf1xHoPMHpKnD_hOpyoJFkwxqRZ5Xa1OUWGmhXPD6svKCCbFGR3d2Np4lZ_rFPX0nCic21B_dC1tZbfAgRsBtL60Qq4V7XWb46szYB7lQL1S5A00arcPUA1y9eTp5vIj6vY2zoub3NdgL7Oo0TZN0CabSJ9m8Wz1o2UCRiokUy03ER4fol8D3q78__va3g6SeqHy8WALnSsps53xWyMM6Mkm6qiNczySOUqB0f1978_BBsjza3bp1akq21ra87kybo9y6bV0Xq-QH8jc5Lu-XMd-1c4XmyUoBLb6o-lNqDnsr_E4y-JWc832MRXpqVbmxdm9gi6dX5rysR3LE6MVUmiR6qitkHGWhe_bvaEm6Tk2oxwHfMH2ox-6WR_xXTB6HukyU8m_dyX_w_p5vZ61j066T9hneg7Be4SWdy39vVUG1URAIdVybYSXuiZbOw5lUbOez6wKjcyAe6Xh5_TNd3YdWm1a23e-1EujbY_STN7RcfdVNnxrLA_2vNQ2flBClhtE9U4YJeFGqooM3F9a67OuXcyKdT8vjBMMlsd5Zv36uVT6-IK-i2KrFBkDWpxZVtg6BrMk5fXBZCtAdY73grjr22suhctIHwdRCUNRmINoo6aK0ywBuOWdtNH4UuYhocwWgOqxvyJt7E3v5HMr0Mv2TRbJlvaNB_Q6ZY2zdd5ts6mnoZDZav7VXWncrl-Zu70qJ6dZlIuGlVGpbNqenvAlOmtyhu_bn4DPJjKor5nzqEckXD-U-Kig73285_s_wfBXvfI",
+      "maps-red": "eJzVWmlv27gW_Vz_CkLAAPNQuuFOqYg7cJy1TZo0TtrXfiloibbZaHEl2qn76x8oeZEztuO8TjEtDBBcDsl7Li8vySvv__UticFE54XJ0paHXyAP6DTMIpMOWt7tzXHT9_561di_UnZ42T8Ym9i1vGo82y_zINYTHbe8AHnAqnyg7fv5UPQz8kAYq6J4qxLd8j4YGw49oIpQp1FnWX8U60SnVsWmsB5IlEm7WXin7UmejUctD3ugp9LI2Jb3Nku1B0YqtUOdpRfqS5afZFHLi8epyk1RazLprGmQj-3wbhx7YGL0_UUW6ZbXaZ93ut6rxrNn-1exmuq8a5UFhVW25XWypGdSHR1edT0wUfFYtzwhKBIvMEWIMW9vfb-bzKr4qZ3OTV8vOjAk8CbgUarzwbQ7NDqOFh2CwN8qzdHp1QKLfSrYC8YoElTQjfNcDaeFCVV8ob6ZZJycGnuj7nS6GIZLspHMscn1tS7KRZzBJd8E7mRxtDP43AyGNjXpYPfhhyorHqDxRvSFSlUnq0EDtA16m-a60PlEL5eC4Y0q7Y50Hfii0t_-Xrl7XO4m1xqo0JqJ7o506Ay-HMkVgM21rm0oOt9RZ1HLoyt7ydUgD6RZpIuWhxHFEEshIRVcQIZ9BhkNJGQBlpD7kkOBOIGCUASFFAxKjAmU1Peh5JxDGVAf-gHzYcAogYH0fYhROSpiAYIYcckhRgFiEGNGEMQE-wHEhMoAOrN3qe9ziBkiGGKOBINYIEIhlpJyiKXv6n1EKcQBDzjEgaBlKgNIEGcCEkwEgQRThF1KkUv9ABIspA8JDrgPCaMOw3zCIBE4EJAIyRAkElEfEkkQhUQyzCGRAmOX8gASH2ECSYCDAFJECIcUUYkgxQIHkGKnIUoIRpBSRrlLZQAp5czlJeeQMswlpEwI7JTMCKRCUAapxNilXASQSiExpDJwswSC-ZAGklHIkJPZpQIyJKVbISIoZJhJAhkO_AAyIoQPGRUuz7BPIWMycPmAc8gECghkgjIEmSQcQ-aXY_pS-pBjHzHIcUAo5EQyAjklmLpUBpAzxiTkTPAyDRjkPEACcokDCbkkxOWJYJBL5jA-YQxynyHiTEdQyP0g8CEPkERQIGc0AtHAhwITHkCBGXapTxkUNBDUpVKUZv1s__b6vMw8G1o7Kl7u7d3f378YKTvM-vqbifWLMEv2RqoozEQ3izsTx023C_ba7Xb7YHDR7t2_Oz0Yh5fdg4OPR1108_a69_1YvPv4fjgqTvxBSA_I4en9mQk6Nx9ff7lPz6dfxJtb_2vSmYbnHN1_-H5-_fYLIt9u8o_Xt9Fxevvp282ZvSjQ9_7t0eubw_gC3-LXN1_ed8fvw0_9N8kh-xRfZ9FJotXd2_yYTHq9trW907OraHhMsnR82D97G6DsTW9Q6MPOx6ve8AM5_fRRNL98-_quOTo_uJvq2x7PB8n3ZvR1RMYpMsNzcdYetT8k-Zuvo_y1Hn8WzZ5tT_HBubmZXH5tmmIUTu3V5UHxOUIHn98Pog8JSc77vaj5hsrDQagvj3jnPDbNT4TnMueXk7FEk4n4fPKmGU24aLfbpcL35hrfr87VolL_rFR6DOc8nCvwgLE6caW5t_w7rtxjNaDYBCy3Qw0oNwFL268B_U3A0rBqwGAz0K9PTWb-_Nn-Xk0F-3vOxZbO2Plgl-k6c6sayyzQqerFOmp5Nh9rDxRxZlveQRZNQTtPsnFe3Vfalfd2Pebu-9n-iU7AoJr_QlsVKav2zqxOir0Tl5ToE52089ADpZnvhExVMjsmyuLs9kWQB76OVWzsdKXghjzUfTWOrfeQyxrB954keXc8GmW5bUeRjhZH9KFK1EA_xqjq6Tit7Vwj6drBAgDmiF-A90KoK51qmytrsnRn3us7L3kvGa8AfgHanSy1eRbHOjrUhc3H4ZN4b-i9JL4EgBXEL8B88U45zsJxsTPlh92WXBctYNb0C5A8VoXVeUcV1qSDnTkue9X5VbVgMdhPoLdfyf-Yx_6g1ShLAf5xd30cq0QfqmK4o9Ou4WuKcZWgqv0F1rydhyrV3XH-FMdd77NyKKlUg1n9v7fgpzpOtP3x5e7EKjd2uuNiL9A1fzav-vd0cZBltvhxVRxqq_PEpDsddOv7LNXyoOGnKmeWK-aP7fdG34PvWZb8t3wxu9zHRe68koR6i3uhg7tCSW_2UHf5rraLt7orA1Ndm181rsslfwmu29dHje7UhaQKU-gIfNH3Oga4cTJUhY2n4GiqwWtX1ygHKOd-CXzSOEtGsQmNLV4C1LgwqcnSAkRaxYDzP4BJw1wrN2B1HVoghmqiAWZ1RNtaFd6BMgrReO4jYDOQVNEd4MJPpabc7A94iMd5kN-Bh3ycB_0dePiP82C_A4_gcR78N-BB0OM8xG_AA2-jcV_emhqXIxWDbqhHNtcPCbyrHPRLQNAqGbEif3ek43jOApN6k7sdzsRmqN7w8NG3aSW2Mcj6_aFKo0ZnaBI3UndkcmNBFUjfmcs6dT53wtoMuKg3qCLNKg2X9S7AXa9fLzzdJvywvMM0Tse93BSgY_Iw1nZHocmqrfxJaJPw_9TVu8IGr2jeBbmd7DqflOczOOr3TWh0Gk5B1gfVafoTtcK2aaWXRdPGe6VicK0HKjZqm0Zm0Z6X4KC5-K2q6U8cNAla0Yzu93VoHdPLfl_nJh0Ujed_YtzE5D8lCxXHYPl2W9JZr5NVq66-5MwtcK6Xpa0_qpytF4xBnE100ehmeahznYOTqvxUmyk90BqbmW3E5_4fIBw6GZ3s7k2Q66JY3eQ_zzq23kx67q675F9efXem769sgmxSrvDMN-EHvqnvGAx0qqvQDMiV1Q3Ct4ywViNkxtx9r3qc-tbLTE_HttEZKpOCA5f9Kd7tafJuvbSoZOz82WU6_QbaVX5nkQl3UpylVsexGehStC001m6vp1nd1nuL8xG4OievTTr4qQfLE1wF3npJcUKTf1joh7r8f4SuX0ku2idnnRWpY7fz-rEq7hqHZmJSXe3F47JmVwobZiZbZ07cqVjNfGR1nqq4Oij_kanp1qnH1rjRZrOf5Co19h_izJ4wcTvRdjgt7I_O3NV2dvkE1thY1x7340J3dZilURWxK9_YfRUXehar6MaZLcMI9Zje4nvQPPz1dxSpfQxag5qHi-YYugaz8tVnDmRrgNWhu8TwtYOVMZk5RKyD6LgmkVyDqLzmEuOvwbitXddRsAlT0xBGa0Dlmq9oG3uzaMgsFLOpT31ksmOf-udAumOf-rdGtq5PZYZdbcvYThnPcblOlvbNoLLOdDSeD6pTnUxL8_ZAOk56Om95_sww_g48mqiiinHNoNIXaPZXj_kE-3sP_0T1P59CsW8=",
+      "pinnacle": "eJzVWttu2zgQfa6_ghCwwC5K1-JdKuIuHOfeuE3iJG36smAk2majiyPRTtyvX1DyRc7ajoO22BYGCIo8Q_IMh8PRyDt_P8YRGKss12nSdNAb1wEqCdJQJ_2mc3V5UPecv9_Vds6kGXzs7Y50ZHve1V7tFHUQqbGKmo7PHWBk1lfmejYU-cd1QBDJPP8gY9V0PmkTDBwg80AlYXvRvh-pWCVGRjo3DoilTrppcKfMYZaOhk0HOeBWJqE2TedDmigHDGViBipNOvJrmh2mYdOJRonMdF7p0sm0q5-NzOBuFDlgrNVDJw1V02m3Tttd513t1auds0hOVNY10oDcSNN02ml8qxMV7p11HTCW0Ug1HR9zit5wxD3OmdNYLXiZGhm9WOpU99RcgmIi1gH3E5X1J92BVlE4F0CIko3r2T86m4MxIdx7Q3zGOPG9tXJng0muAxl15KOOR_GRNpfyTiXzYbi7ns2BztSFyot9nMLFWnA7jcKtwae6PzCJTvrbDz-Qab41uiMT2U4rUH-tgiz0KslUrrKxWuwFZWslukNVBb7hBXCnURwgW7vMlAIyMHqsukMVWJsvRrIPwGRKVc4UmR2q47DpkKXjZFtcByRpqPKmg1yCIBJcQMIZh9RFCFLkUUiJLyD1kYDMwwQyTzDIXYYhx8SFXHAKBUIYCuJ5UDDGoPCJBz2fetCnBENfeB70PSEgcotJXOq7ELlMMIhc36UQIYpdiDDyfIgwET5ExHVt6XkMIupiBBFzOYWIu5hAJARhEAnPtnsuIRD5zGcQ-ZwUpfAhdhnlECPMMcSIuMiWxLWl50OMuPAgRj7zIKbEYqiHKcTMtS0c-RxiLqgLsXCJB7HALoFYUMQgFhwhWzIfYmHJYc9FGGIf-T4kLsYMEpcIFxLEkQ8JsiojGCMXEkwZg4RQUpTCh4QwauvCtlPEBCSUc2R3gWJIOCcUEu4jZkvqQyIQopAIxm2dCwSJ8O28PqceJL6gBFLXMrKl3UghOKQIcwIpogJDinzPhxRz7kFKuK1T5BFIqfBt3WcMUu76GFJOqAupwAxB6hVjekJ4kCHPpZAh39oDFhRDRjAithQ-ZJRSARnlrCh9ChnzXQ6ZQL6ATGBs65hTyARlhVlRCplHXWyti1sb830PMt8VLuSutSvuEt-DHGHmQ44osqVHKOTE58SWghdn4NXO1cVpUXk1MGaYv200Hh4e3gylGaQ99agj9SZI48ZQ5rkeq3p-p6Oobo9Mo9VqtXb7nVb4cH60Owo-dlv1bP-gf3F60UEHmffJe1R3hwc38nZ3fHz04SHsP3rt4_H5HW7feCfDq-R08pW_v_Lu4_YkOGXuw6dvpxcfvrr48TK7ubgKD5KrL4-Xx6aTu996V_snl3tRB12hk8uv193RdfCl9z7eozfqJL4-HLjyC7s_x_ln6Zu8jSed20-Pkz1ycxHen4g-mez1wpP6I31_28_VXvvm7HbwCR99ueH1r4_35x22e313dt99-NJJosO6pCf5P4m8D7Ohf5x267r1_vxgeD-5v5eTz9m4Po7Fececd-md-HY_TrP3nzvZ5bf-7RkJWz10c3Q9NENNMOlpU3-gR0dfBx_PNbsZx-FI1nn9MhMj_1TUx496nNzWVb_VajWbxUY0ZjuxU97Pebkt06fC7VgPZL2IA7RRsX1CU5f7X1xxJitAvg5YHJkKUKwDFmeiAvTWAQuDqwD99UCvOjV2p8CdRkUFOw3rpwuPbh25rXStGZadRRWoRN5GKmw6JhspB-RRaprObhpOQCuL01FWxj2t8gqwErM74NXOoYpBv5y_o4wMpZGNY6PivHFoiwJ9qOJWFjigMP-tkImMp3dN8TiN4jBywP1IRtpMCrazBzvknurJUWScp1xWLLzxopV3R8NhmplWGKpwfs_vyVj21XOMSknLaaVwhaTtB3MAmCF-Ad7zRZ2pRJlMGp0mW_NeLbzgvWC8BPgFaLfTxGRpFKlwT-UmGwUv4r1GekF8AQBLiF-A-fx95yANRvnWlJ-KLbjOe8C06xcgeSBzo7K2zI1O-ltzXEhV-ZWtYD7YT6C3U67_OY_9SclhmgD0_e76IJKx2pP5YEunXcFXFGMbQdn6C-x5Kwtkorqj7CWOuyqzdCnJRIFp-_-34UcqipX5_u1uRzLTZrLlZs_RFX82a_r_dLGbpib_flXsKaOyWCdbXXSrZRZqedLxU5UzreWzN_ZrrR7AtzSNPxev3bZ2M6-dlishzjwutHD7UNCbvu3beleZ-Qu_fQa6DJvf1S6KLX8LLloX-7XuxKa2cp2rEHxVDyoCqHY4kLmJJmB_osCJbasVAxRzvwUerx3Hw0gH2uRvgVvr6ESnSQ5CJSMg3D-AToJMSTtgGQ7NEQM5VgB5VUTLGBncgSKVsYyjSyPFZdoI2MRWoT27oifc-PPc8O_KTTzPjfyu3LznudHflZv_PDf2m3LD7vPc-G_KDW2i9lBEa7XrVIegG6ihydRTUuflxfAWYHeZoLe0ku5QRdGMGWLVLhuVTqmwJZmnL5vrdmcTg7TXG8gkrLUHOrYjdYc60waUnwG25sKX1lV-SZiN8Rq5LjDpsq5fU_aHbbQpelDm0GUSrGNANjEYFAFU7Wh0m-kctHUWRMpsuXK8bBx_Yq-O_b_WWgjC1S6bprdrV9m4CA7Afq-nA62SYALSHiiv8s307eeMKv2XqYVuUsttGk5q11JG4EL1ZaTlJpVMc01vwW59_lvW05-Y1DFdUo3q9VRgLNWPvZ7KdNLPa6__RKyO-F8FCxlFYPHmuKCzRikbjWiqmIXJP6udjfFNP0rHKq910yxQmcrAYfn8UqspnNMKq5mex9fI_QMEA7tIu3j7TpKpPF8-7D_RQDaGQbc22F5ooIi9t1YAWtqrTjoudnnqpZaPieVjbVAlqkwOgUwaVSObRnhtey1N-4ltFf8X2MHGeOlWRabWHkidgF1b3dbhvWzT1rFZveCNQZCMR9a9fUwmj6BV1rdeMy2WfJwYFUW6r4qlbeKxUskvJLMx6rE-A9U-Dq130En_J2n_B7JBGwMdSwf_aDpPT_oPpVMNbjqtw-P2Ep_IntxeJPO72p4e60SVZ_mgaNmW3JqZ8caZY3u1ljPvG5UlMipv2x8yNdk49choO9p09sNMJtr8IM70BRO3YmUGk9x878xdZaZhLDDaRKqSnhjlqquCNAnLnGORJejJKFfTbEs3Sk2RCKlmJedftGYJvP-icOVz1grULOE1w5AVmKXvVjMgXQEs7-0Fhq0crMgqzSB8FURFlRWJFYjS1y4w3gqMPfRVHfnrMBUNIXcFqNjzJW0jZ5rPmSaT1slUR8ZbylQ_aJItZapfS-kqmdIMu8oU2akiI2Vr7TTp6X5pnclwNBtUJSqeFObtgGQU36qs6XjT_f4vcH8s8zJLN4Oi6XfTncZsgp3G07-T_Qub-Akt"
+    }
+  },
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-26T18:09:01.061Z"
+  },
+  "gemInfo": {
+    "Added Lightning Damage": {
+      "requiredLevel": 8,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 19 to 358 added Lightning Damage"
+      ],
+      "tags": [
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Arc": {
+      "requiredLevel": 12,
+      "quest": {
+        "act": 1,
+        "quest": "The Siren's Cadence",
+        "classes": [
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b",
+      "support": false,
+      "description": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies, but not immediately back. Each time the arc chains, it will also chain a secondary arc to another enemy that the main arc has not already hit, which cannot chain further.",
+      "effect": [
+        "15% more Damage with Hits and Ailments for each remaining Chain",
+        "Deals 198 to 1122 Lightning Damage",
+        "Chains +7 Times"
+      ],
+      "tags": [
+        "chaining",
+        "lightning",
+        "spell"
+      ],
+      "qualityEffect": "Chains Times",
+      "qualityWorth": "optional"
+    },
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "quest": {
+        "act": 1,
+        "quest": "Mercy Mission",
+        "classes": [
+          "Scion",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Controlled Destruction": {
+      "requiredLevel": 18,
+      "quest": {
+        "act": 2,
+        "quest": "Sharp and Cruel",
+        "classes": [
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 80% less Critical Strike Chance",
+        "Supported Skills deal 39% more Spell Damage"
+      ],
+      "tags": [
+        "critical",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "quest": {
+        "act": 3,
+        "quest": "Lost in Love",
+        "classes": [
+          "Marauder"
+        ]
+      },
+      "free": false,
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Elemental Focus": {
+      "requiredLevel": 18,
+      "quest": {
+        "act": 2,
+        "quest": "Sharp and Cruel",
+        "classes": [
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills cannot inflict Elemental Ailments",
+        "Supported Skills deal 34% more Elemental Damage"
+      ],
+      "tags": [],
+      "qualityEffect": "Supported Skills deal % increased Elemental Damage",
+      "qualityWorth": "recommended"
+    },
+    "Faster Casting": {
+      "requiredLevel": 18,
+      "quest": {
+        "act": 2,
+        "quest": "Sharp and Cruel",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 39% increased Cast Speed"
+      ],
+      "tags": [
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills have % increased Cast Speed",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "quest": {
+        "act": 1,
+        "quest": "The Caged Brute",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Lightning Penetration": {
+      "requiredLevel": 31,
+      "quest": {
+        "act": 3,
+        "quest": "A Fixture of Fate",
+        "classes": [
+          "Scion",
+          "Shadow",
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Penetrate 34% Lightning Resistance"
+      ],
+      "tags": [
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Rolling Magma": {
+      "requiredLevel": 1,
+      "quest": {
+        "act": 1,
+        "quest": "Enemy at the Gate",
+        "classes": [
+          "Templar",
+          "Witch"
+        ]
+      },
+      "free": true,
+      "color": "b",
+      "support": false,
+      "description": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
+      "effect": [
+        "Projectiles can Chain when impacting the ground\nProjectiles do not change direction when Chaining",
+        "Deals 1215 to 1822 Fire Damage",
+        "Chains +3 Times",
+        "+0.4 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "chaining",
+        "fire",
+        "projectile",
+        "spell"
+      ],
+      "qualityEffect": "Chains Times",
+      "qualityWorth": "optional"
+    }
+  },
+  "seedHash": "0c668cf5e269",
+  "guide": {
+    "summary": {
+      "text": "Arc Elementalist is a self-cast lightning build that measures 66.3k at red maps and 92.6k at pinnacle. Exposure and shock carry the single-target, and no unique is required.",
+      "status": "auto-breadth",
+      "signed": null,
+      "facts": [
+        "mainSkill",
+        "ascendancyId",
+        "gates.maps-red.metrics.dps",
+        "gates.pinnacle.metrics.dps"
+      ],
+      "factsHash": "4b5d183ca6503458"
+    },
+    "leveling": {
+      "text": "Level with Rolling Magma, then switch to Arc as soon as it is available. The first checkpoint measures 344 life and 49 damage; the second measures 512.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.until-12.metrics.life",
+        "gates.until-12.metrics.dps",
+        "gates.until-28.metrics.dps"
+      ],
+      "factsHash": "cfa39206ea6ffac0"
+    },
+    "maps": {
+      "text": "At red maps the build measures 66.3k damage, 18364 effective life and 5724 physical max hit. Keep the resistances capped and let the filter hide the rest.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.maps-red.metrics.dps",
+        "gates.maps-red.metrics.ehp",
+        "gates.maps-red.metrics.maxHit"
+      ],
+      "factsHash": "a0a75691717baf20"
+    },
+    "bossing": {
+      "text": "Pinnacle measures 92.6k damage with 23368 effective life and 6065 physical max hit. Apply the shock and exposure before the burst, then move out of the slam.",
+      "status": "auto-retry",
+      "signed": null,
+      "facts": [
+        "gates.pinnacle.metrics.dps",
+        "gates.pinnacle.metrics.ehp",
+        "gates.pinnacle.metrics.maxHit"
+      ],
+      "factsHash": "00c125b18872050c"
+    }
+  },
+  "medal": "B"
+}

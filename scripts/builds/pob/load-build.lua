@@ -31,7 +31,10 @@ end
 
 local gems = 0
 for _, group in ipairs((build.skillsTab and build.skillsTab.socketGroupList) or {}) do
-  for _ in ipairs(group.gemList or {}) do gems = gems + 1 end
+  for _, gem in ipairs(group.gemList or {}) do
+    -- PoB keeps one empty placeholder group in a fresh build; it is not a gem.
+    if gem.nameSpec and gem.nameSpec ~= '' then gems = gems + 1 end
+  end
 end
 
 print(string.format("RESULT %d %d %d %d", allocated, items, gems, flasks))

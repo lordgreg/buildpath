@@ -712,6 +712,15 @@ tests, human sign-off on prose only.
 **P5 — per-phase filters, staleness delisting, league workflow, changelog.**
 Acceptance: a patch bump delists every unverified build and the site says so.
 
+**P7 — breadth, ratings and signing.** Thirteen builds: the six from P4 plus
+Arc Elementalist, Arc Totem Hierophant, Spectre Necromancer, Essence Drain
+Occultist, Righteous Fire Chieftain, Stone Golem Elementalist and Flicker Strike
+Slayer. Four editorial ratings (tankiness, single target, clear, cost) produce a
+derived C/B/A/S/S+ medal; Dad builds use a reviewed lower damage profile with
+the defensive gates unchanged. `builds:sign` stamps a guide section, and the
+compiler resolves it. The DoT metric now reads `TotalDot`/`TotalDPS`, so an
+Essence Drain or Righteous Fire gate measures the damage it actually deals.
+
 **P6 — build-first landing.** The catalogue is the root page; the filter
 builder moved to `filter.html`, and old `index.html#<state>` links forward to
 the builder. The nav order is Builds first, Filter second. Breadth links use
@@ -878,6 +887,28 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 22 — P7 breadth and ratings
+
+- Seven new builds: Arc Elementalist, Arc Totem Hierophant, Spectre
+  Necromancer, Essence Drain Occultist, Righteous Fire Chieftain, Stone Golem
+  Elementalist and Flicker Strike Slayer. The catalogue is now thirteen.
+- The spectre build carries a real `Spectre` id; the oracle emits it and
+  measures the minion. The guide names the specific spectre.
+- **DoT is measured as DoT.** The oracle now takes the best of
+  `CombinedDPS`, `TotalDPS` and `TotalDot`; before this, Essence Drain and
+  Righteous Fire were judged on a hit-only number and looked broken.
+- **Dad profile.** Low-APM/DoT/totem builds can use a reviewed gate profile
+  that lowers the damage floor but keeps the defensive gates. The page labels
+  the profile, and calibration's must-pass set includes every profile.
+- **Ratings and medal.** Every build has four 1–10 editorial axes and a derived
+  C/B/A/S/S+ medal; S+ requires near-perfection on every axis.
+- **Signing is a command.** `builds:sign -- --build <id> --section summary
+  --by "name"` stamps the seed; `builds:build` resolves the prose and facts
+  hash. Unsigned breadth summaries publish as `auto-breadth`; flagship summaries
+  must be signed.
+- **Economy workflow fix:** the refresh now commits `presets.json` with the new
+  tiers and no longer fails on that expected diff.
 
 ### Revision 21 — build-first landing
 

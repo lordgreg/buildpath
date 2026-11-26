@@ -1,0 +1,152 @@
+schemaVersion: 1
+id: righteous-fire-chieftain
+name: Righteous Fire Chieftain
+class: Marauder
+ascendancyId: chieftain
+family: caster
+mainSkill: Righteous Fire
+flagship: false
+gateProfile: dad
+dad: true
+summary: >-
+  Righteous Fire on the Chieftain shell: a fire aura that burns enemies while you
+  walk, backed by armour, life regeneration and fire resistance. Low APM, very
+  forgiving, and no required unique. A Dad build by design.
+
+pros:
+  - { weight: 3, text: "Righteous Fire burns while you move; very low APM." }
+  - { weight: 3, text: "Chieftain life regeneration and armour make mistakes forgiving." }
+  - { weight: 3, text: "No required unique; life, armour and fire resistance are the gear." }
+  - { weight: 2, text: "A good Dad build: simple rotation and a clear defensive layer." }
+  - { weight: 2, text: "The fire aura clears packs without aiming." }
+  - { weight: 1, text: "The same strength armour bases as the melee builds." }
+cons:
+  - { weight: 3, text: "Righteous Fire burns your own life; the regeneration has to keep up." }
+  - { weight: 3, text: "Single-target damage is lower than a dedicated hit build." }
+  - { weight: 2, text: "Clear speed is slower than a bow build." }
+  - { weight: 2, text: "Fire resistance and life are hard requirements, not upgrades." }
+  - { weight: 1, text: "The build wants a six-link for its best damage." }
+  - { weight: 1, text: "It is a poor choice for no-regeneration maps." }
+
+ratings:
+  tankiness: 9
+  singleTarget: 4
+  clear: 6
+  cost: 7
+
+gearProfile: rf
+
+tree:
+  targets:
+    - increased fire damage
+    - burning damage
+    - increased maximum life
+    - life regeneration
+    - increased armour
+    - fire resistance
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Rolling Magma]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Rolling Magma, Added Fire Damage, Arcane Surge]
+        - slot: Weapon 1
+          gems: [Flame Dash]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Righteous Fire]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Righteous Fire, Lifetap, Elemental Focus, Controlled Destruction]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 68
+      skills: [Righteous Fire]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Righteous Fire, Burning Damage, Elemental Focus, Controlled Destruction, Increased Area of Effect, Lifetap]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 100
+      skills: [Righteous Fire]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Righteous Fire, Burning Damage, Elemental Focus, Controlled Destruction, Increased Area of Effect, Lifetap]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+ascendancyOrder:
+  - { node: ngamahu-flame-s-advance, lab: 1 }
+  - { node: tasalio-cleansing-water, lab: 2 }
+  - { node: ramako-sun-s-light, lab: 3 }
+  - { node: hinekora-death-s-fury, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces physical damage taken, which is most of what kills a low-APM build.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Righteous Fire Chieftain is a low-APM fire aura build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. Life regeneration and
+      armour carry the defence, and no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Rolling Magma, then switch to Righteous Fire when your life
+      regeneration can carry it. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep fire
+      resistance and life above the breakpoints and let the filter hide the
+      rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Keep the fire
+      aura on the boss and move through the small hits; avoid no-regeneration
+      maps.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]

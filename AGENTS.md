@@ -41,6 +41,7 @@ Build pipeline (needs a pinned PoB checkout at `.cache/pob/src` and LuaJIT +
 ```bash
 npm run builds:build      # validate src/builds/*.yaml -> src/generated/builds/
 npm run builds:patch-facts # content hashes of the pinned tree and gem data
+npm run builds:sign -- --build <id> --section summary --by "name"
 npm run builds:calibrate  # must-pass + must-fail gates, committed report
 npm run builds:verify     # PoB gates per checkpoint + the published PoB code
 npm run builds:publish-pobs # release only: create pobb.in pastes and link map

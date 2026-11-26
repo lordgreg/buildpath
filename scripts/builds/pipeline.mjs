@@ -46,6 +46,7 @@ export function gateThresholdsHash() {
       JSON.stringify({
         resistanceFloor: gates.resistanceFloor,
         checkpoints: gates.checkpoints,
+        profiles: gates.profiles ?? {},
       }),
     )
     .digest('hex')
@@ -290,8 +291,14 @@ export function runOracle(spec, { xmlOut } = {}) {
   return JSON.parse(line.slice('RESULT '.length));
 }
 
-export function evaluateGate(checkpointId, metrics) {
-  return evaluateGatePure(metrics, gates.checkpoints[checkpointId], 0);
+export function gateThresholds(checkpointId, profile = 'standard') {
+  const base = gates.checkpoints[checkpointId];
+  const overlay = profile === 'dad' ? gates.profiles?.dad?.[checkpointId] : undefined;
+  return overlay ? { ...base, ...overlay } : base;
+}
+
+export function evaluateGate(checkpointId, metrics, profile = 'standard') {
+  return evaluateGatePure(metrics, gateThresholds(checkpointId, profile), 0);
 }
 
 /** PoB drops unparseable item lines silently, so compare against what we wrote. */
@@ -424,6 +431,7 @@ export function buildCheckpointSpec(seed, checkpointId, options = {}) {
     targets: options.targets ?? seed.tree?.targets ?? [],
     keystones: options.keystones ?? seed.tree?.keystones ?? [],
     ascendancyPoints: seed.ascendancyOrder,
+    spectres: seed.spectres ?? [],
     skillGroups: groups,
     items: gear.items.map((item) => ({ slot: item.slot, text: item.text })),
     jewels: gear.jewels.map((jewel) => ({ text: jewel.text, base: gear.jewelBase })),
@@ -437,6 +445,7 @@ export function buildCheckpointSpec(seed, checkpointId, options = {}) {
             value: `number="${monsterEvasion[(checkpoint.enemyLevel ?? 83) - 1]}"`,
           }]
         : []),
+      ...(seed.config ?? []),
     ],
     ...(options.planOnly ? { planOnly: true } : {}),
     ...(options.endgameNodes ? { endgameNodes: options.endgameNodes } : {}),

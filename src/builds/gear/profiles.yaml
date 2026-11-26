@@ -139,3 +139,94 @@ profiles:
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
       jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+
+  # Elemental spell casters: Arc, Arc totems, and the same shell for a fire
+  # caster. The shared caster body slots already carry life and resistances.
+  spell:
+    starting:
+      slots:
+        weapon: { base: "Driftwood Wand", affixes: [spell-damage] }
+        offhand: { base: "Twig Spirit Shield", affixes: [life] }
+    early:
+      slots:
+        weapon: { base: "Driftwood Wand", affixes: [spell-damage, cast-speed] }
+        offhand: { base: "Yew Spirit Shield", affixes: [life] }
+    ssf-start:
+      slots:
+        weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, lightning-damage] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+    ssf-week1:
+      slots:
+        weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, lightning-damage] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+    trade:
+      slots:
+        weapon: { base: "Void Sceptre", affixes: [spell-damage, cast-speed, lightning-damage] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
+
+  # Chaos damage over time shares the spell shell but rolls chaos and DoT.
+  chaos:
+    starting:
+      slots:
+        weapon: { base: "Driftwood Wand", affixes: [spell-damage] }
+        offhand: { base: "Twig Spirit Shield", affixes: [life] }
+    early:
+      slots:
+        weapon: { base: "Driftwood Wand", affixes: [spell-damage, chaos-damage] }
+        offhand: { base: "Yew Spirit Shield", affixes: [life] }
+    ssf-start:
+      slots:
+        weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, chaos-damage] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+    ssf-week1:
+      slots:
+        weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, chaos-damage, dot-multi] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+    trade:
+      slots:
+        weapon: { base: "Void Sceptre", affixes: [spell-damage, cast-speed, chaos-damage, dot-multi] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
+
+  # Righteous Fire: armour, life and fire/DoT on a sceptre and shield. It uses
+  # the same strength armour bases as the melee profile, not the caster set.
+  rf:
+    starting:
+      slots:
+        weapon: { base: "Driftwood Sceptre", affixes: [fire-damage] }
+        offhand: { base: "Rotted Round Shield", affixes: [life] }
+        body: { base: "Chestplate", affixes: [life] }
+        helmet: { base: "Cone Helmet", affixes: [life] }
+        gloves: { base: "Plated Gauntlets", affixes: [life] }
+        boots: { base: "Steel Greaves", affixes: [life, movement-speed] }
+    early:
+      slots:
+        weapon: { base: "Driftwood Sceptre", affixes: [fire-damage, cast-speed] }
+        offhand: { base: "Linden Kite Shield", affixes: [life] }
+        body: { base: "Sun Plate", affixes: [life, armour] }
+        helmet: { base: "Reaver Helmet", affixes: [life, armour] }
+        gloves: { base: "Guarding Gauntlets", affixes: [life] }
+        boots: { base: "Antique Greaves", affixes: [life, movement-speed] }
+    ssf-start:
+      slots:
+        weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi] }
+        offhand: { base: "Archon Kite Shield", affixes: [life, resist-fire, resist-cold] }
+        body: { base: "Glorious Plate", affixes: [life, armour, resist-lightning, resist-cold] }
+        helmet: { base: "Eternal Burgonet", affixes: [life, armour, resist-fire, resist-cold] }
+        gloves: { base: "Spiked Gloves", affixes: [life, resist-cold, resist-fire] }
+        boots: { base: "Titan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+    ssf-week1:
+      slots:
+        weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi] }
+        offhand: { base: "Archon Kite Shield", affixes: [life, resist-fire, resist-cold] }
+        body: { base: "Legion Plate", affixes: [life, armour, resist-lightning, resist-cold] }
+        helmet: { base: "Conqueror's Helmet", affixes: [life, armour, resist-fire, resist-cold] }
+        gloves: { base: "Precursor Gauntlets", affixes: [life, resist-cold, resist-fire] }
+        boots: { base: "Brimstone Treads", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+    trade:
+      slots:
+        weapon: { base: "Void Sceptre", affixes: [fire-damage, dot-multi] }
+        offhand: { base: "Archon Kite Shield", affixes: [energy-shield-pct, life, resist-cold] }
+        body: { base: "Royal Plate", affixes: [life, armour, resist-lightning, resist-cold] }
+        helmet: { base: "Giantslayer Helmet", affixes: [life, armour, resist-fire, resist-cold] }
+        gloves: { base: "Leviathan Gauntlets", affixes: [life, resist-cold, resist-fire] }
+        boots: { base: "Leviathan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }

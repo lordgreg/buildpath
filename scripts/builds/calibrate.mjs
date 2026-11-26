@@ -70,7 +70,11 @@ function evaluate(seedId, checkpointId, mutate = {}) {
   assertNodeCount(seed.id, checkpointId, metrics);
   const scaled = scaledMetrics(seed, metrics);
   const gate = gates.checkpoints[checkpointId];
-  const result = evaluateGate(checkpointId, scaled);
+  const result = evaluateGate(
+    checkpointId,
+    scaled,
+    seed.gateProfile ?? 'standard',
+  );
   return {
     seed: seed.id,
     checkpoint: checkpointId,

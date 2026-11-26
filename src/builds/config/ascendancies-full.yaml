@@ -78,3 +78,474 @@ ascendancies:
       - { id: unrelenting, name: "Unrelenting", notable: true, effect: ["1% additional Elemental Damage Reduction per Endurance Charge", "1% additional Physical Damage Reduction per Endurance Charge"] }
       - { id: untiring, name: "Untiring", notable: true, effect: ["40% increased Life Regeneration rate", "1.5% of Physical Damage prevented from Hits in the past 10 seconds is Regenerated as Life per second"] }
       - { id: armour-life-regeneration, name: "Armour, Life Regeneration", notable: false, effect: ["15% increased Armour", "Regenerate 0.5% of Life per second"] }
+  hierophant:
+    name: Hierophant
+    class: Templar
+    nodes:
+    - id: mana-regeneration-arcane-surge-effect
+      name: Mana Regeneration, Arcane Surge Effect
+      notable: false
+      effect:
+      - 20% increased Mana Regeneration Rate
+      - 20% increased Effect of Arcane Surge on you
+      - (Arcane Surge grants 20% increased Cast Speed and 30% increased Mana Regeneration
+        rate, for 4 seconds)
+    - id: mana-regeneration-totem-placement-speed
+      name: Mana Regeneration, Totem Placement Speed
+      notable: false
+      effect:
+      - 20% increased Mana Regeneration Rate
+      - 20% increased Totem Placement speed
+    - id: mana-regeneration-mana
+      name: Mana Regeneration, Mana
+      notable: false
+      effect:
+      - 8% increased maximum Mana
+      - 20% increased Mana Regeneration Rate
+    - id: divine-guidance
+      name: Divine Guidance
+      notable: true
+      effect:
+      - 30% increased maximum Mana
+      - 10% of Damage is taken from Mana before Life
+      - Transfiguration of Mind
+    - id: sanctuary-of-thought
+      name: Sanctuary of Thought
+      notable: true
+      effect:
+      - Gain 20% of Maximum Mana as Extra Maximum Energy Shield
+      - 1% increased Area of Effect per 50 Unreserved Maximum Mana, up to 100%
+      - Regenerate 1% of Mana per second
+    - id: pursuit-of-faith
+      name: Pursuit of Faith
+      notable: true
+      effect:
+      - 100% increased Totem Duration
+      - +1 to maximum number of Summoned Totems
+      - 100% increased Totem Placement speed
+    - id: ritual-of-awakening
+      name: Ritual of Awakening
+      notable: true
+      effect:
+      - 3% more Damage per Summoned Totem
+      - Regenerate 0.5% of Mana per second for each Summoned Totem
+      - You and your Totems Regenerate 1% of Life per second for each Summoned Totem
+    - id: conviction-of-power
+      name: Conviction of Power
+      notable: true
+      effect:
+      - +4 to Minimum Endurance Charges
+      - +4 to Minimum Power Charges
+      - +1 to Maximum Power Charges and Maximum Endurance Charges
+    - id: illuminated-devotion
+      name: Illuminated Devotion
+      notable: true
+      effect:
+      - Non-Damaging Ailments have 50% reduced Effect on you while you have Arcane Surge
+      - 30% increased Area of Effect while you have Arcane Surge
+      - 0.5% of Spell Damage Leeched as Life while you have Arcane Surge
+      - (Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked,
+        and Sapped)
+    - id: arcane-blessing
+      name: Arcane Blessing
+      notable: true
+      effect:
+      - Arcane Surge also grants 20% more Spell Damage to you
+      - Gain Arcane Surge when you or your Totems Hit an Enemy with a Spell
+      - (Arcane Surge grants 20% increased Cast Speed and 30% increased Mana Regeneration
+        rate, for 4 seconds)
+    - id: mana-regeneration-brand-damage
+      name: Mana Regeneration, Brand Damage
+      notable: false
+      effect:
+      - 20% increased Mana Regeneration Rate
+      - 14% increased Brand Damage
+      - (Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by
+        a Brand)
+    - id: sign-of-purpose
+      name: Sign of Purpose
+      notable: true
+      effect:
+      - Brands have 100% more Activation Frequency if 75% of Attached Duration expired
+      - Brand Recall has 100% increased Cooldown Recovery Rate
+  elementalist:
+    name: Elementalist
+    class: Witch
+    nodes:
+    - id: elemental-damage-attack-and-cast-speed
+      name: Elemental Damage, Attack and Cast Speed
+      notable: false
+      effect:
+      - 10% increased Elemental Damage
+      - 4% increased Attack and Cast Speed
+    - id: elemental-damage-and-resistances
+      name: Elemental Damage and Resistances
+      notable: false
+      effect:
+      - +6% to all Elemental Resistances
+      - 10% increased Elemental Damage
+    - id: liege-of-the-primordial
+      name: Liege of the Primordial
+      notable: true
+      effect:
+      - Summoned Golems are Immune to Elemental Damage
+      - Summoned Golems are Resummoned 4 seconds after being Killed
+      - +2 to maximum number of Summoned Golems
+    - id: mastermind-of-discord
+      name: Mastermind of Discord
+      notable: true
+      effect:
+      - Exposure you inflict applies an extra -25% to the affected Resistance
+      - Regenerate 1% of Mana per second if you've inflicted Exposure Recently
+      - (Recently refers to the past 4 seconds)
+    - id: heart-of-destruction
+      name: Heart of Destruction
+      notable: true
+      effect:
+      - Gain Convergence when you Hit a Unique Enemy, no more than once every 8 seconds
+      - 60% increased Area of Effect while you don't have Convergence
+      - (Convergence grants 30% more Elemental Damage and lasts 4 seconds)
+    - id: bastion-of-elements
+      name: Bastion of Elements
+      notable: true
+      effect:
+      - Triggers Level 20 Primal Aegis when AllocatedPrimal Aegis can take 75 Elemental
+        Damage per Allocated Notable Passive Skill
+      - Other Aegis Skills are Disabled
+      - Cannot take Reflected Elemental Damage
+      - Grants Level 20 Primal Aegis
+    - id: bringer-of-ruin
+      name: Bringer of Ruin
+      notable: true
+      effect:
+      - 66% increased Effect of Herald Buffs on you
+      - 66% increased Mana Reservation Efficiency of Herald Skills
+    - id: elemental-damage-fire-damage-over-time-multiplier
+      name: Elemental Damage, Fire Damage over Time Multiplier
+      notable: false
+      effect:
+      - +4% to Fire Damage over Time Multiplier
+      - 10% increased Elemental Damage
+    - id: elemental-damage-lightning-ailment-effect
+      name: Elemental Damage, Lightning Ailment Effect
+      notable: false
+      effect:
+      - 10% increased Elemental Damage
+      - 10% increased Effect of Lightning Ailments
+      - (Lightning Ailments are Shocked and Sapped)
+    - id: elemental-damage-cold-ailment-effect
+      name: Elemental Damage, Cold Ailment Effect
+      notable: false
+      effect:
+      - 10% increased Elemental Damage
+      - 10% increased Effect of Cold Ailments
+      - (Cold Ailments are Chilled, Frozen and Brittle)
+    - id: shaper-of-flames
+      name: Shaper of Flames
+      notable: true
+      effect:
+      - Hits always Ignite
+      - All Damage can Ignite
+      - Enemies Ignited by you have 40% of Physical Damage they deal converted to Fire
+      - (Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill,
+        for 4 seconds)
+    - id: shaper-of-storms
+      name: Shaper of Storms
+      notable: true
+      effect:
+      - Hits always Shock
+      - Shocks from your Hits always increase Damage taken by at least 25%
+      - All Damage can Shock
+      - (Shock increases Damage taken by up to 50%, depending on the amount of Lightning
+        Damage in the hit, for 2 seconds)
+    - id: shaper-of-winter
+      name: Shaper of Winter
+      notable: true
+      effect:
+      - All Damage with Hits can Chill
+      - Your Chills can reduce Action Speed by up to a maximum of 40%
+      - Enemies Chilled by your Hits lessen their Damage dealt by half of Chill Effect
+      - (Chill reduces Enemy Action Speed by up to 30%, depending on the amount of Cold
+        Damage in the hit, for 2 seconds)
+  occultist:
+    name: Occultist
+    class: Witch
+    nodes:
+    - id: energy-shield-curse-effect
+      name: Energy Shield, Curse Effect
+      notable: false
+      effect:
+      - 6% increased maximum Energy Shield
+      - 5% increased Effect of your Curses
+    - id: energy-shield-cold-and-chaos-damage
+      name: Energy Shield, Cold and Chaos Damage
+      notable: false
+      effect:
+      - 10% increased Cold Damage
+      - 10% increased Chaos Damage
+      - 6% increased maximum Energy Shield
+    - id: energy-shield-power-charge-duration
+      name: Energy Shield, Power Charge Duration
+      notable: false
+      effect:
+      - 6% increased maximum Energy Shield
+      - 15% increased Power Charge Duration
+    - id: energy-shield-energy-shield-recharge-rate
+      name: Energy Shield, Energy Shield Recharge Rate
+      notable: false
+      effect:
+      - 6% increased maximum Energy Shield
+      - 15% increased Energy Shield Recharge Rate
+    - id: profane-bloom
+      name: Profane Bloom
+      notable: true
+      effect:
+      - Cursed Enemies you or your Minions Kill have a 50% chance to Explode, dealing
+        a quarter of their maximum Life as Chaos Damage
+    - id: unholy-authority
+      name: Unholy Authority
+      notable: true
+      effect:
+      - You can apply an additional Curse
+      - Your Hexes can affect Hexproof Enemies
+    - id: unhallowed-rite
+      name: Unhallowed Rite
+      notable: true
+      effect:
+      - Gain Spirit Infusion every 0.5 seconds while Channelling a Spell
+    - id: vile-bastion
+      name: Vile Bastion
+      notable: true
+      effect:
+      - Regenerate 100 Energy Shield per second
+      - Cannot Be Stunned while you have Energy Shield
+      - Maximum Energy Shield is increased by Chance to Block Spell Damage
+    - id: void-beacon
+      name: Void Beacon
+      notable: true
+      effect:
+      - Nearby Enemies have -20% to Cold Resistance
+      - Nearby Enemies have -20% to Chaos Resistance
+      - Nearby Enemies have 100% reduced Life Regeneration rate
+    - id: forbidden-power
+      name: Forbidden Power
+      notable: true
+      effect:
+      - 6% increased Area of Effect per Power Charge
+      - 6% increased Damage per Power Charge
+      - +1 to Maximum Power Charges
+      - Gain a Power Charge after Spending a total of 200 Mana
+      - occultist_power_charge_on_mana_spent
+    - id: energy-shield-chaos-damage
+      name: Energy Shield, Chaos Damage
+      notable: false
+      effect:
+      - 10% increased Chaos Damage
+      - 6% increased maximum Energy Shield
+    - id: energy-shield-cold-damage
+      name: Energy Shield, Cold Damage
+      notable: false
+      effect:
+      - 10% increased Cold Damage
+      - 6% increased maximum Energy Shield
+    - id: withering-presence
+      name: Withering Presence
+      notable: true
+      effect:
+      - +60% to Chaos Resistance
+      - 15% more Chaos Damage
+      - Every second, inflict Withered on Enemies within 6 metres for 15 seconds
+      - Nearby Hindered Enemies deal 15% reduced Damage over Time
+      - (Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to
+        15 times)
+    - id: frigid-wake
+      name: Frigid Wake
+      notable: true
+      effect:
+      - Cannot be Chilled
+      - Cannot be Frozen
+      - 15% more Cold Damage
+      - Every 4 seconds, 50% chance to Freeze Non-Frozen Enemies within 6 metres for
+        0.4 seconds
+      - Nearby Chilled Enemies deal 10% reduced Damage with Hits
+      - (Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration
+        is based on the Cold Damage of the Hit)
+  chieftain:
+    name: Chieftain
+    class: Marauder
+    nodes:
+    - id: life-regeneration-melee-damage
+      name: Life Regeneration, Melee Damage
+      notable: false
+      effect:
+      - 10% increased Melee Damage
+      - Regenerate 0.5% of Life per second
+    - id: life-regeneration-fire-resistance
+      name: Life Regeneration, Fire Resistance
+      notable: false
+      effect:
+      - +15% to Fire Resistance
+      - Regenerate 0.5% of Life per second
+    - id: life-regeneration-fire-damage
+      name: Life Regeneration, Fire Damage
+      notable: false
+      effect:
+      - 10% increased Fire Damage
+      - Regenerate 0.5% of Life per second
+    - id: life-regeneration-warcry-duration
+      name: Life Regeneration, Warcry Duration
+      notable: false
+      effect:
+      - Regenerate 0.5% of Life per second
+      - 15% increased Warcry Duration
+    - id: sione-sun-s-roar
+      name: Sione, Sun's Roar
+      notable: true
+      effect:
+      - 30% increased Warcry Buff Effect
+      - Warcries have infinite Power
+      - (Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters
+        20, and Players 5)
+    - id: ngamahu-flame-s-advance
+      name: Ngamahu, Flame's Advance
+      notable: true
+      effect:
+      - Non-Unique Jewels cause Increases and Reductions to other Damage Types in a
+        Large Radius to be Transformed to apply to Fire Damage
+      - Non-Unique Jewels cause Small and Notable Passive Skills in a Large Radius toalso
+        grant +4 to Strength
+      - (Passive Skills that are not Notable, Masteries, Keystones, or Jewel Sockets
+        are Small)
+    - id: hinekora-death-s-fury
+      name: Hinekora, Death's Fury
+      notable: true
+      effect:
+      - Enemies you or your Totems Kill have 10% chance to Explode, dealing 250% of
+        their maximum Life as Fire Damage
+    - id: tasalio-cleansing-water
+      name: Tasalio, Cleansing Water
+      notable: true
+      effect:
+      - Modifiers to Fire Resistance also apply to Cold and Lightning Resistances at
+        50% of their Value
+      - Unaffected by Ignite
+      - (Debuffs you are Unaffected by can still be placed on you, but will not actually
+        apply their effect)
+    - id: tukohama-war-s-herald
+      name: Tukohama, War's Herald
+      notable: true
+      effect:
+      - Skills from Equipped Body Armour are Supported by Level 30 Ancestral Call
+      - Skills from Equipped Body Armour are Supported by Level 20 Fist of War
+    - id: ramako-sun-s-light
+      name: Ramako, Sun's Light
+      notable: true
+      effect:
+      - Enemy Monsters within 6 metres have Fire Resistance againstDamage over Time
+        is -20% while you are Stationary
+      - Enemy Monsters within 6 metres have no Fire Resistance againstDamage over Time
+        while you are Stationary
+    - id: valako-storm-s-embrace
+      name: Valako, Storm's Embrace
+      notable: true
+      effect:
+      - Modifiers to Maximum Fire Resistance also apply to Maximum Cold and Lightning
+        Resistances
+  slayer:
+    name: Slayer
+    class: Duelist
+    nodes:
+    - id: attack-damage-critical-strike-chance
+      name: Attack Damage, Critical Strike Chance
+      notable: false
+      effect:
+      - 10% increased Attack Damage
+      - 15% increased Critical Strike Chance
+    - id: attack-damage-attack-speed
+      name: Attack Damage, Attack Speed
+      notable: false
+      effect:
+      - 10% increased Attack Damage
+      - 5% increased Attack Speed
+    - id: attack-damage-life-leech
+      name: Attack Damage, Life Leech
+      notable: false
+      effect:
+      - 10% increased Attack Damage
+      - 0.4% of Attack Damage Leeched as Life
+      - (Leeched Life is recovered over time. Multiple Leeches can occur simultaneously,
+        up to a maximum rate)
+    - id: attack-damage-area-of-effect
+      name: Attack Damage, Area of Effect
+      notable: false
+      effect:
+      - 10% increased Attack Damage
+      - 10% increased Area of Effect
+    - id: headsman
+      name: Headsman
+      notable: true
+      effect:
+      - Kill Enemies that have 20% or lower Life when Hit by your Skills
+      - Gain 10% increased Attack Speed for 20 seconds when you Kill a Rare or Unique
+        Enemy
+      - Gain 10% increased Movement Speed for 20 seconds when you Kill an Enemy
+    - id: overwhelm
+      name: Overwhelm
+      notable: true
+      effect:
+      - Base Critical Strike Chance for Attacks with Weapons is 8%
+      - +10% to Critical Strike Multiplier per Enemy within 6 metres, up to +100%
+      - Nearby Enemies have -30% to Critical Strike Multiplier
+    - id: bane-of-legends
+      name: Bane of Legends
+      notable: true
+      effect:
+      - 10% more Damage if you've Killed Recently
+      - Cannot take Reflected Physical Damage
+      - 20% more Damage with Hits and Ailments against Unique Enemies
+      - (Recently refers to the past 4 seconds)
+    - id: endless-hunger
+      name: Endless Hunger
+      notable: true
+      effect:
+      - 20% of Overkill Damage is Leeched as Life
+      - 20% increased Attack Speed while Leeching
+      - Cannot be Stunned while Leeching
+      - You are Unaffected by Bleeding while Leeching
+      - (Leeched Life is recovered over time. Multiple Leeches can occur simultaneously,
+        up to a maximum rate)
+      - (Overkill Damage is any Damage from a Hit in excess of the Enemy's remaining
+        Life)
+      - (Debuffs you are Unaffected by can still be placed on you, but will not actually
+        apply their effect)
+    - id: brutal-fervour
+      name: Brutal Fervour
+      notable: true
+      effect:
+      - 100% increased Maximum Recovery per Life Leech
+      - Life Leech effects are not removed when Unreserved Life is Filled
+      - 10% reduced Damage taken while Leeching
+    - id: impact
+      name: Impact
+      notable: true
+      effect:
+      - +0.4 metres to Melee Strike Range
+      - 5% increased Area of Effect per Enemy killed recently, up to 50%
+      - Deal up to 15% more Melee Damage to Enemies, based on proximity
+      - 50% increased Accuracy Rating
+      - (Affects Melee Strikes, including the Default Attack. Does not apply to Areas
+        of Effect)
+      - (Recently refers to the past 4 seconds)
+    - id: attack-damage-frenzy-and-endurance-charge-duration
+      name: Attack Damage, Frenzy and Endurance Charge Duration
+      notable: false
+      effect:
+      - 10% increased Attack Damage
+      - 15% increased Endurance Charge Duration
+      - 15% increased Frenzy Charge Duration
+    - id: masterful-form
+      name: Masterful Form
+      notable: true
+      effect:
+      - Your Maximum Endurance Charges is equal to your Maximum Frenzy Charges
+      - +1 to Maximum Frenzy Charges

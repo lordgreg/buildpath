@@ -88,3 +88,26 @@ projectile-damage:
 crit-multi:
   mod: "+{v}% to Critical Strike Multiplier"
   tiers: { 1: 35, 2: 25, 3: 18, 4: 12 }
+# Spell casters: Arc, totems, chaos DoT and Righteous Fire all need a spell
+# weapon rather than the minion wand the shared caster table uses.
+spell-damage:
+  mod: "{v}% increased Spell Damage"
+  tiers: { 1: 80, 2: 65, 3: 50, 4: 30 }
+cast-speed:
+  mod: "{v}% increased Cast Speed"
+  tiers: { 1: 15, 2: 12, 3: 9, 4: 6 }
+lightning-damage:
+  mod: "{v}% increased Lightning Damage"
+  tiers: { 1: 50, 2: 40, 3: 30, 4: 15 }
+fire-damage:
+  mod: "{v}% increased Fire Damage"
+  tiers: { 1: 50, 2: 40, 3: 30, 4: 15 }
+chaos-damage:
+  mod: "{v}% increased Chaos Damage"
+  tiers: { 1: 50, 2: 40, 3: 30, 4: 15 }
+dot-multi:
+  mod: "+{v}% to Damage over Time Multiplier"
+  tiers: { 1: 25, 2: 20, 3: 15, 4: 8 }
+mana:
+  mod: "+{v} to maximum Mana"
+  tiers: { 1: 80, 2: 60, 3: 40, 4: 20 }

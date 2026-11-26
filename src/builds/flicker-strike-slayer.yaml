@@ -1,0 +1,157 @@
+schemaVersion: 1
+id: flicker-strike-slayer
+name: Flicker Strike Slayer
+class: Duelist
+ascendancyId: slayer
+family: melee
+mainSkill: Flicker Strike
+flagship: false
+summary: >-
+  Flicker Strike on the Slayer shell. The build spends frenzy charges to
+  teleport-strike through a pack, and Blood Rage plus Slayer leech keep the
+  charges and life coming back. No required unique.
+
+pros:
+  - { weight: 3, text: "Flicker Strike teleports to enemies, so clear is fast and hands-off." }
+  - { weight: 3, text: "No required unique; a rare two-handed axe carries the damage." }
+  - { weight: 2, text: "Slayer leech and culling make the boss fight forgiving." }
+  - { weight: 2, text: "Blood Rage supplies frenzy charges between packs." }
+  - { weight: 2, text: "A fun, high-mobility melee build." }
+  - { weight: 1, text: "The same armour and axe bases as the other melee builds." }
+cons:
+  - { weight: 3, text: "Flicker teleports you into danger; positioning is not fully yours." }
+  - { weight: 3, text: "Frenzy charge downtime stops the build." }
+  - { weight: 2, text: "Clear speed depends on keeping the chain going." }
+  - { weight: 2, text: "Melee range means you eat mechanics." }
+  - { weight: 1, text: "Mana is tight before leech and reduced cost are solved." }
+  - { weight: 1, text: "A six-link is a large damage step." }
+
+ratings:
+  tankiness: 5
+  singleTarget: 7
+  clear: 9
+  cost: 7
+
+gearProfile: melee
+
+config:
+  - { name: useFrenzyCharges, value: 'boolean="true"' }
+  - { name: overrideFrenzyCharges, value: 'number="3"' }
+
+tree:
+  keystones:
+    - Resolute Technique
+  targets:
+    - increased physical damage
+    - increased attack speed
+    - increased maximum life
+    - increased melee damage
+    - increased area of effect
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Double Strike]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Double Strike, Melee Splash, Faster Attacks]
+        - slot: Weapon 1
+          gems: [Leap Slam, Blood and Sand]
+        - slot: Helmet
+          gems: [Decoy Totem]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Slam attacks are mana-hungry." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Flicker Strike]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Flicker Strike, Melee Splash, Melee Physical Damage, Close Combat]
+        - slot: Weapon 1
+          gems: [Leap Slam, Blood Rage]
+        - slot: Helmet
+          gems: [Decoy Totem, Blood and Sand]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 68
+      skills: [Flicker Strike]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Flicker Strike, Melee Splash, Melee Physical Damage, Multistrike, Close Combat, Faster Attacks]
+        - slot: Weapon 1
+          gems: [Leap Slam, Blood Rage]
+        - slot: Helmet
+          gems: [Decoy Totem, Blood and Sand]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 100
+      skills: [Flicker Strike]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Flicker Strike, Melee Splash, Melee Physical Damage, Multistrike, Close Combat, Faster Attacks]
+        - slot: Weapon 1
+          gems: [Leap Slam, Blood Rage]
+        - slot: Helmet
+          gems: [Decoy Totem, Blood and Sand]
+        - slot: Gloves
+          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+ascendancyOrder:
+  - { node: headsman, lab: 1 }
+  - { node: brutal-fervour, lab: 2 }
+  - { node: endless-hunger, lab: 3 }
+  - { node: bane-of-legends, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces physical damage taken, which is most of what kills a flicker build.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Flicker Strike Slayer is a fast melee build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. Blood Rage and Slayer
+      leech keep the frenzy chain alive, and no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Double Strike until Flicker Strike and Blood Rage are
+      available. The first checkpoint measures {{gates.until-12.metrics.life|int}}
+      life and {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep Blood Rage
+      up, cap the resistances, and let the filter hide the rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Keep a frenzy
+      source for the boss and use the Slayer leech window instead of standing
+      still.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]

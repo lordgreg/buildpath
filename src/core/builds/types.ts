@@ -1,5 +1,6 @@
 import type { CharacterClass, ItemSlot, SlotSpec } from '../archetypes/types.ts';
 import type { BuildGuide } from './guide.ts';
+import type { BuildMedal, BuildRatings } from './ratings.ts';
 import type { Staleness } from './staleness.ts';
 import type { FamilyId } from '../../meta/types.ts';
 
@@ -40,6 +41,9 @@ export interface BuildIndexEntry {
   steps?: BuildStepSummary[];
   /** Differentiators for the catalogue: SSF, playstyle, measured defence. */
   chips?: BuildChip[];
+  /** Editorial 1–10 ratings and the derived medal. */
+  ratings?: BuildRatings;
+  medal?: BuildMedal;
   /** True when the committed calibration report covers the current gates. */
   calibrated?: boolean;
   /** Staleness / waiting state, when the build is delisted (R10). */
@@ -175,6 +179,8 @@ export interface GateResult {
   pass: boolean;
   level: number;
   budget: string;
+  /** The gate profile used, e.g. standard or dad. */
+  gateProfile?: string;
   /** The thresholds this checkpoint was evaluated against. */
   thresholds?: Record<string, number | boolean>;
   gear?: GearItem[];
@@ -282,6 +288,16 @@ export interface Build extends BuildIndexEntry {
   patch?: string;
   /** Staleness / waiting state, when the build is delisted (R10). */
   stale?: Staleness;
+  /** A flagship requires a signed summary; breadth pages may auto-publish. */
+  flagship?: boolean;
+  /** The gate profile this seed is judged against. Defaults to standard. */
+  gateProfile?: 'standard' | 'dad';
+  /** Tanky, low-APM, forgiving build; tagged Dad in the catalogue. */
+  dad?: boolean;
+  /** PoB spectre metadata ids, for a Raise Spectre build. */
+  spectres?: string[];
+  /** Extra PoB config inputs, e.g. frenzy charges. */
+  config?: { name: string; value: string }[];
   /** Resolved, checked prose. The seed YAML is the authoring home. */
   guide?: BuildGuide;
 }

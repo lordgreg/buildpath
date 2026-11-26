@@ -1,6 +1,147 @@
 {
-  "version": "ebbb755d6393",
+  "version": "aec8ce43464d",
   "builds": [
+    {
+      "id": "arc-elementalist",
+      "name": "Arc Elementalist",
+      "class": "Witch",
+      "ascendancyId": "elementalist",
+      "family": "caster",
+      "mainSkill": "Arc",
+      "summary": "Self-cast Arc on the Elementalist shell. Arc clears packs without aiming, the exposure and shock package turns lightning into a real single-target tool, and the gear is the same spell sceptre and shield the totem build uses. No required unique.",
+      "status": "verified",
+      "seedHash": "0c668cf5e269",
+      "calibrated": true,
+      "ratings": {
+        "tankiness": 4,
+        "singleTarget": 6,
+        "clear": 8,
+        "cost": 8
+      },
+      "medal": "B",
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Caster",
+          "kind": "playstyle"
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 49
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 512
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 44710
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 63719
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 66306
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 92642
+        }
+      ]
+    },
+    {
+      "id": "arc-totem-hierophant",
+      "name": "Arc Totem Hierophant",
+      "class": "Templar",
+      "ascendancyId": "hierophant",
+      "family": "caster",
+      "mainSkill": "Arc",
+      "summary": "Arc on Spell Totem, with the Hierophant mana and totem package behind it. The totems cast while you move, so the build is easier on the hands than a self-cast Arc and still scales with the same spell gear. No required unique.",
+      "status": "verified",
+      "seedHash": "5f040e586b3e",
+      "calibrated": true,
+      "ratings": {
+        "tankiness": 6,
+        "singleTarget": 5,
+        "clear": 6,
+        "cost": 8
+      },
+      "medal": "B",
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Caster",
+          "kind": "playstyle"
+        },
+        {
+          "label": "Dad",
+          "kind": "note",
+          "title": "Tanky, low-APM and forgiving; a good build to learn the league with."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 49
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 77
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 7539
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 11219
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 14020
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 24328
+        }
+      ]
+    },
     {
       "id": "boneshatter-juggernaut",
       "name": "Boneshatter Juggernaut",
@@ -10,8 +151,15 @@
       "mainSkill": "Boneshatter",
       "summary": "League-start melee build. Boneshatter trades a little life for stacks, so the gear is armour and resistances, the axe is a rare with attack speed, and the ascendancy makes the trauma survivable. No unique is required, which is what a strength build needs on day one of a solo league.",
       "status": "verified",
-      "seedHash": "acc671370109",
+      "seedHash": "9001e68f0d98",
       "calibrated": true,
+      "ratings": {
+        "tankiness": 9,
+        "singleTarget": 9,
+        "clear": 7,
+        "cost": 8
+      },
+      "medal": "S",
       "chips": [
         {
           "label": "SSF",
@@ -26,6 +174,11 @@
           "label": "HC-ready",
           "kind": "defence",
           "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        },
+        {
+          "label": "Dad",
+          "kind": "note",
+          "title": "Tanky, low-APM and forgiving; a good build to learn the league with."
         },
         {
           "label": "Tanky",
@@ -91,8 +244,15 @@
       "mainSkill": "Cyclone",
       "summary": "Two-handed Cyclone on the Juggernaut shell. The axe and the budget armour are the damage and defence; the ascendancy supplies endurance charges, recovery and stun immunity. No required unique.",
       "status": "verified",
-      "seedHash": "daf16ae8c56b",
+      "seedHash": "330607e254e1",
       "calibrated": true,
+      "ratings": {
+        "tankiness": 8,
+        "singleTarget": 9,
+        "clear": 8,
+        "cost": 8
+      },
+      "medal": "S",
       "chips": [
         {
           "label": "SSF",
@@ -149,6 +309,152 @@
       ]
     },
     {
+      "id": "essence-drain-occultist",
+      "name": "Essence Drain Occultist",
+      "class": "Witch",
+      "ascendancyId": "occultist",
+      "family": "caster",
+      "mainSkill": "Essence Drain",
+      "summary": "Chaos damage over time on the Occultist shell. Essence Drain and Contagion spread through a pack, Wither and Despair amplify the damage, and the build spends most of its time moving. No required unique.",
+      "status": "verified",
+      "seedHash": "9fb8d14b644f",
+      "calibrated": true,
+      "ratings": {
+        "tankiness": 5,
+        "singleTarget": 6,
+        "clear": 7,
+        "cost": 8
+      },
+      "medal": "A",
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Caster",
+          "kind": "playstyle"
+        },
+        {
+          "label": "Dad",
+          "kind": "note",
+          "title": "Tanky, low-APM and forgiving; a good build to learn the league with."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 60
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 478
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 39370
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 55780
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 73542
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 103496
+        }
+      ]
+    },
+    {
+      "id": "flicker-strike-slayer",
+      "name": "Flicker Strike Slayer",
+      "class": "Duelist",
+      "ascendancyId": "slayer",
+      "family": "melee",
+      "mainSkill": "Flicker Strike",
+      "summary": "Flicker Strike on the Slayer shell. The build spends frenzy charges to teleport-strike through a pack, and Blood Rage plus Slayer leech keep the charges and life coming back. No required unique.",
+      "status": "verified",
+      "seedHash": "fd9788ac299a",
+      "calibrated": true,
+      "ratings": {
+        "tankiness": 5,
+        "singleTarget": 7,
+        "clear": 9,
+        "cost": 7
+      },
+      "medal": "A",
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Melee",
+          "kind": "playstyle"
+        },
+        {
+          "label": "Fast clear",
+          "kind": "note",
+          "title": "Flicker teleports through the pack."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 109
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 385
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 99353
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 123882
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 269860
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 477442
+        }
+      ]
+    },
+    {
       "id": "ice-shot-deadeye",
       "name": "Ice Shot Deadeye",
       "class": "Ranger",
@@ -157,8 +463,15 @@
       "mainSkill": "Ice Shot",
       "summary": "Cold bow build with the same league-start shell as Lightning Arrow. Ice Shot converts physical damage to cold, freezes the first pack, and turns a rare bow into the main damage slot. No required unique.",
       "status": "verified",
-      "seedHash": "054ed2dffe86",
+      "seedHash": "d7a46ba15057",
       "calibrated": true,
+      "ratings": {
+        "tankiness": 4,
+        "singleTarget": 7,
+        "clear": 10,
+        "cost": 7
+      },
+      "medal": "B",
       "chips": [
         {
           "label": "SSF",
@@ -223,8 +536,15 @@
       "mainSkill": "Lightning Arrow",
       "summary": "League-start bow build. One skill in the body armour, a physical bow with attack speed, and gem levels carry the damage: nothing here needs a unique, so the same gear works on day one of a solo league. It is the second build the pipeline proves, and the first that is not a minion one.",
       "status": "verified",
-      "seedHash": "d0d12849425e",
+      "seedHash": "be9bdfe451d7",
       "calibrated": true,
+      "ratings": {
+        "tankiness": 4,
+        "singleTarget": 7,
+        "clear": 10,
+        "cost": 8
+      },
+      "medal": "B",
       "chips": [
         {
           "label": "SSF",
@@ -281,16 +601,96 @@
       ]
     },
     {
-      "id": "summon-raging-spirit-necromancer",
-      "name": "Summon Raging Spirit Necromancer",
+      "id": "righteous-fire-chieftain",
+      "name": "Righteous Fire Chieftain",
+      "class": "Marauder",
+      "ascendancyId": "chieftain",
+      "family": "caster",
+      "mainSkill": "Righteous Fire",
+      "summary": "Righteous Fire on the Chieftain shell: a fire aura that burns enemies while you walk, backed by armour, life regeneration and fire resistance. Low APM, very forgiving, and no required unique. A Dad build by design.",
+      "status": "verified",
+      "seedHash": "d47f333aaa8d",
+      "calibrated": true,
+      "ratings": {
+        "tankiness": 9,
+        "singleTarget": 4,
+        "clear": 6,
+        "cost": 7
+      },
+      "medal": "B",
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Caster",
+          "kind": "playstyle"
+        },
+        {
+          "label": "Dad",
+          "kind": "note",
+          "title": "Tanky, low-APM and forgiving; a good build to learn the league with."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 29
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 747
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 5982
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 8728
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 15237
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 19210
+        }
+      ]
+    },
+    {
+      "id": "spectre-necromancer",
+      "name": "Spectre Necromancer",
       "class": "Witch",
       "ascendancyId": "necromancer",
       "family": "minion",
-      "mainSkill": "Summon Raging Spirit",
-      "summary": "League-start minion build that trades skeletons for a swarm of raging spirits. The spirits are temporary, aggressive and scale with minion damage, so the same budget caster gear that proves the skeleton build proves this one. No required unique.",
+      "mainSkill": "Raise Spectre",
+      "summary": "Necromancer with a specific spectre: four Slave Drivers from the Templar Courts. The spectres do the damage, the gear is the same caster shell as the skeleton build, and no unique is required. A deliberately low-APM Dad build.",
       "status": "verified",
-      "seedHash": "ecc4e4d37fb2",
+      "seedHash": "d0afbc867b06",
       "calibrated": true,
+      "ratings": {
+        "tankiness": 6,
+        "singleTarget": 6,
+        "clear": 5,
+        "cost": 9
+      },
+      "medal": "A",
       "chips": [
         {
           "label": "SSF",
@@ -305,6 +705,177 @@
           "label": "HC-ready",
           "kind": "defence",
           "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        },
+        {
+          "label": "Dad",
+          "kind": "note",
+          "title": "Tanky, low-APM and forgiving; a good build to learn the league with."
+        },
+        {
+          "label": "Minion army",
+          "kind": "note",
+          "title": "Minions take the hits while you position."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 66
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 125
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 4125
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 5099
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 19030
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 29521
+        }
+      ]
+    },
+    {
+      "id": "summon-golem-elementalist",
+      "name": "Stone Golem Elementalist",
+      "class": "Witch",
+      "ascendancyId": "elementalist",
+      "family": "minion",
+      "mainSkill": "Summon Stone Golem",
+      "summary": "Golem Elementalist with a small Stone Golem pack. The golems are permanent, aggressive and easy to keep alive; the same caster gear as the Witch minion builds carries them. No required unique, low APM and a good Dad build.",
+      "status": "verified",
+      "seedHash": "1c89840fc579",
+      "calibrated": true,
+      "ratings": {
+        "tankiness": 6,
+        "singleTarget": 6,
+        "clear": 5,
+        "cost": 9
+      },
+      "medal": "A",
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Minion",
+          "kind": "playstyle"
+        },
+        {
+          "label": "HC-ready",
+          "kind": "defence",
+          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        },
+        {
+          "label": "Dad",
+          "kind": "note",
+          "title": "Tanky, low-APM and forgiving; a good build to learn the league with."
+        },
+        {
+          "label": "Minion army",
+          "kind": "note",
+          "title": "Minions take the hits while you position."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 50
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 126
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 4179
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 5085
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 22654
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 40244
+        }
+      ]
+    },
+    {
+      "id": "summon-raging-spirit-necromancer",
+      "name": "Summon Raging Spirit Necromancer",
+      "class": "Witch",
+      "ascendancyId": "necromancer",
+      "family": "minion",
+      "mainSkill": "Summon Raging Spirit",
+      "summary": "League-start minion build that trades skeletons for a swarm of raging spirits. The spirits are temporary, aggressive and scale with minion damage, so the same budget caster gear that proves the skeleton build proves this one. No required unique.",
+      "status": "verified",
+      "seedHash": "512bb013d397",
+      "calibrated": true,
+      "ratings": {
+        "tankiness": 5,
+        "singleTarget": 8,
+        "clear": 6,
+        "cost": 9
+      },
+      "medal": "A",
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Minion",
+          "kind": "playstyle"
+        },
+        {
+          "label": "HC-ready",
+          "kind": "defence",
+          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        },
+        {
+          "label": "Dad",
+          "kind": "note",
+          "title": "Tanky, low-APM and forgiving; a good build to learn the league with."
         },
         {
           "label": "Minion army",
@@ -360,8 +931,15 @@
       "mainSkill": "Summon Skeletons",
       "summary": "League-start minion build. Skeletons do the damage, so a bad weapon is not a brick: cap your resistances, keep your minions alive, and the damage arrives with the gem levels. No required uniques, which is why it is the first build the pipeline proves.",
       "status": "verified",
-      "seedHash": "9d57ac78c245",
+      "seedHash": "83152ad656ce",
       "calibrated": true,
+      "ratings": {
+        "tankiness": 5,
+        "singleTarget": 9,
+        "clear": 5,
+        "cost": 9
+      },
+      "medal": "A",
       "chips": [
         {
           "label": "SSF",
@@ -376,6 +954,11 @@
           "label": "HC-ready",
           "kind": "defence",
           "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        },
+        {
+          "label": "Dad",
+          "kind": "note",
+          "title": "Tanky, low-APM and forgiving; a good build to learn the league with."
         },
         {
           "label": "Minion army",

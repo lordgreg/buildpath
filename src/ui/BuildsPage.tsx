@@ -6,6 +6,7 @@ import type {
 import { BUILDS, BUILD_VERSION } from '../meta/builds.ts';
 import { APP_VERSION } from '../version.ts';
 import SiteHeader from './SiteHeader.tsx';
+import { MedalBadge } from './RatingPanel.tsx';
 
 const CHIP_STYLE: Record<BuildChip['kind'], string> = {
   ssf: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300',
@@ -67,17 +68,20 @@ function BuildCard({ build }: { build: BuildIndexEntry }) {
           </h2>
           <p className="mt-0.5 text-[11px] text-zinc-500">{build.mainSkill}</p>
         </div>
-        <span
-          className={
-            build.status === 'verified'
-              ? 'shrink-0 rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-emerald-300'
-              : build.status === 'stale'
-                ? 'shrink-0 rounded border border-rose-500/40 bg-rose-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-rose-300'
-                : 'shrink-0 rounded border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-amber-300'
-          }
-        >
-          {build.status}
-        </span>
+        <div className="flex shrink-0 items-center gap-2">
+          {build.medal && <MedalBadge medal={build.medal} small />}
+          <span
+            className={
+              build.status === 'verified'
+                ? 'rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-emerald-300'
+                : build.status === 'stale'
+                  ? 'rounded border border-rose-500/40 bg-rose-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-rose-300'
+                  : 'rounded border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-amber-300'
+            }
+          >
+            {build.status}
+          </span>
+        </div>
       </div>
 
       <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-400">{build.summary}</p>

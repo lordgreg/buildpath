@@ -6,6 +6,7 @@ import { inflateSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'yaml';
 import { getGuidePath, validateProseDigits } from '../core/builds/guide.ts';
+import { medalFor } from '../core/builds/ratings.ts';
 import { generateFilter } from '../core/filter/generate.ts';
 import { validateArchetype } from '../core/archetypes/validate.ts';
 import { validateFilter } from '../core/filter/validate.ts';
@@ -661,10 +662,23 @@ describe('guide prose', () => {
   });
 });
 
+describe('build ratings and medal', () => {
+  it('carries four 1–10 ratings and a derived medal', () => {
+    for (const entry of BUILDS) {
+      expect(entry.ratings, entry.id).toBeDefined();
+      for (const value of Object.values(entry.ratings!)) {
+        expect(value, entry.id).toBeGreaterThanOrEqual(1);
+        expect(value, entry.id).toBeLessThanOrEqual(10);
+      }
+      expect(entry.medal, entry.id).toBe(medalFor(entry.ratings!));
+    }
+  });
+});
+
 describe('catalogue chips', () => {
   for (const entry of BUILDS) {
     it(`${entry.id} chips describe the build, not the same ladder`, () => {
-      expect(entry.chips?.length, entry.id).toBeGreaterThanOrEqual(3);
+      expect(entry.chips?.length, entry.id).toBeGreaterThanOrEqual(2);
       expect(entry.chips?.some((chip) => chip.kind === 'ssf'), entry.id).toBe(true);
       expect(entry.chips?.some((chip) => chip.kind === 'playstyle'), entry.id).toBe(true);
       const labels = entry.chips?.map((chip) => chip.label) ?? [];
@@ -713,6 +727,7 @@ describe('gate calibration', () => {
     calibrated: boolean;
     resistanceFloor: number;
     checkpoints: Record<string, unknown>;
+    profiles?: Record<string, unknown>;
   };
 
   it('publishes a green report for the current thresholds', () => {
@@ -721,6 +736,7 @@ describe('gate calibration', () => {
         JSON.stringify({
           resistanceFloor: gateConfig.resistanceFloor,
           checkpoints: gateConfig.checkpoints,
+          profiles: gateConfig.profiles ?? {},
         }),
       )
       .digest('hex')

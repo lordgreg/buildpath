@@ -1,0 +1,152 @@
+schemaVersion: 1
+id: arc-elementalist
+name: Arc Elementalist
+class: Witch
+ascendancyId: elementalist
+family: caster
+mainSkill: Arc
+flagship: false
+gateProfile: dad
+summary: >-
+  Self-cast Arc on the Elementalist shell. Arc clears packs without aiming, the
+  exposure and shock package turns lightning into a real single-target tool, and
+  the gear is the same spell sceptre and shield the totem build uses. No
+  required unique.
+
+pros:
+  - { weight: 3, text: "Arc clears packs without precise aiming." }
+  - { weight: 3, text: "No required unique; spell damage and gem levels carry the build." }
+  - { weight: 2, text: "Elementalist exposure and shock improve the boss fight." }
+  - { weight: 2, text: "The same spell gear works for the totem and self-cast versions." }
+  - { weight: 2, text: "A simple first caster for a new league." }
+  - { weight: 1, text: "The build can pivot to a different lightning spell without new gear." }
+cons:
+  - { weight: 3, text: "Self-casting means you stand still for the damage." }
+  - { weight: 3, text: "Single-target needs the shock and exposure window." }
+  - { weight: 2, text: "Clear speed is slower than a bow or a well-geared melee build." }
+  - { weight: 2, text: "Mana is tight before leech and reduced cost are online." }
+  - { weight: 1, text: "Elemental reflect maps are a hard no." }
+  - { weight: 1, text: "A six-link is a large damage step." }
+
+ratings:
+  tankiness: 4
+  singleTarget: 6
+  clear: 8
+  cost: 8
+
+gearProfile: spell
+
+tree:
+  targets:
+    - increased lightning damage
+    - increased cast speed
+    - increased maximum life
+    - increased elemental damage
+    - increased spell damage
+    - increased maximum mana
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Rolling Magma]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Rolling Magma, Added Lightning Damage, Arcane Surge]
+        - slot: Weapon 1
+          gems: [Flame Dash]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Arc]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Arc, Added Lightning Damage, Faster Casting, Elemental Focus]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 68
+      skills: [Arc]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Arc, Added Lightning Damage, Lightning Penetration, Controlled Destruction, Elemental Focus, Faster Casting]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Determination]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 100
+      skills: [Arc]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Arc, Added Lightning Damage, Lightning Penetration, Controlled Destruction, Elemental Focus, Faster Casting]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Determination]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+ascendancyOrder:
+  - { node: shaper-of-storms, lab: 1 }
+  - { node: heart-of-destruction, lab: 2 }
+  - { node: mastermind-of-discord, lab: 3 }
+  - { node: bastion-of-elements, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch a caster in a bad position.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Arc Elementalist is a self-cast lightning build that measures
+      {{gates.maps-red.metrics.dps|dps}} at red maps and
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. Exposure and shock carry
+      the single-target, and no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Rolling Magma, then switch to Arc as soon as it is available.
+      The first checkpoint measures {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep the
+      resistances capped and let the filter hide the rest.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Apply the shock
+      and exposure before the burst, then move out of the slam.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]

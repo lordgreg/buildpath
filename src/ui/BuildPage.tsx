@@ -7,6 +7,7 @@ import { getPobLink } from '../meta/pob-links.ts';
 import AscendancyPanel from './AscendancyPanel.tsx';
 import InventoryPanel from './InventoryPanel.tsx';
 import PantheonPanel from './PantheonPanel.tsx';
+import RatingPanel from './RatingPanel.tsx';
 import SiteHeader from './SiteHeader.tsx';
 import TreeThumbnail from './TreeThumbnail.tsx';
 import { copyText } from './download.ts';
@@ -440,6 +441,12 @@ export default function BuildPage() {
         <p className="mt-1 text-[10px] text-zinc-600">
           Stronger colour is a bigger factor. Weighted by the guide, not by a popularity poll.
         </p>
+
+        {build.ratings && build.medal && (
+          <div className="mt-4">
+            <RatingPanel ratings={build.ratings} medal={build.medal} />
+          </div>
+        )}
       </header>
 
       {build.guide && (
@@ -462,6 +469,10 @@ export default function BuildPage() {
             </span>{' '}
             generated from declared facts and passing checks, but not signed; a
             draft ·{' '}
+            <span className="mr-1 rounded border border-gold-400/40 bg-gold-400/10 px-1 text-gold-200">
+              auto-breadth
+            </span>{' '}
+            unsigned breadth copy that passed the checks ·{' '}
             <span className="mr-1 rounded border border-rose-500/40 bg-rose-500/10 px-1 text-rose-300">
               stale
             </span>{' '}
@@ -545,15 +556,25 @@ export default function BuildPage() {
               <p className="text-[11px] text-zinc-400">
                 level {gate.level} · {gate.budget}
               </p>
-              <span
-                className={
-                  gate.pass
-                    ? 'rounded border border-emerald-500/40 bg-emerald-500/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-emerald-300'
-                    : 'rounded border border-rose-500/40 bg-rose-500/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-rose-300'
-                }
-              >
-                {gate.pass ? 'pass' : 'fail'}
-              </span>
+              <div className="flex flex-wrap items-center gap-1.5">
+                {gate.gateProfile === 'dad' && (
+                  <span
+                    title="Dad profile: the defensive gates are unchanged, but the damage floor is lower for a low-APM/DoT/totem build."
+                    className="rounded border border-fuchsia-500/40 bg-fuchsia-500/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-fuchsia-300"
+                  >
+                    Dad profile
+                  </span>
+                )}
+                <span
+                  className={
+                    gate.pass
+                      ? 'rounded border border-emerald-500/40 bg-emerald-500/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-emerald-300'
+                      : 'rounded border border-rose-500/40 bg-rose-500/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-rose-300'
+                  }
+                >
+                  {gate.pass ? 'pass' : 'fail'}
+                </span>
+              </div>
             </div>
             <table className="w-full text-left text-xs">
               <thead>
@@ -922,6 +943,7 @@ export default function BuildPage() {
           </p>
           <ul className="flex flex-wrap gap-x-3 gap-y-1 lg:flex-col lg:gap-y-2">
             {[
+              ['ratings', 'Ratings'],
               ['guide', 'Guide'],
               ['steps', 'Step'],
               ['gates', 'Gate report'],

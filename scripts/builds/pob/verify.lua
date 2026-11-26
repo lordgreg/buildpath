@@ -626,6 +626,9 @@ add(string.format(
   spec.level or 90, spec.className, spec.ascendancyClass or "", mainGroup, spec.bandit or "None",
   spec.pantheon and spec.pantheon.major or "None", spec.pantheon and spec.pantheon.minor or "None"
 ))
+for _, spectre in ipairs(spec.spectres or {}) do
+  add(string.format('\t\t<Spectre id="%s"/>\n', spectre))
+end
 add('\t</Build>\n')
 
 -- PoB requires classId and ascendClassId on a Spec that carries a node list.
@@ -705,8 +708,14 @@ assert(output, "PoB produced no calculation output: " .. tostring(__mainObject__
 -- better of the two and say which, so a gate never compares against a zero that
 -- just means "the damage is not yours".
 local minion = build.calcsTab.mainEnv and build.calcsTab.mainEnv.minion
-local playerDps = output.CombinedDPS or 0
-local minionDps = minion and minion.output and minion.output.CombinedDPS or 0
+-- Damage over time lives in TotalDot on some skills even when CombinedDPS only
+-- counts the hit. The gate must measure the damage the build actually deals.
+local function bestDps(out)
+  if not out then return 0 end
+  return math.max(out.CombinedDPS or 0, out.TotalDPS or 0, out.TotalDot or 0)
+end
+local playerDps = bestDps(output)
+local minionDps = minion and bestDps(minion.output) or 0
 local dps, dpsSource = playerDps, "player"
 if minionDps > playerDps then dps, dpsSource = minionDps, "minion" end
 
@@ -891,6 +900,9 @@ local result = {
   ehp = output.TotalEHP,
   physicalMaxHit = output.PhysicalMaximumHitTaken,
   dps = dps,
+  combinedDps = output.CombinedDPS,
+  totalDps = output.TotalDPS,
+  totalDot = output.TotalDot,
   fireResist = output.FireResist,
   coldResist = output.ColdResist,
   lightningResist = output.LightningResist,

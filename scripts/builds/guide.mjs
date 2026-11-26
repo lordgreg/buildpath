@@ -31,7 +31,7 @@ export function guideFactsHash(build, facts) {
  * unresolved placeholder, raw digit or missing declared fact is an error: a
  * build with broken prose does not compile.
  */
-export function resolveGuide(build, seedGuide, { previous } = {}) {
+export function resolveGuide(build, seedGuide, { previous, flagship = true } = {}) {
   const errors = [];
   const guide = {};
   for (const sectionId of GUIDE_SECTIONS) {
@@ -64,7 +64,7 @@ export function resolveGuide(build, seedGuide, { previous } = {}) {
         ? 'stale'
         : signed
           ? 'signed'
-          : sectionId === 'summary'
+          : sectionId === 'summary' && !flagship
             ? 'auto-breadth'
             : 'auto-retry',
       signed,

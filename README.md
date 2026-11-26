@@ -6,7 +6,7 @@ Every guide starts from a build seed, is measured by Path of Building at six
 checkpoints, publishes the PoB code and gate report, and generates the filter
 from the same object. No account; everything is static and local.
 
-**Status:** v0.65.0 — verified build guides whose every number is
+**Status:** v0.66.0 — verified build guides whose every number is
 machine-derived and reproducible. A build is a seed plus a pinned Path of
 Building measurement, a calibrated gate report, one endgame tree pruned into
 each leveling step, a published PoB code and the filter generated from the same
@@ -19,8 +19,14 @@ builds API.
 
 - Verified build guides: six checkpoints, a gate report for each, the PoB code
   the gate measured, and a filter generated from the same build
-- Six published builds across three ascendancies, each with checked prose:
-  placeholders only, a facts hash and a signed summary
+- Thirteen published builds across eight ascendancies, each with checked prose:
+  placeholders only, a facts hash and a sign-off
+- Arc, Arc totem, spectre, chaos DoT, Righteous Fire, golem and Flicker Strike
+  options alongside the original minion, bow and melee builds
+- Four 1–10 ratings (tankiness, single target, clear, cost) and a derived
+  C/B/A/S/S+ medal on every build
+- Dad builds use a reviewed lower-damage gate profile with the defensive gates
+  unchanged, and the page says so
 - Gear drawn as an inventory sheet: weapon and offhand on the sides, armour,
   rings, belt, boots and five flasks in their game positions, with mods shown
   inline and faint slot glyphs behind empty space
@@ -53,6 +59,8 @@ builds API.
   changelog
 - The landing page is the build catalogue; the filter builder is one nav click
   away at `filter.html`, and old `index.html#<state>` links forward to it
+- `npm run builds:sign -- --build <id> --section summary --by "name"` signs a
+  guide section; the compiler resolves it and records the facts hash
 - Four independent modes: by family, by ascendancy, by meta build, or from scratch
 - Per-league meta snapshots, skills grouped by family or by seed weight
 - Soft / Strict / Uber (hidden in From Scratch mode)
@@ -163,6 +171,29 @@ audit). The old `index.html#<state>` builder links are forwarded to
 `filter.html`.
 
 See [PLAN.md](./PLAN.md) for the design and constraints.
+
+## Signing guide prose
+
+Each section in `src/builds/<id>.yaml` can carry a sign-off:
+
+```yaml
+guide:
+  summary:
+    signed: { by: "your name", at: "2026-11-26T00:00:00Z" }
+```
+
+The easy way is the helper:
+
+```bash
+npm run builds:sign -- --build summon-skeletons-necromancer --section summary --by "your name"
+npm run builds:build
+```
+
+`builds:build` resolves the placeholders, recomputes the facts hash and marks
+the section `signed`. If a declared fact moves later, the section becomes
+`stale` and the build is delisted until it is reviewed and signed again. A
+non-flagship breadth build may publish with an unsigned `auto-breadth` summary;
+flagships require a signed summary.
 
 ## Release workflow
 
