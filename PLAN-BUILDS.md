@@ -494,7 +494,7 @@ recalc, record `ablationDrop`. Full subset search is 2ⁿ and is out of scope.
 **Calibration runs in both directions** — the gates' own regression test:
 
 - **Every published build at every checkpoint is a must-pass observation**:
-  13 builds × 6 checkpoints = 78 at 0.66.0, each **re-geared per checkpoint by
+  16 builds × 6 checkpoints = 96 at 0.67.0, each **re-geared per checkpoint by
   the same synthesiser** (§7.7), including the Dad-profile builds. A failure
   means the gate is too strict; re-gearing is what stops a trade-geared build
   from trivially clearing an `ssf-start` gate.
@@ -783,7 +783,9 @@ Essence Drain or Righteous Fire gate measures the damage it actually deals.
 **P7 status (complete: thirteen builds, ratings and signing).**
 
 - Thirteen published builds across eight ascendancies, every one passing all six
-  checkpoints; the calibration must-pass set is 13 × 6 = 78 observations.
+  checkpoints; the calibration must-pass set is 13 × 6 = 78 observations for the
+  release this phase shipped. (0.67.0 adds three breadth builds: sixteen builds,
+  nine ascendancies, 96 observations.)
 - Four 1–10 editorial ratings derive the C/B/A/S/S+ medal; `ratings.test.ts`
   pins the derivation and the S+ rule, and the catalogue shows the medal.
 - `dad` is a reviewed gate profile in `gates.yaml`: lower damage floors, the
@@ -843,7 +845,7 @@ Essence Drain or Righteous Fire gate measures the damage it actually deals.
 - Seeds: every `src/builds/*.yaml` validates against the schema and resolves to
   exactly one build; an orphan seed or an orphan generated build fails the build.
 - Calibration: every published build at every checkpoint is a must-pass
-  observation (13 × 6 = 78 at 0.66.0, including the Dad-profile builds), plus
+  observation (16 × 6 = 96 at 0.67.0, including the Dad-profile builds), plus
   the ten must-fail mutations and the unique-ablation probe.
 
 ### 12.2 The prose claim check (R1)
@@ -937,6 +939,15 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 24 — three off-meta builds
+
+0.67.0 adds Absolution Guardian, Winter Orb Elementalist and Animate Weapon
+Necromancer: sixteen builds across nine ascendancies, 96 calibration
+observations. All three publish on the reviewed Dad profile, because the
+budget-gear numbers sit below the standard damage floor while every defensive
+gate still passes. The release publisher now reuses a paste whose code hash has
+not moved, so only new steps create public pastes.
 
 ### Revision 23 — the plan reconciled with 0.66.0
 
