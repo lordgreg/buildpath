@@ -51,7 +51,10 @@ function decode(code) {
 const files = readdirSync(buildsDir)
   .filter(
     (name) =>
-      name.endsWith('.json') && name !== 'index.json' && name !== 'calibration.json',
+      name.endsWith('.json') &&
+      name !== 'index.json' &&
+      name !== 'calibration.json' &&
+      name !== 'pob-links.json',
   )
   .sort();
 

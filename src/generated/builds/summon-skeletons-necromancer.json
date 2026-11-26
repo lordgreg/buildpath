@@ -961,6 +961,11 @@
       "pass": true,
       "level": 12,
       "budget": "starting (3-link)",
+      "thresholds": {
+        "resists": false,
+        "life": 250,
+        "dps": 25
+      },
       "metrics": {
         "dps": 75,
         "minionCount": 6,
@@ -1302,6 +1307,11 @@
       "pass": true,
       "level": 28,
       "budget": "early (4-link)",
+      "thresholds": {
+        "resists": false,
+        "life": 700,
+        "dps": 350
+      },
       "metrics": {
         "dps": 367,
         "minionCount": 6,
@@ -1872,6 +1882,11 @@
       "pass": true,
       "level": 68,
       "budget": "ssf-start (5-link)",
+      "thresholds": {
+        "life": 2000,
+        "maxHit": 2000,
+        "dps": 8000
+      },
       "metrics": {
         "dps": 45112,
         "minionCount": 6,
@@ -3051,6 +3066,12 @@
       "pass": true,
       "level": 80,
       "budget": "ssf-start (5-link)",
+      "thresholds": {
+        "life": 3000,
+        "ehp": 8000,
+        "maxHit": 4000,
+        "dps": 20000
+      },
       "metrics": {
         "dps": 63500,
         "minionCount": 6,
@@ -4363,6 +4384,12 @@
       "pass": true,
       "level": 90,
       "budget": "ssf-week1 (6-link)",
+      "thresholds": {
+        "life": 4500,
+        "ehp": 12000,
+        "maxHit": 6000,
+        "dps": 120000
+      },
       "metrics": {
         "dps": 214263,
         "minionCount": 6,
@@ -5955,6 +5982,13 @@
       "pass": true,
       "level": 96,
       "budget": "trade (6-link)",
+      "thresholds": {
+        "chaosResist": 75,
+        "life": 5000,
+        "ehp": 14000,
+        "maxHit": 7000,
+        "dps": 150000
+      },
       "metrics": {
         "dps": 413053,
         "minionCount": 6,
@@ -7631,13 +7665,13 @@
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJzVWm1v2zgS_lz_CkJAgS7CXvguqoi7SNwkm0XT7tW99u7TgbHHNjeUlJXopN5ff6Bk2XLqOPY1QVIYIKjhMyKf4XBIjnXw67fUoWsoSptn3Yj-g0QIskE-tNm4G_3r88lrHf36tnPwh_GTj6OjqXWh5W3nxUFVRw6uwXWjhETIm2IM_kvzKv5fEqGBM2X5waTQjb5aP5hEyJQDyIa9pfwDDIo8NdkAigilxmb9fHAJ_rTIp1fdiEbowmRD67vRhzyDCF2ZzE8gz87Nn3lxmg-7kZtmprBlq8lm86ZxMfWTy6mL0LWFm_N8CN2od_i-148Cg_2KQqh9LgCQGXh7Df0rGIRu33ZevDgID8gXAC1WvKF1NuxGfIVQkJAIZfkQym5ECaeYMsIxjVWMqWYMc6pizJVUWPAkxkIShqWgEstYcKwYJ1hxmWAVU4ZjGgquNY5VKBKusU6ExpSIhGBKZCwxJQkRmFLBCKackARTrrXEVBJNMZWCSExVHJBxzEOpGcVU84DUsQqlVhLTRAVJorjEjEihMKOc0FByghlVscaM6tBKE6kxY0QxzDhhMWaSBInknGGmaKIwUywmoUw0ZioWBLM4WILFitJQygSzONYas4QSFcokwZzqWGLOGCWYcxEnmPOgy3ksZSg1x1zQmGIuGIkxF1oTzKVOBOaK0Mq0gmGuFA-ShMpQigTzWKpQqqAbJ6EvTROCeaKExoJwxbCgTHEsqIhDPdEJFlITjoVKKMEiZpJioSukjmkSylhjkRARY5EwKbAkWjEsqaQxlpxRHso4qWY4lELEWEpWlUJLLGVCFJYxY1WpBJaaiVAKwrAiPNFYkTAeReKEYkU5I1hRQROsqJIcK6q5wIommmEViGHFk1hhJYINlSRcVJ784qBeVWX10DxVnhqcNjhehKyHNDxRFe2vx1WT2wLGdwGrGWgB9V3AyugtYHIXsGK9BDJyN1C3u2Z0DjzYb5ngYD8s7SoIhLUfKv1L61zdWFURZObCwbAb-WIKESpd7rvRUT6cocMizafzaHVYR42g0YSNFwenkKJx3f85eDM03uyfeUjL_dNQVOhTSPvTNM2z_iU48HlWRqgMDTtrZSadh626CbXa5vGZkQj9NTXO-tnKQ-jrHYzM1PnoNuE17PZ3pHd1lRf-3GY2z96Z1IzhPoq1ximkq0pLhrUcNQ3Pgd7UeVv6wl7uwK6t0yLXFj8HauAA_pjMSjswbtcJXKfbohqaUdP-nObzqJj6qrOtqbY0lgRbwmdA6gQgnNtOCsj-3p7YLa0luXkDaloegeFBTeG-ePwVzFWeIfrjwfjEQTn5OBpBYbPxlqH4lk7LQKEBLVuegQucQgZFXu7i2G2VJbe29Okmvj-x4IY_Pu09Z4otbHIbvTTHQvSUc9zLs-t8YLzNs22ZLDU-wM0Kofa7nm6CfwOXgv_xCX4HJQwK4-_dur7HL23SEj6dRU5dfg3lQxw7qwXeM6X_OoH5IeuzuYR7fWcRGYLux1XNlgOZ0qObCTTHNDRHzC0nn2B9nKVpXnjjesa5Lf1gVWXJrpGjuuHp3OEoz_0DeMOJMym8M-Vk6z1vgW_vdyYFVEufwV53YkoPRfDDLfby5XFnobVCrZKixcueAb3DYmAy6E-LHc7jKzpLdrUYzeWP6szzWtkk3L5YuEF_53n67yprFmr_WdTe1yPh0eKOHuDhoWI3T9aFeh_8Il8XnpGtUxhvO5-qjfkN-nT46bjTn4XkYGlLGKI_4QYcop3TiSm9m6HjGaDfg6xTvaDq-w3SrHOWXjk7sL58g0invnqWaAjGISlfIpsNCjDhhXWcWyAm5hoQFW3EofdmcIn6VwDDzp4myOcoNd9sOk3RezuCylKh91s84vt5sJ-Bh76fB_8ZeCT38xA_AQ9G7uchfwYe9H4e6ifgsZHGTXXH7VTn8stw7f5qsuFtCv-sQ_QbxMgqnT0axlABUT5Cxjk0T6LVZ4uwT-zKmZM2Ypt52sQvH40mgVFvYtNAr39lC-tRfcPbnucaY-8J8jIIT2wB6FPozoc_mhbyXu6Gbfn6wfNNg59U15TOb9OLwpaoZ4uBA7_loNmqVV8x_prJX-40LV2x-rnJTBg7FNfVXQ0dj0Z2YCEbzMI813vtI1pFbLLKRT6cdb4Y49AnGBtnzSaLzPPyb9DR68Vv1UyvaPKakRXLwGgEAx-YNlmWsrP3itLXlP1SsQiOfuwghcxXw2jorLeJWLHtcQbFeNZ4YGOX93Y88Vnw0HuNIzcZZ1zd4zr9vBhAAQWq73U7-0y1Vtf4zHzB7umXaDAJYwxjDwfBAsoyRCbnlpjH8o6N56-LcHNZ8q8uMlvT1yuLIL-uZngecFdXSKAT_C_kq-olEm7wHSY3vGGtRdic-cTk5f3UNx7ZLsD5Tm9ibIaOQvVRottu4914NDPpNMSzj9nsGzqs61sPmckwirPMg3N2DNXQNtBYu7x287qNp7MQI2jn41WIBjYbP-rGskOooBuPYmHQ7IEHfduW_8-g2weW88PTs97KqF1YeSNnysvOO3ttM6jX4kkl2ZbCHT2zjT2nYVesez72UGTG1Rvlg3TNN3Y99Ta8bd77aWEy6x-Is9ih49_N8IF6lTv0epiCn8xK_6M998HPD8TIW--glXCYltCHQZ4N6_98qnv_yLgSmi8cXO6rzEb7X6HFhwVNpuV7FGt9LLAG1eShGwxfg1n5KqABijXAJoXbYOTal1V5vQai1kHAtUYUr0HUsXqJ0WswIaC0bZTchWlZiJI1oGrOV6xNo3mGZp4eukun_Wa2pU77cxG-pU77WxSxpY5s6ch1OrXr9sFXOaoqLxVqvTwb2XHt0dnVtHkpZJDOqiURoWyaXkDRjfTcmb4HHl-bsvoDpoHGWtWmP9hvOjjYv_1V3v8AvamN3w=="
+    "code": "eJzVWm1vE7kW_kx-hTUSEisM9btnUMOqhLZ0RYFLWLj305WbnCTeemZ6Z5xA9tdfeSaTTEqSJguIokiWYz_HPs_x8dvxHP_-JXVoBkVp86wb0ackQpAN8qHNxt3ozw9nT-Lo9-ed43fGT96OXkytCzXPOw-OqzxyMAPXjRISIW-KMfiPTVP8vyRCA2fK8o1JoRt9sn4wiZApB5ANe6vyNzAo8tRkAygilBqb9fPBNfjzIp_edCMaoSuTDa3vRm_yDCJ0YzI_gTy7NH_lxXk-7EZumpnClq0qmy2qxsXUT66nLkIzC58v8yF0o97J614_et558OD4nTNzKPreeFR647tRL0-vbAbDl-_6EZoZN4VuxKWm5KngWumYShodbRb9kHvj_oHcazuCpYzSCd8GPM2gGM_7EwtuuBSgkomdGp2-erfSiNCEPU0YYYQzslWjd5N5aQfGXZovNp2mr6z_YK4hW_XJKdXbhM9sAe-htKVf4rXcBu7lbrg3-LUdT3xms_H-zU9MXt5C063oS5OZXt5ueCvJAP0zK6CEYgarwdBka-P9G2gB-VOqKuTxUTWLQu5DAYDMwNsZ9G9gEDy_air8Qb4AaE0s3sysi2E34mtzKpSQCGX5EMpuRAmnmDLCMdVKYxozhjlVGnMlFRY80VhIwrAUVGKpBceKcYIVlwlWmjKsaUh4HGOtQpLwGMeJiDElIiGYEqklpiQhAlMqGMGUE5JgyuNYYipJTDGVgkhMlQ5IrXlIY0YxjXlAxlqFNFYS00SFkkRxiRmRQmFGOaEh5QQzqnSMGY1DLU1kjBkjimHGCdOYSRJKJOcMM0UThZlimoQ0iTFTWhDMdLAE04rSkMoEM63jGLOEEhXSJMGcxlpizhglmHOhE8x5kOVcSxnSmGMuqKaYC0Y05iKOCeYyTgTmitDKtIJhrhQPJQmVIRUJ5lqqkKogq5PQV0wTgnmiRIwF4YphQZniWFChQz6JEyxkTDgWKqEEC80kxSKukLGmSUh1jEVChMYiYVJgSWLFsKSSaiw5ozykOqlGOKRCaCwlq1IRSyxlQhSWmrEqVQLLmImQCsKwIjyJsSJBH0V0QrGinBGsqKAJVlRJjhWNucCKJjHDKhDDiidaYSWCDZUkXFSe_OC4XtjL6k_zr_LU4LTB8SJkPaTh32J-bMBVg9sC6m3AagRawHgbsDJ6C5hsA1asV0BGtgPjdtdssdQ-OD5qmeD4KEztahEIcz9k-tfWubqyyiLIzJWDYTfyxRQiVLrcd6MX-XCOToo0ny42zJN61QgSzbLx4PgcUjSu-78Eb4bGm6MLD2l5dB6SCn0OaX-apnnWvwYHPs_KCJWh4mCpzKSLZauuQq26xRGBkQj9b2qc9fO1P6GvlzAyU-ej24Q3sDs6kN7NTV74S5vZPHtpUjOGuyjWEueQrgutGNblqKm4D_SmztvSF_b6AHZtmRa5dvF9oAYOoDmRHDqAm2RbVEM1aurv03i-KKa-6mxvqi2JFcFW4T0gdQYQrg5nBWR_70_sltSK3KICNTU_gOFxTeGu9fgTmJs8Q_TbF-MzB-Xk7WgEhc3Gey7Ft2RaBgoVaFVzD1zgHDIo8vIQx26LrLi1S3_ewDd3sW8d9p4zxR42uY1emWNZ9DPHuJdns3xgvM2zfZmsJN7A5zVC7bZ-3gC_ApeC__YBfgklDArj79y6vsavbNIq_HkWOXf5DMrvceysJnjPlP7TBBaHrEWYYc-VIci-XZdsOZApPfo8geaYhhaIheXkT5gfF2maF964nnFuTz9YF1mxa8pRXfHz3OFFnvvv4A1nzqTw0pSTvfe8Jb6935kUUF16D_a6M1N6KIIf7rGXr447S6k1alUpWjZ2D-idFAOTQX9aHHAeX5NZsauL0aL8hzrzIlc2AbePFj6jv_M8_XcVNQu5_yxzr2tNeLS8owd4-FOxWwTrQr4PfhmvC_-RrUMYzzvvq435GXp_8v6005-H-HRpSxiiv-AzOEQ75xNTejdHp3NAf4SyTtVA1fczFLPORXrj7MD68hkinfrqWaIhGIekfIhsNijAhAbrdW6JmJgZICraiBPvzeAaVaHIzuOYIJ-jtI7xohCFriwVer_FQ9_Ng_0KPOK7efBfgUdyNw_xC_Bg5G4e8lfgQe_moX4BHjtpfK7uuJ3qXH4drt2fTDa8TeFf9RL9DDGyTucxDTpUQJSPkHEOLYJo9dki7BOHcuakjdhnnHbxy0ejSWDUm9g00Ovf2MJ6VN_w9ue5wdiPBXkYCsPDGKofo8Jb57I8vIG1yzcrz3cpP6muKZ1X06vClqhni4EDv6fSbN2qjxh_wuRvW01L16we3sGC7lDMqrsaOh2N7MBCNpiHca732h9oFbHLKlf5cN75aIxD72FsnDW7LLKIyz9DL54sf-tmekSTJ4ysWQZGIxj4wLSJspSdx48ofULZbxWL4OinDlLIfKVGQ2ezTcSabevn3sYDG7ssH0HvNo7cZZxxdY_r9PNiAAUUqL7XHewz1Vzd4DOLCfs4fogGk6Bj0D0cBAsoy7AyObfC_Cjv2Hn-ugo3lxX_6iKzN_14bRLks2qEFwvu-gwJdIL_hXhVPUXCDb7D5I4WNlqELZiHJ-27qe88sl2B853exNgMvQjZH7K6HabvzqOZSadhPXubzb-gkzq_t8pMBi0uMg_O2TFUqu2gsXF6HeZ1O09nYY2gnbc3YTWw2fiHbiwHLBV051EsKM2-s9K3bflPlG4fWC5Pzi96a1q7MPNGzpTXnZd2ZjOo5-JZVbIvhS09s509p2FXrHs-9VBkxtUb5Xfpmu_seuptaG3R-3lhMuu_E2dxQMd_mOF36lUe0OtJCn4yL_239twHvzgQI2-9g1bAYVpCHwZ5NqzffKp7_8i4EpovHFzuq8hG-1Vo-WFBE2n5GsVaHwtsQDVx6AbDN2DWvgpogGIDsAnhNhi5sbEqrtdA1CYIuJZGegOiXqtXmHgDJiwobRsl2zAtC1GyAVSN-Zq1abSI0CzCQ9tk2i2zPWXan4vwPWXa36KIPWVkS0Zukqldtw--ilFVcamQ6-XZyI5rj85upk2jkEE6r6ZEhLJpegVFN4qbDw6_Ap7OTFk9wDRQHSuy-Gyt6eD46PaHof8HTUFUVA=="
   },
   "pipeline": {
     "pobRef": "v2.69.0",
     "treeVersion": "3_30",
     "calibrated": true,
-    "checkedAt": "2026-11-26T12:50:01.918Z"
+    "checkedAt": "2026-11-26T13:26:45.916Z"
   },
   "gemInfo": {
     "Arcane Surge": {
@@ -7665,7 +7699,9 @@
         "arcane",
         "duration",
         "spell"
-      ]
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
     },
     "Brutality": {
       "requiredLevel": 38,
@@ -7687,7 +7723,9 @@
       ],
       "tags": [
         "physical"
-      ]
+      ],
+      "qualityEffect": "Supported Skills deal % increased Physical Damage",
+      "qualityWorth": "recommended"
     },
     "Cast when Damage Taken": {
       "requiredLevel": 38,
@@ -7704,7 +7742,9 @@
       "tags": [
         "spell",
         "trigger"
-      ]
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
     },
     "Clarity": {
       "requiredLevel": 10,
@@ -7730,7 +7770,9 @@
         "area",
         "aura",
         "spell"
-      ]
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
     },
     "Convocation": {
       "requiredLevel": 24,
@@ -7747,7 +7789,9 @@
         "duration",
         "minion",
         "spell"
-      ]
+      ],
+      "qualityEffect": "% increased Skill Effect Duration % increased Cooldown Recovery Rate",
+      "qualityWorth": "recommended"
     },
     "Desecrate": {
       "requiredLevel": 16,
@@ -7774,7 +7818,9 @@
         "chaos",
         "duration",
         "spell"
-      ]
+      ],
+      "qualityEffect": "% increased Cast Speed",
+      "qualityWorth": "recommended"
     },
     "Faster Casting": {
       "requiredLevel": 18,
@@ -7797,7 +7843,9 @@
       ],
       "tags": [
         "spell"
-      ]
+      ],
+      "qualityEffect": "Supported Skills have % increased Cast Speed",
+      "qualityWorth": "recommended"
     },
     "Feeding Frenzy": {
       "requiredLevel": 31,
@@ -7820,7 +7868,9 @@
       "tags": [
         "duration",
         "minion"
-      ]
+      ],
+      "qualityEffect": "Supported Skills have % increased Minion Movement Speed",
+      "qualityWorth": "recommended"
     },
     "Flame Dash": {
       "requiredLevel": 10,
@@ -7852,7 +7902,9 @@
         "movement",
         "spell",
         "travel"
-      ]
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
     },
     "Flesh Offering": {
       "requiredLevel": 12,
@@ -7878,7 +7930,9 @@
         "duration",
         "minion",
         "spell"
-      ]
+      ],
+      "qualityEffect": "% increased Effect of Offering",
+      "qualityWorth": "recommended"
     },
     "Generosity": {
       "requiredLevel": 31,
@@ -7893,7 +7947,9 @@
       ],
       "tags": [
         "aura"
-      ]
+      ],
+      "qualityEffect": "Supported Skills have % increased Aura Area of Effect",
+      "qualityWorth": "recommended"
     },
     "Immortal Call": {
       "requiredLevel": 34,
@@ -7914,7 +7970,9 @@
         "duration",
         "guard",
         "spell"
-      ]
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
     },
     "Melee Physical Damage": {
       "requiredLevel": 18,
@@ -7942,7 +8000,9 @@
         "attack",
         "melee",
         "physical"
-      ]
+      ],
+      "qualityEffect": "Supported Skills deal % increased Melee Physical Damage",
+      "qualityWorth": "recommended"
     },
     "Minion Damage": {
       "requiredLevel": 8,
@@ -7964,7 +8024,9 @@
       ],
       "tags": [
         "minion"
-      ]
+      ],
+      "qualityEffect": "Minions from Supported Skills deal % increased Damage",
+      "qualityWorth": "recommended"
     },
     "Minion Speed": {
       "requiredLevel": 18,
@@ -7987,7 +8049,9 @@
       "tags": [
         "minion",
         "movement"
-      ]
+      ],
+      "qualityEffect": "Supported Skills have % increased Minion Movement Speed",
+      "qualityWorth": "recommended"
     },
     "Multistrike": {
       "requiredLevel": 38,
@@ -8018,7 +8082,9 @@
       "tags": [
         "attack",
         "melee"
-      ]
+      ],
+      "qualityEffect": "Supported Skills deal % increased Melee Damage",
+      "qualityWorth": "recommended"
     },
     "Raise Zombie": {
       "requiredLevel": 1,
@@ -8040,7 +8106,9 @@
       "tags": [
         "minion",
         "spell"
-      ]
+      ],
+      "qualityEffect": "to Maximum Raised Zombies",
+      "qualityWorth": "recommended"
     },
     "Summon Raging Spirit": {
       "requiredLevel": 4,
@@ -8065,7 +8133,9 @@
         "fire",
         "minion",
         "spell"
-      ]
+      ],
+      "qualityEffect": "% chance to summon an extra Minion",
+      "qualityWorth": "recommended"
     },
     "Summon Skeletons": {
       "requiredLevel": 10,
@@ -8089,7 +8159,9 @@
         "duration",
         "minion",
         "spell"
-      ]
+      ],
+      "qualityEffect": "to Maximum Summoned Skeletons",
+      "qualityWorth": "recommended"
     }
   },
   "seedHash": "9d57ac78c245"

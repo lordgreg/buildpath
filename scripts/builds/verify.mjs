@@ -55,6 +55,7 @@ function makeReport({ seed, checkpointId, checkpoint, metrics, scaled, gate, gea
     budget: gear.budget.links
       ? `${checkpoint.budget} (${gear.budget.links}-link)`
       : checkpoint.budget,
+    thresholds: gates.checkpoints[checkpointId] ?? {},
     metrics: {
       dps: Math.round(scaled.dps),
       minionCount: scaled.minionCount,

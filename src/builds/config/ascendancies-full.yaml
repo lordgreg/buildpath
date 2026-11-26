@@ -1,0 +1,61 @@
+# Full ascendancy node sets for the builds in the catalogue.
+#
+# The small passives are the path nodes between the notables; the notables are
+# the choices a player actually picks. The graph is rendered as a circle with
+# every node visible and the build's four choices lit. Data reviewed against
+# poedb's ascendancy pages; no game art is shipped.
+schemaVersion: 1
+ascendancies:
+  necromancer:
+    name: Necromancer
+    class: Witch
+    nodes:
+      - { id: minion-damage-and-life, name: "Minion Damage and Life", notable: false, effect: ["Minions have 10% increased maximum Life", "Minions deal 10% increased Damage"] }
+      - { id: minion-damage-skill-duration, name: "Minion Damage, Skill Duration", notable: false, effect: ["10% increased Skill Effect Duration", "Minions deal 10% increased Damage"] }
+      - { id: minion-damage-cast-speed, name: "Minion Damage, Cast Speed", notable: false, effect: ["4% increased Cast Speed", "Minions deal 10% increased Damage"] }
+      - { id: minion-damage-mana, name: "Minion Damage, Mana", notable: false, effect: ["8% increased maximum Mana", "Minions deal 10% increased Damage"] }
+      - { id: minion-damage-aura-effect, name: "Minion Damage, Aura Effect", notable: false, effect: ["Minions deal 10% increased Damage", "5% increased effect of Non-Curse Auras from your Skills"] }
+      - { id: mindless-aggression, name: "Mindless Aggression", notable: true, effect: ["Minions have 20% more Maximum Life", "Minions deal 10% more Damage"] }
+      - { id: unnatural-strength, name: "Unnatural Strength", notable: true, effect: ["Minions have Unholy Might", "Unholy Might converts 100% of Physical Damage to Chaos and grants 25% chance to apply Withered on Hit"] }
+      - { id: bone-barrier, name: "Bone Barrier", notable: true, effect: ["1% additional Physical Damage Reduction per Minion, up to 10%", "1% of Damage Dealt by your Minions is Leeched to you as Life", "Minions gain 40% of Maximum Life as Extra Maximum Energy Shield"] }
+      - { id: mistress-of-sacrifice, name: "Mistress of Sacrifice", notable: true, effect: ["Your Offering Skills also affect you", "Your Offerings have 50% reduced Effect on you", "40% increased Skill Effect Duration"] }
+      - { id: essence-glutton, name: "Essence Glutton", notable: true, effect: ["For each corpse within 6 metres, you and Allies Regenerate 0.2% of Energy Shield per second, up to 2.0%", "For each corpse within 6 metres, you and Allies Regenerate 5 Mana per second, up to 50", "Regenerate 8% of Energy Shield over 2 seconds when you Consume a corpse"] }
+      - { id: commander-of-darkness, name: "Commander of Darkness", notable: true, effect: ["Auras from your Skills grant 3% increased Attack and Cast Speed to you and Allies", "You and Allies within 6 metres deal 30% increased Damage", "You and Allies within 6 metres have +30% to Elemental Resistances"] }
+      - { id: plaguebringer, name: "Plaguebringer", notable: true, effect: ["If you've Consumed a corpse Recently, you and your Minions have 30% increased Area of Effect", "With at least one corpse within 6 metres, you and Allies deal 10% more Damage", "With at least one corpse within 6 metres, Enemies deal 10% reduced Damage"] }
+      - { id: corpse-pact, name: "Corpse Pact", notable: true, effect: ["4% increased Attack and Cast Speed for each corpse Consumed Recently, up to 200%", "Enemies near corpses you Spawned Recently are Chilled and Shocked"] }
+
+  deadeye:
+    name: Deadeye
+    class: Ranger
+    nodes:
+      - { id: projectile-damage-mark-cast-speed, name: "Projectile Damage, Mark Cast Speed", notable: false, effect: ["10% increased Projectile Damage", "Mark Skills have 25% increased Cast Speed"] }
+      - { id: projectile-damage-attack-speed, name: "Projectile Damage, Attack Speed", notable: false, effect: ["5% increased Attack Speed", "10% increased Projectile Damage"] }
+      - { id: projectile-damage-accuracy, name: "Projectile Damage, Accuracy", notable: false, effect: ["10% increased Projectile Damage", "10% increased Accuracy Rating"] }
+      - { id: projectile-damage-projectile-speed, name: "Projectile Damage, Projectile Speed", notable: false, effect: ["10% increased Projectile Speed", "10% increased Projectile Damage"] }
+      - { id: projectile-damage-mirage-archer-duration, name: "Projectile Damage, Mirage Archer Duration", notable: false, effect: ["10% increased Projectile Damage", "15% increased Mirage Archer Duration"] }
+      - { id: focal-point, name: "Focal Point", notable: true, effect: ["75% increased Effect of your Marks", "25% less Damage taken from other Enemies near your Marked Enemy", "Your Mark Transfers to another Enemy within 3 metres when the Marked Enemy dies"] }
+      - { id: ricochet, name: "Ricochet", notable: true, effect: ["Skills Chain +1 times", "Projectiles have 30% chance to be able to Chain when colliding with terrain"] }
+      - { id: endless-munitions, name: "Endless Munitions", notable: true, effect: ["Skills fire 2 additional Projectiles"] }
+      - { id: far-shot, name: "Far Shot", notable: true, effect: ["Projectiles gain Damage as they travel farther, up to 30% more Damage with Hits and Ailments", "Projectile Barrages have no spread"] }
+      - { id: avidity, name: "Avidity", notable: true, effect: ["5% more Accuracy Rating per Frenzy Charge", "Gain a Frenzy Charge every 1 second while Moving", "+1 to Maximum Frenzy Charges"] }
+      - { id: gathering-winds, name: "Gathering Winds", notable: true, effect: ["Gain 1 Gale Force when you use a Skill", "10% increased Effect of Tailwind on you per Gale Force", "You and nearby Allies have Tailwind"] }
+      - { id: occupying-force, name: "Occupying Force", notable: true, effect: ["Mirage Archers are not attached to you", "+2 to maximum number of Summoned Mirage Archers", "Cannot Summon Mirage Archers while near your Mirage Archers"] }
+      - { id: wind-ward, name: "Wind Ward", notable: true, effect: ["4% less Damage taken per Gale Force", "Lose all Gale Force when Hit"] }
+
+  juggernaut:
+    name: Juggernaut
+    class: Marauder
+    nodes:
+      - { id: armour-endurance-charge-duration, name: "Armour, Endurance Charge Duration", notable: false, effect: ["15% increased Armour", "15% increased Endurance Charge Duration"] }
+      - { id: armour-attack-speed, name: "Armour, Attack Speed", notable: false, effect: ["5% increased Attack Speed", "15% increased Armour"] }
+      - { id: armour-movement-speed, name: "Armour, Movement Speed", notable: false, effect: ["15% increased Armour", "4% increased Movement Speed"] }
+      - { id: armour-stun-duration, name: "Armour, Stun Duration", notable: false, effect: ["15% increased Armour", "20% increased Stun Duration on Enemies"] }
+      - { id: armour-chaos-resistance, name: "Armour, Chaos Resistance", notable: false, effect: ["15% increased Armour", "+11% to Chaos Resistance"] }
+      - { id: unstoppable, name: "Unstoppable", notable: true, effect: ["10% increased Movement Speed", "Cannot be Stunned", "Action Speed cannot be modified to below Base Value"] }
+      - { id: unbreakable, name: "Unbreakable", notable: true, effect: ["Armour from Equipped Body Armour is doubled", "15% of Armour also applies to Chaos Damage taken from Hits"] }
+      - { id: unyielding, name: "Unyielding", notable: true, effect: ["8% increased Damage per Endurance Charge", "6% increased Area of Effect per Endurance Charge", "25% chance to gain an Endurance Charge when you Stun an Enemy"] }
+      - { id: undeniable, name: "Undeniable", notable: true, effect: ["+500 to Accuracy Rating", "1% increased Attack Speed per 150 Accuracy Rating", "Gain Accuracy Rating equal to twice your Strength"] }
+      - { id: unflinching, name: "Unflinching", notable: true, effect: ["30% chance to gain an Endurance Charge when you are Hit", "25% chance that if you would gain Endurance Charges, you instead gain up to maximum Endurance Charges", "Gain 1 Endurance Charge every second if you've been Hit Recently"] }
+      - { id: unrelenting, name: "Unrelenting", notable: true, effect: ["1% additional Elemental Damage Reduction per Endurance Charge", "1% additional Physical Damage Reduction per Endurance Charge"] }
+      - { id: untiring, name: "Untiring", notable: true, effect: ["40% increased Life Regeneration rate", "1.5% of Physical Damage prevented from Hits in the past 10 seconds is Regenerated as Life per second"] }
+      - { id: armour-life-regeneration, name: "Armour, Life Regeneration", notable: false, effect: ["15% increased Armour", "Regenerate 0.5% of Life per second"] }

@@ -48,6 +48,9 @@ const gearProfiles =
 const pantheon = parse(
   readFileSync(resolve(seedsDir, 'config/pantheon.yaml'), 'utf8'),
 );
+const ascendanciesFull = parse(
+  readFileSync(resolve(seedsDir, 'config/ascendancies-full.yaml'), 'utf8'),
+);
 const gemLevel1 = (name) => gemLevels[name]?.levels?.[1];
 const gemName = (gem) => (typeof gem === 'string' ? gem : gem.name);
 const baseItems = new Map(
@@ -148,6 +151,8 @@ function describeGems(seed) {
       description: entry.description ?? null,
       effect: entry.effect ?? [],
       tags: entry.tags ?? [],
+      qualityEffect: entry.qualityEffect ?? '',
+      qualityWorth: entry.qualityWorth ?? 'none',
     };
   }
   return info;
@@ -260,19 +265,25 @@ const index = {
   })),
 };
 
-// The calibration report is evidence, not a generated build file: compiling a
-// seed must not delete it. `npm run builds:calibrate` owns it.
-const calibrationPath = resolve(outDir, 'calibration.json');
-const calibration = existsSync(calibrationPath)
-  ? readFileSync(calibrationPath, 'utf8')
-  : null;
+// The calibration report and the published PoB links are evidence, not
+// generated build files: compiling a seed must not delete them. The calibration
+// run and the release publisher own them.
+const preserved = new Map();
+for (const name of ['calibration.json', 'pob-links.json']) {
+  const path = resolve(outDir, name);
+  if (existsSync(path)) preserved.set(path, readFileSync(path, 'utf8'));
+}
 rmSync(outDir, { recursive: true, force: true });
 mkdirSync(outDir, { recursive: true });
-if (calibration) writeFileSync(calibrationPath, calibration);
+for (const [path, content] of preserved) writeFileSync(path, content);
 writeFileSync(resolve(outDir, 'index.json'), `${JSON.stringify(index, null, 2)}\n`);
 writeFileSync(
   resolve(root, 'src/generated/pantheon.json'),
   `${JSON.stringify(pantheon, null, 2)}\n`,
+);
+writeFileSync(
+  resolve(root, 'src/generated/ascendancies-full.json'),
+  `${JSON.stringify(ascendanciesFull, null, 2)}\n`,
 );
 for (const build of builds) {
   writeFileSync(

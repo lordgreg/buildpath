@@ -65,6 +65,9 @@ export interface GemAvailability {
   effect?: string[];
   /** Mechanical tags, e.g. attack, projectile, minion, aura. */
   tags?: string[];
+  /** What 20% quality buys, with RePoE's placeholders stripped. */
+  qualityEffect?: string;
+  qualityWorth?: 'recommended' | 'optional' | 'none';
 }
 
 export interface AscendancyPoint {
@@ -159,6 +162,8 @@ export interface GateResult {
   pass: boolean;
   level: number;
   budget: string;
+  /** The thresholds this checkpoint was evaluated against. */
+  thresholds?: Record<string, number | boolean>;
   gear?: GearItem[];
   gems?: GemGroup[];
   flasks?: FlaskChoice[];

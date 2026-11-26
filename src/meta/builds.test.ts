@@ -138,7 +138,14 @@ describe('published build data', () => {
         >;
         gemInfo?: Record<
           string,
-          { color?: string | null; description?: string | null; effect?: string[]; tags?: string[] }
+          {
+            color?: string | null;
+            description?: string | null;
+            effect?: string[];
+            tags?: string[];
+            qualityWorth?: string;
+            qualityEffect?: string;
+          }
         >;
         pros?: { text: string; weight: number }[];
         cons?: { text: string; weight: number }[];
@@ -290,6 +297,10 @@ describe('published build data', () => {
               Boolean(entry?.description) || (entry?.effect?.length ?? 0) > 0,
               `${build.class}: ${name} has no description or effect`,
             ).toBe(true);
+            expect(['recommended', 'optional', 'none']).toContain(entry?.qualityWorth);
+            if (entry?.qualityWorth !== 'none') {
+              expect(entry?.qualityEffect?.trim().length, `${name} quality`).toBeGreaterThan(1);
+            }
           }
         }
       }
@@ -450,6 +461,45 @@ describe('pantheon and bandit registry', () => {
     ]) {
       expect(entry.name.trim().length).toBeGreaterThan(2);
       expect(entry.effect.trim().length).toBeGreaterThan(8);
+    }
+  });
+});
+
+describe('full ascendancy graph', () => {
+  const table = JSON.parse(
+    readFileSync(resolve(root, 'src/generated/ascendancies-full.json'), 'utf8'),
+  ) as {
+    ascendancies: Record<
+      string,
+      { name: string; class: string; nodes: { id: string; notable: boolean; effect: string[] }[] }
+    >;
+  };
+  const compiled = BUILDS.map(
+    (entry) =>
+      JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        id: string;
+        ascendancyId: string;
+        class: string;
+        ascendancyOrder: { node: string; lab: number }[];
+      },
+  );
+
+  it('shows every node of the build ascendancy and lights a real choice', () => {
+    for (const build of compiled) {
+      const asc = table.ascendancies[build.ascendancyId];
+      expect(asc, build.id).toBeDefined();
+      expect(asc.class, build.id).toBe(build.class);
+      expect(asc.nodes.length, build.id).toBeGreaterThanOrEqual(10);
+      expect(asc.nodes.filter((node) => node.notable).length, build.id).toBeGreaterThanOrEqual(7);
+      const ids = new Set(asc.nodes.map((node) => node.id));
+      for (const point of build.ascendancyOrder) {
+        expect(ids.has(point.node), `${build.id}: ${point.node}`).toBe(true);
+      }
+      for (const node of asc.nodes) {
+        expect(node.effect.length, `${build.id}: ${node.id}`).toBeGreaterThan(0);
+      }
     }
   });
 });
@@ -704,6 +754,21 @@ describe('published PoB code', () => {
       const path = resolve(root, `public/builds/${build.id}.pob`);
       expect(existsSync(path), `${build.id} has no .pob asset`).toBe(true);
       expect(readFileSync(path, 'utf8').trim(), build.id).toBe(build.pob!.code);
+    }
+  });
+
+  it('has a matching pobb.in link for every published code', () => {
+    const links = JSON.parse(
+      readFileSync(resolve(root, 'src/generated/builds/pob-links.json'), 'utf8'),
+    ) as {
+      links: Record<string, { id: string; url: string; codeHash: string }>;
+    };
+    for (const build of compiled) {
+      const link = links.links[build.id];
+      expect(link, `${build.id} has no pobb.in link`).toBeDefined();
+      expect(link.url, build.id).toBe(`https://pobb.in/${link.id}`);
+      const hash = createHash('sha256').update(build.pob!.code).digest('hex').slice(0, 16);
+      expect(link.codeHash, `${build.id} paste is stale`).toBe(hash);
     }
   });
 

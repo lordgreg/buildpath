@@ -42,10 +42,11 @@ Build pipeline (needs a pinned PoB checkout at `.cache/pob/src` and LuaJIT +
 npm run builds:build      # validate src/builds/*.yaml -> src/generated/builds/
 npm run builds:calibrate  # must-pass + must-fail gates, committed report
 npm run builds:verify     # PoB gates per checkpoint + the published PoB code
+npm run builds:publish-pobs # release only: create pobb.in pastes and link map
 npm run builds:check      # every published code loads in PoB with the same counts
 ```
 
-`validate-builds.yml` runs all four in CI; `builds:build` is also chained into
+`validate-builds.yml` runs the offline chain in CI; `builds:build` is also chained into
 `npm test` and `npm run build`, so committed build JSON can never go stale.
 
 `npm test` and `npm run build` both run `presets:build` first, so the compiled
@@ -124,12 +125,15 @@ scripts/       YAML compiler and data extractors
 
 1. Bump `package.json` version.
 2. Add the release to **both** `src/changelog.ts` and `CHANGELOG.md`.
-3. Commit, tag `v<version>`, then push the commit **and the tag**
+3. Run `builds:calibrate`, `builds:verify` and then `builds:publish-pobs`
+   (network: it creates a public pobb.in paste per build). Commit the updated
+   `builds/pob-links.json`; the test fails if a link's code hash is stale.
+4. Commit, tag `v<version>`, then push the commit **and the tag**
    (`git push origin master --follow-tags`). An unpushed tag is invisible to
    GitHub.
-4. The release workflow (`.github/workflows/release.yml`) creates the GitHub
+5. The release workflow (`.github/workflows/release.yml`) creates the GitHub
    Release from the matching `CHANGELOG.md` section when the tag is pushed.
-5. The deploy workflow runs `npm test` + `npm run build` and publishes to Pages.
+6. The deploy workflow runs `npm test` + `npm run build` and publishes to Pages.
 
 Related workflows:
 

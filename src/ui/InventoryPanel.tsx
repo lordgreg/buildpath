@@ -85,13 +85,21 @@ function SlotCell({
   const colour = RARITY_COLOUR[rarity] ?? RARITY_COLOUR.RARE!;
   const border = RARITY_BORDER[rarity] ?? RARITY_BORDER.RARE!;
   const glow = RARITY_GLOW[rarity] ?? RARITY_GLOW.RARE!;
+  const compact = entry.slot === 'Amulet' || entry.slot.startsWith('Ring');
+  const narrowSide = entry.slot === 'Weapon 1' || entry.slot === 'Weapon 2';
+  const modLimit = compact ? 1 : tall ? 5 : 2;
   return (
     <div
       style={{ gridArea: entry.area }}
       className={
-        'group relative flex flex-col justify-between rounded-[3px] border bg-[#090c12]/80 p-2 shadow-[inset_0_0_22px_rgba(0,0,0,0.75)] ' +
+        'group relative flex flex-col justify-between overflow-hidden rounded-[3px] border bg-[#090c12]/80 shadow-[inset_0_0_22px_rgba(0,0,0,0.75)] ' +
         (item ? border : 'border-[#3a3529]') +
-        (tall ? ' min-h-[10rem]' : ' min-h-[5.6rem]')
+        (compact
+          ? ' h-[4.4rem] w-[4.4rem] min-h-0 justify-self-center self-center p-1'
+          : tall
+            ? ' min-h-[10rem] p-2'
+            : ' min-h-[5.6rem] p-2') +
+        (narrowSide ? ' w-[80%] justify-self-center' : '')
       }
     >
       <SlotGlyph slot={entry.slot} tall={tall} />
@@ -99,22 +107,26 @@ function SlotCell({
         {entry.label}
       </span>
       {item ? (
-        <span className="relative z-10 mt-1 block break-words text-xs leading-tight">
+        <span
+          className={`relative z-10 mt-1 block break-words leading-tight ${
+            compact ? 'text-[9px]' : 'text-xs'
+          }`}
+        >
           <span className={`block ${colour}`}>{item.base}</span>
-          {item.implicits && item.implicits.length > 0 && (
+          {!compact && item.implicits && item.implicits.length > 0 && (
             <span className="mt-0.5 block text-[9px] text-[#a794e0]">
               {item.implicits.map((implicit) => implicit.mod).join(' · ')}
             </span>
           )}
           <span className="mt-0.5 block space-y-0.5 text-[9px] leading-snug text-zinc-400">
-            {item.mods.slice(0, tall ? 5 : 2).map((mod) => (
+            {item.mods.slice(0, modLimit).map((mod) => (
               <span key={mod} className="block truncate">
                 {mod}
               </span>
             ))}
-            {item.mods.length > (tall ? 5 : 2) && (
+            {item.mods.length > modLimit && (
               <span className="block text-[9px] text-zinc-600">
-                +{item.mods.length - (tall ? 5 : 2)} more
+                +{item.mods.length - modLimit} more
               </span>
             )}
           </span>

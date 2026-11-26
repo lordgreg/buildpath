@@ -26,7 +26,7 @@ export const INVENTORY_SLOTS = [
 export const INVENTORY_AREAS = `
   "weapon weapon . helmet amulet offhand offhand"
   "weapon weapon ring1 body ring2 offhand offhand"
-  "gloves . . belt . boots ."
+  ". . gloves belt boots . ."
 `;
 
 export const FLASK_COUNT = 5;

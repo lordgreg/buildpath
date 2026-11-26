@@ -715,8 +715,11 @@ Acceptance: a patch bump delists every unverified build and the site says so.
 - Content test: every build has at least five weighted pros and cons, every
   displayed gem has a description or effect line, and every pantheon/bandit id
   resolves to the reviewed registry.
-- Asset test: every published build has a generated 16:9 header WebP and a
-  plain `.pob` asset equal to the PoB code.
+- Asset test: every published build has a generated 16:9 header WebP, a plain
+  `.pob` asset equal to the PoB code, and a pobb.in link whose code hash still
+  matches.
+- Ascendancy test: the full graph resolves for the build, every chosen node
+  exists in it, and every node has an effect line.
 - Tree-focus test: `focusPoint` centres an edge node and stays inside the
   constellation, like the pan/zoom invariants.
 - PoB round-trip: JSON → XML → code → PoB parse → same tree, links, item count.
@@ -829,6 +832,30 @@ AGENTS.md and PLAN.md.
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
 
+### Revision 16 — the second pass
+
+- **Inventory geometry follows the screen.** Gloves and boots sit next to the
+  belt, weapon/offhand are narrower, and the ring/amulet cells are compact. The
+  hover tooltip was fixed at the source: the slot cell never declared the
+  `group` its tooltip keyed off.
+- **Ascendancy is the whole graph.** `config/ascendancies-full.yaml` carries
+  every notable and path passive for the catalogue's ascendancies. The page
+  draws them as a circle, lights the chosen notables and keeps lab timing under
+  the graph.
+- **The gate report is a table.** Metric / measured / gate, with the checkpoint's
+  thresholds stored in the build JSON. No more large card with five loose
+  numbers.
+- **Quality advice is data.** The gem extractor records the quality effect and a
+  `recommended | optional | none` verdict, rendered as `20q`, `20q?` or
+  `no 20q`.
+- **One-click PoB has a working target.** pob.cool only accepts a pobb.in URL,
+  and its current importer rejects the metadata pobb.in returns. The release
+  publisher (`builds:publish-pobs`) creates a real paste per build, commits the
+  id map and the code hash; the page links the paste directly and keeps the copy
+  button. This is a release-time network step, not a nightly one.
+- **The Filter section links back to the builder** with the build preselected
+  and the four phase/strictness combinations the guide actually maps to.
+
 ### Revision 15 — the endgame sheet
 
 The build page now reads like the inventory screen, and the endgame gear is the
@@ -867,13 +894,19 @@ gear a player actually wears.
 - **The sheet is readable without a mouseover.** Item cells show their mods
   inline (the tall slots more than the small ones), with a faint code-drawn
   glyph behind each empty slot. Helmet/body and gloves/boots/rings share one
-  column width; the five flasks are narrower and taller.
+  column width; the weapon and offhand boxes are 80% of their old width, rings
+  and the amulet are compact, gloves and boots sit beside the belt, and the five
+  flasks are narrower and taller.
 - **Jewels focus the tree.** Clicking a jewel in the legend zooms and centres
   the view on its socket and pulses the marker. The focus maths lives in
   `treeView.ts` and is tested like pan and zoom.
-- **Ascendancy is a path, not a card grid.** Each notable is a circle carrying
-  its point number and lab timing; the separate labyrinth section is gone
-  because the timing belongs on the point it grants.
+- **Ascendancy is the full tree, not four cards.** The graph shows every
+  notable and path passive for the ascendancy, with the chosen notables lit and
+  their lab badges. The lab timing sits under the graph; the separate labyrinth
+  section is gone. Data is reviewed in `config/ascendancies-full.yaml`.
+- **The gate report is a table.** Metric / measured / gate in one compact
+  panel, plus the pass/fail badge and named failures. It no longer spreads a
+  handful of numbers across a large card.
 - **Pantheon is a wheel, bandit is its own section.** The wheel lights the
   selected major and minor god; the table below names every god and its effect.
   Bandit is a separate four-choice section below Pantheon (D17 data in
@@ -884,9 +917,11 @@ gear a player actually wears.
 - **Gems explain themselves.** The gem tooltip carries RePoE's description or,
   for supports, the level-20 effect line, plus mechanical tags. The extractor
   writes those fields into the committed gem table.
-- **PoB opens prefilled.** The publisher writes the same code as a plain `.pob`
-  asset; the page links `pob.cool/#build=<raw GitHub URL>`, so a reader can open
-  the measured build in one click and still copy the code offline.
+- **PoB opens on pobb.in.** The release publisher posts each measured code to
+  pobb.in and commits the id map; the page links the paste directly and keeps
+  the copy button. pob.cool's only accepted input is a pobb.in URL, and its
+  current importer rejects the metadata pobb.in returns, so the paste page is
+  the reliable one-click destination rather than a broken redirect.
 - **Header art is generated per build** (original art, 16:9 WebP, no game
   assets) and sits under the title as orientation, not as evidence.
 

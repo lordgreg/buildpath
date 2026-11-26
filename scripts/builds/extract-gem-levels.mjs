@@ -98,6 +98,22 @@ for (const [id, gem] of Object.entries(gems)) {
     .filter((tag) => !ignoredTags.has(tag))
     .sort();
 
+  // Quality advice: RePoE gives the quality stat template, not a prose line.
+  // Strip the placeholders so the guide can say what quality buys and whether
+  // capping it is worth a Gemcutter's Prism.
+  const qualityEffect = (gem.static?.quality_stats ?? [])
+    .map((quality) => quality.stat.replace(/\{[^}]+\}/g, '').replace(/\s+/g, ' ').trim())
+    .filter(Boolean)
+    .join('; ');
+  const qualityWorth =
+    qualityEffect.length === 0
+      ? 'none'
+      : /damage|attack speed|cast speed|life|resistance|projectile|minion|critical|area|duration|skeleton|maximum|effect|enemies/i.test(
+            qualityEffect,
+          )
+        ? 'recommended'
+        : 'optional';
+
   out[name] = {
     levels,
     quest,
@@ -106,6 +122,8 @@ for (const [id, gem] of Object.entries(gems)) {
     description: active.description ?? null,
     effect,
     tags,
+    qualityEffect,
+    qualityWorth,
   };
 }
 

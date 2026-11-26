@@ -696,11 +696,6 @@ end
 add('\t</Config>\n</PathOfBuilding>\n')
 
 local buildXml = table.concat(xml)
-if os.getenv("BUILD_XML_OUT") then
-  local out = assert(io.open(os.getenv("BUILD_XML_OUT"), "w"))
-  out:write(buildXml)
-  out:close()
-end
 
 loadBuildFromXML(buildXml, spec.name or "verification")
 local output = build.calcsTab.mainOutput
@@ -714,6 +709,51 @@ local playerDps = output.CombinedDPS or 0
 local minionDps = minion and minion.output and minion.output.CombinedDPS or 0
 local dps, dpsSource = playerDps, "player"
 if minionDps > playerDps then dps, dpsSource = minionDps, "minion" end
+
+-- A real PoB export carries display stats inside <Build>. They do not affect the
+-- calculation, but some importers (pobb.in) refuse a Build element with no
+-- children. Inject the measured values after the calculation so the published
+-- code is both importable and shows the numbers the gate measured.
+local statsXml = {}
+local function addPlayerStat(name, value)
+  if value ~= nil then
+    statsXml[#statsXml + 1] = string.format(
+      '\t\t<PlayerStat stat="%s" value="%s"/>\n',
+      name,
+      tostring(value)
+    )
+  end
+end
+addPlayerStat("CombinedDPS", dps)
+addPlayerStat("TotalDPS", dps)
+addPlayerStat("Life", output.Life)
+addPlayerStat("EnergyShield", output.EnergyShield)
+addPlayerStat("TotalEHP", output.TotalEHP)
+addPlayerStat("PhysicalMaximumHitTaken", output.PhysicalMaximumHitTaken)
+addPlayerStat("FireResist", output.FireResist)
+addPlayerStat("ColdResist", output.ColdResist)
+addPlayerStat("LightningResist", output.LightningResist)
+addPlayerStat("ChaosResist", output.ChaosResist)
+addPlayerStat("ManaCost", output.ManaCost)
+addPlayerStat("ManaUnreserved", output.ManaUnreserved)
+addPlayerStat("Speed", output.Speed)
+if #statsXml > 0 then
+  local injected = buildXml:gsub(
+    "(<Build[^>]*>)\n\t</Build>",
+    "%1\n" .. table.concat(statsXml) .. "\t</Build>",
+    1
+  )
+  if injected ~= buildXml then
+    buildXml = injected
+  else
+    print("WARN could not inject build stats into the XML")
+  end
+end
+if os.getenv("BUILD_XML_OUT") then
+  local out = assert(io.open(os.getenv("BUILD_XML_OUT"), "w"))
+  out:write(buildXml)
+  out:close()
+end
 
 -- Per-item parse count: the Node side asserts this against what it synthesised,
 -- because PoB drops unparseable lines without saying so (S6).
