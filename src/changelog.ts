@@ -17,6 +17,18 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.74.0',
+    date: '2026-11-26',
+    title: 'Sunder until Boneshatter unlocks',
+    notes: [
+      "**Boneshatter Juggernaut** now tells you to use **Sunder** from level 12 until Boneshatter unlocks at 28. Cleave covers the first levels; Sunder is a free Marauder quest reward and hits far harder.",
+      "A new `leveling.swaps` field in the build seed lists mid-bracket gem changes. Each swap is validated against the gem requirement tables, rendered on the guide step, and kept out of the seed hash so advice changes never discard measured gates.",
+      "666 tests.",
+    ],
+    commits: [],
+    compare: 'v0.73.0...v0.74.0',
+  },
+  {
     version: '0.73.0',
     date: '2026-11-26',
     title: 'Melee leveling filters drop caster bases',

@@ -2,6 +2,14 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.74.0 — 2026-11-26
+
+Sunder until Boneshatter unlocks.
+
+- **Boneshatter Juggernaut** now tells you to use **Sunder** from level 12 until Boneshatter unlocks at 28. Cleave covers the first levels; Sunder is a free Marauder quest reward and hits far harder.
+- A new `leveling.swaps` field in the build seed lists mid-bracket gem changes. Each swap is validated against the gem requirement tables, rendered on the guide step, and kept out of the seed hash so advice changes never discard measured gates.
+- 666 tests.
+
 ## 0.73.0 — 2026-11-26
 
 Melee leveling filters drop caster bases.
