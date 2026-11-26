@@ -17,6 +17,23 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.58.0',
+    date: '2026-11-26',
+    title: 'The gear sheet and the endgame craft',
+    notes: [
+      "The summoner's shield is back. It had two causes: the caster profile never named an offhand for the early budgets, so the `Clarity`/`Convocation` slots referenced gear that was never synthesised, and the page looked for a slot called `Shield` while PoB stores a shield or quiver in `Weapon 2`. The early Witch now wears a `Twig Spirit Shield` at level 12 and a `Yew Spirit Shield` at 28, and a test checks that every gem group has the gear slot it names.",
+      "The gear panel is drawn as an inventory sheet: weapon and offhand tall on the sides, helmet and amulet on top, body in the middle, rings beside it, gloves/belt/boots below, and five flasks underneath. It is a CSS panel with dark texture and gold-edged slots — similar in feel to the game, not a copy of its art. Jewels are listed separately with their `Jewel 1…n` labels, and endgame armour shows its Eldritch implicits in the tooltip.",
+      "Required jewels are pinned to the passive tree. The oracle returns the socket each jewel was placed in, the tree draws a blue diamond there, and the tooltip and legend name the jewel. A test keeps the pin count equal to the socketed jewels.",
+      "Endgame armour now carries measured **Eldritch Ember and Ichor implicits**: one of each per armour slot, tier 4 at red maps and tier 6 at pinnacle. The oracle counts parsed implicits, so a typo fails the build. With the new implicits a 4-link was clearing the old red-map floor, so the calibration test did its job: the floor moved from 80k to 120k and all three must-pass seeds still clear it.",
+      "Labs are guide milestones, not extra checkpoints. The normal lab unlocks around level 33, so `until-28` now assumes **zero** labs instead of two ascendancy points the game cannot have granted. The page shows normal/cruel/merciless/eternal timing and the notables each lab grants. The six-checkpoint ladder is unchanged.",
+      "One header now spans the filter builder, builds catalogue, build page, simulator, audit and changelog: product name, active nav and version, sticky and responsive.",
+      "The endgame numbers moved with the craft: red-map DPS is now 141.5k for the Deadeye, 276.1k for the Juggernaut and 214.3k for the Summoner; pinnacle is 261.1k, 524.5k and 413.1k. All 18 checkpoint observations still pass.",
+      "594 tests.",
+    ],
+    commits: [],
+    compare: 'v0.57.0...v0.58.0',
+  },
+  {
     version: '0.57.0',
     date: '2026-11-26',
     title: 'The gates prove themselves',
