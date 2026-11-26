@@ -2,6 +2,18 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.68.0 — 2026-11-26
+
+The catalogue gets controls, the guide keeps your place.
+
+- The build catalogue has a **card/list view toggle**. The list view is a dense row per build with the medal, damage, chips and the same links.
+- Sort by **tier grade**, **red-map DPS** or **newest verification**, with a direction toggle. The newest order uses the last Path of Building verification, so a re-proven build moves to the front.
+- Filter by **class** and **tag** with chips. Selections OR within a facet and AND across facets; an empty facet means every build.
+- Every catalogue control — view, order, direction and filters — is remembered in `localStorage`, and **Reset** returns the whole set to its defaults.
+- Each card and list row now carries its generated header art as a low-opacity backdrop, so builds are easier to tell apart at a glance without the key art competing with the text.
+- The build guide's sticky menu now includes a **step switcher** with each checkpoint's level. Change from leveling to pinnacle while reading gems or gear, without scrolling back to the top of the page.
+- 649 tests.
+
 ## 0.67.0 — 2026-11-26
 
 Sentinels, channeling and animated weapons.
