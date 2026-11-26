@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.63.0',
+    date: '2026-11-26',
+    title: 'Patch facts, delisting and the league window',
+    notes: [
+      "The catalogue now records the patch it was verified against. `patch-facts.json` hashes the pinned PoB tree and gem data; every build stores that hash, and a bump marks every unre-verified build **stale** and removes it from the catalogue. The build's own page says why it was delisted.",
+      "The league workflow reads a reviewed start from `config/league.yaml`. The first 72 hours publish nothing; after that, builds only return once they have been re-verified against the current fact set.",
+      "Per-phase filters stay one object: `mode=build` generates leveling and endgame filters at every strictness, the build page links the four guide-mapped combinations, and the tests generate all of them.",
+      "`builds:patch-facts` is part of the validate workflow and the release checklist. The nightly job now checks that the committed fact set and every build hash agree; a moved tree or gem file cannot silently leave old builds published.",
+      "622 tests.",
+    ],
+    commits: [],
+    compare: 'v0.62.0...v0.63.0',
+  },
+  {
     version: '0.62.0',
     date: '2026-11-26',
     title: 'Six builds, prose that cites its sources',
