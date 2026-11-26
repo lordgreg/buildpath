@@ -12,7 +12,20 @@
 schemaVersion: 1
 profiles:
   # The shared slot table is the caster set: wand, spirit shield, ES armour.
-  caster: {}
+  # The early budgets do not carry an offhand because a two-handed build has
+  # none, so the caster names the low-level spirit shield it actually uses.
+  # Without this the guide listed Clarity in a Shield slot that was never
+  # synthesised at level 12 or 28.
+  caster:
+    starting:
+      slots:
+        offhand: { base: "Twig Spirit Shield", affixes: [life] }
+    early:
+      slots:
+        offhand: { base: "Yew Spirit Shield", affixes: [life] }
+    leveling:
+      slots:
+        offhand: { base: "Bone Spirit Shield", affixes: [life, resist-fire] }
 
   # Bow: evasion bases, a physical bow with attack speed, and a quiver instead
   # of a shield. Attack speed and projectile damage are what turn the same

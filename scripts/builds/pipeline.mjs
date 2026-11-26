@@ -32,6 +32,7 @@ export const readYaml = (path) => parse(readFileSync(path, 'utf8'));
 export const affixes = readYaml(resolve(seedsDir, 'gear/affixes.yaml'));
 export const budgets = readYaml(resolve(seedsDir, 'gear/budgets.yaml'));
 export const profileDefs = readYaml(resolve(seedsDir, 'gear/profiles.yaml'));
+export const eldritchDefs = readYaml(resolve(seedsDir, 'gear/eldritch.yaml'));
 export const checkpoints = readYaml(resolve(seedsDir, 'config/checkpoints.yaml'));
 export const gates = readYaml(resolve(root, 'scripts/builds/gates.yaml'));
 
@@ -127,6 +128,16 @@ export const POB_SLOT = {
   ring2: 'Ring 2',
 };
 
+/**
+ * Eldritch implicits for a profile and budget. Only the maps-red and pinnacle
+ * budgets carry them; the act budgets stay what a character can actually buy.
+ */
+export function eldritchFor(profileId, budgetId) {
+  const profiles = eldritchDefs.profiles ?? {};
+  const profile = profiles[profileId] ?? profiles.caster ?? {};
+  return profile[budgetId] ?? {};
+}
+
 export function affixValue(key, tier) {
   const affix = affixes[key];
   if (!affix) throw new Error(`unknown affix "${key}"`);
@@ -168,6 +179,7 @@ export function synthesizeGear(budgetId, profileId = 'caster', options = {}) {
   const links = options.links ?? budget.links;
   const strip = new Set(options.stripAffixes ?? []);
   const dropSlots = new Set(options.dropSlots ?? []);
+  const eldritch = options.eldritch ?? {};
   const items = [];
   // Only a body armour carries the build's links; putting six sockets on a wand
   // produces an item PoB refuses to parse.
@@ -180,6 +192,7 @@ export function synthesizeGear(budgetId, profileId = 'caster', options = {}) {
     const lines = spec.affixes
       .filter((key) => !strip.has(key))
       .map((key) => affixValue(key, budget.tier));
+    const implicits = eldritch[slot] ?? [];
     const text = [
       `Rarity: ${budget.rarity ?? 'RARE'}`,
       `Synthesised ${slot}`,
@@ -190,10 +203,17 @@ export function synthesizeGear(budgetId, profileId = 'caster', options = {}) {
       `Item Level: ${budget.ilvl}`,
       `Quality: ${budget.quality ?? 0}`,
       ...(slot === 'body' ? [`Sockets: ${bodySockets}`] : []),
-      'Implicits: 0',
+      `Implicits: ${implicits.length}`,
+      ...implicits.map((implicit) => implicit.mod),
       ...lines.map((line) => line.mod),
     ].join('\n');
-    items.push({ slot: POB_SLOT[slot] ?? slot, text, expectedMods: lines.length });
+    items.push({
+      slot: POB_SLOT[slot] ?? slot,
+      text,
+      expectedMods: lines.length,
+      expectedImplicits: implicits.length,
+      implicits,
+    });
   }
   // Jewels are the carry slot: a summoner's Ghastly Eye, a ranger's Viridian.
   const jewels = [];
@@ -281,8 +301,14 @@ export function checkItemParsing(metrics, items) {
   for (const item of items) {
     const found = reported.find((entry) => entry.slot === item.slot);
     const parsed = found?.parsed ?? 0;
+    const implicitParsed = found?.implicitParsed ?? 0;
     if (parsed < item.expectedMods) {
       failures.push(`${item.slot}: PoB parsed ${parsed} of ${item.expectedMods} mods`);
+    }
+    if (implicitParsed < (item.expectedImplicits ?? 0)) {
+      failures.push(
+        `${item.slot}: PoB parsed ${implicitParsed} of ${item.expectedImplicits} implicits`,
+      );
     }
   }
   return failures;
@@ -334,10 +360,13 @@ export function buildCheckpointSpec(seed, checkpointId, options = {}) {
   const bracket = bracketFor(seed, level);
 
   const maxJewels = options.maxJewels ?? Infinity;
+  const eldritch =
+    options.eldritch !== undefined ? options.eldritch : eldritchFor(profileId, budgetId);
   const gear = synthesizeGear(budgetId, profileId, {
     links: options.links,
     stripAffixes: options.stripAffixes,
     dropSlots: options.dropSlots,
+    eldritch,
     maxJewels,
   });
   // A core unique replaces the synthesised rare in its slot; the synthesised
@@ -397,7 +426,7 @@ export function buildCheckpointSpec(seed, checkpointId, options = {}) {
     ascendancyPoints: seed.ascendancyOrder,
     skillGroups: groups,
     items: gear.items.map((item) => ({ slot: item.slot, text: item.text })),
-    jewels: gear.jewels.map((jewel) => ({ text: jewel.text })),
+    jewels: gear.jewels.map((jewel) => ({ text: jewel.text, base: gear.jewelBase })),
     flasks,
     jewelCount: gear.jewels.length,
     config: [

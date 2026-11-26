@@ -726,6 +726,13 @@ for index, item in ipairs(build.itemsTab.items or {}) do
       if line.line then mods[#mods + 1] = line.line end
     end
   end
+  local implicitParsed, implicitMods = 0, {}
+  for _, line in ipairs(item.implicitModLines or {}) do
+    if line.modList and #line.modList > 0 then
+      implicitParsed = implicitParsed + 1
+      if line.line then implicitMods[#implicitMods + 1] = line.line end
+    end
+  end
   local block = itemTextById[tonumber(item.id)] or {}
   itemReport[index] = {
     id = tonumber(item.id),
@@ -734,6 +741,8 @@ for index, item in ipairs(build.itemsTab.items or {}) do
     text = block.text,
     mods = mods,
     parsed = parsed,
+    implicitMods = implicitMods,
+    implicitParsed = implicitParsed,
   }
 end
 
@@ -794,8 +803,19 @@ for _, id in ipairs(allocatedIds) do
   }
 end
 
+local jewelPins = {}
+for index, nodeId in ipairs(socketIds) do
+  local jewel = (spec.jewels or {})[index]
+  jewelPins[#jewelPins + 1] = {
+    node = nodeId,
+    label = 'Jewel ' .. index,
+    base = jewel and jewel.base or 'Jewel',
+  }
+end
+
 local result = {
   items = itemReport,
+  jewels = jewelPins,
   tree = { nodes = treeNodes, edges = edgeList, notables = notableList, start = startNode },
   startNode = startNode,
   endgame = endgameIds,

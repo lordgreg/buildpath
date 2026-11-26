@@ -120,6 +120,10 @@ export default function TreeThumbnail({
     for (const node of geometry?.nodes ?? []) map.set(node.id, node);
     return map;
   }, [geometry]);
+  const jewelByNode = useMemo(
+    () => new Map((tree.jewels ?? []).map((jewel) => [jewel.node, jewel])),
+    [tree],
+  );
   const points = useMemo(() => {
     const map = new Map<number, { x: number; y: number }>();
     for (const node of geometry?.nodes ?? []) map.set(node.id, { x: node.x, y: node.y });
@@ -208,6 +212,35 @@ export default function TreeThumbnail({
       </g>
     );
   }, [geometry, points, tree, strokeWidth]);
+
+  const jewelLayer = useMemo(() => {
+    if (!geometry) return null;
+    return (
+      <g>
+        {[...jewelByNode.entries()].map(([nodeId, jewel]) => {
+          const point = points.get(nodeId);
+          if (!point) return null;
+          const size = Math.max(radius * 2.1, 5);
+          return (
+            <g key={`jewel-${nodeId}`} pointerEvents="none">
+              <rect
+                x={point.x - size}
+                y={point.y - size}
+                width={size * 2}
+                height={size * 2}
+                transform={`rotate(45 ${point.x} ${point.y})`}
+                fill="#5b9bd5"
+                stroke="#d7ecff"
+                strokeWidth={strokeWidth}
+                vectorEffect="non-scaling-stroke"
+              />
+              <title>{`${jewel.label}: ${jewel.base}`}</title>
+            </g>
+          );
+        })}
+      </g>
+    );
+  }, [geometry, jewelByNode, points, radius, strokeWidth]);
 
   const hoverLayer = tooltip ? (
     <circle
@@ -321,6 +354,7 @@ export default function TreeThumbnail({
 
   const tooltipLeft = Math.min(tooltip ? tooltip.x + 14 : 0, window.innerWidth - 320);
   const tooltipTop = Math.min(tooltip ? tooltip.y + 14 : 0, window.innerHeight - 220);
+  const tooltipJewel = tooltip ? jewelByNode.get(tooltip.node.id) : undefined;
 
   return (
     <figure className="relative">
@@ -328,7 +362,7 @@ export default function TreeThumbnail({
         ref={setSvg}
         viewBox={`${view.x} ${view.y} ${view.w} ${view.h}`}
         role="img"
-        aria-label={`Passive tree at ${label}: ${tree.nodes.length} points, ${tree.notables.length} notables`}
+        aria-label={`Passive tree at ${label}: ${tree.nodes.length} points, ${tree.notables.length} notables, ${tree.jewels?.length ?? 0} jewels`}
         className="h-[34rem] w-full cursor-grab touch-none select-none rounded-lg border border-ink-700 bg-[#0b0d12]"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
@@ -338,6 +372,7 @@ export default function TreeThumbnail({
       >
         {staticLayer}
         {takenLayer}
+        {jewelLayer}
         {hoverLayer}
         {hitLayer}
       </svg>
@@ -409,6 +444,11 @@ export default function TreeThumbnail({
                   : 'Passive'}
             {taken.has(tooltip.node.id) ? ' · allocated' : ''}
           </p>
+          {tooltipJewel && (
+            <p className="mt-1 rounded border border-[#3f4f8f] bg-[#1b2240]/60 px-2 py-1 text-[11px] text-[#b7d7ff]">
+              {tooltipJewel.label} · {tooltipJewel.base}
+            </p>
+          )}
           {tooltip.node.stats?.length ? (
             <ul className="mt-2 space-y-1 text-zinc-300">
               {tooltip.node.stats.map((line) => (
@@ -431,6 +471,21 @@ export default function TreeThumbnail({
         <span className="text-zinc-300">fit</span> frames the points you took,{' '}
         <span className="text-zinc-300">all</span> shows the whole tree.
       </figcaption>
+
+      {tree.jewels && tree.jewels.length > 0 && (
+        <div className="mt-2 rounded-md border border-[#3f4f8f]/70 bg-[#11182a]/60 px-2.5 py-2">
+          <p className="text-[10px] uppercase tracking-[0.16em] text-[#7ea9d8]">
+            Jewels at this step · blue diamonds on the tree
+          </p>
+          <ul className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-zinc-400">
+            {tree.jewels.map((jewel) => (
+              <li key={`${jewel.node}-${jewel.label}`}>
+                <span className="text-[#b7d7ff]">{jewel.label}</span> {jewel.base}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </figure>
   );
 }

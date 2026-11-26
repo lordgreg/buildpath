@@ -6,20 +6,30 @@ Pick a family, an ascendancy or a meta build, then a phase and strictness, and
 download a valid `.filter` that highlights the bases your build actually wants
 and hides the rest. No account; everything is generated in your browser.
 
-**Status:** v0.57.0 — verified build guides whose every number is
+**Status:** v0.58.0 — verified build guides whose every number is
 machine-derived and reproducible. A build is a seed plus a pinned Path of
 Building measurement, a calibrated gate report, one endgame tree pruned into
 each leveling step, a published PoB code and the filter generated from the same
-object. The current game data is the 3.30 export; real meta capture is blocked
-by poe.ninja's closed builds API.
+object. The guide renders the gear as an inventory sheet, pins required jewels
+to their tree sockets, and measures endgame Eldritch implicits. The current game
+data is the 3.30 export; real meta capture is blocked by poe.ninja's closed
+builds API.
 
 ## Features
 
 - Verified build guides: six checkpoints, a gate report for each, the PoB code
   the gate measured, and a filter generated from the same build
+- Gear drawn as an inventory sheet: weapon and offhand on the sides, armour,
+  rings, belt, boots and five flasks in their game positions
+- Required jewels are pinned to their passive-tree sockets, with the jewel name
+  in the tooltip and legend
+- Endgame armour carries measured Eldritch Ember and Ichor implicits
 - Gates calibrated in both directions against must-pass and must-fail references
 - Bounded repair: a failing step may swap one tree node, with a published
   `nodeDelta` and seed-vs-repaired view
+- Lab timing is explicit: normal ~33, cruel ~55, merciless ~68, eternal ~75
+- One shared header across the filter builder, builds, simulator, audit and
+  changelog
 - Four independent modes: by family, by ascendancy, by meta build, or from scratch
 - Per-league meta snapshots, skills grouped by family or by seed weight
 - Soft / Strict / Uber (hidden in From Scratch mode)

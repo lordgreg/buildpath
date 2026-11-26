@@ -1,12 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import type {
-  Build,
-  BuildIndexEntry,
-  FlaskChoice,
-  GateResult,
-} from '../core/builds/types.ts';
+import type { Build, BuildIndexEntry, GateResult } from '../core/builds/types.ts';
 import { BUILD_VERSION, BUILDS } from '../meta/builds.ts';
 import InventoryPanel from './InventoryPanel.tsx';
+import SiteHeader from './SiteHeader.tsx';
 import TreeThumbnail from './TreeThumbnail.tsx';
 import { copyText } from './download.ts';
 import { APP_VERSION } from '../version.ts';
@@ -49,6 +45,14 @@ function flaskStep(checkpoint: string): 'leveling' | 'maps' | 'endgame' {
 function wikiUrl(name: string): string {
   return `https://www.poewiki.net/wiki/${encodeURIComponent(name.replaceAll(' ', '_'))}`;
 }
+
+/** When each labyrinth unlocks. The checkpoint only assumes labs in its budget. */
+const LAB_MILESTONES = [
+  { lab: 1, name: 'Normal lab', level: 33, where: 'after Act 3' },
+  { lab: 2, name: 'Cruel lab', level: 55, where: 'after Act 7' },
+  { lab: 3, name: 'Merciless lab', level: 68, where: 'after Act 10' },
+  { lab: 4, name: 'Eternal lab', level: 75, where: 'in maps' },
+] as const;
 
 /** PoE gem colours: strength red, dexterity green, intelligence blue, universal white. */
 const GEM_COLOURS: Record<string, string> = {
@@ -112,23 +116,6 @@ function Tooltip({
         {label}
       </span>
     </span>
-  );
-}
-
-function Flasks({ flasks }: { flasks: FlaskChoice[] }) {
-  return (
-    <ul className="mt-2 space-y-1 text-sm text-zinc-300">
-      {flasks.map((flask) => (
-        <li key={flask.name}>
-          <span className="text-[10px] uppercase tracking-[0.14em] text-zinc-600">
-            {flask.slot}
-          </span>{' '}
-          <Tooltip label={flask.note ?? flask.name}>
-            <span className="border-b border-dotted border-zinc-600">{flask.name}</span>
-          </Tooltip>
-        </li>
-      ))}
-    </ul>
   );
 }
 
@@ -231,28 +218,13 @@ export default function BuildPage() {
     ) ?? build.leveling.brackets.at(-1);
 
   return (
-    <div className="mx-auto min-h-dvh max-w-6xl px-5 py-10 sm:px-8">
+    <div className="min-h-dvh">
+      <SiteHeader active="build" />
+      <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
       <div className="lg:grid lg:grid-cols-[1fr_13rem] lg:gap-8">
       <div className="flex flex-col gap-8">
       <header>
-        <nav className="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
-          <a href="./index.html" className="underline underline-offset-2 hover:text-zinc-300">
-            Builder
-          </a>
-          <span aria-hidden>·</span>
-          <a href="./builds.html" className="underline underline-offset-2 hover:text-zinc-300">
-            All builds
-          </a>
-          <span aria-hidden>·</span>
-          <a href="./demo.html" className="underline underline-offset-2 hover:text-zinc-300">
-            Loot simulator
-          </a>
-          <span aria-hidden>·</span>
-          <a href="./changelog.html" className="underline underline-offset-2 hover:text-zinc-300">
-            Changelog
-          </a>
-        </nav>
-        <div className="mt-4 flex flex-wrap items-baseline justify-between gap-3">
+        <div className="flex flex-wrap items-baseline justify-between gap-3">
           <div>
             <p className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
               {build.class} / {build.mainSkill}
@@ -414,10 +386,11 @@ export default function BuildPage() {
           <p className="mt-1 text-[11px] text-zinc-600">
             Budget gear, not hand-picked items: the gate was measured on exactly
             these. Colours follow item rarity — blue magic, yellow rare. Hover a
-            slot for its mods.
+            slot for its mods; the five flasks and any socketed jewels are part
+            of the same sheet, and endgame armour shows its Eldritch implicits.
           </p>
           <div className="mt-3">
-            <InventoryPanel gear={gate.gear} />
+            <InventoryPanel gear={gate.gear} flasks={showFlasks ?? []} />
           </div>
         </section>
       )}
@@ -552,17 +525,6 @@ export default function BuildPage() {
         </section>
       )}
 
-      {showFlasks && (
-        <section aria-labelledby="flasks">
-          <h2 id="flasks" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            Flasks at {step}
-          </h2>
-          <div className="mt-3 max-w-sm rounded-lg border border-ink-700 bg-ink-900/40 p-3">
-            <Flasks flasks={showFlasks} />
-          </div>
-        </section>
-      )}
-
       <section aria-labelledby="ascendancy">
         <h2 id="ascendancy" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
           Ascendancy
@@ -589,6 +551,43 @@ export default function BuildPage() {
               </span>
             </li>
           ))}
+        </ol>
+      </section>
+
+      <section aria-labelledby="labs">
+        <h2 id="labs" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+          Labyrinth timing
+        </h2>
+        <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">
+          Each lab grants two ascendancy points. The checkpoint only evaluates
+          labs a character that level can actually have finished, so the normal
+          lab is not assumed at level 28.
+        </p>
+        <ol className="mt-3 grid gap-2 sm:grid-cols-2">
+          {LAB_MILESTONES.map((milestone) => {
+            const points = build.ascendancyOrder.filter(
+              (point) => point.lab === milestone.lab,
+            );
+            return (
+              <li
+                key={milestone.lab}
+                className="rounded-lg border border-ink-700 bg-ink-900/40 p-3"
+              >
+                <div className="flex items-baseline justify-between gap-2">
+                  <span className="text-sm font-medium text-zinc-200">{milestone.name}</span>
+                  <span className="text-[10px] uppercase tracking-[0.14em] text-zinc-500">
+                    level ~{milestone.level}
+                  </span>
+                </div>
+                <p className="mt-0.5 text-[11px] text-zinc-500">{milestone.where}</p>
+                <p className="mt-1 text-xs text-zinc-300">
+                  {points.length > 0
+                    ? points.map((point) => titleCase(point.node)).join(' · ')
+                    : 'No notable taken yet'}
+                </p>
+              </li>
+            );
+          })}
         </ol>
       </section>
 
@@ -665,8 +664,8 @@ export default function BuildPage() {
               ['gear', 'Gear'],
               ['gems', 'Gems'],
               ['leveling', 'Leveling this step'],
-              ['flasks', 'Flasks'],
               ['ascendancy', 'Ascendancy'],
+              ['labs', 'Labyrinth timing'],
               ['pantheon', 'Pantheon'],
             ].map(([anchor, label]) => (
               <li key={anchor}>
@@ -686,6 +685,7 @@ export default function BuildPage() {
           </ul>
         </nav>
       </aside>
+      </div>
       </div>
     </div>
   );

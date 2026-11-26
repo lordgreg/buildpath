@@ -1,6 +1,7 @@
 import type { BuildIndexEntry, BuildStepSummary } from '../core/builds/types.ts';
 import { BUILDS, BUILD_VERSION } from '../meta/builds.ts';
 import { APP_VERSION } from '../version.ts';
+import SiteHeader from './SiteHeader.tsx';
 
 /** Human labels for the machine-facing checkpoint ids. */
 const STEP_LABEL: Record<string, string> = {
@@ -127,28 +128,11 @@ export default function BuildsPage() {
   const families = [...new Set(published.map((build) => build.family))].sort();
 
   return (
-    <div className="mx-auto min-h-dvh max-w-6xl px-5 py-10 sm:px-8">
+    <div className="min-h-dvh">
+      <SiteHeader active="builds" />
+      <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
       <header>
-        <nav className="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
-          <a href="./index.html" className="underline underline-offset-2 hover:text-zinc-300">
-            Filter
-          </a>
-          <span aria-hidden>·</span>
-          <span className="text-zinc-300">Builds</span>
-          <span aria-hidden>·</span>
-          <a href="./demo.html" className="underline underline-offset-2 hover:text-zinc-300">
-            Loot simulator
-          </a>
-          <span aria-hidden>·</span>
-          <a href="./tests.html" className="underline underline-offset-2 hover:text-zinc-300">
-            Behaviour audit
-          </a>
-          <span aria-hidden>·</span>
-          <a href="./changelog.html" className="underline underline-offset-2 hover:text-zinc-300">
-            Changelog
-          </a>
-        </nav>
-        <div className="mt-4 flex flex-wrap items-baseline justify-between gap-3">
+        <div className="flex flex-wrap items-baseline justify-between gap-3">
           <div>
             <h1 className="text-2xl font-semibold text-white">Builds</h1>
             <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-400">
@@ -252,6 +236,7 @@ export default function BuildsPage() {
           Games in any way.
         </p>
       </footer>
+      </div>
     </div>
   );
 }

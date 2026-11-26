@@ -36,7 +36,10 @@ checkpoints:
     life: 4500
     ehp: 12000
     maxHit: 6000
-    dps: 80000
+    # A 4-link with the eldritch implicits now clears the old 80k floor on the
+    # Deadeye, so the floor moves to where "a 4-link at T16" fails again. All
+    # three must-pass seeds clear 120k (lowest: Deadeye at 141k).
+    dps: 120000
   pinnacle:
     # Pinnacle bosses hit with chaos; capping it is part of being ready.
     chaosResist: 75

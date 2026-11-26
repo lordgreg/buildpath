@@ -424,10 +424,16 @@ hand-writing five item sets per build does not scale to 19 ascendancies.
   describes a budget as **constraints, not items**: candidate classes per slot,
   max affix count, minimum roll tier, ilvl band, link count, quality, and
   forbidden mod families (influence, veiled, essence-only, fractured).
-- `scripts/builds/synthesize-gear.mjs` emits one concrete item per slot: base
-  type picked deterministically from the budget's candidates (lowest ilvl, then
+- `scripts/builds/pipeline.mjs` emits one concrete item per slot: base type
+  picked deterministically from the budget's candidates (lowest ilvl, then
   alphabetical), affixes chosen by a reviewed priority list per slot and family,
-  rolls at the midpoint of the allowed tier.
+  rolls at the midpoint of the allowed tier. A profile may add the early offhand
+  its archetype needs; without it a caster's "Shield" gem rows pointed at gear
+  that was never synthesised.
+- `src/builds/gear/eldritch.yaml` adds one Ember and one Ichor implicit per
+  armour slot at the red-map and pinnacle budgets. These are implicit modifiers,
+  not prefixes or suffixes, and the oracle asserts the parsed implicit count the
+  same way it asserts explicit lines.
 - **Every synthesised line is validated by effect, not by name.** PoB item text
   carries display mod lines (`+100 to maximum Life`), not mod ids, and it drops
   a line it cannot parse **silently** (S6, §15). So for each line the pipeline
@@ -698,6 +704,14 @@ Acceptance: a patch bump delists every unverified build and the site says so.
 - Calibration test: the committed report's hash matches the current thresholds,
   every must-pass passes, every must-fail fails for its named defect, and the
   unique-ablation probe parses real mods and records a drop.
+- Gear-slot test: every gem group's slot exists in that checkpoint's gear, with
+  `Shield` mapped to PoB's `Weapon 2`.
+- Jewel-pin test: every `tree.jewels` entry points at a socket in the checkpoint
+  tree and the pin count equals the socketed jewel count.
+- Eldritch test: endgame body/helmet/gloves/boots carry one Ember and one Ichor
+  implicit, and the oracle's parsed-implicit count matches what was written.
+- Lab test: no checkpoint below level 33 assumes a lab, and no checkpoint
+  assumes more ascendancy nodes than its lab budget can grant.
 - PoB round-trip: JSON → XML → code → PoB parse → same tree, links, item count.
 - Registry tests: gems, bases, ascendancies, pantheon ids and bandit ids all
   exist in the reviewed registries; no unique name in any emitted `BaseType`.
@@ -807,6 +821,42 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 15 — the endgame sheet
+
+The build page now reads like the inventory screen, and the endgame gear is the
+gear a player actually wears.
+
+- **The missing shield had two causes.** The caster profile never named an
+  offhand for the early budgets, so the summoner's `Clarity`/`Convocation` slots
+  referenced a shield that was never synthesised. The page also looked for a
+  slot called `Shield`, while PoB stores a shield or quiver in `Weapon 2`. Both
+  are fixed; the early caster uses `Twig Spirit Shield` at `starting` and `Yew
+  Spirit Shield` at `early`. A test now asserts every gem group has the gear slot
+  it names.
+- **The gear sheet is a grid, not a list.** Weapon and offhand sit on the tall
+  sides, helmet and amulet on top, body in the middle, rings beside it,
+  gloves/belt/boots below, and five flasks underneath. It is a CSS panel with
+  dark texture and gold edges, not a copy of the game art. Jewels are listed
+  separately with their explicit `Jewel 1…n` labels.
+- **Required jewels are pinned to the tree.** The oracle returns the socket each
+  jewel was placed in; the tree draws a blue diamond there and names the jewel
+  in the tooltip and a legend below the figure. A test checks the pin count
+  against the gear list.
+- **Eldritch implicits are measured.** A reviewed `gear/eldritch.yaml` gives
+  each archetype one Ember and one Ichor implicit per armour slot, tier 4 at
+  `maps-red` and tier 6 at `pinnacle`. The oracle counts parsed implicits, so a
+  typo fails the build. The red-map DPS floor moved from 80k to 120k because a
+  4-link with the new implicits was clearing the old floor; the calibration's
+  must-fail set caught that, and all three must-pass seeds still clear 120k.
+- **Labs are guide milestones, not more checkpoints.** The normal lab unlocks
+  around level 33, so `until-28` now assumes `labs: 0`; assuming two ascendancy
+  points at level 28 measured a character the game cannot have. The page shows
+  the normal/cruel/merciless/eternal lab levels and the notables each grants.
+  The six-checkpoint enum is unchanged: a lab is an action, not a gear bracket.
+- **One header.** The filter builder, catalogue, build page, simulator, audit
+  and changelog use the same sticky header with the product name, active nav and
+  version.
 
 ### Revision 14 — P3 landed
 

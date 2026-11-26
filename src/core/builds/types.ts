@@ -97,10 +97,18 @@ export interface CheckpointMetrics {
  * Path of Building and either publishes it or rejects it; it never invents one.
  */
 /** What the PoB oracle measured at one checkpoint, as published. */
+export interface GearImplicit {
+  /** Which Eldritch currency applies the implicit. */
+  currency: 'ember' | 'ichor';
+  mod: string;
+}
+
 export interface GearItem {
   slot: string;
   base: string;
   mods: string[];
+  /** Eldritch implicits, when the budget is endgame gear. */
+  implicits?: GearImplicit[];
   budget: string;
   ilvl: number;
   rarity?: 'NORMAL' | 'MAGIC' | 'RARE' | 'UNIQUE';
@@ -177,12 +185,23 @@ export interface TreePoint {
   name: string;
 }
 
+export interface TreeJewel {
+  /** The jewel socket node in the tree view. */
+  node: number;
+  /** Guide label, e.g. "Jewel 1". */
+  label: string;
+  /** Base type, e.g. "Viridian Jewel". */
+  base: string;
+}
+
 export interface TreeView {
   nodes: TreePoint[];
   edges: [number, number][];
   notables: string[];
   /** The class start node, so a test can prove a valid allocation order. */
   start?: number;
+  /** Jewels this step requires, pinned to the socket that holds each one. */
+  jewels?: TreeJewel[];
 }
 
 /**

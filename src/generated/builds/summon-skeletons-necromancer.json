@@ -913,10 +913,10 @@
         "dps": 75,
         "minionCount": 6,
         "dpsSource": "minion",
-        "life": 319,
-        "energyShield": 457,
-        "ehp": 544,
-        "maxHit": 776,
+        "life": 344,
+        "energyShield": 465,
+        "ehp": 637,
+        "maxHit": 809,
         "resists": [
           -48,
           -48,
@@ -1051,7 +1051,8 @@
           }
         ],
         "notables": [],
-        "start": 54447
+        "start": 54447,
+        "jewels": []
       },
       "gear": [
         {
@@ -1140,6 +1141,16 @@
           "base": "Opal Ring",
           "mods": [
             "+12% to Cold Resistance"
+          ],
+          "budget": "starting",
+          "ilvl": 12,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Twig Spirit Shield",
+          "mods": [
+            "+25 to maximum Life"
           ],
           "budget": "starting",
           "ilvl": 12,
@@ -1240,13 +1251,13 @@
       "level": 28,
       "budget": "early (4-link)",
       "metrics": {
-        "dps": 435,
+        "dps": 367,
         "minionCount": 6,
         "dpsSource": "minion",
-        "life": 1022,
-        "energyShield": 571,
-        "ehp": 1256,
-        "maxHit": 1593,
+        "life": 1097,
+        "energyShield": 588,
+        "ehp": 1509,
+        "maxHit": 1685,
         "resists": [
           -30,
           -30,
@@ -1255,7 +1266,7 @@
         "chaosResist": -25,
         "nodes": 29,
         "sockets": 0,
-        "ascendancy": 3
+        "ascendancy": 1
       },
       "failures": [],
       "tree": {
@@ -1582,7 +1593,8 @@
           "Arcanist's Dominion",
           "Heart and Soul"
         ],
-        "start": 54447
+        "start": 54447,
+        "jewels": []
       },
       "gear": [
         {
@@ -1674,6 +1686,16 @@
           "base": "Opal Ring",
           "mods": [
             "+30% to Cold Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Yew Spirit Shield",
+          "mods": [
+            "+60 to maximum Life"
           ],
           "budget": "early",
           "ilvl": 45,
@@ -2682,7 +2704,19 @@
           "Grave Intentions",
           "Shaper"
         ],
-        "start": 54447
+        "start": 54447,
+        "jewels": [
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 1",
+            "node": 36634
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 2",
+            "node": 41263
+          }
+        ]
       },
       "gear": [
         {
@@ -3982,7 +4016,19 @@
           "Grave Intentions",
           "Shaper"
         ],
-        "start": 54447
+        "start": 54447,
+        "jewels": [
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 1",
+            "node": 6230
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 2",
+            "node": 26196
+          }
+        ]
       },
       "gear": [
         {
@@ -4266,12 +4312,12 @@
       "level": 90,
       "budget": "ssf-week1 (6-link)",
       "metrics": {
-        "dps": 198762,
+        "dps": 214263,
         "minionCount": 6,
         "dpsSource": "minion",
         "life": 6793,
         "energyShield": 1524,
-        "ehp": 29702,
+        "ehp": 30193,
         "maxHit": 13117,
         "resists": [
           75,
@@ -5451,7 +5497,39 @@
           "Grave Intentions",
           "Shaper"
         ],
-        "start": 54447
+        "start": 54447,
+        "jewels": [
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 1",
+            "node": 6230
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 2",
+            "node": 26196
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 3",
+            "node": 36634
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 4",
+            "node": 41263
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 5",
+            "node": 61419
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 6",
+            "node": 61834
+          }
+        ]
       },
       "gear": [
         {
@@ -5486,6 +5564,16 @@
             "+40% to Fire Resistance",
             "+40% to Cold Resistance"
           ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "Minions have (23-25)% increased maximum Life"
+            },
+            {
+              "currency": "ichor",
+              "mod": "10% increased Mana Reservation Efficiency of Skills"
+            }
+          ],
           "budget": "ssf-week1",
           "ilvl": 82,
           "rarity": "RARE"
@@ -5497,6 +5585,16 @@
             "+80 to maximum Life",
             "40% increased Energy Shield",
             "+40% to Lightning Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "(19-20)% increased effect of Offerings"
+            },
+            {
+              "currency": "ichor",
+              "mod": "+(11-12)% to all Elemental Resistances"
+            }
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5510,6 +5608,16 @@
             "+40% to Fire Resistance",
             "+40% to Cold Resistance"
           ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "Minions deal (23-25)% increased Damage"
+            },
+            {
+              "currency": "ichor",
+              "mod": "+8% chance to Suppress Spell Damage"
+            }
+          ],
           "budget": "ssf-week1",
           "ilvl": 82,
           "rarity": "RARE"
@@ -5521,6 +5629,16 @@
             "25% increased Movement Speed",
             "+80 to maximum Life",
             "+20% to Chaos Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "8% increased Movement Speed"
+            },
+            {
+              "currency": "ichor",
+              "mod": "10% increased Life Regeneration rate"
+            }
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5786,12 +5904,12 @@
       "level": 96,
       "budget": "trade (6-link)",
       "metrics": {
-        "dps": 383030,
+        "dps": 413053,
         "minionCount": 6,
         "dpsSource": "minion",
         "life": 6212,
         "energyShield": 1733,
-        "ehp": 34352,
+        "ehp": 35096,
         "maxHit": 12601,
         "resists": [
           75,
@@ -7053,7 +7171,39 @@
           "Grave Intentions",
           "Shaper"
         ],
-        "start": 54447
+        "start": 54447,
+        "jewels": [
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 1",
+            "node": 6230
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 2",
+            "node": 26196
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 3",
+            "node": 36634
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 4",
+            "node": 41263
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 5",
+            "node": 61419
+          },
+          {
+            "base": "Ghastly Eye Jewel",
+            "label": "Jewel 6",
+            "node": 61834
+          }
+        ]
       },
       "gear": [
         {
@@ -7088,6 +7238,16 @@
             "+45% to Fire Resistance",
             "+45% to Cold Resistance"
           ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "Minions have (28-29)% increased maximum Life"
+            },
+            {
+              "currency": "ichor",
+              "mod": "12% increased Mana Reservation Efficiency of Skills"
+            }
+          ],
           "budget": "trade",
           "ilvl": 86,
           "rarity": "RARE"
@@ -7099,6 +7259,16 @@
             "+100 to maximum Life",
             "60% increased Energy Shield",
             "+45% to Lightning Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "(23-24)% increased effect of Offerings"
+            },
+            {
+              "currency": "ichor",
+              "mod": "+(15-16)% to all Elemental Resistances"
+            }
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7112,6 +7282,16 @@
             "+45% to Fire Resistance",
             "+45% to Cold Resistance"
           ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "Minions deal (28-29)% increased Damage"
+            },
+            {
+              "currency": "ichor",
+              "mod": "+10% chance to Suppress Spell Damage"
+            }
+          ],
           "budget": "trade",
           "ilvl": 86,
           "rarity": "RARE"
@@ -7123,6 +7303,16 @@
             "30% increased Movement Speed",
             "+30% to Chaos Resistance",
             "+45% to Lightning Resistance"
+          ],
+          "implicits": [
+            {
+              "currency": "ember",
+              "mod": "10% increased Movement Speed"
+            },
+            {
+              "currency": "ichor",
+              "mod": "12% increased Life Regeneration rate"
+            }
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7389,13 +7579,13 @@
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJzVWm1v2zgS_lz_CkLAfir3wndRhd1F4jbeLJp2r-5t7z4dGHtsc0NJXolOmv31B0qWLaeOX64pksIAQQ2f4cwzHFIk5e4vX1KHbqAobZ71IvoPEiHIRvnYZtNe9K9P5z_r6JfXne7vxs8-TM4W1oWW150X3aqOHNyA60UJiZA3xRT8H01X_L8kQiNnyvK9SaEXfbZ-NIuQKUeQjftr-XsYFXlqshEUEUqNzYb56Br8oMgX815EI3RlsrH1veh9nkGE5ibzM8izS_NnXgzycS9yi8wUtmw12WzZNC0Wfna9cBG6sXB7mY-hF_VP3_WHUWBwUlEItU8FADIjb29gOIdRMPu68-JFNzwgXwC0WPGG1sW4F_ENQkFCIpTlYyh7ESWcYsoIxzRWMaaaMcypijFXUmHBkxgLSRiWgkosY8GxYpxgxWWCVUwZjmkouNY4VqFIuMY6ERpTIhKCKZGxxJQkRGBKBSOYckISTLnWElNJNMVUCiIxVXFAxjEPpWYUU80DUscqlFpJTBMVJIniEjMihcKMckJDyQlmVMUaM6pDK02kxowRxTDjhMWYSRIkknOGmaKJwkyxmIQy0ZipWBDM4hAJFitKQykTzOJYa8wSSlQokwRzqmOJOWOUYM5FnGDOgy7nsZSh1BxzQWOKuWAkxlxoTTCXOhGYK0Kr0AqGuVI8SBIqQykSzGOpQqmCbpwEW5omBPNECY0F4YphQZniWFARh3qiEyykJhwLlVCCRcwkxUJXSB3TJJSxxiIhIsYiYVJgSbRiWFJJYyw5ozyUcVKNcCiFiLGUrCqFlljKhCgsY8aqUgksNROhFIRhRXiisSLBH0XihGJFOSNYUUETrKiSHCuqucCKJpphFYhhxZNYYSVCDJUkXFSZ_KJbz6qyemieqkwNSRsSL0LWQxqeqIpOtuOqwW0B44eA1Qi0gPohYBX0FjB5CFixXgMZeRio26YZXQK7J60QdE_C1K4WgTD3Q2V4bZ2rG6sqgsxcORj3Il8sIEKly30vOsvHd-i0SPPFcrU6rVeNoNEsGy-6A0jRtLZ_Cd6MjTcnFx7S8mQQigo9gHS4SNM8G16DA59nZYTK0HC0VmbS5bJVN6FW23J9ZiRCfy2Ms_5u4yHYegMTs3A-uk94C7uTI-nN53nhL21m8-yNSc0U9lGsNQaQbiqtGdZy1DQ8B3oL523pC3t9BLu2TotcW_wcqIED-H12V9qRcccO4DbdFtXQjJr25zSeZ8XCV8YOptrSWBNsCZ8BqXOAsG87LyD7-3Bi97TW5JYNqGn5Dgy7NYV96_FnMPM8Q_TbF-NzB-Xsw2QChc2mBy7F93RaAQoNaN3yDFJgABkUeXlMYrdV1tza0qcb-OHMght_-7D3nSkOiMl99DocK9FTjnE_z27ykfE2zw5lstZ4D7cbhNp9Pd0A_wouBf_tA_wGShgVxu99dX2NX8ekJXy6iAxcfgPlY2w7qwneN6X_PIPlJuuTuYa9ubNaGYLuh03NVgKZ0qPbGTTbNLRELCMnn2B-XKRpXnjj-sa5A_NgU2XNrpGjuuHp0uEsz_0jZMO5Mym8MeXs4HfeCt9-35kUUC19Bu-6c1N6KEIeHvAuX293Vlob1CopWnX2DOidFiOTwXBRHLEf39BZs6vFaCn_rsm8rJXNhdsfFm7R33me_ru6NQu1_6xq72pPeLQ6owd4eKjYLS_rQn0IfnVfF56Rra8wXnc-Vi_mV-jj6ce3neFduBwsbQlj9CfcgkO0M5iZ0rs79PYO0G9B1qk6qGy_Qpp1LtK5syPry1eIdOqjZ4nGYByS8idks1EBJnRYr3MrxMzcAKKijTj13oyu0XAOMO681AT5HKXmi00XKXpnJ1BFKli_xyPez4P9CDz0fh78R-CR7OchfgAejOznIX8EHnQ_D_UD8NhJ47Y643aqffl1OHZ_Ntn4PoV_1kv0K8TIJp2XNPhQAVE-QcY5tLxEq_cW4T1xLGdO2ohDxmkXv3wymQVG_ZlNA73h3BbWo_qEdzjPLcF-KchPQXhuC0AfgzkfPjSt5P3cjdvy7c7zXc7PqmNK59fFVWFL1LfFyIF_Bk6LXU5f5eO7zh_GOPQRpsZZs8vh5bX5K3T28-q3n4XYSJG3GRTTu2ZIGybv7HTmszDke-nIXXSm1cGoM8yLERRQoPqg9AwGYecu5Crs39dOV9v5g31mG3P0Mr-BFDK_Y915yZaOz0xe7vd8577jCpzv9GfGZugsVL9LoI_zd-f-wqSLMCk_ZHdf0GldP9hlJoMXF5kH5-wUKtd20Nia0sclzc4tRrhOpJ0P8zB1bTb9rjl-xPSkO_cTwWn2yE7fj-X_43T7rXt5Orjob3jt7ATQxJnyuvPG3tgMKgfQeSU5lMIDltlOy6nJzNLyWw9FZhy6DKJHMc13ml54G3pbWh8UJrP-kTiLIwz_ZsaPZFUeYfU0BT-7K_23Wh6CX-7qkLfeQevUvChhCKM8G9cfLqrD68S4EprP9C731fG8_Wlj9XW8uS74GsVaX7y3oJrL1AbDt2A2Pm03QLEF2NxDNhi5tbPqcqqBqG0QcC2P4i2Ieq1eY_QWTFhQ2jFKHsK0IkTJFlA15hvRptHymmF5x_GQTrtndqBO-z8P_ECd9h8qxIE6sqUjt-nUqTsEX120VJcrodbPs4md1hmdzRdNp5BBeldNiQhli_QKil6kl8n0NfDtjSmrrwgNNNaqDn33pDHQPbn_17L_AQ46JPY="
+    "code": "eJzVWm1v2zgS_lz_CkJAgS7CXvguqoi7SNwkm0XT7tW99u7TgbHHNjeUlJXopN5ff6Bk2XLqOPY1QVIYIKjhMyKf4XBIjnXw67fUoWsoSptn3Yj-g0QIskE-tNm4G_3r88lrHf36tnPwh_GTj6OjqXWh5W3nxUFVRw6uwXWjhETIm2IM_kvzKv5fEqGBM2X5waTQjb5aP5hEyJQDyIa9pfwDDIo8NdkAigilxmb9fHAJ_rTIp1fdiEbowmRD67vRhzyDCF2ZzE8gz87Nn3lxmg-7kZtmprBlq8lm86ZxMfWTy6mL0LWFm_N8CN2od_i-148Cg_2KQqh9LgCQGXh7Df0rGIRu33ZevDgID8gXAC1WvKF1NuxGfIVQkJAIZfkQym5ECaeYMsIxjVWMqWYMc6pizJVUWPAkxkIShqWgEstYcKwYJ1hxmWAVU4ZjGgquNY5VKBKusU6ExpSIhGBKZCwxJQkRmFLBCKackARTrrXEVBJNMZWCSExVHJBxzEOpGcVU84DUsQqlVhLTRAVJorjEjEihMKOc0FByghlVscaM6tBKE6kxY0QxzDhhMWaSBInknGGmaKIwUywmoUw0ZioWBLM4WILFitJQygSzONYas4QSFcokwZzqWGLOGCWYcxEnmPOgy3ksZSg1x1zQmGIuGIkxF1oTzKVOBOaK0Mq0gmGuFA-ShMpQigTzWKpQqqAbJ6EvTROCeaKExoJwxbCgTHEsqIhDPdEJFlITjoVKKMEiZpJioSukjmkSylhjkRARY5EwKbAkWjEsqaQxlpxRHso4qWY4lELEWEpWlUJLLGVCFJYxY1WpBJaaiVAKwrAiPNFYkTAeReKEYkU5I1hRQROsqJIcK6q5wIommmEViGHFk1hhJYINlSRcVJ784qBeVWX10DxVnhqcNjhehKyHNDxRFe2vx1WT2wLGdwGrGWgB9V3AyugtYHIXsGK9BDJyN1C3u2Z0DjzYb5ngYD8s7SoIhLUfKv1L61zdWFURZObCwbAb-WIKESpd7rvRUT6cocMizafzaHVYR42g0YSNFwenkKJx3f85eDM03uyfeUjL_dNQVOhTSPvTNM2z_iU48HlWRqgMDTtrZSadh626CbXa5vGZkQj9NTXO-tnKQ-jrHYzM1PnoNuE17PZ3pHd1lRf-3GY2z96Z1IzhPoq1ximkq0pLhrUcNQ3Pgd7UeVv6wl7uwK6t0yLXFj8HauAA_pjMSjswbtcJXKfbohqaUdP-nObzqJj6qrOtqbY0lgRbwmdA6gQgnNtOCsj-3p7YLa0luXkDaloegeFBTeG-ePwVzFWeIfrjwfjEQTn5OBpBYbPxlqH4lk7LQKEBLVuegQucQgZFXu7i2G2VJbe29Okmvj-x4IY_Pu09Z4otbHIbvTTHQvSUc9zLs-t8YLzNs22ZLDU-wM0Kofa7nm6CfwOXgv_xCX4HJQwK4-_dur7HL23SEj6dRU5dfg3lQxw7qwXeM6X_OoH5IeuzuYR7fWcRGYLux1XNlgOZ0qObCTTHNDRHzC0nn2B9nKVpXnjjesa5Lf1gVWXJrpGjuuHp3OEoz_0DeMOJMym8M-Vk6z1vgW_vdyYFVEufwV53YkoPRfDDLfby5XFnobVCrZKixcueAb3DYmAy6E-LHc7jKzpLdrUYzeWP6szzWtkk3L5YuEF_53n67yprFmr_WdTe1yPh0eKOHuDhoWI3T9aFeh_8Il8XnpGtUxhvO5-qjfkN-nT46bjTn4XkYGlLGKI_4QYcop3TiSm9m6HjGaDfg6xTvaDq-w3SrHOWXjk7sL58g0invnqWaAjGISlfIpsNCjDhhXWcWyAm5hoQFW3EofdmcIn6VwDDzp4myOcoNd9sOk3RezuCylKh91s84vt5sJ-Bh76fB_8ZeCT38xA_AQ9G7uchfwYe9H4e6ifgsZHGTXXH7VTn8stw7f5qsuFtCv-sQ_QbxMgqnT0axlABUT5Cxjk0T6LVZ4uwT-zKmZM2Ypt52sQvH40mgVFvYtNAr39lC-tRfcPbnucaY-8J8jIIT2wB6FPozoc_mhbyXu6Gbfn6wfNNg59U15TOb9OLwpaoZ4uBA7_loNmqVV8x_prJX-40LV2x-rnJTBg7FNfVXQ0dj0Z2YCEbzMI813vtI1pFbLLKRT6cdb4Y49AnGBtnzSaLzPPyb9DR68Vv1UyvaPKakRXLwGgEAx-YNlmWsrP3itLXlP1SsQiOfuwghcxXw2jorLeJWLHtcQbFeNZ4YGOX93Y88Vnw0HuNIzcZZ1zd4zr9vBhAAQWq73U7-0y1Vtf4zHzB7umXaDAJYwxjDwfBAsoyRCbnlpjH8o6N56-LcHNZ8q8uMlvT1yuLIL-uZngecFdXSKAT_C_kq-olEm7wHSY3vGGtRdic-cTk5f3UNx7ZLsD5Tm9ibIaOQvVRottu4914NDPpNMSzj9nsGzqs61sPmckwirPMg3N2DNXQNtBYu7x287qNp7MQI2jn41WIBjYbP-rGskOooBuPYmHQ7IEHfduW_8-g2weW88PTs97KqF1YeSNnysvOO3ttM6jX4kkl2ZbCHT2zjT2nYVesez72UGTG1Rvlg3TNN3Y99Ta8bd77aWEy6x-Is9ih49_N8IF6lTv0epiCn8xK_6M998HPD8TIW--glXCYltCHQZ4N6_98qnv_yLgSmi8cXO6rzEb7X6HFhwVNpuV7FGt9LLAG1eShGwxfg1n5KqABijXAJoXbYOTal1V5vQai1kHAtUYUr0HUsXqJ0WswIaC0bZTchWlZiJI1oGrOV6xNo3mGZp4eukun_Wa2pU77cxG-pU77WxSxpY5s6ch1OrXr9sFXOaoqLxVqvTwb2XHt0dnVtHkpZJDOqiURoWyaXkDRjfTcmb4HHl-bsvoDpoHGWtWmP9hvOjjYv_1V3v8AvamN3w=="
   },
   "pipeline": {
     "pobRef": "v2.69.0",
     "treeVersion": "3_30",
     "calibrated": true,
-    "checkedAt": "2026-11-26T06:31:48.140Z"
+    "checkedAt": "2026-11-26T11:58:32.674Z"
   },
   "gemInfo": {
     "Arcane Surge": {

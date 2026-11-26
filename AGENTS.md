@@ -143,14 +143,14 @@ Related workflows:
 | Task | Start here |
 |---|---|
 | Change a preset / family / ascendancy | `src/presets/*.yaml` |
-| Budget gear / archetype gear profiles | `src/builds/gear/` (`budgets.yaml`, `profiles.yaml`, `affixes.yaml`) |
+| Budget gear / archetype gear profiles | `src/builds/gear/` (`budgets.yaml`, `profiles.yaml`, `affixes.yaml`, `eldritch.yaml`) |
 | Gate thresholds, checkpoints, leveling budgets | `scripts/builds/gates.yaml`, `src/builds/config/checkpoints.yaml` |
 | Change filter output | `src/core/filter/` (esp. `generate.ts`, `emit.ts`) |
 | Custom rules, templates, share codes | `src/core/rules/` |
 | Rule matching / preview | `src/core/preview/match.ts` |
 | Behaviour audit page / report | `src/core/audit/`, `src/ui/TestsPage.tsx` |
 | Base types / economy data | `src/core/data/`, `src/generated/` |
-| Wizard / UI / URL state | `src/ui/` |
+| Wizard / UI / URL state / shared header | `src/ui/` (`SiteHeader.tsx`, `InventoryPanel.tsx`, `TreeThumbnail.tsx`) |
 | Folder writing / download | `src/sync/` |
 | Add a league snapshot | `npm run meta:add`, `src/presets/leagues/` |
 

@@ -29,6 +29,7 @@ import { APP_VERSION } from '../version.ts';
 import { decodeShare, encodeShare } from '../core/share/codec.ts';
 import { shapeRules } from '../core/rules/sanitize.ts';
 import FilterPreview from './FilterPreview.tsx';
+import SiteHeader from './SiteHeader.tsx';
 import CollapseChevron from './CollapseChevron.tsx';
 import { usePersistedOpen } from './usePersistedOpen.ts';
 import ThemePreview from './demo/ThemePreview.tsx';
@@ -532,7 +533,9 @@ export default function Wizard() {
             : `${ascendancy.class} / ${family.name}`;
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-6xl flex-col px-5 py-8 pb-28 sm:px-8 sm:py-12 lg:pb-12">
+    <div className="min-h-dvh">
+      <SiteHeader active="filter" />
+      <div className="mx-auto flex max-w-6xl flex-col px-5 py-8 pb-28 sm:px-8 sm:py-12 lg:pb-12">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">
@@ -561,7 +564,7 @@ export default function Wizard() {
               title="Start a new filter"
               className="cursor-pointer transition-opacity hover:opacity-80"
             >
-              BuildPath
+              Filter
             </button>
           </h1>
           <p className="mt-2 max-w-xl text-sm text-zinc-400">
@@ -580,38 +583,6 @@ export default function Wizard() {
             </p>
           )}
         </div>
-        <nav className="flex items-center gap-4 text-xs text-zinc-500">
-          <a
-            href="./builds.html"
-            className="underline-offset-4 hover:text-zinc-300 hover:underline"
-          >
-            builds
-          </a>
-          <a
-            href={`./demo.html#${wizardHash(state)}`}
-            className="underline-offset-4 hover:text-zinc-300 hover:underline"
-          >
-            loot simulator
-          </a>
-          <a
-            href="./changelog.html"
-            className="underline-offset-4 hover:text-zinc-300 hover:underline"
-          >
-            changelog
-          </a>
-          <a
-            href="./tests.html"
-            className="underline-offset-4 hover:text-zinc-300 hover:underline"
-          >
-            audit
-          </a>
-          <a
-            href="https://github.com/lordgreg/buildpath"
-            className="underline-offset-4 hover:text-zinc-300 hover:underline"
-          >
-            source
-          </a>
-        </nav>
       </header>
 
       <main className="mt-8 flex-1 space-y-6">
@@ -1295,6 +1266,7 @@ export default function Wizard() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

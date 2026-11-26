@@ -24,7 +24,9 @@ checkpoints:
   until-28:
     level: 28
     points: 30
-    labs: 1
+    # The normal lab unlocks after Act 3, around level 33. A level-28 gate that
+    # assumed two ascendancy points measured a character the game cannot have.
+    labs: 0
     budget: early
     gemLevelCap: 20
     gemQuality: 0

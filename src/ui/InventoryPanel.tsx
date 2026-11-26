@@ -1,4 +1,10 @@
-import type { GearItem } from '../core/builds/types.ts';
+import type { FlaskChoice, GearItem } from '../core/builds/types.ts';
+import {
+  FLASK_COUNT,
+  INVENTORY_AREAS,
+  INVENTORY_SLOTS,
+  splitGear,
+} from './inventory.ts';
 
 /** PoE's item-name colours, so the sheet reads at a glance. */
 const RARITY_COLOUR: Record<string, string> = {
@@ -9,87 +15,227 @@ const RARITY_COLOUR: Record<string, string> = {
 };
 
 const RARITY_BORDER: Record<string, string> = {
-  NORMAL: 'border-ink-600',
+  NORMAL: 'border-[#3f4650]',
   MAGIC: 'border-[#3f4f8f]',
   RARE: 'border-[#7a6f2a]',
   UNIQUE: 'border-[#7a4a1f]',
 };
 
-/**
- * Gear laid out where the game puts it, so you can read the sheet the way you
- * read your own inventory. Every cell carries the item's mods on hover.
- */
-export default function InventoryPanel({ gear }: { gear: GearItem[] }) {
-  const bySlot = new Map(gear.map((item) => [item.slot, item]));
-  const layout: (string | null)[][] = [
-    ['Weapon 1', 'Helmet', 'Amulet'],
-    ['Shield', 'Body Armour', 'Ring 1'],
-    ['Gloves', 'Boots', 'Ring 2'],
-    ['Belt', null, null],
-  ];
-  const jewels = gear.filter((item) => item.slot.startsWith('Jewel'));
+const RARITY_GLOW: Record<string, string> = {
+  NORMAL: 'from-zinc-800/30',
+  MAGIC: 'from-[#1b2240]/50',
+  RARE: 'from-[#2d2a14]/60',
+  UNIQUE: 'from-[#2c1a10]/60',
+};
 
-  const cell = (slot: string) => {
-    const item = bySlot.get(slot);
-    if (!item) {
-      return (
-        <div className="flex h-16 flex-col justify-center rounded border border-dashed border-ink-700 px-2 text-[10px] uppercase tracking-[0.14em] text-zinc-700">
-          {slot}
-        </div>
-      );
-    }
-    const colour = RARITY_COLOUR[item.rarity ?? 'RARE'] ?? RARITY_COLOUR.RARE!;
-    const border = RARITY_BORDER[item.rarity ?? 'RARE'] ?? RARITY_BORDER.RARE!;
-    return (
-      <div
-        className={`group relative h-16 cursor-help rounded border bg-ink-950/70 px-2 py-1 ${border}`}
-      >
-        <span className="block text-[9px] uppercase tracking-[0.14em] text-zinc-600">
-          {slot}
-        </span>
-        <span className={`mt-0.5 block truncate text-xs ${colour}`}>{item.base}</span>
-        <span className="mt-0.5 block text-[10px] text-zinc-500">
-          {item.mods.length} mods
-        </span>
-        <span
-          role="tooltip"
-          className="pointer-events-none absolute left-0 bottom-full z-30 mb-1 hidden w-64 max-w-[70vw] rounded-md border border-ink-600 bg-ink-950/95 p-2 text-left text-[11px] leading-snug shadow-xl group-hover:block group-focus-within:block"
-        >
-          <strong className={`block ${colour}`}>{item.base}</strong>
-          <span className="block text-zinc-500">
-            {item.slot} · item level {item.ilvl} · {item.budget}
+function ItemTooltip({
+  item,
+  slotLabel,
+}: {
+  item: GearItem;
+  slotLabel: string;
+}) {
+  const colour = RARITY_COLOUR[item.rarity ?? 'RARE'] ?? RARITY_COLOUR.RARE!;
+  return (
+    <span
+      role="tooltip"
+      className="pointer-events-none absolute left-0 bottom-full z-30 mb-1 hidden w-72 max-w-[80vw] rounded-md border border-ink-600 bg-ink-950/95 p-2.5 text-left text-[11px] leading-snug shadow-xl group-hover:block group-focus-within:block"
+    >
+      <strong className={`block ${colour}`}>{item.base}</strong>
+      <span className="block text-zinc-500">
+        {slotLabel} · item level {item.ilvl} · {item.budget}
+      </span>
+      {item.implicits && item.implicits.length > 0 && (
+        <span className="mt-2 block border-t border-ink-700 pt-1.5">
+          <span className="block text-[9px] uppercase tracking-[0.14em] text-[#8f7ad6]">
+            Eldritch implicits
           </span>
-          <span className="mt-1 block">
-            {item.mods.map((mod) => (
-              <span key={mod} className="block text-zinc-300">
-                {mod}
+          {item.implicits.map((implicit) => (
+            <span key={`${implicit.currency}-${implicit.mod}`} className="block text-[#b7a6ef]">
+              {implicit.mod}
+              <span className="ml-1 text-[9px] uppercase tracking-wide text-zinc-600">
+                {implicit.currency === 'ember' ? 'Ember' : 'Ichor'}
               </span>
-            ))}
+            </span>
+          ))}
+        </span>
+      )}
+      <span className="mt-1 block">
+        {item.mods.map((mod) => (
+          <span key={mod} className="block text-zinc-300">
+            {mod}
+          </span>
+        ))}
+      </span>
+    </span>
+  );
+}
+
+function SlotCell({
+  entry,
+  item,
+  tall,
+}: {
+  entry: { area: string; slot: string; label: string; tall?: boolean };
+  item?: GearItem;
+  tall?: boolean;
+}) {
+  const rarity = item?.rarity ?? 'RARE';
+  const colour = RARITY_COLOUR[rarity] ?? RARITY_COLOUR.RARE!;
+  const border = RARITY_BORDER[rarity] ?? RARITY_BORDER.RARE!;
+  const glow = RARITY_GLOW[rarity] ?? RARITY_GLOW.RARE!;
+  return (
+    <div
+      style={{ gridArea: entry.area }}
+      className={
+        tall
+          ? 'relative flex min-h-[10rem] flex-col justify-between rounded-[3px] border bg-[#090c12]/80 p-2 shadow-[inset_0_0_22px_rgba(0,0,0,0.75)] ' +
+            (item ? border : 'border-[#3a3529]')
+          : 'relative flex min-h-[4.8rem] flex-col justify-between rounded-[3px] border bg-[#090c12]/80 p-2 shadow-[inset_0_0_18px_rgba(0,0,0,0.75)] ' +
+            (item ? border : 'border-[#3a3529]')
+      }
+    >
+      <span className="text-[9px] uppercase tracking-[0.16em] text-[#6f6754]">
+        {entry.label}
+      </span>
+      {item ? (
+        <span className={`mt-1 block break-words text-xs leading-tight ${colour}`}>
+          {item.base}
+          <span className="mt-1 block text-[10px] text-zinc-500">
+            {item.implicits?.length ? `${item.implicits.length} implicit · ` : ''}
+            {item.mods.length} mods
           </span>
         </span>
-      </div>
-    );
-  };
+      ) : (
+        <span className="mt-1 block text-[10px] text-[#3e3a31]">Empty</span>
+      )}
+      {item && (
+        <>
+          <span
+            className={`pointer-events-none absolute inset-0 rounded-[2px] bg-gradient-to-br ${glow} to-transparent`}
+            aria-hidden
+          />
+          <ItemTooltip item={item} slotLabel={entry.label} />
+        </>
+      )}
+    </div>
+  );
+}
+
+function FlaskCell({ flask, index }: { flask?: FlaskChoice; index: number }) {
+  return (
+    <div className="group relative flex min-h-[4.3rem] flex-col justify-between rounded-[3px] border border-[#3a3529] bg-[#090c12]/80 p-2 shadow-[inset_0_0_18px_rgba(0,0,0,0.75)]">
+      <span className="text-[9px] uppercase tracking-[0.16em] text-[#6f6754]">
+        Flask {index + 1}
+      </span>
+      {flask ? (
+        <>
+          <span className="mt-1 block text-[11px] leading-tight text-[#8fb4ff]">
+            {flask.name}
+          </span>
+          <span className="mt-0.5 block text-[9px] uppercase tracking-wide text-zinc-600">
+            {flask.slot}
+          </span>
+          <span className="pointer-events-none absolute left-0 bottom-full z-30 mb-1 hidden w-56 max-w-[70vw] rounded-md border border-ink-600 bg-ink-950/95 p-2 text-left text-[11px] leading-snug text-zinc-300 shadow-xl group-hover:block">
+            <strong className="block text-[#8fb4ff]">{flask.name}</strong>
+            <span className="block text-zinc-500">{flask.slot} flask</span>
+            {flask.note && <span className="mt-1 block">{flask.note}</span>}
+          </span>
+        </>
+      ) : (
+        <span className="mt-1 block text-[10px] text-[#3e3a31]">Empty</span>
+      )}
+    </div>
+  );
+}
+
+/**
+ * Gear laid out where the game puts it. The panel is a CSS grid, not a copy of
+ * the game's art: a dark textured sheet with gold-edged slots, the same reading
+ * order as the inventory screen, and every item's mods on hover.
+ */
+export default function InventoryPanel({
+  gear,
+  flasks = [],
+}: {
+  gear: GearItem[];
+  flasks?: FlaskChoice[];
+}) {
+  const { bySlot, jewels } = splitGear(gear);
+  const flaskSlots = Array.from({ length: FLASK_COUNT }, (_, index) => flasks[index]);
 
   return (
-    <div>
-      <div className="rounded-lg border border-ink-600 bg-[#12151c] p-3">
-        <div className="grid grid-cols-3 gap-2">
-          {layout.map((row, index) => (
-            <div key={index} className="contents">
-              {row.map((slot) => (
-                <div key={`${index}-${slot}`}>{slot && cell(slot)}</div>
-              ))}
-            </div>
+    <div className="overflow-x-auto md:overflow-visible">
+      <div
+        className="min-w-[640px] rounded-lg border border-[#5b4a28] p-3 shadow-[0_18px_50px_rgba(0,0,0,0.45)]"
+        style={{
+          backgroundImage:
+            'radial-gradient(ellipse at 50% 0%, rgba(68, 84, 99, 0.35), transparent 58%), radial-gradient(ellipse at 8% 100%, rgba(44, 51, 61, 0.35), transparent 45%), linear-gradient(145deg, #11161e 0%, #0a0d13 45%, #0e131b 100%)',
+        }}
+      >
+        <div className="mb-2 flex items-center justify-between border-b border-[#3a3529] pb-1.5">
+          <span className="text-[10px] uppercase tracking-[0.28em] text-[#8d7a4c]">
+            Inventory
+          </span>
+          <span className="text-[9px] uppercase tracking-[0.16em] text-[#5b5548]">
+            budget gear
+          </span>
+        </div>
+
+        <div
+          className="grid gap-2"
+          style={{
+            gridTemplateAreas: INVENTORY_AREAS,
+            gridTemplateColumns: '1.1fr 0.85fr 0.9fr 0.85fr 1.1fr',
+          }}
+        >
+          {INVENTORY_SLOTS.map((entry) => (
+            <SlotCell
+              key={entry.slot}
+              entry={entry}
+              item={bySlot.get(entry.slot)}
+              tall={'tall' in entry && entry.tall}
+            />
           ))}
         </div>
+
+        <div className="mt-2 grid grid-cols-5 gap-2 border-t border-[#3a3529] pt-2">
+          {flaskSlots.map((flask, index) => (
+            <FlaskCell key={`flask-${index}`} flask={flask} index={index} />
+          ))}
+        </div>
+
         {jewels.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-2 border-t border-ink-700 pt-2">
-            {jewels.map((jewel) => (
-              <div key={jewel.slot} className="w-32">
-                {cell(jewel.slot)}
-              </div>
-            ))}
+          <div className="mt-3 border-t border-[#3a3529] pt-2">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[#8d7a4c]">
+              Jewels socketed
+            </p>
+            <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {jewels.map((jewel) => {
+                const rarity = jewel.rarity ?? 'RARE';
+                return (
+                  <div
+                    key={jewel.slot}
+                    className="group relative flex min-h-[4rem] flex-col justify-between rounded-[3px] border border-[#3f4f8f] bg-[#090c12]/80 p-2 shadow-[inset_0_0_18px_rgba(0,0,0,0.75)]"
+                  >
+                    <span className="text-[9px] uppercase tracking-[0.16em] text-[#6f6754]">
+                      {jewel.slot}
+                    </span>
+                    <span
+                      className={`mt-1 block break-words text-xs leading-tight ${
+                        RARITY_COLOUR[rarity] ?? RARITY_COLOUR.RARE!
+                      }`}
+                    >
+                      {jewel.base}
+                    </span>
+                    <span className="mt-0.5 block text-[10px] text-zinc-500">
+                      {jewel.mods.length} mods
+                    </span>
+                    <ItemTooltip item={jewel} slotLabel={jewel.slot} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
       </div>

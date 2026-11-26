@@ -1,0 +1,95 @@
+# Eldritch implicits for the endgame budgets.
+#
+# Embers apply Searing Exarch implicits; Ichors apply Eater of Worlds implicits.
+# These are implicit modifiers, not ordinary prefixes or suffixes. The lines are
+# PoB display text, checked by effect: the oracle counts the implicits PoB
+# parses, so a typo fails the build instead of quietly making a weaker item.
+#
+# `ssf-week1` is the red-map budget and uses the Exceptional (tier 4) roll;
+# `trade` is the pinnacle budget and uses Perfect (tier 6). A slot may carry one
+# of each influence.
+schemaVersion: 1
+profiles:
+  bow:
+    ssf-week1:
+      body:
+        - { currency: ember, mod: "+(26-27)% to Critical Strike Multiplier for Attack Damage" }
+        - { currency: ichor, mod: "Grace has (28-30)% increased Aura Effect" }
+      helmet:
+        - { currency: ember, mod: "(31-32)% increased Mana Cost Efficiency" }
+        - { currency: ichor, mod: "Damage Penetrates 5% Lightning Resistance" }
+      gloves:
+        - { currency: ember, mod: "11% increased Attack Speed" }
+        - { currency: ichor, mod: "+8% chance to Suppress Spell Damage" }
+      boots:
+        - { currency: ember, mod: "8% increased Movement Speed" }
+        - { currency: ichor, mod: "(24-26)% chance to Avoid Elemental Ailments" }
+    trade:
+      body:
+        - { currency: ember, mod: "+(30-31)% to Critical Strike Multiplier for Attack Damage" }
+        - { currency: ichor, mod: "Grace has (34-36)% increased Aura Effect" }
+      helmet:
+        - { currency: ember, mod: "(35-36)% increased Mana Cost Efficiency" }
+        - { currency: ichor, mod: "Damage Penetrates 6% Lightning Resistance" }
+      gloves:
+        - { currency: ember, mod: "13% increased Attack Speed" }
+        - { currency: ichor, mod: "+10% chance to Suppress Spell Damage" }
+      boots:
+        - { currency: ember, mod: "10% increased Movement Speed" }
+        - { currency: ichor, mod: "(30-32)% chance to Avoid Elemental Ailments" }
+
+  melee:
+    ssf-week1:
+      body:
+        - { currency: ember, mod: "(24-26)% increased Global Physical Damage" }
+        - { currency: ichor, mod: "Determination has (28-30)% increased Aura Effect" }
+      helmet:
+        - { currency: ember, mod: "(31-32)% increased Mana Cost Efficiency" }
+        - { currency: ichor, mod: "(23-25)% increased Attack Damage" }
+      gloves:
+        - { currency: ember, mod: "11% increased Attack Speed" }
+        - { currency: ichor, mod: "0.5% of Physical Damage Leeched as Life" }
+      boots:
+        - { currency: ember, mod: "8% increased Movement Speed" }
+        - { currency: ichor, mod: "Gain 5% of Physical Damage as Extra Fire Damage" }
+    trade:
+      body:
+        - { currency: ember, mod: "(29-30)% increased Global Physical Damage" }
+        - { currency: ichor, mod: "Determination has (34-36)% increased Aura Effect" }
+      helmet:
+        - { currency: ember, mod: "(35-36)% increased Mana Cost Efficiency" }
+        - { currency: ichor, mod: "(28-29)% increased Attack Damage" }
+      gloves:
+        - { currency: ember, mod: "13% increased Attack Speed" }
+        - { currency: ichor, mod: "0.7% of Physical Damage Leeched as Life" }
+      boots:
+        - { currency: ember, mod: "10% increased Movement Speed" }
+        - { currency: ichor, mod: "Gain 6% of Physical Damage as Extra Fire Damage" }
+
+  caster:
+    ssf-week1:
+      body:
+        - { currency: ember, mod: "(19-20)% increased effect of Offerings" }
+        - { currency: ichor, mod: "+(11-12)% to all Elemental Resistances" }
+      helmet:
+        - { currency: ember, mod: "Minions have (23-25)% increased maximum Life" }
+        - { currency: ichor, mod: "10% increased Mana Reservation Efficiency of Skills" }
+      gloves:
+        - { currency: ember, mod: "Minions deal (23-25)% increased Damage" }
+        - { currency: ichor, mod: "+8% chance to Suppress Spell Damage" }
+      boots:
+        - { currency: ember, mod: "8% increased Movement Speed" }
+        - { currency: ichor, mod: "10% increased Life Regeneration rate" }
+    trade:
+      body:
+        - { currency: ember, mod: "(23-24)% increased effect of Offerings" }
+        - { currency: ichor, mod: "+(15-16)% to all Elemental Resistances" }
+      helmet:
+        - { currency: ember, mod: "Minions have (28-29)% increased maximum Life" }
+        - { currency: ichor, mod: "12% increased Mana Reservation Efficiency of Skills" }
+      gloves:
+        - { currency: ember, mod: "Minions deal (28-29)% increased Damage" }
+        - { currency: ichor, mod: "+10% chance to Suppress Spell Damage" }
+      boots:
+        - { currency: ember, mod: "10% increased Movement Speed" }
+        - { currency: ichor, mod: "12% increased Life Regeneration rate" }

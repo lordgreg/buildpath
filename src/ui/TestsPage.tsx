@@ -8,6 +8,7 @@ import {
   type AuditVariant,
 } from '../core/audit/report.ts';
 import { STRICTNESS_LABELS_PUBLIC } from '../core/filter/presets.ts';
+import SiteHeader from './SiteHeader.tsx';
 
 const CASE_BY_ID = new Map(AUDIT_CASES.map((entry) => [entry.id, entry]));
 
@@ -100,7 +101,9 @@ export default function TestsPage() {
   }
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-6xl flex-col px-5 py-8 sm:px-8 sm:py-12">
+    <div className="min-h-dvh">
+      <SiteHeader active="tests" />
+      <div className="mx-auto flex max-w-6xl flex-col px-5 py-8 sm:px-8 sm:py-12">
       <header>
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">
           Path of Exile 1
@@ -117,26 +120,6 @@ export default function TestsPage() {
           App v{report.version} - presets {report.presetVersion} - league{' '}
           {report.league} - {report.builds.length} builds - {totalVariants} variants
         </p>
-        <nav className="mt-5 flex flex-wrap items-center gap-4 text-xs">
-          <a
-            href="./"
-            className="rounded-lg bg-gold-400 px-3 py-2 font-semibold text-ink-950 hover:bg-gold-300"
-          >
-            Back to builder
-          </a>
-          <a
-            href="./demo.html"
-            className="text-zinc-500 underline-offset-4 hover:text-zinc-300 hover:underline"
-          >
-            loot simulator
-          </a>
-          <a
-            href="./changelog.html"
-            className="text-zinc-500 underline-offset-4 hover:text-zinc-300 hover:underline"
-          >
-            changelog
-          </a>
-        </nav>
       </header>
 
       <section className="mt-8 rounded-xl border border-ink-700 bg-ink-800/40 p-4">
@@ -344,6 +327,7 @@ export default function TestsPage() {
         calls the network. This product isn't affiliated with or endorsed by
         Grinding Gear Games in any way.
       </footer>
+      </div>
     </div>
   );
 }

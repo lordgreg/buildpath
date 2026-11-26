@@ -9,6 +9,7 @@ import {
 import { SAMPLE_ITEMS } from '../../core/preview/samples.ts';
 import { playAlertSound } from './alertSound.ts';
 import { lootLabelStyle, RARITY_COLOR } from './lootLabel.ts';
+import SiteHeader from '../SiteHeader.tsx';
 
 function cx(...parts: (string | false | undefined)[]): string {
   return parts.filter(Boolean).join(' ');
@@ -179,7 +180,9 @@ export default function LootSimulator({
   }, [pasted.length]);
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-6xl flex-col px-4 py-6 sm:px-8 sm:py-10">
+    <div className="min-h-dvh">
+      <SiteHeader active="demo" />
+      <div className="mx-auto flex max-w-6xl flex-col px-4 py-6 sm:px-8 sm:py-10">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">
@@ -200,26 +203,6 @@ export default function LootSimulator({
             </code>
           </p>
         </div>
-        <nav className="flex flex-wrap gap-4 text-xs text-zinc-500">
-          <a
-            href={`./#${builderHash}`}
-            className="underline-offset-4 hover:text-zinc-300 hover:underline"
-          >
-            back to builder
-          </a>
-          <a
-            href="./changelog.html"
-            className="underline-offset-4 hover:text-zinc-300 hover:underline"
-          >
-            changelog
-          </a>
-          <a
-            href="./tests.html"
-            className="underline-offset-4 hover:text-zinc-300 hover:underline"
-          >
-            audit
-          </a>
-        </nav>
       </header>
 
       <section className="mt-6 grid gap-3 rounded-xl border border-ink-700 bg-ink-800/40 p-3 lg:grid-cols-[minmax(0,1fr)_auto]">
@@ -497,6 +480,7 @@ export default function LootSimulator({
           in any way.
         </p>
       </footer>
+      </div>
     </div>
   );
 }

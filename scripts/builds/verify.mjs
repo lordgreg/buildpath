@@ -80,14 +80,25 @@ function makeReport({ seed, checkpointId, checkpoint, metrics, scaled, gate, gea
     gear: [
       ...(metrics.items ?? [])
         .filter((item) => !item.slot.startsWith('Flask'))
-        .map((item) => ({
-          slot: item.slot,
-          base: item.base ?? '',
-          mods: item.mods ?? [],
-          budget: checkpoint.budget,
-          ilvl: gear.budget.ilvl,
-          rarity: item.text?.match(/^Rarity: (\w+)/)?.[1] ?? gear.budget.rarity ?? 'RARE',
-        })),
+        .map((item) => {
+          const local = gear.items.find((entry) => entry.slot === item.slot);
+          return {
+            slot: item.slot,
+            base: item.base ?? '',
+            mods: item.mods ?? [],
+            ...(local?.implicits?.length
+              ? {
+                  implicits: local.implicits.map((implicit) => ({
+                    currency: implicit.currency,
+                    mod: implicit.mod,
+                  })),
+                }
+              : {}),
+            budget: checkpoint.budget,
+            ilvl: gear.budget.ilvl,
+            rarity: item.text?.match(/^Rarity: (\w+)/)?.[1] ?? gear.budget.rarity ?? 'RARE',
+          };
+        }),
     ],
     gems: groups.map((group) => ({
       slot: group.slot,
@@ -109,8 +120,16 @@ function evaluateTree({ seed, checkpointId, checkpoint, plan, nodes, pruneTo, xm
     pruneTo,
     repairInfo: true,
   });
-  const metrics = runOracle(spec, { xmlOut });
-  assertNodeCount(seed.id, checkpointId, metrics);
+  const rawMetrics = runOracle(spec, { xmlOut });
+  assertNodeCount(seed.id, checkpointId, rawMetrics);
+  // The guide draws the jewels that are actually socketed, pinned to their
+  // socket nodes, so "put this one here" is visible on the tree.
+  const metrics = {
+    ...rawMetrics,
+    tree: rawMetrics.tree
+      ? { ...rawMetrics.tree, jewels: rawMetrics.jewels ?? [] }
+      : undefined,
+  };
   const scaled = scaledMetrics(seed, metrics);
   const gate = evaluateGate(checkpointId, scaled);
   const itemFailures = checkItemParsing(metrics, gear.items);

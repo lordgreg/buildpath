@@ -168,6 +168,40 @@ describe('published build data', () => {
     }
   });
 
+  it('carries Eldritch implicits on the endgame armour', () => {
+    for (const build of compiled) {
+      for (const checkpoint of ['maps-red', 'pinnacle']) {
+        const gate = build.gates?.[checkpoint];
+        if (!gate?.gear) continue;
+        for (const slot of ['Body Armour', 'Helmet', 'Gloves', 'Boots']) {
+          const item = gate.gear.find((entry) => entry.slot === slot);
+          expect(item, `${build.class}/${checkpoint}/${slot}`).toBeDefined();
+          const implicits = (item as { implicits?: { currency: string; mod: string }[] })
+            .implicits;
+          expect(implicits?.length, `${build.class}/${checkpoint}/${slot}`).toBe(2);
+          for (const implicit of implicits ?? []) {
+            expect(['ember', 'ichor']).toContain(implicit.currency);
+            expect(implicit.mod.trim().length).toBeGreaterThan(3);
+          }
+        }
+      }
+    }
+  });
+
+  it('gives every gem group the gear slot it references', () => {
+    for (const build of compiled) {
+      for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
+        const slots = new Set((gate.gear ?? []).map((item) => item.slot));
+        for (const group of gate.gems ?? []) {
+          // PoB calls a shield or quiver Weapon 2; the guide's gem table keeps
+          // the friendlier "Shield" label.
+          const expected = group.slot === 'Shield' ? 'Weapon 2' : group.slot;
+          expect(slots.has(expected), `${checkpoint}: ${group.slot} has no gear`).toBe(true);
+        }
+      }
+    }
+  });
+
   it('carries a tree view and named failures for every measured checkpoint', () => {
     for (const build of compiled) {
       if (!build.gates) continue;
@@ -298,6 +332,27 @@ describe('leveling tree derivation', () => {
     }
   });
 
+  it('pins every required jewel to a socket in the checkpoint tree', () => {
+    for (const build of compiled) {
+      for (const [checkpoint, nodes] of Object.entries(build.tree!.checkpoints)) {
+        const tree = (build.gates?.[checkpoint]?.tree ?? {}) as {
+          nodes: { id: number }[];
+          jewels?: { node: number; label: string; base: string }[];
+        };
+        const ids = new Set(tree.nodes.map((node) => node.id));
+        for (const jewel of tree.jewels ?? []) {
+          expect(ids.has(jewel.node), `${build.id}/${checkpoint}: ${jewel.label}`).toBe(true);
+          expect(jewel.base.trim(), `${build.id}/${checkpoint}: ${jewel.label}`).not.toBe('');
+        }
+        const gearJewels = (build.gates?.[checkpoint] as { gear?: { slot: string }[] })?.gear ?? [];
+        expect(tree.jewels?.length ?? 0).toBe(
+          gearJewels.filter((item) => item.slot.startsWith('Jewel')).length,
+        );
+        expect(nodes.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
   it('draws every checkpoint as a valid order from the class start', () => {
     for (const build of compiled) {
       for (const [checkpoint, nodes] of Object.entries(build.tree!.checkpoints)) {
@@ -322,6 +377,42 @@ describe('leveling tree derivation', () => {
         expect(seen.size, `${build.id}/${checkpoint}: ${seen.size} of ${nodes.length}`).toBe(
           nodes.length,
         );
+      }
+    }
+  });
+});
+
+describe('labs and ascendancy points', () => {
+  const compiled = BUILDS.map(
+    (entry) =>
+      JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        id: string;
+        ascendancyOrder: { node: string; lab: number }[];
+        gates?: Record<string, { level: number }>;
+      },
+  );
+  const checkpointConfig = parse(
+    readFileSync(resolve(root, 'src/builds/config/checkpoints.yaml'), 'utf8'),
+  ) as { checkpoints: Record<string, { labs: number }> };
+
+  it('gives every ascendancy node one lab and never assumes points early', () => {
+    for (const build of compiled) {
+      const nodes = build.ascendancyOrder.map((point) => point.node);
+      expect(new Set(nodes).size, build.id).toBe(nodes.length);
+      for (const point of build.ascendancyOrder) {
+        expect(point.lab, `${build.id}/${point.node}`).toBeGreaterThanOrEqual(1);
+        expect(point.lab, `${build.id}/${point.node}`).toBeLessThanOrEqual(4);
+      }
+      for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
+        const labs = checkpointConfig.checkpoints[checkpoint]?.labs ?? 0;
+        const assumed = build.ascendancyOrder.filter((point) => point.lab <= labs).length;
+        expect(assumed, `${build.id}/${checkpoint} at level ${gate.level}`).toBeLessThanOrEqual(
+          labs * 2,
+        );
+        // A level-28 character cannot have finished the level-33 normal lab.
+        if (gate.level < 33) expect(labs, `${build.id}/${checkpoint}`).toBe(0);
       }
     }
   });
