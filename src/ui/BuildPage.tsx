@@ -938,6 +938,36 @@ export default function BuildPage() {
           aria-label="On this page"
           className="lg:sticky lg:top-8 lg:mt-2 text-xs text-zinc-500"
         >
+          {/* Kept in the sticky menu so a reader can move between checkpoints
+              while reading gems or gear, without returning to the step block
+              at the top of the page. */}
+          <div className="mb-4 rounded-lg border border-ink-700 bg-ink-900/60 p-2">
+            <p className="mb-1.5 text-[10px] uppercase tracking-[0.2em] text-zinc-600">
+              Step
+            </p>
+            <div className="flex flex-wrap gap-1 lg:flex-col">
+              {gates.map(([checkpoint, entry]) => (
+                <button
+                  key={checkpoint}
+                  type="button"
+                  aria-pressed={checkpoint === step}
+                  aria-label={`Read the ${checkpoint} step, level ${entry.level}`}
+                  onClick={() => {
+                    setStepOverride(checkpoint);
+                    writeStep(build.id, checkpoint);
+                  }}
+                  className={
+                    checkpoint === step
+                      ? 'rounded border border-gold-400 bg-gold-400/10 px-2 py-1 text-left text-[11px] text-gold-200 lg:w-full'
+                      : 'rounded border border-ink-700 bg-ink-800/40 px-2 py-1 text-left text-[11px] text-zinc-400 hover:border-ink-500 lg:w-full'
+                  }
+                >
+                  {checkpoint}
+                  <span className="ml-1 text-zinc-500">lv {entry.level}</span>
+                </button>
+              ))}
+            </div>
+          </div>
           <p className="mb-2 text-[10px] uppercase tracking-[0.2em] text-zinc-600">
             On this page
           </p>

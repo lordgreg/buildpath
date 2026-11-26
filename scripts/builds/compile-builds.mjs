@@ -367,6 +367,7 @@ const index = {
     status: build.status,
     seedHash: build.seedHash,
     ...(build.pipeline ? { calibrated: build.pipeline.calibrated } : {}),
+    ...(build.pipeline?.checkedAt ? { verifiedAt: build.pipeline.checkedAt } : {}),
     ...(build.stale ? { stale: build.stale } : {}),
     ...(build.ratings ? { ratings: build.ratings } : {}),
     ...(build.medal ? { medal: build.medal } : {}),

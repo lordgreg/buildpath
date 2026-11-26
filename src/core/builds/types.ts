@@ -46,6 +46,12 @@ export interface BuildIndexEntry {
   medal?: BuildMedal;
   /** True when the committed calibration report covers the current gates. */
   calibrated?: boolean;
+  /**
+   * When Path of Building last verified this build. The catalogue's "newest"
+   * sort uses it: a build is new to the reader when its numbers were re-proven,
+   * not when its slug was added to an alphabetical file listing.
+   */
+  verifiedAt?: string;
   /** Staleness / waiting state, when the build is delisted (R10). */
   stale?: Staleness;
   /**
