@@ -12,7 +12,7 @@
  * code it was created from.
  */
 import { createHash } from 'node:crypto';
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import {
   outDir,
@@ -68,6 +68,11 @@ async function publish(buildId, checkpoint, code) {
 
 const links = {};
 let published = 0;
+let reused = 0;
+const linksPath = resolve(root, 'src/generated/builds/pob-links.json');
+const previous = existsSync(linksPath)
+  ? JSON.parse(readFileSync(linksPath, 'utf8')).links ?? {}
+  : {};
 for (const file of files) {
   const build = JSON.parse(readFileSync(resolve(outDir, file), 'utf8'));
   const steps = build.pob?.byStep ?? {
@@ -79,11 +84,20 @@ for (const file of files) {
       console.error(`${build.id}/${checkpoint}: no PoB code; run builds:verify first`);
       process.exit(1);
     }
+    const codeHash = createHash('sha256').update(code).digest('hex').slice(0, 16);
+    // A step whose code did not move keeps its paste: re-posting every build on
+    // every release churns public ids and hits the rate limit for no reason.
+    const kept = previous[build.id]?.[checkpoint];
+    if (kept?.codeHash === codeHash) {
+      links[build.id][checkpoint] = kept;
+      reused += 1;
+      continue;
+    }
     const payload = await publish(build.id, checkpoint, code);
     links[build.id][checkpoint] = {
       id: payload,
       url: `https://pobb.in/${payload}`,
-      codeHash: createHash('sha256').update(code).digest('hex').slice(0, 16),
+      codeHash,
     };
     published += 1;
     console.log(`${build.id}/${checkpoint}: https://pobb.in/${payload}`);
@@ -93,7 +107,9 @@ for (const file of files) {
 }
 
 writeFileSync(
-  resolve(root, 'src/generated/builds/pob-links.json'),
+  linksPath,
   `${JSON.stringify({ schemaVersion: 1, links }, null, 2)}\n`,
 );
-console.log(`pob links: ${published} pastes across ${Object.keys(links).length} builds`);
+console.log(
+  `pob links: ${published} new pastes, ${reused} reused across ${Object.keys(links).length} builds`,
+);
