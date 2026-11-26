@@ -238,6 +238,10 @@ export default function BuildPage() {
             Builder
           </a>
           <span aria-hidden>·</span>
+          <a href="./builds.html" className="underline underline-offset-2 hover:text-zinc-300">
+            All builds
+          </a>
+          <span aria-hidden>·</span>
           <a href="./demo.html" className="underline underline-offset-2 hover:text-zinc-300">
             Loot simulator
           </a>

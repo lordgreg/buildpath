@@ -24,6 +24,7 @@ export default defineConfig({
         demo: resolve(root, 'demo.html'),
         tests: resolve(root, 'tests.html'),
         build: resolve(root, 'build.html'),
+        builds: resolve(root, 'builds.html'),
       },
     },
   },
