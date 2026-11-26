@@ -1,6 +1,9 @@
 # BuildPath — Plan
 
-> Revision 13. See §16 for the council reviews and what each round changed.
+> Revision 25. The completed phase narratives, spike table and revision history
+> were removed; the shipped state is summarised in §11, and the next breadth
+> pass is the 15-build backlog in §16. Normative decisions, requirements and
+> architecture are unchanged.
 
 Verified build guides, with the loot filter as one output instead of the whole
 product.
@@ -235,7 +238,7 @@ Rules:
   gear budget and gem cap — so one key drives the gate report, the tree, the
   gems and the gear. Earlier revisions split "gate checkpoints" from "guide
   steps"; P1 shipped one enum, and the page uses the same key as its step. The
-  five-key `act5 | act10 | …` set never shipped (§16, revision 11).
+  five-key `act5 | act10 | …` set never shipped.
 - `tree.checkpoints[cp]` is a **subset** of `tree.endgame`, asserted by test
   with valid topological order.
 - `gearSets` is keyed by the same checkpoint enum and names one `budget`; the
@@ -463,13 +466,13 @@ hand-writing six item sets per build does not scale to 19 ascendancies.
 - Deterministic: seeded by `(buildId, checkpoint)`; no RNG, no network.
 - Every synthesised item is rendered on the page as the "budget gear" table, so
   a reader can see what the gate assumed and disagree with it.
-- Spike **S6** (§11) is the proof; it ran in P0 and passed (§15).
+- Spike **S6** (§15) is the proof; it ran in P0 and passed.
 
 ## 8. Gates
 
 Config lives in `scripts/builds/gates.yaml` (D20), marked `calibrated: true`;
 that file is the only source of thresholds and the calibration report hashes it.
-The table below mirrors it at 0.66.0:
+The table below mirrors it at 0.69.0:
 
 | Checkpoint | Gear budget | Gates |
 |---|---|---|
@@ -494,7 +497,7 @@ recalc, record `ablationDrop`. Full subset search is 2ⁿ and is out of scope.
 **Calibration runs in both directions** — the gates' own regression test:
 
 - **Every published build at every checkpoint is a must-pass observation**:
-  16 builds × 6 checkpoints = 96 at 0.67.0, each **re-geared per checkpoint by
+  16 builds × 6 checkpoints = 96, each **re-geared per checkpoint by
   the same synthesiser** (§7.7), including the Dad-profile builds. A failure
   means the gate is too strict; re-gearing is what stops a trade-geared build
   from trivially clearing an `ssf-start` gate.
@@ -555,7 +558,7 @@ deploy.
 - `build.html#build=<id>&step=<until-12|until-28|until-68|maps-early|maps-red|pinnacle>`
   — the page above. Hash routes, same no-router rule as the builder; `step` holds
   one of the six checkpoint ids, the same key the gate report uses. The
-  `act1…act10` step set in revisions 1–10 never shipped.
+  `act1…act10` step set in the early revisions never shipped.
 - `index.html` — the existing builder, introduced as "Filter", with
   `mode=build&build=<id>` preselecting a build.
 - Filter phase mapping (D10):
@@ -566,234 +569,18 @@ deploy.
 | Early maps | `leveling` × `strict` |
 | Endgame / bossing | `endgame` × `strict` or `uber` |
 
-## 11. Phases
+## 11. Status and next work
 
-**P0 — spikes (2–3 days, go/no-go).** Six spikes, each with a written
-pass/fail note in §15:
+**Shipped baseline.** P0–P7 are complete. The catalogue has sixteen verified
+builds across nine ascendancies; every one passes all six checkpoints, the
+calibrated must-pass set is 16 × 6 = 96 observations, and the ten must-fail
+mutations and the unique-ablation probe are green. Patch facts, delisting, the
+league window, per-section prose with `factsHash`, the Dad profile, ratings,
+season tags and per-build changelogs shipped in 0.69.0.
 
-| # | Spike | Pass criteria |
-|---|---|---|
-| S1 | PoB headless | loads; two runs bit-identical; 8×5×200 evals < 30 min |
-| S2 | Ladder list | HTTP 200 without auth from CI; class/level/rank present |
-| S3 | Ladder trees | character tree fetched without a cookie |
-| S4 | Character → PoB XML | round-trips into PoB with the same tree, links and item count, and **every ladder node id maps to a `TreeData` node (mismatch count 0)** |
-| S5 | Terms | operative API clauses quoted into §7.4 |
-| S6 | Synthesised gear | a budget-synthesised set loads in PoB with the expected mods applied per item; a bogus mod id fails the build |
-
-If S1 (a) or (b) fails: stop and re-plan. If only S1 (c) fails: apply the
-fallback ladder in §7.3 and record the measured rate. S2–S5 already ran; their
-outcome is in §15 and the no-ladder decision in §7.4 stands.
-
-**P0.5 — rename.** Two `chore:`/`refactor:` commits, documented in §16 of the
-changelog.
-
-**P1 — walking skeleton (landed in 0.54.0).** One hand-built reference build
-end to end: `Build` type in `src/core/builds/`, `synthesize-gear.mjs`,
-`verify.mjs`, `gates.yaml`, per-checkpoint gate report, PoB code generation,
-`mode=build` filter, `build.html`, `src/builds/*.yaml` + schema + drift test.
-Acceptance: page numbers equal JSON numbers, filter identical for a fixed preset
-hash, goldens cover the new output, and every gate number is labelled
-**uncalibrated** on the page until P3. Repair, ablation and leveling derivation
-are deliberately absent from P1.
-
-The drift test runs in a new `validate-builds.yml` job with the PoB cache, not in
-`npm test`: it needs Lua and minutes, and `npm test` must stay fast and offline.
-
-What shipped, where it differs from the text above:
-
-- The done criterion for R3 is two tests, not one: `npm test` decodes each
-  published code and compares its tree, items and gems with the gate report
-  (offline, milliseconds), and `npm run builds:check` loads it in the pinned PoB
-  inside `validate-builds.yml` (Lua, minutes).
-- The checkpoint set is the six in `src/builds/config/checkpoints.yaml`
-  (`until-12 | until-28 | until-68 | maps-early | maps-red | pinnacle`), not the
-  five-key enum in §7.1. A checkpoint is a level bracket — it carries the tree,
-  gems and gear a character can actually have — so separate act-5 and act-10
-  keys duplicated `until-68` without adding a measurement (§16, revision 11).
-- `synthesize-gear.mjs` never became its own script: gear synthesis lives in
-  `verify.mjs`, next to the oracle run that consumes it, because a set that is
-  not immediately measured has no reason to exist.
-
-
-**P2 — seeded catalogue.** Three hand-built seeds through the whole chain
-(synthesise → verify → gates → derive leveling → publish). No fetching: the only
-network call is the pinned PoB clone. Acceptance: nightly workflow green,
-deterministic ids and `seedHash` across two runs, and each seed either passes
-every checkpoint or is rejected with a named reason.
-
-**P2 status (complete: three seeds, nightly verification).**
-`summon-skeletons-necromancer` (caster/minion), `lightning-arrow-deadeye` (bow)
-and `boneshatter-juggernaut` (two-handed melee) all pass every checkpoint. Gear
-is profile-aware: `src/builds/gear/profiles.yaml` supplies the bases and affixes
-an archetype wears, while `budgets.yaml` stays the shared test condition, so
-"ssf-week1" means the same thing for every build. `validate-builds.yml` runs the
-whole chain nightly and fails on any diff, which is the determinism acceptance:
-same inputs, same ids, same `seedHash`, same numbers.
-
-Findings that changed the pipeline, recorded so they are not re-learned:
-
-- **Ascendancy points were counted but never applied.** The planner recorded
-  which notables the labs allow, but the XML omitted them, so every gate report
-  measured a build with no ascendancy at all. They are now emitted with the
-  small passives that connect them, and PoB's parsed node count is asserted
-  against the planner's.
-- **The planner walked into cluster-jewel-only nodes** (`Position Proxy`,
-  `Medium Jewel Socket`), which PoB drops silently. They are excluded, and any
-  future mismatch fails the build instead of shrinking the tree.
-- **PoB cannot compute a minion with Unholy Might headless**: the minion's skill
-  list comes back empty and DPS is 0. The summoner takes Bone Barrier instead of
-  Unnatural Strength; a gate must measure the build, not a tool bug.
-- **Flasks were listed but never equipped.** The guide's flasks are now in the
-  XML and active (declared uptime), because a build with its flasks is the build
-  the reader plays.
-- **The act DPS floors were minion-shaped.** 60 DPS at level 12 and 600 at 28
-  only admitted builds with several bodies; a 3-link bow does 37 and 471. The
-  floors are now 25 and 350, with both measurements recorded in `gates.yaml`.
-- **Every checkpoint fought a level-83 monster.** PoB's defaults put red-map
-  evasion (10k) in front of a level-12 character, because `enemyLevel` moves the
-  enemy's accuracy and life but not its evasion. Each checkpoint now carries its
-  own `enemyLevel`, and the oracle reads PoB's evasion table for the same level.
-- **A gem PoB does not know was dropped silently.** `Ancestral Protector` is in
-  RePoE's gem data but not in the pinned PoB's, so the gate measured a link the
-  page still listed. An unknown gem now fails the build.
-- **Keystones are declarable.** A seed may name a keystone (the Juggernaut takes
-  Resolute Technique); it is bought before the notable loop inside the same
-  point budget, and deferred with a warning where the level cannot afford it.
-- **D15 is implemented.** A seed may override filter slots, and a `null` slot
-  removes one: the two-handed build highlights two-handed axes and no shield.
-
-**P3 — repair, breadth pages, leveling derivation, ablation, calibration.**
-Acceptance: calibration green in both directions; the three P2 seeds keep
-passing; leveling path is a proven subset with valid order.
-
-**P3 status (complete: one endgame plan, bounded repair, calibrated gates).**
-
-- **Leveling derivation is real.** `verify.mjs` plans the endgame once at the
-  pinnacle budget, then derives every checkpoint by pruning deepest leaves from
-  that tree. Required jewel sockets are protected while any unprotected leaf
-  remains. The result is written to `tree.endgame` and `tree.checkpoints`, and a
-  test proves every checkpoint is a subset of the endgame, drawn from the class
-  start, with a valid allocation order. The old per-checkpoint greedy plans are
-  gone.
-- **Repair exists and is bounded.** A failing checkpoint swaps one removable
-  leaf for one adjacent node that the endgame plan already bought, so a repair
-  never leaves the planned tree. Candidate order is a seeded shuffle (seed id +
-  checkpoint), every candidate is measured by PoB, and the loop stops at the
-  first all-pass evaluation or 200 evaluations. `nodeDelta` is the number of
-  distinct nodes touched and must stay under `min(10, 8% of allocated points)`;
-  the record lives in `gates[cp].repair`. The published seeds pass without
-  repair, so their record is zero changes and one evaluation, not a silent
-  unverified tree. `src/core/builds/repair.ts` holds the pure bound, score and
-  shuffle, tested without Lua.
-- **Ablation resolves real uniques.** The oracle loads a core unique from PoB's
-  own `Data/Uniques` tables, so the mods are the engine's, not hand-written. A
-  leave-one-out probe in calibration measures **Ryslatha's Coil** on the
-  Juggernaut: the unique is worth 10.7% of red-map damage, and removing it gives
-  the rare-equivalent measurement. The three P2 seeds declare no core uniques;
-  the probe is what proves the path until a P4 flagship needs one.
-- **Calibration is green in both directions.** `calibrate.mjs` runs 18
-  must-pass observations (the three seeds at all six checkpoints, re-geared by
-  the same synthesiser) and 10 must-fail mutations (uncapped resistances, no
-  life, a 4-link, an act-10 tree at T16, a start-only tree, no main skill, no
-  support gems, no defensive layer, uncapped chaos at pinnacle, starting gear at
-  pinnacle). The report is committed as `builds/calibration.json`, hashed over
-  the thresholds, and `verify.mjs` only marks a build calibrated when that hash
-  matches. `gates.yaml` is now `calibrated: true`.
-- **Breadth is a page condition, not a popularity claim.** `builds.html` lists
-  only verified builds, groups them by family, and names each ascendancy that
-  has a passing build. Failed or stale builds are hidden from the catalogue and
-  still show their failures on their own page (R10). The catalogue now carries
-  the calibrated flag in the index.
-- **One pipeline.** Gear synthesis, gem levels, the oracle call, item parsing
-  and PoB-code encoding moved to `scripts/builds/pipeline.mjs`; the verifier and
-  the calibration runner import the same functions, so a fixture cannot be
-  measured by a different pipeline from a published seed.
-
-**P4 — prose + flagships.** 6–8 flagship builds, placeholder checks, breadth
-pages where a gate-passing build exists (D1). Acceptance: R1–R4 enforced by
-tests, human sign-off on prose only.
-
-**P4 status (complete: six builds, checked prose).**
-
-- Six published builds, all gate-verified at every checkpoint: the original
-  Juggernaut, Deadeye and Necromancer plus **Cyclone Juggernaut**,
-  **Ice Shot Deadeye** and **Summon Raging Spirit Necromancer**. The catalogue
-  now has two builds in each of the three ascendancies; the breadth section is
-  still gate-driven, not popularity-driven.
-- Every seed carries four prose sections (`summary | leveling | maps |
-  bossing`). Prose states numbers only through `{{path|format}}` placeholders;
-  the formats are the closed set in §12.2, and a raw digit outside the token
-  set fails the build.
-- `factsHash` covers the declared facts per section, and the page shows the
-  hash and sign-off. A summary signed by the maintainer is required to publish;
-  the other sections may be `auto-retry`. The compiler re-resolves prose after
-  verification, so a gate move changes the hash and marks a signed section
-  stale rather than silently rewriting it.
-- R1–R4 are tests: placeholder/token checks, gate report for every checkpoint,
-  PoB code round-trip, and the 72-hour league window. The league window is read
-  from `src/builds/config/league.yaml` and currently open.
-- The six builds each have generated 16:9 header art and a working pobb.in
-  paste with Gear, Gems and Tree.
-
-**P5 status (complete: patch facts, delisting, league window).**
-
-- **Per-phase filters** remain one build object: `mode=build` generates
-  leveling and endgame filters at all strictness levels, the build page links
-  the four guide-mapped combinations, and the test suite generates and validates
-  every combination for every build.
-- **Patch facts** live in `src/generated/patch-facts.json`: the pinned PoB tag,
-  game patch, tree version and content hashes of `TreeData` and `Gems`.
-  `builds:patch-facts` regenerates them in CI; `builds:verify` records the hash
-  on every build.
-- **Staleness delists.** `applyBuildStaleness` compares each build's recorded
-  hash with the current fact set. A moved hash (or a missing fact set) sets
-  `status: stale`, removes the build from the catalogue, and its own page says
-  why. `npm test` keeps every published build on the current fact set.
-- **League workflow** reads the reviewed start from `config/league.yaml`; the
-  first 72 hours publish nothing, and the catalogue reports stale/waiting
-  builds instead of silently keeping them.
-- **Changelog** stays in both `src/changelog.ts` and `CHANGELOG.md`; the
-  release workflow builds the GitHub Release from the matching section.
-
-**P6 — build-first landing.** The catalogue is the root page; the filter
-builder moved to `filter.html`, and old `index.html#<state>` links forward to
-the builder. The nav order is Builds first, Filter second. Breadth links use
-build names, so two Juggernaut builds are readable as two different builds.
-
-**P6 status (complete: catalogue landing).**
-
-- The root `index.html` renders the catalogue; `filter.html` is the builder, and
-  `index.html#<state>` forwards to `filter.html#<state>` so old share links keep
-  working. `builds.html` remains a catalogue alias.
-- The shared header orders Builds before Filter, and every internal builder
-  link targets `filter.html`.
-- Breadth links use build names (`Boneshatter Juggernaut`, `Cyclone
-  Juggernaut`); `entrypoints.test.ts` pins the landing redirect, both page
-  entries and the shared catalogue script.
-
-**P7 — breadth, ratings and signing.** Thirteen builds: the six from P4 plus
-Arc Elementalist, Arc Totem Hierophant, Spectre Necromancer, Essence Drain
-Occultist, Righteous Fire Chieftain, Stone Golem Elementalist and Flicker Strike
-Slayer. Four editorial ratings (tankiness, single target, clear, cost) produce a
-derived C/B/A/S/S+ medal; Dad builds use a reviewed lower damage profile with
-the defensive gates unchanged. `builds:sign` stamps a guide section, and the
-compiler resolves it. The DoT metric now reads `TotalDot`/`TotalDPS`, so an
-Essence Drain or Righteous Fire gate measures the damage it actually deals.
-
-**P7 status (complete: thirteen builds, ratings and signing).**
-
-- Thirteen published builds across eight ascendancies, every one passing all six
-  checkpoints; the calibration must-pass set is 13 × 6 = 78 observations for the
-  release this phase shipped. (0.67.0 adds three breadth builds: sixteen builds,
-  nine ascendancies, 96 observations.)
-- Four 1–10 editorial ratings derive the C/B/A/S/S+ medal; `ratings.test.ts`
-  pins the derivation and the S+ rule, and the catalogue shows the medal.
-- `dad` is a reviewed gate profile in `gates.yaml`: lower damage floors, the
-  defensive gates unchanged, the page labels the profile.
-- The oracle takes the best of `CombinedDPS`, `TotalDPS` and `TotalDot`, so the
-  DoT builds are measured on the damage they actually deal.
-- `builds:sign` stamps a seed section; `builds:build` resolves the sign-off and
-  `factsHash` into the committed JSON.
+What remains is breadth: prove the 15 builds in §16 through the same chain. A
+build that does not pass every gate stays a draft and is not published (R2).
+No phase is open; the backlog is the only planned work.
 
 ## 12. Testing
 
@@ -845,7 +632,7 @@ Essence Drain or Righteous Fire gate measures the damage it actually deals.
 - Seeds: every `src/builds/*.yaml` validates against the schema and resolves to
   exactly one build; an orphan seed or an orphan generated build fails the build.
 - Calibration: every published build at every checkpoint is a must-pass
-  observation (16 × 6 = 96 at 0.67.0, including the Dad-profile builds), plus
+  observation (16 × 6 = 96, including the Dad-profile builds), plus
   the ten must-fail mutations and the unique-ablation probe.
 
 ### 12.2 The prose claim check (R1)
@@ -898,477 +685,103 @@ rounding rule:
 
 ## 14. Open items
 
-- **Breadth depth** (D1): how many per-ascendancy pages to publish — decide
-  after 1.0, on the evidence of which ones pass gates. No popularity data
-  exists, so no plan depends on it.
+- **Breadth depth** (D1): the 15-build backlog in §16 is the next breadth pass.
+  Publish only the ones that pass every gate, and keep popularity claims off the
+  site; the external signals are editorial input, not page copy.
 - **True third filter phase** (D10): ~18 new preset entries, goldens, audit
   expectations, filenames. Only if the two-phase mapping proves awkward.
 - **`src/core` extraction** (D13): after 1.0, only if a second site exists.
 - **Per-act quest-reward gem data** (D16): dropped from v1; revisit if the
   bracket list proves too coarse.
-- **Gate numbers**: the §8 defaults are calibrated as of revision 14. Further
-  tuning is a calibration run (must-pass and must-fail), not an open design
-  question.
+- **Gate numbers**: the §8 defaults are calibrated. Further tuning is a
+  calibration run (must-pass and must-fail), not an open design question.
 
-## 15. Spike results
+## 15. Completed evidence
 
-Filled in during P0. Empty means P0 has not run.
+The P0 spikes are closed:
 
-| # | Result | Evidence | Decision |
-|---|---|---|---|
-| S1 | **pass** | PoB `v2.69.0` source loads headless under stock LuaJIT 2.1 and returns `CombinedDPS`, `Life`, `EnergyShield`, `TotalEHP`, `PhysicalMaximumHitTaken`, resists, mana. Three loads of one XML are byte-identical; median 0.141 s/eval in a warm process, so 8×5×200 projects to **21 min** (< 30 min target). Needs `lua-utf8` on `LUA_CPATH` and PoB's `runtime/lua` on `LUA_PATH`. `Classes/CompareBuySimilar.lua` at that tag has three Luau-syntax lines that make stock LuaJIT refuse to boot; a three-line patch fixes it (`spike/pob`). | Debug-only oracle, one warm process, XML reload per evaluation. Pin the tag only after that file is clean; check it on every PoB bump. |
-| S2 | **pass** | `api.pathofexile.com/ladders` (and the `www` host) answer unauthenticated: 200 entries per call, `total` 15000, headers `X-Rate-Limit-Policy: ladder-view`, `X-Rate-Limit-Ip: 5:5:10,10:10:30,15:10:300`. The `class` field carries **ascendancy** names (Ascendant, Pathfinder, Necromancer, Warden…) for ascended characters, so an ascendancy distribution needs no character data at all. A `public` flag is present on ~62% of entries. | Usable for distribution only; skills and trees are not in the payload. |
-| S3 | **fail** | `character-window/get-passive-skills?account=…&character=…` returns `{"error":{"code":6,"message":"Forbidden"}}` with a plain UA and with browser-ish headers. An application-level auth gate, not a bot block. | **D5 applies.** No session cookies, so no character trees, no skills, no ladder-derived builds. |
-| S4 | **blocked** | Nothing to map: S3 yields no character data. PoB itself already ships `loadBuildFromJSON`, which ingests the official character response, so the mapping costs nothing if access ever returns. | Not a design risk any more — just unreachable. |
-| S5 | **caution (decided: drop)** | The Developer Docs limit sanctioned use to "resources defined in our API Reference or listed in our Data Exports" and forbid "any other internal website APIs". `/ladders` is on the official host with published rate-limit headers but is **not** in the reference; character endpoints require OAuth and "We are currently unable to process new applications". The UA format they ask for is OAuth-prefixed with a contact. | Maintainer decision (§14). If allowed: distribution only, ≤5 requests/5 s, cached daily, never a character call. |
-
-| S6 | **pass, with a correction** | Item text carries display mod lines, not mod ids. `+100 to maximum Life` applies exactly (100 vs 87 flat = +41 life through the build's increased-life); `+100 to maximum Nonsense` is dropped **silently** — same number of stat lines, one fewer parsed mod, gate computed on a weaker item. | Gates assert **parsed-mod count delta and stat delta per line** (§7.7 revised). No mod-id registry exists to lean on. |
-
-## 16. Revision history
-
-### Council review
-
-One delegate (`openrouter/deepseek/deepseek-v4.1-flash-1017`), reviewed against
-AGENTS.md and PLAN.md.
-
-| Round | Score | Outcome |
-|---|---|---|
-| 1 | 6/10 | three blockers: schema could not express the gates, byte-stability unsatisfiable, non-deterministic clustering |
-| 2 | 8/10 | passed the skill threshold |
-| 3 | 9/10 | internal contradictions: quest-point phrasing, guide-prose determinism, missing S1(c) decision |
-| 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
-| 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
-| 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
-
-### Revision 24 — three off-meta builds
-
-0.67.0 adds Absolution Guardian, Winter Orb Elementalist and Animate Weapon
-Necromancer: sixteen builds across nine ascendancies, 96 calibration
-observations. All three publish on the reviewed Dad profile, because the
-budget-gear numbers sit below the standard damage floor while every defensive
-gate still passes. The release publisher now reuses a paste whose code hash has
-not moved, so only new steps create public pastes.
-
-### Revision 23 — the plan reconciled with 0.66.0
-
-No behaviour change: this entry closes documentation drift against the shipped
-state.
-
-- The `Build` example, the rules, the gate table and the tests use the six
-  shipped checkpoints (`until-12 | until-28 | until-68 | maps-early | maps-red |
-  pinnacle`). The retired `act5`/`act10` keys survive only in revision history.
-- `gates.yaml` is named as the only threshold source, and §8's table mirrors the
-  calibrated values (the old 2M/5M defaults were never the shipped numbers).
-- Calibration is stated as a formula: every published build at all six
-  checkpoints (13 × 6 = 78 at this release), ten must-fail mutations and one
-  ablation probe.
-- §7.2 lists the scripts that shipped. Gear synthesis, leveling derivation and
-  repair live in `pipeline.mjs`, `verify.mjs` and `src/core/builds/repair.ts`,
-  not in files of their own.
-- The leveling budget path is `src/builds/config/checkpoints.yaml`;
-  `src/builds/leveling-points.yaml` never shipped.
-- P0.5, P6 and P7 are recorded as complete; §11 carries status blocks for P6 and
-  P7 like the earlier phases.
-
-### Revision 22 — P7 breadth and ratings
-
-- Seven new builds: Arc Elementalist, Arc Totem Hierophant, Spectre
-  Necromancer, Essence Drain Occultist, Righteous Fire Chieftain, Stone Golem
-  Elementalist and Flicker Strike Slayer. The catalogue is now thirteen.
-- The spectre build carries a real `Spectre` id; the oracle emits it and
-  measures the minion. The guide names the specific spectre.
-- **DoT is measured as DoT.** The oracle now takes the best of
-  `CombinedDPS`, `TotalDPS` and `TotalDot`; before this, Essence Drain and
-  Righteous Fire were judged on a hit-only number and looked broken.
-- **Dad profile.** Low-APM/DoT/totem builds can use a reviewed gate profile
-  that lowers the damage floor but keeps the defensive gates. The page labels
-  the profile, and calibration's must-pass set includes every profile.
-- **Ratings and medal.** Every build has four 1–10 editorial axes and a derived
-  C/B/A/S/S+ medal; S+ requires near-perfection on every axis.
-- **Signing is a command.** `builds:sign -- --build <id> --section summary
-  --by "name"` stamps the seed; `builds:build` resolves the prose and facts
-  hash. Unsigned breadth summaries publish as `auto-breadth`; flagship summaries
-  must be signed.
-- **Economy workflow fix:** the refresh now commits `presets.json` with the new
-  tiers and no longer fails on that expected diff.
-
-### Revision 21 — build-first landing
-
-- The root `index.html` is now the build catalogue. The filter builder lives at
-  `filter.html`; an inline hash forward keeps old `index.html#<state>` links
-  working, and `builds.html` remains a catalogue alias.
-- The shared header puts **Builds** before **Filter**; every internal builder
-  link points at `filter.html`.
-- The breadth links use build names (`Boneshatter Juggernaut`, `Cyclone
-  Juggernaut`) instead of repeating only the ascendancy.
-- `entrypoints.test.ts` pins the landing redirect, the two page entries and the
-  shared catalogue script.
-
-### Revision 20 — step-specific imports
-
-- **Breadth labels are build names.** The breadth list no longer shows
-  `Juggernaut` twice with no context; each link names the build and keeps the
-  ascendancy as a muted suffix.
-- **`auto-retry` is explained in place.** The guide legend says signed =
-  reviewed, auto-retry = generated from facts and passing checks but unsigned,
-  stale = facts moved after sign-off.
-- **pobb.in follows the step.** Verification writes a code for every checkpoint,
-  the release publisher creates one paste per step, and the page links the
-  selected step's paste. Gear, gems and the passive tree therefore match the
-  step picker instead of always showing the maps-red build. The canonical
-  `.pob` asset and the maps-red code remain for the published evidence.
-- The publisher now retries pobb.in rate limits; 36 pastes are created per
-  release for six builds.
-
-### Revision 19 — P5 landed
-
-- **Patch facts are a committed artefact.** `patch-facts.json` hashes the pinned
-  tree and gem data. `builds:patch-facts` regenerates it, the validate workflow
-  runs it, and every build records the hash it was verified against.
-- **Delisting is mechanical.** `applyBuildStaleness` marks a build stale when
-  the hash moves or when no fact set exists for the live patch. The catalogue
-  filters to verified builds and names the stale/waiting count; the individual
-  page explains the reason.
-- **The league window is reviewed data.** `config/league.yaml` supplies the
-  start; the first 72 hours publish nothing.
-- **Filters stay per-phase.** The builder's `mode=build` covers leveling and
-  endgame at every strictness; the build page links the four guide-mapped
-  combinations and the tests generate all of them.
-- **No pathofexile.com call** was added. The patch facts are local content
-  hashes of the pinned PoB checkout.
-
-### Revision 18 — P4 landed
-
-- **Six builds.** Cyclone Juggernaut, Ice Shot Deadeye and Summon Raging Spirit
-  Necromancer were added to the original three. All six pass every checkpoint;
-  the calibration's must-pass set is now 36 observations (six builds × six
-  checkpoints) plus the ten must-fail cases.
-- **Prose is checked, not trusted.** Guide text lives in the seed and stores
-  only placeholders for numbers. `src/core/builds/guide.ts` owns the closed
-  format set, placeholder resolution and the raw-digit check; the compiler
-  computes `factsHash` from the declared facts and stores the resolved text.
-- **Sign-off is visible.** Each section has a status badge; a signed summary
-  is required for publication, while unsigned sections may be `auto-retry`.
-  The page shows the facts hash and signer.
-- **R4 is a real gate.** `leagueWindowOpen` reads the reviewed league start
-  from `config/league.yaml`; the first 72 hours publish nothing.
-- **The landing decision stands:** keep the filter builder as the entry point
-  until P4's six builds become a stronger catalogue, then flip it at the
-  planned P4.5 step.
-
-### Revision 17 — chips, imports and the landing question
-
-- **Catalogue chips are derived, not decorative.** SSF is the publication gate;
-  playstyle comes from the family; HC-ready is only claimed when the measured
-  defensive thresholds at red maps and pinnacle are met. The per-checkpoint dots
-  were identical on every card and are replaced by a small pass count.
-- **pobb.in renders the tree.** Importers read the standard pathofexile.com tree
-  URL from the `<Spec>`; the exporter now injects the URL PoB itself saves. The
-  XML still does not make a request from BuildPath — it carries the same link a
-  desktop export does.
-- **The ascendancy cards explain themselves.** Each lab card shows the point
-  order and the notable's effect lines, so the circle tooltip is optional.
-- **Landing question — recommendation:** make the build catalogue the landing
-  page **after P4 raises it to 6–8 flagships**, not now. The catalogue is the
-  product thesis, but three builds is too thin to be the front door; until then
-  the filter builder remains the complete flow and the header already makes the
-  catalogue one click away.
-
-### Revision 16 — the second pass
-
-- **Inventory geometry follows the screen.** Gloves and boots sit next to the
-  belt, weapon/offhand are narrower, and the ring/amulet cells are compact. The
-  hover tooltip was fixed at the source: the slot cell never declared the
-  `group` its tooltip keyed off.
-- **Ascendancy is the whole graph.** `config/ascendancies-full.yaml` carries
-  every notable and path passive for the catalogue's ascendancies. The page
-  draws them as a circle, lights the chosen notables and keeps lab timing under
-  the graph.
-- **The gate report is a table.** Metric / measured / gate, with the checkpoint's
-  thresholds stored in the build JSON. No more large card with five loose
-  numbers.
-- **Quality advice is data.** The gem extractor records the quality effect and a
-  `recommended | optional | none` verdict, rendered as `20q`, `20q?` or
-  `no 20q`.
-- **One-click PoB has a working target.** pob.cool only accepts a pobb.in URL,
-  and its current importer rejects the metadata pobb.in returns. The release
-  publisher (`builds:publish-pobs`) creates a real paste per build, commits the
-  id map and the code hash; the page links the paste directly and keeps the copy
-  button. This is a release-time network step, not a nightly one.
-- **The Filter section links back to the builder** with the build preselected
-  and the four phase/strictness combinations the guide actually maps to.
-
-### Revision 15 — the endgame sheet
-
-The build page now reads like the inventory screen, and the endgame gear is the
-gear a player actually wears.
-
-- **The missing shield had two causes.** The caster profile never named an
-  offhand for the early budgets, so the summoner's `Clarity`/`Convocation` slots
-  referenced a shield that was never synthesised. The page also looked for a
-  slot called `Shield`, while PoB stores a shield or quiver in `Weapon 2`. Both
-  are fixed; the early caster uses `Twig Spirit Shield` at `starting` and `Yew
-  Spirit Shield` at `early`. A test now asserts every gem group has the gear slot
-  it names.
-- **The gear sheet is a grid, not a list.** Weapon and offhand sit on the tall
-  sides, helmet and amulet on top, body in the middle, rings beside it,
-  gloves/belt/boots below, and five flasks underneath. It is a CSS panel with
-  dark texture and gold edges, not a copy of the game art. Jewels are listed
-  separately with their explicit `Jewel 1…n` labels.
-- **Required jewels are pinned to the tree.** The oracle returns the socket each
-  jewel was placed in; the tree draws a blue diamond there and names the jewel
-  in the tooltip and a legend below the figure. A test checks the pin count
-  against the gear list.
-- **Eldritch implicits are measured.** A reviewed `gear/eldritch.yaml` gives
-  each archetype one Ember and one Ichor implicit per armour slot, tier 4 at
-  `maps-red` and tier 6 at `pinnacle`. The oracle counts parsed implicits, so a
-  typo fails the build. The red-map DPS floor moved from 80k to 120k because a
-  4-link with the new implicits was clearing the old floor; the calibration's
-  must-fail set caught that, and all three must-pass seeds still clear 120k.
-- **Labs are guide milestones, not more checkpoints.** The normal lab unlocks
-  around level 33, so `until-28` now assumes `labs: 0`; assuming two ascendancy
-  points at level 28 measured a character the game cannot have. The page shows
-  the normal/cruel/merciless/eternal lab levels and the notables each grants.
-  The six-checkpoint enum is unchanged: a lab is an action, not a gear bracket.
-- **One header.** The filter builder, catalogue, build page, simulator, audit
-  and changelog use the same sticky header with the product name, active nav and
-  version.
-- **The sheet is readable without a mouseover.** Item cells show their mods
-  inline (the tall slots more than the small ones), with a faint code-drawn
-  glyph behind each empty slot. Helmet/body and gloves/boots/rings share one
-  column width; the weapon and offhand boxes are 80% of their old width, rings
-  and the amulet are compact, gloves and boots sit beside the belt, and the five
-  flasks are narrower and taller.
-- **Jewels focus the tree.** Clicking a jewel in the legend zooms and centres
-  the view on its socket and pulses the marker. The focus maths lives in
-  `treeView.ts` and is tested like pan and zoom.
-- **Ascendancy is the full tree, not four cards.** The graph shows every
-  notable and path passive for the ascendancy, with the chosen notables lit and
-  their lab badges. The lab timing sits under the graph; the separate labyrinth
-  section is gone. Data is reviewed in `config/ascendancies-full.yaml`.
-- **The gate report is a table.** Metric / measured / gate in one compact
-  panel, plus the pass/fail badge and named failures. It no longer spreads a
-  handful of numbers across a large card.
-- **Pantheon is a wheel, bandit is its own section.** The wheel lights the
-  selected major and minor god; the table below names every god and its effect.
-  Bandit is a separate four-choice section below Pantheon (D17 data in
-  `config/pantheon.yaml`).
-- **Pros and cons are weighted content.** Each seed carries at least five of
-  each, with weight 1–3 rendered as stronger or quieter colour. The table sits
-  directly under the summary.
-- **Gems explain themselves.** The gem tooltip carries RePoE's description or,
-  for supports, the level-20 effect line, plus mechanical tags. The extractor
-  writes those fields into the committed gem table.
-- **PoB opens on pobb.in.** The release publisher posts each measured code to
-  pobb.in and commits the id map; the page links the paste directly and keeps
-  the copy button. pob.cool's only accepted input is a pobb.in URL, and its
-  current importer rejects the metadata pobb.in returns, so the paste page is
-  the reliable one-click destination rather than a broken redirect.
-- **Header art is generated per build** (original art, 16:9 WebP, no game
-  assets) and sits under the title as orientation, not as evidence.
-
-### Revision 14 — P3 landed
-
-P3 shipped the parts that turn measurements into claims.
-
-- **One endgame tree, pruned per checkpoint.** The planner no longer searches
-  separately at level 12 and level 96. A checkpoint is a connected, ordered
-  subset of the pinnacle plan, and tests assert the subset and order. Protected
-  jewel sockets keep the gear the budget names actually socketed after pruning.
-- **Repair is bounded and visible.** Single swaps only, candidates restricted to
-  the endgame plan, seeded order, 200 evaluations, `nodeDelta` under 10 and 8%.
-  The seeds pass without repair; the empty record is still written so "no repair
-  was needed" is distinguishable from "repair was not run".
-- **Calibration is the gate's own regression test.** 18 must-pass and 10
-  must-fail cases, plus a unique ablation probe, are committed as
-  `builds/calibration.json`. The report hashes the thresholds, so changing a
-  floor without re-running calibration drops every build back to uncalibrated.
-- **The P2 seeds keep every checkpoint.** Their measured numbers moved with the
-  derived trees (for example the Deadeye's red-map DPS is 120.3k against a
-  104-node tree), and all 18 checkpoint observations remain passing. The gates
-  were not weakened to get there.
-- **Ablation is proved before a seed needs it.** PoB resolves the unique's real
-  mods from its own data; the Juggernaut's Ryslatha's Coil is worth 10.7% of
-  red-map damage. No P2 seed declares a core unique, so this is a calibration
-  probe rather than a published page number.
-- The plan's `src/builds/leveling-points.yaml` did not ship as a separate file:
-  the point budget lives in `config/checkpoints.yaml`, next to the level, labs,
-  budget and enemy level that the same checkpoint drives. One table, one source.
-
-### Revision 13 — third seed, and the nightly
-
-`boneshatter-juggernaut` is the first melee build and the first seed to declare
-a keystone. It also exposed the last two silent mismatches between the page and
-the oracle: the enemy every checkpoint was measured against was a level-83
-monster, and a gem the pinned PoB does not know vanished from the XML while the
-page kept listing it. Both now fail loudly or are configured per checkpoint
-(§11 P2 status). `validate-builds.yml` runs nightly from here, so "the numbers
-still reproduce" is checked by CI rather than remembered.
-
-### Revision 12 — second seed, and what it exposed
-
-P2's first non-minion seed (`lightning-arrow-deadeye`) runs through the whole
-chain. Adding it exposed four measurement bugs that a single caster seed had
-hidden; all are fixed in the pipeline rather than worked around, and §11's P2
-status lists them. In the plan's own terms:
-
-- **D29 is now real.** Ascendancy points are emitted with their connecting
-  passives, so a lab budget in `checkpoints.yaml` actually limits what the gate
-  evaluates.
-- **D23 (budget vs profile).** `budgets.yaml` is the test condition; the new
-  `gear/profiles.yaml` is what an archetype wears under it. A second build
-  cannot silently re-gear itself a different test.
-- **§8's act gates** are survivability gates again in practice: the DPS floors
-  are low enough that a 3-link attack build passes, which the previous numbers
-  did not.
-- **Flasks** are evaluated, not merely listed, which settles the "declared
-  uptime" half of the config question: no other belt is assumed.
-
-Still open: three seeds are the P2 target; the catalogue has two. Repair,
-ablation, leveling derivation and calibration remain P3.
-
-### Revision 11 — P1 landed
-
-P1 shipped in 0.54.0. What that changed in this document:
-
-- **One artefact for R3, two checks.** `npm test` decodes every published code
-  and compares its tree, items and gems with the gate report; `npm run
-  builds:check` loads it in the pinned PoB inside `validate-builds.yml`. The
-  offline half is fast enough for the normal suite, the Lua half is not.
-- **The checkpoint enum is the shipped one.** `checkpoints.yaml` defines six
-  level brackets (`until-12`, `until-28`, `until-68`, `maps-early`, `maps-red`,
-  `pinnacle`), and a checkpoint carries its own level, points, labs, gear budget
-  and gem cap. The five-key `act5 | act10 | maps-early | maps-red | pinnacle`
-  enum and the separate display-only guide steps in revisions 1–10 are
-  superseded: act 5 and act 10 as separate machine checkpoints duplicated
-  `until-68` without measuring anything new.
-- **Gear synthesis stayed in `verify.mjs`.** A synthesised set has no purpose
-  outside the evaluation that consumes it, and a separate script invited the two
-  to drift.
-- **`checkedAt` follows D22 in code.** Re-verifying unchanged numbers no longer
-  rewrites the stamp, so the nightly job produces no diff.
-- Gate numbers are still uncalibrated (§14): P3's must-pass and must-fail sets
-  are what turn them into claims.
-
-### Revision 10 — ladder dropped
-
-Maintainer decision after S2–S5: **no ladder ingest of any kind** (D31).
-
-- §2's evidence row is now hand-curated seeds; §7.4 became "why there is no
-  ladder ingest", with the measurements, so it is not re-opened.
-- Clustering, sample thresholds and the ladder pipeline stage are gone. Seeds are
-  reviewed YAML; the pipeline proves, repairs within bounds, and accepts or
-  rejects.
-- P2 is now "seeded catalogue", calibration uses hand-built must-pass builds,
-  and no page claims popularity.
-- R11 became "no request to pathofexile.com, ever".
-
-### Revision 9 — after the S2–S5 spikes
-
-- S2 passes: the ladder answers unauthenticated and its `class` field carries
-  ascendancy names, so a distribution heatmap needs no character data.
-- S3 fails: character trees return `Forbidden`. **D5 is in force** — no ladder
-  character data, therefore no mined builds and no mined skills.
-- S4 is unreachable and no longer a design risk: PoB's `loadBuildFromJSON`
-  already ingests the official character response.
-- S5 raises a policy question that is now the top open item: `/ladders` is on
-  the official host with published rate limits but is not in the API Reference.
-- Consequence for P2–P4: build *content* comes from hand-curated seeds plus the
-  PoB oracle, exactly as D1's escape hatch already allowed. The ladder's only
-  possible contribution is population counts.
-
-### Revision 8 — after the S1 and S6 spikes
-
-- S1 and S6 ran and passed; results, numbers and the working PoB recipe are in
-  §15, with reproduction steps on `spike/pob-oracle`.
-- §7.7 corrected: PoB item text carries display mod lines, not mod ids, and
-  silently drops what it cannot parse. Synthesis is validated by **parsed-mod
-  count and stat delta per line**, not by an id registry.
-- §7.3 records the pinning prerequisite: PoB `v2.69.0` ships three Luau-syntax
-  lines that make stock LuaJIT refuse to boot, so a tag is only pinnable once
-  that file parses.
-
-### Revision 7 — after round 6
-
-- §7.2's prose loop now states the same publication rule as §7.1, D28 and §9.1.
-- Grepped every remaining mention of `signed`/`auto-*`: the four live copies agree;
-  the revision-history entries are marked as superseded where they differ.
-
-### Revision 6 — after round 5
-
-- Publication rule now accepts `guide.summary.status ∈ { signed, auto-breadth }`,
-  so a breadth page can publish (D1) while flagships still require sign-off.
-- D28 and §9.1 step 3 no longer reference the removed `guide.status` field.
-
-### Revision 5 — after round 4
-
-- `guide` is a per-section map, each with its own `status`, `signed`, declared
-  `facts` and `factsHash`; publication requires a signed `summary` (D28).
-  Superseded in revision 6, which also accepts `auto-breadth`.
-- §7.2 and §9.1 now state the same publication rule in the same words.
-- `build.html#…&step=` is restricted to guide-step values (`act1…act10 | maps |
-  boss`), never a checkpoint id.
-
-### Revision 4 — before round 3
-
-Gap hunt on my side plus round 2's residual list:
-
-- D26 one build per (main skill, ascendancy); competing clusters dropped.
-- D27 PoB-lag policy: no tag for the live patch means "waiting for PoB", never
-  verification against the previous patch.
-- D29 ascendancy points per lab, so act checkpoints cannot assume impossible
-  points.
-- D30 reviewed leveling point budgets, and §7.5 says how the pruning uses them.
-- §9.1 prose lifecycle: draft → check → one retry → sign → invalidate.
-- §7.2 patch-facts content hashes; §12.1 catalogue invariants, lab-point check,
-  two-run byte-identical determinism, and the waiting-for-PoB state.
-
-### Revision 3 — after round 2
-
-- P1/P3 contradiction fixed: `verify.mjs`, `gates.yaml` and `synthesize-gear.mjs`
-  move into P1; repair, ablation, clustering and leveling derivation stay in P3;
-  P1 numbers are labelled **uncalibrated**. Drift test gets a named CI job
-  (`validate-builds.yml`).
-- §7.7 gear synthesis specified, with D23 and spike **S6**: budgets are
-  constraints, items are synthesised deterministically, and an unknown mod id
+- **S1 pass** — PoB `v2.69.0` loads headless under LuaJIT 2.1 and returns the
+  measured stats; repeated loads are identical; the warm-process rate is about
+  0.141 s/evaluation. The three Luau-syntax lines in
+  `Classes/CompareBuySimilar.lua` are fixed by the committed compat patch.
+- **S2 pass / S3 fail / S4 blocked / S5 drop** — the ladder list is reachable,
+  character trees answer `Forbidden`, and the official-host route is not in the
+  sanctioned API reference. No ladder ingest follows (D31, §7.4).
+- **S6 pass** — PoB item text carries display mods, not mod ids. Gear synthesis
+  asserts parsed-mod count and stat delta per line, so a silently dropped line
   fails the build.
-- Must-pass calibration builds are re-geared per checkpoint (§8), closing the
-  vacuous-pass direction.
-- `uniques[].filter` removed: one source of truth for filter bases, asserted by
-  test.
-- `tree.respec[].at` renamed `atStep` so guide steps and checkpoints cannot
-  collide.
-- Repair stop rule and eval accounting stated.
-- `factsHash` covers a declared input list (D25); §12.2 gains the format table
-  and the closed digit-token set.
-- Sparse SSF coverage called out so the heatmap cannot read as "nobody plays it".
+- **Calibration** — 96 must-pass observations (16 builds × 6 checkpoints), ten
+  must-fail mutations and one unique-ablation probe are green.
 
-### Revision 2 — after round 1
+The full spike output and pre-0.69 revision history remain in git history and
+`CHANGELOG.md`.
 
-- `Build` schema rewritten: per-checkpoint `gearSets`, `config`, `leveling`,
-  `uniques` split into `displayName`/`filter`, `repair`, canonical checkpoint
-  enum.
-- Filter determinism restated as "fixed preset hash" (D21) instead of the
-  unsatisfiable byte-stability claim.
-- PoB spike criterion changed from latency to load + determinism + total budget;
-  S4 (character → PoB XML) and S5 (terms) added.
-- Calibration extended with 10 must-fail builds.
-- Determinism section added: id derivation, main-skill detection, clustering,
-  sample threshold, repair bounds, commit discipline.
-- Prose claim check (R1/§12.2) defined with placeholders and a numeral
-  allowlist.
-- `src/builds/` YAML home, schema and drift test added to P1.
-- `builds.json` split into index + per-build files.
+## 16. Backlog — 15 builds for 3.30 Covens
 
-### Declined
+This is the next breadth pass. It is deliberately a backlog, not a popularity
+claim: each seed must still pass the gates in §8 before it publishes (D1, D2).
 
-- **Per-act quest-reward gem table**: no lawful data source inside our
-  constraints (no poedb scraping, absent from RePoE and PoB `Gems`); the bracket
-  list is enough. Open item, not a gap.
-- **Folding builds into `npm run presets:build`**: the PoB pipeline must never sit
-  inside `npm test` or the filter build.
-- **Relaxing R4** so hand-made builds may publish in a league's first 72h: a
-  moved tree invalidates them too.
+**Selection filter.** Patch 3.30 Covens only; no Standard and no 3.29-or-older
+builds. Signals are the Maxroll 3.30 league-starter tier, live poe.ninja Covens
+play share, YouTube guide views (aggregated by poebuilds.cc), and official
+forum/Mobalytics coverage. Views are the highest single 3.30 guide or series
+found, rounded.
+
+| # | Seed id | Build | Class / ascendancy | Family | Main skill | Signals | Source |
+|---|---|---|---|---|---|---|---|
+| 1 | `storm-burst-repulsion-hierophant` | Storm Burst of Repulsion Totems | Templar / Hierophant | caster | Storm Burst of Repulsion | Maxroll **S**; 3.0% Covens, 7.3% SSF; 136k views | [Maxroll](https://maxroll.gg/poe/build-guides/storm-burst-of-repulsion-totem-hierophant-league-starter) · [YouTube](https://www.youtube.com/watch?v=pwGUXX86mrA) |
+| 2 | `poison-ranged-animate-weapon-necromancer` | Poison Ranged Animate Weapons | Witch / Necromancer | minion | Animate Weapon of Ranged Arms | Maxroll **S**; 3.0%; 123k views | [Maxroll](https://maxroll.gg/poe/build-guides/poison-ranged-animate-weapons-league-starter) · [YouTube](https://www.youtube.com/watch?v=DD5NUutEuPI) |
+| 3 | `static-strike-guardian` | Static Strike Guardian | Templar / Guardian | melee | Static Strike | 5.6% SSF; **270k views** | [YouTube](https://www.youtube.com/watch?v=MI3e0Gz6R6s) · [Reddit](https://www.reddit.com/r/PathOfExileBuilds/comments/1xtf3nx/my_330_static_strike_guardian_leaguestarter/) |
+| 4 | `ethereal-knives-massacre-elementalist` | Ethereal Knives of the Massacre | Witch / Elementalist | caster | Ethereal Knives of the Massacre | 4.1% Covens; ~76k views | [poe.ninja](https://poe.ninja/poe1/builds/covens?class=Elementalist&skills=Ethereal+Knives+of+the+Massacre) · [Mobalytics](https://mobalytics.gg/poe/builds/ignite-ethereal-knives-elementalist-build-league-starter-to-endgame) |
+| 5 | `incinerate-venting-elementalist` | Incinerate of Venting | Witch / Elementalist | caster | Incinerate of Venting | 3.6% SSF; 119k views | [YouTube](https://www.youtube.com/watch?v=2NYMoUk7LIM) |
+| 6 | `earthshatter-luminary` | Facebreaker Luminary | Scion / Luminary | melee | Earthshatter | Maxroll **S**; 32k+ views | [Maxroll](https://maxroll.gg/poe/build-guides/facebreaker-luminary-league-starter) · [YouTube](https://www.youtube.com/watch?v=mPJxGsFCZZA) |
+| 7 | `scorching-ray-immolation-chieftain` | Scorching Ray of Immolation | Marauder / Chieftain | caster | Scorching Ray of Immolation | 3.1% Covens; 80k views | [Mobalytics](https://mobalytics.gg/poe/builds/cws-chieftain-3-30-emiracles) · [pobarchives](https://pobarchives.com/build/pWBkU3QX) |
+| 8 | `smite-divine-judgement-inquisitor` | Smite of Divine Judgement | Templar / Inquisitor | melee | Smite of Divine Judgement | Maxroll **S**; 55k+ views | [Maxroll](https://maxroll.gg/poe/build-guides/smite-of-divine-judgement-league-starter) |
+| 9 | `tornado-shot-deadeye` | Tornado Shot | Ranger / Deadeye | bow | Tornado Shot | ~4% snapshot; 133k views | [poe.ninja](https://poe.ninja/poe1/builds/covens?skills=Tornado+Shot) |
+| 10 | `divine-retribution-gladiator` | Divine Retribution | Duelist / Gladiator | caster | Divine Retribution | 2.1% Covens; 124k series views | [YouTube](https://www.youtube.com/watch?v=OBWHGBy70xw) · [poe.ninja](https://poe.ninja/poe1/builds/covens?class=Gladiator&skills=Divine+Retribution) |
+| 11 | `lightning-tendrils-eccentricity-elementalist` | Lightning Tendrils of Eccentricity | Witch / Elementalist | caster | Lightning Tendrils of Eccentricity | 2.5% Covens; 97k views | [YouTube](https://www.youtube.com/watch?v=sOKiVtyhb8M) |
+| 12 | `toxic-rain-pathfinder` | Toxic Rain | Ranger / Pathfinder | bow | Toxic Rain | ~5% snapshot; 61k views | [Mobalytics](https://mobalytics.gg/poe/builds/toxic-rain-pathfinder) · [YouTube](https://www.youtube.com/watch?v=GsDMr2NZRao) |
+| 13 | `venom-gyre-trickster` | Venom Gyre | Shadow / Trickster | hybrid | Venom Gyre | ~2% snapshot; 157k views | [YouTube](https://www.youtube.com/watch?v=zZEUXtXnKmE) |
+| 14 | `penance-brand-elementalist` | Penance Brand Ignite | Witch / Elementalist | caster | Penance Brand | Maxroll **A**; 56–68k views | [Maxroll](https://maxroll.gg/poe/build-guides/penance-brand-ignite-elementalist) · [YouTube](https://www.youtube.com/watch?v=CqWuqGUPQak) |
+| 15 | `ice-nova-elementalist` | Ice Nova | Witch / Elementalist | caster | Ice Nova | Maxroll **A**; 61k views | [Maxroll](https://maxroll.gg/poe/build-guides/ice-nova-elementalist-league-starter) · [YouTube](https://www.youtube.com/watch?v=WcKrpMgiTrg) |
+
+**Already covered, so excluded.** Righteous Fire, Lightning Arrow, Cyclone,
+Boneshatter, Flicker Strike, Arc, Summon Raging Spirit, Summon Skeletons, Raise
+Spectre, Animate Weapon (melee), Absolution, Ice Shot, Winter Orb, Essence Drain
+and Summon Stone Golem. Near-duplicate variants also excluded: Cyclone of
+Tumult, Flicker Strike Berserker, Forged Frostbearer and Wretched Defiler
+Spectres, and Poison SRS. Poison Ranged Animate Weapons is the transfigured
+`Animate Weapon of Ranged Arms`, not the melee Animate Weapon already shipped.
+
+**Suggested batches.** Three batches of five keep the pipeline runs reviewable:
+
+1. **Caster/minion first** — Storm Burst, Poison Ranged Animate Weapons,
+   Penance Brand, Ice Nova, Smite. These reuse the existing `spell` and `caster`
+   profiles.
+2. **SSF/attack** — Static Strike, Incinerate, Lightning Tendrils, Toxic Rain,
+   Venom Gyre. Toxic Rain reuses `bow`; Venom Gyre needs a claw profile or a
+   reviewed filter override.
+3. **Special gear** — Facebreaker Luminary, Scorching Ray, Ethereal Knives,
+   Divine Retribution, Tornado Shot. Facebreaker is unarmed (no weapon slot) and
+   needs a reviewed profile/override; Scorching Ray can reuse `rf`; Tornado Shot
+   reuses `bow`.
+
+**Per-seed acceptance.** Each new seed must:
+
+- validate against `src/presets/schema/build.schema.json`;
+- carry `season: covens` and a changelog entry whose newest season matches;
+- pass all six checkpoints, or stay a draft with its failures named;
+- publish a `maps-red` PoB code and a matching `.pob` asset;
+- add six must-pass calibration observations (96 → 186 across 31 builds) and
+  re-run the must-fail set;
+- not duplicate a `(main skill, ascendancy)` pair (D26);
+- carry generated 16:9 header art and per-step pobb.in pastes at release.
+
+`src/builds/config/league.yaml` and the repo's `covens.yaml` snapshot are from
+league start. The live poe.ninja top ten has moved since (RF 4.8%, EK 4.1%,
+Cyclone of Tumult 3.5%, Void Shockwave 3.1%, Scorching Ray 3.1%); refreshing the
+snapshot with `npm run meta:add` is a separate task and is not required to start
+these seeds.
 
 ## 17. Links
 
