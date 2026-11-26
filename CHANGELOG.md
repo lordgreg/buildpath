@@ -2,6 +2,20 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.59.0 — 2026-11-26
+
+The build page reads like a character sheet.
+
+- The inventory tooltip works again, and the sheet is readable without hovering: each slot shows its mods inline, with a faint code-drawn glyph behind the empty space. Helmet and body share one width, gloves/boots match the rings, and the five flasks are narrower and taller.
+- Jewels are now a control, not just a caption. Clicking a jewel under the tree zooms and centres on its socket and pulses the marker; the view maths is tested alongside pan and zoom.
+- Ascendancy is a path of circles, one per point, with the normal/cruel/merciless/eternal timing written under each notable. The separate labyrinth section is gone.
+- Pantheon is a wheel with the selected major and minor gods lit and the full effect table below it. Bandit is its own section below Pantheon.
+- Every build has a weighted pros/cons table directly under its summary — at least five of each, with weight 1–3 shown as stronger or quieter colour.
+- Gem tooltips now explain the gem: RePoE's description where it exists, the level-20 effect line for supports, and the mechanical tags.
+- The PoB link opens prefilled. The publisher writes the same code as a plain `.pob` asset, and the page sends `pob.cool/poe1/#build=<raw GitHub URL>` so the measured build opens in one click; copying the code still works offline.
+- Each build has generated 16:9 header art — original key art, no game assets — under the title.
+- 601 tests. Gates, trees and measured numbers are unchanged from 0.58.0; calibration is still green (18 must-pass, 10 must-fail, 1 ablation probe).
+
 ## 0.58.0 — 2026-11-26
 
 The gear sheet and the endgame craft.
