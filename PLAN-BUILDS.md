@@ -149,7 +149,7 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
 
 ```jsonc
 {
-  "schemaVersion": 2,
+  "schemaVersion": 1,
   "id": "lightning-arrow-deadeye",
   "patch": "3.29.0",
   "pob": { "ref": "2.51.0", "luaJIT": "2.1", "code": "eNq…" },
@@ -177,16 +177,20 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
   "tree": {
     "endgame": [12345, 67890],
     "checkpoints": {
-      "act5": [], "act10": [], "maps-early": [], "maps-red": [], "pinnacle": []
+      "until-12": [], "until-28": [], "until-68": [],
+      "maps-early": [], "maps-red": [], "pinnacle": []
     },
-    "respec": [ { "atStep": "act10", "taken": [], "dropped": [] } ]
+    "respec": [ { "atStep": "until-68", "taken": [], "dropped": [] } ]
   },
+  // The budget each checkpoint's gear is synthesised from; the shipped JSON
+  // carries the resulting items, gems and flasks under gates[cp].
   "gearSets": {
-    "act5":       { "budget": "leveling",   "items": [], "gemLevels": { "main": 5 } },
-    "act10":      { "budget": "ssf-start",  "items": [], "gemLevels": { "main": 18 } },
-    "maps-early": { "budget": "ssf-start",  "items": [], "gemLevels": { "main": 20 } },
-    "maps-red":   { "budget": "ssf-week1",  "items": [], "gemLevels": { "main": 20, "supports": 20 } },
-    "pinnacle":   { "budget": "trade",      "items": [], "gemLevels": { "main": 20, "supports": 20 } }
+    "until-12":   { "budget": "starting",   "items": [], "gemLevels": { "main": "…" } },
+    "until-28":   { "budget": "early",      "items": [], "gemLevels": { "main": "…" } },
+    "until-68":   { "budget": "ssf-start",  "items": [], "gemLevels": { "main": "…" } },
+    "maps-early": { "budget": "ssf-start",  "items": [], "gemLevels": { "main": "…" } },
+    "maps-red":   { "budget": "ssf-week1",  "items": [], "gemLevels": { "main": "…" } },
+    "pinnacle":   { "budget": "trade",      "items": [], "gemLevels": { "main": "…" } }
   },
   "links": {
     "leveling": [ { "gem": "Lightning Arrow", "supports": ["…"] } ],
@@ -203,8 +207,13 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
   },
   "config": { "flasks": "declared-uptime", "enabledKeys": ["…"] },
   "gates": {
-    "act5": { "pass": true, "dps": 1200, "ehp": 900, "maxHit": 1800, "mana": "ok" }
-    // all five checkpoint keys are required; the rest are rendered the same way
+    "maps-red": {
+      "pass": true,
+      "thresholds": { "life": 4500, "ehp": 12000, "maxHit": 6000, "dps": 120000 },
+      "metrics": { "dps": 141545, "life": 5674, "ehp": 30792, "maxHit": 8729 },
+      "failures": []
+    }
+    // all six checkpoint keys are required, each with pass: true
   },
   "repair": { "added": [], "removed": [], "evals": 812, "nodeDelta": 8, "status": "within-bound" },
   "guide": {
@@ -230,7 +239,7 @@ Rules:
 - `tree.checkpoints[cp]` is a **subset** of `tree.endgame`, asserted by test
   with valid topological order.
 - `gearSets` is keyed by the same checkpoint enum and names one `budget`; the
-  items are synthesised from `src/builds/gear/<budget>.yaml` (§7.7), so five
+  items are synthesised from `src/builds/gear/<budget>.yaml` (§7.7), so six
   hand-written item sets per build are never needed.
 - `uniques[].displayName` may be a unique item name; `uniques[].baseType` is the
   base the filter highlights, and it must be the base `filter.slots[slot]`
@@ -241,7 +250,7 @@ Rules:
   XML the user imports.
 - `filter.slots` uses the existing `SlotSpec` shape, so the filter derives from
   the build the same way it derives from an ascendancy today.
-- `gates` requires **all five** checkpoint keys and every one `pass: true`;
+- `gates` requires **all six** checkpoint keys and every one `pass: true`;
   anything else leaves the build unpublished (R2).
 - `gearSets[cp].items` is produced by the synthesiser (§7.7). A build YAML only
   carries overrides — the slot whose base the build actually needs.
@@ -250,9 +259,12 @@ Rules:
 - `id` is unique across the catalogue: exactly one build per (main skill,
   ascendancy). A second seed for the same pair is rejected, never published as a
   near-duplicate under a suffixed id (D26).
-- `ascendancyOrder` entries carry the lab that grants them. The `act5` checkpoint
-  assumes lab 1 (2 points), `act10` assumes labs 1–2 (4 points), so a gate never
-  evaluates a tree with ascendancy points the player cannot have (D29).
+- `ascendancyOrder` entries carry the lab that grants them, and each
+  checkpoint's `labs` count in `checkpoints.yaml` bounds how many may be
+  allocated: `until-12` and `until-28` assume no lab (the normal lab lands
+  around level 33), `until-68` assumes labs 1–3, and `maps-early` onward assume
+  all four. A gate therefore never evaluates a tree with ascendancy points the
+  player cannot have (D29).
 - `patch` is the game version of the PoB tag we verified against. With no PoB
   tag for the live league, every build is delisted and the site says **"waiting
   for PoB"** (D27) — verifying against last patch's data would be a silent lie.
@@ -285,14 +297,17 @@ hand-curated seeds (src/builds/*.yaml) — editorial input, reviewed by PR
 | Script | Job |
 |---|---|
 | `scripts/builds/patch-facts.mjs` | Diff PoB `TreeData`/`Gems` between two pinned tags; write the fact set. |
-| `scripts/builds/verify.mjs` | Seed → per-checkpoint PoB evaluation, gate evaluation, leave-one-out ablation. |
-| `scripts/builds/repair.mjs` | Bounded deterministic hill-climb (§7.5). |
-| `scripts/builds/derive-leveling.mjs` | Reverse-topological pruning of `endgame` to the reviewed point budget per step (`src/builds/leveling-points.yaml`, D30). |
-| `scripts/builds/synthesize-gear.mjs` | Budget constraints → concrete items, each line validated by effect (§7.7). |
-| `scripts/builds/write-guide.mjs` | Facts → prose with placeholders; then the claim checks run. |
+| `scripts/builds/pipeline.mjs` | Shared gear synthesis, gem levels, XML serialisation, oracle call and PoB-code encoding. |
+| `scripts/builds/verify.mjs` | Seed → one endgame plan → per-checkpoint pruning, PoB evaluation, bounded repair, gate evaluation and leave-one-out ablation. |
+| `scripts/builds/calibrate.mjs` | Must-pass and must-fail gates in both directions; commits `builds/calibration.json`. |
+| `scripts/builds/compile-builds.mjs` | Resolve prose and `factsHash`, compile the seeds to JSON, apply staleness. |
+| `scripts/builds/sign-guide.mjs` | Stamp a guide section's sign-off in the seed (`builds:sign`). |
+| `scripts/builds/publish-pobs.mjs` | Release only: create the pobb.in paste per build and commit the id map. |
+| `scripts/builds/check-pob-code.mjs` | Load every published code in the pinned PoB and compare its counts (`builds:check`). |
 
-`builds:refresh` chains them for the nightly workflow; each is runnable alone so
-a failure has a name. Nothing in the chain touches the network except the pinned
+`validate-builds.yml` chains patch facts, compile, calibrate, verify and the code
+check for the nightly workflow; each script is runnable alone so a failure has a
+name. Nothing in the chain touches the network except the pinned
 PoB clone (D31). Patch facts are consumed by three things: the gate
 evaluator (tree/gem validity), the registry checks (R8), and prose facts. They
 also drive delisting (R10).
@@ -309,12 +324,12 @@ version and content hashes of `TreeData` and `Gems`. Every build stores that
 hash, so "verified against a fact set that has since moved" is detectable
 offline, without a network call (R10).
 
-**Prose loop** — `write-guide.mjs` drafts a section from its declared facts, runs
-the §12.2 checks, and on failure retries once with the failure text appended. A
-second failure sets `guide.<section>.status: auto-retry`, still placeholder-resolved
-and still checked. Publication requires `guide.summary.status ∈
-{ signed, auto-breadth }`, the latter only on a non-flagship breadth page; every
-other section may be `auto-retry` (D1, D28).
+**Prose loop** — the prose is authored in the seed (model-drafted, at most two
+attempts, §9.1); `compile-builds.mjs` resolves its placeholders, computes
+`factsHash` and runs the §12.2 checks. A section that still fails is
+`auto-retry`, still placeholder-resolved and still checked. Publication requires
+`guide.summary.status ∈ { signed, auto-breadth }`, the latter only on a
+non-flagship breadth page; every other section may be `auto-retry` (D1, D28).
 
 ### 7.3 PoB oracle
 
@@ -402,9 +417,10 @@ value moves (D22), through a rolling PR, exactly like `chore/economy`.
 
 **Leveling checkpoints** — derived by reverse-topological pruning of `endgame`
 (drop a node once nothing depends on it) until the allocated count equals the
-budget in `src/builds/leveling-points.yaml` for that step. The budget is a
-human-reviewed per-patch table (D30); deriving it from quest counts at runtime is
-what breaks on every league.
+`points` budget in `src/builds/config/checkpoints.yaml` for that step (the same
+table that carries level, labs and gear budget; there is no separate leveling
+file). The budget is a human-reviewed per-patch table (D30); deriving it from
+quest counts at runtime is what breaks on every league.
 
 ### 7.6 Filter determinism
 
@@ -418,12 +434,15 @@ displays the hash and header line so a stale file is identifiable.
 ### 7.7 Gear synthesis
 
 Gates are only as honest as the items PoB evaluates them against, and
-hand-writing five item sets per build does not scale to 19 ascendancies.
+hand-writing six item sets per build does not scale to 19 ascendancies.
 
-- `src/builds/gear/<budget>.yaml` (`leveling`, `ssf-start`, `ssf-week1`, `trade`)
-  describes a budget as **constraints, not items**: candidate classes per slot,
-  max affix count, minimum roll tier, ilvl band, link count, quality, and
-  forbidden mod families (influence, veiled, essence-only, fractured).
+- `src/builds/gear/budgets.yaml` (`starting`, `early`, `leveling`, `ssf-start`,
+  `ssf-week1`, `trade`) describes a budget as **constraints, not items**:
+  candidate classes per slot, max affix count, minimum roll tier, ilvl band,
+  link count, quality, and forbidden mod families (influence, veiled,
+  essence-only, fractured). `profiles.yaml` supplies the bases and affixes each
+  archetype actually wears under that budget, so "ssf-week1" means the same test
+  for every build.
 - `scripts/builds/pipeline.mjs` emits one concrete item per slot: base type
   picked deterministically from the budget's candidates (lowest ilvl, then
   alphabetical), affixes chosen by a reviewed priority list per slot and family,
@@ -448,15 +467,21 @@ hand-writing five item sets per build does not scale to 19 ascendancies.
 
 ## 8. Gates
 
-Config lives in `scripts/builds/gates.yaml` (D20). Defaults, to be tuned:
+Config lives in `scripts/builds/gates.yaml` (D20), marked `calibrated: true`;
+that file is the only source of thresholds and the calibration report hashes it.
+The table below mirrors it at 0.66.0:
 
 | Checkpoint | Gear budget | Gates |
 |---|---|---|
-| `act5` | `leveling` (template set) | res capped, life ≥ 1200 |
-| `act10` | `ssf-start`: rares only, ≤3 useful mods, ilvl 68–75 bases, no influence, ≤5-link, gems 18/0%, no clusters, no awakened | res capped, life ≥ 2200 |
-| `maps-early` | `ssf-start` + 5-link | EHP ≥ 20k, max phys hit ≥ 8k, clear DPS ≥ 400k |
-| `maps-red` | `ssf-week1`: 6-link, 20/20 gems, clusters, core uniques allowed | EHP ≥ 30k, max phys hit ≥ 12k, single-target ≥ 2M |
-| `pinnacle` | `trade`, uncapped | single-target ≥ 5M, or an explicit boss-timer allowance |
+| `until-12` | `starting` (3-link) | life ≥ 250, DPS ≥ 25; resistances not required yet |
+| `until-28` | `early` (4-link) | life ≥ 700, DPS ≥ 350; resistances not required yet |
+| `until-68` | `ssf-start` (5-link) | resistances capped (75 after penalty), life ≥ 2000, max phys hit ≥ 2000, DPS ≥ 8000 |
+| `maps-early` | `ssf-start` (5-link) | resistances capped, life ≥ 3000, EHP ≥ 8000, max phys hit ≥ 4000, DPS ≥ 20000 |
+| `maps-red` | `ssf-week1` (6-link) | resistances capped, life ≥ 4500, EHP ≥ 12000, max phys hit ≥ 6000, DPS ≥ 120000 |
+| `pinnacle` | `trade` (6-link) | chaos resistance 75, life ≥ 5000, EHP ≥ 14000, max phys hit ≥ 7000, DPS ≥ 150000 |
+
+A `dad` profile in the same file lowers only the damage floor; the defensive
+gates are unchanged and the page labels the profile.
 
 **Honest-config whitelist** — one fixed config per archetype, recorded in
 `Build.config` and enforced by test: only self-applied buffs, declared flask
@@ -468,13 +493,12 @@ recalc, record `ablationDrop`. Full subset search is 2ⁿ and is out of scope.
 
 **Calibration runs in both directions** — the gates' own regression test:
 
-- **10 must-pass builds**: hand-built references that a competent player would
-  ship, **re-geared per checkpoint by the same synthesiser** (§7.7). They cover
-  `maps-early`, `maps-red` and `pinnacle`; the act checkpoints are covered by the
-  must-fail set plus the P1 reference build, because their leveling trees arrive
-  with derivation (P3). A failure means the gate is too strict; re-gearing is
-  what stops a trade-geared build from trivially clearing an `ssf-start` gate.
-- **10 must-fail builds** (uncapped res at `maps-red`, `act10` tree at T16,
+- **Every published build at every checkpoint is a must-pass observation**:
+  13 builds × 6 checkpoints = 78 at 0.66.0, each **re-geared per checkpoint by
+  the same synthesiser** (§7.7), including the Dad-profile builds. A failure
+  means the gate is too strict; re-gearing is what stops a trade-geared build
+  from trivially clearing an `ssf-start` gate.
+- **10 must-fail builds** (uncapped res at `maps-red`, `until-68` tree at T16,
   no sustain, 4-link at T16, no defensive layer, zero-damage-link swap, and so
   on). A pass means the gate is too loose — the failure that actually publishes
   bad builds.
@@ -495,7 +519,7 @@ step is a level bracket, not a filter phase; the page never calls one a "phase".
 | Ascendancy 1→4 | `ascendancyOrder`, with lab breakpoints tied to tree checkpoints |
 | Optional uniques | `uniques.core` vs `uniques.optional`, split by ablation, with the SSF source |
 | Passive tree path | `tree.checkpoints` as an ordered path; `tree.respec` marks the respec boundary |
-| Works at every stage | the gate strip: act5 / act10 / maps / red maps / pinnacle, each pass/fail |
+| Works at every stage | the gate strip: until-12 / until-28 / until-68 / early maps / red maps / pinnacle, each pass/fail |
 | SSF | the SSF gate result and each core unique's self-found route |
 | Filter while leveling | the step's filter download, right where that step starts |
 
@@ -519,17 +543,19 @@ Stale or failed builds render a banner and are excluded from `builds.html`
 
 ## 10. Site
 
-Rename to BuildPath (D11, D13): repo and directory done; `base`,
-`package.json`, workflows, docs and favicon still to land. One Pages deploy.
+Rename to BuildPath (D11, D13) is landed: the repository, `package.json`, all
+page titles, workflows, docs and the `base` path carry BuildPath. One Pages
+deploy.
 
 - `builds.html` — the catalogue: verified builds with the six-step pass/fail
   strip, red-map and pinnacle damage, and links to the guide and its filter. It
   reads `builds/index.json` alone (§7.2) and has no popularity widget, because
   there is no population data (D1, §7.4). A league selector waits for a second
   league to exist.
-- `build.html#build=<id>&step=<act1…act10|maps|boss>` — the page above. Hash
-  routes, same no-router rule as the builder; `step` only ever holds a guide
-  step value, never a checkpoint id.
+- `build.html#build=<id>&step=<until-12|until-28|until-68|maps-early|maps-red|pinnacle>`
+  — the page above. Hash routes, same no-router rule as the builder; `step` holds
+  one of the six checkpoint ids, the same key the gate report uses. The
+  `act1…act10` step set in revisions 1–10 never shipped.
 - `index.html` — the existing builder, introduced as "Filter", with
   `mode=build&build=<id>` preselecting a build.
 - Filter phase mapping (D10):
@@ -709,23 +735,6 @@ tests, human sign-off on prose only.
 - The six builds each have generated 16:9 header art and a working pobb.in
   paste with Gear, Gems and Tree.
 
-**P5 — per-phase filters, staleness delisting, league workflow, changelog.**
-Acceptance: a patch bump delists every unverified build and the site says so.
-
-**P7 — breadth, ratings and signing.** Thirteen builds: the six from P4 plus
-Arc Elementalist, Arc Totem Hierophant, Spectre Necromancer, Essence Drain
-Occultist, Righteous Fire Chieftain, Stone Golem Elementalist and Flicker Strike
-Slayer. Four editorial ratings (tankiness, single target, clear, cost) produce a
-derived C/B/A/S/S+ medal; Dad builds use a reviewed lower damage profile with
-the defensive gates unchanged. `builds:sign` stamps a guide section, and the
-compiler resolves it. The DoT metric now reads `TotalDot`/`TotalDPS`, so an
-Essence Drain or Righteous Fire gate measures the damage it actually deals.
-
-**P6 — build-first landing.** The catalogue is the root page; the filter
-builder moved to `filter.html`, and old `index.html#<state>` links forward to
-the builder. The nav order is Builds first, Filter second. Breadth links use
-build names, so two Juggernaut builds are readable as two different builds.
-
 **P5 status (complete: patch facts, delisting, league window).**
 
 - **Per-phase filters** remain one build object: `mode=build` generates
@@ -745,6 +754,44 @@ build names, so two Juggernaut builds are readable as two different builds.
   builds instead of silently keeping them.
 - **Changelog** stays in both `src/changelog.ts` and `CHANGELOG.md`; the
   release workflow builds the GitHub Release from the matching section.
+
+**P6 — build-first landing.** The catalogue is the root page; the filter
+builder moved to `filter.html`, and old `index.html#<state>` links forward to
+the builder. The nav order is Builds first, Filter second. Breadth links use
+build names, so two Juggernaut builds are readable as two different builds.
+
+**P6 status (complete: catalogue landing).**
+
+- The root `index.html` renders the catalogue; `filter.html` is the builder, and
+  `index.html#<state>` forwards to `filter.html#<state>` so old share links keep
+  working. `builds.html` remains a catalogue alias.
+- The shared header orders Builds before Filter, and every internal builder
+  link targets `filter.html`.
+- Breadth links use build names (`Boneshatter Juggernaut`, `Cyclone
+  Juggernaut`); `entrypoints.test.ts` pins the landing redirect, both page
+  entries and the shared catalogue script.
+
+**P7 — breadth, ratings and signing.** Thirteen builds: the six from P4 plus
+Arc Elementalist, Arc Totem Hierophant, Spectre Necromancer, Essence Drain
+Occultist, Righteous Fire Chieftain, Stone Golem Elementalist and Flicker Strike
+Slayer. Four editorial ratings (tankiness, single target, clear, cost) produce a
+derived C/B/A/S/S+ medal; Dad builds use a reviewed lower damage profile with
+the defensive gates unchanged. `builds:sign` stamps a guide section, and the
+compiler resolves it. The DoT metric now reads `TotalDot`/`TotalDPS`, so an
+Essence Drain or Righteous Fire gate measures the damage it actually deals.
+
+**P7 status (complete: thirteen builds, ratings and signing).**
+
+- Thirteen published builds across eight ascendancies, every one passing all six
+  checkpoints; the calibration must-pass set is 13 × 6 = 78 observations.
+- Four 1–10 editorial ratings derive the C/B/A/S/S+ medal; `ratings.test.ts`
+  pins the derivation and the S+ rule, and the catalogue shows the medal.
+- `dad` is a reviewed gate profile in `gates.yaml`: lower damage floors, the
+  defensive gates unchanged, the page labels the profile.
+- The oracle takes the best of `CombinedDPS`, `TotalDPS` and `TotalDot`, so the
+  DoT builds are measured on the damage they actually deal.
+- `builds:sign` stamps a seed section; `builds:build` resolves the sign-off and
+  `factsHash` into the committed JSON.
 
 ## 12. Testing
 
@@ -784,8 +831,9 @@ build names, so two Juggernaut builds are readable as two different builds.
 - Catalogue invariants: ids are unique and match (main skill, ascendancy); no
   two builds share the pair (D26).
 - Ascendancy points: every `ascendancyOrder` entry carries `lab ∈ 1…4`, each
-  node appears once, and the count of entries with `lab ≤ k` never exceeds the
-  points available at that checkpoint (2 for `act5`, 4 for `act10`).
+  node appears once, and no checkpoint allocates more labs than its `labs`
+  count in `checkpoints.yaml` (0 at `until-12` and `until-28`, 3 at `until-68`,
+  4 from `maps-early` on).
 - Determinism: two full runs over the cached input produce byte-identical
   `builds/` output **excluding `guide`**. Prose is model-written and is not part
   of the nightly chain; it is regenerated and signed as an explicit step (§9.1).
@@ -794,7 +842,9 @@ build names, so two Juggernaut builds are readable as two different builds.
 - Filter: existing golden/audit suites extend to `mode=build`.
 - Seeds: every `src/builds/*.yaml` validates against the schema and resolves to
   exactly one build; an orphan seed or an orphan generated build fails the build.
-- Calibration: 10 must-pass and 10 must-fail.
+- Calibration: every published build at every checkpoint is a must-pass
+  observation (13 × 6 = 78 at 0.66.0, including the Dad-profile builds), plus
+  the ten must-fail mutations and the unique-ablation probe.
 
 ### 12.2 The prose claim check (R1)
 
@@ -887,6 +937,27 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 23 — the plan reconciled with 0.66.0
+
+No behaviour change: this entry closes documentation drift against the shipped
+state.
+
+- The `Build` example, the rules, the gate table and the tests use the six
+  shipped checkpoints (`until-12 | until-28 | until-68 | maps-early | maps-red |
+  pinnacle`). The retired `act5`/`act10` keys survive only in revision history.
+- `gates.yaml` is named as the only threshold source, and §8's table mirrors the
+  calibrated values (the old 2M/5M defaults were never the shipped numbers).
+- Calibration is stated as a formula: every published build at all six
+  checkpoints (13 × 6 = 78 at this release), ten must-fail mutations and one
+  ablation probe.
+- §7.2 lists the scripts that shipped. Gear synthesis, leveling derivation and
+  repair live in `pipeline.mjs`, `verify.mjs` and `src/core/builds/repair.ts`,
+  not in files of their own.
+- The leveling budget path is `src/builds/config/checkpoints.yaml`;
+  `src/builds/leveling-points.yaml` never shipped.
+- P0.5, P6 and P7 are recorded as complete; §11 carries status blocks for P6 and
+  P7 like the earlier phases.
 
 ### Revision 22 — P7 breadth and ratings
 
