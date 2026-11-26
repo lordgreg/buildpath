@@ -1,4 +1,5 @@
 import type { FlaskChoice, GearItem } from '../core/builds/types.ts';
+import SlotGlyph from './SlotGlyph.tsx';
 import {
   FLASK_COUNT,
   INVENTORY_AREAS,
@@ -88,26 +89,38 @@ function SlotCell({
     <div
       style={{ gridArea: entry.area }}
       className={
-        tall
-          ? 'relative flex min-h-[10rem] flex-col justify-between rounded-[3px] border bg-[#090c12]/80 p-2 shadow-[inset_0_0_22px_rgba(0,0,0,0.75)] ' +
-            (item ? border : 'border-[#3a3529]')
-          : 'relative flex min-h-[4.8rem] flex-col justify-between rounded-[3px] border bg-[#090c12]/80 p-2 shadow-[inset_0_0_18px_rgba(0,0,0,0.75)] ' +
-            (item ? border : 'border-[#3a3529]')
+        'group relative flex flex-col justify-between rounded-[3px] border bg-[#090c12]/80 p-2 shadow-[inset_0_0_22px_rgba(0,0,0,0.75)] ' +
+        (item ? border : 'border-[#3a3529]') +
+        (tall ? ' min-h-[10rem]' : ' min-h-[5.6rem]')
       }
     >
-      <span className="text-[9px] uppercase tracking-[0.16em] text-[#6f6754]">
+      <SlotGlyph slot={entry.slot} tall={tall} />
+      <span className="relative z-10 text-[9px] uppercase tracking-[0.16em] text-[#6f6754]">
         {entry.label}
       </span>
       {item ? (
-        <span className={`mt-1 block break-words text-xs leading-tight ${colour}`}>
-          {item.base}
-          <span className="mt-1 block text-[10px] text-zinc-500">
-            {item.implicits?.length ? `${item.implicits.length} implicit · ` : ''}
-            {item.mods.length} mods
+        <span className="relative z-10 mt-1 block break-words text-xs leading-tight">
+          <span className={`block ${colour}`}>{item.base}</span>
+          {item.implicits && item.implicits.length > 0 && (
+            <span className="mt-0.5 block text-[9px] text-[#a794e0]">
+              {item.implicits.map((implicit) => implicit.mod).join(' · ')}
+            </span>
+          )}
+          <span className="mt-0.5 block space-y-0.5 text-[9px] leading-snug text-zinc-400">
+            {item.mods.slice(0, tall ? 5 : 2).map((mod) => (
+              <span key={mod} className="block truncate">
+                {mod}
+              </span>
+            ))}
+            {item.mods.length > (tall ? 5 : 2) && (
+              <span className="block text-[9px] text-zinc-600">
+                +{item.mods.length - (tall ? 5 : 2)} more
+              </span>
+            )}
           </span>
         </span>
       ) : (
-        <span className="mt-1 block text-[10px] text-[#3e3a31]">Empty</span>
+        <span className="relative z-10 mt-1 block text-[10px] text-[#3e3a31]">Empty</span>
       )}
       {item && (
         <>
@@ -124,16 +137,17 @@ function SlotCell({
 
 function FlaskCell({ flask, index }: { flask?: FlaskChoice; index: number }) {
   return (
-    <div className="group relative flex min-h-[4.3rem] flex-col justify-between rounded-[3px] border border-[#3a3529] bg-[#090c12]/80 p-2 shadow-[inset_0_0_18px_rgba(0,0,0,0.75)]">
-      <span className="text-[9px] uppercase tracking-[0.16em] text-[#6f6754]">
+    <div className="group relative flex min-h-[6.4rem] flex-col justify-between rounded-[3px] border border-[#3a3529] bg-[#090c12]/80 p-1.5 shadow-[inset_0_0_18px_rgba(0,0,0,0.75)]">
+      <SlotGlyph slot="Flask" />
+      <span className="relative z-10 text-[9px] uppercase tracking-[0.16em] text-[#6f6754]">
         Flask {index + 1}
       </span>
       {flask ? (
         <>
-          <span className="mt-1 block text-[11px] leading-tight text-[#8fb4ff]">
+          <span className="relative z-10 mt-1 block text-[11px] leading-tight text-[#8fb4ff]">
             {flask.name}
           </span>
-          <span className="mt-0.5 block text-[9px] uppercase tracking-wide text-zinc-600">
+          <span className="relative z-10 mt-0.5 block text-[9px] uppercase tracking-wide text-zinc-600">
             {flask.slot}
           </span>
           <span className="pointer-events-none absolute left-0 bottom-full z-30 mb-1 hidden w-56 max-w-[70vw] rounded-md border border-ink-600 bg-ink-950/95 p-2 text-left text-[11px] leading-snug text-zinc-300 shadow-xl group-hover:block">
@@ -143,7 +157,7 @@ function FlaskCell({ flask, index }: { flask?: FlaskChoice; index: number }) {
           </span>
         </>
       ) : (
-        <span className="mt-1 block text-[10px] text-[#3e3a31]">Empty</span>
+        <span className="relative z-10 mt-1 block text-[10px] text-[#3e3a31]">Empty</span>
       )}
     </div>
   );
@@ -186,7 +200,7 @@ export default function InventoryPanel({
           className="grid gap-2"
           style={{
             gridTemplateAreas: INVENTORY_AREAS,
-            gridTemplateColumns: '1.1fr 0.85fr 0.9fr 0.85fr 1.1fr',
+            gridTemplateColumns: 'repeat(7, minmax(0, 1fr))',
           }}
         >
           {INVENTORY_SLOTS.map((entry) => (
@@ -199,7 +213,7 @@ export default function InventoryPanel({
           ))}
         </div>
 
-        <div className="mt-2 grid grid-cols-5 gap-2 border-t border-[#3a3529] pt-2">
+        <div className="mx-auto mt-2 grid w-full max-w-[34rem] grid-cols-5 gap-2 border-t border-[#3a3529] pt-2">
           {flaskSlots.map((flask, index) => (
             <FlaskCell key={`flask-${index}`} flask={flask} index={index} />
           ))}
@@ -218,18 +232,28 @@ export default function InventoryPanel({
                     key={jewel.slot}
                     className="group relative flex min-h-[4rem] flex-col justify-between rounded-[3px] border border-[#3f4f8f] bg-[#090c12]/80 p-2 shadow-[inset_0_0_18px_rgba(0,0,0,0.75)]"
                   >
-                    <span className="text-[9px] uppercase tracking-[0.16em] text-[#6f6754]">
+                    <SlotGlyph slot="Jewel" />
+                    <span className="relative z-10 text-[9px] uppercase tracking-[0.16em] text-[#6f6754]">
                       {jewel.slot}
                     </span>
                     <span
-                      className={`mt-1 block break-words text-xs leading-tight ${
+                      className={`relative z-10 mt-1 block break-words text-xs leading-tight ${
                         RARITY_COLOUR[rarity] ?? RARITY_COLOUR.RARE!
                       }`}
                     >
                       {jewel.base}
                     </span>
-                    <span className="mt-0.5 block text-[10px] text-zinc-500">
-                      {jewel.mods.length} mods
+                    <span className="relative z-10 mt-0.5 block space-y-0.5 text-[9px] leading-snug text-zinc-400">
+                      {jewel.mods.slice(0, 3).map((mod) => (
+                        <span key={mod} className="block truncate">
+                          {mod}
+                        </span>
+                      ))}
+                      {jewel.mods.length > 3 && (
+                        <span className="block text-zinc-600">
+                          +{jewel.mods.length - 3} more
+                        </span>
+                      )}
                     </span>
                     <ItemTooltip item={jewel} slotLabel={jewel.slot} />
                   </div>

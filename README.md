@@ -6,7 +6,7 @@ Pick a family, an ascendancy or a meta build, then a phase and strictness, and
 download a valid `.filter` that highlights the bases your build actually wants
 and hides the rest. No account; everything is generated in your browser.
 
-**Status:** v0.58.0 — verified build guides whose every number is
+**Status:** v0.59.0 — verified build guides whose every number is
 machine-derived and reproducible. A build is a seed plus a pinned Path of
 Building measurement, a calibrated gate report, one endgame tree pruned into
 each leveling step, a published PoB code and the filter generated from the same
@@ -20,10 +20,16 @@ builds API.
 - Verified build guides: six checkpoints, a gate report for each, the PoB code
   the gate measured, and a filter generated from the same build
 - Gear drawn as an inventory sheet: weapon and offhand on the sides, armour,
-  rings, belt, boots and five flasks in their game positions
-- Required jewels are pinned to their passive-tree sockets, with the jewel name
-  in the tooltip and legend
+  rings, belt, boots and five flasks in their game positions, with mods shown
+  inline and faint slot glyphs behind empty space
+- Required jewels are pinned to their passive-tree sockets; click a jewel to
+  zoom to and pulse its socket
 - Endgame armour carries measured Eldritch Ember and Ichor implicits
+- Ascendancy circles with lab timing, a pantheon wheel, a separate bandit
+  section, and weighted pros/cons on every build
+- Gem tooltips explain what each gem does, from RePoE descriptions and effects
+- One-click PoB import through pob.cool, backed by a committed `.pob` asset
+- Generated 16:9 build header art
 - Gates calibrated in both directions against must-pass and must-fail references
 - Bounded repair: a failing step may swap one tree node, with a published
   `nodeDelta` and seed-vs-repaired view

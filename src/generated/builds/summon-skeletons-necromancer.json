@@ -7,6 +7,58 @@
   "family": "minion",
   "mainSkill": "Summon Skeletons",
   "summary": "League-start minion build. Skeletons do the damage, so a bad weapon is not a brick: cap your resistances, keep your minions alive, and the damage arrives with the gem levels. No required uniques, which is why it is the first build the pipeline proves.",
+  "pros": [
+    {
+      "weight": 3,
+      "text": "No required uniques; the league-start gear is the gear the guide shows."
+    },
+    {
+      "weight": 3,
+      "text": "Cheap to start: gem levels carry damage, not an expensive weapon."
+    },
+    {
+      "weight": 3,
+      "text": "Minions take the hits, so a mistake is usually recoverable."
+    },
+    {
+      "weight": 2,
+      "text": "Damage scales cleanly with gem levels and minion supports."
+    },
+    {
+      "weight": 2,
+      "text": "Good sustained damage against bosses that stay in one place."
+    },
+    {
+      "weight": 1,
+      "text": "Gear slots are flexible; resistances and life are the only hard requirements."
+    }
+  ],
+  "cons": [
+    {
+      "weight": 3,
+      "text": "Minion AI and positioning decide fights more than your own aim."
+    },
+    {
+      "weight": 3,
+      "text": "You are fragile when the minion wall breaks or you are caught alone."
+    },
+    {
+      "weight": 2,
+      "text": "Clear speed is slower than a bow or a well-geared melee build."
+    },
+    {
+      "weight": 2,
+      "text": "Offerings need corpses, so the damage rotation has setup."
+    },
+    {
+      "weight": 2,
+      "text": "Many gems compete for slots and links."
+    },
+    {
+      "weight": 1,
+      "text": "Leveling with skeletons is clunky before the first minion notables."
+    }
+  ],
   "minionCount": 6,
   "tree": {
     "endgame": [
@@ -7585,7 +7637,7 @@
     "pobRef": "v2.69.0",
     "treeVersion": "3_30",
     "calibrated": true,
-    "checkedAt": "2026-11-26T11:58:32.674Z"
+    "checkedAt": "2026-11-26T12:50:01.918Z"
   },
   "gemInfo": {
     "Arcane Surge": {
@@ -7600,7 +7652,20 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ]
     },
     "Brutality": {
       "requiredLevel": 38,
@@ -7612,13 +7677,34 @@
         ]
       },
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal no Elemental Damage",
+        "Supported Skills deal no Chaos Damage",
+        "Supported Skills deal 39% more Physical Damage"
+      ],
+      "tags": [
+        "physical"
+      ]
     },
     "Cast when Damage Taken": {
       "requiredLevel": 38,
       "quest": null,
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ]
     },
     "Clarity": {
       "requiredLevel": 10,
@@ -7633,13 +7719,35 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ]
     },
     "Convocation": {
       "requiredLevel": 24,
       "quest": null,
       "free": false,
-      "color": "w"
+      "color": "w",
+      "support": false,
+      "description": "Recalls all minions that are following you to your location, and grants them a temporary life regeneration effect.",
+      "effect": [
+        "Base duration is 2.00 seconds",
+        "Regenerate 1.65% of Life per second"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "spell"
+      ]
     },
     "Desecrate": {
       "requiredLevel": 16,
@@ -7651,7 +7759,22 @@
         ]
       },
       "free": true,
-      "color": "g"
+      "color": "g",
+      "support": false,
+      "description": "Desecrates the ground, spawning corpses based on monsters in the current area and dealing chaos damage over time to enemies. If you are using the Raise Spectre skill there is a chance to spawn spectral corpses matching your most recently raised Spectres. Spectral corpses cannot be interacted with except by Minion skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Spawns 5 corpses",
+        "Maximum of 10 corpses allowed",
+        "Deals 294 Base Chaos Damage per second",
+        "Spawned corpses' level matches the area level, up to a maximum of Level 80"
+      ],
+      "tags": [
+        "area",
+        "chaos",
+        "duration",
+        "spell"
+      ]
     },
     "Faster Casting": {
       "requiredLevel": 18,
@@ -7666,7 +7789,15 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 39% increased Cast Speed"
+      ],
+      "tags": [
+        "spell"
+      ]
     },
     "Feeding Frenzy": {
       "requiredLevel": 31,
@@ -7678,7 +7809,18 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Minions from Supported Skills are Aggressive",
+        "Minions from Supported Skills have 44% chance to grant Feeding Frenzy to you on Hit",
+        "Feeding Frenzy base Duration is 5.9 seconds"
+      ],
+      "tags": [
+        "duration",
+        "minion"
+      ]
     },
     "Flame Dash": {
       "requiredLevel": 10,
@@ -7693,7 +7835,24 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ]
     },
     "Flesh Offering": {
       "requiredLevel": 12,
@@ -7705,19 +7864,57 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": false,
+      "description": "Consumes a corpse, which temporarily empowers your minions with swiftness. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
+      "effect": [
+        "Base duration is 5.00 seconds",
+        "Additional 1.00 seconds Base Duration per extra corpse Consumed",
+        "Grants Minions 30% increased Attack Speed",
+        "Grants Minions 29% increased Movement Speed",
+        "Grants Minions 30% increased Cast Speed"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "spell"
+      ]
     },
     "Generosity": {
       "requiredLevel": 31,
       "quest": null,
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Auras do not affect you",
+        "Non-Curse Auras from Supported Skills have 39% increased Effect"
+      ],
+      "tags": [
+        "aura"
+      ]
     },
     "Immortal Call": {
       "requiredLevel": 34,
       "quest": null,
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ]
     },
     "Melee Physical Damage": {
       "requiredLevel": 18,
@@ -7733,7 +7930,19 @@
         ]
       },
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 10% less Attack Speed",
+        "Supported Skills deal 49% more Melee Physical Damage",
+        "Supported Skills deal 49% more Damage with Bleeding and Poison caused by Melee Hits"
+      ],
+      "tags": [
+        "attack",
+        "melee",
+        "physical"
+      ]
     },
     "Minion Damage": {
       "requiredLevel": 8,
@@ -7746,7 +7955,16 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Minions from Supported Skills have 25% less Maximum Life",
+        "Minions from Supported Skills deal 39% more Damage"
+      ],
+      "tags": [
+        "minion"
+      ]
     },
     "Minion Speed": {
       "requiredLevel": 18,
@@ -7758,7 +7976,18 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Minion Movement Speed",
+        "Supported Skills have 34% increased Minion Attack Speed",
+        "Supported Skills have 34% increased Minion Cast Speed"
+      ],
+      "tags": [
+        "minion",
+        "movement"
+      ]
     },
     "Multistrike": {
       "requiredLevel": 38,
@@ -7776,7 +8005,20 @@
         ]
       },
       "free": true,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Repeat 2 additional times",
+        "First Repeat of Supported Skills deals 22% more Damage",
+        "Second Repeat of Supported Skills deals 44% more Damage",
+        "Supported Skills have 44% more Melee Attack Speed",
+        "Supported Skills deal 20% less Attack Damage"
+      ],
+      "tags": [
+        "attack",
+        "melee"
+      ]
     },
     "Raise Zombie": {
       "requiredLevel": 1,
@@ -7788,7 +8030,17 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": false,
+      "description": "Raises a zombie minion from a corpse, which will follow you and attack enemies with a melee strike.",
+      "effect": [
+        "Maximum 6 Raised Zombies",
+        "Minions have 38% more Maximum Life"
+      ],
+      "tags": [
+        "minion",
+        "spell"
+      ]
     },
     "Summon Raging Spirit": {
       "requiredLevel": 4,
@@ -7800,7 +8052,20 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": false,
+      "description": "Summons a short-lived flaming skull that rushes at nearby enemies and attacks them rapidly, converting all its physical damage to fire. Enemies will not directly engage these spirits, and can pass through them.",
+      "effect": [
+        "Base duration is 5.00 seconds",
+        "Maximum 20 Summoned Raging Spirits",
+        "Minions cannot Taunt Enemies"
+      ],
+      "tags": [
+        "duration",
+        "fire",
+        "minion",
+        "spell"
+      ]
     },
     "Summon Skeletons": {
       "requiredLevel": 10,
@@ -7812,8 +8077,20 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": false,
+      "description": "Summon Skeleton Warrior minions at the targeted location. They use a melee attack and die after a duration. If made aggressive, Skeleton Warriors will also dash towards nearby enemies.",
+      "effect": [
+        "Base duration is 20.00 seconds",
+        "Summons 3 Skeleton Warriors",
+        "Maximum 7 Summoned Skeletons"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "spell"
+      ]
     }
   },
-  "seedHash": "bf7f64acc6a1"
+  "seedHash": "9d57ac78c245"
 }

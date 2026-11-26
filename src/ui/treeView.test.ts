@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { MIN_FRACTION, boundsOf, clampView, fitView, focalPoint, panView, zoomView } from './treeView.ts';
+import {
+  MIN_FRACTION,
+  boundsOf,
+  clampView,
+  fitView,
+  focalPoint,
+  focusPoint,
+  panView,
+  zoomView,
+} from './treeView.ts';
 import type { View } from './treeView.ts';
 
 const full: View = { x: -100, y: -100, w: 200, h: 200 };
@@ -28,6 +37,22 @@ describe('boundsOf', () => {
 
   it('falls back to a small box for an empty tree', () => {
     expect(boundsOf([])).toEqual({ x: -1, y: -1, w: 2, h: 2 });
+  });
+});
+
+describe('focusPoint', () => {
+  it('centres the view on a node and stays inside the tree', () => {
+    const view = focusPoint({ x: 0, y: 0 }, full, 0.22);
+    expect(view.w).toBeCloseTo(44);
+    expect(view.x).toBeLessThanOrEqual(0);
+    expect(view.y).toBeLessThanOrEqual(0);
+    expect(inside(view, full)).toBe(true);
+  });
+
+  it('pulls an edge node back into the constellation', () => {
+    const view = focusPoint({ x: 100, y: 100 }, full, 0.22);
+    expect(inside(view, full)).toBe(true);
+    expect(view.x + view.w).toBeLessThanOrEqual(full.x + full.w);
   });
 });
 

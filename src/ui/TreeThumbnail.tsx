@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from 'react';
 import type { TreeView } from '../core/builds/types.ts';
-import { boundsOf, fitView, focalPoint, panView, zoomView } from './treeView.ts';
+import { boundsOf, fitView, focalPoint, focusPoint, panView, zoomView } from './treeView.ts';
 import type { View } from './treeView.ts';
 
 interface GeometryNode {
@@ -92,6 +92,7 @@ export default function TreeThumbnail({
   const [geometry, setGeometry] = useState<Geometry | null>(null);
   const [view, setView] = useState<View | null>(null);
   const [tooltip, setTooltip] = useState<Tooltip | null>(null);
+  const [pulseNode, setPulseNode] = useState<number | null>(null);
   const [svg, setSvg] = useState<SVGSVGElement | null>(null);
   const size = useElementSize(svg);
   const drag = useRef<{ x: number; y: number } | null>(null);
@@ -129,6 +130,23 @@ export default function TreeThumbnail({
     for (const node of geometry?.nodes ?? []) map.set(node.id, { x: node.x, y: node.y });
     return map;
   }, [geometry]);
+
+  const focusJewel = useCallback(
+    (nodeId: number) => {
+      const point = points.get(nodeId);
+      if (!point || !full) return;
+      setTooltip(null);
+      setView(focusPoint(point, full, 0.22));
+      setPulseNode(nodeId);
+    },
+    [points, full],
+  );
+
+  useEffect(() => {
+    if (pulseNode === null) return;
+    const timer = setTimeout(() => setPulseNode(null), 2600);
+    return () => clearTimeout(timer);
+  }, [pulseNode]);
 
   // Scale maps tree units to CSS pixels. Nodes grow slowly with zoom so the
   // whole constellation stays legible and a zoomed-in cluster stays readable.
@@ -241,6 +259,39 @@ export default function TreeThumbnail({
       </g>
     );
   }, [geometry, jewelByNode, points, radius, strokeWidth]);
+
+  const pulseLayer = (() => {
+    if (pulseNode === null) return null;
+    const point = points.get(pulseNode);
+    if (!point) return null;
+    const base = Math.max(radius * 3.4, 10);
+    return (
+      <g pointerEvents="none">
+        <circle
+          cx={point.x}
+          cy={point.y}
+          r={base}
+          fill="none"
+          stroke="#f3e6bd"
+          strokeWidth={strokeWidth * 1.8}
+          vectorEffect="non-scaling-stroke"
+        >
+          <animate
+            attributeName="r"
+            values={`${base};${base * 2.2};${base}`}
+            dur="0.9s"
+            repeatCount="3"
+          />
+          <animate
+            attributeName="opacity"
+            values="1;0.15;1"
+            dur="0.9s"
+            repeatCount="3"
+          />
+        </circle>
+      </g>
+    );
+  })();
 
   const hoverLayer = tooltip ? (
     <circle
@@ -373,6 +424,7 @@ export default function TreeThumbnail({
         {staticLayer}
         {takenLayer}
         {jewelLayer}
+        {pulseLayer}
         {hoverLayer}
         {hitLayer}
       </svg>
@@ -475,12 +527,18 @@ export default function TreeThumbnail({
       {tree.jewels && tree.jewels.length > 0 && (
         <div className="mt-2 rounded-md border border-[#3f4f8f]/70 bg-[#11182a]/60 px-2.5 py-2">
           <p className="text-[10px] uppercase tracking-[0.16em] text-[#7ea9d8]">
-            Jewels at this step · blue diamonds on the tree
+            Jewels at this step · blue diamonds on the tree · click to focus
           </p>
           <ul className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-zinc-400">
             {tree.jewels.map((jewel) => (
               <li key={`${jewel.node}-${jewel.label}`}>
-                <span className="text-[#b7d7ff]">{jewel.label}</span> {jewel.base}
+                <button
+                  type="button"
+                  onClick={() => focusJewel(jewel.node)}
+                  className="rounded border border-transparent px-1 py-0.5 text-left underline-offset-2 hover:border-[#3f4f8f] hover:text-[#b7d7ff] hover:underline focus:border-[#3f4f8f] focus:outline-none"
+                >
+                  <span className="text-[#b7d7ff]">{jewel.label}</span> {jewel.base}
+                </button>
               </li>
             ))}
           </ul>

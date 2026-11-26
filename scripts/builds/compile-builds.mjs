@@ -45,6 +45,9 @@ const gemLevels = JSON.parse(
 ).gems;
 const gearProfiles =
   parse(readFileSync(resolve(seedsDir, 'gear/profiles.yaml'), 'utf8')).profiles ?? {};
+const pantheon = parse(
+  readFileSync(resolve(seedsDir, 'config/pantheon.yaml'), 'utf8'),
+);
 const gemLevel1 = (name) => gemLevels[name]?.levels?.[1];
 const gemName = (gem) => (typeof gem === 'string' ? gem : gem.name);
 const baseItems = new Map(
@@ -141,6 +144,10 @@ function describeGems(seed) {
         : null,
       free: quest ? quest.classes.includes(seed.class) : false,
       color: entry.color ?? null,
+      support: entry.support === true,
+      description: entry.description ?? null,
+      effect: entry.effect ?? [],
+      tags: entry.tags ?? [],
     };
   }
   return info;
@@ -263,6 +270,10 @@ rmSync(outDir, { recursive: true, force: true });
 mkdirSync(outDir, { recursive: true });
 if (calibration) writeFileSync(calibrationPath, calibration);
 writeFileSync(resolve(outDir, 'index.json'), `${JSON.stringify(index, null, 2)}\n`);
+writeFileSync(
+  resolve(root, 'src/generated/pantheon.json'),
+  `${JSON.stringify(pantheon, null, 2)}\n`,
+);
 for (const build of builds) {
   writeFileSync(
     resolve(outDir, `${build.id}.json`),

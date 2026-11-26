@@ -7,6 +7,58 @@
   "family": "melee",
   "mainSkill": "Boneshatter",
   "summary": "League-start melee build. Boneshatter trades a little life for stacks, so the gear is armour and resistances, the axe is a rare with attack speed, and the ascendancy makes the trauma survivable. No unique is required, which is what a strength build needs on day one of a solo league.",
+  "pros": [
+    {
+      "weight": 3,
+      "text": "Very tanky: armour, endurance charges and Juggernaut recovery."
+    },
+    {
+      "weight": 3,
+      "text": "No required unique; a rare two-handed axe is the whole damage slot."
+    },
+    {
+      "weight": 2,
+      "text": "Strong single-target once trauma stacks are running."
+    },
+    {
+      "weight": 2,
+      "text": "Cheap to gear because accuracy is solved by Resolute Technique."
+    },
+    {
+      "weight": 2,
+      "text": "Trauma scaling rewards staying in the fight."
+    },
+    {
+      "weight": 1,
+      "text": "A comfortable lab runner for the first two labyrinths."
+    }
+  ],
+  "cons": [
+    {
+      "weight": 3,
+      "text": "Trauma hurts you; mistakes and long fights tax your own life."
+    },
+    {
+      "weight": 3,
+      "text": "Melee range means you eat mechanics a ranged build can walk away from."
+    },
+    {
+      "weight": 2,
+      "text": "Attack speed is both damage and survival, so slow weapons feel bad."
+    },
+    {
+      "weight": 2,
+      "text": "Clear speed is slower than a bow or a minion build."
+    },
+    {
+      "weight": 1,
+      "text": "Mana is tight before leech and reduced cost are solved."
+    },
+    {
+      "weight": 1,
+      "text": "Resolute Technique gives up critical strikes entirely."
+    }
+  ],
   "gearProfile": "melee",
   "filter": {
     "slots": {
@@ -7443,7 +7495,7 @@
     "pobRef": "v2.69.0",
     "treeVersion": "3_30",
     "calibrated": true,
-    "checkedAt": "2026-11-26T11:58:03.377Z"
+    "checkedAt": "2026-11-26T12:49:34.330Z"
   },
   "gemInfo": {
     "Blood and Sand": {
@@ -7456,13 +7508,43 @@
         ]
       },
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": false,
+      "description": "Casts a buff that grants different bonuses to melee skills depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance.",
+      "effect": [
+        "Melee Skills have 5% less Area of Effect while in Blood Stance",
+        "Melee Skills deal 5% less Area Damage while in Sand Stance",
+        "190% increased Cooldown Recovery Rate",
+        "Melee Skills deal 27% more Area Damage while in Blood Stance",
+        "Melee Skills have 27% more Area of Effect while in Sand Stance"
+      ],
+      "tags": [
+        "low_max_level",
+        "spell",
+        "stance"
+      ]
     },
     "Boneshatter": {
       "requiredLevel": 28,
       "quest": null,
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": false,
+      "description": "Attack enemies with a forceful melee strike that also hurts you. Successive uses will raise the damage dealt both to enemies and you. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
+      "effect": [
+        "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
+        "Gain 1 Trauma the first time this Attack Hits an Enemy\nTake 194 Physical Damage per Trauma when you gain Trauma\nTrauma lasts 6.0 seconds",
+        "158 to 238 Added Physical Damage",
+        "6% more Damage per Trauma"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "duration",
+        "melee",
+        "physical",
+        "strike"
+      ]
     },
     "Brutality": {
       "requiredLevel": 38,
@@ -7474,13 +7556,34 @@
         ]
       },
       "free": true,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal no Elemental Damage",
+        "Supported Skills deal no Chaos Damage",
+        "Supported Skills deal 39% more Physical Damage"
+      ],
+      "tags": [
+        "physical"
+      ]
     },
     "Cast when Damage Taken": {
       "requiredLevel": 38,
       "quest": null,
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ]
     },
     "Cleave": {
       "requiredLevel": 1,
@@ -7492,7 +7595,17 @@
         ]
       },
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": false,
+      "description": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
+      "effect": [
+        "When Dual Wielding, Deals 60% Damage from each Weapon combined"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee"
+      ]
     },
     "Close Combat": {
       "requiredLevel": 18,
@@ -7506,7 +7619,20 @@
         ]
       },
       "free": true,
-      "color": "g"
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills grant Combat Rush on Hit\nCombat Rush lasts 2 seconds or until you use a Travel Skill",
+        "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
+        "Supported Skills can only be used with Axes or Swords",
+        "Supported Skills deal up to 39% more Melee Damage to Enemies, based on proximity"
+      ],
+      "tags": [
+        "attack",
+        "duration",
+        "melee"
+      ]
     },
     "Decoy Totem": {
       "requiredLevel": 4,
@@ -7520,7 +7646,19 @@
         ]
       },
       "free": true,
-      "color": "r"
+      "color": "r",
+      "support": false,
+      "description": "Summons a totem that taunts nearby monsters to attack it.",
+      "effect": [
+        "Totem lasts 8 seconds",
+        "Totems Summoned by this Skill cannot Evade",
+        "Summons a Totem which uses this Skill"
+      ],
+      "tags": [
+        "area",
+        "spell",
+        "totem"
+      ]
     },
     "Determination": {
       "requiredLevel": 24,
@@ -7532,7 +7670,20 @@
         ]
       },
       "free": true,
-      "color": "r"
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ]
     },
     "Enduring Cry": {
       "requiredLevel": 10,
@@ -7545,7 +7696,21 @@
         ]
       },
       "free": true,
-      "color": "r"
+      "color": "r",
+      "support": false,
+      "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
+      "effect": [
+        "Grants 1 Endurance Charge per 5 Power to you and Allied Players",
+        "Buff grants 2% of Life Regenerated per second per\n5 power, counting a maximum of 25 Power",
+        "Counts total Power of Enemies in Range",
+        "38% increased Warcry Speed",
+        "Base duration is 3.40 seconds"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "warcry"
+      ]
     },
     "Faster Attacks": {
       "requiredLevel": 8,
@@ -7561,13 +7726,36 @@
         ]
       },
       "free": true,
-      "color": "g"
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Attack Speed"
+      ],
+      "tags": [
+        "attack"
+      ]
     },
     "Immortal Call": {
       "requiredLevel": 34,
       "quest": null,
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ]
     },
     "Leap Slam": {
       "requiredLevel": 10,
@@ -7582,7 +7770,23 @@
         ]
       },
       "free": true,
-      "color": "r"
+      "color": "r",
+      "support": false,
+      "description": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
+      "effect": [
+        "+0.55 seconds to Attack Time",
+        "Base radius is 1.5 metres",
+        "Damaging Hits always Stun Enemies that are on Full Life",
+        "39% increased Stun Duration against Enemies that are on Full Life"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee",
+        "movement",
+        "slam",
+        "travel"
+      ]
     },
     "Melee Physical Damage": {
       "requiredLevel": 18,
@@ -7598,7 +7802,19 @@
         ]
       },
       "free": true,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 10% less Attack Speed",
+        "Supported Skills deal 49% more Melee Physical Damage",
+        "Supported Skills deal 49% more Damage with Bleeding and Poison caused by Melee Hits"
+      ],
+      "tags": [
+        "attack",
+        "melee",
+        "physical"
+      ]
     },
     "Pulverise": {
       "requiredLevel": 31,
@@ -7612,7 +7828,19 @@
         ]
       },
       "free": true,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 15% less Attack Speed",
+        "Supported Skills deal 49% more Melee Area Damage",
+        "Supported Skills have 34% increased Area of Effect"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee"
+      ]
     },
     "Ruthless": {
       "requiredLevel": 1,
@@ -7626,8 +7854,22 @@
         ]
       },
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
+        "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds",
+        "Ruthless Blows with Supported Skills deal 98% more Melee Damage",
+        "Ruthless Blows with Supported Skills deal 98% more Damage with\nAilments caused by Melee Hits"
+      ],
+      "tags": [
+        "attack",
+        "melee",
+        "slam",
+        "strike"
+      ]
     }
   },
-  "seedHash": "cb207c7644b1"
+  "seedHash": "acc671370109"
 }

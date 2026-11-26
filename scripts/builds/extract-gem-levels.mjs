@@ -75,7 +75,38 @@ for (const [id, gem] of Object.entries(gems)) {
       }
     : null;
 
-  out[name] = { levels, quest, color: gem.color ?? null };
+  // What the gem does. Skill gems carry a prose description; supports do not,
+  // so their level-20 stat line is the useful explanation. Constants (e.g.
+  // Lightning Arrow's conversion) live in `static.stat_text`.
+  const active = gem.active_skill ?? {};
+  const bestLevel = gem.per_level?.['20'] ? '20' : Object.keys(gem.per_level ?? {})[0];
+  const perLevel = bestLevel ? gem.per_level?.[bestLevel] : null;
+  const statText = {
+    ...(gem.static?.stat_text ?? {}),
+    ...(perLevel?.stat_text ?? {}),
+  };
+  const effect = [...new Set(Object.values(statText).filter(Boolean))].slice(0, 8);
+  const ignoredTags = new Set([
+    'intelligence',
+    'strength',
+    'dexterity',
+    'grants_active_skill',
+    'support',
+    'default',
+  ]);
+  const tags = [...new Set(gem.tags ?? [])]
+    .filter((tag) => !ignoredTags.has(tag))
+    .sort();
+
+  out[name] = {
+    levels,
+    quest,
+    color: gem.color ?? null,
+    support: gem.is_support === true,
+    description: active.description ?? null,
+    effect,
+    tags,
+  };
 }
 
 const names = Object.keys(out).sort();

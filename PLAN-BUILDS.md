@@ -712,6 +712,13 @@ Acceptance: a patch bump delists every unverified build and the site says so.
   implicit, and the oracle's parsed-implicit count matches what was written.
 - Lab test: no checkpoint below level 33 assumes a lab, and no checkpoint
   assumes more ascendancy nodes than its lab budget can grant.
+- Content test: every build has at least five weighted pros and cons, every
+  displayed gem has a description or effect line, and every pantheon/bandit id
+  resolves to the reviewed registry.
+- Asset test: every published build has a generated 16:9 header WebP and a
+  plain `.pob` asset equal to the PoB code.
+- Tree-focus test: `focusPoint` centres an edge node and stays inside the
+  constellation, like the pan/zoom invariants.
 - PoB round-trip: JSON → XML → code → PoB parse → same tree, links, item count.
 - Registry tests: gems, bases, ascendancies, pantheon ids and bandit ids all
   exist in the reviewed registries; no unique name in any emitted `BaseType`.
@@ -857,6 +864,31 @@ gear a player actually wears.
 - **One header.** The filter builder, catalogue, build page, simulator, audit
   and changelog use the same sticky header with the product name, active nav and
   version.
+- **The sheet is readable without a mouseover.** Item cells show their mods
+  inline (the tall slots more than the small ones), with a faint code-drawn
+  glyph behind each empty slot. Helmet/body and gloves/boots/rings share one
+  column width; the five flasks are narrower and taller.
+- **Jewels focus the tree.** Clicking a jewel in the legend zooms and centres
+  the view on its socket and pulses the marker. The focus maths lives in
+  `treeView.ts` and is tested like pan and zoom.
+- **Ascendancy is a path, not a card grid.** Each notable is a circle carrying
+  its point number and lab timing; the separate labyrinth section is gone
+  because the timing belongs on the point it grants.
+- **Pantheon is a wheel, bandit is its own section.** The wheel lights the
+  selected major and minor god; the table below names every god and its effect.
+  Bandit is a separate four-choice section below Pantheon (D17 data in
+  `config/pantheon.yaml`).
+- **Pros and cons are weighted content.** Each seed carries at least five of
+  each, with weight 1–3 rendered as stronger or quieter colour. The table sits
+  directly under the summary.
+- **Gems explain themselves.** The gem tooltip carries RePoE's description or,
+  for supports, the level-20 effect line, plus mechanical tags. The extractor
+  writes those fields into the committed gem table.
+- **PoB opens prefilled.** The publisher writes the same code as a plain `.pob`
+  asset; the page links `pob.cool/#build=<raw GitHub URL>`, so a reader can open
+  the measured build in one click and still copy the code offline.
+- **Header art is generated per build** (original art, 16:9 WebP, no game
+  assets) and sits under the title as orientation, not as evidence.
 
 ### Revision 14 — P3 landed
 

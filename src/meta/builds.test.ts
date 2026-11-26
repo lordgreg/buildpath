@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inflateSync } from 'node:zlib';
@@ -136,10 +136,27 @@ describe('published build data', () => {
             }[];
           }
         >;
-        gemInfo?: Record<string, { color?: string | null }>;
+        gemInfo?: Record<
+          string,
+          { color?: string | null; description?: string | null; effect?: string[]; tags?: string[] }
+        >;
+        pros?: { text: string; weight: number }[];
+        cons?: { text: string; weight: number }[];
         status: string;
       },
   );
+
+  it('gives every build at least five weighted pros and cons', () => {
+    for (const build of compiled) {
+      expect(build.pros?.length ?? 0, 'pros').toBeGreaterThanOrEqual(5);
+      expect(build.cons?.length ?? 0, 'cons').toBeGreaterThanOrEqual(5);
+      for (const entry of [...(build.pros ?? []), ...(build.cons ?? [])]) {
+        expect(entry.text.trim().length, entry.text).toBeGreaterThan(7);
+        expect(entry.weight, entry.text).toBeGreaterThanOrEqual(1);
+        expect(entry.weight, entry.text).toBeLessThanOrEqual(3);
+      }
+    }
+  });
 
   it('gives every leveling bracket a gear slot and at least one gem', () => {
     for (const build of compiled) {
@@ -256,6 +273,25 @@ describe('published build data', () => {
           roots.size,
           `${checkpoint}: ${nodes.length} nodes, ${edges.length} edges`,
         ).toBe(1);
+      }
+    }
+  });
+
+  it('explains what every displayed gem does', () => {
+    for (const build of compiled) {
+      const info = build.gemInfo ?? {};
+      for (const bracket of build.leveling.brackets) {
+        for (const group of bracket.skillGroups ?? []) {
+          for (const gem of group.gems) {
+            const name = typeof gem === 'string' ? gem : gem.name;
+            const entry = info[name];
+            expect(entry, `${build.class}: ${name}`).toBeDefined();
+            expect(
+              Boolean(entry?.description) || (entry?.effect?.length ?? 0) > 0,
+              `${build.class}: ${name} has no description or effect`,
+            ).toBe(true);
+          }
+        }
       }
     }
   });
@@ -378,6 +414,42 @@ describe('leveling tree derivation', () => {
           nodes.length,
         );
       }
+    }
+  });
+});
+
+describe('pantheon and bandit registry', () => {
+  const pantheon = JSON.parse(
+    readFileSync(resolve(root, 'src/generated/pantheon.json'), 'utf8'),
+  ) as {
+    major: Record<string, { name: string; effect: string }>;
+    minor: Record<string, { name: string; effect: string }>;
+    bandits: Record<string, { name: string; effect: string }>;
+  };
+  const compiled = BUILDS.map(
+    (entry) =>
+      JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        id: string;
+        pantheon: { major: string; minor: string; note?: string };
+        bandit: string;
+      },
+  );
+
+  it('resolves every build choice to a reviewed god and bandit', () => {
+    for (const build of compiled) {
+      expect(pantheon.major[build.pantheon.major], `${build.id} major`).toBeDefined();
+      expect(pantheon.minor[build.pantheon.minor], `${build.id} minor`).toBeDefined();
+      expect(pantheon.bandits[build.bandit], `${build.id} bandit`).toBeDefined();
+    }
+    for (const entry of [
+      ...Object.values(pantheon.major),
+      ...Object.values(pantheon.minor),
+      ...Object.values(pantheon.bandits),
+    ]) {
+      expect(entry.name.trim().length).toBeGreaterThan(2);
+      expect(entry.effect.trim().length).toBeGreaterThan(8);
     }
   });
 });
@@ -624,6 +696,23 @@ describe('published PoB code', () => {
       expect(build.pob!.checkpoint, build.id).toBe('maps-red');
       expect(build.pob!.ref, build.id).toBe(build.pipeline?.pobRef);
       expect(build.pob!.code, build.id).toMatch(/^[A-Za-z0-9_-]+={0,2}$/);
+    }
+  });
+
+  it('publishes a plain .pob asset that matches the code', () => {
+    for (const build of compiled) {
+      const path = resolve(root, `public/builds/${build.id}.pob`);
+      expect(existsSync(path), `${build.id} has no .pob asset`).toBe(true);
+      expect(readFileSync(path, 'utf8').trim(), build.id).toBe(build.pob!.code);
+    }
+  });
+
+  it('has a header image for every published build', () => {
+    for (const build of compiled) {
+      expect(
+        existsSync(resolve(root, `public/builds/${build.id}.webp`)),
+        `${build.id} has no generated header image`,
+      ).toBe(true);
     }
   });
 

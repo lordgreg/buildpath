@@ -7,6 +7,58 @@
   "family": "bow",
   "mainSkill": "Lightning Arrow",
   "summary": "League-start bow build. One skill in the body armour, a physical bow with attack speed, and gem levels carry the damage: nothing here needs a unique, so the same gear works on day one of a solo league. It is the second build the pipeline proves, and the first that is not a minion one.",
+  "pros": [
+    {
+      "weight": 3,
+      "text": "Fast clear: a single arrow covers a pack at range."
+    },
+    {
+      "weight": 3,
+      "text": "Strong league starter with no required unique."
+    },
+    {
+      "weight": 2,
+      "text": "Critical strikes and added lightning scale hard into maps."
+    },
+    {
+      "weight": 2,
+      "text": "Ranged play keeps you out of most retaliation range."
+    },
+    {
+      "weight": 2,
+      "text": "The filter and the build share the same bow and quiver bases."
+    },
+    {
+      "weight": 1,
+      "text": "Gear upgrades are easy to compare because the rare bow is the main damage slot."
+    }
+  ],
+  "cons": [
+    {
+      "weight": 3,
+      "text": "Evasion is the defensive layer; a bad streak of hits ends the map."
+    },
+    {
+      "weight": 3,
+      "text": "Single-target needs investment beyond the clear setup."
+    },
+    {
+      "weight": 2,
+      "text": "Critical gear is expensive relative to a plain resistance set."
+    },
+    {
+      "weight": 2,
+      "text": "Physical burst and spell damage are the common death causes."
+    },
+    {
+      "weight": 1,
+      "text": "Mana is tight before leech and reduced cost are online."
+    },
+    {
+      "weight": 1,
+      "text": "No built-in sustain; leech or life flasks have to cover it."
+    }
+  ],
   "gearProfile": "bow",
   "tree": {
     "endgame": [
@@ -7535,7 +7587,7 @@
     "pobRef": "v2.69.0",
     "treeVersion": "3_30",
     "calibrated": true,
-    "checkedAt": "2026-11-26T11:58:18.045Z"
+    "checkedAt": "2026-11-26T12:49:48.148Z"
   },
   "gemInfo": {
     "Added Lightning Damage": {
@@ -7551,13 +7603,32 @@
         ]
       },
       "free": false,
-      "color": "b"
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 19 to 358 added Lightning Damage"
+      ],
+      "tags": [
+        "lightning"
+      ]
     },
     "Cast when Damage Taken": {
       "requiredLevel": 38,
       "quest": null,
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ]
     },
     "Clarity": {
       "requiredLevel": 10,
@@ -7572,7 +7643,18 @@
         ]
       },
       "free": false,
-      "color": "b"
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ]
     },
     "Elemental Damage with Attacks": {
       "requiredLevel": 18,
@@ -7588,7 +7670,15 @@
         ]
       },
       "free": true,
-      "color": "r"
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Attack Skills deal 34% more Elemental Damage"
+      ],
+      "tags": [
+        "attack"
+      ]
     },
     "Faster Attacks": {
       "requiredLevel": 8,
@@ -7604,7 +7694,15 @@
         ]
       },
       "free": true,
-      "color": "g"
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Attack Speed"
+      ],
+      "tags": [
+        "attack"
+      ]
     },
     "Flame Dash": {
       "requiredLevel": 10,
@@ -7619,7 +7717,24 @@
         ]
       },
       "free": false,
-      "color": "b"
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ]
     },
     "Frenzy": {
       "requiredLevel": 16,
@@ -7633,7 +7748,18 @@
         ]
       },
       "free": true,
-      "color": "g"
+      "color": "g",
+      "support": false,
+      "description": "Performs an attack with a ranged weapon that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed.",
+      "effect": [
+        "5% more Attack Damage per Frenzy Charge",
+        "5% more Attack Speed per Frenzy Charge"
+      ],
+      "tags": [
+        "attack",
+        "bow",
+        "projectile"
+      ]
     },
     "Grace": {
       "requiredLevel": 24,
@@ -7646,7 +7772,19 @@
         ]
       },
       "free": true,
-      "color": "g"
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants evasion to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 29% more Evasion rating",
+        "You and nearby allies gain 1545 additional Evasion Rating",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ]
     },
     "Herald of Thunder": {
       "requiredLevel": 16,
@@ -7664,25 +7802,75 @@
         ]
       },
       "free": true,
-      "color": "b"
+      "color": "b",
+      "support": false,
+      "description": "Grants a buff which adds lightning damage to spells and attacks. If you kill a shocked enemy, this skill will create a storm, causing lightning bolts to strike enemies around you for a duration. The damage inflicted by this skill is not affected by modifiers to spell damage.",
+      "effect": [
+        "Base duration is 6.00 seconds",
+        "Storm Hits an Enemy every 0.25 Seconds",
+        "Cannot inflict Shock",
+        "Creates a storm when you Kill a Shocked Enemy",
+        "Buff grants 19 to 76 Added Spell Lightning Damage",
+        "Buff grants 19 to 76 Added Attack Lightning Damage",
+        "Deals 23 to 1108 Lightning Damage"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "herald",
+        "lightning",
+        "spell"
+      ]
     },
     "Immortal Call": {
       "requiredLevel": 34,
       "quest": null,
       "free": false,
-      "color": "r"
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ]
     },
     "Increased Critical Damage": {
       "requiredLevel": 18,
       "quest": null,
       "free": false,
-      "color": "b"
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +138% to Critical Strike Multiplier"
+      ],
+      "tags": [
+        "critical"
+      ]
     },
     "Increased Critical Strikes": {
       "requiredLevel": 8,
       "quest": null,
       "free": false,
-      "color": "b"
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +2% to Critical Strike Chance",
+        "Supported Skills have 117% increased Critical Strike Chance"
+      ],
+      "tags": [
+        "critical"
+      ]
     },
     "Lightning Arrow": {
       "requiredLevel": 12,
@@ -7694,7 +7882,21 @@
         ]
       },
       "free": true,
-      "color": "g"
+      "color": "g",
+      "support": false,
+      "description": "Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning, which also damages a number of surrounding enemies.",
+      "effect": [
+        "50% of Physical Damage Converted to Lightning Damage",
+        "Hits up to 3 additional enemies near the target",
+        "Shocks Enemies as though dealing 290% more Damage"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "bow",
+        "lightning",
+        "projectile"
+      ]
     },
     "Precision": {
       "requiredLevel": 10,
@@ -7709,7 +7911,20 @@
         ]
       },
       "free": true,
-      "color": "g"
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants accuracy and critical strike chance to you and your allies.",
+      "effect": [
+        "You and nearby allies gain +701 to Accuracy Rating",
+        "You and nearby allies gain 58% increased Critical Strike Chance",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "critical",
+        "spell"
+      ]
     },
     "Sniper's Mark": {
       "requiredLevel": 4,
@@ -7722,8 +7937,19 @@
         ]
       },
       "free": true,
-      "color": "g"
+      "color": "g",
+      "support": false,
+      "description": "Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time.",
+      "effect": [
+        "Projectiles which Hit Cursed Enemies Split towards 2 additional targets",
+        "Cursed enemies take 29% increased Damage from Projectile Hits"
+      ],
+      "tags": [
+        "curse",
+        "mark",
+        "spell"
+      ]
     }
   },
-  "seedHash": "847605c7c63c"
+  "seedHash": "d0d12849425e"
 }

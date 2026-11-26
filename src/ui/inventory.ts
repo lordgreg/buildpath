@@ -20,10 +20,13 @@ export const INVENTORY_SLOTS = [
   { area: 'boots', slot: 'Boots', label: 'Boots' },
 ] as const;
 
+// Seven equal columns keep the one-slot boxes (helmet, body, rings, gloves,
+// boots) the same width. Weapon and offhand span two columns, so they read as
+// the tall side slots without making the armour cells wide.
 export const INVENTORY_AREAS = `
-  "weapon helmet helmet amulet offhand"
-  "weapon ring1 body ring2 offhand"
-  "gloves gloves belt boots boots"
+  "weapon weapon . helmet amulet offhand offhand"
+  "weapon weapon ring1 body ring2 offhand offhand"
+  "gloves . . belt . boots ."
 `;
 
 export const FLASK_COUNT = 5;

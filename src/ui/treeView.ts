@@ -100,6 +100,25 @@ export function fitView(nodes: { x: number; y: number }[], full: View): View {
   );
 }
 
+/** Centres a zoomed view on one node, clamped inside the whole tree. */
+export function focusPoint(
+  point: { x: number; y: number },
+  full: View,
+  fraction = 0.22,
+): View {
+  const width = Math.min(Math.max(full.w * fraction, full.w * MIN_FRACTION), full.w);
+  const height = full.h * (width / full.w);
+  return clampView(
+    {
+      x: point.x - width / 2,
+      y: point.y - height / 2,
+      w: width,
+      h: height,
+    },
+    full,
+  );
+}
+
 /**
  * Converts a client point to a fraction of the drawn tree.
  *

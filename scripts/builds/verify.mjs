@@ -13,7 +13,7 @@
  *
  * Not shipped: PoB is a dev/CI dependency only (PLAN-BUILDS.md D6).
  */
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import {
   hashString,
@@ -32,6 +32,7 @@ import {
   gateThresholdsHash,
   outDir,
   readYaml,
+  root,
   runOracle,
   scaledMetrics,
   scratchDir,
@@ -357,6 +358,12 @@ for (const file of files) {
   build.tree = tree;
   build.pob = pob;
   build.status = status;
+  // A one-click pob.cool link needs a URL whose body is the code, not our JSON.
+  // This is the same published code the copy button shows; it is not an XML
+  // download, and it keeps the reader on the pinned PoB version.
+  const publicBuilds = resolve(root, 'public/builds');
+  mkdirSync(publicBuilds, { recursive: true });
+  writeFileSync(resolve(publicBuilds, `${seed.id}.pob`), pob.code);
   build.pipeline = {
     pobRef: process.env.POB_REF ?? 'v2.69.0',
     treeVersion: checkpoints.treeVersion,
