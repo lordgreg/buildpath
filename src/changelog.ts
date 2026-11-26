@@ -17,6 +17,22 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.60.0',
+    date: '2026-11-26',
+    title: 'The full ascendancy and a build link that opens',
+    notes: [
+      "Inventory geometry is fixed: gloves and boots sit beside the belt, weapon and offhand boxes are 80% of their old width, and rings/amulet are compact. The five flasks stay narrow and tall.",
+      "Ascendancy is now the **full graph**: every notable and every path passive is visible, with the chosen notables lit and their lab badges. The data lives in `ascendancies-full.yaml`. Lab timing stays under the graph; the separate labyrinth section is gone.",
+      "The gate report is a compact **Metric / Measured / Gate** table instead of a large spread-out card. It shows the actual thresholds each checkpoint was evaluated against.",
+      "Gem rows now carry a quality recommendation: `20q` when capping quality is worth it, `20q?` when it is optional, `no 20q` when quality does nothing. The tooltip explains the quality effect.",
+      "There is a dedicated **Filter** section on every build, linking the build-specific filter builder at leveling, early-map, endgame and bossing settings.",
+      "The broken pob.cool prefill is gone. pob.cool only accepts pobb.in URLs, and its current importer does not resolve the metadata pobb.in returns. The release publisher now creates a real pobb.in paste per build (`builds:publish-pobs`), the page links that paste directly, and the code copy remains for desktop PoB.",
+      "603 tests. Gates, trees and measured numbers are unchanged; calibration is still green.",
+    ],
+    commits: [],
+    compare: 'v0.59.0...v0.60.0',
+  },
+  {
     version: '0.59.0',
     date: '2026-11-26',
     title: 'The build page reads like a character sheet',
