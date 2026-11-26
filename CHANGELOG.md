@@ -2,6 +2,16 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.71.0 — 2026-11-26
+
+Goals, gear targets and crafting, step by step.
+
+- Every build guide now has a **Step plan** under the step picker. It answers three questions for the selected checkpoint: what to prioritise now, which modifiers are worth paying for on each slot, and which crafting recipes are actually available.
+- Sixteen reviewed profiles in [`step-plans.yaml`](./src/builds/config/step-plans.yaml) cover all six checkpoints. The compiler rejects a missing checkpoint, an empty goal list, or a slot without a modifier.
+- The advice is build-specific, not generic. Boneshatter at level 12 says to upgrade the physical axe whenever a higher-DPS base drops. The Necromancer plans call out `+1 to Level of all Minion Skill Gems`, Minion Damage and Minion Life, with the wand trigger recipe only where it matters.
+- The panel follows the same step as the tree, gems and gear, so the page never shows endgame gear advice while you are reading the leveling step.
+- 655 tests.
+
 ## 0.70.0 — 2026-11-26
 
 The Wickerman, and quality earns its place at red maps.
