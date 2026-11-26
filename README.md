@@ -6,7 +6,7 @@ Pick a family, an ascendancy or a meta build, then a phase and strictness, and
 download a valid `.filter` that highlights the bases your build actually wants
 and hides the rest. No account; everything is generated in your browser.
 
-**Status:** v0.63.0 — verified build guides whose every number is
+**Status:** v0.64.0 — verified build guides whose every number is
 machine-derived and reproducible. A build is a seed plus a pinned Path of
 Building measurement, a calibrated gate report, one endgame tree pruned into
 each leveling step, a published PoB code and the filter generated from the same
@@ -35,7 +35,8 @@ builds API.
 - Compact Metric / Measured / Gate tables with the actual checkpoint thresholds
 - Gem tooltips explain what each gem does and whether 20% quality is worth it
 - A Filter section that opens the build-specific builder at the right phase
-- One-click build link through pobb.in, with Gear, Gems and Tree rendered there
+- One-click build link through pobb.in for the selected step, with Gear, Gems
+  and the passive tree at that step; the canonical maps-red code is still kept
 - A release step that publishes the measured code to pobb.in and commits the
   link map; the copy button remains for desktop PoB
 - Generated 16:9 build header art

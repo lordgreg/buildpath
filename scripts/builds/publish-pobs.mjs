@@ -4,10 +4,12 @@
  *
  *   npm run builds:publish-pobs
  *
- * This is a release step, not part of the nightly verification: it creates a
- * public paste on a third-party service and the id is not reproducible. Run it
- * after `builds:verify`, commit the link map, then tag. `builds.test.ts` checks
- * that every link still matches the code it was created from.
+ * One paste per guide step, so the pasted build shows the tree, gear and gems
+ * for the step the reader selected. This is a release step, not part of the
+ * nightly verification: it creates public pastes on a third-party service and
+ * the ids are not reproducible. Run it after `builds:verify`, commit the link
+ * map, then tag. `builds.test.ts` checks that every link still matches the
+ * code it was created from.
  */
 import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -33,36 +35,65 @@ if (files.length === 0) {
   process.exit(1);
 }
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function publish(buildId, checkpoint, code) {
+  for (let attempt = 1; attempt <= 6; attempt += 1) {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'user-agent': 'BuildPath release publisher (+https://github.com/lordgreg/buildpath)',
+      },
+      body: JSON.stringify({ content: code }),
+    });
+    if (response.status === 429 || response.status >= 500) {
+      const retryAfter = Number(response.headers.get('retry-after')) || attempt * 3000;
+      console.log(
+        `${buildId}/${checkpoint}: ${response.status}; retrying in ${retryAfter} ms`,
+      );
+      await sleep(retryAfter);
+      continue;
+    }
+    const payload = await response.json().catch(() => null);
+    if (!response.ok || typeof payload !== 'string') {
+      throw new Error(
+        `${buildId}/${checkpoint}: pobb.in rejected the code (${response.status}) ${JSON.stringify(payload)}`,
+      );
+    }
+    return payload;
+  }
+  throw new Error(`${buildId}/${checkpoint}: pobb.in rate limit did not clear`);
+}
+
 const links = {};
+let published = 0;
 for (const file of files) {
   const build = JSON.parse(readFileSync(resolve(outDir, file), 'utf8'));
-  if (!build.pob?.code) {
-    console.error(`${build.id}: no published PoB code; run builds:verify first`);
-    process.exit(1);
-  }
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      'user-agent': 'BuildPath release publisher (+https://github.com/lordgreg/buildpath)',
-    },
-    body: JSON.stringify({ content: build.pob.code }),
-  });
-  const payload = await response.json().catch(() => null);
-  if (!response.ok || typeof payload !== 'string') {
-    console.error(`${build.id}: pobb.in rejected the code`, response.status, payload);
-    process.exit(1);
-  }
-  links[build.id] = {
-    id: payload,
-    url: `https://pobb.in/${payload}`,
-    codeHash: createHash('sha256').update(build.pob.code).digest('hex').slice(0, 16),
+  const steps = build.pob?.byStep ?? {
+    [build.pob?.checkpoint ?? 'unknown']: build.pob?.code,
   };
-  console.log(`${build.id}: https://pobb.in/${payload}`);
+  links[build.id] = {};
+  for (const [checkpoint, code] of Object.entries(steps)) {
+    if (!code) {
+      console.error(`${build.id}/${checkpoint}: no PoB code; run builds:verify first`);
+      process.exit(1);
+    }
+    const payload = await publish(build.id, checkpoint, code);
+    links[build.id][checkpoint] = {
+      id: payload,
+      url: `https://pobb.in/${payload}`,
+      codeHash: createHash('sha256').update(code).digest('hex').slice(0, 16),
+    };
+    published += 1;
+    console.log(`${build.id}/${checkpoint}: https://pobb.in/${payload}`);
+    // The API is rate-limited; a release step can afford a pause.
+    await sleep(900);
+  }
 }
 
 writeFileSync(
   resolve(root, 'src/generated/builds/pob-links.json'),
   `${JSON.stringify({ schemaVersion: 1, links }, null, 2)}\n`,
 );
-console.log(`pob links: ${Object.keys(links).length} published`);
+console.log(`pob links: ${published} pastes across ${Object.keys(links).length} builds`);

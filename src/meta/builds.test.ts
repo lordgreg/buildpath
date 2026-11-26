@@ -835,7 +835,12 @@ describe('published PoB code', () => {
         class: string;
         status: string;
         pipeline?: { pobRef: string };
-        pob?: { ref: string; checkpoint: string; code: string };
+        pob?: {
+          ref: string;
+          checkpoint: string;
+          code: string;
+          byStep?: Record<string, string>;
+        };
         gates?: Record<
           string,
           {
@@ -873,18 +878,23 @@ describe('published PoB code', () => {
     }
   });
 
-  it('has a matching pobb.in link for every published code', () => {
+  it('has a matching pobb.in link for every step', () => {
     const links = JSON.parse(
       readFileSync(resolve(root, 'src/generated/builds/pob-links.json'), 'utf8'),
     ) as {
-      links: Record<string, { id: string; url: string; codeHash: string }>;
+      links: Record<string, Record<string, { id: string; url: string; codeHash: string }>>;
     };
     for (const build of compiled) {
-      const link = links.links[build.id];
-      expect(link, `${build.id} has no pobb.in link`).toBeDefined();
-      expect(link.url, build.id).toBe(`https://pobb.in/${link.id}`);
-      const hash = createHash('sha256').update(build.pob!.code).digest('hex').slice(0, 16);
-      expect(link.codeHash, `${build.id} paste is stale`).toBe(hash);
+      const codes = build.pob!.byStep ?? {
+        [build.pob!.checkpoint]: build.pob!.code,
+      };
+      for (const [checkpoint, code] of Object.entries(codes)) {
+        const link = links.links[build.id]?.[checkpoint];
+        expect(link, `${build.id}/${checkpoint} has no pobb.in link`).toBeDefined();
+        expect(link.url, `${build.id}/${checkpoint}`).toBe(`https://pobb.in/${link.id}`);
+        const hash = createHash('sha256').update(code).digest('hex').slice(0, 16);
+        expect(link.codeHash, `${build.id}/${checkpoint} paste is stale`).toBe(hash);
+      }
     }
   });
 
@@ -897,29 +907,35 @@ describe('published PoB code', () => {
     }
   });
 
-  it('decodes to the tree, items and gems the gate report measured', () => {
+  it('decodes every step code to the tree, items and gems of that step', () => {
     for (const build of compiled) {
-      const gate = build.gates?.['maps-red'];
-      expect(gate, `${build.id} has no maps-red gate report`).toBeDefined();
-      const xml = decode(build.pob!.code);
-      expect(xml.startsWith('<?xml'), build.id).toBe(true);
-      expect(xml, build.id).toContain('<PathOfBuilding>');
-      expect(xml, build.id).toContain(`className="${build.class}"`);
-      expect(xml, build.id).toContain(`<Build level="${gate!.level}"`);
+      const codes = build.pob!.byStep ?? {
+        [build.pob!.checkpoint]: build.pob!.code,
+      };
+      for (const [checkpoint, code] of Object.entries(codes)) {
+        const gate = build.gates?.[checkpoint];
+        expect(gate, `${build.id}/${checkpoint} has no gate report`).toBeDefined();
+        const xml = decode(code);
+        const label = `${build.id}/${checkpoint}`;
+        expect(xml.startsWith('<?xml'), label).toBe(true);
+        expect(xml, label).toContain('<PathOfBuilding>');
+        expect(xml, label).toContain(`className="${build.class}"`);
+        expect(xml, label).toContain(`<Build level="${gate!.level}"`);
+        expect(xml, label).toContain('<URL>');
 
-      const specNodes = xml.match(/<Spec\b[^>]*\bnodes="([^"]*)"/)?.[1] ?? '';
-      expect(specNodes.split(',').filter(Boolean).length, build.id).toBe(
-        gate!.tree.nodes.length + gate!.metrics.ascendancy,
-      );
-      // Flasks are items in their own slots, shown in their own section.
-      const flaskSlots = (xml.match(/<Slot name="Flask /g) ?? []).length;
-      expect((xml.match(/<Item id=/g) ?? []).length - flaskSlots, build.id).toBe(
-        gate!.gear.length,
-      );
-      expect(flaskSlots, build.id).toBe(gate!.flasks?.length ?? 0);
-      expect((xml.match(/<Gem /g) ?? []).length, build.id).toBe(
-        gate!.gems.reduce((sum, group) => sum + group.gems.length, 0),
-      );
+        const specNodes = xml.match(/<Spec\b[^>]*\bnodes="([^"]*)"/)?.[1] ?? '';
+        expect(specNodes.split(',').filter(Boolean).length, label).toBe(
+          gate!.tree.nodes.length + gate!.metrics.ascendancy,
+        );
+        const flaskSlots = (xml.match(/<Slot name="Flask /g) ?? []).length;
+        expect((xml.match(/<Item id=/g) ?? []).length - flaskSlots, label).toBe(
+          gate!.gear.length,
+        );
+        expect(flaskSlots, label).toBe(gate!.flasks?.length ?? 0);
+        expect((xml.match(/<Gem /g) ?? []).length, label).toBe(
+          gate!.gems.reduce((sum, group) => sum + group.gems.length, 0),
+        );
+      }
     }
   });
 });

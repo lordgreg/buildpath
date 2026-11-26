@@ -874,6 +874,22 @@ AGENTS.md and PLAN.md.
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
 
+### Revision 20 — step-specific imports
+
+- **Breadth labels are build names.** The breadth list no longer shows
+  `Juggernaut` twice with no context; each link names the build and keeps the
+  ascendancy as a muted suffix.
+- **`auto-retry` is explained in place.** The guide legend says signed =
+  reviewed, auto-retry = generated from facts and passing checks but unsigned,
+  stale = facts moved after sign-off.
+- **pobb.in follows the step.** Verification writes a code for every checkpoint,
+  the release publisher creates one paste per step, and the page links the
+  selected step's paste. Gear, gems and the passive tree therefore match the
+  step picker instead of always showing the maps-red build. The canonical
+  `.pob` asset and the maps-red code remain for the published evidence.
+- The publisher now retries pobb.in rate limits; 36 pastes are created per
+  release for six builds.
+
 ### Revision 19 — P5 landed
 
 - **Patch facts are a committed artefact.** `patch-facts.json` hashes the pinned

@@ -266,16 +266,17 @@ function verifySeed(seed) {
   }
   const report = {};
   const checkpointTrees = {};
+  const stepCodes = {};
   let allPass = true;
-  const codeXmlPath = resolve(scratchDir, `${seed.id}-${codeCheckpoint}.xml`);
 
   for (const [id, checkpoint] of Object.entries(checkpoints.checkpoints)) {
+    const xmlPath = resolve(scratchDir, `${seed.id}-${id}.xml`);
     const initial = evaluateCheckpoint({
       seed,
       checkpointId: id,
       checkpoint,
       plan,
-      xmlOut: id === codeCheckpoint ? codeXmlPath : undefined,
+      xmlOut: xmlPath,
     });
     const repaired = repairCheckpoint({
       seed,
@@ -284,6 +285,19 @@ function verifySeed(seed) {
       plan,
       initial,
     });
+    // Repair trials do not write XML; re-run the final tree once so the
+    // published code for this step is the tree the report measured.
+    if (repaired.repair.nodeDelta > 0) {
+      evaluateTree({
+        seed,
+        checkpointId: id,
+        checkpoint,
+        plan,
+        nodes: repaired.nodes,
+        xmlOut: xmlPath,
+      });
+    }
+    stepCodes[id] = encodePobCode(readFileSync(xmlPath, 'utf8'));
     const { metrics, scaled, gate, gear, bracket, groups } = repaired;
     allPass = allPass && gate.pass;
     checkpointTrees[id] = repaired.nodes;
@@ -314,7 +328,7 @@ function verifySeed(seed) {
     );
     if (!gate.pass) console.log(`  ${gate.failures.join('; ')}`);
   }
-  if (!existsSync(codeXmlPath)) {
+  if (!stepCodes[codeCheckpoint]) {
     throw new Error(`${seed.id}: the ${codeCheckpoint} oracle run wrote no XML`);
   }
   return {
@@ -327,7 +341,8 @@ function verifySeed(seed) {
     pob: {
       ref: process.env.POB_REF ?? 'v2.69.0',
       checkpoint: codeCheckpoint,
-      code: encodePobCode(readFileSync(codeXmlPath, 'utf8')),
+      code: stepCodes[codeCheckpoint],
+      byStep: stepCodes,
     },
   };
 }

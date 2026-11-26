@@ -204,7 +204,10 @@ export default function BuildsPage() {
                         href={`./build.html#build=${build.id}`}
                         className="text-zinc-300 underline-offset-2 hover:text-white hover:underline"
                       >
-                        {titleCase(build.ascendancyId)}
+                        {build.name}
+                        <span className="ml-1 text-[10px] text-zinc-600">
+                          {titleCase(build.ascendancyId)}
+                        </span>
                       </a>
                     ))}
                 </dd>

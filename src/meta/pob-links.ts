@@ -8,11 +8,15 @@ export interface PobLink {
 
 const links = data as {
   schemaVersion: number;
-  links: Record<string, PobLink>;
+  links: Record<string, Record<string, PobLink>>;
 };
 
-export function getPobLink(buildId: string): PobLink | undefined {
-  return links.links[buildId];
+export function getPobLink(buildId: string, checkpoint: string): PobLink | undefined {
+  return links.links[buildId]?.[checkpoint];
+}
+
+export function getPobLinks(buildId: string): Record<string, PobLink> {
+  return links.links[buildId] ?? {};
 }
 
 export const POB_LINKS = links.links;
