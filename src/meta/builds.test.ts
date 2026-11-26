@@ -35,6 +35,33 @@ describe('compiled build seeds', () => {
     expect(BUILDS.map((build) => build.id).sort()).toEqual(seedIds);
   });
 
+  it('tags every guide with a season and keeps a changelog', () => {
+    for (const entry of BUILDS) {
+      expect(entry.season?.id, entry.id).toBeTruthy();
+      expect(entry.season?.name, entry.id).toBeTruthy();
+      expect(
+        entry.chips?.some(
+          (chip) => chip.kind === 'season' && chip.label === entry.season?.name,
+        ),
+        `${entry.id} season chip`,
+      ).toBe(true);
+      const full = JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        changelog?: { season: string; seasonName?: string; date: string; notes: string[] }[];
+      };
+      const changelog = full.changelog ?? [];
+      expect(changelog.length, `${entry.id} changelog`).toBeGreaterThan(0);
+      for (const update of changelog) {
+        expect(update.notes.length, `${entry.id} ${update.date}`).toBeGreaterThan(0);
+        expect(Number.isNaN(Date.parse(`${update.date}T00:00:00Z`)), update.date).toBe(false);
+      }
+      const newest = changelog.at(-1)!;
+      expect(newest.season, `${entry.id} newest season`).toBe(entry.season?.id);
+      expect(newest.seasonName, `${entry.id} newest season name`).toBe(entry.season?.name);
+    }
+  });
+
   it('keeps the committed index in step with the seeds', () => {
     // The drift guard: a committed index that no longer matches the seeds means
     // someone edited YAML without running `npm run builds:build`.

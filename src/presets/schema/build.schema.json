@@ -22,7 +22,9 @@
     "tree",
     "ascendancyOrder",
     "bandit",
-    "pantheon"
+    "pantheon",
+    "season",
+    "changelog"
   ],
   "properties": {
     "schemaVersion": {
@@ -68,6 +70,36 @@
     "summary": {
       "type": "string",
       "minLength": 20
+    },
+    "season": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "League id this guide was created for or last updated for. Must match a league in src/presets/leagues/index.yaml and the newest changelog entry."
+    },
+    "changelog": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Guide updates, oldest first in the seed. The newest entry's season must match `season`.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["season", "date", "notes"],
+        "properties": {
+          "season": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "notes": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 3 }
+          }
+        }
+      }
     },
     "flagship": {
       "type": "boolean",

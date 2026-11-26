@@ -60,6 +60,23 @@ const ascendanciesFull = parse(
 const league = parse(
   readFileSync(resolve(seedsDir, 'config/league.yaml'), 'utf8'),
 );
+// Season tags are display names from the reviewed league registry, never the
+// raw id, so the catalogue reads "Covens" rather than "covens".
+const leaguesIndex = parse(
+  readFileSync(resolve(root, 'src/presets/leagues/index.yaml'), 'utf8'),
+);
+const leaguesById = new Map(
+  (leaguesIndex.leagues ?? []).map((entry) => {
+    const detailPath = resolve(root, `src/presets/leagues/${entry.id}.yaml`);
+    const detail = existsSync(detailPath)
+      ? parse(readFileSync(detailPath, 'utf8'))
+      : undefined;
+    return [
+      entry.id,
+      { id: entry.id, name: detail?.league?.name ?? entry.name ?? entry.id },
+    ];
+  }),
+);
 const leagueOpen = leagueWindowOpen(new Date(), league.startsAt);
 const patchFactsPath = resolve(root, 'src/generated/patch-facts.json');
 const patchFacts = existsSync(patchFactsPath)
@@ -137,6 +154,52 @@ function checkBrackets(seed, file) {
 }
 
 /**
+ * A guide's season tag and its changelog are one promise: the tag says which
+ * league the current guide belongs to, and the newest changelog entry must be
+ * that league's update. Updating for a new league therefore cannot land with a
+ * stale tag, and a tag cannot move without a line saying what changed.
+ */
+function checkSeason(seed, file) {
+  const season = leaguesById.get(seed.season);
+  if (!season) {
+    console.error(
+      `build seed invalid: ${file}\n  unknown season "${seed.season}" (see src/presets/leagues/index.yaml)`,
+    );
+    process.exit(1);
+  }
+  if (!Array.isArray(seed.changelog) || seed.changelog.length === 0) {
+    console.error(`build seed invalid: ${file}\n  changelog must have at least one entry`);
+    process.exit(1);
+  }
+  let previous = 0;
+  for (const entry of seed.changelog) {
+    if (!leaguesById.has(entry.season)) {
+      console.error(
+        `build seed invalid: ${file}\n  changelog names unknown season "${entry.season}"`,
+      );
+      process.exit(1);
+    }
+    const at = Date.parse(`${entry.date}T00:00:00Z`);
+    if (!Number.isFinite(at)) {
+      console.error(`build seed invalid: ${file}\n  changelog date "${entry.date}" is invalid`);
+      process.exit(1);
+    }
+    if (at < previous) {
+      console.error(`build seed invalid: ${file}\n  changelog entries must be oldest first`);
+      process.exit(1);
+    }
+    previous = at;
+  }
+  const newest = seed.changelog.at(-1);
+  if (newest.season !== seed.season) {
+    console.error(
+      `build seed invalid: ${file}\n  season "${seed.season}" does not match the newest changelog entry "${newest.season}"`,
+    );
+    process.exit(1);
+  }
+}
+
+/**
  * Where each gem comes from for this class: a free quest reward, or the same
  * quest's vendor pool. The distinction matters to a new player ("do I have to
  * buy this?") and it is already in the data, so the guide carries it.
@@ -200,6 +263,7 @@ for (const file of files) {
   }
   checkBrackets(seed, file);
   checkAvailability(seed, file);
+  checkSeason(seed, file);
   if (`${seed.id}.yaml` !== file) {
     console.error(
       `build seed invalid: ${file}\n  id "${seed.id}" must match the file name`,
@@ -211,8 +275,14 @@ for (const file of files) {
     process.exit(1);
   }
   // Prose edits must not force a re-verification, so the mechanics hash leaves
-  // the guide out. The guide gets its own facts hash when it is resolved.
-  const { guide: seedGuide, ...mechanics } = seed;
+  // the guide out. Season tags and the build changelog are editorial too: moving
+  // a tag or adding an update must not throw away the measured gates.
+  const {
+    guide: seedGuide,
+    season: seedSeason,
+    changelog: seedChangelog,
+    ...mechanics
+  } = seed;
   const seedHash = hashOf(mechanics);
   seedById.set(seed.id, seed);
   // Verification writes gates, the published PoB code and the pipeline stamp
@@ -238,6 +308,11 @@ for (const file of files) {
     ...mechanics,
     ...carried,
     ...(carried.gates ? {} : { status: 'draft' }),
+    season: leaguesById.get(seedSeason),
+    changelog: seedChangelog.map((entry) => ({
+      ...entry,
+      seasonName: leaguesById.get(entry.season)?.name ?? entry.season,
+    })),
     gemInfo: describeGems(seed),
     seedHash,
   });
@@ -309,6 +384,13 @@ function chipsFor(build) {
       title: 'Verified against self-found budgets with no required unique.',
     });
   }
+  if (build.season) {
+    chips.push({
+      label: build.season.name,
+      kind: 'season',
+      title: `Created for, or last updated for, the ${build.season.name} league.`,
+    });
+  }
   const playstyle =
     { minion: 'Minion', melee: 'Melee', bow: 'Ranged', caster: 'Caster', hybrid: 'Hybrid' }[
       build.family
@@ -371,6 +453,7 @@ const index = {
     ...(build.stale ? { stale: build.stale } : {}),
     ...(build.ratings ? { ratings: build.ratings } : {}),
     ...(build.medal ? { medal: build.medal } : {}),
+    ...(build.season ? { season: build.season } : {}),
     chips: chipsFor(build),
     // The catalogue page reads the index only (no per-build fetch), so each
     // checkpoint's pass flag and damage travel with it.

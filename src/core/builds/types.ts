@@ -22,8 +22,26 @@ export interface BuildStepSummary {
 /** A short catalogue badge, e.g. SSF, Minion, HC-ready. */
 export interface BuildChip {
   label: string;
-  kind: 'ssf' | 'defence' | 'playstyle' | 'note';
+  kind: 'ssf' | 'defence' | 'playstyle' | 'note' | 'season';
   title?: string;
+}
+
+/** The league a guide was created for, or last updated for. */
+export interface BuildSeason {
+  id: string;
+  name: string;
+}
+
+/** One guide update, shown at the bottom of the build page. */
+export interface BuildChangelogEntry {
+  /** League id the update landed in, e.g. covens. */
+  season: string;
+  /** Display name resolved at compile time, e.g. Covens. */
+  seasonName?: string;
+  /** ISO date of the update. */
+  date: string;
+  /** What changed, in short lines. */
+  notes: string[];
 }
 
 export interface BuildIndexEntry {
@@ -44,6 +62,8 @@ export interface BuildIndexEntry {
   /** Editorial 1–10 ratings and the derived medal. */
   ratings?: BuildRatings;
   medal?: BuildMedal;
+  /** The league this guide was created for, or last updated for. */
+  season?: BuildSeason;
   /** True when the committed calibration report covers the current gates. */
   calibrated?: boolean;
   /**
@@ -292,6 +312,8 @@ export interface Build extends BuildIndexEntry {
   flasks?: { leveling?: FlaskChoice[]; maps?: FlaskChoice[]; endgame?: FlaskChoice[] };
   /** The game patch the build was verified against. */
   patch?: string;
+  /** Every guide update, newest first when rendered. */
+  changelog?: BuildChangelogEntry[];
   /** Staleness / waiting state, when the build is delisted (R10). */
   stale?: Staleness;
   /** A flagship requires a signed summary; breadth pages may auto-publish. */

@@ -2,6 +2,16 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.69.0 — 2026-11-26
+
+Season tags and a changelog on every guide.
+
+- Every build now carries the league it was **created for, or last updated for**. All sixteen current guides are tagged **Covens**, which appears as a catalogue chip and a badge on the build page.
+- The tag is tied to the newest changelog entry: the compiler rejects a guide whose season does not match its latest update, so updating for the next league cannot leave a stale tag behind.
+- Each build page ends with its own **Build changelog**. An update lists the league, the date and short notes on what changed, newest first.
+- Season tags and build changelogs are editorial metadata: they are excluded from the seed hash, so moving a tag or adding a note never discards the measured gates.
+- 650 tests.
+
 ## 0.68.0 — 2026-11-26
 
 The catalogue gets controls, the guide keeps your place.

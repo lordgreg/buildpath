@@ -28,6 +28,7 @@ const CHIP_STYLE: Record<BuildChip['kind'], string> = {
   defence: 'border-sky-500/30 bg-sky-500/10 text-sky-300',
   playstyle: 'border-gold-400/40 bg-gold-400/10 text-gold-200',
   note: 'border-ink-600 bg-ink-900/70 text-zinc-400',
+  season: 'border-violet-400/40 bg-violet-500/10 text-violet-200',
 };
 
 const SORT_LABEL: Record<CatalogueSort, string> = {

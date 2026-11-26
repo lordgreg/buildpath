@@ -378,7 +378,17 @@ export default function BuildPage() {
             <p className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
               {build.class} / {build.mainSkill}
             </p>
-            <h1 className="mt-1 text-2xl font-semibold text-white">{build.name}</h1>
+            <div className="mt-1 flex flex-wrap items-center gap-2">
+              <h1 className="text-2xl font-semibold text-white">{build.name}</h1>
+              {build.season && (
+                <span
+                  title={`Created for, or last updated for, the ${build.season.name} league.`}
+                  className="rounded border border-violet-400/40 bg-violet-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-violet-200"
+                >
+                  {build.season.name}
+                </span>
+              )}
+            </div>
           </div>
           <span
             className={
@@ -920,6 +930,43 @@ export default function BuildPage() {
         </div>
       </section>
 
+      {build.changelog && build.changelog.length > 0 && (
+        <section aria-labelledby="changelog">
+          <h2
+            id="changelog"
+            className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+          >
+            Build changelog
+          </h2>
+          <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">
+            What changed in this guide, newest first. The season tag at the top of
+            the page follows the newest entry.
+          </p>
+          <ol className="mt-3 space-y-3">
+            {[...build.changelog].reverse().map((entry) => (
+              <li
+                key={`${entry.season}-${entry.date}`}
+                className="rounded-lg border border-ink-700 bg-ink-900/40 p-3"
+              >
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="rounded border border-violet-400/40 bg-violet-500/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-violet-200">
+                    {entry.seasonName ?? entry.season}
+                  </span>
+                  <time dateTime={entry.date} className="text-[10px] text-zinc-500">
+                    {entry.date}
+                  </time>
+                </div>
+                <ul className="mt-1.5 space-y-0.5 text-xs leading-snug text-zinc-400">
+                  {entry.notes.map((note) => (
+                    <li key={note}>{note}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
       <footer className="mt-auto border-t border-ink-700 pt-4 text-[11px] leading-relaxed text-zinc-600">
         <p>
           Provenance: seed <code>{build.seedHash}</code> · builds {BUILD_VERSION} · app{' '}
@@ -989,6 +1036,7 @@ export default function BuildPage() {
               ['ascendancy', 'Ascendancy'],
               ['pantheon', 'Pantheon'],
               ['bandit', 'Bandit'],
+              ['changelog', 'Build changelog'],
             ].map(([anchor, label]) => (
               <li key={anchor}>
                 <a
