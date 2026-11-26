@@ -17,6 +17,21 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.72.0',
+    date: '2026-11-26',
+    title: 'Boneshatter Juggernaut reaches S+',
+    notes: [
+      "**Boneshatter Juggernaut is now S+** (10/10/9/9). All six checkpoints were re-measured: pinnacle 525k → 830k DPS, 5.4k → 7.2k life, 32.4k → 41.5k EHP and 12.7k → 15.8k physical max hit. The level-12 and level-28 steps also rise.",
+      "A dedicated `melee-boneshatter` gear profile gives the two-hander no offhand, adds armour rolls on the small slots, a chaos belt and weapon mana leech. Axe-scoped tree targets stop points going to one-hand and mace-crit notables under Resolute Technique.",
+      "Herald of Purity and Determination fit in 75% reservation, the level-28 bracket keeps a mana flask until the rare axe can leech, and CWDT stays level 5 with Immortal Call 7 / Vulnerability 8 so the triggers are legal.",
+      "The gate report now publishes `manaUnreserved` and `manaCost` at every checkpoint, so a future 100%-reservation build is visible instead of silently passing on DPS. `synthesizeGear` also supports a null slot override for two-handed profiles.",
+      "Step plans no longer recommend crit multi on a Resolute Technique build, the 5-link/6-link split matches the measured budgets, and the Melee Splash swap is part of the maps-red plan.",
+      "655 tests.",
+    ],
+    commits: [],
+    compare: 'v0.71.0...v0.72.0',
+  },
+  {
     version: '0.71.0',
     date: '2026-11-26',
     title: 'Goals, gear targets and crafting, step by step',
