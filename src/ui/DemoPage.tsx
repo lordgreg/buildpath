@@ -105,7 +105,7 @@ export default function DemoPage() {
           shows what it would label.
         </p>
         <a
-          href="./"
+          href="./filter.html"
           className="rounded-lg bg-gold-400 px-4 py-2 text-sm font-semibold text-ink-950"
         >
           Open the builder

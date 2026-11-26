@@ -3,8 +3,8 @@ import { APP_VERSION } from '../version.ts';
 export type SitePage = 'filter' | 'builds' | 'build' | 'demo' | 'changelog' | 'tests';
 
 const LINKS: { id: SitePage; href: string; label: string }[] = [
-  { id: 'filter', href: './index.html', label: 'Filter' },
-  { id: 'builds', href: './builds.html', label: 'Builds' },
+  { id: 'builds', href: './', label: 'Builds' },
+  { id: 'filter', href: './filter.html', label: 'Filter' },
   { id: 'demo', href: './demo.html', label: 'Loot simulator' },
   { id: 'changelog', href: './changelog.html', label: 'Changelog' },
   { id: 'tests', href: './tests.html', label: 'Audit' },
@@ -20,7 +20,7 @@ export default function SiteHeader({ active }: { active: SitePage }) {
     <header className="sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-5 py-3 sm:px-8">
         <a
-          href="./index.html"
+          href="./"
           className="group flex items-baseline gap-3"
           aria-label="BuildPath home"
         >

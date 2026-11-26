@@ -51,7 +51,7 @@ function BuildCard({ build }: { build: BuildIndexEntry }) {
   const red = step(build, 'maps-red');
   const pinnacle = step(build, 'pinnacle');
   const href = `./build.html#build=${build.id}`;
-  const filterHref = `./index.html#mode=build&build=${build.id}&phase=leveling&strictness=soft`;
+  const filterHref = `./filter.html#mode=build&build=${build.id}&phase=leveling&strictness=soft`;
 
   return (
     <article className="flex flex-col rounded-xl border border-ink-700 bg-ink-900/40 p-4">
@@ -205,9 +205,6 @@ export default function BuildsPage() {
                         className="text-zinc-300 underline-offset-2 hover:text-white hover:underline"
                       >
                         {build.name}
-                        <span className="ml-1 text-[10px] text-zinc-600">
-                          {titleCase(build.ascendancyId)}
-                        </span>
                       </a>
                     ))}
                 </dd>

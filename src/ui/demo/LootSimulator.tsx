@@ -433,7 +433,7 @@ export default function LootSimulator({
                   {selected.result.shown ? 'Shown' : 'Hidden'}{' '}
                   {selected.result.index >= 0 ? (
                     <a
-                      href={`./#${builderHash}&rule=${selected.result.index}`}
+                      href={`./filter.html#${builderHash}&rule=${selected.result.index}`}
                       className="underline underline-offset-2 hover:text-white"
                       title="Open this rule in the builder"
                     >
@@ -446,7 +446,7 @@ export default function LootSimulator({
                 </p>
                 <p className="mt-1 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[10px]">
                   <a
-                    href={`./#${builderHash}&newClass=${encodeURIComponent(
+                    href={`./filter.html#${builderHash}&newClass=${encodeURIComponent(
                       selected.item.itemClass,
                     )}&newBase=${encodeURIComponent(
                       selected.item.baseType,

@@ -712,6 +712,11 @@ tests, human sign-off on prose only.
 **P5 — per-phase filters, staleness delisting, league workflow, changelog.**
 Acceptance: a patch bump delists every unverified build and the site says so.
 
+**P6 — build-first landing.** The catalogue is the root page; the filter
+builder moved to `filter.html`, and old `index.html#<state>` links forward to
+the builder. The nav order is Builds first, Filter second. Breadth links use
+build names, so two Juggernaut builds are readable as two different builds.
+
 **P5 status (complete: patch facts, delisting, league window).**
 
 - **Per-phase filters** remain one build object: `mode=build` generates
@@ -873,6 +878,18 @@ AGENTS.md and PLAN.md.
 | 4 | 9/10 | step enum vs checkpoint enum, and the `guide` object could not hold per-section sign-off |
 | 5 | 9/10 | `auto-breadth` could never satisfy the publication rule (a round-4 regression) |
 | 6 | 9/10 | the same rule still had a stale copy in §7.2, the section the pipeline obeys |
+
+### Revision 21 — build-first landing
+
+- The root `index.html` is now the build catalogue. The filter builder lives at
+  `filter.html`; an inline hash forward keeps old `index.html#<state>` links
+  working, and `builds.html` remains a catalogue alias.
+- The shared header puts **Builds** before **Filter**; every internal builder
+  link points at `filter.html`.
+- The breadth links use build names (`Boneshatter Juggernaut`, `Cyclone
+  Juggernaut`) instead of repeating only the ascendancy.
+- `entrypoints.test.ts` pins the landing redirect, the two page entries and the
+  shared catalogue script.
 
 ### Revision 20 — step-specific imports
 

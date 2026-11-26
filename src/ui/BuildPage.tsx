@@ -599,7 +599,7 @@ export default function BuildPage() {
           {filterLinks.map((entry) => (
             <a
               key={entry.label}
-              href={`./index.html${entry.href}`}
+              href={`./filter.html${entry.href}`}
               className="rounded-lg border border-ink-700 bg-ink-900/40 px-3 py-2 text-xs text-zinc-300 transition-colors hover:border-gold-400/60 hover:text-gold-200"
             >
               {entry.label}
@@ -693,7 +693,7 @@ export default function BuildPage() {
           </p>
           <p className="mt-2 text-xs leading-relaxed text-zinc-500">
             <a
-              href={`./index.html${builderHash}`}
+              href={`./filter.html${builderHash}`}
               className="text-gold-300 underline underline-offset-2"
             >
               Open the leveling filter for this build

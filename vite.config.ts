@@ -20,6 +20,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(root, 'index.html'),
+        filter: resolve(root, 'filter.html'),
         changelog: resolve(root, 'changelog.html'),
         demo: resolve(root, 'demo.html'),
         tests: resolve(root, 'tests.html'),

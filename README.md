@@ -1,12 +1,12 @@
 # BuildPath
 
-Build-specific Path of Exile 1 loot filters in three clicks.
+Verified Path of Exile 1 build guides, with the loot filter as one output.
 
-Pick a family, an ascendancy or a meta build, then a phase and strictness, and
-download a valid `.filter` that highlights the bases your build actually wants
-and hides the rest. No account; everything is generated in your browser.
+Every guide starts from a build seed, is measured by Path of Building at six
+checkpoints, publishes the PoB code and gate report, and generates the filter
+from the same object. No account; everything is static and local.
 
-**Status:** v0.64.0 — verified build guides whose every number is
+**Status:** v0.65.0 — verified build guides whose every number is
 machine-derived and reproducible. A build is a seed plus a pinned Path of
 Building measurement, a calibrated gate report, one endgame tree pruned into
 each leveling step, a published PoB code and the filter generated from the same
@@ -51,6 +51,8 @@ builds API.
 - Lab timing is explicit: normal ~33, cruel ~55, merciless ~68, eternal ~75
 - One shared header across the filter builder, builds, simulator, audit and
   changelog
+- The landing page is the build catalogue; the filter builder is one nav click
+  away at `filter.html`, and old `index.html#<state>` links forward to it
 - Four independent modes: by family, by ascendancy, by meta build, or from scratch
 - Per-league meta snapshots, skills grouped by family or by seed weight
 - Soft / Strict / Uber (hidden in From Scratch mode)
@@ -81,8 +83,8 @@ builds API.
 **Changelog:** [CHANGELOG.md](./CHANGELOG.md) or the
 [in-site changelog](https://lordgreg.github.io/buildpath/changelog.html).
 
-**Live:** https://lordgreg.github.io/buildpath/
-**Builds:** https://lordgreg.github.io/buildpath/builds.html
+**Live builds:** https://lordgreg.github.io/buildpath/
+**Filter builder:** https://lordgreg.github.io/buildpath/filter.html
 **Loot simulator:** https://lordgreg.github.io/buildpath/demo.html
 **Behaviour audit:** https://lordgreg.github.io/buildpath/tests.html
 
@@ -154,9 +156,11 @@ src/changelog.ts           release and commit data for the site
 scripts/                   preset compiler, data extractors, build pipeline
 ```
 
-Six Vite entries: `index.html` (builder), `builds.html` (catalogue),
-`build.html` (guide), `demo.html` (loot simulator), `changelog.html` (release
-history) and `tests.html` (behaviour audit).
+Seven Vite entries: `index.html` (build catalogue), `filter.html` (builder),
+`builds.html` (catalogue alias), `build.html` (guide), `demo.html` (loot
+simulator), `changelog.html` (release history) and `tests.html` (behaviour
+audit). The old `index.html#<state>` builder links are forwarded to
+`filter.html`.
 
 See [PLAN.md](./PLAN.md) for the design and constraints.
 
