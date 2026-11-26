@@ -2,6 +2,17 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.74.1 — 2026-11-27
+
+Weapon-aware passive tree planning.
+
+- The passive tree planner now checks every notable's stat line against the build's equipped weapon. A one-hand notable cannot be chosen for a two-hander, a mace notable cannot be chosen for an axe, and a bow or wand notable is skipped when the build does not wield one.
+- **Boneshatter Juggernaut** no longer spends points on **Strong Arm** (one-handed) or **Spinecruncher** (maces). The level-28 tree drops the one-hand branch, and the pinnacle tree keeps only axe and two-handed notables.
+- Resolute Technique now makes accuracy and critical-strike lines ineligible, so Feller of Foes is no longer picked for a dead accuracy roll.
+- The points that bought those dead notables now buy axe, two-handed and life nodes: **Flicker Strike Slayer**'s pinnacle measures **869k DPS** (was 477k), **Cyclone Juggernaut** **555k** (was 519k), and **Boneshatter Juggernaut** **916k** with 7,556 life (was 830k and 7,245).
+- The same check removes off-weapon notables from **Cyclone Juggernaut**, **Flicker Strike Slayer**, **Ice Shot Deadeye**, **Lightning Arrow Deadeye** and the caster trees; a non-minion build can no longer satisfy `increased maximum life` with a `Minions have increased maximum life` line.
+- 701 tests.
+
 ## 0.74.0 — 2026-11-26
 
 Sunder until Boneshatter unlocks.
