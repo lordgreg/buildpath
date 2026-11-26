@@ -582,6 +582,12 @@ export default function Wizard() {
         </div>
         <nav className="flex items-center gap-4 text-xs text-zinc-500">
           <a
+            href="./builds.html"
+            className="underline-offset-4 hover:text-zinc-300 hover:underline"
+          >
+            builds
+          </a>
+          <a
             href={`./demo.html#${wizardHash(state)}`}
             className="underline-offset-4 hover:text-zinc-300 hover:underline"
           >

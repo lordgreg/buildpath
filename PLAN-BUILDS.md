@@ -516,8 +516,11 @@ Stale or failed builds render a banner and are excluded from `builds.html`
 Rename to BuildPath (D11, D13): repo and directory done; `base`,
 `package.json`, workflows, docs and favicon still to land. One Pages deploy.
 
-- `builds.html` — league selector, flagships first, then breadth pages. No
-  popularity widget: there is no population data (D1, §7.4).
+- `builds.html` — the catalogue: verified builds with the six-step pass/fail
+  strip, red-map and pinnacle damage, and links to the guide and its filter. It
+  reads `builds/index.json` alone (§7.2) and has no popularity widget, because
+  there is no population data (D1, §7.4). A league selector waits for a second
+  league to exist.
 - `build.html#build=<id>&step=<act1…act10|maps|boss>` — the page above. Hash
   routes, same no-router rule as the builder; `step` only ever holds a guide
   step value, never a checkpoint id.

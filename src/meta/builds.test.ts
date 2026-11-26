@@ -57,6 +57,37 @@ describe('compiled build seeds', () => {
     }
   });
 
+  it('ships each checkpoint result in the index for the catalogue page', () => {
+    // `builds.html` must not fetch three detail files to draw three cards.
+    const committed = JSON.parse(
+      readFileSync(resolve(root, 'src/generated/builds/index.json'), 'utf8'),
+    ) as {
+      builds: {
+        id: string;
+        steps?: { id: string; pass: boolean; level: number; dps: number }[];
+      }[];
+    };
+    for (const entry of committed.builds) {
+      const full = JSON.parse(
+        readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
+      ) as {
+        gates?: Record<string, { pass: boolean; level: number; metrics: { dps: number } }>;
+      };
+      if (!full.gates) {
+        expect(entry.steps, entry.id).toBeUndefined();
+        continue;
+      }
+      expect(entry.steps, entry.id).toEqual(
+        Object.entries(full.gates).map(([id, gate]) => ({
+          id,
+          pass: gate.pass,
+          level: gate.level,
+          dps: gate.metrics.dps,
+        })),
+      );
+    }
+  });
+
   it('gives every build a main skill the site knows', () => {
     for (const build of BUILDS) {
       expect(build.mainSkill.trim(), build.id).not.toBe('');

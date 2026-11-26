@@ -235,6 +235,18 @@ const index = {
     summary: build.summary,
     status: build.status,
     seedHash: build.seedHash,
+    // The catalogue page reads the index only (no per-build fetch), so each
+    // checkpoint's pass flag and damage travel with it.
+    ...(build.gates
+      ? {
+          steps: Object.entries(build.gates).map(([id, gate]) => ({
+            id,
+            pass: gate.pass,
+            level: gate.level,
+            dps: gate.metrics.dps,
+          })),
+        }
+      : {}),
     ...(build.filter ? { filter: build.filter } : {}),
   })),
 };

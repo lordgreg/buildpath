@@ -8,6 +8,14 @@ export type BuildStatus = 'draft' | 'verified' | 'rejected';
  * The list entry `builds.html` and the builder read. Everything here is small:
  * the detailed build lives in its own JSON file (see `Build`).
  */
+/** One checkpoint's result, small enough to ship in the catalogue index. */
+export interface BuildStepSummary {
+  id: string;
+  pass: boolean;
+  level: number;
+  dps: number;
+}
+
 export interface BuildIndexEntry {
   id: string;
   name: string;
@@ -19,6 +27,8 @@ export interface BuildIndexEntry {
   status: BuildStatus;
   /** Hash of the seed it was compiled from; changes when the seed changes. */
   seedHash: string;
+  /** Gate results per checkpoint, so `builds.html` needs only the index. */
+  steps?: BuildStepSummary[];
   /**
    * Filter slots that override the family/ascendancy defaults (D15). A null
    * slot removes the default, e.g. a two-handed build has no offhand.
