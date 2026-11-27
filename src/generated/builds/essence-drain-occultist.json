@@ -869,7 +869,748 @@
     "core": [],
     "optional": []
   },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Sceptre",
+          "Wand"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Shield"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "intjewel"
+        ]
+      }
+    }
+  },
   "status": "verified",
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "chaos-dot",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Severed Rhoa Head",
+          "tier": "low",
+          "effect": "(10-15)% increased Chaos Damage",
+          "source": "Oozeback",
+          "area": "Act 1",
+          "note": "Chaos damage for Essence Drain."
+        },
+        "torso": {
+          "name": "Chaos Golem's Core",
+          "tier": "low",
+          "effect": "(4-5)% reduced Chaos Damage taken over time",
+          "source": "Muruk",
+          "area": "Act 9",
+          "note": "Chaos damage over time reduction."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "low",
+          "effect": "+(30-50) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life while the DoT works."
+        },
+        "lowerLimb": {
+          "name": "Skeletal Tail",
+          "tier": "low",
+          "effect": "(10-15)% increased Projectile Damage",
+          "source": "Skeletal Abomination",
+          "area": "Act 5",
+          "note": "Projectile damage for the ED projectile."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Severed Rhoa Head",
+          "tier": "med",
+          "effect": "(20-30)% increased Chaos Damage",
+          "source": "Oozeback",
+          "area": "Act 1",
+          "note": "More chaos damage."
+        },
+        "torso": {
+          "name": "Chaos Golem's Core",
+          "tier": "med",
+          "effect": "(6-7)% reduced Chaos Damage taken over time",
+          "source": "Muruk",
+          "area": "Act 9",
+          "note": "Chaos DoT reduction."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "med",
+          "effect": "+(60-80) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life before damage scaling."
+        },
+        "lowerLimb": {
+          "name": "Skeletal Tail",
+          "tier": "med",
+          "effect": "(20-30)% increased Projectile Damage",
+          "source": "Skeletal Abomination",
+          "area": "Act 5",
+          "note": "Projectile damage."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Severed Rhoa Head",
+          "tier": "high",
+          "effect": "Every second, inflict Withered on Enemies within 6 metres for 5 seconds",
+          "source": "Oozeback",
+          "area": "Act 1",
+          "note": "Withers enemies around you every second."
+        },
+        "torso": {
+          "name": "Chaos Golem's Core",
+          "tier": "high",
+          "effect": "(8-10)% of Physical Damage over Time taken as Chaos Damage",
+          "source": "Muruk",
+          "area": "Act 9",
+          "note": "Physical DoT is taken as chaos, which you resist."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "high",
+          "effect": "(5-7)% more Maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "More maximum life."
+        },
+        "lowerLimb": {
+          "name": "Skeletal Tail",
+          "tier": "high",
+          "effect": "Projectiles Pierce, Fork or Chain an additional time at random",
+          "source": "Skeletal Abomination",
+          "area": "Act 5",
+          "note": "An extra pierce, fork or chain at random."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Essence Drain and Contagion; life and a 3-link first.",
+        "Do not chase chaos damage before resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "Magic wand."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "3-link."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Keep moving."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Add Efficacy and Controlled Destruction to Essence Drain.",
+        "Cap resistances and keep Despair on the boss."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Chaos damage",
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "Rare wand."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Defensive shield."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Chaos damage"
+          ],
+          "note": "Bench chaos damage."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Six-link Essence Drain and reach 2,000 life; cap resistances.",
+        "Void Sphere and Wither are utility, not damage links."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link."
+        },
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Chaos damage",
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "The wand is the damage slot."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Chaos damage"
+          ],
+          "note": "Life first."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link.",
+        "Reach 3,000 life and cap resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Chaos damage",
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "Rare wand."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Fix resists."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Chaos damage"
+          ],
+          "note": "Bench chaos damage."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life.",
+        "Chaos damage over time multiplier is the red-map upgrade."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Chaos damage",
+            "Damage over time multiplier",
+            "Cast speed"
+          ],
+          "note": "Chaos wand."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Chaos damage"
+          ],
+          "note": "Chaos damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Chaos damage"
+          ],
+          "note": "Bench chaos damage."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 Essence Drain and awakened chaos supports."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Chaos damage",
+            "Damage over time multiplier",
+            "Cast speed"
+          ],
+          "note": "Endgame wand."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Life",
+            "Chaos resistance",
+            "Chaos damage"
+          ],
+          "note": "Fix chaos resistance."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Chaos damage"
+          ],
+          "note": "Keep life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Contagion": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, the debuff spreads to other enemies.",
+      "effect": [
+        "Base duration is 5.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Spreads when affected Enemy dies",
+        "Deals 336.5 Base Chaos Damage per second",
+        "Base radius is 2.1 metres"
+      ],
+      "tags": [
+        "area",
+        "chaos",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Base radius is metres",
+      "qualityWorth": "optional"
+    },
+    "Controlled Destruction": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 80% less Critical Strike Chance",
+        "Supported Skills deal 39% more Spell Damage"
+      ],
+      "tags": [
+        "critical",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Despair": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Curses all targets in an area, lowering their chaos resistance.",
+      "effect": [
+        "Base duration is 11.80 seconds",
+        "+1 metre to radius",
+        "Cursed enemies have -30% to Chaos Resistance"
+      ],
+      "tags": [
+        "area",
+        "chaos",
+        "curse",
+        "duration",
+        "hex",
+        "spell"
+      ],
+      "qualityEffect": "% increased Effect of Curse",
+      "qualityWorth": "recommended"
+    },
+    "Efficacy": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal 24% more Damage over Time",
+        "Supported Skills have 24% increased Skill Effect Duration"
+      ],
+      "tags": [
+        "duration"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Damage over Time",
+      "qualityWorth": "recommended"
+    },
+    "Essence Drain": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Siren's Cadence"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Fires a projectile that applies a damage over time debuff when it hits. You are healed for a portion of the debuff damage. The debuff is spread by Contagion.",
+      "effect": [
+        "Regenerate 0.50% of Debuff Damage as Life",
+        "Base duration is 3.80 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 2729.1 Base Chaos Damage per second",
+        "Deals 786 to 1179 Chaos Damage"
+      ],
+      "tags": [
+        "area",
+        "chaos",
+        "duration",
+        "projectile",
+        "spell"
+      ],
+      "qualityEffect": "Regenerate % of Debuff Damage as Life",
+      "qualityWorth": "recommended"
+    },
+    "Faster Casting": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 39% increased Cast Speed"
+      ],
+      "tags": [
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills have % increased Cast Speed",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Swift Affliction": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "25% less Duration of Supported Skills and Damaging Ailments they inflict",
+        "Supported Skills deal 39% more Damage over Time"
+      ],
+      "tags": [
+        "duration"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Damage over Time",
+      "qualityWorth": "recommended"
+    },
+    "Void Sphere": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "reward",
+        "act": 4,
+        "quest": "Breaking the Seal"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Creates a Void Sphere which Hinders enemies in an area around it, with the debuff being stronger on enemies closer to the sphere. It also regularly releases pulses of area damage. The Void Sphere will consume the corpses of any enemies which die in its area. Can only have one Void Sphere at a time.",
+      "effect": [
+        "60% of Physical Damage Converted to Chaos Damage",
+        "Pulses every 0.40 seconds",
+        "Base duration is 5.00 seconds",
+        "Base radius is 3.8 metres",
+        "Deals 464 to 696 Physical Damage",
+        "Enemies in range are Hindered, with up to 39% reduced Movement Speed, based on distance from the Void Sphere"
+      ],
+      "tags": [
+        "area",
+        "chaos",
+        "duration",
+        "orb",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Wither": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts a debilitating debuff on enemies in an area, hindering their movement and also inflicts the Withered debuff, which increases the Chaos Damage they take and can stack up to 15 times.",
+      "effect": [
+        "6% increased Chaos Damage taken",
+        "Base duration is 0.50 seconds",
+        "Withered lasts 2 seconds",
+        "36% reduced Movement Speed",
+        "19% increased Area of Effect"
+      ],
+      "tags": [
+        "area",
+        "channelling",
+        "chaos",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "% increased Skill Effect Duration",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "63651767ade5",
+  "medal": "A",
+  "stale": {
+    "status": "waiting-for-pob",
+    "reason": "This build has not been verified against a patch fact set."
+  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -1745,16 +2486,16 @@
       "thresholds": {
         "life": 1800,
         "maxHit": 1800,
-        "dps": 4000
+        "dps": 3500
       },
       "metrics": {
-        "dps": 69354,
+        "dps": 51347,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 2253,
+        "life": 2221,
         "energyShield": 1000,
-        "ehp": 8514,
-        "maxHit": 3253,
+        "ehp": 8430,
+        "maxHit": 3221,
         "resists": [
           75,
           75,
@@ -2776,10 +3517,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "40% increased Chaos Damage",
-            "+20% to Damage over Time Multiplier",
-            "12% increased Cast Speed",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "12% increased Chaos Damage",
+            "+5% to Damage over Time Multiplier",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -2789,10 +3530,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "40% increased Chaos Damage",
-            "+20% to Damage over Time Multiplier",
-            "12% increased Cast Speed",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "12% increased Chaos Damage",
+            "+5% to Damage over Time Multiplier",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -2907,13 +3648,13 @@
         "dps": 4500
       },
       "metrics": {
-        "dps": 90531,
+        "dps": 68190,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 2968,
+        "life": 2915,
         "energyShield": 1036,
-        "ehp": 10474,
-        "maxHit": 4004,
+        "ehp": 10336,
+        "maxHit": 3951,
         "resists": [
           75,
           75,
@@ -4071,10 +4812,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "40% increased Chaos Damage",
-            "+20% to Damage over Time Multiplier",
-            "12% increased Cast Speed",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "12% increased Chaos Damage",
+            "+5% to Damage over Time Multiplier",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4084,10 +4825,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "40% increased Chaos Damage",
-            "+20% to Damage over Time Multiplier",
-            "12% increased Cast Speed",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "12% increased Chaos Damage",
+            "+5% to Damage over Time Multiplier",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4202,13 +4943,13 @@
         "dps": 6000
       },
       "metrics": {
-        "dps": 206457,
+        "dps": 111406,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 3968,
+        "life": 3869,
         "energyShield": 1134,
-        "ehp": 13573,
-        "maxHit": 5102,
+        "ehp": 13309,
+        "maxHit": 5003,
         "resists": [
           75,
           75,
@@ -5595,10 +6336,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "40% increased Chaos Damage",
-            "+20% to Damage over Time Multiplier",
-            "12% increased Cast Speed",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "12% increased Chaos Damage",
+            "+5% to Damage over Time Multiplier",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5608,10 +6349,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "40% increased Chaos Damage",
-            "+20% to Damage over Time Multiplier",
-            "12% increased Cast Speed",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "12% increased Chaos Damage",
+            "+5% to Damage over Time Multiplier",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5621,10 +6362,10 @@
           "slot": "Jewel 3",
           "base": "Cobalt Jewel",
           "mods": [
-            "40% increased Chaos Damage",
-            "+20% to Damage over Time Multiplier",
-            "12% increased Cast Speed",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "12% increased Chaos Damage",
+            "+5% to Damage over Time Multiplier",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5634,10 +6375,10 @@
           "slot": "Jewel 4",
           "base": "Cobalt Jewel",
           "mods": [
-            "40% increased Chaos Damage",
-            "+20% to Damage over Time Multiplier",
-            "12% increased Cast Speed",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "12% increased Chaos Damage",
+            "+5% to Damage over Time Multiplier",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5647,10 +6388,10 @@
           "slot": "Jewel 5",
           "base": "Cobalt Jewel",
           "mods": [
-            "40% increased Chaos Damage",
-            "+20% to Damage over Time Multiplier",
-            "12% increased Cast Speed",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "12% increased Chaos Damage",
+            "+5% to Damage over Time Multiplier",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5660,10 +6401,10 @@
           "slot": "Jewel 6",
           "base": "Cobalt Jewel",
           "mods": [
-            "40% increased Chaos Damage",
-            "+20% to Damage over Time Multiplier",
-            "12% increased Cast Speed",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "12% increased Chaos Damage",
+            "+5% to Damage over Time Multiplier",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5790,13 +6531,13 @@
         "dps": 8000
       },
       "metrics": {
-        "dps": 320438,
+        "dps": 159292,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 4702,
+        "life": 4529,
         "energyShield": 1290,
-        "ehp": 16008,
-        "maxHit": 5992,
+        "ehp": 15545,
+        "maxHit": 5819,
         "resists": [
           75,
           75,
@@ -7278,10 +8019,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "50% increased Chaos Damage",
-            "+25% to Damage over Time Multiplier",
-            "15% increased Cast Speed",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "13% increased Chaos Damage",
+            "+6% to Damage over Time Multiplier",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7291,10 +8032,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "50% increased Chaos Damage",
-            "+25% to Damage over Time Multiplier",
-            "15% increased Cast Speed",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "13% increased Chaos Damage",
+            "+6% to Damage over Time Multiplier",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7304,10 +8045,10 @@
           "slot": "Jewel 3",
           "base": "Cobalt Jewel",
           "mods": [
-            "50% increased Chaos Damage",
-            "+25% to Damage over Time Multiplier",
-            "15% increased Cast Speed",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "13% increased Chaos Damage",
+            "+6% to Damage over Time Multiplier",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7317,10 +8058,10 @@
           "slot": "Jewel 4",
           "base": "Cobalt Jewel",
           "mods": [
-            "50% increased Chaos Damage",
-            "+25% to Damage over Time Multiplier",
-            "15% increased Cast Speed",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "13% increased Chaos Damage",
+            "+6% to Damage over Time Multiplier",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7330,10 +8071,10 @@
           "slot": "Jewel 5",
           "base": "Cobalt Jewel",
           "mods": [
-            "50% increased Chaos Damage",
-            "+25% to Damage over Time Multiplier",
-            "15% increased Cast Speed",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "13% increased Chaos Damage",
+            "+6% to Damage over Time Multiplier",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7343,10 +8084,10 @@
           "slot": "Jewel 6",
           "base": "Cobalt Jewel",
           "mods": [
-            "50% increased Chaos Damage",
-            "+25% to Damage over Time Multiplier",
-            "15% increased Cast Speed",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "13% increased Chaos Damage",
+            "+6% to Damage over Time Multiplier",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7461,766 +8202,23 @@
       }
     }
   },
-  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJzVWmlv2zgT_lz_CkLAAvuiTMObYhF34ThX06Q5nKO7XwpGpm02OlyJdur8-heU7ERubcfZtugWAQiKfoacZ4YzpEbZ-utLEoOxyQubpc0Av0IBMGmUdW3abwaXF3sbYfDXm8bWqXaDk972yMb-lzeNF1tlH8RmbOJmoFAAnM77xl3NpqIfUQCiWBfFe52YZnBtXTQIgC4ik3bbj-MnUTSKnS1cABJt004W3Rq3n2ejYTPAAbjRade6ZvA-S00Ahjp1A5Olx_pTlu9n3WYQj1Kd26L2k02nP_XzkRvcjuIAjK25O866phm0W0ftTvCm8eLF1mmsJybvOO1A4bRrBu0subGp6e6cdgIw1vHINAOCBOPyFQkFF5yGweZi0YvM6fhfyB3ZnnmQoUosBe6mJu9POgNr4u6DAMaUrdRo9-D0EUy5pK8QYYIhwZYudDqYFDbS8bH-YpNRcmDdhb416cM0HCOyTHbP5ubcFKUvp3DJl4HbWdxdG3xk-wOX2rS__vQDnRVro491qttZDSqWGtZDL9PcFCYfm0dfKKyWSXSGpgakrxSXmJGwbCuhrc0ymnzvIjcG6MjZsekMTeRjoJzVPwCXG1MLMDqLsLfdZkDnYsuPoACkWdcUzQAjiiGWQkIquIAMYQwZDhlkVEnIQ0KhIBRBiTGBkoYhlIqGMFQshIpyDhWjBKpQMKhCKSFGGHOIEVMIYsQlhxgzgiDGnGOIKUIKYhqGHGLOOIFYSI-RknKIQypDiJXwGCUohwRxJiDBRBBIMEUYEixkCAlWPISEU6Qg4UoiSARWAhIhGYJEIt-XBFFIpCBlyxUkUoYhJCHCBBKFlYIUEcIhRZSGvpUIUkyxgBSHkkOKVcggJQQjSAnDElLKpIKUSs59G1JIGeYSUkaQbxnxI0Jgb01GIBWCMkglJhJSyRSBVHKhIJVCYkil8jqEWApIFScMUuWNyxAVBDJMBIUMM-n7KlSQESkQZBQhBBmTSkHGFOeQ8RBRyARlCPoYDiEToRKQScIxZCHGoW8JgywsZw6lDCFTSoaQIxQSyDHBvg0Rg5xIRiCnBFPfSgU5Y0xCzgQvW8UgZ6EIIeeUEsi5QgJySUjZCuZ3DfMtQwTyUHmkIpxArphfSwkkoEBUhVBghhUUOKQMCqqkgIJxpMp9_WLr8vyo7LwYODcsXm9u3t3dvRpqN8h65ouNzasoSzaHuijs2GwUtzaON3wYbLZardZ2_7h1c3d2sD2KTjqtjXx3r39-dK4_7u_9fTPZvo8O7t5a1e4cHb7vJ7atrw7ZcbZh49Ojwzt3cH90_v4TCj_s7h-cX3aPk8vJ_eXu4cVOfIyv3vGrL8lR958Ph8nV_gDp7uDzGRmnNy1XfNrHRdRXZPeDbnc_H4qrg8lO73RboVQM-oXZIeyUDq7JXsr-oQNyfTLOQn17Zjrdw6Pt24m5vOGX_STpRK0h-Zx1Nmzr3dne8M6mG-_kx5yPJkJe7rpLS4-P7MXoo5Yfj-4_j7N856Q4sZPW_bsPx2z_XtGzA3W9jfXN9dX7_i1JjnrWbdwxdnH7dvTP35xeZNejT9diQ47Fx_13G-aT_HjWapUG35xZfKs6a4vK_NOnMmX47OETQgCsM4l_wtPU-S2ujMkaUCwDlmFSA8plwDImasBwGbDcWDWgWg4M60sTNAVubdZMsLXpc2yZjX0S9p2O327Vj2UXmFTfxKbbDFw-MgEo4sw1g-2sOwGtPMlGeXWHaVXp20vM8veLrX2TgH61_rFxuqud3nzrTFJs7vumRO-bZLcoTBqZnVzbNADlfn-eSKqT6ckxHQfTH6ZXNYIC8HmkY-smcw9-lR3T06PYBV_zXEBq81msOqPhMMvdbq9nIx1NniJWoT21B4EarYex_wCjdpa6PItj090xhctHkbPZk357oLdE-pHrIwDMIf4DzDt3tudavV5sn8f5XA9td8dEes6p5WygPt2vpHiV2W5nODC5WTME6wKPpPwomA3_B1y2pwtn8rYunE37azvsUarOrRoFD5P9BHpblf5Ppd9ro4dZCvD3514fbbq_xmb-Fj8fstPBX-nyvVgnZkcXgzW51PA1J_tBUI3-OgcfmDgx7ge4N9a5dU8ePl-ja66dDf1Kx-6YYqhtvm5iGsWpyfWNjb_i8jDNr_Prdpa54vvdem3dwKxrjxn40RCzkZ9qh2mvmL3hX1lzB-6zLPlQvqb73t8PvaNKExo83EU93D-UhKbVAd_vGPdQIPDPwFZX9TeN83KnvgbnrfPdRmfiS2OFLUwXfDJ3Jga40c5udOzAoX9slLLlsq9BSBpvk2FsI-uK1wA1GPoD2DTKjfbiZVkF7OhE903jJUF_AJdNH0E2Njm4sIkBx76iN4ytyRuYzInrwoGyHtJ4GSIvm1R1JuArYaXJvC5fERJPEyK_FSH5NCH6WxEKnybEfitC6mlC_HciRNDThMTvRAiv4nNXXgkbJ0Mdg05khi43X9M5q9L6a0DQPDXB67p1hiaOZ9SWqv2d5ljislUMs15voNNuoz2wiU37oDO0uXWg-kCwNtdF5n7JKoV9MR9UBXSdRo_jvm5fH1-sPF2l_KC80DUORje5LUDb5lFs3JpKk8axTW2WFmCgxwb8SegG4f-rm3-ODZ7zjK_de91NPtb-LROUtQRr0mgCsh6ozuifaBW2yio3WXfSuNI6Buemr2OrV1lkWrd6DbY3Hv7mzfQnVhsEzVnG9Homcp7pSa9ncpv2i8bLPzHewOR_JQsdx2A3NolJXanGjM5im8zv-uoL1WwHzuzy8OHmaeOsvLb042xsikYnyyOTmxzsV8_P3TNdo-NFe2YWrOEfIBp4Hb3u_hU4N0UxnwR-3u5Yec258ZflR_7l3Xlt-uFcEGTj0sPT3DUfIZ6O33_GvzWUIZJrZxqEr5hhoUWmaa_KhU9SX3khujGxa7QH2qZg23d_SnZ7nr4r7zs6Gfl8dpJOvoBW1V9bZcK9Fm9TZ-LY9k2p2goaC8Prebtu5U3H5whcnaPnNu3_1IPlGakCr7zNeKXJD1b6a1v-G6XrV5bj1v7b9pzWsY-8XqyL28aOHdvUVLG4V46sS2HJymTlyok_FauVd53JUx1XB-UPWZquXHrkysLEdPWzkc7d_Y9Zlz1j3VZi3GBSuO9duWPc9G4KnHWxqVUMRoXpmChLu1W1snxx7-m4MNNaRyfOXFmUqNczHz5szUpE36JI7avWAtSsdDbD0AWYuc9XMyBbAKzO3EcMXzhZWdOZQcQiiIlrGskFiCppPmLCBRgf2XUbqWWYmoUwWgAqfT5nbRxMSyzT-s4ymfrMZE2Z-ndNuqZM_aMpWyRTbcOOcWXBqCwS-V47S3u2X-3OdDiaTWpSk0zK7R2AdJTcmLwZhNON8S1wd6yLqsI9hcpQoOk_rcwW2Nr8-t_D_g8mH-si",
+    "code": "eJzVWltvGjkUfi6_whpppV3VaXwdj6vQFSH3QnMhl-6-VGYw4GYudMaQkl-_8gwkQwqE7LbqVkiW7flsn-8cn2PPGXb-_BpHYKKz3KRJ3cNvkAd0EqY9kwzq3tXlwVbg_fmutnOm7PC0vzs2kXvyrvZqp6iDSE90VPck8oBV2UDb6_lU9BPyQBipPP-gYl33bowNhx5QeaiTXvOx_zQMx5E1ufVArEzSScNbbQ-zdDyqe9gDXZX0jK17H9JEe2CkEjvUadJWn9PsMO3VvWicqMzklUcmmT0aZGM7vB1HHpgYfddOe7ruNRutZsd7V3v1aucsUlOddayyILfK1r1mGndNont7Zx0PTFQ01nUPY8wQfxMwHzFJmbe9fOhlalX0L8a1TF8_jKGBL1cB9xOdDaadodFRr7LIMxLtH509gilF8g3ljHMq2MpxZ8NpbkIVtdVXE4_jI2Mv1a1OHqbhCNFVYw9Mpi90XthyBhd8FbiZRr2NwS0zGNrEJIPNpx-qNN8Y3VaJaqYVqL9SQQ56lWQ619lEP9pC4pW264x0BUjf4IALzEhRlrrc2S68ydUuM62BCq2Z6M5Ih84HilldA9hM64qD0bmHHffqHl3wLdeDPJCkPZ3XPYwohlj4AlKf-5AhjCHDAYOMSgF5QCj0CUVQYEygoEEAhaQBDCQLoKScQ8kogTLwGZSBEBAjjDnEiEkEMeKCQ4wZQRBjzjHEFCEJMQ0CDjFnnEDsC4cRgnKIAyoCiKXvMNKnHBLEmQ8JJj6BBFOEIcG-CCDBkgeQcIokJFwKBImPpQ-JLxiCRCBXFwRRSIRPipJLSIQIAkgChAkkEksJKSKEQ4ooDVwpEKSYYh9SHAgOKZYBg5QQjCAlDAtIKRMSUio4d2VAIWWYC0gZQa5kxPX4PnbaZARS36cMUoGJgFQwSSAV3JeQCl9gSIV0MgRY-JBKThik0imXIeoTyDDxKWSYCVeXgYSMCB9BRhFCkDEhJWRMcg4ZDxCFzKcMQeYzFEDmB9KHTBCOIQswDlxJGGRBMXMgRACZlCKAHKGAQI4JdmWAGOREMAI5JZi6UkjIGWMCcubzopQMchb4AeScUgI5l8iHXBBSlD5zu4a5kiECeSAdUhJOIJfMrSV95EMfURlAHzMsoY8DyqBPpfChzziSxb5-tXN10Soqr4bWjvK329t3d3dvRsoO077-aiL9Jkzj7ZHKczPRW_mtiaIt5wbbjUajsTtoN7p350e74_C009jK9g8GF60L9enw4K_udPc-PLo7NrLZaZ18GMSmqa5PWDvdMtFZ6-TOHt23Lj58RsHH_cOji6teO76a3l_tn1zuRW18_Z5ff41bvb8_nsTXh0OkesMv52SSdBs2_3yI83Agyf5H1ex9OfGvj6Z7_bNdiRJ_OMj1HmFndHhDDhL2Nx2Sm9NJGqjbc93pnbR2b6f6qsuvBnHcCRsj8iXtbJnG-_OD0Z1Jtt6LTxkfT31xtW-vDG23zOX4kxKfWvdfJmm2d5qfmmnj_v3HNju8l_T8SN7sYtW9uf4wuCVxq2_s1h1jl7fH47__4vQyvRl_vvG3xMT_dPh-S38Wn84bjULh23ON75RnbV6qf9YqQoaLHi4geMBYHbsWnoXOb3GFT1aA_ipg4SYVoFgFLHyiAgxWAYuNVQHK1cCgujRBM-DOdkUFO9suxhbR2AVhV-m47VY-LKpAJ6ob6V7ds9lYeyCPUlv3dtPeFDSyOB1n5R2mUYZvN2Iev1_tHOoYDMr129qqnrJq-9jqON8-dEWBPtTxfp7rJNR7mTKJB4r9_rIhiYpnJ8esH8wezK5qBHngy1hFxk4XGm6VPd1X48h6T3kuIbX9Ilad8WiUZna_3zehCqfPESvRjtrDgAqth77_AaNmmtgsjSLd29O5zcahNemzdnugt2L0I9dHAFhA_A-Yd-5M3zb6_ci8jPOFGpneng7VglGL2UB1up9J8To1vc5oqDO9oQtWBzyScr1g3v0_MNmByq3Omiq3JhlsbLDHUVVuZS94mOwH0Nsp5X8u_N5oNUoTgP977HXepgYbbOZv8YsuO-v8mSY_iFSs91Q-3JBLBV8xsusEZe_PM_CRjmJtv4N5I5UZ--zh8xRdMe2862cadk_nI2WyTQPTOEp0promesLlYZqfZ9fdNLX5fzfrjbFDvak-5uBHRcx7fqgeZrV8_oZ_bfQduE_T-GPxmu5qfz3UWqUk1Hu4izq4axSEZtkBV-9o-5AgcG1gyqv6u9pFsVPfgovGxX6tM3Wpsdzkugc-6zsdAVxrpl0VWXDimrVibLHsWxCQ2nE8ikxobP4WoJr_GzBJmGnlRsdlVgi4vFUNk-qjIuEC9lSsBrr2mv8GbDprgXSiM3BpYg3aLtU3iozOanRhsMotKPIkhdqcPE9I-c-TIr8cKfE8KfrLkQqeJ8V-OVLyeVL8VyNF0POk_F-NFF7H6a64KtZORyoCnVCPbKafUjovw_1bQNATerwqR2eko2hO4gm_RxEZWk2coGeZrzDbOoZpvz9USa_WHJrYJAPQGZnMWFB-ONiY6-sAOdkWjPialQK7JD8oE-sqCR_7XT6_2r9ceLpO-GFx0asdjbuZyUHTZGGk7YZCk1rbJCZNcjBUEw1-J3SL8D9Wb8kFy7icvpNdZxPl3j5BkWMwOgmnIO2D8uz-gVph67TSTXvT2rVSEbjQAxUZtU4js3zWW7C79fBbVNPvWG4RtKAZ3e_r0Dqmp_2-zkwyyGuvf8d4C5M_ChYqisB-pGOd2EKMOZ3lOlnc9eWXq_kOnOvl4YPO88pZe50ZROlE57VOmoU60xk4LNsv3TM9raJle2burMFvIBw6GZ3s7tU403m-GAR-3O5Ye_Xpukv0I__iTr0x_WDBCdJJYeFZ7Fr0EEfH7T_t3iYKF8mU1TXC18ywVCOzsFfGwmepr70gdXVka82hMgnYddUfEt1eJu_au4-Kxy6enSbTr6BR1jcWmXAnxXFidRSZgS5EW0NjqXu9bNetvfG4GIHLc_TCJIMferC8IFTgtTcaJzT5zkI_1eW_Ebp6ZWk3Do-bC1JHzvP6kcpva3tmYhJd-uJB0bMphRUrk7Urx-5ULFfetzpLVFQelN9labp26bEtEhaz1c_HKrP332dd9oJ1G7G2w2lu_-vKHW1nd1NgjY10JZMwznVHh2nSK7OYxQt9X0W5nuVAOlFqi2RFNc_58MFrnjr6FkUqX7uWoOYptTmGLsEsfNaaA9kSYHnmPmL40smKXM8c4i-D6KgikViCKIPmIyZYgnGeXdWRXIWpaAijJaDC5gvaxt4s9TLL-6waU52ZbDim-r2Tbjim-jGVLRtTbsOOtkUiqUgeuVozTfpmUO7OZDSeT6oTHU-L7e2BZBx3dVb3gvl_fb4B7k9UXma-Z1AR-Gj2Z5b5AjvbT_829g-N8vg5",
     "byStep": {
       "until-12": "eJzFWFtT4zYUfia_QqOZfWog8SU3Jt5OLiwwJQuLYbd96gj72FaRJVeSE9Jf35HtJIYmIezS9sVzdPyd-5F07OHPTylDc5CKCu5h66SNEfBAhJTHHr6_-3Tcxz9_bAxviE6uo3FOmXnzsXE0LGjEYA7Mw5aNkSYyBv11pcr5vY1RwIhSn0kKHv5GdZBgRFQAPJxs-NdBkDNNlcYoJZT7IngEfS5FnnnYwuiB8JBqD38WHDDKCNcJCD4jfwh5LkIPs5wTSVXtFeXVq1jmOnnMGUZzCouZCMHDk9HVxMcfG0dHwxtGliB9TTRSmmgPT0T6QDmE0xsfozlhOXi42z5xuwPL6eLWdqE7oQl7k8QVjWCNdlx3F-6Mg4yXfkKBhWu822vv9eTs4mbjiWudtO1B1-m3Hbe3085NslQ0IGxGnmiapxdU35FH4Gs1fWun6Ccq4RZUUbwKfez2d6EngoWHo69onGhOefwGAwkR6iW8uzNhM8LJRNSwlrMPes8lKJBz2FTD6nR2SfgZ1IEnPcu1-53qWQgNW8UWMtSdBEAk0HQOfgaBafxCq1kgLQFqu8pZbavL0MPOsw1lOG2MuAhBedh1Br1mf-D2m1bf6fWbttXt9ZuO1e91mo5tW-2m0-24dtPpdbqDptO3et1mx3XdXrPTs-2ueXbdwo-j4f3tVUEcJVpn6rTVWiwWJxnRiYjgiTI4CUTayohSdA7H6pEydmzcbo1Go9E4no0myZm-nN_eS76cRuEv1_Psasz8aUT18WI0GnmFkVZlZdgycRcZMokxhG9UqjInhkTAyQOD0MNa5oCRYkJ7eCzCJRrJVOSyPExGZUqNxCqnR8NzSFEMqUnWDDQJiSatSw2pap2bR4E-h_RMKeABTCWhHKMipreJcJJW1az4qHqxOjMx-jMnjOplUbWKNjamEJGcafwyyi0htd4Uk59nmZD6LIpoQILla2GVaBPYWqAW1JpXxWP_b_GMZEA4-LmM4eCQnslsoirZqOJXkXXeLbJh6fprjfwNSCY4sn68iyeCaxJTcWgL1_CbpNSYVUbc_77WnxhJYUpUcmAkNfwmkoKJSu67b8MDi3sBLAX9DqVlRFL96iZ-ia6VdcX6FzNRUWp1y32lsEB_CZH-Wtgw1G9r6qr0w8Hrs9_AzaIIqLohDe2DXl-SZo1oWK5vi5BO0Wx0fjlp-EszEyqqIESLYk81ppJGeiFEiL4RHjYK4cLuKbLsxpcy5lPUblymGaMB1cosnPYHRHkggRhVfgaMoSlJSQxFtEbLc1_svb4kRQs0LvIHSRWaUBkw0If68pPdQVqgtBzXkBkndzjh7HXiQYTLxldCGLqFmDBK9jhQTuXqFI2Px8fj7_XH3etPzMQcVMMXMgAJEp2X60OzYtkfjBtmJEXlDEh4sMuTziuZEbrmyLhY_kB1rE69e2ZiDilwjYoRcYeD3f0OAtONSUIoR2NDvnvn9PaaJ2lu-vWaL5_QqKTfWKX1cP96qfp7XZGUx1bjOjNdTHn8_pkYvGre_g7zVRrMF9HrGbDae30QUZSYo-xuQWPkZ1RSjcqvxvfPhrX_jGU0AhQxoh4bMwhppQt9KjgHOrPD8P4DNSWcVIb9lDCGzAfbu9jdf4bmmhpllekvOQ0eFWVzkD9o2wddXWlIU82gdgXnCnwIBA_LIbG4CSPCFFTTg8-ELi75-hhJdTlPrIeuGmo1j6ww9hbMsy-rFdDZAiwP7Q3G3apM6Bqksw0CrOZRdwuiPHc2mN4WjNmS9ej7uzD2BjPYgqnyWENZ7S2wouTPsm3hamapBqZdMnXN9oEyTk3G2SZTtpQPupimignKUBPBIxqXncazfKUUOKTLolMx4nn6ALL2P-QfwLM5UeVHQgV1nEH1U2Olf9h6-c_wb6cvb1E=",
       "until-28": "eJzFWNtu4zYQfY6_ghDQpyqx7pIDewtfckOdTTbaTdqngpHGNhuK1JKUHffrC0qyo6S-bTftwoAxpM5wznDI0Yy6vzxnFM1BSMJZz7BPLAMBS3hK2LRnfPl8fhwZv3xodW-xmt1MBgWh-smH1lG3lBGFOdCe4UQGUlhMQd2vlnL_sAyUUCzlR5xBz3ggKpkZCMsEWDp8mb9JkoIqIpWBMkxYzJMnUBeCF3nPsA30iFlKVM_4yBkYKMdMzYCza_wnFxc87Rm0YFgQ2XhEWP1oKgo1eyqogeYEFtc8hZ4x7I-HsfGhdXTUvaV4CSJWWCGpsOoZQ549Egbp6DY20BzTAnqGF0YnXscPfM8PjPZmvc9cYfqtSmMygbVCx-psw50xENNlPCNA0zXeD72dZM4ub9dY27P8kygIXD9wIyfcpnc7W0qSYHqNn0lWZJdEfcZPwBrLRO423XMi4A5kGcMafmz729BDTtPD0WMynSlG2PStimttNTDDXL6FO1stXGOGh7yBdbZuroZ-YQIkiDm8hMOJtmrEOTSBJazbLu-Olj4LAIQTReYQ55DoE1-uowdICYDGdXJX9-kq7Rnuq5ukZywDMZ6C7Bm25dqmZ0ee6bmd0Aw7bmRGHS8ybdtzLNO2fd82bd_zHdOO3DAyHTvQ_2Hgd0zXjkLfdB3HtkzXs_3QdL0gsE038D3HdEM_6JhuGIS26UZ2GJiea1mW6Xkd3ze9wPUs04vcwDG9KAwj07esyDF9z_NC0_cCPzT90HEC_R94ZmC5nah0-Kj75W5cCkczpXJ52m4vFouTHKsZn8AzoXCS8KydYynJHI7lE6H0WO9Pu9_v9wfT6_5l_9Pl2fn0bnwXDa_mnyQbWpPb8-cvIluMJ1cfOxa_VzPn4WaejwdPS7i_-nXiCb-wB-O_vs65GHH1MHA9MZE386Lf7_dKUu2aVbetA1KGTkdMC7GmIKtgaREBw48U0p6hRAEGkpSrnjHg6RL1RcYLUaW3fhVrrbEK9lH3AjI0hUxH8RoUTrHC7SsFmWxf6L8SfQHZmZTAEhgJTJiByj34NhWGs_qY1fOoflBncd9AXwtMiVqWx6mWtY0RTHBBlfHWyw0utb_Jp7jIcy7U2WRCEpws97lVobVja4WGU-u52p_gh_kz5EwJTimkI5BKFIkifG_M1s5t0X7x9AWAXiFqv90f5vc5lgrEEEtF2PRgf1-0mk5Ws2i92Ls7163Y77vDD4BzzpD9_RdYhw1PDzgJ_8S_jn09We9I9P-H-5ziDEZYzg70pIFvBFhPomr23TPQgcG9BJqBeofQUiyI2pu_3qIbYV1N_bhcPAKZYyIO9OG-oAwEfiT0jSfrZVa9wX8Q01qSqxrqnsAC_cV59ltpQ0u_r6XxKnGsX-AargelW3X9peUY1LoE02NE0mp8VwbnFF33L66GrXipWw1JJKRoUWaH1kiQiVpwnqIHzNJWqVzaPUWe3_pU-XyKrNZVllOSECX1wLd-QoQlArBeKs6BUjTCGZ5Cy331qCxpV4_0RmgDr2k6O2nOynPeuiweBZFoSERCQR1K8-fAQoqjrGoNkG5dWj9rgoojXfujqtjGLNlGzt1J7pGny9Y9xhTdwRRTgncQq_pDeYoGx-VvP1PHb-5k1U-hqqHawtbbyXZK-RxkK-YiAQECXVTj79jLzSz8PXvGVYPEoBx-Bwfn1Xm75nPIgClU9i9bCAa7CQJVreEME4YGWnz3_Ql3msdZoU_4DVs-o34lvzuDaCcDQdjUbt3k-lgTNn2Py7ZuhvffuM5ebs6_4Fbz0C38fgq2tZMDn0xmOlf-DgsU50QQtbqV7x4oe3cOp2QCaEKxfGpdEMxUuRQ6LycO5LLF7u6knGGGV3YFYF3t6i8M72J5d8YtVPnaro33M1CzpVTfaTgGVb8wkSKKQuMFX0iIIeEsrYrp8j07wVRCXWXFlKuyhGiW20RVNcu6jmmgVnXbCuNswLxqvldAdwOwyuAvGG_jYlw1IP4mCNAGo2ADokpEL5hwA0bfx6b30TaM84LpbMDU-9hA2dYGWBnyV7ttG3VFVJdj23SaKzsH6rgNHXeTTnWkYlBlrVbWZ1oacjYh0-qksbxYLQoMsmV5Ug3EiuwRRPkpur0ZeDbHsmqmamjUCeoPcqv1u-23H7r_BlBgUD8=",
-      "until-68": "eJzVWVlv27gWfo5_BSFgnsrU4iJRKuIOHGftJE0aZZn2ZUDLtM2GElWJsuP--gEl2XFSx3GmLXIvDBAk9R3yfGfh5p0_7xIFJiIvpE47DnrrOkCksR7IdNRxri4PtgPnz_etnXNuxmfD3VIq--V9a2unqgMlJkJ1HD9wgOH5SJjr-VDkH9cBseJF8ZEnouPcSBOPHcCLWKSD3n3_WRyXysjCOCDhMo10fCvMYa7LrOMgB_R5OpCm43zUqXBAxlMzFjo95V91fqgHHUeVKc9lsfRJps2nUV6a8W2pHDCRYnqqB6Lj9Lonvch539ra2jlXfCbyyHADCsNNx-nppC9TMdg7jxww4aoUHccPiUfeBn6Ag8AlgdNeLXqpDVf_Qe5EDsVCBmOPPAXcT0U-mkVjKdRgIYBc112r0f7R-QIceIi8ZT6j1EUu9Z-SOx_PChlzdcrvZFImR9Jc8luRLoYha5Q8kLm4EEXlywbOvKfAPa0GG4NP5GhsUpmONh9-zHWxMfqUp7ynl6A-Wge9SnNRiHwi7n3B3PApiSgTS0D8NsSBxxCty0pop11lk61d5kIAHhs5EVEmYpsD1ai2AUwuxFKCkXmGHQ86DnmQW7bHdUCqB6KwgUIQRMxnkPieDykKKKQkZJAhhCEjQQBZSAIYhDSAISUYIhchDyKXhi5Ersc8iBDFLkTI8xBExHVDiEgQeBB51MMQ-cxiGCMeRAFhAUShTzyIXY_6ECPsY4gRcRHEyGcBxCj0Aog94oYQeyFzIfYZdSFmbuhDzLBLIGY-rkovhDhEYQiJi7EHiUuYCwkiyIcEBcyDBIUBhQRj5EKCKWKQEMpCSAjzPFsGBBKKPAYJpdjWfR9ZW1AMie8TCglDmEHCPD-EhPkMQcJCO2OAmDUY9gmkKAxCSDHzXUiJ67qQ0tDzIPUJdSH1g9CHlGEPQRogFEAaEB9DGjAWQM91Aww9FLgUephRDD2CEbElC6FHKWXQo75XlSGFnkcIhh7D2LelT6EXYGpL6mLohTTA0HdJGEAfURRCHwWEQp-EzK_iZWvn6uKkqmyNjcmKd-32dDp9m3Ez1kNxJ5V4G-uknfGikBOxXdxKpbZteLW73W53d3TavRp9Otot47Nod_fzfuT2Z7vf46PpsQx7l58_0FO9LdX5yYepOfp-cvHxqxv8vX94dHE1OC3Qbu9q6l1-vI7K6_iLJDfXM350keHDbI9vD4oeOT4fjA-wTrOr4fHHIDgi0fDbYe-OnvdH_4iD_ucvZIxvziY64LefRDT9cpqqw-3r47_2J1n3Ju39NaS5V6Ldk3hafjhjYf7920Tne7rI4u-j_jkZdIfo89F1Zka3hObD4uxs3-ud6JtyUrLtyZ2cpLrb7XYqI7XnVtqp952iNlnTqtKnyi0bIw6QRiS2iZp15EdgFShLwGaZ3dppL42_07bJXKW9zXZbiaz9649VFYiU95UYdByTl8IBhdKm4-zqwQx080SXeb1Zdut1wkrMF4qtnUORgFE9_6kwfMANbx8bkRTtQ1tU6EOR7BeFSGOxl3OZOqAKgJeJpDxplqimHzQfmjMBCh3wreRKmlm1FjV1O8meGPJSGecxzRWc2i8iFZVZpnOzPxzKmMez53jVaMtsIbDEatH3-oR6OjW5VkoM9kRh8jI2Uj_rtQW7J6Tvqd4DwAPE6xOPpnJousOhki-jfMEzOdgTMX_g0mo0sDzcKzK81nIQZWORiw3Tb1ngnpPtBfPuOZ3g1Rx2wAsj8h4vjExHG7vrXmqZWt0LFoP9emft1Oo_t_DeCJ7pFKCfX3VtpvHRBpH8I_5hujadrxi_B4onYo8X4w2pLOGXXGw7Qd37au49EioR5hc4V_Fcmmd3ncfoJcfOu17RrXuiyLjMN12TSpWKnPelekRlMcyreXVXa1P8vFNvpBmLTc0xB9_bYd7zO83Q1Ir5_fFaiin4rnXydzWHrX1e1E5qRYizOIBauG1UfJq7p61Hwiyun7YNZH32fd-6qML0HbjoXuy3opl9eClkIQbgq5gKBVCrp_tcGfDBNluVbDXtO8Bw6zjJlIylKd4Bt0XdP4BM41xwK15d2sEeT_hItN5g9w9gdNMEeiJycCkTAU7te1GmpMhbCD8Q54UB1W279SZwrWxSv2IA-85Smczq8oiQ_zwh_H9FaB2fabWTtc4yrkAUi8zk4jGdT3VIvgPIfUjN95Z1izKh1Jzak2qvMcdq7fE67fVwOObpoNUby0SmIxBlMpcG1M9iG_NYZco3tPaNfcIC9bMRT-P7fvtatdy_WnmyTvlxtcu0jsp-LgvQk3mshPkfUJquU7qvB7PWNecKXIgRV5KvU7i5474Du9vN73kODwOkfuacO3TOY_H69zyZtavTSOmJKFqRzmORixwc1u3Xd8HaJahv97F7pattbWOd8YOcPdUTkYh0saY0C1Kdliu0f4Hh2VoKQplWb8xlCnZt9bdY_Ckyq_UN1unLk9Lm5lk6uwPdur6xytizWhynRiglR6JSbQ2NlSZ-WfSE66jkMh2her2_kOnotwb7C8IFuc8pjX-x0o9t-V-UXt5aT7uHx70HWis5FGCoeHHb2pMTmYpKAXBQ9WxK4YmZ8dqZE57yZuYjrpSe2ly3fb9kbrJ27tJUZ_9m-k8lz833XzMvfcG83USY8awwPztzJExziAJGGiWWjuVlISIR63RQvwZUp-MhV4Vo7hOR0qY6-C-_Fyxegue3sB9R-B6FV6Dml9M5hqzAPHgYngPpCmC9491jvJWDVfemOcRfBRFqSSO2AlGvmveYYAXGpvayjcKnMEsWQu4KUOXzB9ZGTnOPaS5RT8ksj4w3lFl-3ycbyiz_eUBXydRhGAlT3cqqm5it9XQ6lKM6OtOsnA8qUpHMqvB2QFomfZFXf8G3VwP3J7yoX5AaKGUkbP53nE-w0378D_-_o4MLxQ==",
-      "maps-early": "eJzVWltv27gSfo5_BSFgn5apeZMoFXEPHDu3bry5OJfNvhS0RNvcUJIrUU7dX39ASXaU1HGc3S5yDgIQ5Ogbcr4Zcnhx9v7zLdZgLrNcpUnHwR-QA2QSppFKJh3n-upw13f-86m1dy7M9Gy8Xyhtv3xq7eyVdaDlXOqO4yMHGJFNpLlZdkW_IAeEWuT57yKWHedWmXDqAJGHMol6j_KzMCy0UblxQCxUMkzDe2mOsrSYdRzsgJFIImU6zu9pIh0wE4mZyjQZiL_S7CiNOo4uEpGpvPFJJfWnSVaY6X2hHTBX8mGQRrLj9LqnvaHzqbWzs3euxUJmQyMMyI0wHaeXxiOVyKh_PnTAXOhCdpwAuRR_YNgnCDPfd9rrVa9SI_Tf0DtVY7nSIYH3IvAgkdlkMZwqqaOVAkbU22jRwfF5A8w4-8A48X2PEvyS3vl0katQ6IH4puIiPlbmStzLZNUNQ4i9pHuoMnkp8zKWNZy7L4F7qY62Bp-qydQkKpls3_1UpPnW6IFIRC9tQL0XSVrodZLJXGZz-RgLH6GXNIYz2QCSDwEjvstxVZZKe-1yNdnaVSYlEKFRczmcydCugbJX2wAmk7KxwOhyhZ1EHYc-WVtWghyQpJHMy4mCIeYeh9RzPciwzyCjAYccYwI59X3IA-pDP2A-DBglMPA9BjHC2IUYsQBBjFzuQowZQRBj18UQU4QCiKnvuxC7zCUQe9xiOKcuxD7lPsSBZzGBR11IkMs8SDDxCCSYIgwJ9rgPCQ5cHxKXogASN-AIEg8HHiQeZwgSjmydE0Qh4R4pSzeAhHPfh8RHmEAS4CCAFBHiQoooR5Biij1Isc9dSHHgM0gJwQhSwjCHlDIeQEq569rSp5Ay7HJIGUG2ZMRKPA9bdzECqedRBinHhEPKWUAg5a4XQMo9jiHlgR3dx9yDDFGPQIaJRyHDjNt64AeQEe4hyChCCDLGgwAyFrguZB5lCDKPIR8yzw88yDhxMWQ-xr4tCYPML_v0Ofehi5BPoIt9xKBLOCPQpQRTW_IAuowxDl3muWUZMOi6lBLougHyoMsJKUuPQdcnzJYMEegGxLUl8wn0EA186GGGA-hhnzLo0YB75RTc2bu-PC0rO1NjZvnHdvvh4eHDTJhpOpbflJYfwjRuz0Seq7ncze-V1rt2xra73W53fzLo3nUvjveL8Gy4v393MESjxf738PjhRAW9q7vP6SSZLP7yfrv286SHxgNzQM6vvoUXd9HhJVr8eXX6-8WFHpxdf7-5zvQfR3cG6zD-81ocX87I0awvdqO8RxaD0e23RZ_eXUZfP3s3x4v--Hw_QIk3neSyT9g5nd6Sw4T9Safk9mye-uL-Qg6jz6f79wt5PXKvJ4n4Oj31Trqz7m3S-23MsvnuPObXB-Za0cGpuiq-CP7l9PvXeZr103wWfp-MzmnUHeO745uZmdyT-HSszO4DY1f3J0WEvMMs48WXzL_LXK_b7ZaObC89uVdtd3nl1rpVrlq7gMt14ABlZGybuE5fPwLLCdoA1rvCzl670f9e2-aQMtvYJGMrQxuj6mNZBTIRIy2jjmOyQjog16npOPtptADdLE6LrNqju1V6shrL_LSzdyRjMKnGH0gjImFE-8TIOG8f2aJEH8n4IM9lEsp-JlTigHKSvE0lEXGdGWs5qD_URxGCHPC1EFqZRZkC67odpC_HotDGeU5zDaf2m0gNi9kszczBeKxCES5e41WhLbOVQoPVSvb-hHppYrJUaxn1ZW6yIjQqfTVqK3YvaD9SfQSAJ4j3Jz58UGPTHY-1ehvlSzFTUV-G4klIy95As7t3ZHiTqmg4m8pMbrn8mgqPnKwULMXvH7BDkRuZ9URuVDLZOlyPWk1qlRSsOvv57PYq819LvLdSzNIE4H-ede1KE5MtZvKP-KfLtRa-Y8APtYhlX-TTLak08I0QWyGopO8W3mOpY2l-QnC1yJR5ddd5jm4Edil6x7D2ZT4TKts2JxU6kZkYKf2Myqqbd4vqfpqa_J8H9VaZqdzWHUvwox-Wkn_TDXUtX15bb5R8AN_TNP6jHMPW7la108oQ6qwOoBZuGyWf-spr60NpVrde2waqOvt-al2W0_QjuOxeHrSGC_vek6tcRuAv-SA1wK1eOhLagM-22Sp1y2E_Ak5aJ_FMq1CZ_CNALYZ-ASoJMymsevlWAPoiFhPZ-pWgX4BJ6yZI5zIDVyqWYGCfqWZayayFyRN1kRtQXvJbv_rI6sbV4wmwzzuly6wtzwh5rxMi_1eENvF5KHey1tlMaDAM5cxk8jmdi2pKfgQYPaXmuU3bhjOp9ZLai2ZvcMd668km69PxeCqSqNWbqlglEzCcqUwZUL3Gbc1jnSt_ZVVs7MsZqF6rRBI-yu0jWVO-3ni6yfhpucu0jotRpnLQU1mopfkfMJptMnqURovWjRAaXMqJ0EpsMri-434E-7v13-scnk6Q6nV1GdAlj9Wj4-tkNmaniU7nMm8N0yyUmczAUdV-_xBsTEEju489Gl1ua1vbTJ6s2UE6l7FMVjmlTkjVslxj_RsczzdSkNq0elOhErBvq_-Kx18is95ef5O9Ii7s2jxLFt9At6pvbTJxrRUniZFaq4ksTdtAY62L3zZ7gk1UMpVMcJXvL1Uy-Vcn-xumC0avGU1-stHPffl3jG5urYPu0UnvidVajSUYa5Hft_pqrhJZGgAOS8m2FF4YmWwcORaJqEc-MDJLhAb215GfMzTdOHRhyqN_PfpFITLz_eeMy94wbjeWZrrIzT8deShNfYYCRhktG6fyIpdDGaZJVD0GlIfjsdC5rK8TQ52a8tzffC5YPQQvL2E_osgjiqxBLe-mSwxdg3nyLrwEsjXAasN7xLhrOyuvTUuItw4idcMivgZRJc1HjL8GY1d200fBS5iGhzBaAypj_sTb2KmvMfUd6iWdZs9kSx3a0KFb6jR_EmDrdKppOJSmvJSVFzFb66XJWE2q2ZnMimWnMpHxopzeDkiKeCSzxk-qPwAP5iKvHpBqqIdIUP_auRxgr_38_wr-C_FXJ90=",
-      "maps-red": "eJzVWmlv2zgT_lz_CkLAAvuiTMObYhF34ThX06Q5nKO7XwpGpm02OlyJdur8-heU7ERubcfZtugWAQiKfoacZ4YzpEbZ-utLEoOxyQubpc0Av0IBMGmUdW3abwaXF3sbYfDXm8bWqXaDk972yMb-lzeNF1tlH8RmbOJmoFAAnM77xl3NpqIfUQCiWBfFe52YZnBtXTQIgC4ik3bbj-MnUTSKnS1cABJt004W3Rq3n2ejYTPAAbjRade6ZvA-S00Ahjp1A5Olx_pTlu9n3WYQj1Kd26L2k02nP_XzkRvcjuIAjK25O866phm0W0ftTvCm8eLF1mmsJybvOO1A4bRrBu0subGp6e6cdgIw1vHINAOCBOPyFQkFF5yGweZi0YvM6fhfyB3ZnnmQoUosBe6mJu9POgNr4u6DAMaUrdRo9-D0EUy5pK8QYYIhwZYudDqYFDbS8bH-YpNRcmDdhb416cM0HCOyTHbP5ubcFKUvp3DJl4HbWdxdG3xk-wOX2rS__vQDnRVro491qttZDSqWGtZDL9PcFCYfm0dfKKyWSXSGpgakrxSXmJGwbCuhrc0ymnzvIjcG6MjZsekMTeRjoJzVPwCXG1MLMDqLsLfdZkDnYsuPoACkWdcUzQAjiiGWQkIquIAMYQwZDhlkVEnIQ0KhIBRBiTGBkoYhlIqGMFQshIpyDhWjBKpQMKhCKSFGGHOIEVMIYsQlhxgzgiDGnGOIKUIKYhqGHGLOOIFYSI-RknKIQypDiJXwGCUohwRxJiDBRBBIMEUYEixkCAlWPISEU6Qg4UoiSARWAhIhGYJEIt-XBFFIpCBlyxUkUoYhJCHCBBKFlYIUEcIhRZSGvpUIUkyxgBSHkkOKVcggJQQjSAnDElLKpIKUSs59G1JIGeYSUkaQbxnxI0Jgb01GIBWCMkglJhJSyRSBVHKhIJVCYkil8jqEWApIFScMUuWNyxAVBDJMBIUMM-n7KlSQESkQZBQhBBmTSkHGFOeQ8RBRyARlCPoYDiEToRKQScIxZCHGoW8JgywsZw6lDCFTSoaQIxQSyDHBvg0Rg5xIRiCnBFPfSgU5Y0xCzgQvW8UgZ6EIIeeUEsi5QgJySUjZCuZ3DfMtQwTyUHmkIpxArphfSwkkoEBUhVBghhUUOKQMCqqkgIJxpMp9_WLr8vyo7LwYODcsXm9u3t3dvRpqN8h65ouNzasoSzaHuijs2GwUtzaON3wYbLZardZ2_7h1c3d2sD2KTjqtjXx3r39-dK4_7u_9fTPZvo8O7t5a1e4cHb7vJ7atrw7ZcbZh49Ojwzt3cH90_v4TCj_s7h-cX3aPk8vJ_eXu4cVOfIyv3vGrL8lR958Ph8nV_gDp7uDzGRmnNy1XfNrHRdRXZPeDbnc_H4qrg8lO73RboVQM-oXZIeyUDq7JXsr-oQNyfTLOQn17Zjrdw6Pt24m5vOGX_STpRK0h-Zx1Nmzr3dne8M6mG-_kx5yPJkJe7rpLS4-P7MXoo5Yfj-4_j7N856Q4sZPW_bsPx2z_XtGzA3W9jfXN9dX7_i1JjnrWbdwxdnH7dvTP35xeZNejT9diQ47Fx_13G-aT_HjWapUG35xZfKs6a4vK_NOnMmX47OETQgCsM4l_wtPU-S2ujMkaUCwDlmFSA8plwDImasBwGbDcWDWgWg4M60sTNAVubdZMsLXpc2yZjX0S9p2O327Vj2UXmFTfxKbbDFw-MgEo4sw1g-2sOwGtPMlGeXWHaVXp20vM8veLrX2TgH61_rFxuqud3nzrTFJs7vumRO-bZLcoTBqZnVzbNADlfn-eSKqT6ckxHQfTH6ZXNYIC8HmkY-smcw9-lR3T06PYBV_zXEBq81msOqPhMMvdbq9nIx1NniJWoT21B4EarYex_wCjdpa6PItj090xhctHkbPZk357oLdE-pHrIwDMIf4DzDt3tudavV5sn8f5XA9td8dEes6p5WygPt2vpHiV2W5nODC5WTME6wKPpPwomA3_B1y2pwtn8rYunE37azvsUarOrRoFD5P9BHpblf5Ppd9ro4dZCvD3514fbbq_xmb-Fj8fstPBX-nyvVgnZkcXgzW51PA1J_tBUI3-OgcfmDgx7ge4N9a5dU8ePl-ja66dDf1Kx-6YYqhtvm5iGsWpyfWNjb_i8jDNr_Prdpa54vvdem3dwKxrjxn40RCzkZ9qh2mvmL3hX1lzB-6zLPlQvqb73t8PvaNKExo83EU93D-UhKbVAd_vGPdQIPDPwFZX9TeN83KnvgbnrfPdRmfiS2OFLUwXfDJ3Jga40c5udOzAoX9slLLlsq9BSBpvk2FsI-uK1wA1GPoD2DTKjfbiZVkF7OhE903jJUF_AJdNH0E2Njm4sIkBx76iN4ytyRuYzInrwoGyHtJ4GSIvm1R1JuArYaXJvC5fERJPEyK_FSH5NCH6WxEKnybEfitC6mlC_HciRNDThMTvRAiv4nNXXgkbJ0Mdg05khi43X9M5q9L6a0DQPDXB67p1hiaOZ9SWqv2d5ljislUMs15voNNuoz2wiU37oDO0uXWg-kCwNtdF5n7JKoV9MR9UBXSdRo_jvm5fH1-sPF2l_KC80DUORje5LUDb5lFs3JpKk8axTW2WFmCgxwb8SegG4f-rm3-ODZ7zjK_de91NPtb-LROUtQRr0mgCsh6ozuifaBW2yio3WXfSuNI6Buemr2OrV1lkWrd6DbY3Hv7mzfQnVhsEzVnG9Homcp7pSa9ncpv2i8bLPzHewOR_JQsdx2A3NolJXanGjM5im8zv-uoL1WwHzuzy8OHmaeOsvLb042xsikYnyyOTmxzsV8_P3TNdo-NFe2YWrOEfIBp4Hb3u_hU4N0UxnwR-3u5Yec258ZflR_7l3Xlt-uFcEGTj0sPT3DUfIZ6O33_GvzWUIZJrZxqEr5hhoUWmaa_KhU9SX3khujGxa7QH2qZg23d_SnZ7nr4r7zs6Gfl8dpJOvoBW1V9bZcK9Fm9TZ-LY9k2p2goaC8Prebtu5U3H5whcnaPnNu3_1IPlGakCr7zNeKXJD1b6a1v-G6XrV5bj1v7b9pzWsY-8XqyL28aOHdvUVLG4V46sS2HJymTlyok_FauVd53JUx1XB-UPWZquXHrkysLEdPWzkc7d_Y9Zlz1j3VZi3GBSuO9duWPc9G4KnHWxqVUMRoXpmChLu1W1snxx7-m4MNNaRyfOXFmUqNczHz5szUpE36JI7avWAtSsdDbD0AWYuc9XMyBbAKzO3EcMXzhZWdOZQcQiiIlrGskFiCppPmLCBRgf2XUbqWWYmoUwWgAqfT5nbRxMSyzT-s4ymfrMZE2Z-ndNuqZM_aMpWyRTbcOOcWXBqCwS-V47S3u2X-3OdDiaTWpSk0zK7R2AdJTcmLwZhNON8S1wd6yLqsI9hcpQoOk_rcwW2Nr8-t_D_g8mH-si",
-      "pinnacle": "eJzVWm1v27YW_lz_CkLAgA1lGr6LKuINjvO-pEnjNFn3pWAs2uZCSZ5E23F-_QUlO5Fb23FuW3RFAIKknkPyOYfnkD7Mzh_3iQVjnRcmS5sBfoMCoNNuFpu03ww-XB1syeCP3xs7F8oNznu7I2P9l98br3bKOrB6rG0ziEQAnMr72l3Ph6KfUAC6VhXFO5XoZnBjXHcQAFV0dRq3n_rPu92RdaZwAUiUSTtZ9067wzwbDZsBDsCtSmPjmsG7LNUBGKrUDXSWnql_svwwi5uBHaUqN0Xtk0lnn_r5yA3uRjYAY6MnZ1msm0G7ddruBL83Xr3aubBqqvOOUw4UTrlm0M6SW5PqeO-iE4CxsiPdDChBjMo3LAqlEEwE28tFrzKn7P8hd2p6-lGGhYisAu6nOu9POwOjbfwogEmE1q5o_-jiCSwQCt8IIlEkGcer5C4G08J0lT1T9yYZJUfGXak7nT4Ow6No5SIPTK4vdVHacgYP-SpwO7PxxuBT0x-41KT9zYcfqKzYGH2mUtXOalARroN-SHNd6Hysn2wRrR68M9Q1IHtDQsyI5GVZ7Yyd7dKbfO0q1xqorjNj3RnqrveBclTfAC7XuuZgdO5hx3EzoAu-5XtQANIs1kUzwIhiiEMRQiq4gFQKChnCGDIsGWQ0CiGXhEJBKIIhxgSGVEoYRlRCGTEJI4Q5jCjnMGKUwIhTDiMpGIxkGEKMMOYQIxYhiBEPOcSYEQQx5hxDTBGKIKZScog54wRiEXpMGFIOsaShhDgSHhMJyiFBnAlIMBEEEkwRhgSLUEKCIy4hoYxGkHDk65wiX49CBInAkYBEhAxBEiJfDwmikISClCWPIAlDKSGRCBNIIhxFkCJCOKSIUunLEEGKKRaQYhlySHEkGaSEYORLEkJKGA4hpSyMIKUh576UFFKGeQgpI8iXjPgeIbBXNyOQCkEZpCH2I4QsIpCGXESQhkJQX4YY0jDy65E4FJBGnDBII69-hqggkGHiTYZZ6OuRjCAjoUCQUYQQZCyMIshYxLkvpYSMS0QhE5QhyARDEjIhIwFZSDiGTGIsfUkYZLIcX4ahhCyKQgk5QpJAjgn2pUQMchIyAjklmPoyjCBnjIWQM8HLMmKQMykk5JxSAjmPkIA8JKQsBfO7i_mSIQK5jDwyIpxAHjE_VySQgALRSEKBGY6gwJIyKGgUCigYR1HpBK92PlyelpVXA-eGxdvt7clk8mao3CDr6Xtj9ZtulmwPVVGYsd4q7oy1W95ntlutVmu3f9aKJ--Pdkfd805L_rUnivc3u_vuIJcfrwfj46N3k17LnKLjh-6dmV59PLmSiWmr6xN2lm0Ze3F6MnFHD6eX7_5B8q_9w6PLD_FZ8mH68GH_5GrPnuHrP_n1vR1dfNQnht5cT_-2l1l8mH5Ud-9yTiant8f37vbo-CIeHJB-qoy2l7JPHya9-CRiVAz6hd4j7IIObshByv6mA3JzPs6kunuvO_HJ6e7d_dbVCb8c205b_X0yaafq38GpOG4NWzdp-88ey8db40RsyWI0wrun18fuoc3uwjEZfZpKkYs_Jw_5Xlb0z6b24Xy3-BSj3U_X_fgmwfbq48m7oaEs7xXn5_u8fZrcnMdIHOQZHo1H4db43ozTbOsTarVazWZpiO25JXaqA7uozDJrlXHHhyAfUAJgnE58C89C5Je40ntrQLEKWLpSDRiuApYeUwPKVcByw9WA0WqgrE9NZkfvq53tmgp2tn2gLkO6j-S-0vHbsPpYVoFO1a3VcTNw-UgHoLCZawa7WTwFrTzJRnl1EWpVZ4CXmB8Cr3YOdQL61fxn2qlYObV97HRSbB_6okQf6mS_KHTa1Xu5MmkASj94mUiqktnxM-sHsw-z-x7BAfh3pKxx01IT84afZU_31Mi64HOeS0htv4hVZzQcZrnb7_VMV3WnzxGr0J7ao0CN1mPff4BRO0tdnlmr4z1duHzUdSZ71m6P9FZIP3F9AoAFxH-AeWdieq7V61nzMs6XamjiPd1VC0YtRwP14X4kxevMxJ3hQOd6QxesCzyR8r1g3v0fMNmBKpzO26pwJu1vbLAnqTq3qhc8DvYd6O1U638u_N5oNcxSgL8-9npvU_0NNvOX-EWXnXX-SJMfWJXoPVUMNuRSw9eM7DtB1fvjDHykbaLdNzCvVblxzx4-n6Nrpp13_UjD7uliqEy-aWAa2VTn6tbYz7g8DvPj7LqbZa74erPeGDfQm-pjDn5SxLznu-phVivmaYJroyfgIcuSv8rf-r728bF2Wq2EBo93UQ_3jZLQLMXg6x3tHrMMvg1MdVX_vXFZ7tS34LJ1ud_oTH1-rTCFjsE_eqItwI12dqusAye-2Shly2nfAikax8nQmq5xxVuAGhz9AkzazbXy4mVuBuypRPV14zXhvwCXzZogG-scXJlEgzOfFhxao_MG5gviqnCgTKo0XmOEvHBSZauAz6eVOvOL-YyReJ4R-bkYhc8zoj8XI_k8I_ZzMYqeZ8R_KkYEPc9I_FSM8DpCk_Ji2Khu4V09dLn-nM_7Kri_BQQtcpML3DpDbe2c28p1f6U-VthsHcOs1xuoNG60ByYxaR90hiY3DlRvDRtzFQvrrp4r5mMstcVrVrHx7wCgStSrtLvKRnQdg0F5t2scjW5zU4C2ybtWuw1XThpnJjVZWoCBGmvwK5FbJPqtzmVh1ZjUP_m3AL92nY-V_8EJyrSC0Wl3CrIeqI7r9fT9m0md_svUwtap5TaLp41rpSy41H1ljVqnklkO6y3Y3Xr8W9TTr4RuEbagGt3r6a7zVM97PZ2btF80Xv-K-RYWv5UslLVg3-pEp65cxpzOCqWs3UQzxTw-BT2vnbV3mL7NxrpodLK8q3Odg8Oq_dJdE2tll-2auc9i9AvoDvwi_eL9D-JcF8ViMPiOG2TtpefW352fNFBepTdWAF6w1Vk2Lq08i2KLbuL5-D2o_a-I0k9y5XSDrhvhtf_qaZYRcAn_F-yDtfekW21doz1QJgW7vrppwHuZ0VaxWb7gtdcglYx8eDtPp_egVdU3XjMrl3ycOm2t6etyaet4LFXyC8msvQH5mIEb50MfHUza_07a_4Zs8Nrrj6dDvjWdzz39m9KpX37OWofH7QU-1ntuz6rirrFnxibVlS8flD2bklsxM1k7c-KP1mrmfafzVNnqtP0mU9O1U49cmeiYzf5-pHL38G3mZS-Yt5VoN5gW7mtn7mg3u-UCZ5zVtQzEqNAd3c3SuMp-lomAnrKFnuVOOjZzZZKjnh99fCibp5y-RJHaK9kS1DwVN8fQJZiF57A5kC0BVsf2E4YvHazMEc0hYhlE29qKwiWIKtQ-YeQSjPf5uo6iVZiahjBaAiptvqBtHMxSNrN80SqZ-shkQ5n6OyndUKb-CMuWyVTbsKNdmYAqk06-1s7SnulXuzMdjuaD6lQn03J7ByAdJbc6bwZyZu8vgftjVVQZ8zkUz55jd7bnE-xsf_4_a_8DyWIWwg=="
+      "until-68": "eJzVWVlv27gWfq5_BSFgnsrU4iJRKuIOHGftJE0aZZn2ZUDLtM2GElWJsuv--gEleUnqOM60Re6FAYGkvkOe7yykDr3757dEgYnIC6nTjoPeuA4QaawHMh11nOurw53A-fNda_eCm_H5cK-Uyr5513q1W7WBEhOhOo4fOMDwfCTMzXwq8o_rgFjxovjAE9FxbqWJxw7gRSzSQW85fh7HpTKyMA5IuEwjHd8Jc5TrMus4yAF9ng6k6TgfdCockPHUjIVOz_gXnR_pQcdRZcpzWay8kmnzapSXZnxXKgdMpJie6YHoOL3uaS9y3rVevdq9UHwm8shwAwrDTcfp6aQvUzHYv4gcMOGqFB3HQ4T6bxgiLkM4JE57veiVNlz9B7lTORQLGYwxegx4kIp8NIvGUqjBQgC5rrtRo4PjiwU4oDh8E3oeDn0csuAxuYvxrJAxV2f8m0zK5FiaK34n0sU0ZIOShzIXl6KofNnAmfcYuKfVYGvwqRyNTSrT0fbTj7kutkaf8ZT39ArUf5SkhV6nuShEPhFLXzA3fEwiysQKEL_xGaI48KqnXwnttqtssq2rXAjAYyMnIspEbHOgmtV2gMmFWEkwMs-wk0HHIfdyy464Dkj1QBQ2UAiCiPkMEt_zIUUBhZSEDDKEMGQkCCALSQCDkAYwpARD5CLkQeTS0IXI9ZgHEaLYhQh5HoKIuG4IEQkCDyKPehgin1kMY8SDKCAsgCj0iQex61EfYoR9DDEiLoIY-SyAGIVeALFH3BBiL2QuxD6jLsTMDX2IGXYJxMzH1dMLIQ5RGELiYuxB4hLmQoII8iFBAfMgQWFAoQ1NFxJMEYOEUBZCQpjn2WdAIKHIY5BQim3b95G1BcWQ-D6hkDCEGSTM80NImM8QJCy0KwaIWYNhn0CKwiCEFDPfhZS4rgspDT0PUp9QF1I_CH1IGfYQpAFCAaQB8TGkAWMB9Fw3wNBDgUuhhxnF0CMYEftkIfQopQx61PeqZ0ih5xGCoccw9u3Tp9ALMLVP6mLohTTA0HdJGEAfURRCHwWEQp-EzK_i5dXu9eVp1Xg1NiYr3rbb0-n0TcbNWA_FN6nEm1gn7YwXhZyIneJOKrVjw6vd7Xa7e6Oz7vXo4_FeGZ9He3ufDiK3P9v7Hh9PT2TYu_r0np7pHakuTt9PzfH308sPX9zg74Oj48vrwVmB9nrXU-_qw01U3sSfJbm9mfHjywwfZft8Z1D0yMnFYHyIdZpdD08-BMExiYZfj3rf6EV_9I847H_6TMb49nyiA373UUTTz2epOtq5OfnrYJJ1b9PeX0OaeyXaO42n5ftzFubfv050vq-LLP4-6l-QQXeIPh3fZGZ0R2g-LM7PD7zeqb4tJyXbmXyTk1R3u91OZaT23Eq79blT1CZrelX6VLllY8QB0ojEdlGzj_wIrAJlBeg3wN32yvy7bZvMVdrbbLeNyNq_flk1gUh5X4lBxzF5KRxQKG06zp4ezEA3T3SZ14dlt94nrMR8o3i1eyQSMKrXPxOGD7jh7RMjkqJ9ZB8V-kgkB0Uh0ljs51ymDqgC4HkiKU-aLaoZB82L5psAhQ74WnIlzazai5q2XWRfDHmpjPOQ5hpO7WeRisos07k5GA5lzOPZU7xqtGW2EFhhtRh7eUI9nZpcKyUG-6IweRkbqZ_02oLdI9JLqksAuId4eeLRVA5NdzhU8nmUL3kmB_si5vdcWs0GVqd7QYY3Wg6ibCxysWX6rQosOdlRMB-e0wlezGGHvDAi7_HCyHS0tbuWUqvU6lGwmOzXO2u3Vv-pjfdW8EynAP38rmszjY-2iOQf8ffTtRl8wfg9VDwR-7wYb0llBb_iYjsI6tEXc--xUIkwv8C5iufSPHnqPESvOHY-9IJu3RdFxmW-7Z5UqlTkvC_VAyqLaV7Mq3tam-LnnXorzVhsa445eGmH-cjvNEPTKub1440UU_Bd6-Tvag3b-rRondaKEGfxAWrhtlPxaWpP246EWZSftg9k_e37rnVZhelbcNm9PGhFM3vxUshCDMAXMRUKoFZP97ky4L3ttirZatm3gOHWSZIpGUtTvAVuy_8DyDTOBbfSSX3nAOytSAvh1VdVOQ_2ecJHovXa-wMY3fSAnogcXMlEgDN7kZQpKfIWuSfMCwOqKrwym9XnASn_aVL4_47UJk7T6kRrnWdcgSgWmcnFQ0of69B8C5D7gJ63qkeUCaXmJB7wW6pI3UeJr9ceb9JeD4djng5avbFMZDoCUSZzaUB9PbY1j9eBay1-z0GvraJGA3uVBerrI57Gy3F7a7U6vl55skn5cXXatI7Lfi4L0JN5rIT5H1CablK6rwez1g3nClyKEVeSb1K4qXXfgr2d5vc0h_sBUl93zh0657G4BXyazMZdaqT0RBStSOexyEUOjur-y7tg4zbUt-fZUunqeNtaZ3wvZ8_0RCQinSfna9woWaXlGu2fYXi2kYJQptUbc5mCPdv8LRZ_jMx6fYNN-vKktLl5ns6-gW7d3lpl7FktTlIjlJIjUam2gcZaEz8vesJNVHKZjlC931_KdPRbg_0Z4YLcp5TGv1jph7b8L0qvHq1n3aOT3j2tlRwKMFS8uGvty4lMRaUAOKxGtqXwyMp448oJT3mz8jFXSk9trtuxX7I22bh2aaoaoFn-Y8lz8_3XrEufsW43EWY8K8zPrhwJ03xEASONEiuf52UhIhHrdFDfClRfyUOuCtHUFZHSpioAVu8NFjfC82rsRxReovAa1LxInWPIGsy9C-I5kK4B1ifeEuOtnayqn-YQfx1EqBWN2BpEvWsuMcEajE3tVRuFj2FWLITcNaDK5_esjZymnmmKqcdkVmfGW8qs3vOTLWVW_0Sg62TqMIyEqaqzqiKzrZ5Oh3JUR2ealfNJRSqSWRXeDkjLpC_y6q_49nrgwYQX9U1SA6WMhM3_j_MFdtsP_-n_F2I5EA4=",
+      "maps-early": "eJzVWltv27gSfo5_BSFgn8rUvEmUirgLx86tGzcX57LZl4KWaJsbSnIlyqn76xeUfFFSx3G2XeQcBCCo0TfkfDMcUhxn7_dvsQZTmeUqTVoOfo8cIJMwjVQyajnXV4e7vvP7x8beuTDjs-F-obR987Gxs1f2gZZTqVuOjxxgRDaS5mYxFP2CHBBqkeefRSxbzq0y4dgBIg9lEnVW8rMwLLRRuXFALFTST8N7aY6ytJi0HOyAgUgiZVrO5zSRDpiIxIxlmvTE32l2lEYtRxeJyFRee6WS-atRVpjxfaEdMFXyoZdGsuV02qedvvOxsbOzd67FTGZ9IwzIjTAtp5PGA5XIqHved8BU6EK2HM_HAXrPECWUudRzmutVr1Ij9L_QO1VDudQhAXafAx4kMhvN-mMldbRUwOgFiw6Oz-tg6r733AARihl-Tu98PMtVKHRPfFNxER8rcyXuZbIchgbus7qHKpOXMi9jOYfzZxl1Uh1tDT5Vo7FJVDLafvixSPOt0T2RiE5ag3psE_Q6yWQus6lcxcJH6DmN_kTWgOS957scM1K2tFTaa5bZZHtXmZRAhEZNZX8iQ5sD5aj2AZhMylqC0UWGnUQthz7KLStBDkjSSOZl7DHE3OOQeq4HGfYZZDTgkGNMIKe-D3lAfegHzIcBowQGvscgRhi7ECMWIIiRy12IMSMIYuy6GGKKUAAx9X0XYpe5BGKPWwzn1IXYp9yHOPAsJvCoCwlymQcJJh6BBFOEIcEe9yHBgetD4lIUQOIGHEHi4cCDxOMMQcKR7XOCKCTcI2XrBpBw7vuQ-AgTSAIcBJAiQlxIEeUIUkyxByn2uQspDnwGKSEYQUoY5pBSxgNIKXdd2_oUUoZdDikjyLaMWInnYesuRiD1PMog5ZhwSDkLCKTc9QJIuccxpDyws_uYe5Ah6hHIMPEoZJhx2w_8ADLCPQQZRQhBxngQQMYC14XMowxB5jHkQ-b5gQcZJy6GzMfYty1hkPnlmD7nPnQR8gl0sY8YdAlnBLqUYGpbHkCXMcahyzy3bAMGXZdSAl03QB50OSFl6zHo-oTZliEC3YC4tmU-gR6igQ89zHAAPexTBj0acK9cgjt715enZWdnbMwk_9BsPjw8vJ8IM06H8pvS8n2Yxs2JyHM1lbv5vdJ6167YZrvdbu-Peu279sXxfhGe9ff37w76aDDb_x4eP5yooHN19ykdJaPZ394f136edNCwZw7I-dW38OIuOrxEs7-uTj9fXOje2fX3m-tM_3l0Z7AO47-uxfHlhBxNumI3yjtk1hvcfpt16d1l9PWTd3M86w7P9wOUeONRLruEndPxLTlM2F90TG7Ppqkv7i9kP_p0un8_k9cD93qUiK_jU--kPWnfJp0_hiyb7k5jfn1grhXtnaqr4ovgX06_f52mWTfNJ-H30eCcRu0hvju-mZjRPYlPh8rsPjB2dX9SRMg7zDJefMn8u8z12u126cjmwpN71XGXV26dP5VZaxO4zAMHKCNj-7g4HX4Elgu0BpyfCjt7zdr4e027h5S7jd1kbKdvY1S9LLtAJmKgZdRyTFZIB-Q6NS1nP41moJ3FaZFVZ3S72p6sxmJ_2tk7kjEYVfP3pBGRMKJ5YmScN49sU6KPZHyQ5zIJZTcTKnFAuUhep5KIeL4zzuVg_mL-KUKQA74WQiszK7fAed9O0pVDUWjjPKW5hlPzVaT6xWSSZuZgOFShCGcv8arQltlSocZqKXt7Qp00MVmqtYy6MjdZERqVvhi1JbtntFdUVwDwCPH2xPsPamjaw6FWr6N8KSYq6spQPAppORqoD_eGDG9SFfUnY5nJLdOvrrDiZKVgIX77gB2K3MisI3KjktHW4Vpp1alVUrAc7Nez26vMf2njvZVikiYA__yuazNNjLZYyT_iH6frXPiGAT_UIpZdkY-3pFLD10JshaCSvll4j6WOpfkFwdUiU-bFU-cpuhbYhegNw9qV-USobNs9qdCJzMRA6SdUlsO8WVT309TkPx_UW2XGclt3LMArPywk_6Ub5r18cW29UfIBfE_T-M9yDtu7W_ZOK0Oos_wAtXD7UPKZX3ltvy_N8tZrn4Gqvn0_Ni7LZfoBXLYvDxr9ma335CqXEfhbPkgNcKOTDoQ24JN9bJS65bQfACeNk3iiVahM_gGghvcbUEmYSWG146rUAWwxpoFJ_VVZRQBdEYuRbLxzfwMmnT-BdCozcKViCXq2fjXRSmYN-khZ5AaUl__SbdaeJ6S8l0mR_ztSmzg9lCda42wiNOiHcmIy-ZTSRbU0PwCMntBz63b0J1LrBYkn_FYmMvQs8fXWk03Wp8PhWCRRozNWsUpGoD9RmTKgqsptzeOdj6zHHwXonTXUpMBW0EBVtRJJuJLbYlldvt54usn4cXnaNI6LQaZy0FFZqKX5HzCabTJ6kEazxo0QGlzKkdBKbDJ4ftf9APZ3538vc3i8QKoq6yKgCx7L4uPLZDbuUiOdTmXe6KdZKDOZgaPq-e1DsHEbGtjzbGV0ebxtbTN5lLO9dCpjmSyS8x2ZG1mm5RrrX-F4vpGC1KbRGQuVgH3b_U88_hyZ9fb6m-wVcWFz8yyZfQPtqr-1ycS1VpwkRmqtRrI0bQONtS5-3eoJNlHJVDLC1X5_qZLRf7rYX7FcMHrJaPKLjX7qy39jdP1o7bWPTjqPrNZqKMFQi_y-0VVTlcjSAHBYSral8MzMZOPMsUjEfOYDI7NEaGB_Jfk1U9ONUxemvALMZ78oRGa-_5p52SvmbcfSjGe5-dmZ-9LMv6GAUUbL2td5kcu-DNMkqooC5UfyUOhczq8VfZ2a8vu_XjZYFoQXl7EfUWSFImtQizvqAkPXYB7VhxdAtgZYHXgrjLt2sPL6tIB46yBS1yziaxDVprnC-GswNrPrPgqew9Q8hNEaUBnzR97Gzvw6M79LPadTH5lsqUNrOnRLnfpPA2ydTrUM-9KUl7PyQmZ7nTQZqlG1OpNJsRhUJjKelcvbAUkRD2RW-2n1B-DBVORVIWkO9RAJ5r96LibYaz79_4J_AOVTLDk=",
+      "maps-red": "eJzVWltvGjkUfi6_whpppV3VaXwdj6vQFSH3QnMhl-6-VGYw4GYudMaQkl-_8gwkQwqE7LbqVkiW7flsn-8cn2PPGXb-_BpHYKKz3KRJ3cNvkAd0EqY9kwzq3tXlwVbg_fmutnOm7PC0vzs2kXvyrvZqp6iDSE90VPck8oBV2UDb6_lU9BPyQBipPP-gYl33bowNhx5QeaiTXvOx_zQMx5E1ufVArEzSScNbbQ-zdDyqe9gDXZX0jK17H9JEe2CkEjvUadJWn9PsMO3VvWicqMzklUcmmT0aZGM7vB1HHpgYfddOe7ruNRutZsd7V3v1aucsUlOddayyILfK1r1mGndNont7Zx0PTFQ01nUPY8wQfxMwHzFJmbe9fOhlalX0L8a1TF8_jKGBL1cB9xOdDaadodFRr7LIMxLtH509gilF8g3ljHMq2MpxZ8NpbkIVtdVXE4_jI2Mv1a1OHqbhCNFVYw9Mpi90XthyBhd8FbiZRr2NwS0zGNrEJIPNpx-qNN8Y3VaJaqYVqL9SQQ56lWQ619lEP9pC4pW264x0BUjf4IALzEhRlrrc2S68ydUuM62BCq2Z6M5Ih84HilldA9hM64qD0bmHHffqHl3wLdeDPJCkPZ3XPYwohlj4AlKf-5AhjCHDAYOMSgF5QCj0CUVQYEygoEEAhaQBDCQLoKScQ8kogTLwGZSBEBAjjDnEiEkEMeKCQ4wZQRBjzjHEFCEJMQ0CDjFnnEDsC4cRgnKIAyoCiKXvMNKnHBLEmQ8JJj6BBFOEIcG-CCDBkgeQcIokJFwKBImPpQ-JLxiCRCBXFwRRSIRPipJLSIQIAkgChAkkEksJKSKEQ4ooDVwpEKSYYh9SHAgOKZYBg5QQjCAlDAtIKRMSUio4d2VAIWWYC0gZQa5kxPX4PnbaZARS36cMUoGJgFQwSSAV3JeQCl9gSIV0MgRY-JBKThik0imXIeoTyDDxKWSYCVeXgYSMCB9BRhFCkDEhJWRMcg4ZDxCFzKcMQeYzFEDmB9KHTBCOIQswDlxJGGRBMXMgRACZlCKAHKGAQI4JdmWAGOREMAI5JZi6UkjIGWMCcubzopQMchb4AeScUgI5l8iHXBBSlD5zu4a5kiECeSAdUhJOIJfMrSV95EMfURlAHzMsoY8DyqBPpfChzziSxb5-tXN10Soqr4bWjvK329t3d3dvRsoO077-aiL9Jkzj7ZHKczPRW_mtiaIt5wbbjUajsTtoN7p350e74_C009jK9g8GF60L9enw4K_udPc-PLo7NrLZaZ18GMSmqa5PWDvdMtFZ6-TOHt23Lj58RsHH_cOji6teO76a3l_tn1zuRW18_Z5ff41bvb8_nsTXh0OkesMv52SSdBs2_3yI83Agyf5H1ex9OfGvj6Z7_bNdiRJ_OMj1HmFndHhDDhL2Nx2Sm9NJGqjbc93pnbR2b6f6qsuvBnHcCRsj8iXtbJnG-_OD0Z1Jtt6LTxkfT31xtW-vDG23zOX4kxKfWvdfJmm2d5qfmmnj_v3HNju8l_T8SN7sYtW9uf4wuCVxq2_s1h1jl7fH47__4vQyvRl_vvG3xMT_dPh-S38Wn84bjULh23ON75RnbV6qf9YqQoaLHi4geMBYHbsWnoXOb3GFT1aA_ipg4SYVoFgFLHyiAgxWAYuNVQHK1cCgujRBM-DOdkUFO9suxhbR2AVhV-m47VY-LKpAJ6ob6V7ds9lYeyCPUlv3dtPeFDSyOB1n5R2mUYZvN2Iev1_tHOoYDMr129qqnrJq-9jqON8-dEWBPtTxfp7rJNR7mTKJB4r9_rIhiYpnJ8esH8wezK5qBHngy1hFxk4XGm6VPd1X48h6T3kuIbX9Ilad8WiUZna_3zehCqfPESvRjtrDgAqth77_AaNmmtgsjSLd29O5zcahNemzdnugt2L0I9dHAFhA_A-Yd-5M3zb6_ci8jPOFGpneng7VglGL2UB1up9J8To1vc5oqDO9oQtWBzyScr1g3v0_MNmByq3Omiq3JhlsbLDHUVVuZS94mOwH0Nsp5X8u_N5oNUoTgP977HXepgYbbOZv8YsuO-v8mSY_iFSs91Q-3JBLBV8xsusEZe_PM_CRjmJtv4N5I5UZ--zh8xRdMe2862cadk_nI2WyTQPTOEp0promesLlYZqfZ9fdNLX5fzfrjbFDvak-5uBHRcx7fqgeZrV8_oZ_bfQduE_T-GPxmu5qfz3UWqUk1Hu4izq4axSEZtkBV-9o-5AgcG1gyqv6u9pFsVPfgovGxX6tM3Wpsdzkugc-6zsdAVxrpl0VWXDimrVibLHsWxCQ2nE8ikxobP4WoJr_GzBJmGnlRsdlVgi4vFUNk-qjIuEC9lSsBrr2mv8GbDprgXSiM3BpYg3aLtU3iozOanRhsMotKPIkhdqcPE9I-c-TIr8cKfE8KfrLkQqeJ8V-OVLyeVL8VyNF0POk_F-NFF7H6a64KtZORyoCnVCPbKafUjovw_1bQNATerwqR2eko2hO4gm_RxEZWk2coGeZrzDbOoZpvz9USa_WHJrYJAPQGZnMWFB-ONiY6-sAOdkWjPialQK7JD8oE-sqCR_7XT6_2r9ceLpO-GFx0asdjbuZyUHTZGGk7YZCk1rbJCZNcjBUEw1-J3SL8D9Wb8kFy7icvpNdZxPl3j5BkWMwOgmnIO2D8uz-gVph67TSTXvT2rVSEbjQAxUZtU4js3zWW7C79fBbVNPvWG4RtKAZ3e_r0Dqmp_2-zkwyyGuvf8d4C5M_ChYqisB-pGOd2EKMOZ3lOlnc9eWXq_kOnOvl4YPO88pZe50ZROlE57VOmoU60xk4LNsv3TM9raJle2burMFvIBw6GZ3s7tU403m-GAR-3O5Ye_Xpukv0I__iTr0x_WDBCdJJYeFZ7Fr0EEfH7T_t3iYKF8mU1TXC18ywVCOzsFfGwmepr70gdXVka82hMgnYddUfEt1eJu_au4-Kxy6enSbTr6BR1jcWmXAnxXFidRSZgS5EW0NjqXu9bNetvfG4GIHLc_TCJIMferC8IFTgtTcaJzT5zkI_1eW_Ebp6ZWk3Do-bC1JHzvP6kcpva3tmYhJd-uJB0bMphRUrk7Urx-5ULFfetzpLVFQelN9labp26bEtEhaz1c_HKrP332dd9oJ1G7G2w2lu_-vKHW1nd1NgjY10JZMwznVHh2nSK7OYxQt9X0W5nuVAOlFqi2RFNc_58MFrnjr6FkUqX7uWoOYptTmGLsEsfNaaA9kSYHnmPmL40smKXM8c4i-D6KgikViCKIPmIyZYgnGeXdWRXIWpaAijJaDC5gvaxt4s9TLL-6waU52ZbDim-r2Tbjim-jGVLRtTbsOOtkUiqUgeuVozTfpmUO7OZDSeT6oTHU-L7e2BZBx3dVb3gvl_fb4B7k9UXma-Z1AR-Gj2Z5b5AjvbT_829g-N8vg5",
+      "pinnacle": "eJzVWm1v2zYQ_lz_CkLAgA1lGvFVZBF3cJz3JU0ap8m6LwVj0TYXSvIk2o7z6wdKdiK3tuNgLboiAEFSD8l77nhH-pid3-8TC8Y6L0yWNgP0JgyATrtZbNJ-M_h4dbAlgt_fNXYulBuc93ZHxvov7xqvdso6sHqsbTOQPABO5X3trudTkc9hALpWFcV7lehmcGNcdxAAVXR1Gref-s-73ZF1pnABSJRJO1n3TrvDPBsNmwEKwK1KY-Oawfss1QEYqtQNdJaeqb-z_DCLm4EdpSo3Re2TSWef-vnIDe5GNgBjoydnWaybQbt12u4E7xqvXu1cWDXVeccpBwqnXDNoZ8mtSXW8d9EJwFjZkW4GiEks8RuEIhQSFGwvH3mVOWVfPuzU9PTjEMqwXAXcT3Xen3YGRtv4aQ0sw7UC7R9d1ARilL6RSEgcMrxq2MVgWpiusmfq3iSj5Mi4K3Wn08dZmEArZTwwub7URWnIGTxiq8DtzMYbg09Nf-BSk_Y3n36gsmJj9JlKVTurQXm0DvoxzXWh87F-MoVcPXlnqGtA8oZgwSJEq7IctLNdupKvXeVaA9V1Zqw7Q931DlDO6hvA5VrXvIvM3es4bgZkwbF8TxiANIt10Qz8DoQo4hEknHFIBCeQhghBigSFlMgIMoEJ5JiEMEIIw4gIASNJBBSSCihDxKAkjEFJCYaSEQal4BRKEUUQhQgxiEIqQ4hCFjGIEMUhRIgxBBEJQwkREYJBxCjDEPHIY6KIMIgEiQREknuM5IRBHDLKIUaYY4gRCRHEiEcCYiSZgJhQIiFmoa8zEvq6jEKIOZIcYh7REOIo9PUIhwTiiOOyZBLiKBICYhEiDLFEUkISYswgCQkRvoxCSBBBHBIkIgYJkoJCgjEKfYkjSDBFESSERhISEjHmS0EgoYhFkFAc-pJi38M58uqmGBLOCYUkQn6GiEoMScS4hCTinPgyQpBE0ssjUMQhkQxTSKRXPw0Jx5Ai7E2GaOTrUkhIccRDSEkYhpDSSEpIqWTMl0JAykRIIOWEhpByGgpIuZAc0ggzBKlASPgSU0hFOb-IIgGplJGALAwFhgxh5EsRUshwRDFkBCPiy0hCRimNIKOclaWkkFHBBWSMEAwZkyGHLMK4LDn1u4v6koYYMiE9UmKGIZPUryV5yCEPiRSQI4ok5EgQCjmREYecslCWTvBq5-PlaVl5NXBuWLzd3p5MJm-Gyg2ynr43Vr_pZsn2UBWFGeut4s5Yu-V9ZrvVarV2-2etePLhaHfUPe-0xJ97vPhws7vvDnLx6XowPj56P-m1zGl4_NC9M9OrTydXIjFtdX1Cz7ItYy9OTybu6OH08v3fofhz__Do8mN8lnycPnzcP7nas2fo-g92fW9HF5_0iSE319O_7GUWH6af1N37nOHJ6e3xvbs9Or6IBwe4nyqj7aXok4dJLz6RlPBBv9B7mF6QwQ0-SOlfZIBvzseZUHcfdCc-Od29u9-6OmGXY9tpq79OJu1U_TM45cetYesmbf_Ro_l4a5zwLVGMRmj39PrYPbTpXTTGo89TwXP-x-Qh38uK_tnUPpzvFp_jcPfzdT--SZC9-nTyfmgIzXvF-fk-a58mN-dxyA_yDI3Go2hrfG_Gabb1OWy1Ws1maYjtuSV2qtO6qMwya5Vxx4cgH1ACYJxOfAvNQuTXuNJ7a0C-Cli6Ug0YrQKWHlMDilXAcsPVgHI1UNSXxrOT99XOdk0FO9s-UJch3UdyX-n4bVh9LKtAp-rW6rgZuHykA1DYzDWD3SyeglaeZKO8ugW1qjPAj5gfAq92DnUC-tX6Z9qpWDm1fex0Umwf-qJEH-pkvyh02tV7uTJpAEo_eNmQVCWz42fWD2YfZpc9jALwz0hZ46alJuYNv8qe7qmRdcGXPJeQ2n4Rq85oOMxyt9_rma7qTp8jVqE9tccBNVqPff8DRu0sdXlmrY73dOHyUdeZ7Fm7PdJbMfqJ6xMALCD-B8w7E9NzrV7PmpdxvlRDE-_prlowajkbqE_3IyleZybuDAc61xu6YH3AEynfC-bd_wOTHajC6bytCmfS_sYGexpV51b1gsfJvgO9nUr-58LvjVbDLAXov8de722qv8Fm_hq_6LKzzh9p8gOrEr2nisGGXGr4mpF9J6h6f5yBj7RNtPsG5rUqN-7Zw-dLdM20864fadg9XQyVyTcNTCOb6lzdGvsFl8dpfpxdd7PMFf_drDfGDfSm-piDnxQx7_muepjVinma4NroCXjIsuTP8re-r316rJ1WkpDg8S7q4b5REpqlGHy9o91jlsG3gamu6u8al-VOfQsuW5f7jc7UJ9cKU-gY_K0n2gLUaGe3yjpw4puNcmy57FsgeOM4GVrTNa54C8JG9AswaTfXyo9OqtQS8LmvBiL1T2XWBuypRPV14zX_Bbhs1gLZWOfgyiQanPlk4dAanTfowmBVOFAmW0q1eXm-IMWfJ4V_OlLR86TIT0dKPE-K_nSk5POk2M9GCofPk-I_Gym0jtOkvCo2qnt5Vw9drr-k9KEK928BDhfpibAuR2eorZ2TQGyFiCxcTRyzZ5mvMNs6hlmvN1Bp3GgPTGLSPugMTW4cqB4fNubKF-Su3i_mc7xGYegFX7Dwa1qx8S8DoErdq7SrVzAg6xgMytte42h0m5sCtE3etdptKDlunJnUZGkBBmqswa9YbGH52-p9ieuf_OuAl13nY-V_goIy0WB02p2CrAeqA3w9ff-KUqf_MrXQdWq5zeJp41opCy51X1mj1qlkltV6C3a3Hv8W9fQrJluYLqhG93q66zzV815P5ybtF43XvyK2hfhvJQtlLdi3OtGpK8WY01mhlLWbaKaYx8eh57Wz9lbTt9lYF41Olnd1rnNwWLVfumtireyyXTP3WRT-AroDL6QX3v9EznVRLAaD77hB1t6Bbv1t-kkD5eV6YwWgBVudZePSyrMotugmno_fg9r_rij9JFdON8i6GV77r55mGQGX8H_BPlh7Z7rV1jXaA2VSsOurmwa8lxltFZvlAq-9D6lk5MPbeTq9B62qvrHMtBT5OHXaWtPXpWjreCxV8gvJrL0H-ZiBGudDHx1M2v9O2v-GbNDaG5Cng781nS89_ZvSqV9-zlqHx-0FPtZ7bs-q4q6xZ8Ym1ZUvH5Q9m5JbsTJeu3Lij9Zq5X2n81TZ6rT9JkuTtUuPXJn6mK3-YaRy9_Bt1qUvWLeVaDeYFu6_rtzRbnbLBc44q2s5iVGhO7qbpXGVDy1TAz1lCz3LpnRs5sq0Rz1j-vh0Nk9CfY3CtXezJah5cm6OIUswCw9kcyBdAqyO7ScMWzpZmTWaQ_gyiLY1iaIliCrUPmHEEoz3-bqO5CpMTUMoXAIqbb6gbRTMkjizDNKqMfWZ8YZj6i-nZMMx9WdZumxMtQ072pUpqTIN5WvtLO2ZfrU70-FoPqlOdTItt3cA0lFyq_NmIGb2_hq4P1ZFlUOfQ9HsgXZne77AzvaX_8L2LwyvIiY="
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T09:15:32.967Z"
-  },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Sceptre",
-          "Wand"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Shield"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "intjewel"
-        ]
-      }
-    }
-  },
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "chaos-dot",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Severed Rhoa Head",
-          "tier": "low",
-          "effect": "(10-15)% increased Chaos Damage",
-          "source": "Oozeback",
-          "area": "Act 1",
-          "note": "Chaos damage for Essence Drain."
-        },
-        "torso": {
-          "name": "Chaos Golem's Core",
-          "tier": "low",
-          "effect": "(4-5)% reduced Chaos Damage taken over time",
-          "source": "Muruk",
-          "area": "Act 9",
-          "note": "Chaos damage over time reduction."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "low",
-          "effect": "+(30-50) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life while the DoT works."
-        },
-        "lowerLimb": {
-          "name": "Skeletal Tail",
-          "tier": "low",
-          "effect": "(10-15)% increased Projectile Damage",
-          "source": "Skeletal Abomination",
-          "area": "Act 5",
-          "note": "Projectile damage for the ED projectile."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Severed Rhoa Head",
-          "tier": "med",
-          "effect": "(20-30)% increased Chaos Damage",
-          "source": "Oozeback",
-          "area": "Act 1",
-          "note": "More chaos damage."
-        },
-        "torso": {
-          "name": "Chaos Golem's Core",
-          "tier": "med",
-          "effect": "(6-7)% reduced Chaos Damage taken over time",
-          "source": "Muruk",
-          "area": "Act 9",
-          "note": "Chaos DoT reduction."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "med",
-          "effect": "+(60-80) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life before damage scaling."
-        },
-        "lowerLimb": {
-          "name": "Skeletal Tail",
-          "tier": "med",
-          "effect": "(20-30)% increased Projectile Damage",
-          "source": "Skeletal Abomination",
-          "area": "Act 5",
-          "note": "Projectile damage."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Severed Rhoa Head",
-          "tier": "high",
-          "effect": "Every second, inflict Withered on Enemies within 6 metres for 5 seconds",
-          "source": "Oozeback",
-          "area": "Act 1",
-          "note": "Withers enemies around you every second."
-        },
-        "torso": {
-          "name": "Chaos Golem's Core",
-          "tier": "high",
-          "effect": "(8-10)% of Physical Damage over Time taken as Chaos Damage",
-          "source": "Muruk",
-          "area": "Act 9",
-          "note": "Physical DoT is taken as chaos, which you resist."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "high",
-          "effect": "(5-7)% more Maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "More maximum life."
-        },
-        "lowerLimb": {
-          "name": "Skeletal Tail",
-          "tier": "high",
-          "effect": "Projectiles Pierce, Fork or Chain an additional time at random",
-          "source": "Skeletal Abomination",
-          "area": "Act 5",
-          "note": "An extra pierce, fork or chain at random."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Essence Drain and Contagion; life and a 3-link first.",
-        "Do not chase chaos damage before resistances."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "Magic wand."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "3-link."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Keep moving."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Add Efficacy and Controlled Destruction to Essence Drain.",
-        "Cap resistances and keep Despair on the boss."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Chaos damage",
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "Rare wand."
-        },
-        {
-          "slot": "Shield",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Defensive shield."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "4-link."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Chaos damage"
-          ],
-          "note": "Bench chaos damage."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Six-link Essence Drain and reach 2,000 life; cap resistances.",
-        "Void Sphere and Wither are utility, not damage links."
-      ],
-      "lookFor": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link."
-        },
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Chaos damage",
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "The wand is the damage slot."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Chaos damage"
-          ],
-          "note": "Life first."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "A 5-link clears white maps; start the 6-link.",
-        "Reach 3,000 life and cap resistances."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Chaos damage",
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "Rare wand."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the 6-link."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Fix resists."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Chaos damage"
-          ],
-          "note": "Bench chaos damage."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life.",
-        "Chaos damage over time multiplier is the red-map upgrade."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Chaos damage",
-            "Damage over time multiplier",
-            "Cast speed"
-          ],
-          "note": "Chaos wand."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Chaos damage"
-          ],
-          "note": "Chaos damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Chaos damage"
-          ],
-          "note": "Bench chaos damage."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 Essence Drain and awakened chaos supports."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Chaos damage",
-            "Damage over time multiplier",
-            "Cast speed"
-          ],
-          "note": "Endgame wand."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Life",
-            "Chaos resistance",
-            "Chaos damage"
-          ],
-          "note": "Fix chaos resistance."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Chaos damage"
-          ],
-          "note": "Keep life."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Arcane Surge": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Arcane Surge lasts 4 seconds",
-        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
-        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
-        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
-      ],
-      "tags": [
-        "arcane",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Contagion": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, the debuff spreads to other enemies.",
-      "effect": [
-        "Base duration is 5.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Spreads when affected Enemy dies",
-        "Deals 336.5 Base Chaos Damage per second",
-        "Base radius is 2.1 metres"
-      ],
-      "tags": [
-        "area",
-        "chaos",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "Base radius is metres",
-      "qualityWorth": "optional"
-    },
-    "Controlled Destruction": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 80% less Critical Strike Chance",
-        "Supported Skills deal 39% more Spell Damage"
-      ],
-      "tags": [
-        "critical",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Despair": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Curses all targets in an area, lowering their chaos resistance.",
-      "effect": [
-        "Base duration is 11.80 seconds",
-        "+1 metre to radius",
-        "Cursed enemies have -30% to Chaos Resistance"
-      ],
-      "tags": [
-        "area",
-        "chaos",
-        "curse",
-        "duration",
-        "hex",
-        "spell"
-      ],
-      "qualityEffect": "% increased Effect of Curse",
-      "qualityWorth": "recommended"
-    },
-    "Efficacy": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills deal 24% more Damage over Time",
-        "Supported Skills have 24% increased Skill Effect Duration"
-      ],
-      "tags": [
-        "duration"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Damage over Time",
-      "qualityWorth": "recommended"
-    },
-    "Essence Drain": {
-      "requiredLevel": 12,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Siren's Cadence"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Fires a projectile that applies a damage over time debuff when it hits. You are healed for a portion of the debuff damage. The debuff is spread by Contagion.",
-      "effect": [
-        "Regenerate 0.50% of Debuff Damage as Life",
-        "Base duration is 3.80 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 2729.1 Base Chaos Damage per second",
-        "Deals 786 to 1179 Chaos Damage"
-      ],
-      "tags": [
-        "area",
-        "chaos",
-        "duration",
-        "projectile",
-        "spell"
-      ],
-      "qualityEffect": "Regenerate % of Debuff Damage as Life",
-      "qualityWorth": "recommended"
-    },
-    "Faster Casting": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 39% increased Cast Speed"
-      ],
-      "tags": [
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills have % increased Cast Speed",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Swift Affliction": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "25% less Duration of Supported Skills and Damaging Ailments they inflict",
-        "Supported Skills deal 39% more Damage over Time"
-      ],
-      "tags": [
-        "duration"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Damage over Time",
-      "qualityWorth": "recommended"
-    },
-    "Void Sphere": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "reward",
-        "act": 4,
-        "quest": "Breaking the Seal"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Creates a Void Sphere which Hinders enemies in an area around it, with the debuff being stronger on enemies closer to the sphere. It also regularly releases pulses of area damage. The Void Sphere will consume the corpses of any enemies which die in its area. Can only have one Void Sphere at a time.",
-      "effect": [
-        "60% of Physical Damage Converted to Chaos Damage",
-        "Pulses every 0.40 seconds",
-        "Base duration is 5.00 seconds",
-        "Base radius is 3.8 metres",
-        "Deals 464 to 696 Physical Damage",
-        "Enemies in range are Hindered, with up to 39% reduced Movement Speed, based on distance from the Void Sphere"
-      ],
-      "tags": [
-        "area",
-        "chaos",
-        "duration",
-        "orb",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Wither": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts a debilitating debuff on enemies in an area, hindering their movement and also inflicts the Withered debuff, which increases the Chaos Damage they take and can stack up to 15 times.",
-      "effect": [
-        "6% increased Chaos Damage taken",
-        "Base duration is 0.50 seconds",
-        "Withered lasts 2 seconds",
-        "36% reduced Movement Speed",
-        "19% increased Area of Effect"
-      ],
-      "tags": [
-        "area",
-        "channelling",
-        "chaos",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "% increased Skill Effect Duration",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "870e34865312",
+  "patch": "3.30.0",
   "guide": {
     "summary": {
-      "text": "Essence Drain Occultist is a chaos damage-over-time build that measures 206.5k at red maps and 320.4k at pinnacle. The damage keeps working while you move, and no unique is required.",
+      "text": "Essence Drain Occultist is a chaos damage-over-time build that measures 111.4k at red maps and 159.3k at pinnacle. The damage keeps working while you move, and no unique is required.",
       "status": "auto-breadth",
       "signed": null,
       "facts": [
@@ -8229,7 +8227,7 @@
         "gates.maps-red.metrics.dps",
         "gates.pinnacle.metrics.dps"
       ],
-      "factsHash": "d1784a172e3e56ad"
+      "factsHash": "a579ebda2cc18acb"
     },
     "leveling": {
       "text": "Level with Essence Drain and Contagion, then add the DoT supports as they unlock. The first checkpoint measures 344 life and 60 damage; the second measures 478.",
@@ -8243,7 +8241,7 @@
       "factsHash": "d2e5a16183aa1982"
     },
     "maps": {
-      "text": "At red maps the build measures 206.5k damage, 13573 effective life and 5102 physical max hit. Spread Contagion, keep Wither on the rare, and cap the resistances.",
+      "text": "At red maps the build measures 111.4k damage, 13309 effective life and 5003 physical max hit. Spread Contagion, keep Wither on the rare, and cap the resistances.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8251,10 +8249,10 @@
         "gates.maps-red.metrics.ehp",
         "gates.maps-red.metrics.maxHit"
       ],
-      "factsHash": "1cd62f7ad765f90c"
+      "factsHash": "8860149bc9a016c6"
     },
     "bossing": {
-      "text": "Pinnacle measures 320.4k damage with 16008 effective life and 5992 physical max hit. Apply Despair and Wither before the burst, then keep moving while the DoT works.",
+      "text": "Pinnacle measures 159.3k damage with 15545 effective life and 5819 physical max hit. Apply Despair and Wither before the burst, then keep moving while the DoT works.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8262,8 +8260,14 @@
         "gates.pinnacle.metrics.ehp",
         "gates.pinnacle.metrics.maxHit"
       ],
-      "factsHash": "0d39d1300c98c682"
+      "factsHash": "5bea5600dc0de752"
     }
   },
-  "medal": "A"
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:53:28.065Z"
+  }
 }

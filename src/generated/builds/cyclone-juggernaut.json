@@ -985,6 +985,747 @@
     "optional": []
   },
   "status": "verified",
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "physical-melee",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "low",
+          "effect": "(10-15)% increased Global Physical Damage",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "Global physical damage."
+        },
+        "torso": {
+          "name": "Bonestalker's Ribcage",
+          "tier": "low",
+          "effect": "(4-5)% reduced Physical Damage taken over time",
+          "source": "Boneshaper",
+          "area": "Act 2",
+          "note": "Physical DoT reduction for Boneshatter."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "low",
+          "effect": "Adds (2-4) to (5-7) Physical Damage to Attacks",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "Flat physical damage to attacks."
+        },
+        "lowerLimb": {
+          "name": "Captain's Leg",
+          "tier": "low",
+          "effect": "(3-4)% increased Movement Speed",
+          "source": "Guard Captain",
+          "area": "Act 3",
+          "note": "Movement speed."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "med",
+          "effect": "(20-30)% increased Global Physical Damage",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "More global physical damage."
+        },
+        "torso": {
+          "name": "Bonestalker's Ribcage",
+          "tier": "med",
+          "effect": "(6-7)% reduced Physical Damage taken over time",
+          "source": "Boneshaper",
+          "area": "Act 2",
+          "note": "Physical DoT reduction."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "med",
+          "effect": "Adds (8-12) to (15-18) Physical Damage to Attacks",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "Flat physical damage to attacks."
+        },
+        "lowerLimb": {
+          "name": "Pocked Leg",
+          "tier": "med",
+          "effect": "(35-50)% increased Armour from Equipped Helmet and Gloves",
+          "source": "Pikerivet",
+          "area": "Act 4",
+          "note": "Armour from helmet and gloves."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "high",
+          "effect": "Hits have (30-50)% chance to ignore Enemy Physical Damage Reduction",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "Hits can ignore enemy physical damage reduction."
+        },
+        "torso": {
+          "name": "Searing Exarch's Descry",
+          "tier": "fixed",
+          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
+          "source": "Searing Exarch",
+          "area": "Pinnacle / Map Boss",
+          "note": "Physical hits are taken as fire, which you can resist."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "high",
+          "effect": "(10-12)% more Maximum Physical Attack Damage",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "More maximum physical attack damage."
+        },
+        "lowerLimb": {
+          "name": "Lithic Haunches",
+          "tier": "high",
+          "effect": "(10-15)% chance to Avoid Physical Damage from Hits",
+          "source": "Boulderback",
+          "area": "Act 9",
+          "note": "Chance to avoid physical damage from hits."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops.",
+        "Use Cyclone as soon as it is available; do not chase attack speed over raw damage."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Highest physical DPS",
+            "Attack speed"
+          ],
+          "note": "A rare axe is better than any unique here."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "A 3-link is enough."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Movement speed is defence while leveling."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed if the axe has a free suffix."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Swap to Cyclone; keep Enduring Cry on a movement or left-click bind.",
+        "Cyclone is channeled; area and movement speed matter."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "The weapon is the build."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link is enough."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Fix resists before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %"
+          ],
+          "note": "Bench physical damage % on a free prefix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Six-link Cyclone and reach 2,000 life; cap elemental resistances.",
+        "Take the labs when they unlock; the ascendancy is a large defence step."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "The 6-link is the damage step."
+        },
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "Do not replace a good rare with a worse unique."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link and upgrade the weapon.",
+        "Reach 3,000 life and cap resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "The weapon is still the main damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed if the weapon has a free suffix."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Do not stand in the hit; the build is not a tank even with armour."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "Upgrade the weapon before the jewellery."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link is the red-map gate."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %"
+          ],
+          "note": "Bench physical damage %."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 Cyclone and awakened supports; keep the defensive flasks."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "The endgame weapon is the last big purchase."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Life",
+            "Chaos resistance",
+            "Critical strike multiplier"
+          ],
+          "note": "Fix chaos resistance on the amulet."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed",
+            "Critical strike multiplier"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Blood and Sand": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts a buff that grants different bonuses to melee skills depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance.",
+      "effect": [
+        "Melee Skills have 5% less Area of Effect while in Blood Stance",
+        "Melee Skills deal 5% less Area Damage while in Sand Stance",
+        "190% increased Cooldown Recovery Rate",
+        "Melee Skills deal 27% more Area Damage while in Blood Stance",
+        "Melee Skills have 27% more Area of Effect while in Sand Stance"
+      ],
+      "tags": [
+        "low_max_level",
+        "spell",
+        "stance"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Brutality": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "reward",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal no Elemental Damage",
+        "Supported Skills deal no Chaos Damage",
+        "Supported Skills deal 39% more Physical Damage"
+      ],
+      "tags": [
+        "physical"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Physical Damage",
+      "qualityWorth": "recommended"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Cleave": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "r",
+      "support": false,
+      "description": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
+      "effect": [
+        "When Dual Wielding, Deals 60% Damage from each Weapon combined"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee"
+      ],
+      "qualityEffect": "metres to radius per Nearby Enemy, up to a maximum of +1 metre",
+      "qualityWorth": "recommended"
+    },
+    "Close Combat": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills grant Combat Rush on Hit\nCombat Rush lasts 2 seconds or until you use a Travel Skill",
+        "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
+        "Supported Skills can only be used with Axes or Swords",
+        "Supported Skills deal up to 39% more Melee Damage to Enemies, based on proximity"
+      ],
+      "tags": [
+        "attack",
+        "duration",
+        "melee"
+      ],
+      "qualityEffect": "% increased Damage with Hits to Close Range Enemies",
+      "qualityWorth": "recommended"
+    },
+    "Cyclone": {
+      "requiredLevel": 28,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Sever the Right Hand"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
+      "effect": [
+        "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+        "20% less Movement Speed"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "channelling",
+        "melee",
+        "movement"
+      ],
+      "qualityEffect": "% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "qualityWorth": "recommended"
+    },
+    "Decoy Totem": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Summons a totem that taunts nearby monsters to attack it.",
+      "effect": [
+        "Totem lasts 8 seconds",
+        "Totems Summoned by this Skill cannot Evade",
+        "Summons a Totem which uses this Skill"
+      ],
+      "tags": [
+        "area",
+        "spell",
+        "totem"
+      ],
+      "qualityEffect": "% more Totem Life",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Enduring Cry": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
+      "effect": [
+        "Grants 1 Endurance Charge per 5 Power to you and Allied Players",
+        "Buff grants 2% of Life Regenerated per second per\n5 power, counting a maximum of 25 Power",
+        "Counts total Power of Enemies in Range",
+        "38% increased Warcry Speed",
+        "Base duration is 3.40 seconds"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "warcry"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Faster Attacks": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Attack Speed"
+      ],
+      "tags": [
+        "attack"
+      ],
+      "qualityEffect": "Supported Skills have % increased Attack Speed",
+      "qualityWorth": "recommended"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "Breaking the Seal"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Leap Slam": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
+      "effect": [
+        "+0.55 seconds to Attack Time",
+        "Base radius is 1.5 metres",
+        "Damaging Hits always Stun Enemies that are on Full Life",
+        "39% increased Stun Duration against Enemies that are on Full Life"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee",
+        "movement",
+        "slam",
+        "travel"
+      ],
+      "qualityEffect": "% increased Stun Duration against Enemies that are on Full Life",
+      "qualityWorth": "recommended"
+    },
+    "Melee Physical Damage": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 10% less Attack Speed",
+        "Supported Skills deal 49% more Melee Physical Damage",
+        "Supported Skills deal 49% more Damage with Bleeding and Poison caused by Melee Hits"
+      ],
+      "tags": [
+        "attack",
+        "melee",
+        "physical"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Melee Physical Damage",
+      "qualityWorth": "recommended"
+    },
+    "Pulverise": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 15% less Attack Speed",
+        "Supported Skills deal 49% more Melee Area Damage",
+        "Supported Skills have 34% increased Area of Effect"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee"
+      ],
+      "qualityEffect": "Supported Skills have % increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Ruthless": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
+        "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds",
+        "Ruthless Blows with Supported Skills deal 98% more Melee Damage",
+        "Ruthless Blows with Supported Skills deal 98% more Damage with\nAilments caused by Melee Hits"
+      ],
+      "tags": [
+        "attack",
+        "melee",
+        "slam",
+        "strike"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Attack Damage",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "06f9e570851b",
+  "medal": "S",
+  "stale": {
+    "status": "waiting-for-pob",
+    "reason": "This build has not been verified against a patch fact set."
+  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -1872,13 +2613,13 @@
         "dps": 8000
       },
       "metrics": {
-        "dps": 70603,
+        "dps": 65289,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 3089,
+        "life": 3040,
         "energyShield": 0,
-        "ehp": 16258,
-        "maxHit": 7501,
+        "ehp": 16000,
+        "maxHit": 7415,
         "resists": [
           75,
           75,
@@ -2889,8 +3630,8 @@
           "slot": "Jewel 1",
           "base": "Crimson Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
             "14% increased Physical Damage"
           ],
           "budget": "ssf-start",
@@ -2901,8 +3642,8 @@
           "slot": "Jewel 2",
           "base": "Crimson Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
             "14% increased Physical Damage"
           ],
           "budget": "ssf-start",
@@ -3034,13 +3775,13 @@
         "dps": 20000
       },
       "metrics": {
-        "dps": 136117,
+        "dps": 126394,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 4183,
+        "life": 4092,
         "energyShield": 0,
-        "ehp": 22505,
-        "maxHit": 9539,
+        "ehp": 22014,
+        "maxHit": 9382,
         "resists": [
           76,
           75,
@@ -4188,8 +4929,8 @@
           "slot": "Jewel 1",
           "base": "Crimson Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
             "14% increased Physical Damage"
           ],
           "budget": "ssf-start",
@@ -4200,8 +4941,8 @@
           "slot": "Jewel 2",
           "base": "Crimson Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
             "14% increased Physical Damage"
           ],
           "budget": "ssf-start",
@@ -4334,16 +5075,16 @@
         "life": 4500,
         "ehp": 12000,
         "maxHit": 6000,
-        "dps": 120000
+        "dps": 80000
       },
       "metrics": {
-        "dps": 275068,
+        "dps": 231185,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 5193,
+        "life": 4939,
         "energyShield": 0,
-        "ehp": 29960,
-        "maxHit": 12193,
+        "ehp": 28510,
+        "maxHit": 11748,
         "resists": [
           76,
           75,
@@ -5716,8 +6457,8 @@
           "slot": "Jewel 1",
           "base": "Crimson Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
             "14% increased Physical Damage"
           ],
           "budget": "ssf-week1",
@@ -5728,8 +6469,8 @@
           "slot": "Jewel 2",
           "base": "Crimson Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
             "14% increased Physical Damage"
           ],
           "budget": "ssf-week1",
@@ -5740,8 +6481,8 @@
           "slot": "Jewel 3",
           "base": "Crimson Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
             "14% increased Physical Damage"
           ],
           "budget": "ssf-week1",
@@ -5752,8 +6493,8 @@
           "slot": "Jewel 4",
           "base": "Crimson Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
             "14% increased Physical Damage"
           ],
           "budget": "ssf-week1",
@@ -5764,8 +6505,8 @@
           "slot": "Jewel 5",
           "base": "Crimson Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
             "14% increased Physical Damage"
           ],
           "budget": "ssf-week1",
@@ -5776,8 +6517,8 @@
           "slot": "Jewel 6",
           "base": "Crimson Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
             "14% increased Physical Damage"
           ],
           "budget": "ssf-week1",
@@ -5924,16 +6665,16 @@
         "life": 5000,
         "ehp": 14000,
         "maxHit": 7000,
-        "dps": 150000
+        "dps": 125000
       },
       "metrics": {
-        "dps": 554817,
+        "dps": 449593,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 5939,
+        "life": 5662,
         "energyShield": 0,
-        "ehp": 36413,
-        "maxHit": 14011,
+        "ehp": 34712,
+        "maxHit": 13525,
         "resists": [
           76,
           75,
@@ -7399,8 +8140,8 @@
           "slot": "Jewel 1",
           "base": "Crimson Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
             "16% increased Physical Damage"
           ],
           "budget": "trade",
@@ -7411,8 +8152,8 @@
           "slot": "Jewel 2",
           "base": "Crimson Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
             "16% increased Physical Damage"
           ],
           "budget": "trade",
@@ -7423,8 +8164,8 @@
           "slot": "Jewel 3",
           "base": "Crimson Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
             "16% increased Physical Damage"
           ],
           "budget": "trade",
@@ -7435,8 +8176,8 @@
           "slot": "Jewel 4",
           "base": "Crimson Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
             "16% increased Physical Damage"
           ],
           "budget": "trade",
@@ -7447,8 +8188,8 @@
           "slot": "Jewel 5",
           "base": "Crimson Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
             "16% increased Physical Damage"
           ],
           "budget": "trade",
@@ -7459,8 +8200,8 @@
           "slot": "Jewel 6",
           "base": "Crimson Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
             "16% increased Physical Damage"
           ],
           "budget": "trade",
@@ -7598,766 +8339,23 @@
       }
     }
   },
-  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJzNWmtT2zgX_tz8Co1ndt7dWQV0l90h3UlCCGWhXEJp2S87IlYSF1-CLSekv35HdkIMTULYdt8yzHjko-dI5zmSjk-O2PvjPgrBRKdZkMQNB-8gB-i4n_hBPGw4Hy8P6q7zx7va3pkyo9NBKw9C2_Ou9mavaINQT3TYcDzkAKPSoTZXi6Ho38gB_VBl2QcV6YZzolKV-zp1gMr6Ovbby66jfDjUaaxy44BIBXEv6d9q002TfNxwsANuVOwHpuF8SGLtgLGKzUgn8Yn6kqTdxG84YR6rNMgqXUE87xqmuRnd5qEDJoGeniS-bjjt5nG757yrvXmzdxaqmU57RhmQGWUaTjuJboJY-_tnPQdMVJjrhkMkR0LuCOxRSjF2dlerXiZGhf9C7zgY6Acdjj26DtiJdTqc9UaBDv0HBbTRnM7h2dIcz-PejuScUUldsU7vbDTLgr4KT9R9EOXRYWAu1a2OH4bBZIOJB0GqL3QWZOYBL9fO1E5C_ymYr_fScGTiIB5urdEeqSR7ghZrjTlRsWonFai7CfkxTnWm04leLgRhZJ1Gb6wrQIx3pCdKF-7tFsfIti5TrYHqm2Cie2Pdtxu_GM2-AJNqXTlZdHG03vvFAamcKCtBDogTX2cNh0kBMZcEYkkZJIwzSLGQUBCKoKDcg4IxAYXEBArPxVBS14WSMQQ9jjHEiBD7ZB6CmLjIg5gJZMdEkkLMGeL2SV2IheTCPiWHWErBIXYpIpAghF1IEOcYEswwhYQiIiGhroshYYJhSLhwCSTcoxQSgT0BieDEtrlgkAhJuH0yBInExZMiDImUdmSXYgyJyySHxJXEhcQjHoHEo5xCigjHkCLqIkiR8GxbUgopRlaCBXEhxZ7AkBKMOaSUuBJSyqQHKRUUQ0rtvJQh5EHKsMSQMoIkpEwIASlnVEAqOKOQCkEZpMJjHqSulBIyJDiFjLgIQWYHgowyTCBjBBVPT0ImuHQhEx5GkEksOWTS2swkIxgy1_qWuS6SkHnYjuZhi_eKcTwuMeSIEQI54hJBjlxh2x5ikGPPcyGnGNun9Cjk1MUCcs5cDjl3OYOce0hALj1OIXcZ8yD3qJV4HnGhQEwSKDD2XCgIwnbfIIKhIBhZCSMeFJS4BApqbRBUEgoF9aSAgiEpoWB2RsERZcVufrP38eK4aLwZGTPO3u7uTqfTnbEyo2Sg74NQ7_STaHessiyY6Hp2G4Rh3W7-3Waz2WwNO82b88N-Kzjv3g-jT_sH7vXV6Mvnbo-p05Y5OPww9Tvtj_FRHSX1L--PTs-ZYJdTc9bhLb_TPbyg_PQkbB1-FFd_uRgfXXcObj9GVx_-Ci_iiAw6qnuV-N2ko-6usotIfL75aqanh0dZ_y4kf1KV-fUPbP9zmGh275LP-OtwqNv37MNg6M465PpKjv6qH6pknH1J62fdcesqpJH-qvrTu09iHP45u0vPI-ym_Xp-dMrPbhCZ3A2azX5TTc8vW4l7Se6v026a3VzP7uXZwLwfoS9frid-kpPoOLjWFxdcpHfd0ymTUzk7HxwduOOvX-mgP_OkZOLvOKnfUu_kjP3ZbDYbhbN3F97eKz-pWen6-VsRJGy8sNHAAYHRURFP5hH1W1xxNitAsR4oCa8A5VqgPbcVoLsOWBzGCtBbC7SncAkk8-_jm73digv2dm1ULeKvDbu20bNbrewsmkDH6ibUfsMxaa4dkIWJaTitxJ-BZholeVqmKs0yYFuNRcR-s9fVERiW859oo3xl1O57o6Nst2sfBbqro_asHxYZTbHNt0bHKpp_IR5E8yyMIAfc5SoMzOzRix16Xw9UHhrnKa8VJHZfxKKXj8dJak50qPUid9hXkRo-S6xU7Opope6SZtENFv1gAXgFpFtpborJtqZa0VgSrAhfAamzPJzoNMi2X7-KxpJURfgKSLXDJNM2uVdma1qPdCqnzorBQv4KuB2ozOi0aYzq32Zbs6tqVemVcvAw3H9AcK9k8Fyw_aTVOIkB_v5Ie6zVuBeqaMtQu4Qv3WJloBT-zCXvxH6eBvGwnT4bc1ZpLPksxKCQ_7xFPtRhpM33L_G-NjqNgliZIIm3dM0TnaVznnT8zAVvhUniN2O_p2J_S1qPVSqfGSsHKvZB2TOnhcX_fdG7YTLR2fcv-iK4q8x8Gum4zAzm5Yptg7zKzOljzUqoV5kB05GO50kHmCPmnuM_YT-8j6IkNSpsqzDccj88VlmyW8hB2fHzYkArScwP2A37up_MLhOjt43zVYXq4e8nMzAX_6dOmbeyRfnnKtBT8DVJos9FDce2rh9ax6Ul1Hn42WLh9qVgNi8d2XZPm4fqkX0HQfmr7l3tQqWBmb0FF82LTq03s8XSLMi0D77oqQ4BrrXTIMqSGBzZ91qhXMz7Frik9j4ah0E_MNlbgGq_uwiYBERllRDYImYN019AEPdTreyYZQYBiuJXDbNq15NcvnCKneyJyeJ5k8krM1k-bzJ9ZSa7z5vMXpnJ3vMm89dlMkHPmyxel8l4k8XTIjevNcf6HrRDrSY6fWrveRki3wKCHtuOGdpkTdP3M0ALegJ907uB5BrPb6IxKrLPWjuJ73KdJun_MlAmpFuSIbVfKa5T8lvVKHtBAOxdAugMBkE_0HF_VvuV0Drhv60wfk5s1Yr-bj1lEmCvVUB5laHi_lJub1Cq8tUeoJs8cJP4s9qxHgZJDM5CZfQm5vMS2lvQqj_8PXEHYXUiHtHshsmNCr9ZyEc5NhipDPxK3DpFj12Up8p6UffNRgc93A79ey-xTV4aFglr7SzV_TzNkhR0VR6bUJts642C8dqNi3b4LyAZPHURONa6P9I-UNmc7csO_Tr-63bVar9szBtubOZWa9mwZZJYg8tUK397n7iPjk0y0ZGOzdz6rgpisNovKgOde5OqksF8PxG-YbBNe2ede1buqdU-2pio3OjQ1I61MiOdgpZ92TZQvigkkDkbe-v5vMUb8xQV5aE2tdN4dg-aZftHmLzxkH4nn41JjK1z4NrpWIXgIoiH_43_N5J8GZmN6Y0lQ34wmRcdgReSwdXM56TZfd9-RCcMBhoMQpXd1vaDSRDrwjJwUEi25bZmZrxx5sh-psuZO8b--0lYfrl_yNRk49S5Cexo89m7qYoD84M40xdM3FKZCs2PmZe9YN5mpM1oln33zD1t5pkqMIEJdeW3eJ7pnu4nsV8WkYufxAMVZnpeUuiFiSl-81fLzA-3i4uaTAW1qFM-XCyuwDy6HVwA6Qrgov61wLCVgxVFkQWEr4LosGKRWIEoo_cSI1dgbBSpsnfXYcgS463AFIv5yI3ImVcl5iWRdTqVgTHeUodWdMiWOpV7YUy31KneTrNVOuWe7GlT1GWKWoxttZN4EAzLrRqP88WgOtbRrNjrDojz6EanDcdd_DvVN8DORGVlaXoOla5A838cWkywt_v0f_P-AWlycpE=",
+    "code": "eJzNWm1z2rgW_lx-hcYzO3d3VjR6t90J3QFCSNOkSUOaNvtlR8EC3NgWsWUI_fV3ZEMwKRBy273NZMYjHz1HOs-RdHw4yv5f93EEJirNQp00HPwaOUAlfR2EybDhfLo8rHvOX29r--fSjM4GrTyMbM_b2qv9og0iNVFRw_GRA4xMh8pcLYai_yAH9COZZR9krBrOqUxlHqjUATLrqyRoL7uO8-FQpYnMjQNiGSY93b9VppvqfNxwsANuZBKEpuF80IlywFgmZqR0ciq_6rSrg4YT5YlMw6zSFSbzrmGam9FtHjlgEqrpqQ5Uw2k3T9o9523t1av980jOVNoz0oDMSNNw2jq-CRMVHJz3HDCRUa4aDqEYe_w1oYJ5hDp76zUvtZHR89VOwoF6UGE-9TcBO4lKh7PeKFRR8KCAtlrTOTpfWuNx5L_2iS88QdlGc85Hsyzsy-hU3odxHh-F5lLequRhGIxd5m1SPgxTdaGyMDMPeFdsArd1FDwG881eGo5MEibDnTXaI6mzR2ix0ZhTmci2rkA3crTIT0mqMpVO1HIhCCObNHpjVQH6r33MWIHd3yvOkG1dpkoB2TfhRPXGqm93fTGYfQEmVapyrOjiXL0LitNROU5WghyQ6EBlDYe5AmLuEohdyiBhnEGKhQsFoQgKyn0oGBNQuJhA4XsYutTzoMsYgj7HGGJEiH0yH0FMPORDzASyYyKXQswZ4vZJPYiFy4V9uhxi1xUcYo8iAglC2IMEcY4hwQxTSCgiLiTU8zAkTDAMCRcegYT7lEIisC8gEZzYNhcMEuESbp8MQeLi4kkRhsR17cgexRgSj7kcEs8lHiQ-8QkkPuUUUkQ4hhRRD0GKhG_bLqWQYmQlWBAPUuwLDCnBmENKiedCSpnrQ0oFxZBSOy9lCPmQMuxiSBlBLqRMCAEpZ1RAKjijkApBGaTCZz6knuu6kCHBKWTEQwgyOxBklGECGSOoePouZIK7HmTCxwgyF7scMtfazFxGMGSe9S3zPORC5mM7mo8t3i_G8bmLIUeMEMgRdxHkyBO27SMGOfZ9D3IbgiCnrk8hpx4WkHPmcci5xxnk3EcCctfnFHKPMR9yn1qJ7xMPCsRcAgXGvgcFQdjuG0QwFAQjK2HEh4ISj0BBrQ2CuoRCQX1XQMGQ60LB7IyCI8qK3fxq_9PFSdF4NTJmnL3Z25tOp6_H0oz0QN2HkXrd1_HeWGZZOFH17DaMorrd_HvNZrPZGnaaNx-P-q3wY_d-GH8-OPSur0Zfv3R7TJ61zOHRh2nQaX9KjutI17--Oz77yAS7nJrzDm8Fne7RBeVnp1Hr6JO4-tvD-Pi6c3j7Kb768Hd0kcRk0JHdKx10dUfeXWUXsfhy881Mz46Os_5dRN5TmQX1D-zgS6QVu_fIF_xtOFTte_ZhMPRmHXJ95Y7-rh9JPc6-pvXz7rh1FdFYfZP96d1nMY7ez-7SjzH20n49Pz7j5zeITO4GzWa_KacfL1vauyT312k3zW6uZ_fu-cC8G6GvX68ngc5JfBJeq4sLLtK77tmUuVN39nFwfOiNv32jg_7Md10m_kl0_Zb6p-fsfbPZbBTO3lt4e7_8nmal6-dvRZCw8cJGAweERsVFPJkH1O9xxdmsAMVmoEt4BehuBNpzWwF6m4DFYawA_Y1AewqXQDL_PL7a36u4YH_PRtUi_tqwaxs9u9XKzqIJVCJvIhU0HJPmygFZpE3DaelgBppprPO0zFOaZcC2GouI_Wq_q2IwLOc_VUYG0si9d0bF2V7XPgp0V8XtWT8q0plim--MTmQ8_0I8iOYpGEEOuMtlFJrZyosd-kANZB4Z5zGvNST2nsWil4_HOjWnKlJqkTocyFgOnyRWKnZVvFZ3SbPoBot-sAC8ANKtNDfFZDtTrWgsCVaEL4DUeR5NVBpmu69fRWNJqiJ8AaTakc6Uzeyl2ZnWik7l1FkxWMhfALdDmRmVNo2R_dtsZ3ZVrSq9Ug4ehvsXCO6XDJ4Ktp-VHOsE4B-PtCdKjnuRjHcMtUv40i1WBkrhr1zyThLkaZgM2-mTMWedxpLPQgwK-a9b5CMVxcr8-BIfKKPSOEykCXWyo2se6Syd86jjVy54K9I6aCZBTybBjrRWVSqfGSsHMglA2TOnhcX_fdG7kZ6o7McXfRHcZWY-j1RSZgbzasWuQV5m5mxVsxLqZWbAdKSSedIB5oi55_gv2A_v4linRkZtGUU77odVlSW7hRyUHb8uBrS0Nj9hNxyovp5daqN2jfNVherh7-sZmIv_VafMW9mi_HMVqin4pnX8pajh2Nb1Q-uktIQ6Dz9bLNy-FMzmpSPb7inzUD2y7yAsf9W9rV3INDSzN-CiedGp9Wa2UpqFmQrAVzVVEcC1dhrGmU7AsX2vFcrFvG-AR2rv4nEU9kOTvQGoJn4DYdJPlbTqcVkqBLaSWWPVnjKNAEUBrIZXuh4l9IVn7IyP7BZP201eot3u03bTl2i397Td7CXa7T9tN3-BdhP0tN3iBdqNt5k9LTL3WnOs7kE7UnKi0sdGfywD6BtA0CoBzNA2a5pBkAGKgNFAoO96Md1IcoP7t9EYFblpra2Tu1ylOv1PBsp0dUcypPY7xXVK_qgaZW8PgL1oAJ3BIOyHKunPar8TWif8jzXGz4n96RWUVxb0T-spo4G9cwHlPYdM-ku5vV6pytd7gG7zwI0OZrUTNQx1As4jadQ25vMC2xvQqj_8PXIHYXUiVmh2I30jo-8WciUDByOZgd-JV6do1UV5Kq0XVd9sddDD1dH_7iW2zUvDIp2tnaeqn6eZTkFX5omJlMl23igYb9y46DX_DejBYxeBE6X6IxUAmc3ZrvHAlvOwif-mXbXeL1uzihub19VaNnYZnShwmSoZ7O4Tb-XY6ImKVWLm1ndlmID1fpEZ6NybVJYM5vuJ8C2Dbds7m9yzdk-t99HWDOZGRaZ2oqQZqRS07MuugfJZIYHM2dgr0act3pq7yDiPlKmdJbN70CzbP8PkrYf0B_lszWlsFQTXzsYyAhdhMvx3_L-V5PPIbE10LBnyk8k86wg8kwyupj-nze679gqdKBwoMIhkdls7CCdhogrLwGEh2ZXbhpnx1plj-5kuZ-4Y-58pUfnl_ilTk61T5ya0o81n76YyCc1P4kyfMXFLZjIyP2de9ox5m7Eyo1n2wzP3lJlnqsCEJlKVX-p5pnqqr5OgLDEXP5gHMsrUvODQi7QpKgLVIvTD3eOiYlNBLaqYD9eOazArd4cLIF0DXFTHFhi2drCiZLKA8HUQFVUsEmsQZfReYtw1GBtFquy9TRiyxPhrMMVirrgROfOaxbxgskmnMjDGO-rQig7ZUadya4zpjjrVu2u2Tqfckz1liqpNUamxrbZOBuGw3KrJOF8MqhIVz4q97oAkj29U2nC8xT9qfQfsTGRWFq7nUNcTaP5vRYsJ9vce_9vefwEucYBL",
     "byStep": {
       "until-12": "eJzFWNty2zYQfTa_AoOZPFW2RFLUxSOmQym24owVO6aTtE8dmFxRqEGAJUDZ6td3AFIinUqyErvpi2axPLt7dnFbaPTrY8rQEnJJBfexfdLBCHgkYsoTH3--PT8e4F_fWqNrohZX83FBmf7y1joaGRkxWALzse1gpEiegPqyduX-0cEoYkTKjyQFH89ITooYcoyIjIDHk_rThyJJIOekUBilhPJQRPegprkoMh_bGN0RHlPl44-CA0YZ4WoBgs_InyKfitjHrOAkp7LxifLqU5IXanFfMIyWFB5mIgYfT4LLSYjfWkdHo2tGVpCHiigkFVE-noj0jnKI312HGC0JK8DHTu_E7Qz7g-Gw53i4vd3wVijCvtvqks5hY9HdjTvjkCercEGBxRt8Zy-Xs_fXNZehfTIYdh3Ps4duz95ld71YSRoRNiOPNC3S91TdknvgNcH-zpDnNIcbkFSqDfq4txM9ESz-Ft0d7C5SslCc8uRwk8mCCHk4nxnhZCIa2J2ONfIzz0FCvoR6KuzOzqKGGTSBJ27fIEdts4G0dJsDIBIpuoQwg0gveeNKD5DKARp7yl1vqovYbI3GXtKaDkZcxCB93BsO7NbQs-2W3e_3vJbjDgZ2y-l5jtty7Z4zaLk9r-u2up2e57a6fbvvtbrDru20vM6w0215g253aHgcjT7fXBrhaKFUJk_b7YeHh5OMqIWYwyNlcBKJtJ0RKekSjuU9ZexY024HQRCMk7NgslDnH8I4Dr_CHXRXV0uv__Hh0-3Uubq5CYLAN0HaVZRRW-dtKqQLo4VQu5RlTbSIgJM7BrGPVV4ARpIJ5eOxiFcoyFNR5OUxEpQl1Rbrmh6NppCiBFJdrBkoEhNF2hcKUtme6h-DnkI6YUCW2rUeHwrmJK1mcK2pjkcPo78KwqhamSmqZO32HcxJwRT-NqUt_NvflUBYZJnI1U2hFgykfC6TEj2FtDaos6l1_3s-50QqyAOlSHR_eFJNq2ZipR5t3FXpOa-W3qjk_9zS_QokExzZL1-3l0CykJH0wJVbw-uiaB0qlevb_edP9xmPi5zyZJKvDkzliUWdzVqNjP7VEzpwgt8DS0G9fHrfQSRWt0LBoRPcNKiLYrSoUlc16f7smoyFUPLlJRkzIeKAxyHh8YFFeWpSl8XoEeExKr_8h8dBJcn1_f-FwgP6W4j0NxNDS79vpMuSh4s3t6KG64FJruodtByC2rQPeoxoXI5vSE7V6hTNgunFxApXuk-WVEKMHszZY4VKcEDBI1jGzoQ8RbZjfSrTPUUd6yLNGI2oknoQxLFEA6QEsnto3TmidyQlCVjeG0R5lAPREcrjFZlGyBRBR3hK0dlLcWF2jzXRDMuddCjJXxxPM0zLhhbpdnsHA3cvgzsRr6zJAqTKGFH7alS-XeQpGh-Pj8c_yqa7l03CxBKkda2pxGhKCq4YKPn6RfGeKYpQ0goVAEPTXDc8L6JgP1k0M7GEFLjau2x6-_kBU9YlELWAHI314NUL1N9LgKQFA2Vd8dUjCkr5UAa280ZT2Dx9UPmYITzaRWWwl4q-Am3rKiMM3VCevH4lhs-Gd34gfFUG_V58vgJ2Zy8HRueA5ozIe2sGMa3SQedGcyChHYH3n7Ap4aQKHKaEMaQfka8Sd_-xWSiqnVWhPxU0upeULSF_YewQVHWvIEUVg8Y9WEgIIRI8Ljtacx3NCZNQ3ekhE8pcuM2el6rylt_0iA3UunFaY5wtmCcPvzXQ3QKcmnOzxnS3OjNdyRribYMAazDqbUGUm73G9Ldg9D5oZj_YhXFqzHALxszlkzJ2cNURVO3ILpuGY9s-0MZt2DjbbMq1EoIyvYrpT7Q0EXxOk3IJ8axYOwUO6cosQYx4kd5B7mO7mrp_A8-WRP8PUkNdd1j9mbL2P2p_-0_lP2bsnAE=",
       "until-28": "eJzFWW1v4jgQ_lx-hRXpPl1a4rxTwZ4C26Vdtdtuae_ty8klA3hxbC52aLlff7ITIFRAuS13p0qVPX7G84zHHo9D-6eXjKE55JIK3rHwmWMh4EORUj7uWI8Pn05j66cPjfYdUZPbUbegTI98aJy0TRsxmAPrWG5sIUXyMaifl1N5fzgWGjIi5ReSQce6ITkpUsgtROQQeNpbD30uxmPIOSmUhTJC-UAMp6D6uShmHQtb6InwlKqO9UVwsNCMcDUBwW_IN5H3RdqxWMFJTmVtiPJqaJwXajItmIXmFJ5vRAodq5dc9wbWh8bJSfuOkQXkA0UUkoqojtUT2RPlkH68G1hoTlgBHctvRWdh2ApwGLg48K3mdtUHoQj7Dr1rOoKVDsZutAt4wSEfLwYTCixdKTh76Vxc3q2QcRydhW4Y4xbGfujt0rubLCQdEnZDXmhWZJdUPZAp8DXDyG_t0v1Ec7gHSaVawU_DnQx7gqWv0d5O9DUdTxSnfHy4Sm9ChHwNd4Nd8BvCSU_UsDtDppGPPAcJ-RzWsYh3Tj2YQQ0XnGHsGmi7aY6Rbj3kAIgMFZ3DYAZDvfHNXLqDVA5QO1ne8mhdpeaA1E6UljgW4iIF2bFC3w_tsBVjuxVgbGPHdbGNA9-LbRxFYWC7ThBg2_XiGNtuGLie7caRG9ueE7aw7WEndmwPh1oS-F5oe2Hge7YXR1Fk-04YeLbvxo5j-54X-bYf4Siw_RaOYttv-di1A8d39f-W49uBF7U8O4h9v2WHGLdiO3QdHNmhi53YDv0Yh8blk_bj_bVpnEyUmsnzZvP5-flsRtREjOCFMjgbiqw5I1LSOZzKKWXsVK9QM0mSpDu-SC6706LvPLLPi5G6uwi-3mP8-fdAPd9ejr7BL5Po29VMfstPf4Xfoy-zv3qzJ5mQ568PFy359JtDL6ePEN_G08sFv3OekyTpGFLNilW7qUNigqdjphsDTUGW4dJNBJw8MUg7lsoLsJBkQnWsrkgXKMkzUeRlnkvKaGuNZbhP2n3I0BgyHccbUCQlijSvFGSy2df_DLoPWW8xZCYdGvcPRnOSVdtrJapSOLbQnwVhVC3MBqraeuKPMCIFU9Zrr7a40PxHPgyK2Uzk6gYYwDLtfCQZGb_pVqnYh2yr7tpJM4yW42gJqFz2_jeXe0xI0HcNUQe7uqFTi6MWo6X8f_fsE5EK8kQpMpzKg32ra9WdK-VoNV3lXng099ol_7eO7i9AZoIj_P5zew1kNmAkO_DgruHrRdEyVAqr9Qj--3Bf8LTIKR_38sWBrmxorL1ZipGRH92hAwN8CSwD9f7wfoShWDwIBYcGuK6wXhQjRZW4WpP4vw9ylwmRJjwdEJ4e6M-mytojI0eEp6gcOXqiOjDQXSGUPEacFeQZ5URRwQ8O9YZOPdobA8s31b-wNFVLLgvOnyk8o7-EyH41NnTrt1XrehmiVa2j4bpjnKuKVd0egFrVq7qPaFr270lO1eIc3ST9q15jsNDPM0klpOjZZNTGJZBUZoSj5AUaRtVYPUd-0PhaenyOnMZVNmN0SJXUnSRNJXIdpATyndeXe6P1A6J8mAPRVsqLA5ny2yyENrFJ091Lc2LyQuMeyBxyVGaJQ3n-GBqOWfmQQvqdt4ODt5fDk0gXjUHB0R0jat8qle9meY66p-bve-n4e-mMmZiDbPQLkutvAahPCq4YKHn8dQneWBehZCPhiv5ZAOrnOkbvIuE69b1zI-aQAVd7d0-4nyEw1bgGoiaQo67uHH2Jor0ESFYwUI1bvnhBSdk-OoN4LwN9tePG7YwwdE_5-D3mf_ScH7Rw9SUAlW97woe7uLXe5OZ-B7eKh_5-8TYF7OzlwOgI0IgROW30KeHKuIo-GcGBfHbY3Z9_M8LJ0m4ORFfZ-qvGUSzvT6mFonqylXHCqTqOx_vT6KbdLpGEqaOY3Z8uN80mGajJQr7X8ABUdcciRRWDWk1QSBjAUPC0fLOYq3lEmISqwBkwoUztUX_VUFWWPKsCsYZalsZLjLsFs_FpYwn0tgD75vJYY_ytk5kSbQkJtkGA1RiFWxBltltjoi0Yfejr3se7MO4a09qCMbHcWEbHqqqjqjTbpVObGOMDdbyajnugjl_T8Q7UCWo6_jadck8OQJn60NSEutUTfETH5Vbls2I5KXDIFmarW4gX2RPk5meD5nbgxZzIskquoHErrL6YLudvN1__KPE3UofY4g==",
-      "until-68": "eJzNWm1T27oS_kx-hcYz99MRRG9-Y0jPJAFCWyiUQGn75Y6IlURFloMtB9Jff0a2QwwnCeHAudxhxiOvntXuI2lX1oa9P-9jBaYizWSiWw7eQQ4QepBEUo9azuXF4Xbg_PmhsXfGzfh02Mmlsj0fGlt7RRsoMRWq5XiBAwxPR8J8mw9F_4scMFA8y77wWLScE57yPBKpA3g2EDrqLro-5aORSDXPjQNiLnU_GdwI00uTfNJysAOuuY6kaTlfEi0cMOHajEWiT_ivJO0lUctRueapzGpdUlddozQ345tcOWAqxd1JEomW020fd_vOh8bW1t6Z4jOR9g03IDPctJxuEl9LLaL9s74DplzlouX4yEN0h1ASeCElrtNcrnqRGK7-gd6xHIoHHYqCcBXwQIt0NOuPpVDRgwJa687B0dkDEnvEDXYYc33MaOiv0jsbzzI54OqE38s4j4-kueA3Qi9YuQiv0j2UqTgXmcxMDb4K3E1UtDH4WI7GRks92nz4MU-yJ2jPW4U-4Zp3k_rA65CXOhWZSKdisQ44WDkr_YmoAYMdl_qswO41iyCyrYtUCMAHRk5FfyIGdtsXg9kXYFIhanFF54H1MSrCoxZPVoIcoJNIZC2H-R7Erk8g9imDhLkMUuz50KNuCD3GPOiFAYY-YwiGLsYQI0IwxCRAIcTMQ1adIdc-aQCx57ueffouxL7vuRAHFBFIkOtiSDDDFBKKiA8JDQIMiRtSConnkuLpMUh8zBAkPkUYEt_HASQBxRiSgPkuJIFPAkhCEhJIQupSSBFxMaSIBghS5IW27VMKKUZWgj0SQIpDD0NKMHYhpSTwIaUexZBSnyFIGUIhpMzzPEhdRj1IPZdRSAPf9yFDnkshIwFCkFkFyCjDBDJGUPEMfcg81w8g80KMIPOx70LmM4IhC-ycsBDbEUJsMaHVdREj9un6CLoo8Gw7RAy6OAwD6FI_pNClAfag6wYug27AWAjdMCQB9BDzCfQwDgPoEYR96BGMAuhREhDoUTuyR31CoceQ70OP2XE8F1FWbJetvcvz46KxNTZmku02m3d3dzsTbsbJUNxLJXYGSdyc8CyTU7Gd3Uiltu3uarbb7XZndNC-HB0NOvJr734UX-0fBj_w_U3eQ5fRQfdSf9pGs-7FzelZFwUXN4fo64_oaKg6R5fet58Bxp9-XmIdk-EBH53fTq7ue9eTaHpK22wQ389uv_9Io9t7yujoi7ga-7-Ofv8cfj_tdtiX4SiYHZAf0a2MZ6dTN3J1RvTJZ5Xf_uxnt7fokxl-pmfpTTi9uG63B21-9_XiIMyuPt_f-j1ykgkkj_qnX5LcPTy67Z3eMf_On30dfh6Ev4_pdPor3b6h4ckZ-9xut1vFJDXns7RXnjRZOWXVWxE9NpCKXekAaURcRFqVav4OLDZcDVhlma29Zm38vaaN5SLqbbDbRt_Of9lZNIHQ_FqJqOWYNBcOyFRiWk4niWagncZJnpbHY7tME1Zjnie29noiBqPS_okwPOKGNz8aEWfNnn0U6J6Iu7OBKk7RYu03RmseV3npQVSd_Dh0wG3OlTSzIvVUbTvyvhjyXBnnKa0lHJovItHPJ5MkNSdCCTE_rvZ5zEfP8ioVeyJeqrtgWXSDeT-YA96fcyfNTWFsY6Y1jQW_mnDOKXg3Tme5mopUZpuvXk1jwakmfP91OuSZEWnbGD64yTbmVdeqUyvl4GG4t-e3VxJ4LhddCT5JNMCvT0THgk_6iscbZqIFfDErVgZK4Tsu-IGO8lTqUTd9NiaXaSzozMWgkL_bEh8JFQvz-gXeF0aksdTcyERvODNPdBZz86TjHZe7o5Ikauuoz3W0IavHKrUkbOWA6wiUPRUr93-94j2VTEX2-hWv8liXZ-ZqLHR5aFaXxw0ToNU9faxZ-_TgmQF3Y6Gr8xhUiDeft40Zf4zjJDVcdblSG26GxyoLcnM5KDve_lTecDN0ksS8wV7YF4NkdpEYsWmCryvU436QzEAl_jdTYtXK5nfxb1Lcgd9JEn8vbNjWj4fWcekIdR6-5i3cvhTEqnu8bfeFebjK23cgy4vEh8Y5T6WZ7YLz9vlBoz-zdatMZiICv8SdUAA3uqmMs0SDT_a9USgXdneBTxof44mSA2myXYAafwQImATEZcEG2HpSA9P_AKkHqeB2zPLDARSFiAZm9a4n37jFpFhjT1z2nneZ_J-5vM7ju-I7ptGeiHvQVYJPRfrU36_lttoFGD32HTO0zpt2FGWAFvQ89LfeNSSX0yDraIyLs7pxYGz1VIFOno4SLczGVJYtwx-WnkmAreWBsn7G9WAht2W7uny523Sd29dJNGv0VJLKJM_AmeJGrHO5ukTvgs529bc5i4e64T-nwtZRGRVnZ6M_kTciAuVJ-qrpX7NBVrm9asWW01mbfK5t9m9cSMM16KU2LjZnQ9y65yfJVMRCm7nva9ZoFZ-la7ec1Nr0dC2UaRwLbsYiBR378q_EB6nY2Lrz8x776zzmca6EaZzq2T1ol-23cHltMLyST7COj73W4MbphCtwLvXoX81Py0m-jEz4HBnyxmReFAIvJINRjc1Ju_ex-4iOkkMBhopnN419OZVaFJ6Bw0KyKbcVlvFayzHXvLJ8xJVK7mzasLI3sU3W2s6NtKNV5nsp19K8EWn6AsMdnnFl3sYue4HddizMeJa92nJfmOpjCxhplKh9gueZ6ItBoqOyZlR8CQ-5ykR1keirxBRf-vWq0kMJfX4Rq6HmhYk5hizBPKqVz4F0CXB-551j2NLBiqvQHOIugwhV88hbgijT9wLjL8HYNFJnH6zCkAUmXIIpFvPRNCKnuoxUN6FVOrWBMd5Qh9Z0yIY6rKZDN9Sp_wTDlumUe7IvTHEdK65gttVN9FCOyq2qJ_l8UKFFPCv2ugN0Hl-LtPj3heZy4MGUZ2UtqoIyn4bVj7dzA3vNp_8d8RdyGXix",
-      "maps-early": "eJzNWmtT2zgX_kx-hcYz76cVRTdLdod0JwRIaaFcAi27X3aUWCReZDnYciD8-h3ZDjFskqZbdnknMx756Dk659HlSDrO7q8PiQZTleVxatoefoc8oMwwjWIzantXl4fbgffrh9bumbTj05u9Itau5kNra7csA62mSre9AHnAymyk7Nd5U_QP5IGhlnn-RSaq7Z3ITBaRyjwg86EyUXdR9akYjVRmZGE9kMjY9NPhrbK9LC0mbQ97YCBNFNu29yU1ygMTaexYpeZE_plmvTRqe7owMovzRlVs6qpRVtjxbaE9MI3V_UkaqbbX7Rx3-96H1tbW7pmWM5X1rbQgt9K2vW6aDGKjov2zvgemUheq7WHKMebvAh-HOMTU21mueplaqf-B3nF8o550GA5WAg-Mykaz_jhWOnpSQGvdOfh49oQkxEfsnQgCggOMw1V6Z-NZHg-lPpEPcVIkH2N7KW-VeWom9OlK3cM4Uxcqj3P7BBd8Fbib6ugl2F_dSaOxNbEZbazRHcs0f4HmK505kUZ20wYUr-xYB70ymcpVNlWLgSCrNfoT1QAG78KQsxK7u1OuIle6zJQCcmjjqepP1NDN-7Ix9wJsplRjYdH5yjqKyvXRWFBOgjxg0kjlbY8JDrEvCMSCMkiYzyDFXEBO_RByxjjkAhPIwwBDwRiCoY8xxIgQDDEJUAgx48i1wZDvnjSAmAufu6fwIRaC-xAHFBFIkO9jSDDDFBKKiICEBgGGxOcBgcQPKYWE-6R8cgaJwAxBIijCkAiBA0gCijEkARM-JIEgASQhCQkkIfUppIj4GFJEAwQp4qErC0ohxchJMCcBpDjkGFKCsQ8pJYGAlHKKIaWCIUgZQiGkDAsMKSNIQMo455D6jHJIuc8opDxkIaSBEAIyxH0KGQkQgsw1ARllmEDGCCqfoYCM-yKAjIcYQSaw8CETjGDIAtdXLAiQgCzErp0QO2ToWvARI-7pCwR9FHBXDhGDPg7DAPoUY_cUIYU-DTCHvs8CH_p-4DPoB4yF0A8p4tAPQxJAjpggkGMcBpAThIV7Egw5wchJGAkhpyQgkFNnl1NBKOQ0FBxyhoSAnDkr3EeUlbNua_fq4rgsbI2tneTvd3bu7-_fTaQdpzfqIdbq3TBNdiYyz-Op2s5vY6233STd6XQ6nb3RQed69HG4F5_3HkbJt_3D4Df8cFv0_hwNLi7Q-af-0IjLo0-n5yw4vnw4Pb--2BujaPvqILqcfDWP11f69ir5-uV335qHXnog777mFwm_Hjza-9OPn_LhnSafqcyj7S9s_1qnij0E5Bo_jkZq_5qdnYy_JIeKfbsZk7vPgyP-x-3ht2v1u_gyeexOBnfJVfb5znYH1zP7yP2zASLTu5tOZ9iR9-eXB2H-7fPDneiRk1w9UtE_io4YOabyuLi48Hl21zu9Z-JezM5vPh0Gk8dHejOchUIw_odJt29peHLGPnc6nXbZiTvzXtytdrS86tL6rVykbr2WM94DsVVJuaDrkPZ3YDmZG8A6mm3t7jTa391xIaMMLi6muELfjU9VWRaBMnKgVdT2bFYoD-Q6tW1vL41moJMlaZFV23CnikZOYx6OtnZ7KgGjyv6JsjKSVu4cWZXkOz33KNE9lXRnQ13u1uXc2BhtZFKHvydRfcIgyAN3hdSxnZURri67lvfVjSy09V7SWsJh54dI9IvJJM3sidJKzbfFfZnI0Xd5VYo9lSzVXbAsq8G8HswBb895LytsaWxjpg2NBb-G8O05nRV6qrI433z0GhoLTg3h23Pq6jRX7tAq7casnuk0VpwTg7n87akdytyqrGOtHN7mG5NrajXZVXLw1Nzr89utCHwvzH5TcpIagH8-xh4rOelrmWwYZBfwRa84GaiEbzjgByYqstiMutl3w80yjQWduRiU8jcb4o9KJ8r-_ADvK6uyJDbSxqnZsGde6Cz65kXFGw73nk7TqGOivjTRhqyeqzT2FycH0kSgqqlZYfxfD3lPp1OV__yQz8O6zO23sTLVgaC-gG8a3mVuT59rNoK8zC24HytTnzVAjag7zv_vZ8NRkqSZlbortd5wNjxXWZCby0FV8Wbrfy9N7SvMhX01TGeXqVWbRvimQnPhD9MZqMX_Zp_UpXyezvgaq3vwmKbJdWnDlX57Kh1XjlDv6abi4O6lJFanQly5r-xTNsS9g7i6JH1oXcgstrP34KJzcdDqz1zuL49zFYE_1b3SALe6WZzkqQGf3HurVC7tvgeCtI6SiY6Hsc3fA9T6JUDApiCpkl7A5eRamP4PxGaYKenarE4OoMzltDBrVr04v5ed4oy9cJl_32Xyf-byOo_vy4NMqzNRD6CrlZyq7KW_59W0eg8weu47ZmidN50oygEt6XH0t9o1JJfTIOtojMvNunVgXQZag70iG6VG2Y2pLBuGXxw9mwKXDwVVDlKa4ULuUp9N-XK36Tq3B2k0a_V0msVpkYMzLa1a53KdIHgP9rbr3-YsnnKv_5wKW0dlVO6drf4kvlURqHbSn-r-NRNkldurRmw5nbXBZ-Cif-syttKAXubWxeZsiN_0_CSdqkQZO_d9zRit4rN07JaTWhueBkrb1rGSdqwysOde_pX1QWo2Lnf_fY_FOo9lUmhlW6dm9gA6Vfk1XF67GH6ST7COj7vX4NbpRGpwEZvRvxqflpP8MTLh98iQVybzQ0vgB8lg1GBz0ukddZ_R0fGNAjda5ret_XgaG1V6Bg5LyabcVljGay0n0sja8nwHc9-nXsc0WWu6sLFrrbbey6SJ7Stxpj9geE_mUtvXsct-wG4nUXY8y3_acl_Z-qwFbGy1apzAi1z11TA1UZUzKg_CN1Lnqr5H9HVqy4N-M6v09HVgfg9roOaJiTmGLME8-wwwB9IlwPmVd45hSxsrb0JziL8MonTDI74EUUXvBUYswbgo0mQfrMKQBSZcgikH81k3Iq--i9QXoVU6jYZd-mEjHdrQIRvqsIYO3VCn-XWJLdOp5mRf2fI2Vt7AXKmbmpt4VE1VMynmjSqjklk51z1gimSgssaH-L8BD6Yyr3JRNZQjEtafv-cGdnde_sHkLwn63Jw=",
-      "maps-red": "eJzNWmtT2zgX_tz8Co1ndt7dWQV0l90h3UlCCGWhXEJp2S87IlYSF1-CLSekv35HdkIMTULYdt8yzHjko-dI5zmSjk-O2PvjPgrBRKdZkMQNB-8gB-i4n_hBPGw4Hy8P6q7zx7va3pkyo9NBKw9C2_Ou9mavaINQT3TYcDzkAKPSoTZXi6Ho38gB_VBl2QcV6YZzolKV-zp1gMr6Ovbby66jfDjUaaxy44BIBXEv6d9q002TfNxwsANuVOwHpuF8SGLtgLGKzUgn8Yn6kqTdxG84YR6rNMgqXUE87xqmuRnd5qEDJoGeniS-bjjt5nG757yrvXmzdxaqmU57RhmQGWUaTjuJboJY-_tnPQdMVJjrhkMkR0LuCOxRSjF2dlerXiZGhf9C7zgY6Acdjj26DtiJdTqc9UaBDv0HBbTRnM7h2dIcz-PejuScUUldsU7vbDTLgr4KT9R9EOXRYWAu1a2OH4bBZIOJB0GqL3QWZOYBL9fO1E5C_ymYr_fScGTiIB5urdEeqSR7ghZrjTlRsWonFai7CfkxTnWm04leLgRhZJ1Gb6wrQIx3pCdKF-7tFsfIti5TrYHqm2Cie2Pdtxu_GM2-AJNqXTlZdHG03vvFAamcKCtBDogTX2cNh0kBMZcEYkkZJIwzSLGQUBCKoKDcg4IxAYXEBArPxVBS14WSMQQ9jjHEiBD7ZB6CmLjIg5gJZMdEkkLMGeL2SV2IheTCPiWHWErBIXYpIpAghF1IEOcYEswwhYQiIiGhroshYYJhSLhwCSTcoxQSgT0BieDEtrlgkAhJuH0yBInExZMiDImUdmSXYgyJyySHxJXEhcQjHoHEo5xCigjHkCLqIkiR8GxbUgopRlaCBXEhxZ7AkBKMOaSUuBJSyqQHKRUUQ0rtvJQh5EHKsMSQMoIkpEwIASlnVEAqOKOQCkEZpMJjHqSulBIyJDiFjLgIQWYHgowyTCBjBBVPT0ImuHQhEx5GkEksOWTS2swkIxgy1_qWuS6SkHnYjuZhi_eKcTwuMeSIEQI54hJBjlxh2x5ikGPPcyGnGNun9Cjk1MUCcs5cDjl3OYOce0hALj1OIXcZ8yD3qJV4HnGhQEwSKDD2XCgIwnbfIIKhIBhZCSMeFJS4BApqbRBUEgoF9aSAgiEpoWB2RsERZcVufrP38eK4aLwZGTPO3u7uTqfTnbEyo2Sg74NQ7_STaHessiyY6Hp2G4Rh3W7-3Waz2WwNO82b88N-Kzjv3g-jT_sH7vXV6Mvnbo-p05Y5OPww9Tvtj_FRHSX1L--PTs-ZYJdTc9bhLb_TPbyg_PQkbB1-FFd_uRgfXXcObj9GVx_-Ci_iiAw6qnuV-N2ko-6usotIfL75aqanh0dZ_y4kf1KV-fUPbP9zmGh275LP-OtwqNv37MNg6M465PpKjv6qH6pknH1J62fdcesqpJH-qvrTu09iHP45u0vPI-ym_Xp-dMrPbhCZ3A2azX5TTc8vW4l7Se6v026a3VzP7uXZwLwfoS9frid-kpPoOLjWFxdcpHfd0ymTUzk7HxwduOOvX-mgP_OkZOLvOKnfUu_kjP3ZbDYbhbN3F97eKz-pWen6-VsRJGy8sNHAAYHRURFP5hH1W1xxNitAsR4oCa8A5VqgPbcVoLsOWBzGCtBbC7SncAkk8-_jm73digv2dm1ULeKvDbu20bNbrewsmkDH6ibUfsMxaa4dkIWJaTitxJ-BZholeVqmKs0yYFuNRcR-s9fVERiW859oo3xl1O57o6Nst2sfBbqro_asHxYZTbHNt0bHKpp_IR5E8yyMIAfc5SoMzOzRix16Xw9UHhrnKa8VJHZfxKKXj8dJak50qPUid9hXkRo-S6xU7Opope6SZtENFv1gAXgFpFtpborJtqZa0VgSrAhfAamzPJzoNMi2X7-KxpJURfgKSLXDJNM2uVdma1qPdCqnzorBQv4KuB2ozOi0aYzq32Zbs6tqVemVcvAw3H9AcK9k8Fyw_aTVOIkB_v5Ie6zVuBeqaMtQu4Qv3WJloBT-zCXvxH6eBvGwnT4bc1ZpLPksxKCQ_7xFPtRhpM33L_G-NjqNgliZIIm3dM0TnaVznnT8zAVvhUniN2O_p2J_S1qPVSqfGSsHKvZB2TOnhcX_fdG7YTLR2fcv-iK4q8x8Gum4zAzm5Yptg7zKzOljzUqoV5kB05GO50kHmCPmnuM_YT-8j6IkNSpsqzDccj88VlmyW8hB2fHzYkArScwP2A37up_MLhOjt43zVYXq4e8nMzAX_6dOmbeyRfnnKtBT8DVJos9FDce2rh9ax6Ul1Hn42WLh9qVgNi8d2XZPm4fqkX0HQfmr7l3tQqWBmb0FF82LTq03s8XSLMi0D77oqQ4BrrXTIMqSGBzZ91qhXMz7Frik9j4ah0E_MNlbgGq_uwiYBERllRDYImYN019AEPdTreyYZQYBiuJXDbNq15NcvnCKneyJyeJ5k8krM1k-bzJ9ZSa7z5vMXpnJ3vMm89dlMkHPmyxel8l4k8XTIjevNcf6HrRDrSY6fWrveRki3wKCHtuOGdpkTdP3M0ALegJ907uB5BrPb6IxKrLPWjuJ73KdJun_MlAmpFuSIbVfKa5T8lvVKHtBAOxdAugMBkE_0HF_VvuV0Drhv60wfk5s1Yr-bj1lEmCvVUB5laHi_lJub1Cq8tUeoJs8cJP4s9qxHgZJDM5CZfQm5vMS2lvQqj_8PXEHYXUiHtHshsmNCr9ZyEc5NhipDPxK3DpFj12Up8p6UffNRgc93A79ey-xTV4aFglr7SzV_TzNkhR0VR6bUJts642C8dqNi3b4LyAZPHURONa6P9I-UNmc7csO_Tr-63bVar9szBtubOZWa9mwZZJYg8tUK397n7iPjk0y0ZGOzdz6rgpisNovKgOde5OqksF8PxG-YbBNe2ede1buqdU-2pio3OjQ1I61MiOdgpZ92TZQvigkkDkbe-v5vMUb8xQV5aE2tdN4dg-aZftHmLzxkH4nn41JjK1z4NrpWIXgIoiH_43_N5J8GZmN6Y0lQ34wmRcdgReSwdXM56TZfd9-RCcMBhoMQpXd1vaDSRDrwjJwUEi25bZmZrxx5sh-psuZO8b--0lYfrl_yNRk49S5Cexo89m7qYoD84M40xdM3FKZCs2PmZe9YN5mpM1oln33zD1t5pkqMIEJdeW3eJ7pnu4nsV8WkYufxAMVZnpeUuiFiSl-81fLzA-3i4uaTAW1qFM-XCyuwDy6HVwA6Qrgov61wLCVgxVFkQWEr4LosGKRWIEoo_cSI1dgbBSpsnfXYcgS463AFIv5yI3ImVcl5iWRdTqVgTHeUodWdMiWOpV7YUy31KneTrNVOuWe7GlT1GWKWoxttZN4EAzLrRqP88WgOtbRrNjrDojz6EanDcdd_DvVN8DORGVlaXoOla5A838cWkywt_v0f_P-AWlycpE=",
-      "pinnacle": "eJzNWm9P4zgTf00_hRXppHt0hvq_kxXsqZRSYCmwLbvc8mZlGrcN5E9JnELv0z9y0tLAtaXc7mkRUuSMf2PPb2xPpmN2_3yMQjDRaRYk8Z6Dd5ADdNxP_CAe7jlfLg-3XefPj7XdC2VG54P9PAhtz8fa1m7RBqGe6HDP8YQDjEqH2nydD0W_Iwf0Q5VlZyrSe05HpSr3deoAlfV17DcXXSf5cKjTWOXGAZEK4l7Sv9OmnSb5eM_BDrhRsR-YPecsibUDxio2I53EHXWbpO3E33PCPFZpkFW6gnjWNUxzM7rLQwdMAv3QSXy95zQbp82e87G2tbV7EaqpTntGGZAZZfacZhLdBLH2Dy56DpioMNd7DufMxXIHY-R6lDKnvlz1MjEq_Bd6p8FAL3Q86q0CtmKdDqe9UaBD_0kBrTWndXTxhKSCYbLjSS4ZJ3yV2sVomgV9FXbUYxDl0VFgLtWdjp9GwQxhvEr5MEh1V2dBZp7wUqwCN5PQfwleadZpMByZOIiHG2s0RyrJNkZ3VKyaSRW6DvklTnWm04lerAPhK4n2xroCxHRHshK7Wy8OkW1dploD1TfBRPfGum-3fTGYfQEm1bpyruj8YB37xfGonCcrQQ6IE19new6TAmIuCcSSMkgYZ5BiISHzGIICYwoFoQgKyj0oGBNQSEyg8FwMJXVdKBlD0OMYQ8-zQyFCMMSIeQhiwpCEmEhEICYu8iBmAtnpkKQQc4a4fVIXYiG5sE_JIZZScIhdiggkCGEXEsQ5hgQzTCGhiEj7pC4k1HUxJEwwDAlnXEDChUsg4R6lkAjsCUgEJ7bNBYNESMLtkyFIJC6eFGFIpLSzuBRjSFwmOSSuJFbiShcSj3gEEo9yCikiHEM7OYIUCc-2JaWQYmQlWBAXUuwJDCnBmENKiSshpUx6kFJBMaTUzk4ZQh6kDEsMKSNIQsqEEJByRgWkgjMKqRCUQSo85kHqSikhQ4JTyIiLEGR2IMgowwQyRlDx9CRkgksXMuFhBJnEkkMmrc1MMoIhc623mesiu8DYjuZhi_eKcTwuMeSIEQI54hJBjlxh2x5ikGPPcyGnGNun9Cjk1MUC2gjGIecuZ5BzDwnIpccp5C5jHuQetRLPIy4UiEli95TnQkEQlvZJMBQEIythxIOCEpdAQa0NgkpCoaB2XwmGpISC2RkFR5QVW39r90v3tGhsjYwZZx_q9YeHh52xMqNkoB-DUO_0k6g-VlkWTPR2dheE4bY9KfVGo9HYH7Ya_uej_n7wuf04jK4ODt3Ly_3BqH347Rt-vMvbt8Obbvfv_lG3EZ5Mb9jJNkq2b_dp55pNm5d35-d5yz29fDz__Fd3f4T87cvbk89dfB5eDc6uv4f45Fvr8Lbf7vauv-Doa1vfXLvd5PpqhNSwez--emzfjP3JOW2wfodPb44-jf3AkPRocKsbmKujvDM4C70-Oz4aZvrgL3bRGZ1Fh5pdDUbk_tPNsfh--3j_-eu1z-OMxJ1PYX5_3cvu79GJGXyiF2lwmV8S7ywV8UPjqNHOWq0HddHysqtPj_eyTTqZ_pvK3rF_zMgpVadmHLDo6O6L1vdidJudn7vn7t3RtDv41Ldfps5Eb2-fT7i4GJ99vzzYbg4bjWIB6vMV2C2_yFm5HLO3IsrYgGODiAMCo6MiIM1i7D9xxamtAMVqoCS8ApQrgfZEV4DuKmBxQCtAbyXQnswFkMw-r1u79YoLdus2LBcB3MZt2-jZ7Vd2Fk2gY3UTan_PMWmuHZCFidlz9hN_ChpplORpmek0yohvNeYhf2u3rSMwLOfvaKN8ZVT92Ogoq7fto0C3ddSc9sMiISq2_sboWEWzT8yTaJbEEeyA-1yFgZkWzOcvdugDPVB5aJyXvJaQqL-JRS8fj5PUdHSo9Tz3OFCRGr5KrFRs62ip7oJm0Q3m_WAOeAek99PcFJNtTLWisSBYEb4DUhd5ONFpkG2-fhWNBamK8B2QaoZJpu1vA2U2pvVMp3LqrBjM5e-A26HKjE4bxqj-XbYxu6pWlV4pB0_D_QcEd0sGrwXbK63GSQzwj0faU63GvVBFG4baBXzhFisDpfBXLnkr9vM0iIfN9NWYs0xjwWcuBoX81y3ykQ4jbX58iQ-00WkUxMoESbyha17oLJzzouNXLvh-mCR-I_Z7KvY3pPVcpfKZsXKgYh-UPb9u0dthMtHZjy_6PLirzFyNdFxmBrNyx6ZBXmXm_LlmJdSrzICHkY5nSQeYIWae479gPxxHUZIaFTZVGG64H56rLNjN5aDs-HXbYT9JzE_YDQe6n0wvE6M3jfNVherh7ydTMBP_p06ZtbJ5_ehroB_A30kS_VUUgWzr21PrtLSEOk8_WyzcvhTMZrUn2-5p81R-su8gKH_Vfax1VRqY6QfQbXRbtd7U1lqzINM-uNUPOgS41kyDKEticGLfa4VyMe8H4IracTQOg35gsg8A1f7ACAGTgKgsMwJbBK1h-RsI4n6qlR20TCFAUT2rYVHtepHMF16xs72wWbxuM3lvNsvXbabvzWb3dZvZe7PZe91m_s5sJuh1m8U7sxmvM_mhyNBrjbF-BM1Qq4lOXxr8uQyUHwBBz43HEq2zpuH7GWAFPRf9o3cNyRWuX0djVOSgtXagYpMVxX9QpqUbkiG13ynfpuJ_VaPsNQOwNxKgNRgE_UDH_Wntd-JuE-9_S4yfEVu6pH8w_psV2tsZUN6IqLi_kNuLmKp8uQvoOhfcJP601k2mKgQXoTJ6HfNZIe0D2N9--nvhDuJtU_SMZjtMbuzgLxbyWaYNRioDv1P20pWNPFXWi7pv1jvo6ZLp33uJrfPSsMhba6d6EigzUjFoqzw2oTbZxjsF05U7F-3I30AyeOkjcKp1f6R9oLIZ2zce-1UOWLWtljtmbf5wYzO4ql9SGwze4JVnsaCTTHSkYzOzv62CGIilrlEZaD2aVJUcZnuKrhts7f5Z5aGl-2q5m9amLDc6NLVTrcxIp2DfvmwaLd8WF6wHLB17g_q6yWszFhXloTa183j6CBpl-6fYvPao_iChtemMLXrg2vlYhaAbxMP_aAXWsnwbm7WJjmVDfjabNx2DN7LB1Ryo02gfN5_xCYOBBoNQZXe1g2ASxLqwDBwWkk3JrZgZr505st_rcuaWsf_MEpaf8J8yNVk7dW4CO9ps9naq4sD8JM70DRPvq0yF5ufMy94wbyPSZjTNfnjmnjazlBWYwIS68tM8z3RP95PYL2vKxS_kgQozPasw9MLEFCWAatX56bJxXqKpoOZly6d7xiWYZ5eFcyBdApyXw-YYtnSwokYyh_BlEB1WLBJLEGUAX2DkEowNI1X27ioMWWC8JZhiMZ-5ETmzIsWsQrJKpzIwxhvq0IoO2VCnck2M6YY61ctqtkyn3JM9bYoyTVGasa1mEg-CYblV43E-H1THOpoWe90BcR7d6HTPcef_aPYPYGuisrJSPYfi2f32bn0-wW795X_6_R_5d4S8"
+      "until-68": "eJzNWm1T27oS_kx-hcYz99MRRG9-Y0jPJAFCWyiUQGn75Y6IlURFloMtB9Jff0a2QwwnCeHAudxhxiOvnpX20WpX1oa9P-9jBaYizWSiWw7eQQ4QepBEUo9azuXF4Xbg_PmhsXfGzfh02Mmlsj0fGlt7RRsoMRWq5XiBAwxPR8J8mw9F_4scMFA8y77wWLScE57yPBKpA3g2EDrqLro-5aORSDXPjQNiLnU_GdwI00uTfNJysAOuuY6kaTlfEi0cMOHajEWiT_ivJO0lUctRueapzGpdUlddozQ345tcOWAqxd1JEomW020fd_vOh8bW1t6Z4jOR9g03IDPctJxuEl9LLaL9s74DplzlouV4LgnCHYQxYoi52GkuV71IDFf_QO9YDsWDDkUMrQIeaJGOZv2xFCp6UFiJLsw5ODp7QGIPIbRD_AAxin26Su9sPMvkgKsTfi_jPD6S5oLfCP0wjM-wu0r3UKbiXGQyMwv4SnA3UdHG4GM5Ghst9Wjz4cc8yZ6gPW8V-oRr3k3qA69DXupUZCKdioUfcLDSwf2JqAH9nSBkQYHdaxZBZFsXqRCAD4yciv5EDOy2LwazL8CkQtTiis4D62NUhEctnqwEOUAnkchaDvM9iF2fQOxTBglzGaTY86FH3RB6jHnQCwMMfcYQDF2MIUaEYIhJgEKImYesOkOufdIAYs93Pfv0XYh933MhDigikCDXxZBghikkFBEfEhoEGBI3pBQSzyXF02OQ-JghSHyKMCS-jwNIAooxJAHzXUgCnwSQhCQkkITUpZAi4mJIEQ0QpMgLbdunFFKMrAR7JIAUhx6GlGDsQkpJ4ENKPYohpT5DkDKEQkiZ53mQuox6kHouo5AGvu9DhjyXQkYChCCzCpBRhglkjKDiGfqQea4fQOaFGEHmY9-FzGcEQxbYNWEhtiOE2GJCq-siRuzT9RF0UeDZdogYdHEYBtClfkihSwPsQdcNXAbdgLEQumFIAugh5hPoYRwG0CMI-9AjGAXQoyQg0KN2ZI_6hEKPId-HHrPjeC6irNguW3uX58dFY2tszCTbbTbv7u52JtyMk6G4l0rsDJK4OeFZJqdiO7uRSm3b3dVst9vtzuigfTk6GnTk1979KL7aPwx-4PubvIcuo4Pupf60jWbdi5vTsy4KLm4O0dcf0dFQdY4uvW8_A4w__bzEOibDAz46v51c3feuJ9H0lLbZIL6f3X7_kUa395TR0RdxNfZ_Hf3-Ofx-2u2wL8NRMDsgP6JbGc9Op27k6ozok88qv_3Zz25v0Scz_EzP0ptwenHdbg_a_O7rxUGYXX2-v_V75CQTSB71T78kuXt4dNs7vWP-nT_7Ovw8CH8f0-n0V7p9Q8OTM_a53W63ikVqzldprzxpsnLJqrciemwgFbvSAdKIuIi0KtX8HVhsuBqwyjJbe83a-HtNG8tF1Ntgt42-Xf-ys2gCofm1ElHLMWkuHJCpxLScThLNQDuNkzwtj8d2mSasxjxPbO31RAxG5fwnwvCIG978aEScNXv2UaB7Iu7OBqo4RQvfb4zWPK7y0oOoOvlx6IDbnCtpZkXqqdp25H0x5LkyzlNaSzg0X0Sin08mSWpOhBJiflzt85iPnuVVKvZEvFR3wbLoBvN-MAe8P-dOmptiso2Z1jQW_GrCOafg3Tid5WoqUplt7r2axoJTTfj-fjrkmRFp2xg-uMk25lXXqlMr5eBhuLfnt1cSeC4XXQk-STTAr09Ex4JP-orHG2aiBXyxKlYGSuE7OvxAR3kq9aibPhuTyzQWdOZiUMjfzcVHQsXCvN7B-8KINJaaG5noDVfmic5ibZ50vKO7OypJoraO-lxHG7J6rFJLwlYOuI5A2VOxcv_XHu-pZCqy13u8ymNdnpmrsdDloVldHjdMgFb39LFm7dODZwbcjYWuzmNQId583TZm_DGOk9Rw1eVKbbgZHqssyM3loOx4-1N5w83QSRLzBnthXwyS2UVixKYJvq5Qj_tBMgOV-N9MiVUrm9_Fv0lxB34nSfy9mMO2fjy0jktDqPPwNW_h9qUgVt3jbbsvzMNV3r4DWV4kPjTOeSrNbBect88PGv2ZrVtlMhMR-CXuhAK40U1lnCUafLLvjUK5mHcX-KTxMZ4oOZAm2wWo4f0HSD1IBbfqcVm2Abaq1GD1nvLrARTViAZ-1PXkQ7dYGTvjE7u95-0m_492rzP7rviiabQn4h50leBTkT41-mu5wXYBRo8JYIbWWdOOogxQBEwCPPS3XkxXklxOg6yjMS5O7caBsXVUBTp5Okq0MBtT-SMo7HzkhT8sPZMAW9UDZSWN68FCbgt4dflys-k6s6-TaNboqSSVSZ6BM8WNWGdydZ3eBZ3t6m9zFg8VxH9Oha2jMipO0UZ_Im9EBMoz9VXLv2aDrDJ7lceW01mbhq7tOdC4kIZr0EttXGzOhrh1y0-SqYiFNnPb1_hoFZ-lvltOam2OuhbKNI4FN2ORgo59-Vfig1RsbAX6eYv9dRbzOFfCNE717B60y_ZbmLw2GF7JJ1jHx15wcON0whU4l3r0r-an5SRfRiZ8jgx5YzIvCoEXksGoxuak3fvYfURHyaEAQ8Wzm8a-nEotCsvAYSHZlNuKmfHamWOueTXzEVcqubNpw8reZG6ydu7cSDtaNX0v5VqaNyJNXzBxh2dcmbeZl71g3nYszHiWvXrmvjDVxxYw0ihR-xjPM9EXg0RHZfWo-CYecpWJ6krRV4kpvvnr9aWHYvr8SlZDzUsUcwxZgnlUNZ8D6RLg_PY7x7ClgxWXojnEXQYRqmaRtwRRpu8Fxl-CsWmkzj5YhSELTLgEUzjz0TIip7qWVHeiVTq1gTHeUIfWdMiGOqymQzfUqf8Yw5bplHuyL0xxMSsuY7bVTfRQjsqtqif5fFChRTwr9roDdB5fi7T4R4bmcuDBlGdlVaqCMp-G1c-48wn2mk__T-Iv8K99Sw==",
+      "maps-early": "eJzNWmtT2zgX_kx-hcYz76cVRTdLdod0JwRIaaFcAi27X3aUWCReZDnYciD8-h3ZDjFskqZbdnknMx756Dk659HlSDrO7q8PiQZTleVxatoefoc8oMwwjWIzantXl4fbgffrh9bumbTj05u9Itau5kNra7csA62mSre9AHnAymyk7Nd5U_QP5IGhlnn-RSaq7Z3ITBaRyjwg86EyUXdR9akYjVRmZGE9kMjY9NPhrbK9LC0mbQ97YCBNFNu29yU1ygMTaexYpeZE_plmvTRqe7owMovzRlVs6qpRVtjxbaE9MI3V_UkaqbbX7Rx3-96H1tbW7pmWM5X1rbQgt9K2vW6aDGKjov2zvgemUheq7WHCacjeERxyGuLQ21mueplaqf-B3nF8o550GArJKuCBUdlo1h_HSkdPCmitOwcfz56QhCDM3jEiEPJ9zFbpnY1neTyU-kQ-xEmRfIztpbxV5qmZkAYrPTyMM3Wh8ji3T3DBV4G7qY5egv3VnTQaWxOb0cYa3bFM8xdovtKZE2lkN21A8cqOddArk6lcZVO1GAiyWqM_UQ1g8I76NCixuzvlKnKly0wpIIc2nqr-RA3dvC8bcy_AZko1Fhadr6yjqFwfjQXlJMgDJo1U3vaY4BD7gkAsKIOE-QxSzAXk1A8hZ4xDLjCBPAwwFIwhGPoYQ4wIwRCTAIUQM45cGwz57kkDiLnwuXsKH2IhuA9xQBGBxM0qSDDDFBKKiICEBgGGxOcBgcQPKYWE-6R8cgaJwAxBIijCkAiBA0gCijEkARM-JIEgASQhCQkkIfUppIj4GFJEAwQp4qErC0ohxchJMCcBpDjkGFKCsQ8pJYGAlHKKIaWCIUgZQiGkDAsMKSNIQMo455D6jHJIuc8opDxkIaSBEAIyxH0KGQkQgsw1ARllmEDGCCqfoYCM-yKAjIcYQSaw8CETjGDIAtdXLAiQgCzErp0QO2ToWvARI-7pCwR9FHBXDhGDPg7DAPoUY_cUIYU-DTCHvs8CH_p-4DPoB4yF0A8p4tAPQxJAjpggkGMcBpAThIV7Egw5wchJGAkhpyQgkFNnl1NBKOQ0FBxyhoSAnDkr3EeUlbNua_fq4rgsbI2tneTvd3bu7-_fTaQdpzfqIdbq3TBNdiYyz-Op2s5vY6233STd6XQ6nb3RQed69HG4F5_3HkbJt_3D4Df8cFv0_hwNLi7Q-af-0IjLo0-n5yw4vnw4Pb--2BujaPvqILqcfDWP11f69ir5-uV335qHXnog777mFwm_Hjza-9OPn_LhnSafqcyj7S9s_1qnij0E5Bo_jkZq_5qdnYy_JIeKfbsZk7vPgyP-x-3ht2v1u_gyeexOBnfJVfb5znYH1zP7yP2zASLTu5tOZ9iR9-eXB2H-7fPDneiRk1w9UtE_io4YOabyuLi48Hl21zu9Z-JezM5vPh0Gk8dHejOchUIw_odJt29peHLGPnc6nXbZiTvzXtytdrS86tL6rVykbr2WM94DsVVJuaDrkPZ3YDmZG8A6mm3t7jTa391xIaMMLi6muELfjU9VWRaBMnKgVdT2bFYoD-Q6tW1vL41moJMlaZFV23CnikZOYx6OtnZ7KgGjyv6JsjKSVu4cWZXkOz33KNE9lXRnQ13u1uXc2BhtZFKHvydRfcIgyAN3hdSxnZURri67lvfVjSy09V7SWsJh54dI9IvJJM3sidJKzbfFfZnI0Xd5VYo9lSzVXbAsq8G8HswBb895LytsaWxjpg2NBb-G8O05nRV6qrI433z0GhoLTg3h23Pq6jRX7tAq7casnuk0VpwTg7n87akdytyqrGOtHN7mG5NrajXZVXLw1Nzr89utCHwvzH5TcpIagH8-xh4rOelrmWwYZBfwRa84GaiEbzjgByYqstiMutl3w80yjQWduRiU8jcb4o9KJ8r-_ADvK6uyJDbSxqnZsGde6Cz65kXFGw73nk7TqGOivjTRhqyeqzT2FycH0kSgqqlZYfxfD3lPp1OV__yQz8O6zO23sTLVgaC-gG8a3mVuT59rNoK8zC24HytTnzVAjag7zv_vZ8NRkqSZlbortd5wNjxXWZCby0FV8Wbrfy9N7SvMhX01TGeXqVWbRvimQnPhD9MZqMX_Zp_UpXyezvgaq3vwmKbJdWnDlX57Kh1XjlDv6abi4O6lJFanQly5r-xTNsS9g7i6JH1oXcgstrP34KJzcdDqz1zuL49zFYE_1b3SALe6WZzkqQGf3HurVC7tvgeCtI6SiY6Hsc3fA9Ti_wOxGWZKOvWkSn0Bl5lrsWZNdXwAZUKnhZ9VvTjElz3jLL7wm3_fb_L_6Pc6t-_LI02rM1EPoKuVnKrspdPn1QR7DzB6TgAztM6bThTlgCJgU8DR32oxXUlyOQ2yjsa43LZbB9blojXYK7JRapTdmMovQenns1H4xdGzKXCZUVBlI6UZLuQuCdqUL3ebrnN7kEazVk-nWZwWOTjT0qp1Ltepgvdgb7v-bc7iKQv7z6mwdVRG5S7a6k_iWxWBak_9qe5fM0FWub1qxJbTWRuGBm4faF3GVhrQy9y62JwN8Zuen6RTlShj576vGaNVfJaO3XJSa2PUQGnbOlbSjlUG9tzLv7I-SM3GZfG_77FY57FMCq1s69TMHkCnKr-Gy2sXw0_yCdbxcTcc3DqdSA0uYjP6V-PTcpI_Rib8HhnyymR-aAn8IBmMGmxOOr2j7jM6Or5R4EbL_La1H09jo0rPwGEp2ZTbCst4reVEGllbnu9g7kvV65gma00XNnat1dZ7mTSxfSXO9AcM78lcavs6dtkP2O0kyo5n-U9b7itbn7WAja1WjbN4kau-GqYmqrJH5ZH4Rupc1TeKvk5teeRv5peevhPMb2QN1DxFMceQJZhnHwTmQLoEOL_8zjFsaWPlnWgO8ZdBlG54xJcgqui9wIglGBdFmuyDVRiywIRLMOVgPutG5NW3kvpKtEqn0bBLRGykQxs6ZEMd1tChG-o0vzOxZTrVnOwrW97LyruYK3VTcxOPqqlqJsW8UWVUMivnugdMkQxU1vgk_zfgwVTmVVaqhnJEwvpD-NzA7s7Lv5r8BSek4VM=",
+      "maps-red": "eJzNWm1z2rgW_lx-hcYzO3d3VjR6t90J3QFCSNOkSUOaNvtlR8EC3NgWsWUI_fV3ZEMwKRBy273NZMYjHz1HOs-RdHw4yv5f93EEJirNQp00HPwaOUAlfR2EybDhfLo8rHvOX29r--fSjM4GrTyMbM_b2qv9og0iNVFRw_GRA4xMh8pcLYai_yAH9COZZR9krBrOqUxlHqjUATLrqyRoL7uO8-FQpYnMjQNiGSY93b9VppvqfNxwsANuZBKEpuF80IlywFgmZqR0ciq_6rSrg4YT5YlMw6zSFSbzrmGam9FtHjlgEqrpqQ5Uw2k3T9o9523t1av980jOVNoz0oDMSNNw2jq-CRMVHJz3HDCRUa4aDqEYe_w1oYJ5hDp76zUvtZHR89VOwoF6UGE-9TcBO4lKh7PeKFRR8KCAtlrTOTpfWuNx5L_2iS88QdlGc85Hsyzsy-hU3odxHh-F5lLequRhGIxd5m1SPgxTdaGyMDMPeFdsArd1FDwG881eGo5MEibDnTXaI6mzR2ix0ZhTmci2rkA3crTIT0mqMpVO1HIhCCObNHpjVQH6r33MWIHd3yvOkG1dpkoB2TfhRPXGqm93fTGYfQEmVapyrOjiXL0LitNROU5WghyQ6EBlDYe5AmLuEohdyiBhnEGKhQsFoQgKyn0oGBNQuJhA4XsYutTzoMsYgj7HGGJEiH0yH0FMPORDzASyYyKXQswZ4vZJPYiFy4V9uhxi1xUcYo8iAglC2IMEcY4hwQxTSCgiLiTU8zAkTDAMCRcegYT7lEIisC8gEZzYNhcMEuESbp8MQeLi4kkRhsR17cgexRgSj7kcEs8lHiQ-8QkkPuUUUkQ4hhRRD0GKhG_bLqWQYmQlWBAPUuwLDCnBmENKiedCSpnrQ0oFxZBSOy9lCPmQMuxiSBlBLqRMCAEpZ1RAKjijkApBGaTCZz6knuu6kCHBKWTEQwgyOxBklGECGSOoePouZIK7HmTCxwgyF7scMtfazFxGMGSe9S3zPORC5mM7mo8t3i_G8bmLIUeMEMgRdxHkyBO27SMGOfZ9D3IbgiCnrk8hpx4WkHPmcci5xxnk3EcCctfnFHKPMR9yn1qJ7xMPCsRcAgXGvgcFQdjuG0QwFAQjK2HEh4ISj0BBrQ2CuoRCQX1XQMGQ60LB7IyCI8qK3fxq_9PFSdF4NTJmnL3Z25tOp6_H0oz0QN2HkXrd1_HeWGZZOFH17DaMorrd_HvNZrPZGnaaNx-P-q3wY_d-GH8-OPSur0Zfv3R7TJ61zOHRh2nQaX9KjutI17--Oz77yAS7nJrzDm8Fne7RBeVnp1Hr6JO4-tvD-Pi6c3j7Kb768Hd0kcRk0JHdKx10dUfeXWUXsfhy881Mz46Os_5dRN5TmQX1D-zgS6QVu_fIF_xtOFTte_ZhMPRmHXJ95Y7-rh9JPc6-pvXz7rh1FdFYfZP96d1nMY7ez-7SjzH20n49Pz7j5zeITO4GzWa_KacfL1vauyT312k3zW6uZ_fu-cC8G6GvX68ngc5JfBJeq4sLLtK77tmUuVN39nFwfOiNv32jg_7Md10m_kl0_Zb6p-fsfbPZbBTO3lt4e7_8nmal6-dvRZCw8cJGAweERsVFPJkH1O9xxdmsAMVmoEt4BehuBNpzWwF6m4DFYawA_Y1AewqXQDL_PL7a36u4YH_PRtUi_tqwaxs9u9XKzqIJVCJvIhU0HJPmygFZpE3DaelgBppprPO0zFOaZcC2GouI_Wq_q2IwLOc_VUYG0si9d0bF2V7XPgp0V8XtWT8q0plim--MTmQ8_0I8iOYpGEEOuMtlFJrZyosd-kANZB4Z5zGvNST2nsWil4_HOjWnKlJqkTocyFgOnyRWKnZVvFZ3SbPoBot-sAC8ANKtNDfFZDtTrWgsCVaEL4DUeR5NVBpmu69fRWNJqiJ8AaTakc6Uzeyl2ZnWik7l1FkxWMhfALdDmRmVNo2R_dtsZ3ZVrSq9Ug4ehvsXCO6XDJ4Ktp-VHOsE4B-PtCdKjnuRjHcMtUv40i1WBkrhr1zyThLkaZgM2-mTMWedxpLPQgwK-a9b5CMVxcr8-BIfKKPSOEykCXWyo2se6Syd86jjVy54K9I6aCZBTybBjrRWVSqfGSsHMglA2TOnhcX_fdG7kZ6o7McXfRHcZWY-j1RSZgbzasWuQV5m5mxVsxLqZWbAdKSSedIB5oi55_gv2A_v4linRkZtGUU77odVlSW7hRyUHb8uBrS0Nj9hNxyovp5daqN2jfNVherh7-sZmIv_VafMW9mi_HMVqin4pnX8pajh2Nb1Q-uktIQ6Dz9bLNy-FMzmpSPb7inzUD2y7yAsf9W9rV3INDSzN-CiedGp9Wa2UpqFmQrAVzVVEcC1dhrGmU7AsX2vFcrFvG-AR2rv4nEU9kOTvQGoJn4DYdJPlbTqcVkqBLaSWWPVnjKNAEUBrIZXuh4l9IVn7IyP7BZP201eot3u03bTl2i397Td7CXa7T9tN3-BdhP0tN3iBdqNt5k9LTL3WnOs7kE7UnKi0sdGfywD6BtA0CoBzNA2a5pBkAGKgNFAoO96Md1IcoP7t9EYFblpra2Tu1ylOv1PBsp0dUcypPY7xXVK_qgaZW8PgL1oAJ3BIOyHKunPar8TWif8jzXGz4n96RWUVxb0T-spo4G9cwHlPYdM-ku5vV6pytd7gG7zwI0OZrUTNQx1As4jadQ25vMC2xvQqj_8PXIHYXUiVmh2I30jo-8WciUDByOZgd-JV6do1UV5Kq0XVd9sddDD1dH_7iW2zUvDIp2tnaeqn6eZTkFX5omJlMl23igYb9y46DX_DejBYxeBE6X6IxUAmc3ZrvHAlvOwif-mXbXeL1uzihub19VaNnYZnShwmSoZ7O4Tb-XY6ImKVWLm1ndlmID1fpEZ6NybVJYM5vuJ8C2Dbds7m9yzdk-t99HWDOZGRaZ2oqQZqRS07MuugfJZIYHM2dgr0act3pq7yDiPlKmdJbN70CzbP8PkrYf0B_lszWlsFQTXzsYyAhdhMvx3_L-V5PPIbE10LBnyk8k86wg8kwyupj-nze679gqdKBwoMIhkdls7CCdhogrLwGEh2ZXbhpnx1plj-5kuZ-4Y-58pUfnl_ilTk61T5ya0o81n76YyCc1P4kyfMXFLZjIyP2de9ox5m7Eyo1n2wzP3lJlnqsCEJlKVX-p5pnqqr5OgLDEXP5gHMsrUvODQi7QpKgLVIvTD3eOiYlNBLaqYD9eOazArd4cLIF0DXFTHFhi2drCiZLKA8HUQFVUsEmsQZfReYtw1GBtFquy9TRiyxPhrMMVirrgROfOaxbxgskmnMjDGO-rQig7ZUadya4zpjjrVu2u2Tqfckz1liqpNUamxrbZOBuGw3KrJOF8MqhIVz4q97oAkj29U2nC8xT9qfQfsTGRWFq7nUNcTaP5vRYsJ9vce_9vefwEucYBL",
+      "pinnacle": "eJzNWmtP4zgX_kx_hRVppX21Bnx3MoJZlVIKDAWmZYYdvoxM47aBXEriFLq__pWTXgLblrIzq0FIkXP8HPs8x_bJ6TF7fz5FIRjrNAuSeN_BO8gBOu4lfhAP9p0vV0fbrvPnx9repTLDi_5BHoS252Nta69og1CPdbjveMIBRqUDbb7OhqLfkQN6ocqycxXpfaetUpX7OnWAyno69huLrtN8MNBprHLjgEgFcTfp3WvTSpN8tO9gB9yq2A_MvnOexNoBIxWboU7itrpL0lbi7zthHqs0yCpdQTztGqS5Gd7noQPGgX5sJ77edxr1s0bX-Vjb2tq7DNVEp12jDMiMMvtOI4lug1j7h5ddB4xVmOt9hzGPe3QHS4GEK5mzu1z1KjEq_Bd6Z0Ffz3W4EGQVsBnrdDDpDgMd-nMFtNac5vHlHEmZxGQHe5RyJjhepXc5nGRBT4Vt9RREeXQcmCt1r-P5MJhywlcpHwWp7ugsyMwcL8UqcCMJ_ZfglSOfBYOhiYN4sLFGY6iSbGN0W8WqkVSh65Bf4lRnOh3rxUIQvpJod6QrQIx3MPUK7N5ucYps6yrVGqieCca6O9I9u--LwewLMKnWlYNFZyfrxC_OR-VAWQlyQJz4Ott3mBQQc0kglpRBwjiDFAsJmccQFBhTKAhFUFDuQcGYgEJiAoXnYiip60LJGIIexxh6nh0KEYIhRsxDEBOGJMREIgIxcZEHMRPITockhZgzxO2TuhALyYV9Sg6xlIJD7FJEIEEIu5AgzjEkmGEKCUVE2id1IaGuiyFhgmFIOOMCEi5cAgn3KIVEYE9AIjixbS4YJEISbp8MQSJx8aQIQyKlncWlGEPiMskhcSWxEle6kHjEI5B4lFNIEeEY2skRpEh4ti0phRQjK8GCuJBiT2BICcYcUkpcCSll0oOUCoohpXZ2yhDyIGVYYkgZQRJSJoSAlDMqIBWcUUiFoAxS4TEPUldKCRkSnEJGXIQgswNBRhkmkDGCiqcnIRNcupAJDyPIJJYcMmltZpIRDJlrvc1cF9kFxnY0D1u8V4zjcYkhR4wQyBGXCHLkCtv2EIMce54LOcXYPqVHIacuFpBz5nLIucsZ5NxDAnLpcQq5y5gHuUetxPOICwViktg95blQEISlfRIMBcHIShjxoKDEJVBQa4OgklAoqN1XgiEpoWB2RsERZcXW39r70jkrGltDY0bZh93dx8fHnZEyw6Svn4JQ7_SSaHeksiwY6-3sPgjDbXtSduv1ev1g0Kz7n497B8Hn1tMguj48cq-uDvrD1tG3b_jpPm_dDW47nb97x516eDq5ZafbKNm-O6DtGzZpXN1fXORN9-zq6eLzX52DIfK3r-5OP3fwRXjdP7_5HuLTb82ju16r0735gqOvLX1743aSm-shUoPOw-j6qXU78scXtM56bT65Pf408gND0uP-na5jro7zdv889Hrs5HiQ6cO_2GV7eB4daXbdH5KHT7cn4vvd08Pnrzc-jzMStz-F-cNNN3t4QKem_4lepsFVfkW881TEj_XjeitrNh_VZdPLrj89PcgWaWf6byq7J_4JI2dUnZlRwKLj-y9aP4jhXXZx4V6498eTTv9Tz_UobY_19vbFmIvL0fn3q8PtxqBeLxZgd7YCe-UnOSuXY_pWRBkbcGwQcUBgdFQEpGmM_SeuOLUVoFgNlIRXgHIl0J7oCtBdBSwOaAXorQTak7kAkun3dWtvt-KCvV0blosAbuO2bXTt9is7iybQsboNtb_vmDTXDsjCxOw7B4k_AfU0SvK0THXqZcS3GrOQv7XX0hEYlPO3tVG-Mmr3xOgo223ZR4Fu6agx6YVFRlRs_Y3RsYqmn5i5aJrFEeyAh1yFgZkUzGcvduhD3Vd5aJyXvJaQ2H0Ti24-GiWpaetQ61nucagiNXiVWKnY0tFS3QXNohvM-sEM8A5IH6S5KSbbmGpFY0GwInwHpC7zcKzTINt8_SoaC1IV4Tsg1QiTTNsfB8psTOuZTuXUWTGYyd8BtyOVGZ3WjVG9-2xjdlWtKr1SDubD_QcE90oGrwXba61GSQzwj0faM61G3VBFG4baBXzhFisDpfBXLnkz9vM0iAeN9NWYs0xjwWcmBoX81y3ysQ4jbX58iQ-10WkUxMoESbyha17oLJzzouNXLvhBmCR-Pfa7KvY3pPVcpfKZsXKgYh-UPb9u0VthMtbZjy_6LLirzFwPdVxmBtNyx6ZBXmXm4rlmJdSrzIDHoY6nSQeYIqae479gP5xEUZIaFTZUGG64H56rLNjN5KDs-HXb4SBJzE_YDYe6l0yuEqM3jfNVherh7yUTMBX_p06ZtrJZ_ehroB_B30kS_VUUgWzr27x1VlpCnfnPFgu3LwWzae3JtrvazMtP9h0E5a-6j7WOSgMz-QA69U6z1p3YYmsWZNoHd_pRhwDXGmkQZUkMTu17rVAu5v0AXFE7iUZh0AtM9gGgmvwNBHEv1cqqR2WtEdhSaI1Xe8o0AhQVtBoW1a4XCX3hGTvjC7vF63aT92i3fN1u-h7tdl-3m71Hu73X7ebv0G6CXrdbvEO78TqzH4vMvVYf6SfQCLUa6_Sl0Z_LAPoBEPScAJZonTV1388AQ8AkwEX_6MVyJckV7l9HY1jkprVWoGKTFZcCoExXNyRDar9Tvk3F_6pG2esHYG8qQLPfD3qBjnuT2u_E3Sbe_5YYPyX2B0YF52cr-gfjv1mhvbUB5U2JinsLub2gqcqXu4Cuc8Ft4k9qnWSiQnAZKqPXMZ8W2D6Ag-353wt3EG-bomc0W2Fyawd_sZDPMnAwVBn4nbKXrqznqbJe1D2z3kHzy6d_7yW2zkuDIp-tnelxoMxQxaCl8tiE2mQb7xRMV-5ctCN_A0n_pY_Amda9ofaByqZsl7lgzYlY5YBV22q5Y9bmFbc2s6v6JbXB4A1eeRYL2slYRzo2U_tbKoiBWOoalYHmk0lVyWG6p-i6wdbun1UeWrqvlrtpbRpzq0NTO9PKDHUKDuzLptHybXHBesDSsTerr5u8NoNRUR5qU7uIJ0-gXrZ_is1rj-oPElqb2thiCK5djFQIOkE8-I9WYC3Lt7FZm_BYNuRns3nTMXgjG1zNg9r11knjGZ8w6GvQD1V2XzsMxkGsC8vAUSHZlNyKmfHamSP7vS5nbhr7Xy5h-Qn_KVOTtVPnJrCjTWdvpSoOzE_iTN8w8YHKVGh-zrzsDfPWI22Gk-yHZ-5qM01ZgQlMqCs_2fNMd3Uvif2y1lz8cu6rMNPTykM3TExRGqhWo-eXkLPSTQU1K2fO7x-XYJ5dIs6AdAlwViabYdjSwYrayQzCl0F0WLFILEGUAXyBkUswNoxU2burMGSB8ZZgisV85kbkTIsX08rJKp3KwBhvqEMrOmRDncr1MaYb6lQvsdkynXJPdrUpyjdFyca2GkncDwblVo1H-WxQHetoUux1B8R5dKvTfced_QfaP4DNscrKCvYMiqf33nu7swn2dl_-C-D_AaAGkk4="
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T09:15:19.751Z"
-  },
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "physical-melee",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "low",
-          "effect": "(10-15)% increased Global Physical Damage",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "Global physical damage."
-        },
-        "torso": {
-          "name": "Bonestalker's Ribcage",
-          "tier": "low",
-          "effect": "(4-5)% reduced Physical Damage taken over time",
-          "source": "Boneshaper",
-          "area": "Act 2",
-          "note": "Physical DoT reduction for Boneshatter."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "low",
-          "effect": "Adds (2-4) to (5-7) Physical Damage to Attacks",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "Flat physical damage to attacks."
-        },
-        "lowerLimb": {
-          "name": "Captain's Leg",
-          "tier": "low",
-          "effect": "(3-4)% increased Movement Speed",
-          "source": "Guard Captain",
-          "area": "Act 3",
-          "note": "Movement speed."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "med",
-          "effect": "(20-30)% increased Global Physical Damage",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "More global physical damage."
-        },
-        "torso": {
-          "name": "Bonestalker's Ribcage",
-          "tier": "med",
-          "effect": "(6-7)% reduced Physical Damage taken over time",
-          "source": "Boneshaper",
-          "area": "Act 2",
-          "note": "Physical DoT reduction."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "med",
-          "effect": "Adds (8-12) to (15-18) Physical Damage to Attacks",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "Flat physical damage to attacks."
-        },
-        "lowerLimb": {
-          "name": "Pocked Leg",
-          "tier": "med",
-          "effect": "(35-50)% increased Armour from Equipped Helmet and Gloves",
-          "source": "Pikerivet",
-          "area": "Act 4",
-          "note": "Armour from helmet and gloves."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "high",
-          "effect": "Hits have (30-50)% chance to ignore Enemy Physical Damage Reduction",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "Hits can ignore enemy physical damage reduction."
-        },
-        "torso": {
-          "name": "Searing Exarch's Descry",
-          "tier": "fixed",
-          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
-          "source": "Searing Exarch",
-          "area": "Pinnacle / Map Boss",
-          "note": "Physical hits are taken as fire, which you can resist."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "high",
-          "effect": "(10-12)% more Maximum Physical Attack Damage",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "More maximum physical attack damage."
-        },
-        "lowerLimb": {
-          "name": "Lithic Haunches",
-          "tier": "high",
-          "effect": "(10-15)% chance to Avoid Physical Damage from Hits",
-          "source": "Boulderback",
-          "area": "Act 9",
-          "note": "Chance to avoid physical damage from hits."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops.",
-        "Use Cyclone as soon as it is available; do not chase attack speed over raw damage."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Highest physical DPS",
-            "Attack speed"
-          ],
-          "note": "A rare axe is better than any unique here."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "A 3-link is enough."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Movement speed is defence while leveling."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Attack speed"
-          ],
-          "note": "Bench attack speed if the axe has a free suffix."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Swap to Cyclone; keep Enduring Cry on a movement or left-click bind.",
-        "Cyclone is channeled; area and movement speed matter."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "The weapon is the build."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "4-link is enough."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Fix resists before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %"
-          ],
-          "note": "Bench physical damage % on a free prefix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Six-link Cyclone and reach 2,000 life; cap elemental resistances.",
-        "Take the labs when they unlock; the ascendancy is a large defence step."
-      ],
-      "lookFor": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "The 6-link is the damage step."
-        },
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "Do not replace a good rare with a worse unique."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "A 5-link clears white maps; start the 6-link and upgrade the weapon.",
-        "Reach 3,000 life and cap resistances."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "The weapon is still the main damage slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the 6-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Attack speed"
-          ],
-          "note": "Bench attack speed if the weapon has a free suffix."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Do not stand in the hit; the build is not a tank even with armour."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "Upgrade the weapon before the jewellery."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link is the red-map gate."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %"
-          ],
-          "note": "Bench physical damage %."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 Cyclone and awakened supports; keep the defensive flasks."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "The endgame weapon is the last big purchase."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Life",
-            "Chaos resistance",
-            "Critical strike multiplier"
-          ],
-          "note": "Fix chaos resistance on the amulet."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed",
-            "Critical strike multiplier"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Blood and Sand": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts a buff that grants different bonuses to melee skills depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance.",
-      "effect": [
-        "Melee Skills have 5% less Area of Effect while in Blood Stance",
-        "Melee Skills deal 5% less Area Damage while in Sand Stance",
-        "190% increased Cooldown Recovery Rate",
-        "Melee Skills deal 27% more Area Damage while in Blood Stance",
-        "Melee Skills have 27% more Area of Effect while in Sand Stance"
-      ],
-      "tags": [
-        "low_max_level",
-        "spell",
-        "stance"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Brutality": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "reward",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills deal no Elemental Damage",
-        "Supported Skills deal no Chaos Damage",
-        "Supported Skills deal 39% more Physical Damage"
-      ],
-      "tags": [
-        "physical"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Physical Damage",
-      "qualityWorth": "recommended"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Cleave": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "r",
-      "support": false,
-      "description": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
-      "effect": [
-        "When Dual Wielding, Deals 60% Damage from each Weapon combined"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee"
-      ],
-      "qualityEffect": "metres to radius per Nearby Enemy, up to a maximum of +1 metre",
-      "qualityWorth": "recommended"
-    },
-    "Close Combat": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills grant Combat Rush on Hit\nCombat Rush lasts 2 seconds or until you use a Travel Skill",
-        "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
-        "Supported Skills can only be used with Axes or Swords",
-        "Supported Skills deal up to 39% more Melee Damage to Enemies, based on proximity"
-      ],
-      "tags": [
-        "attack",
-        "duration",
-        "melee"
-      ],
-      "qualityEffect": "% increased Damage with Hits to Close Range Enemies",
-      "qualityWorth": "recommended"
-    },
-    "Cyclone": {
-      "requiredLevel": 28,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Sever the Right Hand"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
-      "effect": [
-        "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-        "20% less Movement Speed"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "channelling",
-        "melee",
-        "movement"
-      ],
-      "qualityEffect": "% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "qualityWorth": "recommended"
-    },
-    "Decoy Totem": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Summons a totem that taunts nearby monsters to attack it.",
-      "effect": [
-        "Totem lasts 8 seconds",
-        "Totems Summoned by this Skill cannot Evade",
-        "Summons a Totem which uses this Skill"
-      ],
-      "tags": [
-        "area",
-        "spell",
-        "totem"
-      ],
-      "qualityEffect": "% more Totem Life",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Enduring Cry": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
-      "effect": [
-        "Grants 1 Endurance Charge per 5 Power to you and Allied Players",
-        "Buff grants 2% of Life Regenerated per second per\n5 power, counting a maximum of 25 Power",
-        "Counts total Power of Enemies in Range",
-        "38% increased Warcry Speed",
-        "Base duration is 3.40 seconds"
-      ],
-      "tags": [
-        "area",
-        "duration",
-        "warcry"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Faster Attacks": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 44% increased Attack Speed"
-      ],
-      "tags": [
-        "attack"
-      ],
-      "qualityEffect": "Supported Skills have % increased Attack Speed",
-      "qualityWorth": "recommended"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "Breaking the Seal"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Leap Slam": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
-      "effect": [
-        "+0.55 seconds to Attack Time",
-        "Base radius is 1.5 metres",
-        "Damaging Hits always Stun Enemies that are on Full Life",
-        "39% increased Stun Duration against Enemies that are on Full Life"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee",
-        "movement",
-        "slam",
-        "travel"
-      ],
-      "qualityEffect": "% increased Stun Duration against Enemies that are on Full Life",
-      "qualityWorth": "recommended"
-    },
-    "Melee Physical Damage": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 10% less Attack Speed",
-        "Supported Skills deal 49% more Melee Physical Damage",
-        "Supported Skills deal 49% more Damage with Bleeding and Poison caused by Melee Hits"
-      ],
-      "tags": [
-        "attack",
-        "melee",
-        "physical"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Melee Physical Damage",
-      "qualityWorth": "recommended"
-    },
-    "Pulverise": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 15% less Attack Speed",
-        "Supported Skills deal 49% more Melee Area Damage",
-        "Supported Skills have 34% increased Area of Effect"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee"
-      ],
-      "qualityEffect": "Supported Skills have % increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Ruthless": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
-        "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds",
-        "Ruthless Blows with Supported Skills deal 98% more Melee Damage",
-        "Ruthless Blows with Supported Skills deal 98% more Damage with\nAilments caused by Melee Hits"
-      ],
-      "tags": [
-        "attack",
-        "melee",
-        "slam",
-        "strike"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Attack Damage",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "540369b7ac09",
+  "patch": "3.30.0",
   "guide": {
     "summary": {
-      "text": "Cyclone Juggernaut is a two-handed melee build that measures 275.1k at red maps and 554.8k at pinnacle. Armour, endurance charges and the ascendancy carry the defence; the rare axe carries the damage, and no unique is required.",
+      "text": "Cyclone Juggernaut is a two-handed melee build that measures 231.2k at red maps and 449.6k at pinnacle. Armour, endurance charges and the ascendancy carry the defence; the rare axe carries the damage, and no unique is required.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8369,7 +8367,7 @@
         "gates.maps-red.metrics.dps",
         "gates.pinnacle.metrics.dps"
       ],
-      "factsHash": "eef45d44204adca5"
+      "factsHash": "cb62c6676f595b23"
     },
     "leveling": {
       "text": "Level with Cleave until Cyclone unlocks, then switch to the two-handed axe and keep spinning. The first checkpoint measures 425 life and 26 damage; the second measures 498. Enduring Cry and a mana flask cover the early sustain.",
@@ -8383,7 +8381,7 @@
       "factsHash": "4e06ed978371eb6d"
     },
     "maps": {
-      "text": "At red maps the build measures 275.1k damage, 29960 effective life and 12193 physical max hit. Keep the axe current, cap elemental resistances, and use the filter to hide the rest.",
+      "text": "At red maps the build measures 231.2k damage, 28510 effective life and 11748 physical max hit. Keep the axe current, cap elemental resistances, and use the filter to hide the rest.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8391,10 +8389,10 @@
         "gates.maps-red.metrics.ehp",
         "gates.maps-red.metrics.maxHit"
       ],
-      "factsHash": "c416782f8be03003"
+      "factsHash": "c7df821e1fc99336"
     },
     "bossing": {
-      "text": "Pinnacle measures 554.8k damage with 36413 effective life and 14011 physical max hit. Hold the spin through small hits, then move out of the telegraphed slams instead of trying to out-armour them.",
+      "text": "Pinnacle measures 449.6k damage with 34712 effective life and 13525 physical max hit. Hold the spin through small hits, then move out of the telegraphed slams instead of trying to out-armour them.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8402,8 +8400,14 @@
         "gates.pinnacle.metrics.ehp",
         "gates.pinnacle.metrics.maxHit"
       ],
-      "factsHash": "1eae19eaee211565"
+      "factsHash": "e9351ff8e0d11f95"
     }
   },
-  "medal": "S"
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:53:12.580Z"
+  }
 }

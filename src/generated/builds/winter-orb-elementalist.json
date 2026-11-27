@@ -939,7 +939,866 @@
     "core": [],
     "optional": []
   },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Sceptre",
+          "Wand"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Shield"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "intjewel"
+        ]
+      }
+    }
+  },
   "status": "verified",
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "cold-spell",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Bandit Rogue's Head",
+          "tier": "low",
+          "effect": "(4-6)% increased Attack and Cast Speed",
+          "source": "Kraityn",
+          "area": "Act 2",
+          "note": "Cast speed while channeling Winter Orb."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "low",
+          "effect": "+(14-18)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "low",
+          "effect": "+(30-50) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life while channeling."
+        },
+        "lowerLimb": {
+          "name": "Siren's Tentacle",
+          "tier": "low",
+          "effect": "(10-15)% increased Effect of Cold Ailments",
+          "source": "Merveil",
+          "area": "Act 1",
+          "note": "Cold ailment effect."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Gelid Fangs",
+          "tier": "med",
+          "effect": "Damage Penetrates (6-8)% Cold Resistance",
+          "source": "Chill of the Mountain",
+          "area": "Act 9",
+          "note": "Cold penetration is the damage stat."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "med",
+          "effect": "+(22-28)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance while gearing."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "med",
+          "effect": "+(60-80) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life before damage scaling."
+        },
+        "lowerLimb": {
+          "name": "Siren's Tentacle",
+          "tier": "med",
+          "effect": "(20-30)% increased Effect of Cold Ailments",
+          "source": "Merveil",
+          "area": "Act 1",
+          "note": "Chill effect keeps packs in the orb."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Gelid Fangs",
+          "tier": "high",
+          "effect": "Hits have (10-15)% chance to treat Enemy Monster Cold Resistance values as inverted",
+          "source": "Chill of the Mountain",
+          "area": "Act 9",
+          "note": "Hits can treat cold resistance as inverted."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "high",
+          "effect": "+(2-3)% to maximum Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Maximum cold resistance."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "high",
+          "effect": "(5-7)% more Maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "More maximum life."
+        },
+        "lowerLimb": {
+          "name": "Siren's Tentacle",
+          "tier": "high",
+          "effect": "+5% to Maximum Effect of Chill",
+          "source": "Merveil",
+          "area": "Act 1",
+          "note": "Maximum chill effect."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Winter Orb; a spell damage wand and a 3-link are enough.",
+        "Life, resistances and movement speed carry Act 1."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "A magic wand is enough."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "3-link."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Keep moving."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Add Added Cold Damage and Controlled Destruction to Winter Orb.",
+        "Herald of Ice and Hatred are the damage auras."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Cold damage"
+          ],
+          "note": "Rare wand or sceptre."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Defensive shield."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cast speed"
+          ],
+          "note": "Bench cast speed on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Six-link Winter Orb and reach 2,000 life; cap elemental resistances.",
+        "The 6-link and gem levels are the damage step."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "The 6-link is the damage step."
+        },
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Cold damage"
+          ],
+          "note": "Do not drop cast speed."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Cast speed"
+          ],
+          "note": "Life first, cast speed second."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link and upgrade the wand.",
+        "Reach 3,000 life and cap resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Cold damage"
+          ],
+          "note": "The wand is the damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Fix resists on rings."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cold damage"
+          ],
+          "note": "Bench elemental damage on a free prefix."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Critical strike or Elemental Overload is the red-map damage upgrade."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Critical strike chance"
+          ],
+          "note": "Crit wand."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Crit multi."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 Winter Orb and awakened elemental supports."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Cold Skill Gems",
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "+1 elemental gems is the endgame goal."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "+1 to Level of all Cold Skill Gems",
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Amulet carries gem levels."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Keep life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Cold Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 152 to 228 added Cold Damage"
+      ],
+      "tags": [
+        "cold"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Cold Damage",
+      "qualityWorth": "recommended"
+    },
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Cold Penetration": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Penetrate 34% Cold Resistance"
+      ],
+      "tags": [
+        "cold"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Cold Damage",
+      "qualityWorth": "recommended"
+    },
+    "Controlled Destruction": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 80% less Critical Strike Chance",
+        "Supported Skills deal 39% more Spell Damage"
+      ],
+      "tags": [
+        "critical",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Elemental Focus": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills cannot inflict Elemental Ailments",
+        "Supported Skills deal 34% more Elemental Damage"
+      ],
+      "tags": [],
+      "qualityEffect": "Supported Skills deal % increased Elemental Damage",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Freezing Pulse": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "b",
+      "support": false,
+      "description": "An icy projectile which has a chance to freeze enemies it passes through. The projectile fades quickly, reducing damage and freezing chance until it dissipates.",
+      "effect": [
+        "Projectiles Pierce all Targets",
+        "Projectiles continuously lose Damage, up to 50% less Damage by the time they dissipate\nProjectiles have 25% chance to Freeze, which is lost over the first quarter of their flight",
+        "Deals 1659 to 2488 Cold Damage",
+        "Fires 5 Projectiles"
+      ],
+      "tags": [
+        "cold",
+        "projectile",
+        "spell"
+      ],
+      "qualityEffect": "% increased Projectile Speed",
+      "qualityWorth": "recommended"
+    },
+    "Frost Bomb": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Creates a crystal that pulses with cold for a duration. Each pulse applies a debuff to nearby enemies for a secondary duration which reduces life regeneration rate, and also inflicts Cold Exposure. When the crystal's duration ends, it explodes, dealing heavy cold damage to enemies around it.",
+      "effect": [
+        "Base duration is 2.00 seconds",
+        "Base secondary duration is 5.00 seconds",
+        "Cold Exposure applies -15% to Cold Resistance",
+        "75% reduced Life Regeneration rate",
+        "25% chance to Freeze enemies",
+        "Deals 1712 to 2568 Cold Damage",
+        "Base radius is 3.1 metres"
+      ],
+      "tags": [
+        "area",
+        "cold",
+        "duration",
+        "orb",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Frostblink": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving Chilled ground in an area at both ends of the teleport. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 3.00 seconds",
+        "Deals 1144 to 1716 Cold Damage",
+        "19% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area\n99% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
+        "38% increased maximum travel distance",
+        "+0.3 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "blink",
+        "cold",
+        "duration",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased maximum travel distance",
+      "qualityWorth": "recommended"
+    },
+    "Hatred": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants extra cold damage based on physical damage to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 39% of Physical Damage as Extra Cold Damage",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "cold",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Herald of Ice": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage.",
+      "effect": [
+        "Base radius is 1.2 metres",
+        "Damage cannot be Reflected",
+        "Buff grants 38 to 56 Added Spell Cold Damage",
+        "Buff grants 38 to 56 Added Attack Cold Damage",
+        "Deals 308 to 462 Cold Damage"
+      ],
+      "tags": [
+        "area",
+        "cold",
+        "herald",
+        "spell"
+      ],
+      "qualityEffect": "metres to radius",
+      "qualityWorth": "optional"
+    },
+    "Hypothermia": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +20% chance to Freeze Enemies which are Chilled",
+        "Supported Skills deal 29% more Damage with Hits and Ailments against Chilled Enemies",
+        "Supported Skills deal 29% more Cold Damage Over Time"
+      ],
+      "tags": [
+        "cold"
+      ],
+      "qualityEffect": "Supported Skills have % chance to Freeze Enemies which are Chilled",
+      "qualityWorth": "recommended"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "lilly",
+        "act": 6,
+        "quest": "Fallen from Grace"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Winter Orb": {
+      "requiredLevel": 28,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Sever the Right Hand"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Channel to conjure an orb above you, which pelts nearby enemies with projectiles that impact the ground and explode. Channelling for longer builds up stages on the skill. When you stop channelling, the stages decay over a duration.",
+      "effect": [
+        "Maximum 8 Stages",
+        "Fires projectiles every 1.2 seconds",
+        "30% increased Duration per Stage",
+        "20% increased Projectile Frequency per Stage",
+        "80% more Projectile Frequency while Channelling",
+        "Base duration is 1.60 seconds",
+        "25% chance to Freeze enemies",
+        "Fires 2 Projectiles"
+      ],
+      "tags": [
+        "area",
+        "channelling",
+        "cold",
+        "duration",
+        "orb",
+        "projectile",
+        "spell"
+      ],
+      "qualityEffect": "Maximum Stages",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "dc0b415e57f4",
+  "medal": "A",
+  "stale": {
+    "status": "waiting-for-pob",
+    "reason": "This build has not been verified against a patch fact set."
+  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -1849,16 +2708,16 @@
       "thresholds": {
         "life": 1800,
         "maxHit": 1800,
-        "dps": 4000
+        "dps": 3500
       },
       "metrics": {
-        "dps": 37143,
+        "dps": 27252,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 3452,
-        "energyShield": 1145,
-        "ehp": 17581,
-        "maxHit": 8027,
+        "life": 3320,
+        "energyShield": 1228,
+        "ehp": 17393,
+        "maxHit": 7948,
         "resists": [
           75,
           75,
@@ -2877,10 +3736,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -2890,10 +3749,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -3045,13 +3904,13 @@
         "dps": 4500
       },
       "metrics": {
-        "dps": 49534,
+        "dps": 37793,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 4249,
-        "energyShield": 1270,
-        "ehp": 27569,
-        "maxHit": 9669,
+        "life": 4094,
+        "energyShield": 1353,
+        "ehp": 27289,
+        "maxHit": 9553,
         "resists": [
           75,
           75,
@@ -4204,10 +5063,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4217,10 +5076,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4372,13 +5231,13 @@
         "dps": 6000
       },
       "metrics": {
-        "dps": 108609,
+        "dps": 60228,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 6960,
-        "energyShield": 1593,
-        "ehp": 43036,
-        "maxHit": 14602,
+        "life": 6282,
+        "energyShield": 1856,
+        "ehp": 41356,
+        "maxHit": 13928,
         "resists": [
           75,
           75,
@@ -5763,10 +6622,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5776,10 +6635,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5789,10 +6648,10 @@
           "slot": "Jewel 3",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5802,10 +6661,10 @@
           "slot": "Jewel 4",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5815,10 +6674,10 @@
           "slot": "Jewel 5",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5828,10 +6687,10 @@
           "slot": "Jewel 6",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -6000,13 +6859,13 @@
         "dps": 8000
       },
       "metrics": {
-        "dps": 145173,
+        "dps": 72353,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 8272,
-        "energyShield": 1901,
-        "ehp": 62674,
-        "maxHit": 17472,
+        "life": 7329,
+        "energyShield": 2235,
+        "ehp": 59617,
+        "maxHit": 16482,
         "resists": [
           75,
           75,
@@ -7473,10 +8332,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7486,10 +8345,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7499,10 +8358,10 @@
           "slot": "Jewel 3",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7512,10 +8371,10 @@
           "slot": "Jewel 4",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7525,10 +8384,10 @@
           "slot": "Jewel 5",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7538,10 +8397,10 @@
           "slot": "Jewel 6",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7698,884 +8557,23 @@
       }
     }
   },
-  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJzVWllv2zgQfq5_BSFggV2UbsRLR5F04ThnN24O59j0paAt2mZDUY5E2XV__YKSHcup7TjbFmlhQKDJb8j5hsMhOdL2319iBUYizWSidxz0xnWA0N0kkrq_41xdHtQD5-93te0zbganvd1cKtvyrvZquygDJUZC7Tih6wDD074w17OuyCfXAV3Fs-wDj8WOcyNNd-AAnnWFjprz-n0lYqENVzIzDoi51O2keyfMYZrkwx0HOaDDdSTNjvMh0cIBQ67NQCS6xT8n6WES7Tgq1zyVWaVJ6mlTP83N4C5XDhhJMW4lkdhxmo2TZtt5V3v1avtM8YlI24YbkBludpxmEnekFtHeWdsBI65yseMgN_Dc4E1IKMIo8J2t5aKXieHqf8idyJ54kPFCz10F3Nci7U_aAylUNB-EhWStRvtHZw9gSlzivaEIeT4J0Eq5s8Ekk12uWvyLjPP4SJpLfif0fEzquXiV8IFMxYXIismc4n22CtxMVLQx-ET2B0ZL3d-8-wFPskdovJJ2i2veTCpQRNdBr3QqMpGOxHwy6hSvFGkPRQUZvimB21vFMrKly1QIwLtGjkR7KLrW84ue7B9gUiEqK4vMltZxtOOQhUVla1wH6CQSmfVBgiDCLoHI93yIAowh8ZgHKQoopCT0IWUuhjREPmQ-JZAFmEDPZRh6mLjQ8z0KfYQw9EkQQD8kAQxCGsCQBB4MA9-HyC0GcRFiELk0dCFymc8gQhS7ECHGrArU1hDXDSEiQcAgoi7zIWKuRyHyXEwg8nyL8X1inwFGEAWBxyAKWWifHmEQu4x6ELsBwxAj4iL7JC7EyPMDiFFgMShkAcTMtU8PhR7Enk9diH1rB-x7LITY94MA4hCFISQuxgwSFPgMEoyRCwmmjEFCKCmefggJsT0Q4hf1fkAgoZ6HIKGh60HCgpBau9LCugGDxPOIrQlpCImPEIXEZ54tez6CxA_tuAEKXUhCjwaQusTDxdOD1A2QCynCHoEUUR9DisIghBR7NISUuK4LKfXDEFIaMgapF1q8jxmCNCj6CXw_gDTEjEJGMCL26YeQUUp9yKgXUsgYtmVGAwYZsyyYj0LrBBjbMvao9QUU2Ce1ZepiyALfs-5BwgB6CLMQeohgF3qIIlv2GIEeCgiFniUJPRJaPAl9D3rMJbTw6VfbVxcnReHVwJhh9nZrazwevxlyM0h64otU4k03ibeGPMvkSNSzO6lU3S6BrUaj0djttxqd8fnR7knrkI27Yu-uf36zu2_2P95efrj4ODpIg3-Hu4Obw3jcmex-7R6Nj2XYbN-_H17pk4nY--csGV5OJt2Ti2Ccfz25-PDZxd5lent-Gx1cuDdRu3PQku7k69X--4vooIWu0PurVF2fXHc_Dmj88YofXdyf4_FJ5_jLZI_cXvSOP4Su9o_6w7z5hZ61-mG-F9JIyYP71ofEq3_O47PD4e713dl9e_yxpdVh_fpkmPY1v4_SYXiftOuy8c_5wXAY6_o__qeU5eQslZej0_u6zHbjryE5PwpvYhR8uh1FQ0kw6UlTH1Ocfh6cnkt2O0r9PDzx6eeR92nvOrhN2YdPulMXn-vNfqNRGHxrZvHtcnfNSvNP_xXhwkYOu-YdII2I7T_kldHsW1yxripAfxWwWAgVYLAKWPh7BRiuAhauNgdidzUwqA6N0RS4vVUxwfaWja9FJLYB2Bba1t3KxqIIhOYdJaIdx6S5cECmErPj7CbRBDTSOMnT8tTSKEO3lZjF7lfbhyIG_XL8ljA84oZvHRsRZ1uH9lGgD0V8I7UR6WnacUDh7M_Aax5P94uyEhS102MZdh1wn3MlzWThj-1_T_R4rozzmN4SLlvPItPOh8MkNY0oEpHd4Pd4zPviKWal0KGIv5GbMyyagG0Ds8ZfgGgz0SZNlBLRnshMmneNTPTGdFdIz0nPAWAB8Qswfzi6HyTdPNuY8mOxOdeHFjBt-gVIWnc7E1qYlD9zYh_JVadURWCh7RfgeTQZJmYg0ljyjTmWq7DR51JnpjmQ1kurRBf6_Akct0sST8XqG8GHiQbo-wP1QZpkZjeJNw3UFfzcKkUlKGtfcuILPTpK6rvnsJkKPKIzrX25OZ7di793ho-4Sa0Tb2SQGbji8dOal5zXPWHsktMbxavlMnNCjxpeboKPhIqF-QETLFKuotPecffJM8kyicpUF9Ug6YGi4SVnvKl4Ks1kQz4P6MqONKt6ufk9VMlIZN8_v7Ntm2fmZiB0uUVNE1ibbt08M6eLkhVT8cyA8UDo6RkUTBFTy7EXmP7jOE5Sw1WTK7WhDyyKzNnN6kHZ8HLusJsk5gd4w4Hisdjj2WDTLW6Or-xwthKUtb_ASa2RdrkW7Tx9zq2qKlO5URXVYFr_U2d7Wspmuc5rKcbga5LE_xYJS1u6fSidlJoQ5-FmbuH2T8Fumie15bYwD6lS-x_IMnHxrnZRhLS34KJxsV9rT-yrgUxmIgKfxVgogGrNpMOVAe_t31ohWwz7FgS4dhwPlexKk70Fbs1jfwCpu6ngVrw9FEpNF38N4WpTERuKTG_tNWZ_AJOAZiqNTaaDtknlnQCtXBk5VFKktdeBaxFxmWYH9kVAYTGryiM-_tN88O_EJ3iaD_md-IRP86G_ER_sPs2H_U580NN8vN-Iz1o64-K2Wzsd2kG6YmhS8ZjNeRnQ3wLsfj8z6lYbHt7SzeRWzMg6BkmvN-A6qjUHMrY9tYcylQaUV7yNuSwz52urrEmAfUsJyjeDXHfn9UVmplK_XHmyTvlBcU-pHeWdVGagKdOuEmZDpXGtJbVMdAYGfCTAn5jUMfurat4FNmjB8valpNVdpKPisgb2ez3ZlUJ3J_aSUu6-P9EqdJ1VOkk0qV1zrsCF6HMl-TqLTPPzb8Fu_eG3aKY_UVjH7oJlRK8nusYyPe31RCp1P6u9_hOhOsJ_FSy4UmCeYJzTWW6TRa8u373PPHBml7mvP2kcts44_eLqU2snaVekIgXlVejZPhMJrpb5zHQhvg7-AN2B1dHqbo-GqciyxUX-87xj7YmsYw_7c_7F2X9j-sHCIkhGxQxPYxN6FJt6lkFfaFEmXkHKjahhtqaHpRbBU-b2-4Knqa89vHWEMrXmgEsNdm3xp0S35-m79nDG49zGs1M9-QIaZXljlTGzWhxrI5SSfVGotobG0uX1PK9bey6zMQKV--SF1P2furE8I1SgtYcvqzT-wUo_tuX_Ubp6JGk1Do-bC1oru_J6imd3tT05klqUa_GgqNmUwoqR8dqRY7srliPvG5FqrsqN8ocMTdYOnRtpe5uOfphyLc0P4kyfMfB5zlPz9ceMy54xbiMWZjDJzPeO3BZmeugFRholKkmIPBNt0U10VL7hKXIBPa4yMU0StVViimxH9R3QwycGs-zLtyhc-WxgCWqWip5hyBLMwvcBMyBdApzlPWcYtrSzIhk2g3jLIEJVNPKXIMpoPccESzA2pFRtFK7CVCyE3CWgYs4XrI2cadZmmjJaJVPtGW8oU_1whGwoU_0qhW4owyoybJlM6bptYYq8VZGrsqVmonuyX3q0HuazToUW8aRYEg7QedwR6Y4TzL5P_Aa4P-JZ-XJmCvWD6cei21uzAba3Hn-o-x9Pls-O",
+    "code": "eJzVWllv2zgQfq5_BSFggV2UbsRLRxF34ThnN2kO59j0paAt2mZDUY5E23V__YKSHMup7TjbFmlhQKDJb8j5hsMhOdL2319iBcYizWSiGw564zpA6G4SSd1vOFeX-_XA-ftdbfuMm8Fpb2cklW15V3u1nZeBEmOhGk7oOsDwtC_M9awr8sl1QFfxLPvAY9FwbqTpDhzAs67QUWtev6dELLThSmbGATGXup1074Q5SJPRsOEgB3S4jqRpOB8SLRww5NoMRKJP-OckPUiihqNGmqcyqzRJXTb105EZ3I2UA8ZSTE6SSDScVvO41Xbe1V692j5TfCrStuEGZIabhtNK4o7UIto9aztgzNVINBzPxdh_wxjyAsRC6mwtF71MDFf_Q-5Y9sRcBgd4FXBPi7Q_bQ-kUNGDAAqYt1ajvcOzBzBFhHlvEKHYw5T5q-TOBtNMdrk64V9kPIoPpbnkd0LPxyQhDlYJ78tUXIgsn8wS77NV4Faioo3Bx7I_MFrq_ubdD3iSPUJjsgp9wjVvJRUoWjlnFnqlU5GJdCzmk1GneKVIeygqSP9NidzeyteRLV2mQgDeNXIs2kPRta6fd2X_AJMKUVlaZLa2jqKGQxZWla1xHaCTSGQNB7kEQYRdApHv-RAFGEPiMQ9SFFBISehDylwMaYh8yHxKIAswgZ7LMPQwcaHnexT6CGHokyCAfkgCGIQ0gCEJPBgGvg-Rmw_iIsQgcmnoQuQyn0GEKHYhQoxZFaitIa4bQkSCgEFEXeZDxFyPQuS5mEDk-Rbj-8Q-A4wgCgKPQRSy0D49wiB2GfUgdgOGIUbERfZJXIiR5wcQo8BiUMgCiJlrnx4KPYg9n7oQ-9YO2PdYCLHvBwHEIQpDSFyMGSQo8BkkGCMXEkwZg4RQkj_9EBJieyDEz-v9gEBCPQ9BQkPXg4QFIbV2pbl1AwaJ5xFbE9IQEh8hConPPFv2fASJH9pxAxS6kIQeDSB1iYfzpwepGyAXUoQ9AimiPoYUhUEIKfZoCClxXRdS6ochpDRkDFIvtHgfMwRpkPcT-H4AaYgZhYxgROzTDyGjlPqQUS-kkDFsy4wGDDJmWTAfhdYJMLZl7FHrCyiwT2rL1MWQBb5n3YOEAfQQZiH0EMEu9BBFtuwxAj0UEAo9SxJ6JLR4Evoe9JhLaO7Tr7avLo7zwquBMcPs7dbWZDJ5M-RmkPTEF6nEm24Sbw15lsmxqGd3Uqm6XQJbzWazudM_aXYm54c7xycHbNIVu3f985udPbP38fbyw8XH8X4a_DvcGdwcxJPOdOdr93ByJMNW-_798EofT8XuP2fJ8HI67R5fBJPR1-OLD59d7F2mt-e30f6FexO1O_sn0p1-vdp7fxHtn6Ar9P4qVdfH192PAxp_vOKHF_fneHLcOfoy3SW3F72jD6Gr_cP-cNT6Qs9O-uFoN6SRkvv3Jx8Sr_55FJ8dDHeu787u25OPJ1od1K-Ph2lf8_soHYb3Sbsum_-c7w-Hsa7_439K2YicpfJyfHpfl9lO_DUk54fhTYyCT7fjaCgJJj1p6hOK08-D03PJbsepPwqPffp57H3avQ5uU_bhk-7Uxed6q99s5gbfmll8u9hes8L85b88XNjIYde8A6QRsf2Hyr3lW1y-ripAfxUwXwgVYLAKmPt7BRiuAuauNgdidzUwqA6NUQnc3qqYYHvLxtc8EtsAbAtt625FY14EQvOOElHDMelIOCBTiWk4O0k0Bc00TkZpcWxpFqHbSsxi96vtAxGDfjH-iTA84oZvHRkRZ1sH9pGjD0R8I7UR6WnacUDu7M_Aax6X-0VRCfLa8lyGXQfcj7iSZrrwx_a_K3p8pIzzmN4SLlvPItMeDYdJappRJCK7w-_ymPfFU8wKoQMRfyM3Z5g3AdsGZo2_ANFWok2aKCWiXZGZdNQ1MtEb010hPSc9B4AFxC_A_OHsvp90R9nGlB-Lzbk-tICy6Rcgad3tTGhhUv7MiX0kV51SFYGFtl-A5-F0mJiBSGPJN-ZYrMJmn0udmdZAWi-tEl3o8ydw3C5IPBWrbwQfJhqg7w_U-2mSmZ0k3jRQV_Bzq-SVoKh9yYnP9egoqe-ew6YUeESnrH25OZ5djL93hg-5Sa0Tb2SQGbji8WXNS87rrjB2yemN4tVymTmhRw0vN8GHQsXC_IAJFilX0WnvqPvkmWSZRGWq82qQ9EDe8JIz3lI8lWa6IZ8HdGVHmlW93PweqGQssu-f39m2zTNzMxC62KLKDNamWzfPzOmiZMVUPDNgMhC6PIOCElFajr3A9B_FcZIarlpcqQ19YFFkzm5WD4qGl3OHnSQxP8Ab9hWPxS7PBptucXN8ZYezlaCo_QVOas20y7Voj9Ln3KqqMpUbVV4NyvqfOttlKZvlOq-lmICvSRL_mycsben2oXRcaEKch5u5hds_ObsyT2rLbWEeUqX2P5BF4uJd7SIPaW_BRfNir9ae2ncDmcxEBD6LiVAA1VpJhysD3tu_tVw2H_YtCHDtKB4q2ZUmewvcmvcHkLqbCm6l4yItDmzivuYvayky9aA4kdQQqmLaQ6FUGTlqpNqSx5U8TZybzerziJT_NCn825EKniZFfjtS4dOk6O9GCrtPk2K_HSn0NCnvdyO1ltMkvwvXTodcgXZXDE0qHlM6L8L9W4DdR_TYSg0RXqEidasNDy_xZnIrpmUdg6TXG3Ad1VoDGdue2kOZSjOz4qZcXgcuMMniJL22ypoE2JeYoHhxyHV3Xp_nbSr1y5Un65Qf5LeY2uGok8oMtGTaVcJsqDSunUgtE52BAR8L8Ccmdcz-WulyaMHy9p2l1V2k4_wqB_Z6PdmVQnen9gpT7M0_0Sp0nVU6STStXXOuwIXocyX5OouU2fu3YKf-8Fs0058orGN3wTKi1xNdY5me9noilbqf1V7_iVAd4b9yFlwpME8_zukst8miVy-u45ld5r7-pHHYOuP084tRrZ2kXZGKFBQXpWf7TCS4WuYz5UJ8HfwBugOro9XdHhxTkWWLi_znecfa81rHXgXm_PObwcb0g4VFkIzzGS5jE3oUm3qWQV9oUaRlQcqNqGG2poelFsElc_v5wdPU157qOkKZWmvApQY7tvhTotvz9F17YOPxyMazUz39AppFeWOVMbNaHGkjlJJ9kau2hsbS5fU8r1t7TLMxAhX75IXU_Z-6sTwjVKC1xzCrNP7BSj-25f9RunokOWkeHLUWtFZ25fUUz-5qu3IstSjW4n5esymFFSPjtSPHdlcsRt4zItVcFRvlDxmarB16ZKTtrRz9IOVamh_EmT5j4PMRT83XHzMue8a4zViYwTQz3ztyW5jy0AuMNEpUUhSjTLRFN9FR8f4nzxT0uMpEmUJqq8TkuZDqG6KHDxBmuZlvUbjyUcES1CxRPcOQJZiFrwdmQLoEOMuKzjBsaWd5qmwG8ZZBhKpo5C9BFNF6jgmWYGxIqdooXIWpWAi5S0D5nC9YGzllTqdMKK2SqfaMN5SpflZCNpSpfrNCN5RhFRm2TKZw3bYweVYrz2TZUivRPdkvPFoPR7NOhRbxNF8SDtCjuCPShhPMPl_8Brg35lnx6qaE-oHnlt8YzgbY3nr8He9_ITfgeg==",
     "byStep": {
       "until-12": "eJy9WFtz2jgUfg6_QqOZPi0EfOGWgXaAJCQzoU3jpN192hH2wWiRJVaSIfTX70g24GSBhJbpi-dI-s5VR0dH7nx6ThhagFRU8C52zmsYAQ9FRHncxU-P15UW_vSx1Lknevpl0k8pMysfS2cdSyMGC2Bd7LgYaSJj0N_Wory_axiFjCj1mSTQxd-pDqcYERUCjwbb-SsGCXBNGFUao4RQHohwBnooRTrvYgejMeER1V38WXDAaE64noLgI_KPkEMRdTFLOZFUFZYoz5dimerpLGUYLSgsRyKCLh707gYB_lg6O-vcM7ICGWiikdJEd_FAJGPKIbq8DzBaEJZCFzfd85bn1nF1N8uj0IQdgb-jE9hgPd_fh7viIONVMKXAog3ebxy24-rmfoNteM3zWsv1W3XH8VrNfXz305WiIWEj8kyTNLmh-pHMgG_EtGrtfazXVMIDKLtxObrit_ahB4JF70ff0XiqOeXxEQqmRKjX8EZtH3xEOBmIAnavYIN84hIUyAVsN8Op75UdzKEIPG_5Dafu5V_L1KnaA2SoRwmASKjpAoI5hCbnrVQzQFoCFM6Utz5Ut1EXey-Ok5mpYcRFBKqLfa_dLLfafqvsNGquV3adRrNVdpuNervsOa1mvey5rlMre42675a9Zr3RLtd932-W603XbZhvw7d2nHWeHu4scTbVeq4uqtXlcnk-J3oqJvBMGZyHIqnOiVJ0ARU1o4xVjNnVXq_X68ej3mB6pW8XD08yWd5Nbj-3a6JRmambCdWVZa_X61ol1VxLp2r8thEygTFEYESqLCaGRMDJmEHUxVqmgJFiQndxX0Qr1JOJSGVWR3pZSA3HOqZnnSEkKIbEBGsEmkREk-qthkRVh-Zj0UNIriXAD8rj-5Qpo8FMH8nDSZLv53oB5St50axj9G9KGNUru3E5bbRcwoSkTOPXju7wqnqUW0E6nwupe1EEkTmPlyQh8Zv-ZUxDSP7Ht_XRLiGzhtaLuZvuydzsZH68lQjfgcwFR84pskAo3RfJ-N0ZsMEXd18ojbLZPCT-7w7JDbAE9K8HZMCIpHr1znBs0NtgbKbWjcPvjkRfCK1OlBljRvnsmNTIGV7lRj578tw4uirIkHAIUnlMRSjyFKqBnUb5_Mnr3Xavc0qt79FvFJbohxDJn1aHof7aUHeZHR7e3C4GbgbWt_wONnQAenMNmzGiUTZ-sOl7gUa94e2gFKxMw6mogggtbdUpXUo60UshIvSd8Khkma3eC-S4pa-ZzxeoVrpN5oyGVCsz8GofEOWhBGJEBXNgLC-j1lsj5aUt7kFbpva4l27SsaQKDagMGej32vKHW0daoCTrB5HpV_cY4R00YiyiVekbIQw9QEwYJQcMyFp-dYH6lX6l_7P2-AftiZlYgCoFQoYgQaJhNn5vVBz3gzHD9LwoazIJD_dZUn8jMkIXDLEl6Vd2x6kXs2ckFvZFhWwTusfAxmEDgenSYEooR31DnjxzmgfVkyQ1-fqFr55RL6OP3KXN6-HtrWodNEVSHjulL3OTxZTHp49E-0317k-oz8Ng27E3I-DUDtogJpOpKWWPSxqjYE4l1Sh7lp4-Gs7hGsvoBNCEETUrjSCiuSx0bWfeacwexYcLakI4yRUHCWEMmSfhSfQerqGppkZYrvprSsOZomwB8hd1B6DzKw1pqhkUruBUQQCh4FHWRtubcELMuyXrKQImtL3pi4021VmXsek8Cqh177nGuDswL95ua6C3A5gV7S3G3ynMtnhrSH0XBFjBosYORFZ3tpjmDow5kkXvW_sw7hbT3oHJ41hAObUdMLvlL6Lt4LxnyRumfTxFye47ebwCj7eLJ0upALTtpmwHZaiB4BMaZ5nG5-laKHBIVjZTMeJpMgZp5VZ3A68WxPzx2EI9r53_NlnL71Rf_5P8D39ukBg=",
       "until-28": "eJzFWdtu4zgSfY6_ghAwT6PEul8CuweOc8Xk1lG6s_20oKWyzQ1FekTKae_XL0hJtpK1HWfj7UGAgCqeIk9VkcUi3fvjZ07RHApBOOsb9pFlIGApzwib9I1vj-eHkfHHl07vHsvp3fikJFT1fOkc9HQbUZgD7RtOZCCJiwnI781Q7j8tA6UUC3GLc-gbT0SmUwNhkQLLhiv5GYUcmMSUCGmgHBOW8PQZ5EXBy1nfsA00wiwjsm_ccgYGmmEmp8DZDf4XLy541jdoyXBBRKuLsLprUpRy-lxSA80JvNzwDPrGcHA9TIwvnYOD3j3FCygSiSUSEsu-MeT5iDDITu8TA80xLaFvBHF45AdeEHhW4PhGd73mI5eYflztmoxhqWJbcbgJeMagmCySKQGaLRX8KNrK5-zyfjV44PlHURi7vuP6drxJ7366ECTF9Ab_JHmZXxL5iJ-BtYaJNhpzTgp4AKEDWcMP7Y3oIafZ7uhrMplKRtjkAxNMMRdv4ZtDcYMZHvIW1tuG_MYKEFDMYRWNjbFLZtCC-Ud-oJG9rt5DqvVYACCcSjKHZAapWvZ6KPWBZAHQ2lZus6-usr7hvtpRSmIZiPEMhFpOrm16duSZnhuHZhi7kRnFXmTatudYpu1aVmzageW4ph0Hrm86tmvZpmMHYWQ6oWO5phMGfmy6luP4pmtHoW-6jmNbpuuGvm-6XhDYphv4nmO6oR_EphsGoW26ceBFpufFvm96kRs4pheFYWT6nueFph86TqD-B54ZWG4cmYHtOpY2-KD37eFaNw6mUs7Ecbf78vJyNMNyysfwk1A4SnnenWEhyBwOxTOh9FD5pzsYDAYnk5vB5eDr5dn55OH6IRpezb8Kdnr98Hh9-3j7PSnx860Yuj8exle3scXvR1Pn6W4-uz55XgD2_jwcze_-OiTy8E83PC3C8vBqMBj0NaluzarXVQHRoVMRU41EURBVsFQTAcMjClnfkEUJBhKUy75xwrMFGhQ5L4sqxw2qWCuNJtgHvQvI0QRyFcUbkDjDEnevJOSie6H-afQF5E-ESSjuipGBtAM-gGc4rxdYJURaWidx20B_lZgSudCrqG6r0U9hjEsqjbfGrbGk-yFTknI244UcZBlkKh-c4hxP4D27KqULyP9Lb2Wf7kKqDzWdtZnB32bmkDNZcEohOwUhizKVhLOdjd2gvTJ5BUCvELXd7t9m9_KIP-dpKXY2-K3aytJlD6q79m5ir7LhvX39BHjGGbI_v6nPCy7kCc933dQt_MovWogqae2S6NdHXbMYUcKeP2JLrfDGmFq6d2N2jG9Tb302updYFqoE2MkdDXjlikbSVNu_PqZDigsiFztasES3klMjqm3wf3UoL4HmIPcQSigwze7GV-m759Q6jVZQtRjxMdIdtV-8X-2XE86l2EP-ojiHUyymu-75Fb615ZUQVdK9r5MPFyVFihkkZfGRgqSt0ypGtBjV8tqy-P8Q6bolmjvFdwIv6N-c5__Qc6jWj2Xrujk0lwWtgqsPbVt9H1HtBOTySqK-Ecmq7we9qY_RzeDiathJFur-LYiADL3ok7FzWpCxfOE8Q0-YZR2trOc9Rp7f-VrZfIyszlU-oyQlUqgP3_oNEZYWgNVQyQworau4TtzuGWIhkb5daS-o0V9zdLZynOqU0LksRwURaEiKlILclePvgYUkR3l1T0bqIt_53bV-U0J1EUbVzROzFDaQc7eSG_Fs0fmOMUUPMMGU4C3EqhcTcYxODvXf-0wdv-3H6nEBVafdBrbeVrYTyucgOgkvUiigQBfV9yd8uZ6F_47PuGyR0KntMxycV-vwhs912bl1xQXbCQKVneEUE4ZOVHPv_gm3To_zUq3wO7b4iQZVe-8Moq0MCsImduduppY1YZN9bLbly9D7Oy5-l5vzP3Creei75rsUbGsrBz4eT1Wi_AEvKJmRgshmV-49UPb2BE7JGNCYYvHcuSCYST0UOteCHblsmHd7Us4xw828BWD1SKHe2_Yy8_aMW0qiBqsnH-Qgpwsh9zLx9uT5euKvJUmfBaFzKD45dwKyPqmRJJJCq7IoBSSQcpZVN1h9wI8xFVBXfQnlUhcw7TsukVXxtCyoWqimvG4wzhrMq1ewBuiuAVanxwrjrR1M160NxF8HAdpiFKxBVElwhQnXYFQuaFsfbcI4K0y8BlP7sYWyrTUwHfJX3raNuhSr68BNOu2RnR113JaOu6OO19Lx1ulUyzABqQtLXUyq1pCzMZlUq5PNymZQYJAv9Oo2ECvzERT696TueuDZHIvq3auGRnHzmt6M3-u-_bXqPxSwjdw=",
-      "until-68": "eJzVWltzGjkWfja_QtVV8zQitG59SZlMYXzNmtgxdryzL1OCFqBYLZFuASG_fkvdjWl7MMYbz3i2XKVSH31HOt_R0e3g_d--pwrMRZZLo9seeud7QOihSaQet72b6-Nm5P32obF_ye3kYnQwk8q1fGjs7Rd1oMRcqLYXRB6wPBsL-2XVFfnD98BQ8Tz_xFPR9m6lHU48wPOh0El3LT9SIhXaciVz64GUS903wzthTzIzm7Y95IEB14m0be-T0cIDU67tRBjd419NdmKStqdmmmcyrzVJXTWNs5md3M2UB-ZSLHomEW2v2znv9r0Pjb29_UvFlyLrW25Bbrlte12TDqQWyeFl3wNzrmai7ZEQUfwuCEhMooB5rc2a18Zy9XK1czkSaxXK8FPAIy2y8bI_kUIl9woI0e0GHZ1ersEhi_x3UeDHhIQBfUrvcrLM5ZCrHv8u01l6Ku01vxP6vpvIx-FTuscyE1ciL2aygodPGtg1KtkZfC7HE6ulHu_e_YSb_BEaPYnucc27pg590kEOeqMzkYtsLtZz0WR-_JRKfypqyPAdCgrkfqtYRK52nQkB-NDKuehPxdDFfdGV-wA2E6K2rshqYZ0lbY88WFJO4ntAm0TkbQ_5BEGEfQJRGISQBCyAFEUUUhKHkDIfwyAMKAwRwjAkUQTDmEQwimkEkY8Qg8insQ-Rz0IGEaLYhwgx5jqlTkJ8P4aIRBGDiPoshIj5AYUo8DGBKAgdJgyJKyOMIIqigEEUs9iVAWEQ-4wGEPsRwxAj4iNXEh9iFIQRxChyGBSzCGLmuzIIqQ9x6DjhMGAxxDGKY0h8jBkkKAoZJBgjHxJCwxgSEjLmyohAQoMAQcKimDpXUAxJEBAKSYiQK1kQQxIGIYIkjF2fcUAjSH0SBJD6EfIhRTggkCIaYkhRHMWQEt_3IaVhHENKY8YgDTFDkEYkwJBGYRhBGmNGISMYEVeGMWSU0hAyhl0ZotiVGAeuDChkEaaupD6GLAoDAgOfxBEMEGYxDBDBPgwQRTEMnKEwIHEYFNGyt39zdV5U9ibWTvP3rdZisXg35XZiRuK7VOLd0KStKc9zORfN_E4q1XTB1ep0Op2Dca9zM_58enDeO2ELdnZ0PL46vzq5PUkXg-XBj-Hp4kzGXXH4r0szvV4uh-dX0WL24_zq01cfB9fZ759_T46v_NukPzjuSX_54-bo41Vy3EM36ONNpr6cfxn-Z0LTic_vPuVdcnaZTI6jMSH9cS4OMb0kE3zb-2SC5tfv3z43p-cHd0txM2DZWPNgxL8dzc24e3fARzSbN-dpKK_nF9-aMj9If8Tk82k8uiSYjKRtLii9vjub3Z4HzXDebzbPwuacffpDm06n0y6c1Fp5ab88afLSZdVXsXiKleWiwwPSitR9Vmt2A7AIixqw2h739lu1_vdbbikXi96tdVfpO_-XjUUVCM0HSiRtz2Yz4YFcGdv2DkyyBJ0sNbOsPB475S7hNFbbxN7-iUjBuBy_JyxPuOWtMyvSvHXiigJ9ItJbqa3ILrKBB4rZfwFe87TamkohKKTV-Y9iD3ybcSXtstiAqrrr_lCM-ExZ7zG7DVRaL-LSn02nJrOdJBGJO0sOecrH4jlipdKJSP-ktyZYNAHXBlaNb8-za7TNjFIiORS5zWZDK43eme0T2mvOawB4gHh74vcXxGMznOU7M36stqZ63wKqprfn6GLtUmhhM_7CaX2kV59QlYAHbW9P83Q5NXYislTynSmWK7Az5lLntjuRLkTrPB_0-foU90sOz-3St4JPjQbo57fo48zk9sCku27RNfzaKYUQlNI3nPbCjIGS-u4lZCqFR2wq6ZvN8Orp9bPze8pt5iJ4J3-swLVwryRvOKuHwrrlpnfaqjbrrPk8aniz6T0VKhX2FaZXZFwlF6Oz4bNXkU0atYkuxMCMQNHwhvPdVTyTdrkjnXt07Shaid5sdk-UmYv852d3dVzz3N5OhC7Ppio_suuRzXN78VCz5imeW7CYCF1dPEGFqBzH_v7JP0tTk1muulypHSPgocqa3EoOyoZVMER_dzAcGGNfIRaOFU_FIc8nu55ta3ztaHNCUErf_n7WyYZci_4se8k7qq5Te0MVYlDJ_8qFX9XyVRrtixQL8MOY9N_FGK72-33tvDSEePcvcQd3HwW5KgXn6n1h77Nw7hvIMgnwoXFV7GbvwVXn6qjRX7qccy5zkYCvYiEUQI2uGXBlwUf32Sh0i2HfgxA3ztKpkkNp8_fAbwTsFyD1MBPcqfenQqlq4TcQrjcV-0KRRWz8itkvwBrQzaR1eVrQt5m8E6A3U1ZOlRRZ49fId4i0zOACl2MuPOZMecQnfJ4P_n_is43OorijNy6mbpChmNpMPGbzuQzI9wD5P8-M-vWG-wz2Sm8zA7yNgRmNJlwnje5Epq6n_lRm0oLyarozl03u_NUZaw1wGXxQZs25Hq7lxWuyJt9sPNlm_KS4YTVOZ4NM5qArs6ES9h9gNN1m9MAky8YXzhW4EmOuJN9mcJXuew8OmtXf8xweBkn5K89qQlc81qHzLBm2jcy4uAU1-iYbikxkoLwV_QOmYOuuOnDH9dro4vTe2Wb8YN32zLxI_dxvPZWR7qeiTda_wPFbN9KBULbRnXCpwYGr_iUef4rMZnujbfbydObW5oVefgedsr6zyZg5K860FUrJsShM20Jjo4tfFj3xNiqZ1GNU7vlXUo__0mB_Qbgg_zmj8Ssb_diX_4vR9eO11zk56z6wWsmRACPF87vGoZxLLQoDwHEh2ZXCEyPjrSOnXPNq5FOulFm4te5krzI22Tr2zErXWzX8Sca1tK9Emr5g4M8zntkfrzMue8G4nVTYyTK3PztyX9jqBgestErUXgSzXPTF0OikTLIWF_MRV7mo3mt9ZWzx8qinYe9_jVu9hP6MwmsU3oBaZYRWGLIB8-DHuRWQbgCuEhArDNvYWfEuXUGCTRChahaFGxDldr3GRBswbk-p-yh-ClPzEPI3gIo5f-Bt5FVPqOr99pROvWe8o079N1ayo079B1y6ow6r6bBNOmXo9oUtHpHFw9HVukaP5LiMaD2drToVWqTLYkl4QM_SgciK_5dqbQYezXlepkgrKA1JXP23yGqA_dbjf8f6L928928=",
-      "maps-early": "eJzVWm1z2joW_lx-hcYz99MVjfVquxN6h5CEpM1bQ9K0-2VHgAAVWaa2TEp__Y5sE5yUELLN3dwdZjyy9BzpPDpHR9Ixu3_9iDWYyzRTiWl56K3vAWkGyVCZccu7vjpsht5f7xu7F8JOzkd7udKu5X3jzW5RBlrOpW55oe8BK9KxtJ-XXZF_-x4YaJFlZyKWLe9G2cHEAyIbSDPsrOoPtIylsUKrzHogFsr0ksFU2m6a5LOWhzzQF2aobMs7S4z0wEwYO5GJORXfkrSbDFuezo1IVVZrUqZqGqe5nUxz7YG5krenyVC2vE77pNPz3jfevNm90GIh054VFmRW2JbXSeK-MnK4f9HzwFzoXLY8GjFC35KQR4Qyb2e94FVihX621IkayZUEptFjwAMj0_GiN1FSD-8EEA78jfocHF3cgXHAePSWsDAKEfHRY3IXk0WmBkKfih8qzuMjZa_EVJq7biLOH1XyUKXyUmaFHSt48Cj1TqKHW4NP1HhijTLj7bufiCR7gEaPok-FEZ2kDqWboNcmlZlM53JliyZjj85pbyZryOAt4gVyd6dYQq50lUoJxMCquezN5MB5fdGVewE2lbK2qshyWR0PWx65t6Bcje8Bkwxl1vKQTxBE2CcQBTyAKMQYEs44pCikkJIogJT5GNIIBZD7DEMecAoDhDAMSBjCICIhDCMawoiEHEZhEEDkI8Qg8mnkQ-SzgEGEKPYhQoy50airIb4fQUTCkEFEfRZAxHxOIeI-JhDxwGGCgLhniBFEYcgZRBGL3JMTBrHPKIfYDxmG2LmrexIfYsSDEGIUOgyKWAgx892TB9SHOHBkccBZBHGEoggSH2MGCQoDBgnGyIeEUMLcM4ggIQFz5SAkkFDOEXTLg7pJosVUhQwSzgmFJEDIPRmPIAl4gCAJItd_iCIfkojTEFKfcFw8OaR-iHxIEeYEUkQDDCmKwghS4vs-pDSIIkhpxBikPHLIADMEaVj0EAZBCGmEGYWMYETcM4ggo5QGkFEeUcgYdmUW-RyyAEUBZAHGrow5hSzE1D2pjyELA04g90kUQo4wiyBHBPuQI4pcOSQUckcGchI5JIkCXjjfm93ry5Oi8GZi7Sx7t7Nze3v7dibsJBnJH0rLt4Mk3pmJLFNz2cymSuum89Wddrvd3huftr-2Px3tnZx22e1A7k_Hn272DuzBv75enV3KaTe-7S_2fg6Obo9V1Ol9_zC7NuPFN_7xOsxMxx-dnmQL_-prdJZPOT7oHl1eDw_Ndfzj6tieZmivc_3l8urs81nv80f2uYe-dL_KD8mwO9vvt-1in3y9HB2fRX7ysT_O5D6mF2SCb07PEt78lscX3dk-n2bdqw_scq57XNAP-LsRfCS-H8yTcWe6J0Y0nTfncTBo5h_OQ57yj7fd_gUZtkdI9L_8jGaKYDJStnlL6dX0OL854c1g3ms2j4Pm_IeaT0lzOGe83W4XE7mznMndcmvLymmt3or1Wixm52seUFbG7rUKE2uAhWPVgEEF3N2p9b-746JHEWdceHGFnrNR2VgUgTSir-Ww5dk0lx7IdGJb3l4yXIB2Gid5Wu7H7TIwOYllZHqz25UxGJfjn0orhsKKnWMr42yn6x4FuivjG2WsTM_TvgcKD3kG3oi4ioZlJShqqwMH9j3wPRda2UUR86qy635fjkSurfeQ3RoqO8_i0stnsyS17eFQDt32tS9iMZZPESuFujL-RW5FsGgCrg0sG1-fZycxNk20lsN9mdk0H1iVmK3ZPiK94rwCgHuI1yd-dyI9TAZ5tjXjh2IrqnctoGp6fY7O1y6kkTYVzzTrA7m6QfUQ3Gt7fZpHi1liJzKNldiaYrkC22OhTGY7E-VctM7zXp8vT3G35PBUlL6RYpYYgH4_RB-mSWb3knjbEF3DryalqARl7SuavVCjr5WZPodMJfCATVX7ahZe3vZ-175HwqbOg7eajyW45u5VzStadV9at9zMVqFqvcyKz4OGVzPvkdSxtC9gXpkKPTwfHQ-ePIqsk6gZuqgGyQgUDa9o744WqbKLLencoWtb0bLq1azb1clcZr9v3eV2LTJ7M5Gm3JuqlMy2W7bI7Pl9ydpMicyC24k01cETVIhq4tj_3vjHcZykVuiO0HpLD7gvsiK3rAdlw6s5w16S2BfwhUMtYrkvssm2e9sKX9vaXCUoa1__fNZOB8LIXp4-5x5Vl6ndoYpqUNX_nbauStkyc_dZyVvwM0niL8UYrvT1rnRSKkK8u5u4g7uXglyV9XPlnrR3iT_3DlSZBHjfuCyi2Ttw2b48aPQWLsmdqUwOwTd5KzVAjU7SF9qCD-61UcgWw74DAW4cxzOtBspm74Df4OwPoMwglcKJ92ZS62rhNxCuNxVxoUhcNv7E7A9gE9BJlXWpYdCzqZpKcJprq2ZaybTxZ-g7RFwmjYFLaxcz5lR5wCd4mg_-f-Kzic5tcUZvnM_cIAM5s6l8yOZT6ZDvAPJ_nxn16w13SfOl3HoGeBODZDSaCDNsdCYqdj31ZipVFpRH0625rJvOP52yNgHuowEoE_XCDFb1xW2yVr9eebJJ-Ulxwmoc5f1UZaCj0oGW9h-gNN2kdD8ZLhqfhdDgUo6FVmKTwlW67x3Ya1a_pzncd5Lyw9LSoEseK9d5kgzbRGZcnIIavSQdyFSmoDwV_QNMsDGq9t12vVK62L231hnfW7enybxI_dyFnkpJ93VqnfbPmPiNgbQvtW10JkIZsOeKf8uMP0Zmvb7hJn1FnLu1eW4WP0C7LG-tMmZOi2NjpdZqLAvVNtBYO8XP855oE5VUmTEqY_6lMuO_1dmf4S7If0pp_MJKP5zL_0bp-vZ62u4ed-5prdVIgpEW2bSxr-bKyEIBcFjUbEvhkZHxxpFjYUQ18oGVqREauA_DLzM02Th0bpXrrRq9mwqj7Atxps8Y-FMuUvvzZcZlzxi3HUs7WWT2d0fuSVsd4IBVVsvahSDPZE8OEjMsc6zFuXwkdCar61pPJ7a4eNSzsHcf45YXoV9ReIXCa1DLhNASQ9Zg7n2bWwLpGuAy_7DEsLWdFdfSJYSvg0hd0yhYgyij9QoTrsG4kFKfo-gxTG2GkL8GVNj83mwjr7pBVde3x2TqPeMtZeqfWMmWMvXvt3RLGVaTYetkStftSVvcIYt7oyt1EjNS49KjzSxfdiqNjBfFkvCAyeO-TGt_lPkFeDAXWZkhraDcx1H1_5TlALs7D__-9R-N6RG6",
-      "maps-red": "eJzVWllv2zgQfq5_BSFggV2UbsRLR5F04ThnN24O59j0paAt2mZDUY5E2XV__YKSHcup7TjbFmlhQKDJb8j5hsMhOdL2319iBUYizWSidxz0xnWA0N0kkrq_41xdHtQD5-93te0zbganvd1cKtvyrvZquygDJUZC7Tih6wDD074w17OuyCfXAV3Fs-wDj8WOcyNNd-AAnnWFjprz-n0lYqENVzIzDoi51O2keyfMYZrkwx0HOaDDdSTNjvMh0cIBQ67NQCS6xT8n6WES7Tgq1zyVWaVJ6mlTP83N4C5XDhhJMW4lkdhxmo2TZtt5V3v1avtM8YlI24YbkBludpxmEnekFtHeWdsBI65yseMgN_Dc4E1IKMIo8J2t5aKXieHqf8idyJ54kPFCz10F3Nci7U_aAylUNB-EhWStRvtHZw9gSlzivaEIeT4J0Eq5s8Ekk12uWvyLjPP4SJpLfif0fEzquXiV8IFMxYXIismc4n22CtxMVLQx-ET2B0ZL3d-8-wFPskdovJJ2i2veTCpQRNdBr3QqMpGOxHwy6hSvFGkPRQUZvimB21vFMrKly1QIwLtGjkR7KLrW84ue7B9gUiEqK4vMltZxtOOQhUVla1wH6CQSmfVBgiDCLoHI93yIAowh8ZgHKQoopCT0IWUuhjREPmQ-JZAFmEDPZRh6mLjQ8z0KfYQw9EkQQD8kAQxCGsCQBB4MA9-HyC0GcRFiELk0dCFymc8gQhS7ECHGrArU1hDXDSEiQcAgoi7zIWKuRyHyXEwg8nyL8X1inwFGEAWBxyAKWWifHmEQu4x6ELsBwxAj4iL7JC7EyPMDiFFgMShkAcTMtU8PhR7Enk9diH1rB-x7LITY94MA4hCFISQuxgwSFPgMEoyRCwmmjEFCKCmefggJsT0Q4hf1fkAgoZ6HIKGh60HCgpBau9LCugGDxPOIrQlpCImPEIXEZ54tez6CxA_tuAEKXUhCjwaQusTDxdOD1A2QCynCHoEUUR9DisIghBR7NISUuK4LKfXDEFIaMgapF1q8jxmCNCj6CXw_gDTEjEJGMCL26YeQUUp9yKgXUsgYtmVGAwYZsyyYj0LrBBjbMvao9QUU2Ce1ZepiyALfs-5BwgB6CLMQeohgF3qIIlv2GIEeCgiFniUJPRJaPAl9D3rMJbTw6VfbVxcnReHVwJhh9nZrazwevxlyM0h64otU4k03ibeGPMvkSNSzO6lU3S6BrUaj0djttxqd8fnR7knrkI27Yu-uf36zu2_2P95efrj4ODpIg3-Hu4Obw3jcmex-7R6Nj2XYbN-_H17pk4nY--csGV5OJt2Ti2Ccfz25-PDZxd5lent-Gx1cuDdRu3PQku7k69X--4vooIWu0PurVF2fXHc_Dmj88YofXdyf4_FJ5_jLZI_cXvSOP4Su9o_6w7z5hZ61-mG-F9JIyYP71ofEq3_O47PD4e713dl9e_yxpdVh_fpkmPY1v4_SYXiftOuy8c_5wXAY6_o__qeU5eQslZej0_u6zHbjryE5PwpvYhR8uh1FQ0kw6UlTH1Ocfh6cnkt2O0r9PDzx6eeR92nvOrhN2YdPulMXn-vNfqNRGHxrZvHtcnfNSvNP_xXhwkYOu-YdII2I7T_kldHsW1yxripAfxWwWAgVYLAKWPh7BRiuAhauNgdidzUwqA6N0RS4vVUxwfaWja9FJLYB2Bba1t3KxqIIhOYdJaIdx6S5cECmErPj7CbRBDTSOMnT8tTSKEO3lZjF7lfbhyIG_XL8ljA84oZvHRsRZ1uH9lGgD0V8I7UR6WnacUDh7M_Aax5P94uyEhS102MZdh1wn3MlzWThj-1_T_R4rozzmN4SLlvPItPOh8MkNY0oEpHd4Pd4zPviKWal0KGIv5GbMyyagG0Ds8ZfgGgz0SZNlBLRnshMmneNTPTGdFdIz0nPAWAB8Qswfzi6HyTdPNuY8mOxOdeHFjBt-gVIWnc7E1qYlD9zYh_JVadURWCh7RfgeTQZJmYg0ljyjTmWq7DR51JnpjmQ1kurRBf6_Akct0sST8XqG8GHiQbo-wP1QZpkZjeJNw3UFfzcKkUlKGtfcuILPTpK6rvnsJkKPKIzrX25OZ7di793ho-4Sa0Tb2SQGbji8dOal5zXPWHsktMbxavlMnNCjxpeboKPhIqF-QETLFKuotPecffJM8kyicpUF9Ug6YGi4SVnvKl4Ks1kQz4P6MqONKt6ufk9VMlIZN8_v7Ntm2fmZiB0uUVNE1ibbt08M6eLkhVT8cyA8UDo6RkUTBFTy7EXmP7jOE5Sw1WTK7WhDyyKzNnN6kHZ8HLusJsk5gd4w4Hisdjj2WDTLW6Or-xwthKUtb_ASa2RdrkW7Tx9zq2qKlO5URXVYFr_U2d7Wspmuc5rKcbga5LE_xYJS1u6fSidlJoQ5-FmbuH2T8Fumie15bYwD6lS-x_IMnHxrnZRhLS34KJxsV9rT-yrgUxmIgKfxVgogGrNpMOVAe_t31ohWwz7FgS4dhwPlexKk70Fbs1jfwCpu6ngVrw9FEpNF38N4WpTERuKTG_tNWZ_AJOAZiqNTaaDtknlnQCtXBk5VFKktdeBaxFxmWYH9kVAYTGryiM-_tN88O_EJ3iaD_md-IRP86G_ER_sPs2H_U580NN8vN-Iz1o64-K2Wzsd2kG6YmhS8ZjNeRnQ3wLsfj8z6lYbHt7SzeRWzMg6BkmvN-A6qjUHMrY9tYcylQaUV7yNuSwz52urrEmAfUsJyjeDXHfn9UVmplK_XHmyTvlBcU-pHeWdVGagKdOuEmZDpXGtJbVMdAYGfCTAn5jUMfurat4FNmjB8valpNVdpKPisgb2ez3ZlUJ3J_aSUu6-P9EqdJ1VOkk0qV1zrsCF6HMl-TqLTPPzb8Fu_eG3aKY_UVjH7oJlRK8nusYyPe31RCp1P6u9_hOhOsJ_FSy4UmCeYJzTWW6TRa8u373PPHBml7mvP2kcts44_eLqU2snaVekIgXlVejZPhMJrpb5zHQhvg7-AN2B1dHqbo-GqciyxUX-87xj7YmsYw_7c_7F2X9j-sHCIkhGxQxPYxN6FJt6lkFfaFEmXkHKjahhtqaHpRbBU-b2-4Knqa89vHWEMrXmgEsNdm3xp0S35-m79nDG49zGs1M9-QIaZXljlTGzWhxrI5SSfVGotobG0uX1PK9bey6zMQKV--SF1P2furE8I1SgtYcvqzT-wUo_tuX_Ubp6JGk1Do-bC1oru_J6imd3tT05klqUa_GgqNmUwoqR8dqRY7srliPvG5FqrsqN8ocMTdYOnRtpe5uOfphyLc0P4kyfMfB5zlPz9ceMy54xbiMWZjDJzPeO3BZmeugFRholKkmIPBNt0U10VL7hKXIBPa4yMU0StVViimxH9R3QwycGs-zLtyhc-WxgCWqWip5hyBLMwvcBMyBdApzlPWcYtrSzIhk2g3jLIEJVNPKXIMpoPccESzA2pFRtFK7CVCyE3CWgYs4XrI2cadZmmjJaJVPtGW8oU_1whGwoU_0qhW4owyoybJlM6bptYYq8VZGrsqVmonuyX3q0HuazToUW8aRYEg7QedwR6Y4TzL5P_Aa4P-JZ-XJmCvWD6cei21uzAba3Hn-o-x9Pls-O",
-      "pinnacle": "eJzVWm9P2zoXf71-CivSle6juSP-m2SCe1UKFO7o-FNg231zZRq39XCSkjiF7tM_cpLSlLWlaExsqhS59u_Y_p1zfGyfZPvv-0iDiUwzlcQ7DnrnOkDG_SRU8XDHubw4aPrO3381tk-FGZ0MdnOlbctfjTfbRRloOZF6xwm4A4xIh9Jczboi_7kO6GuRZR9FJHecT8r0Rw4QWV_GYXtev69lJGMjtMqMAyKh4l7Sv5Gmkyb5eMdBDrgWcajMjvMxiaUDxiI2I5nEXfE1STtJuOPoPBapympNKq6ahmluRje5dsBEybtuEsodp906bvecvxpv3myfajGVac8IAzIjzI7TTqJrFctw77TngInQudxxEGXII-9owBD3na3lgheJEfrZUsdqIB8kfOzhVcD9WKbDaW-kpA7nQwQuWjuf_cPTBzDH3KN2Op7PVwmdjqaZ6gvdFfcqyqNDZS7EjYznA3p09RQPVCrPZVZYscJ7bBW4nehwY_CxGo5MrOLh5t2PRJJtjO6KWLSTGhTRddDLOJWZTCdybokmJWSVSG8sa0jkvsNl79tbxQqypYtUSiD6Rk1kbyz71umLvuwfYFIpa4uKzFbVUbjjkIX1ZGtcB8RJKDM7EkEQYZdA5HEPIh9jSBD3IOGMQ4p8CikJPEiZiyENkAeZRwlkPiaQuwxDjokLOWEB5B6n0EMIQ4_4PvQC4kM_oD4MiM9h4HseRG4xnIsQg8ilgQuRyzwGEaLYhQgxZidDbQ1x3QAi4vsMIuoyDyLmcgoRoy6DiLuYQMQ9i_Q8Yp8-RhD5Hg8g8n3OIApYYJ-cMIhdRjnErs8wxIi4yD6JCzGiiECMuOdDjHyLRAHzIaaYcYiZa8scBRzadeFC7FlNYY-zAGLP832IAxQEkLgYM0iQ7zFIMEYuJJgyBgmhpHh6ASTE9kCIV9R7PoGEco4goYHLIWF-QK3SKbZPn0HCObE1AQ0g8RCikHiM2zL3ECReYMf1UeBCEnDqQ-oSjosnh9T1kQspwpxAiqiHIUWBH0CKOQ0gJa7rQkq9IICUBoxBygOL9zBDkPpFP77n-ZAGmFHIXJ9jyAhGxD69ADJKqQcZ5QGFjGFbZtRnkDHLhXkosH6CsS1jTq27IN8-qS1TF0Pme9x6EAl8yBG27oMIdiFHFNkyZwRy5BMKuaUKOQksngQeh5y5hBa-_2b78vy4KLwZGTPO3m9t3d3dvRsLM0oG8l5p-a6fRFtjkWVqIpvZjdK6aZfKVqvVau0Ou61weHa4e9ztsLu-3DvwT3q7u1_2e-65HnXRQeR_mtzLm87Bly_ofpx1_GGf7Prto8nZza0SV_9M_Xg4_co_XPpZ3HYH3eNs6l58CT7mNxzv3ZmzL-HBufsp7F0d_JNdTo8vjj-enekD9_Lb1cWlPtFXH9hVD33ufM52RzT691Icnt-e4bvj66P76R75cj44-hi4sXc4HOfte3raHQb5XkBDrQ5uux8T3vyaR6ed8e7Vzelt7-7fbqw7zavjcTqMxW2YjoPbpNdUrQ9nB-NxFDc_eP-lLCenqbqYnNw2VbYb3d96pyRsDZC4_vwtUAGOjgfXYfMD8fa-ivxkn7WPtWpOcs-dTNTJf6n_8fO9mtyQZjhh_JR-aLVaO4URtmZW2C435aw0SfWvCDU26thQ4QBlZGT_oWqD-R5XrLga0FsFLJZIDeivAhYroQYMVgEL95sDsbsa6NeHxtUW-2Z7q6aC7S0bm4soboO3LfSsC5aNRRHIWFxrGe44Js2lAzKdmB1nNwmnoJVGSZ6Wh51WGfatxCzuv9nuyAgMy_G70ohQGLF1ZGSUbXXso0B3ZPRJxUamJ-m1A4oF8Ax8LKJqrykrQVFbneYwcsBtLrQy00JTsz-2_z05ELk2zmN6S7hsPYtMLx-Pk9S0wlCG9niwJyIxlE8xK4U6MvpObs6waAK2DcwafwGi7SQ2aaK1DPdkZtK8b1QSb0x3hfSc9BwAFhC_APOHE_9B0s-zjSk_FptzfWgBVdMvQNK626mMpUnFMw37SK5uUh2ChbZfgOfhdJyYkUwjJTbmWK7C1lCoODPtkbJeWie60OdP4LhdkngqVn-SYpzEAP14oD5Ik8zsJtGmgbqGn2ulqARl7WsavpjHtVbxzXPYVAKP6FS1r2fj2ZX6Ry18KExqnXgjhczANY-val7TrnvS2CUXbxSvlsvMCT1qeD0DH0odSfMCBpap0OHJ4Kj_5JlkmUTN1EU1SAagaHhNi7e1SJWZbsjnAV3bkWZVr2ffjk4mMvtx-862bZGZTyMZl1tUlf7adOsWmTlZlKypSmQG3I1kXJ1BQYWoNMdewfxHUZSkRui20HpDH1gUmbOb1YOy4fXcYTdJzAt4w4EWkdwT2WjTLW6Or-1wthKUtb_ASa2V9kUse3n6nFtVXaZ2oyqqQVX_U61dlbJZnvRKyTvwLUmiz0Wy05a-PJSOy5kQ5-FmbuH2T8GuyrHack-ahzSr_Q9Umbj4q3FehLT34Lx1vt_oTe0bhUxlMgRf5Z3UADXaybXQBvxj_zYK2WLY98DnjaNorFVfmew9cBu--wdQcT-Vwor3xlLravE3EKs3FbGhyBM33hL2BzAJaKfK2FQ86JlU3UjQzbVRY61k2niLXNdCojJLD-xLhEJldi6PCHlPE8K_FSH_aULktyIUPE2I_k6EsPs0IfZbEUJPE-K_E6G1fO6KO2_jKlEh6PXl2KTyMZ2zMqy_B9j9cWpsQebhTd9MboVJ1jFIBoORiMNGe6Qi21NvrFJlQHnR25gLX5hX-fp11sdSXb-llY1skqZ89Sji_ioGZB2DUXFlaRzm16nKQFulfS3NhjPHja6KVRJnYCQmEvyJ_SYO_lfnsjBrhOtN9u2mnbtMJ8W9DewPBqqvZNyf2vtKuRGvp2_fAtfpP08tdJ1arpNw2rgSQoNzORRaiXUqqXL178Fu8-G3qKc_MWliuqAaORjIvrFUTwYDmap4mDXe_olYE_H_FSyE1mCebJzTWaGUtU5UKWbu8k9qh63TzrC4BzV6SdqXqUxBeS96tteEUuhlXlOtx7fI_QP0R3aSdvL2oJjKLFtc7D_RQdYe0K7t2X-ugeIqsLEC0IKtusmksHIVpRaXieVjfVDGskzEglQY2SDrenhrWy1N-2XCMv7P8IO1h7prqU2jPRIqBru2uGnAe57RVrFZPuG1hzYR5Ta8ncTTe9AqyxvPmRZTPoqN1FoNZTG1dTyWKvmZZNYe2GzMQI2TsY0OKh7-JO2_IBu09rhm6eCXpvN4pb8onfrhptvqHLUX-Gi7cgdaZDeNPTVRsSzX8kFRsym5FSPjtSNHdmstR943Mo2FLnfbFxmarB06N8r2Vo3eSUWszAtxps8Y-CwXqfn2MuOyZ4zbiqQZTTPzoyP3pKmOz8Aoo2UtqZFnsif7SRyWb4yK3MJA6ExWSaeeTkyRPam_U3r4ZGGWzfkehWufISxBzVLbMwxZgln43mAGpEuAszzqDMOWdlYk12YQvgwidW1G3hJEGePnGH8Jxgabuo6CVZiahpC7BFTYfEHbyKmyQFUKapVMvWe8oUz9QxSyoUz9Kxe6oQyrybBlMqXr9qQp8mBF7suW2kk8UMPSo-NxPutUxjKaFkvCAXEeXct0x_Fnn0B-B9yfiKx82TODoupjmu2t2QDbW4-_F_4_Cg70mg=="
+      "until-68": "eJzVWltzGjkWfg6_QtVV-zQitG59SZlMYXzN2rEDdrzZlylBC1CsbpFuASG_fkt9MY0DGE8849lylUp99B3pfNI5uhx88Pv3WIG5SDOpk7aD3roOEMlQRzIZt53bm5Nm4Pz-vnFwzc3kanQ4k8q2vG-8OcjrQIm5UG3HCxxgeDoW5nPVFfnDdcBQ8Sz7yGPRdu6kGU4cwLOhSKLuSn6sRCwSw5XMjANiLpO-Ht4Lc5rq2bTtIAcMeBJJ03Y-6kQ4YMoTMxE6ueRfdXqqo7ajZglPZVZrkknZNE5nZnI_Uw6YS7G41JFoO93ORbfvvG-8eXNwrfhSpH3DDcgMN22nq-OBTER0dN13wJyrmWg72McMv6XIx5i6mDmtzao32nD1J_Qu5Eg86BCC3W3A40Sk42V_IoWKHhQQxsFOi47Prldgn4TkLWGIYt_16Da968kyk0OuLvl3Gc_iM2lu-L1IHrrxQ7p1zBOZip7I8rWs4Fupd7WK9gZfyPHEJDIZ79_9hOvsERptRV_yhHd1Hbp1giz0NklFJtK5WK1Fk7nhNpX-VNSQ3ltadH7QysPI1m5SIQAfGjkX_akYWs_Pu7IfwKRC1CKLVKF1HrUdshZUVuI6INGRyNoOcgmCCLsEIt_zIfGYBykKKKQk9CFlLoae71HoI4ShT4IA-iEJYBDSACIXIQaRS0MXIpf5DCJEsQsRYsx2Sq2EuG4IEQkCBhF1mQ8Rcz0KkediApHnW4zvE1sGGEEUBB6DKGShLT3CIHYZ9SB2A4YhRsRFtiQuxMjzA4hRYDEoZAHEzLWl51MXYt9ywr7HQohDFIaQuBgzSFDgM0gwRi4khPohJMRnzJYBgYR6HoKEBSG1U0ExJJ5HKCQ-QrZkXgiJ7_kIEj-0fYYeDSB1iedB6gbIhRRhj0CKqI8hRWEQQkpc14WU-mEIKQ0Zg9THDEEaEA9DGvh-AGmIGYWMYERs6YeQUUp9yBi2pY9CW2Ls2dKjkAWY2pK6GLLA9wj0XBIG0EOYhdBDBLvQQxSF0LOGQo-Evpd7y5uD295FXnkzMWaavWu1FovF2yk3Ez0S36USb4c6bk15lsm5aGb3Uqmmda5Wp9PpHI4vO7fjT2eHF5enbMHOj0_GvYve6d1pvBgsD38MzxbnMuyKo39f6-nNcjm86AWL2Y-L3sevLvZu0i-fvkQnPfcu6g9OLqW7_HF7_KEXnVyiW_ThNlWfLz4P_zuh8cTl9x-zLjm_jiYnwZiQ_jgTR5hekwm-u_yovebX798-NacXh_dLcTtg6Tjh3oh_O57rcff-kI9oOm_OY1_ezK--NWV2GP8IyaezcHRNMBlJ01xQenN_Pru78Jr-vN9snvvNOfv4R6I7nU47n6RWNUsHxVmTFVNWfuXBk0eW9Q4HSCNi-4m8Irp_BuZuUQP6JfCgVev_oGVDOQ96G-u20rfzXzTmVSASPlAiajsmnQkHZEqbtnOooyXopLGepcUB2Sl2CatRbRNvDk5FDMbF-JfC8Igb3jo3Is5ap7bI0acivpOJEelVOnBAvvrPwCc8LremQghyaXkDQKEDvs24kmaZb0Bl3XZ_JEZ8pozzmN0GKq1ncenPplOdmk4UicieJUc85mPxFLFC6VTEP-mtCOZNwLaBqvH1eXZ1YlKtlIiORGbS2dBInezNdov2ivMKANYQr0_84Yp4ooezbG_Gj9VWVB9aQNn0-hytr12LRJiUP3NZH-nVF1RFYK3t9WmeLafaTEQaS743xSICO2Muk8x0J9K6aJ3nWp8vT_Gg4PDULn0n-FQnAP36Fn2S6swc6njfLbqGX01KLgSF9BWXPTdjoGRy_xwypcIjNqX01Va4enr96vqecZNaD95rPipwzd1LySuu6pEwNtySvbaqzTorPo8aXm15z4SKhXmB5RUpV9HV6Hz45FVkk0ZtoXMx0COQN7ziencVT6VZ7knnAV07iirRq63uqdJzkf366lbHNc_M3UQkxdlU5kf2PbJ5Zq7WNWszxTMDFhORlBdPUCLKiWN__-Kfx7FODVddrtSeHrCusiJXyUHRUDlD8Hc7w6HW5gV84UTxWBzxbLLv2bbC1442KwSF9PXvZ510yBPRn6XPeUfVdWpvqFwMSvlfGfhlLavSaJ-lWIAfWsf_ycewtS8PtYvCEOI8vMQt3H7k5MoUnK33hXnIwtlvIIskwPtGL9_N3oFep3fc6C9t1jmTmYjAV7EQCqBGVw-4MuCD_Wzkuvmw74CPG-fxVMmhNNk74Da8fwGZDFPBrXZcJFyBTQk3_E0tRQ4YFDeRBkJ1TH8qlCp3jQapt-R7Sp6BzKfN2vOIlP80Kfx_R2oXp0V-W29cTbkC_aGYmlQ8pvSpcM13ALmP6LGtFiK8xUTq1hsectmV3mYGeBcDPRpNeBI1uhMZ2576U5lKU83ivlx-C1xg9Poi_WaNNRrYXD4o8uc8Ga7k-buyJt9sPNll_CS_azXOZoNUZqAr06ES5h9gNN1l9EBHy8ZnzhXoiTFXku8yuEz8vQOHzfLvaQ7rTrIeFhWPles8SYbtIjPO70ONvk6HIhUpKO5H_4Al2Lm_DuzBvTI6P8f3thmvxe2lnudJoDJAf8OlkfZHo03WP2Pid-6mA6FMozvhMgGHtvqXzPg2MpvtDXbZy-OZjc2rZPkddIr63iZjZq04T4xQSo5FbtoOGhun-HneE-6ikspkjIo9vyeT8V_q7M9wF-Q-ZTR-YaMfz-WfMbp-vF52Ts-7a1YrORJgpHh23ziSc5mI3ABwkkv2pbBlZLxz5JgnvBz5jCulFzbWrexFxiY7x54ZaXsrhz9NeSLNC5Gmzxj404yn5sfLjMueMW4nFmayzMyvjtwXprzBASONErW3wSwTfTHUSVSkW_Mr-oirTJQvt77SJn-D1BOyD7_LVW-in1F4hcIbUFVuqMKQDZi1n-kqIN0ArFIRFYZt7Cx_oVYQbxNEqJpF_gZEsV2vMMEGjN1T6nMUbsPUZgi5G0D5mq_NNnLKx1T5ktumU-8Z76lT_7WV7KlT_ymX7qnDajpsk07hun1h8udk_oS0ta5ORnJceHQynVWdikTEyzwkHJDM4oFI8_-dam0GHs95ViRLSyj1SVj-30g1wEHr8b9m_Q9j5_00",
+      "maps-early": "eJzVWm1z2joW_hx-hcYz--mKxnq3O6F3CElJ2rw1JE27X3YEFqBGtqktSOmv35FtgpMCIbe5m7vDjEeWniOdR-foSDpm788fsQEzleU6TVoeeuN7QCWDNNLJqOVdX71vBt6f7xp7F9KOz4f7U21cy7vGzl5RBkbNlGl5ge8BK7ORsp8XXZH_-B4YGJnnZzJWLe9G28HYAzIfqCTqLOsPjYpVYqXRufVALHXSSwe3ynazdDppecgDfZlE2ra8szRRHpjIxI5VmpzKb2nWTaOWZ6aJzHRea9JJ1TTKpnZ8OzUemGl1d5pGquV12iednveusbOzd2HkXGU9Ky3IrbQtr5PGfZ2o6OCi54GZNFPV8ogQIXlDEefYJ4J5u6tFr1IrzV-QO9FDdS9D_ZCuAx4mKhvNe2OtTHQvgAgjGzU6PLq4B2OBg_ANocIXIRZindzFeJ7rgTSn8oeOp_GRtlfyViX33YRs_ZjvdaYuVV7YsoKvp95JTbQ1-ESPxjbRyWj77scyzR-h0Vr0qUxkJ61D11rCQa-TTOUqm6mlLZqMoXUivYmqIfkbWna-t1ssI1e6ypQCcmD1TPUmauA8v-jKvQCbKVVbWWSxtI6jlkceLCpX43sgSSOVtzzkEwQR9glEgguIAowh4YxDigIKKQkFpMzHkIZIQO4zDLngFAqEMBQkCKAISQCDkAYwJAGHYSAERD5CDCKfhj5EPhMMIkSxDxFizI1GXQ3x_RAiEgQMIuozARHzOYWI-5hAxIXDCEHcM8AIoiDgDKKQhe7JCYPYZ5RD7AcMQ4yIj9yT-BAjLgKIUeAwKGQBxMx3Ty6oD7FwZLHgLIQ4RGEIiY8xgwQFgkGCMfIhIZQw9xQhJEQwVxYBgYRyjiBhQUjdJNFiqgIGCeeEQiIQck_GQ0gEFwgSEbr-AxT6kIScBpD6hOPiySH1A-RDijAnkCIqMKQoDEJIie_7kFIRhpDSkDFIeeiQAjMEaVD0EAgRQBpiRiEjGBH3FCFklFIBGeUhhYxhV2ahzyETKBSQCYxdGXMKWYCpe1IfQxYITiD3SRhAjjALIUcE-5Ajilw5IBRyRwZyEjokCQUvnG9n7_rypCjsjK2d5G93d-_u7t5MpB2nQ_VDG_VmkMa7E5nneqaa-a02pul8dbfdbrf3R6ftr-1PR_snp112N1AHt6NPN_uH9vDfX6_OLtVtN77rz_d_Do7ujnXY6X3_MLlORvNv_ON1kCcdf3h6ks_9q6_h2fSW48Pu0eV19D65jn9cHdvTHO13rr9cXp19Put9_sg-99CX7lf1IY26k4N-284PyNfL4fFZ6Kcf-6NcHWB6Qcb45vQs5c1v0_iiOzngt3n36gO7nJkel_QD_p5IPpTfD2fpqHO7L4c0mzVnsRg0px_OA57xj3fd_gWJ2kMk-19-hhNNMBlq27yj9Or2eHpzwpti1ms2j0Vz9kPPbkkzmjHebreLidxdzOReub3l5bRWb8V6LRaz8zUPaKti94p4GVB-BRaOVQNW0Xxnb7fW_96uix5FnHHhxRV6zkZlY1EEKpF9o6KWZ7Op8kBuUtvy9tNoDtpZnE6zck9ul4HJSSwi085eV8VgVI5_qqyMpJW7x1bF-W7XPQp0V8U3OrEqO8_6Hig85Bn4RMZVNCwrQVFbHTqw74HvU2m0nRcxryq77g_UUE6N9R6zW0Fl91lcetPJJM1sO4pU5LavAxnLkXqKWCnUVfEvckuCRRNwbWDR-Po8O2lis9QYFR2o3GbTgdVpsjXbNdJLzksAeIB4feL3p9L36WCab834sdiS6n0LqJpen6PztQuVKJvJZ5r1kVzdoCYCD9pen-bRfJLascpiLbemWK7A9kjqJLedsXYuWuf5oM-Xp7hXcngqSt8oOUkTgH4_RL_P0tzup_G2IbqGX05KUQnK2lc0e6FG3-jk9jlkKoFHbKraV7Pw4rb3u_Y9kjZzHrzVfCzANXeval7RqgfKuuWWbBWqVsss-TxqeDXzHikTK_sC5lWZNNH58Hjw5FFklUTN0EU1SIegaHhFe3eMzLSdb0nnHl3bihZVr2bdrklnKv996y62a5nbm7FKyr2pSslsu2XL3J4_lKzNlMwtuBurpDp4ggpRTRz73xv_OI7TzErTkcZs6QEPRZbkFvWgbHg1Z9hPU_sCvvDeyFgdyHy87d62xNe2NlcJytrXP5-1s4FMVG-aPeceVZep3aGKalDV_522rkr5InP3Was78DNN4y_FGK709b50UipCvPubuIO7l4JclfVz5Z6y94k_9w50mQR417gsotlbcNm-PGz05i7RnetcReCbulMGoEYn7UtjwQf32ihki2HfAoEbx_HE6IG2-VvgN_i_gE4GmZJOOi5zvMBloRtiVUuZdgblSaSBUB3TmyhjqqjRIPWWIqYUSc9i2pw-j0iJp0nh_ztSmzjdFaf1xvlEGtAbqInN1GNKn0rXfAuQ_4geW6shwmtUpH694T59vpBbzQBvYpAOh2OZRI3OWMeup95EZ9ouZnFbLn8EPrDpQyP94ZS1KXCfD0CZspfJYFlf3Ctr9auVJ5uUHxdnrcbRtJ_pHHR0NjDK_gOUppuU7qfRvPFZSgMu1UgaLTcpXCX-3oL9ZvV7msNDJ3m4LBY8lq7zJBm2icyoOA81emk2UJnKQHk--geYYGN87buNe6l0sY9vrTN-sG5P01mRBKoW6B-4UtJ9p1ql_TMmfmM07StjG52x1AnYd8W_ZcbXkVmtb7BJXxlP3do8T-Y_QLssb60yZk6L48QqY_RIFaptoLFyip_nPeEmKplORqiM-Zc6Gf2tzv4Md0H-U0rjF1b68Vz-FaXr2-tpu3vceaC10UMFhkbmt40DPdOJKhQA74uabSmsGRlvHDmWiaxGPrQqS6QB7hPxywxNNg49tdr1Vo3ezWSi7Qtxps8Y-NNUZvbny4zLnjFuO1Z2PM_t747cU7Y6wAGrrVG1q8E0Vz01SJOozLYWJ_ShNLmqLm49k9riClLPx95_lltciX5F4SUKr0AtUkMLDFmBefCVbgGkK4CLTMQCw1Z2VlxQFxC-CqJMTSOxAlFG6yUmWIFxIaU-R-E6TG2GkL8CVNj8wWwjr7pLVRe5dTL1nvGWMvWPrWRLmfqXXLqlDKvJsFUypev2lC1uk8UN0pU6aTLUo9Kjk8l00alKVDwvloQHkmncV1ntLzO_AA9nMi9zpRWU-zis_qmyGGBv9_Gfwf4LtDoYBw==",
+      "maps-red": "eJzVWllv2zgQfq5_BSFggV2UbsRLRxF34ThnN2kO59j0paAt2mZDUY5E23V__YKSHMup7TjbFmlhQKDJb8j5hsMhOdL2319iBcYizWSiGw564zpA6G4SSd1vOFeX-_XA-ftdbfuMm8Fpb2cklW15V3u1nZeBEmOhGk7oOsDwtC_M9awr8sl1QFfxLPvAY9FwbqTpDhzAs67QUWtev6dELLThSmbGATGXup1074Q5SJPRsOEgB3S4jqRpOB8SLRww5NoMRKJP-OckPUiihqNGmqcyqzRJXTb105EZ3I2UA8ZSTE6SSDScVvO41Xbe1V692j5TfCrStuEGZIabhtNK4o7UIto9aztgzNVINBzPxdh_wxjyAsRC6mwtF71MDFf_Q-5Y9sRcBgd4FXBPi7Q_bQ-kUNGDAAqYt1ajvcOzBzBFhHlvEKHYw5T5q-TOBtNMdrk64V9kPIoPpbnkd0LPxyQhDlYJ78tUXIgsn8wS77NV4Faioo3Bx7I_MFrq_ubdD3iSPUJjsgp9wjVvJRUoWjlnFnqlU5GJdCzmk1GneKVIeygqSP9NidzeyteRLV2mQgDeNXIs2kPRta6fd2X_AJMKUVlaZLa2jqKGQxZWla1xHaCTSGQNB7kEQYRdApHv-RAFGEPiMQ9SFFBISehDylwMaYh8yHxKIAswgZ7LMPQwcaHnexT6CGHokyCAfkgCGIQ0gCEJPBgGvg-Rmw_iIsQgcmnoQuQyn0GEKHYhQoxZFaitIa4bQkSCgEFEXeZDxFyPQuS5mEDk-Rbj-8Q-A4wgCgKPQRSy0D49wiB2GfUgdgOGIUbERfZJXIiR5wcQo8BiUMgCiJlrnx4KPYg9n7oQ-9YO2PdYCLHvBwHEIQpDSFyMGSQo8BkkGCMXEkwZg4RQkj_9EBJieyDEz-v9gEBCPQ9BQkPXg4QFIbV2pbl1AwaJ5xFbE9IQEh8hConPPFv2fASJH9pxAxS6kIQeDSB1iYfzpwepGyAXUoQ9AimiPoYUhUEIKfZoCClxXRdS6ochpDRkDFIvtHgfMwRpkPcT-H4AaYgZhYxgROzTDyGjlPqQUS-kkDFsy4wGDDJmWTAfhdYJMLZl7FHrCyiwT2rL1MWQBb5n3YOEAfQQZiH0EMEu9BBFtuwxAj0UEAo9SxJ6JLR4Evoe9JhLaO7Tr7avLo7zwquBMcPs7dbWZDJ5M-RmkPTEF6nEm24Sbw15lsmxqGd3Uqm6XQJbzWazudM_aXYm54c7xycHbNIVu3f985udPbP38fbyw8XH8X4a_DvcGdwcxJPOdOdr93ByJMNW-_798EofT8XuP2fJ8HI67R5fBJPR1-OLD59d7F2mt-e30f6FexO1O_sn0p1-vdp7fxHtn6Ar9P4qVdfH192PAxp_vOKHF_fneHLcOfoy3SW3F72jD6Gr_cP-cNT6Qs9O-uFoN6SRkvv3Jx8Sr_55FJ8dDHeu787u25OPJ1od1K-Ph2lf8_soHYb3Sbsum_-c7w-Hsa7_439K2YicpfJyfHpfl9lO_DUk54fhTYyCT7fjaCgJJj1p6hOK08-D03PJbsepPwqPffp57H3avQ5uU_bhk-7Uxed6q99s5gbfmll8u9hes8L85b88XNjIYde8A6QRsf2Hyr3lW1y-ripAfxUwXwgVYLAKmPt7BRiuAuauNgdidzUwqA6NUQnc3qqYYHvLxtc8EtsAbAtt625FY14EQvOOElHDMelIOCBTiWk4O0k0Bc00TkZpcWxpFqHbSsxi96vtAxGDfjH-iTA84oZvHRkRZ1sH9pGjD0R8I7UR6WnacUDu7M_Aax6X-0VRCfLa8lyGXQfcj7iSZrrwx_a_K3p8pIzzmN4SLlvPItMeDYdJappRJCK7w-_ymPfFU8wKoQMRfyM3Z5g3AdsGZo2_ANFWok2aKCWiXZGZdNQ1MtEb010hPSc9B4AFxC_A_OHsvp90R9nGlB-Lzbk-tICy6Rcgad3tTGhhUv7MiX0kV51SFYGFtl-A5-F0mJiBSGPJN-ZYrMJmn0udmdZAWi-tEl3o8ydw3C5IPBWrbwQfJhqg7w_U-2mSmZ0k3jRQV_Bzq-SVoKh9yYnP9egoqe-ew6YUeESnrH25OZ5djL93hg-5Sa0Tb2SQGbji8WXNS87rrjB2yemN4tVymTmhRw0vN8GHQsXC_IAJFilX0WnvqPvkmWSZRGWq82qQ9EDe8JIz3lI8lWa6IZ8HdGVHmlW93PweqGQssu-f39m2zTNzMxC62KLKDNamWzfPzOmiZMVUPDNgMhC6PIOCElFajr3A9B_FcZIarlpcqQ19YFFkzm5WD4qGl3OHnSQxP8Ab9hWPxS7PBptucXN8ZYezlaCo_QVOas20y7Voj9Ln3KqqMpUbVV4NyvqfOttlKZvlOq-lmICvSRL_mycsben2oXRcaEKch5u5hds_ObsyT2rLbWEeUqX2P5BF4uJd7SIPaW_BRfNir9ae2ncDmcxEBD6LiVAA1VpJhysD3tu_tVw2H_YtCHDtKB4q2ZUmewvcmvcHkLqbCm6l4yItDmzivuYvayky9aA4kdQQqmLaQ6FUGTlqpNqSx5U8TZybzerziJT_NCn825EKniZFfjtS4dOk6O9GCrtPk2K_HSn0NCnvdyO1ltMkvwvXTodcgXZXDE0qHlM6L8L9W4DdR_TYSg0RXqEidasNDy_xZnIrpmUdg6TXG3Ad1VoDGdue2kOZSjOz4qZcXgcuMMniJL22ypoE2JeYoHhxyHV3Xp_nbSr1y5Un65Qf5LeY2uGok8oMtGTaVcJsqDSunUgtE52BAR8L8Ccmdcz-WulyaMHy9p2l1V2k4_wqB_Z6PdmVQnen9gpT7M0_0Sp0nVU6STStXXOuwIXocyX5OouU2fu3YKf-8Fs0058orGN3wTKi1xNdY5me9noilbqf1V7_iVAd4b9yFlwpME8_zukst8miVy-u45ld5r7-pHHYOuP084tRrZ2kXZGKFBQXpWf7TCS4WuYz5UJ8HfwBugOro9XdHhxTkWWLi_znecfa81rHXgXm_PObwcb0g4VFkIzzGS5jE3oUm3qWQV9oUaRlQcqNqGG2poelFsElc_v5wdPU157qOkKZWmvApQY7tvhTotvz9F17YOPxyMazUz39AppFeWOVMbNaHGkjlJJ9kau2hsbS5fU8r1t7TLMxAhX75IXU_Z-6sTwjVKC1xzCrNP7BSj-25f9RunokOWkeHLUWtFZ25fUUz-5qu3IstSjW4n5esymFFSPjtSPHdlcsRt4zItVcFRvlDxmarB16ZKTtrRz9IOVamh_EmT5j4PMRT83XHzMue8a4zViYwTQz3ztyW5jy0AuMNEpUUhSjTLRFN9FR8f4nzxT0uMpEmUJqq8TkuZDqG6KHDxBmuZlvUbjyUcES1CxRPcOQJZiFrwdmQLoEOMuKzjBsaWd5qmwG8ZZBhKpo5C9BFNF6jgmWYGxIqdooXIWpWAi5S0D5nC9YGzllTqdMKK2SqfaMN5SpflZCNpSpfrNCN5RhFRm2TKZw3bYweVYrz2TZUivRPdkvPFoPR7NOhRbxNF8SDtCjuCPShhPMPl_8Brg35lnx6qaE-oHnlt8YzgbY3nr8He9_ITfgeg==",
+      "pinnacle": "eJzVWm9P2zoXf71-CivSle6juSP-m2SiuyoFCncw_hTYdt9cmcZtPRynJG6h-_SPnLQ05balaExsqhS59u_Y_p1zfGyfZPuv-0SDscxylZqGh975HpCmm8bK9Bve5cV-PfT--lDbPhV2cNLbGSntWj7U3mwXZaDlWOqGF3EPWJH1pb2adUX-9T3Q1SLPP4lENrzPynYHHhB5V5q4Na_f0zKRxgqtcuuBRCjTSbs30razdDRseMgD18LEyja8T6mRHhgKYwcyNcfiW5q107jh6ZERmcorTcpMm_rZyA5uRtoDYyXvjtNYNrxW86jV8T7U3rzZPtViIrOOFRbkVtiG10qTa2VkvHva8cBY6JFseAEmDL8LGMHe1nKpi9QK_TyRI9WTczjB0SrgnpFZf9IZKKnjBwGMCVs7mb2D0wcwizgK3mE_CFgYUrJK7nQwyVVX6GNxr5JRcqDshbiR5qEbxGm4ks6-yuS5zAsTzkitnGEr1fHG4CPVH1ijTH_z7gcizTdGHwsjWmkFiug66KXJZC6zsZwbo07JSqV2hrKCDN7xAri9VSweV7rIpASia9VYdoay6_y96Mn9ATaTsrKeyGxBHcYNjywsJVfje8CkscwbHvIJggj7BKKABxCFGEOCeAAJZxxSFFJISRRAynwMaYQCyAJKIAsxgdxnGHJMfMgJiyAPOIUBQhgGJAxhEJEQhhENYURCDqMwCCDyi-F8hBhEPo18iHwWMIgQxT5EiDE3GepqiO9HEJEwZBBRnwUQMZ9TiBj1GUTcxwQiHjhkEBD3DDGCKAx4BFEYcgZRxCL35IRB7DPKIfZDhiFGxEfuSXyIEUUEYsSDEGIUOiSKWAgxxYxDzHxX5ijiEPOA-hAHTlM44CyCOAjCEOIIRREkPsYMEhQGDBKMkQ8JpoxBQigpnkEECXE9EBIU9UFIIKGcI0ho5HNIWBhRp3SK3TNkkHBOXE1EI0gChCgkAeOuzAMESRC5cUMU-ZBEnIaQ-oTj4skh9UPkQ4owJ5AiGmBIURRGkGJOI0iJ7_uQ0iCKIKURY5DyyOEDzBCkYdFPGAQhpBFmFDI_5BgyghFxzyCCjFIaQEZ5RCFj2JUZDRlkzHFhAYqcn2DsyphT5y4odE_qytTHkIUBdx5EohByhJ37IIJ9yBFFrswZgRyFhELuqEJOIocnUcAhZz6hhe-_2b48PyoKbwbWDvP3W1t3d3fvhsIO0p68V1q-66bJ1lDkuRrLen6jtK67pbLVbDabO_3jZtw_O9g5Om6zu67c3Q9POjs7X_c6_rkeHKP9JPw8vpc37f2vX9H9MG-H_S7ZCVuH47ObWyWu_p6Epj_5xj9ehrlp-b3jo3ziX3yNPo1uON69s2df4_1z_3Pcudr_O7-cHF0cfTo70_v-5feri0t9oq8-sqsO-tL-ku8MaPLPpTg4vz3Dd0fXh_eTXfL1vHf4KfJNcNAfjlr39PS4H412IxprtX97_Cnl9W-j5LQ93Lm6Ob3t3P1zbHS7fnU0zPpG3MbZMLpNO3XV_Hi2Pxwmpv4x-DdjI3KaqYvxyW1d5TvJ_W1wSuJmD4nrL98jFeHkqHcd1z-SYPebGJ3ssdaRVvXxKPDHY3XybxZ--nKvxjekHo8ZP6Ufm81mozDC1swK2-V-nJcmmf4rQo2LOi5UeEBZmbh_qAxwS3DFiqsAg1XAYolUgOEqYLESKsBoFbBwvzkQ-6uBYXVojKbA7a2KCra3XGwuorgL3q7QcS5YNhZFII241jJueDYbSQ_kOrUNbyeNJ6CZJekoK885zTLsO4lZ3H-z3ZYJ6JfjH0srYmHF1qGVSb7Vdo8C3ZbJZ2WszE6yaw8UC-AZeCOS6V5TVoKidnqQw8gDtyOhlZ0Umpr9cf3vyp4Yaes9preEy9azyHRGw2Ga2WYcy9gdDnZFIvryKWalUFsm_5GbMyyagGsDs8ZfgGgrNTZLtZbxrsxtNupalZqN6a6QnpOeA8AC4hdg_nDY30-7o3xjyo_F5lwfWsC06Rcg6dztVBppM_FMwz6Sq5pUx2Ch7RfgeTAZpnYgs0SJjTmWq7DZF8rktjVQzkurRBf6_Akct0sST8Xqz1IMUwPQjwfq_SzN7U6abBqoK_i5VopKUNa-puGLeVxrZW6ew2Yq8IjOtPb1bDy7U_-ohQ-EzZwTb6SQGbji8dOa17TrrrRuyZmN4tVymTmhRw2vZ-ADqRNpX8DAMhM6Pukddp88kyyTqJi6qAZpDxQNr2nxlhaZspMN-TygKzvSrOr17NvW6VjmP27f2bYtcvt5IE25RU2TX5tu3SK3J4uSFVWJ3IK7gTTTMyiYIqaaY69g_sMkSTMrdEtovaEPLIrM2c3qQdnweu6wk6b2BbxhX4tE7op8sOkWN8dXdjhXCcraX-Ck1sy6wsjOKHvOraoqU7lRFdVgWv9TrT0t5bM86ZWSd-B7miZfimSnK319KB2VMyHew83cwd2fgt00x-rKHWkf0qzuP1Bl4uJD7bwIae_BefN8r9aZuJcJucplDL7JO6kBqrXSa6Et-Nv9rRWyxbDvQchrh8lQq66y-Xvg14I_gDLdTAonnZQZdeBy_rVwWUuZ5AfliaSGcBXTGUqtp5GjRqstRVwpMsyF2tx8HpEKniaFfztS4dOkyG9HKnqaFP3dSGH_aVLstyOFnibFfzdSazndFXfh2lWqYtDpyqHN5GNKZ2W4fw-wv0gv9FfOELEVU2QLMg_v_2ZyK8yyjkHa6w2EiWutgUpcT52hypSdaXFTLnxhXouWeIt8H9h00YJvKfvDVRbJm_KFpDDdVQzIOgaD4ipTOxhdZyoHLZV1tbQbzhzXjpVRqcnBQIwl-BOHdRz9b6XfLTqVe-fp5i6zcXGfA3u9nuoqaboTd48pN-j19N274Sr956mFrlPLdRpPaldCaHAu-0IrsU4l0xz-e7BTf_gt6ulPTOqYLqhG9nqyax3Vk15PZsr089rbPxGrI_6_goXQGsyTkHM6K5Sy1ommipm7_JPaYeu00y_uR7VOmnVlJjNQ3pee7TWxFHqZ10zX41vk_wG6AzdJN3l3gMxkni8u9p_oIGsPbtfuTjDXQHFF2FgBaMFWx-m4sPI0Si0uE8fH-aA0skzQgkxYWSPrenjrWh1N973CMv7P8IO1B71rqW2tNRDKgB1X3DTgPc9oq9gsn_DaQ5xIRi68nZjJPWiW5Y3nTIspHxortVZ9WUxtHY-lSn4mmbWHNxczUO1k6KKDMv2fpP0XZIPWHtscHfzSdB6v9BelUz3cHDfbh60FPtqt3J4W-U1tV42VkeVa3i9qNiW3YmS8duTEba3lyHtWZkbocrd9kaHJ2qFHVrnepqO3M2GUfSHO9BkDn41EZr-_zLjsGeM2E2kHk9z-6MgdaafHZ2CV1bKS7BjlsiO7qYnLN0lFzqEndC6nyaiOTm2RVam-a3r4lGGW5fkvClc-T1iCmqW8ZxiyBLPwHcIMSJcAZ_nVGYYt7axIus0gfBlE6sqMgiWIMsbPMeESjAs2VR1FqzAVDSF_Caiw-YK2kTfNDk1TU6tkqj3jDWWqH6iQDWWqX7_QDWVYRYYtkyldtyNtkR8rcmKu1EpNT_VLjzbD0axTaWQyKZaEB8wouZZZwwtnH0b-B7g3Fnn5EmgGRdOPbLa3ZgNsbz3-hPj_xiEDbA=="
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T09:18:38.034Z"
-  },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Sceptre",
-          "Wand"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Shield"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "intjewel"
-        ]
-      }
-    }
-  },
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "cold-spell",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Bandit Rogue's Head",
-          "tier": "low",
-          "effect": "(4-6)% increased Attack and Cast Speed",
-          "source": "Kraityn",
-          "area": "Act 2",
-          "note": "Cast speed while channeling Winter Orb."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "low",
-          "effect": "+(14-18)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "low",
-          "effect": "+(30-50) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life while channeling."
-        },
-        "lowerLimb": {
-          "name": "Siren's Tentacle",
-          "tier": "low",
-          "effect": "(10-15)% increased Effect of Cold Ailments",
-          "source": "Merveil",
-          "area": "Act 1",
-          "note": "Cold ailment effect."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Gelid Fangs",
-          "tier": "med",
-          "effect": "Damage Penetrates (6-8)% Cold Resistance",
-          "source": "Chill of the Mountain",
-          "area": "Act 9",
-          "note": "Cold penetration is the damage stat."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "med",
-          "effect": "+(22-28)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance while gearing."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "med",
-          "effect": "+(60-80) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life before damage scaling."
-        },
-        "lowerLimb": {
-          "name": "Siren's Tentacle",
-          "tier": "med",
-          "effect": "(20-30)% increased Effect of Cold Ailments",
-          "source": "Merveil",
-          "area": "Act 1",
-          "note": "Chill effect keeps packs in the orb."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Gelid Fangs",
-          "tier": "high",
-          "effect": "Hits have (10-15)% chance to treat Enemy Monster Cold Resistance values as inverted",
-          "source": "Chill of the Mountain",
-          "area": "Act 9",
-          "note": "Hits can treat cold resistance as inverted."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "high",
-          "effect": "+(2-3)% to maximum Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Maximum cold resistance."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "high",
-          "effect": "(5-7)% more Maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "More maximum life."
-        },
-        "lowerLimb": {
-          "name": "Siren's Tentacle",
-          "tier": "high",
-          "effect": "+5% to Maximum Effect of Chill",
-          "source": "Merveil",
-          "area": "Act 1",
-          "note": "Maximum chill effect."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Winter Orb; a spell damage wand and a 3-link are enough.",
-        "Life, resistances and movement speed carry Act 1."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "A magic wand is enough."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "3-link."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Keep moving."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Add Added Cold Damage and Controlled Destruction to Winter Orb.",
-        "Herald of Ice and Hatred are the damage auras."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Cold damage"
-          ],
-          "note": "Rare wand or sceptre."
-        },
-        {
-          "slot": "Shield",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Defensive shield."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "4-link."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Cast speed"
-          ],
-          "note": "Bench cast speed on a free suffix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Six-link Winter Orb and reach 2,000 life; cap elemental resistances.",
-        "The 6-link and gem levels are the damage step."
-      ],
-      "lookFor": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "The 6-link is the damage step."
-        },
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Cold damage"
-          ],
-          "note": "Do not drop cast speed."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Cast speed"
-          ],
-          "note": "Life first, cast speed second."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "A 5-link clears white maps; start the 6-link and upgrade the wand.",
-        "Reach 3,000 life and cap resistances."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Cold damage"
-          ],
-          "note": "The wand is the damage slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the 6-link."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Fix resists on rings."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Cold damage"
-          ],
-          "note": "Bench elemental damage on a free prefix."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Critical strike or Elemental Overload is the red-map damage upgrade."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Critical strike chance"
-          ],
-          "note": "Crit wand."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Crit multi."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 Winter Orb and awakened elemental supports."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Cold Skill Gems",
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "+1 elemental gems is the endgame goal."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "+1 to Level of all Cold Skill Gems",
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Amulet carries gem levels."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Keep life."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Cold Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 152 to 228 added Cold Damage"
-      ],
-      "tags": [
-        "cold"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Cold Damage",
-      "qualityWorth": "recommended"
-    },
-    "Arcane Surge": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Arcane Surge lasts 4 seconds",
-        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
-        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
-        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
-      ],
-      "tags": [
-        "arcane",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Cold Penetration": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills Penetrate 34% Cold Resistance"
-      ],
-      "tags": [
-        "cold"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Cold Damage",
-      "qualityWorth": "recommended"
-    },
-    "Controlled Destruction": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 80% less Critical Strike Chance",
-        "Supported Skills deal 39% more Spell Damage"
-      ],
-      "tags": [
-        "critical",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Elemental Focus": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills cannot inflict Elemental Ailments",
-        "Supported Skills deal 34% more Elemental Damage"
-      ],
-      "tags": [],
-      "qualityEffect": "Supported Skills deal % increased Elemental Damage",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Freezing Pulse": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "b",
-      "support": false,
-      "description": "An icy projectile which has a chance to freeze enemies it passes through. The projectile fades quickly, reducing damage and freezing chance until it dissipates.",
-      "effect": [
-        "Projectiles Pierce all Targets",
-        "Projectiles continuously lose Damage, up to 50% less Damage by the time they dissipate\nProjectiles have 25% chance to Freeze, which is lost over the first quarter of their flight",
-        "Deals 1659 to 2488 Cold Damage",
-        "Fires 5 Projectiles"
-      ],
-      "tags": [
-        "cold",
-        "projectile",
-        "spell"
-      ],
-      "qualityEffect": "% increased Projectile Speed",
-      "qualityWorth": "recommended"
-    },
-    "Frost Bomb": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Creates a crystal that pulses with cold for a duration. Each pulse applies a debuff to nearby enemies for a secondary duration which reduces life regeneration rate, and also inflicts Cold Exposure. When the crystal's duration ends, it explodes, dealing heavy cold damage to enemies around it.",
-      "effect": [
-        "Base duration is 2.00 seconds",
-        "Base secondary duration is 5.00 seconds",
-        "Cold Exposure applies -15% to Cold Resistance",
-        "75% reduced Life Regeneration rate",
-        "25% chance to Freeze enemies",
-        "Deals 1712 to 2568 Cold Damage",
-        "Base radius is 3.1 metres"
-      ],
-      "tags": [
-        "area",
-        "cold",
-        "duration",
-        "orb",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Frostblink": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving Chilled ground in an area at both ends of the teleport. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 3.00 seconds",
-        "Deals 1144 to 1716 Cold Damage",
-        "19% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area\n99% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
-        "38% increased maximum travel distance",
-        "+0.3 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "blink",
-        "cold",
-        "duration",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased maximum travel distance",
-      "qualityWorth": "recommended"
-    },
-    "Hatred": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Casts an aura that grants extra cold damage based on physical damage to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 39% of Physical Damage as Extra Cold Damage",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "cold",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Herald of Ice": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage.",
-      "effect": [
-        "Base radius is 1.2 metres",
-        "Damage cannot be Reflected",
-        "Buff grants 38 to 56 Added Spell Cold Damage",
-        "Buff grants 38 to 56 Added Attack Cold Damage",
-        "Deals 308 to 462 Cold Damage"
-      ],
-      "tags": [
-        "area",
-        "cold",
-        "herald",
-        "spell"
-      ],
-      "qualityEffect": "metres to radius",
-      "qualityWorth": "optional"
-    },
-    "Hypothermia": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have +20% chance to Freeze Enemies which are Chilled",
-        "Supported Skills deal 29% more Damage with Hits and Ailments against Chilled Enemies",
-        "Supported Skills deal 29% more Cold Damage Over Time"
-      ],
-      "tags": [
-        "cold"
-      ],
-      "qualityEffect": "Supported Skills have % chance to Freeze Enemies which are Chilled",
-      "qualityWorth": "recommended"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "lilly",
-        "act": 6,
-        "quest": "Fallen from Grace"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Winter Orb": {
-      "requiredLevel": 28,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Sever the Right Hand"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Channel to conjure an orb above you, which pelts nearby enemies with projectiles that impact the ground and explode. Channelling for longer builds up stages on the skill. When you stop channelling, the stages decay over a duration.",
-      "effect": [
-        "Maximum 8 Stages",
-        "Fires projectiles every 1.2 seconds",
-        "30% increased Duration per Stage",
-        "20% increased Projectile Frequency per Stage",
-        "80% more Projectile Frequency while Channelling",
-        "Base duration is 1.60 seconds",
-        "25% chance to Freeze enemies",
-        "Fires 2 Projectiles"
-      ],
-      "tags": [
-        "area",
-        "channelling",
-        "cold",
-        "duration",
-        "orb",
-        "projectile",
-        "spell"
-      ],
-      "qualityEffect": "Maximum Stages",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "bb7013a9700a",
+  "patch": "3.30.0",
   "guide": {
     "summary": {
-      "text": "Winter Orb Elementalist channels a floating orb that keeps firing while you move. It measures 108.6k at red maps and 145.2k at pinnacle, and needs no unique.",
+      "text": "Winter Orb Elementalist channels a floating orb that keeps firing while you move. It measures 60.2k at red maps and 72.4k at pinnacle, and needs no unique.",
       "status": "auto-breadth",
       "signed": null,
       "facts": [
@@ -8584,7 +8582,7 @@
         "gates.maps-red.metrics.dps",
         "gates.pinnacle.metrics.dps"
       ],
-      "factsHash": "53f6a0ef5d33bdaf"
+      "factsHash": "37bf1df23010f71e"
     },
     "leveling": {
       "text": "Level with Freezing Pulse, then switch to Winter Orb as soon as it is available. The first checkpoint measures 344 life and 73 damage; the second measures 698.",
@@ -8598,7 +8596,7 @@
       "factsHash": "3f950c0caeab1f31"
     },
     "maps": {
-      "text": "At red maps the build measures 108.6k damage, 43036 effective life and 14602 physical max hit. Charge the orb for a moment, then move through the pack while it fires.",
+      "text": "At red maps the build measures 60.2k damage, 41356 effective life and 13928 physical max hit. Charge the orb for a moment, then move through the pack while it fires.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8606,10 +8604,10 @@
         "gates.maps-red.metrics.ehp",
         "gates.maps-red.metrics.maxHit"
       ],
-      "factsHash": "ba1f52b4dc410735"
+      "factsHash": "de1168d43cecd7ad"
     },
     "bossing": {
-      "text": "Pinnacle measures 145.2k damage with 62674 effective life and 17472 physical max hit. Keep the orb charged, apply exposure, and move out of the slam instead of holding the channel.",
+      "text": "Pinnacle measures 72.4k damage with 59617 effective life and 16482 physical max hit. Keep the orb charged, apply exposure, and move out of the slam instead of holding the channel.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8617,8 +8615,14 @@
         "gates.pinnacle.metrics.ehp",
         "gates.pinnacle.metrics.maxHit"
       ],
-      "factsHash": "ea5869e36b0f78fb"
+      "factsHash": "f422644a4fbb7eb5"
     }
   },
-  "medal": "A"
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:57:01.608Z"
+  }
 }

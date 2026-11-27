@@ -926,7 +926,803 @@
     "core": [],
     "optional": []
   },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Bow"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Quiver"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "dexjewel"
+        ]
+      }
+    }
+  },
   "status": "verified",
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "cold-bow",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Bandit Rogue's Head",
+          "tier": "low",
+          "effect": "(4-6)% increased Attack and Cast Speed",
+          "source": "Kraityn",
+          "area": "Act 2",
+          "note": "Attack speed for the bow."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "low",
+          "effect": "+(14-18)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance."
+        },
+        "upperLimb": {
+          "name": "Skeletal Archer's Arm",
+          "tier": "low",
+          "effect": "Projectiles deal (8-12)% increased Damage with Hits and Ailments for each Enemy Pierced",
+          "source": "Ironpoint",
+          "area": "Act 1",
+          "note": "Projectile damage per pierce."
+        },
+        "lowerLimb": {
+          "name": "Skeleton Wheel",
+          "tier": "low",
+          "effect": "(5-7)% increased Attack and Cast Speed if you've used a Movement Skill Recently",
+          "source": "Fleetfreak",
+          "area": "Act 6",
+          "note": "Attack speed after a movement skill."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Gelid Fangs",
+          "tier": "med",
+          "effect": "Damage Penetrates (6-8)% Cold Resistance",
+          "source": "Chill of the Mountain",
+          "area": "Act 9",
+          "note": "Cold penetration for Ice Shot."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "med",
+          "effect": "+(22-28)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance while gearing."
+        },
+        "upperLimb": {
+          "name": "Skeletal Archer's Arm",
+          "tier": "med",
+          "effect": "Projectiles deal (15-20)% increased Damage with Hits and Ailments for each Enemy Pierced",
+          "source": "Ironpoint",
+          "area": "Act 1",
+          "note": "Projectile damage per pierce."
+        },
+        "lowerLimb": {
+          "name": "Skeletal Tail",
+          "tier": "med",
+          "effect": "(20-30)% increased Projectile Damage",
+          "source": "Skeletal Abomination",
+          "area": "Act 5",
+          "note": "Projectile damage."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Hydra's Head",
+          "tier": "fixed",
+          "effect": "Arrows Pierce all Targets after Forking",
+          "source": "Hydra",
+          "area": "Pinnacle / Map Boss",
+          "note": "Arrows pierce all targets after forking."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "high",
+          "effect": "+(2-3)% to maximum Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Maximum cold resistance."
+        },
+        "upperLimb": {
+          "name": "Skeletal Archer's Arm",
+          "tier": "high",
+          "effect": "Projectiles Pierce (2-3) additional Targets",
+          "source": "Ironpoint",
+          "area": "Act 1",
+          "note": "Projectiles pierce additional targets."
+        },
+        "lowerLimb": {
+          "name": "Skeletal Tail",
+          "tier": "high",
+          "effect": "Projectiles Pierce, Fork or Chain an additional time at random",
+          "source": "Skeletal Abomination",
+          "area": "Act 5",
+          "note": "An extra pierce, fork or chain at random."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Ice Shot; a physical bow with attack speed is the first upgrade.",
+        "Life, a 3-link and movement speed carry Act 1."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed"
+          ],
+          "note": "A magic bow is enough in Act 1."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "3-link."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Keep moving."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed if the bow has a free suffix."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Add Added Cold Damage and Faster Attacks to Ice Shot.",
+        "Herald of Ice and Hatred are the damage auras."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "A rare bow is the damage slot."
+        },
+        {
+          "slot": "Quiver",
+          "mods": [
+            "Life",
+            "Elemental resistances",
+            "Critical strike multiplier"
+          ],
+          "note": "Quiver is cheap damage and defence."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Quiver",
+          "mods": [
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Six-link Ice Shot and reach 2,000 life; cap elemental resistances.",
+        "The bow and quiver carry the damage; do not over-invest in armour."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "The 6-link is the damage step."
+        },
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "A rare bow is still the main slot."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Crit multi is the damage stat."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link and upgrade the bow.",
+        "Reach 3,000 life and cap resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "The bow is the damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Quiver",
+          "mods": [
+            "Life",
+            "Critical strike multiplier",
+            "Elemental resistances"
+          ],
+          "note": "Quiver fixes resists and damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Critical strike chance"
+          ],
+          "note": "Bench crit chance if the bow has a free suffix."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Critical strike multiplier is the red-map damage upgrade."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "Upgrade the bow before the quiver."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link is the gate."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Crit multi."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi on a free suffix."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 Ice Shot and awakened elemental supports."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "The endgame bow is the last big purchase."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Life",
+            "Chaos resistance",
+            "Critical strike multiplier"
+          ],
+          "note": "Fix chaos resistance here."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Keep life on every jewel."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Cold Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 152 to 228 added Cold Damage"
+      ],
+      "tags": [
+        "cold"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Cold Damage",
+      "qualityWorth": "recommended"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Elemental Damage with Attacks": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Attack Skills deal 34% more Elemental Damage"
+      ],
+      "tags": [
+        "attack"
+      ],
+      "qualityEffect": "% increased Elemental Damage with Attack Skills",
+      "qualityWorth": "recommended"
+    },
+    "Faster Attacks": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Attack Speed"
+      ],
+      "tags": [
+        "attack"
+      ],
+      "qualityEffect": "Supported Skills have % increased Attack Speed",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Grace": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants evasion to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 29% more Evasion rating",
+        "You and nearby allies gain 1545 additional Evasion Rating",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Hatred": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants extra cold damage based on physical damage to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 39% of Physical Damage as Extra Cold Damage",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "cold",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Herald of Ice": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage.",
+      "effect": [
+        "Base radius is 1.2 metres",
+        "Damage cannot be Reflected",
+        "Buff grants 38 to 56 Added Spell Cold Damage",
+        "Buff grants 38 to 56 Added Attack Cold Damage",
+        "Deals 308 to 462 Cold Damage"
+      ],
+      "tags": [
+        "area",
+        "cold",
+        "herald",
+        "spell"
+      ],
+      "qualityEffect": "metres to radius",
+      "qualityWorth": "optional"
+    },
+    "Ice Shot": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target.",
+      "effect": [
+        "60% of Physical Damage Converted to Cold Damage",
+        "Base radius is 2.4 metres",
+        "Chills Enemies as though dealing 195% more Damage"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "bow",
+        "cold",
+        "projectile"
+      ],
+      "qualityEffect": "% increased Area of Effect angle",
+      "qualityWorth": "recommended"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "lilly",
+        "act": 6,
+        "quest": "Fallen from Grace"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Increased Critical Damage": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +138% to Critical Strike Multiplier"
+      ],
+      "tags": [
+        "critical"
+      ],
+      "qualityEffect": "Supported Skills have % to Critical Strike Multiplier",
+      "qualityWorth": "recommended"
+    },
+    "Increased Critical Strikes": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +2% to Critical Strike Chance",
+        "Supported Skills have 117% increased Critical Strike Chance"
+      ],
+      "tags": [
+        "critical"
+      ],
+      "qualityEffect": "Supported Skills have % increased Critical Strike Chance",
+      "qualityWorth": "recommended"
+    },
+    "Precision": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants accuracy and critical strike chance to you and your allies.",
+      "effect": [
+        "You and nearby allies gain +701 to Accuracy Rating",
+        "You and nearby allies gain 58% increased Critical Strike Chance",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "critical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Sniper's Mark": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time.",
+      "effect": [
+        "Projectiles which Hit Cursed Enemies Split towards 2 additional targets",
+        "Cursed enemies take 29% increased Damage from Projectile Hits"
+      ],
+      "tags": [
+        "curse",
+        "mark",
+        "spell"
+      ],
+      "qualityEffect": "Cursed enemies take % increased Damage from Projectile Hits",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "5983952f8f8f",
+  "medal": "B",
+  "stale": {
+    "status": "waiting-for-pob",
+    "reason": "This build has not been verified against a patch fact set."
+  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -1835,13 +2631,13 @@
         "dps": 8000
       },
       "metrics": {
-        "dps": 33765,
+        "dps": 25070,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 2955,
+        "life": 2884,
         "energyShield": 0,
-        "ehp": 13854,
-        "maxHit": 4477,
+        "ehp": 13521,
+        "maxHit": 4370,
         "resists": [
           75,
           75,
@@ -2869,10 +3665,9 @@
           "slot": "Jewel 1",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -2882,10 +3677,9 @@
           "slot": "Jewel 2",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -3016,13 +3810,13 @@
         "dps": 20000
       },
       "metrics": {
-        "dps": 76075,
+        "dps": 59026,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 3675,
+        "life": 3583,
         "energyShield": 0,
-        "ehp": 18807,
-        "maxHit": 5654,
+        "ehp": 18336,
+        "maxHit": 5512,
         "resists": [
           75,
           75,
@@ -4188,10 +4982,9 @@
           "slot": "Jewel 1",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4201,10 +4994,9 @@
           "slot": "Jewel 2",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4336,16 +5128,16 @@
         "life": 4500,
         "ehp": 12000,
         "maxHit": 6000,
-        "dps": 120000
+        "dps": 80000
       },
       "metrics": {
-        "dps": 200747,
+        "dps": 105385,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 5197,
+        "life": 4836,
         "energyShield": 0,
-        "ehp": 27759,
-        "maxHit": 7995,
+        "ehp": 25830,
+        "maxHit": 7440,
         "resists": [
           75,
           75,
@@ -5741,10 +6533,9 @@
           "slot": "Jewel 1",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5754,10 +6545,9 @@
           "slot": "Jewel 2",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5767,10 +6557,9 @@
           "slot": "Jewel 3",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5780,10 +6569,9 @@
           "slot": "Jewel 4",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5793,10 +6581,9 @@
           "slot": "Jewel 5",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5806,10 +6593,9 @@
           "slot": "Jewel 6",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5955,16 +6741,16 @@
         "life": 5000,
         "ehp": 14000,
         "maxHit": 7000,
-        "dps": 150000
+        "dps": 125000
       },
       "metrics": {
-        "dps": 394144,
+        "dps": 168181,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 6284,
+        "life": 5821,
         "energyShield": 0,
-        "ehp": 36559,
-        "maxHit": 9668,
+        "ehp": 33862,
+        "maxHit": 8955,
         "resists": [
           75,
           75,
@@ -7451,10 +8237,9 @@
           "slot": "Jewel 1",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7464,10 +8249,9 @@
           "slot": "Jewel 2",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7477,10 +8261,9 @@
           "slot": "Jewel 3",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7490,10 +8273,9 @@
           "slot": "Jewel 4",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7503,10 +8285,9 @@
           "slot": "Jewel 5",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7516,10 +8297,9 @@
           "slot": "Jewel 6",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7656,821 +8436,23 @@
       }
     }
   },
-  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJzVWmtvGrsW_Vx-hTVSdXtU0_g9nir0iIS8ekKThvT5JTKMAYd50BlDQn_9lWeATFog5LbnthWS5bHXtr22t7ftbXb_vo0jMNVZbtKk4eEXyAM66aWhSQYN793lYV16f7-q7Z4rOzzr701M5Gpe1Z7sFnkQ6amOGl6APGBVNtD2_aIpeoU80ItUnr9RsW54FyoZ6MwDKu_pJNy_q2hpFeqZ9kCsTNJJeyNtj7J0Mm542ANdlYTGNrw3aaI9MFaJHeo0aavrNDtKw4bXzUyiRyYZVCpNMq8cZBM7HE0iD0yNvmmnoW54-83T_Y73qvbkye55pGY661hlQW6VbXj7adw1iQ5b5x0PTFU00Q2PIOQz_wVmfhAgxL2d1aKXqVXR_yB3avp6KcNx4K8DHiQ6G8w6Q6OjcCmANg7n4Pj8bji-z-UL4QdIEEToOrnz4Sw3PRW11a2JJ_GxsZdqpJNlM34QrKVyaDJ9oXOT2zv4WvB-GoVbg0_NYGgTkwy2b36o0vwbNF-LbqtE7acVKFmrWAd9l2Q619lU301Ena5tvDPWFSB_IQQnTBbo3Z1iEbncZaY1UD1rproz1j1n-0Vz7gPYTOvKuqKLhXUSNjxyb0W5EuSBJA113vAIlZAxBgOKICYIQ8pEAKngAjKEMeSE-pAzJCFnjEIuCYWCUwkFlwj6SHLoY0ygdA0EBAkYUM5hIH0fYiRJADFmgQ8xFhxDjCUPXD9CQkwJIhBTKTnEXDICscDCh1hIh_Sx71I3JOxLzCCWzOEDJAKIA8wYxAFHAuLAxxjiQHIJCcWEQEKZjyFhgrlUMgkJR66WMy4g4QGlkAgkfEh8X0pIJMIEEhkEHJIAyQCSwGEowpxDighyqQwYpJgjCSkWkkJKUIAhJRj7kFIcCEhpgKhLZQApQ9QpkzkkE76EVAjpQ-pzxCCVlElIpRAE0kAS7FKBIUNUEMiwFAIy7NphBDEMGQkEg4xiV8sR5ZBxiilknAUYMkEZg8wvZH2fUcgkc_MqJfIhCwJfQo4odSnjAeSYIQY5CVxKkRSQU4Ip5AwTN9mYEcgFQhhywWUAuZBcQO7jIHAGwBjkAfUR5IGkPhQIIQIFIohBgXzKoUABI1BgioRLiQ8FlpRBQTENoKB-wKGgklEoGCLOlAhGLiWssOgnu-8uTovMk6G14_zlzs7Nzc2LsbLDtK9vTaRf9NJ4Z6zy3Ex1PR-ZKKq7BbDTbDabe4OTZvemNXFJOujctj6hs06znh0ev3t_sve-dZjJz2YYoyOBurP9U3Ny9WlkZur9PyOUiw5pnUbt6evWWefNNQrYtUzehm9aB6h9e_H58zEbjYNOPmy3R1-vLj-_Vu-iyfTTweHw4OjYfKJ70eWHj5fdk1vbPT5s9dQh8j9-PA37mGVJ_k7LN8EHivFAzQ667PJweFY_yllIrlG9M3j9sR3dqO715wlO1Jdr8-Xt4bgVJ_gfo7L65LbZPfpq3xrezMZX00tVH8u2uP3n9ORrW6RfsX9OwzdTRH11E6I3lFxdD8_6X0SXfvk0yXP_8mrSmgTCZ1e3Zqqu65fn_NNV2rvKsvqs2WwWCt9ZaHy33F3zUv3zr8JZOL9RWL4HjNWx-8Si9GgrgG4RVID-WqBbIRWgXAcsjLMCDNYBCxu8Ay789AqgM8oKEM-BuzsVHezuOPdaOGLnf12m4-ytrCyyQCeqG-mw4dlsoj2QR6lteHtpOAPNLE4nWXlsaZae20ksXPeT3SMdg0HZf1tbFSqrdk6sjvOdI5cU6CMdn_R0Z5haDxS2vjU6UfF8qzjpaVCWzU9jBHngy0RFxs7ufbi2W7qvJpH1viW2gsXOo2h0JuNxmtlmGOrQ7e4tFauBfohVKXSk4-_k7vgVVcDVgUXlb0D0INKxTtyprxjTB2OHTWtVb5RvzfmDVuM0-aahKvNl1Zw4uDF2CJbd_AZaOEl6mVa5DvczY93JsWMzM9Lb62B9AxUDX2DAAgSWqN9RB480_bXyGzXwGy2FQ5VbnT3W-qtSVa5l-b9q5bslg4fcfLk-Af5xH99JzFhneVtloy39_HmWXuueNZH-oNUo0fm9FVG2958clC3-Shs41pmKwrP-Se9Bi18lccepLAZpHxQVv27aj3UUa_vjk36Uqa11MsfeaWNe8Ctn9jzTPeMunVub7BJ_x6NS-Otm9ChKp26z-OFlXDqvfZXbD0OdlC54HiHZ0us52bP7knfKcpXgZqiTxX4_R8w1x3-BEZzEcZpZFe2rKNr2iHpPpLKJzctBWfHrzGEvTe1PsIbDSMW6pfLhlnqp4Cu7nSsEZem_qpF5Ll9Em94bfQO-pmn8sQgZudynZe60HAn1lpcjB3cfBa95pMrlO9oug1XuG5jy7viqdqEyY2cvwUXz4qDWmbngbG7cEeZa3-gI4Np7k5nQqAS8dgW1Qrro-CWQpHYSjyPTMzZ_CVDtuUTApiAuw5LARU1rmD4FZnkuKo8LoIi21SiqVt1tpfNlVXtO-FPX3jfHSdCeRNaMI6OzQnVuRN8Q8x8mRv5IYvJhYvSPJBY8TIz9icQIepgY_yOJ4YeJiT-R2EZeN8Vdo9YZm0SDvfTmW0Zvyz3gJSDoPjvM7o93_oKzGG0zDHNACwUItLoWE1eLJQLLh5ZF_QY1rZm8TRzTfn-okrDWzKyJIp3NwNuJmepsa66rZrKgIF2xz78j4IrnF8nac6com1Yw5QORSnp6DRu6ic2wuCbUjjLz9Ws0A-c6slsSIbVnFNcp-auqXPeyBNwrFDjo903P6KQ3q81ZnOtE20xZnQP-dDWBVapZMHYvc_ew8_IipPagEtgmJXTTcFZr5jZTETjVyg43z-Y8-PoS7NWXv_uaef6MiDrx_3pgiYF-uggRLGy1uDGBocrBMyLrFN3TbnOSKadY3bMbVbVat4_SF9-kr0FxE6kdq2w8y0cmAeXVZGvDwXjtgnwun4Le0A3MjdXdODKd564yWq73R7rCdcTXGdZqhWw8DHbdWbzWsWkWZybUGSgO51vrQ95bQum0iJfOR_-MsDoRf1W10pymJgR3YdWmiVwurzmfvrahTQazTjWP8DIbz5Rd51bmKwvsbe9jVjvLtR6BzNm4d_OHR7zxsKjiSaRt7SyZ3YJmmf_1_v2RBDceGjOTDHDtbKwicGGSwf-X3Q_OHN54anTMyE9i9ljf8Vgi1dNUu3l0sn-PSWT6GvQjlY9qLTN1Zyo3KHBYlGxLa03PZGPPsdvHy54PrM4SFZVb-0_pmm7semKNa23JW8VpEv6cjtkjOu6YaKqzn9Mvf0S_zVjb4Sy3P9pzR9v5eR1YYyNdibpMct3RvTQJy6eBIvjRV1Gu55GjTpTaIrhTfTxYPmsvQm_fo0jlqXoFahGRXmDoCsy9N-kFkK0ALoKhCwxf2VgRIVtAxCqIjioj8lcgSud_h5ErMM7NVHUUrMNUNITRClAx5_e0jb15mGoeI1snU22ZbClT_VcD3VKm8ncEzLaUqfzXAfNVMqXpdrQtAnVFcM7l9tOkbwalRSfjyaJRneh4ViwJDySTuKuzhicXfwb8DngwVfNo_hzqS4Hmf1xbdLC78-0_Q_8LvftFmA==",
+    "code": "eJzNWutz2roS_1z-Co1nztx2Khq9LXeSniEhr56kSUP6_JIRWIASP6gtSOhff0e2IaYFQm57bjPMaGTtb6Xd1Wq1XrP9910cgYnOcpMmOx5-hTygk14ammSw4324PGhK7-83je1zZYdn_d2xiRzlTePZdtEHkZ7oaMcLkAesygbafpxNRa-QB3qRyvN3KtY73oVKBjrzgMp7Ogn37gltrUI91R6IlUk6ae9G28MsHY92POyBrkpCY3e8d2miPTBSiR3qNDlV12l2mIY7Xjczib4xyaBGNElFHGRjO7wZRx6YGH17moZ6x9trnex1vDeNZ8-2zyM11VnHKgtyq-yOt5fGXZPosH3e8cBERWO942HEqeSvCPGZIIx4W8tZL1Orov-B78T09ZyHSSpWAfcTnQ2mnaHRUThnQGvF2T86nyMJlyR4FQhJfRQQuYrvfDjNTU9Fp-rOxOP4yNhLdaOT-TQ-YyvXPDCZvtC5ye09nK8C76VRuDH4xAyGNjHJYPPphyrNf0DzlehTlai9tAYlK5V00A9JpnOdTfT9RjTpysk7I10Dslc-o35Q-sP2VnGIXO8y0xqonjUT3RnpnvP9Yjr3AGymde1c0dnBOg53PLJwotwI8kCShjrf8QiVkDEGA4ogJghDykQAqeACMoQx5IT6kDMkIWeMQi4JhYJTCQWXCPpIcuhjTKB0EwQECRhQzmEgfR9iJEkAMWaBDzEWHEOMJQ_cOkJCTAkiEFMpOcRcMgKxwMKHWEiH9LHvWicS9iVmEEvm8AESAcQBZgzigCMBceBjDHEguYSEYkIgoczHkDDBXCuZhIQjR-WMC0h4QCkkAgkfEt-XEhKJMIFEBgGHJEAygCRwGIow55AiglwrAwYp5khCioWkkBIUYEgJxj6kFAcCUhog6loZQMoQdcZkDsmELyEVQvqQ-hwxSCVlElIpBIE0kAS7VmDIEBUEMiyFgAy7eRhBDENGAsEgo9hROaIcMk4xhYyzAEMmKGOQ-QWv7zMKmWRuX6VEPmRB4EvIEaWuZTyAHDPEICeBaymSAnJKMIWcYeI2GzMCuUAIQy64DCAXkgvIfRwEzgEYgzygPoI8kNSHAiFEoEAEMSiQTzkUKGAECkyRcC3xocCSMigopgEU1A84FFQyCgVDxLkSwci1hBUe_Wz7w8VJ0Xk2tHaUv97aur29fTVSdpj29Z2J9KteGm-NVJ6biW7mNyaKmu4AbLVardbu4LjVvW2PXZMOOnftL-is02pmB0cfPh7vfmwfZPKrGcboUKDudO_EHF99uTFT9fGfG5SLDmmfRKeTt-2zzrtrFLBrmbwP37X30endxdevR-xmFHTy4enpzfery69v1YdoPPmyfzDcPzwyX-hudPnp82X3-M52jw7aPXWA_M-fT8I-ZlmSf9DyXfCJYjxQ0_0uuzwYnjUPcxaSa9TsDN5-Po1uVff66xgn6tu1-fb-YNSOE_yPUVlzfNfqHn637w1vZaOryaVqjuSpuPvn5Pj7qUi_Y_-chu8miPrqNkTvKLm6Hp71v4ku_fZlnOf-5dW4PQ6Ez67uzERdNy_P-ZertHeVZc1pq9UqDL41s_h2ebvmpfmrpyJYuLhReL4HjNWxe8TVVbQE6A5BDeivBLoTUgPKVcDCOWvAYBWw8MF74CxOLwE6p6wBcQXc3qrZYHvLhdciELv46zod528lsegCnahupMMdz2Zj7YE8Su2Ot5uGU9DK4nSclWlLq4zcjmMWup9tH-oYDMr1T7VVobJq69jqON86dE2BPtTxcU93hqn1QOHrG6MTFVdXxXFPg3KsysYI8sC3sYqMnS48uLnbuq_GkfV-VGyJFluPUqMzHo3SzLbCUIfudm-rWA30Q1qVTIc6_onvXr-CBBwNzIhPQNH9SMc6cVlfIdMnY4cta1XvJt9Y509ajdLkh4nqms9JleLg1tghmC_zBKxwnPQyrXId7mXGusyxYzNzoze3weoJag4-w4AZCMxRT9EGj3T9lfxrLfCEjsKByq3OHuv9da66ruX4v-rl26UGD4X58nwC_OsxvpOYkc7yU5XdbBjnz7P0WvesifQnrW4SnS-ciHK-_-SgnPFP-sCRzlQUnvWPew96_DKOe53KYZD2QUH4c9t-pKNY21_f9MNMbWyTCntvjWrgT-7seaZ7xr10buyyc_y9HrXBP7ejh1E6cZfFLx_jMnjtqdx-GuqkDMFVhWTDqOd4zxY5743liOB2qJPZfV8hKsvxP-AEx3GcZlZFeyqKNk1RF1hql1g1DkrCn3OH3TS1v8EbDiIV67bKhxvapYav3XZuEJSj_6pFql4-qzZ9NPoWfE_T-HNRMnK9L_PeSSkJ9eYvRw7uHgq9qkqV63e0nRer3DMw5bvjm8aFyoydvgYXrYv9RmfqirO5cSnMtb7VEcCNjyYzoVEJeOsGGgV3sfBrIEnjOB5Fpmds_hqghvgLmHkKFJfFSeBqpw1Wp5Q5AyhKbg2M66T7-7Q6W4Vx3Jo_iO4_LDp5oqLLh0WnT1T04GHR2dMUnaCHRedPVHT8sOjiaYq-VvLbIm9vdEYm0WA3vf1R5vdlPH0NCFqUHzO0IEz1NWQmSisMc0ARsCkQaDkVE0fFEoH5R4sZHdOVNlixPet0TPv9oUrCRiuzJop0NgXvx2ais411fSkLRRZ2qVBBumGf_6SAG65eyhovnaFsWsOUH1tU0lu1Y3SdNsMi5W4cZub792gKznVkN1SENJ5T3KTkRd247isNcF90wH6_b3pGJ71po9LiXCfaZsrqHPC_liuwzDQzjd1XrgVsNV6Upx40AltnhG4aThut3GYqAida2eH63awKma_BbnP-W7TMy-dENIn_ohRwsXQCTseRNaPI6Az009nr9sxXi7cPMFQ5eE5kk6IF67bGmXKG1T271lTLbfsoe_F19hoUWX3jSGWjaX5jElCm-Rs7zmLkWTiQL-VfoDd0gjlZXfae6Tx3xGh-3pepvuaMr1J8lWMtN8jaxKrr8tpGx6ZZnJlQZ6BIdDe2h1w4QumkqD1W0j8nrEnEi7pVWpPUhOC-RNkykevlDcLXTLTOYVaZ5hFRZm321nVhpTpZYHfzGLM8WK6MCKTSxn2DfljitUmbiseRto2zZHoHWmX_z8f3Ryq4NrXLTDLAjbORisCFSQb_X-1-cefw2szPaUZ-k2aPjR2PVaSeTZ22Do_3FjSJTF-DfqTym0bbTFxO5YQCB8XIpmqtWJmsXTl293i58r7VWaKi8mr_LUvTtUuPrXGzzfVWcZqEv2dh9oiFOyaa6Oz3rMsfsW4r1nY4ze2vrtzRtsrXgTU20rUKxjjXHd1Lk7AssxeFhL6Kcl1VYTpRaotCSb0QP_9EPCtj_Ywitc--S1Cz6u4MQ5dgFr7vzoBsCXBWWJxh-NLJimrTDCKWQXRUk8hfgiiD_z1GLsG4MFO3UbAKU7MQRktAxZ4vWBt7Vcmnqjet4qnPTDbkqf9DgG7IU_u0j9mGPLX_DWC-jKd03Y62RdGrKHS53l6a9M2g9OhkNJ5NqhMdT4sj4YFkHHd1tuPJypl-Bu5PVFUZr6C-FKj6E9hsge2tH_9l-V95YQxq",
     "byStep": {
       "until-12": "eJzFWFtz2jgUfo5_hUYznX1YEnzBXDLQHUMampnQpnHa7j51FPtgq8gSlWQo_fU7sg04XSC0ybYvjC7fOec7n27H9P_6mjG0AKmo4APsnNkYAY9ETHkywO_vLk-7-K-XVv-G6PTtdJhTZmZeWif9oo0YLIANsONipIlMQH9Yu_I-2RhFjCj1hmQwwLeEJyAxIioCHo-2ExdAYlgBRhmhPBTRDPRYinw-wA5G94THVA_wG8EBoznhOgXBJ-SzkGMRD_C9pBxmlCe1ScqryUTmOp3lDKMFheVExDDAo-B6FOKX1slJ_4aRFchQE42UJnqARyK7pxzii5sQowVhOQxw1z7zOz3P67puCzd3290JTdiPGl3TKWwMvK63D_eKg0xWYUqBxRu8fZDKq9c3W88d96zjtxzPs-2W395nd5OuFI0Im5CvNMuz11TfkRnwYwheUgm3oKjSG_Rpey_BkWDx9-hWd79ISao55cnxJqOUCHU8nwnhZCRq2M4h5HsuQYFcwHYp_L0G4RxqOOes7XdKbL9ZHB7TupMAiESaLiCcQ2T2fOHMdJCWALXz5K0P1FU8wO6Dk2RGbIy4iEENcKvVanjddttteL2u6zRavu35Dd9u-b2G7_bsVsNvd_12w-95HbvRtnstt9F2PLvdaHuO12u0vU7PL3ic9N_fXheNk1TruTpvNpfL5dmc6FRM4StlcBaJrDknStEFnKoZZezU0G4GQRAMk6tglIy7bEnuP5NP8tuXz7ydt952POmKT7NvQRAMiiDNKkq_afIuFDLCmEZoXKpSE9NEwMk9g3iAtcwBI8WEHuChiFcokJnIZXmPBKWkxmKt6Ul_DBlKIDNiTUCTmGjSvNKQqebY_BToMWRXEYSp0BgV6RyN5iSr1vAqAlSOVdejj9GXnDCqV8UyVW3j-QKmJGcaf5_WjhyaP5REmM_nQuogjiE2Z-6CZCSBx3IqjcaQ_cdum10xhcwcWk9Wabq_Lc1LojTIQGsSzdTRSdat6hmW42jj7tnT65f8H9vVH4HMBUfO07d0yOkcpJoQOTtyW99I8RkiTRl8BDLjoFRdodLfHwqVHiuBWr9-_S8ZyeCCqPTItGr42nqbQVSOrguaX73Wr4FloJ--0jcSImpejKPXeYPfClIb_F16DIXQ6ulyjBiRVK-OFGOD3kqxGfofhahaal0QfKCwRN-EyP4uYpjWP5vWdcnDw5tn0sBNp0ioKiZMOwS9qSdMH9G47N8WKZ2jSTC-GlnhytTNiiqI0bK4caxrwRM0FEurMCsiniPHtd6V2Z4j27rK5oxGVCvTCeJYIQ9pgVo22tRs1fNg-S8Q5ZEEYiKUlyoqaqNCBBPiIUX3IMW0OCjWnaSRkByOpfin6xt-WVnfIlN97wnvHQx_L-KVFWpJ5nOI0TUQnYI8QKL8oFHnaHg6PB3-LKfWQU4JEwtQ1h3lM5BoXPaeXRf_EV2EVtZYEJ3SGFBxfJ_CwXmwayZiARlwfXDftA8TBKatar3Q0HSeXaHOQQIkyxlo6y1ffUVB2T6WgeO-MBS2J6v8viE82kele5CKpDxxrLdzwtAt5cnzK9F7NLz7E-ErGYrS81EFHPsgBzGdpoTHVpgSOdNC6BQFUoolepfTxcET_ZOSOIdvXkangKaMqJk1gZhWvtBlMXIkmT2BD9-nGeGkChxmhDFkvnOfJe7hizTX1DirQr_LaTRTlC1APjF2CLp66JCmmkHtYc4VhBAJHpeFdfE-TglTUNUUIRO6ePrrpTfVZZWxqUxrqHXRtsa4OzAPPk3XQG8HsLy3t5jWTmdFVbSG-LsgwGqM2jsQ5eWzxXR2YMy5rGff3Ydxt5jeDkylYw3l2DtgxZI_UNvBVSVTlVH7bOqe3SNtvJqNt8um3FIh6KLGKuoq0xoJPqVJudP4PF87BQ7ZqtipGPE8uwdZ-G3uBr5akKrcrqCe16v-FVr77ze__7v1Xyos2bc=",
       "until-28": "eJzFWe9z2jgT_hz-Co1nbu7DmeDf2BnojUMawl1o0ri9vu99uVHsBVRkiZNkEvrXvyPbgNMDwjV522HGI0vP7j6rlVYr0_v1MadoCUISzvqGfWoZCFjKM8KmfePjh8t2aPz6ptW7xWp2MzkvCNUjb1onvbKNKCyB9g0nNJDCYgrqj7Uq9y_LQCnFUr7DOfSNO8ymIAyEZQosG2wHLgBnsAID5ZiwhKdzUEPBi0XfsA10j1lGVN94xxkYaIGZmgFnY_yZiyHP-sa9IAzmhE0bg4TVg1NRqNm8oAZaEngY8wz6xiC-HiTGm9bJSe-W4hWIRGGFpMKqbwx4fk8YZBe3iYGWmBbQN7qudxo6djeMgsAPjM5uyQ9cYfrvxa7JBDYituVa-4BvGYjpKpkRoNlGYC-6ZPP26nar2vW8U8eyncALPcvZJ3c7W0mSYjrGjyQv8iuiPuA5sKMYXhIBdyCJVBt4299racBp9jXa2Yu-JtOZYoRNjxcZzDCX_4D7--BjzPCAN7C2fQj6kQmQIJawDUbbtt19IskCGkj7NLK8EtrrlJtItz4IAIRTRZaQLCDVa7_UpV-QEgCNfeWuN9Yo6xvOkx2leywDMZ6B7Bue55m-Z4Vm4LuhabuO5Zi2H3qO6Vph5JmuY9td03XtKDDdrm95phsGgWO6UejY-hnYpmeHQWB6ThR4pudbrm96UdQNTd9yXf30_Mj0ncjSlmzPMf3ADyPTD0I_MP3I7VpmYEWeYwa2awVm4NpuZAZuN_LNwA091wx8x7b00_FKj096H--uy8bJTKmFPOt0Hh4eThdYzfgEHgmF05TnnQWWkiyhLeeE0raeoE4cx_H5dBRfxcPwMon_JJ9vklv4zRPMtqd4lUx_S4e559wrfPP7IkqWQTgOHn-_vvn73bu2-95lQeHddF3h8L_mX9qfbtvFsjuK47hfkurUrHodHZEydjpkupFoCrKKlm4iYPieQtY3lCjAQJJy1TfOebZCsch5IapMF1fB1hLraJ_0hpCjKeQ6jGNQOMMKd0YKctkZ6keJHkI-SiGZcWWg0v2j0Qzn9eoapYCqvjqBRwb6u8CUqFW5gOq21nwBE1xQZXzt1g4fOv_KiaRYLLhQcZZBpvPBBc7xFJ7zqRIaQv4Pua135RDSY2g9WLsZ_DA3L7FUIGKlcDqXRzvZlGp6WPWjjbof7t6IpQKwhGwgiNJnSKIEmcPxnu5X0Fi1awxag9AG9eoz0KtcfG5ffwK84AzZL9_UCSMLEHKMxfzIjX0r-GdIFaHwCfCcgXwyW5W-nyWqNNYTFH7_JXIFAtPsZjJKn93duyS2HlXdiE9QOVB75H3vkF8BzUG9POC3AlKiD_Wjw73Bb-ek0VnPh_8DIoyV0BXOccGtwY241j3ry8T3Dug550q-PJ5DgY9e4TV2Owd1x_9xCuqWXJebfxB4QF84z_9T2tCt_25a1xUP19iUOhquX0pn6lJVtxNQm2pVvyOSVe93WBC1OkPjeDgatJKVvp1JorP3Q5kzW1WCQuf8oVUKljbPkOe33lf-niGrNcoXlKRESf0SZ5lEIVIc2baFNteC-pRvRT8hsjkiqrMRlbV3OQ_axlOWzkGWs3Kbt64Kpo_aK86zY2n-EliaY15do5C-5e1h4B5kcM-zVWtIuSC8kOgasJqBOECiujzLM3TeLn_fyso7yGpK-RJkK5lhMZdzwtCw6nj1yfGfmRyumizKTfwSEo7VXD5jvoQcmDq4gILDDIGqVh01dK5fXn2KugcJ4LygoFo3bPWI4qr96gzCgwwEYVO7dbPAFN0RNn2J-V9c6yfdud311fUes3Qft-hZbs43cKt5lNeLZynY1kEOfDKZYZa1zin-ol2KheAP6H1Blgc3-jfGyj6climZAJpQLOetIcFMlarQZdlxJJc9dg8n2hwzvLYrAOtsqz-yvIrlwwm2UEQrq41fEJxzlr2K3cMp9Knd9wVJ55LQJYhXsX04bz61HeegZiupXmg4AVWf-0gRRaFRpxQSEkg5y6qbUlkuTDCVUBdXCeWqrIOadymiqnJrU4g2UOvye41xdmCefG1ZA90dwOrs2mK8ncrK8nAN8XdBgDYYBTsQVf7dYro7MDoNNb0P92GcLSbagannsYGyrR2wMuRPZts26sKurir3yTQ1O0fKuA0Z90gZryHjHSnjN2T8XTLV0k1AlaVtWc7q1oCzCZlWK5otirVSYJCvyh1hIFbk9yDKfzs6u4Fvl7i-oNXQMArqT71r_b3O1_-l_A-RfA6W",
-      "until-68": "eJzVWmtP4zgX_kx_hRVptR_WTH3NZURnVS7TYZZCIcMws19GbuO2hsQpidvC_PpXTtIS2LYUMbvoFZLl2M-x_Ryfc2yfsvfnXRKDmcxyleqWg98hB0g9SCOlRy3n8svHXd_580NjryfM-Gy4P1Wx7fnQ2Nkr6iCWMxm3HNd3gBHZSJqvi6HoD-SAQSzy_FQksuVcCD2SmQNEPpA6OnjoOJQikvfSAYlQOkwHN9J0snQ6aTnYAX2hI2VazmmqpQMmQpuxTHVXXKdZJ41aTj9TWt4oPap1Kl11jrKpGd9MYwfMlJx300i2nIP2yUHofGjs7Oz1YnEvs9AIA3IjTMs5SJO-0jI67IUOmIl4KlsOpZ7L3xHuM48H2GmulvySGhG_XOxEDeVShAScrwMeaZmN7sOxknG0FEAbV3P0qbdEYupz9g55iHvURWtn6Y3vczUQcVfcqWSafFLmi7iRejkMY563TvajyuSFzFVulnBv7UQHaRxtDT5Ro7HRSo-2H34s0vwJmqzVVldocZBuDb3UmcxlNpMPG7HrrpUIJ7IGZO8I8wPqFui9ZuFCtvYlkxKIgVEzGU7kwFp-MZz9ACaTsuZVdOFWx1HLIY_8ybYgB-g0knnLIdSHjDEYUAQxQRhS5gaQIYwhJ9SDnCEfcp9Q6HLqQ5f7CHrI5zAgyIUB5RwGvudBjHwSQIxZ4EGMXY4hpgQRiKnvc4i5zwjELnY9iF3f9nrYs6WdEvvMIgMPY4gDn_uQUOZhSJjLbOkzHxIeUAqJi1wPEh9hAokfBBySAPkBpAhzDikiyJZ-wCDFHPmQEhRgSAnGHqQUBy6kNLB4xnxqqXo-pK7re5B6HDFIfcp8SH3XJZAGPsG2dDFkiLoEMuy7LmQkcBlkHFEOGaeYQsZZgCFzKWOQeQXSZ1avvo88yILA8yFHlNqS8QByzBCDnAS2ZJgRyF2EMOQu9wPIXZ-7kAfUQ5AHPvWgixAi0EUe5dBFASPQxRS5tiQedCmmAXSpF3DoUp9R6DJE7FYRjGxJWGEnO3uXFydFZWdszCR_32zO5_N3E2HG6VDeqVi-G6RJcyLyXM3kbn6j4njXmlWz3W6390fH7cvR4bTdnx-mo_Du8Dvq3d5d4I9h-2p2l_zV6Z_3s7BHPh_nSRxOTk_Obszo51l4eo0Cdu3r8-j08Ah17y52P3d_IBJeucHo_Oro_O9LHCOC88Hl6V367dtJNMQs0_nl8KsJou-dfNy96uQsItdoNxx9_taN56J__fcUa3F7rW6Hl9nu9K7d7_w054q3M0Rmt8PDszxU992fZ7enp7sk_xQdyuGt26e336fohzfyZnK62wtue7z7I77eHf_cnc6843a73SqU1Fxoaa88ZfJSZdVX4TbWgwo7coAyMrGfuPTWVUBrajVgFRt39pq18fea1okLd7debiuh1X_ZWVSB1KIfy6jlmGwqHZDHqWk5-2l0D9pZkk6z8mhsl_HBSiwCxM5eRyZgVM7flUZEwojmsZFJ3uzYokB3ZHI8kOE4NQ4o9n5rtBZJFZCOBxKUbdWJjwMH3E5FrMx9EXSquh36UA7FNDbOU14rSDRfxCKcTiZpZtpRJCN7hByKRIzkc6RKoY5M_iH3QK_oArYPLDrfnudRLBOp7cWiWNKVMuO2MWJwk29N-UqKSaqfDFQnvuyqeIO5MmOwnObtlXCsB5kUuYwOMmXs5SQ0mbqR26tg_QA1615gwAIElqi3V8FHkRuZvXTr61J1rmX7v7nFeyWB5wJcaZsAvz66hVpNZJZ3RXazZYTrZem1HBgVyyspbrTMH5lDOd7vOShHfEML-CQzEUdnw-PBs2FulcQDpbIZpENQdLzZpn-ScSLN67e8k4mtVVJhH5RRNbzhvvYyOVD2Rr-1vS7xDzRqjW-2n504ndko-WoXLuPWgcjN1Vjq8jCqXp9bBjwre_ZY8kFXthPMx1IvzrkKUSmO__cmcJwkaWZEfCDieNt72SOR2vFVtYOyY2EM_n9tDPtpan6BLXyMRSIPRT7eUi01fO2Ys42gbP03vaOq5Ytn_Fcl5-Bnmibfijls7fuydlIuhDrL94CF24-CVpUCsPVQmmUWwH4DVT5FPjQuRKbM_Xtw0b44aoT3NueVK3t1uZZzGQPc-KoyFSmhwWfb0Ciki4nfA480jpNJrAbK5O8BavzhI2BSkJT5HmDTUQ1MfwNqeR8qrwmgSGM0KKp3PZyhlU81_iD8Nzvek0sU6E5joyaxklmhOruiJ8S854mR_0tim3jNiwtQI5woLcF-On_K6Ly0z_cAo8fsMHu83iptt1htO4pyQAsFuGh1Lya2F_sILLNri_4NalrNkWzimA6HY6GjRi9TiYhBO8vSOTifqpnMtqa7ajMLFr5t9vg_ONjm6n7b-MPqyqQ1TJkYFHog1xCimwiNiwtM40SlGvRkbF7FYrE4mzytr2vRXjxIn10v27TefhrdN9p5bnM_-vccdETW37TmKnXxHuzvVn_b01ip45dx4Zu4jIrLRqOTqclERqC8e7xqAzYY-7p1r9uz1Xw2Ruy-PS8bYaz0DSjOzq252Hj0sO5uOite8YuVb9iidWxe4B4bY3XfusSJFGYsM7D_r_kHqdjYRP_zK_Y3rVgk01iaxpm-vwPtsv72gemFBINNBDOlR7hxNhExuFB69N-ye-XOYfQcM_KLmL3U3V9KpH4T6LY7xwePmMRqKMEwFvlN41DN7H3ALgp8LFq2pbVmZrJx5kRoUc38ScRxOrfxxLb9krnpxrmnRtnRlsRFkuro10zMXjBxqOKZzH7NvPwF855PRWZ-vnbeUJrqqgmMMrGsPWamuQzlINVRmWor3hRDEeeyeo-FcWqKJ1M9Gbf8OWPxnv0nijygyArUIsezwNAVmEe_biyAbAVwkWBYYPjKwYp35wLiroLIuLYibwWijP0PGH8FxkaZuo6CdZiahjBaASr2_JG2sVO9_qqn5zqZ-shkS5n6j1R0SxlWk2FbyvCaDF8lU5puKE3x_i3evLZ2kOqhGpUWrSfTxaBSy-S-cAkH6GnSl1nxjybN1cCjmagSZBWUeTSofmhfTLDXfPp_LP8DnLkBdA==",
-      "maps-early": "eJzVWltv27gSfq5_BSFgcR6WaXiVqCLuws7F9TZp3Ci9ZF8KxqJt1rq4Em3H-fUHlGRHSW3HOelu9iAAQZHfkPMNh0NynIM_buIIzFSW6zRpOvg1coBK-mmok2HT-XR5siecP942DnrSjM4H7amObM_bxquDog4iNVNR0xHIAUZmQ2U-L4ei35AD-pHM8w8yVk3nQiZDlTlA5n2VhId3HUdKhmqhHBBLnQRpf6xMJ0unk6aDHXAtk1CbpvMhTZQDJjIxI5UmZ_J7mnXSsOlcZzpRY50Ma506qTqH2dSMxtPIATOt5mdpqJrOYev0MHDeNl69OuhFcqGywEgDciNN0zlM42udqPCoFzhgJqOpajqeizz2mgsP-ZQI39lfL3qZGhn9D3KneqBWMtT1-CbgcaKy4SIYaRWFKwG0VZ3jd70VEguBvNfEI9hneJNUb7TIdV9GZ_JGx9P4nTaXcqyS1SDc5WyT7InO1IXKdW7uTLCRzGEahTuDT_VwZBKdDHcffiTT_AGab0SfyUQepjUocbdBPyWZylU2U3fLsMc3mjSYqBqQvabYwz4p0Af7xRaytctMKSD7Rs9UMFF96_nFcPYDmEyp2q6iy23VDZsOubefbAtyQJKGKm86hArIGIM-RRAThCFlrg8ZwhhyQj3IGRKQM0YhF4RCl1MBXS4Q9JDg0MOYQGFlfYJc6FPOoS88D2IkiA8xZr4HMXY5toO7AmJKEIGYCsEh5oIRiF3sehC7wmI87NnS6oE9gRnEglm8j1wfYh8zBrHvYQyxL7iAhDIPQ8JcZkvBBCQc2XbOuAsJ9ymFxEWuB4lAmEAifJ9D4iPhQ4ow55AigmwpfAYp5khASpCPISUYe5BS7LuQUh9RW1opxgS1NvIEpK4rPEg9jhikgjIBqXBdAqkvCLaliyFD1CWQYeG6kBHfZZBxRDlknGIKGWc-hsyljEHmFUjB7ILYfQiZ73sCckSpLRn3IccMMciJb0uKhAs5w4xA7iKEIXe58CF3BXch97Dv2yVjDHKfeghyX1APugghAl1EEIMu8iiHLvIZgS6myLUl8aBLMfWhSz2fQ5cKRqHLELHLTjCyJWGF4706-HRxWlRejYyZ5G_29-fz-euJNKN0oG50pF7303h_IvNcz9RePtZRtGf9dL_VarXaw27rqnU0bV3Pj9JhcHN0hXo_bi7wSdD6_PFGfutcpX-Z9tR0xFAz3SN_dvM4CiYfTs_HZrgQ4zPeJb1LqnuLsI3Q2eXH25OTaDzQQYLfL45vv13-9ed1Rtrtq4v2iMUf5n99whEiOO9_-nCTfv16Gg4wy5L80-Cz8cOrTj7q7B3fXMnbEZW9S_6-FfUXX9uT6YfY-xL--HH-fuIHM9c7bufX5_jwdHw4u5R7E3Hm3rw_7d6euekt9i4HJmvTj3RwvXd-zPeyyUxNtLu4Nb09du7RbPb9m_y-d9njV9_S_rcs21u0Wq3CkPtLSx6UR1temrX6Kvaq3baFDzpAGxXbT1yFoDVA66Y1oFcBD_Zr4x_s28hRxBgbWmwlsGtUdhZVoBJ5Hamw6ZhsqhyQR6lpOu00XIBWFqfTrDyPW2VQshLLqPTqoKNiMCznP1NGhtLI_a5Rcb7fsUWB7qi421fBKDUOKPxjZ3Qi4yoKdvsKlG3VNYMgB_yYykibRRHpqrod-kgN5DQyzkNea0jsP4lFMJ1M0sy0wlCF9tw6krEcqsdIlUIdFf8kd0ev6AK2Dyw7X57ncaRildjLTKHSF21GLWNkf5zvTPmLkpM0eTBQnfiqq-IN5tqMwGqalzdCN-lnSuYqPMy0sTeiwGR6rHY3weYBat69xIAlCKxQ_0ITPNHvN8pvNcC_Zx-cyNyo7KmuX5eqUy3b_04XPygJPBbgy70J8POje5DoicryM5mNd4zwvSz9rvpGR-qLkuNE5fe2Qznef3JQjviCHvBOZTIKzwfd_qPuvk7ijlLZDNIBKDpebNHfqShW5vlL3snkziapsHfGqBpecF17mepr-4za2V9X-DsatcYXW89OlM7sKfHsLVzGrUOZmy8jlZTBt3ry7xjwrOz5fck7W9lOMB-pZHnOV4jKcPyfd4FuHKeZkdGhjKJd76X3RGqnV9UOyo4Xc4Z2mppf4AsnkYzVkcxHO5qlhq8dc7YRlK1_p0GqWr7MnXzWag5u0zT-Wsxha1er2mmpCHVW7yELtx8FrSrvYuuBMqvUi_0GunyKvW1cyEybxRtw0bo4bgQLm2jMtb25fFdzFQHc-KwzHWqZgD9tQ6OQLiZ-AzzS6MaTSPe1yd8A1PhdIGBSEJdJNmAzgA1MfwN6dR0qrwmgyB01KKp33Z2h1Z5q_E74b3a8B5dIcDaNjJ5EWmWF6axGD4h5jxMj_5fEtvGaFxegRjDRiQLtdP6Q0cfSP98AjO6zw-y-vlWudKltKwxzQAsDuGh9Lya2FwsEVinNZf8WM63nSLZxTAeDkUzCRi_TsYxAK8vSOfg41TOV7Ux33WIWLIRt9vhPHGxzdb9t_G5tZdIapszGyqSvNhCi2wiNigtM41SnCeipyDyLxVI5m7Gu67VsLx7kj-rLtul7nYaLRivPbX4s-U8OOjK73qZzlbp5A9p71d_uNNba-Glc-DYuw-Ky0ehkejJRISjvHs9agC3OvknvTWu2ns_WiH1tz8tGEOlkDIqzc2cuNh7d6X2WzoosxlLzLUu0ic0TtsfWWH1tt8SpkmakMtD-2_YHqdjYX1ce11hs01jG00iZxnmyuAGtsv7ygemJBP1tBDOdDHHjfCIjcKGT4T_L7pkrh9FjzMgvYvbU7f5UIvWbwFmr0z28xyTSAwUGkczHjSM9s_cBqxQ4KVp2pbVhZrJ15lgmspr52KgskRGwPy3-mqnp1qmnRtvRVrxlnCbhr5mYPWHiQEczlf2aefkT5m3FyowWuXnuzIEy1V0TGG0iVXvNTHMVqH6ahGWurXhUDGSUq-pBFkSpKd5M9Wzc6vec5YP2ZxS5Q5E1qGWSZ4mhazD3ft5ZAtka4DLDsMTwtYMVD88lxF0HUVFNI28Nogz-dxixBmPDTN1G_iZMzUIYrQEVa37P2tipnn_V23OTTH1ksqNM_Vc6uqMMq8mwHWV4TYavkyldN1CmeAAXj15bO0yTgR6WHp1MpstBVaLiRbElHJBM42uV1f7V4ifg8UxWGbIK6iLiV__esJzgYP_hfw_9F1VPdww=",
-      "maps-red": "eJzVWmtvGrsW_Vx-hTVSdXtU0_g9nir0iIS8ekKThvT5JTKMAYd50BlDQn_9lWeATFog5LbnthWS5bHXtr22t7ftbXb_vo0jMNVZbtKk4eEXyAM66aWhSQYN793lYV16f7-q7Z4rOzzr701M5Gpe1Z7sFnkQ6amOGl6APGBVNtD2_aIpeoU80ItUnr9RsW54FyoZ6MwDKu_pJNy_q2hpFeqZ9kCsTNJJeyNtj7J0Mm542ANdlYTGNrw3aaI9MFaJHeo0aavrNDtKw4bXzUyiRyYZVCpNMq8cZBM7HE0iD0yNvmmnoW54-83T_Y73qvbkye55pGY661hlQW6VbXj7adw1iQ5b5x0PTFU00Q2PIOQz_wVmfhAgxL2d1aKXqVXR_yB3avp6KcNx4K8DHiQ6G8w6Q6OjcCmANg7n4Pj8bji-z-UL4QdIEEToOrnz4Sw3PRW11a2JJ_GxsZdqpJNlM34QrKVyaDJ9oXOT2zv4WvB-GoVbg0_NYGgTkwy2b36o0vwbNF-LbqtE7acVKFmrWAd9l2Q619lU301Ena5tvDPWFSB_IQQnTBbo3Z1iEbncZaY1UD1rproz1j1n-0Vz7gPYTOvKuqKLhXUSNjxyb0W5EuSBJA113vAIlZAxBgOKICYIQ8pEAKngAjKEMeSE-pAzJCFnjEIuCYWCUwkFlwj6SHLoY0ygdA0EBAkYUM5hIH0fYiRJADFmgQ8xFhxDjCUPXD9CQkwJIhBTKTnEXDICscDCh1hIh_Sx71I3JOxLzCCWzOEDJAKIA8wYxAFHAuLAxxjiQHIJCcWEQEKZjyFhgrlUMgkJR66WMy4g4QGlkAgkfEh8X0pIJMIEEhkEHJIAyQCSwGEowpxDighyqQwYpJgjCSkWkkJKUIAhJRj7kFIcCEhpgKhLZQApQ9QpkzkkE76EVAjpQ-pzxCCVlElIpRAE0kAS7FKBIUNUEMiwFAIy7NphBDEMGQkEg4xiV8sR5ZBxiilknAUYMkEZg8wvZH2fUcgkc_MqJfIhCwJfQo4odSnjAeSYIQY5CVxKkRSQU4Ip5AwTN9mYEcgFQhhywWUAuZBcQO7jIHAGwBjkAfUR5IGkPhQIIQIFIohBgXzKoUABI1BgioRLiQ8FlpRBQTENoKB-wKGgklEoGCLOlAhGLiWssOgnu-8uTovMk6G14_zlzs7Nzc2LsbLDtK9vTaRf9NJ4Z6zy3Ex1PR-ZKKq7BbDTbDabe4OTZvemNXFJOujctj6hs06znh0ev3t_sve-dZjJz2YYoyOBurP9U3Ny9WlkZur9PyOUiw5pnUbt6evWWefNNQrYtUzehm9aB6h9e_H58zEbjYNOPmy3R1-vLj-_Vu-iyfTTweHw4OjYfKJ70eWHj5fdk1vbPT5s9dQh8j9-PA37mGVJ_k7LN8EHivFAzQ667PJweFY_yllIrlG9M3j9sR3dqO715wlO1Jdr8-Xt4bgVJ_gfo7L65LbZPfpq3xrezMZX00tVH8u2uP3n9ORrW6RfsX9OwzdTRH11E6I3lFxdD8_6X0SXfvk0yXP_8mrSmgTCZ1e3Zqqu65fn_NNV2rvKsvqs2WwWCt9ZaHy33F3zUv3zr8JZOL9RWL4HjNWx-8Si9GgrgG4RVID-WqBbIRWgXAcsjLMCDNYBCxu8Ay789AqgM8oKEM-BuzsVHezuOPdaOGLnf12m4-ytrCyyQCeqG-mw4dlsoj2QR6lteHtpOAPNLE4nWXlsaZae20ksXPeT3SMdg0HZf1tbFSqrdk6sjvOdI5cU6CMdn_R0Z5haDxS2vjU6UfF8qzjpaVCWzU9jBHngy0RFxs7ufbi2W7qvJpH1viW2gsXOo2h0JuNxmtlmGOrQ7e4tFauBfohVKXSk4-_k7vgVVcDVgUXlb0D0INKxTtyprxjTB2OHTWtVb5RvzfmDVuM0-aahKvNl1Zw4uDF2CJbd_AZaOEl6mVa5DvczY93JsWMzM9Lb62B9AxUDX2DAAgSWqN9RB480_bXyGzXwGy2FQ5VbnT3W-qtSVa5l-b9q5bslg4fcfLk-Af5xH99JzFhneVtloy39_HmWXuueNZH-oNUo0fm9FVG2958clC3-Shs41pmKwrP-Se9Bi18lccepLAZpHxQVv27aj3UUa_vjk36Uqa11MsfeaWNe8Ctn9jzTPeMunVub7BJ_x6NS-Otm9ChKp26z-OFlXDqvfZXbD0OdlC54HiHZ0us52bP7knfKcpXgZqiTxX4_R8w1x3-BEZzEcZpZFe2rKNr2iHpPpLKJzctBWfHrzGEvTe1PsIbDSMW6pfLhlnqp4Cu7nSsEZem_qpF5Ll9Em94bfQO-pmn8sQgZudynZe60HAn1lpcjB3cfBa95pMrlO9oug1XuG5jy7viqdqEyY2cvwUXz4qDWmbngbG7cEeZa3-gI4Np7k5nQqAS8dgW1Qrro-CWQpHYSjyPTMzZ_CVDtuUTApiAuw5LARU1rmD4FZnkuKo8LoIi21SiqVt1tpfNlVXtO-FPX3jfHSdCeRNaMI6OzQnVuRN8Q8x8mRv5IYvJhYvSPJBY8TIz9icQIepgY_yOJ4YeJiT-R2EZeN8Vdo9YZm0SDvfTmW0Zvyz3gJSDoPjvM7o93_oKzGG0zDHNACwUItLoWE1eLJQLLh5ZF_QY1rZm8TRzTfn-okrDWzKyJIp3NwNuJmepsa66rZrKgIF2xz78j4IrnF8nac6com1Yw5QORSnp6DRu6ic2wuCbUjjLz9Ws0A-c6slsSIbVnFNcp-auqXPeyBNwrFDjo903P6KQ3q81ZnOtE20xZnQP-dDWBVapZMHYvc_ew8_IipPagEtgmJXTTcFZr5jZTETjVyg43z-Y8-PoS7NWXv_uaef6MiDrx_3pgiYF-uggRLGy1uDGBocrBMyLrFN3TbnOSKadY3bMbVbVat4_SF9-kr0FxE6kdq2w8y0cmAeXVZGvDwXjtgnwun4Le0A3MjdXdODKd564yWq73R7rCdcTXGdZqhWw8DHbdWbzWsWkWZybUGSgO51vrQ95bQum0iJfOR_-MsDoRf1W10pymJgR3YdWmiVwurzmfvrahTQazTjWP8DIbz5Rd51bmKwvsbe9jVjvLtR6BzNm4d_OHR7zxsKjiSaRt7SyZ3YJmmf_1_v2RBDceGjOTDHDtbKwicGGSwf-X3Q_OHN54anTMyE9i9ljf8Vgi1dNUu3l0sn-PSWT6GvQjlY9qLTN1Zyo3KHBYlGxLa03PZGPPsdvHy54PrM4SFZVb-0_pmm7semKNa23JW8VpEv6cjtkjOu6YaKqzn9Mvf0S_zVjb4Sy3P9pzR9v5eR1YYyNdibpMct3RvTQJy6eBIvjRV1Gu55GjTpTaIrhTfTxYPmsvQm_fo0jlqXoFahGRXmDoCsy9N-kFkK0ALoKhCwxf2VgRIVtAxCqIjioj8lcgSud_h5ErMM7NVHUUrMNUNITRClAx5_e0jb15mGoeI1snU22ZbClT_VcD3VKm8ncEzLaUqfzXAfNVMqXpdrQtAnVFcM7l9tOkbwalRSfjyaJRneh4ViwJDySTuKuzhicXfwb8DngwVfNo_hzqS4Hmf1xbdLC78-0_Q_8LvftFmA==",
-      "pinnacle": "eJzVWmtvGrsW_Vx-hTVSdc5Rncbv8VShV-RFaPMgIWna8yVyGANO5kFnDAn99VeeATLJAUJue25bIVkee23ba3t7295m6z_3cQTGOstNmtQ9_BZ5QCfdNDRJv-5dnO9vSO8_72tbbWUHJ73tkYlczfvaq60iDyI91lHdC4QHrMr62n6aNUWvkAe6kcrzYxXrunemkr7OPKDyrk7CnYeKXa1CPdEeiJVJOmn3Vttmlo6GdQ974FolobF17zhNtAeGKrEDnSZH6ibNmmlY964zk-hbk_QrlSaZVvazkR3cjiIPjI2-O0pDXfd2Goc7He997dWrrXakJjrrWGVBbpWteztpfG0SHe62Ox4Yq2ik6x4NGGb0rRSUB1j63uZi0fPUquh_kDs0PT2XEUSyZcC9RGf9SWdgdBTOBdDK4ewdtB-GIziXbwOOMPIF4cvk2oNJbroqOlL3Jh7FB8aeq1udzJsJhJDLZPdNps90bnI7h_tLO9pJo3Bt8KHpD2xikv76zQ9Umq-NPlKJ2kkrUBysgl4kmc51NtYPE7FBl05FZ6grQPGWkYBxUaC3NotF5HLnmdZAda0Z685Qd53tF825D2AzrSvris4WViuse-TRinIlyANJGuq87hEqIWMMBhRBTBCGmBIOKRMBpIILyBDGkHFEICfUh5whCTljFHJJKBScSii4RNBHkkMfYwKlayogSMCAcg4D6fsQI0kCiDELfIix4BhiLHngehTSdYkIxFRKDjGXjEAssPAhFtIhfey7tBicLzGDWDKHD5AIIA4wYxAHHAmIAx9jiAPJJSSIMwEJkpxAQjFxKfMxJEwwl0omIeHIITnjAhIeUAqJQMKHxPelhEQiTCCRQcAhCZAMIAkchiLMOaSIIJfKgEGKOZKQYiEppAQFGFKCsQ8pxYGAlPqunAaoSGUAKUMUQ8qYK2fCl5Dyoh3BJYdUCOlD6nPEIJWUSUilEATSQBLsUoEhQ1QQyLAUAjLs2mQEMQwZEczlA8Ego9hhOKIcMk4xhYyzAEMmKGOQ-UULvs8oZJI5K5AS-ZAFgS8hR5S6lPEAcswQg5wELqVICsgpwRRyhokzCMwI5AIhDLngMoBcSC4g93EQOCNhDPKA-gjyQFIfCoQQgQIRxKBAPuVQoIARKDBFwqXEhwJLyqCgmAZQUD_gUFDJKBQMEWduBCOXElbY_6uti7PDIvNqYO0wf7e5eXd393ao7CDt6XsT6bfdNN4cqjw3Y72R35oo2nDLZbPRaDS2-61GeLc7alzf7ab9zv12Bx3fnPLWrsjPosEZ3u80Pp3eq6vml_Rvuz2yTdk3zLTJh1YeR53h8eHJre1P-Pnh5PTb7c2XoK1bVx_Qwfnp_fHu0cXl5dnGh4-9i6x1vvvh6AqRzsXeh7Nwf9i5FEH_9HLv9Iv-cNNtfjr-OzzOb5o4714c36efz23Ytfjqsxnp-zP_juLr3ufL7azVpoPmxt79l_PxIDs5CNM7cjOK2-f8YyPqTj5vD0fHsX8Zfv168nHYuLw9UervYdBJ469XWX7avM_9i9bo9KPo-YiMv_Z2T_KOmRx9O_l6FOhvAT2_Do43SH4Q7obBmLHzRIziQMSH2eEJuvL7_liPNtryS0bSq9tvG5dtcdAW4irvNxqNer2YiM3ZTGyVe3ReTsv0q3A5zvsUK8UDxurYfeLS0y0CuuVSAfpLgW4tVYByGbAw2gowWAYsbPMBSNBSoDPWChBPgVubFR1sbTonXbhz58VdpuPssKwsskAn6jrSYd2z2Uh7II9SW_e203ACGlmcjrLy8NMo_b-TmG0Ar7aaOgb9sv8jbVWorNpsWR3nm02XFOimjltd3Rmk1gPFGlgbnah4uuG0uhqUZdMzHcEe-DpSkbGTQkezD9f2ru6pUWS9p8QWsNh8EY3OaDhMM9sIQx26M8KuilVfP8eqFGrq-B9yD_yKKuDqwKzyFyC6F-lYJ-7sWIzp0thBw1rVvc3X5nyp1TBNnjRUZT6vmhIHd8YOwLybX0ALraSbaZXrcCcz1p0_OzYzt3p9HSxvoGLgMwyYgcAc9Svq4IWmv1R-pQZ-oaWwr3Krs5daf1WqyrUs_1etfKtk8JybL9cnwN_v4zuJGeosP1LZ7Zp-vp2lN7prTaQvtbpNdP5oRZTt_ZGDssWfaQMHOlNReNJrdZ-1-EUSD5zKYpD2QFHx86b9QEextt8_6c1Mra2TKfZBG9OCnzmz7Ux3jbu6rm2yc_wDj0rhz5vRZpSO3Wbx3cu4dF47KreXA52ULngaZ1nT6znZk8eSD8pyleBuoJPZfj9FTDXHf4IRtOI4zayKdlQUrXtEfSRS2cSm5aCs-HnmsJ2m9gdYw36kYr2r8sGaeqngK7udKwRl6b-qkWkun8WsPhl9B76lafy5CDy53Jd57rAcCfXmlyMHdx8Fr2m8y-U72s5DXu4bmPLu-L52pjJjJ-_AWeNsr9aZuBBvbtwR5kbf6Qjg2ieTmdCoBHxwBbVCuuj4HZCi1oqHkekam78DqPYGIwRsCuIyuglc8LWG_dfAzA9G5XkBFEG7GkPVqoe9dLquam8of-3ae3KeBEejyJphZHRW6M4N6Qkz_3lm5PdkJp9nRn9PZsHzzNhvyYyg55nx35MZfp6Z-C2ZrSR2V9w4ap2hSTTYTu-eUjotd4J3gKDH9LD_eLzT16DZaBthmANWKECixbWYu1rCEZg_2szqV6hpyeyt4pj2egOVhLVGZk0U6WwCTkdmrLO1uS6cypJDUe6qn3Jw5dMbZe0NK6fuAVO-N6mkq5cQoqsIDYr7Qu1I3ejcmi5o68iuSYbU_qR8g4q_qgp2L1XAvWqBvV7PdI1OupPalEZbJ9pmyuociNeLGSxUz4yze-p7BJ6WF9G1Z9XAVqnhOg0nriA0XWX1Hzloqux6lR6mkdh3YHtj_nusnDd_UrRB8V_PrDTQS2fxgpnJFtcnMFA5-JOypwpujDLldKu7drW2Fuv3RSrjq1TWL-4ltU86SkcZKG8pa1sOpktX5RuMXoPuwA3LjdTdPjKd5642mq_6l3rEZbyXmdZifaw8GV67g_lMHcUpfX1tPPJ_R-m4iJxOh16YEfmrqpPGODUheAiwNkzkcnmNrmpopbUsU8wL_MzK0-W18yuHWtmBzsD2-k5micdc6hKcBhwd9xL__JBXHhtVPIq0rZ0kk3vQKPO_hJd_IceVB8jMJH1cOxmqCJyZpP9_J_id84dXniEdOfKjyL3Ug7yUSfVoddRotnYeUYlMT4NepPLb2q4ZuwOWGxTYL0rW5bWkZ7Ky59ht6GXPe1ZniYrKPf6HdE1Xdj2yxrU2563iNAl_TMfsBR13TDTW2Y_pl7-g30as7WCS2-_tuaPt9PAOrLGRrgRiRrnu6G6ahOVrQREP6ako19NgUidKbRHvqb4nzF-6Z9G4f6JI5fV6AWoWpJ5h6ALMo2fqGZAtAM7iozMMX9hYETSbQcQiiI4qI_IXIMo94AEjF2Ccn6nqKFiGqWgIowWgYs4faRt708jVNGy2TKbaMllTpvpHB7qmTOUfCpitKVP5-wPmi2RK0-1oW8Tuinidy-2kSc_0S4tOhqNZozrR8aRYEh5IRvG1zure_L-M_wDujdU0wD-D4ul_MLY2Zx1sbT79y-l_AUvNWpk="
+      "until-68": "eJzNWltv27gSfq5_BSHgYB-WqXmTRBVxF87NTTdOnKhp2n0paIu2mUiUI9F20l9_QEl2lNZ2nJN2cxCAoDjfcOYbDq_O7l93SQxmMstVqlsOfoscIPUgjZQetZzLT0c73PnrfWO3J8z4bLg3VbGVvG-82S3qIJYzGbccjzvAiGwkzedFV_QbcsAgFnl-KhLZci6EHsnMASIfSB3tPwgOpIjkvXRAIpQO08GNNJ0snU5aDnZAX-hImZZzmmrpgInQZixT3RXXadZJo5bTz5SWN0qPakKlK-Eom5rxzTR2wEzJeTeNZMvZb5_sh877xps3u71Y3MssNMKA3AjTcvbTpK-0jA56oQNmIp7KlkNc5AVvA0IYIsQLnOZq1U-pEfH_oHeihvJBh3O2DnioZTa6D8dKxtFSAW105_BDb4nE1CXobRB4Lid-4K7T643vczUQcVfcqWSafFDmk7iRetkNo_5am0cqkxcyV7lZwv21hvbTONoafKJGY6OVHm3f_Vik-Q9ostbzrtBiP90aeqkzmctsJh8GYsdbqxFOZA1I3wYM-9Uw7zaLSWRrnzIpgRgYNZPhRA5s7hfd2Q9gMilr84ouJtZx1HLIoxllW5ADdBrJvOUQyiFjDAYUQUwQhpR5AWQIY-gS6kOXIQ5dTij0XMqh53IEfcRdGBDkwYC6Lgy470OMOAkgxizwIcaeiyGmBBGIKecuxC5nBGIPez7EHrdSH_u2tCYxZxYZ-BhDHHCXQ0KZjyFhHrMlZxwSN6AUEg95PiQcYQIJDwIXkgDxAFKEXRdSRJAtecAgxS7ikBIUYEgJxj6kFAcepDSweMY4tVR9DqnncR9S30UMUk4Zh5R7HoE04ATb0sOQIeoRyDD3PMhI4DHIXERdyFyKKWQuCzBkHmUMMr9AcmbjyjnyIQsCn0MXUWpL5gbQxQwx6JLAlgwzAl0PIQxdz-UBdD3uetANqI-gG3DqQw8hRKCHfOpCDwWMQA9T5NmS-NCjmAbQo37gQo9yRqHHELFDRTCyJWFFnrzZvbw4KSpvxsZM8nfN5nw-fzsRZpwO5Z2K5dtBmjQnIs_VTO7kNyqOd2xaNdvtdntvdNy-HB1M2_35QToK7w6-ot7t3QU-CttXs7vk707_vJ-FPfLxOE_icHJ6cnZjRt_PwtNrFLBrrs-j04ND1L272PnY_YZIeOUFo_Orw_N_LnGMCM4Hl6d36ZcvJ9EQs0znl8PPJoi-dvJx96qTs4hco51w9PFLN56L_vU_U6zF7bW6HV5mO9O7dr_z3Zwrt50hMrsdHpzlobrvfj-7PT3dIfmH6EAOb70-vf06Rd_8kT-T051ecNtzu9_i653x953pzD9ut9utIkjNRZR2y30mL0NWfRXTxs6gIo8coIxM7Cf2yrm9AmhTrQb0K-Bus9b_btNO4mK621luK6GNfyksqkBq0Y9l1HJMNpUOyOPUtJy9NLoH7SxJp1m5ObbL9cFqLBaIN7sdmYBRab8rjYiEEc1jI5O82bFFge7I5Hggw3FqHFCM_dZoLZJqQToeSFC2VXs-DhxwOxWxMvfFolPVbdcHciimsXF-5LWCRPNZLMLpZJJmph1FMrJbyIFIxEg-RapU6sjkJ70HeoUIWBlYCF-f52EsE6ntyaJw6UqZcdsYMbjJt6Z8JcUk1T90VCe-FFW8wVyZMViaef0gHOtBJkUuo_1MGXs4CU2mbuT2IVjfQS27FxiwAIEl6vVDcCRyI7PnDn1dq861bP-dQ7xbEnhqgStzE-CXr26hVhOZ5V2R3Wy5wvWy9FoOjIrllRQ3WuaP0qHs748clD2-YgZ8kJmIo7Ph8eDJZW6VxgOlshmkQ1AIXm3QP8g4keblQ97JxNYhqbAPwagaXnFce5kcKHui3zpfl_gHGrXGVxvPTpzO7Cr54ilcrlv7IjdXY6nLzai6fW654Fnds8eaD7GyQjAfS73Y5ypEFTj330-B4yRJMyPifRHH257LHqnUtq-qHZSCRTLwfzsZ9tLU_IJcOIpFIg9EPt4yLDV8bZuzjaBs_Z2zo6rli2v8ZyXn4HuaJl8KG7b2dVk7KR2hzvI-YOH2o6BVPQHYeijN8hXAfgNVXkXeNy5Epsz9O3DRvjhshPf21StX9uhyLecyBrjxWWUqUkKDj7ahUWgXht8BnzSOk0msBsrk7wBqeP8Bann0ScpXH2AfpRqsLinPCqB4y2hgXBc9bKTVxCqCY23-4Lr_tOvk_9T1TZ7Pi0NMI5woLcFeOv_R5_Myx94BjB77jxl65Ez19LZwpR1FOaAImBR4aLUUEyvFHIHlC9lCjunaGKzmSDZxTIfDsdBRo5epRMSgnWXpHJxP1UxmW9P9kxdcHg1UwYLbZt_9iYNtrs6ojT9trExaw5SPe0IP1g0a3URoXBxCGicq1aAnY_MiFgvn7ANo3a9Fe3GpfNJftsnffhrdN9p5bt9v9B856Iisv8nn6vnhHdjbqf62p7Eyxs_j4m7iMioODI1OpiYTGYHy_PCiAdiQ7Ov8Xjdmq_lsXHX7ds9rhLHSN6DY_7bmQty63910VtzEF55vGKJ1bJ4xPTauxn07JU6kMGOZgb3fNj9IxcY-1j_tMd_ksUimsTSNM31_B9pl_fUXpmcSDDYRzJQe4cbZRMTgQunRv8vuhSOH0VPMyC9i9tzp_lwi9ZNAt9053n_EJFZDCYaxyG8aB2pmzwPWKXBUtGxLa41lstFyIrSoLH8QcZzO7Xpi236JbbrR9tQo29uSuEhSHf0aw-wZhkMVz2T2a-y6z7B7PhWZ-f5Su6E01VETGGViWbuQTHMZykGqo_K5rLgXDEWcy-pOFcapKa499Qe15U8SizvpzyjygCIrUIt3mgWGrsA8-oViAWQrgItHggXGXdlZcXdcQLxVEBnXPPJXIMq1_wHDV2DsKlOPUbAOU4sQRitAxZg_ijZ2qhtcdX1cp1PvmWypU_-hiW6pw2o6bEsdt6bjrtIpUzeUprjDFvdWW9tP9VCNyozWk-miU6llcl9MCQfoadKXWfHvIs3VwMOZqB65KijzaVD9WL4wsNv88b9R_gtp9O61",
+      "maps-early": "eJzNWmtz2jgX_lx-hcYz7-yHVYquttwJ3YFcKG3S0JBesl86AgtQ8YXaAkJ-_Y5sQ5wWCHnTbnYyo5Gl50jnOTo6kg45_OsmCsFcpZlO4oaDXyIHqHiQBDoeNZyPV6cHwvnrde2wK834Ytia6dD2vK69OMzrIFRzFTYcgRxgZDpS5tNqKPoVOWAQyix7LyPVcC5lPFKpA2Q2UHFwdNdxrGSglsoBkdRxLxlMlGmnyWzacLAD-jIOtGk475NYOWAqYzNWSXwuvyVpOwkaTj_VsZroeFTp1HHZOUpnZjyZhQ6Ya7U4TwLVcI6aZ0c953XtxYvDbiiXKu0ZaUBmpGk4R0nU17EKjrs9B8xlOFMNh_uI8Jc-EsT1XB879c2iV4mR4f8hd6aHai1DuaDbgCexSkfL3lirMFgLoJ3qnLzprpFYUMpfCs_FVHDOtsl1x8tMD2R4Lm90NIveaHMlJyq-Y8Ux2SZ7qlN1qTKdmTXc49vAR0kY7A0-06OxiXU82n_4sUyyH9B8K_pcxvIoqUCJuwv6MU5VptK5uluIA751hXtTVQGylwgjVNj_sJ7vIVu7SpUCcmD0XPWmamBdPx_NfgCTKlXZVnS1rzpBwyH3NpRtQQ6Ik0BlDYdQARlj0KcIYoIwpMz1IUMYQ06oBzlDAnLGKOSCUOhyKqDLBYIeEhx6GBMorKxPkAt9yjn0hedBjATxIcbM9yDGLsd2cFdATAkiEFMhOMRcMAKxi10PYldYjIc9W1o9sCcwg1gwi_eR60PsY8Yg9j2MIfYFF5BQ5mFImMtsKZiAhCPbzhl3IeE-pZC4yPUgEQgTSITvc0h8JHxIEeYcUkSQLYXPIMUcCUgJ8jGkBGMPUop9F1LqI2pLK8WYoNZGnoDUdYUHqccRg1RQJiAVrksg9QXBtnQxZIi6BDIsXBcy4rsMMo4oh4xTTCHjzMeQuZQxyLwcKZhdECGQB5nvewJyRKktGfchxwwxyIlvS4qECznDjEDuIoQhd7nwIXcFdyH3sO_bJWMMcp96CHJfUA-6CCECXUQQgy7yKIcu8hmBLqbItSXxoEsx9aFLPZ9DlwpGocsQsctOMLIlYbnjvTj8eHmWV16MjZlmr-r1xWLxcirNOBmqGx2ql4Mkqk9llum5OsgmOgwPrJ_Wm81mszXqNK-bx7Nmf3GcjHo3x9eo-_3mEp_2mp8-3Miv7evkb9OambYYaaa75G0ni8Le9P3ZxcSMlmJyzjuke0V1dxm0EDq_-nB7ehpOhroX43fLk9uvV3-_7aek1bq-bI1Z9H7x90ccIoKzwcf3N8mXL2fBELM0zj4OPxk_uG5n4_bByc21vB1T2b3i75rhYPmlNZ29j7zPwffvF--mfm_ueietrH-Bj84mR_MreTAV5-7Nu7PO7bmb3GLvamjSFv1Ah_2DixN-kE7naqrd5a3pHrALj6bzb1_lt4OrLr_-mgy-punBstls5oasryx5WJxtWWHW8ivfq3bb5j7oAG1UZD9xGYE2AK2bVoBeCTysV8Y_rNvIkccYG1pspWfXqOjMq0DFsh-qoOGYdKYckIWJaTitJFiCZhols7Q4kJtFULISq6j04rCtIjAq5j9XRgbSyHrHqCirt22Ro9sq6gxUb5wYB-T-sTc6llEZBTsDBYq28p5BkAO-z2SozTKPdGXdDn2shnIWGudHXhtI1B_FojebTpPUNINABfbYOpaRHKmHSBVCbRX9JHdHL-8Ctg-sOp-f50moIhXb20yu0mdtxk1j5GCS7U35s5LTJP5hoCrxdVfJGyy0GYP1NM9vhE48SJXMVHCUamMvRD2T6ona3wTbB6h49woDViCwRv0HTfBIv98qv9MA_519cCozo9LHun5Vqkq1aP-dLn5YEHgowBd7E-CnR_derKcqzc5lOtkzwnfT5JsaGB2qz0pOYpXd2w7FeH9koBjxGT3gjUplGFwMO4MH3X2TxB2lohkkQ5B3PNuiv1FhpMzTl7ydyr1NUmLvjFE2POO6dlM10PYZtbe_rvF3NCqNz7ae7TCZ21PiyVu4iFtHMjOfxyougm_54t8z4FnZi_uSd7aynWAxVvHqnC8RpeH4v-8CnShKUiPDIxmG-95L74lUTq-yHRQdz-YMrSQxv8AXTkMZqWOZjfc0SwVfOeZsIyhaf6dBylq2yp180moBbpMk-pLPYWvX69pZoQh11u8hC7cfOa0y72LrPWXWqRf7DXTxFHtdu5SpNstX4LJ5eVLrLW2mMdP25vJNLVQIcO2TTnWgZQze2oZaLp1P_Ap4pNaJpqEeaJO9Aqjm_g_o9c0nKjJtwCYCa6zaU9wVQJ4_qmFc7bo7SMuNlRvHzvmD6t7DqpP_qOq7NF_kl5hab6pjBVrJ4kedPxQ-9gpgdF9_zNA9Zcp050qVZhBkgCJgEuCizb2Y2F4sEFhnJVf9mG61wWaOZBfHZDgcyziodVMdyRA00zRZgA8zPVfp3nT_FDmXewuVsxC22eM_cbDN5R219qe1lUkqmCKhKuPBtkWjuwiN80tI7UwnMeiq0DyJxUo5m3Su6rVqzx_VD-rLdunbT4JlrZllNscV_5GBtkz7u3Qu0y-vQOug_NufxkYbP44L38VllF8Yau1UT6cqAMX94UkLsMPZt-m9bc0289kZdfv2zKv1Qh1PQH7-7c2F8Kre58k8z0SsNN-xRNvYPGJ77IzGfbslzpQ0Y5WC1m_bH6RkY38geVhjsUtjGc1CZWoX8fIGNIv68wemRxL0dxFMdTzCtYupDMGljkf_LrsnrhxGDzEjv4jZY7f7Y4lUbwLnzXbn6B6TUA8VGIYym9SO9dzeB6xS4DRv2ZfWlpnJzpkjGcty5hOj0liGwP46-GumpjunnhltR1vzllESB79mYvaIiXs6nKv018zLHzFvM1JmvMzMU2fuKVPeNYHRJlSVF8ksUz01SOKgyJflD4OhDDNVPqp6YWLyd081o7b-TWb1KP0ZRe5QZANqlahZYegGzL2faFZAtgG4yhKsMHzjYPnjcQVxN0FUWNHI24Aogv8dRmzA2DBTtZG_DVOxEEYbQPma37M2dsonXPl-3CZTHZnsKVP9pY3uKcMqMmxPGV6R4ZtkCtftKZM_YvOHq60dJfFQjwqPjqez1aAqVtEy3xIOiGdRX6WV_5b4CXgyl2WWq4S6iPjlvyisJjis__gvQP8AsnhkGg==",
+      "maps-red": "eJzNWutz2roS_1z-Co1nztx2Khq9LXeSniEhr56kSUP6_JIRWIASP6gtSOhff0e2IaYFQm57bjPMaGTtb6Xd1Wq1XrP9910cgYnOcpMmOx5-hTygk14ammSw4324PGhK7-83je1zZYdn_d2xiRzlTePZdtEHkZ7oaMcLkAesygbafpxNRa-QB3qRyvN3KtY73oVKBjrzgMp7Ogn37gltrUI91R6IlUk6ae9G28MsHY92POyBrkpCY3e8d2miPTBSiR3qNDlV12l2mIY7Xjczib4xyaBGNElFHGRjO7wZRx6YGH17moZ6x9trnex1vDeNZ8-2zyM11VnHKgtyq-yOt5fGXZPosH3e8cBERWO942HEqeSvCPGZIIx4W8tZL1Orov-B78T09ZyHSSpWAfcTnQ2mnaHRUThnQGvF2T86nyMJlyR4FQhJfRQQuYrvfDjNTU9Fp-rOxOP4yNhLdaOT-TQ-YyvXPDCZvtC5ye09nK8C76VRuDH4xAyGNjHJYPPphyrNf0DzlehTlai9tAYlK5V00A9JpnOdTfT9RjTpysk7I10Dslc-o35Q-sP2VnGIXO8y0xqonjUT3RnpnvP9Yjr3AGymde1c0dnBOg53PLJwotwI8kCShjrf8QiVkDEGA4ogJghDykQAqeACMoQx5IT6kDMkIWeMQi4JhYJTCQWXCPpIcuhjTKB0EwQECRhQzmEgfR9iJEkAMWaBDzEWHEOMJQ_cOkJCTAkiEFMpOcRcMgKxwMKHWEiH9LHvWicS9iVmEEvm8AESAcQBZgzigCMBceBjDHEguYSEYkIgoczHkDDBXCuZhIQjR-WMC0h4QCkkAgkfEt-XEhKJMIFEBgGHJEAygCRwGIow55AiglwrAwYp5khCioWkkBIUYEgJxj6kFAcCUhog6loZQMoQdcZkDsmELyEVQvqQ-hwxSCVlElIpBIE0kAS7VmDIEBUEMiyFgAy7eRhBDENGAsEgo9hROaIcMk4xhYyzAEMmKGOQ-QWv7zMKmWRuX6VEPmRB4EvIEaWuZTyAHDPEICeBaymSAnJKMIWcYeI2GzMCuUAIQy64DCAXkgvIfRwEzgEYgzygPoI8kNSHAiFEoEAEMSiQTzkUKGAECkyRcC3xocCSMigopgEU1A84FFQyCgVDxLkSwci1hBUe_Wz7w8VJ0Xk2tHaUv97aur29fTVSdpj29Z2J9KteGm-NVJ6biW7mNyaKmu4AbLVardbu4LjVvW2PXZMOOnftL-is02pmB0cfPh7vfmwfZPKrGcboUKDudO_EHF99uTFT9fGfG5SLDmmfRKeTt-2zzrtrFLBrmbwP37X30endxdevR-xmFHTy4enpzfery69v1YdoPPmyfzDcPzwyX-hudPnp82X3-M52jw7aPXWA_M-fT8I-ZlmSf9DyXfCJYjxQ0_0uuzwYnjUPcxaSa9TsDN5-Po1uVff66xgn6tu1-fb-YNSOE_yPUVlzfNfqHn637w1vZaOryaVqjuSpuPvn5Pj7qUi_Y_-chu8miPrqNkTvKLm6Hp71v4ku_fZlnOf-5dW4PQ6Ez67uzERdNy_P-ZertHeVZc1pq9UqDL41s_h2ebvmpfmrpyJYuLhReL4HjNWxe8TVVbQE6A5BDeivBLoTUgPKVcDCOWvAYBWw8MF74CxOLwE6p6wBcQXc3qrZYHvLhdciELv46zod528lsegCnahupMMdz2Zj7YE8Su2Ot5uGU9DK4nSclWlLq4zcjmMWup9tH-oYDMr1T7VVobJq69jqON86dE2BPtTxcU93hqn1QOHrG6MTFVdXxXFPg3KsysYI8sC3sYqMnS48uLnbuq_GkfV-VGyJFluPUqMzHo3SzLbCUIfudm-rWA30Q1qVTIc6_onvXr-CBBwNzIhPQNH9SMc6cVlfIdMnY4cta1XvJt9Y509ajdLkh4nqms9JleLg1tghmC_zBKxwnPQyrXId7mXGusyxYzNzoze3weoJag4-w4AZCMxRT9EGj3T9lfxrLfCEjsKByq3OHuv9da66ruX4v-rl26UGD4X58nwC_OsxvpOYkc7yU5XdbBjnz7P0WvesifQnrW4SnS-ciHK-_-SgnPFP-sCRzlQUnvWPew96_DKOe53KYZD2QUH4c9t-pKNY21_f9MNMbWyTCntvjWrgT-7seaZ7xr10buyyc_y9HrXBP7ejh1E6cZfFLx_jMnjtqdx-GuqkDMFVhWTDqOd4zxY5743liOB2qJPZfV8hKsvxP-AEx3GcZlZFeyqKNk1RF1hql1g1DkrCn3OH3TS1v8EbDiIV67bKhxvapYav3XZuEJSj_6pFql4-qzZ9NPoWfE_T-HNRMnK9L_PeSSkJ9eYvRw7uHgq9qkqV63e0nRer3DMw5bvjm8aFyoydvgYXrYv9RmfqirO5cSnMtb7VEcCNjyYzoVEJeOsGGgV3sfBrIEnjOB5Fpmds_hqghvgLmHkKFJfFSeBqpw1Wp5Q5AyhKbg2M66T7-7Q6W4Vx3Jo_iO4_LDp5oqLLh0WnT1T04GHR2dMUnaCHRedPVHT8sOjiaYq-VvLbIm9vdEYm0WA3vf1R5vdlPH0NCFqUHzO0IEz1NWQmSisMc0ARsCkQaDkVE0fFEoH5R4sZHdOVNlixPet0TPv9oUrCRiuzJop0NgXvx2ais411fSkLRRZ2qVBBumGf_6SAG65eyhovnaFsWsOUH1tU0lu1Y3SdNsMi5W4cZub792gKznVkN1SENJ5T3KTkRd247isNcF90wH6_b3pGJ71po9LiXCfaZsrqHPC_liuwzDQzjd1XrgVsNV6Upx40AltnhG4aThut3GYqAida2eH63awKma_BbnP-W7TMy-dENIn_ohRwsXQCTseRNaPI6Az009nr9sxXi7cPMFQ5eE5kk6IF67bGmXKG1T271lTLbfsoe_F19hoUWX3jSGWjaX5jElCm-Rs7zmLkWTiQL-VfoDd0gjlZXfae6Tx3xGh-3pepvuaMr1J8lWMtN8jaxKrr8tpGx6ZZnJlQZ6BIdDe2h1w4QumkqD1W0j8nrEnEi7pVWpPUhOC-RNkykevlDcLXTLTOYVaZ5hFRZm321nVhpTpZYHfzGLM8WK6MCKTSxn2DfljitUmbiseRto2zZHoHWmX_z8f3Ryq4NrXLTDLAjbORisCFSQb_X-1-cefw2szPaUZ-k2aPjR2PVaSeTZ22Do_3FjSJTF-DfqTym0bbTFxO5YQCB8XIpmqtWJmsXTl293i58r7VWaKi8mr_LUvTtUuPrXGzzfVWcZqEv2dh9oiFOyaa6Oz3rMsfsW4r1nY4ze2vrtzRtsrXgTU20rUKxjjXHd1Lk7AssxeFhL6Kcl1VYTpRaotCSb0QP_9EPCtj_Ywitc--S1Cz6u4MQ5dgFr7vzoBsCXBWWJxh-NLJimrTDCKWQXRUk8hfgiiD_z1GLsG4MFO3UbAKU7MQRktAxZ4vWBt7Vcmnqjet4qnPTDbkqf9DgG7IU_u0j9mGPLX_DWC-jKd03Y62RdGrKHS53l6a9M2g9OhkNJ5NqhMdT4sj4YFkHHd1tuPJypl-Bu5PVFUZr6C-FKj6E9hsge2tH_9l-V95YQxq",
+      "pinnacle": "eJzNWltv27gSfo5_BSGg2F2UaXgXVcQ9cC513ObixEnT7kvAWLTNRBdXop24v_6Aku0oWdtxTrungQGC4nxDzgyHw9HI2_-5jyMw1llu0qTu4XfIAzrppqFJ-nXv4vzjpvT-86G23VZ2cNLbGZnIUT7UNraLPoj0WEd1LxAesCrra_tlNhW9Qh7oRirPj1Ws696ZSvo684DKuzoJdx8Ie1qFeqI9ECuTdNLurbbNLB0N6x72wLVKQmPr3nGaaA8MVWIHOk2O1E2aNdOw7l1nJtG3JulXiCaZEvvZyA5uR5EHxkbfHaWhrnu7jcPdjvehtrGx3Y7URGcdqyzIrbJ1bzeNr02iw712xwNjFY103cNCYoneBZgLn8jA21rMep5aFf0PfIemp-c8XBK8DLif6Kw_6QyMjsI5A1opzv5Be46kVAryjuKAMULRUnHag0luuio6UvcmHsUHxp6rW53Mp5EB58t4P5pMn-nc5HYO95eCd9MoXBt8aPoDm5ikv_70A5Xma6OPVKJ20woULzWQg14kmc51NtYPG7FJl25FZ6grQP4Oc4YDUqC3t4pD5HrnmdZAda0Z685Qd53vF9O5B2AzrSvnis4OViuse-TRiXIjyANJGuq87hEqIWMMBhRBTBCGmBIOKRMBpIILyBDGkHFEICfUh5whCTljFHJJKBScSii4RNBHkkMfYwKlmyogSMCAcg4D6fsQI0kCiDELfIix4BhiLHngVhTSLYkIxFRKDjGXjEAssPAhFtIhfey7thDOl5hBLJnDB0gEEAeYMYgDjgTEgY8xxIHkEhLEmYAESU4goZi4lvkYEiaYayWTkHDkkJxxAQkPKIVEIOFD4vtSQiIRJpDIIOCQBEgGkAQOQxHmHFJEkGtlwCDFHElIsZAUUoICDCnB2IeU4kBASn03TgNUtDKAlCGKIWXMjTPhS0h5MY_gkkMqhPQh9TlikErKJKRSCAJpIAl2rcCQISoIZFgKARl2czKCGIaMCOb6gWCQUewwHFEOGaeYQsZZgCETlDHI_GIG32cUMsmcF0iJfMiCwJeQI0pdy3gAOWaIQU4C11IkBeSUYAo5w8Q5BGYEcoEQhlxwGUAuJBeQ-zgInJMwBnlAfQR5IKkPBUKIQIEIYlAgn3IoUMAIFJgi4VriQ4ElZVBQTAMoqB9wKKhkFAqGiHM3gpFrCSv8f2P74uyw6GwMrB3m77e27u7u3g2VHaQ9fW8i_a6bxltDledmrDfzWxNFm-64bDUajcZOv9UI7_ZGjeu7vbTfud_poOObU97aE_lZNDjDHzuNL6f36qr5Lf3b7oxsU_YNM23yqZXHUWd4fHhya_sTfn44Of1xe_MtaOvW1Sd0cH56f7x3dHF5ebb56XPvImud7306ukKkc7H_6Sz8OOxciqB_erl_-k1_uuk2vxz_HR7nN02cdy-O79Ov5zbsWnz11Yz0_Zl_R_F17-vlTtZq00Fzc__-2_l4kJ0chOkduRnF7XP-uRF1J193hqPj2L8Mv38_-TxsXN6eKPX3MOik8ferLD9t3uf-RWt0-ln0fETG33t7J3nHTI5-nHw_CvSPgJ5fB8ebJD8I98JgzNh5IkZxIOLD7PAEXfl9f6xHm235LSPp1e2Pzcu2OGgLcZX3G41GvV5sxNZsJ7bLOzovt2X6VIQcF32Kk-IBY3XsHrEo4-ICoDsuFaC_FOjOUgUolwELp60Ag2XAwjcfgAQtBTpnrQCnt_PG9lbFBttbLkgX4dxFcdfpOD8siUUX6ERdRzqsezYbaQ_kUWrr3k4aTkAji9NRViY_jTL-O47ZBbCx3dQx6JfrH2mrQmXVVsvqON9quqZAN3Xc6urOILUeKM7A2uhExdMLp9XVoByb5nQEe-D7SEXGTgobzR7c3Hu6p0aR9Z4qtkCLrRep0RkNh2lmG2GoQ5cj7KlY9fVzWpVMTR3_g-9Bv4IEHA3MiK9A0f1IxzpxuWMh06Wxg4a1qnubr63zpVbDNHkyUVXzOWmqOLgzdgDmy7wCK7SSbqZVrsPdzFiXf3ZsZm71-jZYPkHFwWcYMAOBOeo12uCFrr-Uf6UFXtFR-Khyq7OXen-Vq6prOf6vevl2qcFzYb48nwD_fIzvJGaos_xIZbdrxvl2lt7orjWRvtTqNtH5oxNRzvdHDsoZf6cPHOhMReFJr9V91uMXcTzoVA6DtAcKwu_b9gMdxdr-_KY3M7W2TabYB2tMB37nzrYz3TXu1XVtl53jH_SoDP6-HW1G6dhdFj99jMvgtatyeznQSRmCp3WWNaOe4z15zPlgLEcEdwOdzO77KWJqOf4bnKAVx2lmVbSromjdFPURS-USm46DkvD73GEnTe0v8IaPkYr1nsoHa9qlgq_cdm4QlKP_qkWmvXxWs_pi9B34kabx16Lw5Hrf5r3DUhLqzV-OHNw9FHpN612u39F2XvJyz8CU744famcqM3byHpw1zvZrnYkr8ebGpTA3-k5HANe-mMyERiXgkxuoFdzFwu-BFLVWPIxM19j8PUA1_w0w8xQoLkucwFVga7xKKXMGUBTuaphUSQ_36fRsFcZxaz4R3X9edPJKRZfPi05fqejB86Kz1yk6Qc-Lzl-p6Ph50cXrFH2l5HdF3l7rDE2iwU5691Tm0zKevgcEPZYf--iRMNNvKjNRGmGYA4aATYFEi6mYOyrhCMw_fczo2F9qgyXbs0rHtNcbqCSsNTJrokhnE3A6MmOdra3rW4wKTR5tU6lDMe7IT3Vw49P3stpbxt-45wdM-dVGJd1lm0ZXKTQosu7akbrRuTVd0NaRXVMZUvuT8k0q_qoa2H3vAe7bENjv9UzX6KQ7qU3VaOtE20xZnQPxZrEGC80z09l9MHsEno4XNapnzcBWmeE6DSduIDRdZfUfOWiq7HqVHab1zPdgZ3P-e2yct39StEnxX6WIjyso4GgUWTOMjM5AL529dc9ctngJAQOVgz8pe2rgxihTzra6a1dba7F9X2Qyvspk_SK7r33RUTrKQJnrr-05mC49lW8xegO6AyeWk9Tl8JnOc0eN5qd-oeYrjvoyvZe51mJ7rMyvrl16OzNHkeuub41H8e8oHRf1x6nohRuRv6o2aYxTE4KHMmXDRK6X1-iqiVZ6yzLDvCDOrEzhrl1cOdTKDnQGdtYPMksi5tKQ4Czg1HHfs58XeWXqpuJRpG3tJJncg0bZfxVR_oU6rszxMpP0ce1kqCJwZpL-_13Bn9w_vDILdMqRX6XcSyPISzWpplZHjWZr95Eqkelp0ItUflvbM2OXYDmhwMdiZF29lqxMVq4cuwu9XHnf6ixRUXnH_5Kl6cqlR9a42eZ6qzhNwl-zMHvBwh0TjXX2a9blL1i3EWs7mOT2Z1fuaDtN3oE1NtKVcsYo1x3dTZOwrLkXVYWeinI9Lcl0otQWVZNqVX7-vXhW0_onilS-AS9AzUq9MwxdgHn0sXcGZAuAsyrjDMMXTlaUnmYQsQiio4pE_gJEeQc8YOQCjIszVRsFyzAVC2G0AFTs-SNrY29a_5kWn5bxVGcma_JU_y5A1-SpfOfHbE2eyp8IMF_EU7puR9uiAlZUvVxvN016pl96dDIczSbViY4nxZHwQDKKr3VW9-TUR_4J3B-raZl8BsXTfzJsb80W2N56-sfN_wICUSBZ"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T09:16:12.527Z"
-  },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Bow"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Quiver"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "dexjewel"
-        ]
-      }
-    }
-  },
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "cold-bow",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Bandit Rogue's Head",
-          "tier": "low",
-          "effect": "(4-6)% increased Attack and Cast Speed",
-          "source": "Kraityn",
-          "area": "Act 2",
-          "note": "Attack speed for the bow."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "low",
-          "effect": "+(14-18)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance."
-        },
-        "upperLimb": {
-          "name": "Skeletal Archer's Arm",
-          "tier": "low",
-          "effect": "Projectiles deal (8-12)% increased Damage with Hits and Ailments for each Enemy Pierced",
-          "source": "Ironpoint",
-          "area": "Act 1",
-          "note": "Projectile damage per pierce."
-        },
-        "lowerLimb": {
-          "name": "Skeleton Wheel",
-          "tier": "low",
-          "effect": "(5-7)% increased Attack and Cast Speed if you've used a Movement Skill Recently",
-          "source": "Fleetfreak",
-          "area": "Act 6",
-          "note": "Attack speed after a movement skill."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Gelid Fangs",
-          "tier": "med",
-          "effect": "Damage Penetrates (6-8)% Cold Resistance",
-          "source": "Chill of the Mountain",
-          "area": "Act 9",
-          "note": "Cold penetration for Ice Shot."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "med",
-          "effect": "+(22-28)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance while gearing."
-        },
-        "upperLimb": {
-          "name": "Skeletal Archer's Arm",
-          "tier": "med",
-          "effect": "Projectiles deal (15-20)% increased Damage with Hits and Ailments for each Enemy Pierced",
-          "source": "Ironpoint",
-          "area": "Act 1",
-          "note": "Projectile damage per pierce."
-        },
-        "lowerLimb": {
-          "name": "Skeletal Tail",
-          "tier": "med",
-          "effect": "(20-30)% increased Projectile Damage",
-          "source": "Skeletal Abomination",
-          "area": "Act 5",
-          "note": "Projectile damage."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Hydra's Head",
-          "tier": "fixed",
-          "effect": "Arrows Pierce all Targets after Forking",
-          "source": "Hydra",
-          "area": "Pinnacle / Map Boss",
-          "note": "Arrows pierce all targets after forking."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "high",
-          "effect": "+(2-3)% to maximum Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Maximum cold resistance."
-        },
-        "upperLimb": {
-          "name": "Skeletal Archer's Arm",
-          "tier": "high",
-          "effect": "Projectiles Pierce (2-3) additional Targets",
-          "source": "Ironpoint",
-          "area": "Act 1",
-          "note": "Projectiles pierce additional targets."
-        },
-        "lowerLimb": {
-          "name": "Skeletal Tail",
-          "tier": "high",
-          "effect": "Projectiles Pierce, Fork or Chain an additional time at random",
-          "source": "Skeletal Abomination",
-          "area": "Act 5",
-          "note": "An extra pierce, fork or chain at random."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Ice Shot; a physical bow with attack speed is the first upgrade.",
-        "Life, a 3-link and movement speed carry Act 1."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed"
-          ],
-          "note": "A magic bow is enough in Act 1."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "3-link."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Keep moving."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Attack speed"
-          ],
-          "note": "Bench attack speed if the bow has a free suffix."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Add Added Cold Damage and Faster Attacks to Ice Shot.",
-        "Herald of Ice and Hatred are the damage auras."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "A rare bow is the damage slot."
-        },
-        {
-          "slot": "Quiver",
-          "mods": [
-            "Life",
-            "Elemental resistances",
-            "Critical strike multiplier"
-          ],
-          "note": "Quiver is cheap damage and defence."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "4-link."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Quiver",
-          "mods": [
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi on a free suffix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Six-link Ice Shot and reach 2,000 life; cap elemental resistances.",
-        "The bow and quiver carry the damage; do not over-invest in armour."
-      ],
-      "lookFor": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "The 6-link is the damage step."
-        },
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "A rare bow is still the main slot."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Crit multi is the damage stat."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "A 5-link clears white maps; start the 6-link and upgrade the bow.",
-        "Reach 3,000 life and cap resistances."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "The bow is the damage slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the 6-link."
-        },
-        {
-          "slot": "Quiver",
-          "mods": [
-            "Life",
-            "Critical strike multiplier",
-            "Elemental resistances"
-          ],
-          "note": "Quiver fixes resists and damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Critical strike chance"
-          ],
-          "note": "Bench crit chance if the bow has a free suffix."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Critical strike multiplier is the red-map damage upgrade."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "Upgrade the bow before the quiver."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link is the gate."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Crit multi."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi on a free suffix."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 Ice Shot and awakened elemental supports."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "The endgame bow is the last big purchase."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Life",
-            "Chaos resistance",
-            "Critical strike multiplier"
-          ],
-          "note": "Fix chaos resistance here."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Keep life on every jewel."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Cold Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 152 to 228 added Cold Damage"
-      ],
-      "tags": [
-        "cold"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Cold Damage",
-      "qualityWorth": "recommended"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Elemental Damage with Attacks": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Attack Skills deal 34% more Elemental Damage"
-      ],
-      "tags": [
-        "attack"
-      ],
-      "qualityEffect": "% increased Elemental Damage with Attack Skills",
-      "qualityWorth": "recommended"
-    },
-    "Faster Attacks": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 44% increased Attack Speed"
-      ],
-      "tags": [
-        "attack"
-      ],
-      "qualityEffect": "Supported Skills have % increased Attack Speed",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Grace": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Casts an aura that grants evasion to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 29% more Evasion rating",
-        "You and nearby allies gain 1545 additional Evasion Rating",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Hatred": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Casts an aura that grants extra cold damage based on physical damage to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 39% of Physical Damage as Extra Cold Damage",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "cold",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Herald of Ice": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage.",
-      "effect": [
-        "Base radius is 1.2 metres",
-        "Damage cannot be Reflected",
-        "Buff grants 38 to 56 Added Spell Cold Damage",
-        "Buff grants 38 to 56 Added Attack Cold Damage",
-        "Deals 308 to 462 Cold Damage"
-      ],
-      "tags": [
-        "area",
-        "cold",
-        "herald",
-        "spell"
-      ],
-      "qualityEffect": "metres to radius",
-      "qualityWorth": "optional"
-    },
-    "Ice Shot": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target.",
-      "effect": [
-        "60% of Physical Damage Converted to Cold Damage",
-        "Base radius is 2.4 metres",
-        "Chills Enemies as though dealing 195% more Damage"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "bow",
-        "cold",
-        "projectile"
-      ],
-      "qualityEffect": "% increased Area of Effect angle",
-      "qualityWorth": "recommended"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "lilly",
-        "act": 6,
-        "quest": "Fallen from Grace"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Increased Critical Damage": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "vendor",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have +138% to Critical Strike Multiplier"
-      ],
-      "tags": [
-        "critical"
-      ],
-      "qualityEffect": "Supported Skills have % to Critical Strike Multiplier",
-      "qualityWorth": "recommended"
-    },
-    "Increased Critical Strikes": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have +2% to Critical Strike Chance",
-        "Supported Skills have 117% increased Critical Strike Chance"
-      ],
-      "tags": [
-        "critical"
-      ],
-      "qualityEffect": "Supported Skills have % increased Critical Strike Chance",
-      "qualityWorth": "recommended"
-    },
-    "Precision": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Casts an aura that grants accuracy and critical strike chance to you and your allies.",
-      "effect": [
-        "You and nearby allies gain +701 to Accuracy Rating",
-        "You and nearby allies gain 58% increased Critical Strike Chance",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "critical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Sniper's Mark": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time.",
-      "effect": [
-        "Projectiles which Hit Cursed Enemies Split towards 2 additional targets",
-        "Cursed enemies take 29% increased Damage from Projectile Hits"
-      ],
-      "tags": [
-        "curse",
-        "mark",
-        "spell"
-      ],
-      "qualityEffect": "Cursed enemies take % increased Damage from Projectile Hits",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "ff8d44b826f6",
+  "patch": "3.30.0",
   "guide": {
     "summary": {
-      "text": "Ice Shot Deadeye is a cold bow build that measures 200.7k at red maps and 394.1k at pinnacle. Freeze is the defensive layer, the rare bow is the damage slot, and no unique is required.",
+      "text": "Ice Shot Deadeye is a cold bow build that measures 105.4k at red maps and 168.2k at pinnacle. Freeze is the defensive layer, the rare bow is the damage slot, and no unique is required.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8482,7 +8464,7 @@
         "gates.maps-red.metrics.dps",
         "gates.pinnacle.metrics.dps"
       ],
-      "factsHash": "c5d3ec82e14c891d"
+      "factsHash": "aa917fbbf31c6d94"
     },
     "leveling": {
       "text": "Level with Ice Shot and added cold, then add the critical supports as they unlock. The first checkpoint measures 383 life and 81 damage; the second measures 735. Keep a mana flask until leech and reduced cost are online.",
@@ -8496,7 +8478,7 @@
       "factsHash": "99afbac0429de1bf"
     },
     "maps": {
-      "text": "At red maps the build measures 200.7k damage, 27759 effective life and 7995 physical max hit. Freeze the first pack, keep the bow current, and cap the elemental resistances.",
+      "text": "At red maps the build measures 105.4k damage, 25830 effective life and 7440 physical max hit. Freeze the first pack, keep the bow current, and cap the elemental resistances.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8504,10 +8486,10 @@
         "gates.maps-red.metrics.ehp",
         "gates.maps-red.metrics.maxHit"
       ],
-      "factsHash": "ffcbdcfb38883b9d"
+      "factsHash": "12e972e57bcb22e7"
     },
     "bossing": {
-      "text": "Pinnacle measures 394.1k damage with 36559 effective life and 9668 physical max hit. Keep the mark up and fire from outside the boss's slam range; the freeze is a bonus, not a plan.",
+      "text": "Pinnacle measures 168.2k damage with 33862 effective life and 8955 physical max hit. Keep the mark up and fire from outside the boss's slam range; the freeze is a bonus, not a plan.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8515,8 +8497,14 @@
         "gates.pinnacle.metrics.ehp",
         "gates.pinnacle.metrics.maxHit"
       ],
-      "factsHash": "bbc2be43d18e44dc"
+      "factsHash": "5327a2c93722c994"
     }
   },
-  "medal": "B"
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:54:12.574Z"
+  }
 }

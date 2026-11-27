@@ -1,5 +1,5 @@
 {
-  "version": "45aad0bd25b6",
+  "version": "98edac145840",
   "builds": [
     {
       "id": "absolution-guardian",
@@ -324,10 +324,12 @@
       "family": "caster",
       "mainSkill": "Arc",
       "summary": "Self-cast Arc on the Elementalist shell. Arc clears packs without aiming, the exposure and shock package turns lightning into a real single-target tool, and the gear is the same spell sceptre and shield the totem build uses. No required unique.",
-      "status": "verified",
-      "seedHash": "2f660060cd06",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T09:13:57.905Z",
+      "status": "stale",
+      "seedHash": "a255d7077ac5",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 4,
         "singleTarget": 6,
@@ -341,11 +343,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -353,44 +350,6 @@
         {
           "label": "Caster",
           "kind": "playstyle"
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 49
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 443
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 61118
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 81903
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 171121
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 262071
         }
       ],
       "filter": {
@@ -475,10 +434,12 @@
       "family": "caster",
       "mainSkill": "Lightning Tendrils of Eccentricity",
       "summary": "The Tendrils totem is the default link: Lightning Tendrils of Eccentricity channels a semicircle in front of the totem, and every fifth pulse is stronger (a much larger area and an automatic critical strike), so the same six-link clears packs and kills bosses from two Spell Totems. The measured damage is per totem. Arc drops into the four-link helmet when an open layout wants a chain more than a frontal pulse. The Hierophant totem package pays for both totems, and no unique is required: a rare six-link, a spell sceptre and capped resistances are the core of the bill. For spread packs, swap Concentrated Effect for Increased Area of Effect or use the Arc helmet.",
-      "status": "verified",
-      "seedHash": "4c78766ba934",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T12:22:21.315Z",
+      "status": "stale",
+      "seedHash": "825b261fb65c",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 10,
         "singleTarget": 10,
@@ -491,11 +452,6 @@
         "name": "Covens"
       },
       "chips": [
-        {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
         {
           "label": "Covens",
           "kind": "season",
@@ -511,11 +467,6 @@
           "title": "The damage comes from summoned totems, not from self-casting."
         },
         {
-          "label": "Hardcore",
-          "kind": "defence",
-          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
-        },
-        {
           "label": "Dad",
           "kind": "note",
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
@@ -524,44 +475,6 @@
           "label": "Boss killer",
           "kind": "note",
           "title": "Single-target damage is the build’s defining strength."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 49
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 773
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 31150
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 47283
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 299931
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 934979
         }
       ],
       "filter": {
@@ -646,10 +559,12 @@
       "family": "melee",
       "mainSkill": "Boneshatter",
       "summary": "League-start melee build. Boneshatter trades a little life for stacks, so the gear is armour and resistances, the axe is a rare with attack speed, and the ascendancy makes the trauma survivable. Herald of Purity and Vulnerability turn the axe into damage, and no unique is required, which is what a strength build needs on day one of a solo league.",
-      "status": "verified",
-      "seedHash": "665276383e5f",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T09:15:06.569Z",
+      "status": "stale",
+      "seedHash": "543a8e98a501",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 10,
         "singleTarget": 10,
@@ -663,11 +578,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -675,11 +585,6 @@
         {
           "label": "Melee",
           "kind": "playstyle"
-        },
-        {
-          "label": "Hardcore",
-          "kind": "defence",
-          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
         },
         {
           "label": "Dad",
@@ -695,44 +600,6 @@
           "label": "Tanky",
           "kind": "note",
           "title": "Armour, endurance charges and Juggernaut defences."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 41
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 1446
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 136604
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 174328
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 590270
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 915745
         }
       ],
       "filter": {
@@ -809,10 +676,12 @@
       "family": "melee",
       "mainSkill": "Cyclone",
       "summary": "Two-handed Cyclone on the Juggernaut shell. The axe and the budget armour are the damage and defence; the ascendancy supplies endurance charges, recovery and stun immunity. No required unique.",
-      "status": "verified",
-      "seedHash": "540369b7ac09",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T09:15:19.751Z",
+      "status": "stale",
+      "seedHash": "06f9e570851b",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 8,
         "singleTarget": 9,
@@ -826,11 +695,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -838,11 +702,6 @@
         {
           "label": "Melee",
           "kind": "playstyle"
-        },
-        {
-          "label": "Hardcore",
-          "kind": "defence",
-          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
         },
         {
           "label": "Boss killer",
@@ -853,44 +712,6 @@
           "label": "Tanky",
           "kind": "note",
           "title": "Armour, endurance charges and Juggernaut defences."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 26
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 498
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 70603
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 136117
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 275068
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 554817
         }
       ],
       "filter": {
@@ -967,10 +788,12 @@
       "family": "caster",
       "mainSkill": "Essence Drain",
       "summary": "Chaos damage over time on the Occultist shell. Essence Drain and Contagion spread through a pack, Wither and Despair amplify the damage, and the build spends most of its time moving. No required unique.",
-      "status": "verified",
-      "seedHash": "870e34865312",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T09:15:32.967Z",
+      "status": "stale",
+      "seedHash": "63651767ade5",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 5,
         "singleTarget": 6,
@@ -984,11 +807,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -1001,44 +819,6 @@
           "label": "Dad",
           "kind": "note",
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 60
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 478
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 69354
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 90531
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 206457
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 320438
         }
       ],
       "filter": {
@@ -1123,10 +903,12 @@
       "family": "melee",
       "mainSkill": "Flicker Strike",
       "summary": "Flicker Strike on the Slayer shell. The build spends frenzy charges to teleport-strike through a pack, and Blood Rage plus Slayer leech keep the charges and life coming back. No required unique.",
-      "status": "verified",
-      "seedHash": "fdf882d1e748",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T09:15:46.104Z",
+      "status": "stale",
+      "seedHash": "0a94fb1fae99",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 5,
         "singleTarget": 7,
@@ -1140,11 +922,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -1157,44 +934,6 @@
           "label": "Fast clear",
           "kind": "note",
           "title": "Flicker teleports through the pack."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 115
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 520
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 123498
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 269724
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 486291
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 868731
         }
       ],
       "filter": {
@@ -1271,10 +1010,12 @@
       "family": "caster",
       "mainSkill": "Ice Nova",
       "summary": "Ice Nova is a self-cast cold nova: the Elementalist shell turns every hit into chill and freeze, so packs stop moving before they reach you. The build is a straightforward crit caster with no required unique, and the same sceptre and spirit shield carry it from white maps to pinnacle.",
-      "status": "verified",
-      "seedHash": "20fa7d965c37",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T09:15:59.281Z",
+      "status": "stale",
+      "seedHash": "1dee185a7162",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 5,
         "singleTarget": 7,
@@ -1288,11 +1029,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -1300,49 +1036,6 @@
         {
           "label": "Caster",
           "kind": "playstyle"
-        },
-        {
-          "label": "Hardcore",
-          "kind": "defence",
-          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 73
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 662
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 49196
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 78688
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 186948
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 274946
         }
       ],
       "filter": {
@@ -1427,10 +1120,12 @@
       "family": "bow",
       "mainSkill": "Ice Shot",
       "summary": "Cold bow build with the same league-start shell as Lightning Arrow. Ice Shot converts physical damage to cold, freezes the first pack, and turns a rare bow into the main damage slot. No required unique.",
-      "status": "verified",
-      "seedHash": "ff8d44b826f6",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T09:16:12.527Z",
+      "status": "stale",
+      "seedHash": "5983952f8f8f",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 4,
         "singleTarget": 7,
@@ -1444,11 +1139,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -1461,44 +1151,6 @@
           "label": "Fast clear",
           "kind": "note",
           "title": "A single arrow clears packs at range."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 81
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 735
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 33765
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 76075
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 200747
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 394144
         }
       ],
       "filter": {
@@ -1579,10 +1231,12 @@
       "family": "bow",
       "mainSkill": "Lightning Arrow",
       "summary": "League-start bow build. One skill in the body armour, a physical bow with attack speed, and gem levels carry the damage: nothing here needs a unique, so the same gear works on day one of a solo league. It is the second build the pipeline proves, and the first that is not a minion one.",
-      "status": "verified",
-      "seedHash": "abfceea27864",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T09:16:25.834Z",
+      "status": "stale",
+      "seedHash": "547d8ddeb92d",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 4,
         "singleTarget": 7,
@@ -1596,11 +1250,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -1613,44 +1262,6 @@
           "label": "Fast clear",
           "kind": "note",
           "title": "A single arrow clears packs at range."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 75
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 542
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 30541
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 56605
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 165238
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 320289
         }
       ],
       "filter": {
@@ -1731,10 +1342,12 @@
       "family": "caster",
       "mainSkill": "Penance Brand",
       "summary": "Penance Brand attaches to a pack, charges up and then detonates for a large ignite. The Elementalist Shaper of Flames node makes every hit able to ignite, so the build is a fire-and-forget brand that keeps burning while you place the next one, and it needs no unique.",
-      "status": "verified",
-      "seedHash": "df302d6eb698",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T10:43:44.916Z",
+      "status": "stale",
+      "seedHash": "a5cf78841ad1",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 5,
         "singleTarget": 8,
@@ -1748,11 +1361,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -1760,44 +1368,6 @@
         {
           "label": "Caster",
           "kind": "playstyle"
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 32
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 248
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 21784
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 36628
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 89089
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 135517
         }
       ],
       "filter": {
@@ -1881,10 +1451,12 @@
       "family": "minion",
       "mainSkill": "Animate Weapon of Ranged Arms",
       "summary": "Animate Weapon of Ranged Arms turns dropped ranged weapons into a poison firing line: each animated bow keeps shooting while you move, and the Necromancer shell keeps the swarm alive. The build needs no unique, only weapons on the ground and a Necromancer to command them.",
-      "status": "verified",
-      "seedHash": "9c07f2e62413",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T10:44:01.239Z",
+      "status": "stale",
+      "seedHash": "163f386620d7",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 6,
         "singleTarget": 8,
@@ -1898,11 +1470,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -1910,49 +1477,6 @@
         {
           "label": "Minion",
           "kind": "playstyle"
-        },
-        {
-          "label": "Hardcore",
-          "kind": "defence",
-          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 476
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 2904
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 25969
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 35522
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 75837
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 108064
         }
       ],
       "filter": {
@@ -2033,10 +1557,12 @@
       "family": "caster",
       "mainSkill": "Righteous Fire",
       "summary": "Righteous Fire on the Chieftain shell: a fire aura that burns enemies while you walk, backed by armour, life regeneration and fire resistance. Low APM, very forgiving, and no required unique. A Dad build by design.",
-      "status": "verified",
-      "seedHash": "b487d2857e6a",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T09:17:05.561Z",
+      "status": "stale",
+      "seedHash": "61480f1bfa9f",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 9,
         "singleTarget": 4,
@@ -2050,11 +1576,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -2067,44 +1588,6 @@
           "label": "Dad",
           "kind": "note",
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 29
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 747
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 11674
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 16062
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 65128
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 121164
         }
       ],
       "filter": {
@@ -2189,10 +1672,12 @@
       "family": "melee",
       "mainSkill": "Smite of Divine Judgement",
       "summary": "Smite of Divine Judgement is a lightning melee strike that calls a second bolt down on nearby enemies, so one swing hits the pack and the rare behind it. The Inquisitor critical package ignores elemental resistances, and the build needs no unique.",
-      "status": "verified",
-      "seedHash": "a9c037599df3",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T10:40:42.329Z",
+      "status": "stale",
+      "seedHash": "ace656082529",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 7,
         "singleTarget": 8,
@@ -2206,11 +1691,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -2223,44 +1703,6 @@
           "label": "Tanky",
           "kind": "note",
           "title": "Armour, endurance charges and Juggernaut defences."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 35
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 281
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 7728
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 12426
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 30359
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 67244
         }
       ],
       "filter": {
@@ -2497,10 +1939,12 @@
       "family": "caster",
       "mainSkill": "Storm Burst of Repulsion",
       "summary": "Storm Burst of Repulsion on Spell Totem: the totems channel orbs that bounce away from the target and detonate when the channel ends, so the damage keeps landing while you walk. The Hierophant totem and mana package pays for the channel, and no unique is required.",
-      "status": "verified",
-      "seedHash": "4c1389bedaca",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T10:43:26.509Z",
+      "status": "stale",
+      "seedHash": "75b08760c63a",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 6,
         "singleTarget": 7,
@@ -2513,11 +1957,6 @@
         "name": "Covens"
       },
       "chips": [
-        {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
         {
           "label": "Covens",
           "kind": "season",
@@ -2536,44 +1975,6 @@
           "label": "Dad",
           "kind": "note",
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 49
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 285
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 5478
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 13456
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 30107
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 46650
         }
       ],
       "filter": {
@@ -3143,10 +2544,12 @@
       "family": "caster",
       "mainSkill": "Winter Orb",
       "summary": "Winter Orb is a channel-and-run cold skill: hold the button until the orb is charged, then move while it keeps firing. The Elementalist shell adds chill, exposure and a lightning-free damage package, so the build maps with almost no aiming and no required unique.",
-      "status": "verified",
-      "seedHash": "bb7013a9700a",
-      "calibrated": true,
-      "verifiedAt": "2026-11-27T09:18:38.034Z",
+      "status": "stale",
+      "seedHash": "dc0b415e57f4",
+      "stale": {
+        "status": "waiting-for-pob",
+        "reason": "This build has not been verified against a patch fact set."
+      },
       "ratings": {
         "tankiness": 5,
         "singleTarget": 7,
@@ -3160,11 +2563,6 @@
       },
       "chips": [
         {
-          "label": "SSF",
-          "kind": "ssf",
-          "title": "Verified against self-found budgets with no required unique."
-        },
-        {
           "label": "Covens",
           "kind": "season",
           "title": "Created for, or last updated for, the Covens league."
@@ -3172,49 +2570,6 @@
         {
           "label": "Caster",
           "kind": "playstyle"
-        },
-        {
-          "label": "Hardcore",
-          "kind": "defence",
-          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
-        }
-      ],
-      "steps": [
-        {
-          "id": "until-12",
-          "pass": true,
-          "level": 12,
-          "dps": 73
-        },
-        {
-          "id": "until-28",
-          "pass": true,
-          "level": 28,
-          "dps": 698
-        },
-        {
-          "id": "until-68",
-          "pass": true,
-          "level": 68,
-          "dps": 37143
-        },
-        {
-          "id": "maps-early",
-          "pass": true,
-          "level": 80,
-          "dps": 49534
-        },
-        {
-          "id": "maps-red",
-          "pass": true,
-          "level": 90,
-          "dps": 108609
-        },
-        {
-          "id": "pinnacle",
-          "pass": true,
-          "level": 96,
-          "dps": 145173
         }
       ],
       "filter": {

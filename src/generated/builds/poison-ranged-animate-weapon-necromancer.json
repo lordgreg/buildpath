@@ -1006,7 +1006,846 @@
     "core": [],
     "optional": []
   },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Bow"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Quiver"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "dexjewel"
+        ]
+      }
+    }
+  },
   "status": "verified",
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "minion",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Bandit Rogue's Head",
+          "tier": "low",
+          "effect": "(4-6)% increased Attack and Cast Speed",
+          "source": "Kraityn",
+          "area": "Act 2",
+          "note": "Attack and cast speed for summoning."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "low",
+          "effect": "+(14-18)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance while gearing."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "low",
+          "effect": "+(30-50) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life for you and your minions to hide behind."
+        },
+        "lowerLimb": {
+          "name": "Sea Witch's Tentacle",
+          "tier": "low",
+          "effect": "Minions deal (10-15)% increased Damage",
+          "source": "Brood Princess",
+          "area": "Act 1",
+          "note": "Minion damage from Act 1."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Bandit Rogue's Head",
+          "tier": "med",
+          "effect": "(8-10)% increased Attack and Cast Speed",
+          "source": "Kraityn",
+          "area": "Act 2",
+          "note": "Keep the summoning speed."
+        },
+        "torso": {
+          "name": "Ornate Torso",
+          "tier": "med",
+          "effect": "Minions have (20-30)% increased maximum Life",
+          "source": "Greust",
+          "area": "Act 7",
+          "note": "Minion life; the aura stays on after they die."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "med",
+          "effect": "+(60-80) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life before damage scaling."
+        },
+        "lowerLimb": {
+          "name": "Sea Witch's Tentacle",
+          "tier": "med",
+          "effect": "Minions deal (20-30)% increased Damage",
+          "source": "Brood Princess",
+          "area": "Act 1",
+          "note": "The default minion damage leg."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Chimera's Head",
+          "tier": "fixed",
+          "effect": "Minions deal (35-50)% increased Damage if you've Hit Recently",
+          "source": "Chimera",
+          "area": "Pinnacle / Map Boss",
+          "note": "Swap to this only if you hit recently; otherwise keep Bandit Rogue's Head."
+        },
+        "torso": {
+          "name": "Ornate Torso",
+          "tier": "high",
+          "effect": "(3-5)% of Damage from Hits is taken from your Damagable Minions' Life before you",
+          "source": "Greust",
+          "area": "Act 7",
+          "note": "Damage from hits is taken from your minions first."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "high",
+          "effect": "(5-7)% more Maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "More maximum life is the best defensive arm."
+        },
+        "lowerLimb": {
+          "name": "Sea Witch's Tentacle",
+          "tier": "high",
+          "effect": "Minions have (8-12)% chance to deal Double Damage",
+          "source": "Brood Princess",
+          "area": "Act 1",
+          "note": "Minions have a chance to deal double damage."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Summon Skeletons until ranged weapons start dropping.",
+        "Animate every bow you find; Chance to Poison turns the volley into damage."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage",
+            "Minion gem levels"
+          ],
+          "note": "Any wand; the animated weapon does the damage."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "A 3-link is enough."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Movement speed is defence."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Add Minion Speed and start Desecrate plus Flesh Offering.",
+        "Take the first two labs when they unlock; Mindless Aggression is the army."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage",
+            "Minion gem levels"
+          ],
+          "note": "Minion wand."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Stay defensive; the minions do the damage."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "4-link",
+            "Life"
+          ],
+          "note": "Four links carry the swarm."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage"
+          ],
+          "note": "Bench minion damage on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Five-link the animate group and reach 2,000 life.",
+        "Add Vile Toxins and Deadly Ailments; the poison does the heavy lifting."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage",
+            "Minion gem levels",
+            "Minion attack speed"
+          ],
+          "note": "The wand is the minion slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Five links."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Minion damage",
+            "Minion life"
+          ],
+          "note": "Minion damage first."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "Reach 3,000 life and cap resistances in white maps.",
+        "Unbound Ailments is the sixth link; keep the swarm refreshed."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage",
+            "Minion gem levels",
+            "Minion attack speed"
+          ],
+          "note": "Minion wand."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the six-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Resistances before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Rings",
+          "mods": [
+            "Elemental resistances"
+          ],
+          "note": "Bench the resistance the gear is missing."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Keep a Desecrate and Flesh Offering on the bar for every pack."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Minion Skill Gems",
+            "Minion damage",
+            "Minion attack speed"
+          ],
+          "note": "Gem levels beat everything for minions."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Six-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Minion damage",
+            "Minion life"
+          ],
+          "note": "Minion damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage"
+          ],
+          "note": "Bench minion damage."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 gems and a +1 minion gems wand for bosses."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Minion Skill Gems",
+            "Minion damage",
+            "Minion attack speed"
+          ],
+          "note": "The wand carries gem levels."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "+1 to Level of all Minion Skill Gems",
+            "Life",
+            "Minion damage"
+          ],
+          "note": "The amulet carries gem levels."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Minion damage",
+            "Minion life"
+          ],
+          "note": "Keep minion life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Animate Weapon": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Animates a Melee Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
+      "effect": [
+        "Base duration is 40.00 seconds",
+        "Animated Lingering Blades deal 17 to 80 Added Attack Physical Damage",
+        "Can use Items requiring up to Level 100",
+        "Minions deal 38% more Damage",
+        "Minions have 38% more Attack Speed",
+        "Minions' Attacks deal 126 to 184 additional Physical Damage",
+        "Maximum 14 Animated Weapons"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "to Maximum Animated Weapons",
+      "qualityWorth": "recommended"
+    },
+    "Animate Weapon of Ranged Arms": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "divine-font",
+        "act": null,
+        "quest": null
+      },
+      "color": "g",
+      "support": false,
+      "description": "Animates a Ranged Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
+      "effect": [
+        "Base duration is 40.00 seconds",
+        "Animated Lingering Blades become Bows",
+        "Can use Items requiring up to Level 100",
+        "Minions deal 138% of Damage",
+        "126 to 184 Added Physical Damage",
+        "Maximum 14 Animated Weapons"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "to Maximum Animated Weapons",
+      "qualityWorth": "recommended"
+    },
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Chance to Poison": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 40% chance to Poison on Hit",
+        "Supported Skills have 94 to 141 added Chaos Damage"
+      ],
+      "tags": [
+        "chaos"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Damage with Poison",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Deadly Ailments": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal 80% less Damage with Hits",
+        "Supported Skills deal 44% more Damage with Ailments"
+      ],
+      "tags": [],
+      "qualityEffect": "Supported Skills deal % increased Damage over Time",
+      "qualityWorth": "recommended"
+    },
+    "Desecrate": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Desecrates the ground, spawning corpses based on monsters in the current area and dealing chaos damage over time to enemies. If you are using the Raise Spectre skill there is a chance to spawn spectral corpses matching your most recently raised Spectres. Spectral corpses cannot be interacted with except by Minion skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Spawns 5 corpses",
+        "Maximum of 10 corpses allowed",
+        "Deals 294 Base Chaos Damage per second",
+        "Spawned corpses' level matches the area level, up to a maximum of Level 80"
+      ],
+      "tags": [
+        "area",
+        "chaos",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cast Speed",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Flesh Offering": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Siren's Cadence"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Consumes a corpse, which temporarily empowers your minions with swiftness. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
+      "effect": [
+        "Base duration is 5.00 seconds",
+        "Additional 1.00 seconds Base Duration per extra corpse Consumed",
+        "Grants Minions 30% increased Attack Speed",
+        "Grants Minions 29% increased Movement Speed",
+        "Grants Minions 30% increased Cast Speed"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "spell"
+      ],
+      "qualityEffect": "% increased Effect of Offering",
+      "qualityWorth": "recommended"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "lilly",
+        "act": 6,
+        "quest": "Fallen from Grace"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Minion Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Minions from Supported Skills have 25% less Maximum Life",
+        "Minions from Supported Skills deal 39% more Damage"
+      ],
+      "tags": [
+        "minion"
+      ],
+      "qualityEffect": "Minions from Supported Skills deal % increased Damage",
+      "qualityWorth": "recommended"
+    },
+    "Minion Speed": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Minion Movement Speed",
+        "Supported Skills have 34% increased Minion Attack Speed",
+        "Supported Skills have 34% increased Minion Cast Speed"
+      ],
+      "tags": [
+        "minion",
+        "movement"
+      ],
+      "qualityEffect": "Supported Skills have % increased Minion Movement Speed",
+      "qualityWorth": "recommended"
+    },
+    "Summon Skeletons": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Summon Skeleton Warrior minions at the targeted location. They use a melee attack and die after a duration. If made aggressive, Skeleton Warriors will also dash towards nearby enemies.",
+      "effect": [
+        "Base duration is 20.00 seconds",
+        "Summons 3 Skeleton Warriors",
+        "Maximum 7 Summoned Skeletons"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "spell"
+      ],
+      "qualityEffect": "to Maximum Summoned Skeletons",
+      "qualityWorth": "recommended"
+    },
+    "Unbound Ailments": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "54% increased Duration of Ailments inflicted with Supported Skills",
+        "Supported Skills deal 19% more Damage with Ailments",
+        "Supported Skills have 54% increased Effect of non-Damaging Ailments on Enemies"
+      ],
+      "tags": [],
+      "qualityEffect": "% increased Duration of Ailments inflicted with Supported Skills",
+      "qualityWorth": "recommended"
+    },
+    "Vile Toxins": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal 5% more Damage with Hits for each Poison on the Enemy, up to 8",
+        "Supported Skills deal 19% more Damage with Poison"
+      ],
+      "tags": [],
+      "qualityEffect": "Supported Skills deal % increased Damage with Poison",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "163f386620d7",
+  "medal": "A",
+  "stale": {
+    "status": "waiting-for-pob",
+    "reason": "This build has not been verified against a patch fact set."
+  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -1909,16 +2748,16 @@
       "thresholds": {
         "life": 1800,
         "maxHit": 1800,
-        "dps": 4000
+        "dps": 3500
       },
       "metrics": {
         "dps": 25969,
         "minionCount": 8,
         "dpsSource": "minion",
-        "life": 3640,
-        "energyShield": 194,
-        "ehp": 16606,
-        "maxHit": 6460,
+        "life": 3517,
+        "energyShield": 187,
+        "ehp": 16042,
+        "maxHit": 6261,
         "resists": [
           75,
           75,
@@ -2945,10 +3784,9 @@
           "slot": "Jewel 1",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -2958,10 +3796,9 @@
           "slot": "Jewel 2",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -3099,10 +3936,10 @@
         "dps": 35522,
         "minionCount": 8,
         "dpsSource": "minion",
-        "life": 4559,
-        "energyShield": 224,
-        "ehp": 20361,
-        "maxHit": 8068,
+        "life": 4404,
+        "energyShield": 216,
+        "ehp": 19667,
+        "maxHit": 7815,
         "resists": [
           75,
           75,
@@ -4269,10 +5106,9 @@
           "slot": "Jewel 1",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4282,10 +5118,9 @@
           "slot": "Jewel 2",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4423,10 +5258,10 @@
         "dps": 75837,
         "minionCount": 8,
         "dpsSource": "minion",
-        "life": 6451,
-        "energyShield": 303,
-        "ehp": 31110,
-        "maxHit": 11118,
+        "life": 5874,
+        "energyShield": 276,
+        "ehp": 28325,
+        "maxHit": 10184,
         "resists": [
           75,
           75,
@@ -5822,10 +6657,9 @@
           "slot": "Jewel 1",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5835,10 +6669,9 @@
           "slot": "Jewel 2",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5848,10 +6681,9 @@
           "slot": "Jewel 3",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5861,10 +6693,9 @@
           "slot": "Jewel 4",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5874,10 +6705,9 @@
           "slot": "Jewel 5",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5887,10 +6717,9 @@
           "slot": "Jewel 6",
           "base": "Viridian Jewel",
           "mods": [
-            "+80 to maximum Life",
-            "13% increased Attack Speed",
-            "30% increased Projectile Damage",
-            "+25% to Critical Strike Multiplier"
+            "6% increased maximum Life",
+            "4% increased Attack Speed",
+            "11% increased Projectile Damage"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -6047,10 +6876,10 @@
         "dps": 108064,
         "minionCount": 8,
         "dpsSource": "minion",
-        "life": 7720,
-        "energyShield": 349,
-        "ehp": 40917,
-        "maxHit": 13167,
+        "life": 6986,
+        "energyShield": 315,
+        "ehp": 37019,
+        "maxHit": 11981,
         "resists": [
           75,
           75,
@@ -7493,10 +8322,9 @@
           "slot": "Jewel 1",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7506,10 +8334,9 @@
           "slot": "Jewel 2",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7519,10 +8346,9 @@
           "slot": "Jewel 3",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7532,10 +8358,9 @@
           "slot": "Jewel 4",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7545,10 +8370,9 @@
           "slot": "Jewel 5",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7558,10 +8382,9 @@
           "slot": "Jewel 6",
           "base": "Viridian Jewel",
           "mods": [
-            "+100 to maximum Life",
-            "17% increased Attack Speed",
-            "40% increased Projectile Damage",
-            "+35% to Critical Strike Multiplier"
+            "7% increased maximum Life",
+            "5% increased Attack Speed",
+            "12% increased Projectile Damage"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7703,861 +8526,20 @@
       }
     }
   },
-  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJzVWmtz2joT_lx-hcYznemZikYXS7Y7oWcckpK0uZCQy2m_dAQIUOILtWUS-uvPyDZgUiDkbc_bdpjRyLvPSnpW0lpesfv3QxiAiUxSFUcNC79BFpBRL-6raNiwri7f113r73e13bbQo7PBXqYCo3lXe7Gb10EgJzJoWB6ygBbJUOrrWVP0C7JALxBpeipC2bBulO6NLCDSnoz6zYX8VPaSOBRRTyYWCIWKOnHvTupWEmfjhoUt0BVRX-mGdRpH0gJjEemRjKMTcRsnrbjfsIIsEolKKyoVlaphkunRXRZYYKLk_Unclw2r6R83O9a72osXu-1ATGXS0UKDVAvdsJpx2FWR7O-3OxaYiCCTDcuzHe8NRy6zkeM5jrWz2vQy1iL4H-yO1UDObbjN8DrgQSST4bQzUjLozw0oohsHdHDYXmAxxuiNTVzPxTYj6-zao2mqeiI4EQ8qzMJDpS_FnYzmzWCMsbvO-L1K5IVMVarneIetAzfjoL81-FgNRzpS0XD75kciTh-h-Vp3nYhINOMKlK1t2ECvokSmMpnIxVxgz1tn0RnLKvBN4b_dnXwPmdplIiUQPa0msjOWPbPu85bMA9CJlJVtRWf76qjfsOjSjjISZIEo7su0YWGEOMSIYogJohA73IGEeARSzji0qedAZmMGmWNTyAlF0MGYQIe6LnQ4tqHDTc2jLnSLwnahxyiDGOWtIttDECPmGImHbIhxLiEuwhBThDyIKfZM3XUZxAxx25Quhpg7xspxTGuOSzDErssZxB6nDBLEbA4JpgibkiJIMHdcSLBrtNhjLiQEcQIJQ6bOscch4cRBpvSMxHYxJNyxESSOoU8cjrEpmQeJ47guJI5HPGgGSyDxsOdBiih1IcWuwyAlBCNIqe14kFKHMUht7GBIbddFkDLXsyHlCDvGnbZxKqdG4mFmStuD1GHclNxYOZ5p3-O2C6nnYlMan9qIcgJtjD0EbUw4hTa2HSPxXA_ajHkU2txGLrS5hxG0HcIwtJ3cynUcF9oeYTZkmGACGSWYmtLx8qk1pW2baXa5Cxkjps5sl0HGPMQhcwjJS25D5hLsmtI2dRsRyDzCTMkRhxxRz4UcmbFxxGwHcuR4GHJMCYIc29iDHLvUhtxQhZx6DofcNj7kDBk5w4zmq_rF7tXFcV55MdJ6nL7d2bm_v38zFnoUD-SDCuSbXhzujEWaqomsp3cqCOpmE-z4vu_vDU_87n072_N7B-l9N2q2z886ewf6fad3030Y3bTcYY_ukfrhcDjw1fHXo8l50J72Jh_b8fhy-vXT8dnR1L88vjixe6R9mXw6y4K9Ebo-vPiMP6RX029XBx8uT69PO9cf2XUH_9O6Vmxkh5-vPo9ZmIX9B3F48fWcTLpdX6e3LfS5e_Mw3aeiOTg69VB8fDj0svfSHvm3--Ik_cTrtw9fz0_Y3vVd2rr8wC4mYdbsqvF9MxJfh-zrwSQeNu_2ukef9ZWi7URdZucf6yrdC6f-tzbt-wNkf7m5Ph20yTEVn3T9I3X2b0V2dsCax1H_7PaG15307Gy679i3E_6l9bF-OWC8nXS-DJP68Nz3c4fvzDy-W7xd08L95VMeMEzsMEHAAkrL0DxhXsSz73H5fqsAnXXAfFNUgO46YL72K0BvHTBfagsgQeuBbrVrUr5YX-zuVFywu2MibB6LTQg2lY5ZboUyrwIZiW4g-w1LJ5m0QBrEumHtxf0p8JMwzspTi18Eb2Mxi94vdlsyBMOi_xOpRV9osXOkZZjutEyRo1sy9CMVCi1vpBjHkR_oTxbIF_2z7CwQibB8e5QKUGhAPAAXIhrKvhlxas0ObQRZ4GsmAqWnSw-m2305EFmgrcfsV1DdeRbXTjYex4k-UZGKo30RiqF8im1h0ZLhstGCbiEHM8VvQK85MgdaHbdjlZqp2ZLgsUxTmcyMFgSL5oCOwUz3G3C8VoG8jB9UlG7Nr2qyYGekYCb-DYjtS9EPpr4KQhnp7ck9NlsQLDRgofoNSF5F3TiL-s9m-Z3dgmap-m957hZEnorPZeTDPx6c3wcyHZ0NBjJR0XDLwPzIZuGiXAEWml-5EPZlKnuJ0E_G3-_x1aU9F_66yZ59FP_oVO9LLZNQRUKrp4P2apuqZ5YUv3Kmm4FIlJ5uyWiOrrx_ZqJfN8etIJ7I9MfnePaCFqm-GcnyMFFmOLYMgcb2bNmy4iqRanA_krPjCCgRpefYL5j-ozCMEy2CpgiCLdfAssmC3UwOCsWvWw57cax_wmp4H4hQ7ot0tHVgn-OrQV2EEhTS3-DN7ic9EclOljzjZL1kU_mOyMWglP-ns13W0lk27FrJe_AtjsN_8pSWqX2a146LkeTphOLLzcDNQ86uzKSZekfqeTLNPANVfNi-q13kIe0tuPAvDmqdqUkdpyqVfXAr72UAcO1aJaqvRAQ-GEEtt847fgtcUjsKx4HqKZ2-Baj22kXmcB4WKVNgcro1TF8CFfUSKUyjvtaidwfyRGCNoqqqncS3sqfNIbgIGbXXhL007TUTpU0qFnR0ou4kOMkCrcaBkknuOjOiR8Scp4mRP5KY-zQx-kcS854mZv-JxAh6mhj7I4nhp4nxP5HYRl73-fdUrTNWkQR78f1jRufFO-AtIGiZHbaXx1veLs1G6_f7KaC5AzharcXEaLGLwPwOaKbf4KY1k7eJYzwYjETUr_mJVkEgkyk4z9REJltzXTWTOQXXiB32HQEjLkad1l4bR-m4ginurkzmZw0buonNSAah1LVWor59C6agLQO9JRFSe0VxnZK_qs41l17AXJCBg8FA9ZSMetNayaItI6nNR2AK2MvVBFa5ZsbYXBouYUu5uR982gn2Jid04_605qc6EQE4lkKPNs9mmRl-C_bq89-yZ16_IrxOnL-e2GJgECez9Viu1VYiehKMRApeEbdO0ZJ3_SwRxrGypze6arVvn-Uvtslfw_wrq3YokvE0vVMRKD67tl44GK_dkK_dl6A3z2Oao2ci09Qog_l-f2YoXEd83cJa7ZCNh8Gu-c6odXSchInqywTkHx5b-8Nd2kLxRJrEWDn6V8SuE_5X1Sv-JFZ9cBDkMBHMM2k1E9PXNrRpwaxzzTOizMYzZdeElXJngb3tY8zqYLk2IpCSjbnSf3rEGw-LIswCqWtn0fQB-EX918f3ZxLceGg0mUVcOxuLAFyoaPj_ZfeDM4c3nhoNM_KTmD03djyXSPU0deK3jppLTAI1kGAQiPSutq8m5kxlBgXe55Jtaa3pmWzsOTTv8aLnAy2TSATFq_2ndE03dp1pZVore28lIlL6J3G2n9HxeSYS_e3n9Mue0a8fSj2apvpHe-5IXZ7XgVY6kJWsS5bKjuzFUb-4_siTHwMRpLLMinWCWOfpneoFyfzOfZZu-h5FKvfoK1CH-VFzgaErMEsX5jOgvQI4S_TOMGxlY3n2bwbhqyAyqIzIWYEogv8C467AmDBT9ZG3DlPxEEYrQPmcL3kbW2WaqsyRrbOptky2tKn-k4JuaVP9m4a9pQ2r2LBVNsXS7UidJ-ry5JypNeNooIbFio7G2axRGclwmm8JC0RZ2JVJw3Jn_9j7DngwEWlx51JCHZej8o91sw52dx7_cfVf5MJ-hQ==",
+    "code": "eJzNWmtz2roW_Vx-hcYzZ6ZnKho9LNnuJL3jkISkzYOEPE77pSNAgBI_iC2T0F9_R7YBkwIhtz03GWY08tba0l5b0ra8xfZ_HsMAjGWSqjjasfBHZAEZdeOeigY71tXlQd21_vO5tt0SenjW381UYFo-195t53UQyLEMdiwPWUCLZCD19bQr-gNZoBuIND0VodyxbpTuDi0g0q6Meo25_FR2kzgUUVcmFgiFitpx907qZhJnox0LW6Ajop7SO9ZpHEkLjESkhzKOTsRtnDTj3o4VZJFIVFppUlHZNEgyPbzLAguMlXw4iXtyx2r4x4229bn27t12KxATmbS10CDVQu9YjTjsqEj29lptC4xFkMkdy7Md7yNHLrOR4zmOtbVc9TLWIvgf9I5VX850mOvYq4D7kUwGk_ZQyaA3UyAOX2vQ_mFrjnUpYR8p9bhHMcKr9FrDSaq6IjgRjyrMwkOlL8WdjGbdYITdlUYeqEReyFSleoZ32CpwIw56G4OP1WCoIxUNNu9-KOL0CZrTVegTEYlGXIGylR0b6FWUyFQmYzmfC-x5qzTaI1kFfnRz4PZWvodM7TKREoiuVmPZHsmuWfd5T-YB6ETKyrai03111Nux6MKOMhJkgSjuydTMFOIQI4ohJohC7HAHEuIRSDnj0KaeA5mNGWSOTSEnFEEHYwId6rrQ4diGDjc1j7rQLQrbhR6jDGKU94psD0GMmGMkHrIhxrmEuAhDTBHyIKbYM3XXZRAzxG1Tuhhi7hgtxzG9OS7BELsuZxB7nDJIELM5JJgibEqKIMHccSHBrmnFHnMhIYgTSBgydY49DgknDjKlZyS2iyHhjo0gcQx94nCMTck8SBzHdSFxPOJBYyyBxMOeBymi1IUUuw6DlBCMIKW240FKHcYgtbGDIbVdF0HKXM-GlCPsGHfaxqmcGomHmSltD1KHcVNyo-V4pn-P2y6knotNaXxqI8oJtDH2ELQx4RTa2HaMxHM9aDPmUWhzG7nQ5h5G0HYIw9B2ci3XcVxoe4TZkGGCCWSUYGpKx8un1pS2babZ5S5kjJg6s10GGfMQh8whJC-5DZlLsGtK29RtRCDzCDMlRxxyRD0XcmRs44jZDuTI8TDkmBIEObaxBzl2qQ25oQo59RwOuW18yBkycoYZzVf1u-2ri-O88m6o9Sj9tLX18PDwcST0MO7LRxXIj9043BqJNFVjWU_vVBDUzSbY8n3f3x2c-J2HVrbrd_fTh07UaJ2ftXf39UG7e9N5HN403UGX7pL64WDQ99Xx_dH4PGhNuuOvrXh0Obn_dnx2NPEvjy9O7C5pXSbfzrJgd4iuDy--4y_p1eTn1f6Xy9Pr0_b1V3bdxv80rxUb2uH3q-8jFmZh71EcXtyfk3Gn4-v0tom-d24eJ3tUNPpHpx6Kjw8HXnYg7aF_uydO0m-8fvt4f37Cdq_v0ublF3YxDrNGR40eGpG4H7D7_XE8aNztdo6-6ytFW4m6zM6_1lW6G078ny3a8_vI_nFzfdpvkWMqvun6V-rs3YrsbJ81jqPe2e0Nrzvp2dlkz7Fvx_xH82v9ss94K2n_GCT1wbnv5w7fmnp8u3i7poX7y6c8YJjYYYKABZSWoXnC5bvlV1y-3ypAZxUw3xQVoLsKmK_9CtBbBcyX2hxI0GqgWx2alC-8d9tbFRdsb5kIm8diE4JNpW2WW9GYV4GMRCeQvR1LJ5m0QBrEesfajXsT4CdhnJWnFr8I3kZjGr3fbTdlCAbF-CdSi57QYutIyzDdapoiRzdl6EcqFFreSDGKIz_Q3yyQL_oX6VkgEmH59igbQNEC4j64ENFA9ozFqTU9tBFkgftMBEpPFh7MsHuyL7JAW0_ZL6G69SKu7Ww0ihN9oiIVR3siFAP5HNtCoynDRaU53UIOpg1vgF5jaA60Om7FKjVTsyHBY5mmMpkqzQkW3QEdg2nbG-B4rQJ5GT-qKN2YX1Vlzs5IwVT8BojtSdELJr4KQhnpzck9VZsTLFrAvOkNkLyKOnEW9V7M8he9Oc2y6d_luV0QeS4-l5EP_35wPghkOjzr92WiosGGgfmJztxFeQOYt7zmQtiTqewmQj8bf3_FV5f2TPh6kz39KP7dqd6TWiahioRWzwft5TpVzyw0vOZMNwKRKD3ZkNEMXXn_TEWvN8fNIB7L9PfnePqCFqm-GcryMFFmODYMgUb3bFGz4iqRavAwlNPjCCgRpefYK0z_URjGiRZBQwTBhmtgUWXObioHRcPrLYfdONZ_YDUcBCKUeyIdbhzYZ_hqUBehBIX0DbzZ_aQrItnOkhecrBd0Kt8RuRiU8n91tstaOs2GXSv5AH7GcfhPntIytW-z2nFhSZ5OKL7cDNw85OzKTJqpt6WeJdPMM1DFh-3n2kUe0j6BC_9iv9aemNRxqlLZA7fyQQYA165VonpKROCLEdRy7XzgT8AltaNwFKiu0ukngGr8L6CibiKF0Q-LxCkwmd2aXW3xtRbdO5BnA2sYV5taSXwru9qchIu4kTvHjPnEdOd508kbNd193nT6Rk33njfdfpumE_S86eyNmo6fN52_TdPXWv6Qf5vU2iMVSbAbPzy1-byIp58AQYv2YxstGFPe1ExN8Xu9FFBk0gQcLW_FxLRiF4HZfcq0HdOVPlgxPes4xv3-UES9mp9oFQQymYDzTI1lsjHXD25OZGGWcgquETvsFwJGXFid1j4YR-m4ginugUwWZQUbuo7NUAah1LVmon7-DCagJQO9IRFSe09xnZK_q841F0jAXDaB_X5fdZWMupNayaIlI6nNB1UK2F_LCSxzzZSxuYBbwJZyc9f2vBPsdU7oxL1JzU91IgJwLIUerp_NMsv6CezWZ79Fz3x4T3idOH8XBiZK58u1rRN1J8FJFmg1CpRMQD9OpuuxXKvNRHQlGIoUvCdunaIF7_pZIoxjZVevddVy377IX2ydvwb5F0vtUCSjSXqnIlB8wmy8cBYjz8KG_OD-BbqznKA5xiUyTU1jMNvvy6iv2eOriK9aWMsdsvZg1TFn9lpbx0mYqJ5MQH6I39gf7sIWisfSJJlK698Tu07431Wv-ONY9cB-kMNEMMtK1Qhb09G6BbPKNS-IMmtPbx0TVsqdBXY3jzHLg-XKiEBKNuZ6_HmL1x7aRJgFUtfOoskj8Iv668f3FxJce7QzWTpcOxuJAFyoaPD_ZfebM4fXnvwMM_KHmL00dryUSPU0deI3jxoLTALVl6AfiPSutqfG5kxljAIHuWRTWitGJmtHDs17vBh5X8skEkHxav8jQ9O1Q2damd7K0ZuJiJT-Q5ztFwx8nolE__wz47IXjOuHUg8nqf7dkdtSl-d1oJUOZCWDkaWyLbtx1CuuEvJEQl8EqSwzTO0g1nmqpHrZMLu_nqZufkWRyp30EtRhftScY-gSzMLl8xRoLwFOk6ZTDFvaWZ5Jm0L4MogMKhY5SxBF8J9j3CUYE2aqPvJWYSoewmgJKJ_zBW9jq0z5lPmmVTrVnsmGOtV_JdANdap_ebA31GEVHbZMp1i6banzpFee6DK1Rhz11aBY0dEom3YqIxlO8i1hgSgLOzLZsdzpv99-Ae6PRVrcX5RQx-Wo_JPadIDtrad_Av0vMONFeg==",
     "byStep": {
       "until-12": "eJzFWFtz4jYUfo5_hUYz-1QI2Oaagd0xJCGZgWw2TnbbvnQU-4BVZIlKMoT--o58AWcLhGzS7ovnSPrO7bN0dOzep6eYoSVIRQXvY_u0jhHwQISUz_r44f6y2sGfPlq9W6Kjz9NBQplZ-Wid9FIZMVgC62PbwUgTOQP9tTDl_lHHKGBEqRsSQx9_ozqIMCIqAB4Ot_M3EEgREx6AxCgmlPsimIMeSZEs-tjG6JHwkOo-vhEcMFoQriMQfEL-FHIkwj5mCSeSqtIS5fnSTCY6micMoyWF1USE0MdDbzz08Ufr5KR3y8gapK-JRkoT3cdDET9SDuH5rY_RkrAE-rjZPW10Om6n2aw3cG233r3QhL1WaUynsFFwW919uAsOcrb2Iwos3OI7B2O5uLrdQtudU7ftOJ1616637X16t9Fa0YCwCXmicRJfUX1P5sA3Zhr19j7VSyrhDhRVeoOutur70EPBwu_Rjb3pjOks0pzy2fEqw4gIdXw8E8LJUJSw9kHoA5egQC5h-zLszl4NfwEloJPCerX07BjpXgIgEmi6BH8BgdnvqR0zQFoClI6TW5yn67CP3WcnyczUMeIiBNXHDbfbrnS6jU7FsVvtTsVpd51uxbU77WbFdRy7XnFbzYZTcdvNVrfSbDQa7Uqz7Tgt82w1Kq16u5vFcdJ7uBunwkmk9UKd1Wqr1ep0QXQkpvBEGZwGIq4tiFJ0CVU1p4xVTdg1z_O8wWziDaMLfb28e5Bx_ffp9U23LlrVubqaUl1deZ7XT53Uci-9msk7ZcgQYwTfmFQZJ0ZEwMkjg7CPtUwAI8WE7uOBCNfIk7FI8hriZZQajYLTk94IYjSD2JA1AU1CokntWkOsaiPzSNEjiD1OY6LhG5CF4BilSb1Sh5M4f5_5AipW8nrZwOivhDCq1-mLy2Xj5RymJGEaf5_ojqxqr0rLTxYLIfWEcir4OYnJDF5KLtMYQfxcaZtdNo-KhTw556clN4zMPaLFraDq5Xe3SW8MSoEslLbpZeaQFqhYyzNsvluGvSyFlzZ4tn2Q_fbd7SdxLLg_BwZacHXk_v6X1pakbAmV1oqe4P8m6QpYDPrtFA0ZkVSvj6Rmgy7tm2LqZzExEEKrtxNxyUgM50RFR1JRwm_JSCdRNvvufLy2QHgyIBz8RL6i-D3TKVX2dBrl8_9hYcglVfQLXyms0N9CxL-mPoz020YaZ3G4eHOLGrgZpLnlvYaRfdCbdsOMEQ2z8V26ec_QxBtdDy1_bZpqRRWEaJVWIWss-AwNxMpK1VKPZ8h2rC9Ztmeobl3HC0YDqpUZeGGokGvKaKOONv1cfmtYzQ-I8kACMR48rUkwR2nXlJJgXDwP0TkYYpTWAOte0kBIDseG-IvTNPHFWe-LTGu-x7170P2jCNeWryVZLCBEYyA6AnkgiOxbR52hQXVQHfxoTI2DMc2YWIKy7imfg0SjbPTuvDRf4EVoZY0E0RENAaX16S0x2M92zUQsIQauD-6b1uEAgWkrf19oYAbvzlD7YAAkThho6zNfPyEvk4-NwHY-mBC2Jyv79jG9y55QOgdDkZTPbOvzgjB0R_ns_Znovuje-QH3OQ3m8_JlBuz6wRjEdBoRHlp-RORcC6Ej5EkpVuhLQpcHT_QPUmIfrryMTgFNGVFzawIhzW2hy3TmyGD2OD5cT2PCSe7YjwljyHwCv4vfw4U00dQYy11_SWgwV5QtQb7Rtw86v-iQpppB6WJOFPgQCB5mzXZ6P04JU5A3TT4TOr3_y-041VnvselHSqiiHy0wzg7Msy_XAujuAGZ1e4tp7DSWtn0FpLkLAqwUUWsHIis-W0x7B8acy3L2nX0YZ4vp7sDkPJZQxb-XZ7D0lT9j28Z5J5O3Uft0ypadI3Xcko67SyfbUj7otMdK-yojDQWf0lm20_giKYwCh3id7lSMeBI_gkzt1nYDL5bE_O_ZQl23m_80Kuz3at__jP0H7UDneQ==",
       "until-28": "eJzFWVtz4rgSfg6_QuWqfVon-IJvKZgtB2ZIzsLkQmZm9-mUYjeggyxxJBmG-fVbsg04WSDMhJqpVKV0-Vr9tVrdapn2H18zihYgJOGsY9gXloGAJTwlbNIxPj1-OA-NP9412ndYTW_HVzmheuZd46xdtBGFBdCO4YQGUlhMQH1eL-X-1zJQQrGUH3EGHeMLUcnUQFgmwNLudvwjJIJnmCUgDJRhwkY8mYHqC57PO4ZtoCfMUqI6xkfOwEBzzNQUOBvi_3HR52nHoDnDgsjaFGHV1ETkajrLqYEWBJZDnkLH6MaD7sh41zg7a99RvAIxUlghqbDqGF2ePREGae9uZKAFpjl0DNd3LiLPtZ2W5biubzR3iz5yhekPyA3IGDYytu209gHfMxCT1WhKgKYbgdZeeMHn_fXddm0nsi_80PZ927OsvXzupitJEkyH-CvJ8uyaqEc8A1ajGAX7ZD8QAQ8giVQb-Llv7UN3OU1fot296AGZTBUjbHK8SHeKuXwJd7x98CFmuMtrWHvvJmnoJyZAglhAWtubcJ_EaA41oFPA2s0ihnTrUQAgnCiygNEcEn3ui3V0BykBUAsrdx1XN2nHcJ9FlB6xDMR4CrJj2JZrm44TOWbLjQIzcMPQDCI3NMOoFZq2a1mRaXtWaJt25Lue6diuZZuO7Qeh6TiW75hO4Fiu6QS-F5lOEDmR6dph4Jmu49iW6bqB55mu77Uc0w08PzLdwA9s0438Vmi2wiAITa_VagWmFziOr__7LdO33Cg0fSuIbNO3XccyfTeIosLes_anh0HROJsqNZeXzeZyubyYYzXlY_hKKFwkPGvOsZRkAedyRig919vTjOM4vpoM4-v4_rp7d_8wePiWXC9vSNQbPNzmdCjtof35T-_LIJv3nmKl-n-teuP0z57T8s9nsv_4H09MFlyMiTpf-ufBgtzN3DiOOwWpZsWq3dT-KDynHaYbI01Blr7STQQMP1FIO4YSORhIUq46xhVPVygWGc-rHBeXrtYSa1-ftfuQoQlk2olDUDjFCjdvFGSy2df_CnQfspiRDCv4AnjOmYGKTfhOGYaz6pxVE2g9U-Xz0ED_zzElalUcqKqttfRgjHOqjJeG7rCq-V1mjfL5nAs1JIxw1sMZnsBrxpUSfcieC22tK8fReqIyzv9lxnWn-p5T_I4T-brvNuYNQEoQa6GteeVySHG0nqssjH6x-6ps913eq2T-5bxqvLLMPZll7ZL6a6FbBgay3x63HyjI6e14DIKwyZFx-0JmuznFBNrOVNvj_XzH90BCIrB6NVr_jd-aUxusLGn9bEevK6u3urkHCkRGGFbk6PT8Qqa-L88m1tX2z_dyl2JB1OpIezboWq5aD538pB7p3yvOlTxFFOMMelhOj47gDb4evTgDVI7-usitMnAsEsxglIvvuHCfydSqiWIYVeMnv4y2nq5acl07fyawRN84z_4qdOjW35vWYH11bCo3Ddedwraq7tbtEahN6a37iKRl_6E4vJdoGPdvuo3RSj80JZGQomVxPzRGjMxBoCu-bBSChc5L1PIa96W9l8hq3GRzShKipO7EaSpRqC9v27bQ5nlTFSuN6DdEWCIAayWxUjiZlVdhsQ9ax3OWzkGWU6AZqMZ1zhQIdM15eizN331Lc8zK5yDSz9U9DNyDDJ54umr0KReE5xINAKspiAMkyq8A8hJdnRd_P8qqdZDVhPIFyMZoisVMzghD_XLg5JvjvbI5XNVZFLnqLSQcq358hnwBGTB18AD5hxkCVY3Ka-hKd06-RcFBAjjLKajGLVt9RXHZPjmD8CADXWjZjds5puiBsMlb1P_uWr_pwW3Ul58pdDm_h1v0KjfnB7hVPPSnmNcp2NZBDnw8nmKWNq4o_qZNioXgS3Sfk8XBQP9BX9mH0zIlY0BjiuWs0SeYqWIp9KEYOJLLHr2HE22GGV7rFYB1ttUfi06i-XCCzRXRi1XK4wzUdCXVSRQfzqHPFd_nJJlJQhcg3qh7BKq6f5EiikKtXsgljCDhLC1fZ8W1PcZUQlXLjShXRVlSf78RVZZEmzKphrou7sctxtmBefYRZw10dwDLO2SLae1crKhG1xBvFwRojZG_A1HmwS0m2IHR6aBufbgP42wx0Q5MtY81lG3tgBUuf7bbtlEVWFV1t0-mvrJzpIxbk3GPlGnVZFq7ZMpjOAJVlItFiahbXc7GZFKeTjbP14sCg2xVnG4DsTx7AlH8GtLcDXy_wLJ84lXQMPKrb8Hr9dvNl7-1_ANW7yPG",
-      "until-68": "eJzVWmtz2jgX_lx-hcYzO--HKsG6WLYzoTsEUpIWmgtJu9svHYEFKJFtagsI_fU78iU4KRAyyW7mHWY0ss5zpPPocqxzzOGfd6ECc5GkMo4aFtq3LSCiYRzIaNywrq8-7nnWnx9qh-dcT85GRzOpjORD7d1hVgdKzIVqWMyzgObJWOivZVfkh22BoeJp-oWHomF9k3o4sQBPhyIKWqv2L2KYxCGPhiKxQMhl1I-Ht0J3kng2bVjIAgMeBVI3rC9xJCww5ZGeiDjq8Zs46cRBw1KziCcyrYhkVIjGyUxPbmfKAnMpFr04EA2r1ey2-taH2rt3h-eKL0XS11yDVHPdsFpxOJCRCNrnfQvMuZqJhkUwZfuI2LZHfWbV1ytexZqrZ2t15UisNBi1NwGPI5GMl_2JFCq4V0A-3WrO8cn5CsuY7ex7lLgEE4Y36Z1PlqkcctXjdzKchSdSX_FbEd13wyjbaONHmYhLkcpU38NdZxO4FatgZ3BXjic6ktF49-4nPE4foZ2N6B6PeCuuQOlW6HWUiFQkc1FZCuxt0uhPRQWI91He92E9Oz-mdpUIAfhQy7noT8XQ7PmsK_MAdCJE5UiR8kydBg2LPDhNpsW2QBQHIm1YyCYIImwTiFzmQox9DAlzGKTEd6GLEIYu8TzoMkShy0zNJx70fOpBZFPfhsh2XAci27cpRChrIbbtQ0SQjyAinudA5NiMmtJDEDHX4F2XmNLDCCLPYw5EPiMOxLZDGcSI2MiUxIYYMdeDGHlGinzHgxjbDEPs2KbOsG9Kl9oQu4YHdhlCpnR8iF0f-xB7NsIQ-8j3IUGe60CCMbIhIdT1ISGu40BCPc-GxPF8avhTMwuMmLqPHEhch_mQuMxFkLi-6cdn1IPE95AHqU0YhhRhRiBF1DV13_MhZT6yIXWxgyB1M4znuh6kPnYodAhGxJSuDx2KHFNS6kLHwVnp2ww6LsZZySh0PExNSW0MmU18DzLboS5ktusjyBDBNmSIIh8y5BEKmTEUMuK7DDIHOSTbLe8Ory-7WeXdROtpelCvLxaL_SnXk3gk7qQS-8M4rE95msq52EtvpVJ7ZnPVm81m82jca16PL06Our2Os7ix27fjy-7l_PTkyyKYT-jpyeJU-q0b9vna-xm2fsmePv41-fW3f6bHjF13Ti6vg4_RdXh31f1ycaF66Bp9uk7U1-7X4fdv3fBEfk-mcdCZtrmv0xa2vw--3S3bZNkeBZ9bd_R8II9bvS8x27u5-3nRc7pHt0txPXCScUh_Bj9_Hs_jcev2aDDcm306c5oJ-7zoDM5J0BzZ9Mdfv_ypJDQZpWdnx06rm7izZdulN3P2o_N572rksHN21Gw2G9kk1ctZOszfMmk-ZcVTdniyk2X2iAWkFqF5RIUH_x2YbY4K0C2Ah_VK_4d1c5SzQ2_Ouqn0zfznwqwKRMQHSgQNSyczYYFUxbphHcXBEjSTMJ4Vr8Zm7iWMRukm3h12RAjG-fg9oXnANa-fahGm9Y4pMnRHhM1IhlyLb4JP48gC2Q54pk7Ew8JFFQJQSoprAPIt8HPGldTLzBkVdTNMW4z4TGnrMdM1tOrP4tWfTadxonsyknHU5iEfi6fY5RodET5UWtHL20EpeHt2rYm5IOn4PJbp06t3z68r0lQkpdKKX94d0DEoZW9P8atU4iq-k1G6M72qyoqcaQVlc8nLezNebcEDtWxKFYpI787tsdqKXy4BK9Hrr91hTuIp_5SffoBe7pw-KpFOzkYjkchovKNzeqSzmqBMAFaSN9zbbZGKYcL1ky7pd3x1we8b32ypy9jjpQvdFlokoYy4lju_hR7pVCfmgeAN17mleCL1ckdC9-iKRy6b3myFOyqei_TlK1y-sXiqv01E8XItwsgdfZ_RPXuoWZkpnmqwmIjy9QwKRDFxzn-_-KdhGCeaqxZXascd8FBlRa5sB7ng9d9eO26GozjWr7AXPioeijZPJzu79Ht81Z3zUIC89e2vKc1kyCPRnyXPuGY-0KlcorNmULT_mwe_qKVluuGrFAvwK47Dv7IxTO3v-1o3NySLK_OIxcDNQ0auSFWYel_o-2yFeQYyD5Y-1C4zb3YALpuXx7X-0uTlUpmKANyIhVAA1b7KRAaSR-CTaahl2tnAB8DFtdNwquRQ6vQA2LX3nm1uqmGekwImaVZD5A8go2EiuOm0qTUf3oIs1VIjdlV0nsQ3YqjNlTB3F7X32PnD9NdKpDa5LtDXibwVoDdTWk6VFEk2dcaiR8Tcp4nh_0ti23gtsjterT-VkQBH8eIxo4t8fx4AZD9kh-hDe4vUYmltMwhSQLIJYPZ6KcJGijwb3GcAS_mWaVrPEW_jGI9GEx4FtfNEhlyBZpLEC3Axk3OR7Ex33WJmLDzT7Dq_cTDNueFp7b2ZKx1XMHny0kRpGwiRbYQmQoVC17omiD0XSr-IRWmcSfBW7SrbTS73aXvpNnsHcbCsNdPUZKei_6Wgw5PBNpuL5MoBONorfrvTWDvHz-PibOMyzu5RtU4ip1MRgPxa9aIF2LLZN9m9ac3W89nqsQfmKlDrKxndguxasDMX449WdvfiuTABa2n5liXaxOYZx2Orrx6YI9EVXE9EAo7-tfOBCzbmY8TTFnvbLObhTAldO4uWd6CZ19_eMT2ToL-NoInUUe1syhW4lNH4v2X3wpVD9lPM8Csxe-5xfy6R6k2g1-ycth4wUXIkwEjx9LbWlnNzHzBGgY9Zy660NoyMt44c8ogXI59wpeKF8Sem7VXGJlvHnmlpeiuG7yQ8kvqVSNNnDHwx44n-9TrjOs8YtxkKPVmm-qUj94UuLptAS61EJZyZpaIvhnEU5PnELKoYcZWKItjsq1hnYVM143j_yaUM435H4RUKr0GdZJekFYaswTz4AlMC6RpgmT0pMc7azrKguoSwdRChKha5axC5919hvDUY42eqc-RvwlRmCNlrQNmaP5htZBXxXxF8btKp9ox31Kl-SCM76lS_0tEddZyKjrNOJ9-6faGzCDiLek2tFUcjOc53dDSdlZ2KSITL7EhYIJqFA5Fk_4eprwcez3mapzELKHWJX_wloBzgsP747zb_AK8XO0Q=",
-      "maps-early": "eJzVWutv4rgW_1z-CivS6n5YT7Edx0mqMiugLWW3D1razna-jAwx4JIHkzhQ5q-_ch4l7QClt7NbXSFZznnY5-djn_iccPjHY-CDuYgTGYUNA-8jA4hwGHkyHDeM25uTT47xx-faYY-ryeWolUpfcz7X9g6zPvDFXPgNw0EGUDweC3VXDmV-QwYY-jxJLnggGsYXqYYTA_BkKEKvvaJfiGEcBTwcitgAAZdhPxpOherEUTprGNgAAx56UjWMiygUBpjxUE1EFJ7zhyjuRF7D8NOQxzKpsGRYsMZxqibT1DfAXIrFeeSJhtFunrX7xufa3t5hz-dLEfcVVyBRXDWMdhQMZCi8o17fAHPup6JhUErRPnERxY7tYmLU16veRIr7_4PemRyJlY5luZsEj0MRj5f9iRS-96RACN1q0PFpbyWLTIb3qUlt00XM2qTXmywTOeT-OX-UQRqcSnXDpyJ8GsZBzNmkeyJjcS0SmagncXvjRO3I93YWPpPjiQplON59-AmPkhfS1kbpcx7ydlQRpRtBatHbMBaJiOdi5Qps2Zs0-jNREST7JDfjsJ6dId27iYUAfKjkXPRnYqj3fTaUfgAqFqJyrMzyXHW9hmE-O1GaggwQRp5IGgZGiEGMTAwxQSbENrMhIS6BJrMYpKZrQ4tiCzJiImhjTKBtOg60GabQZrrnmg50XOpAjLJhEHURxMiyLYiRiyjEOKOYCLkQm9jFEJuOY0FsIUZ162CIma3lbdvUrUMwxI7DLIhdZlqQIIsySLCJsG5NBAlmtgMJdjQXu5YDCUGMQGIh3WfYZZAw4uq-TREktkZHbIaxbi0XEtt2HEhsl7iQOAgTSFzsutDEjm1BkxCMoGlS24WmaVsWNCm2MTSp4yBoWo5LockQtvU6Ub1azNQUF1u6pS40bYvplmkt29Uju4w60HQd7ECKTEYgxYSZkGJq677ruJAyihxImYsRpDaxMKR2JunYtgOpSywKLZNgU7e2m_lGt5Ta0LJI1rqIQcsmJGsZhZZDqG4pItByiaVbhhhkyHQdyJCenSGL2pAh28WQYZMgyDDFLmTYMSlkGgBkpmszyCykKRa2zGz77R3eXp9lnb2JUrPkoF5fLBb7M64m0Ug8Sl_sD6OgPuNJIufiUzKVvv9J79Z6s9lstsbnzftmL201h8fJYhC2e1eX_daxOukP7-8m8-7pxcKbT2j3dNGVbns4_6sXzW6W3-_PLrtLdHN5evGAGDmKZ1f33sk1-uL1ByfnCW61b3_c3dz6_fTuVt09-vfpvfgzuOtwxk-vv1-R-WDQVMlDB30dfHlcHpnLo5H3V_uR9gaTv9PuVXdBHs46l_PI4dOjy6u7r2et6VLcDqx4HNDv3vfvx_No3J62Bndd9YPRqT1tz6O4-TX55qHWt5sHd9QjwdlIqk8LSm-m3dRD7GIQ2-mC2t3eXF5-i5372Lr4FkbfxvGn8VWzmS1kvVzJw_z1luTLWjxlJ1YfXn0UDSCVCPQTZnlE-VkuOwUVwSL07B3WK8Mf1nX4yAKNji-609cuyplZF4iQD3zhNQwVp8IAiR-phtGKvCVoxkGUFq_kZh6ZtEYZmvYOOyIA43z-c6G4xxWvd5UIknpHN5l0RwTNUAZciS-Cz6LQANkmeaNOyIMiLBYMUHKK6wdBBviecl-qZRYAi76e5kiMeOor4yXSNbDqb8LVT2ezKFbnMpRReMQDPhavocs1OiJ4rrSCl9NByfh4dO2JvpipqBfJ5HXvPeE7E0ki4lJphS8fDqgIlLyPh3gnfXETPcow2RleVWUFTlNBSf54XEeCe_6yKf1AhGp3bC_VVvhyDlixfj3GwxzEa_EpP_0Avz84nfgimVyORiKW4XjH4PRCZ7VAGQOsOB-4B45EIoYxV6-GpJ_lqw5_In6Yq8t8572OPhJKxIEMuZI7v4Ve6FQX5hnjA_3c9nks1XJHQE_SlYhckj7Mwx0_movk_R4u31g8UV8moni5FqnrjrFP614-16ysFE8UWExE-XoGhUSxcNa_7_xuEESx4n6b-_6OO-C5ygpcSQc548M2QyuK1C_YCyc-D8QRTyY7h_Qn-Wo454EAOfXjX-fNeMhD0U_jN1wzn-lULtEZGRT0f9LXRS8pSxx3UizAjygK_s7m0L37p95ZbkiWeuYZixbXDxm4ojyi-32hniok-hnIPFn6XLvOotkBuG5eH9f6S10PTGQiPPAgFsIHuHYnY-lJHoI_NaGWaWcTHwCb1LrBzJdDqZIDgGq_O0jfVIO8DgZ0oa6Gzd-ADIex4HrQplJ8OAVZeadmoiqrF0cPYqj0lTAPF7XfifWbHq8dS6Xra6CvYjkV4Dz1lZz5UsTZ0mmLXgCzXwdG_i-BbcO1yO54tf5MhgK0osVLRFf5_jwAGD1Hh-lze4tyZmlt0_MSYGYLwNB6Liaaix0EnqqOJX_LMq3HSLZhjEajCQ-9Wi-WAfdBM46jBbhK5VzEO8Nd58wMhaPJtvUTBk3ODU9qv-u1UlFFJi-Y6ixtAyBzG6CJ8AOhamc6ie0JX70LRWmcLipX7Srpun78ur10m72DyFvWmkmiC1jhfxLQ4fFgm81FceUAtD4Vv91hrF3jt2GxtmEZZ_eoWieWs5nwQH6tepcDtmz2TXZv8tl6PFsj9kBfBWp9X4ZTkF0Ldsai49HK7vNoLnTCWlq-xUWb0LzheGyN1QN9JM4EVxMRg9Y_dj5IgUZ_AHndYmebxTxIfaFql-HyETTz_scHpjcCdLcB1Jk6rl3OuA-uZTj-d9G903MYvYaM_CJkbz3ubwVSvQmcNzvd9jMkvhwJMPJ5Mq0dybm-D2ijwElG2RXWhpnJ1pkDHvJi5lPu-9FCxxNN-yVzm1vnTpXUoxXTd2IeSvWLQNM3THyV8lj9-DXzWm-YtxkINVkm6r0z94UqLptASeWLSjqTJqIvhlHo5fXELKsYcT8RRbLZ9yOVpU3ViuPTJ5cyjftZiqykyBqp0-yStJIx18g8-wJTCtI1gmX1pJSx1g6WJdWlCFsnIvyKRfYaiTz6r2ScNTI6zlTXyN0kU1khjNYIZT5_ttrYKPK_IvncpFMdmeyoY1Z0zB11aEWH7qhjVXSsdTr51u0LlWXAWdare-0oHMlxvqPDWVoOKkIRLLMjYYAwDQYirvwd4ifB4zlP8jJmIcoQcYu_IZQTHNZf_s3nv8mjWnQ=",
-      "maps-red": "eJzVWmtz2joT_lx-hcYznemZikYXS7Y7oWcckpK0uZCQy2m_dAQIUOILtWUS-uvPyDZgUiDkbc_bdpjRyLvPSnpW0lpesfv3QxiAiUxSFUcNC79BFpBRL-6raNiwri7f113r73e13bbQo7PBXqYCo3lXe7Gb10EgJzJoWB6ygBbJUOrrWVP0C7JALxBpeipC2bBulO6NLCDSnoz6zYX8VPaSOBRRTyYWCIWKOnHvTupWEmfjhoUt0BVRX-mGdRpH0gJjEemRjKMTcRsnrbjfsIIsEolKKyoVlaphkunRXRZYYKLk_Unclw2r6R83O9a72osXu-1ATGXS0UKDVAvdsJpx2FWR7O-3OxaYiCCTDcuzHe8NRy6zkeM5jrWz2vQy1iL4H-yO1UDObbjN8DrgQSST4bQzUjLozw0oohsHdHDYXmAxxuiNTVzPxTYj6-zao2mqeiI4EQ8qzMJDpS_FnYzmzWCMsbvO-L1K5IVMVarneIetAzfjoL81-FgNRzpS0XD75kciTh-h-Vp3nYhINOMKlK1t2ECvokSmMpnIxVxgz1tn0RnLKvBN4b_dnXwPmdplIiUQPa0msjOWPbPu85bMA9CJlJVtRWf76qjfsOjSjjISZIEo7su0YWGEOMSIYogJohA73IGEeARSzji0qedAZmMGmWNTyAlF0MGYQIe6LnQ4tqHDTc2jLnSLwnahxyiDGOWtIttDECPmGImHbIhxLiEuwhBThDyIKfZM3XUZxAxx25Quhpg7xspxTGuOSzDErssZxB6nDBLEbA4JpgibkiJIMHdcSLBrtNhjLiQEcQIJQ6bOscch4cRBpvSMxHYxJNyxESSOoU8cjrEpmQeJ47guJI5HPGgGSyDxsOdBiih1IcWuwyAlBCNIqe14kFKHMUht7GBIbddFkDLXsyHlCDvGnbZxKqdG4mFmStuD1GHclNxYOZ5p3-O2C6nnYlMan9qIcgJtjD0EbUw4hTa2HSPxXA_ajHkU2txGLrS5hxG0HcIwtJ3cynUcF9oeYTZkmGACGSWYmtLx8qk1pW2baXa5Cxkjps5sl0HGPMQhcwjJS25D5hLsmtI2dRsRyDzCTMkRhxxRz4UcmbFxxGwHcuR4GHJMCYIc29iDHLvUhtxQhZx6DofcNj7kDBk5w4zmq_rF7tXFcV55MdJ6nL7d2bm_v38zFnoUD-SDCuSbXhzujEWaqomsp3cqCOpmE-z4vu_vDU_87n072_N7B-l9N2q2z886ewf6fad3030Y3bTcYY_ukfrhcDjw1fHXo8l50J72Jh_b8fhy-vXT8dnR1L88vjixe6R9mXw6y4K9Ebo-vPiMP6RX029XBx8uT69PO9cf2XUH_9O6Vmxkh5-vPo9ZmIX9B3F48fWcTLpdX6e3LfS5e_Mw3aeiOTg69VB8fDj0svfSHvm3--Ik_cTrtw9fz0_Y3vVd2rr8wC4mYdbsqvF9MxJfh-zrwSQeNu_2ukef9ZWi7URdZucf6yrdC6f-tzbt-wNkf7m5Ph20yTEVn3T9I3X2b0V2dsCax1H_7PaG15307Gy679i3E_6l9bF-OWC8nXS-DJP68Nz3c4fvzDy-W7xd08L95VMeMEzsMEHAAkrL0DxhXsSz73H5fqsAnXXAfFNUgO46YL72K0BvHTBfagsgQeuBbrVrUr5YX-zuVFywu2MibB6LTQg2lY5ZboUyrwIZiW4g-w1LJ5m0QBrEumHtxf0p8JMwzspTi18Eb2Mxi94vdlsyBMOi_xOpRV9osXOkZZjutEyRo1sy9CMVCi1vpBjHkR_oTxbIF_2z7CwQibB8e5QKUGhAPAAXIhrKvhlxas0ObQRZ4GsmAqWnSw-m2305EFmgrcfsV1DdeRbXTjYex4k-UZGKo30RiqF8im1h0ZLhstGCbiEHM8VvQK85MgdaHbdjlZqp2ZLgsUxTmcyMFgSL5oCOwUz3G3C8VoG8jB9UlG7Nr2qyYGekYCb-DYjtS9EPpr4KQhnp7ck9NlsQLDRgofoNSF5F3TiL-s9m-Z3dgmap-m957hZEnorPZeTDPx6c3wcyHZ0NBjJR0XDLwPzIZuGiXAEWml-5EPZlKnuJ0E_G3-_x1aU9F_66yZ59FP_oVO9LLZNQRUKrp4P2apuqZ5YUv3Kmm4FIlJ5uyWiOrrx_ZqJfN8etIJ7I9MfnePaCFqm-GcnyMFFmOLYMgcb2bNmy4iqRanA_krPjCCgRpefYL5j-ozCMEy2CpgiCLdfAssmC3UwOCsWvWw57cax_wmp4H4hQ7ot0tHVgn-OrQV2EEhTS3-DN7ic9EclOljzjZL1kU_mOyMWglP-ns13W0lk27FrJe_AtjsN_8pSWqX2a146LkeTphOLLzcDNQ86uzKSZekfqeTLNPANVfNi-q13kIe0tuPAvDmqdqUkdpyqVfXAr72UAcO1aJaqvRAQ-GEEtt847fgtcUjsKx4HqKZ2-Baj22kXmcB4WKVNgcro1TF8CFfUSKUyjvtaidwfyRGCNoqqqncS3sqfNIbgIGbXXhL007TUTpU0qFnR0ou4kOMkCrcaBkknuOjOiR8Scp4mRP5KY-zQx-kcS854mZv-JxAh6mhj7I4nhp4nxP5HYRl73-fdUrTNWkQR78f1jRufFO-AtIGiZHbaXx1veLs1G6_f7KaC5AzharcXEaLGLwPwOaKbf4KY1k7eJYzwYjETUr_mJVkEgkyk4z9REJltzXTWTOQXXiB32HQEjLkad1l4bR-m4ginurkzmZw0buonNSAah1LVWor59C6agLQO9JRFSe0VxnZK_qs41l17AXJCBg8FA9ZSMetNayaItI6nNR2AK2MvVBFa5ZsbYXBouYUu5uR982gn2Jid04_605qc6EQE4lkKPNs9mmRl-C_bq89-yZ16_IrxOnL-e2GJgECez9Viu1VYiehKMRApeEbdO0ZJ3_SwRxrGypze6arVvn-Uvtslfw_wrq3YokvE0vVMRKD67tl44GK_dkK_dl6A3z2Oao2ci09Qog_l-f2YoXEd83cJa7ZCNh8Gu-c6odXSchInqywTkHx5b-8Nd2kLxRJrEWDn6V8SuE_5X1Sv-JFZ9cBDkMBHMM2k1E9PXNrRpwaxzzTOizMYzZdeElXJngb3tY8zqYLk2IpCSjbnSf3rEGw-LIswCqWtn0fQB-EX918f3ZxLceGg0mUVcOxuLAFyoaPj_ZfeDM4c3nhoNM_KTmD03djyXSPU0deK3jppLTAI1kGAQiPSutq8m5kxlBgXe55Jtaa3pmWzsOTTv8aLnAy2TSATFq_2ndE03dp1pZVore28lIlL6J3G2n9HxeSYS_e3n9Mue0a8fSj2apvpHe-5IXZ7XgVY6kJWsS5bKjuzFUb-4_siTHwMRpLLMinWCWOfpneoFyfzOfZZu-h5FKvfoK1CH-VFzgaErMEsX5jOgvQI4S_TOMGxlY3n2bwbhqyAyqIzIWYEogv8C467AmDBT9ZG3DlPxEEYrQPmcL3kbW2WaqsyRrbOptky2tKn-k4JuaVP9m4a9pQ2r2LBVNsXS7UidJ-ry5JypNeNooIbFio7G2axRGclwmm8JC0RZ2JVJw3Jn_9j7DngwEWlx51JCHZej8o91sw52dx7_cfVf5MJ-hQ==",
-      "pinnacle": "eJzVWm1z2rgW_lx-hcYznbs7VRq92-6E7gBJabpJQ0OSbvqlI7AAJX6htkxCf_0d2Tg4KRBy271thxmNfM5zJD1H0rF8xN5ft1EIZirNdBI3HfwSOUDFwyTQ8bjpnJ-92fGcv1439nrSTE5G7VyHVvO68WyvqINQzVTYdHzhACPTsTIXVVP0M3LAMJRZ9l5Gqul81GY4cYDMhioOOkv5ezVMk0jGQ5U6IJI67ifDa2W6aZJPmw52wEDGgTZN530SKwdMZWwmKomP5VWSdpOg6YR5LFOd1VQ6XqjGaW4m13nogJlWN8dJoJpOp3XU6TuvG8-e7fVCOVdp30gDMiNN0-kk0UDHKtjv9R0wk2Gumg6mHLkvfcZ9hH2Mnd3VpmeJkeH_YHekR-rOxnUJWgc8iFU6nvcnWoXBnQFl_sYBHbzt3WEZ8rH7knqCudwjbJ1dbzLP9FCGx_JWR3n0Vpszea3iGi8s3HXGb3SqTlWmM7PkxNeBO0kYbA0-0uOJiXU83r75iUyyrdHHMpadpAbla0la6HmcqkylM7WcC4LWWvSnqgbEL70CuLdb7CFbO0uVAnJo9Ez1p2po133Rkn0AJlWqtq1ota8Og6ZD7-0oK0EOiJNAZU0HIyQgRhRDTBCF2BUuJMQnkAouIMOuCxn1XcgZ5pC7jEJBKIIuxgS61POgKzCDrrA1n3rQKwvmQZ9TDjEqmkbMRxAj7lqJjxjEuJAQD2GIKUI-xBT7tu55HGKOBLOlhyEWrrVyXdua6xEMsecJDrGP7Xh9QTkkiDMBCaYI25IiSLBwPUiwZ7XY5x4kBAkCCUe2LrAvIBHERbb0rYR5GBLhMgSJaz1BXIGxLbkPiet6HiSuT3xoh0wg8bHvQ4oo9SDFnsshJQQjSClzfUipyzmkDLsYUuZ5CFJOhC09n0EqEHatf5n1sqBW4mNuS-ZD6nJhS2FtXd_24gvmQep72JbWvwxRQSDD2EeQYSIoZJi5VuJ7PmSc-xQywZAHmfAxgswlHEPmFlae63qQ-YQzyDHBBHKKMYOcEkxt6frFZNuSMTvxnvAg58TWOfM45NxHAnKXkKIUDHKPYM-WzNYZIpD7hNtSIAEFor4HBbIjFIgzFwrk-hgKTAmCAjPsQ4E9yqCwhKGgviugYNafgiMr55jTYrE_2zs_PSoqzybGTLNXu7s3Nzcvp9JMkpG61aF6OUyi3anMMj1TO9m1DsMduzd2W61Wqz0-bg1venm7NTzIbgZxp_fhpN9unx700cW720-z7pvLwbz9dfh2wFSn7XUO80T7nfPP7-ZesqPD3t_TccauDtvH5uDr5Oulf2LGQpx3356eB2_i8-i2P_WPM9zunH-9ODsP-_nFubm4DS_zS_UuuuhK9SmdxsOPEySv36eE3BwNDm9N9yPOhmOfjOP5_ij4u3PLeoPJP_nhh8PIu9qXx9ml2Lm6_fLhmLcvrrPu2Tt-OovyzkBPbzqx_DLmXw5mybhz3R4cfjLnmvZSfZZ_-HtHZ-1o3vraU9nnALU_n135n86x9_lyFkw1ZekoO3n_hbGz68M8QOL9IHXzG-Ye9mb65HPqXab8_ec42TFHO52ZaLdarWbh_N3K-3vlCzgrp2LxVMQUG15siHCANiqyT1iUIe9bXLEPa0B3HbDYJjWgtw5Y7IYa0F8HLJbdEli9UlcBvXrXZPGSfra3W3PB3q4NwkW4tlHaVvp26ZXKogpULAehCpqOSXPlgCxMTNNpJ8EctNIoyRcHm1YZ361FFeCf7XVVBMZl_8fKyEAauXtoVJTtdm1RoLsqasU6kkZ9VHKaxK3QXDqg2ABPsnNALKPFC2ahAKUGJCNwKuOxCuyIM6c61xHsgC-5DLWZF46sHmy3-2ok89A4D9mvoLr7JK79fDpNUnOsY53E-zKSY_UY29Kiq6L7Rku6pRxUil-AXmdiz7wm6SU6s1OzJcEjlWUqrYyWBMvmgElApfsFOF7oUJ0ltzrOtuZXN1mys1JQiX8BYvtKBuG8pcNIxWZ7cg_NlgRLDViqfgGS5_EgyePgySy_sVvSXKj-XZ57JZHH4vMi8uHvD85vQpVNTkYjlep4vGVgfmCzdFGhAEvNz1wI-ypTw1SaR-Pvt_j60r4T_rzJrr6bv3eq95VRaaRjafTjQXu1Td0z9xQ_c6Y7oUy1mW_J6A5de_9Uop83x90wmans--e4ekHLzHycqMVhYpEE2TIEWtuT-5Y1V8nMgJuJqo4jYIFYeI7_hOk_jKIkNTLsyDDccg3cN1myq-SgVPy85dBOEvMDVsObUEZqX2aTrQP7Hb4e1GWkQCn9Bd7srXQoY9XP0yecrO_Z1L4jCjFYyP_V2V7UsiphdqHVDfiaJNE_RdbL1i7vakflSIrUQvnlZuH2oWC3SLbZel-Zu3ybfQa6_LB93TgtQtorcNo6PWj05za7nOlMBeBK3agQ4MaFTnWgZQzeWUGjsC46fgU80TiMpqEeapO9AqjxAiNkT-dRmVYFNu_bwO5zoONhqqRttWWMHF6DIlnYYKiu6qXJlRoaewouY0bjBeXPbXudVBubrgV9k-prBY7z0OhpqFVa-M4O6QEz93Fm5Pdk5j3OjP6ezPzHmbHfkhlBjzPjvycz_Dgz8Vsy20jspviqavSnOlagndw8pPShfBO8AgTdp4fd--NdXENVo20FQQZY4QAPrdZibrWEI3B3WVTpN7hpzext4piMRhMZB41WanQYqnQOPuR6ptKtua6cypJDIbfqhxysvBx41njByqlbYsp7LpsCWkOIbiI0UWGkTONYXqnM6CHoqdBsSYY0_qB8h4o_6w62N2TA3qaBg9FID7WKh_PGgkZPxcrYz8EMiOerGax0T8XZXjHeAy_k9jbxcTewTW4YJMHcCgI9lEb9JwNdmQ42-WGRJn4F2jt3v_vOefEHRTsU__nITgOjJK2W5WLJdlM5VGAiM_AHZQ8d3MpTaX2rhmazt1b790ku45tcNi6-uRoXKkzyFJRfYFuvHEzX7soXGD0Hw7ucpj2GpirLrDa82_VPjYjreK9bWqv9sfFkOLAfHZU7ii-Q7b1xL_4dJzNlU2SLoRfLiPxZ90lrlugAHIQFTIZ3ObUG3dTQxtWyzjFPiDMbT5cDG1eOlDQTlYL29kFmTcRcGxKsBywd-w-Ax4e88dgoozxUpnESz29Bq6z_ElH-iRw3HiBtohE3TqYyBKc6Hv_fCX7n_OGNZ0hLjvwock-NIE9lUj9aHbe6h517VEI9UmAUyuy6sa9n9oBlBwXeFJJtea3pmWzsObIv9LLnA6PSWIblO_6HdE03dp0bbVtb9N5NZazND-LMntDxh1ym5uuP6Zc_od9WpMxknpnv7bmvzOLwDow2oaolYvJM9dUwiYPyRqTIh4xkmKlFoqwfJqbI-NTvTO6u4asM1LcoUrtaX4F6Wxw6lxi6AnPvDr0CshXAKvdbYfjKxoqEYAURqyAqrI3IXYEo3wFLjLcCY-NM3Uf-OkzNQxitABVzfs_b2FlkrhZps3U29ZbJljb1P1fQLW3q_9xgW9rwmg1fZVMu3b4yRe6uyNfZWieJR3pcruh4mleNqlhF82JLOCDOo4FKm45X_b3xG-DBTGblNUwFxYs_iOztVh3s7T78u-t_Adozi64="
+      "until-68": "eJzNWltTIrsWfpZfkeqqU-dhR-lcOt1twexCUHQGFEVn9p6XqUAHiPYFuwOIv_5U-iKtA4ile3vKqlTI-layvlxWslZb-_Mh8MFcxImMwrqBDkwDiHAYeTIc142b65N9x_jzS6XW42pyMTqaSV9LvlT2amkd-GIu_LrBHAMoHo-F-l50RX6ZBhj6PEnOeSDqxg-phhMD8GQoQq-5aj8XwzgKeDgUsQECLsN-NLwTqh1Hs2ndQAYY8NCTqm6cR6EwwJSHaiKisMtvo7gdeXXDn4U8lklJJMNcNI5nanI38w0wl2LRjTxRN5qNTrNvfKns7dV6Pl-KuK-4Aoniqm40o2AgQ-G1en0DzLk_E3WDYMoOEDFNh7rMqK5XvI4U99-s1ZEjsdKwkL0JeByKeLzsT6TwvScF5GzEp-Ycn_ZWWGZSdOBQhomF6Ca13mSZyCH3u_xBBrPgVKprfifCp14YZmiT7omMxZVIZKKe4La1CdyMfG9ncEeOJyqU4Xj37ic8Sl6grY3oLg95MypB6VboTRiLRMRzUVoJ7GzS6E9FCYgPUNZ3rZoeH127joUAfKjkXPSnYqi3fNqV_gFULETpRJHiSJ15dYM8O0y6xTRAGHkiqRvIJAgibBKIbGZDjF0MCbMYpMS1oY0QhjZxHGgzRKHNdM0lDnRc6kBkUteEyLRsCyLTNSlEKG0hpulCRJCLICKOY0FkmYzq0kEQMVvjbZvo0sEIIsdhFkQuIxbEpkUZxIiYSJfEhBgx24EYOVqKXMuBGJsMQ2yZus6wq0ubmhDbmge2GUK6tFyIbRe7EDsmwhC7yHUhQY5tQYIxMiEh1HYhIbZlQUIdx4TEclyq-VM9C4zouossSGyLuZDYzEaQ2K7ux2XUgcR1kAOpSRiGFGFGIEXU1nXXcSFlLjIhtbGFILVTjGPbDqQutii0CEZEl7YLLYosXVJqQ8vCaemaDFo2xmnJKLQcTHVJTQyZSVwHMtOiNmSm7SLIEMEmZIgiFzLkEAqZNhQy4toMMgtZJN0te7Wbq05a2ZsoNU0Oq9XFYnEw5WoSjcSD9MXBMAqqU54kci72kzvp-_t6c1UbjUbjaNxt3IwvT4863ba1uDVbd-OrztX87PR84c0n9Ox0cSbd5i37duPcB81H2VXHj5PHv90LNWbspn16deOdhDfBw3Xn_PLS76Ib9PUm9r93vg9__ugEp_JnPI289rTFXZU0sflz8ONh2SLL1sj71nygvYE8bnbPI7Z_-3B_2bU6R3dLcTOw4nFA7737--N5NG7eHQ2G-7OvF1YjZt8W7UGPeI2RSX_99ehOJaHxKLm4OLaandieLVs2vZ2zX-1v-9cji_XYUaPRqKeTVC1mqZZdMkk2Zfmv9PCkJ0vvEQNIJQL9E-UO_HdgujlKwNwh79Wqpf5rVX2U00Ovz7qu9PX8Z8K0CkTIB77w6oaKZ8IAiR-punEUeUvQiINolt-MjcxLaI3CTezV2iIA42z8rlDc44pXz5QIkmpbFym6LYJGKAOuxA_Bp1FogHQHvFEn5EHuonIBKCT5KwC5BrifcV-qZeqM8roepiVGfOYr4yXTNbSqb-LVn02nUay6MpRR2OIBH4vX2GUabRE8V1rRy9pBIfh8ds2Jfh-pqBfJ5PXVe-LXEUki4kJpxS_rDqgIFLLPp_hd-uI6epBhsjO9ssqKnG4FRXPBy_k0Xi3BPX_ZkH4gQrU7t5dqK36ZBKxEH792tYzEa_4pO_0Avd85nfgimVyMRiKW4XhH5_RCZzVBqQCsJJ-4t1siEcOYq1dd0u_48oI_NX7aUhehx3sXuiWUiAMZciV3voVe6JQn5pngE9e56fNYquWOhJ7QJY9cNH3aCrf9aC6S969wcWPxRP2YiPxyzcPIHX2f1r14rlmaKZ4osJiI4noGOSKfOOvfX_yzIIhixf0m9_0dd8BzlRW5oh1kgo-_vXbcDEdRpD5gL5z4PBAtnkx2dulP-LI754EAWevnP1Ma8ZCHoj-L3_DMfKZTekSnzSBv_ycPfl5LinTDdykW4DGKgr_SMXTt76daJzMkjSuziEXD9Y-UXJ6q0PW-UE_ZCv0byCxY-lK5Sr3ZIbhqXB1X-kudlktkIjxwKxbCB6jyXcbSkzwEX3VDJdVOBz4ENq6cBVNfDqVKDoFZYf8BMhzGgmv9IMtMAZ05q9CypKEUH96BNN9SQags6sXRrRgq_S7MfEY6OXrMF6bbr5uO_09N32b5In2nVfpTGQpwFC1e2nyZ7bFDgMzn9iNqPjMmTw8WpjQ8LwHE1HEEM9dLEdZS5JjgKYtXyBHZOAfrOeJtHKPRaMJDr9KLZcB90IjjaAEuZ3Iu4p3p_uGkXJ4tVMrC0c229RsH3ZwZnlT-0HOlohImS0DqSGsDIbKN0ET4gVCVjg5Ee8JX72JRGKeTtGW7inadj33dXrrN3kHkLSuNJNEZpvC_CWjzeLDN5jxBcgiO9vO_3WmsneO3cbG2cRmnb6FKO5bTqfBA9jR61wJs2eyb7N60Zuv5bPW6A32dV_q-DO9AerXvzAVbZbu70VzooLOwfMsSbWLzhuOx1RsP9JHoCK4mIgZH_9j5wDkb_UHhdYudbRbzYOYLVbkIlw-gkdU_3zG9kaC7jaCOtlHlYsp9cCXD8b_L7p0rh8zXmOEPYvbW4_5WIuWXQLfRPms-Y-LLkQAjnyd3lZac6_eANgqcpC270towMt46csBDno98yn0_Wmh_ots-ZGyydeyZkrq3fPh2zEOpPog0fcPAlzMeq8ePGdd6w7iNQKjJMlHvHbkvVP7YBEoqX5RCklki-mIYhV6WE0wjgxH3E5EHjH0_UmnoU84aPn02KUKx31F4hcJrUKfpI2mFIWswz76iFEC6BlhkQAqMtbazNDAuIGwdRPgli-w1iMz7rzDOGoz2M-U5cjdhSjOEzDWgdM2fzTYy8hguDyA36ZR7xjvqlD-GkR11yl_a6I46VknHWqeTbd2-UGkUm0auutaMwpEcZzs6nM6KTkUogmV6JAwQzoKBiNN_aamuBx7PeZKlInMotYmbf9YvBqhVX_7HzP8AU_YoAQ==",
+      "maps-early": "eJzNWltz4rgSfg6_QuWqU-dhNUGSZdlOhdkCkhB2cyEhyWzmZUpgAQq-MLYMYX79lnwJTgYIOZndnEqVSu7-WupPl5Za5PD3x8AHcxEnMgobBt5HBhDhMPJkOG4Ytzcnnxzj98-1wx5Xk8tRK5W-1nyu7R1mdeCLufAbhoMMoHg8FuqubMr8hgww9HmSXPBANIwvUg0nBuDJUIReeyW_EMM4Cng4FLEBAi7DfjScCtWJo3TWMLABBjz0pGoYF1EoDDDjoZqIKDznD1HcibyG4achj2VSUcmwUI3jVE2mqW-AuRSL88gTDaPdPGv3jc-1vb3Dns-XIu4rrkCiuGoY7SgYyFB4R72-AebcT0XDoJSifeIiih3bxcSorze9iRT3_we7MzkSFRtENwGPQxGPl_2JFL73ZEAw2-rQ8WnvCYtdxti-4xBKkM2cTXa9yTKRQ-6f80cZpMGpVDd8KsKnZmwHW5tsT2QsrkUiE7WCbwS3I9_bGXwmxxMVynC8e_MTHiUv0NZG9DkPeTuqQOnGAdLQ2zAWiYjnYjUV2LI3WfRnogIk-yR347Ce7SFdu4mFAHyo5Fz0Z2Ko133WlP4AKhaisq3Mcl91vYZhPttRWoIMEEaeSBoGRohBjEwMMUEmxDazISEugSazGKSma0OLYgsyYiJoY0ygbToOtBmm0Ga65poOdFzqQIyyZhB1EcTIsi2IkYsoxDiTmAi5EJvYxRCbjmNBbCFGdelgiJmt8bZt6tIhGGLHYRbELjMtSJBFGSTYRFiXJoIEM9uBBDtai13LgYQgRiCxkK4z7DJIGHF13aYIEluzIzbDWJeWC4ltOw4ktktcSByECSQudl1oYse2oEkIRtA0qe1C07QtC5oU2xia1HEQNC3HpdBkCNt6nKgeLWZqiYstXVIXmrbFdMm0le3qll1GHWi6DnYgRSYjkGLCTEgxtXXddVxIGUUOpMzFCFKbWBhSO0M6tu1A6hKLQssk2NSl7WZzo0tKbWhZJCtdxKBlE5KVjELLIVSXFBFoucTSJUMMMmS6DmRI986QRW3IkO1iyLBJEGSYYhcy7JgUMk0AMtO1GWQW0hILW2a2_PYOb6_PssreRKlZclCvLxaL_RlXk2gkHqUv9odRUJ_xJJFz8SmZSt__pFdrvdlsNlvj8-Z9s5e2msPjZDEI272ry37rWJ30h_d3k3n39GLhzSe0e7roSrc9nP_Zi2Y3y-_3Z5fdJbq5PL14QIwcxbOre-_kGn3x-oOT8wS32rc_7m5u_X56d6vuHv379F78Edx1OOOn19-vyHwwaKrkoYO-Dr48Lo_M5dHI-7P9SHuDyV9p96q7IA9nnct55PDp0eXV3dez1nQpbgdWPA7od-_79-N5NG5PW4O7rvrB6NSetudR3PyafPNQ69vNgzvqkeBsJNWnBaU3027qIXYxiO10Qe1uby4vv8XOfWxdfAujb-P40_iq2cwGsl6O5GF-vCX5sBZf2Y7Vm1dvRQNIJQL9VQb3n3HZLqgAi9Czd1ivNH9Y1-EjCzQ6vuhKX09RrsyqQIR84AuvYag4FQZI_Eg1jFbkLUEzDqK0OJKbeWTSFmVo2jvsiACM8_7PheIeV7zeVSJI6h1dZOiOCJqhDLgSXwSfRaEBskXyRpuQB0VYLBSg1BTXD4IM8D3lvlTLLAAWdd3NkRjx1FfGS6ZraNXfxKufzmZRrM5lKKPwiAd8LF5jl1t0RPDcaEUvl4NS8fHs2hN9MVNRL5LJ67P3xO9MJImIS6MVv7w5oCJQ6j6e4p30xU30KMNkZ3pVkxU5LQWl-ON5HQnu-cum9AMRqt25vTRb8cs1YKX69RwPcxKvxad89wP8_uB04otkcjkaiViG4x2D0wub1QBlCrDSfOAaOBKJGMZcvRqSfsZXJ_xJ-GFTXeY7753oI6FEHMiQK7nzKfTCpjowzxQfOM9tn8dSLXck9ISuRORS9GEz3PGjuUjeP8PlicUT9WUiisO1SF13jH3a9vK5ZWWkeKLAYiLK4xkUiGLgrH9_8rtBEMWK-23u-zuugOcmK3KlHOSKD1sMrShSv2AtnPg8EEc8mewc0p_w1XDOAwFy6ccf5814yEPRT-M3XDOf2VQu0ZkYFPJ_cq6LWlI-cdxJsQA_oij4K-tD1-6fame5I1nqmWcsGq4_MnLF84iu94V6eiHR30DmydLn2nUWzQ7AdfP6uNZf6vfARCbCAw9iIXyAa3cylp7kIfhDC2qZddbxAbBJrRvMfDmUKjkAqMb-A2Q4jAXX9kH-Ggb0c12NVjVNpfhwCrI3nhrGVVUvjh7EUOl7YR4zssHRfb5w3X7ddfJ_6vo2zxfZPa3Wn8lQgFa0eOnzVb7GDgBGz_3HFD1zpniSLF1pel4CTKTzCIbWazHRWuwg8PRyWOqxuXEM1nMk2zhGo9GEh16tF8uA-6AZx9ECXKVyLuKd6f7mZFyeTVTGwtFi2_qJgxbnjie13_RYqaiCyR89daa1gZC5jdBE-IFQtTOdiPaEr97FonROPwxX_Srl-g34dX_pNn8HkbesNZNEP0KF_01Ah8eDbT4XDyQHoPWp-NudxtoxfhsXaxuXcXYXqnViOZsJD-RXo3dNwJbFvsnvTXO2ns_WqDvQx3mt78twCrKjfWcuxKr6fR7NhU46S8-3TNEmNm_YHluj8UBviTPB1UTEoPWP7Q9SsNE_YrzusbPNYx6kvlC1y3D5CJp5_eMD0xsJutsI6mwb1y5n3AfXMhz_u-zeOXMYvcaM_CJmb93ubyVSvQmcNzvd9jMmvhwJMPJ5Mq0dybm-D2inwEkm2ZXWhp7J1p4DHvKi51Pu-9FCxxMt-yV9m1v7TpXUrRXdd2IeSvWLSNM3dHyV8lj9-DX9Wm_otxkINVkm6r0994UqLptASeWLSkqSJqIvhlHo5W-CWWYw4n4iioSx70cqS32qr4ZPP5uUqdjPKLJCkTWo0-yStMKYazDPfkUpgXQNsHwBKTHW2sayxLiEsHUQ4Vc8stcg8ui_wjhrMDrOVMfI3YSpjBBGa0DZnD8bbWwUOVyRQG6yqbZMdrQxKzbmjja0YkN3tLEqNtY6m3zp9oXKstgsc9W1dhSO5Dhf0eEsLRsVoQiW2ZYwQJgGAxFX_qXhJ-DxnCf5U2QBZYi4xb8SlB0c1l_-q87fGaFHcQ==",
+      "maps-red": "eJzNWmtz2roW_Vx-hcYzZ6ZnKho9LNnuJL3jkISkzYOEPE77pSNAgBI_iC2T0F9_R7YBkwIhtz03GWY08tba0l5b0ra8xfZ_HsMAjGWSqjjasfBHZAEZdeOeigY71tXlQd21_vO5tt0SenjW381UYFo-195t53UQyLEMdiwPWUCLZCD19bQr-gNZoBuIND0VodyxbpTuDi0g0q6Meo25_FR2kzgUUVcmFgiFitpx907qZhJnox0LW6Ajop7SO9ZpHEkLjESkhzKOTsRtnDTj3o4VZJFIVFppUlHZNEgyPbzLAguMlXw4iXtyx2r4x4229bn27t12KxATmbS10CDVQu9YjTjsqEj29lptC4xFkMkdy7Md7yNHLrOR4zmOtbVc9TLWIvgf9I5VX850mOvYq4D7kUwGk_ZQyaA3UyAOX2vQ_mFrjnUpYR8p9bhHMcKr9FrDSaq6IjgRjyrMwkOlL8WdjGbdYITdlUYeqEReyFSleoZ32CpwIw56G4OP1WCoIxUNNu9-KOL0CZrTVegTEYlGXIGylR0b6FWUyFQmYzmfC-x5qzTaI1kFfnRz4PZWvodM7TKREoiuVmPZHsmuWfd5T-YB6ETKyrai03111Nux6MKOMhJkgSjuydTMFOIQI4ohJohC7HAHEuIRSDnj0KaeA5mNGWSOTSEnFEEHYwId6rrQ4diGDjc1j7rQLQrbhR6jDGKU94psD0GMmGMkHrIhxrmEuAhDTBHyIKbYM3XXZRAzxG1Tuhhi7hgtxzG9OS7BELsuZxB7nDJIELM5JJgibEqKIMHccSHBrmnFHnMhIYgTSBgydY49DgknDjKlZyS2iyHhjo0gcQx94nCMTck8SBzHdSFxPOJBYyyBxMOeBymi1IUUuw6DlBCMIKW240FKHcYgtbGDIbVdF0HKXM-GlCPsGHfaxqmcGomHmSltD1KHcVNyo-V4pn-P2y6knotNaXxqI8oJtDH2ELQx4RTa2HaMxHM9aDPmUWhzG7nQ5h5G0HYIw9B2ci3XcVxoe4TZkGGCCWSUYGpKx8un1pS2babZ5S5kjJg6s10GGfMQh8whJC-5DZlLsGtK29RtRCDzCDMlRxxyRD0XcmRs44jZDuTI8TDkmBIEObaxBzl2qQ25oQo59RwOuW18yBkycoYZzVf1u-2ri-O88m6o9Sj9tLX18PDwcST0MO7LRxXIj9043BqJNFVjWU_vVBDUzSbY8n3f3x2c-J2HVrbrd_fTh07UaJ2ftXf39UG7e9N5HN403UGX7pL64WDQ99Xx_dH4PGhNuuOvrXh0Obn_dnx2NPEvjy9O7C5pXSbfzrJgd4iuDy--4y_p1eTn1f6Xy9Pr0_b1V3bdxv80rxUb2uH3q-8jFmZh71EcXtyfk3Gn4-v0tom-d24eJ3tUNPpHpx6Kjw8HXnYg7aF_uydO0m-8fvt4f37Cdq_v0ublF3YxDrNGR40eGpG4H7D7_XE8aNztdo6-6ytFW4m6zM6_1lW6G078ny3a8_vI_nFzfdpvkWMqvun6V-rs3YrsbJ81jqPe2e0Nrzvp2dlkz7Fvx_xH82v9ss94K2n_GCT1wbnv5w7fmnp8u3i7poX7y6c8YJjYYYKABZSWoXnC5bvlV1y-3ypAZxUw3xQVoLsKmK_9CtBbBcyX2hxI0GqgWx2alC-8d9tbFRdsb5kIm8diE4JNpW2WW9GYV4GMRCeQvR1LJ5m0QBrEesfajXsT4CdhnJWnFr8I3kZjGr3fbTdlCAbF-CdSi57QYutIyzDdapoiRzdl6EcqFFreSDGKIz_Q3yyQL_oX6VkgEmH59igbQNEC4j64ENFA9ozFqTU9tBFkgftMBEpPFh7MsHuyL7JAW0_ZL6G69SKu7Ww0ihN9oiIVR3siFAP5HNtCoynDRaU53UIOpg1vgF5jaA60Om7FKjVTsyHBY5mmMpkqzQkW3QEdg2nbG-B4rQJ5GT-qKN2YX1Vlzs5IwVT8BojtSdELJr4KQhnpzck9VZsTLFrAvOkNkLyKOnEW9V7M8he9Oc2y6d_luV0QeS4-l5EP_35wPghkOjzr92WiosGGgfmJztxFeQOYt7zmQtiTqewmQj8bf3_FV5f2TPh6kz39KP7dqd6TWiahioRWzwft5TpVzyw0vOZMNwKRKD3ZkNEMXXn_TEWvN8fNIB7L9PfnePqCFqm-GcryMFFmODYMgUb3bFGz4iqRavAwlNPjCCgRpefYK0z_URjGiRZBQwTBhmtgUWXObioHRcPrLYfdONZ_YDUcBCKUeyIdbhzYZ_hqUBehBIX0DbzZ_aQrItnOkhecrBd0Kt8RuRiU8n91tstaOs2GXSv5AH7GcfhPntIytW-z2nFhSZ5OKL7cDNw85OzKTJqpt6WeJdPMM1DFh-3n2kUe0j6BC_9iv9aemNRxqlLZA7fyQQYA165VonpKROCLEdRy7XzgT8AltaNwFKiu0ukngGr8L6CibiKF0Q-LxCkwmd2aXW3xtRbdO5BnA2sYV5taSXwru9qchIu4kTvHjPnEdOd508kbNd193nT6Rk33njfdfpumE_S86eyNmo6fN52_TdPXWv6Qf5vU2iMVSbAbPzy1-byIp58AQYv2YxstGFPe1ExN8Xu9FFBk0gQcLW_FxLRiF4HZfcq0HdOVPlgxPes4xv3-UES9mp9oFQQymYDzTI1lsjHXD25OZGGWcgquETvsFwJGXFid1j4YR-m4ginugUwWZQUbuo7NUAah1LVmon7-DCagJQO9IRFSe09xnZK_q841F0jAXDaB_X5fdZWMupNayaIlI6nNB1UK2F_LCSxzzZSxuYBbwJZyc9f2vBPsdU7oxL1JzU91IgJwLIUerp_NMsv6CezWZ79Fz3x4T3idOH8XBiZK58u1rRN1J8FJFmg1CpRMQD9OpuuxXKvNRHQlGIoUvCdunaIF7_pZIoxjZVevddVy377IX2ydvwb5F0vtUCSjSXqnIlB8wmy8cBYjz8KG_OD-BbqznKA5xiUyTU1jMNvvy6iv2eOriK9aWMsdsvZg1TFn9lpbx0mYqJ5MQH6I39gf7sIWisfSJJlK698Tu07431Wv-ONY9cB-kMNEMMtK1Qhb09G6BbPKNS-IMmtPbx0TVsqdBXY3jzHLg-XKiEBKNuZ6_HmL1x7aRJgFUtfOoskj8Iv668f3FxJce7QzWTpcOxuJAFyoaPD_ZfebM4fXnvwMM_KHmL00dryUSPU0deI3jxoLTALVl6AfiPSutqfG5kxljAIHuWRTWitGJmtHDs17vBh5X8skEkHxav8jQ9O1Q2damd7K0ZuJiJT-Q5ztFwx8nolE__wz47IXjOuHUg8nqf7dkdtSl-d1oJUOZCWDkaWyLbtx1CuuEvJEQl8EqSwzTO0g1nmqpHrZMLu_nqZufkWRyp30EtRhftScY-gSzMLl8xRoLwFOk6ZTDFvaWZ5Jm0L4MogMKhY5SxBF8J9j3CUYE2aqPvJWYSoewmgJKJ_zBW9jq0z5lPmmVTrVnsmGOtV_JdANdap_ebA31GEVHbZMp1i6banzpFee6DK1Rhz11aBY0dEom3YqIxlO8i1hgSgLOzLZsdzpv99-Ae6PRVrcX5RQx-Wo_JPadIDtrad_Av0vMONFeg==",
+      "pinnacle": "eJzNWm1z2rgW_lx-hcYznbs7VRq9-qUTugMkpemGhoYk3fRLR9gClPiF2jIJ_fV3ZONgUiDktnubYUYjHz1HOs-RdCwfcfDXXRSCmUwzlcRNC79GFpCxnwQqHjeti_N3e67119vGQV_oyemonavQtLxtvDgo6iCUMxk2Lc-2gBbpWOrLqiv6FVnAD0WWfRSRbFqflfYnFhCZL-Ogs5R_lH6aRCL2ZWqBSKh4kPg3UnfTJJ82LWyBoYgDpZvWxySWFpiKWE9kEvfEdZJ2k6BphXksUpXVmlS8aBqnuZ7c5KEFZkre9pJANq1O66QzsN42Xrw46IdiLtOBFhpkWuim1UmioYplcNgfWGAmwlw2LUw5cl57jHsIexhb--tVzxMtwv9B70SN5L2O7bn2JuBRLNPxfDBRMgzuFSjmWw06et9fYh2E3deOSx2MMCGb9PqTeaZ8EfbEnYry6L3S5-JGxkte2HM3snmnUnkmM5Xpe7yz0cJOEgY7g0_UeKJjFY93734ikmxndE_EopPUoNzZBr2IU5nJdCaXc0HQRo3BVNaA-LVbAA_2iz1kaueplED4Ws3kYCp9s-6LnswD0KmUtW1Fq311HDQturKjjARZIE4CmTUtjJANMaIYYoIoxI7tQEI8AqnNbciw40BGPQdyhjnkDqPQJhRBB2MCHeq60LExg45tah51oVsWzIUepxxiVHSNmIcgRtwxEg8xiHEhIS7CEFOEPIgp9kzddTnEHNnMlC6G2HaMluOY3hyXYIhd1-YQe9jY69mUQ4I4syHBFGFTUgQJth0XEuyaVuxxFxKCbAIJR6ZuY8-GxCYOMqVnJMzFkNgOQ5A4xhPEsTE2JfcgcRzXhcTxiAeNyQQSD3sepIhSF1LsOhxSQjCClDLHg5Q6nEPKsIMhZa6LIOXENqXrMUhthB3jX2a8bFMj8TA3JfMgdbhtStvoOp4ZxbOZC6nnYlMa_zJEbQIZxh6CDBObQoaZYySe60HGuUchsxlyIbM9jCBzCMeQOYWW6zguZB7hDHJMMIGcYswgpwRTUzpeMdmmZMxMvGu7kHNi6py5HHLuIRtyh5CitBnkLsGuKZmpM0Qg9wg3pY1saCPqudBGxkIbceZAGzkehjamBEEbM-xBG7uUQdsQhjb1HBvazPjT5sjIOea0WOwvDi7OTorKi4nW0-zN_v7t7e3rqdCTZCTvVChf-0m0PxVZpmZyL7tRYbhn9sZ-q9Vqtce9ln_bz9st_yi7Hcad_qfTQbt9djRAlx_uvsy6766G8_Z3__2QyU7b7RznifI6F18_zN1kT4X9v6fjjF0ft3v66Pvk-5V3qse2fdF9f3YRvIsvorvB1OtluN25-H55fhEO8ssLfXkXXuVX8kN02RXySzqN_c8TJG4-poTcngyP73T3M878sUfG8fxwFPzduWP94eSf_PjTceReH4pedmXvXd99-9Tj7cubrHv-gZ_NorwzVNPbTiy-jfm3o1ky7ty0h8df9IWi_VSd55_-3lNZO5q3vvdl9jVA7a_n196XC-x-vZoFU0VZOspOP35j7PzmOA-Q_XGYOvktc477M3X6NXWvUv7xa5zs6ZO9zsxut1qtZuH8_cr7B-ULOCunYvFUxBQTXkyIsIDSMjJPePG6-hFX7MMa0NkELLZJDehuAha7oQb0NgGLZbcEErQZ6NaHJovX2ouD_ZoLDvZNEC7CtYnSpjIwS69sLKpAxmIYyqBp6TSXFsjCRDetdhLMQSuNknxxsGmV8d1oVAH-xUFXRmBcjt-TWgRCi_1jLaNsv2uKAt2VUStWkdDysxTTJG6F-soCxQZ4kp4FYhEtXjCLBlC2gGQEzkQ8loGxOLOqcx3BFviWi1DpeeHI6sEMeyhHIg-19ZD9Gqr7T-I6yKfTJNU9FaskPhSRGMvH2JYaXRmtKi3plnJQNTwDep2JOfPqpJ-ozEzNjgRPZJbJtFJaEiy7AzoBVdsz4HipQnme3Kk425lfXWXJzkhBJX4GxA6lCMJ5S4WRjPXu5B6qLQmWLWDZ9AxIXsTDJI-DJ7P8QW9Jc9H07_I8KIk8Fp8XkQ__fHB-F8pscjoayVTF4x0D8wOdpYuKBrBs-Z0L4VBm0k-FfjT-_oivL-174e-b7Oq7-Wen-lBqmUYqFlo9HrTX69Q9s9LwO2e6E4pU6fmOjO7RtfdPJfp9c9wNk5nMfn6Oqxe0yPTniVwcJhZJkB1DoNE9XdWsuUpkGtxOZHUcAQvEwnP8N0z_cRQlqRZhR4ThjmtgVWXJrpKDsuH3LYd2kuhfsBrehSKShyKb7BzY7_H1oC4iCUrpM3izt1JfxHKQp084Wa_o1L4jCjFYyP_V2V7UsiphdqnkLfieJNE_RdbL1K7uayelJUVqofxyM3DzULBbJNtMfSD1fb7NPANVfti-bZwVIe0NOGudHTUGc5NdzlQmA3Atb2UIcONSpSpQIgYfjKBRaBcDvwGu3TiOpqHylc7eANRwXgIV-6kURj8qc6vAJH8bvN7S0lr4N6BIGDYwqTf10-Ra-tqchMu4UTjHjPnAdOdx08kzNd193HT6TE33HjedPU_TCXrcdP5MTcePm24_T9O3Wn5bfJs0BlMVS9BObh_a_KmMp28AQav2YwetGLO4zKlMaQVBBhgyaQIXrW_F3LQSjsD9lUvVjp2NPtgwPds4JqPRRMRBo5VqFYYynYNPuZrJdGeurzAqmKxMU8mhkJvmhxyMvDQ8a7xi_KV5XmLK2yKTSNlAiG4jNJFhJHWjJ65lppUP-jLUO5IhjT8o36P2n3UHm3smYO6kwNFopHwlY3_eWNDoy1hq81GVAfvlegZr3VNxNhd1K-CF3NzJPe4Gts0NwySYG0GgfKHlfzLQFelwmx8WydY3oL13_1t1zqs_KNqj-M_SxFTpYtUOdKpuJOjloVbTUMkUjJK0WpaLJdtNhS_BRGTgD8oeOriVp8L4Vvp6u7fW-_dJLuPbXDYuvlwalzJM8hSU3zE7rxxMN-7KVxi9BP59ZtAc5lKZZaY1vN_1a5lv2eqbeG9aWuv9sfV8NTRH98odxTl-d2-sxL9eMpMm0bQwvVhG5M-6T1qzRAXgKCxgIrzPTDXoto62rpZNjnlCnNl6hBuauHIihZ7IFLR3DzIbIubGkGA8YOiYe_THTd56dBNRHkrdOI3nd6BV1p9FlH8ix61nPJOuw43TqQjBmYrH_3eCPzl_eOsp0JAjv4rcUyPIU5nUj1a9Vve4s0IlVCMJRqHIbhqHamYOWMYo8K6Q7Mprw8hk68iReaGXIx9pmcYiLN_xv2RounXoXCvT22L0bipipX8RZ_aEgT_lItXff824_AnjtiKpJ_NM_-zIA6kXh3eglQ5lLZ2RZ3Ig_SQOynuFIqswEmEmF-mmQZjoIm9Sv3m4v8yu8jg_okjtgnoN6n1x6Fxi6BrMyk10BWRrgFUGtcLwtZ0VabUKYq-DyLBmkbMGUb4Dlhh3DcbEmbqPvE2YmocwWgMq5nzF29ha5H8WyadNOvWeyY469b8o0B116v9_YDvq8JoOX6dTLt2B1EUGrMh6mVoniUdqXK7oeJpXncpYRvNiS1ggzqOhTJuWu1gjPwKPZiIrLzMqKF78zeJgvxrgYP_hn0b_C38JUXg="
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T10:44:01.239Z"
-  },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Bow"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Quiver"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "dexjewel"
-        ]
-      }
-    }
-  },
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "minion",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Bandit Rogue's Head",
-          "tier": "low",
-          "effect": "(4-6)% increased Attack and Cast Speed",
-          "source": "Kraityn",
-          "area": "Act 2",
-          "note": "Attack and cast speed for summoning."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "low",
-          "effect": "+(14-18)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance while gearing."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "low",
-          "effect": "+(30-50) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life for you and your minions to hide behind."
-        },
-        "lowerLimb": {
-          "name": "Sea Witch's Tentacle",
-          "tier": "low",
-          "effect": "Minions deal (10-15)% increased Damage",
-          "source": "Brood Princess",
-          "area": "Act 1",
-          "note": "Minion damage from Act 1."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Bandit Rogue's Head",
-          "tier": "med",
-          "effect": "(8-10)% increased Attack and Cast Speed",
-          "source": "Kraityn",
-          "area": "Act 2",
-          "note": "Keep the summoning speed."
-        },
-        "torso": {
-          "name": "Ornate Torso",
-          "tier": "med",
-          "effect": "Minions have (20-30)% increased maximum Life",
-          "source": "Greust",
-          "area": "Act 7",
-          "note": "Minion life; the aura stays on after they die."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "med",
-          "effect": "+(60-80) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life before damage scaling."
-        },
-        "lowerLimb": {
-          "name": "Sea Witch's Tentacle",
-          "tier": "med",
-          "effect": "Minions deal (20-30)% increased Damage",
-          "source": "Brood Princess",
-          "area": "Act 1",
-          "note": "The default minion damage leg."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Chimera's Head",
-          "tier": "fixed",
-          "effect": "Minions deal (35-50)% increased Damage if you've Hit Recently",
-          "source": "Chimera",
-          "area": "Pinnacle / Map Boss",
-          "note": "Swap to this only if you hit recently; otherwise keep Bandit Rogue's Head."
-        },
-        "torso": {
-          "name": "Ornate Torso",
-          "tier": "high",
-          "effect": "(3-5)% of Damage from Hits is taken from your Damagable Minions' Life before you",
-          "source": "Greust",
-          "area": "Act 7",
-          "note": "Damage from hits is taken from your minions first."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "high",
-          "effect": "(5-7)% more Maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "More maximum life is the best defensive arm."
-        },
-        "lowerLimb": {
-          "name": "Sea Witch's Tentacle",
-          "tier": "high",
-          "effect": "Minions have (8-12)% chance to deal Double Damage",
-          "source": "Brood Princess",
-          "area": "Act 1",
-          "note": "Minions have a chance to deal double damage."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Summon Skeletons until ranged weapons start dropping.",
-        "Animate every bow you find; Chance to Poison turns the volley into damage."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage",
-            "Minion gem levels"
-          ],
-          "note": "Any wand; the animated weapon does the damage."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "A 3-link is enough."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Movement speed is defence."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Add Minion Speed and start Desecrate plus Flesh Offering.",
-        "Take the first two labs when they unlock; Mindless Aggression is the army."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage",
-            "Minion gem levels"
-          ],
-          "note": "Minion wand."
-        },
-        {
-          "slot": "Shield",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Stay defensive; the minions do the damage."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "4-link",
-            "Life"
-          ],
-          "note": "Four links carry the swarm."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage"
-          ],
-          "note": "Bench minion damage on a free suffix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Five-link the animate group and reach 2,000 life.",
-        "Add Vile Toxins and Deadly Ailments; the poison does the heavy lifting."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage",
-            "Minion gem levels",
-            "Minion attack speed"
-          ],
-          "note": "The wand is the minion slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Five links."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Minion damage",
-            "Minion life"
-          ],
-          "note": "Minion damage first."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "Reach 3,000 life and cap resistances in white maps.",
-        "Unbound Ailments is the sixth link; keep the swarm refreshed."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage",
-            "Minion gem levels",
-            "Minion attack speed"
-          ],
-          "note": "Minion wand."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the six-link."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Resistances before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Rings",
-          "mods": [
-            "Elemental resistances"
-          ],
-          "note": "Bench the resistance the gear is missing."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Keep a Desecrate and Flesh Offering on the bar for every pack."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Minion Skill Gems",
-            "Minion damage",
-            "Minion attack speed"
-          ],
-          "note": "Gem levels beat everything for minions."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Six-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Minion damage",
-            "Minion life"
-          ],
-          "note": "Minion damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage"
-          ],
-          "note": "Bench minion damage."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 gems and a +1 minion gems wand for bosses."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Minion Skill Gems",
-            "Minion damage",
-            "Minion attack speed"
-          ],
-          "note": "The wand carries gem levels."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "+1 to Level of all Minion Skill Gems",
-            "Life",
-            "Minion damage"
-          ],
-          "note": "The amulet carries gem levels."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Minion damage",
-            "Minion life"
-          ],
-          "note": "Keep minion life."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Animate Weapon": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Animates a Melee Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
-      "effect": [
-        "Base duration is 40.00 seconds",
-        "Animated Lingering Blades deal 17 to 80 Added Attack Physical Damage",
-        "Can use Items requiring up to Level 100",
-        "Minions deal 38% more Damage",
-        "Minions have 38% more Attack Speed",
-        "Minions' Attacks deal 126 to 184 additional Physical Damage",
-        "Maximum 14 Animated Weapons"
-      ],
-      "tags": [
-        "duration",
-        "minion",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "to Maximum Animated Weapons",
-      "qualityWorth": "recommended"
-    },
-    "Animate Weapon of Ranged Arms": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "divine-font",
-        "act": null,
-        "quest": null
-      },
-      "color": "g",
-      "support": false,
-      "description": "Animates a Ranged Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
-      "effect": [
-        "Base duration is 40.00 seconds",
-        "Animated Lingering Blades become Bows",
-        "Can use Items requiring up to Level 100",
-        "Minions deal 138% of Damage",
-        "126 to 184 Added Physical Damage",
-        "Maximum 14 Animated Weapons"
-      ],
-      "tags": [
-        "duration",
-        "minion",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "to Maximum Animated Weapons",
-      "qualityWorth": "recommended"
-    },
-    "Arcane Surge": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Arcane Surge lasts 4 seconds",
-        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
-        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
-        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
-      ],
-      "tags": [
-        "arcane",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Chance to Poison": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 40% chance to Poison on Hit",
-        "Supported Skills have 94 to 141 added Chaos Damage"
-      ],
-      "tags": [
-        "chaos"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Damage with Poison",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Deadly Ailments": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "vendor",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills deal 80% less Damage with Hits",
-        "Supported Skills deal 44% more Damage with Ailments"
-      ],
-      "tags": [],
-      "qualityEffect": "Supported Skills deal % increased Damage over Time",
-      "qualityWorth": "recommended"
-    },
-    "Desecrate": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Desecrates the ground, spawning corpses based on monsters in the current area and dealing chaos damage over time to enemies. If you are using the Raise Spectre skill there is a chance to spawn spectral corpses matching your most recently raised Spectres. Spectral corpses cannot be interacted with except by Minion skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Spawns 5 corpses",
-        "Maximum of 10 corpses allowed",
-        "Deals 294 Base Chaos Damage per second",
-        "Spawned corpses' level matches the area level, up to a maximum of Level 80"
-      ],
-      "tags": [
-        "area",
-        "chaos",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cast Speed",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Flesh Offering": {
-      "requiredLevel": 12,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Siren's Cadence"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Consumes a corpse, which temporarily empowers your minions with swiftness. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
-      "effect": [
-        "Base duration is 5.00 seconds",
-        "Additional 1.00 seconds Base Duration per extra corpse Consumed",
-        "Grants Minions 30% increased Attack Speed",
-        "Grants Minions 29% increased Movement Speed",
-        "Grants Minions 30% increased Cast Speed"
-      ],
-      "tags": [
-        "duration",
-        "minion",
-        "spell"
-      ],
-      "qualityEffect": "% increased Effect of Offering",
-      "qualityWorth": "recommended"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "lilly",
-        "act": 6,
-        "quest": "Fallen from Grace"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Minion Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Minions from Supported Skills have 25% less Maximum Life",
-        "Minions from Supported Skills deal 39% more Damage"
-      ],
-      "tags": [
-        "minion"
-      ],
-      "qualityEffect": "Minions from Supported Skills deal % increased Damage",
-      "qualityWorth": "recommended"
-    },
-    "Minion Speed": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 44% increased Minion Movement Speed",
-        "Supported Skills have 34% increased Minion Attack Speed",
-        "Supported Skills have 34% increased Minion Cast Speed"
-      ],
-      "tags": [
-        "minion",
-        "movement"
-      ],
-      "qualityEffect": "Supported Skills have % increased Minion Movement Speed",
-      "qualityWorth": "recommended"
-    },
-    "Summon Skeletons": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Summon Skeleton Warrior minions at the targeted location. They use a melee attack and die after a duration. If made aggressive, Skeleton Warriors will also dash towards nearby enemies.",
-      "effect": [
-        "Base duration is 20.00 seconds",
-        "Summons 3 Skeleton Warriors",
-        "Maximum 7 Summoned Skeletons"
-      ],
-      "tags": [
-        "duration",
-        "minion",
-        "spell"
-      ],
-      "qualityEffect": "to Maximum Summoned Skeletons",
-      "qualityWorth": "recommended"
-    },
-    "Unbound Ailments": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "54% increased Duration of Ailments inflicted with Supported Skills",
-        "Supported Skills deal 19% more Damage with Ailments",
-        "Supported Skills have 54% increased Effect of non-Damaging Ailments on Enemies"
-      ],
-      "tags": [],
-      "qualityEffect": "% increased Duration of Ailments inflicted with Supported Skills",
-      "qualityWorth": "recommended"
-    },
-    "Vile Toxins": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills deal 5% more Damage with Hits for each Poison on the Enemy, up to 8",
-        "Supported Skills deal 19% more Damage with Poison"
-      ],
-      "tags": [],
-      "qualityEffect": "Supported Skills deal % increased Damage with Poison",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "9c07f2e62413",
+  "patch": "3.30.0",
   "guide": {
     "summary": {
       "text": "Poison Ranged Animate Weapons measure 75.8k at red maps and 108.1k at pinnacle. The animated bows poison from range while you position, and the build needs no unique.",
@@ -8583,7 +8565,7 @@
       "factsHash": "daca0a69f09a0483"
     },
     "maps": {
-      "text": "At red maps the build measures 75.8k damage, 31110 effective life and 11118 physical max hit. Animate the first pack's bows, then keep the swarm moving with Flesh Offering.",
+      "text": "At red maps the build measures 75.8k damage, 28325 effective life and 10184 physical max hit. Animate the first pack's bows, then keep the swarm moving with Flesh Offering.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8591,10 +8573,10 @@
         "gates.maps-red.metrics.ehp",
         "gates.maps-red.metrics.maxHit"
       ],
-      "factsHash": "efbf30e002814d0f"
+      "factsHash": "20ab3570ab84b68f"
     },
     "bossing": {
-      "text": "Pinnacle measures 108.1k damage with 40917 effective life and 13167 physical max hit. Stack the bows before the burst, refresh Flesh Offering, and recast Animate Weapon when the oldest ones expire.",
+      "text": "Pinnacle measures 108.1k damage with 37019 effective life and 11981 physical max hit. Stack the bows before the burst, refresh Flesh Offering, and recast Animate Weapon when the oldest ones expire.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8602,8 +8584,14 @@
         "gates.pinnacle.metrics.ehp",
         "gates.pinnacle.metrics.maxHit"
       ],
-      "factsHash": "6680c879a282ef02"
+      "factsHash": "5d113c63a62a1599"
     }
   },
-  "medal": "A"
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:54:58.458Z"
+  }
 }

@@ -1072,7 +1072,923 @@
     "core": [],
     "optional": []
   },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Sceptre",
+          "Wand"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Shield"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "intjewel"
+        ]
+      }
+    }
+  },
   "status": "verified",
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    },
+    {
+      "season": "covens",
+      "date": "2026-11-27",
+      "notes": [
+        "The default link is Lightning Tendrils of Eccentricity on Spell Totems: its wide pulse clears and its always-crit larger pulse bosses. Arc keeps the four-link helmet for open layouts.",
+        "The gate report measures the default link at red maps and pinnacle; the published paste holds both links, and the four-link Arc is the clear swap.",
+        "Lightning Tendrils, self-cast and then on Spell Totem, carries the campaign; the transfigured version takes over at the Merciless Labyrinth.",
+        "Awakened Added Lightning Damage, Awakened Lightning Penetration and Awakened Elemental Focus lift pinnacle damage; the red-map paste keeps the regular supports so the import stays self-fundable.",
+        "Arcane Blessing and Blasphemy with Conductivity are the damage layers; Determination, a Granite flask, a Basalt flask and Conviction of Power are the physical layer.",
+        "The tree buys life first and reaches a nine-thousand-life pool at pinnacle; chaos resistance is capped and every checkpoint now passes the standard floors rather than the lower Dad damage floor.",
+        "Ratings move from 6/6/5/8 to 10/10/9/9 on the measured gates; the medal moves from B to S+."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "lightning-totem",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Totemic Visage",
+          "tier": "low",
+          "effect": "(10-15)% chance to Shock",
+          "source": "Kuduku",
+          "area": "Act 1",
+          "note": "Shock chance for the totems."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "low",
+          "effect": "Damage Penetrates (3-4)% Lightning Resistance",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Lightning penetration."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "low",
+          "effect": "+(30-50) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life while placing totems."
+        },
+        "lowerLimb": {
+          "name": "Carved Haunches",
+          "tier": "low",
+          "effect": "(10-15)% increased Totem Placement speed",
+          "source": "Torchoak Grove",
+          "area": "Act 4",
+          "note": "Totem placement speed."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Totemic Visage",
+          "tier": "med",
+          "effect": "(20-30)% chance to Shock",
+          "source": "Kuduku",
+          "area": "Act 1",
+          "note": "More shock chance."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "med",
+          "effect": "Damage Penetrates (6-8)% Lightning Resistance",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Lightning penetration."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "med",
+          "effect": "+(60-80) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life before damage scaling."
+        },
+        "lowerLimb": {
+          "name": "Carved Haunches",
+          "tier": "med",
+          "effect": "(20-30)% increased Totem Placement speed",
+          "source": "Torchoak Grove",
+          "area": "Act 4",
+          "note": "Faster totem placement."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Totemic Visage",
+          "tier": "high",
+          "effect": "(10-12)% more Maximum Lightning Damage",
+          "source": "Kuduku",
+          "area": "Act 1",
+          "note": "More maximum lightning damage."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "high",
+          "effect": "Hits have (10-15)% chance to treat Enemy Monster Lightning Resistance values as inverted",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Hits can treat lightning resistance as inverted."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "high",
+          "effect": "(5-7)% more Maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "More maximum life."
+        },
+        "lowerLimb": {
+          "name": "Carved Haunches",
+          "tier": "high",
+          "effect": "Skills that Summon a Totem have (16-24)% chance to Summon two Totems instead of one",
+          "source": "Torchoak Grove",
+          "area": "Act 4",
+          "note": "Chance to summon two totems instead of one."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Rolling Magma; life and a 3-link first.",
+        "Do not buy totem gear before the main skill is online."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "Magic wand."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "3-link."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Keep moving."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Add Spell Totem and Added Lightning Damage to Arc.",
+        "Cap resistances; totem placement speed is a luxury."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "Rare sceptre."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Defensive shield."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cast speed"
+          ],
+          "note": "Bench cast speed."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Six-link Arc totem and 2,000 life; cap resistances.",
+        "Add Lightning Penetration and Controlled Destruction."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "The sceptre is the damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Cast speed"
+          ],
+          "note": "Life first."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link.",
+        "Reach 3,000 life and cap resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "Rare sceptre."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Fix resists."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Lightning damage"
+          ],
+          "note": "Bench elemental damage."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life.",
+        "Totem placement speed and crit are the damage upgrades."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Critical strike chance"
+          ],
+          "note": "Crit sceptre."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Crit multi."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 Arc and awakened supports."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Lightning Skill Gems",
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "+1 elemental gems."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "+1 to Level of all Lightning Skill Gems",
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Amulet carries gem levels."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Keep life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Lightning Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 19 to 358 added Lightning Damage"
+      ],
+      "tags": [
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Arc": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Siren's Cadence"
+      },
+      "color": "b",
+      "support": false,
+      "description": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies, but not immediately back. Each time the arc chains, it will also chain a secondary arc to another enemy that the main arc has not already hit, which cannot chain further.",
+      "effect": [
+        "15% more Damage with Hits and Ailments for each remaining Chain",
+        "Deals 198 to 1122 Lightning Damage",
+        "Chains +7 Times"
+      ],
+      "tags": [
+        "chaining",
+        "lightning",
+        "spell"
+      ],
+      "qualityEffect": "Chains Times",
+      "qualityWorth": "optional"
+    },
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Awakened Added Lightning Damage": {
+      "requiredLevel": 72,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 32 to 616 added Lightning Damage",
+        "+4 to Level of Supported Lightning Skill Gems"
+      ],
+      "tags": [
+        "awakened",
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Awakened Elemental Focus": {
+      "requiredLevel": 72,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills cannot inflict Elemental Ailments",
+        "Supported Skills deal 47% more Elemental Damage",
+        "+1 to Level of Supported Elemental Skill Gems"
+      ],
+      "tags": [
+        "awakened"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Elemental Damage",
+      "qualityWorth": "recommended"
+    },
+    "Awakened Lightning Penetration": {
+      "requiredLevel": 72,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Penetrate 47% Lightning Resistance",
+        "Supported Skills have 10% chance to inflict Lightning Exposure on Hit"
+      ],
+      "tags": [
+        "awakened",
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Blasphemy": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "25% less Effect of Supported Curses",
+        "Supported Curse Skills apply their Curses as Auras\nSupported Curse Skills also count as Aura Skills",
+        "Using Supported Skills is Instant"
+      ],
+      "tags": [
+        "aura",
+        "hex"
+      ],
+      "qualityEffect": "% increased Area of Effect of Supported Curse Skills",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Concentrated Effect": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 30% less Area of Effect",
+        "Supported Skills deal 39% more Area Damage"
+      ],
+      "tags": [
+        "area"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Area Damage",
+      "qualityWorth": "recommended"
+    },
+    "Conductivity": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Curses all targets in an area, lowering their lightning resistance and giving them a chance to be shocked when hit.",
+      "effect": [
+        "Hits against Cursed Enemies have +25% chance to Shock",
+        "Base duration is 11.80 seconds",
+        "+1 metre to radius",
+        "Cursed enemies have -36% to Lightning Resistance"
+      ],
+      "tags": [
+        "area",
+        "curse",
+        "duration",
+        "hex",
+        "lightning",
+        "spell"
+      ],
+      "qualityEffect": "Shocks on Cursed enemies have % increased Duration",
+      "qualityWorth": "recommended"
+    },
+    "Controlled Destruction": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 80% less Critical Strike Chance",
+        "Supported Skills deal 39% more Spell Damage"
+      ],
+      "tags": [
+        "critical",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Elemental Focus": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills cannot inflict Elemental Ailments",
+        "Supported Skills deal 34% more Elemental Damage"
+      ],
+      "tags": [],
+      "qualityEffect": "Supported Skills deal % increased Elemental Damage",
+      "qualityWorth": "recommended"
+    },
+    "Faster Casting": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 39% increased Cast Speed"
+      ],
+      "tags": [
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills have % increased Cast Speed",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Lightning Penetration": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Penetrate 34% Lightning Resistance"
+      ],
+      "tags": [
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Lightning Tendrils": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
+      "color": "b",
+      "support": false,
+      "description": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a semicircular area in front of you.",
+      "effect": [
+        "Releases a Stronger Pulse every 3 Pulses\nStronger Pulses always Critically Strike",
+        "Deals 105 to 1986 Lightning Damage",
+        "Base radius is 3.6 metres"
+      ],
+      "tags": [
+        "area",
+        "channelling",
+        "critical",
+        "lightning",
+        "spell"
+      ],
+      "qualityEffect": "% to Critical Strike Multiplier",
+      "qualityWorth": "recommended"
+    },
+    "Lightning Tendrils of Eccentricity": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "b",
+      "support": false,
+      "description": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a semicircular area in front of you.",
+      "effect": [
+        "Releases a Stronger Pulse every 5 Pulses\nStronger Pulses always Critically Strike",
+        "Stronger Pulses deal 500% more Damage with Hits and Ailments",
+        "Stronger Pulses have 150% more Area of Effect",
+        "Deals 48 to 916 Lightning Damage",
+        "Base radius is 3.6 metres"
+      ],
+      "tags": [
+        "area",
+        "channelling",
+        "critical",
+        "lightning",
+        "spell"
+      ],
+      "qualityEffect": "% to Critical Strike Multiplier",
+      "qualityWorth": "recommended"
+    },
+    "Rolling Magma": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
+      "effect": [
+        "Projectiles can Chain when impacting the ground\nProjectiles do not change direction when Chaining",
+        "Deals 1215 to 1822 Fire Damage",
+        "Chains +3 Times",
+        "+0.4 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "chaining",
+        "fire",
+        "projectile",
+        "spell"
+      ],
+      "qualityEffect": "Chains Times",
+      "qualityWorth": "optional"
+    },
+    "Spell Totem": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Totem lasts 8 seconds",
+        "Supported Skills have 40% less Cast Speed",
+        "Supported Skills will summon a Totem which uses that Skill",
+        "Supported Skills deal 50% less Damage"
+      ],
+      "tags": [
+        "spell",
+        "totem"
+      ],
+      "qualityEffect": "Supported Skills have % increased Totem Placement speed",
+      "qualityWorth": "optional"
+    }
+  },
+  "seedHash": "825b261fb65c",
+  "medal": "S+",
+  "stale": {
+    "status": "waiting-for-pob",
+    "reason": "This build has not been verified against a patch fact set."
+  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -1945,13 +2861,13 @@
         "dps": 8000
       },
       "metrics": {
-        "dps": 31150,
+        "dps": 19107,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 4118,
-        "energyShield": 913,
-        "ehp": 13772,
-        "maxHit": 6106,
+        "life": 3953,
+        "energyShield": 995,
+        "ehp": 13545,
+        "maxHit": 6020,
         "resists": [
           75,
           75,
@@ -2971,10 +3887,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -2984,10 +3900,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -3113,13 +4029,13 @@
         "dps": 20000
       },
       "metrics": {
-        "dps": 47283,
+        "dps": 27430,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 5130,
-        "energyShield": 924,
-        "ehp": 20076,
-        "maxHit": 8601,
+        "life": 4931,
+        "energyShield": 1006,
+        "ehp": 19697,
+        "maxHit": 8459,
         "resists": [
           76,
           75,
@@ -4274,10 +5190,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4287,10 +5203,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4414,16 +5330,16 @@
         "life": 4500,
         "ehp": 12000,
         "maxHit": 6000,
-        "dps": 120000
+        "dps": 80000
       },
       "metrics": {
-        "dps": 299931,
+        "dps": 91016,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 7371,
-        "energyShield": 1008,
-        "ehp": 29453,
-        "maxHit": 11759,
+        "life": 6713,
+        "energyShield": 1276,
+        "ehp": 28081,
+        "maxHit": 11285,
         "resists": [
           76,
           75,
@@ -5807,10 +6723,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5820,10 +6736,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5833,10 +6749,10 @@
           "slot": "Jewel 3",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5846,10 +6762,10 @@
           "slot": "Jewel 4",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5859,10 +6775,10 @@
           "slot": "Jewel 5",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5872,10 +6788,10 @@
           "slot": "Jewel 6",
           "base": "Cobalt Jewel",
           "mods": [
-            "65% increased Spell Damage",
-            "12% increased Cast Speed",
-            "+25% to Critical Strike Multiplier",
-            "+80 to maximum Life"
+            "6% increased maximum Life",
+            "7% increased maximum Energy Shield",
+            "11% increased Spell Damage",
+            "3% increased Cast Speed"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -6037,16 +6953,16 @@
         "life": 5000,
         "ehp": 14000,
         "maxHit": 7000,
-        "dps": 150000
+        "dps": 125000
       },
       "metrics": {
-        "dps": 934979,
+        "dps": 221151,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 9125,
-        "energyShield": 1150,
-        "ehp": 42850,
-        "maxHit": 14097,
+        "life": 8121,
+        "energyShield": 1496,
+        "ehp": 40103,
+        "maxHit": 13301,
         "resists": [
           76,
           75,
@@ -7522,10 +8438,10 @@
           "slot": "Jewel 1",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7535,10 +8451,10 @@
           "slot": "Jewel 2",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7548,10 +8464,10 @@
           "slot": "Jewel 3",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7561,10 +8477,10 @@
           "slot": "Jewel 4",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7574,10 +8490,10 @@
           "slot": "Jewel 5",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7587,10 +8503,10 @@
           "slot": "Jewel 6",
           "base": "Cobalt Jewel",
           "mods": [
-            "80% increased Spell Damage",
-            "15% increased Cast Speed",
-            "+35% to Critical Strike Multiplier",
-            "+100 to maximum Life"
+            "7% increased maximum Life",
+            "8% increased maximum Energy Shield",
+            "12% increased Spell Damage",
+            "4% increased Cast Speed"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7743,941 +8659,23 @@
       }
     }
   },
-  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJztWmtv2zoS_Vz_CkLABe6iTCM-JRVJLxzn2ebtJG36paAl2mYjUa5EOXF-_YKSH3Ku7Tjbdm-7WBggKPIMOWc4HNIjbf31kMRgKLNcpXrbQW9cB0gdppHSvW3n-mp_w3f-etfYOhemf9bdKVRse941Xm2VdRDLoYy3ncB1gBFZT5qbyVDki-uAMBZ5fioSue1cyWQQi8wBIg-ljlqznkMls3TQF9o4IBFKt9PwTpqDLC0G2w5yQEfoSJlt5zTV0gEDoU1fpvpEfE2zgzTaduJCi0zltS6lx129rDD9uyJ2wFDJ-5M0kttOq3ncajvvGq9ebZ3HYiSzthEG5EaYbaeVJh2lZbR73nbAUMSF3HZwEATEfcMC5lNnc7HcVWpE_FKhY9WVUwGPeGgZcE_LrDdq95WMo6kAcl1_pTp7h-c1dSgjbwgngcv8wFsmd94f5SoU8Yl4UEmRHCpzJe6kns2JPBYsE95XmbyUucrNjBRfBm6lcfQUzJYbqtc3Wune2hKtvkjzJ2hMlqFPhBattA5daiELvdaZzGU2lLXF8JcuXnsga0DvTaXz1ma5f2ztKpMSiNCooWwPZGhdvhzJPgCTSVnbUmSyp46ibYfN7SXb4jpAp5HMrXcQBBFyGcQBIpAg7kHCCIGEUwop8imkJPAgw4RA5lECOSYu5IQFkFPKIfc4hR7xbOH70GOMQS8gPgyIz2FACYbILSdxaeBC5DKP2Ql9HyJEsQsRJl4AEXHdACLqYmRL5kFEEbN133MhogFxIWIupxAx6jKIuGfH8TxiS99KBZwwiF2MfYhdxhDEiBAXYkQRgRgFzIcYY59BjDnxIGbcYjgKOMScYQIx9xC1JWa2pC7E3OccYg-7BGKPcWqtFASQuBgzSNyAupAg32OQYMoYJAT7HiSEElunXgAJ4QRBQjzbSxHzIKGUUEgo5wgSxhiHhHPbwgMaQOIFdvyAUx-SIEAcUpdwWzLkQoqohyGlyCeQUooDSCl3OaTUC7yytC2B69uSMVtyD1IeWFkPMwSpTziGzKXYlr6tE4R8yAj2AsiIFxDIKGceZIz6DDLGaWBLj0PGApdD5mOL96mLbWl7fY8TyF0S-JAjVJYUBbb0EOSIYQY5dpFnfcciSTAumS09DjlzCYWcIdcvffrV1vXlcVl51TdmkL_d3Ly_v38zEKafduWDiuWbME02ByLP1VBu5HcqjjfsFthsNpvNnd51s3N_cbizv3d8e_HQ3Q3ds_Odndu9tnsdXn4eHuzf3qKHu-IguQ8f-4_h4e1Jt6na396f9vTx6Cv_cO1n161ReLKfj9yrzv5pcUcuH9OPZ_ERx7v35uI22r90P0ZXx6fnO_s7h9fo_dXg5tPBzT267Xy8ePwcX-oE94U4uEmjg68jcXeaZYdH51F_3-8R77DXk62EHh_20MYupjemn344_Hyb3X19-HZx8_lymBStjvceF_orV80Po0_ZLS7Ov3lBNtwYdj5sdDIuyXmmroZn2V6Qi-KReBeHwVEf3R7eDqO4jz89itvi9BtrHd9dy4_HfMMb7hZfMn_ny-iie9bZiIaMdHX6pZdt3DSbzdLgmxOLb1XHal6Zf_xUhgsbOezud4AyMrFPaBy3_44r91UN6C0HepjVgP4yYLmTasBgKdBupxkQu8uApZfWgOPQ_Gprs2aCrU0bX8tIbAOwrbStu1WdZRVILTqxjLYdkxXSAXmcmm1nJ41GoJklaZFV15VmFbqtxCR2v9o6kAnoVfOfSCMiYcTmkZFJvnlgixJ9IJPpyXYldZSpOG_G5pMDSsd_sawDtEjGZ8i0E0x6QdoFe2EotclUqMzImdzdsOuAb4WIlRnNPdj5d2VXFLFxnppiAe_NFxFvF4NBmpn2QMbxVWpk8hzpCm8layIzvmUrGDf_AsSaUSSj6SLsikT05NoUFwvPyJb9YLbEE8QvwHuq1LnU0mTCqFSvzXux8CKnngP8ArT3YplIbUS8n4ZFvjbhp2IzqtMeMO76BUi2Ul2GD2FktNftytCsTXSR6IxsvRdMun8C4a2K0XMR_lDGiTTfH9ybWbhmKC-Rtf1tH3-BBf9_dP4fi877Ijcya4ncKN1bm_BMqk6zagXTwf65_fpRikGqAfr-Hbsfi0Tuiry_5r6t4WuGsY2gav0F1ryZhULLdpG9xMXrMnNxSWgJxu3_JLdWLLLyDrvWMk3RtSNn0jRmgf7rXnsQp0OZf7_PtlIdFVb-BfaYE5k7h2vtv4Dv7sQiH_Rl8iyxqefWJGa8ao3_XJTaSVPzA5Z7VxqZJUqvdbNeLDMzzJOOn2qccS2fpDxvlLwHj2mafCrzlrZ2O60dV5oQZ_oH3cLtQ0lvnC619bY004ypfQaqyl-8a1yWO_wtuGxe7jXaI_tqIFe5jMBXeS9jgBqttCNiA97bx0YpW077Fvi4cZQMYvs3OX8L3AZnfwClw0wKK15dZqpTvYFwvcsehqBM-DZeY_YHMCloZcrYlDpom0zdSXBSxEYNYiWzxmvftYikSrYD-zqgtJhV5Qkf73k--Hfi4z_Ph_xOfILn-dDfiA92n-fDfic-6Hk-_Dfis5LOfXkdbpwN7CShHJhMPmVzUQX0twC738-MuvWOp_97lq3IKgZpt9sXOmq0-iqxI7UHKlMGVC9A1-ayyJyvrbImBfZdJajeDwodztrta8l6-2LlySrl-2X2oHFYdDKVg5bKwliaNZXGjROlVapz0BdDCf7EZAOzf9XNO8cGzVnevpq0ustsWJ7nNpOiQiV1OLK53-r0_YlWoaus0kmjUeNGiBhcyp6IlVhlkXGa_i3Y2Zj-5s30Jwo2sDtnGVnmjSzTs25XZkr38sbrPxHaQPhfJQsRx2CWVpvRWWyTea-u3sBPPHBil5mvP2sctso4vfKvQKOdZqHMZAaqvwYv9plIiniRz4w34mv_DxD2rY5Wd3tlzmSez2_yn-cdK29kHXs3nvEvr8pr0_fnNkE6LFd4HJvQk9jUtQx6UssqdwxsyrGB2YoRFloEj5nbrwyep77y8taRsWm0-kJpsGOrPyW6vUzflZczkRQ2np3p0QNoVvW1VcbManGkjYxj1ZOlaitoLNxeL_O6lfcyGyNQdU5eKt37qQfLC0IFWnn5skrjH6z0U1v-J0rXryQnzYOj1pzWsd153Vjkd41dNVRaVntxv2xZl8KSmfHKmRN7KlYz7xmZaRFXB-UPmZqsnLowyo42nv0gE1qZH8SZvmDiHZHba-0PmZe9YN5mIk1_lH_3zG1pxpdeYJSJZS0JUeSyLcNUR1UKuMwFdEWcy3FOpR2npkx31JPE0y8NJjmpv6Nw7euBBajJC6IJhizAzH0mMAHSBcBJHnCCYQsHK3NHEwhfBJFxTSNvAaKK1jOMvwBjQ0rdRsEyTM1CyF0AKtd8ztrIGWdtximjZTL1kfGaMqQmQ9aUqX1KguiaMvUPWtgimcp129KUeasyV2VrrVR3Va_yaD0oJoNKLZNRuSUcoIukI7Ntx598pfg34N5Q5FX-bgz1fO6OPyacTLC1-fRD3X8DNwjZgg==",
+    "code": "eJztWmtv2zoS_Vz_CkLABe6iTCM-JRVxLxzn2SbNw0na9EtBS7TNRqJciXLi_voFJT_kXNtxtu3edrEwQFDkGXLOkDOkR9r56yGJwUhmuUp100GvXAdIHaaR0v2mc311sOU7f71p7JwLMzjr7RYqtj1vGi92yjqI5UjGTSdwHWBE1pfmZjoU-ew6IIxFnr8XiWw6VzIZxiJzgMhDqaP2vOdIySwdDoQ2DkiE0p00vJPmMEuLYdNBDugKHSnTdN6nWjpgKLQZyFSfii9pdphGTScutMhUXutSetLVzwozuCtiB4yUvD9NI9l02q2Tdsd503jxYuc8FmOZdYwwIDfCNJ12mnSVltHeeccBIxEXsukEyEX8FWIM-djZXi53lRoRP1foRPXkTIB7iKwC7muZ9cedgZJxNBNA2ONr1dk_Op-Bse_66BX1sO9zylZOdD4Y5yoU8al4UEmRHClzJe6kns-JsM9WCR-oTF7KXOVmhl-tYTuNo8fglSOfqP7AaKX7G0u0ByLNH6HxStqnQot2Wod666DXOpO5zEaythg-WiXRGcoakL0KSuDOduk_tnaVSQlEaNRIdoYytFu-HMk-AJNJWXMpMvWp46jpsAVfsi2uA3QaybzpIJcgiJDLIA4QgQRxDxJGCCScUkiRTyElgQcZJgQyjxLIMXEhJyyAnFIOuccp9IhnC9-HHmMMegHxYUB8DgNKMERuOYlLAxcil3nMTuj7ECGKXYgw8QKIiOsGEFEXI1syDyKKmK37ngsRDYgLEXM5hYhRl0HEPTuO5xFb-lYq4IRB7GLsQ-wyhiBGhLgQI4oIxChgPsQY-wxizIkHMeMWw1HAIeYME4i5h6gtMbMldSHmPucQe9glEHuMU2ulIIDExZhB4gbUhQT5HoMEU8YgIdj3ICGU2Dr1AkgIJwgS4tleipgHCaWEQkI5R5AwxjgknNsWHtAAEi-w4wec-pAEAeKQuoTbkiEXUkQ9DClFPoGUUhxASrnLIaVe4JWlbQlc35aM2ZJ7kPLAynqYIUh9wjFkLsW29G2dIORDRrAXQEa8gEBGOfMgY9RnkDFOA1t6HDIWuBwyH1u8T11sS9vre5xA7pLAhxyhsqQosKWHIEcMM8ixizy7dyySBJOS2dLjkDOXUMgZcv1yT7_Yub48KSsvBsYM89fb2_f396-GwgzSnnxQsXwVpsn2UOS5Gsmt_E7F8ZZ1ge1Wq9Xa7V-3uvcXR7sH-ye3Fw-9vdA9O9_dvd3vuNfh5afR4cHtLXq4Kw6T-_Db4Ft4dHvaa6nO17fv-_pk_IW_u_az6_Y4PD3Ix-5V9-B9cUcuv6UfzuJjjvfuzcVtdHDpfoiuTt6f7x7sHl2jt1fDm4-HN_fotvvh4tun-FIneCDE4U0aHX4Zi7v3WXZ0fB4NDvw-8Y76fdlO6MlRH23tYXpjBum7o0-32d2Xh68XN58uR0nR7npvcaG_cNV6N_6Y3eLi_KsXZKOtUffdVjfjkpxn6mp0lu0HuSi-Ee_iKDgeoNuj21EUD_DHb-K2eP-VtU_uruWHE77ljfaKz5m_-3l80TvrbkUjRno6_dzPtm5arVZp8O2pxXeqYzWvzD95KsOFjRzW-x2gjEzsE5rE7b_jSr-qAb3VQA-zGtBfBSw9qQYMVgKtO82B2F0FLHdpDTgJzS92tmsm2Nm28bWMxDYA20rHbreqs6wCqUU3llHTMVkhHZDHqWk6u2k0Bq0sSYusuq60qtBtJaax-8XOoUxAv5r_VBoRCSO2j41M8u1DW5ToQ5nMTrYrqaNMxXkrNh8dUG78Z8s6QItkcobMOsG0F6Q9sB-GUptMhcqMnendDbsO-FqIWJnxwoOdf0_2RBEb57EplvDefhbxTjEcppnpDGUcX6VGJk-RrvBWsiYy51u2gknzL0CsFUUymi3CnkhEX25McbnwnGzZD-ZLPEX8ArxnSp1LLU0mjEr1xryXCy_b1AuAX4D2fiwTqY2ID9KwyDcm_FhsTnXWAyZdvwDJdqrL8CGMjPZ7PRmajYkuE52TrfeCafdPILxTMXoqwh_JOJHm-4N7Kws3DOUlsubf9vEXWPD_R-f_seh8IHIjs7bIjdL9jQnPpeo0q1YwG-yf89cPUgxTDdD3e-xBLBK5J_LBhn5bw9cMYxtB1foLrHkrC4WWnSJ7zhavyyzEJaElmLT_k9zascjKO-xGyzRD146cadOEBfqv79rDOB3J_Pv3bDvVUWHln2GPBZGFc7jW_gvs3d1Y5MOBTJ4kNtu5NYk5r1rjPxeldtPU_IDl3pNGZonSG92sl8vMDfOo46caZ1LLpynPGyXvwbc0TT6WeUtbu53VTipNiDP7g27h9qGkN0mX2npHmlnG1D4DVeUv3jQuSw9_DS5bl_uNzti-GshVLiPwRd7LGKBGO-2K2IC39rFRypbTvgY-bhwnw9j-Tc5fA7fB_wBKh5kUVjqpcuPAZu8b3rKeKl0Pqnx9A6E6proJVVeCBqn32IMUlMni0mxWn0ekvKdJ4d-OlP80KfLbkQqeJkV_N1LYfZoU--1IoadJ8d-N1FpO9-VluXE2FDHohHJoMvmY0kUV7l8D7D6ix1ZqiPAKFalb73j8r2jVsqxjkPZ6A6GjRnugEjtSZ6gyZaZW3JTLS98FJl1cpJdWWZMC-yYTVG8PhQ7n7falZb19ufJknfKDMrfQOCq6mcpBW2VhLM2GSuPGqdIq1TkYiJEEf2Kyhdm_Vm45tGB5--LS6i6zUXna2zyLCpXU4dhmhquz-Sdaha6zSjeNxo0bIWJwKfsiVmKdRSZJ_Ndgd2v2WzTTnyjYwu6CZWSZVbJMz3o9mSndzxsv_0RoC-F_lSxEHIN50m1OZ7lNFnf1oh9P7TLf608ah60zTr_8o9DopFkoM5mB6o_Ds_dMJEW8bM9MHPGl_wcIB1ZHq7u9UGcyzxed_OftjrX3ta69Oc_5lxfpjen7C06QjsoVnsQm9Cg29SyDvtSyyiwDm5BsYLZmhKUWwRPm9huEp6mvvdV1ZWwa7YFQGuza6k-Jbs_Td-2FTSSFjWdnevwAWlV9Y5Uxs1ocayPjWPVlqdoaGkvd63m7bu01zcYIVJ2Tl0r3f-rB8oxQgdZew6zS-Acr_diW_4nS9SvJaevwuL2gdWw9rxeL_K6xp0ZKy8oXD8qWTSmsmBmvnTmxp2I1876RmRZxdVD-kKnJ2qkLo-xok9kPM6GV-UGc6TMm3hW5vdv-kHnZM-ZtJdIMxvl3z9yRZnLpBUaZWNZSFEUuOzJMdVQliMtMQU_EuZxkXDpxaspkSD2FPPsOYZqx-jsK174tWIKavj6aYsgSzMJHBFMgXQKcZgmnGLZ0sDKzNIXwZRAZ1zTyliCqaD3H-EswNqTUbRSswtQshNwloHLNF6yNnElOZ5JQWiVTHxlvKENqMmRDmdqHJohuKFP_3IUtk6m2bkeaMqtVZrJsrZ3qnupXO1oPi-mgUstkXLqEA3SRdGXWdPzpN4x_A-6PRF5l9yZQz-fu5FPD6QQ7248_4_03uD7p9w==",
     "byStep": {
       "until-12": "eJzFWFFz2jgQfg6_QqOZPh0J2MYGMtAOkIbkLjRpnLR3TzeKvRg1suRKMoT--hvJBpwOkKTJ3b0wK_nb3W9XK2lF78NDytAcpKKC97Fz1MQIeCRiypM-vr05PezgD-9rvSuiZ5fTYU6Z-fK-dtCzMmIwB9bHjouRJjIB_WVlyvu7iVHEiFKfSAp9fANpxojEiKgIeDzafDmjIEU2I1xjlBLKQxHdgx5LkWd97GB0R3hMdR9_EhwwygjXMxB8Qr4JORZxH7OcE0lV5RPl5adE5np2nzOM5hQWExFDH48GF6MQv68dHPSuGFmCDDXRSGmi-3gk0jvKIT65CjGaE5ZDH7c6R91my-34bafldgLc2K56IzRhv6B3Qaew1vHa7V24jxxksgxnFFhc8eHt5fPx7GqNDdrtI6_ltVqtbjMIdvq5mi0VjQibkAea5ukZ1TfkHvjaTCdo7lI9pRKuQVGl1-jDVmcXeiRY_Hz0BU1mmlOevMDBjAj1M3w3-wnhZCQq2O4-5C2XoEDOYbMYjuvu0ggzqAKPbEn45a9V6jXshjLSjQRAJNJ0DmEGkdkD1qoZIC0BKnvMW22y87iP_Ueby8w0MeIiBtXHTsvxnbrTbnt-3W26bqfuBp0gqLttP2jVvWa31ax7vu8Hda_bdYK6qZJO3e-0mm49cHzXrwdeN_Atk4Pe7fWFFQ5mWmfquNFYLBZHGdEzMYUHyuAoEmkjI0rRORyqe8rYoSHeGAwGg2FyOxh9i8-ub-Or4fjbkgTLP_zf50q6P-7P5zweDAZ966RReuk1TOQ2RyY1RgiNSVVkxYgIOLljEPexljlgpJjQfTwU8RINZCpyWZwsgyKpRmOV1YPeGFKUQGrSNQFNYqJJ41xDqhpj82PRY0ivBWOUJxOSpAQjG9NTKhZ7Ke8w4iQt17I0g0o75fnpY_Q9J4zqpV2zUjb2T2BKcqbxzxFuCafxonjCPMuE1IM4hni9uU5IShJ4KrxCcwzpduVNsPY7WgPQClFG7f5_UcuIcAhz-ZJgqzqVGO00KufffD17BfWnSv0rkExw5Ly-zk8ZSeGEqNkzi7yC3yTFTqJidtUi_NcpOQOWgn59QkaMSKqXz0zHGr1JxnrqX8xEKanV_fGFwgL9ECL90_ow0l9r6aLg4eH1mWrgZmADKu8eI4eg19ePGSMaF-NrG9IxmgzG56NauDSNl6IKYrSwlVg7kXSqF0LE6Cvhcc0qW7_HyHFrn4uYj1Gzdp5mjEZUKzPwmu8Q5ZEEYkyFGTBWHho2WmPlMRd3L5eZLYHaWX4nqUIjKiMG-rlcfnN9pAVKiz4ImT5tBwlvL4k7ES9rXwhh6BoSwijZQ6BofdUxGh4OD4e_yqe1l0_CxBxULRQyAgkSjYvxc7PiuO8MDdProaK5IjzaxcR_IjNCV4gM7fAVq-P41eqZiDmkwDWyzdcOgsF-gsB0bTQjlKOhEd-8ctp73ZM0N_V6yZcPaFDIL1ylzdX75FJ19lKRlCdO7TIzVUx58vaZ6D7p3v0F92UazFPj6Qw4zb0cxHQ6M0fZzYImKMyopBoVz7G3z4az_4xldApoyoi6r00gpqUtdGpnnklmh-P9B2pKOCkdhylhDJmn0Jv43X-G5poaY6XrzzmN7hVlc5Cv9B2CLq80pKlmULmCcwUhRILHRWtlb8IpYQrK7iFkQttLvtp8UV30E-u2tIJa9SMrjLsF8-jFsgJ6W4DFob3BtLYaE7oC8bdBgFUYBVsQxbmzwbS3YMyWrEbf2YVxN5juFkyZxwrKaW6B2SV_lG0Hlz1L2TDt0qladp-p41V0vG06RUmFoG03ZTsoI40En9KkqDSe5SujwCFd2krFiOfpHUhrt7Ed-HFOzEt_A_W8bvl3wcp-r_Hzf3P_AOIiOm8=",
       "until-28": "eJzFWFtv2zYUfo5_BSFgT1Ni3S-B3cFxGqdb0qZR0m1PAy0dy1woUiUpO96vHyjJtlLYTrpkGwwYh-R3yO_cqCMNfnosKFqAkISzoWGfWAYClvKMsHxo3N9dHEfGT-96gxus5p9mZxWheuVd72hQy4jCAujQcCIDKSxyUF_WW7l_WAZKKZbyIy5gaNxBUVIsDIRlCiwbb1cuCQhezjFTBiowYQlPH0BNBK_KoWEbaIpZRtTQ-MgZGKjETM2Bs2v8JxcTng0NWjEsiOwsEdYu5aJS84eKGmhBYHnNMxga49HVODHe9Y6OBjcUr0AkCiskFVZDY8yLKWGQnd8kBlpgWsHQCEP3xPasKDD6u5XuuML0uzSuyAw2aNsOw33A9wxEvkrmBGi2UfDj-CCV95c328392Drx4zCM4jh03H16N_OVJCmm1_iRFFVxSdQdfgC23SYM9xpzQQTcgiRSbeDHrrUPPeY0ezn6iuRzxQjLv-OAOebyW7jj74NfY4bHvIPda6dG3jMBEsQCttGw42ifRlJCBxiceA2LQb-uHS3dCQCEU0UWkJSQ6nSvt9IDpARAp5zcdT19yIaG_6SO9IxlIMYzkEPDiW3XdO0gNIMw8MzQjSLTtvzQN23XsmLT9iw_NG3P9m3T9j3LN-0wdH3TsRwnMp0gCgLTCf3AM53YjmPTtWLPMl07Cn3T9X0_MN048CLTjWM7MD3LDQLTs73QMT0vsALT82IrMn3LcxzTt6LAMf3IsxwzsNw4MgPbC20zsH3HNwM3Dvza4qPB_e1VLRzNlSrlab-_XC5PSqzmfAaPhMJJyot-iaUkCziWD4TSY-2g_mg0Gp3l96PLkZqfX0R4evZX-st9tLLupuVHK42u7r9c3i1veVRUMs3jKPfEQ1GNp-HPTsXzcXXzNZaPN9OJqD6T4DhcXv7BstFoNKxJ9VtWg76OSB07HTItJJqCbKKlRQQMTylkQ0OJCgwkKVdD44xnKzQSBa9Ec7mNmmBrjXW0jwYTKFAOhQ7jNSicYYX7HxQUsj_RfzV6AsWmGu6AZYJQaaDaEf9Aj-GizbjNItqutrd6bKCvFaZErer0amV92jnMcEWV8a3ROyzsf5eJSVWWXKhRlkG2YXaOC5zDc8Y2mhModitvLa7X0dbuNaK1OvjfrB5zpgSnFLJzkEpUqSKcvdjsPdpbu7cA9ATR2u3-f9EWKWaQVOJ7gtzV6cS2nkbt_Jvn8aCh_lzV_wq45AzZry_5C4oLOMdy_sJS7-C3TqknUTPbusT_r11yCbQA9XqHjCkWRK1e6I4NulMF66l_0ROtJNeP-C8Elugvzovf6jO09PtGulqX3-bxouF6UBvUtgdaTkBtOgQ9RiRrxre1SafoejT5MO4lK90GSyIhQ8s6E3vngszUkvMM_YpZ1quV63NPkef3Pjc2nyKr96EoKUmJknrgWz8gwlIBWG-VlEBpe1n24u7KGEuF6man9oLe_SlH5yDHeZ0avctqKohEYyJSCuqlHH8MLKQ4KprGFenOuveja_2gJ3VnippWELMU9pBzD5Kb8mzV-4IxRbeQY0rwAWLNi4s8RWfH9e95po7f9WPT7aOm3d_D1jvINqd8AbKXcJGCAIEmzfgVvtzNwn_GZ1x1SJzVw1dwcJ7k4TVfQAHscMYFhwkCVb3xHBOGzrT45v4JDx6Pi0pn-Ce2ekSjRn5zBtFBBoKw3O59KnVaE5a_RbFt-6lnKy5-lpvzD7i1PPQL5vMUbOsgBz6bzfVF-TssUVISQdS6Kt88UPbhC5ySGaAZxfKhNyGYqXordFFPvJDLnnMPX8oFZnh9rgCsQCD9AvwmJx--cStF9Gbt4aMC1Hwl1ZscfPjyfHrw54qkD5LQBYhXnp2Aap_USBFFodNZVBISSDnLmo6xfsDPMJXQNkUJ5aruXbo9JVFNm7TptjuodZu1xjg7ME_eSddAdweweXpsMd7OzbjqQPxdEKAdRsEORHMJbjHhDoy-C7rWR_swzhYT78C0fuygbGsHrA75E2_bRtuKtX3gPp3uzs4LddyOjvtCHa-j4-3SadIwAVU3lnUzqaUxZzOSN9nJymq9KTAoVnV2G4hVxRRE_Vm3vxv4foFl83rZQqM4aD9urfcf9L_9aPw30wAPwA==",
-      "until-68": "eJztWltv27gSfo5_BSFgn5aJxaukIu7Cca7bJE3jpNn0ZcFYY5uNLl6KcuL99QeUfEvWcZ1te9oDHAQgePmGM99wOBTp7P72mCZoDKbQedbyyI7vIch6eayzQcu7vjrcDr3f3jZ2L5Qdvu_vlTpxI28bW7tVHSUwhqTlydBDVpkB2I-zqdifvod6iSqKc5VCy7uCdJQo4yFV9CCLO4uRYw0mHw1VZj2UKp1189492COTl6OWRzx0p7JY25Z3nmfgoZHK7BDy7Ex9zs1RHre8pMyU0cXSkM6mQwNT2uF9mXhorOHhLI-h5XXap52u97axtbV7kagJmK5VFhVW2ZbXydM7nUG8f9H10FglJbQ8RgiPdgSPgoBRr7la8Cq3Knm11Knuw1yCExK-BDzIwAwm3aGGJJ4LRIStNefg-GKOJSwI6A6VARM-D17UczGcFLqnkjP1qNMyPdb2St1DNp9GEl--JHuoDVxCoQs7hwfiJXAnT-KNwad6MLSZzgabTz9UefEMTV_01pnKVCdfhvJ10OvMQAFmDIuloPJFU7ojWAKKHVYjd5vVBnK1KwOAVM_qMXRH0HMxX03lGsgagKU9xWab6iRueeLJZnI9voeyPIai5RGfEUyILzCNCMOMyABzEnLMWRRgEXCGJRMRlpxLLAPJccACV4QhDiIW4oiFEhO_msbnkY-JLwLhpgxDTAinPibM9yNMuE-JK0WACSfC1cPAx0T4kmMiuC8wCQLmypASTH1KQ0x9IQimhDEfU8IJw5TSUGAqSSQxlYIyTGVAOKYylBLTgPoM00BI7hhFEWY-pQIzP-I-ZiQMBGaUC4EZ46wqgwgzJhnBjAWunxMRYMY545hxKQlmQgiJmZSuR0Y8wiyI3MyR5CFmUUQk5j6TrhTEx5zwgGLOOY0w59KXmPMgCqrS9UR-6EohXOn8HVBBMA-ZpFj4nLoydHUuRYCFkDzCIqQkxCLkPnVl1RNIhqXPohBLQqqSBwRLIqjAkkVulEWyqgeyipWt3evL06qyNbR2VLxpNh8eHnZGyg7zPjzqBHZ6edocqaLQY9gu7nWSbLvQarbb7fbe4Lp9PfhwvHd4cHr74bF_cDi4PL38ND467306HY6K4zPeY3th5_d3eXY6-SzfXYfmujPpndkD-nh1Nzr3e_Lws7m96JDDS_8mvnq4_HBJzrvX8uMf-zefrj8Jm9-knyfq_tyY45OLeHgYDlhwPBiVnUd-3h9E5eHdreoM6c07cRKq-8Ob6zthBun2JDYjvp0POvaz4ttmTMs_ZVQYUY5Hgb4avzcHUaFKcnv86RbO_xKd0_truDmV28F4f9zub8djwfpZ3m63W5WTmjMv7dZnTFG7bNqqto7bRVUMekhbSF2TTFPeP4FVeC0Bgylwt7k0_27TbeRqy7ud7ipd5_96sKoiyNRdAnHLs6YEDxVJblveXh5PUNukeWnqg7Fd5wgnMUsSW7tHkKJBrf8MrIqVVc0TC2nRPHJFhT6CdJ5DryCLjU4KD1VR8C_kMpVOE9V8EC1Gp18EJPLQX6VKtJ1UaWlad-r2oa_KxHrPWa-g2HwVx245GuXGdkeQJFe5hfRLHGu8k1wSWdCretG0-8fzascxxHOX76tUDWBjhquFF1yrcbRY0Bnix9Oe23QBGVijrM6zjWmvFl4VwU8AP551J8-syZME4n0orCl7r6L9gvSC9wKAniC-PfHdmtmXkt0xJCnYr89zbdPbMLNVyKUN4Jo_ft3_n7x-6uS1YTTfgBrlGSJfH8-HiUphXxXDDaN6Cb_wT9WJ6t6fIBRMT2XQLc1rImBZ5smmVRmgaf8PpNZJlNF2suEizdFLCXnWNSUh_tshu5fntvj6eN0HCybV2UbH9GqZhVOeDXzP7TytFbML-UcND-jvPE__qHS42u28dlobwrz5V72Du0bFbnqZd_Uu2Pl93rWRri8UbxuX1Xq_QZfty4NGd-JergpdQIw-wwMkiDQ6-Z1KLPrdNRuVbKX2DQpo4yQdJbqnbfEG-Q0pfkE66xlQTrzO-3UGbBC6PNRRhUXVe0TjVyp-QTZHHaOte_BBXWv0PaCzMrF6lGgwjV9D3yHS-ikIubeqymPOlGd8gi_zof9LfNbReahSe-P9yCnpwcgaeM7mQx2QbxDxv54Z95cHnp9xLzCg6xjk_f5QZXGjM9Spm6k70kZbVL8ubsxllTt_dcbaHLmnQFQ_v6mst-h3r37L_auNZ-uMH1bfiY3j8s7oAnW06SVgfwKj-Tqj7_J40vioVIIuYaASrdYZPH06eIP2tqd_X-bwNEjq1-LZgs54LELni2TEOjKDJB9D0ejmpgcGDDqq2z9-CdZm1Tt3vC2Mrk67jW2mT_btWT6GFLJF6pka6d6cV1n_CsevTaR3kNhGZ6h0hvZc9bt4_CUyq-0N19mr0tLtzffZ5BG16_rGJlPhrDjJLCSJHkBl2hoaK138uuiJ1lExOhuQOudf6mzwXYP9FeFC_C8ZTb-x0c99-W-MXj5ez9pHJ50nVie6D6ifqOK-sa_HOoPKAHRY9WxK4QXNdK3mVGVqqvnAgslUgtzPPd9GNVururTazTbVfmRUpu034sxfoXhPFe4T7ZvoFa_Q207BDifFV2vugp1-wCGrbQJLF4KygC708iyur-bVd3lfJQVMrzfdJLfVzWP58j5_2J_dBv-JogsUXYGaPWvNMGwF5sk7_wzIVwDrk3aBESsnq65xM4hcBYFkyaJgBaLO1gtMuALjUsqyj6KXMEseIv4KULXmT7xNvOkNanp9e0lmeWa6oQxbkmEbyvAlGb6hjFiSEatk6tDtgq3ukNW90dU6edbXgzqis1E5mxQySCfVlvBQVqZ3YKp_umiuBh6MVVFfpadQHrBo-rPzTMFu8_n_dPwHqAG6Aw==",
-      "maps-early": "eJztWltv27gSfq5_BSFgn5apxaukIu7CcRIn3aRN4lyafSkYe2yzoSRXouy4v35BybdkHdc57Z72AAcBCIr8hpxvOByS4-z-8RAbNIYs12nS8Mhr30OQdNOeTgYN7-rycCf0_nhb2z1Tdvihv1do43re1l7tlnVkYAym4YW-h6zKBmCv50OxT76Hukbl-XsVQ8O7hHhkVOYhlXch6bWWPUcasnQ0VIn1UKx00km792DbWVqMGh7x0J1Keto2vPdpAh4aqcQOIU1O1ec0a6e9hmeKRGU6X-nSyaxrkBV2eF8YD401TE7THjS8VvOk1fHe1l692j0zagpZxyqLcqtsw2ul8Z1OoLd_1vHQWJkCGh4PaEhfi4CRkHv19XKXqVXmpUInug8LAUGY_xzwIIFsMO0MNZjeQiCim7U5ODpbYKnvB_I1D3zGAsbJc3Jnw2muu8qcqgcdF_GRtpfqHpLFMKH0n5U91BlcQK5zu4AH8jlwKzW9p2DxvJkGQ5voZLC1RGuo0vwJmrLn0KcqUa10BUqiTdCrJIMcsjEsl2KDSTsjWAGK15XOu_Vy97jaZQaAVNfqMXRG0HUOX47kPpDNAFY2FJvvqONewxOPdpJr8T2UpD3IGx7xGcGE-ALTiDDMiAwwE4xhTkKOOYsCLALOsGQiwpJziWUgOQ5Y4IowxEHEQhyxUGLil2P5PPIx8UUg3LhhiAnh1MeEsiDChPl-hAn3KXGlCDDhRLh6GPiYCF9yTAT3BSYycCMEAXNl6PCRZAJTn9IQU18IgilhzMeUcMIwJZEIMaU0FJhSyQJMhXQYSSKJqRSUYSoDwl3JfUxlKCWmAfUZpoGQ3BkgijDzKRWY-RH3MSNhIDCjXAjMGGdlGUSYMckIZixw7ZyIADPOGceMS0kwE0JIzKR0LTLiEWZB5EaOJA8xiyIiMfeZdKUgPuaEBxRzTkKGOec0wpxLX2LOgygoS9cS-aErhXClDDAPqCCYh0xSLHxOXRm6OiMkxILRIMKCBRHDgksRYCEkj7AIqesNuU9dWbYEkmHpsyjEkpCy5AHBkggqsKTM9bJoVgpXBhJLQfywdL9Xu1cXJ2Xl1dDaUf6mXp9MJq9Hyg7TPjxoA6-7aVwfqTzXY9jJ77UxO85b681ms7k3uGreNs-P9g4PTm7PH_r7Xf_8Zu_AHsbhLXm4L9rxpPt1-LV7NDm-_6K74z_P0tHl1J6fvJtMbr6eXLzPr6i87B19GN5Kuj-x57e9wwv_pnd58v5s73Dv6Iq8uxxdf2xfT8jt3c3517_MRRLToVJHF2kYj_aVfJjus9uL_vH7nQf-590gh_2P_OxueEPbg7RndNE5a4_2rk17R_F34zxREs6-HDezd2A_K76TjWnxSUZ5JorxKNCX4w_ZQZSr4isLzo-i4yG5PfrrFt5_Ea2T-yu4OZE7wXh_3OyHYizop6S3A593rpvNZmnI-tySu9W5lldmnX2VO9Zt3tKjPaQtxO6TzGLnP4Glm64Agxlwt74y_m7dxY8y0rgA4yodt0ZVZ1lFkKg7A72GZ7MCPJSb1Da8vbQ3Rc0sTousOoybVWhyEvPY9Gq3DTEaVPOfglU9ZVX92EKc19uuKNFtiBeR-xKSXqZN3jT2o4dKb3mxrIcSFc9i5KITzXtR2kcH3S4kNtNdbafe_GZCfQ99KZTRdlpGyFndTb8PfVUY6z21xBra9Rfx7hSjUZrZzgiMuUwtxN_iXOGd5IrIkm7ZimbNP59Xs9eD3mIJ9lWsBrA1w_XCS65lP1ou8Bzx82kvdDqDBGymrE6TrWmvF17n0Y8AP5_1gYEYEqvMYdot8q35PhVbMl30oFnXj-e4W5H4Vqw7AhOD_f4w18y6Wwa1Erni6-7z5y_x_-PULx2ntvTmG1CjNEHk-_350KgY9lU-3NKrV_BL-5SNqGr9BVwh66oEOkX2Eg9YlXm0aVUCaNb-E6m1jMrKm85Wi7RAL5ksmmYkxH_bZffS1Obf76_7YCGLdbLVibxeZmmUJx3_5nae1fJ5GuBawwR9TdP4YzmHq90uaieVIsxbXOod3H2U7GYpBFfvgF1kEdw30tV74m3tolzvN-iieXFQ60xdsizXOfTQZ5iAQaTWSu-Useid-6yVsuW0b1BAa8fxyLirdf4G-TUpfkM66WagnHgV96sIWCN0taulcovKJEjtdyp-QzZFrUxbl2VCHZvpe0CnhbF6ZDRktd9D3yHiKv-EXIKstJhT5Qmf4Nt86P8Sn010JmVor30YuUm6MLIZPGVzXjnkG0T872fG_dWOp2fcMwzoJgZpvz9USa_WGurYjdQZ6UxbVKU0t-ayzpy_O2Vtilz-EVU5P5V0l-0u1bjavl55tkn5YXlPrB0Vd5nOUUtnXQP2F1Cab1L6Lu1Na9dKGXQBA2W02qTwLHPwBu3tzP6-zeGxk1Qp6vmCznksXeebZMQmMgOTjiGvddKsCxlkqF19__wl2BhV79zxtlS6PO221pk-2ren6bh8NS1Cz0xJl-hep_0LDL8xkN6BsbXWUOkE7bnqv2Lx58is1zfcpK-KC7c3PyTTB9Ss6lurTIXT4jixYIweQKnaBhprTfwy74k2Ucl0MiBVzL_QyeBfdfYXuAvxv6U0_cFKP7Xlf6L06vF62mwftx5pbXQfUN-o_L62r8c6gVIBdFi2bEvhmZnpxpljlajZzAcWskQZ5H5j-jFTs41TF1a70WaztzOVaPuDOPMXTLyncndF-yHzihfM24zBDqf5d8_cATu7wCGrrYGVB0GRQwe6adKrnublvbyvTA6z503HpLZ8eaw-3hd5_flr8J8oukTRNah5WmuOYWswj9L8cyBfA6xO2iVGrB2sfMbNIXIdBMyKRsEaRBWtl5hwDcaFlFUbRc9hVixE_DWgcs0fWZt4sxfU7Pn2nMzqyHRLGbYiw7aU4SsyfEsZsSIj1slUrtsBW74hy3ejq7XSpK8HlUcno2I-KCQQT8st4aGkiO8gW_nN_R_Ag7HKq6f0DCp9Gs1-7J5PsFt_-m8kfwPM6tTo",
-      "maps-red": "eJztWmtv2zoS_Vz_CkLABe6iTCM-JRVJLxzn2ebtJG36paAl2mYjUa5EOXF-_YKSH3Ku7Tjbdm-7WBggKPIMOWc4HNIjbf31kMRgKLNcpXrbQW9cB0gdppHSvW3n-mp_w3f-etfYOhemf9bdKVRse941Xm2VdRDLoYy3ncB1gBFZT5qbyVDki-uAMBZ5fioSue1cyWQQi8wBIg-ljlqznkMls3TQF9o4IBFKt9PwTpqDLC0G2w5yQEfoSJlt5zTV0gEDoU1fpvpEfE2zgzTaduJCi0zltS6lx129rDD9uyJ2wFDJ-5M0kttOq3ncajvvGq9ebZ3HYiSzthEG5EaYbaeVJh2lZbR73nbAUMSF3HZwEATEfcMC5lNnc7HcVWpE_FKhY9WVUwGPeGgZcE_LrDdq95WMo6kAcl1_pTp7h-c1dSgjbwgngcv8wFsmd94f5SoU8Yl4UEmRHCpzJe6kns2JPBYsE95XmbyUucrNjBRfBm6lcfQUzJYbqtc3Wune2hKtvkjzJ2hMlqFPhBattA5daiELvdaZzGU2lLXF8JcuXnsga0DvTaXz1ma5f2ztKpMSiNCooWwPZGhdvhzJPgCTSVnbUmSyp46ibYfN7SXb4jpAp5HMrXcQBBFyGcQBIpAg7kHCCIGEUwop8imkJPAgw4RA5lECOSYu5IQFkFPKIfc4hR7xbOH70GOMQS8gPgyIz2FACYbILSdxaeBC5DKP2Ql9HyJEsQsRJl4AEXHdACLqYmRL5kFEEbN133MhogFxIWIupxAx6jKIuGfH8TxiS99KBZwwiF2MfYhdxhDEiBAXYkQRgRgFzIcYY59BjDnxIGbcYjgKOMScYQIx9xC1JWa2pC7E3OccYg-7BGKPcWqtFASQuBgzSNyAupAg32OQYMoYJAT7HiSEElunXgAJ4QRBQjzbSxHzIKGUUEgo5wgSxhiHhHPbwgMaQOIFdvyAUx-SIEAcUpdwWzLkQoqohyGlyCeQUooDSCl3OaTUC7yytC2B69uSMVtyD1IeWFkPMwSpTziGzKXYlr6tE4R8yAj2AsiIFxDIKGceZIz6DDLGaWBLj0PGApdD5mOL96mLbWl7fY8TyF0S-JAjVJYUBbb0EOSIYQY5dpFnfcciSTAumS09DjlzCYWcIdcvffrV1vXlcVl51TdmkL_d3Ly_v38zEKafduWDiuWbME02ByLP1VBu5HcqjjfsFthsNpvNnd51s3N_cbizv3d8e_HQ3Q3ds_Odndu9tnsdXn4eHuzf3qKHu-IguQ8f-4_h4e1Jt6na396f9vTx6Cv_cO1n161ReLKfj9yrzv5pcUcuH9OPZ_ERx7v35uI22r90P0ZXx6fnO_s7h9fo_dXg5tPBzT267Xy8ePwcX-oE94U4uEmjg68jcXeaZYdH51F_3-8R77DXk62EHh_20MYupjemn344_Hyb3X19-HZx8_lymBStjvceF_orV80Po0_ZLS7Ov3lBNtwYdj5sdDIuyXmmroZn2V6Qi-KReBeHwVEf3R7eDqO4jz89itvi9BtrHd9dy4_HfMMb7hZfMn_ny-iie9bZiIaMdHX6pZdt3DSbzdLgmxOLb1XHal6Zf_xUhgsbOezud4AyMrFPaBy3_44r91UN6C0HepjVgP4yYLmTasBgKdBupxkQu8uApZfWgOPQ_Gprs2aCrU0bX8tIbAOwrbStu1WdZRVILTqxjLYdkxXSAXmcmm1nJ41GoJklaZFV15VmFbqtxCR2v9o6kAnoVfOfSCMiYcTmkZFJvnlgixJ9IJPpyXYldZSpOG_G5pMDSsd_sawDtEjGZ8i0E0x6QdoFe2EotclUqMzImdzdsOuAb4WIlRnNPdj5d2VXFLFxnppiAe_NFxFvF4NBmpn2QMbxVWpk8hzpCm8layIzvmUrGDf_AsSaUSSj6SLsikT05NoUFwvPyJb9YLbEE8QvwHuq1LnU0mTCqFSvzXux8CKnngP8ArT3YplIbUS8n4ZFvjbhp2IzqtMeMO76BUi2Ul2GD2FktNftytCsTXSR6IxsvRdMun8C4a2K0XMR_lDGiTTfH9ybWbhmKC-Rtf1tH3-BBf9_dP4fi877Ijcya4ncKN1bm_BMqk6zagXTwf65_fpRikGqAfr-Hbsfi0Tuiry_5r6t4WuGsY2gav0F1ryZhULLdpG9xMXrMnNxSWgJxu3_JLdWLLLyDrvWMk3RtSNn0jRmgf7rXnsQp0OZf7_PtlIdFVb-BfaYE5k7h2vtv4Dv7sQiH_Rl8iyxqefWJGa8ao3_XJTaSVPzA5Z7VxqZJUqvdbNeLDMzzJOOn2qccS2fpDxvlLwHj2mafCrzlrZ2O60dV5oQZ_oH3cLtQ0lvnC619bY004ypfQaqyl-8a1yWO_wtuGxe7jXaI_tqIFe5jMBXeS9jgBqttCNiA97bx0YpW077Fvi4cZQMYvs3OX8L3AZnfwClw0wKK15dZqpTvYFwvcsehqBM-DZeY_YHMCloZcrYlDpom0zdSXBSxEYNYiWzxmvftYikSrYD-zqgtJhV5Qkf73k--Hfi4z_Ph_xOfILn-dDfiA92n-fDfic-6Hk-_Dfis5LOfXkdbpwN7CShHJhMPmVzUQX0twC738-MuvWOp_97lq3IKgZpt9sXOmq0-iqxI7UHKlMGVC9A1-ayyJyvrbImBfZdJajeDwodztrta8l6-2LlySrl-2X2oHFYdDKVg5bKwliaNZXGjROlVapz0BdDCf7EZAOzf9XNO8cGzVnevpq0ustsWJ7nNpOiQiV1OLK53-r0_YlWoaus0kmjUeNGiBhcyp6IlVhlkXGa_i3Y2Zj-5s30Jwo2sDtnGVnmjSzTs25XZkr38sbrPxHaQPhfJQsRx2CWVpvRWWyTea-u3sBPPHBil5mvP2sctso4vfKvQKOdZqHMZAaqvwYv9plIiniRz4w34mv_DxD2rY5Wd3tlzmSez2_yn-cdK29kHXs3nvEvr8pr0_fnNkE6LFd4HJvQk9jUtQx6UssqdwxsyrGB2YoRFloEj5nbrwyep77y8taRsWm0-kJpsGOrPyW6vUzflZczkRQ2np3p0QNoVvW1VcbManGkjYxj1ZOlaitoLNxeL_O6lfcyGyNQdU5eKt37qQfLC0IFWnn5skrjH6z0U1v-J0rXryQnzYOj1pzWsd153Vjkd41dNVRaVntxv2xZl8KSmfHKmRN7KlYz7xmZaRFXB-UPmZqsnLowyo42nv0gE1qZH8SZvmDiHZHba-0PmZe9YN5mIk1_lH_3zG1pxpdeYJSJZS0JUeSyLcNUR1UKuMwFdEWcy3FOpR2npkx31JPE0y8NJjmpv6Nw7euBBajJC6IJhizAzH0mMAHSBcBJHnCCYQsHK3NHEwhfBJFxTSNvAaKK1jOMvwBjQ0rdRsEyTM1CyF0AKtd8ztrIGWdtximjZTL1kfGaMqQmQ9aUqX1KguiaMvUPWtgimcp129KUeasyV2VrrVR3Va_yaD0oJoNKLZNRuSUcoIukI7Ntx598pfg34N5Q5FX-bgz1fO6OPyacTLC1-fRD3X8DNwjZgg==",
-      "pinnacle": "eJztWttu27oSfa6_ghBQYG-UacSrpCLuhuPESdokTewkvbwUtEXbbCTKlSgn7tcfUPJFzrYdB21PW5wDAwRFruFwDTlDeqS9f-7jCIxlmqlE1x300nWA1L0kVHpQd66vWju-88_r2t6FMMN3_f1cRbbnde3ZXlEHkRzLqO4E3AFGpANpbmZDkc-uA3qRyLJzEcu6cyXjUSRSB4isJ3XYXPQcK5kmo6HQxgGxULqT9G6lOUqTfFR3kAO6QofK1J3zREsHjIQ2Q5noM_ElSY-SsO5EuRapyipdSk-7Bmluhrd55ICxkndnSSjrTrNx2uw4r2vPnu1dRGIi044RBmRGmLrTTOKu0jI8uOg4YCyiXNadgNDAC14ixlDgU2d3teRVYkT0dLFT1ZcLEYTZOuChlulg0hkqGYVzAYSYu3FCh8cXczDFPg1eeoT4Hud07YwuhpNM9UR0Ju5VnMfHylyJW6kXOqkbeOuEWyqVbZmpzMzxHl8HbiZR-BC8lv-pGgyNVnqwtURzKJJsa_SZ0KKZVKAEbYJe61RmMh3LxWJgN1gn0RnJCtB_icpp7O0WTmRrV6mUQPSMGsvOSPbsvi-Gsg_ApFJW_IrMHOskrDtsyaFsi-sAnYQyqzvIJQgi5DKICGYQB4hAgrgHCSMEEk4ppMinkJLAgwwTAplHCeSYuJBjP4CcsABySjnkHqfQI54tfB96jDHoBcSHAfE5DCjBELmFOpcGLkQu85hV7fsQIYpdiDDxAoiI6wYQURcjWzIPIoqYrfueCxENiAsRczmFiFE7b-7ZcTyP2NK3UgEnDGIXYx9ilzEEMSLEhRhRRCBGAfMhxthnEGNOPIip6xOIaYAoxIxbPEcBh5gzTCDmnm3nnjUP96gLMfc5h9jDLoHYY5xaswUBJC7GDBI3oC4kiHoIEuR7DBJMGYOEYN-DhFBi69QLICGcIEiIZ3spYh4klLquLQmFhHKOIGGMcUg4ty08oAEkXmB1BZz6kAQB4pC6hNuSIRdSRD0MKUU-gZRSHEBKucshpV7gFaVtCVzflozZknuQ8sDKepghSH07T-oTjiFzKbalb-sEIR8ygr0AMuIFBDLKmQcZoz6DjHEa2NLjkLHA5ZD52OJ96mJb2l7f4wRylwQ-5AgVJeYYckRRYEsPQY4YZpBjF3l2k1k8CaYls6XHIWcuoZAz5PqFBzzbu26fFpVnQ2NG2avd3bu7u5cjYYZJX96rSL7sJfHuSGSZGsud7FZF0Y51mN1Go9HYH1w3wrvL4_3WYev00gwPWv75t0vqH7YG7dN2-74V-x9vhqp9dN77dDocZcdntEf28cHx3cntV3X18c3ET3ZUdPEWNTJ9sN89M4f4_qo7Ond7vPVl1HlnBv7p9dFx-zps6evJt6u79mUbnXeu-c3NfdQ7f3-E5CFudT4dnMc3R7IrWqPk0_uhKy7efL3EedYbBPjwQzrun5zv3NOT48Eob97T8_4gyFvdj58Gw-Tt8aeP6e2X-6-XN5_a4zhvdr03ONdfuGq8nXxIP-L84qsXpOOdcfftTjflklyk6mr8Zsfn2RW-_-pd9E2j76rjm0GoAvz--FP_fKQoTm9P8nabfRynXu6_81xvzD83-v7t8bf4s-7uhITxC_r2c3TZaDTq9WIhdmcrsVee0Fm5LNOnIujY-GPDhwOUkbF9QtPw_29c4YcVoLce6GFWAfrrgIXPVYDBWqB1uQUQu-uAxe6tAKdnwrO93YoJ9nZtlC7iuQ3jttKx27DsLKpAatGNZFh3TJpLB2RRYurOfhJOQCONkzwtbz6N8gCwErMT4NnekYzBoNR_Jo0IhRG7J0bG2e6RLQr0kYznB-SV1GGqoqwRmQ8OKBziybIO0CKenkTzTjDrBUkfHPZ6UptU9ZSZOLNrIEYO-JqLSJlJYdXZg9V_IPsij4zz0BQreO8-iXgnH42S1HRGMoquEiPjx0iXeCtZEVnwLVrBtPk3INa4s_cvGTbCUIbzxTgQsRjIramuEr6I8qWFnikCBRgs1n2ma2oMxH-9MeaTu5BamlQYleitjbFKeK0xFmZYUvUb2eIwkrHURkStpGdJbGmFZbG1_OcwMB3-N2DeTHQRfYSR4WG_L3tma9arRBesq71g1v0TYsBeyeixA-JYRrE03382NNLelidBgazsAvv4G8TA_wf3_4Xg3hKZkWlTZEbpwdbsF1JVvmUrmA_265z4vRSjRAP0_W7cikQsD0Q23NKZK_iKYWwjKFt_BwdIe0LLTp4-Zb9XZZaCldASTNt_JbdmJNLiXrzVMs3RlXNo1jTzyv_6rj2KkrHMvn_PNhMd5lb-CfZYElk6nCvtv8He3Y9ENhrK-FFi851bkVjwqjT-uii1nyTmByz3gTQyjZXe6kK-WmZhmAcdP9U401o2S8beKHkHviVJ_KHIqNrax3nttJwJceZ_-i3cPhT0polcW-9IM8_l2megypzI61q78PBXoN1oH9Y6E_vmIlOZDMEXeScjgGrNpCsiA97Yx1ohW6h9BXxeO4lHkf3rnb0Cbs13nwOle6kUVry84ZSneg2xapc9DEGRi669IOw5MAlopsrYbD_omFTdSnCWR0aNIiXT2gvkuhYSly8CgH1VUZjMzuUBIe9xQviPIuQ_Toj8UYSCxwnRP4kQdh8nxP4oQuhxQvxPIrSRz11xKa7dJCoEnZ4cmVQ-pHNZhvVXALvfT40tyTz897NuSTYxSPr9odBhrTlUsR2pM1KpMqB8Q7s1F740r_Il72yMlbZ-QadrlEQhKN9uCt1bx4BsYjAssgu147ybqgw0VdqLpNly5rh2prRKdAaGYizBX9jfwcHfVS5Ls0a42mVfoNq5y3RcHO0206J6SurexKaWy4N4M337orlK_2lmoZvM0k3CSe1GiAi05UBESmwyyfQ1wCuwvzP_LdvpL0x2MF0yjSwSS5bqu35fpkoPstqLvxDbQfzvgoWIokrebUFnjVE2bqKpYRZb_lHrsE3WGRT_C2qdJO3JVKag_J_w5F0TShGt2jVTf3yB3OegN7STtJO3F-hUZtmys__EDbLxgta1V-WFBYqb89YGQEtrdZaMi1WeRqllN7F87B6UWpZZZ2DzkjWyaYQXttfStB8_rOL_hH2w8VLXlZGpNYdCabBvq9sGvKct2jo2qye88dIm4tyGt3d6cg8aZX3rOdNiyifayChSA1lMbROPlUZ-IpmNFzYbM1Dt3chGB6UHP8n6P5AN2nhds3Twj6bz0NN_KJ3q5eascXTSXOITWc_tRyK7rR2osdKy9OVW0bItuTWa8UbNsT1aS82HRqZaROVp-0NUk42qc6PsaFPtR6nQyvwgzvQJivdFZm_IP0Qve4LeRizNcJJ9t-aONNPrMzDKRLKS1Mgz2ZG9RIdlSrnILfRFlMlpjqYTJaZIn1STzvOvIWY5rn-jcOULhxWo2VuoGYaswCx9yjAD0hXAWV5xhmErBytyUTMIXwWRUWVG3gpEGeMXGH8Fxgabqo2CdZiKhZC7AlSs-ZK1kTPNAk1TUOtkqiPjLWVIRYZsKVP53AXRLWWqH92wVTLl1u1IU-TBityXrTUT3VeDckfrUT4bVGoZTwqXcIDO465M6878y9h_AQ_HIivzgTMomn6ns7c7U7C3-_C75P8AKLAi3g=="
+      "until-68": "eJztWltv2zgWfq5_BSFgn8rE4lVSEXfgONdpkqZ20kz6MmAs2mYiUR6KcuL99QtKvigZ23Wm7bYLLAIQvHyHPN_hOYcinb3fntIETKTJVaZbHtr1PSB1P4uVHra866ujndD77X1j71LY0cfBfqESN_K-8WavrINETmTS8njoASvMUNrP86nIn74H-onI8wuRypZ3JdNxIowHRN6XOu4sR06UNNl4JLT1QCqU7mX9B2mPTVaMWx7ywJ3QsbIt7yLT0gNjoe1IZvpc3GfmOItbXlJoYVReG1J6NjQ0hR09FIkHJko-nmexbHmd9lmn571vvHmzd5mIqTQ9KyzIrbAtr5Old0rL-OCy54GJSArZ8lCEfL4b-RFiIfWaqwWvMiuSV0udqYFcSJCIkXXAQy3NcNobKZnEC4EoYhvVOTy5XKpDGKW7YRBixGm4TuxyNM1VXyTn4kmlRXqi7JV4kHoxC_exv072SBnZlbnK7QIerNWvkyXx1uAzNRxZrfRw--lHIstfoPFa454LLTpZHbp2wxz0WhuZSzORy53AfK0qvbGsAeluZfu9Zhk-rnZlpASib9VE9say7zy-nMk1gDVS1iKKzEPqNG557FkouR7fAzqLZd7ykE8QRMhnEEeIQIJ4ACkKKaQkCiALKIGcsAhySjnkAacwIIErwhAGEQlhREIOkV9O49PIh8hnAXNThiFEiGIfIuL7EUTUx8iVLICIIubqYeBDxHxOIWLUZxAFAXFliBHEPsYhxD5jCGJEiA8xoohAjHHIIOYo4hBzhgnEPEAUYh5yDnGAfQJxwDh1jKIIEh9jBokfUR8SFAYMEkwZg4RQUpZBBAnhBEFCAtdPEQsgoZRQSCjnCBLGGIeEc9fDIxpBEkRu5ojTEJIoQhxSn3BXMuRDimiAIaUUR5BS7nNIaRAFZel6Ij90JWOudPYOMEOQhoRjyHyKXRm6OuUsgIxxGkEWYhRCFlIfu7LsCTiB3CdRCDlCZUkDBDlimEFOIjdKIl7WA176ypu96-5ZWXkzsnacv2s2Hx8fd8fCjrKBfFKJ3O1naXMs8lxN5E7-oJJkx7lWs91ut_eH1-3r4aeT_aPDs9tPT4PDo2H3rPtlcnzR_3I2Gucn57RP9sPO7x8yfTa95x-uQ3PdmfbP7SF-urobX_h9fnRvbi876Kjr38RXj91PXXTRu-af_zi4-XL9hdnsJr2fiocLY05OL-PRUTgkwclwXHSe6MVgGBVHd7eiM8I3H9hpKB6Obq7vmBmmO9PYjOlONuzYe0F3zAQXf_IoN6yYjAN1NfloDqNcFOj25MutvPiLdc4eruXNGd8JJgeT9mAnnjAy0Fm73W6VRmrOrbRXnTB5ZbJZqwwdF0WlD3pAWZm6JuJVaP8dWLpXDRjMgHvN2vx7TRfIZci7SHeVnrN_NVhWgdTiLpFxy7OmkB7Ik8y2vP0snoK2SbPCVMdiu8oRTmKeJN7sHcsUDKv1z6UVsbCieWplmjePXVGij2W6SKFXUsdGJbkHSi_4B3JapLNEtRgEy9HZ9wCKPPBXIRJlp2VamtXdcgdyIIrEei9Zr6DYfBXHXjEeZ8b2xjJJrjIr069xrPBOsiaypFf2gln3z-fVjmMZL0x-IFIxlFszXC285FqOg-WGzhE_n_ZCp0uppTXCqkxvTXu18CoPfgb4-aw7mbYmSxIZH8jcmqL_KtprpJe8lwDwDPH9ie9VzL6W7E5kkkr77XmubfpbZrYSWQsA1_z5-_7_5PVLJ68tvflGinGmAfp2fz5KRCoPRD7a0qtr-KV9yk5Q9f4CrmD6QsteYV7jAXWZZ0ErtASz_p9IrZMIo-x0y01aoGsJed41I8H-2y67n2U2_3Z_PZBWmlTprY7p1TJLo7wY-JHhPKvl8wv5ZyUfwb-zLP2jXMPVbhe1s0oR4i2-6h3cNUp2s8u8q_ekXdznXRuo6kLxvtEt9_sd6La7h43e1L1b5SqXMbiXjzIBqNHJ7kRiwe-u2Shly2XfgQA3TtNxovrK5u-A3-D_Akr3jRROOq0eboB7WGoEq0aqlyRQPSU1EKpjqkOjSp8NUh_piNyC8imjNJvT5wWp4Ouk8P8cqU2cHssk3_g4Fgno9eXYGvmS0qfKNd8B5L-gx9ZqiPAaFalfH3h52q1hgDcxyAaDkdBxozNSqZupN1ZG2bkVt-XyNvSBzZ5v0lunrM2AexME1Tuc0P1lv3v-q_evVp5sUn5UfjE2Too7o3LQUaafSPsLKE03KX2XxdPGZyES0JVDkSixSeHZI8I7sL8z-_s6h-dO8jws5jyWrvNVMmwTmWGSTWTe6GWmL4004Lhq__wt2Jhf79xBt1S6PPe21hk_i9vzbCJTqecB-hbPlHSPz6u0f4XhN2bTO5nYRmcklAb7rvpDLL6OzGp9w036irRwsflRT59Au6pvrTJmTotTbWWSqKEsVdtAY6WJX-c90SYqRukhqnJ-V-nhD3X2V7gL8r-mNP7OSr-05T9Run68nrePTzvPtE7UQIJBIvKHxoGaKC1LBcBR2bMthTUr440rp0KL2cqHVhotEuB-9_k-S5ONSxdWudlmqx8boZX9TpzpKxbeF7n7Tvsu67JXrNtOpR1N829euSft7AMOWGUTWbsaFLnsyX6m4-qSXn6hD0SSy9lFp5dktryD1K_xiyf--b3w7yi8ROEVqPkD1xxDVmCevfjPgXQFsDpplxi2crLyQjeH8FUQmdQ0ClYgqmy9xIQrMC6l1G0UrcPULIT8FaByz59ZG3mzu9TsIrdOpj4z3lKG1GTIljK0JkO3lGE1GbZKpnLdnrTlbbK8QbpaJ9MDNaw8Wo-L-aRSy3RahoQHdJHeSVP-80VzNfBwIvLqUj2D0oBEsx-g5wvsNV_-b8d_ADyMvzY=",
+      "maps-early": "eJztWltv2zoSfq5_BSFgnw5Ti1dJRdIDx0mc9CRtEufSnJcDxqJtNhTlSpQd99cvKPmipLbrbNttF1gEICjyG3K-4XBIjrP752OiwVhmuUrNnode-x6QppfGygz2vOuro53Q-_NtY_dc2OGH_n6htOt523i1W9aBlmOp97zQ94AV2UDam_lQ5B_fAz0t8vy9SOSedyWTkRaZB0TekyZuL3uOlczS0VAY64FEKNNNew_SdrK0GO15yAP3wsTK7nnvUyM9MBLGDmVqzsSnNOuk8Z6nCyMylde6lJl1DbLCDh8K7YGxkpOzNJZ7Xrt12u56bxuvXu2eazGVWdcKC3Ir7J7XTpN7ZWR8cN71wFjoQu55OKA4eh1FhHCvuVrsKrVCv1DmVPXlAk8jgtYBD43MBtPuUEkdLwSQ72_W5vD4fAmOeMRfB4yFPCAMr5M7H05z1RP6TDyqpEiOlb0SD9Ishgkpi9bJHqlMXspc5XYBD9Yq2E51_BzM1ttpMLRGmcHWEu2hSPNnaEzWoc-EEe20BkVrSTrotclkLrOxXK4FoWvXrjuSNWCl8W6z3DqudpVJCUTPqrHsjmTPeXs5jvsANpOytpvIfDudxG6k-jZyLb4HTBrL3LkGQRAhn0EcIQIJ4gEkjBBIUUghJVEAWUAJ5IRFkFPKIQ84hQEJXBGGMIhICCMScoj8ciyfRj5EPguYGzcMIUIU-xBhEkQQEd-PIKI-Rq5kAUQUMVcPAx8i5nMKEaM-g4gHboQgIK4MHT7ihEHsYxxC7DOGIEaE-BAjigjEKGIhxBiHDGLMSQAx4w7DUcQh5gwTiHmAqCupDzEPOYc4wD6BOGCcOgNEESQ-xgwSP6I-JCgMGCSYMgYJoaQsgwgSwgmChASunSIWQEIpoZBQzhEkjDEOCeeuhUc0giSI3MgRpyEkUYQ4pD7hrmTIhxTRAENKUUggpRRHkFLuc0hpEAVl6VoiP3QlY67kAaQBZgjSkHAMmU-xK0NXJwiFkBEcRJCRICKQUc4CyBinEWQhdr0h9bEry5aAE8h9EoWQI1SWNECQI4YZ5Ji4XhLNSubKgEPOkB-W7vdq9_rytKy8Glo7yt80m5PJ5PVI2GHal49Ky9e9NGmORJ6rsdzJH5TWO85bm61Wq7U_uG7dtS6O948OT-8uHvsHPf_idv_QHiXhHXp8KDrJpPdl-KV3PDl5-Kx647_O09HV1F6cvptMbr-cXr7PrzG_io8_DO84PpjYi7v46NK_ja9O35_vH-0fX6N3V6Obj52bCbq7v7348re-NAkeCnF8mYbJ6EDwx-kBubvsn7zfeaR_3Q9yefCRnt8Pb3FnkMZaFd3zzmj_Rnd2BH03zo3g8vzzSSt7J-0nQXeyMS7-4VGesWI8CtTV-EN2GOWi-EKCi-PoZIjujv--k-8_s_bpw7W8PeU7wfhg3OqHbMzwPybekZ92blqtVmnI5tySu9WhlldmnX2VO9Zt3tKjPaCsTNwnmkXOr4Glm9aAwQy426yNv9t08aOMNC7AuErXrVHVWVaBNOJey3jPs1khPZDr1O55-2k8Ba0sSYusOolbVWhyEvPY9Gq3IxMwqOY_k1bEwormiZVJ3uy4okR3ZLKI21fSxJnSeUvbjx4oveXFsh4wIpnFyEUnmPeCtA8Oez1pbKZ6yk69-bUE-x74XAit7LSMkLO6m_5A9kWhrffcEitoN1_Eu1uMRmlmuyOp9VVqZfItzhXeSdZElnTLVjBr_vW8WnEs48USHIhEDOTWDFcLL7mW_WC5wHPEr6e90OlcGmkzYVVqtqa9WniVRz8B_HrWh1om0lihj9JekW_N97nYkumiB8y6fjzH3YrEt2LdsdSJtN8f5lpZb8ugViJrvu4-f_0S_z9O_dZxaktvvpVilBqAvt-fj7RI5IHIh1t6dQ2_tE_ZCKrW38AVsp4wsltkL_GAusyTTSuMBLP2X0itrUVW3nS2WqQFeslk0TQjwf7bLrufpjb_fn89kFZmiTJbncirZZZGedbxM7fzrJbP0wA3Sk7AlzRNPpZzuNrdonZaKUK8xaXewd1HyW6WQnD1rrSLLIL7Bqp6T7xtXJbr_QZcti4PG92py5TlKpcx-CQnUgPUaKf3Qlvwzn02Stly2jcgwI2TZKTd1Tp_A_wG_xdQppdJ4aSTKlkEXDqrEazqqfJXoEpgNRCqY6pDowqfDVLvaYvcgjJ9UprN6fOMVPBtUvh_jtQmTpMyyDc-jIQG3Z4c2Uw-p3RRueYbgPxn9NhaDRFeoyL16x3PT7s1DPAmBmm_PxQmbrSHKnEjdUcqU3ZuxW25_BH6wKZPF-kPp6xNgctDgir3J0xv2e5SjvX21cqTTcoPyxtj47i4z1QO2irraWl_A6XpJqXv03jauBFCg0s5EFqJTQrPcghvwP7O7O_bHJ46ydNtMeexdJ1vkmGbyAx0OpZ5o5tmPZnJDHSq71-_BBvj67076JZKl-fe1jrjJ_v2LB2X76fZBv0Dz5R0Ce9V2r_A8Buj6b3UttEeCmXAvqv-FIuvI7Na33CTviIp3N78YKaPoFXVt1YZM6fFibFSazWQpWobaKw08cu8J9pEJVNmgKqYf6nM4Kc6-wvcBfnfUhr_YKWf2_I_Ubp-vJ61OiftJ1pr1Zegr0X-0DhQY2VkqQA4Klu2pbBmZrxx5kQYMZv50MrMCA3cb00_ZmqycerCKjfabPZOJoyyP4gzfcHE-yJ397QfMi97wbytRNrhNP_umbvSzi5wwCqrZe1pUOSyK3upiatHenlD7wudy9lDp6tTW75B6s_4RYZ__i78GoWXKLwCNU9wzTFkBeZJwn8OpCuA1Um7xLCVg5UPujmEr4JIXdMoWIGoovUSE67AuJBSt1G0DlOzEPJXgMo1f2Jt5M3eUrOH3DqZ-sh4SxlSkyFbytCaDN1ShtVk2CqZynW70pavyfIF6Wrt1PTVoPJoMyrmg0ojk2m5JTxgiuReZrXf3r8CHo5FXj2qZ1Du42j2s_d8gt3m8_8m-Te0VdoU",
+      "maps-red": "eJztWmtv2zoS_Vz_CkLABe6iTCM-JRVxLxzn2SbNw0na9EtBS7TNRqJciXLi_voFJT_kXNtxtu3edrEwQFDkGXLOkDOkR9r56yGJwUhmuUp100GvXAdIHaaR0v2mc311sOU7f71p7JwLMzjr7RYqtj1vGi92yjqI5UjGTSdwHWBE1pfmZjoU-ew6IIxFnr8XiWw6VzIZxiJzgMhDqaP2vOdIySwdDoQ2DkiE0p00vJPmMEuLYdNBDugKHSnTdN6nWjpgKLQZyFSfii9pdphGTScutMhUXutSetLVzwozuCtiB4yUvD9NI9l02q2Tdsd503jxYuc8FmOZdYwwIDfCNJ12mnSVltHeeccBIxEXsukEyEX8FWIM-djZXi53lRoRP1foRPXkTIB7iKwC7muZ9cedgZJxNBNA2ONr1dk_Op-Bse_66BX1sO9zylZOdD4Y5yoU8al4UEmRHClzJe6kns-JsM9WCR-oTF7KXOVmhl-tYTuNo8fglSOfqP7AaKX7G0u0ByLNH6HxStqnQot2Wod666DXOpO5zEaythg-WiXRGcoakL0KSuDOduk_tnaVSQlEaNRIdoYytFu-HMk-AJNJWXMpMvWp46jpsAVfsi2uA3QaybzpIJcgiJDLIA4QgQRxDxJGCCScUkiRTyElgQcZJgQyjxLIMXEhJyyAnFIOuccp9IhnC9-HHmMMegHxYUB8DgNKMERuOYlLAxcil3nMTuj7ECGKXYgw8QKIiOsGEFEXI1syDyKKmK37ngsRDYgLEXM5hYhRl0HEPTuO5xFb-lYq4IRB7GLsQ-wyhiBGhLgQI4oIxChgPsQY-wxizIkHMeMWw1HAIeYME4i5h6gtMbMldSHmPucQe9glEHuMU2ulIIDExZhB4gbUhQT5HoMEU8YgIdj3ICGU2Dr1AkgIJwgS4tleipgHCaWEQkI5R5AwxjgknNsWHtAAEi-w4wec-pAEAeKQuoTbkiEXUkQ9DClFPoGUUhxASrnLIaVe4JWlbQlc35aM2ZJ7kPLAynqYIUh9wjFkLsW29G2dIORDRrAXQEa8gEBGOfMgY9RnkDFOA1t6HDIWuBwyH1u8T11sS9vre5xA7pLAhxyhsqQosKWHIEcMM8ixizy7dyySBJOS2dLjkDOXUMgZcv1yT7_Yub48KSsvBsYM89fb2_f396-GwgzSnnxQsXwVpsn2UOS5Gsmt_E7F8ZZ1ge1Wq9Xa7V-3uvcXR7sH-ye3Fw-9vdA9O9_dvd3vuNfh5afR4cHtLXq4Kw6T-_Db4Ft4dHvaa6nO17fv-_pk_IW_u_az6_Y4PD3Ix-5V9-B9cUcuv6UfzuJjjvfuzcVtdHDpfoiuTt6f7x7sHl2jt1fDm4-HN_fotvvh4tun-FIneCDE4U0aHX4Zi7v3WXZ0fB4NDvw-8Y76fdlO6MlRH23tYXpjBum7o0-32d2Xh68XN58uR0nR7npvcaG_cNV6N_6Y3eLi_KsXZKOtUffdVjfjkpxn6mp0lu0HuSi-Ee_iKDgeoNuj21EUD_DHb-K2eP-VtU_uruWHE77ljfaKz5m_-3l80TvrbkUjRno6_dzPtm5arVZp8O2pxXeqYzWvzD95KsOFjRzW-x2gjEzsE5rE7b_jSr-qAb3VQA-zGtBfBSw9qQYMVgKtO82B2F0FLHdpDTgJzS92tmsm2Nm28bWMxDYA20rHbreqs6wCqUU3llHTMVkhHZDHqWk6u2k0Bq0sSYusuq60qtBtJaax-8XOoUxAv5r_VBoRCSO2j41M8u1DW5ToQ5nMTrYrqaNMxXkrNh8dUG78Z8s6QItkcobMOsG0F6Q9sB-GUptMhcqMnendDbsO-FqIWJnxwoOdf0_2RBEb57EplvDefhbxTjEcppnpDGUcX6VGJk-RrvBWsiYy51u2gknzL0CsFUUymi3CnkhEX25McbnwnGzZD-ZLPEX8ArxnSp1LLU0mjEr1xryXCy_b1AuAX4D2fiwTqY2ID9KwyDcm_FhsTnXWAyZdvwDJdqrL8CGMjPZ7PRmajYkuE52TrfeCafdPILxTMXoqwh_JOJHm-4N7Kws3DOUlsubf9vEXWPD_R-f_seh8IHIjs7bIjdL9jQnPpeo0q1YwG-yf89cPUgxTDdD3e-xBLBK5J_LBhn5bw9cMYxtB1foLrHkrC4WWnSJ7zhavyyzEJaElmLT_k9zascjKO-xGyzRD146cadOEBfqv79rDOB3J_Pv3bDvVUWHln2GPBZGFc7jW_gvs3d1Y5MOBTJ4kNtu5NYk5r1rjPxeldtPU_IDl3pNGZonSG92sl8vMDfOo46caZ1LLpynPGyXvwbc0TT6WeUtbu53VTipNiDP7g27h9qGkN0mX2npHmlnG1D4DVeUv3jQuSw9_DS5bl_uNzti-GshVLiPwRd7LGKBGO-2K2IC39rFRypbTvgY-bhwnw9j-Tc5fA7fB_wBKh5kUVjqpcuPAZu8b3rKeKl0Pqnx9A6E6proJVVeCBqn32IMUlMni0mxWn0ekvKdJ4d-OlP80KfLbkQqeJkV_N1LYfZoU--1IoadJ8d-N1FpO9-VluXE2FDHohHJoMvmY0kUV7l8D7D6ix1ZqiPAKFalb73j8r2jVsqxjkPZ6A6GjRnugEjtSZ6gyZaZW3JTLS98FJl1cpJdWWZMC-yYTVG8PhQ7n7falZb19ufJknfKDMrfQOCq6mcpBW2VhLM2GSuPGqdIq1TkYiJEEf2Kyhdm_Vm45tGB5--LS6i6zUXna2zyLCpXU4dhmhquz-Sdaha6zSjeNxo0bIWJwKfsiVmKdRSZJ_Ndgd2v2WzTTnyjYwu6CZWSZVbJMz3o9mSndzxsv_0RoC-F_lSxEHIN50m1OZ7lNFnf1oh9P7TLf608ah60zTr_8o9DopFkoM5mB6o_Ds_dMJEW8bM9MHPGl_wcIB1ZHq7u9UGcyzxed_OftjrX3ta69Oc_5lxfpjen7C06QjsoVnsQm9Cg29SyDvtSyyiwDm5BsYLZmhKUWwRPm9huEp6mvvdV1ZWwa7YFQGuza6k-Jbs_Td-2FTSSFjWdnevwAWlV9Y5Uxs1ocayPjWPVlqdoaGkvd63m7bu01zcYIVJ2Tl0r3f-rB8oxQgdZew6zS-Acr_diW_4nS9SvJaevwuL2gdWw9rxeL_K6xp0ZKy8oXD8qWTSmsmBmvnTmxp2I1876RmRZxdVD-kKnJ2qkLo-xok9kPM6GV-UGc6TMm3hW5vdv-kHnZM-ZtJdIMxvl3z9yRZnLpBUaZWNZSFEUuOzJMdVQliMtMQU_EuZxkXDpxaspkSD2FPPsOYZqx-jsK174tWIKavj6aYsgSzMJHBFMgXQKcZgmnGLZ0sDKzNIXwZRAZ1zTyliCqaD3H-EswNqTUbRSswtQshNwloHLNF6yNnElOZ5JQWiVTHxlvKENqMmRDmdqHJohuKFP_3IUtk6m2bkeaMqtVZrJsrZ3qnupXO1oPi-mgUstkXLqEA3SRdGXWdPzpN4x_A-6PRF5l9yZQz-fu5FPD6QQ7248_4_03uD7p9w==",
+      "pinnacle": "eJztWttu27oSfa6_ghBQYG-UacSrpCLuhuPESdokTewkvbwUtEXbbCTKlSgn7tcfUPJFzrYdB21PW5wDAwRFriG5hjNDeqS9f-7jCIxlmqlE1x300nWA1L0kVHpQd66vWju-88_r2t6FMMN3_f1cRbbnde3ZXlEHkRzLqO4E3AFGpANpbmZDkc-uA3qRyLJzEcu6cyXjUSRSB4isJ3XYXPQcK5kmo6HQxgGxULqT9G6lOUqTfFR3kAO6QofK1J3zREsHjIQ2Q5noM_ElSY-SsO5EuRapyipdSk-7Bmluhrd55ICxkndnSSjrTrNx2uw4r2vPnu1dRGIi044RBmRGmLrTTOKu0jI8uOg4YCyiXNYdjBFi6KVLfZcG2NldLXmVGBE9XexU9eVcxEcYrQMeapkOJp2hklE4F0A04BsXdHh8MQdTF7n4JScuphwhuk7uYjjJVE9EZ-JexXl8rMyVuJV6MSch7tpVtlQq2zJTmZnjvbUrbCZR-BDM1itqMDRa6cHWEs2hSLKt0WdCi2ZSgZK1JC30Wqcyk-lYLjYDu8E6ic5IVoD8JSqXsbdbOJGtXaVSAtEzaiw7I9mzdl8MZR-ASaWs-BWZOdZJWHfYkkPZFtcBOgllVneQSxBEyGUQEcwgDhCBBHEPEkYIJJxSSJFPISWBBxkmBDKPEsgxcSHHfgA5YQHklHLIPU6hRzxb-D70GGPQC4gPA-JzGFCCIXKL6VwauBC5zGN2at-HCFHsQoSJF0BEXDeAiLoY2ZJ5EFHEbN33XIhoQFyImMspRIzadXPPjuN5xJa-lQo4YRC7GPsQu4whiK1FQowoIhCjgPkQY-wziDEnHsTU9QnENEAUYsYtnqOAQ8wZJhBzz7Zzz6qHe9SFmPucQ-xhl0DsMU6t2oIAEhdjBokbUBcSRD0ECfI9BgmmjEFCsO9BQiixdeoFkBBOECTEs70UMQ8SSl3XloRCQjlHkDDGOCSc2xYe0AASL7BzBZz6kAQB4pC6hNuSIRdSRD0MKUU-gZRSHEBKucshpV7gFaVtCVzflozZknuQ8sDKepghSH27TuoTjiFzKbalb-sEIR8ygr0AMuIFBDLKmQcZoz6DjHEa2NLjkLHA5ZD52OJ96mJb2l7f4wRylwQ-5AgVJeYYckRRYEsPQY4YZpBjF3nWyCyeBNOS2dLjkDOXUMgZcv3CA57tXbdPi8qzoTGj7NXu7t3d3cuRMMOkL-9VJF_2knh3JLJMjeVOdquiaMc6zG6j0WjsD64b4d3l8X7rsHV6aYYHLf_82yX1D1uD9mm7fd-K_Y83Q9U-Ou99Oh2OsuMz2iP7-OD47uT2q7r6-GbiJzsquniLGpk-2O-emUN8f9Udnbs93voy6rwzA__0-ui4fR229PXk29Vd-7KNzjvX_ObmPuqdvz9C8hC3Op8OzuObI9kVrVHy6f3QFRdvvl7iPOsNAnz4IR33T8537unJ8WCUN-_peX8Q5K3ux0-DYfL2-NPH9PbL_dfLm0_tcZw3u94bnOsvXDXeTj6kH3F-8dUL0vHOuPt2p5tySS5SdTV-s-Pz7Arff_Uu-qbRd9XxzSBUAX5__Kl_PlIUp7cnebvNPo5TL_ffea435p8bff_2-Fv8WXd3QsL4BX37ObpsNBr1erERu7Od2CtP6KzclulTEXRs_LHhwwHKyNg-oWn4_zeu8MMK0FsP9DCrAP11wMLnKsBgLdC63AKI3XXAwnorwOmZ8Gxvt6KCvV0bpYt4bsO4rXSsGZadRRVILbqRDOuOSXPpgCxKTN3ZT8IJaKRxkqflzadRHgBWYnYCPNs7kjEYlPOfSSNCYcTuiZFxtntkiwJ9JOP5AXkldZiqKGtE5oMDCod4sqwDtIinJ9G8E8x6QdIHh72e1CZVPWUmzuwaiJEDvuYiUmZSaHX2YOc_kH2RR8Z5qIoVvHefRLyTj0ZJajojGUVXiZHxY6RLvJWsiCz4Fq1g2vwbEGvc2fuXDBthKMP5ZhyIWAzk1lRXCV9E-dJGzyYCBRgs9n0211QZiP96ZcwXdyG1NKkwKtFbK2OV8FplLNSwNNVvpIvDSMZSGxG1kp4lsaUWlsXW8p_DwHT434B5M9FF9BFGhof9vuyZrVmvEl2wrvaCWfdPiAF7JaPHDohjGcXSfP_Z0Eh7W54EBbJiBfbxN4iB_w_u_wvBvSUyI9OmyIzSg63ZL6SqfMtWMB_s1znxeylGiQbo-924FYlYHohsuKUzV_AVxdhGULb-Dg6Q9oSWnTx9ir1XZZaCldASTNt_JbdmJNLiXrzVNs3RlXNo1jTzyv-61R5FyVhm32-zzUSHuZV_gj6WRJYO50r7b2C7-5HIRkMZP0psbrkViQWvSuOvi1L7SWJ-wHYfSCPTWOmtLuSrZRaKedDxU5UzrWWzZOyNknfgW5LEH4qMqq19nNdOy5UQZ_6n38LtQ0Fvmsi19Y4081yufQaqzIm8rrULD38F2o32Ya0zsW8uMpXJEHyRdzICqNZMuiIy4I19rBWyxbSvgM9rJ_Eosn-9s1fArXnPgdK9VAorHZdpe2BfLNT8VT3lmwRQvkqoIVzFlNej8kpQo9Uee5CCIo9dqM2u5wEp73FS-I8j5T9OivxxpILHSdE_jRR2HyfF_jhS6HFS_E8jtZHTXXFZrt0kKgSdnhyZVD6kdFmG-1cAu8v0fHftChFbs0S2JPPwX9G6bdnEIOn3h0KHteZQxXakzkilysy0uC0XvrSu5Z14gVwXmGR5B19Q9tw22peqoHzrKXRvHQOyicGwyDrUjvNuqjLQVGkvkmbLlePamdIq0RkYirEEf2F_Bwd_r7W7ZaOyL1bt2mU6Lo58m4FRPSV1b2JTzuUBvZm-fQFdpf80tdBNaukm4aR2I0QE2nIgIiU2qWT6euAV2N-Z_5b19BcmO5guqUYWCSdL9V2_L1OlB1ntxV-I7SD-d8FCRFElH7egs0YpG41oqpiFyT-qHbZJO4Pi_0Ktk6Q9mcoUlP8fnmw1oRTRKquZ-uML5D4HvaFdpF28vVinMsuWnf0nGsjGi1vXXqEXGihu1FsrAC3t1VkyLnZ5GqWW3cTysTYotSyz0cDmK2tk0wgvbK-laT-KWMX_CXaw8aLXlZGpNYdCabBvq9sGvKdt2jo2qxe88RIn4tyGt3d6cg8aZX3rNdNiySfayChSA1ksbROPlUp-IpmNlzcbM1Dt3chGB6UHP0n7P5AN2nhts3Twj6bz0NN_KJ3q5eascXTSXOITWc_tRyK7rR2osdKy9OVW0bItuTUz440zx_ZoLWc-NDLVIipP2x8yNdk4dW6UHW06-1EqtDI_iDN9wsT7IrO35B8yL3vCvI1YmuEk--6ZO9JMr8_AKBPJSrIjz2RH9hIdlqnmIufQF1Emp7mbTpSYIq1STUbPv5KY5b7-jcKVLx9WoGZvp2YYsgKz9InDDEhXAGf5xhmGrRysyFHNIHwVREaVFXkrEGWMX2D8FRgbbKo6CtZhKhpC7gpQsedL2kbONDs0TU2tk6mOjLeUIRUZsqVM5TMYRLeUqX6Mw1bJlKbbkabIjxU5MVtrJrqvBqVF61E-G1RqGU8Kl3CAzuOuTOuOP_s-9V_Aw7HIyjzhDIqm3-_s7c4m2Nt9-L3yfwCEgjIu"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T12:22:21.315Z"
-  },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Sceptre",
-          "Wand"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Shield"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "intjewel"
-        ]
-      }
-    }
-  },
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    },
-    {
-      "season": "covens",
-      "date": "2026-11-27",
-      "notes": [
-        "The default link is Lightning Tendrils of Eccentricity on Spell Totems: its wide pulse clears and its always-crit larger pulse bosses. Arc keeps the four-link helmet for open layouts.",
-        "The gate report measures the default link at red maps and pinnacle; the published paste holds both links, and the four-link Arc is the clear swap.",
-        "Lightning Tendrils, self-cast and then on Spell Totem, carries the campaign; the transfigured version takes over at the Merciless Labyrinth.",
-        "Awakened Added Lightning Damage, Awakened Lightning Penetration and Awakened Elemental Focus lift pinnacle damage; the red-map paste keeps the regular supports so the import stays self-fundable.",
-        "Arcane Blessing and Blasphemy with Conductivity are the damage layers; Determination, a Granite flask, a Basalt flask and Conviction of Power are the physical layer.",
-        "The tree buys life first and reaches a nine-thousand-life pool at pinnacle; chaos resistance is capped and every checkpoint now passes the standard floors rather than the lower Dad damage floor.",
-        "Ratings move from 6/6/5/8 to 10/10/9/9 on the measured gates; the medal moves from B to S+."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "lightning-totem",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Totemic Visage",
-          "tier": "low",
-          "effect": "(10-15)% chance to Shock",
-          "source": "Kuduku",
-          "area": "Act 1",
-          "note": "Shock chance for the totems."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "low",
-          "effect": "Damage Penetrates (3-4)% Lightning Resistance",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Lightning penetration."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "low",
-          "effect": "+(30-50) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life while placing totems."
-        },
-        "lowerLimb": {
-          "name": "Carved Haunches",
-          "tier": "low",
-          "effect": "(10-15)% increased Totem Placement speed",
-          "source": "Torchoak Grove",
-          "area": "Act 4",
-          "note": "Totem placement speed."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Totemic Visage",
-          "tier": "med",
-          "effect": "(20-30)% chance to Shock",
-          "source": "Kuduku",
-          "area": "Act 1",
-          "note": "More shock chance."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "med",
-          "effect": "Damage Penetrates (6-8)% Lightning Resistance",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Lightning penetration."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "med",
-          "effect": "+(60-80) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life before damage scaling."
-        },
-        "lowerLimb": {
-          "name": "Carved Haunches",
-          "tier": "med",
-          "effect": "(20-30)% increased Totem Placement speed",
-          "source": "Torchoak Grove",
-          "area": "Act 4",
-          "note": "Faster totem placement."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Totemic Visage",
-          "tier": "high",
-          "effect": "(10-12)% more Maximum Lightning Damage",
-          "source": "Kuduku",
-          "area": "Act 1",
-          "note": "More maximum lightning damage."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "high",
-          "effect": "Hits have (10-15)% chance to treat Enemy Monster Lightning Resistance values as inverted",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Hits can treat lightning resistance as inverted."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "high",
-          "effect": "(5-7)% more Maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "More maximum life."
-        },
-        "lowerLimb": {
-          "name": "Carved Haunches",
-          "tier": "high",
-          "effect": "Skills that Summon a Totem have (16-24)% chance to Summon two Totems instead of one",
-          "source": "Torchoak Grove",
-          "area": "Act 4",
-          "note": "Chance to summon two totems instead of one."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Rolling Magma; life and a 3-link first.",
-        "Do not buy totem gear before the main skill is online."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "Magic wand."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "3-link."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Keep moving."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Add Spell Totem and Added Lightning Damage to Arc.",
-        "Cap resistances; totem placement speed is a luxury."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Lightning damage"
-          ],
-          "note": "Rare sceptre."
-        },
-        {
-          "slot": "Shield",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Defensive shield."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "4-link."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Cast speed"
-          ],
-          "note": "Bench cast speed."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Six-link Arc totem and 2,000 life; cap resistances.",
-        "Add Lightning Penetration and Controlled Destruction."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Lightning damage"
-          ],
-          "note": "The sceptre is the damage slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Cast speed"
-          ],
-          "note": "Life first."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "A 5-link clears white maps; start the 6-link.",
-        "Reach 3,000 life and cap resistances."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Lightning damage"
-          ],
-          "note": "Rare sceptre."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the 6-link."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Fix resists."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Lightning damage"
-          ],
-          "note": "Bench elemental damage."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life.",
-        "Totem placement speed and crit are the damage upgrades."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Critical strike chance"
-          ],
-          "note": "Crit sceptre."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Crit multi."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 Arc and awakened supports."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Lightning Skill Gems",
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "+1 elemental gems."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "+1 to Level of all Lightning Skill Gems",
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Amulet carries gem levels."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Keep life."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Lightning Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 19 to 358 added Lightning Damage"
-      ],
-      "tags": [
-        "lightning"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Arc": {
-      "requiredLevel": 12,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Siren's Cadence"
-      },
-      "color": "b",
-      "support": false,
-      "description": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies, but not immediately back. Each time the arc chains, it will also chain a secondary arc to another enemy that the main arc has not already hit, which cannot chain further.",
-      "effect": [
-        "15% more Damage with Hits and Ailments for each remaining Chain",
-        "Deals 198 to 1122 Lightning Damage",
-        "Chains +7 Times"
-      ],
-      "tags": [
-        "chaining",
-        "lightning",
-        "spell"
-      ],
-      "qualityEffect": "Chains Times",
-      "qualityWorth": "optional"
-    },
-    "Arcane Surge": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Arcane Surge lasts 4 seconds",
-        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
-        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
-        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
-      ],
-      "tags": [
-        "arcane",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Awakened Added Lightning Damage": {
-      "requiredLevel": 72,
-      "source": {
-        "kind": "level",
-        "act": null,
-        "quest": null
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 32 to 616 added Lightning Damage",
-        "+4 to Level of Supported Lightning Skill Gems"
-      ],
-      "tags": [
-        "awakened",
-        "lightning"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Awakened Elemental Focus": {
-      "requiredLevel": 72,
-      "source": {
-        "kind": "level",
-        "act": null,
-        "quest": null
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills cannot inflict Elemental Ailments",
-        "Supported Skills deal 47% more Elemental Damage",
-        "+1 to Level of Supported Elemental Skill Gems"
-      ],
-      "tags": [
-        "awakened"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Elemental Damage",
-      "qualityWorth": "recommended"
-    },
-    "Awakened Lightning Penetration": {
-      "requiredLevel": 72,
-      "source": {
-        "kind": "level",
-        "act": null,
-        "quest": null
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills Penetrate 47% Lightning Resistance",
-        "Supported Skills have 10% chance to inflict Lightning Exposure on Hit"
-      ],
-      "tags": [
-        "awakened",
-        "lightning"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Blasphemy": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "25% less Effect of Supported Curses",
-        "Supported Curse Skills apply their Curses as Auras\nSupported Curse Skills also count as Aura Skills",
-        "Using Supported Skills is Instant"
-      ],
-      "tags": [
-        "aura",
-        "hex"
-      ],
-      "qualityEffect": "% increased Area of Effect of Supported Curse Skills",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Concentrated Effect": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 30% less Area of Effect",
-        "Supported Skills deal 39% more Area Damage"
-      ],
-      "tags": [
-        "area"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Area Damage",
-      "qualityWorth": "recommended"
-    },
-    "Conductivity": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Curses all targets in an area, lowering their lightning resistance and giving them a chance to be shocked when hit.",
-      "effect": [
-        "Hits against Cursed Enemies have +25% chance to Shock",
-        "Base duration is 11.80 seconds",
-        "+1 metre to radius",
-        "Cursed enemies have -36% to Lightning Resistance"
-      ],
-      "tags": [
-        "area",
-        "curse",
-        "duration",
-        "hex",
-        "lightning",
-        "spell"
-      ],
-      "qualityEffect": "Shocks on Cursed enemies have % increased Duration",
-      "qualityWorth": "recommended"
-    },
-    "Controlled Destruction": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 80% less Critical Strike Chance",
-        "Supported Skills deal 39% more Spell Damage"
-      ],
-      "tags": [
-        "critical",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Elemental Focus": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills cannot inflict Elemental Ailments",
-        "Supported Skills deal 34% more Elemental Damage"
-      ],
-      "tags": [],
-      "qualityEffect": "Supported Skills deal % increased Elemental Damage",
-      "qualityWorth": "recommended"
-    },
-    "Faster Casting": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 39% increased Cast Speed"
-      ],
-      "tags": [
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills have % increased Cast Speed",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Lightning Penetration": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills Penetrate 34% Lightning Resistance"
-      ],
-      "tags": [
-        "lightning"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Lightning Tendrils": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "level",
-        "act": null,
-        "quest": null
-      },
-      "color": "b",
-      "support": false,
-      "description": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a semicircular area in front of you.",
-      "effect": [
-        "Releases a Stronger Pulse every 3 Pulses\nStronger Pulses always Critically Strike",
-        "Deals 105 to 1986 Lightning Damage",
-        "Base radius is 3.6 metres"
-      ],
-      "tags": [
-        "area",
-        "channelling",
-        "critical",
-        "lightning",
-        "spell"
-      ],
-      "qualityEffect": "% to Critical Strike Multiplier",
-      "qualityWorth": "recommended"
-    },
-    "Lightning Tendrils of Eccentricity": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "b",
-      "support": false,
-      "description": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a semicircular area in front of you.",
-      "effect": [
-        "Releases a Stronger Pulse every 5 Pulses\nStronger Pulses always Critically Strike",
-        "Stronger Pulses deal 500% more Damage with Hits and Ailments",
-        "Stronger Pulses have 150% more Area of Effect",
-        "Deals 48 to 916 Lightning Damage",
-        "Base radius is 3.6 metres"
-      ],
-      "tags": [
-        "area",
-        "channelling",
-        "critical",
-        "lightning",
-        "spell"
-      ],
-      "qualityEffect": "% to Critical Strike Multiplier",
-      "qualityWorth": "recommended"
-    },
-    "Rolling Magma": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
-      "effect": [
-        "Projectiles can Chain when impacting the ground\nProjectiles do not change direction when Chaining",
-        "Deals 1215 to 1822 Fire Damage",
-        "Chains +3 Times",
-        "+0.4 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "chaining",
-        "fire",
-        "projectile",
-        "spell"
-      ],
-      "qualityEffect": "Chains Times",
-      "qualityWorth": "optional"
-    },
-    "Spell Totem": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Totem lasts 8 seconds",
-        "Supported Skills have 40% less Cast Speed",
-        "Supported Skills will summon a Totem which uses that Skill",
-        "Supported Skills deal 50% less Damage"
-      ],
-      "tags": [
-        "spell",
-        "totem"
-      ],
-      "qualityEffect": "Supported Skills have % increased Totem Placement speed",
-      "qualityWorth": "optional"
-    }
-  },
-  "seedHash": "4c78766ba934",
+  "patch": "3.30.0",
   "guide": {
     "summary": {
-      "text": "Arc Totem Hierophant runs Lightning Tendrils of Eccentricity on two Spell Totems as its default clear and boss link, and keeps Arc in a four-link helmet for open layouts. The measured link runs 299.9k at red maps and 935.0k at pinnacle per totem. The channel covers a semicircle in front of the totem, and every fifth pulse is stronger (a much larger area and an automatic critical strike), so the same link clears packs and delivers the boss hit. No unique is required.",
+      "text": "Arc Totem Hierophant runs Lightning Tendrils of Eccentricity on two Spell Totems as its default clear and boss link, and keeps Arc in a four-link helmet for open layouts. The measured link runs 91.0k at red maps and 221.2k at pinnacle per totem. The channel covers a semicircle in front of the totem, and every fifth pulse is stronger (a much larger area and an automatic critical strike), so the same link clears packs and delivers the boss hit. No unique is required.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8689,7 +8687,7 @@
         "gates.maps-red.metrics.dps",
         "gates.pinnacle.metrics.dps"
       ],
-      "factsHash": "a06f2e1d04046398"
+      "factsHash": "e0105ec15bf252e8"
     },
     "leveling": {
       "text": "Level with Rolling Magma, then self-cast Lightning Tendrils: the channel hits harder than self-cast Arc before the totem links, and it is the same skill the default link upgrades. The first checkpoint measures 377 life and 49 damage; the second measures 773 damage. Put the Tendrils on Spell Totem, put Arc in the helmet as a three-link alongside the totem body, add Faster Casting when the helmet becomes a four-link, and transfigure a Tendrils at the Divine Font in the Merciless Labyrinth for the upgraded version.",
@@ -8706,7 +8704,7 @@
       "factsHash": "6c4e78219b44a6cc"
     },
     "maps": {
-      "text": "At red maps the default link measures 299.9k per totem with 29453 effective life and 11759 physical max hit. It runs Concentrated Effect for that number, so swap the support for Increased Area of Effect (or use the Arc helmet) when a pack is spread; the swap costs some damage, and the Arc helmet's damage is not measured here. The channel covers a semicircle in front of the totem, so the totem clears the pack it is placed in; Arc swaps into the four-link helmet when an open layout wants a chain. Blasphemy with Conductivity is the damage aura, and Determination with a Granite and a Basalt flask is the physical layer. Cap the elemental resistances and keep both totems ahead of you. The tree's fire and cold walkers are planner artifacts: their damage and cast-speed lines are fire/cold-scoped, so a hand-built tree should cut them for a lightning or life cluster.",
+      "text": "At red maps the default link measures 91.0k per totem with 28081 effective life and 11285 physical max hit. It runs Concentrated Effect for that number, so swap the support for Increased Area of Effect (or use the Arc helmet) when a pack is spread; the swap costs some damage, and the Arc helmet's damage is not measured here. The channel covers a semicircle in front of the totem, so the totem clears the pack it is placed in; Arc swaps into the four-link helmet when an open layout wants a chain. Blasphemy with Conductivity is the damage aura, and Determination with a Granite and a Basalt flask is the physical layer. Cap the elemental resistances and keep both totems ahead of you. The tree's fire and cold walkers are planner artifacts: their damage and cast-speed lines are fire/cold-scoped, so a hand-built tree should cut them for a lightning or life cluster.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8717,10 +8715,10 @@
         "gates.maps-red.metrics.ehp",
         "gates.maps-red.metrics.maxHit"
       ],
-      "factsHash": "571b67a7beaf066b"
+      "factsHash": "68d92c517cc4d2a7"
     },
     "bossing": {
-      "text": "Pinnacle measures 935.0k per totem with 42850 effective life and 14097 physical max hit. Place both Tendrils totems before the burst (they expire on a timer, so recast them before they run out) and keep Conductivity on the boss. Replace a totem after every phase that clears the arena; the stronger pulse is the damage window, so the totem has to be channelling before the boss commits to a slam.",
+      "text": "Pinnacle measures 221.2k per totem with 40103 effective life and 13301 physical max hit. Place both Tendrils totems before the burst (they expire on a timer, so recast them before they run out) and keep Conductivity on the boss. Replace a totem after every phase that clears the arena; the stronger pulse is the damage window, so the totem has to be channelling before the boss commits to a slam.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8731,8 +8729,14 @@
         "gates.pinnacle.metrics.ehp",
         "gates.pinnacle.metrics.maxHit"
       ],
-      "factsHash": "5ff371ad5b86da9b"
+      "factsHash": "10e60038dc07e405"
     }
   },
-  "medal": "S+"
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:52:42.952Z"
+  }
 }
