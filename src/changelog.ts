@@ -17,6 +17,24 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.80.0',
+    date: '2026-11-27',
+    title: 'A level-38 step, step grades and GitHub feedback',
+    notes: [
+      "**Every build has its own level-38 step.** The 28→68 jump is split at 38: a measured four-link with the supports that unlock by 38, a reviewed 42-point budget (41 allocated nodes), the fifth link at 68 and the sixth at red maps. Where a step listed six gems on a five-link budget, the list now matches the gear it can socket. All 21 builds were re-verified.",
+      "**Boneshatter stays on Sunder until Brutality.** The 28-38 step is now the Sunder four-link, measured at 3,801 DPS; Boneshatter starts at 39 with Brutality in the link, and Pulverise is the fifth link at 68. The guide prose, watch lines and tests follow the new plan.",
+      "**Penance Brand waits for its supports.** The four-link brand set measured only 53 DPS at 38, below its floor. The 28-38 step keeps Rolling Magma with Controlled Destruction (522 DPS) and proper level-38 flasks; Penance Brand takes over at 39.",
+      "**Step grades.** Every sub-step carries an authored S–D play-feel grade, shown on the step picker and in \"What changes here\": S is a power spike or a smooth stretch, D is the slog. The 28-38 stretch is C/D, Boneshatter's is D and its 39-68 payoff is A. Grades are editorial and excluded from the mechanics hash and the guide facts, so changing one never invalidates a gate report or a signed section.",
+      "**Visitor feedback without a backend.** Each verified build has a GitHub issue; visitors vote with 👍/👎, and a weekly Action bakes the counts into `feedback.json`. The build page shows the counts and links to the issue, makes no runtime network call, and says plainly that votes are feedback, not a ranking. 21 threads are live.",
+      "**Filter page.** The drop preview is randomised per filter state — roughly 80% items the filter shows and 20% it hides — the verified-build list sorts by tier, red-map DPS or newest, and the selected verified build's key art backs the result card.",
+      "**Inventory and passive tree.** Gear tooltips are back for every slot, not just flasks: the slot cell no longer clips them, they open away from the sheet edge, and a focused cell opens the same card. The tree shows its passive-point, notable and jewel counts, and its node tooltip now disappears on scroll, pointer-leave, Escape or a click outside instead of floating over the page.",
+      "**Header.** Nav is Builds and Filter; the version badge links to the changelog, GitHub is an icon, and Loot simulator and Behaviour audit live in a Filter tools sub-nav instead of the top level.",
+      "805 tests.",
+    ],
+    commits: [],
+    compare: 'v0.79.0...v0.80.0',
+  },
+  {
     version: '0.79.0',
     date: '2026-11-27',
     title: 'Leveling, Maps and Endgame are roots with sub-steps',
