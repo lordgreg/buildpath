@@ -2,6 +2,18 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.75.2 — 2026-11-27
+
+Catalogue tags say what each build does.
+
+- The catalogue vocabulary is now **SSF**, **Hardcore**, **Dad**, **Tanky**, **Fast clear**, **Boss killer**, **Minion**, **Caster**, **Melee**, **Ranged** and **Totems**. The season chip is unchanged.
+- **HC-ready is now Hardcore.** It still appears only when the build clears the published defensive thresholds at red maps and pinnacle.
+- **Minion army is gone**, because the **Minion** playstyle chip already says it. Minion guides now carry one chip instead of two.
+- **Boss killer** is new: it marks the four guides whose measured single-target rating is 9 or 10 — Animate Weapon, Boneshatter, Cyclone and Summon Skeletons.
+- **Totems** is new and additive: Arc Totem Hierophant and Storm Burst of Repulsion Totems keep **Caster** and gain **Totems**.
+- **Dad** now reads as easy to play, matching how the guides use it.
+- 734 tests.
+
 ## 0.75.1 — 2026-11-27
 
 Build filters follow the gear the builds wear.
