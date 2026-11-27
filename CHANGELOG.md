@@ -2,6 +2,19 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.78.0 — 2026-11-27
+
+Legal jewels, two S+ builds and an honest RF.
+
+- **Jewels now roll legal affixes.** The shared gear profiles had reused weapon and armour keys on jewels, so every build wore six jewels with 80% spell damage, 15% cast speed, 35% critical strike multiplier and 100 life. They now use jewel-scoped rolls from the pinned PoB data — 12% spell damage, 4% cast speed, 12% critical strike multiplier, 7% increased life and the rest — with legal two-prefix/two-suffix layouts. This is a correctness fix, not a balance pass.
+- **The damage floors were recalibrated to legal gear.** Red maps 120k → 80k (a 4-link still measures 44.7k), pinnacle 150k → 125k (starting gear still 19k) and the Dad level-68 floor 4k → 3.5k. Calibration: 126 must-pass, 10 must-fail, green.
+- **Arc Totem Hierophant is S+ again, this time on legal jewels.** Lightning Tendrils of Eccentricity on Spell Totems is the default link; Arc stays as the four-link clear swap. Pinnacle measures 917k DPS, 8.1k life, 46.0k EHP and 14.1k physical max hit; red maps measure 293k. Ratings 10/10/9/9.
+- **Arc Elementalist is S+.** Cerberus Limb and Saffell's Frame are the cheap uniques, with Elemental Overload and Wave of Conviction exposure. Pinnacle measures 676k DPS, 6.8k life, 53.4k EHP and 14.0k max hit; red maps measure 541k. Ratings 10/10/9/9.
+- **Righteous Fire Chieftain is retuned to an honest S.** Fire Trap carries the campaign and white maps; RF switches on at red maps with Purity of Fire and level-14 Vitality. Pinnacle measures 212k DPS, 9.0k life, 42.0k EHP and 13.4k max hit. Ratings 9/7/7/9. S+ is not claimed because the legal single-target and clear numbers do not support it.
+- **The step plans and gem panel match the new paths.** Arc runs Rolling Magma → Arc; Arc Totem runs self-cast Lightning Tendrils → the transfigured totem; RF runs Fire Trap → RF. Lightning Tendrils of Eccentricity is marked as a Divine Font / trade gem, and Empower has its game description.
+- **All 21 builds were re-verified** against the pinned PoB oracle and the changed codes were republished to pobb.in.
+- 760 tests.
+
 ## 0.77.2 — 2026-11-27
 
 Caster-only rings stay off attack builds.
