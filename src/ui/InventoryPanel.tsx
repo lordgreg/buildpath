@@ -32,15 +32,28 @@ const RARITY_GLOW: Record<string, string> = {
 function ItemTooltip({
   item,
   slotLabel,
+  align = 'left',
+  below = false,
 }: {
   item: GearItem;
   slotLabel: string;
+  align?: 'left' | 'center' | 'right';
+  below?: boolean;
 }) {
   const colour = RARITY_COLOUR[item.rarity ?? 'RARE'] ?? RARITY_COLOUR.RARE!;
+  // The slot boxes stay the size the inventory sheet needs; the tooltip is the
+  // full item card, so it opens outside the box and clamps its own edge.
+  const side =
+    align === 'right'
+      ? 'right-0'
+      : align === 'center'
+        ? 'left-1/2 -translate-x-1/2'
+        : 'left-0';
+  const position = below ? 'top-full mt-1' : 'bottom-full mb-1';
   return (
     <span
       role="tooltip"
-      className="pointer-events-none absolute left-0 bottom-full z-30 mb-1 hidden w-72 max-w-[80vw] rounded-md border border-ink-600 bg-ink-950/95 p-2.5 text-left text-[11px] leading-snug shadow-xl group-hover:block group-focus-within:block"
+      className={`pointer-events-none absolute ${side} ${position} z-30 hidden w-72 max-w-[80vw] rounded-md border border-ink-600 bg-ink-950/95 p-2.5 text-left text-[11px] leading-snug shadow-xl group-hover:block group-focus-within:block`}
     >
       <strong className={`block ${colour}`}>{item.base}</strong>
       <span className="block text-zinc-500">
@@ -72,6 +85,21 @@ function ItemTooltip({
   );
 }
 
+/** Where a tooltip opens: top slots open down, bottom slots open up. */
+const TOOLTIP_BELOW = new Set(['weapon', 'helmet', 'amulet', 'offhand']);
+const TOOLTIP_ALIGN: Record<string, 'left' | 'center' | 'right'> = {
+  weapon: 'left',
+  helmet: 'left',
+  amulet: 'center',
+  offhand: 'right',
+  ring1: 'left',
+  body: 'center',
+  ring2: 'right',
+  gloves: 'left',
+  belt: 'center',
+  boots: 'right',
+};
+
 function SlotCell({
   entry,
   item,
@@ -91,15 +119,20 @@ function SlotCell({
   return (
     <div
       style={{ gridArea: entry.area }}
+      // No overflow clip: the tooltip is the full item card and must be able to
+      // leave a 4.4rem amulet box. The glow stays inside because it is inset.
+      // A focused cell opens the same tooltip, so keyboard readers get it too.
+      tabIndex={item ? 0 : undefined}
       className={
-        'group relative flex flex-col justify-between overflow-hidden rounded-[3px] border bg-[#090c12]/80 shadow-[inset_0_0_22px_rgba(0,0,0,0.75)] ' +
+        'group relative flex flex-col justify-between rounded-[3px] border bg-[#090c12]/80 shadow-[inset_0_0_22px_rgba(0,0,0,0.75)] outline-none ' +
         (item ? border : 'border-[#3a3529]') +
         (compact
           ? ' h-[4.4rem] w-[4.4rem] min-h-0 justify-self-center self-center p-1'
           : tall
             ? ' min-h-[10rem] p-2'
             : ' min-h-[5.6rem] p-2') +
-        (narrowSide ? ' w-[80%] justify-self-center' : '')
+        (narrowSide ? ' w-[80%] justify-self-center' : '') +
+        (item ? ' focus-visible:ring-2 focus-visible:ring-gold-400/70' : '')
       }
     >
       <SlotGlyph slot={entry.slot} tall={tall} />
@@ -140,7 +173,12 @@ function SlotCell({
             className={`pointer-events-none absolute inset-0 rounded-[2px] bg-gradient-to-br ${glow} to-transparent`}
             aria-hidden
           />
-          <ItemTooltip item={item} slotLabel={entry.label} />
+          <ItemTooltip
+            item={item}
+            slotLabel={entry.label}
+            align={TOOLTIP_ALIGN[entry.area] ?? 'left'}
+            below={TOOLTIP_BELOW.has(entry.area)}
+          />
         </>
       )}
     </div>

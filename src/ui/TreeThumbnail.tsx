@@ -97,6 +97,41 @@ export default function TreeThumbnail({
   const size = useElementSize(svg);
   const drag = useRef<{ x: number; y: number } | null>(null);
   const down = useRef<{ x: number; y: number } | null>(null);
+  /** A clicked node keeps its tooltip until the page moves or it is dismissed. */
+  const pinned = useRef(false);
+
+  const hideTooltip = useCallback(() => {
+    pinned.current = false;
+    setTooltip(null);
+  }, []);
+
+  // The tooltip is fixed-positioned, so it would otherwise float over the page
+  // after a scroll or a fast pointer exit. Any scroll, resize, Escape or window
+  // blur dismisses it; this is the reported "tooltip stays after scrolling".
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') hideTooltip();
+    };
+    window.addEventListener('scroll', hideTooltip, true);
+    window.addEventListener('resize', hideTooltip);
+    window.addEventListener('blur', hideTooltip);
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('scroll', hideTooltip, true);
+      window.removeEventListener('resize', hideTooltip);
+      window.removeEventListener('blur', hideTooltip);
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [hideTooltip]);
+
+  useEffect(() => {
+    if (!svg) return;
+    const onDown = (event: PointerEvent) => {
+      if (!svg.contains(event.target as Node)) hideTooltip();
+    };
+    window.addEventListener('pointerdown', onDown, true);
+    return () => window.removeEventListener('pointerdown', onDown, true);
+  }, [svg, hideTooltip]);
 
   useEffect(() => {
     let cancelled = false;
@@ -135,11 +170,11 @@ export default function TreeThumbnail({
     (nodeId: number) => {
       const point = points.get(nodeId);
       if (!point || !full) return;
-      setTooltip(null);
+      hideTooltip();
       setView(focusPoint(point, full, 0.22));
       setPulseNode(nodeId);
     },
-    [points, full],
+    [points, full, hideTooltip],
   );
 
   useEffect(() => {
@@ -344,7 +379,7 @@ export default function TreeThumbnail({
         const dx = event.clientX - last.x;
         const dy = event.clientY - last.y;
         drag.current = { x: event.clientX, y: event.clientY };
-        setTooltip(null);
+        hideTooltip();
         setView((current) =>
           current && full ? panView(current, dx, dy, scale, full) : current,
         );
@@ -352,10 +387,17 @@ export default function TreeThumbnail({
       }
       const hit = pick(event);
       if (hit) setTooltip(hit);
-      else setTooltip(null);
+      else if (!pinned.current) setTooltip(null);
     },
-    [pick, scale, full],
+    [pick, scale, full, hideTooltip],
   );
+
+  const onPointerLeave = useCallback(() => {
+    drag.current = null;
+    // A hover tooltip must not outlive the pointer. A pinned one survives until
+    // the page scrolls, Escape, or a click elsewhere.
+    if (!pinned.current) setTooltip(null);
+  }, []);
 
   const onPointerDown = useCallback((event: ReactPointerEvent<SVGSVGElement>) => {
     down.current = { x: event.clientX, y: event.clientY };
@@ -376,6 +418,7 @@ export default function TreeThumbnail({
         return;
       }
       const hit = pick(event);
+      pinned.current = Boolean(hit);
       setTooltip(hit);
     },
     [pick],
@@ -388,7 +431,7 @@ export default function TreeThumbnail({
       event.preventDefault();
       const factor = Math.exp(event.deltaY * 0.0015);
       const rect = svg.getBoundingClientRect();
-      setTooltip(null);
+      hideTooltip();
       setView((current) => {
         if (!current) return current;
         const { fx, fy } = focalPoint(current, rect, event.clientX, event.clientY);
@@ -397,7 +440,7 @@ export default function TreeThumbnail({
     };
     svg.addEventListener('wheel', handler, { passive: false });
     return () => svg.removeEventListener('wheel', handler);
-  }, [svg, full]);
+  }, [svg, full, hideTooltip]);
 
   if (!geometry || !view) {
     return <p className="text-sm text-zinc-500">Loading the tree…</p>;
@@ -418,7 +461,7 @@ export default function TreeThumbnail({
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
-        onPointerLeave={onPointerUp}
+        onPointerLeave={onPointerLeave}
         onClick={onClick}
       >
         {staticLayer}
@@ -429,11 +472,28 @@ export default function TreeThumbnail({
         {hitLayer}
       </svg>
 
+      <div className="pointer-events-none absolute left-3 top-3 flex flex-wrap items-center gap-x-2 gap-y-1 rounded border border-ink-600 bg-ink-950/85 px-2 py-1 text-[10px] uppercase tracking-[0.14em] text-zinc-500">
+        <span>
+          <span className="text-sm font-semibold normal-case tracking-normal text-zinc-100">
+            {tree.nodes.length}
+          </span>{' '}
+          passive points
+        </span>
+        <span className="text-zinc-700">·</span>
+        <span>{tree.notables.length} notables</span>
+        {tree.jewels && tree.jewels.length > 0 && (
+          <>
+            <span className="text-zinc-700">·</span>
+            <span>{tree.jewels.length} jewels</span>
+          </>
+        )}
+      </div>
+
       <div className="absolute right-3 top-3 flex gap-1">
         <button
           type="button"
           onClick={() => {
-            setTooltip(null);
+            hideTooltip();
             setView((current) =>
               current ? zoomView(current, current.w * 1.35, 0.5, 0.5, full!) : current,
             );
@@ -446,7 +506,7 @@ export default function TreeThumbnail({
         <button
           type="button"
           onClick={() => {
-            setTooltip(null);
+            hideTooltip();
             setView((current) =>
               current ? zoomView(current, current.w / 1.35, 0.5, 0.5, full!) : current,
             );
@@ -459,7 +519,7 @@ export default function TreeThumbnail({
         <button
           type="button"
           onClick={() => {
-            setTooltip(null);
+            hideTooltip();
             setView((current) => (full ? fitView(tree.nodes, full) : current));
           }}
           className="rounded border border-ink-600 bg-ink-900/80 px-2 py-1 text-xs text-zinc-300 hover:text-gold-300"
@@ -469,7 +529,7 @@ export default function TreeThumbnail({
         <button
           type="button"
           onClick={() => {
-            setTooltip(null);
+            hideTooltip();
             setView(full);
           }}
           className="rounded border border-ink-600 bg-ink-900/80 px-2 py-1 text-xs text-zinc-300 hover:text-gold-300"
@@ -519,7 +579,8 @@ export default function TreeThumbnail({
 
       <figcaption className="mt-2 text-xs text-zinc-500">
         {tree.nodes.length} points and {tree.notables.length} notables at {label}. Hover a
-        node to read it, click to pin. Scroll to zoom; drag pans once you are zoomed in.{' '}
+        node to read it; click to pin it, and scrolling or Escape dismisses it. Scroll
+        to zoom; drag pans once you are zoomed in.{' '}
         <span className="text-zinc-300">fit</span> frames the points you took,{' '}
         <span className="text-zinc-300">all</span> shows the whole tree.
       </figcaption>
