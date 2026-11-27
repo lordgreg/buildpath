@@ -549,3 +549,19 @@ ascendancies:
       effect:
       - Your Maximum Endurance Charges is equal to your Maximum Frenzy Charges
       - +1 to Maximum Frenzy Charges
+  inquisitor:
+    name: Inquisitor
+    class: Templar
+    nodes:
+      - { id: elemental-damage-critical-strike-multiplier, name: "Elemental Damage, Critical Strike Multiplier", notable: false, effect: ["10% increased Elemental Damage", "+10% to Critical Strike Multiplier"] }
+      - { id: elemental-damage-life-regeneration, name: "Elemental Damage, Life Regeneration", notable: false, effect: ["10% increased Elemental Damage", "Regenerate 0.5% of Life per second"] }
+      - { id: elemental-damage-attack-and-cast-speed, name: "Elemental Damage, Attack and Cast Speed", notable: false, effect: ["10% increased Elemental Damage", "4% increased Attack and Cast Speed"] }
+      - { id: elemental-damage-and-resistances, name: "Elemental Damage and Resistances", notable: false, effect: ["10% increased Elemental Damage", "+6% to all Elemental Resistances"] }
+      - { id: righteous-providence, name: "Righteous Providence", notable: true, effect: ["1% increased Critical Strike Chance per point of Strength or Intelligence, whichever is lower", "+50 to Strength and Intelligence"] }
+      - { id: inevitable-judgement, name: "Inevitable Judgement", notable: true, effect: ["Critical Strikes ignore Enemy Monster Elemental Resistances", "Non-Critical Strikes Penetrate 10% of Enemy Elemental Resistances"] }
+      - { id: sanctuary, name: "Sanctuary", notable: true, effect: ["Consecrated Ground you create applies 15% increased Damage taken to Enemies", "You have Consecrated Ground around you while stationary"] }
+      - { id: augury-of-penitence, name: "Augury of Penitence", notable: true, effect: ["Nearby Enemies take 16% increased Elemental Damage", "Nearby Enemies deal 8% less Elemental Damage"] }
+      - { id: pious-path, name: "Pious Path", notable: true, effect: ["Consecrated Ground you create causes Life Regeneration to also Recover Energy Shield for you and Allies", "Effects of Consecrated Ground you create Linger for 4 seconds"] }
+      - { id: instruments-of-virtue, name: "Instruments of Virtue", notable: true, effect: ["10% more Attack Damage for each Non-Instant Spell you've Cast in the past 8 seconds, up to a maximum of 30%", "Battlemage"] }
+      - { id: instruments-of-zeal, name: "Instruments of Zeal", notable: true, effect: ["Gain Fanaticism for 5 seconds on reaching Maximum Fanatic Charges", "Gain 1 Fanatic Charge every second if you've Attacked in the past second", "Lose all Fanatic Charges on reaching Maximum Fanatic Charges", "+3 to Maximum Fanatic Charges"] }
+      - { id: instruments-of-justice, name: "Instruments of Justice", notable: true, effect: ["Base Spell Critical Strike Chance of Spells is equal to that of Main Hand Weapon"] }
