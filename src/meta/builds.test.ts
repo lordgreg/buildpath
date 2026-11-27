@@ -958,7 +958,13 @@ describe('catalogue chips', () => {
         red!.metrics.ehp >= 25000 &&
         pinnacle!.metrics.ehp >= 30000 &&
         pinnacle!.metrics.chaosResist >= 75;
-      expect(labels.includes('HC-ready'), `${entry.id} HC-ready`).toBe(measuredHc);
+      expect(labels.includes('Hardcore'), `${entry.id} Hardcore`).toBe(measuredHc);
+      expect(labels.includes('Boss killer'), `${entry.id} Boss killer`).toBe(
+        (entry.ratings?.singleTarget ?? 0) >= 9,
+      );
+      expect(labels.includes('Totems'), `${entry.id} Totems`).toBe(
+        /\btotems?\b/i.test(`${entry.name} ${entry.mainSkill}`),
+      );
     });
   }
 });

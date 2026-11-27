@@ -658,8 +658,10 @@ if (!leagueOpen) {
 
 /**
  * Catalogue chips. SSF is the gate for every published build; the playstyle
- * comes from the family; HC-ready is only claimed when the measured defensive
- * thresholds at red maps and pinnacle are met.
+ * comes from the family, with Totems layered on when the guide is built around
+ * a totem skill; Hardcore is only claimed when the measured defensive
+ * thresholds at red maps and pinnacle are met, Boss killer when single-target
+ * damage is the build's defining strength.
  */
 function chipsFor(build) {
   const chips = [];
@@ -682,6 +684,15 @@ function chipsFor(build) {
       build.family
     ];
   if (playstyle) chips.push({ label: playstyle, kind: 'playstyle' });
+  // The main skill gem alone does not say "totem" (Arc is still Arc), so the
+  // guide name is part of the signal: "Arc Totem Hierophant".
+  if (/\btotems?\b/i.test(`${build.name} ${build.mainSkill}`)) {
+    chips.push({
+      label: 'Totems',
+      kind: 'playstyle',
+      title: 'The damage comes from summoned totems, not from self-casting.',
+    });
+  }
   const red = build.gates?.['maps-red'];
   const pinnacle = build.gates?.['pinnacle'];
   if (
@@ -694,7 +705,7 @@ function chipsFor(build) {
     pinnacle.metrics.chaosResist >= 75
   ) {
     chips.push({
-      label: 'HC-ready',
+      label: 'Hardcore',
       kind: 'defence',
       title:
         'Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee.',
@@ -704,7 +715,14 @@ function chipsFor(build) {
     chips.push({
       label: 'Dad',
       kind: 'note',
-      title: 'Tanky, low-APM and forgiving; a good build to learn the league with.',
+      title: 'Easy to play: low-APM, forgiving and a good build to learn the league with.',
+    });
+  }
+  if ((build.ratings?.singleTarget ?? 0) >= 9) {
+    chips.push({
+      label: 'Boss killer',
+      kind: 'note',
+      title: 'Single-target damage is the build’s defining strength.',
     });
   }
   const note =
@@ -714,9 +732,7 @@ function chipsFor(build) {
         ? build.mainSkill === 'Flicker Strike'
           ? { label: 'Fast clear', kind: 'note', title: 'Flicker teleports through the pack.' }
           : { label: 'Tanky', kind: 'note', title: 'Armour, endurance charges and Juggernaut defences.' }
-        : build.family === 'minion'
-          ? { label: 'Minion army', kind: 'note', title: 'Minions take the hits while you position.' }
-          : null;
+        : null;
   if (note) chips.push(note);
   return chips;
 }
