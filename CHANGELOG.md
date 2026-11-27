@@ -2,6 +2,15 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.74.2 — 2026-11-27
+
+Two-handed builds stop carrying a shield.
+
+- The `melee` gear profile now sets `offhand: null` at `ssf-start`, `ssf-week1` and `trade`, matching its own two-handed comment. **Cyclone Juggernaut** and **Flicker Strike Slayer** no longer display a **Chiming Spirit Shield** next to an **Apex Cleaver**.
+- PoB already ignored the shield when the weapon was two-handed, so DPS, life and EHP are unchanged. The published item list and one-click PoB codes now describe a legal character.
+- A new invariant test fails if a two-handed melee build carries an offhand, or if a bow carries anything other than a quiver.
+- 702 tests.
+
 ## 0.74.1 — 2026-11-27
 
 Weapon-aware passive tree planning.
