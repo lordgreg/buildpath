@@ -7702,7 +7702,7 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T13:11:04.106Z"
+    "checkedAt": "2026-11-27T14:44:15.597Z"
   },
   "filter": {
     "slots": {
@@ -7795,12 +7795,12 @@
       "date": "2026-11-27",
       "notes": [
         "The measured build now passes the standard gate profile at every checkpoint, not only the Dad floors.",
-        "Fire Trap levels the campaign and white maps; Righteous Fire comes online at red maps when capped resistance, Purity of Fire and Vitality make the self-burn net positive.",
-        "The endgame link uses Lifetap, Swift Affliction, Burning Damage, Elemental Focus and Concentrated Effect; Controlled Destruction and Increased Area of Effect did nothing for the RF DoT.",
-        "Purity of Fire and a level-14 Vitality are the sustain package; the measured net life regeneration is positive at red maps and pinnacle, and Vitality stays at 14 so the auras fit the mana bar.",
-        "Malevolence and Flammability are the damage auras; Enduring Cry charges and the listed flasks keep the physical numbers honest, and the build still needs no unique and no Awakened gem.",
-        "The shared jewel-affix correction replaced the illegal weapon-scale jewel rolls with legal jewel caps. The corrected build measures 212k RF DPS at pinnacle and 122k at red maps; ratings are tankiness 9, single target 7, clear 7, cost 9 (S), not S+.",
-        "Sustain was measured with the pinned oracle plus a scratch copy that prints LifeRegenRecovery and NetLifeRegen: maps-red gross 1,287/s and net +105/s, pinnacle gross 1,577/s and net +140/s; the Fire Trap checkpoints have no RF degen."
+        "Fire Trap levels the campaign and white maps; Righteous Fire comes online at red maps when capped resistance, Purity of Fire, Vitality and three Enduring Cry charges make the self-burn net positive.",
+        "The endgame link uses Lifetap, Swift Affliction, Burning Damage, Elemental Focus and Concentrated Effect; Controlled Destruction did nothing for RF's damage, and Increased Area of Effect widens the aura at a damage cost.",
+        "Purity of Fire, a level-14 Vitality and three Enduring Cry charges are the steady sustain package; the boots' life-regeneration implicit adds margin, and Enduring Cry's regeneration adds more while the warcry buff is up. The measured net life regeneration is positive at red maps and pinnacle, and Vitality stays at 14 so the auras fit the mana bar.",
+        "Malevolence is the damage aura and Flammability is the fire-resistance curse; Enduring Cry charges and the listed flasks keep the physical and self-burn numbers honest, and the build still needs no unique and no Awakened gem.",
+        "The shared jewel-affix correction replaced the illegal weapon-scale jewel rolls with legal jewel caps. The corrected build measures 212.0k RF DPS at pinnacle and 122.1k at red maps; ratings are tankiness 9, single target 7, clear 7, cost 9 (S), not S+.",
+        "Sustain was measured with the pinned oracle plus a scratch copy that prints LifeRegenRecovery and NetLifeRegen: maps-red gross 1,286.6/s, degen 1,181.5/s and net +105.1/s; pinnacle gross 1,577/s, degen 1,437/s and net +140/s; the Fire Trap checkpoints have no RF degen. The degen uses 90% of maximum life and 70% of maximum energy shield per second, 80% fire resistance and three endurance charges (12% less elemental damage taken)."
       ],
       "seasonName": "Covens"
     }
@@ -8581,7 +8581,7 @@
   "seedHash": "3fe041365467",
   "guide": {
     "summary": {
-      "text": "Righteous Fire Chieftain is a low-APM fire aura build that levels with Fire Trap and switches to Righteous Fire at red maps. It measures 122.1k at red maps and 212.0k at pinnacle. Purity of Fire, Vitality and Enduring Cry make the self-burn net positive; Malevolence and Flammability carry the bossing damage, and no unique is required.",
+      "text": "Righteous Fire Chieftain is a low-APM fire aura build that levels with Rolling Magma, then Fire Trap, and switches to Righteous Fire at red maps. It measures 122.1k DPS at red maps and 212.0k DPS at pinnacle. Purity of Fire, Vitality, three Enduring Cry charges and the boots' life-regeneration implicit keep the self-burn net positive; Enduring Cry's regeneration adds margin while the warcry buff is up. Malevolence and Flammability carry the bossing damage, and no unique is required.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8590,53 +8590,76 @@
       "facts": [
         "mainSkill",
         "ascendancyId",
+        "config",
+        "leveling",
+        "uniques",
         "gates.maps-red.metrics.dps",
-        "gates.pinnacle.metrics.dps"
+        "gates.pinnacle.metrics.dps",
+        "gates.maps-red.gems",
+        "gates.pinnacle.gems",
+        "gates.maps-red.gear",
+        "gates.pinnacle.gear"
       ],
-      "factsHash": "71a4c23c987c1d55"
+      "factsHash": "4a42464892e67420"
     },
     "leveling": {
-      "text": "Level with Rolling Magma into Fire Trap; the first checkpoint measures 445 life and 29 damage, and the second measures 428 with Fire Trap. Fire Trap carries the campaign and white maps; the switch to Righteous Fire comes at the red-map checkpoint, when capped resistance, Purity of Fire and Vitality make the degen sustainable.",
+      "text": "Level with Rolling Magma into Fire Trap; the first checkpoint measures 445 life and 29 DPS, and the second measures 428 DPS with Fire Trap. Fire Trap carries the campaign and white maps; stay on it until the red-map set is complete: the six-link, capped fire resistance, three Enduring Cry charges, and the boots life-regeneration and helmet reservation-efficiency implicits. The leveling panel opens the Righteous Fire bracket before that set; do not switch until it is complete. Without the charges the burn is net negative; with them, Purity of Fire and Vitality make the degen sustainable, and Enduring Cry's regeneration adds margin while the warcry buff is up.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
         "at": "2026-11-27T00:00:00Z"
       },
       "facts": [
+        "config",
         "gates.until-12.metrics.life",
         "gates.until-12.metrics.dps",
-        "gates.until-28.metrics.dps"
+        "gates.until-28.metrics.dps",
+        "gates.maps-red.gear",
+        "gates.maps-red.gems",
+        "gates.maps-red.metrics.resists"
       ],
-      "factsHash": "fa19f222c6b0605c"
+      "factsHash": "9c92f1fbd8801012"
     },
     "maps": {
-      "text": "At red maps the build measures 122.1k damage with 26.3k effective life and 11.1k physical max hit. Concentrated Effect is the default link; swap it for Increased Area of Effect when you want a wider aura. Purity of Fire, Vitality and the life flask keep the self-burn net positive; Lifetap pays for Flame Dash and the warcry, so the low mana bar does not stop the loop. The measured clear number is modest; the aura and Hinekora do the work. Keep Enduring Cry and Flammability up and let the filter hide the rest.",
+      "text": "At red maps the build measures 122.1k DPS with 26.3k effective life and 11.1k physical max hit. Those physical numbers assume three Enduring Cry charges and the listed flasks; the Amethyst Flask is what keeps chaos resistance positive here, and the measured pinnacle cap still uses it. Concentrated Effect is the default link; swap it for Increased Area of Effect when you want a wider aura, at the cost of the Concentrated Effect damage. Purity of Fire, Vitality, three Enduring Cry charges and the boots' life-regeneration Eldritch implicit keep the self-burn net positive, but the margin is thin. Enduring Cry's regeneration adds margin while the warcry buff is up, so recast it on cooldown; the charges are also the physical layer, so do not let them drop. The helmet's reservation efficiency implicit is part of the measured aura fit. Lifetap pays for Flame Dash, Flammability and the warcry; in the RF link it converts the cost to life, and its more-damage buff is not part of the measured number. The low mana bar does not stop the loop. The measured clear number is modest; the aura and Hinekora do the work. Keep Enduring Cry and Flammability up and let the filter hide the rest.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
         "at": "2026-11-27T00:00:00Z"
       },
       "facts": [
+        "config",
         "gates.maps-red.metrics.dps",
         "gates.maps-red.metrics.ehp",
-        "gates.maps-red.metrics.maxHit"
+        "gates.maps-red.metrics.maxHit",
+        "gates.maps-red.metrics.chaosResist",
+        "gates.maps-red.metrics.resists",
+        "gates.maps-red.gear",
+        "gates.maps-red.gems",
+        "gates.maps-red.flasks"
       ],
-      "factsHash": "d0852a26a3920db6"
+      "factsHash": "0ceffa45528f5546"
     },
     "bossing": {
-      "text": "Pinnacle measures 212.0k damage with 42.0k effective life, 13.4k physical max hit and 75% chaos resistance. Stand in the aura, keep Flammability on the boss, and move only for the slams; Ramako rewards the stationary windows. The measured self-burn is net positive with Purity of Fire and Vitality. The physical and sustain numbers assume maximum Enduring Cry charges (a pinnacle boss supplies enough power) and the listed flasks are up. The measured single-target number is below the dedicated boss builds.",
+      "text": "Pinnacle measures 212.0k DPS with 42.0k effective life, 13.4k physical max hit and 75% chaos resistance. Stand in the aura, keep Flammability on the boss, and move for the slams and the mechanics that would kill you; use the stationary windows only when the fight lets you. The measured damage does not include Ramako's stationary effect, which can override Flammability's fire-resistance curse rather than add to it, so do not count it as extra damage. The measured self-burn is net positive with Purity of Fire, Vitality, three Enduring Cry charges and the boots' life-regeneration Eldritch implicit, but the margin is thin. Enduring Cry's regeneration adds margin while the warcry buff is up; the charges are also the physical layer, so do not let them drop. The physical and self-burn numbers assume three charges (the config override; a lone rare enemy supplies two) and the listed flasks; the aura fit assumes the helmet's reservation efficiency implicit. The measured damage does not include the Lifetap buff. The Amethyst Flask is part of the measured chaos resistance at red maps and the chaos cap at pinnacle; do not drop it for a damage flask unless the gear adds the missing chaos resistance. The measured single-target number is below the dedicated boss builds.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
         "at": "2026-11-27T00:00:00Z"
       },
       "facts": [
+        "config",
+        "ascendancyOrder",
         "gates.pinnacle.metrics.dps",
         "gates.pinnacle.metrics.ehp",
         "gates.pinnacle.metrics.maxHit",
-        "gates.pinnacle.metrics.chaosResist"
+        "gates.pinnacle.metrics.chaosResist",
+        "gates.pinnacle.metrics.resists",
+        "gates.pinnacle.gear",
+        "gates.pinnacle.gems",
+        "gates.pinnacle.flasks"
       ],
-      "factsHash": "b9e52d9418ed5168"
+      "factsHash": "1587387632bc4661"
     }
   },
   "medal": "S"
