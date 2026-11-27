@@ -33,18 +33,14 @@ function SlotList({
   );
 }
 
+/**
+ * The section heading above already names the step plan and the step chip, so
+ * the panel starts straight at the content instead of repeating both.
+ */
 export default function StepPlanPanel({ plan, step }: { plan: StepPlan; step: string }) {
   return (
     <div className="rounded-lg border border-ink-700 bg-ink-900/40 p-3">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <h3 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-400">
-          Step plan
-        </h3>
-        <span className="rounded border border-gold-400/40 bg-gold-400/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wide text-gold-200">
-          {step}
-        </span>
-      </div>
-      <div className="mt-3 grid gap-3 lg:grid-cols-2">
+      <div className="grid gap-3 lg:grid-cols-2">
         <section aria-labelledby={`goals-${step}`}>
           <h4
             id={`goals-${step}`}
