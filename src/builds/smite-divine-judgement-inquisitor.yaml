@@ -1,0 +1,174 @@
+schemaVersion: 1
+season: covens
+wickerman:
+  profile: physical-melee
+stepPlan: smite
+id: smite-divine-judgement-inquisitor
+name: Smite of Divine Judgement Inquisitor
+class: Templar
+ascendancyId: inquisitor
+family: melee
+mainSkill: Smite of Divine Judgement
+flagship: false
+gateProfile: dad
+summary: >-
+  Smite of Divine Judgement is a lightning melee strike that calls a second bolt
+  down on nearby enemies, so one swing hits the pack and the rare behind it. The
+  Inquisitor critical package ignores elemental resistances, and the build needs
+  no unique.
+
+pros:
+  - { weight: 3, text: "One swing hits the target and the enemies around it." }
+  - { weight: 3, text: "Inquisitor critical strikes ignore elemental resistances." }
+  - { weight: 2, text: "No required unique; a rare mace and shield carry the build." }
+  - { weight: 2, text: "Physical-to-lightning conversion and Shockwave scale together." }
+  - { weight: 2, text: "A shield and Consecrated Ground give it more defence than a two-hander." }
+  - { weight: 1, text: "The same mace and shield serve any later lightning attack build." }
+cons:
+  - { weight: 3, text: "Melee range means you take the hits you are trying to dodge." }
+  - { weight: 3, text: "Single-target needs the critical package to be online." }
+  - { weight: 2, text: "Elemental reflect maps are a hard no." }
+  - { weight: 2, text: "Mana is tight before leech and reduced cost are sorted." }
+  - { weight: 1, text: "The build wants a six-link for its best damage." }
+  - { weight: 1, text: "Lightning-resistant bosses slow the fight noticeably." }
+
+ratings:
+  tankiness: 7
+  singleTarget: 8
+  clear: 7
+  cost: 7
+
+gearProfile: melee-lightning
+
+tree:
+  targets:
+    - increased physical damage
+    - increased lightning damage
+    - increased attack speed
+    - increased maximum life
+    - increased elemental damage with attack skills
+    - increased critical strike multiplier
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Static Strike, Ancestral Call]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Static Strike, Added Lightning Damage, Ancestral Call]
+        - slot: Weapon 1
+          gems: [Leap Slam]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Attacks are mana-hungry before leech." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Smite of Divine Judgement, Ancestral Call]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Smite of Divine Judgement, Shockwave, Added Lightning Damage, Elemental Damage with Attacks]
+        - slot: Weapon 1
+          gems: [Leap Slam, War Banner]
+        - slot: Helmet
+          gems: [Clarity, Herald of Thunder]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
+    - until: 68
+      skills: [Smite of Divine Judgement, War Banner]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Smite of Divine Judgement, Shockwave, Added Lightning Damage, Elemental Damage with Attacks, Increased Critical Strikes]
+        - slot: Weapon 1
+          gems: [Leap Slam, War Banner]
+        - slot: Helmet
+          gems: [Clarity, Herald of Thunder]
+        - slot: Boots
+          gems: [Determination]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing out of the pack." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    - until: 100
+      skills: [Smite of Divine Judgement, War Banner]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Smite of Divine Judgement, Shockwave, Added Lightning Damage, Elemental Damage with Attacks, Increased Critical Strikes, Multistrike]
+        - slot: Weapon 1
+          gems: [Leap Slam, War Banner]
+        - slot: Helmet
+          gems: [Clarity, Herald of Thunder]
+        - slot: Boots
+          gems: [Determination]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing out of the pack." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance for pinnacle bosses." }
+
+ascendancyOrder:
+  - { node: righteous-providence, lab: 1 }
+  - { node: inevitable-judgement, lab: 2 }
+  - { node: augury-of-penitence, lab: 3 }
+  - { node: sanctuary, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that land in melee range.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Smite of Divine Judgement measures {{gates.maps-red.metrics.dps|dps}} at
+      red maps and {{gates.pinnacle.metrics.dps|dps}} at pinnacle. The
+      Inquisitor critical package ignores elemental resistances, and the build
+      needs no unique.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Static Strike, then switch to Smite of Divine Judgement once the
+      links are in place; Shockwave carries the area damage and Ancestral Call
+      covers the campaign. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Smite into the
+      pack, keep the shield up, and let the second bolt finish the stragglers.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Stand in your
+      Consecrated Ground, keep War Banner down, and strike on cooldown.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+changelog:
+  - season: covens
+    date: "2026-11-26"
+    notes:
+      - "First guide for the Covens league."

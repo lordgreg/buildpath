@@ -1,0 +1,177 @@
+schemaVersion: 1
+season: covens
+wickerman:
+  profile: cold-spell
+stepPlan: ice-nova
+id: ice-nova-elementalist
+name: Ice Nova Elementalist
+class: Witch
+ascendancyId: elementalist
+family: caster
+mainSkill: Ice Nova
+flagship: false
+gateProfile: dad
+summary: >-
+  Ice Nova is a self-cast cold nova: the Elementalist shell turns every hit into
+  chill and freeze, so packs stop moving before they reach you. The build is a
+  straightforward crit caster with no required unique, and the same sceptre and
+  spirit shield carry it from white maps to pinnacle.
+
+pros:
+  - { weight: 3, text: "Freeze and chill stop most packs before they reach you." }
+  - { weight: 3, text: "No required unique; spell damage, crit and gem levels carry the damage." }
+  - { weight: 2, text: "A nova hits everything around you, so aiming is simple." }
+  - { weight: 2, text: "The cold package leaves gear slots free for life and resistances." }
+  - { weight: 2, text: "Critical strikes scale the build without changing the links." }
+  - { weight: 1, text: "The same spell gear pivots to Frostbolt or Winter Orb later." }
+cons:
+  - { weight: 3, text: "You have to stand in the pack for the nova to connect." }
+  - { weight: 3, text: "Cold-resistant bosses slow the fight down noticeably." }
+  - { weight: 2, text: "Critical gear is expensive relative to a plain resistance set." }
+  - { weight: 2, text: "Mana is tight until reduced cost and regeneration are online." }
+  - { weight: 1, text: "Elemental reflect maps are a hard no." }
+  - { weight: 1, text: "The build wants a six-link for its best damage." }
+
+ratings:
+  tankiness: 5
+  singleTarget: 7
+  clear: 8
+  cost: 6
+
+gearProfile: cold-spell
+
+tree:
+  targets:
+    - increased maximum life
+    - increased cold damage
+    - increased critical strike multiplier
+    - increased critical strike chance
+    - increased spell damage
+    - increased cast speed
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Freezing Pulse, Frost Bomb]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Freezing Pulse, Added Cold Damage]
+        - slot: Weapon 1
+          gems: [Frost Bomb]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Frostblink, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Ice Nova, Frost Bomb, Frostblink]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Ice Nova, Added Cold Damage, Controlled Destruction, Faster Casting]
+        - slot: Weapon 1
+          gems: [Frost Bomb, Frostblink]
+        - slot: Shield
+          gems: [Hatred, Clarity]
+        - slot: Helmet
+          gems: [Herald of Ice]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
+    - until: 68
+      skills: [Ice Nova, Frost Bomb, Frostblink]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Ice Nova, Added Cold Damage, Spell Echo, Increased Critical Strikes, Cold Penetration]
+        - slot: Weapon 1
+          gems: [Frost Bomb, Frostblink]
+        - slot: Shield
+          gems: [Hatred, Determination]
+        - slot: Helmet
+          gems: [Herald of Ice, Clarity]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing out of the pack." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    - until: 100
+      skills: [Ice Nova, Frost Bomb, Frostblink]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Ice Nova, Added Cold Damage, Spell Echo, Increased Critical Strikes, Increased Critical Damage, Cold Penetration]
+        - slot: Weapon 1
+          gems: [Frost Bomb, Frostblink]
+        - slot: Shield
+          gems: [Hatred, Determination]
+        - slot: Helmet
+          gems: [Herald of Ice, Clarity]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing out of the pack." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance for pinnacle bosses." }
+
+ascendancyOrder:
+  - { node: shaper-of-winter, lab: 1 }
+  - { node: heart-of-destruction, lab: 2 }
+  - { node: mastermind-of-discord, lab: 3 }
+  - { node: bastion-of-elements, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that land while you stand in the pack.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Ice Nova Elementalist measures {{gates.maps-red.metrics.dps|dps}} at red
+      maps and {{gates.pinnacle.metrics.dps|dps}} at pinnacle. Critical strikes
+      and the Elementalist cold package carry the build, and no unique is
+      required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Freezing Pulse, then switch to Ice Nova as soon as it unlocks.
+      The first checkpoint measures {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Step into the pack,
+      cast once, and keep moving while the freeze buys the next cast.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Keep the boss
+      chilled, recast Frost Bomb for exposure, and burst inside the freeze
+      window.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+changelog:
+  - season: covens
+    date: "2026-11-26"
+    notes:
+      - "First guide for the Covens league."

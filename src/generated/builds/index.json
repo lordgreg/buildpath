@@ -1,5 +1,5 @@
 {
-  "version": "8b3cb898c449",
+  "version": "9d73b89975a4",
   "builds": [
     {
       "id": "absolution-guardian",
@@ -716,6 +716,89 @@
       }
     },
     {
+      "id": "ice-nova-elementalist",
+      "name": "Ice Nova Elementalist",
+      "class": "Witch",
+      "ascendancyId": "elementalist",
+      "family": "caster",
+      "mainSkill": "Ice Nova",
+      "summary": "Ice Nova is a self-cast cold nova: the Elementalist shell turns every hit into chill and freeze, so packs stop moving before they reach you. The build is a straightforward crit caster with no required unique, and the same sceptre and spirit shield carry it from white maps to pinnacle.",
+      "status": "verified",
+      "seedHash": "b145d8ea566e",
+      "calibrated": true,
+      "verifiedAt": "2026-11-27T05:44:09.011Z",
+      "ratings": {
+        "tankiness": 5,
+        "singleTarget": 7,
+        "clear": 8,
+        "cost": 6
+      },
+      "medal": "A",
+      "season": {
+        "id": "covens",
+        "name": "Covens"
+      },
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Covens",
+          "kind": "season",
+          "title": "Created for, or last updated for, the Covens league."
+        },
+        {
+          "label": "Caster",
+          "kind": "playstyle"
+        },
+        {
+          "label": "HC-ready",
+          "kind": "defence",
+          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 73
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 662
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 27951
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 47657
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 64765
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 80390
+        }
+      ]
+    },
+    {
       "id": "ice-shot-deadeye",
       "name": "Ice Shot Deadeye",
       "class": "Ranger",
@@ -882,6 +965,172 @@
       ]
     },
     {
+      "id": "penance-brand-elementalist",
+      "name": "Penance Brand Ignite Elementalist",
+      "class": "Witch",
+      "ascendancyId": "elementalist",
+      "family": "caster",
+      "mainSkill": "Penance Brand",
+      "summary": "Penance Brand attaches to a pack, charges up and then detonates for a large ignite. The Elementalist Shaper of Flames node makes every hit able to ignite, so the build is a fire-and-forget brand that keeps burning while you place the next one, and it needs no unique.",
+      "status": "verified",
+      "seedHash": "b7eeea5a1688",
+      "calibrated": true,
+      "verifiedAt": "2026-11-27T05:44:49.380Z",
+      "ratings": {
+        "tankiness": 5,
+        "singleTarget": 8,
+        "clear": 7,
+        "cost": 7
+      },
+      "medal": "A",
+      "season": {
+        "id": "covens",
+        "name": "Covens"
+      },
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Covens",
+          "kind": "season",
+          "title": "Created for, or last updated for, the Covens league."
+        },
+        {
+          "label": "Caster",
+          "kind": "playstyle"
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 32
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 248
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 12824
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 22298
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 29159
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 38402
+        }
+      ]
+    },
+    {
+      "id": "poison-ranged-animate-weapon-necromancer",
+      "name": "Poison Ranged Animate Weapons",
+      "class": "Witch",
+      "ascendancyId": "necromancer",
+      "family": "minion",
+      "mainSkill": "Animate Weapon of Ranged Arms",
+      "summary": "Animate Weapon of Ranged Arms turns dropped ranged weapons into a poison firing line: each animated bow keeps shooting while you move, and the Necromancer shell keeps the swarm alive. The build needs no unique, only weapons on the ground and a Necromancer to command them.",
+      "status": "verified",
+      "seedHash": "2a3a325eceea",
+      "calibrated": true,
+      "verifiedAt": "2026-11-27T00:21:46.541Z",
+      "ratings": {
+        "tankiness": 6,
+        "singleTarget": 8,
+        "clear": 7,
+        "cost": 8
+      },
+      "medal": "A",
+      "season": {
+        "id": "covens",
+        "name": "Covens"
+      },
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Covens",
+          "kind": "season",
+          "title": "Created for, or last updated for, the Covens league."
+        },
+        {
+          "label": "Minion",
+          "kind": "playstyle"
+        },
+        {
+          "label": "HC-ready",
+          "kind": "defence",
+          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        },
+        {
+          "label": "Minion army",
+          "kind": "note",
+          "title": "Minions take the hits while you position."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 476
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 2904
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 25969
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 54785
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 75837
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 108064
+        }
+      ]
+    },
+    {
       "id": "righteous-fire-chieftain",
       "name": "Righteous Fire Chieftain",
       "class": "Marauder",
@@ -961,6 +1210,89 @@
           "pass": true,
           "level": 96,
           "dps": 25836
+        }
+      ]
+    },
+    {
+      "id": "smite-divine-judgement-inquisitor",
+      "name": "Smite of Divine Judgement Inquisitor",
+      "class": "Templar",
+      "ascendancyId": "inquisitor",
+      "family": "melee",
+      "mainSkill": "Smite of Divine Judgement",
+      "summary": "Smite of Divine Judgement is a lightning melee strike that calls a second bolt down on nearby enemies, so one swing hits the pack and the rare behind it. The Inquisitor critical package ignores elemental resistances, and the build needs no unique.",
+      "status": "verified",
+      "seedHash": "ae6de9374b13",
+      "calibrated": true,
+      "verifiedAt": "2026-11-27T05:45:30.078Z",
+      "ratings": {
+        "tankiness": 7,
+        "singleTarget": 8,
+        "clear": 7,
+        "cost": 7
+      },
+      "medal": "A",
+      "season": {
+        "id": "covens",
+        "name": "Covens"
+      },
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Covens",
+          "kind": "season",
+          "title": "Created for, or last updated for, the Covens league."
+        },
+        {
+          "label": "Melee",
+          "kind": "playstyle"
+        },
+        {
+          "label": "Tanky",
+          "kind": "note",
+          "title": "Armour, endurance charges and Juggernaut defences."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 35
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 344
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 4384
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 7760
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 11433
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 21097
         }
       ]
     },
@@ -1054,6 +1386,89 @@
           "pass": true,
           "level": 96,
           "dps": 29521
+        }
+      ]
+    },
+    {
+      "id": "storm-burst-repulsion-hierophant",
+      "name": "Storm Burst of Repulsion Totems",
+      "class": "Templar",
+      "ascendancyId": "hierophant",
+      "family": "caster",
+      "mainSkill": "Storm Burst of Repulsion",
+      "summary": "Storm Burst of Repulsion on Spell Totem: the totems channel orbs that bounce away from the target and detonate when the channel ends, so the damage keeps landing while you walk. The Hierophant totem and mana package pays for the channel, and no unique is required.",
+      "status": "verified",
+      "seedHash": "68f3659ba24a",
+      "calibrated": true,
+      "verifiedAt": "2026-11-27T05:45:57.319Z",
+      "ratings": {
+        "tankiness": 6,
+        "singleTarget": 7,
+        "clear": 7,
+        "cost": 7
+      },
+      "medal": "A",
+      "season": {
+        "id": "covens",
+        "name": "Covens"
+      },
+      "chips": [
+        {
+          "label": "SSF",
+          "kind": "ssf",
+          "title": "Verified against self-found budgets with no required unique."
+        },
+        {
+          "label": "Covens",
+          "kind": "season",
+          "title": "Created for, or last updated for, the Covens league."
+        },
+        {
+          "label": "Caster",
+          "kind": "playstyle"
+        },
+        {
+          "label": "Dad",
+          "kind": "note",
+          "title": "Tanky, low-APM and forgiving; a good build to learn the league with."
+        }
+      ],
+      "steps": [
+        {
+          "id": "until-12",
+          "pass": true,
+          "level": 12,
+          "dps": 49
+        },
+        {
+          "id": "until-28",
+          "pass": true,
+          "level": 28,
+          "dps": 104
+        },
+        {
+          "id": "until-68",
+          "pass": true,
+          "level": 68,
+          "dps": 4549
+        },
+        {
+          "id": "maps-early",
+          "pass": true,
+          "level": 80,
+          "dps": 8747
+        },
+        {
+          "id": "maps-red",
+          "pass": true,
+          "level": 90,
+          "dps": 11402
+        },
+        {
+          "id": "pinnacle",
+          "pass": true,
+          "level": 96,
+          "dps": 16424
         }
       ]
     },

@@ -1,0 +1,178 @@
+schemaVersion: 1
+season: covens
+wickerman:
+  profile: minion
+stepPlan: poison-animate-weapon
+id: poison-ranged-animate-weapon-necromancer
+name: Poison Ranged Animate Weapons
+class: Witch
+ascendancyId: necromancer
+family: minion
+mainSkill: Animate Weapon of Ranged Arms
+flagship: false
+gateProfile: dad
+summary: >-
+  Animate Weapon of Ranged Arms turns dropped ranged weapons into a poison
+  firing line: each animated bow keeps shooting while you move, and the
+  Necromancer shell keeps the swarm alive. The build needs no unique, only
+  weapons on the ground and a Necromancer to command them.
+
+pros:
+  - { weight: 3, text: "The animated weapons keep firing while you move and dodge." }
+  - { weight: 3, text: "Poison keeps ticking after the volley, so damage does not stop." }
+  - { weight: 2, text: "Damage scales with minion notables and gem levels, not your own gear." }
+  - { weight: 2, text: "No required unique; the build works from the first dropped bow." }
+  - { weight: 2, text: "A ranged minion army is safer than a melee summoner." }
+  - { weight: 1, text: "The same caster gear serves any later Necromancer build." }
+cons:
+  - { weight: 3, text: "The army needs ranged weapons on the ground before it starts." }
+  - { weight: 3, text: "Animated weapons expire, and a long boss phase can outlast them." }
+  - { weight: 2, text: "Poison needs a moment to ramp, so short bursts feel slow." }
+  - { weight: 2, text: "Minion AI spreads the firing line and can leave a straggler." }
+  - { weight: 1, text: "Clear speed is slower than a bow or a well-geared melee mapper." }
+  - { weight: 1, text: "Fewer links early means the weapon count matters more than the tooltip." }
+
+ratings:
+  tankiness: 6
+  singleTarget: 8
+  clear: 7
+  cost: 8
+
+gearProfile: bow
+minionCount: 8
+
+tree:
+  targets:
+    - minions deal increased damage
+    - minions have increased attack speed
+    - minion damage
+    - increased skill effect duration
+    - minions have increased maximum life
+    - increased maximum life
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Summon Skeletons, Animate Weapon of Ranged Arms]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Animate Weapon of Ranged Arms, Minion Damage, Chance to Poison]
+        - slot: Weapon 1
+          gems: [Summon Skeletons]
+        - slot: Helmet
+          gems: [Clarity]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Animating is expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Animate Weapon of Ranged Arms, Flesh Offering, Desecrate]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Animate Weapon of Ranged Arms, Minion Damage, Chance to Poison, Minion Speed]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Desecrate]
+        - slot: Shield
+          gems: [Determination, Clarity]
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
+    - until: 68
+      skills: [Animate Weapon of Ranged Arms, Flesh Offering, Desecrate]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Animate Weapon of Ranged Arms, Minion Damage, Chance to Poison, Vile Toxins, Deadly Ailments]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Desecrate]
+        - slot: Shield
+          gems: [Determination, Clarity]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing through your own minions." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    - until: 100
+      skills: [Animate Weapon of Ranged Arms, Flesh Offering, Desecrate]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Animate Weapon of Ranged Arms, Minion Damage, Chance to Poison, Vile Toxins, Deadly Ailments, Unbound Ailments]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Desecrate]
+        - slot: Shield
+          gems: [Determination, Clarity]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing through your own minions." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance for pinnacle bosses." }
+
+ascendancyOrder:
+  - { node: mindless-aggression, lab: 1 }
+  - { node: unnatural-strength, lab: 2 }
+  - { node: plaguebringer, lab: 3 }
+  - { node: commander-of-darkness, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch a summoner in a bad position.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Poison Ranged Animate Weapons measure {{gates.maps-red.metrics.dps|dps}} at
+      red maps and {{gates.pinnacle.metrics.dps|dps}} at pinnacle. The animated
+      bows poison from range while you position, and the build needs no unique.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Summon Skeletons until ranged weapons start dropping, then
+      animate every bow you find. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Animate the first
+      pack's bows, then keep the swarm moving with Flesh Offering.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Stack the bows
+      before the burst, refresh Flesh Offering, and recast Animate Weapon when
+      the oldest ones expire.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+changelog:
+  - season: covens
+    date: "2026-11-26"
+    notes:
+      - "First guide for the Covens league."

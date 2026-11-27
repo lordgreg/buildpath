@@ -1,0 +1,166 @@
+schemaVersion: 1
+season: covens
+wickerman:
+  profile: lightning-totem
+stepPlan: storm-burst-totems
+id: storm-burst-repulsion-hierophant
+name: Storm Burst of Repulsion Totems
+class: Templar
+ascendancyId: hierophant
+family: caster
+mainSkill: Storm Burst of Repulsion
+flagship: false
+gateProfile: dad
+dad: true
+summary: >-
+  Storm Burst of Repulsion on Spell Totem: the totems channel orbs that bounce
+  away from the target and detonate when the channel ends, so the damage keeps
+  landing while you walk. The Hierophant totem and mana package pays for the
+  channel, and no unique is required.
+
+pros:
+  - { weight: 3, text: "Totems channel the orbs while you move, so uptime survives mechanics." }
+  - { weight: 3, text: "Physical-to-lightning conversion scales with the same spell gear as any caster." }
+  - { weight: 2, text: "The bouncing orbs cover a pack without precise aiming." }
+  - { weight: 2, text: "Hierophant mana recovery keeps two channelling totems affordable." }
+  - { weight: 2, text: "No required unique; gem levels and a rare sceptre carry the build." }
+  - { weight: 1, text: "The same sceptre and spirit shield serve any later lightning spell." }
+cons:
+  - { weight: 3, text: "Totem uptime is a second thing to manage on top of the channel." }
+  - { weight: 3, text: "Single-target needs both totems alive through the whole fight." }
+  - { weight: 2, text: "The orbs travel, so a mobile boss can walk out of the damage." }
+  - { weight: 2, text: "Mana is tight before the Hierophant recovery package is online." }
+  - { weight: 1, text: "Area damage kills totems in dense rare packs." }
+  - { weight: 1, text: "The build wants a six-link for its best damage." }
+
+ratings:
+  tankiness: 6
+  singleTarget: 7
+  clear: 7
+  cost: 7
+
+gearProfile: spell
+
+tree:
+  targets:
+    - totem damage
+    - increased maximum life
+    - increased lightning damage
+    - increased cast speed
+    - increased maximum mana
+    - increased elemental damage
+
+leveling:
+  brackets:
+    - until: 12
+      skills: [Rolling Magma, Flame Dash]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Rolling Magma, Added Lightning Damage, Arcane Surge]
+        - slot: Weapon 1
+          gems: [Flame Dash]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 28
+      skills: [Storm Burst of Repulsion, Flame Dash]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Storm Burst of Repulsion, Spell Totem, Added Lightning Damage, Faster Casting]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Shield
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
+    - until: 68
+      skills: [Storm Burst of Repulsion, Flame Dash]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Storm Burst of Repulsion, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Shield
+          gems: [Determination]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing out of a pack." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    - until: 100
+      skills: [Storm Burst of Repulsion, Flame Dash]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Storm Burst of Repulsion, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction, Elemental Focus]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge]
+        - slot: Shield
+          gems: [Determination]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing out of a pack." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance for pinnacle bosses." }
+
+ascendancyOrder:
+  - { node: pursuit-of-faith, lab: 1 }
+  - { node: ritual-of-awakening, lab: 2 }
+  - { node: divine-guidance, lab: 3 }
+  - { node: sanctuary-of-thought, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that catch you while you place the next totem.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Storm Burst of Repulsion Totems measure {{gates.maps-red.metrics.dps|dps}}
+      at red maps and {{gates.pinnacle.metrics.dps|dps}} at pinnacle. Two Spell
+      Totems channel the bouncing orbs while you position, and the build needs
+      no unique.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Rolling Magma, then put Storm Burst of Repulsion on Spell Totem
+      as soon as both gems are available. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}}.
+    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep both totems
+      down, recast them ahead of the pack, and let the orbs finish the clear.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Place both totems
+      before the burst window and refresh them after every immunity phase.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+changelog:
+  - season: covens
+    date: "2026-11-26"
+    notes:
+      - "First guide for the Covens league."

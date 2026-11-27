@@ -1,0 +1,146 @@
+schemaVersion: 1
+season: covens
+wickerman:
+  profile: fire-dot
+stepPlan: penance-brand
+id: penance-brand-elementalist
+name: Penance Brand Ignite Elementalist
+class: Witch
+ascendancyId: elementalist
+family: caster
+mainSkill: Penance Brand
+flagship: false
+gateProfile: dad
+summary: >-
+  Penance Brand attaches to a pack, charges up and then detonates for a large
+  ignite. The Elementalist Shaper of Flames node makes every hit able to ignite,
+  so the build is a fire-and-forget brand that keeps burning while you place the
+  next one, and it needs no unique.
+
+pros:
+  - { weight: 3, text: "The brand keeps applying damage while you move and dodge." }
+  - { weight: 3, text: "Ignite proliferation clears the pack from one detonation." }
+  - { weight: 2, text: "No required unique; fire damage and gem levels carry the build." }
+  - { weight: 2, text: "Brands can be pre-placed before a boss becomes targetable." }
+  - { weight: 2, text: "The same fire sceptre serves Righteous Fire or any fire spell later." }
+  - { weight: 1, text: "The damage-over-time playstyle is forgiving on reaction time." }
+cons:
+  - { weight: 3, text: "The brand has to charge before the big detonation lands." }
+  - { weight: 3, text: "Ignite damage needs time to tick, so burst phases favour other builds." }
+  - { weight: 2, text: "Brand attachment is a second thing to manage in a busy pack." }
+  - { weight: 2, text: "Fire-resistant bosses slow the fight noticeably." }
+  - { weight: 1, text: "The build wants a six-link for its best damage." }
+  - { weight: 1, text: "Elemental reflect maps are a hard no." }
+
+ratings:
+  tankiness: 5
+  singleTarget: 8
+  clear: 7
+  cost: 7
+
+gearProfile: fire-dot
+
+tree:
+  targets:
+    - increased maximum life
+    - increased fire damage
+    - burning damage
+    - increased damage over time
+    - increased cast speed
+    - increased elemental damage
+
+leveling:
+  brackets:
+    - until: 28
+      skills: [Rolling Magma, Flame Wall]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Rolling Magma, Added Fire Damage, Arcane Surge]
+        - slot: Weapon 1
+          gems: [Flame Wall]
+        - slot: Helmet
+          gems: [Clarity]
+      flasks:
+        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
+        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    - until: 68
+      skills: [Penance Brand, Flame Wall]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Penance Brand, Deadly Ailments, Unbound Ailments, Controlled Destruction, Burning Damage]
+        - slot: Weapon 1
+          gems: [Flame Wall, Flame Dash]
+        - slot: Shield
+          gems: [Determination, Clarity]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing out of the pack." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    - until: 100
+      skills: [Penance Brand, Flame Wall]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Penance Brand, Swiftbrand, Deadly Ailments, Burning Damage, Ignite Proliferation, Unbound Ailments]
+        - slot: Weapon 1
+          gems: [Flame Wall, Flame Dash]
+        - slot: Shield
+          gems: [Determination, Clarity]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing out of the pack." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance for pinnacle bosses." }
+
+ascendancyOrder:
+  - { node: shaper-of-flames, lab: 1 }
+  - { node: mastermind-of-discord, lab: 2 }
+  - { node: heart-of-destruction, lab: 3 }
+  - { node: bastion-of-elements, lab: 4 }
+
+bandit: kill-all
+pantheon:
+  major: lunaris
+  minor: gruthkul
+  note: Gruthkul reduces the physical hits that land while you place the next brand.
+uniques:
+  core: []
+  optional: []
+
+guide:
+  summary:
+    text: >-
+      Penance Brand Ignite measures {{gates.maps-red.metrics.dps|dps}} at red
+      maps and {{gates.pinnacle.metrics.dps|dps}} at pinnacle. One detonation
+      ignites the pack, and Shaper of Flames makes every hit able to start it;
+      no unique is required.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+  leveling:
+    text: >-
+      Level with Rolling Magma and Flame Wall, then switch to Penance Brand as
+      soon as it unlocks. The second checkpoint measures
+      {{gates.until-28.metrics.life|int}} life and
+      {{gates.until-28.metrics.dps|dps}} damage.
+    facts: [gates.until-28.metrics.life, gates.until-28.metrics.dps]
+  maps:
+    text: >-
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
+      {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Place the brand on
+      the pack, let the detonation ignite it, and move to the next group.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+  bossing:
+    text: >-
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Pre-place the brand
+      before the boss is targetable, then refresh it after every immunity phase.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+changelog:
+  - season: covens
+    date: "2026-11-26"
+    notes:
+      - "First guide for the Covens league."
