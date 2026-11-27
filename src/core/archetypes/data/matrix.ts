@@ -127,7 +127,7 @@ export const archetypes: readonly Archetype[] = [
     leveling: true,
     verifiedFor: 'Covens',
     excludedBases: ['Chain Belt', 'Bone Ring'],
-    excludedMagicBases: ['Paua Ring'],
+    excludedMagicBases: ['Paua Ring', 'Moonstone Ring'],
     slots: {
       ...armour(['str_armour']),
       ...jewellery('strjewel'),
@@ -146,6 +146,7 @@ export const archetypes: readonly Archetype[] = [
     leveling: true,
     verifiedFor: 'Covens',
     excludedBases: ['Bone Ring'],
+    excludedMagicBases: ['Moonstone Ring'],
     slots: {
       ...armour(['str_armour']),
       ...jewellery('strjewel'),
@@ -164,6 +165,7 @@ export const archetypes: readonly Archetype[] = [
     leveling: true,
     verifiedFor: 'Covens',
     excludedBases: ['Bone Ring'],
+    excludedMagicBases: ['Moonstone Ring'],
     slots: {
       ...armour(['str_dex_armour', 'str_armour']),
       ...jewellery('strjewel'),
@@ -183,6 +185,7 @@ export const archetypes: readonly Archetype[] = [
     leveling: true,
     verifiedFor: 'Covens',
     excludedBases: ['Bone Ring'],
+    excludedMagicBases: ['Moonstone Ring'],
     slots: {
       ...armour(['dex_armour']),
       ...jewellery('dexjewel'),
@@ -202,6 +205,7 @@ export const archetypes: readonly Archetype[] = [
     leveling: true,
     verifiedFor: 'Covens',
     excludedBases: ['Bone Ring'],
+    excludedMagicBases: ['Moonstone Ring'],
     slots: {
       ...armour(['dex_int_armour', 'dex_armour']),
       ...jewellery('dexjewel'),
@@ -221,6 +225,7 @@ export const archetypes: readonly Archetype[] = [
     leveling: true,
     verifiedFor: 'Covens',
     excludedBases: ['Bone Ring'],
+    excludedMagicBases: ['Moonstone Ring'],
     slots: {
       ...armour(['dex_int_armour']),
       ...jewellery('dexjewel'),

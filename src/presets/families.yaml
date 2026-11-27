@@ -42,6 +42,9 @@ families:
     jewelTag: dexjewel
     # Bone Ring's implicit only helps minions.
     excludedBases: [Bone Ring]
+    # Moonstone Ring's cast speed implicit is a caster stat; a rare can still
+    # roll life and resists, so only the normal and magic drops are hidden.
+    excludedMagicBases: [Moonstone Ring]
     weapon:
       itemClasses: [Bow]
     offhand:
@@ -55,9 +58,10 @@ families:
     # Chain Belt's energy-shield implicit is dead on a strength armour build,
     # and Bone Ring's implicit only helps minions.
     excludedBases: [Chain Belt, Bone Ring]
-    # Paua Ring's mana implicit is a caster base; a rare can still roll life and
-    # resists, so only the normal and magic drops are hidden.
-    excludedMagicBases: [Paua Ring]
+    # Paua Ring's mana implicit and Moonstone Ring's cast speed implicit are
+    # caster bases; a rare can still roll life and resists, so only the normal
+    # and magic drops are hidden.
+    excludedMagicBases: [Paua Ring, Moonstone Ring]
     weapon:
       itemClasses: [One Hand Sword]
     offhand:
@@ -71,6 +75,9 @@ families:
     jewelTag: dexjewel
     # Bone Ring's implicit only helps minions.
     excludedBases: [Bone Ring]
+    # Moonstone Ring's cast speed implicit is a caster stat; a rare can still
+    # roll life and resists, so only the normal and magic drops are hidden.
+    excludedMagicBases: [Moonstone Ring]
     weapon:
       itemClasses: [Claw]
     offhand:

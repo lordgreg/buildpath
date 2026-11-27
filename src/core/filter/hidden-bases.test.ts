@@ -672,3 +672,136 @@ describe('minion-only Bone Ring on non-minion builds', () => {
     }
   });
 });
+
+const MOONSTONE_RING = `Item Class: Rings
+Rarity: Magic
+Moonstone Ring
+--------
+Item Level: 32
+--------
+{ Implicit Modifier — Caster, Speed }
+7(7-10)% increased Cast Speed
+--------
+Unidentified`;
+
+describe('caster-only Moonstone Ring on attack builds', () => {
+  const ATTACK_SELECTIONS = [
+    { mode: 'family' as const, familyId: 'bow' as const },
+    { mode: 'family' as const, familyId: 'melee' as const },
+    { mode: 'family' as const, familyId: 'hybrid' as const },
+    { mode: 'ascendancy' as const, ascendancyId: 'juggernaut' },
+    { mode: 'build' as const, buildId: 'boneshatter-juggernaut' },
+  ];
+
+  it('parses the reported unidentified magic Moonstone Ring', () => {
+    const [parsed] = parseItemText(MOONSTONE_RING);
+    expect(parsed).toMatchObject({
+      itemClass: 'Rings',
+      baseType: 'Moonstone Ring',
+      rarity: 'Magic',
+      itemLevel: 32,
+      identified: false,
+    });
+  });
+
+  it('hides the reported item for the Boneshatter build', () => {
+    const [parsed] = parseItemText(MOONSTONE_RING);
+    const filter = generateFilter({
+      selection: { mode: 'build', buildId: 'boneshatter-juggernaut' },
+      phase: 'leveling',
+      strictness: 'soft',
+    });
+    const found = evaluateRules(filter.rules, parsed!);
+    expect(found.shown).toBe(false);
+    expect(found.reason).toContain('excluded base');
+  });
+
+  it('hides normal and magic Moonstone Rings for attack builds in every preset', () => {
+    for (const selection of ATTACK_SELECTIONS) {
+      for (const phase of ['leveling', 'endgame'] as const) {
+        for (const strictness of ['soft', 'strict', 'uber'] as const) {
+          const filter = generateFilter({ selection, phase, strictness });
+          for (const rarity of ['Normal', 'Magic'] as const) {
+            const found = evaluateRules(
+              filter.rules,
+              ring('Moonstone Ring', rarity, 85, 85),
+            );
+            expect(
+              found.shown,
+              `${selection.mode}/${phase}/${strictness}/${rarity}`,
+            ).toBe(false);
+            expect(found.reason).toContain('excluded base');
+          }
+        }
+      }
+    }
+  });
+
+  it('keeps rare Moonstone Rings visible for attack builds', () => {
+    for (const selection of ATTACK_SELECTIONS) {
+      for (const phase of ['leveling', 'endgame'] as const) {
+        const filter = generateFilter({ selection, phase, strictness: 'uber' });
+        const found = evaluateRules(
+          filter.rules,
+          ring('Moonstone Ring', 'Rare', 85, 85),
+        );
+        expect(found.shown, `${selection.mode}/${phase}`).toBe(true);
+      }
+    }
+  });
+
+  it('keeps unique Moonstone Rings visible for attack builds', () => {
+    const filter = generateFilter({
+      selection: ATTACK_SELECTIONS[1]!,
+      phase: 'leveling',
+      strictness: 'soft',
+    });
+    const found = evaluateRules(
+      filter.rules,
+      ring('Moonstone Ring', 'Unique', 32, 32),
+    );
+    expect(found.shown).toBe(true);
+  });
+
+  it('keeps magic Moonstone Rings visible for casters', () => {
+    const caster = [
+      { mode: 'family' as const, familyId: 'caster' as const },
+      { mode: 'ascendancy' as const, ascendancyId: 'elementalist' },
+    ];
+    for (const selection of caster) {
+      const filter = generateFilter({
+        selection,
+        phase: 'endgame',
+        strictness: 'uber',
+      });
+      const found = evaluateRules(
+        filter.rules,
+        ring('Moonstone Ring', 'Magic', 85, 85),
+      );
+      expect(found.shown, selection.mode).toBe(true);
+    }
+  });
+
+  it('hides magic Moonstone Rings for the legacy melee archetype', () => {
+    for (const archetypeId of [
+      'jugg-boneshatter',
+      'slayer-cyclone',
+      'champion-steel',
+      'deadeye-lightning-arrow',
+      'pathfinder-toxic-rain',
+      'trickster-frost-blades',
+    ] as const) {
+      const filter = generateFilter({
+        archetypeId,
+        phase: 'leveling',
+        strictness: 'soft',
+      });
+      const found = evaluateRules(
+        filter.rules,
+        ring('Moonstone Ring', 'Magic', 32, 32),
+      );
+      expect(found.shown, archetypeId).toBe(false);
+      expect(found.reason).toContain('excluded base');
+    }
+  });
+});
