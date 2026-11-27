@@ -109,6 +109,7 @@ profiles:
     ssf-start:
       slots:
         weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed] }
+        offhand: null
         body: { base: "Glorious Plate", affixes: [life, resist-lightning, resist-cold] }
         helmet: { base: "Eternal Burgonet", affixes: [life, resist-fire, resist-cold] }
         gloves: { base: "Spiked Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
@@ -120,6 +121,7 @@ profiles:
     ssf-week1:
       slots:
         weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed] }
+        offhand: null
         body: { base: "Legion Plate", affixes: [life, resist-lightning, resist-cold] }
         helmet: { base: "Conqueror's Helmet", affixes: [life, resist-fire, resist-cold] }
         gloves: { base: "Precursor Gauntlets", affixes: [life, attack-speed, resist-cold, resist-fire] }
@@ -131,6 +133,7 @@ profiles:
     trade:
       slots:
         weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed] }
+        offhand: null
         body: { base: "Royal Plate", affixes: [life, resist-lightning, resist-cold] }
         helmet: { base: "Giantslayer Helmet", affixes: [life, resist-fire, resist-cold] }
         gloves: { base: "Leviathan Gauntlets", affixes: [life, attack-speed, resist-cold, resist-fire] }
@@ -140,11 +143,10 @@ profiles:
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
       jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
 
-  # Boneshatter wears the melee shell but leans into the two-handed identity:
-  # no offhand at all, and the armour bases carry an armour roll on top of life
-  # and resists. The belt keeps chaos resistance, so the pinnacle chaos gate is
-  # still met. Herald of Purity and Determination leave a quarter of the mana
-  # bar free, and the weapon's mana leech pays for the attacks.
+  # Boneshatter uses the melee shell's two-hander but adds an armour roll on the
+  # small slots, a chaos belt and mana leech on the axe. Herald of Purity and
+  # Determination leave a quarter of the mana bar free, and the weapon's mana
+  # leech pays for the attacks.
   melee-boneshatter:
     starting:
       slots:

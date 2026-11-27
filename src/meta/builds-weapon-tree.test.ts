@@ -111,4 +111,26 @@ describe('weapon-compatible tree notables', () => {
       expect(gate.tree.notables, checkpoint).not.toContain('Spinecruncher');
     }
   });
+
+  it('never puts an offhand next to a two-handed weapon', () => {
+    for (const entry of BUILDS) {
+      const build = readBuild(entry.id);
+      for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
+        const weapon = baseByName.get(
+          gate.gear.find((item) => item.slot === 'Weapon 1')?.base ?? '',
+        );
+        if (!weapon?.tags.includes('two_hand_weapon')) continue;
+        const offhandItem = gate.gear.find((item) => item.slot === 'Weapon 2');
+        if (!offhandItem) continue;
+        const label = `${entry.id}/${checkpoint}: ${offhandItem.base}`;
+        if (weapon.tags.includes('bow')) {
+          // A bow is two-handed but may carry a quiver.
+          const offhand = baseByName.get(offhandItem.base);
+          expect(offhand?.tags.includes('quiver'), label).toBe(true);
+        } else {
+          expect(offhandItem, label).toBeUndefined();
+        }
+      }
+    }
+  });
 });
