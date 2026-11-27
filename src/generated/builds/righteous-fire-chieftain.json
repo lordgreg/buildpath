@@ -6,30 +6,30 @@
   "ascendancyId": "chieftain",
   "family": "caster",
   "mainSkill": "Righteous Fire",
-  "flagship": false,
-  "gateProfile": "dad",
+  "flagship": true,
+  "gateProfile": "standard",
   "dad": true,
-  "summary": "Righteous Fire on the Chieftain shell: a fire aura that burns enemies while you walk, backed by armour, life regeneration and fire resistance. Low APM, very forgiving, and no required unique. A Dad build by design.",
+  "summary": "Righteous Fire on the Chieftain shell: a tanky fire aura that burns enemies while you walk, backed by armour, life regeneration and fire resistance. Fire Trap levels the character, then Righteous Fire comes online at red maps with Purity of Fire, Vitality and Enduring Cry making the self-burn net positive. Malevolence and Flammability carry the damage; the legal jewel caps keep the single-target and clear numbers modest, but the build is cheap, forgiving and has no required unique.",
   "pros": [
     {
       "weight": 3,
-      "text": "Righteous Fire burns while you move; very low APM."
+      "text": "Fire Trap levels the campaign, then Righteous Fire burns while you move."
     },
     {
       "weight": 3,
-      "text": "Chieftain life regeneration and armour make mistakes forgiving."
+      "text": "Chieftain regeneration, armour and Enduring Cry charges make the self-burn forgiving."
     },
     {
       "weight": 3,
-      "text": "No required unique; life, armour and fire resistance are the gear."
+      "text": "No required unique: the defensive slots are life and resistance rares."
+    },
+    {
+      "weight": 3,
+      "text": "Purity of Fire and Vitality make the measured self-burn net positive at red maps and pinnacle."
     },
     {
       "weight": 2,
-      "text": "A good Dad build: simple rotation and a clear defensive layer."
-    },
-    {
-      "weight": 2,
-      "text": "The fire aura clears packs without aiming."
+      "text": "Hinekora explosions and the aura clear packs without aiming."
     },
     {
       "weight": 1,
@@ -39,36 +39,46 @@
   "cons": [
     {
       "weight": 3,
-      "text": "Righteous Fire burns your own life; the regeneration has to keep up."
+      "text": "The Righteous Fire switch is late: red maps, not the campaign."
     },
     {
       "weight": 3,
-      "text": "Single-target damage is lower than a dedicated hit build."
+      "text": "It is a close-range bosser: stand in the aura and use the stationary windows, not a ranged hit build."
+    },
+    {
+      "weight": 2,
+      "text": "Vitality has to stay at level 14 so the auras fit; the last levels eat the mana bar."
     },
     {
       "weight": 2,
       "text": "Clear speed is slower than a bow build."
     },
     {
-      "weight": 2,
+      "weight": 1,
       "text": "Fire resistance and life are hard requirements, not upgrades."
     },
     {
       "weight": 1,
-      "text": "The build wants a six-link for its best damage."
-    },
-    {
-      "weight": 1,
-      "text": "It is a poor choice for no-regeneration maps."
+      "text": "The red-map six-link and the endgame 21/20 gems are the real bill."
     }
   ],
   "ratings": {
     "tankiness": 9,
-    "singleTarget": 4,
-    "clear": 6,
-    "cost": 7
+    "singleTarget": 7,
+    "clear": 7,
+    "cost": 9
   },
   "gearProfile": "rf",
+  "config": [
+    {
+      "name": "useEnduranceCharges",
+      "value": "boolean=\"true\""
+    },
+    {
+      "name": "overrideEnduranceCharges",
+      "value": "number=\"3\""
+    }
+  ],
   "tree": {
     "endgame": [
       476,
@@ -640,7 +650,8 @@
           {
             "slot": "Weapon 1",
             "gems": [
-              "Flame Dash"
+              "Flame Dash",
+              "Enduring Cry"
             ]
           },
           {
@@ -671,29 +682,36 @@
       {
         "until": 28,
         "skills": [
-          "Righteous Fire"
+          "Fire Trap"
         ],
         "skillGroups": [
           {
             "slot": "Body Armour",
             "gems": [
-              "Righteous Fire",
-              "Lifetap",
+              "Fire Trap",
               "Elemental Focus",
-              "Controlled Destruction"
+              "Efficacy",
+              "Concentrated Effect"
             ]
           },
           {
             "slot": "Weapon 1",
             "gems": [
               "Flame Dash",
-              "Arcane Surge"
+              "Arcane Surge",
+              "Enduring Cry"
             ]
           },
           {
             "slot": "Helmet",
             "gems": [
-              "Clarity"
+              "Malevolence"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              "Flammability"
             ]
           }
         ],
@@ -706,48 +724,54 @@
           {
             "slot": "mana",
             "name": "Greater Mana Flask",
-            "note": "Drops from level 12."
+            "note": "Drops from level 12; Fire Trap is mana-hungry."
+          },
+          {
+            "slot": "utility",
+            "name": "Sulphur Flask",
+            "note": "Damage and consecrated ground."
           },
           {
             "slot": "utility",
             "name": "Granite Flask",
             "note": "Armour."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance."
           }
         ]
       },
       {
         "until": 68,
         "skills": [
-          "Righteous Fire"
+          "Fire Trap"
         ],
         "skillGroups": [
           {
             "slot": "Body Armour",
             "gems": [
-              "Righteous Fire",
+              "Fire Trap",
               "Burning Damage",
               "Elemental Focus",
-              "Controlled Destruction",
-              "Increased Area of Effect",
-              "Lifetap"
+              "Swift Affliction",
+              "Concentrated Effect"
             ]
           },
           {
             "slot": "Weapon 1",
             "gems": [
               "Flame Dash",
-              "Arcane Surge"
+              "Arcane Surge",
+              "Enduring Cry"
             ]
           },
           {
             "slot": "Helmet",
             "gems": [
-              "Clarity"
+              "Malevolence"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              "Flammability"
             ]
           }
         ],
@@ -758,14 +782,157 @@
             "note": "Instant prefix."
           },
           {
-            "slot": "mana",
-            "name": "Hallowed Mana Flask",
-            "note": "Drops from level 42."
+            "slot": "utility",
+            "name": "Sulphur Flask",
+            "note": "Damage and consecrated ground."
           },
           {
             "slot": "utility",
             "name": "Granite Flask",
             "note": "Iron Skin."
+          },
+          {
+            "slot": "utility",
+            "name": "Basalt Flask",
+            "note": "Physical damage reduction."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Chaos resistance."
+          }
+        ]
+      },
+      {
+        "until": 80,
+        "skills": [
+          "Fire Trap"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Fire Trap",
+              "Burning Damage",
+              "Elemental Focus",
+              "Swift Affliction",
+              "Concentrated Effect"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Flame Dash",
+              "Arcane Surge",
+              "Enduring Cry"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Malevolence"
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              "Flammability"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Divine Life Flask",
+            "note": "Instant prefix."
+          },
+          {
+            "slot": "utility",
+            "name": "Sulphur Flask",
+            "note": "Damage and consecrated ground."
+          },
+          {
+            "slot": "utility",
+            "name": "Granite Flask",
+            "note": "Iron Skin."
+          },
+          {
+            "slot": "utility",
+            "name": "Basalt Flask",
+            "note": "Physical damage reduction."
+          },
+          {
+            "slot": "utility",
+            "name": "Amethyst Flask",
+            "note": "Chaos resistance."
+          }
+        ]
+      },
+      {
+        "until": 90,
+        "skills": [
+          "Righteous Fire"
+        ],
+        "skillGroups": [
+          {
+            "slot": "Body Armour",
+            "gems": [
+              "Righteous Fire",
+              "Lifetap",
+              "Swift Affliction",
+              "Burning Damage",
+              "Elemental Focus",
+              "Concentrated Effect"
+            ]
+          },
+          {
+            "slot": "Weapon 1",
+            "gems": [
+              "Flame Dash",
+              "Lifetap",
+              "Enduring Cry"
+            ]
+          },
+          {
+            "slot": "Helmet",
+            "gems": [
+              "Malevolence",
+              "Purity of Fire",
+              {
+                "name": "Vitality",
+                "maxLevel": 14,
+                "note": "Level 14 is the reservation cap; higher levels eat the mana bar."
+              }
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              "Flammability",
+              "Lifetap"
+            ]
+          }
+        ],
+        "flasks": [
+          {
+            "slot": "life",
+            "name": "Divine Life Flask",
+            "note": "Instant prefix."
+          },
+          {
+            "slot": "utility",
+            "name": "Sulphur Flask",
+            "note": "Damage and consecrated ground."
+          },
+          {
+            "slot": "utility",
+            "name": "Granite Flask",
+            "note": "Iron Skin."
+          },
+          {
+            "slot": "utility",
+            "name": "Basalt Flask",
+            "note": "Physical damage reduction."
           },
           {
             "slot": "utility",
@@ -784,24 +951,38 @@
             "slot": "Body Armour",
             "gems": [
               "Righteous Fire",
+              "Lifetap",
+              "Swift Affliction",
               "Burning Damage",
               "Elemental Focus",
-              "Controlled Destruction",
-              "Increased Area of Effect",
-              "Lifetap"
+              "Concentrated Effect"
             ]
           },
           {
             "slot": "Weapon 1",
             "gems": [
               "Flame Dash",
-              "Arcane Surge"
+              "Lifetap",
+              "Enduring Cry"
             ]
           },
           {
             "slot": "Helmet",
             "gems": [
-              "Clarity"
+              "Malevolence",
+              "Purity of Fire",
+              {
+                "name": "Vitality",
+                "maxLevel": 14,
+                "note": "Level 14 is the reservation cap; higher levels eat the mana bar."
+              }
+            ]
+          },
+          {
+            "slot": "Gloves",
+            "gems": [
+              "Flammability",
+              "Lifetap"
             ]
           }
         ],
@@ -812,14 +993,19 @@
             "note": "Keep the instant prefix."
           },
           {
-            "slot": "mana",
-            "name": "Eternal Mana Flask",
-            "note": "Drops from level 65."
+            "slot": "utility",
+            "name": "Sulphur Flask",
+            "note": "Damage and consecrated ground."
           },
           {
             "slot": "utility",
             "name": "Granite Flask",
             "note": "Iron Skin."
+          },
+          {
+            "slot": "utility",
+            "name": "Basalt Flask",
+            "note": "Physical damage reduction."
           },
           {
             "slot": "utility",
@@ -942,6 +1128,20 @@
       "date": "2026-11-26",
       "notes": [
         "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    },
+    {
+      "season": "covens",
+      "date": "2026-11-27",
+      "notes": [
+        "The measured build now passes the standard gate profile at every checkpoint, not only the Dad floors.",
+        "Fire Trap levels the campaign and white maps; Righteous Fire comes online at red maps when capped resistance, Purity of Fire and Vitality make the self-burn net positive.",
+        "The endgame link uses Lifetap, Swift Affliction, Burning Damage, Elemental Focus and Concentrated Effect; Controlled Destruction and Increased Area of Effect did nothing for the RF DoT.",
+        "Purity of Fire and a level-14 Vitality are the sustain package; the measured net life regeneration is positive at red maps and pinnacle, and Vitality stays at 14 so the auras fit the mana bar.",
+        "Malevolence and Flammability are the damage auras; Enduring Cry charges and the listed flasks keep the physical numbers honest, and the build still needs no unique and no Awakened gem.",
+        "The shared jewel-affix correction replaced the illegal weapon-scale jewel rolls with legal jewel caps. The corrected build measures 212k RF DPS at pinnacle and 122k at red maps; ratings are tankiness 9, single target 7, clear 7, cost 9 (S), not S+.",
+        "Sustain was measured with the pinned oracle plus a scratch copy that prints LifeRegenRecovery and NetLifeRegen: maps-red gross 1,287/s and net +105/s, pinnacle gross 1,577/s and net +140/s; the Fire Trap checkpoints have no RF degen."
       ],
       "seasonName": "Covens"
     }
@@ -1385,7 +1585,7 @@
       "qualityEffect": "% increased Area of Effect",
       "qualityWorth": "recommended"
     },
-    "Controlled Destruction": {
+    "Concentrated Effect": {
       "requiredLevel": 18,
       "source": {
         "kind": "vendor",
@@ -1396,14 +1596,33 @@
       "support": true,
       "description": null,
       "effect": [
-        "Supported Skills have 80% less Critical Strike Chance",
-        "Supported Skills deal 39% more Spell Damage"
+        "Supported Skills have 30% less Area of Effect",
+        "Supported Skills deal 39% more Area Damage"
       ],
       "tags": [
-        "critical",
-        "spell"
+        "area"
       ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityEffect": "Supported Skills deal % increased Area Damage",
+      "qualityWorth": "recommended"
+    },
+    "Efficacy": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal 24% more Damage over Time",
+        "Supported Skills have 24% increased Skill Effect Duration"
+      ],
+      "tags": [
+        "duration"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Damage over Time",
       "qualityWorth": "recommended"
     },
     "Elemental Focus": {
@@ -1422,6 +1641,60 @@
       ],
       "tags": [],
       "qualityEffect": "Supported Skills deal % increased Elemental Damage",
+      "qualityWorth": "recommended"
+    },
+    "Enduring Cry": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
+      "effect": [
+        "Grants 1 Endurance Charge per 5 Power to you and Allied Players",
+        "Buff grants 2% of Life Regenerated per second per\n5 power, counting a maximum of 25 Power",
+        "Counts total Power of Enemies in Range",
+        "38% increased Warcry Speed",
+        "Base duration is 3.40 seconds"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "warcry"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Fire Trap": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Siren's Cadence"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Throws a trap that explodes when triggered, dealing fire damage to surrounding enemies and leaving an area of burning ground that damages enemies who walk through it.",
+      "effect": [
+        "Trap lasts 4 seconds",
+        "Base duration is 1.75 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 915 to 1373 Fire Damage",
+        "Deals 2566 Base Fire Damage per second",
+        "286 to 429 added Fire Damage against Burning Enemies",
+        "+0.8 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "fire",
+        "spell",
+        "trap"
+      ],
+      "qualityEffect": "% increased Trap Trigger Area of Effect",
       "qualityWorth": "recommended"
     },
     "Flame Dash": {
@@ -1452,23 +1725,31 @@
       "qualityEffect": "% increased Cooldown Recovery Rate",
       "qualityWorth": "optional"
     },
-    "Increased Area of Effect": {
-      "requiredLevel": 38,
+    "Flammability": {
+      "requiredLevel": 24,
       "source": {
-        "kind": "reward",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
       },
       "color": "b",
-      "support": true,
-      "description": null,
+      "support": false,
+      "description": "Curses all targets in an area, lowering their fire resistance and giving them a chance to be ignited when hit.",
       "effect": [
-        "Supported Skills have 49% increased Area of Effect"
+        "Hits against Cursed Enemies have +25% chance to Ignite",
+        "Base duration is 11.80 seconds",
+        "+1 metre to radius",
+        "Cursed enemies have -36% to Fire Resistance"
       ],
       "tags": [
-        "area"
+        "area",
+        "curse",
+        "duration",
+        "fire",
+        "hex",
+        "spell"
       ],
-      "qualityEffect": "Supported Skills deal % increased Area Damage",
+      "qualityEffect": "Ignite on Cursed enemies has % increased Duration",
       "qualityWorth": "recommended"
     },
     "Lifetap": {
@@ -1491,6 +1772,53 @@
         "duration"
       ],
       "qualityEffect": "Lifetap lasts seconds",
+      "qualityWorth": "recommended"
+    },
+    "Malevolence": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that multiplies damage over time and increases skill effect duration of you and your allies.",
+      "effect": [
+        "You and nearby allies deal 20% more Damage over Time",
+        "+1.9 metres to radius",
+        "You and nearby allies have 19% increased Skill Effect Duration"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Purity of Fire": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants fire resistance to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 41% additional Fire Resistance",
+        "You and nearby allies gain 4% additional maximum Fire Resistance",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "fire",
+        "spell"
+      ],
+      "qualityEffect": "You and nearby allies gain % additional Fire Resistance",
       "qualityWorth": "recommended"
     },
     "Righteous Fire": {
@@ -1544,10 +1872,52 @@
       ],
       "qualityEffect": "Chains Times",
       "qualityWorth": "optional"
+    },
+    "Swift Affliction": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "25% less Duration of Supported Skills and Damaging Ailments they inflict",
+        "Supported Skills deal 39% more Damage over Time"
+      ],
+      "tags": [
+        "duration"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Damage over Time",
+      "qualityWorth": "recommended"
+    },
+    "Vitality": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants life regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 193.2 Life per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
     }
   },
-  "seedHash": "61480f1bfa9f",
-  "medal": "B",
+  "seedHash": "3fe041365467",
+  "medal": "S",
   "stale": {
     "status": "waiting-for-pob",
     "reason": "This build has not been verified against a patch fact set."
@@ -1557,11 +1927,11 @@
       "pass": true,
       "level": 12,
       "budget": "starting (3-link)",
-      "gateProfile": "dad",
+      "gateProfile": "standard",
       "thresholds": {
         "resists": false,
         "life": 250,
-        "dps": 15
+        "dps": 25
       },
       "metrics": {
         "dps": 29,
@@ -1569,8 +1939,8 @@
         "dpsSource": "player",
         "life": 445,
         "energyShield": 0,
-        "ehp": 348,
-        "maxHit": 493,
+        "ehp": 390,
+        "maxHit": 561,
         "resists": [
           -60,
           -48,
@@ -1839,6 +2209,10 @@
             {
               "name": "Flame Dash",
               "level": 1
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 1
             }
           ]
         },
@@ -1881,28 +2255,28 @@
       "pass": true,
       "level": 28,
       "budget": "early (4-link)",
-      "gateProfile": "dad",
+      "gateProfile": "standard",
       "thresholds": {
         "resists": false,
-        "life": 600,
-        "dps": 75
+        "life": 700,
+        "dps": 350
       },
       "metrics": {
-        "dps": 747,
+        "dps": 428,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 1292,
         "energyShield": 14,
-        "ehp": 1184,
-        "maxHit": 1735,
+        "ehp": 1299,
+        "maxHit": 1987,
         "resists": [
           -49,
           -27,
           -27
         ],
-        "chaosResist": -25,
-        "manaUnreserved": 130,
-        "manaCost": 0,
+        "chaosResist": -60,
+        "manaUnreserved": 109,
+        "manaCost": 23,
         "nodes": 29,
         "sockets": 0,
         "ascendancy": 1
@@ -2348,19 +2722,19 @@
           "slot": "Body Armour",
           "gems": [
             {
-              "name": "Righteous Fire",
-              "level": 4
-            },
-            {
-              "name": "Lifetap",
-              "level": 6
+              "name": "Fire Trap",
+              "level": 5
             },
             {
               "name": "Elemental Focus",
               "level": 3
             },
             {
-              "name": "Controlled Destruction",
+              "name": "Efficacy",
+              "level": 6
+            },
+            {
+              "name": "Concentrated Effect",
               "level": 3
             }
           ]
@@ -2375,6 +2749,10 @@
             {
               "name": "Arcane Surge",
               "level": 9
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 5
             }
           ]
         },
@@ -2382,8 +2760,17 @@
           "slot": "Helmet",
           "gems": [
             {
-              "name": "Clarity",
-              "level": 5
+              "name": "Malevolence",
+              "level": 2
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Flammability",
+              "level": 2
             }
           ]
         }
@@ -2397,17 +2784,17 @@
         {
           "slot": "mana",
           "name": "Greater Mana Flask",
-          "note": "Drops from level 12."
+          "note": "Drops from level 12; Fire Trap is mana-hungry."
+        },
+        {
+          "slot": "utility",
+          "name": "Sulphur Flask",
+          "note": "Damage and consecrated ground."
         },
         {
           "slot": "utility",
           "name": "Granite Flask",
           "note": "Armour."
-        },
-        {
-          "slot": "utility",
-          "name": "Amethyst Flask",
-          "note": "Chaos resistance."
         }
       ],
       "repair": {
@@ -2422,28 +2809,28 @@
       "pass": true,
       "level": 68,
       "budget": "ssf-start (5-link)",
-      "gateProfile": "dad",
+      "gateProfile": "standard",
       "thresholds": {
-        "life": 1800,
-        "maxHit": 1800,
-        "dps": 3500
+        "life": 2000,
+        "maxHit": 2000,
+        "dps": 8000
       },
       "metrics": {
-        "dps": 7372,
+        "dps": 30347,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 4524,
         "energyShield": 56,
-        "ehp": 12528,
-        "maxHit": 6078,
+        "ehp": 14664,
+        "maxHit": 7243,
         "resists": [
           76,
           75,
           75
         ],
         "chaosResist": -5,
-        "manaUnreserved": 241,
-        "manaCost": 0,
+        "manaUnreserved": 253,
+        "manaCost": 62,
         "nodes": 77,
         "sockets": 2,
         "ascendancy": 7
@@ -3483,7 +3870,7 @@
           "slot": "Body Armour",
           "gems": [
             {
-              "name": "Righteous Fire",
+              "name": "Fire Trap",
               "level": 19
             },
             {
@@ -3495,15 +3882,11 @@
               "level": 19
             },
             {
-              "name": "Controlled Destruction",
+              "name": "Swift Affliction",
               "level": 19
             },
             {
-              "name": "Increased Area of Effect",
-              "level": 18
-            },
-            {
-              "name": "Lifetap",
+              "name": "Concentrated Effect",
               "level": 19
             }
           ]
@@ -3518,6 +3901,10 @@
             {
               "name": "Arcane Surge",
               "level": 19
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 19
             }
           ]
         },
@@ -3525,7 +3912,16 @@
           "slot": "Helmet",
           "gems": [
             {
-              "name": "Clarity",
+              "name": "Malevolence",
+              "level": 19
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Flammability",
               "level": 19
             }
           ]
@@ -3538,14 +3934,19 @@
           "note": "Instant prefix."
         },
         {
-          "slot": "mana",
-          "name": "Hallowed Mana Flask",
-          "note": "Drops from level 42."
+          "slot": "utility",
+          "name": "Sulphur Flask",
+          "note": "Damage and consecrated ground."
         },
         {
           "slot": "utility",
           "name": "Granite Flask",
           "note": "Iron Skin."
+        },
+        {
+          "slot": "utility",
+          "name": "Basalt Flask",
+          "note": "Physical damage reduction."
         },
         {
           "slot": "utility",
@@ -3565,29 +3966,29 @@
       "pass": true,
       "level": 80,
       "budget": "ssf-start (5-link)",
-      "gateProfile": "dad",
+      "gateProfile": "standard",
       "thresholds": {
-        "life": 2400,
+        "life": 3000,
         "ehp": 8000,
-        "maxHit": 3500,
-        "dps": 4500
+        "maxHit": 4000,
+        "dps": 20000
       },
       "metrics": {
-        "dps": 10412,
+        "dps": 40705,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 5481,
         "energyShield": 60,
-        "ehp": 15158,
-        "maxHit": 7093,
+        "ehp": 17743,
+        "maxHit": 8408,
         "resists": [
           76,
           75,
           75
         ],
         "chaosResist": -5,
-        "manaUnreserved": 309,
-        "manaCost": 0,
+        "manaUnreserved": 294,
+        "manaCost": 66,
         "nodes": 89,
         "sockets": 2,
         "ascendancy": 9
@@ -4760,7 +5161,7 @@
           "slot": "Body Armour",
           "gems": [
             {
-              "name": "Righteous Fire",
+              "name": "Fire Trap",
               "level": 20
             },
             {
@@ -4772,15 +5173,11 @@
               "level": 20
             },
             {
-              "name": "Controlled Destruction",
+              "name": "Swift Affliction",
               "level": 20
             },
             {
-              "name": "Increased Area of Effect",
-              "level": 20
-            },
-            {
-              "name": "Lifetap",
+              "name": "Concentrated Effect",
               "level": 20
             }
           ]
@@ -4795,6 +5192,10 @@
             {
               "name": "Arcane Surge",
               "level": 20
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 20
             }
           ]
         },
@@ -4802,7 +5203,16 @@
           "slot": "Helmet",
           "gems": [
             {
-              "name": "Clarity",
+              "name": "Malevolence",
+              "level": 20
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Flammability",
               "level": 20
             }
           ]
@@ -4812,17 +5222,22 @@
         {
           "slot": "life",
           "name": "Divine Life Flask",
-          "note": "Keep the instant prefix."
+          "note": "Instant prefix."
         },
         {
-          "slot": "mana",
-          "name": "Eternal Mana Flask",
-          "note": "Drops from level 65."
+          "slot": "utility",
+          "name": "Sulphur Flask",
+          "note": "Damage and consecrated ground."
         },
         {
           "slot": "utility",
           "name": "Granite Flask",
           "note": "Iron Skin."
+        },
+        {
+          "slot": "utility",
+          "name": "Basalt Flask",
+          "note": "Physical damage reduction."
         },
         {
           "slot": "utility",
@@ -4842,28 +5257,28 @@
       "pass": true,
       "level": 90,
       "budget": "ssf-week1 (6-link)",
-      "gateProfile": "dad",
+      "gateProfile": "standard",
       "thresholds": {
-        "life": 3500,
-        "ehp": 9000,
-        "maxHit": 4500,
-        "dps": 6000
+        "life": 4500,
+        "ehp": 12000,
+        "maxHit": 6000,
+        "dps": 80000
       },
       "metrics": {
-        "dps": 27129,
+        "dps": 122106,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 7403,
         "energyShield": 72,
-        "ehp": 21647,
-        "maxHit": 9385,
+        "ehp": 26348,
+        "maxHit": 11091,
         "resists": [
-          76,
+          80,
           75,
           75
         ],
         "chaosResist": 3,
-        "manaUnreserved": 473,
+        "manaUnreserved": 11,
         "manaCost": 0,
         "nodes": 104,
         "sockets": 6,
@@ -6325,6 +6740,16 @@
               "quality": 20
             },
             {
+              "name": "Lifetap",
+              "level": 20,
+              "quality": 20
+            },
+            {
+              "name": "Swift Affliction",
+              "level": 20,
+              "quality": 20
+            },
+            {
               "name": "Burning Damage",
               "level": 20,
               "quality": 20
@@ -6335,17 +6760,7 @@
               "quality": 20
             },
             {
-              "name": "Controlled Destruction",
-              "level": 20,
-              "quality": 20
-            },
-            {
-              "name": "Increased Area of Effect",
-              "level": 20,
-              "quality": 20
-            },
-            {
-              "name": "Lifetap",
+              "name": "Concentrated Effect",
               "level": 20,
               "quality": 20
             }
@@ -6360,7 +6775,12 @@
               "quality": 20
             },
             {
-              "name": "Arcane Surge",
+              "name": "Lifetap",
+              "level": 20,
+              "quality": 20
+            },
+            {
+              "name": "Enduring Cry",
               "level": 20,
               "quality": 20
             }
@@ -6370,7 +6790,34 @@
           "slot": "Helmet",
           "gems": [
             {
-              "name": "Clarity",
+              "name": "Malevolence",
+              "level": 20,
+              "quality": 20
+            },
+            {
+              "name": "Purity of Fire",
+              "level": 20,
+              "quality": 20
+            },
+            {
+              "name": "Vitality",
+              "level": 14,
+              "quality": 20,
+              "maxLevel": 14,
+              "note": "Level 14 is the reservation cap; higher levels eat the mana bar."
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Flammability",
+              "level": 20,
+              "quality": 20
+            },
+            {
+              "name": "Lifetap",
               "level": 20,
               "quality": 20
             }
@@ -6381,17 +6828,22 @@
         {
           "slot": "life",
           "name": "Divine Life Flask",
-          "note": "Keep the instant prefix."
+          "note": "Instant prefix."
         },
         {
-          "slot": "mana",
-          "name": "Eternal Mana Flask",
-          "note": "Drops from level 65."
+          "slot": "utility",
+          "name": "Sulphur Flask",
+          "note": "Damage and consecrated ground."
         },
         {
           "slot": "utility",
           "name": "Granite Flask",
           "note": "Iron Skin."
+        },
+        {
+          "slot": "utility",
+          "name": "Basalt Flask",
+          "note": "Physical damage reduction."
         },
         {
           "slot": "utility",
@@ -6411,29 +6863,29 @@
       "pass": true,
       "level": 96,
       "budget": "trade (6-link)",
-      "gateProfile": "dad",
+      "gateProfile": "standard",
       "thresholds": {
-        "chaosResist": 0,
-        "life": 3500,
-        "ehp": 12000,
-        "maxHit": 4500,
-        "dps": 8000
+        "chaosResist": 75,
+        "life": 5000,
+        "ehp": 14000,
+        "maxHit": 7000,
+        "dps": 125000
       },
       "metrics": {
-        "dps": 46549,
+        "dps": 212000,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 8982,
         "energyShield": 119,
-        "ehp": 32745,
-        "maxHit": 11338,
+        "ehp": 42024,
+        "maxHit": 13383,
         "resists": [
-          76,
+          80,
           75,
           75
         ],
         "chaosResist": 75,
-        "manaUnreserved": 604,
+        "manaUnreserved": 57,
         "manaCost": 0,
         "nodes": 112,
         "sockets": 6,
@@ -7988,6 +8440,16 @@
               "quality": 20
             },
             {
+              "name": "Lifetap",
+              "level": 21,
+              "quality": 20
+            },
+            {
+              "name": "Swift Affliction",
+              "level": 21,
+              "quality": 20
+            },
+            {
               "name": "Burning Damage",
               "level": 21,
               "quality": 20
@@ -7998,17 +8460,7 @@
               "quality": 20
             },
             {
-              "name": "Controlled Destruction",
-              "level": 21,
-              "quality": 20
-            },
-            {
-              "name": "Increased Area of Effect",
-              "level": 21,
-              "quality": 20
-            },
-            {
-              "name": "Lifetap",
+              "name": "Concentrated Effect",
               "level": 21,
               "quality": 20
             }
@@ -8023,7 +8475,12 @@
               "quality": 20
             },
             {
-              "name": "Arcane Surge",
+              "name": "Lifetap",
+              "level": 21,
+              "quality": 20
+            },
+            {
+              "name": "Enduring Cry",
               "level": 21,
               "quality": 20
             }
@@ -8033,7 +8490,34 @@
           "slot": "Helmet",
           "gems": [
             {
-              "name": "Clarity",
+              "name": "Malevolence",
+              "level": 21,
+              "quality": 20
+            },
+            {
+              "name": "Purity of Fire",
+              "level": 21,
+              "quality": 20
+            },
+            {
+              "name": "Vitality",
+              "level": 14,
+              "quality": 20,
+              "maxLevel": 14,
+              "note": "Level 14 is the reservation cap; higher levels eat the mana bar."
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Flammability",
+              "level": 21,
+              "quality": 20
+            },
+            {
+              "name": "Lifetap",
               "level": 21,
               "quality": 20
             }
@@ -8047,14 +8531,19 @@
           "note": "Keep the instant prefix."
         },
         {
-          "slot": "mana",
-          "name": "Eternal Mana Flask",
-          "note": "Drops from level 65."
+          "slot": "utility",
+          "name": "Sulphur Flask",
+          "note": "Damage and consecrated ground."
         },
         {
           "slot": "utility",
           "name": "Granite Flask",
           "note": "Iron Skin."
+        },
+        {
+          "slot": "utility",
+          "name": "Basalt Flask",
+          "note": "Physical damage reduction."
         },
         {
           "slot": "utility",
@@ -8074,62 +8563,75 @@
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJzVWm1T27gW_kx-hcYzO3d3KoreLXegd5IQArtkoQnQsl86IlYSg2ynthxIf_0d2XmDTQLstnPbyYxGlp4jnefo6Eg-zv5_H2IDJjrLozQ58PBb5AGd9NMwSoYH3uXF0a70_vu-tn-u7Ohs0Cgi43re13b2yzoweqLNgRcgD1iVDbW9mg9FPyMP9I3K8z9VrA-8jspUEerMAyrv6yRsLruao0gPrIoSD8QqSnpp_07bdpYW4wMPe-BGJWFkD7w_00R7YKwSO9Jp0lG3adZOwwPPFInKonylK0pmXcOssKO7wnhgEun7Thq62eqnzZ73vrazs39u1FRnPassyK2yB14zjW-iRIeH5z0PTJQp9IFHfEyCt4wGkvrc21sveJFaZV4tdRoN9ELCZ4huArYSnQ2nvVGkTbgUIFu1aR2fL7XBgvlvGSacS5-yTXLno2ke9ZXpqIcoLuLjyF6oO50shgmo3MjlKMp0V-dRbpcKik3gZmrCp-AtVhqObBIlwxdLNEcqzZ-gN9q2oxLVTFeQaBvyMsl0rrOJXq4D8zeO3RvrFWA18P5euXVc7SLTGqi-jSa6N9Z95-3lOO4B2Ezrld1E59vpJCx3xcouci3IA0ka6typI6CUHGJEMcSUcIh9iiEJMIUUCx9SwRhkWDLIaOBDTiiFXDAKuc8oFIQiKIgMoKA8gIIxAYUvGBSBxNAPqIRS-gEMqBQw4BjDIPAxxKicDhEqIUbc5xBjRhDEWPIAYopQADFD3IeYMezqAUWuDATEHAkGMWeIQyx8J-v71JWSYIglRQQSxDmGBFOKIMEMU0gIkRwSKiWGhFHCIGE-cqUUHBKBAwGJ4IRCInziWnyGIBFSCEgk87kzSRBAEgSUQooYDSBFIsCQYiSRsxWRkGLpc0hxQDGklEgfUirKuhuNUp9zSJljR5mzAGVCuNLnCFIecAmp4IxCKgIWQOoHQQBpIJiEDJEAQ4aoEJAhjiRkmPkEMjc0ZIyRADImkICMBa5XBBhB5mOfQyadJkxSQSCTjEpXSgRZgH0JWcAwgRyJwJVSuDJADHKKsYSc-gGFnGHiQ86Z5JBzwQJX-gJyHiABuUAIQy6Jw0uGiCtZAAWigYQC47KknEOBmY-hIAj7znUEhYIGvoCCI8pKb97Zv-yelpWdkbXj_N3e3v39_duxsqN0oB8io9_203hvrPI8mujd_C4yZtc5_169Xq83hq36zf1xv04vW437S9vIO6fXHx4Gh7f3Hz42WvbouPWx-fDXpH10fX3Xvf3U7jF107BHx_cnUTbtffm914_ltD_5_TMbX0yn_VPTmaKLm_HZUUdc3n65PLNDeXrZPu5ehkfJZbh72QovLs2ZubrHYe9Ktq57R_FVW9-o9lUatm-nN1_t9JBe2LAIKaMm1exBDunUHw714Sd23hkGRYtcX0xG5OPxJH0gt9nuh6u_upO4aIbXnBTJ7TSq_2GK7JoU51-C3H4VMvG_fplcqOC6U1f3Hy7ajY4qHuzt-cCejBD5fD0JzYh8-qqubdZgJLs7KbpdsetPDovdTDY-Tz8Mzm529e1uc1ivlwbfm1t8vzpL88r8s6cyULiY4ba6ByKr4zKmzMLp33HlXloBis1An_AVoL8R6PbfClBuApabbQUYbAKW_rwEklkQ39nfWzHB_p6LrGUMdqHXVXrO3arOsgp0om6MDg88mxXaA7lJ7YHXSMMpqGdxWmTVHaVeBW0nMY_aO_ttHYNhNX9HWxUqq_ZOrI7zvbYrSnRbx113num0yN2R6YHS4V8pk6h4dmIsOkDVM7uQEeSBL4UykZ0-enDzHOqBKoz1nlJdw2vvVcR6xXicZrZRZO60PlSxGj7LrxJp6_gk6Wda5Tp8Ir6kOusA854fgGrL6FgnVpmjtF_kL-b6VGzJcdEDZl0_AMlmmtgsNUaHhzq3WdG3UZq8mOsG6SXlJQA8QvwAzBc-Wc-0SgetwUD37es92kmfLaSXzBcA4BAgHYA55gfg7t5NrBq_mO0Cv-S3aPoOdPYrfZ8L3B-1GqcJwP8-ah8ZFetDlY9eGLFX8EuLlI2gav0B1rie9VWie0X2ijj9SGbJrGoGs_b_34IfaxNr---Xu2lUFtnpCxd7gV4Ja_Om72qLWS2fv01eRfoefE3T-FP5Suhq14vaaaUJ9RY3IAd3DyWl2Zuoq_e0XbyMumcQVRfE97Vuyeod6Na7rVpv6hIueeRC2K2-1wbgWjOL4jxNwO_uuVYKl_O-A5LUTuKxifqRzd8BVBO_gGgRAeMq5QBczKhhvtrlLjazQ7_2hv8CbDp7AulEZ-AiijXoFMZGYxPprPYGsxJTilVJAJX0dWk2p84TUuJ5UuSnI-U_T4r-dKTk86TYT0cqeJ4U_9lIEfQ8KfGzkcLbON2X14za2VgZ0Ovrsc30U0YfqnD_DhD0mB1DGzkQ9CyJDSuwTdl0MBipJKzVs_4oTcAfkdWgSi2_WOc3EjnFHq3FG4bWmnPe7nK-z5uZbtN8VB7utWaafCl0lmb_yUF13r9QcVLrREmUJjkYqYkGvxK6S_hvm73r0cq47K_TX2cT5d5Q3GU96kc66U_d1b06h9dbhqCysUogfCNDsW2GuknDae1UD52a50bZrd44S5C8A43dxe-x1X7FwS5BjwylyzcVR_xsMNBZlAzz2ptfMd7F5LeShTIGLN9ml3ReZaJF6v-f22nrpWVo0onOa-eZ7hdZnmagrYrEGm3zV3tUqJVZ51HzvSx_Af2R09Op7q7Tmc5z0BtrY5aYzbvqKdlNTrTeCFsvOTdpavNaw4VjmyYaXGRahS83gHy0SdJJueSg_PLxZAc5QqCrhzrRWbWFMueahG8Z4Z_YZK3XrDfM1ovSjTa2dqqVHekMNNzDd4mPsyhffrR6XuOttyAVF0bb2lkyfQD1qv5ilQl3WpwkVhsTDXWp2hYa32Brbr37uJCCqxO1GyXD73o0vcJh8Na7jVOafGOlv4GX49XLS6fePmk-0tq4fTkwKr-rHUaTKNHVTj0qW15KYcPMZOvMsTtTq5lbVmeJMtUx-02mplunLmzkRpvN3s5U4u5B32Ri9oqJ67G2o2lu_-3MPW1n11RgI2v0SlKhyHVP99MkrJJh5bv9QJlczzIiPZPaMnGxmi5bfHGZZ5b-jiIrn1vWoOaZmDmGrsE8-q4yB7I1wHZ5UC8xfO1gqV2BiHUQbVY08tcgqqi5xMg1GLe1V20UbMKsWAijNaByzR9Z233YL7MwsxTQJpnVkckLZeiKDH2hDFuRYetkKjfsaVvmlMo8kqs102QQDSvvTMbFfFCd6HhaurcHkiK-0dmBJ-f_nvgbsDVRefWxYAb1pZj_h2I-wf7e078m_Q8kgXeD",
+    "code": "eJztWm1v27YW_lz_CkLAcDeUafguqkg6OE7iZIuXNE7SZl8KxqJtpZTkSpQT99cPlOxYzmzH2bK79uLCgECRzyHPc3R4dHTonZ_vYwPGOsujNNn18BvkAZ300jBKBrve5cXhlvR-ftfYOVN2eNrfKyLjRt41Xu2UbWD0WJtdL0AesCobaHs1m4p-Qh7oGZXnv6lY73odlaki1JkHVN7TSdiaD7WGke5bFSUeiFWUdNPeZ23bWVqMdj3sgRuVhJHd9X5LE-2BkUrsUKdJR92mWTsNdz1TJCqL8tpQlEyHBllhh58L44FxpO86aehWa560ut67xqtXO2dGTXTWtcqC3Cq767XS-CZKdLh_1vXAWJlC73qYEIz4G4l9Qakg3vZy0YvUKvMX5E6ivn6Q8Rmiq4AHic4Gk-4w0iacC6zX5-Do7AFKBGXyDaOY8EAiuUrubDjJo54yHXUfxUV8FNkL9Vknc1oYBXiV8GGU6XOdR7l9wEu0CtxKTfgI7PPVZhoMbRIlg40lWkOV5o_QK43bUYlqpTXkSq0d8jLJdK6zsQ5rZlkl0B3pGq6ad2e73D6udZFpDVTPRmPdHeme8_hyHncDbKZ1bUfR2ZY6DsudUdtJrgd5IElDne96zBdQSg4xohhiSjjEPsWQBJhCioUPqWAMMiwZZDTwISeUQi4YhdxnFApCERREBlBQHkDBmIDCFwyKQGLoB1RCKf0ABlQKGHCMYRD4GGJULocIlRAj7nOIMSMIYix5ADFFKICYIe5DzBh27YAidw0ExBwJBjFniEMsfCfr-9RdJcEQS4oIJIhzDAmmFEGCGaaQECI5JFRKDAmjhEHCfOSuUnBIBA4EJIITConwievxGYJESCEgkcznziRBAEkQUAopYjSAFIkAQ4qRRM5WREKKpc8hxQHFkFIifUipKNtuNkp9ziFljh1lzgKUCeGuPkeQ8oBLSAVnFFIRsABSPwgCSAPBJGSIBBgyRIWADHEkIcPMJ5C5qSFjjASQMYEEZCxwoyLACDIf-xwy6TRhkgoCmWRUuqtEkAXYl5AFDBPIkQjcVQp3DRCDnGIsIad-QCFnmPiQcyY55FywwF19ATkPkIBcIIQhl8ThJUPEXVkABaKBhALj8ko5hwIzH0NBEPad6wgKBQ18AQVHlJXe_Grn8vykbLwaWjvK325v393dvRkpO0z7-j4y-k0vjbdHKs-jsd7KP0fGbDnn3242m829wUHz5u6o16SXB3t3l3Yv75xcv7_v79_evf-wd2APjw4-tO5_H7cPr68_n99-bHeZutmzh0d3x1E26X75pduL5aQ3_uUTG11MJr0T05mgi5vR6WFHXN5-uTy1A3ly2T46vwwPk8tw6_IgvLg0p-bqDofdK3lw3T2Mr9r6RrWv0rB9O7n5aif79MKGRUgZNalm93JAJ_5goPc_srPOICgOyPXFeEg-HI3Te3Kbbb2_-v18HBet8JqTIrmdRM1fTZFdk-LsS5Dbr0Im_tcv4wsVXHea6u79RXuvo4p7e3vWt8dDRD5dj0MzJB-_qmub7TGSfT4uzs_Flj_eL7Yyufdp8r5_erOlb7dag2azNPj2zOI71fs0r8w_vSsDhYsZbqt7ILI6LmOKqKLYn3HlXqoB_dVAn_AaUK4Euv1XAwargOVmmwMJWgUs_bkGnIbkVzvbNRPsbLvIWsZgF3pdo-vcrRosm0An6sbocNezWaE9kJvU7np7aTgBzSxOi6zKU5pV0HYSs6j9aqetYzCo1u9oq0Jl1fax1XG-3XaXEt3W8bl7nem0yN0b0wOlwz9TJlHx9I3xMACqkWlSRpAHvhTKRHaycOPW2dd9VRjrPaa6hNf2s4h1i9EozazLaqwaPcWsArd1_ICfs3ro-gbodO-ivm32-ybq2ShNNqZ1rkZRuK97alJnVs4G6tN9AxT3isylV_sqVoMnPfKB4HHSy7TKdfhIfE52OgBmI98A1QOjY51YZQ7TXpFvzPWx2JzjwwiYDn0DJFtp0tOJzZTV4UG_r3t2Y6LLROdk66NgNvwPEN6pGD0Vlj9oNUoTgP9-TD40Ktb7Kh9uGI9r-Ll1yk5Q9X4DXvC_EocPkrDIomTQyiYbPp0FidpWnXaDsv_fc9sjbWJt_77TdpTR49TopLdpGlEF4tOxzi6iWDeLTNXtszDfv_nEz4osspPT_jMSpHn14TGrajKQ9r-BDOkqsuUiG5Kaw-d05n1TIpj91x24bdKxzl8m6sbqJnqGSRZFFmPvvP__0XfzJz1t5bOC1FWk78DXNI0_llUl17p-aJ1UmlDv4SPKwd1NSWpazHLtrrYP9Sx3D6LqG_Nd41y5DfkWnDfPDxrdiavb5lGuQ3Cr77QBuNHKojhPE_CLu2-UwuW6b4EkjeN4ZKJeZPO3ADXEDyCaZaEgrqqWwJmtgXl9yO38aRbaeM1_ADad3oF0rDPggiHoFMZGIxPprPEasxJTilVRRSU9XZrNqfOIlP80KfLdkZJPk6LfHangaVLseyNF0NOk-HdHCj9NSnxvpNZyuiu_ZRqnI2VAt6dHNtOPGb2vwv1bQNAiO4ZWciDoSRIrnsA6ZdN-f6iSsNHMesM0Ab9GVoPqdGpjnV9L5BRbeBavGVpqzlm_OzV62sx0nebDMvdutNLkS6GzNPtPDqp0fEPFSaMTJVGa5GCoxhr8SOgW4T-t9q6FJ-POj5z-OhsrV_xxn9BRL9JJr8xPq_fwcssQVHZWNcgXMhRbZ6ibNJw0TvTAqXlmlF3rjdMa61uwt_XwW7TajzjYImjBULqsHzjip_2-dh9meeP1jxhvYfJTyUIZA-bllTmdZ5no4fDwr9uJr7PToMyFG2eZ7hVZnmagrYrEGm3zZ3tUqJVZ5lGzvSx_AL2h09Op7jLHTOc56I60MXPM6l31mOwqJ1puhLWZ202a2ryx58KxTRMNLjKtws0NIBc2STouHzkoD08f7SBHCJzrgU50Vm0hV4tqEL5mhr9ik6Ves9wwa7O_G21s40QrO9QZ2HM3_0h8nEb58tj7aY3XpnYqLoy2jdNkcg-aVXtjlQl3WhwnVhsTDXSp2hoaL7A11yZ0LqTg6o16HiWDf_TV9AyHwWsTNqc0eWGlX8DLcT156TTbx60FrY3bl32j8s-N_WgcJbraqYdlz6YUVqxM1q5c2PKbf7p4tzCjYZG9zML0GQu3M5W4LOhFFmbPWHhP5crYl1mXP2PdZqztcJL_7ZW72k6TY2Aja3StlFHkuqt7aRJWdf6yotBXJtfTKlPXpLYsl9RPAh7OlGdlmz-jSO2ceAlqVp6dYegSzMKB8AzIlgBnpbIZhi-dLLU1iFgG0aamkb8EUcXqOUYuwbiAUrdRsApTsxBGS0DlM1-wtvtHUln7mRaeVsnUZyYbytCaDN1QhtVk2IYy9X8k8GUylet2tS2rX2XFy7VaadKPBpVHJ6NiNqlOdDwpt4QHkiK-0dmuJ2f_QvsT8GCs8vI8eAb1pUBLwEWuy3MMF6tbQ_e_y9xz-ZfRKlnQtS7kvvuyKFwiOVuNTv-bNuOys_34b59_AEOCQuU=",
     "byStep": {
-      "until-12": "eJzFWG1z4jYQ_hz_Co1m7lMh4DdeMnAdQhIunXDJ4dxd-6mj2AtWI0tUkiH013ckG3CuQLhL2n5hVtKzu8-uV9KK3s9PGUMLkIoK3sfuaRMj4LFIKJ_18ef7q3oH__ze6d0Rnd5Oz3PKzMp756RnZcRgAayPXQ8jTeQM9Je1Kf_3JkYxI0p9JBn08ZhIkicgMSIqBp4Mt0vDlMJUE8oxygjlkYgfQY-kyOd97GL0QHhCdR9_FBwwmhOuUxB8TP4QciSSPmY5J5KqyhLl5dJM5jp9zBlGCwrLsUiMt8HNMMLvnZOT3h0jK5CRJhopTXQfD0X2QDkkF3cRRgvCcuhjr3Pa6rbdwOuEbTfwcWO36r3QhP2A3g2dwkYnCMJ9uEsOcraKUgos2eCbB9lcfrjbIP2gfdr1Ok0_bPqhu5fNXbpSNCZsTJ5olmcfqL4nj8C3BLt7Va-ohAkoqvQGXW_tJTgULPkWHXT2J2mWak757HiVYUqEOp7PmHAyFBVs9xDyM5egQC5g-yk6wT6FaA4VnHu6qQnza5V6DbubjHQvARCJNV1ANIfYbABr1QyQlgCVDeavd9h1YjdKZWOZmSZGXCSg-rjV7bi1bui6Nc_vdNyaF7SbQc1rhZ5f892W16n5rTDwa0HQarZqQdtth7WgG7heLWx2m0Et7ARB1_I46X2e3FjhJNV6rs4ajeVyeTonOhVTeKIMTmORNeZEKbqAunqkjNUN7cZgMBiczy4Hw1Rf_RIlSfQVHiBY3S5aQX356X7k3U4mg8Ggb500Si-9honbZsgkxgiRMamKnBgRAScPDJI-1jIHjBQTuo_PRbJCA5mJXBaHyqBIqdFY5_SkN4IMzSAzyRqDJgnRpHGtIVONkfmx6BFkE8EY5bMxmWUEIxvTSyoWeysfMOIkK79kaQaVdsqjM8Toz5wwqlf2i5WysX8BU5Izjb-NcEc4je-KJ8rncyH1IEkgMbv2gmRkBi9FViiNIPuH3jZEu4TMGlovlmF6_1-YMiYcolx-T4hVnUp4dhqV82_-AXsF9Zdq-yuQueDIfX1hXzGSwQVR6ZFVXcFvk2InUTG7bgf-65R8AJaBfn1ChoxIqldHpmOD3iZjM_UvZqKU1Pq6-EJhif4SIvvV-jDSbxvppuDh480hauBmYAMqrxojR6A3t40ZI5oU44kN6QyNB6ProROtTJOlqIIELW0lOheSTvVSiARFMcy1BMfqW9dnyPWcT0XYZ6jpXGdzRmOqlRm44TtEeSyBqOfHho3XGHnOxjvIJrVF4AwFB1QUxLE8fvJCpAXKiqYHmZZsDwP_IIMHkaycYQpKzxnRh9JQ9LjqDJ3Xz-vnP8omOMhmxsQClHNnqCRoRHKuGWj19kkJX0iK0MqJNABDIwnEcHoFhec1MxYLyIBrZJusPfxah_kB084NEJ2CROdm8OYJah8kQLKcgXZu-eoJDQr5WAau985Q2LTHqGh4CY_3UekcpCIpn7nO7ZwwNKF89vaZ6L7o3vsB92UazJvi5Qy4zYMcxHSaEp44E6HNtpmInCeoeHa9fTrcw-cro1NAU0bUozOGhJa20JWdOZLMHseHj9KMcFI6jjLCGDKPnjfxe_gAzTU1xkrXn3IaPyrKFiBf6TsCXV5nSFPNoHL95goiiAVPirbK3oJTwhSUnUPEhLYXfLXxorroJTYtaQW17kXWGG8H5tnzZA30dwBH9gzfYoKdxoSuQMJdEGAVRq0diOLg2WLaOzBmT1aj7-zDeFtMdwemzGMF5TZ3wOwnf5Zt88a1_UrZLO3TqVr2jtTxKzr-Lp2ipCLQtpOy3ZORhoJP6ayoND7P10aBQ7aylYoRz7MHkNZuYzfwckHMo34L9f1u-c_A2n6v8e1_cH8DrI0xDA==",
-      "until-28": "eJzFWFtv47YSfo5-BSGgT1Vi3S0F9haKkzhp4900ym5Pz8sBbY0tbijSS1L2ur--oCTbytZ2vE1wFgYMXr4ZfjPDIYfq_fK1oGgBQhLO-qZzZpsI2IRnhM365sfH69PI_OWd0bvHKv8wvSgJ1TPvjJNe1UYUFkD7phuZSGExA_Vprcr7n22iCcVSvscF9M0RFrjMQJgIywmwbLCdGuQEpgoTZqICE5byyROooeDlvG86JhpjlhHVN99zBiaaY6Zy4GyEP3Mx5FnfpCXDgsjWFGHN1EyUKn8qqYkWBJYjnunVkrtBar4zTk569xSvQKQKKyQVVn1zwIsxYZBd3qcmWmBaQt_s-uFZ2HWjwOzsFnrkCtPvkrgjU9igHTd29wGvGIjZKs0J0Gwr4B9kcnVzv4U6kXcWhV7XjgIvdvbJ3ecrSSaYjvBXUpTFDVGP-AnYVk3X22vLNRHwAJJItYGf-vE-9IDT7Fu0293vp1muGGGz40UGOebyH_C97EeY4QFvYe1DyI9MgASxgFYwvL0S6RxawBrW61R5o1uPAgDhiSILSOcw0Vu90qM7SAmAVip561y6zaqUaKWQHrFNxHgGsm-6seNZnhN2rdD3QyuMI8eKA8exnMC3A8u1g8CxXNeNAsv1osixXL9r-5YbBq5neXYYO5bn2JGtdbiR5YWB71m-53V9y_d9N7Z8P7RDy_djO7L8rtMNLD92upHlx77jWoEdhfo_tn0r8BwnsgKvG3tWEIR-bAWR78dW6DhxZIWuF3qVwSe9jw93VeMkV2ouzzud5XJ5Nscq51P4SiicTXjRmWMpyQJO5ROh9FT7p5MkSXIxu0puEpVfXkf_vcvV9a_pJLr7dHHzaelk6R8wzk7fB_imHH0Wp_PxF_e9-BwuxqMEL39_HAo5_vMvr5veZjQPrm8Wl4sP4yRJ-hWpTsOq19EBqUKnI6YbqaYg62DpJgKGxxSyvqlECSaSlKu-ecGzFUpEwUtRn2tJHWstsQ72SW8IBZpBoaM4AoUzrHDnVkEhO0P9V6GHUDzoTABeSp1uJqqc8J0yDBfNRttMoHqmOcR9E30pMSVqVe2opq1XuYQpLqkyvzV0h1Wd7zIrLedzLpQ-DxWev2RXDR5CscFvbdoMNcaEP8yYKwoFMIXpNZ-U8mibvhXbmraZQc1UY6L3w0wccKYEpxSyS5BKlBNFODva0j3SW4O3APQM8eZ292rDXsrkPwDPOUPO69P4muICLrHMj0zhFn7rnmoQ1aONS4IfthUSMcEM0lLMXjyWNhvgmczWrnoYNeONZfH_O9g3QAtQrw_1gGJB1OrIQG_QrSxYD715jLeeaFpyXY98IrBEf3Fe_KdaQ7f-3LTu1um3uQw1XHcqg5paRrdTUJtyRvcRyer-Q2XSORolw9uBka50vS6JhAwtqxwzLgWZqiXnGUonMFcCjEq-Wvoc-YHxe232ObKN22JOyYQoqTue_RMibCIAa236XkOXuMAzMOL2xABLharCrPKDVv6cpXuQZV5tDuMB8AIEqrfKsQx_Dm2kOCrqGhvpC8v42XGrwbpM2EPJO0hpzLOVkZYM3VOsDrmrflbJc3RxWv3eiJ1_kN2M8gVIY1hioR-OaIhLpigo-Rqv7SYSvOAmrqSRMEW-lICGQkfwVSTcZxtuxBfVJX1wb4WHGQJVxh1glYNAF7rz5i7qHiSAi5KCMj6w1VeU1O03ZxAdZCAImznGhzmm6IGw2asySx8IiqPNExLVj0LMJvu4xS9yc_8Ft4aHfvi-TMGxD3Lg02mOWWbcEZYBQ78RBaj-OPD2kXIOn9eUTAFNKZZPxpBgpipV6LoaOJLLnnUPn8AFZni9rgCsQCD9Mn-TlQ8ftKUiWtlmccy0-99i3cNH6PN1kwJUvpLqlQunoJpLGSmiKLSKiFJCChPOsrrsre7yKaYSmvonpVxVZUq7MCaqrog2VWQLta6o1hh3B-bZY3kN9HYAh9WFssX4O5Vx1YIEuyBAW4zCHYj6BNxiujsw-iBoWx_tw7hbTLwD0_ixhXLsHbAq5M-8rT8FVVVXU_Ltk2lrdo-U8Voy3pEyfkvG3yVTb8MUVFVDVnWjbg04m5JZvTvZvFwrBQbFqtrdJmJlMQZRfWru7AZeLbCsX5INNIrD5qPbWn-v8-2H7L8BT3ZA6Q==",
-      "until-68": "eJzVWWtT2zoT_kx-hcYz51NFY11td0jPJAECPaSlhPSUTx0RK4lAtlJbDqS__h3ZucFJArR0Ou9kRqPLs9I-0u7Kqxz8fZ9oMJVZrkza8NBb3wMyHZhYpaOG17883g-9v9_XDs6FHX8atgql3cj72t5BWQdaTqVueDz0gBXZSNovi6nIN98DAy3y_KNIZMPrikwUscw8IPKBTOP2aqg9VnJohUo9kAiV9szgVtpOZopJw0MeuBZprGzD-2hS6YGJSO1YmrQrbkzWMXHD00UqMpWvDal0PjTKCju-LbQHpkredU3sVmuetXve-9re3sG5FjOZ9aywILfCNry2Sa5VKuPD854HpkIXsuEFJMBvKUYUe_XNUpfGCv0ykTM1lEs4ZZhuAx6lMhvNemMldbwUYHynKkcn50sowgyHbwmmmBPMtupzPp7laiB0V9yrpEhOlL0UtzJdTsP9INwme6wyeSFzldvVBmxVsG10_BjMtu_SaGxTlY6eLdEeC5M_Qu9vRXdFKtpmDervQvbTTOYym8rVQWCKtkn0JnINWE18UC-9xtUuMymBGFg1lb2JHDhDL-dxDWAzKdcciSw86TQuHWLNgVyP74HUxDJveDTgEBHMII4QgQTxABJOKWSYEMg4JZBj4kNOWAQ5pRzygFPIoxDBiCEEke8TV2ISQuSzgEGEQhZBRCPiuzLiEDGfU4gY9RlEPHCYICAMopD4GGKfMQQxoohAjHHIICZhiCCmgU8hpiFnEHMUcYg5wwRiHjh1eUB9iHnIOcQhDUoCUQRxFBECic8jBAnyQ99xwiEkKCIIEoLDABLCy7qbgVDfj1zpemjAfEhYxEJIOKMEEh7RCJIgiiJIfeaHkCIaYEidMKSU4ghSyn0OKY3cKI-QD2mAAgZpSEnoytCHNEJBCGlEEYbM55ErQ-7KyKeQEYRCyEgQEcgowgFkjIYMMsZp5MqAQ8Yin0PGfR9BFlIfu5JGkCMUhZAjwhjkiAYIcuyjwJ0aJ5CTKOCQM5_Q0lb2DvoXZ2Vlb2ztJH9Xr9_d3b2dCDs2Q3mvtHw7MEl9IvJcTeV-fqu03nemVW82m83W6KjZH50MWj3_7Orz_fDw5q4_uLg66xxfXaH726KT3F1f9Prph1mYflP6_Ex3ef_me_-THYVn_c7JRT8-GerWSZ9_-Xr4BX246h0nXzryWnS-mLhzM7v-YWeH5NLG-x-ZOCm6w7Oi3aIfh6NwdoSvLqfjgHdjw7_dHv_bv2Y0NKP25Po7_pjd8On12WB_eimiq25T3H2-7LS6ori3N-dDezr28beraazH-OsPcWWzFmuf3fZl-Cng07uTbx9aIZsyfk7_aTabjXKT6otdOqgulrzasnmrdB3nRc4zPKCsTEovm8eM_-JK610DziPd3kF9bfqDuvPj0uOdo7tKz21_NVhWgUzFtZZxw7NZIT2Qa2MbXsvEM9DMElNk1WXYrEKEk1jEiL2DjkzAqFq_K62IhRX1UyuTvN5xRYnuyOTChU9pitxFaA-UBvBCmVQk8_i0HADVyPzmR5EHvhdCKzsrI9G87pY5lENRaOs9ZrqBVv1FvHrFZGIy2yoydzccikSMnqRXiXRkcpoOMilyGT8SXzGdD4DFyJ9neqRlIlMr9LEZFPmzqT4WW1FcjoD50J_n2DapzYzWMj6Uuc2KgVUmfTbVLdIrxisAeID488SXBtnMpDDDo-FQDuzLzdlJf1pKr4gvAcAhgBmCBWZBPfxj1N1XsBWTZ5Nd4lf0ll2vf5AHlbpPhex_pZiYFKBfj9fHWiTyUOTjZ8bqNfxqQ8pOUPX-eeNuZgORyl6RvSBCP5BZEau6wbz_jx33idSJtL9-2G0tMmVnzzzqJXotoi26fudWzGv5ImX5ouQd-GFM8rVcw9WulrWzShHiLT98HNw1SkbzdMfVe9IuMx7XBqr65npfuyhJvQMXzYujWm_mEvpcueh1I--kBqjWzlSSmxR8cO1aKVyu-w4EuHaaTLQaKJu_A36N_wXUMvglVWILXLyoIbY-5L5n5pd97Q37C1gzbwEzlRm4VIkE3UJbNdFKZrU3iJaYUqxKNUU6kOW2OXUekeJPk8L_d6R2cbor42Ht00Ro0BvIic3kY0afK9N8B5D_kB31t3LA_pMkNiuLdylrhsOxSONaMxuMTQr-UVaC6rHl2Tq_CX2n2IOzeEP9jdu56HevIE9vM9ml-biMQ7UjK7NUaNAqspFJpf01tbFfdlYJyCuxoLtYXJt4VutokymXWZxrYXcayzzFegda-_PfT5Navi39PLOd8WqkzVTmtd5E3coYdKrWa9jUY922ndJmnXeGo2tjbF67VFakoJNJ8RKV8YPw0zXTMsMA5TPYT_HZeECbSQU7SUlta2dS2LHMQMs1fotnz-NT-QD5tMbhLo1FUmhpa5_S2T1oVvVnq4yZ0-I0tVJrNZKlajtovIIXRLuoZCodoeouuFDp6LcG1RcYDPKfUhq_stKvYOVo_drtNjun7QdaazWUYKhFfls7VFOVylIBcFz2PJfClpXxzpUTkYr5yidCa3PnAoDre5W1yc61C6vcbPPlO5lI3RX-KgvTFyzcTKQdz3L7qyv3pJ1_YQGrrJZr3-5FLntyYNK4SjjLT-ih0Lmc5x09bWyZHqynpMtnykX69l8UXqHwBtQi31lgyAbMg1fLBZBuAFbX4ArDNk5m7BqEb4JIvaZRsAFRhc0VJtyAcb69vkfRNszaDiF_A6g88we77f6kKZOdeaa1TWZ9ZvxMGbImQ54pQ9dk6CaZygx70papW5muuVrbpEM1qqwznRSLSWUqk1lp3h5Ii-RaZuVfwPXNwKOpyKvXuDmUBiSa_x-2WOCg_vgf5v8Bn5aROQ==",
-      "maps-early": "eJzVWWtP4zgX_kx_hRVpP4079T0Jglm1pRQYCiyFubxfRm7rth6SuJM4he6vXznpDbYtsMNo9KqS5djP8TmPfXzs4x78-RBHYKrSTJvk0MPvkQdU0jcDnYwOvdub42rg_fmhcnAl7fhy2Mh15Ho-VPYOijqI1FRFh16APGBlOlL202Io-g15oB_JLLuQsTr0OjKV-UClHpBZXyWD5qqrOdZqaKVOPBBLnXRN_07ZdmryyaGHPdCTyUDbQ-_CJMoDE5nYsTJJR343adsMDr0oT2Sqs7Uuncy7Rmlux3d55IGpVvcdM3Da6ufNrvehsrd3cBXJmUq7VlqQWWkPvaaJezpRg6OrrgemMsrVoYcRw-Q9Er7AmHm1zYI3xsro1VLneqiWEpwFeBuwlah0NOuOtYoGSwGBdlrTOrlaWcMxD95jLsIAk3CrPVfjWab7MurIBx3n8Ym2N_JOJcthfBTSbbLHOlXXKtOZXcHFNnDTRIOnYL59lkZjm-hk9GKJ5lia7Am6uhXdkYlsmjXo1nl1yNskVZlKp2q1EBSF2yS6E7UGLAc-qBV7x9VuUqWA7Fs9Vd2J6jt3L8ZxH8CmSq1tJ7rYT6eDYlusbSPXgjyQmIHKDj3mCxgEHGJKOMQ-xZCEmEKKhQ-pYAxyQinkglEoCEVQkCCEgvIQCsYEFL5g0DkKDAI_hCENBAw5xjAMfQwxQtSVhAYQI-5ziHHAQ4gpQiHEDHEfYsawq4cUuTIUEHMkGMScIQ6x8J2U71MOcUARgQRxjiHBDFNICAk4JDQIMCTMRwwSFggOicChgERwQiERPnEtPkOQiEAISALmc0czDCEJQ0ohRSLEkGIUIMecBJDikGJIKQl8SKko6m4EypzllDlelPkcQcpDHkAqOKOQipCFkPphGEIaChZAhkiIIUNUCMgQRwFkmPkEMjccZIyREDImkICMha5XhBhB5mOfQxY47SxgNHBlgCALsR9AFjJMIEcidGUgXBkiBjnFOICc-iGFnGHiQ85ZwCHngoWu9AXkPEQCcoEQhjxgiLiShVAgGgZQYFyUlHMoMPMxFARh3628oFDQ0BdQcERZ4Xh7B7fX50Vlb2ztJNuv1e7v799PpB2boXrQkXrfN3FtIrNMT1U1u9NRVHV-WqvX6_XGqFX_Wj_p1-nt8flfvaMmaXW-3LPg-KT1ufkw_tw-a33FD3d5O77vXXc_Ts8-muhs1vv7bBYk33R0dR51ZuimN7k87ojb7z9uL-0oOL9tn1zfDk6GUePkVnz6cvQJn33tHsef2qon25_MoP191vvbzo7ojR1UL7g8yTvD87zZYBfDUTBrka8307EvOgMjvt0df77t8XSUfL4cpBMWmFFz0vtBLtLvYto771enZ9XwIsWj-0baaHS-th5--G3SCatIn9z0Qh2Szyf_G15MNMlO7k7z62tR9adHeTUNGt9mfw0ve1X1vdoc1evFRNYWM3lQnmdZOa3zr2Kvum3rdqAHtFVxsa3nQerfuML_14Dz0Lp3UFsb_qDmAkcRYlxkcZWuW6Kys6gClchepAaHnk1z5YEsMvbQa5jBDNTT2ORpeQbXy5jkJBZBae-grWIwKvV3lJUDaWXt1Ko4q7VdUaDbKr528VqZPHNHggcKJ3mlTCLjeUBcdoCyZ37hIMgDP3IZaTsrQt-87tQcqaHMI-s9ZbqBVu1VvLr5ZGJS28hTdxgdyViOnqVXirRVfJr0UyUzNXgivmI67wCLnt_PtBWpWCVWRsemn2cvpvpUbEVx2QPmXb-fY9MkNjVRpAZHKrNp3rfaJC-mukV6xXgFAI8Qv5_40iHrqZJm2BoOVd--3p2d9OVSekV8CQAOAcwQLDC_n7q7dls5eTHZJX5Fb9n09mwOSnOfC9mflZyYBOCfj9fHkYzVkczGL4zVa_jVhBSNoGz9_StcT_syUd08fUWEfiSzIlY2g3n7b1vuExXFyv78YjcjmWo7e-FSL9FrEW3R9CunYl7LFjnSJ63uwd_GxF8KHa72dVk7Lw2h3vLi4-Duo2A0z69cvavsMsVy30CXd64PleuC1D64rl-3Kt2Ze0fItIte39W9igCuNFMdZyYBZ-67UggXeveBTyqn8STSfW2zfYAq4g-gl8EvLjNp4OJFBfP1LnefmR_2lXf8D2DN_AuYqUrBjY4V6OSR1ZNIq7TyDrMCU4iVua1M-qqYNmfOE1LieVLk_47ULk73RTysXE5kBLp9NbGpesror9I19wFGj9kxtJUDQc-S2Gws2WWsGQ7HMhlU6ml_bBLwUVsFytedF9v8LkDOsEdr8Y6hjdO5aHfPLs9PM91l-biIQ5WWVWkiI9DI05FJlP05swkqGssE5I1YsF0semYwq7Qjk2qXWVxF0u50lnmKtQ8a1fnvP5NaPmb9d2Y749UoMlOVVboTfacGoF1-vYVPPbVt2ypttnlnOOoZY7PKjbYyAe1UydeYTB6Fn46ZFhkGKN7d_hOfjQu0mZS_k5SKbOVcSTtWKWi4j1-ys-fxqXjxfN7iYJfFMs4jZSuXyewB1Mv6i00m3FlxmlgVRXqkCtN20HiDXRDuopLqZITLs-BaJ6NfGlRf4TAYPWc0eWOj38DL8fqx26m3T5uPrI70UIFhJLO7ypGe6kQVBoDjouWlFLZoJjs1xzKRc82L48g90L-NarpTdW61G22uvZ3KxJ3gb6KYvUJxPVZ2PMvsz2ruKju_YAGrbaTWru55prqqb5JBmW8WN-ihjDI1Tzu6kbFFdrCekS5fKRfZ279RZIUiG1CLdGeBoRswjx4tF0C2AViegisM3ziYsWsQsQmiojWL_A2IMmquMMEGjNva63MUbsOszRBGG0DFmj-abfenUJHrzBOtbTLrI5MXytA1GfpCGbYmwzbJlG7YVbbI3IpszdWaJhnqUemdySRfDKoSFc8K9_ZAksc9la79B_gvYGsqs_Ixbg4ViITz_98WCg5qT__X_gcg8Kv_",
-      "maps-red": "eJzVWm1T27gW_kx-hcYzO3d3KoreLXegd5IQArtkoQnQsl86IlYSg2ynthxIf_0d2XmDTQLstnPbyYxGlp4jnefo6Eg-zv5_H2IDJjrLozQ58PBb5AGd9NMwSoYH3uXF0a70_vu-tn-u7Ohs0Cgi43re13b2yzoweqLNgRcgD1iVDbW9mg9FPyMP9I3K8z9VrA-8jspUEerMAyrv6yRsLruao0gPrIoSD8QqSnpp_07bdpYW4wMPe-BGJWFkD7w_00R7YKwSO9Jp0lG3adZOwwPPFInKonylK0pmXcOssKO7wnhgEun7Thq62eqnzZ73vrazs39u1FRnPassyK2yB14zjW-iRIeH5z0PTJQp9IFHfEyCt4wGkvrc21sveJFaZV4tdRoN9ELCZ4huArYSnQ2nvVGkTbgUIFu1aR2fL7XBgvlvGSacS5-yTXLno2ke9ZXpqIcoLuLjyF6oO50shgmo3MjlKMp0V-dRbpcKik3gZmrCp-AtVhqObBIlwxdLNEcqzZ-gN9q2oxLVTFeQaBvyMsl0rrOJXq4D8zeO3RvrFWA18P5euXVc7SLTGqi-jSa6N9Z95-3lOO4B2Ezrld1E59vpJCx3xcouci3IA0ka6typI6CUHGJEMcSUcIh9iiEJMIUUCx9SwRhkWDLIaOBDTiiFXDAKuc8oFIQiKIgMoKA8gIIxAYUvGBSBxNAPqIRS-gEMqBQw4BjDIPAxxKicDhEqIUbc5xBjRhDEWPIAYopQADFD3IeYMezqAUWuDATEHAkGMWeIQyx8J-v71JWSYIglRQQSxDmGBFOKIMEMU0gIkRwSKiWGhFHCIGE-cqUUHBKBAwGJ4IRCInziWnyGIBFSCEgk87kzSRBAEgSUQooYDSBFIsCQYiSRsxWRkGLpc0hxQDGklEgfUirKuhuNUp9zSJljR5mzAGVCuNLnCFIecAmp4IxCKgIWQOoHQQBpIJiEDJEAQ4aoEJAhjiRkmPkEMjc0ZIyRADImkICMBa5XBBhB5mOfQyadJkxSQSCTjEpXSgRZgH0JWcAwgRyJwJVSuDJADHKKsYSc-gGFnGHiQ86Z5JBzwQJX-gJyHiABuUAIQy6Jw0uGiCtZAAWigYQC47KknEOBmY-hIAj7znUEhYIGvoCCI8pKb97Zv-yelpWdkbXj_N3e3v39_duxsqN0oB8io9_203hvrPI8mujd_C4yZtc5_169Xq83hq36zf1xv04vW437S9vIO6fXHx4Gh7f3Hz42WvbouPWx-fDXpH10fX3Xvf3U7jF107BHx_cnUTbtffm914_ltD_5_TMbX0yn_VPTmaKLm_HZUUdc3n65PLNDeXrZPu5ehkfJZbh72QovLs2ZubrHYe9Ktq57R_FVW9-o9lUatm-nN1_t9JBe2LAIKaMm1exBDunUHw714Sd23hkGRYtcX0xG5OPxJH0gt9nuh6u_upO4aIbXnBTJ7TSq_2GK7JoU51-C3H4VMvG_fplcqOC6U1f3Hy7ajY4qHuzt-cCejBD5fD0JzYh8-qqubdZgJLs7KbpdsetPDovdTDY-Tz8Mzm529e1uc1ivlwbfm1t8vzpL88r8s6cyULiY4ba6ByKr4zKmzMLp33HlXloBis1An_AVoL8R6PbfClBuApabbQUYbAKW_rwEklkQ39nfWzHB_p6LrGUMdqHXVXrO3arOsgp0om6MDg88mxXaA7lJ7YHXSMMpqGdxWmTVHaVeBW0nMY_aO_ttHYNhNX9HWxUqq_ZOrI7zvbYrSnRbx113num0yN2R6YHS4V8pk6h4dmIsOkDVM7uQEeSBL4UykZ0-enDzHOqBKoz1nlJdw2vvVcR6xXicZrZRZO60PlSxGj7LrxJp6_gk6Wda5Tp8Ir6kOusA854fgGrL6FgnVpmjtF_kL-b6VGzJcdEDZl0_AMlmmtgsNUaHhzq3WdG3UZq8mOsG6SXlJQA8QvwAzBc-Wc-0SgetwUD37es92kmfLaSXzBcA4BAgHYA55gfg7t5NrBq_mO0Cv-S3aPoOdPYrfZ8L3B-1GqcJwP8-ah8ZFetDlY9eGLFX8EuLlI2gav0B1rie9VWie0X2ijj9SGbJrGoGs_b_34IfaxNr---Xu2lUFtnpCxd7gV4Ja_Om72qLWS2fv01eRfoefE3T-FP5Suhq14vaaaUJ9RY3IAd3DyWl2Zuoq_e0XbyMumcQVRfE97Vuyeod6Na7rVpv6hIueeRC2K2-1wbgWjOL4jxNwO_uuVYKl_O-A5LUTuKxifqRzd8BVBO_gGgRAeMq5QBczKhhvtrlLjazQ7_2hv8CbDp7AulEZ-AiijXoFMZGYxPprPYGsxJTilVJAJX0dWk2p84TUuJ5UuSnI-U_T4r-dKTk86TYT0cqeJ4U_9lIEfQ8KfGzkcLbON2X14za2VgZ0Ovrsc30U0YfqnD_DhD0mB1DGzkQ9CyJDSuwTdl0MBipJKzVs_4oTcAfkdWgSi2_WOc3EjnFHq3FG4bWmnPe7nK-z5uZbtN8VB7utWaafCl0lmb_yUF13r9QcVLrREmUJjkYqYkGvxK6S_hvm73r0cq47K_TX2cT5d5Q3GU96kc66U_d1b06h9dbhqCysUogfCNDsW2GuknDae1UD52a50bZrd44S5C8A43dxe-x1X7FwS5BjwylyzcVR_xsMNBZlAzz2ptfMd7F5LeShTIGLN9ml3ReZaJF6v-f22nrpWVo0onOa-eZ7hdZnmagrYrEGm3zV3tUqJVZ51HzvSx_Af2R09Op7q7Tmc5z0BtrY5aYzbvqKdlNTrTeCFsvOTdpavNaw4VjmyYaXGRahS83gHy0SdJJueSg_PLxZAc5QqCrhzrRWbWFMueahG8Z4Z_YZK3XrDfM1ovSjTa2dqqVHekMNNzDd4mPsyhffrR6XuOttyAVF0bb2lkyfQD1qv5ilQl3WpwkVhsTDXWp2hYa32Brbr37uJCCqxO1GyXD73o0vcJh8Na7jVOafGOlv4GX49XLS6fePmk-0tq4fTkwKr-rHUaTKNHVTj0qW15KYcPMZOvMsTtTq5lbVmeJMtUx-02mplunLmzkRpvN3s5U4u5B32Ri9oqJ67G2o2lu_-3MPW1n11RgI2v0SlKhyHVP99MkrJJh5bv9QJlczzIiPZPaMnGxmi5bfHGZZ5b-jiIrn1vWoOaZmDmGrsE8-q4yB7I1wHZ5UC8xfO1gqV2BiHUQbVY08tcgqqi5xMg1GLe1V20UbMKsWAijNaByzR9Z233YL7MwsxTQJpnVkckLZeiKDH2hDFuRYetkKjfsaVvmlMo8kqs102QQDSvvTMbFfFCd6HhaurcHkiK-0dmBJ-f_nvgbsDVRefWxYAb1pZj_h2I-wf7e078m_Q8kgXeD",
-      "pinnacle": "eJzVWttu2zgTvq6fghCwwC7KNOJRZBF34ZzsdOMmjZOm7U3B2LTNlJJciXLiffoflHxKajvObhd_CwMERX5DzjfkDKmR9_68jy0Y6yw3aVIP0KswADrppj2TDOrB1eXxjgj-fFPbO1dueNbfL4z1PW9qL_bKOrB6rG09kDwATmUD7T7MhiJfwgB0rcrzdyrW9aCtMlX0dBYAlXd10jtYdB0Mje47ZZIAxMoknbT7VbtmlhajeoACcKOSnnH14F2a6ACMVOKGOk3a6jbNmmmvHtgiUZnJl7pMMu0aZIUbfi1sAMZG37XTnp-tcXrQCd7UXrzYO7dqorOOUw7kTrl6cJDGNybRvcPzTgDGyha6HlDOqHjFiZSSC46D3dWil6lT9h_InZq-nssIKdYCjxKdDSadodG2NxdASG5U6Kh1PscSHFH6KqKYccLFWrnz4SQ3XWXb6t7ERdwy7lJ91cnSlISIdcLHJtMXOje5m-Mjvg58kNreYzBbb6fB0CUmGWwtcTBUab41uq0SdZAuQcNNyKsk07nOxnqxFDyk6yQ6I70ErAbe2y09yNcuM62B6joz1p2R7vpNX47jH4DLtF5yKjLzqpNe6RxLzuRbwgAkaU_n9YBGHArBIAoJgohgBlFEEMQSEUgQjyDhlEKKBIWUyAgyTAhknBLIIkogxySEHAsJOWEScko55BGnkEuBYCSJgEJEEkoiOJQMIShlhCAKy-lCTAREIYsYRIjiECIkmIQISUwhImEoISLMt9CQRRBRinxdkrAsuS8lh4iFnELEaMgg4pEfLYqILwVGEAkSYohDxhDEiJAQYkQRgRhJJiDGWDCIiRAIYkowhZhGoS8FZxBzJDnEnGECMY-wb4loCDEXnEMc4ZBALGjEvMGkhFhKQiAJKZGQhFwiSFAoQkgQ5djbEwtIkIgYJEgSBAnBIoKE8LLuRyYkYgwS6rkT6q1EKOe-jFgICfM6E84ogYRLKiGJpJSQSE4FpCGWCNKQcA5pyEIBKaIRhtQPDWm1iJRiCSnlIYeUSo_hEoWQRihikAqvDxWEY0gFJcKXIoRUokhAKinCkIVc-lJwX8qQQkYQEpCRSBLIKMIRZIwKBhnjVPoy4pAxGXLIeBgiyAT2eEFD7EsqIQ-JFJAjVJaEMcgRjRDkSIQUchyiyG81TiAnMuKQs5DQcve_2Lu6OC0rL4bOjfLXu7t3d3evRsoN076-N1a_6qbx7kjluRnrnfyrsXbHO8tuo9Fo7A-OGr27VrdBro72767cft4-_fT-vn94e_f-ev_IHbeOrg_uP4-bx58-fb24_djsUHWz745bdycmm3S-ve10YzHpjt9-oaPLyaR7atuFPTy9eHfexfxyeHlmT_j14berMzcQp1fN1sVV7zi56u1cHfUur-yZ_dD9_PHwA3r78e5ieHL9-eozc-nn62Gozt9-e49F1B3IMPp4k_R23jHVymJN78WATKLBQB9-pOftgSyO8KfL8RBft8bpPb7Ndt5_-HwxjouD3ieGi-R2Yhp_2SJ7a9ytojsZnpDzbNIfn32T7zI0uNvP9vfbn47uv0VN3JY7oWld3kgj8XXrc__dyOC8dauK94Ydt7KoEGcRH9-1vhzn4mvr7_hLkn4ZpI1Go14vF2J3thJ71dGcV8syfSoDjo89PmQEwDgdl7FpGmm_x5W-twTk64ERZkvAaC3Qe-oSUKwDlg65BJTrgOVuXwDx9DB4sbe7ZIK9XR-hy1juQ7ivdPw2rDrLKtCJurG6Vw9cVugA5DZ19WA_7U1AI4vTIquuPI0q-HuJWfR_sdfUMRhU87e1Uz3l1O6J03G-2_RFiW7q-MIfjDotcn_2BqB0hGfKJCqenjzzDlD1TO93GAXgW6GscZPSGLMHP8-h7qvCuuAx1RW8dp9FrFOMRmnm9ovMH_uHKlaDJ_lVIk0dnyTdTKtc9x6JL6hOO8Cs5yegemR1rBOn7HHaLfKtuT4WW3Cc94Bp109A8iBNXJZaq3uHOndZ0XUmTbbmukZ6QXkBAA8QPwHz-Z5sZFql_aN-X3fd83e0lz6bSy-YzwHAI0DaBzPMT8Ddv-Y4Ndqa7Ry_4Ddv-g_o7FX6PhW4r7UapQlA_z5qH1sV60OVD7eM2Ev4hUXKRlC1_gRr3Mi6KtGdIntGnH4gs2BWNYNp-_9vwVvaxtr9--U-sCozbrLlYs_RS2Ft1vSf2mJay2dvpR-MvgN_p2n8sXy19LVP89pppQkJ5jcgD_cPJaXpG62vd7Sbv9T6Z2CqC-Kb2kXJ6jW4aFwc1ToTn7_JjQ9ht_pOW4BqB5mJ8zQBb_1zrRQu530NBK-dxCNrusblr0FYi34DZh4B4yp5AXzMqCG-3OUvNtNDv_aS_wZcOn0C6Vhn4NLEGrQL68zIGp3VXiJWYkqxKpugkq4uzebVeUSKP00K_3KkoqdJkV-OlHiaFP3lSMmnSbFfjRQOnybFfzVSaBOnu_KaUfuQmh7odPXIZfoxo_dVuH8NcPiQHQvXcsDsSRJrVmCTsmm_P1RJr9bIusM0AX8Zp0GVpd5aZ_5A5yrRPRvjJQpDr_WDhXpJKyo-g_y0rckm9YflCV9rGpW4vEzcgurQ31J7XGubxKRJDoZqrMHvWOxg-cf6LYaXu3wq2euvs7Hyryn-xm66Rifdib-_V4fxGhOQqrFKI8wt8nj3Pc9SdJOlbtLepHaRTpQF51a5jVtymiV5DfZ35r-HVvsdkx1MHxhKl68rnvhZv68zkwzy2svfEdtB_I-ShLIWLF5pF2yeZ6L5l4R_bqeNV5eBTcc6r53qsVFuqBLQVEXirHb5s7dUTyu7akvNPBqFv4Hu0Cvqdfe36kznOeiMtLVLoO0daN02Wm2GjZedmzR1D6yQaeXtsq0N0IOg0E7H5bqD8lvKIzfylMCFHuhEZ5UfZX5_kk0j_COzrNw6q22z8c50o62rnWrlhjoD-_5h21C5Ue3vnN9bwNPxX8KeVnnjjUjFhdWudpZM7kGjqm-tMy1VPkmcttYMdKnaJh6rPfR5ZDbehHxsQbWzkY8iJhn8R9b_gWzQxjuQp4N_NJ1n-cBz6Sxff9qN5snBAz7W-3Pfqvxr7dCMTaIrDz8uW7Ylt2ZmvHHm2B_I1cxHTmeJstUZ_UOmJhunLpzxo01nb2Yq8TepHzIxfcbEjVi74SR3_3bmjnbTiy5wxlm9lJYoct3R3TTpVem0MjvQVzbX05xKx6auTH0sJ9zm32xmuanvUXjpg80K1CyXM8OQFZgHX2ZmQLoC2CwP-QWGrRwsdUsQvgqi7ZJG0QpEFWsXGLEC451-2UZyHWbJQihcASrX_IG1_V8MyjzONIm0TmZ5ZLylDFmSIVvK0CUZukqm2oYd7cqsVJmJ8rWDNOmbQbU7k1ExG1QnOp6U2zsASRHf6KweiNn_OL4DHo1VXn1umEERnv2bYzbB3u7j_0r9D6UHnVc="
+      "until-12": "eJzFWG1z4jYQ_hz_Co1m7lNJwC8QyMB1iJNw6YRLDufu2k8dxV6wGllyJRlCf31HsgHnCoS7pO0Xz0p6dvfZ1dvK_Z-fMobmIBUVfIDdkxZGwGORUD4b4M_3V8dd_PN7p39HdHo7PS8oMyPvnaO-lRGDObABdj2MNJEz0F9WpvzfWxjFjCj1kWQwwGMiSZGAxIioGHgSbobClMJUE8oxygjlkYgfQY-kKPIBdjF6IDyheoA_Cg4Y5YTrFAQfkz-EHIlkgFnBiaSqNkR5NTSThU4fC4bRnMJiLBLjbXgTRvi9c3TUv2NkCTLSRCOliR7gUGQPlENycRdhNCesgAH2uied3qkbeN32qRv4uLld9V5own5A74ZOYa0TBO1duEsOcraMUgosWeNbe9lcfrhbI_1e66TV8v3A9Xtdr7tL7y5dKhoTNiZPNCuyD1Tfk0fgazPtjrtL9YpKmICiSq_Rx52dBEPBkm_RwU5aN3SWak757HCVMCVCHc5nTDgJRQ3b24f8zCUokHPYTEU32KUQ5VDDuSfrNWG-VqnftLvJSPcSAJFY0zlEOcRmA1irpoG0BKhtMH-1w64Tu1FqG8v0tDDiIgE1wJ1e12302q7b8Pxu1214wWkraHidtuc3fLfjdRt-px34jSDotDqN4NQ9bTeCXuB6jXar1woa7W4Q9CyPo_7nyY0VjlKtc3XWbC4Wi5Oc6FRM4YkyOIlF1syJUnQOx-qRMnZsaDeHw-HwfHY5DFN99UuUJNFXeIBgeTvvBMeLT_cj73YyGQ6HA-ukWXnpN03cNkMmMUaIjElV5sSICDh5YJAMsJYFYKSY0AN8LpIlGspMFLI8VIZlSo3GKqdH_RFkaAaZSdYYNEmIJs1rDZlqjszHokeQTQRjlM_GZJYRjGxML6lY7K18wIiTrJrJygyq7FRHZxujPwvCqF7aGatkY_8CpqRgGn8b4ZZwmt8VT1TkuZB6mCSQmF17QTIyg5ciK5VGkP1DbxOiHUJmDK0GqzC9_y9MGRMOUSG_J8S6Ti08242q_jefwH5J_aW1_RVILjhyX7-wrxjJ4IKo9MBVXcNvkmI7Udm7Kgf--8m-5EkhKZ-FcnlgMM80NuGsupHtf_OADpzjD8Ay0K-f4ZARSfWhKVmjN-lYd_2Lmagktbr_vlBYoL-EyH61Poz021q6KXn4eH0rGLhp2ICqu9PIEej19WnaiCZle2JDOkPj4eg6dKKlqRoVVZCghd1azoWkU70QIkFRDLmW4Fh96_oMuZ7zqQz7DLWc6yxnNKZamYbbfocojyUQ9fwctPEaI8_ZeHvZpHYROKHggMoFcSiPn7w20gJlZRWHTI25g4G_l8GDSJZOmILSOSN6XxrKol2dofPj8-PzH2UT7GUzY2IOyrkzVBI0IgXXDLR6-6S0X0iK0MqJNABDIwnEcHoFhedrZizmkAHXyFaNO_h19vMDpp0bIDoFic5N480TdLqXAMkKBtq55csnNCzlQxm43jtDYV3vo7KCJzzeRaW7l4o5yV3nNicMTSifvX0mei-6937AfZUG80h6OQNuay8HMZ2mhCfORGizbSai4Akq35Fvnw53__nK6BTQlBH16IwhoZUtdGV7DiSzw_H-ozQjnFSOo4wwhswr7k387j9AC02Nscr1p4LGj4qyOchX-o5AV9cZ0lQzqF2_hYIIYsGTsk60t-CUMAVV5RAxoe0FX68kqS5riXXZVUOtapEVxtuCefbeWgH9LcCRPcM3mGCrMaFrkPY2CLAao84WRHnwbDCnWzBmT9aj7-7CeBtMbwumymMN5ba2wOyUP8u2ebTbeqUqlnbp1C17B-r4NR1_m065pCLQtpKy1ZORQsGndFauNJ4XK6PAIVvalYoRL7IHkNZuczvwck7MX4oN1Pd7W7CFAltvm9MtTM0PRIXN_cqA8GdU60piDlLSZIvm2ln1V2UVSr_57f_LvwGUQZyx",
+      "until-28": "eJzFWW1z4jgS_hz_CpWr7tM6we_YKZgtQhKSuzDJxpnZ3ftyJewGa0aWGFkmw_76K8kGnBQQdsPuJFWU3Hq69bRaLbfk3s_fC4oWIErCWd90zmwTAUt5Rtisb356uj6NzJ8_GL0HLPP76UVFqOr5YJz0dBtRWADtm25kIonFDOTnlSnvf7aJUorL8iMuoG-OscBVBsJEuEyBZcNN1zAnMJWYMBMVmLCEp19BjgSv5n3TMdEEs4zIvvmRMzDRHDOZA2dj_IWLEc_6Jq0YFqRsdRHWdM1EJfOvFTXRgsDzmGdqtMHdMDE_GCcnvQeKlyASiSUqJZZ9c8iLCWGQXT4kJlpgWkHf9N3ozLc9246i0Ol6Zme76hOXmP4FvTsyhbWO48buLuAVAzFbJjkBmm0U_L18rm4e2rajs67bDbrdKPacXXoP-bIkKaZj_J0UVXFD5BP-CmxjJo66u3SviYBHKEkp1_BTP96FHnKavUa7O23fkVkuGWGzw1WGOebla3ho74KPMcND3sK6O4OmoJ-YgBLEAlrRsHc6m8yhDTwLW3-1A72OTinVehIACKeSLCCZQ6qyQFtVD0gKgFaWeas0u810trSyS0lsEzGeQdk33djxLM8Ju1bo-6EVxpFjxYHjWE7g24Hl2kHgWK7rRoHlelHkWK7ftX3LDQPXszw7jB3Lc-zIVjbcyPLCwPcs3_O6vuX7vhtbvh_aoeX7sR1ZftfpBpYfO93I8mPfca3AjkL1G9u-FXiOE1mB1409KwhCP7aCyPdjK3ScOLJC1ws97fBJ79PjnW6c5FLOy_NO5_n5-WyOZc6n8J1QOEt50ZnjsiQLOC2_EkpP1fx0BoPB4GJ2NbgZyPzyOvrvXS6v_52k0d3ni5vPz06W_AqT7PRjgG-q8RdxOp98cz-KL-FiMh7g51-eRqKc_P6H101uM5oH1zeLy8X9ZDAY9DWpTsOq11EB0aFTEVONRFEo62CpJgKGJxSyvilFBSYqKZd984JnSzQQBa9EveUN6lgrjVWwT3ojKNAMChXFMUicYYk7txKKsjNSPxo9gkIl3ZPAcxNp_w-HM1w0y0vJUC1sNvTARN8qTIlc6iXUtJXtS5jiikrztWdb3Oj8KT-Saj7nQl5RKIBJTK95WpVvOVXrjKB4rbZxbt2Dmq7GRe_HuTidkhSny8OdWyu03FrLGn_CH-bPkLMUmBRYQnY1nUIqD_Zsm-rGx3YvWnUfPXy92p-3kvZXwHPOkHOEjKW4gEtc5oem7AbfylklRLX0hyftQKSYQVKJGRwc-hc6G79qMWrkjWfxP-_ZFcsqQdhsKN7M020arURtxEjLjx6qA1fvDdAC5PvX7hhTWHAKLH0z0o3GJS7wDO4XIJ5IAYNK4PbsvLC3Ok3805MzonwB5XESu8ATouj-idzeqLxM7438b5yYplWu6s7PBJ7RH5wXv-kxVOv3detutfeuix4FVw_ataZmVe0E5LpsVc-IZPXzIxZELs_ReDC6HRrJUh3ZSlJChp71BmtcCjKVz5xnKElhLgUYWl8PfY78wPildvsc2cZtMackJbJUD579L0RYKgAra7qmqdeeEbc7hriUSJfjeh6U8Zcs3b0sc51IxiPgBQhUp9WhDH8KbSQ5KuqjFVJHP-Mnx9XCuhzcQcnbS2nCs6WRVAw9UCz3TVd9si7P0cWp_j8SO38vu5lOLmNUYaHuDtAIV0xSkOV7Zm07keCNaeKyNAZMkm8VoJFQEXwXCffFghvzhS40966tcD9DoNK4AyxzEOhCPRx9irp7CeCioiCNe7b8jgZ1--gMor0M1JvSMe7nmKJHwmbvyiy1IUiO1jcHqL4LwCzdxS1-k5v7F7g1PNR9x9sUHHsvBz6d5phlxh1hGTD0HyIB1XdCx4-Us3-_pmQKaEpx-dUYEcykNoWuteBALjvG3b8DF5jh1bgCsASB1H3MUUbev9FWUr-Pm8GTis7zShxl3P1b6MtxRwIzFfb3jZuAbN7JSBJJoVVDVCUkkHKW1Uce_SqfYlpCUw0llEtdqrQPRUTW9dG6zm6hVsXnCuNuwby4E1kBvS3AVbG2wvhbjXHZggTbIEBbjMItiHoD3GC6WzBqH2h7H-3CuBtMvAXTzGML5dhbYDrkL2Zb3fjpoqup-HbptC27B-p4LR3vQB2_peNv06mXYQJSl5C6bFStIWdTMqtXJ5tXK6PAoFjq1W0iVhUTEPpjQ2c78GqB1bXoBhrF4RZsVYI-lKldeJirzxalqaoDCpi9oNpW4gsQgmRbNFeDec017sqVXuf1V5P_A60LDg8=",
+      "until-68": "eJzVWl1T2zgXvm5-hcYze1XRWJ-2O6Q7SYBAl7SUkO5y1VFiJRHIctaWA9lf_47sBAwbQmjZYd52RiNLz9E5j6RzpKOw__ttosFCZrlKTctDH3wPSDNOY2WmLW94cbQXer9_auyfCTv7OukUSrueT413-2UdaLmQuuXx0ANWZFNpv6-HIj98D4y1yPMvIpEtry8yUcQy84DIx9LE3fuu7kzJiRXKeCARygzS8bW0vSwt5i0PeWAkTKxsy_uSGumBuTB2JlPTF1dp1kvjlqcLIzKV17qUWXVNs8LOrgvtgYWSN_00dtrap92B96nx7t3-mRZLmQ2ssCC3wra8bpqMlJHxwdnAAwuhC9nyiE9o8MEPaYgIw6HX3Cx6kVqhf0LuVE3knQxlmD4FPDQymy4HMyV1fCfA-FZ7Do_P7qCIck4_4IhRjv3gSbmz2TJXY6H74lYlRXKs7IW4luZumABT8pTskcrkucxVbu_hTyrqpjp-DGZPz9J0Zo0y050lujOR5o_Qe0-i-8KIblqDcrwNOjSZzGW2kPcrgdmT0zKYyxoQfeC1f0EptN8s3cnVLjIpgRhbtZCDuRw7DyhHdR_AZlLWPIysXewkLj2l5lmuxfeASWOZtzwacIgIZhBHiECCeAAJpxQyTAhknBLIMfEhJyyCnFIOecAp5FGIYMQQgsj3iSsxCSHyWcAgQiGLIKIR8V0ZcYiYzylEjPoMIh44TBAQBlFIfAyxzxiCGFFEIMY4ZBCTMEQQ08CnENOQM4g5ijjEnGECMQ-cuTygPsQ85BzikAYlgSiCOIoIgcTnEYIE-aHvOOEQEhQRBAnBYQAJ4WXdjUCo70eudC00YD4kLGIhJJxRAgmPaARJEEURpD7zQ0gRDTCkThhSSnEEKeU-h5RGrpdHyIc0QAGDNKQkdGXoQxqhIIQ0oghD5vPIlSF3ZeRTyAhCIWQkiAhkFOEAMkZDBhnjNHJlwCFjkc8h476PIAupj11JI8gRikLIEWEMckQDBDn2UeBWjRPISRRwyJlPaLlX3u0Pz0_LyruZtfP8Y7N5c3PzYS7sLJ3IW6Xlh3GaNOciz9VC7uXXSus9t7Wa7Xa73ZketofT43Fn4J9efrudHFzdDMfnl6e9o8tLdHtd9JKb0flgaD4vQ_ND6bNT3efDq7-HX-00PB32js-H8fFEd46H_PtfB9_R58vBUfK9J0ei9z2Ne1fL0T92eUAubLz3hYnjoj85Lbod-mUyDZeH-PJiMQt4P075j-ujP4cjRsN02p2P_sZfsiu-GJ2O9xYXIrrst8XNt4tepy-KW3t1NrEnMx__uFzEeob_-kdc2qzDuqfXQxl-Dfji5vjH507IFoyf0T_a7XarnKTmepb2qxMnr6Zs9VW6jvMi5xkeUFYmpZet4tm_ceXurQGDFXC_WRt-v-n8uPR45-iuMnDTX3WWVSCNGGkZtzybFdIDuU5ty-uk8RK0syQtsuqUbFchwkmsY8S7_Z5MwLTS35dWxMKK5omVSd7suaJE92Ti4vRFJuYeKNd-d7gRySoquTZQNa7uACjywN-F0Mouy9CzqrvBD-REFNp6j6lt4NF8EZFBMZ-nme0UmTsbDkQipvI5UpVITyYnZpxJkcv4kfg9yVUHWPe8PdNDLRNprNBH6bjId6b6WOye4l0PWHW9PcfBjZrY9mSi1diq1OxM8lzMVXwgx2JZJ1iOBurDvT3DbmrG0thMWBkfTiZybHcmuUn0nmy9F6y7X5_vfkXouZj1pxTz1AD0CgFLi0QeiHy2a8S6x9dClmsEVevb74F2NhZGDorsBRHrgcw9saoZrNrfkNqhiYtMmWk3W-64UA8kalFp1QzK9jfbwMdSJ9L--vbtCy0XqZZm_OxarySqE-frQmYXKpHtIhP16Xkw3pvNTk-nC5m_jnMnYqScuS_w73uRhy5-3_5fzsyqlq9Ttu9K3oB_0jT5q9Thapd3tdPKEOLdXfwc3H2U3FbpnqsPpL3L-Nw3UNWd81PjXGTKLj-C8_b5YWOwdC8ducplDK7kjdQANbqZSvLUgM_uu1EKl3o_ggA3TpK5VmNl84_Ab_DfgFrffUBS5fnAvUM0EKt3lXe8aic23rPfgE1XXyBdyAy4nQn6hbZqrpXMGu8RLTGlWJV5CzOW5bQ5cx6RCp4nhf_vSG3jdFMeh42vc6HBYCznNpOPGX2rtuZHgPyH7Kj_JAfsP0tis7F4m7HpZDITJm60s_EsNeAPZSWo3p52tvl96DvDHqzFe-pvnM51u3sUen6ayTbLZ2XQbhxamRmhQafIpqmR9tfMxn7ZWCVgr8SCbmMxSuNlo6fTTKVFDs60sFs3yyrF_Ag6e6v_P03q7qnt55mxbcym5bHRGMzVtYxBdYi8yp56bNtTq7TZ5q0xdpSmNm9cKCsM6GVSvMRk_CD89NNFmXCB8lHwp_hsXKDNpLbG2JHUtnEqhZ3JDHTcx3_i2av4VL7HPm9xuM1ikRRa2sZXs7wF7aq-s8mYOStOjJVaq6ksTdtC4xW8INpGxd1uUXUWnCsz_U-D6gs2DPKfMxq_stGvsMtR_djtt3sn3QdWazWRYKJFft04UAtlZGkAOCpbdqXwhGa8VXNhy5voSvmg0PNZkb2OYvICxb1MGHd-v4pi-gLFHZELbV9HL3uB3nYi7WyZ_7LmgbSrax2wympZSxiKXA7kODVx9chR3tsnQudylfsMdGrLxKT-DHL3NrzOq_-NwvcovAG1zkjXGLIB8-CpeA2kG4DrBG6NYRsHS20NwjdBpK5ZFGxAVLH6HhNuwLiAUp-j6ClMbYaQvwFUrvmD2Xa_jJUZ1iq9e0qmPjLeUYbUZMiOMrQmQ3eUYTUZtkmm2roDacscs8wrXa2bmomaVjvazIv1oNLIZFm6hAdMkYxkVv6I39wMPFyIvHw6XUNpQKIN4CKX5cuNi9Xdmft7gNxzdycthXlga13IZSyZijdIrrWR1W-kay77zcd_jvA_iBlCvw==",
+      "maps-early": "eJzVWl1T2zgXvm5-hcYze1Wl0bftDnQnCSFACbAE2u1701FiJVGR7dSWA9lfvyM7AcMmfHTZYd52RiNLz5HOI51zpKOw8_tNbMBCZblOk10Pf0AeUMk4jXQy3fUuL_abgff7p8bOmbSz00mn0Mb1fGq82ynrwKiFMrtegDxgZTZV9st6KPodeWBsZJ6fyFjtegOZySJSmQdkPlZJ1L3r6s60mlipEw_EUifDdHylbD9Li_muhz0wkkmk7a53kibKA3OZ2JlKk4H8kWb9NNr1TJHITOe1Lp2suqZZYWdXhfHAQqvrQRq52drH3aH3qfHu3c6ZkUuVDa20ILfS7nrdNB7pREV7Z0MPLKQp1K7HkI_4B0qx7yNEQq-1WfQitdL8gtyxnqhbGc4CvA3YS1Q2XQ5nWpnoVkCgR_XpHZzdQrHvM_qBYIqxH1K-Te5stsz1WJqBvNFxER9oeyGvVHI7TMBQsE12X2fqXOU6t7dwX2wDd1MTPQRv1epYT2c20cn02RLdmUzzB-jmVvRAJrKb1qBiq94OeplkKlfZQt3tBAnZNonhXNWA-IOo_fNLoZ1W6U6udpEpBeTY6oUaztXYeUA5qvsANlOq5mF07WKHUekpNc9yLcgDSRqpfNdjvoBBwCGmhEPsUwxJiCmkWPiQCsYgJ5RCLhiFglAEBQlCKCgPoWBMQOELBkUYYBgEfghDGggYcoxhGPoYYoSoKwkNIEbc5xDjgIcQU4RCiBniPsSMYVcPKXJlKCDmSDCIOUMcYuE7Kd-nHOKAIgIJ4hxDghmmkBAScEhoEGBImI8YJCwQHBKBQwGJ4IRCInziWnyGIBGBEJAEzOeOZhhCEoaUQopEiCHFKECOOQkgxSHFkFIS-JBSUdbdCJQ5zSlzvCjzOYKUhzyAVHBGIRUhCyH1wzCENBQsgAyREEOGqBCQIY4CyDDzCWRuOMgYIyFkTCABGQtdrwgxgszHPocscLOzgNHAlQGCLMR-AFnIMIEcidCVgXBliBjkFOMAcuqHFHKGiQ85ZwGHnAsWutIXkPMQCcgFQhjygCHiShZCgWgYQIFxWVLOocDMx1AQhH2384JCQUNfQMERZaXhvdu5PD8uK-9m1s7zj63W9fX1h7m0s3SibrRRH8Zp3JrLPNcL1cyvtDFNZ6etdrvd7kx77W_tg3GbXu4f_zHa65Le4M9rFuwf9L52b2Zf-0e9b_jmqujH16Pz4efF0efUHC1Hfx0tg-S7NmfHZrBEF6P56f5AXP74eXlqp8HxZf_g_DI6mJjOwaX48ufeF3z0bbgff-mrkex_SaP-j-XoL7vcoxc2ap5weVAMJsdFt8NOJtNg2SPfLhYzXwyiVHy_2v96OeLZNPl6GmVzFqTT7nz0k5xkP8RidDxuLo6a4UmGp9edrNMZfOvd_PT7ZBA2kT64GIU6JF8P_jc5mWuSH1wdFufnoukv9opmFnS-L_-YnI6a6kezO223y4VsrVdypzri8mpZV1-lrzq3dR7oAW1VXLr1KhD9E1fafw3or4A7rdrwOy0XOMoQ4yKLqwzdFlWdZRWoRI6MinY9mxXKA7lJ7a7XSaMlaGdxWmTVsdyuYpKTWAeldzt9FYNpNf9AWRlJK1uHVsV5q--KEt1XsTsYLjI590BpH8-HJzJehUHXBqrG1aWDIA_8LKTRdlnGulXdDb6nJrIw1ntIbQOP1ouIDIv5PM1sp8jcYbQnYzlVT5GqRPoqPkzGmZK5ih6I35FcdYB1z9sz7RkVq8RKs5-Oi_zZVB-K3VG87QGrrrfnOLzWE9ueTIweW50mzyZ5Luc62lNjuawTLEcD9eHenmE3TcYqsZm0KupNJmpsn01yk-gd2XovWHe_Pt-ditBTMeurkvM0AfgVApaRsdqT-ey5EesOXwtZrhFUrW9vA-1sLBM1LLIXRKx7MnfEqmawan9Dar0kKjKdTLvZ8pkbdU-iFpVWzaBsfzMDPlAmVvbfm-9AGrVIjUrGT-71SqI6cU4XKrvQsWoXmawvz73x3mx1-iZdqPx1nDuWI-3UfYF_34ncd_G79v9yZVa1fJ0jftHqGvyVpvGf5Ryu9u22dlwpQr3bi5-Du4-S2yq_dPWhsrcppvsGurpzfmqcy0zb5Udw3j7vNYZL97SS61xF4Ie6VgbgRjfTcZ4m4Mh9N0rhct6PwCeNw3hu9Fjb_CNADfEb0Ou7D4irhwXgHj4amNe7yjteZYmN9_w3YNPVF0gXKgPOMsGgMFbPjVZZ4z1mJaYUq1J9mYxVuWxOnQek_KdJkf87Uo9xui6Pw8bpXBowHKu5zdRDRn9UpvkRYHSfHUNbORD0JInNypLHlE0nk5lMokY7G8_SBHzWVoHqsevZOr8PkFPs3l68Z2jjcq7b3SvU08tMH9N8VgbtRs-qLJEGdIpsmibK_ju1CSobqwTslViwx1iM0mjZ6Js002mRgzMj7aPGskoxP4JOc_X_l0ndvu39OjP-GLNpeWw0hnN9pSJQHSKvYlMPddu2S5t1fjTGjtLU5o0LbWUC-pmSL1GZ3As_g3RRJlygfIX8JT4bN2gzqUdj7EgZ2zhW0s5UBjru4z_x7FV8Kh-An9Y4eExjGRdG2cZpsrwB7ar-bJUJd1ocJlYZo6eqVO0RGq_gBeFjVNztFldnwblOpv9pUH2BwWD0lNLklZV-BSvH9WN30O4fdu9pbfREgYmR-VVjTy90okoFwH7Z8lwKW2Ymj85c2PImupp8WJj5rMheZ2L6gon7mUzc-f0qE7MXTNyRuTT2deblL5i3HSs7W-b_euahsqtrHbDaGlVLGIpcDdU4TaLqkaO8t0-kydUq9xma1JaJSf0Z5PZteJ1X_xNF7lBkA2qdka4xdAPm3lPxGsg2ANcJ3BrDNw6W2hpEbIIoU9PI34CoYvUdJtiAcQGlvkbhNkxthTDaACr3_N5qu5_iygxrld5tk6mPTJ4pQ2sy9JkyrCbDninDazJ8k0xlukNlyxyzzCtdrZsmEz2tLDqZF-tBVaLiZekSHkiKeKSy2o-3_wD2FjIvn07XUHH3C3odXOSqfLlxsbo7c3-AkHvu7mSUTO7pWhdyGUumow2S69no6kfZNZed1sO_f_gbxPRcnw==",
+      "maps-red": "eJztWm1v27YW_lz_CkLAcDeUafguqkg6OE7iZIuXNE7SZl8KxqJtpZTkSpQT99cPlOxYzmzH2bK79uLCgECRzyHPc3R4dHTonZ_vYwPGOsujNNn18BvkAZ300jBKBrve5cXhlvR-ftfYOVN2eNrfKyLjRt41Xu2UbWD0WJtdL0AesCobaHs1m4p-Qh7oGZXnv6lY73odlaki1JkHVN7TSdiaD7WGke5bFSUeiFWUdNPeZ23bWVqMdj3sgRuVhJHd9X5LE-2BkUrsUKdJR92mWTsNdz1TJCqL8tpQlEyHBllhh58L44FxpO86aehWa560ut67xqtXO2dGTXTWtcqC3Cq767XS-CZKdLh_1vXAWJlC73qYEIz4G4l9Qakg3vZy0YvUKvMX5E6ivn6Q8Rmiq4AHic4Gk-4w0iacC6zX5-Do7AFKBGXyDaOY8EAiuUrubDjJo54yHXUfxUV8FNkL9Vknc1oYBXiV8GGU6XOdR7l9wEu0CtxKTfgI7PPVZhoMbRIlg40lWkOV5o_QK43bUYlqpTXkSq0d8jLJdK6zsQ5rZlkl0B3pGq6ad2e73D6udZFpDVTPRmPdHeme8_hyHncDbKZ1bUfR2ZY6DsudUdtJrgd5IElDne96zBdQSg4xohhiSjjEPsWQBJhCioUPqWAMMiwZZDTwISeUQi4YhdxnFApCERREBlBQHkDBmIDCFwyKQGLoB1RCKf0ABlQKGHCMYRD4GGJULocIlRAj7nOIMSMIYix5ADFFKICYIe5DzBh27YAidw0ExBwJBjFniEMsfCfr-9RdJcEQS4oIJIhzDAmmFEGCGaaQECI5JFRKDAmjhEHCfOSuUnBIBA4EJIITConwievxGYJESCEgkcznziRBAEkQUAopYjSAFIkAQ4qRRM5WREKKpc8hxQHFkFIifUipKNtuNkp9ziFljh1lzgKUCeGuPkeQ8oBLSAVnFFIRsABSPwgCSAPBJGSIBBgyRIWADHEkIcPMJ5C5qSFjjASQMYEEZCxwoyLACDIf-xwy6TRhkgoCmWRUuqtEkAXYl5AFDBPIkQjcVQp3DRCDnGIsIad-QCFnmPiQcyY55FywwF19ATkPkIBcIIQhl8ThJUPEXVkABaKBhALj8ko5hwIzH0NBEPad6wgKBQ18AQVHlJXe_Grn8vykbLwaWjvK325v393dvRkpO0z7-j4y-k0vjbdHKs-jsd7KP0fGbDnn3242m829wUHz5u6o16SXB3t3l3Yv75xcv7_v79_evf-wd2APjw4-tO5_H7cPr68_n99-bHeZutmzh0d3x1E26X75pduL5aQ3_uUTG11MJr0T05mgi5vR6WFHXN5-uTy1A3ly2T46vwwPk8tw6_IgvLg0p-bqDofdK3lw3T2Mr9r6RrWv0rB9O7n5aif79MKGRUgZNalm93JAJ_5goPc_srPOICgOyPXFeEg-HI3Te3Kbbb2_-v18HBet8JqTIrmdRM1fTZFdk-LsS5Dbr0Im_tcv4wsVXHea6u79RXuvo4p7e3vWt8dDRD5dj0MzJB-_qmub7TGSfT4uzs_Flj_eL7Yyufdp8r5_erOlb7dag2azNPj2zOI71fs0r8w_vSsDhYsZbqt7ILI6LmOKqKLYn3HlXqoB_dVAn_AaUK4Euv1XAwargOVmmwMJWgUs_bkGnIbkVzvbNRPsbLvIWsZgF3pdo-vcrRosm0An6sbocNezWaE9kJvU7np7aTgBzSxOi6zKU5pV0HYSs6j9aqetYzCo1u9oq0Jl1fax1XG-3XaXEt3W8bl7nem0yN0b0wOlwz9TJlHx9I3xMACqkWlSRpAHvhTKRHaycOPW2dd9VRjrPaa6hNf2s4h1i9EozazLaqwaPcWsArd1_ICfs3ro-gbodO-ivm32-ybq2ShNNqZ1rkZRuK97alJnVs4G6tN9AxT3isylV_sqVoMnPfKB4HHSy7TKdfhIfE52OgBmI98A1QOjY51YZQ7TXpFvzPWx2JzjwwiYDn0DJFtp0tOJzZTV4UG_r3t2Y6LLROdk66NgNvwPEN6pGD0Vlj9oNUoTgP9-TD40Ktb7Kh9uGI9r-Ll1yk5Q9X4DXvC_EocPkrDIomTQyiYbPp0FidpWnXaDsv_fc9sjbWJt_77TdpTR49TopLdpGlEF4tOxzi6iWDeLTNXtszDfv_nEz4osspPT_jMSpHn14TGrajKQ9r-BDOkqsuUiG5Kaw-d05n1TIpj91x24bdKxzl8m6sbqJnqGSRZFFmPvvP__0XfzJz1t5bOC1FWk78DXNI0_llUl17p-aJ1UmlDv4SPKwd1NSWpazHLtrrYP9Sx3D6LqG_Nd41y5DfkWnDfPDxrdiavb5lGuQ3Cr77QBuNHKojhPE_CLu2-UwuW6b4EkjeN4ZKJeZPO3ADXEDyCaZaEgrqqWwJmtgXl9yO38aRbaeM1_ADad3oF0rDPggiHoFMZGIxPprPEasxJTilVRRSU9XZrNqfOIlP80KfLdkZJPk6LfHangaVLseyNF0NOk-HdHCj9NSnxvpNZyuiu_ZRqnI2VAt6dHNtOPGb2vwv1bQNAiO4ZWciDoSRIrnsA6ZdN-f6iSsNHMesM0Ab9GVoPqdGpjnV9L5BRbeBavGVpqzlm_OzV62sx0nebDMvdutNLkS6GzNPtPDqp0fEPFSaMTJVGa5GCoxhr8SOgW4T-t9q6FJ-POj5z-OhsrV_xxn9BRL9JJr8xPq_fwcssQVHZWNcgXMhRbZ6ibNJw0TvTAqXlmlF3rjdMa61uwt_XwW7TajzjYImjBULqsHzjip_2-dh9meeP1jxhvYfJTyUIZA-bllTmdZ5no4fDwr9uJr7PToMyFG2eZ7hVZnmagrYrEGm3zZ3tUqJVZ5lGzvSx_AL2h09Op7jLHTOc56I60MXPM6l31mOwqJ1puhLWZ202a2ryx58KxTRMNLjKtws0NIBc2STouHzkoD08f7SBHCJzrgU50Vm0hV4tqEL5mhr9ik6Ves9wwa7O_G21s40QrO9QZ2HM3_0h8nEb58tj7aY3XpnYqLoy2jdNkcg-aVXtjlQl3WhwnVhsTDXSp2hoaL7A11yZ0LqTg6o16HiWDf_TV9AyHwWsTNqc0eWGlX8DLcT156TTbx60FrY3bl32j8s-N_WgcJbraqYdlz6YUVqxM1q5c2PKbf7p4tzCjYZG9zML0GQu3M5W4LOhFFmbPWHhP5crYl1mXP2PdZqztcJL_7ZW72k6TY2Aja3StlFHkuqt7aRJWdf6yotBXJtfTKlPXpLYsl9RPAh7OlGdlmz-jSO2ceAlqVp6dYegSzMKB8AzIlgBnpbIZhi-dLLU1iFgG0aamkb8EUcXqOUYuwbiAUrdRsApTsxBGS0DlM1-wtvtHUln7mRaeVsnUZyYbytCaDN1QhtVk2IYy9X8k8GUylet2tS2rX2XFy7VaadKPBpVHJ6NiNqlOdDwpt4QHkiK-0dmuJ2f_QvsT8GCs8vI8eAb1pUBLwEWuy3MMF6tbQ_e_y9xz-ZfRKlnQtS7kvvuyKFwiOVuNTv-bNuOys_34b59_AEOCQuU=",
+      "pinnacle": "eJztWmtv27gS_Vz_CkLAArso0_AtqYi7cJzETjdu0jhp2n4pGIu2mejhSpQd76-_oOSHnNqOs9u9215cGCAo8gzJM-SMR0Md_P4QhWCs0kwncd3Br5ADVNxLAh0P6s711cme5_z-pnZwIc3wvH-Y69D2vKm9OCjqIFRjFdYdXzjAyHSgzIf5UPQLckAvlFn2Tkaq7nRkKvNApQ6QWU_FQXPZ1Rxq1TdSxw6IpI67Se9emVaa5KO6gx1wK-NAm7rzLomVA0YyNkOVxB15l6StJKg7YR7LVGeVLh3PugZpbob3eeiAsVaTThLY2Rpnza7zpvbixcFFKKcq7RppQGakqTvNJLrVsQqOLroOGMswV3WHYIIQesWocBHlrrO_XvQqMTL8C3Jnuq8WMp7vkU3A41ilg2l3qFUYLAQw9rcu6Lh9scAyggh7hRHzXMr8jXIXw2mmezLsyAcd5VFbmyt5r-LllJR6dJPwiU7Vpcp0Zpac0CZwMwmDR2CXb9bTYGhiHQ92lmgOZZLtjO7IWDaTCnTjsi3yOk5VptKxWm7F5i3ujlQFV457sF8YkK1dpUoB2TN6rLoj1bNnvhjHPgCTKlWxKTo3qtOgsI2KLdkW5IA4CVRWd5groOdxiBHFEFPCIXYphsTHFFIsXEgFY5Bhj0FGfRdyQinkglHIXUahIBRBQTwfCsp9KBgTULiCQeF7GLo-9aDnuT70qSegzzGGvu9iiFExHSLUgxhxl0OMGUEQY4_7EGOfMIgpQj7ElNsWhrgLMWPY1n2KilLY0hcQcyQYxJwhDrFw7WiuS23pEQyxRxGBBHGOIcGUIkgwwxQS7HMPEkI8Dgn1PAwJo4RBwlxkS09wSAT2BSSCEwqJcIltcRmCRHhCQOISRCHxmMutwnwfEt-nFFLEqA8pEj6GFCMPQYqZIFafxIMUey6HFPsUQ0qJ50JKRVG3I1Pqcg4ps9wps1qiTAhbuhxByu2aqeCMQip85kPq-r4PqS-YBxkiPoYMUSEgQxx5kGHmEsjs0JCVm8gY8SFjAgnImG8xwscIMhe7HDLProd5VBDIPEY9W3oIMh-7HmQ-wwRyJHxbesKWPmKQU4w9yKnrU8gZJi7knHkcci6Yb0tXQM59JCAXCGHIPWLxHkPElsyHAlHfgwLjoqScQ4GZi6HAHmJQEIRde9QEhYL6roCCI8qK0__i4PryrKi8GBozyl7v708mk1cjaYZJXz3oUL3qJdH-SGaZHqu97F6H4Z41lv1Go9E4HBw3gkm716DXx4eTa3OYdc4-vX_oH91N3t8cHpuT9vFN8-HzuHXy6dP95d3HVpfJ20Nz0p6c6nTa_fq224u8aW_89gsbXU2nvbOwk4dHZ5fvLnpEXA2vzsNTcXP09frcDLyz61b78jo4ia-Dvevj4Oo6PA8_9D5_PPqA336cXA5Pbz5ff-Ym-XwzRPLi7df3xHN7Ax-5H2_jYO8dl-00UuzBG9CpOxioo4_sojPw82Py6Wo8JDftcfJA7tK99x8-X46jvBl84iSP76a68UeYp2-1uZNsLyVTepFO--Pzr_67FA8mh-nhYefT8cNXt0U6_h7S7atbX_vkpv25_26kSda-k_l7zU_aqZt7564YT9pfTjLvvv1n9CVOvgySRqNRrxcbsT_fiYPynzkrt2X2VDgc63usy3CANioqfJMoveG3uML2KkB3M9AlvAL0NgKtpVaA_iZgYZBLIEGbgMVprwDxDHiwX1HBwb710IUvty7cVrr2GJadRRWoWN6GKqg7Js2VA7IwMXXnMAmmoJFGSZ6WEU-jdP5WYu79Xxy0VAQG5fwdZWQgjdw_NSrK9lu2KNAtFV3a_0WV5Jn963VAYQjPlIllNPvnWXSAsmcW3hHsgK-5DLWZFlqbP9h5jlRf5qFxHlNdw2v_WcS6-WiUpMbGR0aOnmJWglsqWuCXrBZNPwCd7kT3TaPfD3XP6CTemdalHOngSPXktMqsGA1Uh_sBKB7mqY3TjmQkB0-eyAXB07iXKpmp4JH4kuysA8x7fgCqx6GKVGxkeJL08mxnro_FlhwXPWDW9QOQbCZxT8UmlUYFx_2-6pmdia4TXZKt9oJ59z9A-KBk9JRbvlFylMQA_32ffBLKSB3JbLijP67gl9opGkHZ-gOcgv8VP3wcB3mq40Ezne64OysSFVOdNYOi_d87tm0VRsr8_UPbkaEaJ6GKe7uGEaUjPh-r9EpHqpGnsqqflfH-zR2_yFNtpuf9ZwRIyzTGY1blYCDp_wAR0gdtikl2JLWEL-ks22ZEMPuvH-BWmIxV9n28biRv9TNUsiqy6nuX7f_3vrvv9KyWzRNbH7SagD-TJPpYZKds7dOidlauhDqLlygLtw8FqVlSzNa7yizyYvYZ6PId803tUlqDfA0uG5fHte7UZoAznakA3KmJCgGuNVMdZUkM3trnWiFczPsaeKJ2Go1C3dMmew1Qzf0F6HkUCqIy_Qms2mpYVLus5c-i0NpL8QswyewJJGOVAusMQScPjR6FWqW1l5gXmEKs9Coy7qlCbXY5j0i5T5MiPx0p72lS9Kcj5T9Niv1spAh6mhT_6Ujhp0mJn43UVk6T4l2m9iHRAej21Mik6jGj96W7fw0IWmXH0UYOhD9JYsMObFts0u8PZRzUGmlvmMTgD20UKO-5dl6zWFlzeVU2H-MlRsiuemWjXrKSir2DelrXdNvyh0UAXmtpGZusuPsBZUy-4-pJraNjncQZGMqxAr8Sb4_4v20-YqTaZS-j7PpVOpY2A2Tfo3VPq7hXBKnln_EGFdCyscxELjTy-PQ9T1Nsm6Zuk2Bau0ymMgQXoTRbj-Qs0foaHO4tfqta-5XQPcJWFKWKJIIlft7vK_t2ltVe_or5Hha_FSRkGIJljmXJ5nkqWtxF_nU98W16GhQRce1MjbU0QxmDlsxjEyqTPftIBUqG647U3KIx-gX0hnahdu02gExVloHuSIVhBbS7AW06RuvVsDWCu00Ss6KFVEmrl111gFecQicZF_sOiuvYR2ZkKYFLNVCxSks7slmpGt02wl9Sy9qjs143WwPBWxWa2pmSZqhScGgfdnWVW5f9jfFbDVg69i796SVvDfNklIfK1M7j6QNolPWd18yKJZ_GRoWhHqhiadt4rLfQ55HZGt5Z34Jr5yPrRXQ8-Ie0_x3Z4K2BnaVDvjedZ9nAc-lUw59Oo3XaXOETWnvuhzK7rx3psY5VaeEnRcuu5DbMTLbOnJsiazCbvJuHo2Gefp-J6TMmbqUytnHUd5mYPWPiQ5nJ0Hyfefkz5m1Eygyn2d-euavMLLwGRptQVZIheaa6qpfEQXlTUOQk-jLM1CxP1Q0TUyRcqncJi1vpeeLnWxSp3DSvQc0TvHMMXYNZuVKeA9ka4DzZNsfwtYMlpgIR6yAqrKzIXYMoPfwS463BWFdT1ZG_CVPREEZrQMWer2jbfhtVZI9mqatNMtWRyY4ytCJDd5RhFRm2o0z1mwa-TqY8ul1livxZkTOztWYS9_WgPNHxKJ8PqmIVTQuTcECcR7cqrTve7Ix8Czwey6y4UV5A8fx7iRVwnqniJsT66ubQfgOaOTZyC5WMV9ZaFbJvjqkO1kjOZ6Ozr-TmXA72H3-C-h_nkmed"
     }
   },
   "patch": "3.30.0",
   "guide": {
     "summary": {
-      "text": "Righteous Fire Chieftain is a low-APM fire aura build that measures 27.1k at red maps and 46.5k at pinnacle. Life regeneration and armour carry the defence, and no unique is required.",
-      "status": "auto-breadth",
-      "signed": null,
+      "text": "Righteous Fire Chieftain is a low-APM fire aura build that levels with Fire Trap and switches to Righteous Fire at red maps. It measures 122.1k at red maps and 212.0k at pinnacle. Purity of Fire, Vitality and Enduring Cry make the self-burn net positive; Malevolence and Flammability carry the bossing damage, and no unique is required.",
+      "status": "signed",
+      "signed": {
+        "by": "maintainer",
+        "at": "2026-11-27T00:00:00Z"
+      },
       "facts": [
         "mainSkill",
         "ascendancyId",
         "gates.maps-red.metrics.dps",
         "gates.pinnacle.metrics.dps"
       ],
-      "factsHash": "2697362f1473639a"
+      "factsHash": "71a4c23c987c1d55"
     },
     "leveling": {
-      "text": "Level with Rolling Magma, then switch to Righteous Fire when your life regeneration can carry it. The first checkpoint measures 445 life and 29 damage; the second measures 747.",
-      "status": "auto-retry",
-      "signed": null,
+      "text": "Level with Rolling Magma into Fire Trap; the first checkpoint measures 445 life and 29 damage, and the second measures 428 with Fire Trap. Fire Trap carries the campaign and white maps; the switch to Righteous Fire comes at the red-map checkpoint, when capped resistance, Purity of Fire and Vitality make the degen sustainable.",
+      "status": "signed",
+      "signed": {
+        "by": "maintainer",
+        "at": "2026-11-27T00:00:00Z"
+      },
       "facts": [
         "gates.until-12.metrics.life",
         "gates.until-12.metrics.dps",
         "gates.until-28.metrics.dps"
       ],
-      "factsHash": "7343ec9b05a6cd09"
+      "factsHash": "fa19f222c6b0605c"
     },
     "maps": {
-      "text": "At red maps the build measures 27.1k damage, 21647 effective life and 9385 physical max hit. Keep fire resistance and life above the breakpoints and let the filter hide the rest.",
-      "status": "auto-retry",
-      "signed": null,
+      "text": "At red maps the build measures 122.1k damage with 26.3k effective life and 11.1k physical max hit. Concentrated Effect is the default link; swap it for Increased Area of Effect when you want a wider aura. Purity of Fire, Vitality and the life flask keep the self-burn net positive; Lifetap pays for Flame Dash and the warcry, so the low mana bar does not stop the loop. The measured clear number is modest; the aura and Hinekora do the work. Keep Enduring Cry and Flammability up and let the filter hide the rest.",
+      "status": "signed",
+      "signed": {
+        "by": "maintainer",
+        "at": "2026-11-27T00:00:00Z"
+      },
       "facts": [
         "gates.maps-red.metrics.dps",
         "gates.maps-red.metrics.ehp",
         "gates.maps-red.metrics.maxHit"
       ],
-      "factsHash": "b9426097645c80a4"
+      "factsHash": "d0852a26a3920db6"
     },
     "bossing": {
-      "text": "Pinnacle measures 46.5k damage with 32745 effective life and 11338 physical max hit. Keep the fire aura on the boss and move through the small hits; avoid no-regeneration maps.",
-      "status": "auto-retry",
-      "signed": null,
+      "text": "Pinnacle measures 212.0k damage with 42.0k effective life, 13.4k physical max hit and 75% chaos resistance. Stand in the aura, keep Flammability on the boss, and move only for the slams; Ramako rewards the stationary windows. The measured self-burn is net positive with Purity of Fire and Vitality. The physical and sustain numbers assume maximum Enduring Cry charges (a pinnacle boss supplies enough power) and the listed flasks are up. The measured single-target number is below the dedicated boss builds.",
+      "status": "signed",
+      "signed": {
+        "by": "maintainer",
+        "at": "2026-11-27T00:00:00Z"
+      },
       "facts": [
         "gates.pinnacle.metrics.dps",
         "gates.pinnacle.metrics.ehp",
-        "gates.pinnacle.metrics.maxHit"
+        "gates.pinnacle.metrics.maxHit",
+        "gates.pinnacle.metrics.chaosResist"
       ],
-      "factsHash": "ffc3bc78b8e5bcc2"
+      "factsHash": "b9e52d9418ed5168"
     }
   },
   "pipeline": {
@@ -8137,6 +8639,6 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T12:55:13.697Z"
+    "checkedAt": "2026-11-27T13:11:04.106Z"
   }
 }

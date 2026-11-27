@@ -9,38 +9,72 @@ class: Marauder
 ascendancyId: chieftain
 family: caster
 mainSkill: Righteous Fire
-flagship: false
-gateProfile: dad
+flagship: true
+# The Dad chip is a playstyle label, not a lower bar. The measured build clears
+# the standard floors at every checkpoint, so the damage floor is not relaxed.
+gateProfile: standard
 dad: true
+
 summary: >-
-  Righteous Fire on the Chieftain shell: a fire aura that burns enemies while you
-  walk, backed by armour, life regeneration and fire resistance. Low APM, very
-  forgiving, and no required unique. A Dad build by design.
+  Righteous Fire on the Chieftain shell: a tanky fire aura that burns enemies
+  while you walk, backed by armour, life regeneration and fire resistance. Fire
+  Trap levels the character, then Righteous Fire comes online at red maps with
+  Purity of Fire, Vitality and Enduring Cry making the self-burn net positive.
+  Malevolence and Flammability carry the damage; the legal jewel caps keep the
+  single-target and clear numbers modest, but the build is cheap, forgiving and
+  has no required unique.
 
 pros:
-  - { weight: 3, text: "Righteous Fire burns while you move; very low APM." }
-  - { weight: 3, text: "Chieftain life regeneration and armour make mistakes forgiving." }
-  - { weight: 3, text: "No required unique; life, armour and fire resistance are the gear." }
-  - { weight: 2, text: "A good Dad build: simple rotation and a clear defensive layer." }
-  - { weight: 2, text: "The fire aura clears packs without aiming." }
+  - { weight: 3, text: "Fire Trap levels the campaign, then Righteous Fire burns while you move." }
+  - { weight: 3, text: "Chieftain regeneration, armour and Enduring Cry charges make the self-burn forgiving." }
+  - { weight: 3, text: "No required unique: the defensive slots are life and resistance rares." }
+  - { weight: 3, text: "Purity of Fire and Vitality make the measured self-burn net positive at red maps and pinnacle." }
+  - { weight: 2, text: "Hinekora explosions and the aura clear packs without aiming." }
   - { weight: 1, text: "The same strength armour bases as the melee builds." }
 cons:
-  - { weight: 3, text: "Righteous Fire burns your own life; the regeneration has to keep up." }
-  - { weight: 3, text: "Single-target damage is lower than a dedicated hit build." }
+  - { weight: 3, text: "The Righteous Fire switch is late: red maps, not the campaign." }
+  - { weight: 3, text: "It is a close-range bosser: stand in the aura and use the stationary windows, not a ranged hit build." }
+  - { weight: 2, text: "Vitality has to stay at level 14 so the auras fit; the last levels eat the mana bar." }
   - { weight: 2, text: "Clear speed is slower than a bow build." }
-  - { weight: 2, text: "Fire resistance and life are hard requirements, not upgrades." }
-  - { weight: 1, text: "The build wants a six-link for its best damage." }
-  - { weight: 1, text: "It is a poor choice for no-regeneration maps." }
+  - { weight: 1, text: "Fire resistance and life are hard requirements, not upgrades." }
+  - { weight: 1, text: "The red-map six-link and the endgame 21/20 gems are the real bill." }
 
 ratings:
+  # Tankiness 9: pinnacle measures 42.0k EHP and 13.4k physical max hit with
+  # chaos capped, 80% max fire resistance from Purity of Fire, maximum Enduring
+  # Cry charges, Basalt/Granite flasks and a net-positive self-burn. Not a 10:
+  # the physical max hit is below the published Juggernaut line.
+  #
+  # Single target 7: the legal-jewel RF link measures 212k at pinnacle. It is
+  # well above the old 121k but below the 500k single-target bar; this is an
+  # aura build, not a dedicated bosser.
+  #
+  # Clear 7: red maps measure 122k on the default link. The RF aura and
+  # Hinekora explosions clear while you move, but the corrected jewels put the
+  # number below the 250k clear bar.
+  #
+  # Cost 9: no required unique, no Awakened gem, and every defensive slot is a
+  # life or resistance roll. The six-link body and 21/20 gems are the bill.
   tankiness: 9
-  singleTarget: 4
-  clear: 6
-  cost: 7
+  singleTarget: 7
+  clear: 7
+  cost: 9
 
 gearProfile: rf
 
+# Enduring Cry is the physical mitigation layer: three charges are 12% physical
+# damage reduction and 12% elemental resistance. The warcry is in every bracket
+# from level 12, so the declared charges are a buff the build can apply.
+config:
+  - { name: useEnduranceCharges, value: 'boolean="true"' }
+  - { name: overrideEnduranceCharges, value: 'number="3"' }
+
 tree:
+  # RF's damage is a percentage of maximum life, so life is a damage stat as
+  # well as the defensive one. Fire and burning notables come first because
+  # they multiply the life-derived base; the life and armour targets keep the
+  # self-burn and physical hits survivable. The same fire/burning/life tree
+  # supports Fire Trap through the campaign.
   targets:
     - increased fire damage
     - burning damage
@@ -57,57 +91,111 @@ leveling:
         - slot: Body Armour
           gems: [Rolling Magma, Added Fire Damage, Arcane Surge]
         - slot: Weapon 1
-          gems: [Flame Dash]
+          gems: [Flame Dash, Enduring Cry]
         - slot: Helmet
           gems: [Clarity]
       flasks:
         - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
         - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
         - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+    # Fire Trap is the campaign skill: it uses the same fire/burning/life tree
+    # as RF and does enough damage to clear the act and white-map gates without
+    # pretending a level-28 character can pay RF's self-burn.
     - until: 28
-      skills: [Righteous Fire]
+      skills: [Fire Trap]
       skillGroups:
         - slot: Body Armour
-          gems: [Righteous Fire, Lifetap, Elemental Focus, Controlled Destruction]
+          gems: [Fire Trap, Elemental Focus, Efficacy, Concentrated Effect]
         - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
+          gems: [Flame Dash, Arcane Surge, Enduring Cry]
         - slot: Helmet
-          gems: [Clarity]
+          gems: [Malevolence]
+        - slot: Gloves
+          gems: [Flammability]
       flasks:
         - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12; Fire Trap is mana-hungry." }
+        - { slot: utility, name: "Sulphur Flask", note: "Damage and consecrated ground." }
         - { slot: utility, name: "Granite Flask", note: "Armour." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
     - until: 68
+      skills: [Fire Trap]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Fire Trap, Burning Damage, Elemental Focus, Swift Affliction, Concentrated Effect]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge, Enduring Cry]
+        - slot: Helmet
+          gems: [Malevolence]
+        - slot: Gloves
+          gems: [Flammability]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: utility, name: "Sulphur Flask", note: "Damage and consecrated ground." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    # White maps still run the five-link the ssf-start budget actually has. The
+    # RF switch and the sixth link are the red-map step.
+    - until: 80
+      skills: [Fire Trap]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Fire Trap, Burning Damage, Elemental Focus, Swift Affliction, Concentrated Effect]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge, Enduring Cry]
+        - slot: Helmet
+          gems: [Malevolence]
+        - slot: Gloves
+          gems: [Flammability]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: utility, name: "Sulphur Flask", note: "Damage and consecrated ground." }
+        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    # Red maps are the RF switch. Capped resistance plus Purity of Fire and
+    # Vitality make the measured self-burn net positive; Vitality stays at 14
+    # so Malevolence and Purity of Fire still fit the mana bar.
+    - until: 90
       skills: [Righteous Fire]
       skillGroups:
         - slot: Body Armour
-          gems: [Righteous Fire, Burning Damage, Elemental Focus, Controlled Destruction, Increased Area of Effect, Lifetap]
+          gems: [Righteous Fire, Lifetap, Swift Affliction, Burning Damage, Elemental Focus, Concentrated Effect]
         - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
+          gems: [Flame Dash, Lifetap, Enduring Cry]
         - slot: Helmet
-          gems: [Clarity]
+          gems: [Malevolence, Purity of Fire, { name: Vitality, maxLevel: 14, note: "Level 14 is the reservation cap; higher levels eat the mana bar." }]
+        - slot: Gloves
+          gems: [Flammability, Lifetap]
       flasks:
         - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Sulphur Flask", note: "Damage and consecrated ground." }
         - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
     - until: 100
       skills: [Righteous Fire]
       skillGroups:
         - slot: Body Armour
-          gems: [Righteous Fire, Burning Damage, Elemental Focus, Controlled Destruction, Increased Area of Effect, Lifetap]
+          gems: [Righteous Fire, Lifetap, Swift Affliction, Burning Damage, Elemental Focus, Concentrated Effect]
         - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
+          gems: [Flame Dash, Lifetap, Enduring Cry]
         - slot: Helmet
-          gems: [Clarity]
+          gems: [Malevolence, Purity of Fire, { name: Vitality, maxLevel: 14, note: "Level 14 is the reservation cap; higher levels eat the mana bar." }]
+        - slot: Gloves
+          gems: [Flammability, Lifetap]
       flasks:
         - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Sulphur Flask", note: "Damage and consecrated ground." }
         - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
 
 ascendancyOrder:
+  # Ngamahu's strength and jewel conversion help the life/armour shell; Tasalio
+  # turns the fire resistance into cold and lightning resistance; Ramako is the
+  # stationary fire DoT resistance shred that the boss link stands in; Hinekora
+  # is the clear explosion.
   - { node: ngamahu-flame-s-advance, lab: 1 }
   - { node: tasalio-cleansing-water, lab: 2 }
   - { node: ramako-sun-s-light, lab: 3 }
@@ -125,37 +213,65 @@ uniques:
 guide:
   summary:
     text: >-
-      Righteous Fire Chieftain is a low-APM fire aura build that measures
+      Righteous Fire Chieftain is a low-APM fire aura build that levels with Fire
+      Trap and switches to Righteous Fire at red maps. It measures
       {{gates.maps-red.metrics.dps|dps}} at red maps and
-      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. Life regeneration and
-      armour carry the defence, and no unique is required.
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. Purity of Fire, Vitality
+      and Enduring Cry make the self-burn net positive; Malevolence and
+      Flammability carry the bossing damage, and no unique is required.
     facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   leveling:
     text: >-
-      Level with Rolling Magma, then switch to Righteous Fire when your life
-      regeneration can carry it. The first checkpoint measures
+      Level with Rolling Magma into Fire Trap; the first checkpoint measures
       {{gates.until-12.metrics.life|int}} life and
-      {{gates.until-12.metrics.dps|dps}} damage; the second measures
-      {{gates.until-28.metrics.dps|dps}}.
+      {{gates.until-12.metrics.dps|dps}} damage, and the second measures
+      {{gates.until-28.metrics.dps|dps}} with Fire Trap. Fire Trap carries the
+      campaign and white maps; the switch to Righteous Fire comes at the
+      red-map checkpoint, when capped resistance, Purity of Fire and Vitality
+      make the degen sustainable.
     facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   maps:
     text: >-
-      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
-      {{gates.maps-red.metrics.ehp|int}} effective life and
-      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep fire
-      resistance and life above the breakpoints and let the filter hide the
-      rest.
+      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage
+      with {{gates.maps-red.metrics.ehp|k}} effective life and
+      {{gates.maps-red.metrics.maxHit|k}} physical max hit. Concentrated Effect
+      is the default link; swap it for Increased Area of Effect when you want a
+      wider aura. Purity of Fire, Vitality and the life flask keep the self-burn
+      net positive; Lifetap pays for Flame Dash and the warcry, so the low mana
+      bar does not stop the loop. The measured clear number is modest; the aura
+      and Hinekora do the work. Keep Enduring Cry and Flammability up and let
+      the filter hide the rest.
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   bossing:
     text: >-
       Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
-      {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Keep the fire
-      aura on the boss and move through the small hits; avoid no-regeneration
-      maps.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+      {{gates.pinnacle.metrics.ehp|k}} effective life,
+      {{gates.pinnacle.metrics.maxHit|k}} physical max hit and
+      {{gates.pinnacle.metrics.chaosResist|res}} chaos resistance. Stand in the
+      aura, keep Flammability on the boss, and move only for the slams; Ramako
+      rewards the stationary windows. The measured self-burn is net positive
+      with Purity of Fire and Vitality. The physical and sustain numbers assume
+      maximum Enduring Cry charges (a pinnacle boss supplies enough power) and
+      the listed flasks are up. The measured single-target number is below the
+      dedicated boss builds.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit, gates.pinnacle.metrics.chaosResist]
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
+
 changelog:
   - season: covens
     date: "2026-11-26"
     notes:
       - "First guide for the Covens league."
+  - season: covens
+    date: "2026-11-27"
+    notes:
+      - "The measured build now passes the standard gate profile at every checkpoint, not only the Dad floors."
+      - "Fire Trap levels the campaign and white maps; Righteous Fire comes online at red maps when capped resistance, Purity of Fire and Vitality make the self-burn net positive."
+      - "The endgame link uses Lifetap, Swift Affliction, Burning Damage, Elemental Focus and Concentrated Effect; Controlled Destruction and Increased Area of Effect did nothing for the RF DoT."
+      - "Purity of Fire and a level-14 Vitality are the sustain package; the measured net life regeneration is positive at red maps and pinnacle, and Vitality stays at 14 so the auras fit the mana bar."
+      - "Malevolence and Flammability are the damage auras; Enduring Cry charges and the listed flasks keep the physical numbers honest, and the build still needs no unique and no Awakened gem."
+      - "The shared jewel-affix correction replaced the illegal weapon-scale jewel rolls with legal jewel caps. The corrected build measures 212k RF DPS at pinnacle and 122k at red maps; ratings are tankiness 9, single target 7, clear 7, cost 9 (S), not S+."
+      - "Sustain was measured with the pinned oracle plus a scratch copy that prints LifeRegenRecovery and NetLifeRegen: maps-red gross 1,287/s and net +105/s, pinnacle gross 1,577/s and net +140/s; the Fire Trap checkpoints have no RF degen."
