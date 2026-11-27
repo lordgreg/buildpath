@@ -2,14 +2,28 @@
 
 Reference for the step model (D32–D37, [PLAN-BUILDS.md](../PLAN-BUILDS.md) §9.3).
 
-**Status:** PR 2 of 5. Schema, resolver, alias table and the pipeline's measured
-steps are in; the page still reads `leveling.brackets`, so a migrated seed must
-keep `leveling` until PR 3 lands.
+**Status:** PR 3 of 5. The page reads the three roots and `leveling` is now
+optional in the schema. An unmigrated seed's six checkpoints are projected onto
+Leveling, Maps and Endgame (`stepView`), so the navigation is the same for both
+shapes and migrating a seed in PR 4 moves nothing on screen.
 
 Measured steps carry the band they inherit (`bandFor`): a level-38 step is
 measured on the level-28 budget rather than an invented one, which under-points
 rather than over-points. Calibration keeps one observation per band per build,
 so a second step in the same band does not grow the report.
+
+## What the page shows
+
+- **Step picker** — three labelled groups. Each step reads `Lv 13–28` inside
+  Leveling and `Lv 90` elsewhere, with `not measured` on an editorial step.
+- **What changes here** — the section that used to be "Leveling this step". It
+  prints the step's `watch` line for a migrated seed, or the derived leveling
+  plan for one that still has brackets. One section, one job.
+- **Numbers on an editorial step** — the nearest measured step at or before it,
+  labelled in the gate report (`this step is not measured · showing Lv 13–28`),
+  so a reader is never shown a number that belongs to a different step silently.
+- **Old links** — `step=until-28` resolves through `stepAliases`; an id that no
+  longer exists falls back to the first measured step rather than a blank page.
 
 ## Why
 
@@ -164,8 +178,7 @@ does not grow with the step count.
 
 ## Migrating a seed (PR 4)
 
-1. Add `steps` and keep `leveling` until PR 3 lands, because the page still reads
-   it.
+1. Replace `leveling` with `steps`. The schema now accepts either, not both.
 2. Split the old brackets where the *change* happens, not where the bracket
    ended: a gem swap, a link count, a jewel, a slot or a budget.
 3. Give every step a `level` and a `watch` line.

@@ -620,6 +620,11 @@ The compiler proves, in `src/core/builds/steps.ts`:
 replaced it, and `resolveStepAlias` is the only reader; the table lives until
 1.0. The reference is `docs/STEPS.md`.
 
+Until every seed migrates, the page projects the six checkpoints onto the three
+roots (`stepView`), so the navigation is the same for both shapes: Leveling
+holds `until-12/28/68`, Maps `maps-early/red`, Endgame `pinnacle`. Migrating a
+seed swaps the source of that view and moves nothing on screen.
+
 **Migration order.** PR 1 (this one) ships the schema, the resolver and the
 alias table, and adds `steps` to compiled JSON while `leveling` stays required,
 so no gate number moves. PR 2 re-keys the pipeline (specs, gates, tree, PoB
