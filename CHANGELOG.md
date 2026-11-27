@@ -2,6 +2,18 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.78.2 — 2026-11-27
+
+Arc Totem withdraws S+ after legal gem caps.
+
+- **Arc Totem Hierophant withdraws S+.** The final council found the gate had measured Awakened supports at level 16 and Empower at 6/10, above the game caps. With Awakened supports capped at 5, Empower at 3 and Awakened Empower at 4, pinnacle measures 295k DPS per totem (590k with both) and red maps 187k. Ratings are now 10/8/8/9 → S. The S+ claim in 0.78.0 was wrong.
+- **Gem caps are enforced.** A test requires an explicit `maxLevel` on every Awakened and exceptional support and rejects anything above 5 (4 for exceptional), so the pipeline cannot measure an illegal gem level again.
+- **Arc Elementalist keeps S+ after council corrections.** The measured 676k DPS, 53.4k EHP and 14.0k max hit are unchanged; ratings stay 10/10/9/9. The Convergence-off figure is now shown as the derived 520k (676k / 1.30), the exposure and second-unique wording is fixed, and the Primal Aegis caveat is stated.
+- **Righteous Fire Chieftain keeps an honest S.** Council confirmed 9/7/7/9. The sustain note now shows net +105/s at red maps and +140/s at pinnacle with three Enduring Cry charges, and net negative without them. No Awakened gem is used or claimed.
+- **The SSF chip stops saying "no required unique"** on builds that do require uniques; it now says the required uniques are cheap drops instead.
+- **The Arc step plan matches the measured build.** Red maps no longer claim capped chaos, and pinnacle no longer promises Awakened supports.
+- 763 tests.
+
 ## 0.78.1 — 2026-11-27
 
 Boneshatter leveling shows the 4-link support progression.
