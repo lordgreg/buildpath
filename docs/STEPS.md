@@ -2,10 +2,10 @@
 
 Reference for the step model (D32–D37, [PLAN-BUILDS.md](../PLAN-BUILDS.md) §9.3).
 
-**Status:** PR 4 of 5. All 21 seeds declare `steps`; `leveling` survives only
-as the pre-migration shape the schema still accepts. An unmigrated seed's six
-checkpoints are projected onto Leveling, Maps and Endgame (`stepView`), so the
-navigation never changed while the data moved.
+**Status:** PR 5 of 5, shipped in 0.79.0. All 21 seeds declare `steps`;
+`leveling` survives only as the pre-migration shape the schema still accepts.
+An unmigrated seed's six checkpoints are projected onto Leveling, Maps and
+Endgame (`stepView`), so the navigation never changed while the data moved.
 
 Measured steps carry the band they inherit (`bandFor`): a level-38 step is
 measured on the level-28 budget rather than an invented one, which under-points
