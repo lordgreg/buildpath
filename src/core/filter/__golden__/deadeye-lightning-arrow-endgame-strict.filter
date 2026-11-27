@@ -4,8 +4,8 @@
 # Build: Lightning Arrow Deadeye - Ranger / Deadeye
 # Phase: Endgame - Strict
 # League: Covens
-# Presets: 796364c6795e
-# Rules: 77 - Base types: 63
+# Presets: be3e27e0fc89
+# Rules: 80 - Base types: 63
 # Base data: RePoE 1d825f53356023dee0fbb3ec23d94057da8fe0ac (4f01123d)
 # Generated at https://lordgreg.github.io/buildpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -47,6 +47,21 @@ Show
     SetBorderColor 120 230 140 255
     SetBackgroundColor 20 26 58 255
     MinimapIcon 1 Green Hexagon
+
+# Bone Ring (normal) - excluded base
+Hide
+    BaseType == "Bone Ring"
+    Rarity Normal
+
+# Bone Ring (magic) - excluded base
+Hide
+    BaseType == "Bone Ring"
+    Rarity Magic
+
+# Bone Ring (rare) - excluded base
+Hide
+    BaseType == "Bone Ring"
+    Rarity Rare
 
 # helmet - rare
 Show

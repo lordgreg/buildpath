@@ -69,6 +69,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Vortex and Cold Snap chill everything while you walk through it.',
     leveling: true,
     verifiedFor: 'Covens',
+    excludedBases: ['Bone Ring'],
     slots: {
       ...armour(['int_armour', 'dex_int_armour']),
       ...jewellery('intjewel'),
@@ -87,6 +88,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Burn yourself, regenerate faster, and let the fire clear the map.',
     leveling: true,
     verifiedFor: 'Covens',
+    excludedBases: ['Bone Ring'],
     slots: {
       ...armour(['str_int_armour', 'str_armour']),
       ...jewellery('intjewel'),
@@ -105,6 +107,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Freezing or arcane totems do the damage from a safe distance.',
     leveling: true,
     verifiedFor: 'Covens',
+    excludedBases: ['Bone Ring'],
     slots: {
       ...armour(['str_int_armour', 'int_armour']),
       ...jewellery('intjewel'),
@@ -123,7 +126,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Two-handed mace trauma stacking with enough armour to ignore it.',
     leveling: true,
     verifiedFor: 'Covens',
-    excludedBases: ['Chain Belt'],
+    excludedBases: ['Chain Belt', 'Bone Ring'],
     excludedMagicBases: ['Paua Ring'],
     slots: {
       ...armour(['str_armour']),
@@ -142,6 +145,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Spin through packs with a big two-hander and leech it all back.',
     leveling: true,
     verifiedFor: 'Covens',
+    excludedBases: ['Bone Ring'],
     slots: {
       ...armour(['str_armour']),
       ...jewellery('strjewel'),
@@ -159,6 +163,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Impale projectiles with a one-hander and a sturdy shield.',
     leveling: true,
     verifiedFor: 'Covens',
+    excludedBases: ['Bone Ring'],
     slots: {
       ...armour(['str_dex_armour', 'str_armour']),
       ...jewellery('strjewel'),
@@ -177,6 +182,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Bow lightning arrows off-screen before anything can reach you.',
     leveling: true,
     verifiedFor: 'Covens',
+    excludedBases: ['Bone Ring'],
     slots: {
       ...armour(['dex_armour']),
       ...jewellery('dexjewel'),
@@ -195,6 +201,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Stack chaos damage over time with pods and never stop moving.',
     leveling: true,
     verifiedFor: 'Covens',
+    excludedBases: ['Bone Ring'],
     slots: {
       ...armour(['dex_int_armour', 'dex_armour']),
       ...jewellery('dexjewel'),
@@ -213,6 +220,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Cold claws, high evasion, and a shield for the hits you do take.',
     leveling: true,
     verifiedFor: 'Covens',
+    excludedBases: ['Bone Ring'],
     slots: {
       ...armour(['dex_int_armour']),
       ...jewellery('dexjewel'),
@@ -231,6 +239,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Detonate chaos mines from range and let the screen disappear.',
     leveling: true,
     verifiedFor: 'Covens',
+    excludedBases: ['Bone Ring'],
     slots: {
       ...armour(['dex_int_armour']),
       ...jewellery('dexjewel'),
@@ -249,6 +258,7 @@ export const archetypes: readonly Archetype[] = [
     summary: 'Stack auras and reservations; the party does the damage.',
     leveling: false,
     verifiedFor: 'Covens',
+    excludedBases: ['Bone Ring'],
     slots: {
       ...armour(['str_int_armour', 'int_armour']),
       ...jewellery('intjewel'),

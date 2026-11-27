@@ -588,3 +588,87 @@ describe('melee accessory bases', () => {
     expect(rare.shown, 'Rare').toBe(true);
   });
 });
+
+const BONE_RING = `Item Class: Rings
+Rarity: Magic
+Bone Ring
+--------
+Item Level: 31
+--------
+{ Implicit Modifier — Elemental, Resistance, Minion }
+Minions have +10(10-15)% to all Elemental Resistances
+--------
+Unidentified`;
+
+describe('minion-only Bone Ring on non-minion builds', () => {
+  const NON_MINION_SELECTIONS = [
+    { mode: 'family' as const, familyId: 'caster' as const },
+    { mode: 'family' as const, familyId: 'bow' as const },
+    { mode: 'family' as const, familyId: 'melee' as const },
+    { mode: 'family' as const, familyId: 'hybrid' as const },
+    { mode: 'ascendancy' as const, ascendancyId: 'juggernaut' },
+    { mode: 'build' as const, buildId: 'boneshatter-juggernaut' },
+  ];
+
+  it('parses the reported unidentified magic Bone Ring', () => {
+    const [parsed] = parseItemText(BONE_RING);
+    expect(parsed).toMatchObject({
+      itemClass: 'Rings',
+      baseType: 'Bone Ring',
+      rarity: 'Magic',
+      itemLevel: 31,
+      identified: false,
+    });
+  });
+
+  it('hides the reported item for the Boneshatter build', () => {
+    const [parsed] = parseItemText(BONE_RING);
+    const filter = generateFilter({
+      selection: { mode: 'build', buildId: 'boneshatter-juggernaut' },
+      phase: 'leveling',
+      strictness: 'soft',
+    });
+    const found = evaluateRules(filter.rules, parsed!);
+    expect(found.shown).toBe(false);
+    expect(found.reason).toContain('excluded base');
+  });
+
+  it('hides Bone Rings at every rarity for non-minion builds', () => {
+    for (const selection of NON_MINION_SELECTIONS) {
+      for (const phase of ['leveling', 'endgame'] as const) {
+        for (const strictness of ['soft', 'strict', 'uber'] as const) {
+          for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
+            const filter = generateFilter({ selection, phase, strictness });
+            // Area 5 keeps every rarity visible in the leveling stage rules,
+            // so a hidden result can only come from the base exclusion.
+            const found = evaluateRules(
+              filter.rules,
+              ring('Bone Ring', rarity, 31, 5),
+            );
+            expect(
+              found.shown,
+              `${selection.mode}/${phase}/${strictness}/${rarity}`,
+            ).toBe(false);
+            expect(found.reason).toContain('excluded base');
+          }
+        }
+      }
+    }
+  });
+
+  it('keeps Bone Rings visible for minion builds', () => {
+    const minion = { mode: 'family' as const, familyId: 'minion' as const };
+    const filter = generateFilter({
+      selection: minion,
+      phase: 'leveling',
+      strictness: 'soft',
+    });
+    for (const rarity of ['Normal', 'Magic', 'Rare'] as const) {
+      const found = evaluateRules(
+        filter.rules,
+        ring('Bone Ring', rarity, 31, 5),
+      );
+      expect(found.shown, rarity).toBe(true);
+    }
+  });
+});

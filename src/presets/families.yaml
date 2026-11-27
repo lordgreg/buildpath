@@ -6,8 +6,9 @@ families:
     attributes: [int]
     armourTags: [int_armour]
     jewelTag: intjewel
-    # Iron Ring's physical attack implicit is useless for spell casters.
-    excludedBases: [Iron Ring]
+    # Iron Ring's physical attack implicit is useless for spell casters, and
+    # Bone Ring's implicit only helps minions.
+    excludedBases: [Iron Ring, Bone Ring]
     weapon:
       itemClasses: [Wand]
     offhand:
@@ -39,6 +40,8 @@ families:
     attributes: [dex]
     armourTags: [dex_armour]
     jewelTag: dexjewel
+    # Bone Ring's implicit only helps minions.
+    excludedBases: [Bone Ring]
     weapon:
       itemClasses: [Bow]
     offhand:
@@ -49,8 +52,9 @@ families:
     attributes: [str]
     armourTags: [str_armour]
     jewelTag: strjewel
-    # Chain Belt's energy-shield implicit is dead on a strength armour build.
-    excludedBases: [Chain Belt]
+    # Chain Belt's energy-shield implicit is dead on a strength armour build,
+    # and Bone Ring's implicit only helps minions.
+    excludedBases: [Chain Belt, Bone Ring]
     # Paua Ring's mana implicit is a caster base; a rare can still roll life and
     # resists, so only the normal and magic drops are hidden.
     excludedMagicBases: [Paua Ring]
@@ -65,6 +69,8 @@ families:
     attributes: [dex, int]
     armourTags: [dex_int_armour]
     jewelTag: dexjewel
+    # Bone Ring's implicit only helps minions.
+    excludedBases: [Bone Ring]
     weapon:
       itemClasses: [Claw]
     offhand:
