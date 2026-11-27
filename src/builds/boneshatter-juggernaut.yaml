@@ -38,12 +38,12 @@ cons:
   - { weight: 1, text: "Resolute Technique gives up critical strikes entirely." }
 
 ratings:
-  # Tankiness and single target are 10s on the measured gates: pinnacle sits
-  # near 830k DPS with 7.2k life, 41.5k EHP and 15.8k physical max hit. Clear is
-  # 9 because Pulverise plus a Melee Splash swap clears packs, but it is still
-  # slower than a bow. Cost is 9: no unique, Resolute Technique and bench-craft
-  # rares; the endgame axe, jewels, 21/20 gems and Perfect eldritch implicits
-  # are the real bill.
+  # Tankiness and single target are 10s on the measured gates: both clear their
+  # floors by a wide margin at every map checkpoint. Clear is 9 because
+  # Pulverise plus a Melee Splash swap clears packs, but it is still slower than
+  # a bow. Cost is 9: no unique, Resolute Technique and bench-craft rares; the
+  # endgame axe, jewels, 21/20 gems and Perfect eldritch implicits are the real
+  # bill.
   tankiness: 10
   singleTarget: 10
   clear: 9
@@ -61,9 +61,10 @@ guide:
   leveling:
     text: >-
       Level with Cleave and Added Fire Damage until Sunder is available, then
-      stay on Sunder until Brutality unlocks; Boneshatter becomes worth the swap
-      once Brutality is in the link and the character has a two-handed axe. The
-      first checkpoint measures
+      stay on Sunder for the measured stretch. Brutality is already usable
+      before the swap; the guide moves to Boneshatter at the next step, because
+      the Sunder checkpoint is what the gate measures. A better two-handed axe
+      is an upgrade, not a gate. The first checkpoint measures
       {{gates.leveling-1-12.metrics.life|int}} life and
       {{gates.leveling-1-12.metrics.dps|dps}} damage; the second measures
       {{gates.leveling-12-28.metrics.dps|dps}} with a self-cast Vulnerability. The mana
@@ -161,10 +162,10 @@ steps:
         trigger: { from: 12, skill: Sunder }
         watch: >-
           Sunder clears packs and hits single targets harder than Cleave, so it
-          stays the main skill until 28. Boneshatter unlocks at 28 and keeps the
-          same four links, so the swap is not a damage jump on its own, and it
-          also asks you to stand still and stack trauma. That is what makes the
-          next stretch feel bad; do not fix it with currency.
+          carries you from 12. Boneshatter unlocks at 28 but keeps the same four
+          links and asks you to stand still and stack trauma, so it is not a
+          damage jump until Brutality is in the link. Stay on Sunder into the
+          next step and do not fix the stretch with currency.
         measure: true
         aliases: [until-28]
         gems:
@@ -208,11 +209,17 @@ steps:
         # checkpoints.yaml. The gate thresholds stay the conservative until-28
         # floors.
         points: 42
+        # The normal lab unlocks around level 33, so a level-38 character has
+        # one ascendancy lab available; the band default (until-28) is zero.
+        labs: 1
         watch: >-
-          Stay on Sunder through 38. Boneshatter only makes sense once Brutality
-          is in the link at 39: before that, the four links and the missing axe
-          are what make this stretch feel bad, so spend nothing to fix it and
-          save for the axe. Cast when Damage Taken brings the curse at 38.
+          Stay on Sunder through 38: this step is the Sunder measurement, not a
+          Boneshatter step. Brutality is already usable at 38, but the guide
+          swaps at 39 when the next step opens. The four links and the missing
+          axe are what make this stretch feel bad, so spend nothing to fix it
+          and save for the axe. Cast when Damage Taken brings Vulnerability and
+          Immortal Call at 38; Herald of Purity and Determination come online
+          here too, with the mana flask paying for them until the axe has leech.
         measure: true
         gems:
           - slot: Body Armour
@@ -227,7 +234,7 @@ steps:
               - Enduring Cry
           - slot: Helmet
             gems:
-              - Herald of Purity
+              - { name: Herald of Purity, note: "The mana flask pays for this until the axe carries leech." }
               - Determination
           - slot: Gloves
             gems:
@@ -251,10 +258,11 @@ steps:
         trigger: { from: 38, skill: Boneshatter }
         watch: >-
           Boneshatter starts at 39, with Brutality replacing Added Fire Damage.
-          The fifth link is Pulverise and it waits for 68. Keep a mana flask
-          until the axe carries leech, and do not add Herald of Purity before it
-          does. Take the labs as they unlock; Unbreakable is the normal-lab
-          defence step.
+          The fifth link is Pulverise and it waits for 68. Herald of Purity and
+          Determination are the auras; until the axe carries leech, run a mana
+          flask in place of the Silver Flask and drop it once leech is online.
+          Take the labs as they unlock: Unflinching at the normal lab,
+          Unbreakable at the cruel lab.
         measure: true
         aliases: [until-68]
         gems:
@@ -461,9 +469,9 @@ steps:
           - { slot: utility, name: "Amethyst Flask", note: "Caps chaos resistance for pinnacle bosses." }
 
 ascendancyOrder:
-  # Unbreakable is the normal-lab defensive step; Undeniable still earns its
-  # point through attack speed, not accuracy, because Resolute Technique makes
-  # the accuracy half irrelevant.
+  # Unflinching is the normal-lab step; Unbreakable is the cruel-lab step.
+  # Undeniable still earns its point through attack speed, not accuracy,
+  # because Resolute Technique makes the accuracy half irrelevant.
   - node: unflinching
     lab: 1
   - node: unbreakable
@@ -500,7 +508,10 @@ changelog:
     date: "2026-11-27"
     notes:
       - "The 28-38 step now draws its own 41-point passive tree instead of repeating the level-28 tree; the 42-point budget is the step's reviewed override, not a derived count."
-      - "The 29-68 leveling step now shows the support progression: a 4-link until level 38, then swap Added Fire Damage for Brutality and add Pulverise as the fifth link."
-      - "The 29-68 step plan tells you to keep a mana flask until the axe carries leech and to hold Herald of Purity until then."
-      - "Boneshatter starts at 39, once Brutality is in the link; the 28-38 step stays on Sunder, because swapping before Brutality was the rough patch."
+      - "The 39-68 leveling step shows the support progression: a 4-link until level 38, then swap Added Fire Damage for Brutality and add Pulverise as the fifth link."
+      - "The 39-68 step plan keeps a mana flask until the axe carries leech; Herald of Purity is part of the level-38 setup and the flask pays for it."
+      - "Boneshatter starts at 39, with Brutality in the link; the 28-38 step stays on Sunder and is the Sunder measurement, because swapping before the next step was the rough patch."
       - "The switch to Boneshatter is now a step with its own gate report instead of prose inside one long bracket, because a playtest found that stretch the hardest part of the build."
+      - "Brutality is already usable at 38; the 39 swap is the guide's step boundary, and a better axe is an upgrade rather than a gate."
+      - "Ascendancy labs are named correctly: Unflinching normal, Unbreakable cruel, then Undeniable and Unrelenting."
+      - "The stale pinnacle comment is gone; the page keeps reading the committed gate values."
