@@ -1023,7 +1023,7 @@ describe('gem level caps', () => {
     for (const file of files) {
       const seed = parse(readFileSync(resolve(seedsDir, file), 'utf8')) as {
         id: string;
-        leveling: {
+        leveling?: {
           brackets: Array<{
             skillGroups?: Array<{
               gems: Array<string | { name: string; maxLevel?: number }>;
@@ -1031,7 +1031,9 @@ describe('gem level caps', () => {
           }>;
         };
       };
-      for (const bracket of seed.leveling.brackets) {
+      // A seed that declares `steps` lists its gems there; the cap is checked
+      // per bracket only while a seed still has brackets.
+      for (const bracket of seed.leveling?.brackets ?? []) {
         for (const group of bracket.skillGroups ?? []) {
           for (const gem of group.gems) {
             const name = typeof gem === 'string' ? gem : gem.name;

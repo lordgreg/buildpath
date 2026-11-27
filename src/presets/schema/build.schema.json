@@ -18,7 +18,6 @@
     "cons",
     "ratings",
     "guide",
-    "leveling",
     "tree",
     "ascendancyOrder",
     "bandit",
@@ -27,6 +26,10 @@
     "changelog",
     "wickerman",
     "stepPlan"
+  ],
+  "anyOf": [
+    { "required": ["leveling"] },
+    { "required": ["steps"] }
   ],
   "properties": {
     "schemaVersion": {
@@ -167,7 +170,7 @@
     "leveling": {
       "type": "object",
       "additionalProperties": false,
-      "description": "Leveling brackets, the pre-`steps` form (D32-D37). The last bracket must end at 100.",
+      "description": "Leveling brackets, the pre-`steps` form (D32-D37). The last bracket must end at 100. A seed that declares `steps` drops this.",
       "required": [
         "brackets"
       ],
@@ -250,7 +253,7 @@
       "type": "object",
       "additionalProperties": false,
       "minProperties": 1,
-      "description": "Guide steps as three roots over authored sub-steps (D32-D37, PLAN-BUILDS.md 9.3). A sub-step is authored, never generated from its trigger; `level` is the level it is read and measured at and it covers up to the next sub-step's level minus one. Optional while the seeds migrate: PR 1 accepts it alongside `leveling`.",
+      "description": "Guide steps as three roots over authored sub-steps (D32-D37, PLAN-BUILDS.md 9.3). A sub-step is authored, never generated from its trigger; `level` is the level it is read and measured at and it covers up to the next sub-step's level minus one. A seed declares either this or `leveling`, not neither.",
       "properties": {
         "leveling": { "$ref": "#/$defs/stepRoot" },
         "maps": { "$ref": "#/$defs/stepRoot" },

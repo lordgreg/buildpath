@@ -215,6 +215,9 @@ function deriveGearFilter(seed) {
  * name a gem or flask that the game does not let you use yet.
  */
 function checkAvailability(seed, file) {
+  // A migrated seed lists its gems on `steps`, where the resolver in
+  // src/core/builds/steps.ts makes the same availability check.
+  if (!seed.leveling) return;
   for (const bracket of seed.leveling.brackets) {
     for (const group of bracket.skillGroups ?? []) {
       for (const gem of group.gems) {
@@ -258,6 +261,8 @@ function checkAvailability(seed, file) {
  * levels with.
  */
 function checkSwaps(seed, file) {
+  // `steps` replaces swaps: a change is a sub-step, not a note inside one.
+  if (!seed.leveling) return;
   const swaps = seed.leveling.swaps ?? [];
   if (swaps.length === 0) return;
   const bracketGems = new Set();
@@ -302,6 +307,7 @@ function checkSwaps(seed, file) {
 
 /** Declared leveling brackets must be ordered, unique and end at 100. */
 function checkBrackets(seed, file) {
+  if (!seed.leveling) return;
   const brackets = seed.leveling.brackets;
   let previous = 0;
   for (const bracket of brackets) {
@@ -520,17 +526,30 @@ function sourceForGem(name, className, entry) {
 
 function describeGems(seed) {
   const names = new Set();
-  for (const bracket of seed.leveling.brackets) {
-    for (const group of bracket.skillGroups ?? []) {
-      for (const gem of group.gems) names.add(gemName(gem));
+  if (seed.leveling) {
+    for (const bracket of seed.leveling.brackets) {
+      for (const group of bracket.skillGroups ?? []) {
+        for (const gem of group.gems) names.add(gemName(gem));
+      }
+      for (const gem of bracket.skills ?? []) names.add(gemName(gem));
     }
-    for (const gem of bracket.skills ?? []) names.add(gemName(gem));
-  }
-  // Swap gems are shown on the guide too, so their colour, availability and
-  // description have to be present even when they never appear in a gate.
-  for (const swap of seed.leveling.swaps ?? []) {
-    names.add(swap.gem);
-    if (swap.replaces) names.add(swap.replaces);
+    // Swap gems are shown on the guide too, so their colour, availability and
+    // description have to be present even when they never appear in a gate.
+    for (const swap of seed.leveling.swaps ?? []) {
+      names.add(swap.gem);
+      if (swap.replaces) names.add(swap.replaces);
+    }
+  } else {
+    // A migrated seed names its gems on the steps; the guide shows them with
+    // the same provenance a bracket list gets.
+    for (const root of Object.values(seed.steps ?? {})) {
+      for (const step of root.sub ?? []) {
+        names.add(step.main);
+        for (const group of step.gems ?? []) {
+          for (const gem of group.gems) names.add(gemName(gem));
+        }
+      }
+    }
   }
   const info = {};
   for (const name of [...names].sort()) {

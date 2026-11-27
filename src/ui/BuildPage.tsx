@@ -8,6 +8,14 @@ import type {
 import { BUILD_VERSION, BUILDS } from '../meta/builds.ts';
 import { GUIDE_SECTIONS, type GuideSection } from '../core/builds/guide.ts';
 import { levelingPlan } from '../core/builds/leveling.ts';
+import {
+  currentStep,
+  measuredFallback,
+  resolveStepId,
+  stepRangeLabel,
+  stepView,
+  STEP_ROOT_LABELS,
+} from '../core/builds/stepView.ts';
 import { BANDITS } from '../meta/pantheon.ts';
 import { getPobLink } from '../meta/pob-links.ts';
 import AscendancyPanel from './AscendancyPanel.tsx';
@@ -48,12 +56,17 @@ function writeStep(id: string, step: string) {
   window.history.replaceState(null, '', `#${params.toString()}`);
 }
 
-/** Flask column for a checkpoint: leveling, maps, or endgame. */
-function flaskStep(checkpoint: string): 'leveling' | 'maps' | 'endgame' {
-  if (checkpoint === 'until-12' || checkpoint === 'until-28' || checkpoint === 'until-68') {
-    return 'leveling';
-  }
-  if (checkpoint === 'pinnacle') return 'endgame';
+/**
+ * Flask column for a step. The root the step is grouped under is the phase, so a
+ * migrated seed with its own step ids needs no table.
+ */
+function flaskStep(
+  step: { root: 'leveling' | 'maps' | 'endgame' } | undefined,
+  id: string,
+): 'leveling' | 'maps' | 'endgame' {
+  if (step) return step.root;
+  if (id === 'until-12' || id === 'until-28' || id === 'until-68') return 'leveling';
+  if (id === 'pinnacle') return 'endgame';
   return 'maps';
 }
 
@@ -386,11 +399,17 @@ export default function BuildPage() {
 
   const gates = Object.entries(build.gates ?? {}) as [string, GateResult][];
   const passed = gates.filter(([, gate]) => gate.pass).length;
-  // The step drives every number on the page: tree, gear, gems, budgets.
-  const step = gates.some(([key]) => key === stepOverride)
-    ? stepOverride!
-    : (gates[0]?.[0] ?? '');
-  const gate = build.gates?.[step];
+  // The step drives every number on the page: tree, gear, gems, budgets. It is
+  // read through the three roots, so an old `step=until-28` link still lands on
+  // the step that replaced it.
+  const roots = stepView(build);
+  const step = resolveStepId(roots, build.stepAliases, stepOverride);
+  const current = currentStep(roots, step);
+  // An editorial step has no report of its own, so the numbers below are the
+  // nearest measured step's and the page says which one that is.
+  const measuredStep = build.gates?.[step] ? current : measuredFallback(roots, step);
+  const gateKey = measuredStep?.gateKey ?? step;
+  const gate = build.gates?.[gateKey];
   const pipeline = build.pipeline;
   const builderHash = `#mode=build&build=${build.id}&phase=leveling&strictness=soft`;
   const filterLinks = [
@@ -399,22 +418,28 @@ export default function BuildPage() {
     { label: 'Endgame · Strict', href: `#mode=build&build=${build.id}&phase=endgame&strictness=strict` },
     { label: 'Bossing · Uber', href: `#mode=build&build=${build.id}&phase=endgame&strictness=uber` },
   ];
-  const showFlasks = gate?.flasks ?? build.flasks?.[flaskStep(step)];
+  const showFlasks = gate?.flasks ?? build.flasks?.[flaskStep(current, step)];
   // Quality and Vaal corruption are endgame investments. The only exception is
   // a guide that is explicitly built around a Vaal gem from the start.
   const showGemQuality =
-    step === 'maps-red' || step === 'pinnacle' || build.gemQualityFrom === 'leveling';
+    build.gemQualityFrom === 'leveling' ||
+    Boolean(gate?.gems?.some((group) => group.gems.some((gem) => (gem.quality ?? 0) > 0)));
   // A guide step is a leveling bracket: show the gems you level with at that
   // step, so there is no separate "leveling" section repeating the same thing.
   // A map step is not a leveling step, and a step that introduces no gem the
   // reader has not already been told about and has no swap has nothing left to
   // say, so it is hidden too.
-  const leveling = levelingPlan(
-    build.leveling,
-    Object.entries(build.gates ?? {}).map(([id, entry]) => ({ id, level: entry.level })),
-    (gem) => build.gemInfo?.[gem]?.requiredLevel,
-  ).find((entry) => entry.id === step);
+  // A migrated seed replaces the derived leveling plan with its own `watch`
+  // line; an unmigrated one still has brackets to read.
+  const leveling = build.leveling
+    ? levelingPlan(
+        build.leveling,
+        Object.entries(build.gates ?? {}).map(([id, entry]) => ({ id, level: entry.level })),
+        (gem) => build.gemInfo?.[gem]?.requiredLevel,
+      ).find((entry) => entry.id === step)
+    : undefined;
   const showLeveling = Boolean(leveling && !leveling.redundant);
+  const showChanges = showLeveling || Boolean(current?.watch);
 
   return (
     <div className="min-h-dvh">
@@ -461,7 +486,7 @@ export default function BuildPage() {
                   : 'rounded border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-xs text-amber-300'
             }
           >
-            {statusLabel(build.status)} · {passed}/{gates.length} checkpoints
+            {statusLabel(build.status)} · {passed}/{gates.length} measured steps
           </span>
         </div>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400">{build.summary}</p>
@@ -580,25 +605,34 @@ export default function BuildPage() {
           Everything below follows the step you pick: tree, gems, gear and the
           numbers the gate measured.
         </p>
-        <div className="mt-2 flex flex-wrap gap-1">
-          {gates.map(([checkpoint]) => (
-            <button
-              key={checkpoint}
-              type="button"
-              aria-pressed={checkpoint === step}
-              onClick={() => {
-                setStepOverride(checkpoint);
-                writeStep(build.id, checkpoint);
-              }}
-              className={
-                checkpoint === step
-                  ? 'rounded border border-gold-400 bg-gold-400/10 px-2 py-1 text-[11px] text-gold-200'
-                  : 'rounded border border-ink-700 bg-ink-800/40 px-2 py-1 text-[11px] text-zinc-400 hover:border-ink-500'
-              }
-            >
-              {checkpoint}
-              <span className="ml-1 text-zinc-500">lv {build.gates?.[checkpoint]?.level}</span>
-            </button>
+        <div className="mt-2 space-y-1.5">
+          {roots.map((root) => (
+            <div key={root.id} className="flex flex-wrap items-center gap-1">
+              <span className="w-20 shrink-0 text-[10px] uppercase tracking-[0.16em] text-zinc-600">
+                {root.label}
+              </span>
+              {root.steps.map((entry) => (
+                <button
+                  key={entry.id}
+                  type="button"
+                  aria-pressed={entry.id === step}
+                  onClick={() => {
+                    setStepOverride(entry.id);
+                    writeStep(build.id, entry.id);
+                  }}
+                  className={
+                    entry.id === step
+                      ? 'rounded border border-gold-400 bg-gold-400/10 px-2 py-1 text-[11px] text-gold-200'
+                      : 'rounded border border-ink-700 bg-ink-800/40 px-2 py-1 text-[11px] text-zinc-400 hover:border-ink-500'
+                  }
+                >
+                  {stepRangeLabel(entry)}
+                  {!entry.measured && (
+                    <span className="ml-1 text-[10px] text-zinc-600">not measured</span>
+                  )}
+                </button>
+              ))}
+            </div>
           ))}
         </div>
       </section>
@@ -632,6 +666,11 @@ export default function BuildPage() {
             {pipeline && !pipeline.calibrated && (
               <span className="ml-2 rounded border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-amber-300">
                 uncalibrated thresholds
+              </span>
+            )}
+            {current && !current.measured && measuredStep && (
+              <span className="ml-2 rounded border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-amber-300">
+                this step is not measured · showing {stepRangeLabel(measuredStep)}
               </span>
             )}
           </p>
@@ -695,7 +734,7 @@ export default function BuildPage() {
         </section>
       )}
 
-      {build.pob && <PobCode buildId={build.id} pob={build.pob} step={step} />}
+      {build.pob && <PobCode buildId={build.id} pob={build.pob} step={gateKey} />}
 
       <section aria-labelledby="filter">
         <h2 id="filter" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -775,17 +814,34 @@ export default function BuildPage() {
         </section>
       )}
 
-      {showLeveling && leveling && (
+      {showChanges && (
         <section aria-labelledby="leveling">
+          {/* The id stays `leveling` so a link written before this refactor still
+              scrolls here; the heading now names what the section does. */}
           <h2
             id="leveling"
             className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
           >
-            Leveling this step
+            What changes here
           </h2>
-          <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-zinc-500">
-            Levels {leveling.from}–{leveling.until}
-          </p>
+          {current && (
+            <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-zinc-500">
+              {STEP_ROOT_LABELS[current.root]} · {stepRangeLabel(current)}
+            </p>
+          )}
+          {current?.watch && (
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-300">
+              {current.watch}
+            </p>
+          )}
+          {current && !current.measured && current.reason && (
+            <p className="mt-2 rounded border border-amber-500/30 bg-amber-500/[0.06] px-2 py-1.5 text-[11px] leading-relaxed text-amber-200">
+              Not measured: {current.reason} The gate numbers below are the last
+              measured step&apos;s.
+            </p>
+          )}
+          {leveling && (
+            <>
           {leveling.startSkills.length > 0 ? (
             <div className="mt-3">
               <p className="text-[10px] uppercase tracking-[0.16em] text-zinc-600">Use</p>
@@ -876,6 +932,8 @@ export default function BuildPage() {
                 );
               })}
             </ul>
+          )}
+            </>
           )}
           <p className="mt-2 text-xs leading-relaxed text-zinc-500">
             <a
@@ -1177,40 +1235,52 @@ export default function BuildPage() {
             <p className="mb-2 text-[10px] uppercase tracking-[0.2em] text-zinc-600">
               Step
             </p>
-            <ul className="flex flex-wrap gap-1 lg:flex-col lg:gap-0.5">
-              {gates.map(([checkpoint, entry]) => {
-                const current = checkpoint === step;
-                return (
-                  <li key={checkpoint} className="lg:w-full">
-                    <button
-                      type="button"
-                      aria-pressed={current}
-                      aria-label={`Read the ${checkpoint} step, level ${entry.level}`}
-                      onClick={() => {
-                        setStepOverride(checkpoint);
-                        writeStep(build.id, checkpoint);
-                      }}
-                      className={
-                        current
-                          ? 'flex w-full items-center justify-between gap-2 rounded-md border border-gold-400/40 bg-gold-400/10 px-2 py-1 text-left text-[11px] font-medium text-gold-200 lg:px-2.5 lg:py-1.5'
-                          : 'flex w-full items-center justify-between gap-2 rounded-md border border-ink-700 bg-ink-800/40 px-2 py-1 text-left text-[11px] text-zinc-500 transition-colors hover:border-ink-500 hover:text-zinc-200 lg:border-transparent lg:bg-transparent lg:px-2.5 lg:py-1.5 lg:hover:bg-ink-800/70'
-                      }
-                    >
-                      <span className="truncate">{checkpoint}</span>
-                      <span
-                        className={
-                          current
-                            ? 'text-[10px] tabular-nums text-gold-300/80'
-                            : 'text-[10px] tabular-nums text-zinc-600'
-                        }
-                      >
-                        lv {entry.level}
-                      </span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+            <div className="space-y-3">
+              {roots.map((root) => (
+                <div key={root.id}>
+                  <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-zinc-600">
+                    {root.label}
+                  </p>
+                  <ul className="flex flex-wrap gap-1 lg:flex-col lg:gap-0.5">
+                    {root.steps.map((entry) => {
+                      const active = entry.id === step;
+                      const result = build.gates?.[entry.id];
+                      return (
+                        <li key={entry.id} className="lg:w-full">
+                          <button
+                            type="button"
+                            aria-pressed={active}
+                            aria-label={`Read the ${stepRangeLabel(entry)} step`}
+                            onClick={() => {
+                              setStepOverride(entry.id);
+                              writeStep(build.id, entry.id);
+                            }}
+                            className={
+                              active
+                                ? 'flex w-full items-center justify-between gap-2 rounded-md border border-gold-400/40 bg-gold-400/10 px-2 py-1 text-left text-[11px] font-medium text-gold-200 lg:px-2.5 lg:py-1.5'
+                                : 'flex w-full items-center justify-between gap-2 rounded-md border border-ink-700 bg-ink-800/40 px-2 py-1 text-left text-[11px] text-zinc-500 transition-colors hover:border-ink-500 hover:text-zinc-200 lg:border-transparent lg:bg-transparent lg:px-2.5 lg:py-1.5 lg:hover:bg-ink-800/70'
+                            }
+                          >
+                            <span className="truncate">{stepRangeLabel(entry)}</span>
+                            <span
+                              className={
+                                !entry.measured
+                                  ? 'text-[10px] text-zinc-600'
+                                  : result?.pass
+                                    ? 'text-[10px] text-emerald-400/80'
+                                    : 'text-[10px] text-rose-400/80'
+                              }
+                            >
+                              {entry.measured ? (result?.pass ? 'pass' : 'fail') : 'not measured'}
+                            </span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
           <p className="mb-2 text-[10px] uppercase tracking-[0.2em] text-zinc-600">
             On this page
@@ -1230,7 +1300,7 @@ export default function BuildPage() {
               ['tree', 'Passive tree'],
               ['gear', 'Gear'],
               ['gems', 'Gems'],
-              ...(showLeveling ? ([['leveling', 'Leveling this step']] as [string, string][]) : []),
+              ...(showChanges ? ([['leveling', 'What changes here']] as [string, string][]) : []),
               ['ascendancy', 'Ascendancy'],
               ['pantheon', 'Pantheon'],
               ['bandit', 'Bandit'],
