@@ -49,66 +49,167 @@ tree:
     - increased maximum life
     - increased energy shield
 
-leveling:
-  brackets:
-    - until: 12
-      skills: [Essence Drain]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Essence Drain, Efficacy, Arcane Surge]
-        - slot: Weapon 1
-          gems: [Contagion, Flame Dash]
-        - slot: Helmet
-          gems: [Clarity]
-      flasks:
-        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
-        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
-    - until: 28
-      skills: [Essence Drain]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Essence Drain, Efficacy, Controlled Destruction, Faster Casting]
-        - slot: Weapon 1
-          gems: [Contagion, Flame Dash]
-        - slot: Helmet
-          gems: [Clarity, Despair]
-      flasks:
-        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 68
-      skills: [Essence Drain]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Essence Drain, Efficacy, Controlled Destruction, Swift Affliction, Void Sphere, Faster Casting]
-        - slot: Weapon 1
-          gems: [Contagion, Flame Dash]
-        - slot: Helmet
-          gems: [Clarity, Despair]
-        - slot: Boots
-          gems: [Wither]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
-        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 100
-      skills: [Essence Drain]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Essence Drain, Efficacy, Controlled Destruction, Swift Affliction, Void Sphere, Faster Casting]
-        - slot: Weapon 1
-          gems: [Contagion, Flame Dash]
-        - slot: Helmet
-          gems: [Clarity, Despair]
-        - slot: Boots
-          gems: [Wither]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
-        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+# Steps (PLAN-BUILDS.md §9.3). Each step is read and measured at its `level`;
+# the pre-refactor checkpoints survive as `aliases`, so old links still land.
+steps:
+  leveling:
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Essence Drain
+        measure: true
+        aliases: [until-12]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Essence Drain
+              - Efficacy
+              - Arcane Surge
+          - slot: Weapon 1
+            gems:
+              - Contagion
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - Clarity
+        flasks:
+          - slot: life
+            name: Medium Life Flask
+            note: Small until level 3.
+          - slot: mana
+            name: Small Mana Flask
+            note: Spells are expensive early.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Act 2 quest reward.
+      - id: leveling-12-28
+        level: 28
+        main: Essence Drain
+        trigger: { from: 12 }
+        measure: true
+        aliases: [until-28]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Essence Drain
+              - Efficacy
+              - Controlled Destruction
+              - Faster Casting
+          - slot: Weapon 1
+            gems:
+              - Contagion
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - Clarity
+              - Despair
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+      - id: leveling-38-68
+        level: 68
+        main: Essence Drain
+        trigger: { from: 28 }
+        measure: true
+        aliases: [until-68]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Essence Drain
+              - Efficacy
+              - Controlled Destruction
+              - Swift Affliction
+              - Void Sphere
+              - Faster Casting
+          - slot: Weapon 1
+            gems:
+              - Contagion
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - Clarity
+              - Despair
+          - slot: Boots
+            gems:
+              - Wither
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Instant prefix.
+          - slot: mana
+            name: Hallowed Mana Flask
+            note: Drops from level 42.
+          - slot: utility
+            name: Quartz Flask
+            note: Phasing.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+  maps:
+    sub:
+      - id: maps-white
+        level: 80
+        main: Essence Drain
+        trigger: { from: 68 }
+        measure: true
+        aliases: [maps-early]
+        gems: &id001
+          - slot: Body Armour
+            gems:
+              - Essence Drain
+              - Efficacy
+              - Controlled Destruction
+              - Swift Affliction
+              - Void Sphere
+              - Faster Casting
+          - slot: Weapon 1
+            gems:
+              - Contagion
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - Clarity
+              - Despair
+          - slot: Boots
+            gems:
+              - Wither
+        flasks: &id002
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: Drops from level 65.
+          - slot: utility
+            name: Quartz Flask
+            note: Phasing.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+      - id: maps-red
+        level: 90
+        main: Essence Drain
+        trigger: { from: 80 }
+        measure: true
+        gems: *id001
+        flasks: *id002
+  endgame:
+    sub:
+      - id: endgame-pinnacle
+        level: 96
+        main: Essence Drain
+        trigger: { from: 90 }
+        measure: true
+        aliases: [pinnacle]
+        gems: *id001
+        flasks: *id002
 
 ascendancyOrder:
   - { node: void-beacon, lab: 1 }
@@ -130,16 +231,16 @@ guide:
     text: >-
       Essence Drain Occultist is a chaos damage-over-time build that measures
       {{gates.maps-red.metrics.dps|dps}} at red maps and
-      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. The damage keeps working
+      {{gates.endgame-pinnacle.metrics.dps|dps}} at pinnacle. The damage keeps working
       while you move, and no unique is required.
-    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.endgame-pinnacle.metrics.dps]
   leveling:
     text: >-
       Level with Essence Drain and Contagion, then add the DoT supports as they
-      unlock. The first checkpoint measures {{gates.until-12.metrics.life|int}}
-      life and {{gates.until-12.metrics.dps|dps}} damage; the second measures
-      {{gates.until-28.metrics.dps|dps}}.
-    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+      unlock. The first checkpoint measures {{gates.leveling-1-12.metrics.life|int}}
+      life and {{gates.leveling-1-12.metrics.dps|dps}} damage; the second measures
+      {{gates.leveling-12-28.metrics.dps|dps}}.
+    facts: [gates.leveling-1-12.metrics.life, gates.leveling-1-12.metrics.dps, gates.leveling-12-28.metrics.dps]
   maps:
     text: >-
       At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
@@ -149,11 +250,11 @@ guide:
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
   bossing:
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
-      {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Apply Despair and
+      Pinnacle measures {{gates.endgame-pinnacle.metrics.dps|dps}} damage with
+      {{gates.endgame-pinnacle.metrics.ehp|int}} effective life and
+      {{gates.endgame-pinnacle.metrics.maxHit|int}} physical max hit. Apply Despair and
       Wither before the burst, then keep moving while the DoT works.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+    facts: [gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit]
 changelog:
   - season: covens
     date: "2026-11-26"

@@ -34,7 +34,7 @@ function build(
     class?: BuildIndexEntry['class'];
     medal?: BuildIndexEntry['medal'];
     chips?: BuildChip[];
-    steps?: BuildStepSummary[];
+    gateSteps?: BuildStepSummary[];
     verifiedAt?: string;
     name?: string;
   } = {},
@@ -51,7 +51,7 @@ function build(
     seedHash: id,
     medal: options.medal,
     chips: options.chips ?? [{ label: 'SSF', kind: 'ssf' }],
-    steps: options.steps,
+    gateSteps: options.gateSteps,
     verifiedAt: options.verifiedAt,
   };
 }
@@ -202,21 +202,21 @@ describe('catalogue order', () => {
       name: 'Alpha',
       class: 'Witch',
       medal: 'B',
-      steps: dpsSteps(20_000),
+      gateSteps: dpsSteps(20_000),
       verifiedAt: '2026-11-26T18:00:00.000Z',
     }),
     build('b', {
       name: 'Bravo',
       class: 'Templar',
       medal: 'S',
-      steps: dpsSteps(90_000),
+      gateSteps: dpsSteps(90_000),
       verifiedAt: '2026-11-26T19:00:00.000Z',
     }),
     build('c', {
       name: 'Charlie',
       class: 'Ranger',
       medal: 'A',
-      steps: dpsSteps(50_000),
+      gateSteps: dpsSteps(50_000),
       verifiedAt: '2026-11-26T17:00:00.000Z',
     }),
   ];
@@ -230,7 +230,7 @@ describe('catalogue order', () => {
     expect(sortBuilds(builds, 'dps', 'desc').map((b) => b.id)).toEqual(['b', 'c', 'a']);
     expect(sortBuilds(builds, 'dps', 'asc').map((b) => b.id)).toEqual(['a', 'c', 'b']);
     const noRed = build('d', {
-      steps: [
+      gateSteps: [
         { id: 'until-12', pass: true, level: 12, dps: 90 },
         { id: 'pinnacle', pass: true, level: 96, dps: 9_000 },
       ],

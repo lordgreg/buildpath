@@ -89,119 +89,265 @@ tree:
     - increased cast speed
     - resistance
 
-leveling:
-  brackets:
-    - until: 12
-      skills: [Rolling Magma]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Rolling Magma, Added Lightning Damage, Arcane Surge]
-        - slot: Weapon 1
-          gems: [Flame Dash]
-        - slot: Helmet
-          gems:
-            - { name: Clarity, maxLevel: 5, note: "Low level keeps the reservation small." }
-      flasks:
-        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
-        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Act 1 quest reward." }
-    - until: 28
-      skills: [Arc]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Arc, Added Lightning Damage, Faster Casting, Arcane Surge]
-        - slot: Weapon 1
-          gems: [Flame Dash]
-        - slot: Helmet
-          gems:
-            - { name: Clarity, maxLevel: 5, note: "Low level keeps the reservation small." }
-        - slot: Gloves
-          gems: [Wave of Conviction, Physical to Lightning]
-      flasks:
-        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Movement is a defensive stat while leveling." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 68
-      skills: [Arc]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Arc, Added Lightning Damage, Lightning Penetration, Arcane Surge, Inspiration]
-        - slot: Weapon 1
-          gems: [Flame Dash]
-        - slot: Helmet
-          gems:
-            - { name: Clarity, maxLevel: 5, note: "Low level keeps the reservation small." }
-        - slot: Boots
-          gems: [Determination]
-        - slot: Gloves
-          gems: [Conductivity, Wave of Conviction, Physical to Lightning, Enduring Cry]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
-        - { slot: utility, name: "Granite Flask", note: "Armour is half of the physical layer." }
-        - { slot: utility, name: "Quicksilver Flask", note: "The Basalt Flask starts at the map steps." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    # White maps still run the five-link the ssf-start budget actually has. The
-    # six-link is the maps-red step; a bracket with six gems at level 80 would
-    # measure a link the character does not own.
-    - until: 80
-      skills: [Arc]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Arc, Added Lightning Damage, Lightning Penetration, Arcane Surge, Inspiration]
-        - slot: Weapon 1
-          gems: [Flame Dash]
-        - slot: Helmet
-          gems: [Arctic Armour]
-        - slot: Gloves
-          gems: [Conductivity, Wave of Conviction, Physical to Lightning, Enduring Cry]
-        - slot: Boots
-          gems: [Determination]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "White maps still use the budget flask." }
-        - { slot: utility, name: "Granite Flask", note: "Armour." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 90
-      skills: [Arc]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Arc, Added Lightning Damage, Lightning Penetration, Arcane Surge, Inspiration, Spell Echo]
-        - slot: Weapon 1
-          gems: [Flame Dash]
-        - slot: Helmet
-          gems: [Arctic Armour]
-        - slot: Gloves
-          gems: [Conductivity, Wave of Conviction, Physical to Lightning, Enduring Cry]
-        - slot: Boots
-          gems: [Determination]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
-        - { slot: utility, name: "Granite Flask", note: "Armour." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 100
-      skills: [Arc]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Arc, Added Lightning Damage, Lightning Penetration, Arcane Surge, Inspiration, Spell Echo]
-        - slot: Weapon 1
-          gems: [Flame Dash]
-        - slot: Helmet
-          gems: [Arctic Armour]
-        - slot: Gloves
-          gems: [Conductivity, Wave of Conviction, Physical to Lightning, Enduring Cry]
-        - slot: Boots
-          gems: [Determination]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "The build does not work without it." }
-        - { slot: utility, name: "Granite Flask", note: "Armour." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "The measured set keeps it; the chaos suffixes already reach the cap, so it is the first slot to swap." }
+# Steps (PLAN-BUILDS.md §9.3). Each step is read and measured at its `level`;
+# the pre-refactor checkpoints survive as `aliases`, so old links still land.
+steps:
+  leveling:
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Rolling Magma
+        measure: true
+        aliases: [until-12]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Rolling Magma
+              - Added Lightning Damage
+              - Arcane Surge
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - name: Clarity
+                maxLevel: 5
+                note: Low level keeps the reservation small.
+        flasks:
+          - slot: life
+            name: Medium Life Flask
+            note: Small until level 3.
+          - slot: mana
+            name: Small Mana Flask
+            note: Spells are expensive early.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Act 1 quest reward.
+      - id: leveling-12-28
+        level: 28
+        main: Arc
+        trigger: { from: 12, skill: Arc }
+        measure: true
+        aliases: [until-28]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Arc
+              - Added Lightning Damage
+              - Faster Casting
+              - Arcane Surge
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - name: Clarity
+                maxLevel: 5
+                note: Low level keeps the reservation small.
+          - slot: Gloves
+            gems:
+              - Wave of Conviction
+              - Physical to Lightning
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Movement is a defensive stat while leveling.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+      - id: leveling-38-68
+        level: 68
+        main: Arc
+        trigger: { from: 28 }
+        measure: true
+        aliases: [until-68]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Arc
+              - Added Lightning Damage
+              - Lightning Penetration
+              - Arcane Surge
+              - Inspiration
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - name: Clarity
+                maxLevel: 5
+                note: Low level keeps the reservation small.
+          - slot: Boots
+            gems:
+              - Determination
+          - slot: Gloves
+            gems:
+              - Conductivity
+              - Wave of Conviction
+              - Physical to Lightning
+              - Enduring Cry
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Instant prefix.
+          - slot: mana
+            name: Hallowed Mana Flask
+            note: Drops from level 42.
+          - slot: utility
+            name: Granite Flask
+            note: Armour is half of the physical layer.
+          - slot: utility
+            name: Quicksilver Flask
+            note: The Basalt Flask starts at the map steps.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+  maps:
+    sub:
+      - id: maps-white
+        level: 80
+        main: Arc
+        trigger: { from: 68 }
+        measure: true
+        aliases: [maps-early]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Arc
+              - Added Lightning Damage
+              - Lightning Penetration
+              - Arcane Surge
+              - Inspiration
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - Arctic Armour
+          - slot: Gloves
+            gems:
+              - Conductivity
+              - Wave of Conviction
+              - Physical to Lightning
+              - Enduring Cry
+          - slot: Boots
+            gems:
+              - Determination
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: mana
+            name: Hallowed Mana Flask
+            note: White maps still use the budget flask.
+          - slot: utility
+            name: Granite Flask
+            note: Armour.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+      - id: maps-red
+        level: 90
+        main: Arc
+        trigger: { from: 80 }
+        measure: true
+        gems:
+          - slot: Body Armour
+            gems:
+              - Arc
+              - Added Lightning Damage
+              - Lightning Penetration
+              - Arcane Surge
+              - Inspiration
+              - Spell Echo
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - Arctic Armour
+          - slot: Gloves
+            gems:
+              - Conductivity
+              - Wave of Conviction
+              - Physical to Lightning
+              - Enduring Cry
+          - slot: Boots
+            gems:
+              - Determination
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: Drops from level 65.
+          - slot: utility
+            name: Granite Flask
+            note: Armour.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+  endgame:
+    sub:
+      - id: endgame-pinnacle
+        level: 96
+        main: Arc
+        trigger: { from: 90 }
+        measure: true
+        aliases: [pinnacle]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Arc
+              - Added Lightning Damage
+              - Lightning Penetration
+              - Arcane Surge
+              - Inspiration
+              - Spell Echo
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - Arctic Armour
+          - slot: Gloves
+            gems:
+              - Conductivity
+              - Wave of Conviction
+              - Physical to Lightning
+              - Enduring Cry
+          - slot: Boots
+            gems:
+              - Determination
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: The build does not work without it.
+          - slot: utility
+            name: Granite Flask
+            note: Armour.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: The measured set keeps it; the chaos suffixes already reach the cap, so it is the first slot to swap.
 
 ascendancyOrder:
   - { node: shaper-of-storms, lab: 1 }
@@ -268,13 +414,13 @@ guide:
       a large life pool, capped resistances, Saffell's Frame's maximum
       resistances, Determination armour, Arctic Armour while stationary and the
       endurance charges from Enduring Cry. The build measures
-      {{gates.pinnacle.metrics.dps|dps}} at pinnacle with
-      {{gates.pinnacle.metrics.ehp|k}} effective life and
-      {{gates.pinnacle.metrics.maxHit|k}} physical max hit. Two cheap uniques
+      {{gates.endgame-pinnacle.metrics.dps|dps}} at pinnacle with
+      {{gates.endgame-pinnacle.metrics.ehp|k}} effective life and
+      {{gates.endgame-pinnacle.metrics.maxHit|k}} physical max hit. Two cheap uniques
       are required. The quoted map and pinnacle numbers assume the declared
       shock, exposure, Elemental Overload, Convergence, endurance charges,
       active flasks and stationary Arctic Armour.
-    facts: [mainSkill, ascendancyId, gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+    facts: [mainSkill, ascendancyId, gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit]
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   leveling:
     text: >-
@@ -283,13 +429,13 @@ guide:
       lightning exposure once the gem pair is available, Conductivity arrives
       with the curse package, and Determination plus Enduring Cry start the
       physical layer. The first checkpoint measures
-      {{gates.until-12.metrics.life|k}} life; the second measures
-      {{gates.until-28.metrics.life|k}} life. The gate strip's early damage
+      {{gates.leveling-1-12.metrics.life|k}} life; the second measures
+      {{gates.leveling-12-28.metrics.life|k}} life. The gate strip's early damage
       numbers use the same global PoB config as the endgame steps, so read them
       as a like-for-like comparison rather than a leveling rotation. Drop
       Clarity for Arctic Armour when the reservation fits, and treat the mana
       flask as a slot you never remove.
-    facts: [gates.until-12.metrics.life, gates.until-28.metrics.life]
+    facts: [gates.leveling-1-12.metrics.life, gates.leveling-12-28.metrics.life]
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   maps:
     text: >-
@@ -308,10 +454,10 @@ guide:
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   bossing:
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
-      {{gates.pinnacle.metrics.ehp|k}} effective life and
-      {{gates.pinnacle.metrics.maxHit|k}} physical max hit, and chaos
-      resistance is capped at {{gates.pinnacle.metrics.chaosResist|res}} by the
+      Pinnacle measures {{gates.endgame-pinnacle.metrics.dps|dps}} damage with
+      {{gates.endgame-pinnacle.metrics.ehp|k}} effective life and
+      {{gates.endgame-pinnacle.metrics.maxHit|k}} physical max hit, and chaos
+      resistance is capped at {{gates.endgame-pinnacle.metrics.chaosResist|res}} by the
       endgame chaos suffixes and Saffell's Frame's maximum resistances. Open
       with Wave of Conviction to apply the exposure, keep the Physical to
       Lightning link so the exposure is lightning, and reapply the wave between
@@ -323,7 +469,7 @@ guide:
       assumes the exposure, curse and shock this build applies itself, so apply
       them before the burst rather than casting into a naked target. The
       rotation spends the mana bar, so start it on a full flask.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit, gates.pinnacle.metrics.chaosResist]
+    facts: [gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit, gates.endgame-pinnacle.metrics.chaosResist]
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
 
 changelog:

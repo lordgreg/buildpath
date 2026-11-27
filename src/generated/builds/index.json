@@ -1,5 +1,5 @@
 {
-  "version": "11feaa4c55b6",
+  "version": "24a5c05f7a6d",
   "builds": [
     {
       "id": "absolution-guardian",
@@ -10,9 +10,9 @@
       "mainSkill": "Absolution",
       "summary": "Absolution turns a single cast into a squad of lightning sentinels that keep attacking while you move. The Guardian shell supplies the defences and the relic army, so the build is a relaxed mapper that still has a real boss rotation, and it needs no unique.",
       "status": "verified",
-      "seedHash": "dd859423f2ea",
+      "seedHash": "c394e21fc154",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:51:58.632Z",
+      "verifiedAt": "2026-11-27T16:00:17.957Z",
       "ratings": {
         "tankiness": 7,
         "singleTarget": 8,
@@ -45,42 +45,48 @@
           "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 39
+          "dps": 39,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 149
+          "dps": 149,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 7615
+          "dps": 7615,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 11872
+          "dps": 11872,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 91571
+          "dps": 91571,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 59216
+          "dps": 59216,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -165,9 +171,9 @@
       "mainSkill": "Animate Weapon",
       "summary": "Animate Weapon turns the weapons a map drops into a temporary melee army. Each cast adds another animated blade, so the build snowballs through a map and then carries the same swarm into the boss room. It needs no unique, only weapons on the ground and a Necromancer shell to keep them alive.",
       "status": "verified",
-      "seedHash": "87f5088f3b2e",
+      "seedHash": "e4c32c196bce",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:52:13.550Z",
+      "verifiedAt": "2026-11-27T16:00:31.523Z",
       "ratings": {
         "tankiness": 5,
         "singleTarget": 9,
@@ -205,42 +211,48 @@
           "title": "Single-target damage is the build’s defining strength."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 131
+          "dps": 131,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 507
+          "dps": 507,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 10319
+          "dps": 10319,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 11132
+          "dps": 11132,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 30847
+          "dps": 30847,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 47388
+          "dps": 47388,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -325,9 +337,9 @@
       "mainSkill": "Arc",
       "summary": "Arc Elementalist casts one lightning spell and lets the chains do the aiming, then pays for the single target with the tools the ascendancy already owns. Shaper of Storms guarantees the shock, Mastermind of Discord makes the Wave of Conviction exposure stronger, and Elemental Overload keeps its damage bonus up from Arc's own critical strikes. The defence is a large life pool, capped resistances, Saffell's Frame's maximum resistances, Determination armour, Arctic Armour while stationary and the endurance charges from Enduring Cry. Cerberus Limb and Saffell's Frame are the only required uniques, both cheap.",
       "status": "verified",
-      "seedHash": "a526244f6cac",
+      "seedHash": "7b7e46b29002",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T15:07:19.658Z",
+      "verifiedAt": "2026-11-27T16:00:45.015Z",
       "ratings": {
         "tankiness": 10,
         "singleTarget": 10,
@@ -365,42 +377,48 @@
           "title": "Single-target damage is the build’s defining strength."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 62
+          "dps": 62,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 800
+          "dps": 800,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 168858
+          "dps": 168858,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 231388
+          "dps": 231388,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 540857
+          "dps": 540857,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 676178
+          "dps": 676178,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -489,9 +507,9 @@
       "mainSkill": "Lightning Tendrils of Eccentricity",
       "summary": "The Tendrils totem is the default link: Lightning Tendrils of Eccentricity channels a semicircle in front of the totem, and every fifth pulse is stronger (a much larger area and an automatic critical strike). Marylene's Fallacy multiplies that guaranteed critical strike into the boss hit and Lioneye's Remorse is the armour and life behind the flasks; Arc sits in the four-link helmet for open layouts. The measured damage is per totem. Both required uniques are cheap common drops; there is no expensive required unique.",
       "status": "verified",
-      "seedHash": "40ed6d7d019e",
+      "seedHash": "0970dd0ee428",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T14:54:09.100Z",
+      "verifiedAt": "2026-11-27T16:00:58.392Z",
       "ratings": {
         "tankiness": 10,
         "singleTarget": 8,
@@ -534,42 +552,48 @@
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 49
+          "dps": 49,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 773
+          "dps": 773,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 19107
+          "dps": 19107,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 27430
+          "dps": 27430,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 186806
+          "dps": 186806,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 294645
+          "dps": 294645,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -662,9 +686,9 @@
       "mainSkill": "Boneshatter",
       "summary": "League-start melee build. Boneshatter trades a little life for stacks, so the gear is armour and resistances, the axe is a rare with attack speed, and the ascendancy makes the trauma survivable. Herald of Purity and Vulnerability turn the axe into damage, and no unique is required, which is what a strength build needs on day one of a solo league.",
       "status": "verified",
-      "seedHash": "543a8e98a501",
+      "seedHash": "a33dd8a1353b",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:52:57.694Z",
+      "verifiedAt": "2026-11-27T15:59:07.090Z",
       "ratings": {
         "tankiness": 10,
         "singleTarget": 10,
@@ -712,42 +736,55 @@
           "title": "Armour, endurance charges and Juggernaut defences."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 41
+          "dps": 41,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 1446
+          "dps": 1515,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-28-38",
+          "pass": true,
+          "level": 38,
+          "dps": 2325,
+          "band": "until-28"
+        },
+        {
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 123386
+          "dps": 123386,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 158264
+          "dps": 158264,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 439543
+          "dps": 439543,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 660442
+          "dps": 660442,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -825,9 +862,9 @@
       "mainSkill": "Cyclone",
       "summary": "Two-handed Cyclone on the Juggernaut shell. The axe and the budget armour are the damage and defence; the ascendancy supplies endurance charges, recovery and stun immunity. No required unique.",
       "status": "verified",
-      "seedHash": "06f9e570851b",
+      "seedHash": "bffc8f1d82f3",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:53:12.580Z",
+      "verifiedAt": "2026-11-27T16:01:26.957Z",
       "ratings": {
         "tankiness": 8,
         "singleTarget": 9,
@@ -870,42 +907,48 @@
           "title": "Armour, endurance charges and Juggernaut defences."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 26
+          "dps": 26,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 498
+          "dps": 498,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 65289
+          "dps": 65289,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 126394
+          "dps": 126394,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 231185
+          "dps": 231185,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 449593
+          "dps": 449593,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -983,9 +1026,9 @@
       "mainSkill": "Essence Drain",
       "summary": "Chaos damage over time on the Occultist shell. Essence Drain and Contagion spread through a pack, Wither and Despair amplify the damage, and the build spends most of its time moving. No required unique.",
       "status": "verified",
-      "seedHash": "63651767ade5",
+      "seedHash": "8b619770f774",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:53:28.065Z",
+      "verifiedAt": "2026-11-27T16:01:40.258Z",
       "ratings": {
         "tankiness": 5,
         "singleTarget": 6,
@@ -1018,42 +1061,48 @@
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 60
+          "dps": 60,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 478
+          "dps": 478,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 51347
+          "dps": 51347,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 68190
+          "dps": 68190,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 111406
+          "dps": 111406,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 159292
+          "dps": 159292,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -1139,9 +1188,9 @@
       "mainSkill": "Flicker Strike",
       "summary": "Flicker Strike on the Slayer shell. The build spends frenzy charges to teleport-strike through a pack, and Blood Rage plus Slayer leech keep the charges and life coming back. No required unique.",
       "status": "verified",
-      "seedHash": "0a94fb1fae99",
+      "seedHash": "1f61bbd63de4",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:53:43.472Z",
+      "verifiedAt": "2026-11-27T16:01:53.561Z",
       "ratings": {
         "tankiness": 5,
         "singleTarget": 7,
@@ -1174,42 +1223,48 @@
           "title": "Flicker teleports through the pack."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 115
+          "dps": 115,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 520
+          "dps": 520,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 116703
+          "dps": 116703,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 255560
+          "dps": 255560,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 422353
+          "dps": 422353,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 731716
+          "dps": 731716,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -1287,9 +1342,9 @@
       "mainSkill": "Ice Nova",
       "summary": "Ice Nova is a self-cast cold nova: the Elementalist shell turns every hit into chill and freeze, so packs stop moving before they reach you. The build is a straightforward crit caster with no required unique, and the same sceptre and spirit shield carry it from white maps to pinnacle.",
       "status": "verified",
-      "seedHash": "1dee185a7162",
+      "seedHash": "fe3a16311f12",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:53:58.022Z",
+      "verifiedAt": "2026-11-27T16:02:06.826Z",
       "ratings": {
         "tankiness": 5,
         "singleTarget": 7,
@@ -1322,42 +1377,48 @@
           "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 73
+          "dps": 73,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 662
+          "dps": 662,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 33569
+          "dps": 33569,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 55834
+          "dps": 55834,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 95217
+          "dps": 95217,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 119776
+          "dps": 119776,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -1443,9 +1504,9 @@
       "mainSkill": "Ice Shot",
       "summary": "Cold bow build with the same league-start shell as Lightning Arrow. Ice Shot converts physical damage to cold, freezes the first pack, and turns a rare bow into the main damage slot. No required unique.",
       "status": "verified",
-      "seedHash": "5983952f8f8f",
+      "seedHash": "167bb052c393",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:54:12.574Z",
+      "verifiedAt": "2026-11-27T16:02:20.196Z",
       "ratings": {
         "tankiness": 4,
         "singleTarget": 7,
@@ -1478,42 +1539,48 @@
           "title": "A single arrow clears packs at range."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 81
+          "dps": 81,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 735
+          "dps": 735,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 25070
+          "dps": 25070,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 59026
+          "dps": 59026,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 105385
+          "dps": 105385,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 168181
+          "dps": 168181,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -1595,9 +1662,9 @@
       "mainSkill": "Lightning Arrow",
       "summary": "League-start bow build. One skill in the body armour, a physical bow with attack speed, and gem levels carry the damage: nothing here needs a unique, so the same gear works on day one of a solo league. It is the second build the pipeline proves, and the first that is not a minion one.",
       "status": "verified",
-      "seedHash": "547d8ddeb92d",
+      "seedHash": "5ce521e01b6f",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:54:27.568Z",
+      "verifiedAt": "2026-11-27T16:02:33.434Z",
       "ratings": {
         "tankiness": 4,
         "singleTarget": 7,
@@ -1630,42 +1697,48 @@
           "title": "A single arrow clears packs at range."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 75
+          "dps": 75,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 542
+          "dps": 542,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 22766
+          "dps": 22766,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 43606
+          "dps": 43606,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 84551
+          "dps": 84551,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 131984
+          "dps": 131984,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -1747,9 +1820,9 @@
       "mainSkill": "Penance Brand",
       "summary": "Penance Brand attaches to a pack, charges up and then detonates for a large ignite. The Elementalist Shaper of Flames node makes every hit able to ignite, so the build is a fire-and-forget brand that keeps burning while you place the next one, and it needs no unique.",
       "status": "verified",
-      "seedHash": "a5cf78841ad1",
+      "seedHash": "511354b5f872",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:54:42.928Z",
+      "verifiedAt": "2026-11-27T16:02:46.815Z",
       "ratings": {
         "tankiness": 5,
         "singleTarget": 8,
@@ -1777,42 +1850,48 @@
           "kind": "playstyle"
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 32
+          "dps": 32,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 248
+          "dps": 248,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 15326
+          "dps": 15326,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 26334
+          "dps": 26334,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 43875
+          "dps": 43875,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 59258
+          "dps": 59258,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -1897,9 +1976,9 @@
       "mainSkill": "Animate Weapon of Ranged Arms",
       "summary": "Animate Weapon of Ranged Arms turns dropped ranged weapons into a poison firing line: each animated bow keeps shooting while you move, and the Necromancer shell keeps the swarm alive. The build needs no unique, only weapons on the ground and a Necromancer to command them.",
       "status": "verified",
-      "seedHash": "163f386620d7",
+      "seedHash": "28eccef2e83f",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:54:58.458Z",
+      "verifiedAt": "2026-11-27T16:03:00.160Z",
       "ratings": {
         "tankiness": 6,
         "singleTarget": 8,
@@ -1932,42 +2011,48 @@
           "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 476
+          "dps": 476,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 2904
+          "dps": 2904,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 25969
+          "dps": 25969,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 35522
+          "dps": 35522,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 75837
+          "dps": 75837,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 108064
+          "dps": 108064,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -2049,9 +2134,9 @@
       "mainSkill": "Righteous Fire",
       "summary": "Righteous Fire on the Chieftain shell: a tanky fire aura that burns enemies while you walk, backed by armour, life regeneration and fire resistance. Fire Trap levels the character, then Righteous Fire comes online at red maps with Purity of Fire, Vitality and Enduring Cry making the self-burn net positive. Malevolence and Flammability carry the damage; the legal jewel caps keep the single-target and clear numbers modest, but the build is cheap, forgiving and has no required unique.",
       "status": "verified",
-      "seedHash": "3fe041365467",
+      "seedHash": "b0b00774cc59",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T14:44:15.597Z",
+      "verifiedAt": "2026-11-27T16:10:32.630Z",
       "ratings": {
         "tankiness": 9,
         "singleTarget": 7,
@@ -2089,42 +2174,48 @@
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 29
+          "dps": 29,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 428
+          "dps": 428,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 30347
+          "dps": 30347,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 40705
+          "dps": 40705,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 122106
+          "dps": 122106,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 212000
+          "dps": 212000,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -2210,9 +2301,9 @@
       "mainSkill": "Smite of Divine Judgement",
       "summary": "Smite of Divine Judgement is a lightning melee strike that calls a second bolt down on nearby enemies, so one swing hits the pack and the rare behind it. The Inquisitor critical package ignores elemental resistances, and the build needs no unique.",
       "status": "verified",
-      "seedHash": "ace656082529",
+      "seedHash": "309ba49aeeec",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:55:29.182Z",
+      "verifiedAt": "2026-11-27T16:10:46.105Z",
       "ratings": {
         "tankiness": 7,
         "singleTarget": 8,
@@ -2245,42 +2336,48 @@
           "title": "Armour, endurance charges and Juggernaut defences."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 35
+          "dps": 35,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 281
+          "dps": 281,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 6357
+          "dps": 6357,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 10245
+          "dps": 10245,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 18931
+          "dps": 18931,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 36456
+          "dps": 36456,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -2358,9 +2455,9 @@
       "mainSkill": "Raise Spectre",
       "summary": "Necromancer with a specific spectre: four Slave Drivers from the Templar Courts. The spectres do the damage, the gear is the same caster shell as the skeleton build, and no unique is required. A deliberately low-APM Dad build.",
       "status": "verified",
-      "seedHash": "bd7964a04ed2",
+      "seedHash": "4016e6222a60",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:55:44.269Z",
+      "verifiedAt": "2026-11-27T16:10:59.332Z",
       "ratings": {
         "tankiness": 6,
         "singleTarget": 6,
@@ -2398,42 +2495,48 @@
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 66
+          "dps": 66,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 125
+          "dps": 125,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 4017
+          "dps": 4017,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 4770
+          "dps": 4770,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 19030
+          "dps": 19030,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 29521
+          "dps": 29521,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -2518,9 +2621,9 @@
       "mainSkill": "Storm Burst of Repulsion",
       "summary": "Storm Burst of Repulsion on Spell Totem: the totems channel orbs that bounce away from the target and detonate when the channel ends, so the damage keeps landing while you walk. The Hierophant totem and mana package pays for the channel, and no unique is required.",
       "status": "verified",
-      "seedHash": "75b08760c63a",
+      "seedHash": "a4a07efb55d1",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:56:00.149Z",
+      "verifiedAt": "2026-11-27T16:11:12.582Z",
       "ratings": {
         "tankiness": 6,
         "singleTarget": 7,
@@ -2558,42 +2661,48 @@
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 49
+          "dps": 49,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 285
+          "dps": 285,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 3832
+          "dps": 3832,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 9533
+          "dps": 9533,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 14267
+          "dps": 14267,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 21048
+          "dps": 21048,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -2679,9 +2788,9 @@
       "mainSkill": "Summon Stone Golem",
       "summary": "Golem Elementalist with a small Stone Golem pack. The golems are permanent, aggressive and easy to keep alive; the same caster gear as the Witch minion builds carries them. No required unique, low APM and a good Dad build.",
       "status": "verified",
-      "seedHash": "57608254343f",
+      "seedHash": "4bae81773da3",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:56:15.682Z",
+      "verifiedAt": "2026-11-27T16:11:25.925Z",
       "ratings": {
         "tankiness": 6,
         "singleTarget": 6,
@@ -2719,42 +2828,48 @@
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 50
+          "dps": 50,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 126
+          "dps": 126,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 4050
+          "dps": 4050,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 4793
+          "dps": 4793,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 22654
+          "dps": 22654,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 40244
+          "dps": 40244,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -2839,9 +2954,9 @@
       "mainSkill": "Summon Raging Spirit",
       "summary": "League-start minion build that trades skeletons for a swarm of raging spirits. The spirits are temporary, aggressive and scale with minion damage, so the same budget caster gear that proves the skeleton build proves this one. No required unique.",
       "status": "verified",
-      "seedHash": "ae9eb2ba4be5",
+      "seedHash": "feb2bb917272",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:56:30.663Z",
+      "verifiedAt": "2026-11-27T16:11:39.189Z",
       "ratings": {
         "tankiness": 5,
         "singleTarget": 8,
@@ -2879,42 +2994,48 @@
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 337
+          "dps": 337,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 1205
+          "dps": 1205,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 56200
+          "dps": 56200,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 54667
+          "dps": 54667,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 140154
+          "dps": 140154,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 205073
+          "dps": 205073,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -2999,9 +3120,9 @@
       "mainSkill": "Summon Skeletons",
       "summary": "League-start minion build. Skeletons do the damage, so a bad weapon is not a brick: cap your resistances, keep your minions alive, and the damage arrives with the gem levels. No required uniques, which is why it is the first build the pipeline proves.",
       "status": "verified",
-      "seedHash": "98a0bb37e0d1",
+      "seedHash": "0938bb6fd72a",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:56:45.967Z",
+      "verifiedAt": "2026-11-27T16:11:52.519Z",
       "ratings": {
         "tankiness": 5,
         "singleTarget": 9,
@@ -3044,42 +3165,48 @@
           "title": "Single-target damage is the build’s defining strength."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 75
+          "dps": 75,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 367
+          "dps": 367,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 40768
+          "dps": 40768,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 52821
+          "dps": 52821,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 214263
+          "dps": 214263,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 413053
+          "dps": 413053,
+          "band": "pinnacle"
         }
       ],
       "filter": {
@@ -3164,9 +3291,9 @@
       "mainSkill": "Winter Orb",
       "summary": "Winter Orb is a channel-and-run cold skill: hold the button until the orb is charged, then move while it keeps firing. The Elementalist shell adds chill, exposure and a lightning-free damage package, so the build maps with almost no aiming and no required unique.",
       "status": "verified",
-      "seedHash": "dc0b415e57f4",
+      "seedHash": "79ca69cb1394",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T12:57:01.608Z",
+      "verifiedAt": "2026-11-27T16:12:05.911Z",
       "ratings": {
         "tankiness": 5,
         "singleTarget": 7,
@@ -3199,42 +3326,48 @@
           "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
         }
       ],
-      "steps": [
+      "gateSteps": [
         {
-          "id": "until-12",
+          "id": "leveling-1-12",
           "pass": true,
           "level": 12,
-          "dps": 73
+          "dps": 73,
+          "band": "until-12"
         },
         {
-          "id": "until-28",
+          "id": "leveling-12-28",
           "pass": true,
           "level": 28,
-          "dps": 698
+          "dps": 698,
+          "band": "until-28"
         },
         {
-          "id": "until-68",
+          "id": "leveling-38-68",
           "pass": true,
           "level": 68,
-          "dps": 27252
+          "dps": 27252,
+          "band": "until-68"
         },
         {
-          "id": "maps-early",
+          "id": "maps-white",
           "pass": true,
           "level": 80,
-          "dps": 37793
+          "dps": 37793,
+          "band": "maps-early"
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 60228
+          "dps": 60228,
+          "band": "maps-red"
         },
         {
-          "id": "pinnacle",
+          "id": "endgame-pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 72353
+          "dps": 72353,
+          "band": "pinnacle"
         }
       ],
       "filter": {

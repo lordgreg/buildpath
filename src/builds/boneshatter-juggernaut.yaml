@@ -53,22 +53,22 @@ guide:
   summary:
     text: >-
       Boneshatter Juggernaut is a two-handed melee build that measures
-      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.pinnacle.metrics.dps|dps}} at
+      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.endgame-pinnacle.metrics.dps|dps}} at
       pinnacle. The rare axe, armour rolls and Herald of Purity carry the damage, the
       ascendancy makes the trauma survivable, and no unique is required.
-    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.endgame-pinnacle.metrics.dps]
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   leveling:
     text: >-
       Level with Cleave and Added Fire Damage until Sunder is available, then
       use Sunder until Boneshatter unlocks and switch to the two-handed axe. The
       first checkpoint measures
-      {{gates.until-12.metrics.life|int}} life and
-      {{gates.until-12.metrics.dps|dps}} damage; the second measures
-      {{gates.until-28.metrics.dps|dps}} with a self-cast Vulnerability. The mana
+      {{gates.leveling-1-12.metrics.life|int}} life and
+      {{gates.leveling-1-12.metrics.dps|dps}} damage; the second measures
+      {{gates.leveling-12-28.metrics.dps|dps}} with a self-cast Vulnerability. The mana
       flask covers you until the rare axe carries leech; the Silver Flask comes
       with that axe.
-    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+    facts: [gates.leveling-1-12.metrics.life, gates.leveling-1-12.metrics.dps, gates.leveling-12-28.metrics.dps]
   maps:
     text: >-
       At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
@@ -81,12 +81,12 @@ guide:
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
   bossing:
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
-      {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Use Enduring Cry
+      Pinnacle measures {{gates.endgame-pinnacle.metrics.dps|dps}} damage with
+      {{gates.endgame-pinnacle.metrics.ehp|int}} effective life and
+      {{gates.endgame-pinnacle.metrics.maxHit|int}} physical max hit. Use Enduring Cry
       before the burst, keep Vulnerability up, and keep the trauma stacks running
       while you move out of the biggest slams.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+    facts: [gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit]
 
 gearProfile: melee-boneshatter
 
@@ -115,192 +115,333 @@ tree:
     - increased attack speed
     - two handed
 
-leveling:
-  # Sunder is a free Marauder reward at level 12 and hits far harder than
-  # Cleave; Boneshatter only unlocks at 28. This is advice between checkpoints,
-  # not a measured step, so it stays out of the seed hash.
-  swaps:
-    - gem: Sunder
-      fromLevel: 12
-      untilLevel: 28
-      replaces: Cleave
-      note: "Sunder clears packs and hits single targets harder than Cleave until Boneshatter unlocks."
-    # The 29-68 step is a level-68 snapshot, so the link it lists is not
-    # available at 29. These two swaps are the missing support progression.
-    - gem: Pulverise
-      fromLevel: 31
-      kind: support
-      note: "The fifth link only. At four links Added Fire Damage is the stronger single-target support."
-    - gem: Brutality
-      fromLevel: 38
-      kind: support
-      replaces: Added Fire Damage
-      note: "Brutality deals no elemental damage, so Added Fire Damage has to come out. The four-link becomes Boneshatter - Melee Physical Damage - Brutality - Faster Attacks."
-  brackets:
-    - until: 12
-      skills:
-        - Cleave
-      skillGroups:
-        - slot: Body Armour
-          gems:
-            - Cleave
-            - Added Fire Damage
-            - Faster Attacks
-        - slot: Weapon 1
-          gems:
-            - Leap Slam
-            - Enduring Cry
-        - slot: Helmet
-          gems:
-            - Decoy Totem
-        - slot: Boots
-          gems:
-            - Blood and Sand
-      flasks:
-        - { slot: life, name: "Medium Life Flask", note: "Small until level 3, then medium." }
-        - { slot: mana, name: "Small Mana Flask", note: "Slam attacks are mana-hungry before leech." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
+# Steps (PLAN-BUILDS.md §9.3). Each step is read and measured at its `level`;
+# the six pre-refactor checkpoints survive as `aliases`, so an old share link
+# still lands. The 28-38 stretch is the one the playtest found painful, so it is
+# a step of its own with its own advice.
+steps:
+  leveling:
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Cleave
+        watch: >-
+          Cleave with Added Fire Damage and Faster Attacks carries acts 1-2.
+          Keep a mana flask, because slam attacks are mana-hungry before leech,
+          and do not spend currency on a rare axe yet.
+        measure: true
+        aliases: [until-12]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Cleave
+              - Added Fire Damage
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Decoy Totem
+          - slot: Boots
+            gems:
+              - Blood and Sand
+        flasks:
+          - { slot: life, name: "Medium Life Flask", note: "Small until level 3, then medium." }
+          - { slot: mana, name: "Small Mana Flask", note: "Slam attacks are mana-hungry before leech." }
+          - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
 
-    - until: 28
-      skills:
-        - Boneshatter
-        - Enduring Cry
-      skillGroups:
-        - slot: Body Armour
-          gems:
-            - Boneshatter
-            - Melee Physical Damage
-            - Added Fire Damage
-            - Faster Attacks
-        - slot: Weapon 1
-          gems:
-            - Leap Slam
-            - Enduring Cry
-        - slot: Helmet
-          gems:
-            - Decoy Totem
-            - Blood and Sand
-        - slot: Boots
-          gems:
-            - Determination
-        - slot: Gloves
-          gems:
-            - { name: Vulnerability, note: "Self-cast until Cast when Damage Taken is available at 38." }
-      flasks:
-        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24; medium is too small by now." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12; the magic axe cannot carry leech yet." }
-        - { slot: utility, name: "Granite Flask", note: "Armour is the defensive layer." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction, from level 27." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+      - id: leveling-12-28
+        level: 28
+        main: Sunder
+        trigger: { from: 12, skill: Sunder }
+        watch: >-
+          Sunder clears packs and hits single targets harder than Cleave, so it
+          stays the main skill until 28. Boneshatter unlocks at 28 and keeps the
+          same four links, so the swap is not a damage jump on its own, and it
+          also asks you to stand still and stack trauma. That is what makes the
+          next stretch feel bad; do not fix it with currency.
+        measure: true
+        aliases: [until-28]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Sunder
+              - Melee Physical Damage
+              - Added Fire Damage
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Decoy Totem
+              - Blood and Sand
+          - slot: Boots
+            gems:
+              - Determination
+          - slot: Gloves
+            gems:
+              - { name: Vulnerability, note: "Self-cast until Cast when Damage Taken is available at 38." }
+        flasks:
+          - { slot: life, name: "Giant Life Flask", note: "Drops from level 24; medium is too small by now." }
+          - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12; the magic axe cannot carry leech yet." }
+          - { slot: utility, name: "Granite Flask", note: "Armour is the defensive layer." }
+          - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction, from level 27." }
+          - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
 
-    - until: 68
-      skills:
-        - Boneshatter
-        - Enduring Cry
-      skillGroups:
-        - slot: Body Armour
-          gems:
-            - Boneshatter
-            - Melee Physical Damage
-            - Brutality
-            - Pulverise
-            - Faster Attacks
-        - slot: Weapon 1
-          gems:
-            - Leap Slam
-            - Enduring Cry
-        - slot: Helmet
-          gems:
-            - Herald of Purity
-            - Determination
-        - slot: Gloves
-          gems:
-            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
-            - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
-            - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
-        - slot: Boots
-          gems:
-            - Decoy Totem
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
-        - { slot: utility, name: "Silver Flask", note: "Onslaught is the damage flask now that leech covers mana." }
-        - { slot: utility, name: "Granite Flask", note: "Iron Skin suffix once it is available." }
-        - { slot: utility, name: "Basalt Flask", note: "The other half of the physical defence." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+      - id: leveling-28-38
+        level: 38
+        main: Boneshatter
+        trigger: { from: 28, skill: Boneshatter }
+        watch: >-
+          Switch to Boneshatter at 28, not at 38: this is the stretch that feels
+          bad. It is the four links and the missing equipment, not the skill, so
+          spend nothing to fix it and use the time to save for the axe. At 38
+          Brutality replaces Added Fire Damage and Cast when Damage Taken brings
+          the curse.
+        measure: true
+        gems:
+          - slot: Body Armour
+            gems:
+              - Boneshatter
+              - Melee Physical Damage
+              - Brutality
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Herald of Purity
+              - Determination
+          - slot: Gloves
+            gems:
+              - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+              - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
+              - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
+          - slot: Boots
+            gems:
+              - Decoy Totem
+        flasks:
+          - { slot: life, name: "Giant Life Flask", note: "Divine drops at 60, so the giant flask is what you have at 38." }
+          - { slot: mana, name: "Greater Mana Flask", note: "The axe cannot carry leech yet, so keep this." }
+          - { slot: utility, name: "Granite Flask", note: "Armour is the defensive layer." }
+          - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+          - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
 
-    # White maps still run the 5-link the ssf-start budget actually has. The
-    # 6-link is the maps-red step; a bracket with six gems at level 80 would
-    # measure a link the character does not own.
-    - until: 80
-      skills:
-        - Boneshatter
-        - Enduring Cry
-      skillGroups:
-        - slot: Body Armour
-          gems:
-            - Boneshatter
-            - Melee Physical Damage
-            - Brutality
-            - Pulverise
-            - Faster Attacks
-        - slot: Weapon 1
-          gems:
-            - Leap Slam
-            - Enduring Cry
-        - slot: Helmet
-          gems:
-            - Herald of Purity
-            - Determination
-        - slot: Gloves
-          gems:
-            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
-            - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
-            - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
-        - slot: Boots
-          gems:
-            - Decoy Totem
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: utility, name: "Silver Flask", note: "Onslaught is the damage flask." }
-        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+      - id: leveling-38-68
+        level: 68
+        main: Boneshatter
+        trigger: { from: 38, link: 5 }
+        watch: >-
+          The fifth link is Pulverise and it is the payoff for the 28-38 stretch.
+          Keep a mana flask until the axe carries leech, and do not add Herald of
+          Purity before it does. Take the labs as they unlock; Unbreakable is the
+          normal-lab defence step.
+        measure: true
+        aliases: [until-68]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Boneshatter
+              - Melee Physical Damage
+              - Brutality
+              - Pulverise
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Herald of Purity
+              - Determination
+          - slot: Gloves
+            gems:
+              - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+              - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
+              - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
+          - slot: Boots
+            gems:
+              - Decoy Totem
+        flasks:
+          - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+          - { slot: utility, name: "Silver Flask", note: "Onslaught is the damage flask now that leech covers mana." }
+          - { slot: utility, name: "Granite Flask", note: "Iron Skin suffix once it is available." }
+          - { slot: utility, name: "Basalt Flask", note: "The other half of the physical defence." }
+          - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
 
-    - until: 100
-      skills:
-        - Boneshatter
-        - Enduring Cry
-      skillGroups:
-        - slot: Body Armour
-          gems:
-            - Boneshatter
-            - Melee Physical Damage
-            - Brutality
-            - Pulverise
-            - Close Combat
-            - Faster Attacks
-        - slot: Weapon 1
-          gems:
-            - Leap Slam
-            - Enduring Cry
-        - slot: Helmet
-          gems:
-            - Herald of Purity
-            - Determination
-        - slot: Gloves
-          gems:
-            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
-            - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
-            - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
-        - slot: Boots
-          gems:
-            - Decoy Totem
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: utility, name: "Silver Flask", note: "Onslaught: attack speed and movement." }
-        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Caps chaos resistance for pinnacle bosses." }
+  maps:
+    sub:
+      - id: maps-white
+        level: 80
+        main: Boneshatter
+        trigger: { from: 68, link: 5 }
+        watch: >-
+          The five-link clears white maps, so spend the first maps on the weapon
+          and the resistances, not on the chest. Fit Herald of Purity with
+          Determination once the axe has mana leech; before that the mana flask
+          is what pays for attacks.
+        measure: true
+        aliases: [maps-early]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Boneshatter
+              - Melee Physical Damage
+              - Brutality
+              - Pulverise
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Herald of Purity
+              - Determination
+          - slot: Gloves
+            gems:
+              - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+              - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
+              - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
+          - slot: Boots
+            gems:
+              - Decoy Totem
+        flasks:
+          - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+          - { slot: utility, name: "Silver Flask", note: "Onslaught is the damage flask." }
+          - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+          - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+          - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+      - id: maps-yellow
+        level: 85
+        main: Boneshatter
+        trigger: { from: 80, link: 6 }
+        watch: >-
+          The six-link is the only change here and red maps measure it, so do not
+          buy a bad chest to get it early. Keep Close Combat for bosses and swap
+          it for Melee Splash when the map is pack-heavy.
+        reason: >-
+          Same gear and gems as the white-map step; the six-link is measured at
+          red maps, where it is the gate.
+        gems:
+          - slot: Body Armour
+            gems:
+              - Boneshatter
+              - Melee Physical Damage
+              - Brutality
+              - Pulverise
+              - Close Combat
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Herald of Purity
+              - Determination
+          - slot: Boots
+            gems:
+              - Decoy Totem
+        flasks:
+          - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+          - { slot: utility, name: "Silver Flask", note: "Onslaught." }
+          - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+          - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+          - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+
+      - id: maps-red
+        level: 90
+        main: Boneshatter
+        trigger: { from: 85, budget: ssf-week1 }
+        watch: >-
+          The six-link, 20% quality gems and capped resistances are the red-map
+          gate. Swap Close Combat for Melee Splash on pack-heavy layouts and keep
+          it for bosses; Herald of Purity stays the damage aura and Vulnerability
+          rides on Cast when Damage Taken.
+        measure: true
+        gems:
+          - slot: Body Armour
+            gems:
+              - Boneshatter
+              - Melee Physical Damage
+              - Brutality
+              - Pulverise
+              - Close Combat
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Herald of Purity
+              - Determination
+          - slot: Gloves
+            gems:
+              - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+              - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
+              - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
+          - slot: Boots
+            gems:
+              - Decoy Totem
+        flasks:
+          - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+          - { slot: utility, name: "Silver Flask", note: "Onslaught: attack speed and movement." }
+          - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+          - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+          - { slot: utility, name: "Amethyst Flask", note: "Caps chaos resistance for pinnacle bosses." }
+
+  endgame:
+    sub:
+      - id: endgame-pinnacle
+        level: 96
+        main: Boneshatter
+        trigger: { from: 90, budget: trade }
+        watch: >-
+          Cap chaos resistance and keep the trauma stacks running while you move
+          out of the biggest slams. Enduring Cry before the burst; the weapon is
+          the last big purchase and it must keep mana leech.
+        measure: true
+        aliases: [pinnacle]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Boneshatter
+              - Melee Physical Damage
+              - Brutality
+              - Pulverise
+              - Close Combat
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Herald of Purity
+              - Determination
+          - slot: Gloves
+            gems:
+              - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+              - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
+              - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
+          - slot: Boots
+            gems:
+              - Decoy Totem
+        flasks:
+          - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+          - { slot: utility, name: "Silver Flask", note: "Onslaught: attack speed and movement." }
+          - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
+          - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+          - { slot: utility, name: "Amethyst Flask", note: "Caps chaos resistance for pinnacle bosses." }
 
 ascendancyOrder:
   # Unbreakable is the normal-lab defensive step; Undeniable still earns its
@@ -343,6 +484,8 @@ changelog:
     notes:
       - "The 29-68 leveling step now shows the support progression: a 4-link until level 38, then swap Added Fire Damage for Brutality and add Pulverise as the fifth link."
       - "The 29-68 step plan tells you to keep a mana flask until the axe carries leech and to hold Herald of Purity until then."
+      - "The leveling guide is split into steps: Sunder is the level-28 measurement, and Boneshatter gets its own 28-38 step where Brutality replaces Added Fire Damage and Cast when Damage Taken brings the curse."
+      - "The switch to Boneshatter is now a step with its own gate report instead of prose inside one long bracket, because a playtest found that stretch the hardest part of the build."
 
 
 

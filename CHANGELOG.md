@@ -2,6 +2,19 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.79.0 — 2026-11-27
+
+Leveling, Maps and Endgame are roots with sub-steps.
+
+- **Guide steps are three roots, not six checkpoints.** Leveling, Maps and Endgame each hold an ordered list of sub-steps. A sub-step exists where something actually changes — a skill, a support, a link count, a jewel, a slot or a gear budget — instead of at a fixed level. Each step is read and measured at its own level, so the gap between "until 68" and "maps at 80" cannot exist.
+- **Boneshatter's hardest stretch is now measured.** A playtest found Sunder fine and the switch to Boneshatter painful. Sunder is the level-28 measurement; Boneshatter has its own 28-38 step, four links with Brutality and Cast when Damage Taken, measured at 2,325 DPS. The guide says the four links and the missing axe are the problem, and that currency will not fix it.
+- **Old links still work.** Every retired checkpoint id is an alias (`until-68` → `leveling-38-68`), so a shared guide or a `step=` link lands on the step that replaced it.
+- **A step with no gate says so.** An editorial step renders "not measured" and shows the nearest measured step's numbers under a badge naming that step, instead of borrowing them silently.
+- **`leveling.brackets` is retired.** All 21 seeds declare steps with their own gems and flasks; the step plan is read from the checkpoint band the step sits in, and the compiler rejects a skill or gem the level cannot hold — the check that used to let a level-13 reader be shown Boneshatter.
+- **Calibration is band-based.** 127 measured steps against 126 calibration observations: a second step in the same band cannot silently grow the report. Verify and calibrate are green on the pinned oracle, and every number at every old checkpoint is unchanged.
+- **All PoB pastes were republished** for the new step ids.
+- 799 tests.
+
 ## 0.78.2 — 2026-11-27
 
 Arc Totem withdraws S+ after legal gem caps.

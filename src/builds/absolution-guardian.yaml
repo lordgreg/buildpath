@@ -48,87 +48,202 @@ tree:
     - increased lightning damage
     - maximum life
 
-leveling:
-  brackets:
-    - until: 12
-      skills: [Absolution, Holy Flame Totem]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Absolution, Added Lightning Damage]
-        - slot: Weapon 1
-          gems: [Holy Flame Totem]
-        - slot: Helmet
-          gems: [Clarity]
-        - slot: Boots
-          gems: [Flame Dash, Arcane Surge]
-      flasks:
-        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
-        - { slot: mana, name: "Small Mana Flask", note: "Sentinels are expensive early." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
-    - until: 28
-      skills: [Absolution, Holy Flame Totem]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Absolution, Added Lightning Damage, Minion Damage, Elemental Focus]
-        - slot: Weapon 1
-          gems: [Holy Flame Totem]
-        - slot: Shield
-          gems: [Determination, Convocation]
-        - slot: Helmet
-          gems: [Clarity]
-        - slot: Boots
-          gems: [Flame Dash, Arcane Surge]
-      flasks:
-        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
-    - until: 68
-      skills: [Absolution, Convocation, Desecrate]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Absolution, Added Lightning Damage, Minion Damage, Elemental Focus, Controlled Destruction, Lightning Penetration]
-        - slot: Weapon 1
-          gems: [Convocation, Clarity]
-        - slot: Shield
-          gems: [Determination]
-        - slot: Helmet
-          gems: [Desecrate]
-        - slot: Gloves
-          gems:
-            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
-            - Immortal Call
-        - slot: Boots
-          gems: [Flame Dash, Arcane Surge]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
-        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
-        - { slot: utility, name: "Quartz Flask", note: "Phasing through the sentinels." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
-    - until: 100
-      skills: [Absolution, Convocation, Desecrate]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Absolution, Added Lightning Damage, Minion Damage, Elemental Focus, Predator, Lightning Penetration]
-        - slot: Weapon 1
-          gems: [Convocation, Clarity]
-        - slot: Shield
-          gems: [Determination]
-        - slot: Helmet
-          gems: [Desecrate]
-        - slot: Gloves
-          gems:
-            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
-            - Immortal Call
-        - slot: Boots
-          gems: [Flame Dash, Arcane Surge]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
-        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
-        - { slot: utility, name: "Quartz Flask", note: "Phasing through the sentinels." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance for pinnacle bosses." }
+# Steps (PLAN-BUILDS.md §9.3). Each step is read and measured at its `level`;
+# the pre-refactor checkpoints survive as `aliases`, so old links still land.
+steps:
+  leveling:
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Absolution
+        measure: true
+        aliases: [until-12]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Absolution
+              - Added Lightning Damage
+          - slot: Weapon 1
+            gems:
+              - Holy Flame Totem
+          - slot: Helmet
+            gems:
+              - Clarity
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
+        flasks:
+          - slot: life
+            name: Medium Life Flask
+            note: Small until level 3.
+          - slot: mana
+            name: Small Mana Flask
+            note: Sentinels are expensive early.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Act 2 quest reward.
+      - id: leveling-12-28
+        level: 28
+        main: Absolution
+        trigger: { from: 12 }
+        measure: true
+        aliases: [until-28]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Absolution
+              - Added Lightning Damage
+              - Minion Damage
+              - Elemental Focus
+          - slot: Weapon 1
+            gems:
+              - Holy Flame Totem
+          - slot: Shield
+            gems:
+              - Determination
+              - Convocation
+          - slot: Helmet
+            gems:
+              - Clarity
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance from level 18.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Movement, not damage.
+      - id: leveling-38-68
+        level: 68
+        main: Absolution
+        trigger: { from: 28 }
+        measure: true
+        aliases: [until-68]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Absolution
+              - Added Lightning Damage
+              - Minion Damage
+              - Elemental Focus
+              - Controlled Destruction
+              - Lightning Penetration
+          - slot: Weapon 1
+            gems:
+              - Convocation
+              - Clarity
+          - slot: Shield
+            gems:
+              - Determination
+          - slot: Helmet
+            gems:
+              - Desecrate
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: 'Level 1-5 only: higher levels need bigger hits before it triggers.'
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Drops from level 60; instant prefix.
+          - slot: mana
+            name: Hallowed Mana Flask
+            note: Drops from level 42.
+          - slot: utility
+            name: Granite Flask
+            note: Armour against physical hits.
+          - slot: utility
+            name: Quartz Flask
+            note: Phasing through the sentinels.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance until it is capped.
+  maps:
+    sub:
+      - id: maps-white
+        level: 80
+        main: Absolution
+        trigger: { from: 68 }
+        measure: true
+        aliases: [maps-early]
+        gems: &id001
+          - slot: Body Armour
+            gems:
+              - Absolution
+              - Added Lightning Damage
+              - Minion Damage
+              - Elemental Focus
+              - Predator
+              - Lightning Penetration
+          - slot: Weapon 1
+            gems:
+              - Convocation
+              - Clarity
+          - slot: Shield
+            gems:
+              - Determination
+          - slot: Helmet
+            gems:
+              - Desecrate
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: 'Level 1-5 only: higher levels need bigger hits before it triggers.'
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
+        flasks: &id002
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: Drops from level 65.
+          - slot: utility
+            name: Granite Flask
+            note: Armour against physical hits.
+          - slot: utility
+            name: Quartz Flask
+            note: Phasing through the sentinels.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance for pinnacle bosses.
+      - id: maps-red
+        level: 90
+        main: Absolution
+        trigger: { from: 80 }
+        measure: true
+        gems: *id001
+        flasks: *id002
+  endgame:
+    sub:
+      - id: endgame-pinnacle
+        level: 96
+        main: Absolution
+        trigger: { from: 90 }
+        measure: true
+        aliases: [pinnacle]
+        gems: *id001
+        flasks: *id002
 
 ascendancyOrder:
   - { node: time-of-need, lab: 1 }
@@ -151,16 +266,16 @@ guide:
       Absolution Guardian turns one cast into a squad of lightning sentinels
       that keep attacking while you move. It measures
       {{gates.maps-red.metrics.dps|dps}} at red maps and
-      {{gates.pinnacle.metrics.dps|dps}} at pinnacle, and needs no unique.
-    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+      {{gates.endgame-pinnacle.metrics.dps|dps}} at pinnacle, and needs no unique.
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.endgame-pinnacle.metrics.dps]
   leveling:
     text: >-
       Level with Holy Flame Totem until Absolution is available, then keep the
       sentinels between you and the pack. The first checkpoint measures
-      {{gates.until-12.metrics.life|int}} life and
-      {{gates.until-12.metrics.dps|dps}} damage; the second measures
-      {{gates.until-28.metrics.dps|dps}}.
-    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+      {{gates.leveling-1-12.metrics.life|int}} life and
+      {{gates.leveling-1-12.metrics.dps|dps}} damage; the second measures
+      {{gates.leveling-12-28.metrics.dps|dps}}.
+    facts: [gates.leveling-1-12.metrics.life, gates.leveling-1-12.metrics.dps, gates.leveling-12-28.metrics.dps]
   maps:
     text: >-
       At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
@@ -170,11 +285,11 @@ guide:
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
   bossing:
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
-      {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Recast Absolution
+      Pinnacle measures {{gates.endgame-pinnacle.metrics.dps|dps}} damage with
+      {{gates.endgame-pinnacle.metrics.ehp|int}} effective life and
+      {{gates.endgame-pinnacle.metrics.maxHit|int}} physical max hit. Recast Absolution
       before the burst, keep Convocation ready, and move when the slam lands.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+    facts: [gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit]
 changelog:
   - season: covens
     date: "2026-11-26"

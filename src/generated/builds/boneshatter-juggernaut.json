@@ -248,7 +248,7 @@
       65034
     ],
     "checkpoints": {
-      "until-12": [
+      "leveling-1-12": [
         6981,
         9511,
         23881,
@@ -261,7 +261,7 @@
         50904,
         58449
       ],
-      "until-28": [
+      "leveling-12-28": [
         2454,
         6446,
         6981,
@@ -292,7 +292,38 @@
         61198,
         64816
       ],
-      "until-68": [
+      "leveling-28-38": [
+        2454,
+        6446,
+        6981,
+        9511,
+        10221,
+        15438,
+        20551,
+        23881,
+        26523,
+        28728,
+        30251,
+        31080,
+        31628,
+        35436,
+        36543,
+        38777,
+        40653,
+        42800,
+        43374,
+        47175,
+        49178,
+        49412,
+        50422,
+        50570,
+        50862,
+        50904,
+        58449,
+        61198,
+        64816
+      ],
+      "leveling-38-68": [
         2454,
         3167,
         3644,
@@ -371,7 +402,7 @@
         64816,
         65034
       ],
-      "maps-early": [
+      "maps-white": [
         2454,
         3167,
         3644,
@@ -568,7 +599,7 @@
         64816,
         65034
       ],
-      "pinnacle": [
+      "endgame-pinnacle": [
         1031,
         2454,
         3167,
@@ -683,417 +714,716 @@
       ]
     }
   },
-  "leveling": {
-    "swaps": [
-      {
-        "gem": "Sunder",
-        "fromLevel": 12,
-        "untilLevel": 28,
-        "replaces": "Cleave",
-        "note": "Sunder clears packs and hits single targets harder than Cleave until Boneshatter unlocks."
-      },
-      {
-        "gem": "Pulverise",
-        "fromLevel": 31,
-        "kind": "support",
-        "note": "The fifth link only. At four links Added Fire Damage is the stronger single-target support."
-      },
-      {
-        "gem": "Brutality",
-        "fromLevel": 38,
-        "kind": "support",
-        "replaces": "Added Fire Damage",
-        "note": "Brutality deals no elemental damage, so Added Fire Damage has to come out. The four-link becomes Boneshatter - Melee Physical Damage - Brutality - Faster Attacks."
-      }
-    ],
-    "brackets": [
-      {
-        "until": 12,
-        "skills": [
-          "Cleave"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Cleave",
-              "Added Fire Damage",
-              "Faster Attacks"
-            ]
+  "steps": [
+    {
+      "id": "leveling",
+      "sub": [
+        {
+          "id": "leveling-1-12",
+          "level": 12,
+          "main": "Cleave",
+          "watch": "Cleave with Added Fire Damage and Faster Attacks carries acts 1-2. Keep a mana flask, because slam attacks are mana-hungry before leech, and do not spend currency on a rare axe yet.",
+          "measure": true,
+          "aliases": [
+            "until-12"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Cleave",
+                "Added Fire Damage",
+                "Faster Attacks"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Leap Slam",
+                "Enduring Cry"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Decoy Totem"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Blood and Sand"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Medium Life Flask",
+              "note": "Small until level 3, then medium."
+            },
+            {
+              "slot": "mana",
+              "name": "Small Mana Flask",
+              "note": "Slam attacks are mana-hungry before leech."
+            },
+            {
+              "slot": "utility",
+              "name": "Quicksilver Flask",
+              "note": "Act 2 quest reward."
+            }
+          ],
+          "root": "leveling",
+          "from": 1,
+          "band": "until-12"
+        },
+        {
+          "id": "leveling-12-28",
+          "level": 28,
+          "main": "Sunder",
+          "trigger": {
+            "from": 12,
+            "skill": "Sunder"
           },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Leap Slam",
-              "Enduring Cry"
-            ]
+          "watch": "Sunder clears packs and hits single targets harder than Cleave, so it stays the main skill until 28. Boneshatter unlocks at 28 and keeps the same four links, so the swap is not a damage jump on its own, and it also asks you to stand still and stack trauma. That is what makes the next stretch feel bad; do not fix it with currency.",
+          "measure": true,
+          "aliases": [
+            "until-28"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Sunder",
+                "Melee Physical Damage",
+                "Added Fire Damage",
+                "Faster Attacks"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Leap Slam",
+                "Enduring Cry"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Decoy Totem",
+                "Blood and Sand"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Vulnerability",
+                  "note": "Self-cast until Cast when Damage Taken is available at 38."
+                }
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Giant Life Flask",
+              "note": "Drops from level 24; medium is too small by now."
+            },
+            {
+              "slot": "mana",
+              "name": "Greater Mana Flask",
+              "note": "Drops from level 12; the magic axe cannot carry leech yet."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Armour is the defensive layer."
+            },
+            {
+              "slot": "utility",
+              "name": "Basalt Flask",
+              "note": "Physical damage reduction, from level 27."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance from level 18."
+            }
+          ],
+          "root": "leveling",
+          "from": 13,
+          "band": "until-28"
+        },
+        {
+          "id": "leveling-28-38",
+          "level": 38,
+          "main": "Boneshatter",
+          "trigger": {
+            "from": 28,
+            "skill": "Boneshatter"
           },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Decoy Totem"
-            ]
+          "watch": "Switch to Boneshatter at 28, not at 38: this is the stretch that feels bad. It is the four links and the missing equipment, not the skill, so spend nothing to fix it and use the time to save for the axe. At 38 Brutality replaces Added Fire Damage and Cast when Damage Taken brings the curse.",
+          "measure": true,
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Boneshatter",
+                "Melee Physical Damage",
+                "Brutality",
+                "Faster Attacks"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Leap Slam",
+                "Enduring Cry"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Purity",
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+                },
+                {
+                  "name": "Immortal Call",
+                  "maxLevel": 7,
+                  "note": "Level 7 is the highest a level-5 CWDT can support."
+                },
+                {
+                  "name": "Vulnerability",
+                  "maxLevel": 8,
+                  "note": "Level 8 is the highest a level-5 CWDT can support."
+                }
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Decoy Totem"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Giant Life Flask",
+              "note": "Divine drops at 60, so the giant flask is what you have at 38."
+            },
+            {
+              "slot": "mana",
+              "name": "Greater Mana Flask",
+              "note": "The axe cannot carry leech yet, so keep this."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Armour is the defensive layer."
+            },
+            {
+              "slot": "utility",
+              "name": "Basalt Flask",
+              "note": "Physical damage reduction."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "leveling",
+          "from": 29,
+          "band": "until-28"
+        },
+        {
+          "id": "leveling-38-68",
+          "level": 68,
+          "main": "Boneshatter",
+          "trigger": {
+            "from": 38,
+            "link": 5
           },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Blood and Sand"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Medium Life Flask",
-            "note": "Small until level 3, then medium."
+          "watch": "The fifth link is Pulverise and it is the payoff for the 28-38 stretch. Keep a mana flask until the axe carries leech, and do not add Herald of Purity before it does. Take the labs as they unlock; Unbreakable is the normal-lab defence step.",
+          "measure": true,
+          "aliases": [
+            "until-68"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Boneshatter",
+                "Melee Physical Damage",
+                "Brutality",
+                "Pulverise",
+                "Faster Attacks"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Leap Slam",
+                "Enduring Cry"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Purity",
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+                },
+                {
+                  "name": "Immortal Call",
+                  "maxLevel": 7,
+                  "note": "Level 7 is the highest a level-5 CWDT can support."
+                },
+                {
+                  "name": "Vulnerability",
+                  "maxLevel": 8,
+                  "note": "Level 8 is the highest a level-5 CWDT can support."
+                }
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Decoy Totem"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Drops from level 60; instant prefix."
+            },
+            {
+              "slot": "utility",
+              "name": "Silver Flask",
+              "note": "Onslaught is the damage flask now that leech covers mana."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Iron Skin suffix once it is available."
+            },
+            {
+              "slot": "utility",
+              "name": "Basalt Flask",
+              "note": "The other half of the physical defence."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance until it is capped."
+            }
+          ],
+          "root": "leveling",
+          "from": 39,
+          "band": "until-68"
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "sub": [
+        {
+          "id": "maps-white",
+          "level": 80,
+          "main": "Boneshatter",
+          "trigger": {
+            "from": 68,
+            "link": 5
           },
-          {
-            "slot": "mana",
-            "name": "Small Mana Flask",
-            "note": "Slam attacks are mana-hungry before leech."
+          "watch": "The five-link clears white maps, so spend the first maps on the weapon and the resistances, not on the chest. Fit Herald of Purity with Determination once the axe has mana leech; before that the mana flask is what pays for attacks.",
+          "measure": true,
+          "aliases": [
+            "maps-early"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Boneshatter",
+                "Melee Physical Damage",
+                "Brutality",
+                "Pulverise",
+                "Faster Attacks"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Leap Slam",
+                "Enduring Cry"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Purity",
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+                },
+                {
+                  "name": "Immortal Call",
+                  "maxLevel": 7,
+                  "note": "Level 7 is the highest a level-5 CWDT can support."
+                },
+                {
+                  "name": "Vulnerability",
+                  "maxLevel": 8,
+                  "note": "Level 8 is the highest a level-5 CWDT can support."
+                }
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Decoy Totem"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Instant prefix."
+            },
+            {
+              "slot": "utility",
+              "name": "Silver Flask",
+              "note": "Onslaught is the damage flask."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Iron Skin."
+            },
+            {
+              "slot": "utility",
+              "name": "Basalt Flask",
+              "note": "Physical damage reduction."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "maps",
+          "from": 69,
+          "band": "maps-early"
+        },
+        {
+          "id": "maps-yellow",
+          "level": 85,
+          "main": "Boneshatter",
+          "trigger": {
+            "from": 80,
+            "link": 6
           },
-          {
-            "slot": "utility",
-            "name": "Quicksilver Flask",
-            "note": "Act 2 quest reward."
-          }
-        ]
-      },
-      {
-        "until": 28,
-        "skills": [
-          "Boneshatter",
-          "Enduring Cry"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Boneshatter",
-              "Melee Physical Damage",
-              "Added Fire Damage",
-              "Faster Attacks"
-            ]
+          "watch": "The six-link is the only change here and red maps measure it, so do not buy a bad chest to get it early. Keep Close Combat for bosses and swap it for Melee Splash when the map is pack-heavy.",
+          "reason": "Same gear and gems as the white-map step; the six-link is measured at red maps, where it is the gate.",
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Boneshatter",
+                "Melee Physical Damage",
+                "Brutality",
+                "Pulverise",
+                "Close Combat",
+                "Faster Attacks"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Leap Slam",
+                "Enduring Cry"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Purity",
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Decoy Totem"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Instant prefix."
+            },
+            {
+              "slot": "utility",
+              "name": "Silver Flask",
+              "note": "Onslaught."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Iron Skin."
+            },
+            {
+              "slot": "utility",
+              "name": "Basalt Flask",
+              "note": "Physical damage reduction."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "maps",
+          "from": 81,
+          "measure": false,
+          "band": "maps-early"
+        },
+        {
+          "id": "maps-red",
+          "level": 90,
+          "main": "Boneshatter",
+          "trigger": {
+            "from": 85,
+            "budget": "ssf-week1"
           },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Leap Slam",
-              "Enduring Cry"
-            ]
+          "watch": "The six-link, 20% quality gems and capped resistances are the red-map gate. Swap Close Combat for Melee Splash on pack-heavy layouts and keep it for bosses; Herald of Purity stays the damage aura and Vulnerability rides on Cast when Damage Taken.",
+          "measure": true,
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Boneshatter",
+                "Melee Physical Damage",
+                "Brutality",
+                "Pulverise",
+                "Close Combat",
+                "Faster Attacks"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Leap Slam",
+                "Enduring Cry"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Purity",
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+                },
+                {
+                  "name": "Immortal Call",
+                  "maxLevel": 7,
+                  "note": "Level 7 is the highest a level-5 CWDT can support."
+                },
+                {
+                  "name": "Vulnerability",
+                  "maxLevel": 8,
+                  "note": "Level 8 is the highest a level-5 CWDT can support."
+                }
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Decoy Totem"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "utility",
+              "name": "Silver Flask",
+              "note": "Onslaught: attack speed and movement."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Iron Skin."
+            },
+            {
+              "slot": "utility",
+              "name": "Basalt Flask",
+              "note": "Physical damage reduction."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Caps chaos resistance for pinnacle bosses."
+            }
+          ],
+          "root": "maps",
+          "from": 86,
+          "band": "maps-red"
+        }
+      ]
+    },
+    {
+      "id": "endgame",
+      "sub": [
+        {
+          "id": "endgame-pinnacle",
+          "level": 96,
+          "main": "Boneshatter",
+          "trigger": {
+            "from": 90,
+            "budget": "trade"
           },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Decoy Totem",
-              "Blood and Sand"
-            ]
-          },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Determination"
-            ]
-          },
-          {
-            "slot": "Gloves",
-            "gems": [
-              {
-                "name": "Vulnerability",
-                "note": "Self-cast until Cast when Damage Taken is available at 38."
-              }
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Giant Life Flask",
-            "note": "Drops from level 24; medium is too small by now."
-          },
-          {
-            "slot": "mana",
-            "name": "Greater Mana Flask",
-            "note": "Drops from level 12; the magic axe cannot carry leech yet."
-          },
-          {
-            "slot": "utility",
-            "name": "Granite Flask",
-            "note": "Armour is the defensive layer."
-          },
-          {
-            "slot": "utility",
-            "name": "Basalt Flask",
-            "note": "Physical damage reduction, from level 27."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance from level 18."
-          }
-        ]
-      },
-      {
-        "until": 68,
-        "skills": [
-          "Boneshatter",
-          "Enduring Cry"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Boneshatter",
-              "Melee Physical Damage",
-              "Brutality",
-              "Pulverise",
-              "Faster Attacks"
-            ]
-          },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Leap Slam",
-              "Enduring Cry"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Herald of Purity",
-              "Determination"
-            ]
-          },
-          {
-            "slot": "Gloves",
-            "gems": [
-              {
-                "name": "Cast when Damage Taken",
-                "maxLevel": 5,
-                "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
-              },
-              {
-                "name": "Immortal Call",
-                "maxLevel": 7,
-                "note": "Level 7 is the highest a level-5 CWDT can support."
-              },
-              {
-                "name": "Vulnerability",
-                "maxLevel": 8,
-                "note": "Level 8 is the highest a level-5 CWDT can support."
-              }
-            ]
-          },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Decoy Totem"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Divine Life Flask",
-            "note": "Drops from level 60; instant prefix."
-          },
-          {
-            "slot": "utility",
-            "name": "Silver Flask",
-            "note": "Onslaught is the damage flask now that leech covers mana."
-          },
-          {
-            "slot": "utility",
-            "name": "Granite Flask",
-            "note": "Iron Skin suffix once it is available."
-          },
-          {
-            "slot": "utility",
-            "name": "Basalt Flask",
-            "note": "The other half of the physical defence."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance until it is capped."
-          }
-        ]
-      },
-      {
-        "until": 80,
-        "skills": [
-          "Boneshatter",
-          "Enduring Cry"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Boneshatter",
-              "Melee Physical Damage",
-              "Brutality",
-              "Pulverise",
-              "Faster Attacks"
-            ]
-          },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Leap Slam",
-              "Enduring Cry"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Herald of Purity",
-              "Determination"
-            ]
-          },
-          {
-            "slot": "Gloves",
-            "gems": [
-              {
-                "name": "Cast when Damage Taken",
-                "maxLevel": 5,
-                "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
-              },
-              {
-                "name": "Immortal Call",
-                "maxLevel": 7,
-                "note": "Level 7 is the highest a level-5 CWDT can support."
-              },
-              {
-                "name": "Vulnerability",
-                "maxLevel": 8,
-                "note": "Level 8 is the highest a level-5 CWDT can support."
-              }
-            ]
-          },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Decoy Totem"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Divine Life Flask",
-            "note": "Instant prefix."
-          },
-          {
-            "slot": "utility",
-            "name": "Silver Flask",
-            "note": "Onslaught is the damage flask."
-          },
-          {
-            "slot": "utility",
-            "name": "Granite Flask",
-            "note": "Iron Skin."
-          },
-          {
-            "slot": "utility",
-            "name": "Basalt Flask",
-            "note": "Physical damage reduction."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance."
-          }
-        ]
-      },
-      {
-        "until": 100,
-        "skills": [
-          "Boneshatter",
-          "Enduring Cry"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Boneshatter",
-              "Melee Physical Damage",
-              "Brutality",
-              "Pulverise",
-              "Close Combat",
-              "Faster Attacks"
-            ]
-          },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Leap Slam",
-              "Enduring Cry"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Herald of Purity",
-              "Determination"
-            ]
-          },
-          {
-            "slot": "Gloves",
-            "gems": [
-              {
-                "name": "Cast when Damage Taken",
-                "maxLevel": 5,
-                "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
-              },
-              {
-                "name": "Immortal Call",
-                "maxLevel": 7,
-                "note": "Level 7 is the highest a level-5 CWDT can support."
-              },
-              {
-                "name": "Vulnerability",
-                "maxLevel": 8,
-                "note": "Level 8 is the highest a level-5 CWDT can support."
-              }
-            ]
-          },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Decoy Totem"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Divine Life Flask",
-            "note": "Keep the instant prefix."
-          },
-          {
-            "slot": "utility",
-            "name": "Silver Flask",
-            "note": "Onslaught: attack speed and movement."
-          },
-          {
-            "slot": "utility",
-            "name": "Granite Flask",
-            "note": "Iron Skin."
-          },
-          {
-            "slot": "utility",
-            "name": "Basalt Flask",
-            "note": "Physical damage reduction."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Caps chaos resistance for pinnacle bosses."
-          }
-        ]
-      }
-    ]
-  },
+          "watch": "Cap chaos resistance and keep the trauma stacks running while you move out of the biggest slams. Enduring Cry before the burst; the weapon is the last big purchase and it must keep mana leech.",
+          "measure": true,
+          "aliases": [
+            "pinnacle"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Boneshatter",
+                "Melee Physical Damage",
+                "Brutality",
+                "Pulverise",
+                "Close Combat",
+                "Faster Attacks"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Leap Slam",
+                "Enduring Cry"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Purity",
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+                },
+                {
+                  "name": "Immortal Call",
+                  "maxLevel": 7,
+                  "note": "Level 7 is the highest a level-5 CWDT can support."
+                },
+                {
+                  "name": "Vulnerability",
+                  "maxLevel": 8,
+                  "note": "Level 8 is the highest a level-5 CWDT can support."
+                }
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Decoy Totem"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "utility",
+              "name": "Silver Flask",
+              "note": "Onslaught: attack speed and movement."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Iron Skin."
+            },
+            {
+              "slot": "utility",
+              "name": "Basalt Flask",
+              "note": "Physical damage reduction."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Caps chaos resistance for pinnacle bosses."
+            }
+          ],
+          "root": "endgame",
+          "from": 91,
+          "band": "pinnacle"
+        }
+      ]
+    }
+  ],
   "ascendancyOrder": [
     {
       "node": "unflinching",
@@ -1124,7 +1454,7 @@
   },
   "status": "verified",
   "gates": {
-    "until-12": {
+    "leveling-1-12": {
       "pass": true,
       "level": 12,
       "budget": "starting (3-link)",
@@ -1452,7 +1782,7 @@
         "status": "within-bound"
       }
     },
-    "until-28": {
+    "leveling-12-28": {
       "pass": true,
       "level": 28,
       "budget": "early (4-link)",
@@ -1463,7 +1793,7 @@
         "dps": 350
       },
       "metrics": {
-        "dps": 1446,
+        "dps": 1515,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 1095,
@@ -1477,7 +1807,564 @@
         ],
         "chaosResist": -25,
         "manaUnreserved": 83,
-        "manaCost": 15,
+        "manaCost": 17,
+        "nodes": 29,
+        "sockets": 0,
+        "ascendancy": 1
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            2454,
+            38777
+          ],
+          [
+            6981,
+            36543
+          ],
+          [
+            9511,
+            23881
+          ],
+          [
+            6446,
+            10221
+          ],
+          [
+            15438,
+            49412
+          ],
+          [
+            15438,
+            28728
+          ],
+          [
+            20551,
+            58449
+          ],
+          [
+            23881,
+            26523
+          ],
+          [
+            6446,
+            26523
+          ],
+          [
+            28728,
+            35436
+          ],
+          [
+            30251,
+            42800
+          ],
+          [
+            31080,
+            43374
+          ],
+          [
+            9511,
+            31628
+          ],
+          [
+            36543,
+            49412
+          ],
+          [
+            38777,
+            58449
+          ],
+          [
+            40653,
+            42800
+          ],
+          [
+            31628,
+            47175
+          ],
+          [
+            47175,
+            50904
+          ],
+          [
+            43374,
+            49178
+          ],
+          [
+            31080,
+            49412
+          ],
+          [
+            40653,
+            49412
+          ],
+          [
+            10221,
+            50422
+          ],
+          [
+            50422,
+            50862
+          ],
+          [
+            50422,
+            50570
+          ],
+          [
+            6981,
+            50904
+          ],
+          [
+            26523,
+            58449
+          ],
+          [
+            20551,
+            61198
+          ],
+          [
+            43374,
+            64816
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 2454,
+            "name": "Two Handed Melee Damage",
+            "notable": false,
+            "x": -5072,
+            "y": 1628
+          },
+          {
+            "id": 6446,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 1302
+          },
+          {
+            "id": 6981,
+            "name": "Strength",
+            "notable": false,
+            "x": -2992,
+            "y": 3067
+          },
+          {
+            "id": 9511,
+            "name": "Strength",
+            "notable": false,
+            "x": -3482,
+            "y": 1368
+          },
+          {
+            "id": 10221,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 687
+          },
+          {
+            "id": 15438,
+            "name": "Two Handed Melee Damage and Stun Duration",
+            "notable": false,
+            "x": -4295,
+            "y": 3804
+          },
+          {
+            "id": 20551,
+            "name": "Life",
+            "notable": false,
+            "x": -4355,
+            "y": 2284
+          },
+          {
+            "id": 23881,
+            "name": "Strength",
+            "notable": false,
+            "x": -3729,
+            "y": 1302
+          },
+          {
+            "id": 26523,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 1302
+          },
+          {
+            "id": 28728,
+            "name": "Two Handed Melee Damage and Ignore Physical Damage Reduction",
+            "notable": false,
+            "x": -4354,
+            "y": 4025
+          },
+          {
+            "id": 30251,
+            "name": "Axe Damage",
+            "notable": false,
+            "x": -4963,
+            "y": 4488
+          },
+          {
+            "id": 31080,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -3145,
+            "y": 3968
+          },
+          {
+            "id": 31628,
+            "name": "Melee Damage and Life",
+            "notable": false,
+            "x": -3159,
+            "y": 1642
+          },
+          {
+            "id": 35436,
+            "name": "Kinetic Impacts",
+            "notable": true,
+            "x": -4133,
+            "y": 4085
+          },
+          {
+            "id": 36543,
+            "name": "Strength",
+            "notable": false,
+            "x": -3485,
+            "y": 3560
+          },
+          {
+            "id": 38777,
+            "name": "Melee Damage",
+            "notable": false,
+            "x": -5027,
+            "y": 1795
+          },
+          {
+            "id": 40653,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 3560
+          },
+          {
+            "id": 42800,
+            "name": "Strength",
+            "notable": false,
+            "x": -4713,
+            "y": 4485
+          },
+          {
+            "id": 43374,
+            "name": "Strength",
+            "notable": false,
+            "x": -2375,
+            "y": 4211
+          },
+          {
+            "id": 47175,
+            "name": "MARAUDER",
+            "notable": false,
+            "x": -2824,
+            "y": 1642
+          },
+          {
+            "id": 49178,
+            "name": "Strength",
+            "notable": false,
+            "x": -2125,
+            "y": 3778
+          },
+          {
+            "id": 49412,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 3560
+          },
+          {
+            "id": 50422,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 7
+          },
+          {
+            "id": 50570,
+            "name": "Strength",
+            "notable": false,
+            "x": -6748,
+            "y": 7
+          },
+          {
+            "id": 50862,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 7
+          },
+          {
+            "id": 50904,
+            "name": "Life and Armour",
+            "notable": false,
+            "x": -2992,
+            "y": 1933
+          },
+          {
+            "id": 58449,
+            "name": "Born to Fight",
+            "notable": true,
+            "x": -4436,
+            "y": 1795
+          },
+          {
+            "id": 61198,
+            "name": "Heart of the Warrior",
+            "notable": true,
+            "x": -4274,
+            "y": 2424
+          },
+          {
+            "id": 64816,
+            "name": "Two Handed Melee Damage and Leech",
+            "notable": false,
+            "x": -2608,
+            "y": 3920
+          }
+        ],
+        "notables": [
+          "Kinetic Impacts",
+          "Born to Fight",
+          "Heart of the Warrior"
+        ],
+        "start": 47175,
+        "jewels": []
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Headsman Axe",
+          "mods": [
+            "Adds 20 to 40 Physical Damage",
+            "9% increased Attack Speed"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Reaver Helmet",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Sun Plate",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Guarding Gauntlets",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Boots",
+          "base": "Antique Greaves",
+          "mods": [
+            "+60 to maximum Life",
+            "20% increased Movement Speed"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Belt",
+          "base": "Leather Belt",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Lightning Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+30% to Cold Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Sunder",
+              "level": 5
+            },
+            {
+              "name": "Melee Physical Damage",
+              "level": 3
+            },
+            {
+              "name": "Added Fire Damage",
+              "level": 6
+            },
+            {
+              "name": "Faster Attacks",
+              "level": 6
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Leap Slam",
+              "level": 5
+            },
+            {
+              "name": "Enduring Cry",
+              "level": 5
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Decoy Totem",
+              "level": 8
+            },
+            {
+              "name": "Blood and Sand",
+              "level": 3
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Determination",
+              "level": 2
+            }
+          ]
+        },
+        {
+          "slot": "Gloves",
+          "gems": [
+            {
+              "name": "Vulnerability",
+              "level": 2,
+              "note": "Self-cast until Cast when Damage Taken is available at 38."
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Giant Life Flask",
+          "note": "Drops from level 24; medium is too small by now."
+        },
+        {
+          "slot": "mana",
+          "name": "Greater Mana Flask",
+          "note": "Drops from level 12; the magic axe cannot carry leech yet."
+        },
+        {
+          "slot": "utility",
+          "name": "Granite Flask",
+          "note": "Armour is the defensive layer."
+        },
+        {
+          "slot": "utility",
+          "name": "Basalt Flask",
+          "note": "Physical damage reduction, from level 27."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance from level 18."
+        }
+      ],
+      "repair": {
+        "added": [],
+        "removed": [],
+        "evals": 1,
+        "nodeDelta": 0,
+        "status": "within-bound"
+      }
+    },
+    "leveling-28-38": {
+      "pass": true,
+      "level": 38,
+      "budget": "early (4-link)",
+      "gateProfile": "standard",
+      "thresholds": {
+        "resists": false,
+        "life": 700,
+        "dps": 350
+      },
+      "metrics": {
+        "dps": 2325,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 1233,
+        "energyShield": 0,
+        "ehp": 1270,
+        "maxHit": 2330,
+        "resists": [
+          -60,
+          -30,
+          -30
+        ],
+        "chaosResist": -25,
+        "manaUnreserved": 67,
+        "manaCost": 18,
         "nodes": 29,
         "sockets": 0,
         "ascendancy": 1
@@ -1912,19 +2799,19 @@
           "gems": [
             {
               "name": "Boneshatter",
-              "level": 1
+              "level": 4
             },
             {
               "name": "Melee Physical Damage",
-              "level": 3
+              "level": 7
             },
             {
-              "name": "Added Fire Damage",
-              "level": 6
+              "name": "Brutality",
+              "level": 1
             },
             {
               "name": "Faster Attacks",
-              "level": 6
+              "level": 9
             }
           ]
         },
@@ -1933,11 +2820,11 @@
           "gems": [
             {
               "name": "Leap Slam",
-              "level": 5
+              "level": 8
             },
             {
               "name": "Enduring Cry",
-              "level": 5
+              "level": 8
             }
           ]
         },
@@ -1945,21 +2832,12 @@
           "slot": "Helmet",
           "gems": [
             {
-              "name": "Decoy Totem",
-              "level": 8
+              "name": "Herald of Purity",
+              "level": 7
             },
             {
-              "name": "Blood and Sand",
-              "level": 3
-            }
-          ]
-        },
-        {
-          "slot": "Boots",
-          "gems": [
-            {
               "name": "Determination",
-              "level": 2
+              "level": 5
             }
           ]
         },
@@ -1967,9 +2845,31 @@
           "slot": "Gloves",
           "gems": [
             {
+              "name": "Cast when Damage Taken",
+              "level": 1,
+              "maxLevel": 5,
+              "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+            },
+            {
+              "name": "Immortal Call",
+              "level": 3,
+              "maxLevel": 7,
+              "note": "Level 7 is the highest a level-5 CWDT can support."
+            },
+            {
               "name": "Vulnerability",
-              "level": 2,
-              "note": "Self-cast until Cast when Damage Taken is available at 38."
+              "level": 5,
+              "maxLevel": 8,
+              "note": "Level 8 is the highest a level-5 CWDT can support."
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Decoy Totem",
+              "level": 10
             }
           ]
         }
@@ -1978,12 +2878,12 @@
         {
           "slot": "life",
           "name": "Giant Life Flask",
-          "note": "Drops from level 24; medium is too small by now."
+          "note": "Divine drops at 60, so the giant flask is what you have at 38."
         },
         {
           "slot": "mana",
           "name": "Greater Mana Flask",
-          "note": "Drops from level 12; the magic axe cannot carry leech yet."
+          "note": "The axe cannot carry leech yet, so keep this."
         },
         {
           "slot": "utility",
@@ -1993,12 +2893,12 @@
         {
           "slot": "utility",
           "name": "Basalt Flask",
-          "note": "Physical damage reduction, from level 27."
+          "note": "Physical damage reduction."
         },
         {
           "slot": "utility",
           "name": "Amethyst Flask",
-          "note": "Chaos resistance from level 18."
+          "note": "Chaos resistance."
         }
       ],
       "repair": {
@@ -2009,7 +2909,7 @@
         "status": "within-bound"
       }
     },
-    "until-68": {
+    "leveling-38-68": {
       "pass": true,
       "level": 68,
       "budget": "ssf-start (5-link)",
@@ -3180,7 +4080,7 @@
         "status": "within-bound"
       }
     },
-    "maps-early": {
+    "maps-white": {
       "pass": true,
       "level": 80,
       "budget": "ssf-start (5-link)",
@@ -6093,7 +6993,7 @@
         "status": "within-bound"
       }
     },
-    "pinnacle": {
+    "endgame-pinnacle": {
       "pass": true,
       "level": 96,
       "budget": "trade (6-link)",
@@ -7785,12 +8685,13 @@
     "checkpoint": "maps-red",
     "code": "eJzNWm9T2zgTf918Co1nbp67OQH6b7tDehMCDW2h0ARa2jc3SrJJDP4TbDkhfPobOQlxaBLCtfeUYUYjS7-19rdabdYr9v-6i0I0gjQLkrjq0F3iIIg7STeI-1Xn8uLtjuf89aayf67N4Kx3kAehnXlTebVf9FEIIwirjk8cZHTaB_N5_ir-N3FQJ9RZ9lFHUHVOdarzLqQO0lkH4m59MfU-7_chjXVuHBTpIG4lnRswjTTJh1WHOqit425gqs7HJAYHDXVsBpDEp_o6SRtJt-qEeazTICtNBfFsqp_mZnCThw4aBTA-TbpQdeq1k3rLeVN59Wr_PNQTSFtGG5QZbapOPYnaQQzdw_OWg0Y6zKHqCO5LwXalIp7rS9_ZWy16kRgd_gu5k6AHDzJSUroOeBRD2p-0BgGE3QcBslGdo-PzByQnjMhdj1GmFPHEOrnzwSQLOjo81XdBlEfHgbnQNxA_vIYyxt11wm-DFJqQBZl5wLtqHbiehN3HYLneSv2BiYO4v7VEfaCT7DF6Le1THet6UoJyvgl6GaeQQTqCxU5QuVaV1hBKQLarBCF0it7fKw6S7V2kAEh3TDCC1hA61vWL19kHZFKA0tni88P1rlsckdKZsiPEQXHShazqUJcLzIQUmFPlYq6EwIL7Lha-IFgyzrF0BceKUo4V4wQr5vlYceljJYTCyqUMK9-j2OWeh10hCPYlpdj3XYUpYYxiSoRPMGWCuJgylzBMhSIKU-FzgqkkLsdUCiJtyz1MlSuVbV2Jqesq23qMYkYI9TAjUlLMKOcEMyoox4wT5tqWe5hxz6OYSeUxzBT1FWaKuQQzJRnHTLlM2lYQzFxatJxQzDzhSsw8l3mYeZ7rYeZzyTEnTFJsX0wwp6RoFfMwp54rMae-opgzSiXmnHku5ly4PuZccYo5t6twQV2KuWDExVwKrjCXvvQwV1JwzJXiAnPlCx9zz3VdzH0lPCyIkhwL5hGChX0RFoIRZlu7N8orWp8SLFzqSixcq6fwrA7Cp1bWp65nd5EyLHzpUiyJYAxLIl2CJfGU7ftEYEl938OSU2pbjyospfAkllK5tu8ThaXrS46lxyzGE8LH0ud23PeZhxXhvm2Fy6yj2D4jjGLFBLO-wjyGFXcZx4pbr1CCUYKVsGspSbgoHPnV_mXzpOi8GhgzzF7v7Y3H492hNoOkB3dBCLudJNob6iwLRrCT3QRhuGP9fq9Wq9UO-ke19qd2o_7t6-nVWHhHLXJxcdC8ext5V6I5-NJ4f_SV3t3kjet-u9m87xw3a-H7SVu83yHJzvUBP_0m5OH1sHWWH3knF3dnn66aBwPypXtx_f5Tk35sXarP3zwa71xdhjeX0bfLb0MZR2wQ6uPm7UHjNmzfm_HZ8eFZ5zZkH7jO4MvAvT6eHPY-hn5HvDvuZ3B4Jc5PB1f521gMs-tjfTYSnr55--UKvqX9OGPx6YcwTz_cmnq7c2fulbhxJ71x7bjWyI6Oxvr8yM--fLi7dRvsNIN77rbOPgY-u7rXX_P3A8HSm0uAWzW4Tt18LNyxO2n2zrv-_YlQf8fJjjnxT8_Fh1qtVi2MvTe39v709zSbmn72VMQHGyrsmXdQYCAqQskshn2PK85aCajWA10mS0B3LdCeyRLQWwcsjlsJ6K8F2tO2ALLZj-Or_b2SCfb3bEAtQq-NuLbTsq42nSy6CGLdDqFbdUyag4OyMDFV5yDpTlAtjZI8neYptWmsthLzYP1qvwER6k_XPwWju9rovXcGomyvYZsC3YDoIIkhG2hjbEZUuPqzJGIdzX4kloZn6RgjDrrNdRiYydKDXeIQejoPjfOY4wpCe89i1MqHwyQ1pxACzJOIQx3pPjxFcCrYgGil7IJqMY3m82gOeAGkD9LcFIttTbUkUdrLxeALIHWehyNIg2z7_StJLEiVBl8AqXqYZGCzfG22prUksyBWDKP5-Avg9lZnBtKaMbpzk23NrixVpjcdRw-v-w8I7k8ZPBV4v4AeJjGiPx51T0APW6GOtgy5C_jCLHYMTQd_5ZYfxd08DeJ-PX0y5qySWPCZD6Ni_Ndt8jGEEZgf3-JjSHXYPeud5-kW8XiN0MI80xmU9NB87lfu-iEYSKMg1iZI4i25PZJZUHs08eu2vhEmI8h-fOvnIV5n5ssA4ml-MKtebBvqdWbOliVLAV9nBo0HEM9SDzRDzCwnf4FDvIuiJDU6rOsw3NIflkUW7ObjaDoxI-X-AlKf8zCGVLeDbTKqmcxHGD8SWzB7NDFj5v3f_fwgScxPcPND6CSTi8TAtj9jZYHy8e8kEzQb_k8P_6yXzYtcnwMYo_skia6KSpXtfX3onUw14c7DF5qF24eC2axAZvstMA81MvuMgukH7JtKU9tQ_Ro1a82jSmtii8JZkEEXXcMYQkQr9TSIsiRG7-1zpRAu1n2NPFZ5Fw3DoBOY7DUiFfUbCuJOCtqKR9OaKLIl24ooz0yzJFQU-ip0aerR90phGbviI73V03qzl6i3-7Te_CXq7T2tt3iJevtP6y1foN6MPK23eoF6001qj4sPk0ptCHeoHoIeQfpY6U_TAPoaMbJMgAqySZtat5shTpBJkCLfzVK-liTZ5b8V6epcZDY7S1lOADoD6CKdIXuPsW63NrEeFJl6pZ7EtzmkSfq_DE2T9y25s8rvnO5w9keZg1UG2QsYdNTrBZ0A4s6k8jvjO0z-sYLrzA5_eoWFlvb_T0aKwWmlrvKntbNJkL2aQtPrIB134GHc3kKVx1cbhG8ySDvpTion0A-SGJ2H2sAmQ8wqka_Rwc7D3yPrMLHD1BLrRpi0dfidGyxl8GigM_Q783Y4WbZYnmprVOiY59jr4cLt3xtNbDJav0j6K-cpdPI0S1LU0HlsQjDZ1m5E6YZTIJdPwffuPyW_yiBe2R4bjto6a6xzudVW2piwtG3KWDmwYdEkMaCLFHR3ewt5S0csGUEEsZlpz8RvqDOwihVsR0nQRUdhgbBRIwhtL6swueEdT5vvKRutdLPVhtqYIbUhNJUT0GYAKTqwD9sG4u05fBdC2IybvWl-Wv-NmZKO8hBM5Sye3KHatP9DBLY5xT_IZ2MGZUtKtHI21CFqBnH_p5BZF8JXk3wemY1plSXDfjKZZx2IZ5Kh5WTrtNZ4V1-iEwY9QL1QZzeVw2AUxFBoht4WI9tyW7My3bhybopv8NnircDeDPycddkz1m2kOg7MTyLMn7Hwgc50aH7OuuIZ69YiMINJ9sMrt8DMkmJkAhNCqSiQZ9CCThJ3p8X64tu8p8MMZrWNVpiYovhQLuc_3OjOC0Ql1Lwe_HCZuwKzdCM7B_IVwHmFcY4RK19WVGfmELkKAmFJI7UCMQ3dC4y7AmNDSJm9tw7DFhh_BabYzCUzEmdWHpnVZtbJlF5M6ZYyvCTDtpQp3cVTvqVM-T8CxCqZqU-2wBQFoqIoZHv1JO4F_amrxsN8_lKIIZoUvu6gOI_akFYdb_6vXd8Bj0Y6m1bJZ1DXU2T2f1rzBfb3Hv8z5D9gW_Zx",
     "byStep": {
-      "until-12": "eJzFWFtz2jgUfo5_hUYzfVoS8I1LBtoxJKHphCaN03b3aUdBB9BGlryWDGF__Y5kA04LhDbZ7gtzJH1H5zufbsd03z0mHM0hU0yKHnZPGhiBGEvKxLSHP99dHLfxu7dO94bo2fWknzNuRt46R11rIw5z4D3sehhpkk1Bf1lN5f_ZwGjMiVIfSQI9PCIZySlkGBE1BkEHm6EP-XQKmSC5xighTMRy_AB6mMk87WEXo3siKNM9_FEKwCglQs9AihH5S2ZDSXuY54JkTFWGmCiHplmuZw85x2jOYDGSFHp4EF0NYvzWOTrq3nCyhCzWRCOlie7hgUzumQB6dhNjNCc8hx4OGiedVtsLPK_VCnF9u-Od1IT_sNcVm8DGw9uJOxeQTZfxjAGna3xjL5fz9zdrpNdxT9qdwAtDt-M33V1-N7OlYmPCR-SRJXnynuk78gBiQ7C1M-QFy-AWFFN6jT5u7kQPJKffooP2bpGmMy2YmB7uMpgRqQ7nMyKCDGQF6-6FfhYZKMjmQCsOO1WNU6gCT_yWRXbr9gQZ6y4DQGSs2RziFMZmz9upTAPpDKByqPzVqbqk9mxUDpPpaWAkJAXVw81O2611Qtetua1WM6x5frvt1rxm6Pk132167ZrfDAO_FjSaoV8LWm4rrAWdwPVqYaPTCGphOwg6lsdR9_PtlTWOZlqn6rReXywWJynRMzmBR8bhZCyTekqUYnM4Vg-M82NDux5FUdSfnkeDmb74EFMaf4V7CJbX87D1cfHpbuhd395GUdSzQepllG7d5G0VMsIYIzZTqkITYyIQ5J4D7WGd5YCR4lL3cF_SJYqyROZZcY9EhaTGY6XpUXcICZpCYsQagSaUaFK_1JCo-tD8WPQQkgEHMjdTm_ahYEGScgVXPeX9GGL0d04400u7RKVtpj2DCcm5xt-mtIV__YcSiPM0lZmOKAVqTucZScj02YQKpyEk3_ltcrNDyIyh1WCZpve_pXlBlIYs0pqMH9TBSVa9qhkW_Wg93aun1y34P7ejvwJJpUDuy7fzFZA05iQ5cENv4BtRTB8qOlev_q9f7nNB84yJ6SBbHpjKE49NNqtuZPtfPaEDF_g98AT0y5f3DMZyeSc1HLrAVYeNKLYXld2lJsGv1qQvpVYvl6TPpaSRoDER9EBRnrpsZLH9iAiKipH_8DooLbUqC74wWKB_pEx-tzGM9cfauip4-Hj9WBq4adjkypLC2DHodVVh2ojRon1LMqaXp2gUDS8HTrw09bNiCiha2LvHibUUgKJHcKyfDXmKXM_5VKR7ihrOZZJyNmZamUZEqUJtpCVym2hVUZYPhRO-QUyMMyAmQnG9IlsfWRFMhKcUvb0UZ_b0OAPDsDhJh5L8zQsNw6QodJEpw3cw8PcyuJd06QxmoHTKid6nUfFNo05R_7h_3P9ZNsFeNlMu56CcG0OFoiHJheag1euLEj4jitTKiTUAR8PM1EEvouA-2TQjOYcEhN67bZr7-QHXzhUQPYMM9U3j1QVq7SVAkpyDdq7F8hFFhX0oA9d7YyisP4lQ8ZFDxHgXlfZeKuYJdJ3rlHB0y8T09ZXoPBve-4nwpQzmO_J5BdzGXg6cTQBNOFEPzggoK9NBF7bnQEI7Au-_YRMiSBk4TgjnyHxbvkrc_ddmrpmZrAz9KWfjB8X4HLIXxo5Bl-8K0kxzqLyDuYIYxlLQoqK1z9GEcAXlmx5zqe2DW615mS5e-XWNWEGtCqcVxtuCefI9uAL6W4BDe29uMMHWyWxVsoKE2yDAK4yaWxDFYd9gWlsw5hxUs2_vwngbTGcLxq7lExkbuKwIynJkl09lYtc90Mev-HjbfIq9EoO2tYqtT4w1kGLCpsUWEmm-mhQEJEu7BTESeXIPWQ-75dJ9DzyfE_P3yAbq-53yP5bV_N36t_9g_gtGJaMM",
-      "until-28": "eJzFWV1z4rgSfQ6_QuWqfVon-Bs7BbNlSEJmN8zkxsnsztOWgjugjSyxlgxhf_0tyTaYXCDMhDtbqUrJ0mn16W6p1RLdX14yiuaQC8JZz7DPLAMBG_OUsEnPeLi_Og2NXz60urdYTj8_9QtC1ciH1klXtxGFOdCe4YQGkjifgPxST-X-aRloTLEQn3AGPWOEc1ykkBsIizGwdLAe-rWYTCBnuJAGyjBhCR8_gxzmvJj1DNtAj5ilRPaMT5yBgWaYySlwNsJ_8XzI055BC4ZzIhpDhFVDk7yQ0-eCGmhOYDHiKfSMQXwzSIwPrZOT7i3FS8gTiSUSEsueMeDZI2GQXtwmBppjWkDPsD3PP_M7gRc5UWR7Rnu76D2XmH6H3A15grWMFfm7gJcM8skymRKg6UrA2kvn8vp2hQz96CywA8eJfMfp7KRzO10KMsZ0hF9IVmTXRN7jZ2BrhkEn3CV7RXK4A0GEXMFPg50MB5ymr9HuTvQNmUwlI2xyuMhgirl4DXd2-neEGR7wBtbeC31gOQjI57AORujuEkhm0MDZZ57t2JEGd9t6J6nWfQ6A8FiSOSQzGKu1r2dTH0jmAI3N5da762Oq90hjU6key0CMpyB6huP5nhl4XmAGUWibkW_bpm05jm3avueGpt3pBL7pWL5vm44bhrbpBL7jmk7YcULTtRzfNl3bCi3TtQPV43tuYLqB77mmG3Y6HdOzAt81PSe0LNNz3Y5neh2745teZHdC04s82zF9y3PUf79jmb4VBqodWZ7ph54XmYFtR6EZeKEdaItPug93N7pxMpVyJs7b7cVicTbDcsqf4IVQOBvzrD3DQpA5nIpnQumpclA7juO4P7mMr-Ps92HiPd4lD-zXUyu8p_3rPx4oy9zYS4n08XUxItny89xPfSYcNvqNFot-3u-P7p2Xr_kwF49f_avr-cXcWsRx3NOk2hWrbltFRMdOhUw1EkVBlNFSTQQMP1JIe4bMCzCQoFz2jD5PlyjOM17kZaaLy2AriTraJ90hZGgCmQrjCCROscTtjxIy0R6qfxo9hKzPGYgpllLlVO2Cb5JgOKtW2UZ3ldBtA_1dYErkUq-lqq0UXMATLqg0Xlu4xZz2N9mTFLMZz-UIKECdhC5whifwlnml4BCyrbJrQ_UwqsdRDahMdv81k-M0hVTlzm8093_k1qbqIaTGXpsZ_GtmXmEhIY-lxONncbCRTammhWU_Wk13dPO6Jf-39vTvgGecIfv9G_oG8CyhODtwN6_ha6eoPlR2Vv7wf3y4L1la5IRNBvnyQFM2JNbW1N1I9x_doAMDfA00A_n-8F7AmC_vuYRDA9wUWDtF96Kqu_JJ-OOD3KecpzFLE8zSQ4-fDZHG-aP6EWYpKkeOno8PDHSfcymOEWcJeUYYloSzg0O9IdOM9sZAfd360a4ZUj6HI_jmS0EZ5PiRKL4H-uYTLF6Jrd3zauD_6J6qJeo6_QuBBfqH8-wPrUO1vq5aN_UKXtWICq4-tH1Vja_aCchVma--EUnL7zucE7k8R6N4-HHQSpbqYiuIgBQt9IHTugacigwzFL9AS4tqrefI81v_KS0-R1brYzajZEykUB9xmgrkWEhy5FmvC6FW9BMibJwDVlrKcxXpe4t2hFKxSdPZS3Oq02brDvAcclQm0UN5_hxojll5BUXqhryDg7uXwyNPl62kYOiWYrnPS-WLgzhH_VP99710vL10JnoXtYYFztUrChrigkkKUhzfL_4bfuFStGImyd8FoGGuYvQuEo7VXDsjPocMmNy7eoL9DIHK1g1gOYUc9dXH0V3U2UsAZwUF2frMli8oLttHZxDuZaAqH7v1eYYpuiNs8h71P7vWT6pz9YaCylcRzMa7uEVvcnO-g1vFQ738vE3BtvZyoOQJ0BPF4rk1JJhJbSq60h0H8tmhd3_-zTDDtd4csLqEqOego2jen1ILqc-5lXLMiDyOxfvT6KbePhaYyqOo3Z8uN9XGGcjpUrxXcQKyOmORJJJCoyYoBCQw5iwtr3T6aH7CVEBV4ySUS117NC99RJZVz6p-bqDqm0ONcbZgNp6EaqC7BViXYDXG2zqZrmBriL8NArTBKNiCKLPdGtPZglGbvml9uAvjrDHRFoyO5YYbLaOqjqrSbJdMY2LbPlDGbcg4B8p4DRn3QBm_IeNtkynXZAJS14e6JlStAWdPZFIuVTYr6kmBQbbUS91ArMgeIdc_uLS3Ay_nWJSXiAoaRkH10FzP322__jnnv5Y4Q9U=",
-      "until-68": "eJzNWm1z2rgW_hx-hcYz-2nVYr1YtjuhO0BS0jZsUki6ab_sCHwCbmyZ2jKE_vo7sk1wcoGQTe7mTmY0ss55JD06OkfSIYd_3MYRmkOahYlqWeStbSFQ4yQI1aRlXV58eONZf7xvHJ5LPT277uRhZCTvGweHRR1FMIeoZQnPQlqmE9BfV12xv20LjSOZZX_KGFpWX6YyDyC1kMzGoILuWvQpn0wgVTLXFoplqIbJ-AZ0L03yWcsiFhpJFYS6Zf2ZKLDQTCo9hUT15Y8k7SVBy4pyJdMwq4lCVYkmaa6nN3lkoXkIi34SQMvqtk-7Q-t94-Dg8DySS0iHWmqUaalbVjeJR6GC4Oh8aKG5jHJoWYQy5jlvhWszQWxhNTdDLxIto3-AOw2v4Q7DmMu2KR4rSCfL4TSEKLgD2Dunc3xyvp6O4GY2gjDHZdzdhjufLrNwLKO-vA3jPD4J9YW8AXXXjcuZsw37IUxhAFmY6bX6Vt7dJAoeKm_t-TScTLUK1WRvRHcqk-yBttg6mb5UspvUVBnZpXqpUsggncPaEIRs7Xw4g5oifUts4ZXdHzYLNzK1ixQAybEO5zCcwdhs_KI384F0ClDzLLZyrY9B4SA1jzIttoVUEkDWsojLOKbc4ZgR4WImOMcOZQwL5vhYcC6wcAnFwvcIdjm3se8QgolNKcGEC1tg4tguw8ThtmNK5mEiXEeY0nUwcV3hYGrbxMPUdhyCKeGEYcps6mLKPI9g6giPYiqILzAV1LUxFQ5lmAqXOqbkNqYuKUpmE0w97jqYei71MPWZwzCzqUMws5lnY0bsohTUw4z4gmBGCXEwY9z1MWOCEcyY6ZNx4hLMOLVdzBzOBGbC4Qwz4XMfM891Xcxt4TDMqWfbmBsY5pza1JS-i7nwitInNuYucR3MfWL0feJ6mPucUMx9xyXYsTml2LEd18aO7QlT922OHeL7HnYYIab0iMCOwz0HO45wBXY8zn3s-MwW2PF96mFhc5diQYjvYUFtSrCgnPpYMOpRLJhLje18V2DBKbGx4KZP4diMF9vl4PBycFpUDqZaz7J3zeZisXg7k3qaXMNtGMHbcRI3ZzLLwjm8yW7CKHpjdlez3W63O5Pj9uVk1Ot-_9a_WnDvw8nxN3J7k_d-TEaDgf3l03Cs3Iubs7P82Du9uD37cjXoTG2-vDwOLmZf1a-ry-jmMv5--X3mqJhOI3ky-Nnp_YxGv_Ti7OTzLAg1TU-iBPitR6_Ir0kGR1f8vD-9yj8oPst-pG--fP0eOCqjqv85ytPPP3V3NL7Vv9x2e9yWiy8XncS7oLff0l6ajb4tb93za_2R01P2_fpsMHBE-rN3tuDuwl0Ors8D_9cpF3-r5I0-9fvn_HO73W4Vi9RcrdJhedZk5ZJVX4X3GEcq9qyFQg1x4WlVsNmk6FKnpliFgoPDZq3_w6bx5cLrjbObytCsfyksqgiUHEUQtCyd5mChLEp0y-okwRK10zjJ0_KAbJdhwiBWceLgsAcxmpTj90HLQGrZ_Kghzpo9UxTaPYg7iYJsKrU2R3Fh_ychlIyr-HSvuboHEN9CP3MZhXpZhKGqbkY4gmuZR9p6SHEDn-aTCA3z2SxJdR8igNXhdSRjOYHH-JXAHsQbsWumhRit5Gil8PqcO2mui8H2ZlpD1Cy5blxx8l6N03kezSENs_2tV0OsOdUaX99OH2SmIW1rLcc32d686qg6tbId3XX38vwOSwKPxaW_QM4Shcjzg9IpyNkwkvGeEWmtvl4V04bKxlc0-LEK8jRUk276qE9uQqzprJpR0f5qJj6BKAb9fAOfQCqj4Oz6PE_3CFdbQOvVKSUouUYr2Sva_Ag0pHGopA4TtSe1B5g1sweCVzN8L0rmkD3f8FU468pM_zUFVZ6d1YtyzzhosGf3kev1MkK0mIKqjmVUaVQL5_z72-FjHCepllFXRtGeu-E-ZE1u1Y5KQcXJ_fc5fc0jBakchftcNirMn7B4AFsTeyCoiL3cpWPPTd5JEv0Ce_wIxsnyItGw7_lVB9Rdf5wsUdX8v3T8qpat0g5fQ1igX0kSXxVjmNq3u9ppORFm3T1cjLr5KIhVKQtTH4K-y1qYbxSWb6b3jYE0QfodGrQHx43h0iTpsjCDAP2ABUSINLppGGeJQp_Md6MAF-O-Qy5tfIxnUTgOdfYO2Q3xGwrVOAVp4HGZo0ImhdbgdUl5OUJF5qVB7oke3OOLlTEjPpi3eHze9P9x3rumvSgubI32DG5RNwI5h_ThpL-UG-wdIvZ9AoTbu2bTDoIMMRvpBAn7v6SEbSVpv2W_FQf5ClJJq3B-CjCeQoBkhkzibQtruov1tLjDNI61yTFHqJOnk0SB3pv5715B657Rfqd20Vi-yhu_m8XRCTIJUFQmHaUaw127yXXW2zezYLtYjJJg2ehFSRomeYbOI6lhF4Mq7_AOdd5Uf_-Y1F3u9Z8z47uYTYqrRmM4C28gQOXF43nG8eo0duy9bSS2mXMzuZ0RbmSOmMZFqKVCvdS43P7cqFOfeT-ZQwxKr-b-KPHH2G2062aKO4PhCCLdOAWpp5Cijvl4OeNtdSxacTNZ_sfn7-6av4zzCHTjTC1vUbusP4vAPm7zTD7eLj7m2UgaZzMZoUGoJi9CZltg20zyaWT8x8jQFybzJId4Ihli19j0272P3Xt0ovAa0HUks5vGUTgPFRQzQx-Kln25bRmZ7Bw518Vluxp8GJr02MuMS58wbi-VKtQvRJg9YeCOzGSkX2Zc_oRx2zHo6TJ79shD0NX9DulQR1C7_-cZDGGcqKDMxxXX8GsZZVC9YoZRootnRj1jd_dTxeolWNNaJX1WOnSDzr3fJFaKbIPiKpGw0uEbOyveYSsVZ5MKRLUZiQ0aZehe67gbdEwIqbP3tunQtY6_Qacw5r1ltK3qJVQ9w7Zhah0TsieG1TB0TwyvYdiemPovWHwTptyTQ9DFW7B4_5laN1HX4aTcqmqWrzoFBfGy2OsWUnk8grT4R5HmZsXjuczKXFilyl3mVz-SrwY4bD78P5T_ADRV9x8=",
-      "maps-early": "eJzNWm1T27oS_kx-hcYz59MRoDfLdof0TggQ2kOAEigtXzoi3iQufkltOSH99XdkO8RwkhAO3MMdZjSydh-tHq20kjbs_ec-CtEE0ixI4qZFd4iFIO4nfhAPm9bV5dG2a_3nY2PvXOnR2WA_D0Ij-djY2ivqKIQJhE3LJRbSKh2C_jrviv8gFuqHKstOVQRNq6tSlfuQWkhlfYj99kL0OR8OIY1Vri0UqSDuJf070J00ycdNi1roVsV-oJvWaRKDhcYq1iNI4q76maSdxG9aYR6rNMhqoiCuRMM016O7PLTQJIBpN_GhabVbJ-2e9bGxtbV3HqoZpD2tNMq00k2rnUS3QQz-wXnPQhMV5tC0qO0yKXY4FUxQQa3d5dDLRKvwH-BOggE8YATjYpXiYQzpcNYbBRD6DwCydjiHx-cPmoy60t0hTEibktXDOR_NsqCvwq66D6I8Og70pbqD-KEbj7n2KuxRkMIFZEGmH9QduUq5nYT-U-WVPZ8Ew5GOg3i4MaI9Ukn2VHvl3HZVrNpJTZWvnCCjehWnkEE6gYUjKF85lN4Yaopsh9quywvlvd1iG5naZQqAVF8HE-iNoW8WftGb-UA6BajtLD7fWp_8YoPUdpRpIRaKEx-ypkUdLjATtsCcSgdzKQS2GefYdgTHklKOJbc9LIWQWDqUYem5FDtCEOzZlGJKGDOl8AimzCEMUyGJxFR4nGBqE4djagtim5K7mErHlqZ0bEwdR9qYEUJdzIhtU8yooBwzTpiDGXddipktXYaZpJ7ETDKHYCZtxjGTDrNNKQhmDi1KTihmrnBszFyHuZi5ruNi5nGbY06YTTEn3CWYU1KUkrmYU09SzBmlNuacuQ7mXDge5lxyijk3_XNBHYq5YMTB3BZcYm57tou5tAXHXHrCw9x1HAcLIm2OBXMJwcKAsRCMMFN6DhbSLUqPEiwc6thYuMai8KhBedRxsfAEZVh4tkOxTQRj2Ca2Q7BNXGnqHhHYpp7nYptTakqXSmzbwrWxbUvH1D0ise14Nse2y4yOK4SHbY-bds9jLpZEOMy413OxZIRRLJlgHpacuQxL7jDjd8-RWApGCZbCWJE24aJYdFt7VxcnRWVrpPU4-7C7O51Od8ZKj5IB3Ach7PSTaHessiyYwHZ2F4Thtlmju61Wq7U_PGx9G9522jffu9-mwj06Pry-vR-MOqf9m5NRIjrkyj9sX8Wft0my_bMDZ1-EvPqZjs7bxL28OyJfvvtn3XD_-Ep-vXEp_Xxz9Dn62lFwY-vk5npE1PDi1_jadfoHo-nv-K-xH2iWHocJiHuXfaO_h0No34vTwdCdHYG4HgTRrOsn8sfd0fU3uHFOx7_b49tfs1_pl4h3b_vbk88_Wq1-S02_XO4n7iW7_5520uz2--zeOR_oT4Kd8JvB6TgQ0fFPlV9c2DL91TmbCmfqzC4G5773-0TIH3GyrU-87rn4q9VqNYtJ3J3P4l55omXllFZfxR4127VY_RYKNETFfq7iyDJFh9k1xSq0bu3t1vrf2zURo4gtJqSYSs_4pxQWVQSxug3Bb1o6zcFCWZjoprWf-DPUSqMkT8tjuFUGI4OYR6OtvQ5EaFja74JWvtJq95OGKNvtmKLQ7kC0n8SQjZTW5sAv1seLELGKqij4qLm6bTBioV-5CgM9K4JdVTcWDmCg8lBbTyku4bP7IkK9fDxOUt2FEGB-RB6oSA3hOX4lsAPRUuyCaSFGczmaK7w_5_0014WxjZnWEDVPLhrfn9N5Hk4gDbLNvVdDLDjVGt-f05HKNKQtrVX_LtuYVx1Vp1a2o4fu3p7fXkngubh0DWqcxIi-PiidgBr3QhVtGJEW6otZMW2obHxHhx_Gfp4G8bCdPrsnlyEWdObNqGh_NxcfQxiBfr2DjyFVoX82OM_TDcLVCtBidkoJSgZoLntHnx-AhjQKYqWDJN6Q2hPMgtkTwbs5vhMmE8he7_gqnLVVpq9HEJdnZ_Vu3TAOGuzZY-RivowQTUcQV8cyqjSqibP__eXwKYqSVKuwrcJww9XwGLIgN29HpaDi5Pz7nL7mYQypug02uWxUmFOYPoEtiD0RzHNV__Yi308S_QZr_AD6yewy0bDp-VUH1Ld-P5mhqvl_ufGrWjZPbnwNYIp-J0n0rbBhat8faiflQLj18HAx6uajIFYlRky9B_ohN2K-UVC-mT42LpQJ0h_QRevisNGbmVRgFmTgo58whRDRRjsNoiyJ0Wfz3SjAhd0PyGGNT9E4DPqBzj4g0pB_oCDup6AMPCozYcgk6hqiLikvR6jI7zToI9GTe3wxM8bik3HL58fN_h_HvW7Y0-LC1miN4R61Q1ATSJ8O-ku5wD4gSh4ToIKsG03L9zPECdIJkuRvUspXkiQ7_I_iIJ9DKmkVzk8A-iPwkcqQSe-tYM3WsR4Vd5jGoTaZ7BDt5-kwiUFvzPxPt6D1yGl_MlI0lq_yxp9mcnSCTJoVlalNFffhod1kVOvty1nwdSxuE3_W6IRJGiR5hs5DpWEdgyrv8AHtb1d__5jUQ4b3nzMT65gNi6tGozcO7sBH5cXjdc5x6zTWrL1VJFa5czm5tRHu1hwxjctAqxh1UrPlNufG7PrIu8kEIoj1fOzPEn-O3VK_Lqe4NhjeQqgbJ6D0CFK0bz7eznkrNxaruJnfEp4fv7Nu_CrKQ9CNs3h2j1pl_VUENtk2r-TjruNjno20cTZWIboI4uGbkFkV2JaTfBkZ7zky7I3JvGhDvJAMJTU23VbnU_sRnTAYABqEKrtrHASTIIZiZOioaNmU2wrLdK3lXBeX7cp4LzDpsbexy15gt5OqONBvRJi_wPC-ylSo38aueIHdVgR6NMtebbkHurrfIR3oEGr3_zyDHvST2C_zccU1fKDCDKpXTC9MdPHMqGfsHn6qmL8Ea1rzpM9chy3RefSbxFyRL1GcJxLmOmJpZ8U7bK5iL1OBsDYiuUSjDN0LHWeJjgkhdfbuKh220PGW6BTOfDSNxKpeQtUzbBWm1jGlG2J4DcM2xIgahm-Iqf-CJZZhyjXZA128BYv3n6m1k3gQDMulGo_zeacQQzQr1rqF4jy6hbT2XwF_UzycqKzMhVWqkjCv-il-bmBv9-l_u_wXKAQNyg==",
+      "leveling-1-12": "eJzFWFtz2jgUfo5_hUYzfVoS8I1LBtoxJKHphCaN03b3aUdBB9BGlryWDGF__Y5kA04LhDbZ7gtzJH1H5zufbsd03z0mHM0hU0yKHnZPGhiBGEvKxLSHP99dHLfxu7dO94bo2fWknzNuRt46R11rIw5z4D3sehhpkk1Bf1lN5f_ZwGjMiVIfSQI9PCIZySlkGBE1BkEHm6EP-XQKmSC5xighTMRy_AB6mMk87WEXo3siKNM9_FEKwCglQs9AihH5S2ZDSXuY54JkTFWGmCiHplmuZw85x2jOYDGSFHp4EF0NYvzWOTrq3nCyhCzWRCOlie7hgUzumQB6dhNjNCc8hx4OGiedVtsLPK_VCnF9u-Od1IT_sNcVm8DGw9uJOxeQTZfxjAGna3xjL5fz9zdrpNdxT9qdwAtDt-M33V1-N7OlYmPCR-SRJXnynuk78gBiQ7C1M-QFy-AWFFN6jT5u7kQPJKffooP2bpGmMy2YmB7uMpgRqQ7nMyKCDGQF6-6FfhYZKMjmQCsOO1WNU6gCT_yWRXbr9gQZ6y4DQGSs2RziFMZmz9upTAPpDKByqPzVqbqk9mxUDpPpaWAkJAXVw81O2611Qtetua1WM6x5frvt1rxm6Pk132167ZrfDAO_FjSaoV8LWm4rrAWdwPVqYaPTCGphOwg6lsdR9_PtlTWOZlqn6rReXywWJynRMzmBR8bhZCyTekqUYnM4Vg-M82NDux5FUdSfnkeDmb74EFMaf4V7CJbX87D1cfHpbuhd395GUdSzQepllG7d5G0VMsIYIzZTqkITYyIQ5J4D7WGd5YCR4lL3cF_SJYqyROZZcY9EhaTGY6XpUXcICZpCYsQagSaUaFK_1JCo-tD8WPQQkgEHMjdTm_ahYEGScgVXPeX9GGL0d04400u7RKVtpj2DCcm5xt-mtIV__YcSiPM0lZmOKAVqTucZScj02YQKpyEk3_ltcrNDyIyh1WCZpve_pXlBlIYs0pqMH9TBSVa9qhkW_Wg93aun1y34P7ejvwJJpUDuy7fzFZA05iQ5cENv4BtRTB8qOlev_q9f7nNB84yJ6SBbHpjKE49NNqtuZPtfPaEDF_g98AT0y5f3DMZyeSc1HLrAVYeNKLYXld2lJsGv1qQvpVYvl6TPpaSRoDER9EBRnrpsZLH9iAiKipH_8DooLbUqC74wWKB_pEx-tzGM9cfauip4-Hj9WBq4adjkypLC2DHodVVh2ojRon1LMqaXp2gUDS8HTrw09bNiCiha2LvHibUUgKJHcKyfDXmKXM_5VKR7ihrOZZJyNmZamUZEqUJtpCVym2hVUZYPhRO-QUyMMyAmQnG9IlsfWRFMhKcUvb0UZ_b0OAPDsDhJh5L8zQsNw6QodJEpw3cw8PcyuJd06QxmoHTKid6nUfFNo05R_7h_3P9ZNsFeNlMu56CcG0OFoiHJheag1euLEj4jitTKiTUAR8PM1EEvouA-2TQjOYcEhN67bZr7-QHXzhUQPYMM9U3j1QVq7SVAkpyDdq7F8hFFhX0oA9d7YyisP4lQ8ZFDxHgXlfZeKuYJdJ3rlHB0y8T09ZXoPBve-4nwpQzmO_J5BdzGXg6cTQBNOFEPzggoK9NBF7bnQEI7Au-_YRMiSBk4TgjnyHxbvkrc_ddmrpmZrAz9KWfjB8X4HLIXxo5Bl-8K0kxzqLyDuYIYxlLQoqK1z9GEcAXlmx5zqe2DW615mS5e-XWNWEGtCqcVxtuCefI9uAL6W4BDe29uMMHWyWxVsoKE2yDAK4yaWxDFYd9gWlsw5hxUs2_vwngbTGcLxq7lExkbuKwIynJkl09lYtc90Mev-HjbfIq9EoO2tYqtT4w1kGLCpsUWEmm-mhQEJEu7BTESeXIPWQ-75dJ9DzyfE_P3yAbq-53yP5bV_N36t_9g_gtGJaMM",
+      "leveling-12-28": "eJzFWe9T4zYT_kz-Co1n-qmG-LcdJrmOEyBcS-4ohmvv0zsiXhK9yFIqyYH0r-9IjhNDk5AeaW-YYVarZ6VndyV5pXR_ei4omoOQhLOe5Z44FgI25jlhk551d3txnFg_fWh1r7Gafn7ol4Tqng-to66REYU50J7lJRZSWExAfamH8v_nWGhMsZSfcAE9a4QFLnMQFsJyDCwfrLt-LicTEAyXykIFJizj40dQQ8HLWc9yLXSPWU5Uz_rEGVhohpmaAmcj_H8uhjzvWbRkWBDZ6CJs2TURpZo-ltRCcwJPI55DzxqkV4PM-tA6OupeU7wAkSmskFRY9awBL-4Jg_zsOrPQHNMSepYbusFJHEZe7MVJGFjtzaa3XGH6DXZX5AHWNk4n3AY8ZyAmi2xKgOYrA2cnnfPL6xUyCTsnkRt5Xif0vHgrnevpQpIxpiP8TIqyuCTqFj8CWzOM4mSb7QURcAOSSLWCH0dbGQ44zV-j_a3oKzKZKkbYZH-TwRRz-RrubY3vCDM84A2sG--C3jEBEsQc1slI_G0G2QwaOPfECyKnItJtm52kpVsBgPBYkTlkMxjrtW9G0w2kBEBjc_n17vqYmz3S2FRa41iI8Rxkz_KCMLCjIIjsqJO4did0Xdt1PM-13TDwE9uN4yi0PScMXdvzk8S1vSj0fNtLYi-xfccLXdt3ncSxfTfSmjDwI9uPwsC3_SSOYztwotC3Ay9xHDvw_Tiwg9iNQzvouHFiB53A9ezQCTz9P4wdO3SSSMsdJ7DDJAg6duS6ncSOgsSNjMdH3bubKyMcTZWaydN2--np6WSG1ZQ_wDOhcDLmRXuGpSRzOJaPhNJjHaB2mqZpf3KeXqbFb8MsuL_J7tjPx05yS_uXv99RVvhpkBMV4styRIrF53mYh0x6bPQLLZ_6ot8f3XrPX8VQyPuv4cXl_GzuPKVp2jOk2ktW3bbOiMmdTpkWMk1BVtnSIgKG7ynkPUuJEiwkKVc9q8_zBUpFwUtRnXRplWxtUWf7qDuEAk2g0GkcgcI5Vrj9UUEh20P9z6CHUGQlM8ep8X5fMMPFcm3VmuUJHlrojxJTohZm8SxlPewZPOCSKuu1Sxv4t_-hA7MZF2oEFKA-dc5wgSfwllOV4RCKjbZrH003qvtRDVi67H83l9M8h1wflv_Q3b_ZrV01XUj3vXYz-m5uXmCpQKRK4fGj3NvJplXTw0qPVsMd3L1uxf-tTfwb4BlnyH3_Dr4CPMsoLvbcw2v4Oihahyrl99vI5ywvBWGTgVjs6coLi7U3tRoZ_cEd2jPBl0ALUO9P7xmM-eKWK9g3wU2DdVCMFi3Vy5gk_32S-5TzPGV5hlm-pz8vTdYeGT3CLEdVz8HP4z0T3edcyUPkWYEoCMOKcLZ3ql_YNLP9oqO-X_3XoRlSPocDxOZLSRkIfE803z1j8wmeXpmtw_Oq418Mz1KSdWH-hcAT-pPz4nczh5a-rqSregWvikIN1w3j37Ko13IGalXX6zYiedW-wYKoxSkapcOPg1a20DdZSSTk6Ml8cFqXgHNZYIbSZ2gZUzPrKQrC1q-Vx6fIaX0sZpSMiZK6kea5RJ6DFEeB87oQanV-QISNBWA9S_VdReaiYgKhp3hJ09tJc2qOzdYN4DkIVB2i-_L8MTIci-rOifSVeAsHfyeHe54vWlnJ0DXFaleUqicGeYr6x-bvW-kEO-lMzC5qDUss9LMJGuKSKQpKHj4u4Rtx4Uq2UqbIHyWgodA5ehcJz2munRGfQwFM7Vw90W6GQFXrCrCagkB93Th4iOKdBHBRUlCtz2zxjNJKPjiDZCcDXfm4rc8zTNENYZP3TP-j7_yglatHE1Q9g2A23sat8yY37xu4LXnop563KbjOTg6UPAB6oFg-toYEM2VcRRdGsSefLfPuPn8LzHA9rwCsLyH6_ecgM-8-UktlvnOryTEj6jAe7z5GX87bxxJTdZBpdx-XL6dNC1DThXzvxBmo5TcWKaIoNGqCUkIGY87y6kpnPs0PmEpY1jgZ5crUHs1LH1FV1bOqnxuo-uZQY7wNmBdvQDXQ3wCsS7AaE2wczFSwNSTcBAHaYBRtQFSn3RoTb8DoTd_0PtmG8daYzgaMyeWLMDrWsjpalmbbbBoDu-6eNn7DxtvTJmjY-HvahA2bYJNNtSYzUKY-NDWhlgacPZBJtVTZrKwHBQbFwix1C7GyuAdhfmFpbwaez7GsLhFLaNKJli_L9fjd9uvfb_4CIzw9pQ==",
+      "leveling-28-38": "eJzFWWtz4jYX_hx-hcYz_VQn-I7JwHYMSSB9wyaNk93up46CD6BGlqgkQ3h_fUe-gJMCoZt0M5nJyNLz6JxHR5cj0fnlKaVoAUISzrqGfWIZCNiYJ4RNu8b93cVxaPzyqdG5wWp2PellhOqWT42jTl5GFBZAu4YbGkhhMQX1perK_cMy0JhiKT_jFLrGCAucJSAMhOUYWNLfNP2aTacgGM6UgVJMWMzHj6AGgmfzrmEb6AGzhKiu8ZkzMNAcMzUDzkb4Ty4GPOkaNGNYEFlrIqxsmopMzR4zaqAFgeWIJ9A1-tFVPzY-NY6OOjcUr0DECiskFVZdo8_TB8IgObuJDbTANIOu4biOf-Jajm2Hjm27RnM79Y4rTL-Dd0UmsObYjrsTeM5ATFfxjABN1gRrrzvnw5ta1y3rxPNCK2wHYSvcxbuZrSQZYzrCTyTN0iFRd_gRWE2Vu9PmBRFwC5JItYYfBzvRfU6Tl-jdfV-R6UwxwqaHU_ozzOVLuOPvgo8ww31ew9o7B0lD75kACWIBm2AErV2EeA41nH3iBZZXgDvNfCXp0p0AQHisyALiOYz13M970x9ICYDa4nKr1XWZ5Guktqh0jWUgxhOQXcPxfM8MPC8wg3Zom23ftk3bchzbtH3PDU271Qp807F83zYdNwxt0wl8xzWdsOWEpms5vm26thVapmsHusb33MB0A99zTTdstVqmZwW-a3pOaFmm57otz_Radss3vbbdCk2v7dmO6Vueo__7Lcv0rTDQ5bblmX7oeW0zsO12aAZeaAe54qPO_e1VXjiaKTWXp83mcrk8mWM14xN4IhROxjxtzrGUZAHH8pFQeqwHqBlFUdSbnkfDKP06iL2H2_ie_XpshXe0N_z9nrLUjbyEKB8PsxFJV9cLP_GZdNjofzRb9kSvN7pznr6JgZAP3_yL4eJsYS2jKOrmTjVLrzpNHZE8djpkuhBrF2QRLV1EwPADhaRrKJGBgSTlqmv0eLJCkUh5JoqdLiqCrRlVtI86A0jRFFIdxhEonGCFm5cKUtkc6H85egBpjzOQM6yU3lPzIfhXDIbTcpY9qy43dM9Af2WYErXK51JZ1gbOYIIzqoyXCrfIaf4rPXE2n3OhRkABqk3oDKd4Cq_JK4gDSLdyN0LzZlS1owpQSm59mOSeyFRu7GChNUYtjpvKUpL9YZIusFQgIqXw-FEeLKvOqisr6tG6u1Je-93kdQr_X1u_XwHPOUP22xfvFeB5THF64MrdwDeDoutQUVmOR_jjw33OkkwQNu2LVyfvNsZGTVWN8vp3F3RggIdAU1BvD-8QBKbJ9eQmEwcs6x2kzeAULYhPUNX2cXvWGSgQKWFYEc4OVPaCsxH2oqFU5f_osA8oX4B8e9jLnayPpfo6A1YcMGX6fOAWqLnXz5mb4dKNaDkDVp5dqER83HZ_maZcKEz7mNIDJ8NzykZcVY-Khupm-eM1fckoA4EfyCFHcsn5DMsXtI2wFw0fNcl7nKt3mONnMOarO67g0LOrTqiv_DFfobK6mr_WfzAmZUlWF6wvBJbo_5ynv-c2dOnbunRVTbp1cq_h-iMXVl7OdDkGtb6f6W9EkuL7Fusd-hSNosFlvxGv9IuEJBIStMyzh8YQcCJTzFD0BI2cmls9RZ7f-K1QfIqsxmU6p2RMlNQfUZJI5FhIceRZLzPYRvsnRNhYANZWiiQJ5RfOfCC0ieduOnvdnOVnYOMW8AIEKk7EQ_38Och9TIu3A6SfNnb44O714YEnq0acMXRDsdo3SsVTkTxFveP873vd8fa6M83Ph8Ygw0I_f6EBzpiioOT7j4v_yrhwJRsRU-SvDNBA6Bi9yQnHqs-dEV9ACkztnT3Bfg-BqsYVYDUDgXr6492HqLXXAZxmFFTjmq2eUFSU392DcK8HOo21G9dzTNEtYdO3mP_ZtX7SlevHL1Q8Z2E23uVb-1XfnO_wrfRDP9m97oJt7fWBkgmgCcXysTEgmKlcKrrIKw70Z4fd_ftvihmu7ArA-kap3_HexfL-LTVT-dm_No4ZUe-jeP82-txuD0tM1buY3b9dPjcbpaBmK_lWwzGo8oxFiigKtZwgkxDDmLOkuJ_nR_MEUwllZhNTrvLUo36DJ6rIddbZYQ1VXQMrjLMF8-wtrwK6W4DV5aLCeFs7y3OzCuJvgwCteRRsQRS73QbT2oLRi76uPtyFcTaY9hZMHstnw2gZZXZUpma7OLWObftAjlvjOAdyvBrHPZDj1zjeNk4xJ2NQeX6Y54S61OdsQqbFVGXzrOoUGKSrfKobiGXpA4iu4VS_KfwDeL7Asrgel9CwHZS_EFT9d5ovf4f7G4nw3W8=",
+      "leveling-38-68": "eJzNWm1z2rgW_hx-hcYz-2nVYr1YtjuhO0BS0jZsUki6ab_sCHwCbmyZ2jKE_vo7sk1wcoGQTe7mTmY0ss55JD06OkfSIYd_3MYRmkOahYlqWeStbSFQ4yQI1aRlXV58eONZf7xvHJ5LPT277uRhZCTvGweHRR1FMIeoZQnPQlqmE9BfV12xv20LjSOZZX_KGFpWX6YyDyC1kMzGoILuWvQpn0wgVTLXFoplqIbJ-AZ0L03yWcsiFhpJFYS6Zf2ZKLDQTCo9hUT15Y8k7SVBy4pyJdMwq4lCVYkmaa6nN3lkoXkIi34SQMvqtk-7Q-t94-Dg8DySS0iHWmqUaalbVjeJR6GC4Oh8aKG5jHJoWYQy5jlvhWszQWxhNTdDLxIto3-AOw2v4Q7DmMu2KR4rSCfL4TSEKLgD2Dunc3xyvp6O4GY2gjDHZdzdhjufLrNwLKO-vA3jPD4J9YW8AXXXjcuZsw37IUxhAFmY6bX6Vt7dJAoeKm_t-TScTLUK1WRvRHcqk-yBttg6mb5UspvUVBnZpXqpUsggncPaEIRs7Xw4g5oifUts4ZXdHzYLNzK1ixQAybEO5zCcwdhs_KI384F0ClDzLLZyrY9B4SA1jzIttoVUEkDWsojLOKbc4ZgR4WImOMcOZQwL5vhYcC6wcAnFwvcIdjm3se8QgolNKcGEC1tg4tguw8ThtmNK5mEiXEeY0nUwcV3hYGrbxMPUdhyCKeGEYcps6mLKPI9g6giPYiqILzAV1LUxFQ5lmAqXOqbkNqYuKUpmE0w97jqYei71MPWZwzCzqUMws5lnY0bsohTUw4z4gmBGCXEwY9z1MWOCEcyY6ZNx4hLMOLVdzBzOBGbC4Qwz4XMfM891Xcxt4TDMqWfbmBsY5pza1JS-i7nwitInNuYucR3MfWL0feJ6mPucUMx9xyXYsTml2LEd18aO7QlT922OHeL7HnYYIab0iMCOwz0HO45wBXY8zn3s-MwW2PF96mFhc5diQYjvYUFtSrCgnPpYMOpRLJhLje18V2DBKbGx4KZP4diMF9vl4PBycFpUDqZaz7J3zeZisXg7k3qaXMNtGMHbcRI3ZzLLwjm8yW7CKHpjdlez3W63O5Pj9uVk1Ot-_9a_WnDvw8nxN3J7k_d-TEaDgf3l03Cs3Iubs7P82Du9uD37cjXoTG2-vDwOLmZf1a-ry-jmMv5--X3mqJhOI3ky-Nnp_YxGv_Ti7OTzLAg1TU-iBPitR6_Ir0kGR1f8vD-9yj8oPst-pG--fP0eOCqjqv85ytPPP3V3NL7Vv9x2e9yWiy8XncS7oLff0l6ajb4tb93za_2R01P2_fpsMHBE-rN3tuDuwl0Ors8D_9cpF3-r5I0-9fvn_HO73W4Vi9RcrdJhedZk5ZJVX4X3GEcq9qyFQg1x4WlVsNmk6FKnpliFgoPDZq3_w6bx5cLrjbObytCsfyksqgiUHEUQtCyd5mChLEp0y-okwRK10zjJ0_KAbJdhwiBWceLgsAcxmpTj90HLQGrZ_Kghzpo9UxTaPYg7iYJsKrU2R3Fh_ychlIyr-HSvuboHEN9CP3MZhXpZhKGqbkY4gmuZR9p6SHEDn-aTCA3z2SxJdR8igNXhdSRjOYHH-JXAHsQbsWumhRit5Gil8PqcO2mui8H2ZlpD1Cy5blxx8l6N03kezSENs_2tV0OsOdUaX99OH2SmIW1rLcc32d686qg6tbId3XX38vwOSwKPxaW_QM4Shcjzg9IpyNkwkvGeEWmtvl4V04bKxlc0-LEK8jRUk276qE9uQqzprJpR0f5qJj6BKAb9fAOfQCqj4Oz6PE_3CFdbQOvVKSUouUYr2Sva_Ag0pHGopA4TtSe1B5g1sweCVzN8L0rmkD3f8FU468pM_zUFVZ6d1YtyzzhosGf3kev1MkK0mIKqjmVUaVQL5_z72-FjHCepllFXRtGeu-E-ZE1u1Y5KQcXJ_fc5fc0jBakchftcNirMn7B4AFsTeyCoiL3cpWPPTd5JEv0Ce_wIxsnyItGw7_lVB9Rdf5wsUdX8v3T8qpat0g5fQ1igX0kSXxVjmNq3u9ppORFm3T1cjLr5KIhVKQtTH4K-y1qYbxSWb6b3jYE0QfodGrQHx43h0iTpsjCDAP2ABUSINLppGGeJQp_Md6MAF-O-Qy5tfIxnUTgOdfYO2Q3xGwrVOAVp4HGZo0ImhdbgdUl5OUJF5qVB7oke3OOLlTEjPpi3eHze9P9x3rumvSgubI32DG5RNwI5h_ThpL-UG-wdIvZ9AoTbu2bTDoIMMRvpBAn7v6SEbSVpv2W_FQf5ClJJq3B-CjCeQoBkhkzibQtruov1tLjDNI61yTFHqJOnk0SB3pv5715B657Rfqd20Vi-yhu_m8XRCTIJUFQmHaUaw127yXXW2zezYLtYjJJg2ehFSRomeYbOI6lhF4Mq7_AOdd5Uf_-Y1F3u9Z8z47uYTYqrRmM4C28gQOXF43nG8eo0duy9bSS2mXMzuZ0RbmSOmMZFqKVCvdS43P7cqFOfeT-ZQwxKr-b-KPHH2G2062aKO4PhCCLdOAWpp5Cijvl4OeNtdSxacTNZ_sfn7-6av4zzCHTjTC1vUbusP4vAPm7zTD7eLj7m2UgaZzMZoUGoJi9CZltg20zyaWT8x8jQFybzJId4Ihli19j0272P3Xt0ovAa0HUks5vGUTgPFRQzQx-Kln25bRmZ7Bw518Vluxp8GJr02MuMS58wbi-VKtQvRJg9YeCOzGSkX2Zc_oRx2zHo6TJ79shD0NX9DulQR1C7_-cZDGGcqKDMxxXX8GsZZVC9YoZRootnRj1jd_dTxeolWNNaJX1WOnSDzr3fJFaKbIPiKpGw0uEbOyveYSsVZ5MKRLUZiQ0aZehe67gbdEwIqbP3tunQtY6_Qacw5r1ltK3qJVQ9w7Zhah0TsieG1TB0TwyvYdiemPovWHwTptyTQ9DFW7B4_5laN1HX4aTcqmqWrzoFBfGy2OsWUnk8grT4R5HmZsXjuczKXFilyl3mVz-SrwY4bD78P5T_ADRV9x8=",
+      "maps-white": "eJzNWm1T27oS_kx-hcYz59MRoDfLdof0TggQ2kOAEigtXzoi3iQufkltOSH99XdkO8RwkhAO3MMdZjSydh-tHq20kjbs_ec-CtEE0ixI4qZFd4iFIO4nfhAPm9bV5dG2a_3nY2PvXOnR2WA_D0Ij-djY2ivqKIQJhE3LJRbSKh2C_jrviv8gFuqHKstOVQRNq6tSlfuQWkhlfYj99kL0OR8OIY1Vri0UqSDuJf070J00ycdNi1roVsV-oJvWaRKDhcYq1iNI4q76maSdxG9aYR6rNMhqoiCuRMM016O7PLTQJIBpN_GhabVbJ-2e9bGxtbV3HqoZpD2tNMq00k2rnUS3QQz-wXnPQhMV5tC0qO0yKXY4FUxQQa3d5dDLRKvwH-BOggE8YATjYpXiYQzpcNYbBRD6DwCydjiHx-cPmoy60t0hTEibktXDOR_NsqCvwq66D6I8Og70pbqD-KEbj7n2KuxRkMIFZEGmH9QduUq5nYT-U-WVPZ8Ew5GOg3i4MaI9Ukn2VHvl3HZVrNpJTZWvnCCjehWnkEE6gYUjKF85lN4Yaopsh9quywvlvd1iG5naZQqAVF8HE-iNoW8WftGb-UA6BajtLD7fWp_8YoPUdpRpIRaKEx-ypkUdLjATtsCcSgdzKQS2GefYdgTHklKOJbc9LIWQWDqUYem5FDtCEOzZlGJKGDOl8AimzCEMUyGJxFR4nGBqE4djagtim5K7mErHlqZ0bEwdR9qYEUJdzIhtU8yooBwzTpiDGXddipktXYaZpJ7ETDKHYCZtxjGTDrNNKQhmDi1KTihmrnBszFyHuZi5ruNi5nGbY06YTTEn3CWYU1KUkrmYU09SzBmlNuacuQ7mXDge5lxyijk3_XNBHYq5YMTB3BZcYm57tou5tAXHXHrCw9x1HAcLIm2OBXMJwcKAsRCMMFN6DhbSLUqPEiwc6thYuMai8KhBedRxsfAEZVh4tkOxTQRj2Ca2Q7BNXGnqHhHYpp7nYptTakqXSmzbwrWxbUvH1D0ise14Nse2y4yOK4SHbY-bds9jLpZEOMy413OxZIRRLJlgHpacuQxL7jDjd8-RWApGCZbCWJE24aJYdFt7VxcnRWVrpPU4-7C7O51Od8ZKj5IB3Ach7PSTaHessiyYwHZ2F4Thtlmju61Wq7U_PGx9G9522jffu9-mwj06Pry-vR-MOqf9m5NRIjrkyj9sX8Wft0my_bMDZ1-EvPqZjs7bxL28OyJfvvtn3XD_-Ep-vXEp_Xxz9Dn62lFwY-vk5npE1PDi1_jadfoHo-nv-K-xH2iWHocJiHuXfaO_h0No34vTwdCdHYG4HgTRrOsn8sfd0fU3uHFOx7_b49tfs1_pl4h3b_vbk88_Wq1-S02_XO4n7iW7_5520uz2--zeOR_oT4Kd8JvB6TgQ0fFPlV9c2DL91TmbCmfqzC4G5773-0TIH3GyrU-87rn4q9VqNYtJ3J3P4l55omXllFZfxR4127VY_RYKNETFfq7iyDJFh9k1xSq0bu3t1vrf2zURo4gtJqSYSs_4pxQWVQSxug3Bb1o6zcFCWZjoprWf-DPUSqMkT8tjuFUGI4OYR6OtvQ5EaFja74JWvtJq95OGKNvtmKLQ7kC0n8SQjZTW5sAv1seLELGKqij4qLm6bTBioV-5CgM9K4JdVTcWDmCg8lBbTyku4bP7IkK9fDxOUt2FEGB-RB6oSA3hOX4lsAPRUuyCaSFGczmaK7w_5_0014WxjZnWEDVPLhrfn9N5Hk4gDbLNvVdDLDjVGt-f05HKNKQtrVX_LtuYVx1Vp1a2o4fu3p7fXkngubh0DWqcxIi-PiidgBr3QhVtGJEW6otZMW2obHxHhx_Gfp4G8bCdPrsnlyEWdObNqGh_NxcfQxiBfr2DjyFVoX82OM_TDcLVCtBidkoJSgZoLntHnx-AhjQKYqWDJN6Q2hPMgtkTwbs5vhMmE8he7_gqnLVVpq9HEJdnZ_Vu3TAOGuzZY-RivowQTUcQV8cyqjSqibP__eXwKYqSVKuwrcJww9XwGLIgN29HpaDi5Pz7nL7mYQypug02uWxUmFOYPoEtiD0RzHNV__Yi308S_QZr_AD6yewy0bDp-VUH1Ld-P5mhqvl_ufGrWjZPbnwNYIp-J0n0rbBhat8faiflQLj18HAx6uajIFYlRky9B_ohN2K-UVC-mT42LpQJ0h_QRevisNGbmVRgFmTgo58whRDRRjsNoiyJ0Wfz3SjAhd0PyGGNT9E4DPqBzj4g0pB_oCDup6AMPCozYcgk6hqiLikvR6jI7zToI9GTe3wxM8bik3HL58fN_h_HvW7Y0-LC1miN4R61Q1ATSJ8O-ku5wD4gSh4ToIKsG03L9zPECdIJkuRvUspXkiQ7_I_iIJ9DKmkVzk8A-iPwkcqQSe-tYM3WsR4Vd5jGoTaZ7BDt5-kwiUFvzPxPt6D1yGl_MlI0lq_yxp9mcnSCTJoVlalNFffhod1kVOvty1nwdSxuE3_W6IRJGiR5hs5DpWEdgyrv8AHtb1d__5jUQ4b3nzMT65gNi6tGozcO7sBH5cXjdc5x6zTWrL1VJFa5czm5tRHu1hwxjctAqxh1UrPlNufG7PrIu8kEIoj1fOzPEn-O3VK_Lqe4NhjeQqgbJ6D0CFK0bz7eznkrNxaruJnfEp4fv7Nu_CrKQ9CNs3h2j1pl_VUENtk2r-TjruNjno20cTZWIboI4uGbkFkV2JaTfBkZ7zky7I3JvGhDvJAMJTU23VbnU_sRnTAYABqEKrtrHASTIIZiZOioaNmU2wrLdK3lXBeX7cp4LzDpsbexy15gt5OqONBvRJi_wPC-ylSo38aueIHdVgR6NMtebbkHurrfIR3oEGr3_zyDHvST2C_zccU1fKDCDKpXTC9MdPHMqGfsHn6qmL8Ea1rzpM9chy3RefSbxFyRL1GcJxLmOmJpZ8U7bK5iL1OBsDYiuUSjDN0LHWeJjgkhdfbuKh220PGW6BTOfDSNxKpeQtUzbBWm1jGlG2J4DcM2xIgahm-Iqf-CJZZhyjXZA128BYv3n6m1k3gQDMulGo_zeacQQzQr1rqF4jy6hbT2XwF_UzycqKzMhVWqkjCv-il-bmBv9-l_u_wXKAQNyg==",
       "maps-red": "eJzNWm9T2zgTf918Co1nbp67OQH6b7tDehMCDW2h0ARa2jc3SrJJDP4TbDkhfPobOQlxaBLCtfeUYUYjS7-19rdabdYr9v-6i0I0gjQLkrjq0F3iIIg7STeI-1Xn8uLtjuf89aayf67N4Kx3kAehnXlTebVf9FEIIwirjk8cZHTaB_N5_ir-N3FQJ9RZ9lFHUHVOdarzLqQO0lkH4m59MfU-7_chjXVuHBTpIG4lnRswjTTJh1WHOqit425gqs7HJAYHDXVsBpDEp_o6SRtJt-qEeazTICtNBfFsqp_mZnCThw4aBTA-TbpQdeq1k3rLeVN59Wr_PNQTSFtGG5QZbapOPYnaQQzdw_OWg0Y6zKHqCO5LwXalIp7rS9_ZWy16kRgd_gu5k6AHDzJSUroOeBRD2p-0BgGE3QcBslGdo-PzByQnjMhdj1GmFPHEOrnzwSQLOjo81XdBlEfHgbnQNxA_vIYyxt11wm-DFJqQBZl5wLtqHbiehN3HYLneSv2BiYO4v7VEfaCT7DF6Le1THet6UoJyvgl6GaeQQTqCxU5QuVaV1hBKQLarBCF0it7fKw6S7V2kAEh3TDCC1hA61vWL19kHZFKA0tni88P1rlsckdKZsiPEQXHShazqUJcLzIQUmFPlYq6EwIL7Lha-IFgyzrF0BceKUo4V4wQr5vlYceljJYTCyqUMK9-j2OWeh10hCPYlpdj3XYUpYYxiSoRPMGWCuJgylzBMhSIKU-FzgqkkLsdUCiJtyz1MlSuVbV2Jqesq23qMYkYI9TAjUlLMKOcEMyoox4wT5tqWe5hxz6OYSeUxzBT1FWaKuQQzJRnHTLlM2lYQzFxatJxQzDzhSsw8l3mYeZ7rYeZzyTEnTFJsX0wwp6RoFfMwp54rMae-opgzSiXmnHku5ly4PuZccYo5t6twQV2KuWDExVwKrjCXvvQwV1JwzJXiAnPlCx9zz3VdzH0lPCyIkhwL5hGChX0RFoIRZlu7N8orWp8SLFzqSixcq6fwrA7Cp1bWp65nd5EyLHzpUiyJYAxLIl2CJfGU7ftEYEl938OSU2pbjyospfAkllK5tu8ThaXrS46lxyzGE8LH0ud23PeZhxXhvm2Fy6yj2D4jjGLFBLO-wjyGFXcZx4pbr1CCUYKVsGspSbgoHPnV_mXzpOi8GhgzzF7v7Y3H492hNoOkB3dBCLudJNob6iwLRrCT3QRhuGP9fq9Wq9UO-ke19qd2o_7t6-nVWHhHLXJxcdC8ext5V6I5-NJ4f_SV3t3kjet-u9m87xw3a-H7SVu83yHJzvUBP_0m5OH1sHWWH3knF3dnn66aBwPypXtx_f5Tk35sXarP3zwa71xdhjeX0bfLb0MZR2wQ6uPm7UHjNmzfm_HZ8eFZ5zZkH7jO4MvAvT6eHPY-hn5HvDvuZ3B4Jc5PB1f521gMs-tjfTYSnr55--UKvqX9OGPx6YcwTz_cmnq7c2fulbhxJ71x7bjWyI6Oxvr8yM--fLi7dRvsNIN77rbOPgY-u7rXX_P3A8HSm0uAWzW4Tt18LNyxO2n2zrv-_YlQf8fJjjnxT8_Fh1qtVi2MvTe39v709zSbmn72VMQHGyrsmXdQYCAqQskshn2PK85aCajWA10mS0B3LdCeyRLQWwcsjlsJ6K8F2tO2ALLZj-Or_b2SCfb3bEAtQq-NuLbTsq42nSy6CGLdDqFbdUyag4OyMDFV5yDpTlAtjZI8neYptWmsthLzYP1qvwER6k_XPwWju9rovXcGomyvYZsC3YDoIIkhG2hjbEZUuPqzJGIdzX4kloZn6RgjDrrNdRiYydKDXeIQejoPjfOY4wpCe89i1MqHwyQ1pxACzJOIQx3pPjxFcCrYgGil7IJqMY3m82gOeAGkD9LcFIttTbUkUdrLxeALIHWehyNIg2z7_StJLEiVBl8AqXqYZGCzfG22prUksyBWDKP5-Avg9lZnBtKaMbpzk23NrixVpjcdRw-v-w8I7k8ZPBV4v4AeJjGiPx51T0APW6GOtgy5C_jCLHYMTQd_5ZYfxd08DeJ-PX0y5qySWPCZD6Ni_Ndt8jGEEZgf3-JjSHXYPeud5-kW8XiN0MI80xmU9NB87lfu-iEYSKMg1iZI4i25PZJZUHs08eu2vhEmI8h-fOvnIV5n5ssA4ml-MKtebBvqdWbOliVLAV9nBo0HEM9SDzRDzCwnf4FDvIuiJDU6rOsw3NIflkUW7ObjaDoxI-X-AlKf8zCGVLeDbTKqmcxHGD8SWzB7NDFj5v3f_fwgScxPcPND6CSTi8TAtj9jZYHy8e8kEzQb_k8P_6yXzYtcnwMYo_skia6KSpXtfX3onUw14c7DF5qF24eC2axAZvstMA81MvuMgukH7JtKU9tQ_Ro1a82jSmtii8JZkEEXXcMYQkQr9TSIsiRG7-1zpRAu1n2NPFZ5Fw3DoBOY7DUiFfUbCuJOCtqKR9OaKLIl24ooz0yzJFQU-ip0aerR90phGbviI73V03qzl6i3-7Te_CXq7T2tt3iJevtP6y1foN6MPK23eoF6001qj4sPk0ptCHeoHoIeQfpY6U_TAPoaMbJMgAqySZtat5shTpBJkCLfzVK-liTZ5b8V6epcZDY7S1lOADoD6CKdIXuPsW63NrEeFJl6pZ7EtzmkSfq_DE2T9y25s8rvnO5w9keZg1UG2QsYdNTrBZ0A4s6k8jvjO0z-sYLrzA5_eoWFlvb_T0aKwWmlrvKntbNJkL2aQtPrIB134GHc3kKVx1cbhG8ySDvpTion0A-SGJ2H2sAmQ8wqka_Rwc7D3yPrMLHD1BLrRpi0dfidGyxl8GigM_Q783Y4WbZYnmprVOiY59jr4cLt3xtNbDJav0j6K-cpdPI0S1LU0HlsQjDZ1m5E6YZTIJdPwffuPyW_yiBe2R4bjto6a6xzudVW2piwtG3KWDmwYdEkMaCLFHR3ewt5S0csGUEEsZlpz8RvqDOwihVsR0nQRUdhgbBRIwhtL6swueEdT5vvKRutdLPVhtqYIbUhNJUT0GYAKTqwD9sG4u05fBdC2IybvWl-Wv-NmZKO8hBM5Sye3KHatP9DBLY5xT_IZ2MGZUtKtHI21CFqBnH_p5BZF8JXk3wemY1plSXDfjKZZx2IZ5Kh5WTrtNZ4V1-iEwY9QL1QZzeVw2AUxFBoht4WI9tyW7My3bhybopv8NnircDeDPycddkz1m2kOg7MTyLMn7Hwgc50aH7OuuIZ69YiMINJ9sMrt8DMkmJkAhNCqSiQZ9CCThJ3p8X64tu8p8MMZrWNVpiYovhQLuc_3OjOC0Ql1Lwe_HCZuwKzdCM7B_IVwHmFcY4RK19WVGfmELkKAmFJI7UCMQ3dC4y7AmNDSJm9tw7DFhh_BabYzCUzEmdWHpnVZtbJlF5M6ZYyvCTDtpQp3cVTvqVM-T8CxCqZqU-2wBQFoqIoZHv1JO4F_amrxsN8_lKIIZoUvu6gOI_akFYdb_6vXd8Bj0Y6m1bJZ1DXU2T2f1rzBfb3Hv8z5D9gW_Zx",
-      "pinnacle": "eJzNWmtz2jgX_lx-hcYzndmdVYLusjuhO0ASkja3Qtq0_bKjYAFOfKG2DKG__h3ZEJwUCNl232aY0cjSc6TzHEnHx0fs_X0XhWCi0yxI4oaDd5EDdNxP_CAeNpyPl4c7rvP329rehTKj80ErD0Lb87b2aq-og1BPdNhwPOEAo9KhNp8WQ9F_kAP6ocqyMxXphnOqUpX7OnWAyvo69tvLrnf5cKjTWOXGAZEK4l7Sv9Wmkyb5uOFgB1yr2A9MwzlLYu2AsYrNSCfxqbpJ0k7iN5wwj1UaZJWuIJ53DdPcjG7z0AGTQE9PE183nHbzpN1z3tZevdq7CNVMpz2jDMiMMg2nnUTXQaz9_YueAyYqzHXDEQIxRnYpJ5gz7jr11aKXiVHhv5A7CQZ6KeNRug54EOt0OOuNAh369wJoozoHRxf3SOoRV-xKwamQeO0kF6NZFvRVeKrugiiPjgJzqW51fD8K5gThdcKHQaq7Ogsyc4-XYh24nYT-YzBfb6ThyMRBPNxaoj1SSbY1-lTFqp1UoJRsgn6MU53pdKKXC0HQWpv2xroK3HUF4l4B3qsXx8jWLlOtgeqbYKJ7Y923G78YzT4Ak2pdOVl0cbSO_eKAVE6UbUEOiBNfZw0HI4ohlpRBwjiDFAsJqWAMMupJyDyGICeUQi4ZhQJjCgWhCArielBQ7kHBmIBCYgKF52IoqetCyRiC0qMu9DjG0POkgBgRgiFGzEMQY0YQxIQhCTGRiEDMBBIQM48iiDmSFGLOELcldSEWkgtbSg6xlMKWLsGQIIRdSBDnGBJMKYIEM0whwR53IaGISFtSW3ddDAkXLoFEYE9AIohEkAhOKCRCEm5LhiCRuCgJopBIijAkLpMcElcSFxLXlS4kHuUUUkQ4hnZ4BClGRSmICyl2JYcUewJDSjDmkFLiSkgpkx6kVFAMKbVzUSo5h5RhiSFlBElIOaMCUm71p4IzCqkQlEEqPOZB6kopIfUEcyFDglPIiIsQZHY4yBhBxJZ24YRblB5GkEksOWTSastcqwlzqSCQediO4GHp2oXGtoVLDDlihECOuESQI1fYuocY5NjzXMgpxrZ0sYCcM5dDzoW0dQ8JyKXHKeQusRiXMQ9yj9p2zyMuFIh6tmSS2L1k6wQRDAVhxG4n4hIoqCQUCmr3jGAEIyiYnUtwRFmx4V_tfeyeFJVXI2PG2Zt6fTqd7o6VGSUDfReEerefRPWxyrJgoney2yAMd-z5qDebzWZreND0mx-OWtmXd-HwbrB_M-2edM9OD48Orq7vBqPO4Zcvt92bz50eU-ctc3h0NvUPWm77Xa8f7bQH5v1FksX7LXr6lfH9m3HvPD9wTy7vzj987rZG6Mq_vHn3oYvPeh_Fp093Yfz9asD93lW39zXsRnGkr1XnU-J3kgN1e_ZtfOXK_v5o-j1-P_YDQ9KjMNHszh3S718Hn8_bLXZyNMQ7-9-PL65Hn_PDmI2zmyN1PmGuuj28-qy_psM4I_Hp-zBP338z7ev-nfku2K2cDSbnabPZb6rph8tW4l6Suy9pJ82uv8zu5MXAHDNyQr8OzsYBi45uVN7tcpF-65xPcrl_M9mfvDt0PUpPJzfpjr4RaIKm_wyTZrPZaBQLUF-swF75Js7K5Zg_Fb7FuhnrKhwQGB0VbmjuW3_EFSeyAhTrgZLwClCuBdozWwG664DFcawAvbVAew6XQDJ_rb7aq1dMsFe3zrhw29Zb20rPbr-ys6gCHavrUPsNx6S5dkAWJqbhtBJ_BppplORpGeE0Sz9vJRaO_tVeR0dgWM5_qo3ylVH1Y6OjrN6xRYHu6KiVxDobKWNsLFVs_2dJxCqav2AeNM8DOYId8C1XYWBmhRUWD3aKfT1QeWicxxxXEKo_i1EvH4-T1JzqUOtF_LGvIjXUTxEsBTs6Wim7pFp0g0U_WABeAOlWmptisq2pViQqa7lsfAGkLvJwotMg2379KhJLUpXGF0CqHSaZtt8HymxN64HMkljRDBbtL4DbocqMTpvGqP5ttjW7qlSVXtkO7of7DwjulQyecrxXWo2TGOCf97onWo17oYq2dLlL-NIstg2Ujb9zyQ9iP0-DeNhOn_Q5qySWfBbNoGj_fYt8pMNIm59f4iOdqtA_H1zk6Rb-eI3Q0jxlD0gGYNH3O1d9XxudRkGsTJDEW3J7JLOk9qjj9y19J0wmOvv5pV-4eJWZq5GOy_hgnvjY1tWrzJw_lKw4fJUZMB3peB56gDlibjn-GzbEcRQlqVFhW4XhlvvhociS3aIdlB1zUvI3kPqUh7FO1XWwTUQ1lznT00diS2aPOubM3P_7Pm8lifkF23xf95PZZWL0tq-xqkD1-PeTGZg3_6eHf17LFgmyT4Gegu9JEn0usly29uW-dlJqQp37LzQLtw8Fs3lyzdZ72tzn1-wzCMoP2Le1rrKu-g3oNrsHtd7MppOzINM-uNFTHQJca6dBlCUxeGefa4VwMe8b4IracTQOg35gsjcA1eRrEMT9VCsrHpXpVGCTvTVe7SmjJFDkCGtYVLsefa8UlrEzPtJbPK03eYl6y6f1pi9Rb_dpvdlL1Nt7Wm_-AvUm6Gm9xQvUG29Se1p8mNSaY30H2qFWE50-VvpD6UDfAIIeEsASbdKm6fsZYAiYBLjoh14s15JEu-x1Ea4uROa985DlROv-SPtAZcBegaxbrU2sR0WkXusEKjZZcUsCyuB9S-6k9gflO1T8WeVglQH27gYcDAZBP9Bxf1b7g7g7xPtzBde5Hf7CqDDRgw3wFy0by1Rd7S_GX9tHe60FyqskFff1fbu9waq2r7YI3WSR68Sf1brJTIXgIlRGbzLEPBP5BrR27n-PrEO8HYoesO6EybUd_NE2eBDBg5HKwB-UPbZsM0-VNarum2fZ6_6y7t8bjW0y2rCI-msnehIoM1Ix6Kg8NqE22db7CNMNx0A-PAY_7v-S_EqLYMwrFtlw2tbZY92mW22njTHLtY0aq2ZKraN5hpEe-JnTZKIjHZu5_hS9Bv2RVa3gO0kCHxyEBcK6jiC0tayArR1jGxM-ZaeVm221sTYGStc6NLUTrcxIp6BlH7b1x89h8YMrsfax7Oxt9dMMNoZMKspDbWrn8ewONMv6z1HY5jj_JKGNsZRNLuHa-ViFoBvEw1_DZp0zX83yeWw2RliWDfnVbJ51Kp7JBlcDr9Nm57j9gE8YDDQYhCq7re0HkyDWhWbgsGjZltyamfHGmXNTfI_PJ-8F9pbg18xLnjFvJ1VxYH4RYfqMiVsqU6H5NfOyZ8zbjLQZzbKfnrmnzTxABiYwoa4kCPJM93Q_if0ycV98pw9UmOl5nqMXJqZIRFRT-_e3u4tkUQW1yA3fX-yuwDy4nV0A6QrgItu4wLCVgxWZmgWEr4LosKKRWIEovfcSI1dgrA-psnfXYcgS463AFIv5wIzImadK5nmadTKVgTHeUoZWZMiWMpV7eUy3lKn-O4Ctkin3ZE-bIllUJIhsrZ3Eg2BYbtV4nC8G1bGOZsVed0CcR9c6bTjufPl_BB5MVFZmzBdQPP9DwV59McFe_fFfKv8HjD4Jqg=="
+      "endgame-pinnacle": "eJzNWmtz2jgX_lx-hcYzndmdVYLusjuhO0ASkja3Qtq0_bKjYAFOfKG2DKG__h3ZEJwUCNl232aY0cjSc6TzHEnHx0fs_X0XhWCi0yxI4oaDd5EDdNxP_CAeNpyPl4c7rvP329rehTKj80ErD0Lb87b2aq-og1BPdNhwPOEAo9KhNp8WQ9F_kAP6ocqyMxXphnOqUpX7OnWAyvo69tvLrnf5cKjTWOXGAZEK4l7Sv9Wmkyb5uOFgB1yr2A9MwzlLYu2AsYrNSCfxqbpJ0k7iN5wwj1UaZJWuIJ53DdPcjG7z0AGTQE9PE183nHbzpN1z3tZevdq7CNVMpz2jDMiMMg2nnUTXQaz9_YueAyYqzHXDEQIxRnYpJ5gz7jr11aKXiVHhv5A7CQZ6KeNRug54EOt0OOuNAh369wJoozoHRxf3SOoRV-xKwamQeO0kF6NZFvRVeKrugiiPjgJzqW51fD8K5gThdcKHQaq7Ogsyc4-XYh24nYT-YzBfb6ThyMRBPNxaoj1SSbY1-lTFqp1UoJRsgn6MU53pdKKXC0HQWpv2xroK3HUF4l4B3qsXx8jWLlOtgeqbYKJ7Y923G78YzT4Ak2pdOVl0cbSO_eKAVE6UbUEOiBNfZw0HI4ohlpRBwjiDFAsJqWAMMupJyDyGICeUQi4ZhQJjCgWhCArielBQ7kHBmIBCYgKF52IoqetCyRiC0qMu9DjG0POkgBgRgiFGzEMQY0YQxIQhCTGRiEDMBBIQM48iiDmSFGLOELcldSEWkgtbSg6xlMKWLsGQIIRdSBDnGBJMKYIEM0whwR53IaGISFtSW3ddDAkXLoFEYE9AIohEkAhOKCRCEm5LhiCRuCgJopBIijAkLpMcElcSFxLXlS4kHuUUUkQ4hnZ4BClGRSmICyl2JYcUewJDSjDmkFLiSkgpkx6kVFAMKbVzUSo5h5RhiSFlBElIOaMCUm71p4IzCqkQlEEqPOZB6kopIfUEcyFDglPIiIsQZHY4yBhBxJZ24YRblB5GkEksOWTSastcqwlzqSCQediO4GHp2oXGtoVLDDlihECOuESQI1fYuocY5NjzXMgpxrZ0sYCcM5dDzoW0dQ8JyKXHKeQusRiXMQ9yj9p2zyMuFIh6tmSS2L1k6wQRDAVhxG4n4hIoqCQUCmr3jGAEIyiYnUtwRFmx4V_tfeyeFJVXI2PG2Zt6fTqd7o6VGSUDfReEerefRPWxyrJgoney2yAMd-z5qDebzWZreND0mx-OWtmXd-HwbrB_M-2edM9OD48Orq7vBqPO4Zcvt92bz50eU-ctc3h0NvUPWm77Xa8f7bQH5v1FksX7LXr6lfH9m3HvPD9wTy7vzj987rZG6Mq_vHn3oYvPeh_Fp093Yfz9asD93lW39zXsRnGkr1XnU-J3kgN1e_ZtfOXK_v5o-j1-P_YDQ9KjMNHszh3S718Hn8_bLXZyNMQ7-9-PL65Hn_PDmI2zmyN1PmGuuj28-qy_psM4I_Hp-zBP338z7ev-nfku2K2cDSbnabPZb6rph8tW4l6Suy9pJ82uv8zu5MXAHDNyQr8OzsYBi45uVN7tcpF-65xPcrl_M9mfvDt0PUpPJzfpjr4RaIKm_wyTZrPZaBQLUF-swF75Js7K5Zg_Fb7FuhnrKhwQGB0VbmjuW3_EFSeyAhTrgZLwClCuBdozWwG664DFcawAvbVAew6XQDJ_rb7aq1dMsFe3zrhw29Zb20rPbr-ys6gCHavrUPsNx6S5dkAWJqbhtBJ_BppplORpGeE0Sz9vJRaO_tVeR0dgWM5_qo3ylVH1Y6OjrN6xRYHu6KiVxDobKWNsLFVs_2dJxCqav2AeNM8DOYId8C1XYWBmhRUWD3aKfT1QeWicxxxXEKo_i1EvH4-T1JzqUOtF_LGvIjXUTxEsBTs6Wim7pFp0g0U_WABeAOlWmptisq2pViQqa7lsfAGkLvJwotMg2379KhJLUpXGF0CqHSaZtt8HymxN64HMkljRDBbtL4DbocqMTpvGqP5ttjW7qlSVXtkO7of7DwjulQyecrxXWo2TGOCf97onWo17oYq2dLlL-NIstg2Ujb9zyQ9iP0-DeNhOn_Q5qySWfBbNoGj_fYt8pMNIm59f4iOdqtA_H1zk6Rb-eI3Q0jxlD0gGYNH3O1d9XxudRkGsTJDEW3J7JLOk9qjj9y19J0wmOvv5pV-4eJWZq5GOy_hgnvjY1tWrzJw_lKw4fJUZMB3peB56gDlibjn-GzbEcRQlqVFhW4XhlvvhociS3aIdlB1zUvI3kPqUh7FO1XWwTUQ1lznT00diS2aPOubM3P_7Pm8lifkF23xf95PZZWL0tq-xqkD1-PeTGZg3_6eHf17LFgmyT4Gegu9JEn0usly29uW-dlJqQp37LzQLtw8Fs3lyzdZ72tzn1-wzCMoP2Le1rrKu-g3oNrsHtd7MppOzINM-uNFTHQJca6dBlCUxeGefa4VwMe8b4IracTQOg35gsjcA1eRrEMT9VCsrHpXpVGCTvTVe7SmjJFDkCGtYVLsefa8UlrEzPtJbPK03eYl6y6f1pi9Rb_dpvdlL1Nt7Wm_-AvUm6Gm9xQvUG29Se1p8mNSaY30H2qFWE50-VvpD6UDfAIIeEsASbdKm6fsZYAiYBLjoh14s15JEu-x1Ea4uROa985DlROv-SPtAZcBegaxbrU2sR0WkXusEKjZZcUsCyuB9S-6k9gflO1T8WeVglQH27gYcDAZBP9Bxf1b7g7g7xPtzBde5Hf7CqDDRgw3wFy0by1Rd7S_GX9tHe60FyqskFff1fbu9waq2r7YI3WSR68Sf1brJTIXgIlRGbzLEPBP5BrR27n-PrEO8HYoesO6EybUd_NE2eBDBg5HKwB-UPbZsM0-VNarum2fZ6_6y7t8bjW0y2rCI-msnehIoM1Ix6Kg8NqE22db7CNMNx0A-PAY_7v-S_EqLYMwrFtlw2tbZY92mW22njTHLtY0aq2ZKraN5hpEe-JnTZKIjHZu5_hS9Bv2RVa3gO0kCHxyEBcK6jiC0tayArR1jGxM-ZaeVm221sTYGStc6NLUTrcxIp6BlH7b1x89h8YMrsfax7Oxt9dMMNoZMKspDbWrn8ewONMv6z1HY5jj_JKGNsZRNLuHa-ViFoBvEw1_DZp0zX83yeWw2RliWDfnVbJ51Kp7JBlcDr9Nm57j9gE8YDDQYhCq7re0HkyDWhWbgsGjZltyamfHGmXNTfI_PJ-8F9pbg18xLnjFvJ1VxYH4RYfqMiVsqU6H5NfOyZ8zbjLQZzbKfnrmnzTxABiYwoa4kCPJM93Q_if0ycV98pw9UmOl5nqMXJqZIRFRT-_e3u4tkUQW1yA3fX-yuwDy4nV0A6QrgItu4wLCVgxWZmgWEr4LosKKRWIEovfcSI1dgrA-psnfXYcgS463AFIv5wIzImadK5nmadTKVgTHeUoZWZMiWMpV7eUy3lKn-O4Ctkin3ZE-bIllUJIhsrZ3Eg2BYbtV4nC8G1bGOZsVed0CcR9c6bTjufPl_BB5MVFZmzBdQPP9DwV59McFe_fFfKv8HjD4Jqg=="
     }
   },
   "pipeline": {
@@ -7798,7 +8699,7 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T12:52:57.694Z"
+    "checkedAt": "2026-11-27T15:59:07.090Z"
   },
   "season": {
     "id": "covens",
@@ -7826,7 +8727,9 @@
       "date": "2026-11-27",
       "notes": [
         "The 29-68 leveling step now shows the support progression: a 4-link until level 38, then swap Added Fire Damage for Brutality and add Pulverise as the fifth link.",
-        "The 29-68 step plan tells you to keep a mana flask until the axe carries leech and to hold Herald of Purity until then."
+        "The 29-68 step plan tells you to keep a mana flask until the axe carries leech and to hold Herald of Purity until then.",
+        "The leveling guide is split into steps: Sunder is the level-28 measurement, and Boneshatter gets its own 28-38 step where Brutality replaces Added Fire Damage and Cast when Damage Taken brings the curse.",
+        "The switch to Boneshatter is now a step with its own gate report instead of prose inside one long bracket, because a playtest found that stretch the hardest part of the build."
       ],
       "seasonName": "Covens"
     }
@@ -7939,7 +8842,7 @@
     }
   },
   "stepPlans": {
-    "until-12": {
+    "leveling-1-12": {
       "goals": [
         "Level with Cleave and Added Fire Damage; Boneshatter unlocks at 28, so do not buy for it yet.",
         "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops."
@@ -7980,7 +8883,7 @@
         }
       ]
     },
-    "until-28": {
+    "leveling-12-28": {
       "goals": [
         "Swap to Boneshatter and self-cast Vulnerability; keep Enduring Cry on a movement or left-click bind.",
         "The trauma stacks are the damage; do not stand in the hit.",
@@ -8023,7 +8926,50 @@
         }
       ]
     },
-    "until-68": {
+    "leveling-28-38": {
+      "goals": [
+        "Swap to Boneshatter and self-cast Vulnerability; keep Enduring Cry on a movement or left-click bind.",
+        "The trauma stacks are the damage; do not stand in the hit.",
+        "Keep a mana flask: the magic axe cannot carry leech, and the auras already reserve most of the bar."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "The weapon is the build."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link is enough."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Fix resists before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %"
+          ],
+          "note": "Bench physical damage % on a free prefix."
+        }
+      ]
+    },
+    "leveling-38-68": {
       "goals": [
         "A 4-link is enough until level 38: swap Added Fire Damage for Brutality, then add Pulverise as the fifth link when you have one.",
         "Keep a mana flask until the axe carries leech; do not add Herald of Purity before then.",
@@ -8070,7 +9016,52 @@
         }
       ]
     },
-    "maps-early": {
+    "maps-white": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link and upgrade the weapon.",
+        "Reach 3,000 life, cap resistances and fit Herald of Purity with Determination."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed",
+            "Mana leech"
+          ],
+          "note": "Mana leech is what pays for attacks under the reservation auras."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed",
+            "Physical damage"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed if the weapon has a free suffix."
+        }
+      ]
+    },
+    "maps-yellow": {
       "goals": [
         "A 5-link clears white maps; start the 6-link and upgrade the weapon.",
         "Reach 3,000 life, cap resistances and fit Herald of Purity with Determination."
@@ -8162,7 +9153,7 @@
         }
       ]
     },
-    "pinnacle": {
+    "endgame-pinnacle": {
       "goals": [
         "Cap chaos resistance at 75% and reach 7,000 life.",
         "Keep Herald of Purity and Vulnerability up; the measured pinnacle uses 21/20 gems, and 20/20 is the budget version."
@@ -8208,6 +9199,13 @@
         }
       ]
     }
+  },
+  "stepAliases": {
+    "until-12": "leveling-1-12",
+    "until-28": "leveling-12-28",
+    "until-68": "leveling-38-68",
+    "maps-early": "maps-white",
+    "pinnacle": "endgame-pinnacle"
   },
   "gemInfo": {
     "Added Fire Damage": {
@@ -8643,7 +9641,7 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "543a8e98a501",
+  "seedHash": "a33dd8a1353b",
   "guide": {
     "summary": {
       "text": "Boneshatter Juggernaut is a two-handed melee build that measures 439.5k at red maps and 660.4k at pinnacle. The rare axe, armour rolls and Herald of Purity carry the damage, the ascendancy makes the trauma survivable, and no unique is required.",
@@ -8656,20 +9654,20 @@
         "mainSkill",
         "ascendancyId",
         "gates.maps-red.metrics.dps",
-        "gates.pinnacle.metrics.dps"
+        "gates.endgame-pinnacle.metrics.dps"
       ],
-      "factsHash": "75b03adbb484d091"
+      "factsHash": "3caf509afb8983b2"
     },
     "leveling": {
-      "text": "Level with Cleave and Added Fire Damage until Sunder is available, then use Sunder until Boneshatter unlocks and switch to the two-handed axe. The first checkpoint measures 425 life and 41 damage; the second measures 1.4k with a self-cast Vulnerability. The mana flask covers you until the rare axe carries leech; the Silver Flask comes with that axe.",
+      "text": "Level with Cleave and Added Fire Damage until Sunder is available, then use Sunder until Boneshatter unlocks and switch to the two-handed axe. The first checkpoint measures 425 life and 41 damage; the second measures 1.5k with a self-cast Vulnerability. The mana flask covers you until the rare axe carries leech; the Silver Flask comes with that axe.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
-        "gates.until-12.metrics.life",
-        "gates.until-12.metrics.dps",
-        "gates.until-28.metrics.dps"
+        "gates.leveling-1-12.metrics.life",
+        "gates.leveling-1-12.metrics.dps",
+        "gates.leveling-12-28.metrics.dps"
       ],
-      "factsHash": "bad00d13443c7922"
+      "factsHash": "acaa7ac12588b865"
     },
     "maps": {
       "text": "At red maps the build measures 439.5k damage, 30206 effective life and 12237 physical max hit. Herald of Purity is the damage aura and a level-capped Vulnerability rides on Cast when Damage Taken; the axe's mana leech keeps the quarter-full mana bar up. Cap the elemental resistances, keep the axe current, and swap Close Combat for Melee Splash when you want faster packs.",
@@ -8687,11 +9685,11 @@
       "status": "auto-retry",
       "signed": null,
       "facts": [
-        "gates.pinnacle.metrics.dps",
-        "gates.pinnacle.metrics.ehp",
-        "gates.pinnacle.metrics.maxHit"
+        "gates.endgame-pinnacle.metrics.dps",
+        "gates.endgame-pinnacle.metrics.ehp",
+        "gates.endgame-pinnacle.metrics.maxHit"
       ],
-      "factsHash": "f1aa919e354c5bab"
+      "factsHash": "ddb9da50a7f9ad36"
     }
   },
   "medal": "S+"

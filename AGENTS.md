@@ -86,6 +86,9 @@ scripts/       YAML compiler and data extractors
   the entire filter. Reference the base type instead.
 - No network, no secrets, no analytics in the browser.
 - Presets are YAML; compiled JSON is committed and schema-validated.
+- **Guide steps are authored, never generated from their trigger** (D32). A step
+  id is stable and carries `aliases` for the checkpoint ids it replaced; moving
+  a trigger must not rename a URL, a PoB paste key or a calibration key.
 - "My rules" are keyed by selection; presets always regenerate from the latest
   preset version.
 - Keep old share links working until 1.0.
@@ -153,6 +156,7 @@ Related workflows:
 | Budget gear / archetype gear profiles | `src/builds/gear/` (`budgets.yaml`, `profiles.yaml`, `affixes.yaml`, `eldritch.yaml`) |
 | Gate thresholds, checkpoints, leveling budgets | `scripts/builds/gates.yaml`, `src/builds/config/checkpoints.yaml` |
 | Where a leveling gem comes from (quest, vendor, Siosa, Divine Font) | `src/builds/config/gem-sources.yaml` |
+| Guide steps: roots, sub-steps, triggers, aliases | `src/core/builds/steps.ts`, `docs/STEPS.md` |
 | Pantheon and bandit data | `src/builds/config/pantheon.yaml` |
 | Build header art and one-click PoB assets | `public/builds/` |
 | Change filter output | `src/core/filter/` (esp. `generate.ts`, `emit.ts`) |

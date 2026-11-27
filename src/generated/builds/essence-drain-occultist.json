@@ -185,7 +185,7 @@
       64509
     ],
     "checkpoints": {
-      "until-12": [
+      "leveling-1-12": [
         4397,
         8948,
         21678,
@@ -198,7 +198,7 @@
         57226,
         57264
       ],
-      "until-28": [
+      "leveling-12-28": [
         1031,
         4184,
         4397,
@@ -229,7 +229,7 @@
         57264,
         60398
       ],
-      "until-68": [
+      "leveling-38-68": [
         1031,
         1767,
         3656,
@@ -308,7 +308,7 @@
         61834,
         63976
       ],
-      "maps-early": [
+      "maps-white": [
         1031,
         1767,
         3656,
@@ -505,7 +505,7 @@
         63976,
         64509
       ],
-      "pinnacle": [
+      "endgame-pinnacle": [
         1031,
         1767,
         3656,
@@ -621,226 +621,409 @@
       ]
     }
   },
-  "leveling": {
-    "brackets": [
-      {
-        "until": 12,
-        "skills": [
-          "Essence Drain"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Essence Drain",
-              "Efficacy",
-              "Arcane Surge"
-            ]
+  "steps": [
+    {
+      "id": "leveling",
+      "sub": [
+        {
+          "id": "leveling-1-12",
+          "level": 12,
+          "main": "Essence Drain",
+          "measure": true,
+          "aliases": [
+            "until-12"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Essence Drain",
+                "Efficacy",
+                "Arcane Surge"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Contagion",
+                "Flame Dash"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Clarity"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Medium Life Flask",
+              "note": "Small until level 3."
+            },
+            {
+              "slot": "mana",
+              "name": "Small Mana Flask",
+              "note": "Spells are expensive early."
+            },
+            {
+              "slot": "utility",
+              "name": "Quicksilver Flask",
+              "note": "Act 2 quest reward."
+            }
+          ],
+          "root": "leveling",
+          "from": 1,
+          "band": "until-12"
+        },
+        {
+          "id": "leveling-12-28",
+          "level": 28,
+          "main": "Essence Drain",
+          "trigger": {
+            "from": 12
           },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Contagion",
-              "Flame Dash"
-            ]
+          "measure": true,
+          "aliases": [
+            "until-28"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Essence Drain",
+                "Efficacy",
+                "Controlled Destruction",
+                "Faster Casting"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Contagion",
+                "Flame Dash"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Clarity",
+                "Despair"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Giant Life Flask",
+              "note": "Drops from level 24."
+            },
+            {
+              "slot": "mana",
+              "name": "Greater Mana Flask",
+              "note": "Drops from level 12."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "leveling",
+          "from": 13,
+          "band": "until-28"
+        },
+        {
+          "id": "leveling-38-68",
+          "level": 68,
+          "main": "Essence Drain",
+          "trigger": {
+            "from": 28
           },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Clarity"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Medium Life Flask",
-            "note": "Small until level 3."
+          "measure": true,
+          "aliases": [
+            "until-68"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Essence Drain",
+                "Efficacy",
+                "Controlled Destruction",
+                "Swift Affliction",
+                "Void Sphere",
+                "Faster Casting"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Contagion",
+                "Flame Dash"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Clarity",
+                "Despair"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Wither"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Hallowed Mana Flask",
+              "note": "Drops from level 42."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "leveling",
+          "from": 29,
+          "band": "until-68"
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "sub": [
+        {
+          "id": "maps-white",
+          "level": 80,
+          "main": "Essence Drain",
+          "trigger": {
+            "from": 68
           },
-          {
-            "slot": "mana",
-            "name": "Small Mana Flask",
-            "note": "Spells are expensive early."
+          "measure": true,
+          "aliases": [
+            "maps-early"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Essence Drain",
+                "Efficacy",
+                "Controlled Destruction",
+                "Swift Affliction",
+                "Void Sphere",
+                "Faster Casting"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Contagion",
+                "Flame Dash"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Clarity",
+                "Despair"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Wither"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Eternal Mana Flask",
+              "note": "Drops from level 65."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "maps",
+          "from": 69,
+          "band": "maps-early"
+        },
+        {
+          "id": "maps-red",
+          "level": 90,
+          "main": "Essence Drain",
+          "trigger": {
+            "from": 80
           },
-          {
-            "slot": "utility",
-            "name": "Quicksilver Flask",
-            "note": "Act 2 quest reward."
-          }
-        ]
-      },
-      {
-        "until": 28,
-        "skills": [
-          "Essence Drain"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Essence Drain",
-              "Efficacy",
-              "Controlled Destruction",
-              "Faster Casting"
-            ]
+          "measure": true,
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Essence Drain",
+                "Efficacy",
+                "Controlled Destruction",
+                "Swift Affliction",
+                "Void Sphere",
+                "Faster Casting"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Contagion",
+                "Flame Dash"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Clarity",
+                "Despair"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Wither"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Eternal Mana Flask",
+              "note": "Drops from level 65."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "maps",
+          "from": 81,
+          "band": "maps-red"
+        }
+      ]
+    },
+    {
+      "id": "endgame",
+      "sub": [
+        {
+          "id": "endgame-pinnacle",
+          "level": 96,
+          "main": "Essence Drain",
+          "trigger": {
+            "from": 90
           },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Contagion",
-              "Flame Dash"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Clarity",
-              "Despair"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Giant Life Flask",
-            "note": "Drops from level 24."
-          },
-          {
-            "slot": "mana",
-            "name": "Greater Mana Flask",
-            "note": "Drops from level 12."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance."
-          }
-        ]
-      },
-      {
-        "until": 68,
-        "skills": [
-          "Essence Drain"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Essence Drain",
-              "Efficacy",
-              "Controlled Destruction",
-              "Swift Affliction",
-              "Void Sphere",
-              "Faster Casting"
-            ]
-          },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Contagion",
-              "Flame Dash"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Clarity",
-              "Despair"
-            ]
-          },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Wither"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Divine Life Flask",
-            "note": "Instant prefix."
-          },
-          {
-            "slot": "mana",
-            "name": "Hallowed Mana Flask",
-            "note": "Drops from level 42."
-          },
-          {
-            "slot": "utility",
-            "name": "Quartz Flask",
-            "note": "Phasing."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance."
-          }
-        ]
-      },
-      {
-        "until": 100,
-        "skills": [
-          "Essence Drain"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Essence Drain",
-              "Efficacy",
-              "Controlled Destruction",
-              "Swift Affliction",
-              "Void Sphere",
-              "Faster Casting"
-            ]
-          },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Contagion",
-              "Flame Dash"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Clarity",
-              "Despair"
-            ]
-          },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Wither"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Divine Life Flask",
-            "note": "Keep the instant prefix."
-          },
-          {
-            "slot": "mana",
-            "name": "Eternal Mana Flask",
-            "note": "Drops from level 65."
-          },
-          {
-            "slot": "utility",
-            "name": "Quartz Flask",
-            "note": "Phasing."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance."
-          }
-        ]
-      }
-    ]
-  },
+          "measure": true,
+          "aliases": [
+            "pinnacle"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Essence Drain",
+                "Efficacy",
+                "Controlled Destruction",
+                "Swift Affliction",
+                "Void Sphere",
+                "Faster Casting"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Contagion",
+                "Flame Dash"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Clarity",
+                "Despair"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Wither"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Eternal Mana Flask",
+              "note": "Drops from level 65."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "endgame",
+          "from": 91,
+          "band": "pinnacle"
+        }
+      ]
+    }
+  ],
   "ascendancyOrder": [
     {
       "node": "void-beacon",
@@ -871,7 +1054,7 @@
   },
   "status": "verified",
   "gates": {
-    "until-12": {
+    "leveling-1-12": {
       "pass": true,
       "level": 12,
       "budget": "starting (3-link)",
@@ -1197,7 +1380,7 @@
         "status": "within-bound"
       }
     },
-    "until-28": {
+    "leveling-12-28": {
       "pass": true,
       "level": 28,
       "budget": "early (4-link)",
@@ -1737,7 +1920,7 @@
         "status": "within-bound"
       }
     },
-    "until-68": {
+    "leveling-38-68": {
       "pass": true,
       "level": 68,
       "budget": "ssf-start (5-link)",
@@ -2895,7 +3078,7 @@
         "status": "within-bound"
       }
     },
-    "maps-early": {
+    "maps-white": {
       "pass": true,
       "level": 80,
       "budget": "ssf-start (5-link)",
@@ -5777,7 +5960,7 @@
         "status": "within-bound"
       }
     },
-    "pinnacle": {
+    "endgame-pinnacle": {
       "pass": true,
       "level": 96,
       "budget": "trade (6-link)",
@@ -7467,12 +7650,12 @@
     "checkpoint": "maps-red",
     "code": "eJzVWltvGjkUfi6_whpppV3VaXwdj6vQFSH3QnMhl-6-VGYw4GYudMaQkl-_8gwkQwqE7LbqVkiW7flsn-8cn2PPGXb-_BpHYKKz3KRJ3cNvkAd0EqY9kwzq3tXlwVbg_fmutnOm7PC0vzs2kXvyrvZqp6iDSE90VPck8oBV2UDb6_lU9BPyQBipPP-gYl33bowNhx5QeaiTXvOx_zQMx5E1ufVArEzSScNbbQ-zdDyqe9gDXZX0jK17H9JEe2CkEjvUadJWn9PsMO3VvWicqMzklUcmmT0aZGM7vB1HHpgYfddOe7ruNRutZsd7V3v1aucsUlOddayyILfK1r1mGndNont7Zx0PTFQ01nUPY8wQfxMwHzFJmbe9fOhlalX0L8a1TF8_jKGBL1cB9xOdDaadodFRr7LIMxLtH509gilF8g3ljHMq2MpxZ8NpbkIVtdVXE4_jI2Mv1a1OHqbhCNFVYw9Mpi90XthyBhd8FbiZRr2NwS0zGNrEJIPNpx-qNN8Y3VaJaqYVqL9SQQ56lWQ619lEP9pC4pW264x0BUjf4IALzEhRlrrc2S68ydUuM62BCq2Z6M5Ih84HilldA9hM64qD0bmHHffqHl3wLdeDPJCkPZ3XPYwohlj4AlKf-5AhjCHDAYOMSgF5QCj0CUVQYEygoEEAhaQBDCQLoKScQ8kogTLwGZSBEBAjjDnEiEkEMeKCQ4wZQRBjzjHEFCEJMQ0CDjFnnEDsC4cRgnKIAyoCiKXvMNKnHBLEmQ8JJj6BBFOEIcG-CCDBkgeQcIokJFwKBImPpQ-JLxiCRCBXFwRRSIRPipJLSIQIAkgChAkkEksJKSKEQ4ooDVwpEKSYYh9SHAgOKZYBg5QQjCAlDAtIKRMSUio4d2VAIWWYC0gZQa5kxPX4PnbaZARS36cMUoGJgFQwSSAV3JeQCl9gSIV0MgRY-JBKThik0imXIeoTyDDxKWSYCVeXgYSMCB9BRhFCkDEhJWRMcg4ZDxCFzKcMQeYzFEDmB9KHTBCOIQswDlxJGGRBMXMgRACZlCKAHKGAQI4JdmWAGOREMAI5JZi6UkjIGWMCcubzopQMchb4AeScUgI5l8iHXBBSlD5zu4a5kiECeSAdUhJOIJfMrSV95EMfURlAHzMsoY8DyqBPpfChzziSxb5-tXN10Soqr4bWjvK329t3d3dvRsoO077-aiL9Jkzj7ZHKczPRW_mtiaIt5wbbjUajsTtoN7p350e74_C009jK9g8GF60L9enw4K_udPc-PLo7NrLZaZ18GMSmqa5PWDvdMtFZ6-TOHt23Lj58RsHH_cOji6teO76a3l_tn1zuRW18_Z5ff41bvb8_nsTXh0OkesMv52SSdBs2_3yI83Agyf5H1ex9OfGvj6Z7_bNdiRJ_OMj1HmFndHhDDhL2Nx2Sm9NJGqjbc93pnbR2b6f6qsuvBnHcCRsj8iXtbJnG-_OD0Z1Jtt6LTxkfT31xtW-vDG23zOX4kxKfWvdfJmm2d5qfmmnj_v3HNju8l_T8SN7sYtW9uf4wuCVxq2_s1h1jl7fH47__4vQyvRl_vvG3xMT_dPh-S38Wn84bjULh23ON75RnbV6qf9YqQoaLHi4geMBYHbsWnoXOb3GFT1aA_ipg4SYVoFgFLHyiAgxWAYuNVQHK1cCgujRBM-DOdkUFO9suxhbR2AVhV-m47VY-LKpAJ6ob6V7ds9lYeyCPUlv3dtPeFDSyOB1n5R2mUYZvN2Iev1_tHOoYDMr129qqnrJq-9jqON8-dEWBPtTxfp7rJNR7mTKJB4r9_rIhiYpnJ8esH8wezK5qBHngy1hFxk4XGm6VPd1X48h6T3kuIbX9Ilad8WiUZna_3zehCqfPESvRjtrDgAqth77_AaNmmtgsjSLd29O5zcahNemzdnugt2L0I9dHAFhA_A-Yd-5M3zb6_ci8jPOFGpneng7VglGL2UB1up9J8To1vc5oqDO9oQtWBzyScr1g3v0_MNmByq3Omiq3JhlsbLDHUVVuZS94mOwH0Nsp5X8u_N5oNUoTgP977HXepgYbbOZv8YsuO-v8mSY_iFSs91Q-3JBLBV8xsusEZe_PM_CRjmJtv4N5I5UZ--zh8xRdMe2862cadk_nI2WyTQPTOEp0promesLlYZqfZ9fdNLX5fzfrjbFDvak-5uBHRcx7fqgeZrV8_oZ_bfQduE_T-GPxmu5qfz3UWqUk1Hu4izq4axSEZtkBV-9o-5AgcG1gyqv6u9pFsVPfgovGxX6tM3Wpsdzkugc-6zsdAVxrpl0VWXDimrVibLHsWxCQ2nE8ikxobP4WoJr_GzBJmGnlRsdlVgi4vFUNk-qjIuEC9lSsBrr2mv8GbDprgXSiM3BpYg3aLtU3iozOanRhsMotKPIkhdqcPE9I-c-TIr8cKfE8KfrLkQqeJ8V-OVLyeVL8VyNF0POk_F-NFF7H6a64KtZORyoCnVCPbKafUjovw_1bQNATerwqR2eko2hO4gm_RxEZWk2coGeZrzDbOoZpvz9USa_WHJrYJAPQGZnMWFB-ONiY6-sAOdkWjPialQK7JD8oE-sqCR_7XT6_2r9ceLpO-GFx0asdjbuZyUHTZGGk7YZCk1rbJCZNcjBUEw1-J3SL8D9Wb8kFy7icvpNdZxPl3j5BkWMwOgmnIO2D8uz-gVph67TSTXvT2rVSEbjQAxUZtU4js3zWW7C79fBbVNPvWG4RtKAZ3e_r0Dqmp_2-zkwyyGuvf8d4C5M_ChYqisB-pGOd2EKMOZ3lOlnc9eWXq_kOnOvl4YPO88pZe50ZROlE57VOmoU60xk4LNsv3TM9raJle2burMFvIBw6GZ3s7tU403m-GAR-3O5Ye_Xpukv0I__iTr0x_WDBCdJJYeFZ7Fr0EEfH7T_t3iYKF8mU1TXC18ywVCOzsFfGwmepr70gdXVka82hMgnYddUfEt1eJu_au4-Kxy6enSbTr6BR1jcWmXAnxXFidRSZgS5EW0NjqXu9bNetvfG4GIHLc_TCJIMferC8IFTgtTcaJzT5zkI_1eW_Ebp6ZWk3Do-bC1JHzvP6kcpva3tmYhJd-uJB0bMphRUrk7Urx-5ULFfetzpLVFQelN9labp26bEtEhaz1c_HKrP332dd9oJ1G7G2w2lu_-vKHW1nd1NgjY10JZMwznVHh2nSK7OYxQt9X0W5nuVAOlFqi2RFNc_58MFrnjr6FkUqX7uWoOYptTmGLsEsfNaaA9kSYHnmPmL40smKXM8c4i-D6KgikViCKIPmIyZYgnGeXdWRXIWpaAijJaDC5gvaxt4s9TLL-6waU52ZbDim-r2Tbjim-jGVLRtTbsOOtkUiqUgeuVozTfpmUO7OZDSeT6oTHU-L7e2BZBx3dVb3gvl_fb4B7k9UXma-Z1AR-Gj2Z5b5AjvbT_829g-N8vg5",
     "byStep": {
-      "until-12": "eJzFWFtT4zYUfia_QqOZfWog8SU3Jt5OLiwwJQuLYbd96gj72FaRJVeSE9Jf35HtJIYmIezS9sVzdPyd-5F07OHPTylDc5CKCu5h66SNEfBAhJTHHr6_-3Tcxz9_bAxviE6uo3FOmXnzsXE0LGjEYA7Mw5aNkSYyBv11pcr5vY1RwIhSn0kKHv5GdZBgRFQAPJxs-NdBkDNNlcYoJZT7IngEfS5FnnnYwuiB8JBqD38WHDDKCNcJCD4jfwh5LkIPs5wTSVXtFeXVq1jmOnnMGUZzCouZCMHDk9HVxMcfG0dHwxtGliB9TTRSmmgPT0T6QDmE0xsfozlhOXi42z5xuwPL6eLWdqE7oQl7k8QVjWCNdlx3F-6Mg4yXfkKBhWu822vv9eTs4mbjiWudtO1B1-m3Hbe3085NslQ0IGxGnmiapxdU35FH4Gs1fWun6Ccq4RZUUbwKfez2d6EngoWHo69onGhOefwGAwkR6iW8uzNhM8LJRNSwlrMPes8lKJBz2FTD6nR2SfgZ1IEnPcu1-53qWQgNW8UWMtSdBEAk0HQOfgaBafxCq1kgLQFqu8pZbavL0MPOsw1lOG2MuAhBedh1Br1mf-D2m1bf6fWbttXt9ZuO1e91mo5tW-2m0-24dtPpdbqDptO3et1mx3XdXrPTs-2ueXbdwo-j4f3tVUEcJVpn6rTVWiwWJxnRiYjgiTI4CUTayohSdA7H6pEydmzcbo1Go9E4no0myZm-nN_eS76cRuEv1_Psasz8aUT18WI0GnmFkVZlZdgycRcZMokxhG9UqjInhkTAyQOD0MNa5oCRYkJ7eCzCJRrJVOSyPExGZUqNxCqnR8NzSFEMqUnWDDQJiSatSw2pap2bR4E-h_RMKeABTCWhHKMipreJcJJW1az4qHqxOjMx-jMnjOplUbWKNjamEJGcafwyyi0htd4Uk59nmZD6LIpoQILla2GVaBPYWqAW1JpXxWP_b_GMZEA4-LmM4eCQnslsoirZqOJXkXXeLbJh6fprjfwNSCY4sn68iyeCaxJTcWgL1_CbpNSYVUbc_77WnxhJYUpUcmAkNfwmkoKJSu67b8MDi3sBLAX9DqVlRFL96iZ-ia6VdcX6FzNRUWp1y32lsEB_CZH-Wtgw1G9r6qr0w8Hrs9_AzaIIqLohDe2DXl-SZo1oWK5vi5BO0Wx0fjlp-EszEyqqIESLYk81ppJGeiFEiL4RHjYK4cLuKbLsxpcy5lPUblymGaMB1cosnPYHRHkggRhVfgaMoSlJSQxFtEbLc1_svb4kRQs0LvIHSRWaUBkw0If68pPdQVqgtBzXkBkndzjh7HXiQYTLxldCGLqFmDBK9jhQTuXqFI2Px8fj7_XH3etPzMQcVMMXMgAJEp2X60OzYtkfjBtmJEXlDEh4sMuTziuZEbrmyLhY_kB1rE69e2ZiDilwjYoRcYeD3f0OAtONSUIoR2NDvnvn9PaaJ2lu-vWaL5_QqKTfWKX1cP96qfp7XZGUx1bjOjNdTHn8_pkYvGre_g7zVRrMF9HrGbDae30QUZSYo-xuQWPkZ1RSjcqvxvfPhrX_jGU0AhQxoh4bMwhppQt9KjgHOrPD8P4DNSWcVIb9lDCGzAfbu9jdf4bmmhpllekvOQ0eFWVzkD9o2wddXWlIU82gdgXnCnwIBA_LIbG4CSPCFFTTg8-ELi75-hhJdTlPrIeuGmo1j6ww9hbMsy-rFdDZAiwP7Q3G3apM6Bqksw0CrOZRdwuiPHc2mN4WjNmS9ej7uzD2BjPYgqnyWENZ7S2wouTPsm3hamapBqZdMnXN9oEyTk3G2SZTtpQPupimignKUBPBIxqXncazfKUUOKTLolMx4nn6ALL2P-QfwLM5UeVHQgV1nEH1U2Olf9h6-c_wb6cvb1E=",
-      "until-28": "eJzFWNtu4zYQfY6_ghDQpyqx7pIDewtfckOdTTbaTdqngpHGNhuK1JKUHffrC0qyo6S-bTftwoAxpM5wznDI0Yy6vzxnFM1BSMJZz7BPLAMBS3hK2LRnfPl8fhwZv3xodW-xmt1MBgWh-smH1lG3lBGFOdCe4UQGUlhMQd2vlnL_sAyUUCzlR5xBz3ggKpkZCMsEWDp8mb9JkoIqIpWBMkxYzJMnUBeCF3nPsA30iFlKVM_4yBkYKMdMzYCza_wnFxc87Rm0YFgQ2XhEWP1oKgo1eyqogeYEFtc8hZ4x7I-HsfGhdXTUvaV4CSJWWCGpsOoZQ549Egbp6DY20BzTAnqGF0YnXscPfM8PjPZmvc9cYfqtSmMygbVCx-psw50xENNlPCNA0zXeD72dZM4ub9dY27P8kygIXD9wIyfcpnc7W0qSYHqNn0lWZJdEfcZPwBrLRO423XMi4A5kGcMafmz729BDTtPD0WMynSlG2PStimttNTDDXL6FO1stXGOGh7yBdbZuroZ-YQIkiDm8hMOJtmrEOTSBJazbLu-Olj4LAIQTReYQ55DoE1-uowdICYDGdXJX9-kq7Rnuq5ukZywDMZ6C7Bm25dqmZ0ee6bmd0Aw7bmRGHS8ybdtzLNO2fd82bd_zHdOO3DAyHTvQ_2Hgd0zXjkLfdB3HtkzXs_3QdL0gsE038D3HdEM_6JhuGIS26UZ2GJiea1mW6Xkd3ze9wPUs04vcwDG9KAwj07esyDF9z_NC0_cCPzT90HEC_R94ZmC5nah0-Kj75W5cCkczpXJ52m4vFouTHKsZn8AzoXCS8KydYynJHI7lE6H0WO9Pu9_v9wfT6_5l_9Pl2fn0bnwXDa_mnyQbWpPb8-cvIluMJ1cfOxa_VzPn4WaejwdPS7i_-nXiCb-wB-O_vs65GHH1MHA9MZE386Lf7_dKUu2aVbetA1KGTkdMC7GmIKtgaREBw48U0p6hRAEGkpSrnjHg6RL1RcYLUaW3fhVrrbEK9lH3AjI0hUxH8RoUTrHC7SsFmWxf6L8SfQHZmZTAEhgJTJiByj34NhWGs_qY1fOoflBncd9AXwtMiVqWx6mWtY0RTHBBlfHWyw0utb_Jp7jIcy7U2WRCEpws97lVobVja4WGU-u52p_gh_kz5EwJTimkI5BKFIkifG_M1s5t0X7x9AWAXiFqv90f5vc5lgrEEEtF2PRgf1-0mk5Ws2i92Ls7163Y77vDD4BzzpD9_RdYhw1PDzgJ_8S_jn09We9I9P-H-5ziDEZYzg70pIFvBFhPomr23TPQgcG9BJqBeofQUiyI2pu_3qIbYV1N_bhcPAKZYyIO9OG-oAwEfiT0jSfrZVa9wX8Q01qSqxrqnsAC_cV59ltpQ0u_r6XxKnGsX-AargelW3X9peUY1LoE02NE0mp8VwbnFF33L66GrXipWw1JJKRoUWaH1kiQiVpwnqIHzNJWqVzaPUWe3_pU-XyKrNZVllOSECX1wLd-QoQlArBeKs6BUjTCGZ5Cy331qCxpV4_0RmgDr2k6O2nOynPeuiweBZFoSERCQR1K8-fAQoqjrGoNkG5dWj9rgoojXfujqtjGLNlGzt1J7pGny9Y9xhTdwRRTgncQq_pDeYoGx-VvP1PHb-5k1U-hqqHawtbbyXZK-RxkK-YiAQECXVTj79jLzSz8PXvGVYPEoBx-Bwfn1Xm75nPIgClU9i9bCAa7CQJVreEME4YGWnz3_Ql3msdZoU_4DVs-o34lvzuDaCcDQdjUbt3k-lgTNn2Py7ZuhvffuM5ebs6_4Fbz0C38fgq2tZMDn0xmOlf-DgsU50QQtbqV7x4oe3cOp2QCaEKxfGpdEMxUuRQ6LycO5LLF7u6knGGGV3YFYF3t6i8M72J5d8YtVPnaro33M1CzpVTfaTgGVb8wkSKKQuMFX0iIIeEsrYrp8j07wVRCXWXFlKuyhGiW20RVNcu6jmmgVnXbCuNswLxqvldAdwOwyuAvGG_jYlw1IP4mCNAGo2ADokpEL5hwA0bfx6b30TaM84LpbMDU-9hA2dYGWBnyV7ttG3VFVJdj23SaKzsH6rgNHXeTTnWkYlBlrVbWZ1oacjYh0-qksbxYLQoMsmV5Ug3EiuwRRPkpur0ZeDbHsmqmamjUCeoPcqv1u-23H7r_BlBgUD8=",
-      "until-68": "eJzVWVlv27gWfq5_BSFgnsrU4iJRKuIOHGftJE0aZZn2ZUDLtM2GElWJsuv--gEleUnqOM60Re6FAYGkvkOe7yykDr3757dEgYnIC6nTjoPeuA4QaawHMh11nOurw53A-fNda_eCm_H5cK-Uyr5513q1W7WBEhOhOo4fOMDwfCTMzXwq8o_rgFjxovjAE9FxbqWJxw7gRSzSQW85fh7HpTKyMA5IuEwjHd8Jc5TrMus4yAF9ng6k6TgfdCockPHUjIVOz_gXnR_pQcdRZcpzWay8kmnzapSXZnxXKgdMpJie6YHoOL3uaS9y3rVevdq9UHwm8shwAwrDTcfp6aQvUzHYv4gcMOGqFB3HQ4T6bxgiLkM4JE57veiVNlz9B7lTORQLGYwxegx4kIp8NIvGUqjBQgC5rrtRo4PjiwU4oDh8E3oeDn0csuAxuYvxrJAxV2f8m0zK5FiaK34n0sU0ZIOShzIXl6KofNnAmfcYuKfVYGvwqRyNTSrT0fbTj7kutkaf8ZT39ArUf5SkhV6nuShEPhFLXzA3fEwiysQKEL_xGaI48KqnXwnttqtssq2rXAjAYyMnIspEbHOgmtV2gMmFWEkwMs-wk0HHIfdyy464Dkj1QBQ2UAiCiPkMEt_zIUUBhZSEDDKEMGQkCCALSQCDkAYwpARD5CLkQeTS0IXI9ZgHEaLYhQh5HoKIuG4IEQkCDyKPehgin1kMY8SDKCAsgCj0iQex61EfYoR9DDEiLoIY-SyAGIVeALFH3BBiL2QuxD6jLsTMDX2IGXYJxMzH1dMLIQ5RGELiYuxB4hLmQoII8iFBAfMgQWFAoQ1NFxJMEYOEUBZCQpjn2WdAIKHIY5BQim3b95G1BcWQ-D6hkDCEGSTM80NImM8QJCy0KwaIWYNhn0CKwiCEFDPfhZS4rgspDT0PUp9QF1I_CH1IGfYQpAFCAaQB8TGkAWMB9Fw3wNBDgUuhhxnF0CMYEftkIfQopQx61PeqZ0ih5xGCoccw9u3Tp9ALMLVP6mLohTTA0HdJGEAfURRCHwWEQp-EzK_i5dXu9eVp1Xg1NiYr3rbb0-n0TcbNWA_FN6nEm1gn7YwXhZyIneJOKrVjw6vd7Xa7e6Oz7vXo4_FeGZ9He3ufDiK3P9v7Hh9PT2TYu_r0np7pHakuTt9PzfH308sPX9zg74Oj48vrwVmB9nrXU-_qw01U3sSfJbm9mfHjywwfZft8Z1D0yMnFYHyIdZpdD08-BMExiYZfj3rf6EV_9I847H_6TMb49nyiA373UUTTz2epOtq5OfnrYJJ1b9PeX0OaeyXaO42n5ftzFubfv050vq-LLP4-6l-QQXeIPh3fZGZ0R2g-LM7PD7zeqb4tJyXbmXyTk1R3u91OZaT23Eq79blT1CZrelX6VLllY8QB0ojEdlGzj_wIrAJlBeg3wN32yvy7bZvMVdrbbLeNyNq_flk1gUh5X4lBxzF5KRxQKG06zp4ezEA3T3SZ14dlt94nrMR8o3i1eyQSMKrXPxOGD7jh7RMjkqJ9ZB8V-kgkB0Uh0ljs51ymDqgC4HkiKU-aLaoZB82L5psAhQ74WnIlzazai5q2XWRfDHmpjPOQ5hpO7WeRisos07k5GA5lzOPZU7xqtGW2EFhhtRh7eUI9nZpcKyUG-6IweRkbqZ_02oLdI9JLqksAuId4eeLRVA5NdzhU8nmUL3kmB_si5vdcWs0GVqd7QYY3Wg6ibCxysWX6rQosOdlRMB-e0wlezGGHvDAi7_HCyHS0tbuWUqvU6lGwmOzXO2u3Vv-pjfdW8EynAP38rmszjY-2iOQf8ffTtRl8wfg9VDwR-7wYb0llBb_iYjsI6tEXc--xUIkwv8C5iufSPHnqPESvOHY-9IJu3RdFxmW-7Z5UqlTkvC_VAyqLaV7Mq3tam-LnnXorzVhsa445eGmH-cjvNEPTKub1440UU_Bd6-Tvag3b-rRondaKEGfxAWrhtlPxaWpP246EWZSftg9k_e37rnVZhelbcNm9PGhFM3vxUshCDMAXMRUKoFZP97ky4L3ttirZatm3gOHWSZIpGUtTvAVuy_8DyDTOBbfSSX3nAOytSAvh1VdVOQ_2ecJHovXa-wMY3fSAnogcXMlEgDN7kZQpKfIWuSfMCwOqKrwym9XnASn_aVL4_47UJk7T6kRrnWdcgSgWmcnFQ0of69B8C5D7gJ63qkeUCaXmJB7wW6pI3UeJr9ceb9JeD4djng5avbFMZDoCUSZzaUB9PbY1j9eBay1-z0GvraJGA3uVBerrI57Gy3F7a7U6vl55skn5cXXatI7Lfi4L0JN5rIT5H1CablK6rwez1g3nClyKEVeSb1K4qXXfgr2d5vc0h_sBUl93zh0657G4BXyazMZdaqT0RBStSOexyEUOjur-y7tg4zbUt-fZUunqeNtaZ3wvZ8_0RCQinSfna9woWaXlGu2fYXi2kYJQptUbc5mCPdv8LRZ_jMx6fYNN-vKktLl5ns6-gW7d3lpl7FktTlIjlJIjUam2gcZaEz8vesJNVHKZjlC931_KdPRbg_0Z4YLcp5TGv1jph7b8L0qvHq1n3aOT3j2tlRwKMFS8uGvty4lMRaUAOKxGtqXwyMp448oJT3mz8jFXSk9trtuxX7I22bh2aaoaoFn-Y8lz8_3XrEufsW43EWY8K8zPrhwJ03xEASONEiuf52UhIhHrdFDfClRfyUOuCtHUFZHSpioAVu8NFjfC82rsRxReovAa1LxInWPIGsy9C-I5kK4B1ifeEuOtnayqn-YQfx1EqBWN2BpEvWsuMcEajE3tVRuFj2FWLITcNaDK5_esjZymnmmKqcdkVmfGW8qs3vOTLWVW_0Sg62TqMIyEqaqzqiKzrZ5Oh3JUR2ealfNJRSqSWRXeDkjLpC_y6q_49nrgwYQX9U1SA6WMhM3_j_MFdtsP_-n_F2I5EA4=",
-      "maps-early": "eJzVWltv27gSfo5_BSFgn8rUvEmUirgLx86tGzcX57LZl4KWaJsbSnIlyqn76xeUfFFSx3G2XeQcBCCo0TfkfDMcUhxn7_dvsQZTmeUqTVoOfo8cIJMwjVQyajnXV4e7vvP7x8beuTDjs-F-obR987Gxs1f2gZZTqVuOjxxgRDaS5mYxFP2CHBBqkeefRSxbzq0y4dgBIg9lEnVW8rMwLLRRuXFALFTST8N7aY6ytJi0HOyAgUgiZVrO5zSRDpiIxIxlmvTE32l2lEYtRxeJyFRee6WS-atRVpjxfaEdMFXyoZdGsuV02qedvvOxsbOzd67FTGZ9IwzIjTAtp5PGA5XIqHved8BU6EK2HM_HAXrPECWUudRzmutVr1Ij9L_QO1VDudQhAXafAx4kMhvN-mMldbRUwOgFiw6Oz-tg6r733AARihl-Tu98PMtVKHRPfFNxER8rcyXuZbIchgbus7qHKpOXMi9jOYfzZxl1Uh1tDT5Vo7FJVDLafvixSPOt0T2RiE5ag3psE_Q6yWQus6lcxcJH6DmN_kTWgOS957scM1K2tFTaa5bZZHtXmZRAhEZNZX8iQ5sD5aj2AZhMylqC0UWGnUQthz7KLStBDkjSSOZl7DHE3OOQeq4HGfYZZDTgkGNMIKe-D3lAfegHzIcBowQGvscgRhi7ECMWIIiRy12IMSMIYuy6GGKKUAAx9X0XYpe5BGKPWwzn1IXYp9yHOPAsJvCoCwlymQcJJh6BBFOEIcEe9yHBgetD4lIUQOIGHEHi4cCDxOMMQcKR7XOCKCTcI2XrBpBw7vuQ-AgTSAIcBJAiQlxIEeUIUkyxByn2uQspDnwGKSEYQUoY5pBSxgNIKXdd2_oUUoZdDikjyLaMWInnYesuRiD1PMog5ZhwSDkLCKTc9QJIuccxpDyws_uYe5Ah6hHIMPEoZJhx2w_8ADLCPQQZRQhBxngQQMYC14XMowxB5jHkQ-b5gQcZJy6GzMfYty1hkPnlmD7nPnQR8gl0sY8YdAlnBLqUYGpbHkCXMcahyzy3bAMGXZdSAl03QB50OSFl6zHo-oTZliEC3YC4tmU-gR6igQ89zHAAPexTBj0acK9cgjt715enZWdnbMwk_9BsPjw8vJ8IM06H8pvS8n2Yxs2JyHM1lbv5vdJ6167YZrvdbu-Peu279sXxfhGe9ff37w76aDDb_x4eP5yooHN19ykdJaPZ394f136edNCwZw7I-dW38OIuOrxEs7-uTj9fXOje2fX3m-tM_3l0Z7AO47-uxfHlhBxNumI3yjtk1hvcfpt16d1l9PWTd3M86w7P9wOUeONRLruEndPxLTlM2F90TG7Ppqkv7i9kP_p0un8_k9cD93qUiK_jU--kPWnfJp0_hiyb7k5jfn1grhXtnaqr4ovgX06_f52mWTfNJ-H30eCcRu0hvju-mZjRPYlPh8rsPjB2dX9SRMg7zDJefMn8u8z12u126cjmwpN71XGXV26dP5VZaxO4zAMHKCNj-7g4HX4Elgu0BpyfCjt7zdr4e027h5S7jd1kbKdvY1S9LLtAJmKgZdRyTFZIB-Q6NS1nP41moJ3FaZFVZ3S72p6sxmJ_2tk7kjEYVfP3pBGRMKJ5YmScN49sU6KPZHyQ5zIJZTcTKnFAuUhep5KIeL4zzuVg_mL-KUKQA74WQiszK7fAed9O0pVDUWjjPKW5hlPzVaT6xWSSZuZgOFShCGcv8arQltlSocZqKXt7Qp00MVmqtYy6MjdZERqVvhi1JbtntFdUVwDwCPH2xPsPamjaw6FWr6N8KSYq6spQPAppORqoD_eGDG9SFfUnY5nJLdOvrrDiZKVgIX77gB2K3MisI3KjktHW4Vpp1alVUrAc7Nez26vMf2njvZVikiYA__yuazNNjLZYyT_iH6frXPiGAT_UIpZdkY-3pFLD10JshaCSvll4j6WOpfkFwdUiU-bFU-cpuhbYhegNw9qV-USobNs9qdCJzMRA6SdUlsO8WVT309TkPx_UW2XGclt3LMArPywk_6Ub5r18cW29UfIBfE_T-M9yDtu7W_ZOK0Oos_wAtXD7UPKZX3ltvy_N8tZrn4Gqvn0_Ni7LZfoBXLYvDxr9ma335CqXEfhbPkgNcKOTDoQ24JN9bJS65bQfACeNk3iiVahM_gGghvcbUEmYSWG146rUAWwxpoFJ_VVZRQBdEYuRbLxzfwMmnT-BdCozcKViCXq2fjXRSmYN-khZ5AaUl__SbdaeJ6S8l0mR_ztSmzg9lCda42wiNOiHcmIy-ZTSRbU0PwCMntBz63b0J1LrBYkn_FYmMvQs8fXWk03Wp8PhWCRRozNWsUpGoD9RmTKgqsptzeOdj6zHHwXonTXUpMBW0EBVtRJJuJLbYlldvt54usn4cXnaNI6LQaZy0FFZqKX5HzCabTJ6kEazxo0QGlzKkdBKbDJ4ftf9APZ3538vc3i8QKoq6yKgCx7L4uPLZDbuUiOdTmXe6KdZKDOZgaPq-e1DsHEbGtjzbGV0ebxtbTN5lLO9dCpjmSyS8x2ZG1mm5RrrX-F4vpGC1KbRGQuVgH3b_U88_hyZ9fb6m-wVcWFz8yyZfQPtqr-1ycS1VpwkRmqtRrI0bQONtS5-3eoJNlHJVDLC1X5_qZLRf7rYX7FcMHrJaPKLjX7qy39jdP1o7bWPTjqPrNZqKMFQi_y-0VVTlcjSAHBYSral8MzMZOPMsUjEfOYDI7NEaGB_Jfk1U9ONUxemvALMZ78oRGa-_5p52SvmbcfSjGe5-dmZ-9LMv6GAUUbL2td5kcu-DNMkqooC5UfyUOhczq8VfZ2a8vu_XjZYFoQXl7EfUWSFImtQizvqAkPXYB7VhxdAtgZYHXgrjLt2sPL6tIB46yBS1yziaxDVprnC-GswNrPrPgqew9Q8hNEaUBnzR97Gzvw6M79LPadTH5lsqUNrOnRLnfpPA2ydTrUM-9KUl7PyQmZ7nTQZqlG1OpNJsRhUJjKelcvbAUkRD2RW-2n1B-DBVORVIWkO9RAJ5r96LibYaz79_4J_AOVTLDk=",
+      "leveling-1-12": "eJzFWFtT4zYUfia_QqOZfWog8SU3Jt5OLiwwJQuLYbd96gj72FaRJVeSE9Jf35HtJIYmIezS9sVzdPyd-5F07OHPTylDc5CKCu5h66SNEfBAhJTHHr6_-3Tcxz9_bAxviE6uo3FOmXnzsXE0LGjEYA7Mw5aNkSYyBv11pcr5vY1RwIhSn0kKHv5GdZBgRFQAPJxs-NdBkDNNlcYoJZT7IngEfS5FnnnYwuiB8JBqD38WHDDKCNcJCD4jfwh5LkIPs5wTSVXtFeXVq1jmOnnMGUZzCouZCMHDk9HVxMcfG0dHwxtGliB9TTRSmmgPT0T6QDmE0xsfozlhOXi42z5xuwPL6eLWdqE7oQl7k8QVjWCNdlx3F-6Mg4yXfkKBhWu822vv9eTs4mbjiWudtO1B1-m3Hbe3085NslQ0IGxGnmiapxdU35FH4Gs1fWun6Ccq4RZUUbwKfez2d6EngoWHo69onGhOefwGAwkR6iW8uzNhM8LJRNSwlrMPes8lKJBz2FTD6nR2SfgZ1IEnPcu1-53qWQgNW8UWMtSdBEAk0HQOfgaBafxCq1kgLQFqu8pZbavL0MPOsw1lOG2MuAhBedh1Br1mf-D2m1bf6fWbttXt9ZuO1e91mo5tW-2m0-24dtPpdbqDptO3et1mx3XdXrPTs-2ueXbdwo-j4f3tVUEcJVpn6rTVWiwWJxnRiYjgiTI4CUTayohSdA7H6pEydmzcbo1Go9E4no0myZm-nN_eS76cRuEv1_Psasz8aUT18WI0GnmFkVZlZdgycRcZMokxhG9UqjInhkTAyQOD0MNa5oCRYkJ7eCzCJRrJVOSyPExGZUqNxCqnR8NzSFEMqUnWDDQJiSatSw2pap2bR4E-h_RMKeABTCWhHKMipreJcJJW1az4qHqxOjMx-jMnjOplUbWKNjamEJGcafwyyi0htd4Uk59nmZD6LIpoQILla2GVaBPYWqAW1JpXxWP_b_GMZEA4-LmM4eCQnslsoirZqOJXkXXeLbJh6fprjfwNSCY4sn68iyeCaxJTcWgL1_CbpNSYVUbc_77WnxhJYUpUcmAkNfwmkoKJSu67b8MDi3sBLAX9DqVlRFL96iZ-ia6VdcX6FzNRUWp1y32lsEB_CZH-Wtgw1G9r6qr0w8Hrs9_AzaIIqLohDe2DXl-SZo1oWK5vi5BO0Wx0fjlp-EszEyqqIESLYk81ppJGeiFEiL4RHjYK4cLuKbLsxpcy5lPUblymGaMB1cosnPYHRHkggRhVfgaMoSlJSQxFtEbLc1_svb4kRQs0LvIHSRWaUBkw0If68pPdQVqgtBzXkBkndzjh7HXiQYTLxldCGLqFmDBK9jhQTuXqFI2Px8fj7_XH3etPzMQcVMMXMgAJEp2X60OzYtkfjBtmJEXlDEh4sMuTziuZEbrmyLhY_kB1rE69e2ZiDilwjYoRcYeD3f0OAtONSUIoR2NDvnvn9PaaJ2lu-vWaL5_QqKTfWKX1cP96qfp7XZGUx1bjOjNdTHn8_pkYvGre_g7zVRrMF9HrGbDae30QUZSYo-xuQWPkZ1RSjcqvxvfPhrX_jGU0AhQxoh4bMwhppQt9KjgHOrPD8P4DNSWcVIb9lDCGzAfbu9jdf4bmmhpllekvOQ0eFWVzkD9o2wddXWlIU82gdgXnCnwIBA_LIbG4CSPCFFTTg8-ELi75-hhJdTlPrIeuGmo1j6ww9hbMsy-rFdDZAiwP7Q3G3apM6Bqksw0CrOZRdwuiPHc2mN4WjNmS9ej7uzD2BjPYgqnyWENZ7S2wouTPsm3hamapBqZdMnXN9oEyTk3G2SZTtpQPupimignKUBPBIxqXncazfKUUOKTLolMx4nn6ALL2P-QfwLM5UeVHQgV1nEH1U2Olf9h6-c_wb6cvb1E=",
+      "leveling-12-28": "eJzFWNtu4zYQfY6_ghDQpyqx7pIDewtfckOdTTbaTdqngpHGNhuK1JKUHffrC0qyo6S-bTftwoAxpM5wznDI0Yy6vzxnFM1BSMJZz7BPLAMBS3hK2LRnfPl8fhwZv3xodW-xmt1MBgWh-smH1lG3lBGFOdCe4UQGUlhMQd2vlnL_sAyUUCzlR5xBz3ggKpkZCMsEWDp8mb9JkoIqIpWBMkxYzJMnUBeCF3nPsA30iFlKVM_4yBkYKMdMzYCza_wnFxc87Rm0YFgQ2XhEWP1oKgo1eyqogeYEFtc8hZ4x7I-HsfGhdXTUvaV4CSJWWCGpsOoZQ549Egbp6DY20BzTAnqGF0YnXscPfM8PjPZmvc9cYfqtSmMygbVCx-psw50xENNlPCNA0zXeD72dZM4ub9dY27P8kygIXD9wIyfcpnc7W0qSYHqNn0lWZJdEfcZPwBrLRO423XMi4A5kGcMafmz729BDTtPD0WMynSlG2PStimttNTDDXL6FO1stXGOGh7yBdbZuroZ-YQIkiDm8hMOJtmrEOTSBJazbLu-Olj4LAIQTReYQ55DoE1-uowdICYDGdXJX9-kq7Rnuq5ukZywDMZ6C7Bm25dqmZ0ee6bmd0Aw7bmRGHS8ybdtzLNO2fd82bd_zHdOO3DAyHTvQ_2Hgd0zXjkLfdB3HtkzXs_3QdL0gsE038D3HdEM_6JhuGIS26UZ2GJiea1mW6Xkd3ze9wPUs04vcwDG9KAwj07esyDF9z_NC0_cCPzT90HEC_R94ZmC5nah0-Kj75W5cCkczpXJ52m4vFouTHKsZn8AzoXCS8KydYynJHI7lE6H0WO9Pu9_v9wfT6_5l_9Pl2fn0bnwXDa_mnyQbWpPb8-cvIluMJ1cfOxa_VzPn4WaejwdPS7i_-nXiCb-wB-O_vs65GHH1MHA9MZE386Lf7_dKUu2aVbetA1KGTkdMC7GmIKtgaREBw48U0p6hRAEGkpSrnjHg6RL1RcYLUaW3fhVrrbEK9lH3AjI0hUxH8RoUTrHC7SsFmWxf6L8SfQHZmZTAEhgJTJiByj34NhWGs_qY1fOoflBncd9AXwtMiVqWx6mWtY0RTHBBlfHWyw0utb_Jp7jIcy7U2WRCEpws97lVobVja4WGU-u52p_gh_kz5EwJTimkI5BKFIkifG_M1s5t0X7x9AWAXiFqv90f5vc5lgrEEEtF2PRgf1-0mk5Ws2i92Ls7163Y77vDD4BzzpD9_RdYhw1PDzgJ_8S_jn09We9I9P-H-5ziDEZYzg70pIFvBFhPomr23TPQgcG9BJqBeofQUiyI2pu_3qIbYV1N_bhcPAKZYyIO9OG-oAwEfiT0jSfrZVa9wX8Q01qSqxrqnsAC_cV59ltpQ0u_r6XxKnGsX-AargelW3X9peUY1LoE02NE0mp8VwbnFF33L66GrXipWw1JJKRoUWaH1kiQiVpwnqIHzNJWqVzaPUWe3_pU-XyKrNZVllOSECX1wLd-QoQlArBeKs6BUjTCGZ5Cy331qCxpV4_0RmgDr2k6O2nOynPeuiweBZFoSERCQR1K8-fAQoqjrGoNkG5dWj9rgoojXfujqtjGLNlGzt1J7pGny9Y9xhTdwRRTgncQq_pDeYoGx-VvP1PHb-5k1U-hqqHawtbbyXZK-RxkK-YiAQECXVTj79jLzSz8PXvGVYPEoBx-Bwfn1Xm75nPIgClU9i9bCAa7CQJVreEME4YGWnz3_Ql3msdZoU_4DVs-o34lvzuDaCcDQdjUbt3k-lgTNn2Py7ZuhvffuM5ebs6_4Fbz0C38fgq2tZMDn0xmOlf-DgsU50QQtbqV7x4oe3cOp2QCaEKxfGpdEMxUuRQ6LycO5LLF7u6knGGGV3YFYF3t6i8M72J5d8YtVPnaro33M1CzpVTfaTgGVb8wkSKKQuMFX0iIIeEsrYrp8j07wVRCXWXFlKuyhGiW20RVNcu6jmmgVnXbCuNswLxqvldAdwOwyuAvGG_jYlw1IP4mCNAGo2ADokpEL5hwA0bfx6b30TaM84LpbMDU-9hA2dYGWBnyV7ttG3VFVJdj23SaKzsH6rgNHXeTTnWkYlBlrVbWZ1oacjYh0-qksbxYLQoMsmV5Ug3EiuwRRPkpur0ZeDbHsmqmamjUCeoPcqv1u-23H7r_BlBgUD8=",
+      "leveling-38-68": "eJzVWVlv27gWfq5_BSFgnsrU4iJRKuIOHGftJE0aZZn2ZUDLtM2GElWJsuv--gEleUnqOM60Re6FAYGkvkOe7yykDr3757dEgYnIC6nTjoPeuA4QaawHMh11nOurw53A-fNda_eCm_H5cK-Uyr5513q1W7WBEhOhOo4fOMDwfCTMzXwq8o_rgFjxovjAE9FxbqWJxw7gRSzSQW85fh7HpTKyMA5IuEwjHd8Jc5TrMus4yAF9ng6k6TgfdCockPHUjIVOz_gXnR_pQcdRZcpzWay8kmnzapSXZnxXKgdMpJie6YHoOL3uaS9y3rVevdq9UHwm8shwAwrDTcfp6aQvUzHYv4gcMOGqFB3HQ4T6bxgiLkM4JE57veiVNlz9B7lTORQLGYwxegx4kIp8NIvGUqjBQgC5rrtRo4PjiwU4oDh8E3oeDn0csuAxuYvxrJAxV2f8m0zK5FiaK34n0sU0ZIOShzIXl6KofNnAmfcYuKfVYGvwqRyNTSrT0fbTj7kutkaf8ZT39ArUf5SkhV6nuShEPhFLXzA3fEwiysQKEL_xGaI48KqnXwnttqtssq2rXAjAYyMnIspEbHOgmtV2gMmFWEkwMs-wk0HHIfdyy464Dkj1QBQ2UAiCiPkMEt_zIUUBhZSEDDKEMGQkCCALSQCDkAYwpARD5CLkQeTS0IXI9ZgHEaLYhQh5HoKIuG4IEQkCDyKPehgin1kMY8SDKCAsgCj0iQex61EfYoR9DDEiLoIY-SyAGIVeALFH3BBiL2QuxD6jLsTMDX2IGXYJxMzH1dMLIQ5RGELiYuxB4hLmQoII8iFBAfMgQWFAoQ1NFxJMEYOEUBZCQpjn2WdAIKHIY5BQim3b95G1BcWQ-D6hkDCEGSTM80NImM8QJCy0KwaIWYNhn0CKwiCEFDPfhZS4rgspDT0PUp9QF1I_CH1IGfYQpAFCAaQB8TGkAWMB9Fw3wNBDgUuhhxnF0CMYEftkIfQopQx61PeqZ0ih5xGCoccw9u3Tp9ALMLVP6mLohTTA0HdJGEAfURRCHwWEQp-EzK_i5dXu9eVp1Xg1NiYr3rbb0-n0TcbNWA_FN6nEm1gn7YwXhZyIneJOKrVjw6vd7Xa7e6Oz7vXo4_FeGZ9He3ufDiK3P9v7Hh9PT2TYu_r0np7pHakuTt9PzfH308sPX9zg74Oj48vrwVmB9nrXU-_qw01U3sSfJbm9mfHjywwfZft8Z1D0yMnFYHyIdZpdD08-BMExiYZfj3rf6EV_9I847H_6TMb49nyiA373UUTTz2epOtq5OfnrYJJ1b9PeX0OaeyXaO42n5ftzFubfv050vq-LLP4-6l-QQXeIPh3fZGZ0R2g-LM7PD7zeqb4tJyXbmXyTk1R3u91OZaT23Eq79blT1CZrelX6VLllY8QB0ojEdlGzj_wIrAJlBeg3wN32yvy7bZvMVdrbbLeNyNq_flk1gUh5X4lBxzF5KRxQKG06zp4ezEA3T3SZ14dlt94nrMR8o3i1eyQSMKrXPxOGD7jh7RMjkqJ9ZB8V-kgkB0Uh0ljs51ymDqgC4HkiKU-aLaoZB82L5psAhQ74WnIlzazai5q2XWRfDHmpjPOQ5hpO7WeRisos07k5GA5lzOPZU7xqtGW2EFhhtRh7eUI9nZpcKyUG-6IweRkbqZ_02oLdI9JLqksAuId4eeLRVA5NdzhU8nmUL3kmB_si5vdcWs0GVqd7QYY3Wg6ibCxysWX6rQosOdlRMB-e0wlezGGHvDAi7_HCyHS0tbuWUqvU6lGwmOzXO2u3Vv-pjfdW8EynAP38rmszjY-2iOQf8ffTtRl8wfg9VDwR-7wYb0llBb_iYjsI6tEXc--xUIkwv8C5iufSPHnqPESvOHY-9IJu3RdFxmW-7Z5UqlTkvC_VAyqLaV7Mq3tam-LnnXorzVhsa445eGmH-cjvNEPTKub1440UU_Bd6-Tvag3b-rRondaKEGfxAWrhtlPxaWpP246EWZSftg9k_e37rnVZhelbcNm9PGhFM3vxUshCDMAXMRUKoFZP97ky4L3ttirZatm3gOHWSZIpGUtTvAVuy_8DyDTOBbfSSX3nAOytSAvh1VdVOQ_2ecJHovXa-wMY3fSAnogcXMlEgDN7kZQpKfIWuSfMCwOqKrwym9XnASn_aVL4_47UJk7T6kRrnWdcgSgWmcnFQ0of69B8C5D7gJ63qkeUCaXmJB7wW6pI3UeJr9ceb9JeD4djng5avbFMZDoCUSZzaUB9PbY1j9eBay1-z0GvraJGA3uVBerrI57Gy3F7a7U6vl55skn5cXXatI7Lfi4L0JN5rIT5H1CablK6rwez1g3nClyKEVeSb1K4qXXfgr2d5vc0h_sBUl93zh0657G4BXyazMZdaqT0RBStSOexyEUOjur-y7tg4zbUt-fZUunqeNtaZ3wvZ8_0RCQinSfna9woWaXlGu2fYXi2kYJQptUbc5mCPdv8LRZ_jMx6fYNN-vKktLl5ns6-gW7d3lpl7FktTlIjlJIjUam2gcZaEz8vesJNVHKZjlC931_KdPRbg_0Z4YLcp5TGv1jph7b8L0qvHq1n3aOT3j2tlRwKMFS8uGvty4lMRaUAOKxGtqXwyMp448oJT3mz8jFXSk9trtuxX7I22bh2aaoaoFn-Y8lz8_3XrEufsW43EWY8K8zPrhwJ03xEASONEiuf52UhIhHrdFDfClRfyUOuCtHUFZHSpioAVu8NFjfC82rsRxReovAa1LxInWPIGsy9C-I5kK4B1ifeEuOtnayqn-YQfx1EqBWN2BpEvWsuMcEajE3tVRuFj2FWLITcNaDK5_esjZymnmmKqcdkVmfGW8qs3vOTLWVW_0Sg62TqMIyEqaqzqiKzrZ5Oh3JUR2ealfNJRSqSWRXeDkjLpC_y6q_49nrgwYQX9U1SA6WMhM3_j_MFdtsP_-n_F2I5EA4=",
+      "maps-white": "eJzVWltv27gSfo5_BSFgn8rUvEmUirgLx86tGzcX57LZl4KWaJsbSnIlyqn76xeUfFFSx3G2XeQcBCCo0TfkfDMcUhxn7_dvsQZTmeUqTVoOfo8cIJMwjVQyajnXV4e7vvP7x8beuTDjs-F-obR987Gxs1f2gZZTqVuOjxxgRDaS5mYxFP2CHBBqkeefRSxbzq0y4dgBIg9lEnVW8rMwLLRRuXFALFTST8N7aY6ytJi0HOyAgUgiZVrO5zSRDpiIxIxlmvTE32l2lEYtRxeJyFRee6WS-atRVpjxfaEdMFXyoZdGsuV02qedvvOxsbOzd67FTGZ9IwzIjTAtp5PGA5XIqHved8BU6EK2HM_HAXrPECWUudRzmutVr1Ij9L_QO1VDudQhAXafAx4kMhvN-mMldbRUwOgFiw6Oz-tg6r733AARihl-Tu98PMtVKHRPfFNxER8rcyXuZbIchgbus7qHKpOXMi9jOYfzZxl1Uh1tDT5Vo7FJVDLafvixSPOt0T2RiE5ag3psE_Q6yWQus6lcxcJH6DmN_kTWgOS957scM1K2tFTaa5bZZHtXmZRAhEZNZX8iQ5sD5aj2AZhMylqC0UWGnUQthz7KLStBDkjSSOZl7DHE3OOQeq4HGfYZZDTgkGNMIKe-D3lAfegHzIcBowQGvscgRhi7ECMWIIiRy12IMSMIYuy6GGKKUAAx9X0XYpe5BGKPWwzn1IXYp9yHOPAsJvCoCwlymQcJJh6BBFOEIcEe9yHBgetD4lIUQOIGHEHi4cCDxOMMQcKR7XOCKCTcI2XrBpBw7vuQ-AgTSAIcBJAiQlxIEeUIUkyxByn2uQspDnwGKSEYQUoY5pBSxgNIKXdd2_oUUoZdDikjyLaMWInnYesuRiD1PMog5ZhwSDkLCKTc9QJIuccxpDyws_uYe5Ah6hHIMPEoZJhx2w_8ADLCPQQZRQhBxngQQMYC14XMowxB5jHkQ-b5gQcZJy6GzMfYty1hkPnlmD7nPnQR8gl0sY8YdAlnBLqUYGpbHkCXMcahyzy3bAMGXZdSAl03QB50OSFl6zHo-oTZliEC3YC4tmU-gR6igQ89zHAAPexTBj0acK9cgjt715enZWdnbMwk_9BsPjw8vJ8IM06H8pvS8n2Yxs2JyHM1lbv5vdJ6167YZrvdbu-Peu279sXxfhGe9ff37w76aDDb_x4eP5yooHN19ykdJaPZ394f136edNCwZw7I-dW38OIuOrxEs7-uTj9fXOje2fX3m-tM_3l0Z7AO47-uxfHlhBxNumI3yjtk1hvcfpt16d1l9PWTd3M86w7P9wOUeONRLruEndPxLTlM2F90TG7Ppqkv7i9kP_p0un8_k9cD93qUiK_jU--kPWnfJp0_hiyb7k5jfn1grhXtnaqr4ovgX06_f52mWTfNJ-H30eCcRu0hvju-mZjRPYlPh8rsPjB2dX9SRMg7zDJefMn8u8z12u126cjmwpN71XGXV26dP5VZaxO4zAMHKCNj-7g4HX4Elgu0BpyfCjt7zdr4e027h5S7jd1kbKdvY1S9LLtAJmKgZdRyTFZIB-Q6NS1nP41moJ3FaZFVZ3S72p6sxmJ_2tk7kjEYVfP3pBGRMKJ5YmScN49sU6KPZHyQ5zIJZTcTKnFAuUhep5KIeL4zzuVg_mL-KUKQA74WQiszK7fAed9O0pVDUWjjPKW5hlPzVaT6xWSSZuZgOFShCGcv8arQltlSocZqKXt7Qp00MVmqtYy6MjdZERqVvhi1JbtntFdUVwDwCPH2xPsPamjaw6FWr6N8KSYq6spQPAppORqoD_eGDG9SFfUnY5nJLdOvrrDiZKVgIX77gB2K3MisI3KjktHW4Vpp1alVUrAc7Nez26vMf2njvZVikiYA__yuazNNjLZYyT_iH6frXPiGAT_UIpZdkY-3pFLD10JshaCSvll4j6WOpfkFwdUiU-bFU-cpuhbYhegNw9qV-USobNs9qdCJzMRA6SdUlsO8WVT309TkPx_UW2XGclt3LMArPywk_6Ub5r18cW29UfIBfE_T-M9yDtu7W_ZOK0Oos_wAtXD7UPKZX3ltvy_N8tZrn4Gqvn0_Ni7LZfoBXLYvDxr9ma335CqXEfhbPkgNcKOTDoQ24JN9bJS65bQfACeNk3iiVahM_gGghvcbUEmYSWG146rUAWwxpoFJ_VVZRQBdEYuRbLxzfwMmnT-BdCozcKViCXq2fjXRSmYN-khZ5AaUl__SbdaeJ6S8l0mR_ztSmzg9lCda42wiNOiHcmIy-ZTSRbU0PwCMntBz63b0J1LrBYkn_FYmMvQs8fXWk03Wp8PhWCRRozNWsUpGoD9RmTKgqsptzeOdj6zHHwXonTXUpMBW0EBVtRJJuJLbYlldvt54usn4cXnaNI6LQaZy0FFZqKX5HzCabTJ6kEazxo0QGlzKkdBKbDJ4ftf9APZ3538vc3i8QKoq6yKgCx7L4uPLZDbuUiOdTmXe6KdZKDOZgaPq-e1DsHEbGtjzbGV0ebxtbTN5lLO9dCpjmSyS8x2ZG1mm5RrrX-F4vpGC1KbRGQuVgH3b_U88_hyZ9fb6m-wVcWFz8yyZfQPtqr-1ycS1VpwkRmqtRrI0bQONtS5-3eoJNlHJVDLC1X5_qZLRf7rYX7FcMHrJaPKLjX7qy39jdP1o7bWPTjqPrNZqKMFQi_y-0VVTlcjSAHBYSral8MzMZOPMsUjEfOYDI7NEaGB_Jfk1U9ONUxemvALMZ78oRGa-_5p52SvmbcfSjGe5-dmZ-9LMv6GAUUbL2td5kcu-DNMkqooC5UfyUOhczq8VfZ2a8vu_XjZYFoQXl7EfUWSFImtQizvqAkPXYB7VhxdAtgZYHXgrjLt2sPL6tIB46yBS1yziaxDVprnC-GswNrPrPgqew9Q8hNEaUBnzR97Gzvw6M79LPadTH5lsqUNrOnRLnfpPA2ydTrUM-9KUl7PyQmZ7nTQZqlG1OpNJsRhUJjKelcvbAUkRD2RW-2n1B-DBVORVIWkO9RAJ5r96LibYaz79_4J_AOVTLDk=",
       "maps-red": "eJzVWltvGjkUfi6_whpppV3VaXwdj6vQFSH3QnMhl-6-VGYw4GYudMaQkl-_8gwkQwqE7LbqVkiW7flsn-8cn2PPGXb-_BpHYKKz3KRJ3cNvkAd0EqY9kwzq3tXlwVbg_fmutnOm7PC0vzs2kXvyrvZqp6iDSE90VPck8oBV2UDb6_lU9BPyQBipPP-gYl33bowNhx5QeaiTXvOx_zQMx5E1ufVArEzSScNbbQ-zdDyqe9gDXZX0jK17H9JEe2CkEjvUadJWn9PsMO3VvWicqMzklUcmmT0aZGM7vB1HHpgYfddOe7ruNRutZsd7V3v1aucsUlOddayyILfK1r1mGndNont7Zx0PTFQ01nUPY8wQfxMwHzFJmbe9fOhlalX0L8a1TF8_jKGBL1cB9xOdDaadodFRr7LIMxLtH509gilF8g3ljHMq2MpxZ8NpbkIVtdVXE4_jI2Mv1a1OHqbhCNFVYw9Mpi90XthyBhd8FbiZRr2NwS0zGNrEJIPNpx-qNN8Y3VaJaqYVqL9SQQ56lWQ619lEP9pC4pW264x0BUjf4IALzEhRlrrc2S68ydUuM62BCq2Z6M5Ih84HilldA9hM64qD0bmHHffqHl3wLdeDPJCkPZ3XPYwohlj4AlKf-5AhjCHDAYOMSgF5QCj0CUVQYEygoEEAhaQBDCQLoKScQ8kogTLwGZSBEBAjjDnEiEkEMeKCQ4wZQRBjzjHEFCEJMQ0CDjFnnEDsC4cRgnKIAyoCiKXvMNKnHBLEmQ8JJj6BBFOEIcG-CCDBkgeQcIokJFwKBImPpQ-JLxiCRCBXFwRRSIRPipJLSIQIAkgChAkkEksJKSKEQ4ooDVwpEKSYYh9SHAgOKZYBg5QQjCAlDAtIKRMSUio4d2VAIWWYC0gZQa5kxPX4PnbaZARS36cMUoGJgFQwSSAV3JeQCl9gSIV0MgRY-JBKThik0imXIeoTyDDxKWSYCVeXgYSMCB9BRhFCkDEhJWRMcg4ZDxCFzKcMQeYzFEDmB9KHTBCOIQswDlxJGGRBMXMgRACZlCKAHKGAQI4JdmWAGOREMAI5JZi6UkjIGWMCcubzopQMchb4AeScUgI5l8iHXBBSlD5zu4a5kiECeSAdUhJOIJfMrSV95EMfURlAHzMsoY8DyqBPpfChzziSxb5-tXN10Soqr4bWjvK329t3d3dvRsoO077-aiL9Jkzj7ZHKczPRW_mtiaIt5wbbjUajsTtoN7p350e74_C009jK9g8GF60L9enw4K_udPc-PLo7NrLZaZ18GMSmqa5PWDvdMtFZ6-TOHt23Lj58RsHH_cOji6teO76a3l_tn1zuRW18_Z5ff41bvb8_nsTXh0OkesMv52SSdBs2_3yI83Agyf5H1ex9OfGvj6Z7_bNdiRJ_OMj1HmFndHhDDhL2Nx2Sm9NJGqjbc93pnbR2b6f6qsuvBnHcCRsj8iXtbJnG-_OD0Z1Jtt6LTxkfT31xtW-vDG23zOX4kxKfWvdfJmm2d5qfmmnj_v3HNju8l_T8SN7sYtW9uf4wuCVxq2_s1h1jl7fH47__4vQyvRl_vvG3xMT_dPh-S38Wn84bjULh23ON75RnbV6qf9YqQoaLHi4geMBYHbsWnoXOb3GFT1aA_ipg4SYVoFgFLHyiAgxWAYuNVQHK1cCgujRBM-DOdkUFO9suxhbR2AVhV-m47VY-LKpAJ6ob6V7ds9lYeyCPUlv3dtPeFDSyOB1n5R2mUYZvN2Iev1_tHOoYDMr129qqnrJq-9jqON8-dEWBPtTxfp7rJNR7mTKJB4r9_rIhiYpnJ8esH8wezK5qBHngy1hFxk4XGm6VPd1X48h6T3kuIbX9Ilad8WiUZna_3zehCqfPESvRjtrDgAqth77_AaNmmtgsjSLd29O5zcahNemzdnugt2L0I9dHAFhA_A-Yd-5M3zb6_ci8jPOFGpneng7VglGL2UB1up9J8To1vc5oqDO9oQtWBzyScr1g3v0_MNmByq3Omiq3JhlsbLDHUVVuZS94mOwH0Nsp5X8u_N5oNUoTgP977HXepgYbbOZv8YsuO-v8mSY_iFSs91Q-3JBLBV8xsusEZe_PM_CRjmJtv4N5I5UZ--zh8xRdMe2862cadk_nI2WyTQPTOEp0promesLlYZqfZ9fdNLX5fzfrjbFDvak-5uBHRcx7fqgeZrV8_oZ_bfQduE_T-GPxmu5qfz3UWqUk1Hu4izq4axSEZtkBV-9o-5AgcG1gyqv6u9pFsVPfgovGxX6tM3Wpsdzkugc-6zsdAVxrpl0VWXDimrVibLHsWxCQ2nE8ikxobP4WoJr_GzBJmGnlRsdlVgi4vFUNk-qjIuEC9lSsBrr2mv8GbDprgXSiM3BpYg3aLtU3iozOanRhsMotKPIkhdqcPE9I-c-TIr8cKfE8KfrLkQqeJ8V-OVLyeVL8VyNF0POk_F-NFF7H6a64KtZORyoCnVCPbKafUjovw_1bQNATerwqR2eko2hO4gm_RxEZWk2coGeZrzDbOoZpvz9USa_WHJrYJAPQGZnMWFB-ONiY6-sAOdkWjPialQK7JD8oE-sqCR_7XT6_2r9ceLpO-GFx0asdjbuZyUHTZGGk7YZCk1rbJCZNcjBUEw1-J3SL8D9Wb8kFy7icvpNdZxPl3j5BkWMwOgmnIO2D8uz-gVph67TSTXvT2rVSEbjQAxUZtU4js3zWW7C79fBbVNPvWG4RtKAZ3e_r0Dqmp_2-zkwyyGuvf8d4C5M_ChYqisB-pGOd2EKMOZ3lOlnc9eWXq_kOnOvl4YPO88pZe50ZROlE57VOmoU60xk4LNsv3TM9raJle2burMFvIBw6GZ3s7tU403m-GAR-3O5Ye_Xpukv0I__iTr0x_WDBCdJJYeFZ7Fr0EEfH7T_t3iYKF8mU1TXC18ywVCOzsFfGwmepr70gdXVka82hMgnYddUfEt1eJu_au4-Kxy6enSbTr6BR1jcWmXAnxXFidRSZgS5EW0NjqXu9bNetvfG4GIHLc_TCJIMferC8IFTgtTcaJzT5zkI_1eW_Ebp6ZWk3Do-bC1JHzvP6kcpva3tmYhJd-uJB0bMphRUrk7Urx-5ULFfetzpLVFQelN9labp26bEtEhaz1c_HKrP332dd9oJ1G7G2w2lu_-vKHW1nd1NgjY10JZMwznVHh2nSK7OYxQt9X0W5nuVAOlFqi2RFNc_58MFrnjr6FkUqX7uWoOYptTmGLsEsfNaaA9kSYHnmPmL40smKXM8c4i-D6KgikViCKIPmIyZYgnGeXdWRXIWpaAijJaDC5gvaxt4s9TLL-6waU52ZbDim-r2Tbjim-jGVLRtTbsOOtkUiqUgeuVozTfpmUO7OZDSeT6oTHU-L7e2BZBx3dVb3gvl_fb4B7k9UXma-Z1AR-Gj2Z5b5AjvbT_829g-N8vg5",
-      "pinnacle": "eJzVWm1v2zYQ_lz_CkLAgA1lGvFVZBF3cJz3JU0ap8m6LwVj0TYXSvIk2o7z6wdKdiK3tuNgLboiAEFSD8l77nhH-pid3-8TC8Y6L0yWNgP0JgyATrtZbNJ-M_h4dbAlgt_fNXYulBuc93ZHxvov7xqvdso6sHqsbTOQPABO5X3trudTkc9hALpWFcV7lehmcGNcdxAAVXR1Gref-s-73ZF1pnABSJRJO1n3TrvDPBsNmwEKwK1KY-Oawfss1QEYqtQNdJaeqb-z_DCLm4EdpSo3Re2TSWef-vnIDe5GNgBjoydnWaybQbt12u4E7xqvXu1cWDXVeccpBwqnXDNoZ8mtSXW8d9EJwFjZkW4GiEks8RuEIhQSFGwvH3mVOWVfPuzU9PTjEMqwXAXcT3Xen3YGRtv4aQ0sw7UC7R9d1ARilL6RSEgcMrxq2MVgWpiusmfq3iSj5Mi4K3Wn08dZmEArZTwwub7URWnIGTxiq8DtzMYbg09Nf-BSk_Y3n36gsmJj9JlKVTurQXm0DvoxzXWh87F-MoVcPXlnqGtA8oZgwSJEq7IctLNdupKvXeVaA9V1Zqw7Q931DlDO6hvA5VrXvIvM3es4bgZkwbF8TxiANIt10Qz8DoQo4hEknHFIBCeQhghBigSFlMgIMoEJ5JiEMEIIw4gIASNJBBSSCihDxKAkjEFJCYaSEQal4BRKEUUQhQgxiEIqQ4hCFjGIEMUhRIgxBBEJQwkREYJBxCjDEPHIY6KIMIgEiQREknuM5IRBHDLKIUaYY4gRCRHEiEcCYiSZgJhQIiFmoa8zEvq6jEKIOZIcYh7REOIo9PUIhwTiiOOyZBLiKBICYhEiDLFEUkISYswgCQkRvoxCSBBBHBIkIgYJkoJCgjEKfYkjSDBFESSERhISEjHmS0EgoYhFkFAc-pJi38M58uqmGBLOCYUkQn6GiEoMScS4hCTinPgyQpBE0ssjUMQhkQxTSKRXPw0Jx5Ai7E2GaOTrUkhIccRDSEkYhpDSSEpIqWTMl0JAykRIIOWEhpByGgpIuZAc0ggzBKlASPgSU0hFOb-IIgGplJGALAwFhgxh5EsRUshwRDFkBCPiy0hCRimNIKOclaWkkFHBBWSMEAwZkyGHLMK4LDn1u4v6koYYMiE9UmKGIZPUryV5yCEPiRSQI4ok5EgQCjmREYecslCWTvBq5-PlaVl5NXBuWLzd3p5MJm-Gyg2ynr43Vr_pZsn2UBWFGeut4s5Yu-V9ZrvVarV2-2etePLhaHfUPe-0xJ97vPhws7vvDnLx6XowPj56P-m1zGl4_NC9M9OrTydXIjFtdX1Cz7ItYy9OTybu6OH08v3fofhz__Do8mN8lnycPnzcP7nas2fo-g92fW9HF5_0iSE319O_7GUWH6af1N37nOHJ6e3xvbs9Or6IBwe4nyqj7aXok4dJLz6RlPBBv9B7mF6QwQ0-SOlfZIBvzseZUHcfdCc-Od29u9-6OmGXY9tpq79OJu1U_TM45cetYesmbf_Ro_l4a5zwLVGMRmj39PrYPbTpXTTGo89TwXP-x-Qh38uK_tnUPpzvFp_jcPfzdT--SZC9-nTyfmgIzXvF-fk-a58mN-dxyA_yDI3Go2hrfG_Gabb1OWy1Ws1maYjtuSV2qtO6qMwya5Vxx4cgH1ACYJxOfAvNQuTXuNJ7a0C-Cli6Ug0YrQKWHlMDilXAcsPVgHI1UNSXxrOT99XOdk0FO9s-UJch3UdyX-n4bVh9LKtAp-rW6rgZuHykA1DYzDWD3SyeglaeZKO8ugW1qjPAj5gfAq92DnUC-tX6Z9qpWDm1fex0Umwf-qJEH-pkvyh02tV7uTJpAEo_eNmQVCWz42fWD2YfZpc9jALwz0hZ46alJuYNv8qe7qmRdcGXPJeQ2n4Rq85oOMxyt9_rma7qTp8jVqE9tccBNVqPff8DRu0sdXlmrY73dOHyUdeZ7Fm7PdJbMfqJ6xMALCD-B8w7E9NzrV7PmpdxvlRDE-_prlowajkbqE_3IyleZybuDAc61xu6YH3AEynfC-bd_wOTHajC6bytCmfS_sYGexpV51b1gsfJvgO9nUr-58LvjVbDLAXov8de722qv8Fm_hq_6LKzzh9p8gOrEr2nisGGXGr4mpF9J6h6f5yBj7RNtPsG5rUqN-7Zw-dLdM20864fadg9XQyVyTcNTCOb6lzdGvsFl8dpfpxdd7PMFf_drDfGDfSm-piDnxQx7_muepjVinma4NroCXjIsuTP8re-r316rJ1WkpDg8S7q4b5REpqlGHy9o91jlsG3gamu6u8al-VOfQsuW5f7jc7UJ9cKU-gY_K0n2gLUaGe3yjpw4puNcmy57FsgeOM4GVrTNa54C8JG9AswaTfXyo9OqtQS8LmvBiL1T2XWBuypRPV14zX_Bbhs1gLZWOfgyiQanPlk4dAanTfowmBVOFAmW0q1eXm-IMWfJ4V_OlLR86TIT0dKPE-K_nSk5POk2M9GCofPk-I_Gym0jtOkvCo2qnt5Vw9drr-k9KEK928BDhfpibAuR2eorZ2TQGyFiCxcTRyzZ5mvMNs6hlmvN1Bp3GgPTGLSPugMTW4cqB4fNubKF-Su3i_mc7xGYegFX7Dwa1qx8S8DoErdq7SrVzAg6xgMytte42h0m5sCtE3etdptKDlunJnUZGkBBmqswa9YbGH52-p9ieuf_OuAl13nY-V_goIy0WB02p2CrAeqA3w9ff-KUqf_MrXQdWq5zeJp41opCy51X1mj1qlkltV6C3a3Hv8W9fQrJluYLqhG93q66zzV815P5ybtF43XvyK2hfhvJQtlLdi3OtGpK8WY01mhlLWbaKaYx8eh57Wz9lbTt9lYF41Olnd1rnNwWLVfumtireyyXTP3WRT-AroDL6QX3v9EznVRLAaD77hB1t6Bbv1t-kkD5eV6YwWgBVudZePSyrMotugmno_fg9r_rij9JFdON8i6GV77r55mGQGX8H_BPlh7Z7rV1jXaA2VSsOurmwa8lxltFZvlAq-9D6lk5MPbeTq9B62qvrHMtBT5OHXaWtPXpWjreCxV8gvJrL0H-ZiBGudDHx1M2v9O2v-GbNDaG5Cng781nS89_ZvSqV9-zlqHx-0FPtZ7bs-q4q6xZ8Ym1ZUvH5Q9m5JbsTJeu3Lij9Zq5X2n81TZ6rT9JkuTtUuPXJn6mK3-YaRy9_Bt1qUvWLeVaDeYFu6_rtzRbnbLBc44q2s5iVGhO7qbpXGVDy1TAz1lCz3LpnRs5sq0Rz1j-vh0Nk9CfY3CtXezJah5cm6OIUswCw9kcyBdAqyO7ScMWzpZmTWaQ_gyiLY1iaIliCrUPmHEEoz3-bqO5CpMTUMoXAIqbb6gbRTMkjizDNKqMfWZ8YZj6i-nZMMx9WdZumxMtQ072pUpqTIN5WvtLO2ZfrU70-FoPqlOdTItt3cA0lFyq_NmIGb2_hq4P1ZFlUOfQ9HsgXZne77AzvaX_8L2LwyvIiY="
+      "endgame-pinnacle": "eJzVWm1v2zYQ_lz_CkLAgA1lGvFVZBF3cJz3JU0ap8m6LwVj0TYXSvIk2o7z6wdKdiK3tuNgLboiAEFSD8l77nhH-pid3-8TC8Y6L0yWNgP0JgyATrtZbNJ-M_h4dbAlgt_fNXYulBuc93ZHxvov7xqvdso6sHqsbTOQPABO5X3trudTkc9hALpWFcV7lehmcGNcdxAAVXR1Gref-s-73ZF1pnABSJRJO1n3TrvDPBsNmwEKwK1KY-Oawfss1QEYqtQNdJaeqb-z_DCLm4EdpSo3Re2TSWef-vnIDe5GNgBjoydnWaybQbt12u4E7xqvXu1cWDXVeccpBwqnXDNoZ8mtSXW8d9EJwFjZkW4GiEks8RuEIhQSFGwvH3mVOWVfPuzU9PTjEMqwXAXcT3Xen3YGRtv4aQ0sw7UC7R9d1ARilL6RSEgcMrxq2MVgWpiusmfq3iSj5Mi4K3Wn08dZmEArZTwwub7URWnIGTxiq8DtzMYbg09Nf-BSk_Y3n36gsmJj9JlKVTurQXm0DvoxzXWh87F-MoVcPXlnqGtA8oZgwSJEq7IctLNdupKvXeVaA9V1Zqw7Q931DlDO6hvA5VrXvIvM3es4bgZkwbF8TxiANIt10Qz8DoQo4hEknHFIBCeQhghBigSFlMgIMoEJ5JiEMEIIw4gIASNJBBSSCihDxKAkjEFJCYaSEQal4BRKEUUQhQgxiEIqQ4hCFjGIEMUhRIgxBBEJQwkREYJBxCjDEPHIY6KIMIgEiQREknuM5IRBHDLKIUaYY4gRCRHEiEcCYiSZgJhQIiFmoa8zEvq6jEKIOZIcYh7REOIo9PUIhwTiiOOyZBLiKBICYhEiDLFEUkISYswgCQkRvoxCSBBBHBIkIgYJkoJCgjEKfYkjSDBFESSERhISEjHmS0EgoYhFkFAc-pJi38M58uqmGBLOCYUkQn6GiEoMScS4hCTinPgyQpBE0ssjUMQhkQxTSKRXPw0Jx5Ai7E2GaOTrUkhIccRDSEkYhpDSSEpIqWTMl0JAykRIIOWEhpByGgpIuZAc0ggzBKlASPgSU0hFOb-IIgGplJGALAwFhgxh5EsRUshwRDFkBCPiy0hCRimNIKOclaWkkFHBBWSMEAwZkyGHLMK4LDn1u4v6koYYMiE9UmKGIZPUryV5yCEPiRSQI4ok5EgQCjmREYecslCWTvBq5-PlaVl5NXBuWLzd3p5MJm-Gyg2ynr43Vr_pZsn2UBWFGeut4s5Yu-V9ZrvVarV2-2etePLhaHfUPe-0xJ97vPhws7vvDnLx6XowPj56P-m1zGl4_NC9M9OrTydXIjFtdX1Cz7ItYy9OTybu6OH08v3fofhz__Do8mN8lnycPnzcP7nas2fo-g92fW9HF5_0iSE319O_7GUWH6af1N37nOHJ6e3xvbs9Or6IBwe4nyqj7aXok4dJLz6RlPBBv9B7mF6QwQ0-SOlfZIBvzseZUHcfdCc-Od29u9-6OmGXY9tpq79OJu1U_TM45cetYesmbf_Ro_l4a5zwLVGMRmj39PrYPbTpXTTGo89TwXP-x-Qh38uK_tnUPpzvFp_jcPfzdT--SZC9-nTyfmgIzXvF-fk-a58mN-dxyA_yDI3Go2hrfG_Gabb1OWy1Ws1maYjtuSV2qtO6qMwya5Vxx4cgH1ACYJxOfAvNQuTXuNJ7a0C-Cli6Ug0YrQKWHlMDilXAcsPVgHI1UNSXxrOT99XOdk0FO9s-UJch3UdyX-n4bVh9LKtAp-rW6rgZuHykA1DYzDWD3SyeglaeZKO8ugW1qjPAj5gfAq92DnUC-tX6Z9qpWDm1fex0Umwf-qJEH-pkvyh02tV7uTJpAEo_eNmQVCWz42fWD2YfZpc9jALwz0hZ46alJuYNv8qe7qmRdcGXPJeQ2n4Rq85oOMxyt9_rma7qTp8jVqE9tccBNVqPff8DRu0sdXlmrY73dOHyUdeZ7Fm7PdJbMfqJ6xMALCD-B8w7E9NzrV7PmpdxvlRDE-_prlowajkbqE_3IyleZybuDAc61xu6YH3AEynfC-bd_wOTHajC6bytCmfS_sYGexpV51b1gsfJvgO9nUr-58LvjVbDLAXov8de722qv8Fm_hq_6LKzzh9p8gOrEr2nisGGXGr4mpF9J6h6f5yBj7RNtPsG5rUqN-7Zw-dLdM20864fadg9XQyVyTcNTCOb6lzdGvsFl8dpfpxdd7PMFf_drDfGDfSm-piDnxQx7_muepjVinma4NroCXjIsuTP8re-r316rJ1WkpDg8S7q4b5REpqlGHy9o91jlsG3gamu6u8al-VOfQsuW5f7jc7UJ9cKU-gY_K0n2gLUaGe3yjpw4puNcmy57FsgeOM4GVrTNa54C8JG9AswaTfXyo9OqtQS8LmvBiL1T2XWBuypRPV14zX_Bbhs1gLZWOfgyiQanPlk4dAanTfowmBVOFAmW0q1eXm-IMWfJ4V_OlLR86TIT0dKPE-K_nSk5POk2M9GCofPk-I_Gym0jtOkvCo2qnt5Vw9drr-k9KEK928BDhfpibAuR2eorZ2TQGyFiCxcTRyzZ5mvMNs6hlmvN1Bp3GgPTGLSPugMTW4cqB4fNubKF-Su3i_mc7xGYegFX7Dwa1qx8S8DoErdq7SrVzAg6xgMytte42h0m5sCtE3etdptKDlunJnUZGkBBmqswa9YbGH52-p9ieuf_OuAl13nY-V_goIy0WB02p2CrAeqA3w9ff-KUqf_MrXQdWq5zeJp41opCy51X1mj1qlkltV6C3a3Hv8W9fQrJluYLqhG93q66zzV815P5ybtF43XvyK2hfhvJQtlLdi3OtGpK8WY01mhlLWbaKaYx8eh57Wz9lbTt9lYF41Olnd1rnNwWLVfumtireyyXTP3WRT-AroDL6QX3v9EznVRLAaD77hB1t6Bbv1t-kkD5eV6YwWgBVudZePSyrMotugmno_fg9r_rij9JFdON8i6GV77r55mGQGX8H_BPlh7Z7rV1jXaA2VSsOurmwa8lxltFZvlAq-9D6lk5MPbeTq9B62qvrHMtBT5OHXaWtPXpWjreCxV8gvJrL0H-ZiBGudDHx1M2v9O2v-GbNDaG5Cng781nS89_ZvSqV9-zlqHx-0FPtZ7bs-q4q6xZ8Ym1ZUvH5Q9m5JbsTJeu3Lij9Zq5X2n81TZ6rT9JkuTtUuPXJn6mK3-YaRy9_Bt1qUvWLeVaDeYFu6_rtzRbnbLBc44q2s5iVGhO7qbpXGVDy1TAz1lCz3LpnRs5sq0Rz1j-vh0Nk9CfY3CtXezJah5cm6OIUswCw9kcyBdAqyO7ScMWzpZmTWaQ_gyiLY1iaIliCrUPmHEEoz3-bqO5CpMTUMoXAIqbb6gbRTMkjizDNKqMfWZ8YZj6i-nZMMx9WdZumxMtQ072pUpqTIN5WvtLO2ZfrU70-FoPqlOdTItt3cA0lFyq_NmIGb2_hq4P1ZFlUOfQ9HsgXZne77AzvaX_8L2LwyvIiY="
     }
   },
   "pipeline": {
@@ -7480,7 +7663,7 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T12:53:28.065Z"
+    "checkedAt": "2026-11-27T16:01:40.258Z"
   },
   "filter": {
     "slots": {
@@ -7677,7 +7860,7 @@
     }
   },
   "stepPlans": {
-    "until-12": {
+    "leveling-1-12": {
       "goals": [
         "Level with Essence Drain and Contagion; life and a 3-link first.",
         "Do not chase chaos damage before resistances."
@@ -7709,7 +7892,7 @@
         }
       ]
     },
-    "until-28": {
+    "leveling-12-28": {
       "goals": [
         "Add Efficacy and Controlled Destruction to Essence Drain.",
         "Cap resistances and keep Despair on the boss."
@@ -7751,7 +7934,7 @@
         }
       ]
     },
-    "until-68": {
+    "leveling-38-68": {
       "goals": [
         "Six-link Essence Drain and reach 2,000 life; cap resistances.",
         "Void Sphere and Wither are utility, not damage links."
@@ -7795,7 +7978,7 @@
         }
       ]
     },
-    "maps-early": {
+    "maps-white": {
       "goals": [
         "A 5-link clears white maps; start the 6-link.",
         "Reach 3,000 life and cap resistances."
@@ -7881,7 +8064,7 @@
         }
       ]
     },
-    "pinnacle": {
+    "endgame-pinnacle": {
       "goals": [
         "Cap chaos resistance at 75% and reach 5,000 life.",
         "Use 21/20 Essence Drain and awakened chaos supports."
@@ -7925,6 +8108,13 @@
         }
       ]
     }
+  },
+  "stepAliases": {
+    "until-12": "leveling-1-12",
+    "until-28": "leveling-12-28",
+    "until-68": "leveling-38-68",
+    "maps-early": "maps-white",
+    "pinnacle": "endgame-pinnacle"
   },
   "gemInfo": {
     "Arcane Surge": {
@@ -8217,7 +8407,7 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "63651767ade5",
+  "seedHash": "8b619770f774",
   "guide": {
     "summary": {
       "text": "Essence Drain Occultist is a chaos damage-over-time build that measures 111.4k at red maps and 159.3k at pinnacle. The damage keeps working while you move, and no unique is required.",
@@ -8227,20 +8417,20 @@
         "mainSkill",
         "ascendancyId",
         "gates.maps-red.metrics.dps",
-        "gates.pinnacle.metrics.dps"
+        "gates.endgame-pinnacle.metrics.dps"
       ],
-      "factsHash": "a579ebda2cc18acb"
+      "factsHash": "c4b4a3a24e3d8c38"
     },
     "leveling": {
       "text": "Level with Essence Drain and Contagion, then add the DoT supports as they unlock. The first checkpoint measures 344 life and 60 damage; the second measures 478.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
-        "gates.until-12.metrics.life",
-        "gates.until-12.metrics.dps",
-        "gates.until-28.metrics.dps"
+        "gates.leveling-1-12.metrics.life",
+        "gates.leveling-1-12.metrics.dps",
+        "gates.leveling-12-28.metrics.dps"
       ],
-      "factsHash": "d2e5a16183aa1982"
+      "factsHash": "ae7951056c3bbed6"
     },
     "maps": {
       "text": "At red maps the build measures 111.4k damage, 13309 effective life and 5003 physical max hit. Spread Contagion, keep Wither on the rare, and cap the resistances.",
@@ -8258,11 +8448,11 @@
       "status": "auto-retry",
       "signed": null,
       "facts": [
-        "gates.pinnacle.metrics.dps",
-        "gates.pinnacle.metrics.ehp",
-        "gates.pinnacle.metrics.maxHit"
+        "gates.endgame-pinnacle.metrics.dps",
+        "gates.endgame-pinnacle.metrics.ehp",
+        "gates.endgame-pinnacle.metrics.maxHit"
       ],
-      "factsHash": "5bea5600dc0de752"
+      "factsHash": "5c192758a7a0c727"
     }
   },
   "medal": "A"

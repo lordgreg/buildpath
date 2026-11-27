@@ -51,74 +51,186 @@ tree:
     - increased maximum life
     - increased skill effect duration
 
-leveling:
-  brackets:
-    - until: 12
-      skills: [Summon Skeletons]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Summon Skeletons, Minion Damage, Added Fire Damage]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
-        - slot: Helmet
-          gems: [Clarity]
-        - slot: Boots
-          gems: [Raise Zombie]
-      flasks:
-        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
-        - { slot: mana, name: "Small Mana Flask", note: "Skeletons are expensive early." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
-    - until: 28
-      skills: [Raise Spectre]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Raise Spectre, Minion Damage, Minion Speed, Minion Life]
-        - slot: Weapon 1
-          gems: [Flesh Offering, Desecrate]
-        - slot: Helmet
-          gems: [Clarity, Convocation]
-        - slot: Boots
-          gems: [Flame Dash, Arcane Surge]
-      flasks:
-        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 68
-      skills: [Raise Spectre]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Raise Spectre, Minion Damage, Minion Life, Minion Speed, Feeding Frenzy, Elemental Focus]
-        - slot: Weapon 1
-          gems: [Flesh Offering, Generosity]
-        - slot: Helmet
-          gems: [Desecrate]
-        - slot: Gloves
-          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
-        - slot: Boots
-          gems: [Flame Dash, Arcane Surge]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
-        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 100
-      skills: [Raise Spectre]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Raise Spectre, Minion Damage, Minion Life, Minion Speed, Feeding Frenzy, Elemental Focus]
-        - slot: Weapon 1
-          gems: [Flesh Offering, Generosity]
-        - slot: Helmet
-          gems: [Desecrate]
-        - slot: Gloves
-          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
-        - slot: Boots
-          gems: [Flame Dash, Arcane Surge]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
-        - { slot: utility, name: "Quartz Flask", note: "Phasing." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+# Steps (PLAN-BUILDS.md §9.3). Each step is read and measured at its `level`;
+# the pre-refactor checkpoints survive as `aliases`, so old links still land.
+steps:
+  leveling:
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Summon Skeletons
+        measure: true
+        aliases: [until-12]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Summon Skeletons
+              - Minion Damage
+              - Added Fire Damage
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+          - slot: Helmet
+            gems:
+              - Clarity
+          - slot: Boots
+            gems:
+              - Raise Zombie
+        flasks:
+          - slot: life
+            name: Medium Life Flask
+            note: Small until level 3.
+          - slot: mana
+            name: Small Mana Flask
+            note: Skeletons are expensive early.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Act 2 quest reward.
+      - id: leveling-12-28
+        level: 28
+        main: Raise Spectre
+        trigger: { from: 12, skill: Raise Spectre }
+        measure: true
+        aliases: [until-28]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Raise Spectre
+              - Minion Damage
+              - Minion Speed
+              - Minion Life
+          - slot: Weapon 1
+            gems:
+              - Flesh Offering
+              - Desecrate
+          - slot: Helmet
+            gems:
+              - Clarity
+              - Convocation
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+      - id: leveling-38-68
+        level: 68
+        main: Raise Spectre
+        trigger: { from: 28 }
+        measure: true
+        aliases: [until-68]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Raise Spectre
+              - Minion Damage
+              - Minion Life
+              - Minion Speed
+              - Feeding Frenzy
+              - Elemental Focus
+          - slot: Weapon 1
+            gems:
+              - Flesh Offering
+              - Generosity
+          - slot: Helmet
+            gems:
+              - Desecrate
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: Level 1-5 only.
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Instant prefix.
+          - slot: mana
+            name: Hallowed Mana Flask
+            note: Drops from level 42.
+          - slot: utility
+            name: Quartz Flask
+            note: Phasing.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+  maps:
+    sub:
+      - id: maps-white
+        level: 80
+        main: Raise Spectre
+        trigger: { from: 68 }
+        measure: true
+        aliases: [maps-early]
+        gems: &id001
+          - slot: Body Armour
+            gems:
+              - Raise Spectre
+              - Minion Damage
+              - Minion Life
+              - Minion Speed
+              - Feeding Frenzy
+              - Elemental Focus
+          - slot: Weapon 1
+            gems:
+              - Flesh Offering
+              - Generosity
+          - slot: Helmet
+            gems:
+              - Desecrate
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: Level 1-5 only.
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
+        flasks: &id002
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: Drops from level 65.
+          - slot: utility
+            name: Quartz Flask
+            note: Phasing.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+      - id: maps-red
+        level: 90
+        main: Raise Spectre
+        trigger: { from: 80 }
+        measure: true
+        gems: *id001
+        flasks: *id002
+  endgame:
+    sub:
+      - id: endgame-pinnacle
+        level: 96
+        main: Raise Spectre
+        trigger: { from: 90 }
+        measure: true
+        aliases: [pinnacle]
+        gems: *id001
+        flasks: *id002
 
 ascendancyOrder:
   - { node: mindless-aggression, lab: 1 }
@@ -140,17 +252,17 @@ guide:
     text: >-
       Spectre Necromancer is a low-APM minion build that measures
       {{gates.maps-red.metrics.dps|dps}} at red maps and
-      {{gates.pinnacle.metrics.dps|dps}} at pinnacle with four Slave Driver
+      {{gates.endgame-pinnacle.metrics.dps|dps}} at pinnacle with four Slave Driver
       spectres. No unique is required.
-    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.endgame-pinnacle.metrics.dps]
   leveling:
     text: >-
       Level with skeletons until Raise Spectre unlocks, then bring the Slave
       Drivers with you. The first checkpoint measures
-      {{gates.until-12.metrics.life|int}} life and
-      {{gates.until-12.metrics.dps|dps}} damage; the second measures
-      {{gates.until-28.metrics.dps|dps}}.
-    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+      {{gates.leveling-1-12.metrics.life|int}} life and
+      {{gates.leveling-1-12.metrics.dps|dps}} damage; the second measures
+      {{gates.leveling-12-28.metrics.dps|dps}}.
+    facts: [gates.leveling-1-12.metrics.life, gates.leveling-1-12.metrics.dps, gates.leveling-12-28.metrics.dps]
   maps:
     text: >-
       At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
@@ -161,11 +273,11 @@ guide:
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
   bossing:
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
-      {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Refresh the
+      Pinnacle measures {{gates.endgame-pinnacle.metrics.dps|dps}} damage with
+      {{gates.endgame-pinnacle.metrics.ehp|int}} effective life and
+      {{gates.endgame-pinnacle.metrics.maxHit|int}} physical max hit. Refresh the
       spectres before the burst and keep Flesh Offering up.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+    facts: [gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit]
 changelog:
   - season: covens
     date: "2026-11-26"

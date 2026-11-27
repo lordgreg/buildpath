@@ -20,6 +20,7 @@ import {
   applyBuildStaleness,
   leagueWindowOpen,
 } from '../../src/core/builds/staleness.ts';
+import { bandFor, resolveSteps } from '../../src/core/builds/steps.ts';
 
 const root = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const seedsDir = resolve(root, 'src/builds');
@@ -214,6 +215,9 @@ function deriveGearFilter(seed) {
  * name a gem or flask that the game does not let you use yet.
  */
 function checkAvailability(seed, file) {
+  // A migrated seed lists its gems on `steps`, where the resolver in
+  // src/core/builds/steps.ts makes the same availability check.
+  if (!seed.leveling) return;
   for (const bracket of seed.leveling.brackets) {
     for (const group of bracket.skillGroups ?? []) {
       for (const gem of group.gems) {
@@ -257,6 +261,8 @@ function checkAvailability(seed, file) {
  * levels with.
  */
 function checkSwaps(seed, file) {
+  // `steps` replaces swaps: a change is a sub-step, not a note inside one.
+  if (!seed.leveling) return;
   const swaps = seed.leveling.swaps ?? [];
   if (swaps.length === 0) return;
   const bracketGems = new Set();
@@ -301,6 +307,7 @@ function checkSwaps(seed, file) {
 
 /** Declared leveling brackets must be ordered, unique and end at 100. */
 function checkBrackets(seed, file) {
+  if (!seed.leveling) return;
   const brackets = seed.leveling.brackets;
   let previous = 0;
   for (const bracket of brackets) {
@@ -432,8 +439,49 @@ function resolveWickerman(seed, file) {
 }
 
 /**
- * Resolve the per-checkpoint step plan: goals, gear targets and crafting. The
- * seed names a profile; every checkpoint in checkpoints.yaml must be covered.
+ * One band's plan, validated. The profile is keyed by checkpoint band, so a
+ * migrated seed reads the plan of the band its step sits in (D36).
+ */
+function planFor(profile, profileId, band, file) {
+  const plan = profile[band];
+  if (!plan) {
+    console.error(
+      `build seed invalid: ${file}\n  stepPlan profile "${profileId}" is missing ${band}`,
+    );
+    process.exit(1);
+  }
+  if (!Array.isArray(plan.goals) || plan.goals.length === 0) {
+    console.error(
+      `build seed invalid: ${file}\n  stepPlan ${profileId}/${band} has no goals`,
+    );
+    process.exit(1);
+  }
+  if (!Array.isArray(plan.lookFor) || plan.lookFor.length === 0) {
+    console.error(
+      `build seed invalid: ${file}\n  stepPlan ${profileId}/${band} has no lookFor`,
+    );
+    process.exit(1);
+  }
+  for (const entry of [...plan.lookFor, ...(plan.crafting ?? [])]) {
+    if (!entry.slot || !Array.isArray(entry.mods) || entry.mods.length === 0) {
+      console.error(
+        `build seed invalid: ${file}\n  stepPlan ${profileId}/${band} has a slot without mods`,
+      );
+      process.exit(1);
+    }
+  }
+  return {
+    goals: plan.goals,
+    lookFor: plan.lookFor,
+    ...(plan.crafting?.length ? { crafting: plan.crafting } : {}),
+  };
+}
+
+/**
+ * Per-step plans. A seed that declares `steps` gets one entry per sub-step,
+ * keyed by the step id the page reads, taken from the plan of its band. A seed
+ * that has not migrated keeps one entry per checkpoint, which is what the
+ * committed JSON holds.
  */
 function resolveStepPlans(seed, file) {
   const profileId = seed.stepPlan;
@@ -445,39 +493,17 @@ function resolveStepPlans(seed, file) {
     process.exit(1);
   }
   const plans = {};
-  for (const checkpoint of checkpointIds) {
-    const plan = profile[checkpoint];
-    if (!plan) {
-      console.error(
-        `build seed invalid: ${file}\n  stepPlan profile "${profileId}" is missing ${checkpoint}`,
-      );
-      process.exit(1);
-    }
-    if (!Array.isArray(plan.goals) || plan.goals.length === 0) {
-      console.error(
-        `build seed invalid: ${file}\n  stepPlan ${profileId}/${checkpoint} has no goals`,
-      );
-      process.exit(1);
-    }
-    if (!Array.isArray(plan.lookFor) || plan.lookFor.length === 0) {
-      console.error(
-        `build seed invalid: ${file}\n  stepPlan ${profileId}/${checkpoint} has no lookFor`,
-      );
-      process.exit(1);
-    }
-    for (const entry of [...plan.lookFor, ...(plan.crafting ?? [])]) {
-      if (!entry.slot || !Array.isArray(entry.mods) || entry.mods.length === 0) {
-        console.error(
-          `build seed invalid: ${file}\n  stepPlan ${profileId}/${checkpoint} has a slot without mods`,
-        );
-        process.exit(1);
+  if (seed.steps) {
+    const bands = checkpointIds.map((id) => ({ id, ...checkpointConfig[id] }));
+    for (const root of Object.values(seed.steps)) {
+      for (const step of root.sub ?? []) {
+        plans[step.id] = planFor(profile, profileId, bandFor(step.level, bands).id, file);
       }
     }
-    plans[checkpoint] = {
-      goals: plan.goals,
-      lookFor: plan.lookFor,
-      ...(plan.crafting?.length ? { crafting: plan.crafting } : {}),
-    };
+    return plans;
+  }
+  for (const checkpoint of checkpointIds) {
+    plans[checkpoint] = planFor(profile, profileId, checkpoint, file);
   }
   return plans;
 }
@@ -519,17 +545,30 @@ function sourceForGem(name, className, entry) {
 
 function describeGems(seed) {
   const names = new Set();
-  for (const bracket of seed.leveling.brackets) {
-    for (const group of bracket.skillGroups ?? []) {
-      for (const gem of group.gems) names.add(gemName(gem));
+  if (seed.leveling) {
+    for (const bracket of seed.leveling.brackets) {
+      for (const group of bracket.skillGroups ?? []) {
+        for (const gem of group.gems) names.add(gemName(gem));
+      }
+      for (const gem of bracket.skills ?? []) names.add(gemName(gem));
     }
-    for (const gem of bracket.skills ?? []) names.add(gemName(gem));
-  }
-  // Swap gems are shown on the guide too, so their colour, availability and
-  // description have to be present even when they never appear in a gate.
-  for (const swap of seed.leveling.swaps ?? []) {
-    names.add(swap.gem);
-    if (swap.replaces) names.add(swap.replaces);
+    // Swap gems are shown on the guide too, so their colour, availability and
+    // description have to be present even when they never appear in a gate.
+    for (const swap of seed.leveling.swaps ?? []) {
+      names.add(swap.gem);
+      if (swap.replaces) names.add(swap.replaces);
+    }
+  } else {
+    // A migrated seed names its gems on the steps; the guide shows them with
+    // the same provenance a bracket list gets.
+    for (const root of Object.values(seed.steps ?? {})) {
+      for (const step of root.sub ?? []) {
+        names.add(step.main);
+        for (const group of step.gems ?? []) {
+          for (const gem of group.gems) names.add(gemName(gem));
+        }
+      }
+    }
   }
   const info = {};
   for (const name of [...names].sort()) {
@@ -580,6 +619,22 @@ for (const file of files) {
   checkAvailability(seed, file);
   checkSwaps(seed, file);
   checkSeason(seed, file);
+  // Guide steps are authored, so every rule about them is a seed error: a
+  // trigger gem the character cannot hold, a gap between levels, or a step
+  // that claims to be unmeasured without saying why.
+  const steps = seed.steps
+    ? resolveSteps(seed.steps, {
+        requiredLevel: gemLevel1,
+        knownBudgets: Object.keys(budgets),
+        bands: checkpointIds.map((id) => ({ id, ...checkpointConfig[id] })),
+      })
+    : null;
+  if (steps?.errors.length) {
+    console.error(
+      `build seed invalid: ${file}\n${steps.errors.map((error) => `  ${error}`).join('\n')}`,
+    );
+    process.exit(1);
+  }
   const wickerman = resolveWickerman(seed, file);
   const stepPlans = resolveStepPlans(seed, file);
   if (`${seed.id}.yaml` !== file) {
@@ -647,6 +702,7 @@ for (const file of files) {
     })),
     wickerman,
     stepPlans,
+    ...(steps ? { steps: steps.roots, stepAliases: steps.aliases } : {}),
     gemInfo: describeGems(seed),
     seedHash,
   });
@@ -711,6 +767,19 @@ if (!leagueOpen) {
  * thresholds at red maps and pinnacle are met, Boss killer when single-target
  * damage is the build's defining strength.
  */
+/**
+ * The gate of a checkpoint band, whether the build names its steps or still uses
+ * checkpoint ids. A migrated seed's red-map step is not called `maps-red`, so
+ * every band lookup goes through this.
+ */
+function gateForBand(build, band) {
+  if (build.gates?.[band]) return build.gates[band];
+  const step = (build.steps ?? [])
+    .flatMap((root) => root.sub)
+    .find((entry) => entry.measure && entry.band === band);
+  return step ? build.gates?.[step.id] : undefined;
+}
+
 function chipsFor(build) {
   const chips = [];
   if (build.status === 'verified') {
@@ -744,8 +813,8 @@ function chipsFor(build) {
       title: 'The damage comes from summoned totems, not from self-casting.',
     });
   }
-  const red = build.gates?.['maps-red'];
-  const pinnacle = build.gates?.['pinnacle'];
+  const red = gateForBand(build, 'maps-red');
+  const pinnacle = gateForBand(build, 'pinnacle');
   if (
     red?.pass &&
     pinnacle?.pass &&
@@ -788,6 +857,13 @@ function chipsFor(build) {
   return chips;
 }
 
+/** The band a measured step belongs to, or undefined for a checkpoint id. */
+function stepBand(build, id) {
+  return (build.steps ?? [])
+    .flatMap((root) => root.sub)
+    .find((entry) => entry.id === id)?.band;
+}
+
 const version = hashOf(builds.map((build) => [build.id, build.seedHash]));
 const index = {
   version,
@@ -812,11 +888,12 @@ const index = {
     // checkpoint's pass flag and damage travel with it.
     ...(build.gates
       ? {
-          steps: Object.entries(build.gates).map(([id, gate]) => ({
+          gateSteps: Object.entries(build.gates).map(([id, gate]) => ({
             id,
             pass: gate.pass,
             level: gate.level,
             dps: gate.metrics.dps,
+            ...(stepBand(build, id) ? { band: stepBand(build, id) } : {}),
           })),
         }
       : {}),
