@@ -2,6 +2,20 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.75.0 — 2026-11-27
+
+Five more builds, and the breadth pass starts.
+
+- **Five new guides** from the 3.30 Covens backlog: **Storm Burst of Repulsion Totems** (Hierophant), **Poison Ranged Animate Weapons** (Necromancer), **Penance Brand Ignite** (Elementalist), **Ice Nova** (Elementalist) and **Smite of Divine Judgement** (Inquisitor). Each passes all six published gates against the pinned PoB oracle.
+- Pinnacle measurements run from 16.4k DPS on the totem build to 108k on the poison minion army, after the weapon-aware tree planner; all five clear the calibrated defensive floors at every checkpoint. Each uses the `dad` damage floor and the gate report shows the badge, because the modelled DPS sits below the standard floor for a budget-geared version of these archetypes.
+- **New gear profiles** for the archetypes the shared budget did not cover: `cold-spell` (cold damage and crit multi on a sceptre), `fire-dot` (fire damage and DoT multiplier) and `melee-lightning` (a two-hand mace for Shockwave). A reviewed `cold-damage` affix backs the cold profile.
+- **Inquisitor** joins the ascendancy graph with its full node set, so the Smite guide renders the same constellation as the other builds.
+- Five reviewed step plans give every checkpoint goals, gear targets and crafting for the new guides.
+- The skill registry gains the three transfigured gems the filter catalogue was missing: `Ethereal Knives of the Massacre`, `Incinerate of Venting` and `Smite of Divine Judgement`.
+- `npm run builds:verify -- --build=<id>` proves one seed while iterating, instead of the whole catalogue.
+- Calibration grows to **126 must-pass observations** (21 builds × 6 checkpoints); the ten must-fail mutations and the ablation probe stay green.
+- 713 tests.
+
 ## 0.74.4 — 2026-11-27
 
 Guide navigation and swap hints read as one page.
