@@ -20,7 +20,7 @@
     },
     {
       "weight": 3,
-      "text": "Single target is real once the exposure, curse, shock and Convergence are up; the gate measures well past the S+ baseline."
+      "text": "Single target is real once the exposure, curse and shock are up, and it holds up on a boss even when Convergence is down."
     },
     {
       "weight": 2,
@@ -32,7 +32,7 @@
     },
     {
       "weight": 1,
-      "text": "Elementalist supplies shock and exposure without a second six-link."
+      "text": "Elementalist supplies the shock and deepens the exposure without a second six-link."
     }
   ],
   "cons": [
@@ -42,7 +42,7 @@
     },
     {
       "weight": 3,
-      "text": "The big number assumes the exposure, curse, shock and Convergence window; drop one and single target falls fast."
+      "text": "The big number assumes the exposure, curse and shock window with Convergence on top; lose a debuff and single target falls fast."
     },
     {
       "weight": 2,
@@ -54,7 +54,7 @@
     },
     {
       "weight": 2,
-      "text": "The Amethyst Flask is mandatory at red maps: chaos resistance is positive with it and negative without it, while the endgame chaos suffixes overcap by pinnacle."
+      "text": "The Amethyst Flask is mandatory at red maps: chaos resistance is positive with it and negative without it, while the endgame chaos suffixes reach the cap by pinnacle."
     },
     {
       "weight": 1,
@@ -747,7 +747,7 @@
           {
             "slot": "utility",
             "name": "Quicksilver Flask",
-            "note": "Act 2 quest reward."
+            "note": "Act 1 quest reward."
           }
         ]
       },
@@ -1103,7 +1103,7 @@
           {
             "slot": "utility",
             "name": "Amethyst Flask",
-            "note": "Free slot at pinnacle: the chaos suffixes already reach the cap."
+            "note": "The measured set keeps it; the chaos suffixes already reach the cap, so it is the first slot to swap."
           }
         ]
       }
@@ -1495,7 +1495,7 @@
         {
           "slot": "utility",
           "name": "Quicksilver Flask",
-          "note": "Act 2 quest reward."
+          "note": "Act 1 quest reward."
         }
       ],
       "repair": {
@@ -7864,7 +7864,7 @@
         {
           "slot": "utility",
           "name": "Amethyst Flask",
-          "note": "Free slot at pinnacle: the chaos suffixes already reach the cap."
+          "note": "The measured set keeps it; the chaos suffixes already reach the cap, so it is the first slot to swap."
         }
       ],
       "repair": {
@@ -7895,7 +7895,7 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T13:33:48.360Z"
+    "checkedAt": "2026-11-27T15:07:19.658Z"
   },
   "season": {
     "id": "covens",
@@ -7919,7 +7919,7 @@
         "Inspiration replaces Faster Casting in the measured six-link, which raises damage and cuts the mana cost; Spell Echo is part of the red-map set.",
         "The physical layer is Determination, Arctic Armour, Enduring Cry and the granite and basalt flasks; Cerberus Limb and Saffell's Frame are the two required uniques.",
         "Enduring Cry fills the three charges the tree can hold; the resistance passives pay for the strict resistance cap.",
-        "Heart of Destruction's Convergence is declared for the pinnacle window; the same build measures about 500k without it.",
+        "Heart of Destruction's Convergence is declared for the pinnacle window; with Convergence off the same gear and tree give about 520k (676k / 1.30).",
         "Pinnacle now measures 676k DPS, 6.8k life, 53.4k EHP, 14.0k physical max hit with chaos capped; red maps measure 541k DPS. Ratings 10/10/9/9."
       ],
       "seasonName": "Covens"
@@ -8197,7 +8197,7 @@
     "maps-red": {
       "goals": [
         "Six-link Arc, 20% quality gems, 4,500 life and Elemental Overload.",
-        "Saffell's Frame and capped chaos are the defensive upgrades."
+        "Saffell's Frame and positive chaos resistance are the defensive upgrades; the Amethyst Flask covers chaos until the suffixes cap it at pinnacle."
       ],
       "lookFor": [
         {
@@ -8241,7 +8241,7 @@
     "pinnacle": {
       "goals": [
         "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 Arc, Spell Echo and awakened elemental supports."
+        "Use 21/20 Arc and Spell Echo; the six-link is the damage bill."
       ],
       "lookFor": [
         {
@@ -8660,10 +8660,10 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "79b235c5dfc4",
+  "seedHash": "a526244f6cac",
   "guide": {
     "summary": {
-      "text": "Arc Elementalist casts one lightning spell and lets the chains do the aiming, then pays for the single target with the tools the ascendancy already owns. Shaper of Storms guarantees the shock, Mastermind of Discord makes the Wave of Conviction exposure stronger, and Elemental Overload keeps its damage bonus up from Arc's own critical strikes. The defence is a large life pool, capped resistances, Saffell's Frame's maximum resistances, Determination armour, Arctic Armour while stationary and the endurance charges from Enduring Cry. The build measures 676.2k at pinnacle with 53353 effective life and 14019 physical max hit. Two cheap uniques are required. The quoted map and pinnacle numbers assume the declared shock, exposure, Elemental Overload, Convergence, endurance charges, active flasks and stationary Arctic Armour.",
+      "text": "Arc Elementalist casts one lightning spell and lets the chains do the aiming, then pays for the single target with the tools the ascendancy already owns. Shaper of Storms guarantees the shock, Mastermind of Discord makes the Wave of Conviction exposure stronger, and Elemental Overload keeps its damage bonus up from Arc's own critical strikes. The defence is a large life pool, capped resistances, Saffell's Frame's maximum resistances, Determination armour, Arctic Armour while stationary and the endurance charges from Enduring Cry. The build measures 676.2k at pinnacle with 53.4k effective life and 14.0k physical max hit. Two cheap uniques are required. The quoted map and pinnacle numbers assume the declared shock, exposure, Elemental Overload, Convergence, endurance charges, active flasks and stationary Arctic Armour.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8679,7 +8679,7 @@
       "factsHash": "db7b623c05404747"
     },
     "leveling": {
-      "text": "Level with Rolling Magma until Arc unlocks, then hold Arc and let it chain. Wave of Conviction linked to Physical to Lightning applies the lightning exposure once the gem pair is available, Conductivity arrives with the curse package, and Determination plus Enduring Cry start the physical layer. The first checkpoint measures 344 life; the second measures 1091. The gate strip's early damage numbers use the same global PoB config as the endgame steps, so read them as a like-for-like comparison rather than a leveling rotation. Drop Clarity for Arctic Armour when the reservation fits, and treat the mana flask as a slot you never remove.",
+      "text": "Level with Rolling Magma until Arc unlocks, then hold Arc and let it chain. Wave of Conviction linked to Physical to Lightning applies the lightning exposure once the gem pair is available, Conductivity arrives with the curse package, and Determination plus Enduring Cry start the physical layer. The first checkpoint measures 344 life; the second measures 1.1k life. The gate strip's early damage numbers use the same global PoB config as the endgame steps, so read them as a like-for-like comparison rather than a leveling rotation. Drop Clarity for Arctic Armour when the reservation fits, and treat the mana flask as a slot you never remove.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8692,7 +8692,7 @@
       "factsHash": "cda7bedaab7d2165"
     },
     "maps": {
-      "text": "At red maps the build measures 540.9k damage, 35202 effective life and 11336 physical max hit. Keep Conductivity and the Wave of Conviction exposure up, refresh the mana flask, and let the chains clear the pack. Keep the Physical to Lightning link: it is what makes the exposure lightning. The Onyx Amulet's attributes cover Cerberus Limb's strength requirement. The Amethyst Flask is what keeps chaos resistance positive at this step; Enduring Cry and the granite and basalt flasks are the physical layer, and Arctic Armour pays out while you stand and cast, so the effective life figure assumes the flasks are up and you are stationary.",
+      "text": "At red maps the build measures 540.9k damage, 35.2k effective life and 11.3k physical max hit. Keep Conductivity and the Wave of Conviction exposure up, refresh the mana flask, and let the chains clear the pack. Keep the Physical to Lightning link: it is what makes the exposure lightning. The Onyx Amulet's attributes cover Cerberus Limb's strength requirement. The Amethyst Flask is what keeps chaos resistance positive at this step; Enduring Cry and the granite and basalt flasks are the physical layer, and Arctic Armour pays out while you stand and cast, so the effective life figure assumes the flasks are up and you are stationary.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8706,7 +8706,7 @@
       "factsHash": "52f98180d6ce9d34"
     },
     "bossing": {
-      "text": "Pinnacle measures 676.2k damage with 53353 effective life and 14019 physical max hit, and chaos resistance is capped at 79% by the endgame chaos suffixes and Saffell's Frame's maximum resistances. Open with Wave of Conviction to apply the exposure, keep the Physical to Lightning link so the exposure is lightning, and reapply the wave between Arc bursts. Keep Conductivity on the boss and cast Arc through the shock and exposure window; land a critical strike first so Elemental Overload is up, because the measured damage includes it. The pinnacle figure is the Heart of Destruction Convergence window; without Convergence the damage is still above the single-target floor. The measured damage assumes the exposure, curse and shock this build applies itself, so apply them before the burst rather than casting into a naked target. The rotation spends the mana bar, so start it on a full flask.",
+      "text": "Pinnacle measures 676.2k damage with 53.4k effective life and 14.0k physical max hit, and chaos resistance is capped at 79% by the endgame chaos suffixes and Saffell's Frame's maximum resistances. Open with Wave of Conviction to apply the exposure, keep the Physical to Lightning link so the exposure is lightning, and reapply the wave between Arc bursts. Keep Conductivity on the boss and cast Arc through the shock and exposure window; land a critical strike first so Elemental Overload is up, because the measured damage includes it. The pinnacle figure is the Heart of Destruction Convergence window; without Convergence the damage is still above the single-target floor. The measured damage assumes the exposure, curse and shock this build applies itself, so apply them before the burst rather than casting into a naked target. The rotation spends the mana bar, so start it on a full flask.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
