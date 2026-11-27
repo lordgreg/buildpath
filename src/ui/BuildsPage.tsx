@@ -363,11 +363,12 @@ export default function BuildsPage() {
           <div>
             <h1 className="text-2xl font-semibold text-white">Builds</h1>
             <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-400">
-              Every build here is measured by Path of Building at six points, from
+              Every build here is measured by Path of Building at seven points, from
               a level-12 character to pinnacle bosses, and the gear it was
               measured in is the gear the page shows. No unique is assumed. A
               build is listed because it passed, not because it is popular —
-              there is no population data, so no page claims any.
+              GitHub votes are guide feedback, not a population ranking, so no
+              page claims one.
             </p>
           </div>
           <span className="rounded border border-ink-600 px-2 py-1 text-[11px] text-zinc-500">
@@ -527,8 +528,8 @@ export default function BuildsPage() {
           </h2>
           <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">
             Every ascendancy below has a build that passes its published gates.
-            Nothing is listed because it is popular: there is no population data,
-            so breadth is evidence, not a rank.
+            Nothing is listed because it is popular: GitHub votes are feedback,
+            not a ranking, so breadth is evidence, not a rank.
           </p>
           <dl className="mt-3 grid gap-3 sm:grid-cols-2">
             {families.map((family) => (

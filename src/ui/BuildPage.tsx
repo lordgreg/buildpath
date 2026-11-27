@@ -27,6 +27,8 @@ import SiteHeader from './SiteHeader.tsx';
 import TreeThumbnail from './TreeThumbnail.tsx';
 import WickermanPanel, { wickermanPhase } from './WickermanPanel.tsx';
 import StepPlanPanel from './StepPlanPanel.tsx';
+import FeedbackPanel from './FeedbackPanel.tsx';
+import { getFeedback } from '../meta/feedback.ts';
 import { copyText } from './download.ts';
 import { buildGuideTitle } from './buildTitle.ts';
 import { APP_VERSION } from '../version.ts';
@@ -577,6 +579,7 @@ export default function BuildPage() {
         )}
       </header>
 
+      {build.status === 'verified' && <FeedbackPanel buildId={build.id} />}
 
       {build.guide && (
         <section aria-labelledby="guide">
@@ -1343,6 +1346,9 @@ export default function BuildPage() {
           <ul className="flex flex-wrap gap-x-3 gap-y-1 lg:flex-col lg:gap-y-2">
             {[
               ['ratings', 'Ratings'],
+              ...(build.status === 'verified' && getFeedback(build.id)
+                ? ([['feedback', 'Feedback']] as [string, string][])
+                : []),
               ['guide', 'Guide'],
               ['steps', 'Step'],
               ['step-plan', 'Step plan'],

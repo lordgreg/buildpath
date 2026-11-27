@@ -163,6 +163,7 @@ Related workflows:
 | Custom rules, templates, share codes | `src/core/rules/` |
 | Rule matching / preview | `src/core/preview/match.ts` |
 | Behaviour audit page / report | `src/core/audit/`, `src/ui/TestsPage.tsx` |
+| Visitor feedback (GitHub reactions, baked counts) | `scripts/feedback/refresh.mjs`, `.github/workflows/feedback.yml`, `src/core/feedback.ts` |
 | Base types / economy data | `src/core/data/`, `src/generated/` |
 | Wizard / UI / URL state / shared header | `src/ui/` (`SiteHeader.tsx`, `InventoryPanel.tsx`, `TreeThumbnail.tsx`) |
 | Folder writing / download | `src/sync/` |

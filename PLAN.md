@@ -311,6 +311,25 @@ The preset is **locked and never cloned**. Users add rules on top of it.
 - **Saved builds** — loading marks a build as active; its row gets `Update`,
   which overwrites name, selection and My rules. Top-level Save creates a copy.
 
+### 2.12 Visitor feedback is GitHub reactions, baked
+
+The site stays static and makes no runtime network calls, so a visitor vote
+cannot be an on-site button that posts to a counter. Feedback is instead a
+👍/👎 reaction on a per-build GitHub issue:
+
+- One labelled issue per verified build (`guide-feedback`), created by the
+  refresh script; the issue body carries a hidden build marker and a link to the
+  guide.
+- The weekly `feedback` Action reads the reactions and commits
+  `src/generated/feedback.json`; the build page only reads that file.
+- Votes are **feedback, not a ranking**: they never change the catalogue order
+  or the editorial ratings, and every page that shows them says so.
+- Voting needs a GitHub account and is public; BuildPath stores nothing about
+  the visitor. The panel shows the last count change, not a live total.
+
+This is the same "GitHub Actions is the own backend" pattern as the economy
+tiers, and it keeps the no-account, no-analytics promise for using the site.
+
 ---
 
 ## 3. Stack
