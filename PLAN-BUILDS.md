@@ -103,6 +103,12 @@ say that, not the reverse.
 | D28 | Prose is drafted at most twice, then either signed or published as `auto-retry`; breadth pages are `auto-breadth`. A build publishes when its `summary` is `signed` or `auto-breadth`. Every section records its sign-off. |
 | D29 | Ascendancy points are explicit per lab: `ascendancyOrder` entries carry `{ node, lab }`, and each checkpoint assumes the labs reachable by that act. |
 | D30 | Leveling point budgets are a reviewed per-patch YAML, never derived from quest count at runtime. |
+| D32 | Steps are three roots — **Leveling, Maps, Endgame** — each holding authored, ordered sub-steps. A sub-step id is authored, never generated from a trigger, so moving a gem swap cannot rename a URL, a PoB paste key or a calibration key. |
+| D33 | `level` on a sub-step is the level it is read **and measured at**; the step covers up to the next sub-step's level minus one. Contiguity from level 1 is enforced by the compiler, so the empty 69–79 stretch the `until` brackets left behind cannot exist. |
+| D34 | Six triggers may start a sub-step: `skill`, `support`, `link`, `jewel`, `slot`, `budget`. `level` is the boundary every step has, not a trigger. A trigger naming no kind is a level boundary. Anything the six cannot express is a `reason` line on the nearest sub-step. |
+| D35 | A sub-step is measured only when it declares `measure: true`. An unmeasured sub-step requires a `reason` and renders as "not measured"; R2 applies to measured sub-steps. PoB runs do not grow with editorial steps. |
+| D36 | `watch` (what changes at this step) is authored inline in the seed. `lookFor` and `crafting` stay in `step-plans.yaml`, re-keyed per **root band** rather than per checkpoint. |
+| D37 | Thresholds are per root band with per-sub-step overrides, and calibration samples **one sub-step per band per build**, so measured steps can grow without silently growing the calibration set. |
 
 ## 5. Requirements
 
@@ -112,8 +118,9 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
 - **R1** Prose may only state numbers through `{{placeholder}}` tokens that
   resolve from the build JSON (§12.2). Unresolved placeholder or a raw numeral
   outside the allowlist fails the build.
-- **R2** No published build without a gate report for every checkpoint, each
-  evaluated against that checkpoint's own gear set.
+- **R2** No published build without a gate report for every **measured**
+  sub-step (§9.3), each evaluated against that sub-step's own gear set. An
+  unmeasured sub-step says why in `reason` and shows no numbers of its own.
 - **R3** No published build without a PoB code that round-trips through PoB.
 - **R4** No build is published in the first 72h of a league. The previous
   league's builds stay visible, stamped "previous patch, unverified". Hand-made
@@ -565,6 +572,63 @@ Stale or failed builds render a banner and are excluded from `builds.html`
 - `gateThresholdsHash` covers the checkpoint config as well as the gate
   thresholds, so changing quality, gem caps, levels or budgets invalidates the
   calibration report and forces a re-run.
+
+### 9.3 Steps: three roots and sub-steps
+
+The six checkpoint ids were doing nine jobs at once — guide step, URL `step=`,
+gate key, tree checkpoint, `pob.byStep` key, calibration observation key,
+step-plan key, catalogue strip and filter mapping — while `leveling.brackets`
+and `leveling.swaps` described the same journey a second and third time. That
+is why a gem switch on a level boundary had nowhere to live and ended up as
+prose bolted onto "Leveling this step".
+
+`steps` replaces that axis with three roots and authored sub-steps (D32–D37):
+
+```yaml
+steps:
+  leveling:
+    default: { budget: early, gemQuality: 0 }
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Cleave
+        watch: "Cleave carries acts 1-2; keep a mana flask, buy no rare axe yet."
+        measure: true
+      - id: leveling-28-38
+        level: 38
+        main: Boneshatter
+        trigger: { from: 28, skill: Boneshatter }
+        watch: "Boneshatter now, four links only."
+        measure: true
+```
+
+The compiler proves, in `src/core/builds/steps.ts`:
+
+1. every root has at least one sub-step;
+2. ids are unique, and levels ascend inside a root and across roots;
+3. the first leveling step opens the character; every other step has a trigger;
+4. `trigger.from` is the previous sub-step's level, so no level is uncovered;
+5. a trigger names at most one kind, and a `skill`/`support` trigger is usable at
+   the step's own level;
+6. `main` and every listed gem are usable at `level` — the check the `until`
+   brackets could not make, which is how a level-13 reader used to be shown
+   Boneshatter in a four-link;
+7. an unmeasured step says why, and a measured one never claims a number it did
+   not measure.
+
+`aliases` on a sub-step map a pre-refactor id (`until-28`) onto the step that
+replaced it, and `resolveStepAlias` is the only reader; the table lives until
+1.0. The reference is `docs/STEPS.md`.
+
+**Migration order.** PR 1 (this one) ships the schema, the resolver and the
+alias table, and adds `steps` to compiled JSON while `leveling` stays required,
+so no gate number moves. PR 2 re-keys the pipeline (specs, gates, tree, PoB
+codes, calibration bands) and makes `leveling` optional. PR 3 rebuilds the step
+picker and folds "Leveling this step" into the sub-step card. PR 4 migrates the
+seeds. PR 5 updates this plan, AGENTS and the changelog.
+
+The catalogue's per-checkpoint strip is `gateSteps`, not `steps`: the index
+carries a gate summary, and `steps` now means the guide tree everywhere.
 
 ## 10. Site
 
