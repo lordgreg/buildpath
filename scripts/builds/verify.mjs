@@ -32,6 +32,7 @@ import {
   gates,
   gateThresholds,
   gateThresholdsHash,
+  measuredCheckpointsFor,
   outDir,
   readYaml,
   root,
@@ -42,8 +43,18 @@ import {
   ascendancyName,
 } from './pipeline.mjs';
 
-const codeCheckpoint = 'maps-red';
-const planCheckpoint = 'pinnacle';
+/**
+ * The step whose PoB code is published (D24: the red-map gear set), and the step
+ * the endgame tree is planned at. Both are resolved per seed so a migrated seed
+ * with different ids still publishes the code the guide is about.
+ */
+function codeStepFor(seed) {
+  const steps = measuredCheckpointsFor(seed);
+  const red = steps.find((step) => step.band === 'maps-red');
+  return red ?? steps.at(-1);
+}
+
+const planStepFor = (seed) => measuredCheckpointsFor(seed).at(-1);
 const MAX_EVALS = 200;
 
 function treeIds(metrics) {
@@ -58,7 +69,7 @@ function makeReport({ seed, checkpointId, checkpoint, metrics, scaled, gate, gea
       ? `${checkpoint.budget} (${gear.budget.links}-link)`
       : checkpoint.budget,
     gateProfile: seed.gateProfile ?? 'standard',
-    thresholds: gateThresholds(checkpointId, seed.gateProfile ?? 'standard'),
+    thresholds: gateThresholds(checkpoint, seed.gateProfile ?? 'standard'),
     metrics: {
       dps: Math.round(scaled.dps),
       minionCount: scaled.minionCount,
@@ -141,7 +152,7 @@ function evaluateTree({ seed, checkpointId, checkpoint, plan, nodes, pruneTo, xm
       : undefined,
   };
   const scaled = scaledMetrics(seed, metrics);
-  const gate = evaluateGate(checkpointId, scaled, seed.gateProfile ?? 'standard');
+  const gate = evaluateGate(checkpoint, scaled, seed.gateProfile ?? 'standard');
   const itemFailures = checkItemParsing(metrics, gear.items);
   const uniqueFailures = (spec.uniques ?? []).flatMap((unique) => {
     const reported = (metrics.items ?? []).find((item) => item.slot === unique.slot);
@@ -185,7 +196,10 @@ function evaluateCheckpoint({ seed, checkpointId, checkpoint, plan, xmlOut }) {
  * touched and must stay inside 10 and 8% of the allocated points.
  */
 function repairCheckpoint({ seed, checkpointId, checkpoint, plan, initial }) {
-  const thresholds = gates.checkpoints[checkpointId];
+  // Repair scores against the band's base thresholds, not the Dad overlay: the
+  // climb is about the tree, and changing its scoring rule is a gate decision,
+  // not a refactor.
+  const thresholds = gates.checkpoints[checkpoint.band];
   let current = initial;
   let added = [];
   let removed = [];
@@ -259,7 +273,9 @@ function repairCheckpoint({ seed, checkpointId, checkpoint, plan, initial }) {
 }
 
 function planEndgame(seed) {
-  const { spec } = buildCheckpointSpec(seed, planCheckpoint, {
+  const planStep = planStepFor(seed);
+  const { spec } = buildCheckpointSpec(seed, planStep.id, {
+    checkpoint: planStep,
     planOnly: true,
     name: `${seed.id}-endgame-plan`,
   });
@@ -276,7 +292,8 @@ function verifySeed(seed) {
   const stepCodes = {};
   let allPass = true;
 
-  for (const [id, checkpoint] of Object.entries(checkpoints.checkpoints)) {
+  for (const checkpoint of measuredCheckpointsFor(seed)) {
+    const id = checkpoint.id;
     const xmlPath = resolve(scratchDir, `${seed.id}-${id}.xml`);
     const initial = evaluateCheckpoint({
       seed,
@@ -335,8 +352,9 @@ function verifySeed(seed) {
     );
     if (!gate.pass) console.log(`  ${gate.failures.join('; ')}`);
   }
-  if (!stepCodes[codeCheckpoint]) {
-    throw new Error(`${seed.id}: the ${codeCheckpoint} oracle run wrote no XML`);
+  const codeStep = codeStepFor(seed);
+  if (!stepCodes[codeStep.id]) {
+    throw new Error(`${seed.id}: the ${codeStep.id} oracle run wrote no XML`);
   }
   return {
     report,
@@ -347,8 +365,8 @@ function verifySeed(seed) {
     status: allPass ? 'verified' : 'draft',
     pob: {
       ref: process.env.POB_REF ?? 'v2.69.0',
-      checkpoint: codeCheckpoint,
-      code: stepCodes[codeCheckpoint],
+      checkpoint: codeStep.id,
+      code: stepCodes[codeStep.id],
       byStep: stepCodes,
     },
   };

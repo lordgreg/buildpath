@@ -18,6 +18,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
 import { evaluateGate as evaluateGatePure } from '../../src/core/builds/gates.ts';
+import { bandFor as bandForPure, measuredSteps, resolveMeasuredStep } from '../../src/core/builds/steps.ts';
 import {
   notableTargetPriorities,
   weaponTraitsFor,
@@ -311,14 +312,17 @@ export function runOracle(spec, { xmlOut } = {}) {
   return JSON.parse(line.slice('RESULT '.length));
 }
 
-export function gateThresholds(checkpointId, profile = 'standard') {
-  const base = gates.checkpoints[checkpointId];
-  const overlay = profile === 'dad' ? gates.profiles?.dad?.[checkpointId] : undefined;
+export function gateThresholds(checkpoint, profile = 'standard') {
+  // A measured sub-step applies the thresholds of the checkpoint band it sits
+  // in, so adding a step never invents a bar of its own (D37).
+  const band = typeof checkpoint === 'string' ? checkpoint : (checkpoint.band ?? checkpoint.id);
+  const base = gates.checkpoints[band];
+  const overlay = profile === 'dad' ? gates.profiles?.dad?.[band] : undefined;
   return overlay ? { ...base, ...overlay } : base;
 }
 
-export function evaluateGate(checkpointId, metrics, profile = 'standard') {
-  return evaluateGatePure(metrics, gateThresholds(checkpointId, profile), 0);
+export function evaluateGate(checkpoint, metrics, profile = 'standard') {
+  return evaluateGatePure(metrics, gateThresholds(checkpoint, profile), 0);
 }
 
 /** PoB drops unparseable item lines silently, so compare against what we wrote. */
@@ -360,6 +364,50 @@ export function bracketFor(seed, level) {
     seed.leveling.brackets.find((entry) => entry.until >= level) ??
     seed.leveling.brackets.at(-1)
   );
+}
+
+/**
+ * The checkpoint bands, as the pure step resolver reads them: `checkpoints.yaml`
+ * is the only source of the budgets, points and labs a step inherits.
+ */
+function checkpointBands() {
+  return Object.entries(checkpoints.checkpoints).map(([id, checkpoint]) => ({
+    id,
+    ...checkpoint,
+  }));
+}
+
+/**
+ * The checkpoint band a level sits in (PLAN-BUILDS.md §9.3). Re-exported so the
+ * verifier and the calibration runner agree with the compiler.
+ */
+export function bandFor(level) {
+  return bandForPure(level, checkpointBands()).id;
+}
+
+/**
+ * The steps a seed is measured on, in reading order.
+ *
+ * A seed that declares `steps` is measured on its measured sub-steps. A seed
+ * that has not migrated is measured on the six checkpoints, which is exactly
+ * what the committed gate reports hold, so migrating a seed is what changes the
+ * report - not compiling this file.
+ */
+export function measuredCheckpointsFor(seed) {
+  if (!seed.steps) {
+    return Object.entries(checkpoints.checkpoints).map(([id, checkpoint]) => {
+      const bracket = bracketFor(seed, checkpoint.level);
+      return {
+        ...checkpoint,
+        id,
+        band: id,
+        gems: bracket.skillGroups ?? [],
+        flasks: bracket.flasks ?? [],
+      };
+    });
+  }
+  const bands = checkpointBands();
+  return measuredSteps(seed.steps).map((step) => resolveMeasuredStep(step, bands));
 }
 
 /** Resolve the seed's ascendancy id to the name PoB and TreeData use. */
@@ -447,15 +495,20 @@ function notablePrioritiesFor(targets, scope) {
  * published seed and a calibration fixture.
  */
 export function buildCheckpointSpec(seed, checkpointId, options = {}) {
-  const checkpoint = checkpoints.checkpoints[checkpointId];
-  if (!checkpoint) throw new Error(`unknown checkpoint "${checkpointId}"`);
+  // A step is either a measured sub-step or one of the six checkpoints; the
+  // latter still resolve by id because that is what calibration fixtures name.
+  const checkpoint =
+    options.checkpoint ?? measuredCheckpointsFor(seed).find((entry) => entry.id === checkpointId);
+  if (!checkpoint) throw new Error(`unknown step "${checkpointId}"`);
   const profileId = options.profileId ?? seed.gearProfile ?? 'caster';
   const budgetId = options.budgetId ?? checkpoint.budget;
   const level = options.level ?? checkpoint.level;
   const gemCap = options.gemLevelCap ?? checkpoint.gemLevelCap ?? 20;
   const points = options.points ?? checkpoint.points;
   const labs = options.labs ?? checkpoint.labs;
-  const bracket = bracketFor(seed, level);
+  const bracket = seed.leveling
+    ? bracketFor(seed, level)
+    : { until: level, skillGroups: checkpoint.gems, flasks: checkpoint.flasks };
   const targets = options.targets ?? seed.tree?.targets ?? [];
 
   const maxJewels = options.maxJewels ?? Infinity;

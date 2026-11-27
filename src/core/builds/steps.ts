@@ -337,6 +337,77 @@ export function measuredSteps(roots: BuildStepRoot[]): BuildSubStep[] {
 }
 
 /**
+ * A reviewed checkpoint band: what a level has to work with. `checkpoints.yaml`
+ * is the source; this module only reads it so the band a step inherits is pure
+ * and testable without the PoB oracle.
+ */
+export interface CheckpointBand {
+  id: string;
+  level: number;
+  budget: string;
+  points: number;
+  labs: number;
+  gemLevelCap?: number;
+  gemQuality?: number;
+  enemyLevel?: number;
+}
+
+/** A measured step with its band resolved: what the oracle is asked to measure. */
+export interface ResolvedStep {
+  id: string;
+  /** The band whose defaults, and whose gate thresholds, apply. */
+  band: string;
+  level: number;
+  budget: string;
+  points: number;
+  labs: number;
+  gemLevelCap: number;
+  gemQuality: number;
+  enemyLevel: number;
+  gems: SkillGroup[];
+  flasks: FlaskChoice[];
+}
+
+/**
+ * The band a level sits in: the highest reviewed checkpoint at or below it.
+ *
+ * A level-38 step therefore inherits the level-28 budget rather than an invented
+ * one, and a level-85 step the level-80 one. That under-points rather than
+ * over-points, which is the safe direction for a floor: the step is measured
+ * with less than the player has, never more.
+ */
+export function bandFor(level: number, bands: readonly CheckpointBand[]): CheckpointBand {
+  const sorted = [...bands].sort((a, b) => a.level - b.level);
+  if (sorted.length === 0) throw new Error('bandFor: no checkpoint bands');
+  let band = sorted[0]!;
+  for (const entry of sorted) {
+    if (entry.level <= level) band = entry;
+  }
+  return band;
+}
+
+/** Resolve one measured sub-step onto its band. */
+export function resolveMeasuredStep(
+  step: BuildSubStep,
+  bands: readonly CheckpointBand[],
+): ResolvedStep {
+  const band = bandFor(step.level, bands);
+  return {
+    id: step.id,
+    band: band.id,
+    level: step.level,
+    budget: step.budget ?? band.budget,
+    points: step.points ?? band.points,
+    labs: step.labs ?? band.labs,
+    gemLevelCap: step.gemLevelCap ?? band.gemLevelCap ?? 20,
+    gemQuality: step.gemQuality ?? band.gemQuality ?? 0,
+    enemyLevel: step.enemyLevel ?? band.enemyLevel ?? 83,
+    gems: step.gems ?? [],
+    flasks: step.flasks ?? [],
+  };
+}
+
+/**
  * Resolve a pre-refactor step id, e.g. `until-28`, to the sub-step that
  * replaced it. Unknown ids come back unchanged so the page can fall back.
  */

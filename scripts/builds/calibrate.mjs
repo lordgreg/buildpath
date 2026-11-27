@@ -18,10 +18,10 @@ import {
   assertNodeCount,
   ascendancyName,
   buildCheckpointSpec,
-  checkpoints,
   evaluateGate,
   gates,
   gateThresholdsHash,
+  measuredCheckpointsFor,
   outDir,
   readYaml,
   runOracle,
@@ -43,7 +43,9 @@ const seeds = new Map(
 const planCache = new Map();
 function endgamePlan(seed) {
   if (!planCache.has(seed.id)) {
-    const { spec } = buildCheckpointSpec(seed, 'pinnacle', {
+    const planStep = measuredCheckpointsFor(seed).at(-1);
+    const { spec } = buildCheckpointSpec(seed, planStep.id, {
+      checkpoint: planStep,
       planOnly: true,
       name: `${seed.id}-calibration-plan`,
     });
@@ -57,11 +59,12 @@ function endgamePlan(seed) {
 function evaluate(seedId, checkpointId, mutate = {}) {
   const seed = seeds.get(seedId);
   if (!seed) throw new Error(`unknown calibration seed "${seedId}"`);
-  const checkpoint = checkpoints.checkpoints[checkpointId];
-  if (!checkpoint) throw new Error(`unknown calibration checkpoint "${checkpointId}"`);
+  const checkpoint = measuredCheckpointsFor(seed).find((entry) => entry.id === checkpointId);
+  if (!checkpoint) throw new Error(`unknown calibration step "${checkpointId}"`);
   const plan = endgamePlan(seed);
   const points = mutate.points ?? checkpoint.points;
   const { spec, gear } = buildCheckpointSpec(seed, checkpointId, {
+    checkpoint,
     endgameNodes: plan.endgame,
     pruneTo: Math.max(1, points - 1),
     ...mutate,
@@ -69,9 +72,9 @@ function evaluate(seedId, checkpointId, mutate = {}) {
   const metrics = runOracle(spec);
   assertNodeCount(seed.id, checkpointId, metrics);
   const scaled = scaledMetrics(seed, metrics);
-  const gate = gates.checkpoints[checkpointId];
+  const gate = gates.checkpoints[checkpoint.band];
   const result = evaluateGate(
-    checkpointId,
+    checkpoint,
     scaled,
     seed.gateProfile ?? 'standard',
   );
@@ -95,14 +98,19 @@ function evaluate(seedId, checkpointId, mutate = {}) {
 const mustPass = [];
 const passSeeds =
   calibration.mustPass?.seeds === 'all' ? [...seeds.keys()].sort() : calibration.mustPass?.seeds ?? [];
-const passCheckpoints =
-  calibration.mustPass?.checkpoints === 'all'
-    ? Object.keys(checkpoints.checkpoints)
-    : calibration.mustPass?.checkpoints ?? [];
+const passBands =
+  calibration.mustPass?.checkpoints === 'all' ? null : calibration.mustPass?.checkpoints ?? [];
 for (const seedId of passSeeds) {
-  for (const checkpointId of passCheckpoints) {
-    const { items, ...result } = evaluate(seedId, checkpointId);
-    mustPass.push({ id: `${seedId}/${checkpointId}`, ...result });
+  // One observation per band per build (D37). A measured sub-step that shares a
+  // band with another step adds no information about the threshold, and an
+  // unmigrated seed has a band per checkpoint, so its report is unchanged.
+  const seen = new Set();
+  for (const step of measuredCheckpointsFor(seeds.get(seedId))) {
+    if (passBands && !passBands.includes(step.band)) continue;
+    if (seen.has(step.band)) continue;
+    seen.add(step.band);
+    const { items, ...result } = evaluate(seedId, step.id);
+    mustPass.push({ id: `${seedId}/${step.id}`, ...result });
   }
 }
 

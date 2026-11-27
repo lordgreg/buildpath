@@ -2,9 +2,14 @@
 
 Reference for the step model (D32–D37, [PLAN-BUILDS.md](../PLAN-BUILDS.md) §9.3).
 
-**Status:** PR 1 of 5. Schema, resolver and alias table are in; the pipeline and
-the page still read `leveling.brackets`. A seed may declare `steps` today, but
-until PR 2 lands it must keep `leveling` as well.
+**Status:** PR 2 of 5. Schema, resolver, alias table and the pipeline's measured
+steps are in; the page still reads `leveling.brackets`, so a migrated seed must
+keep `leveling` until PR 3 lands.
+
+Measured steps carry the band they inherit (`bandFor`): a level-38 step is
+measured on the level-28 budget rather than an invented one, which under-points
+rather than over-points. Calibration keeps one observation per band per build,
+so a second step in the same band does not grow the report.
 
 ## Why
 
@@ -159,7 +164,8 @@ does not grow with the step count.
 
 ## Migrating a seed (PR 4)
 
-1. Add `steps` and keep `leveling` until PR 2 lands.
+1. Add `steps` and keep `leveling` until PR 3 lands, because the page still reads
+   it.
 2. Split the old brackets where the *change* happens, not where the bracket
    ended: a gem swap, a link count, a jewel, a slot or a budget.
 3. Give every step a `level` and a `watch` line.

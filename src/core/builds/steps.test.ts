@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { measuredSteps, resolveStepAlias, resolveSteps } from './steps.ts';
+import {
+  bandFor,
+  measuredSteps,
+  resolveMeasuredStep,
+  resolveStepAlias,
+  resolveSteps,
+} from './steps.ts';
 import type { SeedSteps } from './steps.ts';
 
 const gemLevels: Record<string, number> = {
@@ -266,6 +272,88 @@ describe('measurement', () => {
       }),
     );
     expect(measuredSteps(roots).map((step) => step.id)).toEqual(['a', 'c']);
+  });
+});
+
+describe('checkpoint bands', () => {
+  const bands = [
+    { id: 'until-12', level: 12, budget: 'starting', points: 12, labs: 0, gemLevelCap: 20, gemQuality: 0, enemyLevel: 13 },
+    { id: 'until-28', level: 28, budget: 'early', points: 30, labs: 0, enemyLevel: 28 },
+    { id: 'until-68', level: 68, budget: 'ssf-start', points: 78, labs: 3, enemyLevel: 68 },
+    { id: 'maps-early', level: 80, budget: 'ssf-start', points: 90, labs: 4, enemyLevel: 75 },
+    { id: 'maps-red', level: 90, budget: 'ssf-week1', points: 105, labs: 4, gemQuality: 20, enemyLevel: 83 },
+  ];
+
+  it('puts a level in the highest band at or below it', () => {
+    expect(bandFor(38, bands).id).toBe('until-28');
+    expect(bandFor(28, bands).id).toBe('until-28');
+    expect(bandFor(80, bands).id).toBe('maps-early');
+    expect(bandFor(85, bands).id).toBe('maps-early');
+    expect(bandFor(96, bands).id).toBe('maps-red');
+    expect(bandFor(2, bands).id).toBe('until-12');
+  });
+
+  it('inherits the band rather than inventing points for an odd level', () => {
+    const step = resolveSteps(
+      {
+        leveling: {
+          sub: [
+            { id: 'a', level: 12, main: 'Cleave', watch: 'Early acts.', measure: true },
+            { id: 'b', level: 38, main: 'Sunder', watch: 'Brutality.', trigger: { from: 12 }, measure: true },
+          ],
+        },
+      },
+      { requiredLevel },
+    ).roots[0]!.sub[1]!;
+    expect(resolveMeasuredStep(step, bands)).toMatchObject({
+      id: 'b',
+      band: 'until-28',
+      level: 38,
+      budget: 'early',
+      points: 30,
+      labs: 0,
+      enemyLevel: 28,
+      gemQuality: 0,
+    });
+  });
+
+  it('lets a step override the band it would inherit', () => {
+    const step = {
+      root: 'maps' as const,
+      id: 'maps-red',
+      from: 91,
+      level: 92,
+      main: 'Boneshatter',
+      watch: 'Red maps with the six-link.',
+      measure: true,
+      budget: 'trade',
+      points: 112,
+      gemQuality: 20,
+    };
+    expect(resolveMeasuredStep(step, bands)).toMatchObject({
+      band: 'maps-red',
+      budget: 'trade',
+      points: 112,
+      labs: 4,
+      gemQuality: 20,
+    });
+  });
+
+  it('carries the authored gems and flasks into the spec', () => {
+    const step = {
+      root: 'leveling' as const,
+      id: 'leveling-1-12',
+      from: 1,
+      level: 12,
+      main: 'Cleave',
+      watch: 'Early acts.',
+      measure: true,
+      gems: [{ slot: 'Body Armour', gems: ['Cleave', 'Added Fire Damage'] }],
+      flasks: [{ slot: 'life' as const, name: 'Small Life Flask' }],
+    };
+    const resolved = resolveMeasuredStep(step, bands);
+    expect(resolved.gems).toHaveLength(1);
+    expect(resolved.flasks).toEqual([{ slot: 'life', name: 'Small Life Flask' }]);
   });
 });
 

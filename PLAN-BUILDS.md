@@ -623,9 +623,10 @@ replaced it, and `resolveStepAlias` is the only reader; the table lives until
 **Migration order.** PR 1 (this one) ships the schema, the resolver and the
 alias table, and adds `steps` to compiled JSON while `leveling` stays required,
 so no gate number moves. PR 2 re-keys the pipeline (specs, gates, tree, PoB
-codes, calibration bands) and makes `leveling` optional. PR 3 rebuilds the step
-picker and folds "Leveling this step" into the sub-step card. PR 4 migrates the
-seeds. PR 5 updates this plan, AGENTS and the changelog.
+codes, calibration bands). PR 3 rebuilds the step picker, folds "Leveling this
+step" into the sub-step card, and only then makes `leveling` optional, because
+the page is its last reader. PR 4 migrates the seeds. PR 5 updates this plan,
+AGENTS and the changelog.
 
 The catalogue's per-checkpoint strip is `gateSteps`, not `steps`: the index
 carries a gate summary, and `steps` now means the guide tree everywhere.
