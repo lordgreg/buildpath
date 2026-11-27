@@ -17,6 +17,22 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.81.0',
+    date: '2026-11-27',
+    title: 'Boneshatter review fixes and a no-flask validation',
+    notes: [
+      "**The 28-38 step is the Sunder measurement.** Brutality is already usable at 38, but the guide swaps to Boneshatter at 39 because the 38 checkpoint is what the gate measures. A better two-handed axe is an upgrade, not a gate. The level-38 setup keeps Herald of Purity and the mana flask pays for it; the old \"wait for mana leech\" instruction is gone.",
+      "**Labs are named correctly.** Unflinching is the normal lab, Unbreakable the cruel lab, then Undeniable and Unrelenting. The guide, the step plan and the ascendancy comment agree.",
+      "**A step can have its own plan.** When two steps share a checkpoint band, a step-id key in `step-plans.yaml` wins over the band. The Lv 13-28 and Lv 29-38 Sunder steps no longer inherit each other's advice, and the Lv 29-38 plan stops recommending a self-cast curse that is on CWDT by then.",
+      "**No-flask validation.** `npm run builds:no-flasks` replays the committed trees with all flasks disabled and writes a separate report. The standard gate report still uses the listed flasks active, and the page now says so. Boneshatter Juggernaut clears all seven no-flask steps. The report also records 8 steps in other builds below floor without flasks (mostly pinnacle chaos resistance); it is a validation, not a second gate.",
+      "**Review brief.** `docs/BUILD-REVIEW.md` collects the review protocol, the artifact map and the measurement config, and the contributor guide points at it.",
+      "The stale pinnacle comment is gone; the page keeps reading the committed gate values.",
+      "807 tests.",
+    ],
+    commits: [],
+    compare: 'v0.80.0...v0.81.0',
+  },
+  {
     version: '0.80.0',
     date: '2026-11-27',
     title: 'A level-38 step, step grades and GitHub feedback',
