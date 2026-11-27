@@ -439,33 +439,34 @@ function resolveWickerman(seed, file) {
 }
 
 /**
- * One band's plan, validated. The profile is keyed by checkpoint band, so a
- * migrated seed reads the plan of the band its step sits in (D36).
+ * One plan key, validated. A migrated seed reads the plan of the checkpoint
+ * band its step sits in, unless the profile also defines a key for the step id
+ * (D36).
  */
-function planFor(profile, profileId, band, file) {
-  const plan = profile[band];
+function planFor(profile, profileId, key, file) {
+  const plan = profile[key];
   if (!plan) {
     console.error(
-      `build seed invalid: ${file}\n  stepPlan profile "${profileId}" is missing ${band}`,
+      `build seed invalid: ${file}\n  stepPlan profile "${profileId}" is missing ${key}`,
     );
     process.exit(1);
   }
   if (!Array.isArray(plan.goals) || plan.goals.length === 0) {
     console.error(
-      `build seed invalid: ${file}\n  stepPlan ${profileId}/${band} has no goals`,
+      `build seed invalid: ${file}\n  stepPlan ${profileId}/${key} has no goals`,
     );
     process.exit(1);
   }
   if (!Array.isArray(plan.lookFor) || plan.lookFor.length === 0) {
     console.error(
-      `build seed invalid: ${file}\n  stepPlan ${profileId}/${band} has no lookFor`,
+      `build seed invalid: ${file}\n  stepPlan ${profileId}/${key} has no lookFor`,
     );
     process.exit(1);
   }
   for (const entry of [...plan.lookFor, ...(plan.crafting ?? [])]) {
     if (!entry.slot || !Array.isArray(entry.mods) || entry.mods.length === 0) {
       console.error(
-        `build seed invalid: ${file}\n  stepPlan ${profileId}/${band} has a slot without mods`,
+        `build seed invalid: ${file}\n  stepPlan ${profileId}/${key} has a slot without mods`,
       );
       process.exit(1);
     }
@@ -497,7 +498,10 @@ function resolveStepPlans(seed, file) {
     const bands = checkpointIds.map((id) => ({ id, ...checkpointConfig[id] }));
     for (const root of Object.values(seed.steps)) {
       for (const step of root.sub ?? []) {
-        plans[step.id] = planFor(profile, profileId, bandFor(step.level, bands).id, file);
+        // A step-id key wins when two steps share a band and need different
+        // advice; otherwise the band plan applies (D36).
+        const key = profile[step.id] ? step.id : bandFor(step.level, bands).id;
+        plans[step.id] = planFor(profile, profileId, key, file);
       }
     }
     return plans;
@@ -919,17 +923,20 @@ const index = {
   })),
 };
 
-// The calibration report and the published PoB links are evidence, not
-// generated build files: compiling a seed must not delete them. The calibration
-// run and the release publisher own them.
+// The calibration report, the published PoB links and the no-flask validation
+// are evidence, not generated build files: compiling a seed must not delete
+// them. Their own runs own them.
 const preserved = new Map();
-for (const name of ['calibration.json', 'pob-links.json']) {
+for (const name of ['calibration.json', 'pob-links.json', 'validation/no-flasks.json']) {
   const path = resolve(outDir, name);
   if (existsSync(path)) preserved.set(path, readFileSync(path, 'utf8'));
 }
 rmSync(outDir, { recursive: true, force: true });
 mkdirSync(outDir, { recursive: true });
-for (const [path, content] of preserved) writeFileSync(path, content);
+for (const [path, content] of preserved) {
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, content);
+}
 writeFileSync(resolve(outDir, 'index.json'), `${JSON.stringify(index, null, 2)}\n`);
 writeFileSync(
   resolve(root, 'src/generated/pantheon.json'),

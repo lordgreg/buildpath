@@ -178,8 +178,10 @@ never invalidates a gate report.
   advice. Numbers only through `{{steps.<id>.metrics.*}}`, and only on a
   measured step.
 - `lookFor` and `crafting` stay in `src/builds/config/step-plans.yaml`, keyed by
-  root band (`leveling-early`, `leveling-late`, `maps-early`, `maps-red`,
-  `endgame`), so eight minion builds do not repeat themselves.
+  checkpoint band (`until-12`, `until-28`, `until-68`, `maps-early`,
+  `maps-red`, `pinnacle`), so eight minion builds do not repeat themselves. A
+  profile may also key a plan by step id; the step-id key wins when two steps
+  share a band and need different advice.
 
 ## Rules the compiler enforces
 
@@ -241,3 +243,6 @@ reader, and the switch that mattered lived in `swaps`. It is now
 `leveling-38-68` (Boneshatter from 39, Brutality and the fifth link at 68).
 The 28-38 step is its own measurement, which is what makes the playtest's "the
 switch is a pain" a number instead of a feeling, and the step grade marks it D.
+Brutality is already usable at 38; the 39 swap is the guide's step boundary, not
+a gem-level restriction. The two Sunder steps get their own step-plan keys so
+neither inherits the other's advice.
