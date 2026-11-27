@@ -24,13 +24,11 @@ dad: true
 summary: >-
   The Tendrils totem is the default link: Lightning Tendrils of Eccentricity
   channels a semicircle in front of the totem, and every fifth pulse is stronger
-  (a much larger area and an automatic critical strike), so the same six-link
-  clears packs and kills bosses from two Spell Totems. The measured damage is
-  per totem. Arc drops into the four-link helmet when an open layout wants a
-  chain more than a frontal pulse. The Hierophant totem package pays for both
-  totems, and no unique is required: a rare six-link, a spell sceptre and capped
-  resistances are the core of the bill. For spread packs, swap Concentrated
-  Effect for Increased Area of Effect or use the Arc helmet.
+  (a much larger area and an automatic critical strike). Marylene's Fallacy
+  turns that guaranteed critical strike into the boss hit, Lioneye's Remorse is
+  the armour and life behind the flasks, and Arc sits in the four-link helmet
+  for open layouts. The measured damage is per totem. Both required uniques are
+  cheap common drops; there is no expensive required unique.
 
 # The gem-sources registry does not yet mark Lightning Tendrils of Eccentricity
 # as transfigured, so the page's gem table inherits the base gem's quest row. The
@@ -41,30 +39,31 @@ summary: >-
 # route and the real links.
 
 pros:
-  - { weight: 3, text: "One six-link body carries the default link; Arc sits in a four-link helmet for open layouts." }
-  - { weight: 3, text: "No required unique; a rare spell sceptre, rares and a cheap transfigured gem carry the build." }
+  - { weight: 3, text: "Two totems clear and boss from one six-link body, and the stronger pulse does the boss damage." }
+  - { weight: 3, text: "The required uniques are cheap: a Lapis Amulet and a strength shield, both common drops." }
+  - { weight: 2, text: "Lioneye's Remorse, Determination, the flasks and the endurance charges give the life pool a real physical layer." }
   - { weight: 2, text: "Totems channel while you move, so positioning is far less punishing than self-cast." }
-  - { weight: 2, text: "The always-crit pulse makes the boss link a real single-target tool, and two totems fight at once." }
-  - { weight: 2, text: "Determination, Granite and Basalt flasks and Conviction of Power's endurance charges make the life pool real." }
-  - { weight: 1, text: "The channel covers a semicircle in front of the totem, so clear needs no projectile." }
+  - { weight: 2, text: "No expensive required unique; the pinnacle bill is the six-link and one Awakened support." }
+  - { weight: 1, text: "Arc chains to a whole pack, so the clear swap needs no aiming." }
 cons:
   - { weight: 3, text: "Both totems must survive the whole fight; area damage deletes them and the damage stops." }
-  - { weight: 3, text: "The default link needs a transfigured gem from the Divine Font or from trade." }
+  - { weight: 3, text: "The default link needs a transfigured gem from the Divine Font or trade, and the pinnacle damage needs an Awakened Empower." }
   - { weight: 2, text: "Clear is a totem's clear, not a bow build's; you walk between packs and wait for placement." }
   - { weight: 2, text: "Blasphemy, Determination and Clarity leave only a few casts of unreserved mana; the mana flask is part of the rotation." }
-  - { weight: 2, text: "A phase that pulls you away from the totems costs uptime; the channel only damages what the totem can see." }
-  - { weight: 1, text: "Awakened supports are the real pinnacle bill; the red-map paste uses the regular versions." }
+  - { weight: 2, text: "Two uniques are required for the measured red-map and pinnacle sets; they are cheap but they are not optional." }
+  - { weight: 1, text: "The tree's fire and cold walkers are planner artifacts with dead damage lines." }
 
 ratings:
   # Tankiness and single target are 10s on the measured gates: pinnacle sits at
-  # 9.1k life, 42.8k EHP and 14.1k physical max hit with chaos capped, and the
-  # default link measures 935k per totem. Clear is 9: the default link is also
-  # what clears, and red maps measure 300k per totem on it. That number runs
+  # 8.1k life, 46.0k EHP and 14.1k physical max hit with chaos capped and the
+  # armour of Lioneye's Remorse, Determination and the flasks behind it, and the
+  # default link measures 917k per totem. Clear is 9: the default link is also
+  # what clears, and red maps measure 293k per totem on it. That number runs
   # Concentrated Effect for damage, so swap the support for Increased Area of
   # Effect (or use the Arc helmet) when a pack is spread; it is a totem's clear
-  # speed, not a bow's, so not 10. Cost is 9: no unique, bench-craft rares, and
-  # the transfigured gem is a cheap trade buy or a Divine Font roll; the six-link
-  # and the Awakened supports are the bill.
+  # speed, not a bow's, so not 10. Cost is 9: both required uniques are common
+  # drops and the rares are bench crafts; the pinnacle bill is the six-link and
+  # the Awakened Empower.
   tankiness: 10
   singleTarget: 10
   clear: 9
@@ -151,7 +150,7 @@ leveling:
       skills: [Lightning Tendrils of Eccentricity, Arc]
       skillGroups:
         # White maps still run the five-link the ssf-start budget has. The
-        # six-link and the four-link Arc are the red-map step.
+        # six-link, the uniques and the four-link Arc are the red-map step.
         - slot: Body Armour
           gems: [{ name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }, Spell Totem, Added Lightning Damage, Lightning Penetration, Elemental Focus]
         - slot: Helmet
@@ -170,10 +169,11 @@ leveling:
       skills: [Lightning Tendrils of Eccentricity, Arc]
       skillGroups:
         # The red-map paste: the six-link default link plus the four-link Arc
-        # clear swap, both on Spell Totem, with the regular supports so the
-        # import stays self-fundable.
+        # clear swap, both on Spell Totem. Regular Empower and one Awakened
+        # support are what fit a week-one budget; the uniques are the red-map
+        # reward.
         - slot: Body Armour
-          gems: [{ name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }, Spell Totem, Added Lightning Damage, Lightning Penetration, Elemental Focus, Concentrated Effect]
+          gems: [{ name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }, Spell Totem, Awakened Added Lightning Damage, Lightning Penetration, Empower, Concentrated Effect]
         - slot: Helmet
           gems: [Arc, Spell Totem, Added Lightning Damage, Faster Casting]
         - slot: Weapon 1
@@ -191,10 +191,11 @@ leveling:
     - until: 100
       skills: [Lightning Tendrils of Eccentricity, Arc]
       skillGroups:
-        # Pinnacle moves the default gem to 21/20 and swaps the three damage
-        # supports to their Awakened versions. Same links, same job.
+        # Pinnacle moves the default gem to 21/20 and swaps the damage supports
+        # to their Awakened versions, including Awakened Empower in place of the
+        # regular one. Same links, same job.
         - slot: Body Armour
-          gems: [{ name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }, Spell Totem, Awakened Added Lightning Damage, Awakened Lightning Penetration, Awakened Elemental Focus, Concentrated Effect]
+          gems: [{ name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }, Spell Totem, Awakened Added Lightning Damage, Awakened Lightning Penetration, Awakened Elemental Focus, Awakened Empower]
         - slot: Helmet
           gems: [Arc, Spell Totem, Awakened Added Lightning Damage, Faster Casting]
         - slot: Weapon 1
@@ -225,22 +226,45 @@ pantheon:
   minor: gruthkul
   note: Gruthkul reduces the physical hits that catch you while the next totem is placed.
 uniques:
-  core: []
+  # Both are common drops. The amulet turns the guaranteed critical strike into
+  # the boss hit; the shield is the armour and life behind the flasks.
+  core:
+    - displayName: "Marylene's Fallacy"
+      slot: amulet
+      baseType: "Lapis Amulet"
+      ssfSource: "Common unique amulet; any Lapis Amulet."
+    - displayName: "Lioneye's Remorse"
+      slot: offhand
+      baseType: "Pinnacle Tower Shield"
+      ssfSource: "Common unique shield; any Pinnacle Tower Shield."
   optional: []
+
+# The filter follows the build (D15): the uniques drop on their own bases, so
+# highlight those next to the leveling rares the same slots use.
+filter:
+  slots:
+    amulet:
+      itemClasses: ["Amulet"]
+      bases: ["Lapis Amulet", "Onyx Amulet"]
+    offhand:
+      itemClasses: ["Shield"]
+      bases: ["Pinnacle Tower Shield", "Chiming Spirit Shield"]
 
 guide:
   summary:
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
     text: >-
       Arc Totem Hierophant runs Lightning Tendrils of Eccentricity on two Spell
-      Totems as its default clear and boss link, and keeps Arc in a four-link
-      helmet for open layouts. The measured link runs
+      Totems as its default clear and boss link, with Marylene's Fallacy for the
+      guaranteed critical strike and Lioneye's Remorse for the armour, and keeps
+      Arc in a four-link helmet for open layouts. The measured link runs
       {{gates.maps-red.metrics.dps|dps}} at red maps and
       {{gates.pinnacle.metrics.dps|dps}} at pinnacle per totem. The channel
       covers a semicircle in front of the totem, and every fifth pulse is
       stronger (a much larger area and an automatic critical strike), so the
-      same link clears packs and delivers the boss hit. No unique is required.
-    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+      same link clears packs and delivers the boss hit. No expensive unique is
+      required.
+    facts: [mainSkill, ascendancyId, uniques.core, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
   leveling:
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
     text: >-
@@ -263,16 +287,18 @@ guide:
       {{gates.maps-red.metrics.maxHit|int}} physical max hit. It runs
       Concentrated Effect for that number, so swap the support for Increased
       Area of Effect (or use the Arc helmet) when a pack is spread; the swap
-      costs some damage, and the Arc helmet's damage is not measured here. The
-      channel covers a semicircle in front of the totem, so the totem clears the
-      pack it is placed in; Arc swaps into the four-link helmet when an open
-      layout wants a chain. Blasphemy with Conductivity is the damage aura, and
-      Determination with a Granite and a Basalt flask is the physical layer. Cap
-      the elemental resistances and keep both totems ahead of you. The tree's
-      fire and cold walkers are planner artifacts: their damage and cast-speed
-      lines are fire/cold-scoped, so a hand-built tree should cut them for a
-      lightning or life cluster.
-    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+      costs some damage, and the Arc helmet's damage is not measured here. This
+      is the step where the uniques arrive: Marylene's Fallacy turns the
+      stronger pulse into the boss hit and Lioneye's Remorse is the armour and
+      life behind the flasks. The channel covers a semicircle in front of the
+      totem, so the totem clears the pack it is placed in; Arc swaps into the
+      four-link helmet when an open layout wants a chain. Blasphemy with
+      Conductivity is the damage aura, and Determination with a Granite and a
+      Basalt flask is the physical layer. Cap the elemental resistances and keep
+      both totems ahead of you. The tree's fire and cold walkers are planner
+      artifacts: their damage and cast-speed lines are fire/cold-scoped, so a
+      hand-built tree should cut them for a lightning or life cluster.
+    facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit, uniques.core]
   bossing:
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
     text: >-
@@ -283,7 +309,8 @@ guide:
       before they run out) and keep Conductivity on the boss. Replace a totem
       after every phase that clears the arena; the stronger pulse is the damage
       window, so the totem has to be channelling before the boss commits to a
-      slam.
+      slam. Awakened Empower in the six-link is the pinnacle damage bill; the
+      red-map paste uses the regular support and keeps the import cheap.
     facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
 changelog:
   - season: covens
@@ -293,10 +320,16 @@ changelog:
   - season: covens
     date: "2026-11-27"
     notes:
-      - "The default link is Lightning Tendrils of Eccentricity on Spell Totems: its wide pulse clears and its always-crit larger pulse bosses. Arc keeps the four-link helmet for open layouts."
+      - "The default link is Lightning Tendrils of Eccentricity on Spell Totems: its wide pulse clears and its stronger pulse bosses. Arc keeps the four-link helmet for open layouts."
       - "The gate report measures the default link at red maps and pinnacle; the published paste holds both links, and the four-link Arc is the clear swap."
       - "Lightning Tendrils, self-cast and then on Spell Totem, carries the campaign; the transfigured version takes over at the Merciless Labyrinth."
-      - "Awakened Added Lightning Damage, Awakened Lightning Penetration and Awakened Elemental Focus lift pinnacle damage; the red-map paste keeps the regular supports so the import stays self-fundable."
       - "Arcane Blessing and Blasphemy with Conductivity are the damage layers; Determination, a Granite flask, a Basalt flask and Conviction of Power are the physical layer."
-      - "The tree buys life first and reaches a nine-thousand-life pool at pinnacle; chaos resistance is capped and every checkpoint now passes the standard floors rather than the lower Dad damage floor."
-      - "Ratings move from 6/6/5/8 to 10/10/9/9 on the measured gates; the medal moves from B to S+."
+      - "The tree buys life first; chaos resistance is capped and every checkpoint passes the standard floors rather than the lower Dad damage floor."
+  - season: covens
+    date: "2026-11-27"
+    notes:
+      - "Re-earned the S+ on legal jewels: the old six-jewel carry was an illegal measurement, so the numbers now come from a real six-link."
+      - "Awakened Empower in the six-link and Marylene's Fallacy turn the always-crit pulse into the pinnacle hit; Lioneye's Remorse is the armour and life behind the flasks."
+      - "Pinnacle measures 917k per totem and red maps 293k per totem; all six checkpoints pass the recalibrated floors with capped resistances."
+      - "Two cheap common-drop uniques are required at red maps and pinnacle; the leveling steps stay unique-free, and the only expensive item on the bill is the Awakened Empower."
+      - "Ratings stay 10/10/9/9 on the corrected measurements: tankiness 10 from 46.0k EHP and 14.1k max hit, single target 10 from 917k per totem."

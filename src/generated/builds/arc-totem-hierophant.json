@@ -9,15 +9,19 @@
   "flagship": false,
   "gateProfile": "standard",
   "dad": true,
-  "summary": "The Tendrils totem is the default link: Lightning Tendrils of Eccentricity channels a semicircle in front of the totem, and every fifth pulse is stronger (a much larger area and an automatic critical strike), so the same six-link clears packs and kills bosses from two Spell Totems. The measured damage is per totem. Arc drops into the four-link helmet when an open layout wants a chain more than a frontal pulse. The Hierophant totem package pays for both totems, and no unique is required: a rare six-link, a spell sceptre and capped resistances are the core of the bill. For spread packs, swap Concentrated Effect for Increased Area of Effect or use the Arc helmet.",
+  "summary": "The Tendrils totem is the default link: Lightning Tendrils of Eccentricity channels a semicircle in front of the totem, and every fifth pulse is stronger (a much larger area and an automatic critical strike). Marylene's Fallacy turns that guaranteed critical strike into the boss hit, Lioneye's Remorse is the armour and life behind the flasks, and Arc sits in the four-link helmet for open layouts. The measured damage is per totem. Both required uniques are cheap common drops; there is no expensive required unique.",
   "pros": [
     {
       "weight": 3,
-      "text": "One six-link body carries the default link; Arc sits in a four-link helmet for open layouts."
+      "text": "Two totems clear and boss from one six-link body, and the stronger pulse does the boss damage."
     },
     {
       "weight": 3,
-      "text": "No required unique; a rare spell sceptre, rares and a cheap transfigured gem carry the build."
+      "text": "The required uniques are cheap: a Lapis Amulet and a strength shield, both common drops."
+    },
+    {
+      "weight": 2,
+      "text": "Lioneye's Remorse, Determination, the flasks and the endurance charges give the life pool a real physical layer."
     },
     {
       "weight": 2,
@@ -25,15 +29,11 @@
     },
     {
       "weight": 2,
-      "text": "The always-crit pulse makes the boss link a real single-target tool, and two totems fight at once."
-    },
-    {
-      "weight": 2,
-      "text": "Determination, Granite and Basalt flasks and Conviction of Power's endurance charges make the life pool real."
+      "text": "No expensive required unique; the pinnacle bill is the six-link and one Awakened support."
     },
     {
       "weight": 1,
-      "text": "The channel covers a semicircle in front of the totem, so clear needs no projectile."
+      "text": "Arc chains to a whole pack, so the clear swap needs no aiming."
     }
   ],
   "cons": [
@@ -43,7 +43,7 @@
     },
     {
       "weight": 3,
-      "text": "The default link needs a transfigured gem from the Divine Font or from trade."
+      "text": "The default link needs a transfigured gem from the Divine Font or trade, and the pinnacle damage needs an Awakened Empower."
     },
     {
       "weight": 2,
@@ -55,11 +55,11 @@
     },
     {
       "weight": 2,
-      "text": "A phase that pulls you away from the totems costs uptime; the channel only damages what the totem can see."
+      "text": "Two uniques are required for the measured red-map and pinnacle sets; they are cheap but they are not optional."
     },
     {
       "weight": 1,
-      "text": "Awakened supports are the real pinnacle bill; the red-map paste uses the regular versions."
+      "text": "The tree's fire and cold walkers are planner artifacts with dead damage lines."
     }
   ],
   "ratings": {
@@ -889,9 +889,9 @@
                 "note": "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row."
               },
               "Spell Totem",
-              "Added Lightning Damage",
+              "Awakened Added Lightning Damage",
               "Lightning Penetration",
-              "Elemental Focus",
+              "Empower",
               "Concentrated Effect"
             ]
           },
@@ -976,7 +976,7 @@
               "Awakened Added Lightning Damage",
               "Awakened Lightning Penetration",
               "Awakened Elemental Focus",
-              "Concentrated Effect"
+              "Awakened Empower"
             ]
           },
           {
@@ -1069,7 +1069,20 @@
     "note": "Gruthkul reduces the physical hits that catch you while the next totem is placed."
   },
   "uniques": {
-    "core": [],
+    "core": [
+      {
+        "displayName": "Marylene's Fallacy",
+        "slot": "amulet",
+        "baseType": "Lapis Amulet",
+        "ssfSource": "Common unique amulet; any Lapis Amulet."
+      },
+      {
+        "displayName": "Lioneye's Remorse",
+        "slot": "offhand",
+        "baseType": "Pinnacle Tower Shield",
+        "ssfSource": "Common unique shield; any Pinnacle Tower Shield."
+      }
+    ],
     "optional": []
   },
   "filter": {
@@ -1120,6 +1133,10 @@
       "amulet": {
         "itemClasses": [
           "Amulet"
+        ],
+        "bases": [
+          "Lapis Amulet",
+          "Onyx Amulet"
         ]
       },
       "ring": {
@@ -1131,8 +1148,9 @@
         "itemClasses": [
           "Shield"
         ],
-        "tags": [
-          "int_armour"
+        "bases": [
+          "Pinnacle Tower Shield",
+          "Chiming Spirit Shield"
         ]
       },
       "jewel": {
@@ -1163,13 +1181,23 @@
       "season": "covens",
       "date": "2026-11-27",
       "notes": [
-        "The default link is Lightning Tendrils of Eccentricity on Spell Totems: its wide pulse clears and its always-crit larger pulse bosses. Arc keeps the four-link helmet for open layouts.",
+        "The default link is Lightning Tendrils of Eccentricity on Spell Totems: its wide pulse clears and its stronger pulse bosses. Arc keeps the four-link helmet for open layouts.",
         "The gate report measures the default link at red maps and pinnacle; the published paste holds both links, and the four-link Arc is the clear swap.",
         "Lightning Tendrils, self-cast and then on Spell Totem, carries the campaign; the transfigured version takes over at the Merciless Labyrinth.",
-        "Awakened Added Lightning Damage, Awakened Lightning Penetration and Awakened Elemental Focus lift pinnacle damage; the red-map paste keeps the regular supports so the import stays self-fundable.",
         "Arcane Blessing and Blasphemy with Conductivity are the damage layers; Determination, a Granite flask, a Basalt flask and Conviction of Power are the physical layer.",
-        "The tree buys life first and reaches a nine-thousand-life pool at pinnacle; chaos resistance is capped and every checkpoint now passes the standard floors rather than the lower Dad damage floor.",
-        "Ratings move from 6/6/5/8 to 10/10/9/9 on the measured gates; the medal moves from B to S+."
+        "The tree buys life first; chaos resistance is capped and every checkpoint passes the standard floors rather than the lower Dad damage floor."
+      ],
+      "seasonName": "Covens"
+    },
+    {
+      "season": "covens",
+      "date": "2026-11-27",
+      "notes": [
+        "Re-earned the S+ on legal jewels: the old six-jewel carry was an illegal measurement, so the numbers now come from a real six-link.",
+        "Awakened Empower in the six-link and Marylene's Fallacy turn the always-crit pulse into the pinnacle hit; Lioneye's Remorse is the armour and life behind the flasks.",
+        "Pinnacle measures 917k per totem and red maps 293k per totem; all six checkpoints pass the recalibrated floors with capped resistances.",
+        "Two cheap common-drop uniques are required at red maps and pinnacle; the leveling steps stay unique-free, and the only expensive item on the bill is the Awakened Empower.",
+        "Ratings stay 10/10/9/9 on the corrected measurements: tankiness 10 from 46.0k EHP and 14.1k max hit, single target 10 from 917k per totem."
       ],
       "seasonName": "Covens"
     }
@@ -1640,6 +1668,25 @@
       "qualityEffect": "Supported Skills deal % increased Elemental Damage",
       "qualityWorth": "recommended"
     },
+    "Awakened Empower": {
+      "requiredLevel": 72,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [],
+      "tags": [
+        "awakened",
+        "exceptional",
+        "low_max_level"
+      ],
+      "qualityEffect": "This Gem gains % increased Experience",
+      "qualityWorth": "optional"
+    },
     "Awakened Lightning Penetration": {
       "requiredLevel": 72,
       "source": {
@@ -1815,6 +1862,24 @@
       "qualityEffect": "Supported Skills deal % increased Elemental Damage",
       "qualityWorth": "recommended"
     },
+    "Empower": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [],
+      "tags": [
+        "exceptional",
+        "low_max_level"
+      ],
+      "qualityEffect": "This Gem gains % increased Experience",
+      "qualityWorth": "optional"
+    },
     "Faster Casting": {
       "requiredLevel": 18,
       "source": {
@@ -1983,7 +2048,7 @@
       "qualityWorth": "optional"
     }
   },
-  "seedHash": "825b261fb65c",
+  "seedHash": "8253287714a1",
   "medal": "S+",
   "stale": {
     "status": "waiting-for-pob",
@@ -5333,13 +5398,13 @@
         "dps": 80000
       },
       "metrics": {
-        "dps": 91016,
+        "dps": 292839,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 6713,
-        "energyShield": 1276,
-        "ehp": 28081,
-        "maxHit": 11285,
+        "life": 6828,
+        "energyShield": 1160,
+        "ehp": 32338,
+        "maxHit": 12279,
         "resists": [
           76,
           75,
@@ -5347,7 +5412,7 @@
         ],
         "chaosResist": 23,
         "manaUnreserved": 181,
-        "manaCost": 27,
+        "manaCost": 36,
         "nodes": 104,
         "sockets": 6,
         "ascendancy": 9
@@ -6571,18 +6636,6 @@
           "rarity": "RARE"
         },
         {
-          "slot": "Weapon 2",
-          "base": "Chiming Spirit Shield",
-          "mods": [
-            "+80 to maximum Life",
-            "+40% to Fire Resistance",
-            "+40% to Cold Resistance"
-          ],
-          "budget": "ssf-week1",
-          "ilvl": 82,
-          "rarity": "RARE"
-        },
-        {
           "slot": "Helmet",
           "base": "Hubris Circlet",
           "mods": [
@@ -6683,19 +6736,6 @@
           "rarity": "RARE"
         },
         {
-          "slot": "Amulet",
-          "base": "Onyx Amulet",
-          "mods": [
-            "+25 to Intelligence",
-            "+80 to maximum Life",
-            "+40% to Lightning Resistance",
-            "+40% to Cold Resistance"
-          ],
-          "budget": "ssf-week1",
-          "ilvl": 82,
-          "rarity": "RARE"
-        },
-        {
           "slot": "Ring 1",
           "base": "Opal Ring",
           "mods": [
@@ -6718,6 +6758,43 @@
           "budget": "ssf-week1",
           "ilvl": 82,
           "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Lapis Amulet",
+          "mods": [
+            "+(80-120) to Accuracy Rating",
+            "+(140-160)% to Global Critical Strike Multiplier",
+            "+(210-240)% to Global Critical Strike Multiplier",
+            "+(80-100) to Evasion Rating",
+            "(10-15)% increased Light Radius",
+            "60% less Critical Strike Chance",
+            "50% less Critical Strike Chance",
+            "40% less Critical Strike Chance",
+            "Critical Strikes have Culling Strike"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "UNIQUE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Pinnacle Tower Shield",
+          "mods": [
+            "(200-250)% increased Armour",
+            "20% increased Stun and Block Recovery",
+            "(180-220)% increased Armour",
+            "20% increased Stun and Block Recovery",
+            "+(80-100) to maximum Life",
+            "+(160-180) to maximum Life",
+            "5% reduced Movement Speed",
+            "-25 Physical Damage taken from Projectile Attacks",
+            "-150 Physical Damage taken from Projectile Attacks",
+            "+5% Chance to Block"
+          ],
+          "budget": "ssf-week1",
+          "ilvl": 82,
+          "rarity": "UNIQUE"
         },
         {
           "slot": "Jewel 1",
@@ -6814,8 +6891,8 @@
               "quality": 20
             },
             {
-              "name": "Added Lightning Damage",
-              "level": 20,
+              "name": "Awakened Added Lightning Damage",
+              "level": 10,
               "quality": 20
             },
             {
@@ -6824,8 +6901,8 @@
               "quality": 20
             },
             {
-              "name": "Elemental Focus",
-              "level": 20,
+              "name": "Empower",
+              "level": 6,
               "quality": 20
             },
             {
@@ -6956,21 +7033,21 @@
         "dps": 125000
       },
       "metrics": {
-        "dps": 221151,
+        "dps": 916864,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 8121,
-        "energyShield": 1496,
-        "ehp": 40103,
-        "maxHit": 13301,
+        "life": 8103,
+        "energyShield": 1292,
+        "ehp": 46037,
+        "maxHit": 14062,
         "resists": [
           76,
           75,
           75
         ],
         "chaosResist": 75,
-        "manaUnreserved": 209,
-        "manaCost": 31,
+        "manaUnreserved": 207,
+        "manaCost": 42,
         "nodes": 112,
         "sockets": 6,
         "ascendancy": 9
@@ -8284,18 +8361,6 @@
           "rarity": "RARE"
         },
         {
-          "slot": "Weapon 2",
-          "base": "Chiming Spirit Shield",
-          "mods": [
-            "60% increased Energy Shield",
-            "+100 to maximum Life",
-            "+45% to Cold Resistance"
-          ],
-          "budget": "trade",
-          "ilvl": 86,
-          "rarity": "RARE"
-        },
-        {
           "slot": "Helmet",
           "base": "Hubris Circlet",
           "mods": [
@@ -8396,19 +8461,6 @@
           "rarity": "RARE"
         },
         {
-          "slot": "Amulet",
-          "base": "Onyx Amulet",
-          "mods": [
-            "+40 to Intelligence",
-            "+100 to maximum Life",
-            "+45% to Lightning Resistance",
-            "+30% to Chaos Resistance"
-          ],
-          "budget": "trade",
-          "ilvl": 86,
-          "rarity": "RARE"
-        },
-        {
           "slot": "Ring 1",
           "base": "Opal Ring",
           "mods": [
@@ -8433,6 +8485,43 @@
           "budget": "trade",
           "ilvl": 86,
           "rarity": "RARE"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Lapis Amulet",
+          "mods": [
+            "+(80-120) to Accuracy Rating",
+            "+(140-160)% to Global Critical Strike Multiplier",
+            "+(210-240)% to Global Critical Strike Multiplier",
+            "+(80-100) to Evasion Rating",
+            "(10-15)% increased Light Radius",
+            "60% less Critical Strike Chance",
+            "50% less Critical Strike Chance",
+            "40% less Critical Strike Chance",
+            "Critical Strikes have Culling Strike"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "UNIQUE"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Pinnacle Tower Shield",
+          "mods": [
+            "(200-250)% increased Armour",
+            "20% increased Stun and Block Recovery",
+            "(180-220)% increased Armour",
+            "20% increased Stun and Block Recovery",
+            "+(80-100) to maximum Life",
+            "+(160-180) to maximum Life",
+            "5% reduced Movement Speed",
+            "-25 Physical Damage taken from Projectile Attacks",
+            "-150 Physical Damage taken from Projectile Attacks",
+            "+5% Chance to Block"
+          ],
+          "budget": "trade",
+          "ilvl": 86,
+          "rarity": "UNIQUE"
         },
         {
           "slot": "Jewel 1",
@@ -8544,8 +8633,8 @@
               "quality": 20
             },
             {
-              "name": "Concentrated Effect",
-              "level": 21,
+              "name": "Awakened Empower",
+              "level": 16,
               "quality": 20
             }
           ]
@@ -8662,20 +8751,20 @@
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJztWmtv2zoS_Vz_CkLABe6iTCM-JRVxLxzn2SbNw0na9EtBS7TNRqJciXLi_voFJT_kXNtxtu3edrEwQFDkGXLOkDOkR9r56yGJwUhmuUp100GvXAdIHaaR0v2mc311sOU7f71p7JwLMzjr7RYqtj1vGi92yjqI5UjGTSdwHWBE1pfmZjoU-ew6IIxFnr8XiWw6VzIZxiJzgMhDqaP2vOdIySwdDoQ2DkiE0p00vJPmMEuLYdNBDugKHSnTdN6nWjpgKLQZyFSfii9pdphGTScutMhUXutSetLVzwozuCtiB4yUvD9NI9l02q2Tdsd503jxYuc8FmOZdYwwIDfCNJ12mnSVltHeeccBIxEXsukEyEX8FWIM-djZXi53lRoRP1foRPXkTIB7iKwC7muZ9cedgZJxNBNA2ONr1dk_Op-Bse_66BX1sO9zylZOdD4Y5yoU8al4UEmRHClzJe6kns-JsM9WCR-oTF7KXOVmhl-tYTuNo8fglSOfqP7AaKX7G0u0ByLNH6HxStqnQot2Wod666DXOpO5zEaythg-WiXRGcoakL0KSuDOduk_tnaVSQlEaNRIdoYytFu-HMk-AJNJWXMpMvWp46jpsAVfsi2uA3QaybzpIJcgiJDLIA4QgQRxDxJGCCScUkiRTyElgQcZJgQyjxLIMXEhJyyAnFIOuccp9IhnC9-HHmMMegHxYUB8DgNKMERuOYlLAxcil3nMTuj7ECGKXYgw8QKIiOsGEFEXI1syDyKKmK37ngsRDYgLEXM5hYhRl0HEPTuO5xFb-lYq4IRB7GLsQ-wyhiBGhLgQI4oIxChgPsQY-wxizIkHMeMWw1HAIeYME4i5h6gtMbMldSHmPucQe9glEHuMU2ulIIDExZhB4gbUhQT5HoMEU8YgIdj3ICGU2Dr1AkgIJwgS4tleipgHCaWEQkI5R5AwxjgknNsWHtAAEi-w4wec-pAEAeKQuoTbkiEXUkQ9DClFPoGUUhxASrnLIaVe4JWlbQlc35aM2ZJ7kPLAynqYIUh9wjFkLsW29G2dIORDRrAXQEa8gEBGOfMgY9RnkDFOA1t6HDIWuBwyH1u8T11sS9vre5xA7pLAhxyhsqQosKWHIEcMM8ixizy7dyySBJOS2dLjkDOXUMgZcv1yT7_Yub48KSsvBsYM89fb2_f396-GwgzSnnxQsXwVpsn2UOS5Gsmt_E7F8ZZ1ge1Wq9Xa7V-3uvcXR7sH-ye3Fw-9vdA9O9_dvd3vuNfh5afR4cHtLXq4Kw6T-_Db4Ft4dHvaa6nO17fv-_pk_IW_u_az6_Y4PD3Ix-5V9-B9cUcuv6UfzuJjjvfuzcVtdHDpfoiuTt6f7x7sHl2jt1fDm4-HN_fotvvh4tun-FIneCDE4U0aHX4Zi7v3WXZ0fB4NDvw-8Y76fdlO6MlRH23tYXpjBum7o0-32d2Xh68XN58uR0nR7npvcaG_cNV6N_6Y3eLi_KsXZKOtUffdVjfjkpxn6mp0lu0HuSi-Ee_iKDgeoNuj21EUD_DHb-K2eP-VtU_uruWHE77ljfaKz5m_-3l80TvrbkUjRno6_dzPtm5arVZp8O2pxXeqYzWvzD95KsOFjRzW-x2gjEzsE5rE7b_jSr-qAb3VQA-zGtBfBSw9qQYMVgKtO82B2F0FLHdpDTgJzS92tmsm2Nm28bWMxDYA20rHbreqs6wCqUU3llHTMVkhHZDHqWk6u2k0Bq0sSYusuq60qtBtJaax-8XOoUxAv5r_VBoRCSO2j41M8u1DW5ToQ5nMTrYrqaNMxXkrNh8dUG78Z8s6QItkcobMOsG0F6Q9sB-GUptMhcqMnendDbsO-FqIWJnxwoOdf0_2RBEb57EplvDefhbxTjEcppnpDGUcX6VGJk-RrvBWsiYy51u2gknzL0CsFUUymi3CnkhEX25McbnwnGzZD-ZLPEX8ArxnSp1LLU0mjEr1xryXCy_b1AuAX4D2fiwTqY2ID9KwyDcm_FhsTnXWAyZdvwDJdqrL8CGMjPZ7PRmajYkuE52TrfeCafdPILxTMXoqwh_JOJHm-4N7Kws3DOUlsubf9vEXWPD_R-f_seh8IHIjs7bIjdL9jQnPpeo0q1YwG-yf89cPUgxTDdD3e-xBLBK5J_LBhn5bw9cMYxtB1foLrHkrC4WWnSJ7zhavyyzEJaElmLT_k9zascjKO-xGyzRD146cadOEBfqv79rDOB3J_Pv3bDvVUWHln2GPBZGFc7jW_gvs3d1Y5MOBTJ4kNtu5NYk5r1rjPxeldtPU_IDl3pNGZonSG92sl8vMDfOo46caZ1LLpynPGyXvwbc0TT6WeUtbu53VTipNiDP7g27h9qGkN0mX2npHmlnG1D4DVeUv3jQuSw9_DS5bl_uNzti-GshVLiPwRd7LGKBGO-2K2IC39rFRypbTvgY-bhwnw9j-Tc5fA7fB_wBKh5kUVjqpcuPAZu8b3rKeKl0Pqnx9A6E6proJVVeCBqn32IMUlMni0mxWn0ekvKdJ4d-OlP80KfLbkQqeJkV_N1LYfZoU--1IoadJ8d-N1FpO9-VluXE2FDHohHJoMvmY0kUV7l8D7D6ix1ZqiPAKFalb73j8r2jVsqxjkPZ6A6GjRnugEjtSZ6gyZaZW3JTLS98FJl1cpJdWWZMC-yYTVG8PhQ7n7falZb19ufJknfKDMrfQOCq6mcpBW2VhLM2GSuPGqdIq1TkYiJEEf2Kyhdm_Vm45tGB5--LS6i6zUXna2zyLCpXU4dhmhquz-Sdaha6zSjeNxo0bIWJwKfsiVmKdRSZJ_Ndgd2v2WzTTnyjYwu6CZWSZVbJMz3o9mSndzxsv_0RoC-F_lSxEHIN50m1OZ7lNFnf1oh9P7TLf608ah60zTr_8o9DopFkoM5mB6o_Ds_dMJEW8bM9MHPGl_wcIB1ZHq7u9UGcyzxed_OftjrX3ta69Oc_5lxfpjen7C06QjsoVnsQm9Cg29SyDvtSyyiwDm5BsYLZmhKUWwRPm9huEp6mvvdV1ZWwa7YFQGuza6k-Jbs_Td-2FTSSFjWdnevwAWlV9Y5Uxs1ocayPjWPVlqdoaGkvd63m7bu01zcYIVJ2Tl0r3f-rB8oxQgdZew6zS-Acr_diW_4nS9SvJaevwuL2gdWw9rxeL_K6xp0ZKy8oXD8qWTSmsmBmvnTmxp2I1876RmRZxdVD-kKnJ2qkLo-xok9kPM6GV-UGc6TMm3hW5vdv-kHnZM-ZtJdIMxvl3z9yRZnLpBUaZWNZSFEUuOzJMdVQliMtMQU_EuZxkXDpxaspkSD2FPPsOYZqx-jsK174tWIKavj6aYsgSzMJHBFMgXQKcZgmnGLZ0sDKzNIXwZRAZ1zTyliCqaD3H-EswNqTUbRSswtQshNwloHLNF6yNnElOZ5JQWiVTHxlvKENqMmRDmdqHJohuKFP_3IUtk6m2bkeaMqtVZrJsrZ3qnupXO1oPi-mgUstkXLqEA3SRdGXWdPzpN4x_A-6PRF5l9yZQz-fu5FPD6QQ7248_4_03uD7p9w==",
+    "code": "eJzdW21v2zgS_lz_CkJAcVmUTviqlyLZg-O87iZtYidps18WjETbaijJpSin7qL__UDJdmTXdpzb7rU9BCBo8hmSM5wZjobM7r8_JQqMpM7jLN1z8DZygEzDLIrT_p5zfXXU9J1__9rYvRBm8La3X8TK9vzaeLFb1oGSI6n2nAA5wAjdl-ZmOhT9EzkgVCLP34hE7jlXMhkqoR0g8lCmUfux5ySWOhsORGockIg47WbhvTTHOiuGew52wJ1Io9jsOW-yVDpgKFIzkFl6Lj5k-jiL9hxVpELHea0rTiddfV2YwX2hHDCK5cN5Fsk9p906a3edXxsvXuxeKDGWumuEAbkRZs9pZ8ldnMro4KLrgJFQhdxzSEB8GmxTyihBPnN2lpNeZUao_4LuLO7JGY3rE38V8DCVuj_uDmKpohkBxi5au6LDk4sZmBJK_W0SeJ6LCQlW0V0MxnkcCnUuPsVJkZzE5krcy_RxTkK8lcRHsZYdmce5meE9dxW4naloEcxXC6o_MGmc9jemaA9Eli-gCV2FPhepaGc1KF25bgu9TrXMpR7J2mb4eBVFdyhrQL5dyW93p7QiW7vSUgIRmngku0MZWsUvR7I_gNFS1gyLTi3rNNpz-JxF2RbkgDSLZL7nYEQxxBhxSAJMIcWuBymnFFKXMciwzyCjgQc5oRRyj1HoEoqgS3kAXcZc6Hougx71bOH70OOcQy-gPgyo78KAUQIxKidBLEAQI-5xO6HvQ4wZQRAT6gUQU4QCiBki2Jbcg5hhbuu-hyBmAUUQc-QyiDlDHGLXs-N4HrWlb6kCl3JIECE-JIhzDAmmFEGCGaaQ4ID7kBDic0iISz1IuGsxLg5cSFxOKCSuh5ktCbclQ5C4vutC4hFEIfG4y6yUggBSRAiHFAUMQYp9j0NKGOeQUuJ70NqzrTMvgJS6FENKPdvLMPcgZYwySJnrYkg55y6krmtb3IAFkHqBHT9wmQ9pEGAXMkRdW3KMIMPMI5Ax7FPIGCMBZMxFLmTMC7yytC0B8m3JuS1dDzI3sLQe4Rgyn7oEcsSILX1bpxj7kFPiBZBTL6CQM5d7kHPmc8i5ywJbei7kPEAu5D6xeJ8hYkvb63suhS6igQ9djMuS4cCWHoYu5oRDlyDsWd2xSBpMSm5Lz4UuR5RBl2Pklzr9Yve6c1ZWXgyMGeavd3YeHh62h8IMsp78FCu5HWbJzlDkeTySzfw-VqppTWCn1Wq19vvXrbuHy5P9o8Oz28tPvYMQvb3Y37897KLrsPPH6Pjo9hZ_ui-Ok4fw8-BzeHJ73mvF3Y-_vemnZ-MP7u_Xvr5uj8Pzo3yMru6O3hT3tPM5e_dWnbrk4MFc3kZHHfQuujp7c7F_tH9yjX-7Gt68P755wLd37y4__6E6aUIGQhzfZNHxh7G4f6P1yelFNDjy-9Q76fdlO2FnJ33cPCDsxgyy30_-uNX3Hz59vLz5ozNKivad9xsp0g9u3Pp9_F7fkuLioxfoUXN093vzTruSXuj4avRWHwa5KD5T7_IkOB3g25PbUaQG5P1ncVu8-cjbZ_fX8t2Z2_RGB8Wf2t__c3zZe3vXjEac9tLsz75u3rRarVLgO1OJ71aHa16Jf_KrdBfWc1jrd0BsZGJ_4Yn_-xpX2lUN6K0GeoTXgP4qYGlJNWCwEmjN6RFI0CpgqaU14MQ1v9jdqYlgd8f619ITWwdsK12rblVnWQUyFXdKRnuO0YV0QK4ys-fsZ9EYtHSSFboKWlqV67YUU9_9YvdYJqBfzX8ujYiEETunRib5zrEtSvSxTGYn25VMIx2rvKXMeweUiv9sWgekIpmcIbNOMO0FWQ8chqFMjY7D2IydaQRHkAM-FkLFZjz3w85_IHuiUMZZFMUSvneexXi3GA4zbbpDqdRVZmTyFNMV3lLWSB75LVvBpPkHYKz1YAMnGbWiSEazzTgQiejLjVldRnyhirmNnk4ESjB43PfpXBNh4O8ojNmiLmQqjRYmztKNhbCceJmmzwF-AB04TIbZg9TP2e7YLl6oM7v4OpOzoSZsud-Pq3aWlk5EGBkd9noyNBszuIz0kcd6L5h2_wPbuFtx9JSfP5Eqkebvu_iWDjd06CWyZtn25w-gxv-_Pvpb--a53Vvvjr8n30ciN1K3RW7itL8xw49UdTarVjAb7PvZ6zsphlkK8N-32CMlEnkg8sGGdlvD1wRjG0HV-gPseUuHIpXdQj9Hxes0c35JpBJM2r8nb20ldBnJbrRNM3TtyJk2TYOk_7nWHqtsJPO_r7PtLI0KS_8MecyRzJ3DtfYfQHf3lciHA5k8ydhMc2sUj3zVGr-fl9rPMvMNtvtAGqmTON0olF5O8yiYhY5_VDiTWj5NfN7E8gF8zrLkfZm9tLXbWe2sWgl1Zp_pFm5_lOxNkqa23pVmlje1v0FcZTF-bXRKC38NOq3OYaM7ttcEeZzLCHyQD1IB3Ghnd0IZ8Jv92Shpy2lfA580TpOhsh_L-WuAGu5LEKehlsJSJ1WGHNgcfsNb1lMl7UGVtW9gXMdUkVAVEjRovccepKBMGZdis-tZYMp7miny0zHlP80U_emYCp5miv1sTBH0NFP8p2MKP82U-7MxtZanhzJYbrwdCgW6oRwaLRdZuqzc_WtA0AJ7fOUKMVmxRIbqHYtfRau2ZR0Hg_LzvHFS3Ok4B-1Yh0qaDXkgjfM4jbM0BwMxkmCL0Cbhv6zcNTy3eHsDCDrlBWB5YNpURRzGMg3HNsVaHW-NVz4CJpsf55WVgsmAvSgF1eWkSMPHdnsnWm9fLhW6Tip3WTRu3AihQEf2hYrFOolMsuGvwX5z9jcvpi0cNAmak4wsEzOW07e9ntRx2s8br7YwbmLyS8mFUAocKpnI1JTLmLKzXCbzijFvClO5PKrLk8Jh64TTL2PtRjfTodRSgyr2frbORFKoZToz0eVX_ksQDuwa7dptTKplns_byT-nHXy9dmSmxn8Zi27Mvj9nBNmo3OGJeeMF8-5ZDvoylVU2FticXoPwNSMslQiZcG4v859mfW20dyeVabQHIk7Bvq1u6uyetVPPW-_aQM4aFq78cydO-__Mep9vX2vjNLtm8o3XvKj1_8Wa62HY9ZvTy-vDxrnQYyVT-a8cHAmlRDhunIlhnINWUqw7RlDjRuhYpOY1uNAS4G26vdBEttHXTeTrJrfe1C60lqlpdOTHItYyr6YGbE5OuPGXEf38tTBGx3eFkV9ebRHUpOgXK4_T1Eil4r60cpgBRXj_5dWWj5qYVLBWGBZahGPQETZf1_hrNFkDhgTSLxVhqGNjXwF9ebWFGWpiF1We_VjZCAi0J92ga3R8L8F5oUw8VLHUj8MxyL8ejGDUJGzzwUr6SPYsT_mED1TxcTgS9knMlI0tjJp43huXCgI6IoqLvMbm4qpc9BIo658XF9IuXfgjJVmk5JtSUrhEGuwp6nn4AmoSuLQLpawJVI2NVYEg-toAzuIslWOr_x2ZZDqXjYs4TUWoJLiyF03TI3i1ISwNHtYpuW2iX1sH3cZLYCRYZh_z1jAv37oxzHmSBRXfIgg1CZ8Paqrr_EUomTvVuqZIgUgjsK-y8B50ZJiNpB7P6_wW9lGTkPWjW-Azx8bz6r-cQQKnosAuamJ_CZa_BFpGRfj1ATzPO2RfmoSD6XvASdwCjL1rBj2dJeBCZx9kaGIlQat0NDUr41-amKNnUr_iLyfKb1ddCmKlRte_bc5bx6ftuXNI2fijp0R-3ziIR3Eqq4jkqGzZ9FBaMTNZO3Nivw2qmQ-N1KlQ1efCN5marp26MLEdbTL7sRZpbL4Rz-wZE--L3H4kf5N5-TPmbSXSDMb53565K83k6xmY2ChZy3UWuezKMEuj6qapTDn2hMrlJHXbVZkps6r1u6jZs6Zp6ruGmt4wzx4qLcHMvTaaAukS4PQiYYphSwcrk89TCF8Gkaq2IncJwoZ2dc68VRjyiPGXYKpQ6xETLMFM5FgbCaMlsHLP56SNnUlyeJKZXkVTH5lsSENrNHRDmtq7Ncw2pKm_nuPLaCrV7UpTpsfLlLittbO0F_crjU6HxXRQmcpkPH1YUiR3Uu85_vRJ9FfASYD1CPX8yXPz3Z3pBLs7i_8b8B-BzlpN",
     "byStep": {
       "until-12": "eJzFWFFz2jgQfg6_QqOZPh0J2MYGMtAOkIbkLjRpnLR3TzeKvRg1suRKMoT--hvJBpwOkKTJ3b0wK_nb3W9XK2lF78NDytAcpKKC97Fz1MQIeCRiypM-vr05PezgD-9rvSuiZ5fTYU6Z-fK-dtCzMmIwB9bHjouRJjIB_WVlyvu7iVHEiFKfSAp9fANpxojEiKgIeDzafDmjIEU2I1xjlBLKQxHdgx5LkWd97GB0R3hMdR9_EhwwygjXMxB8Qr4JORZxH7OcE0lV5RPl5adE5np2nzOM5hQWExFDH48GF6MQv68dHPSuGFmCDDXRSGmi-3gk0jvKIT65CjGaE5ZDH7c6R91my-34bafldgLc2K56IzRhv6B3Qaew1vHa7V24jxxksgxnFFhc8eHt5fPx7GqNDdrtI6_ltVqtbjMIdvq5mi0VjQibkAea5ukZ1TfkHvjaTCdo7lI9pRKuQVGl1-jDVmcXeiRY_Hz0BU1mmlOevMDBjAj1M3w3-wnhZCQq2O4-5C2XoEDOYbMYjuvu0ggzqAKPbEn45a9V6jXshjLSjQRAJNJ0DmEGkdkD1qoZIC0BKnvMW22y87iP_Ueby8w0MeIiBtXHTsvxnbrTbnt-3W26bqfuBp0gqLttP2jVvWa31ax7vu8Hda_bdYK6qZJO3e-0mm49cHzXrwdeN_Atk4Pe7fWFFQ5mWmfquNFYLBZHGdEzMYUHyuAoEmkjI0rRORyqe8rYoSHeGAwGg2FyOxh9i8-ub-Or4fjbkgTLP_zf50q6P-7P5zweDAZ966RReuk1TOQ2RyY1RgiNSVVkxYgIOLljEPexljlgpJjQfTwU8RINZCpyWZwsgyKpRmOV1YPeGFKUQGrSNQFNYqJJ41xDqhpj82PRY0ivBWOUJxOSpAQjG9NTKhZ7Ke8w4iQt17I0g0o75fnpY_Q9J4zqpV2zUjb2T2BKcqbxzxFuCafxonjCPMuE1IM4hni9uU5IShJ4KrxCcwzpduVNsPY7WgPQClFG7f5_UcuIcAhz-ZJgqzqVGO00KufffD17BfWnSv0rkExw5Ly-zk8ZSeGEqNkzi7yC3yTFTqJidtUi_NcpOQOWgn59QkaMSKqXz0zHGr1JxnrqX8xEKanV_fGFwgL9ECL90_ow0l9r6aLg4eH1mWrgZmADKu8eI4eg19ePGSMaF-NrG9IxmgzG56NauDSNl6IKYrSwlVg7kXSqF0LE6Cvhcc0qW7_HyHFrn4uYj1Gzdp5mjEZUKzPwmu8Q5ZEEYkyFGTBWHho2WmPlMRd3L5eZLYHaWX4nqUIjKiMG-rlcfnN9pAVKiz4ImT5tBwlvL4k7ES9rXwhh6BoSwijZQ6BofdUxGh4OD4e_yqe1l0_CxBxULRQyAgkSjYvxc7PiuO8MDdProaK5IjzaxcR_IjNCV4gM7fAVq-P41eqZiDmkwDWyzdcOgsF-gsB0bTQjlKOhEd-8ctp73ZM0N_V6yZcPaFDIL1ylzdX75FJ19lKRlCdO7TIzVUx58vaZ6D7p3v0F92UazFPj6Qw4zb0cxHQ6M0fZzYImKMyopBoVz7G3z4az_4xldApoyoi6r00gpqUtdGpnnklmh-P9B2pKOCkdhylhDJmn0Jv43X-G5poaY6XrzzmN7hVlc5Cv9B2CLq80pKlmULmCcwUhRILHRWtlb8IpYQrK7iFkQttLvtp8UV30E-u2tIJa9SMrjLsF8-jFsgJ6W4DFob3BtLYaE7oC8bdBgFUYBVsQxbmzwbS3YMyWrEbf2YVxN5juFkyZxwrKaW6B2SV_lG0Hlz1L2TDt0qladp-p41V0vG06RUmFoG03ZTsoI40En9KkqDSe5SujwCFd2krFiOfpHUhrt7Ed-HFOzEt_A_W8bvl3wcp-r_Hzf3P_AOIiOm8=",
       "until-28": "eJzFWFtv2zYUfo5_BSFgT1Ni3S-B3cFxGqdb0qZR0m1PAy0dy1woUiUpO96vHyjJtlLYTrpkGwwYh-R3yO_cqCMNfnosKFqAkISzoWGfWAYClvKMsHxo3N9dHEfGT-96gxus5p9mZxWheuVd72hQy4jCAujQcCIDKSxyUF_WW7l_WAZKKZbyIy5gaNxBUVIsDIRlCiwbb1cuCQhezjFTBiowYQlPH0BNBK_KoWEbaIpZRtTQ-MgZGKjETM2Bs2v8JxcTng0NWjEsiOwsEdYu5aJS84eKGmhBYHnNMxga49HVODHe9Y6OBjcUr0AkCiskFVZDY8yLKWGQnd8kBlpgWsHQCEP3xPasKDD6u5XuuML0uzSuyAw2aNsOw33A9wxEvkrmBGi2UfDj-CCV95c328392Drx4zCM4jh03H16N_OVJCmm1_iRFFVxSdQdfgC23SYM9xpzQQTcgiRSbeDHrrUPPeY0ezn6iuRzxQjLv-OAOebyW7jj74NfY4bHvIPda6dG3jMBEsQCttGw42ifRlJCBxiceA2LQb-uHS3dCQCEU0UWkJSQ6nSvt9IDpARAp5zcdT19yIaG_6SO9IxlIMYzkEPDiW3XdO0gNIMw8MzQjSLTtvzQN23XsmLT9iw_NG3P9m3T9j3LN-0wdH3TsRwnMp0gCgLTCf3AM53YjmPTtWLPMl07Cn3T9X0_MN048CLTjWM7MD3LDQLTs73QMT0vsALT82IrMn3LcxzTt6LAMf3IsxwzsNw4MgPbC20zsH3HNwM3Dvza4qPB_e1VLRzNlSrlab-_XC5PSqzmfAaPhMJJyot-iaUkCziWD4TSY-2g_mg0Gp3l96PLkZqfX0R4evZX-st9tLLupuVHK42u7r9c3i1veVRUMs3jKPfEQ1GNp-HPTsXzcXXzNZaPN9OJqD6T4DhcXv7BstFoNKxJ9VtWg76OSB07HTItJJqCbKKlRQQMTylkQ0OJCgwkKVdD44xnKzQSBa9Ec7mNmmBrjXW0jwYTKFAOhQ7jNSicYYX7HxQUsj_RfzV6AsWmGu6AZYJQaaDaEf9Aj-GizbjNItqutrd6bKCvFaZErer0amV92jnMcEWV8a3ROyzsf5eJSVWWXKhRlkG2YXaOC5zDc8Y2mhModitvLa7X0dbuNaK1OvjfrB5zpgSnFLJzkEpUqSKcvdjsPdpbu7cA9ATR2u3-f9EWKWaQVOJ7gtzV6cS2nkbt_Jvn8aCh_lzV_wq45AzZry_5C4oLOMdy_sJS7-C3TqknUTPbusT_r11yCbQA9XqHjCkWRK1e6I4NulMF66l_0ROtJNeP-C8Elugvzovf6jO09PtGulqX3-bxouF6UBvUtgdaTkBtOgQ9RiRrxre1SafoejT5MO4lK90GSyIhQ8s6E3vngszUkvMM_YpZ1quV63NPkef3Pjc2nyKr96EoKUmJknrgWz8gwlIBWG-VlEBpe1n24u7KGEuF6man9oLe_SlH5yDHeZ0avctqKohEYyJSCuqlHH8MLKQ4KprGFenOuveja_2gJ3VnippWELMU9pBzD5Kb8mzV-4IxRbeQY0rwAWLNi4s8RWfH9e95po7f9WPT7aOm3d_D1jvINqd8AbKXcJGCAIEmzfgVvtzNwn_GZ1x1SJzVw1dwcJ7k4TVfQAHscMYFhwkCVb3xHBOGzrT45v4JDx6Pi0pn-Ce2ekSjRn5zBtFBBoKw3O59KnVaE5a_RbFt-6lnKy5-lpvzD7i1PPQL5vMUbOsgBz6bzfVF-TssUVISQdS6Kt88UPbhC5ySGaAZxfKhNyGYqXordFFPvJDLnnMPX8oFZnh9rgCsQCD9AvwmJx--cStF9Gbt4aMC1Hwl1ZscfPjyfHrw54qkD5LQBYhXnp2Aap_USBFFodNZVBISSDnLmo6xfsDPMJXQNkUJ5aruXbo9JVFNm7TptjuodZu1xjg7ME_eSddAdweweXpsMd7OzbjqQPxdEKAdRsEORHMJbjHhDoy-C7rWR_swzhYT78C0fuygbGsHrA75E2_bRtuKtX3gPp3uzs4LddyOjvtCHa-j4-3SadIwAVU3lnUzqaUxZzOSN9nJymq9KTAoVnV2G4hVxRRE_Vm3vxv4foFl83rZQqM4aD9urfcf9L_9aPw30wAPwA==",
       "until-68": "eJztWltv2zgWfq5_BSFgn8rE4lVSEXfgONdpkqZ20kz6MmAs2mYiUR6KcuL99QtKvigZ23Wm7bYLLAIQvHyHPN_hOYcinb3fntIETKTJVaZbHtr1PSB1P4uVHra866ujndD77X1j71LY0cfBfqESN_K-8WavrINETmTS8njoASvMUNrP86nIn74H-onI8wuRypZ3JdNxIowHRN6XOu4sR06UNNl4JLT1QCqU7mX9B2mPTVaMWx7ywJ3QsbIt7yLT0gNjoe1IZvpc3GfmOItbXlJoYVReG1J6NjQ0hR09FIkHJko-nmexbHmd9lmn571vvHmzd5mIqTQ9KyzIrbAtr5Old0rL-OCy54GJSArZ8lCEfL4b-RFiIfWaqwWvMiuSV0udqYFcSJCIkXXAQy3NcNobKZnEC4EoYhvVOTy5XKpDGKW7YRBixGm4TuxyNM1VXyTn4kmlRXqi7JV4kHoxC_exv072SBnZlbnK7QIerNWvkyXx1uAzNRxZrfRw--lHIstfoPFa454LLTpZHbp2wxz0WhuZSzORy53AfK0qvbGsAeluZfu9Zhk-rnZlpASib9VE9say7zy-nMk1gDVS1iKKzEPqNG557FkouR7fAzqLZd7ykE8QRMhnEEeIQIJ4ACkKKaQkCiALKIGcsAhySjnkAacwIIErwhAGEQlhREIOkV9O49PIh8hnAXNThiFEiGIfIuL7EUTUx8iVLICIIubqYeBDxHxOIWLUZxAFAXFliBHEPsYhxD5jCGJEiA8xoohAjHHIIOYo4hBzhgnEPEAUYh5yDnGAfQJxwDh1jKIIEh9jBokfUR8SFAYMEkwZg4RQUpZBBAnhBEFCAtdPEQsgoZRQSCjnCBLGGIeEc9fDIxpBEkRu5ojTEJIoQhxSn3BXMuRDimiAIaUUR5BS7nNIaRAFZel6Ij90JWOudPYOMEOQhoRjyHyKXRm6OuUsgIxxGkEWYhRCFlIfu7LsCTiB3CdRCDlCZUkDBDlimEFOIjdKIl7WA176ypu96-5ZWXkzsnacv2s2Hx8fd8fCjrKBfFKJ3O1naXMs8lxN5E7-oJJkx7lWs91ut_eH1-3r4aeT_aPDs9tPT4PDo2H3rPtlcnzR_3I2Gucn57RP9sPO7x8yfTa95x-uQ3PdmfbP7SF-urobX_h9fnRvbi876Kjr38RXj91PXXTRu-af_zi4-XL9hdnsJr2fiocLY05OL-PRUTgkwclwXHSe6MVgGBVHd7eiM8I3H9hpKB6Obq7vmBmmO9PYjOlONuzYe0F3zAQXf_IoN6yYjAN1NfloDqNcFOj25MutvPiLdc4eruXNGd8JJgeT9mAnnjAy0Fm73W6VRmrOrbRXnTB5ZbJZqwwdF0WlD3pAWZm6JuJVaP8dWLpXDRjMgHvN2vx7TRfIZci7SHeVnrN_NVhWgdTiLpFxy7OmkB7Ik8y2vP0snoK2SbPCVMdiu8oRTmKeJN7sHcsUDKv1z6UVsbCieWplmjePXVGij2W6SKFXUsdGJbkHSi_4B3JapLNEtRgEy9HZ9wCKPPBXIRJlp2VamtXdcgdyIIrEei9Zr6DYfBXHXjEeZ8b2xjJJrjIr069xrPBOsiaypFf2gln3z-fVjmMZL0x-IFIxlFszXC285FqOg-WGzhE_n_ZCp0uppTXCqkxvTXu18CoPfgb4-aw7mbYmSxIZH8jcmqL_KtprpJe8lwDwDPH9ie9VzL6W7E5kkkr77XmubfpbZrYSWQsA1_z5-_7_5PVLJ68tvflGinGmAfp2fz5KRCoPRD7a0qtr-KV9yk5Q9f4CrmD6QsteYV7jAXWZZ0ErtASz_p9IrZMIo-x0y01aoGsJed41I8H-2y67n2U2_3Z_PZBWmlTprY7p1TJLo7wY-JHhPKvl8wv5ZyUfwb-zLP2jXMPVbhe1s0oR4i2-6h3cNUp2s8u8q_ekXdznXRuo6kLxvtEt9_sd6La7h43e1L1b5SqXMbiXjzIBqNHJ7kRiwe-u2Shly2XfgQA3TtNxovrK5u-A3-D_Akr3jRROOq0eboB7WGoEq0aqlyRQPSU1EKpjqkOjSp8NUh_piNyC8imjNJvT5wWp4Ouk8P8cqU2cHssk3_g4Fgno9eXYGvmS0qfKNd8B5L-gx9ZqiPAaFalfH3h52q1hgDcxyAaDkdBxozNSqZupN1ZG2bkVt-XyNvSBzZ5v0lunrM2AexME1Tuc0P1lv3v-q_evVp5sUn5UfjE2Too7o3LQUaafSPsLKE03KX2XxdPGZyES0JVDkSixSeHZI8I7sL8z-_s6h-dO8jws5jyWrvNVMmwTmWGSTWTe6GWmL4004Lhq__wt2Jhf79xBt1S6PPe21hk_i9vzbCJTqecB-hbPlHSPz6u0f4XhN2bTO5nYRmcklAb7rvpDLL6OzGp9w036irRwsflRT59Au6pvrTJmTotTbWWSqKEsVdtAY6WJX-c90SYqRukhqnJ-V-nhD3X2V7gL8r-mNP7OSr-05T9Run68nrePTzvPtE7UQIJBIvKHxoGaKC1LBcBR2bMthTUr440rp0KL2cqHVhotEuB-9_k-S5ONSxdWudlmqx8boZX9TpzpKxbeF7n7Tvsu67JXrNtOpR1N829euSft7AMOWGUTWbsaFLnsyX6m4-qSXn6hD0SSy9lFp5dktryD1K_xiyf--b3w7yi8ROEVqPkD1xxDVmCevfjPgXQFsDpplxi2crLyQjeH8FUQmdQ0ClYgqmy9xIQrMC6l1G0UrcPULIT8FaByz59ZG3mzu9TsIrdOpj4z3lKG1GTIljK0JkO3lGE1GbZKpnLdnrTlbbK8QbpaJ9MDNaw8Wo-L-aRSy3RahoQHdJHeSVP-80VzNfBwIvLqUj2D0oBEsx-g5wvsNV_-b8d_ADyMvzY=",
       "maps-early": "eJztWltv2zoSfq5_BSFgnw5Ti1dJRdIDx0mc9CRtEufSnJcDxqJtNhTlSpQd99cvKPmipLbrbNttF1gEICjyG3K-4XBIjrP752OiwVhmuUrNnode-x6QppfGygz2vOuro53Q-_NtY_dc2OGH_n6htOt523i1W9aBlmOp97zQ94AV2UDam_lQ5B_fAz0t8vy9SOSedyWTkRaZB0TekyZuL3uOlczS0VAY64FEKNNNew_SdrK0GO15yAP3wsTK7nnvUyM9MBLGDmVqzsSnNOuk8Z6nCyMylde6lJl1DbLCDh8K7YGxkpOzNJZ7Xrt12u56bxuvXu2eazGVWdcKC3Ir7J7XTpN7ZWR8cN71wFjoQu55OKA4eh1FhHCvuVrsKrVCv1DmVPXlAk8jgtYBD43MBtPuUEkdLwSQ72_W5vD4fAmOeMRfB4yFPCAMr5M7H05z1RP6TDyqpEiOlb0SD9Ishgkpi9bJHqlMXspc5XYBD9Yq2E51_BzM1ttpMLRGmcHWEu2hSPNnaEzWoc-EEe20BkVrSTrotclkLrOxXK4FoWvXrjuSNWCl8W6z3DqudpVJCUTPqrHsjmTPeXs5jvsANpOytpvIfDudxG6k-jZyLb4HTBrL3LkGQRAhn0EcIQIJ4gEkjBBIUUghJVEAWUAJ5IRFkFPKIQ84hQEJXBGGMIhICCMScoj8ciyfRj5EPguYGzcMIUIU-xBhEkQQEd-PIKI-Rq5kAUQUMVcPAx8i5nMKEaM-g4gHboQgIK4MHT7ihEHsYxxC7DOGIEaE-BAjigjEKGIhxBiHDGLMSQAx4w7DUcQh5gwTiHmAqCupDzEPOYc4wD6BOGCcOgNEESQ-xgwSP6I-JCgMGCSYMgYJoaQsgwgSwgmChASunSIWQEIpoZBQzhEkjDEOCeeuhUc0giSI3MgRpyEkUYQ4pD7hrmTIhxTRAENKUUggpRRHkFLuc0hpEAVl6VoiP3QlY67kAaQBZgjSkHAMmU-xK0NXJwiFkBEcRJCRICKQUc4CyBinEWQhdr0h9bEry5aAE8h9EoWQI1SWNECQI4YZ5Ji4XhLNSubKgEPOkB-W7vdq9_rytKy8Glo7yt80m5PJ5PVI2GHal49Ky9e9NGmORJ6rsdzJH5TWO85bm61Wq7U_uG7dtS6O948OT-8uHvsHPf_idv_QHiXhHXp8KDrJpPdl-KV3PDl5-Kx647_O09HV1F6cvptMbr-cXr7PrzG_io8_DO84PpjYi7v46NK_ja9O35_vH-0fX6N3V6Obj52bCbq7v7348re-NAkeCnF8mYbJ6EDwx-kBubvsn7zfeaR_3Q9yefCRnt8Pb3FnkMZaFd3zzmj_Rnd2BH03zo3g8vzzSSt7J-0nQXeyMS7-4VGesWI8CtTV-EN2GOWi-EKCi-PoZIjujv--k-8_s_bpw7W8PeU7wfhg3OqHbMzwPybekZ92blqtVmnI5tySu9WhlldmnX2VO9Zt3tKjPaCsTNwnmkXOr4Glm9aAwQy426yNv9t08aOMNC7AuErXrVHVWVaBNOJey3jPs1khPZDr1O55-2k8Ba0sSYusOolbVWhyEvPY9Gq3IxMwqOY_k1bEwormiZVJ3uy4okR3ZLKI21fSxJnSeUvbjx4oveXFsh4wIpnFyEUnmPeCtA8Oez1pbKZ6yk69-bUE-x74XAit7LSMkLO6m_5A9kWhrffcEitoN1_Eu1uMRmlmuyOp9VVqZfItzhXeSdZElnTLVjBr_vW8WnEs48USHIhEDOTWDFcLL7mW_WC5wHPEr6e90OlcGmkzYVVqtqa9WniVRz8B_HrWh1om0lihj9JekW_N97nYkumiB8y6fjzH3YrEt2LdsdSJtN8f5lpZb8ugViJrvu4-f_0S_z9O_dZxaktvvpVilBqAvt-fj7RI5IHIh1t6dQ2_tE_ZCKrW38AVsp4wsltkL_GAusyTTSuMBLP2X0itrUVW3nS2WqQFeslk0TQjwf7bLrufpjb_fn89kFZmiTJbncirZZZGedbxM7fzrJbP0wA3Sk7AlzRNPpZzuNrdonZaKUK8xaXewd1HyW6WQnD1rrSLLIL7Bqp6T7xtXJbr_QZcti4PG92py5TlKpcx-CQnUgPUaKf3Qlvwzn02Stly2jcgwI2TZKTd1Tp_A_wG_xdQppdJ4aSTKlkEXDqrEazqqfJXoEpgNRCqY6pDowqfDVLvaYvcgjJ9UprN6fOMVPBtUvh_jtQmTpMyyDc-jIQG3Z4c2Uw-p3RRueYbgPxn9NhaDRFeoyL16x3PT7s1DPAmBmm_PxQmbrSHKnEjdUcqU3ZuxW25_BH6wKZPF-kPp6xNgctDgir3J0xv2e5SjvX21cqTTcoPyxtj47i4z1QO2irraWl_A6XpJqXv03jauBFCg0s5EFqJTQrPcghvwP7O7O_bHJ46ydNtMeexdJ1vkmGbyAx0OpZ5o5tmPZnJDHSq71-_BBvj67076JZKl-fe1jrjJ_v2LB2X76fZBv0Dz5R0Ce9V2r_A8Buj6b3UttEeCmXAvqv-FIuvI7Na33CTviIp3N78YKaPoFXVt1YZM6fFibFSazWQpWobaKw08cu8J9pEJVNmgKqYf6nM4Kc6-wvcBfnfUhr_YKWf2_I_Ubp-vJ61OiftJ1pr1Zegr0X-0DhQY2VkqQA4Klu2pbBmZrxx5kQYMZv50MrMCA3cb00_ZmqycerCKjfabPZOJoyyP4gzfcHE-yJ397QfMi97wbytRNrhNP_umbvSzi5wwCqrZe1pUOSyK3upiatHenlD7wudy9lDp6tTW75B6s_4RYZ__i78GoWXKLwCNU9wzTFkBeZJwn8OpCuA1Um7xLCVg5UPujmEr4JIXdMoWIGoovUSE67AuJBSt1G0DlOzEPJXgMo1f2Jt5M3eUrOH3DqZ-sh4SxlSkyFbytCaDN1ShtVk2CqZynW70pavyfIF6Wrt1PTVoPJoMyrmg0ojk2m5JTxgiuReZrXf3r8CHo5FXj2qZ1Du42j2s_d8gt3m8_8m-Te0VdoU",
-      "maps-red": "eJztWmtv2zoS_Vz_CkLABe6iTCM-JRVxLxzn2SbNw0na9EtBS7TNRqJciXLi_voFJT_kXNtxtu3edrEwQFDkGXLOkDOkR9r56yGJwUhmuUp100GvXAdIHaaR0v2mc311sOU7f71p7JwLMzjr7RYqtj1vGi92yjqI5UjGTSdwHWBE1pfmZjoU-ew6IIxFnr8XiWw6VzIZxiJzgMhDqaP2vOdIySwdDoQ2DkiE0p00vJPmMEuLYdNBDugKHSnTdN6nWjpgKLQZyFSfii9pdphGTScutMhUXutSetLVzwozuCtiB4yUvD9NI9l02q2Tdsd503jxYuc8FmOZdYwwIDfCNJ12mnSVltHeeccBIxEXsukEyEX8FWIM-djZXi53lRoRP1foRPXkTIB7iKwC7muZ9cedgZJxNBNA2ONr1dk_Op-Bse_66BX1sO9zylZOdD4Y5yoU8al4UEmRHClzJe6kns-JsM9WCR-oTF7KXOVmhl-tYTuNo8fglSOfqP7AaKX7G0u0ByLNH6HxStqnQot2Wod666DXOpO5zEaythg-WiXRGcoakL0KSuDOduk_tnaVSQlEaNRIdoYytFu-HMk-AJNJWXMpMvWp46jpsAVfsi2uA3QaybzpIJcgiJDLIA4QgQRxDxJGCCScUkiRTyElgQcZJgQyjxLIMXEhJyyAnFIOuccp9IhnC9-HHmMMegHxYUB8DgNKMERuOYlLAxcil3nMTuj7ECGKXYgw8QKIiOsGEFEXI1syDyKKmK37ngsRDYgLEXM5hYhRl0HEPTuO5xFb-lYq4IRB7GLsQ-wyhiBGhLgQI4oIxChgPsQY-wxizIkHMeMWw1HAIeYME4i5h6gtMbMldSHmPucQe9glEHuMU2ulIIDExZhB4gbUhQT5HoMEU8YgIdj3ICGU2Dr1AkgIJwgS4tleipgHCaWEQkI5R5AwxjgknNsWHtAAEi-w4wec-pAEAeKQuoTbkiEXUkQ9DClFPoGUUhxASrnLIaVe4JWlbQlc35aM2ZJ7kPLAynqYIUh9wjFkLsW29G2dIORDRrAXQEa8gEBGOfMgY9RnkDFOA1t6HDIWuBwyH1u8T11sS9vre5xA7pLAhxyhsqQosKWHIEcMM8ixizy7dyySBJOS2dLjkDOXUMgZcv1yT7_Yub48KSsvBsYM89fb2_f396-GwgzSnnxQsXwVpsn2UOS5Gsmt_E7F8ZZ1ge1Wq9Xa7V-3uvcXR7sH-ye3Fw-9vdA9O9_dvd3vuNfh5afR4cHtLXq4Kw6T-_Db4Ft4dHvaa6nO17fv-_pk_IW_u_az6_Y4PD3Ix-5V9-B9cUcuv6UfzuJjjvfuzcVtdHDpfoiuTt6f7x7sHl2jt1fDm4-HN_fotvvh4tun-FIneCDE4U0aHX4Zi7v3WXZ0fB4NDvw-8Y76fdlO6MlRH23tYXpjBum7o0-32d2Xh68XN58uR0nR7npvcaG_cNV6N_6Y3eLi_KsXZKOtUffdVjfjkpxn6mp0lu0HuSi-Ee_iKDgeoNuj21EUD_DHb-K2eP-VtU_uruWHE77ljfaKz5m_-3l80TvrbkUjRno6_dzPtm5arVZp8O2pxXeqYzWvzD95KsOFjRzW-x2gjEzsE5rE7b_jSr-qAb3VQA-zGtBfBSw9qQYMVgKtO82B2F0FLHdpDTgJzS92tmsm2Nm28bWMxDYA20rHbreqs6wCqUU3llHTMVkhHZDHqWk6u2k0Bq0sSYusuq60qtBtJaax-8XOoUxAv5r_VBoRCSO2j41M8u1DW5ToQ5nMTrYrqaNMxXkrNh8dUG78Z8s6QItkcobMOsG0F6Q9sB-GUptMhcqMnendDbsO-FqIWJnxwoOdf0_2RBEb57EplvDefhbxTjEcppnpDGUcX6VGJk-RrvBWsiYy51u2gknzL0CsFUUymi3CnkhEX25McbnwnGzZD-ZLPEX8ArxnSp1LLU0mjEr1xryXCy_b1AuAX4D2fiwTqY2ID9KwyDcm_FhsTnXWAyZdvwDJdqrL8CGMjPZ7PRmajYkuE52TrfeCafdPILxTMXoqwh_JOJHm-4N7Kws3DOUlsubf9vEXWPD_R-f_seh8IHIjs7bIjdL9jQnPpeo0q1YwG-yf89cPUgxTDdD3e-xBLBK5J_LBhn5bw9cMYxtB1foLrHkrC4WWnSJ7zhavyyzEJaElmLT_k9zascjKO-xGyzRD146cadOEBfqv79rDOB3J_Pv3bDvVUWHln2GPBZGFc7jW_gvs3d1Y5MOBTJ4kNtu5NYk5r1rjPxeldtPU_IDl3pNGZonSG92sl8vMDfOo46caZ1LLpynPGyXvwbc0TT6WeUtbu53VTipNiDP7g27h9qGkN0mX2npHmlnG1D4DVeUv3jQuSw9_DS5bl_uNzti-GshVLiPwRd7LGKBGO-2K2IC39rFRypbTvgY-bhwnw9j-Tc5fA7fB_wBKh5kUVjqpcuPAZu8b3rKeKl0Pqnx9A6E6proJVVeCBqn32IMUlMni0mxWn0ekvKdJ4d-OlP80KfLbkQqeJkV_N1LYfZoU--1IoadJ8d-N1FpO9-VluXE2FDHohHJoMvmY0kUV7l8D7D6ix1ZqiPAKFalb73j8r2jVsqxjkPZ6A6GjRnugEjtSZ6gyZaZW3JTLS98FJl1cpJdWWZMC-yYTVG8PhQ7n7falZb19ufJknfKDMrfQOCq6mcpBW2VhLM2GSuPGqdIq1TkYiJEEf2Kyhdm_Vm45tGB5--LS6i6zUXna2zyLCpXU4dhmhquz-Sdaha6zSjeNxo0bIWJwKfsiVmKdRSZJ_Ndgd2v2WzTTnyjYwu6CZWSZVbJMz3o9mSndzxsv_0RoC-F_lSxEHIN50m1OZ7lNFnf1oh9P7TLf608ah60zTr_8o9DopFkoM5mB6o_Ds_dMJEW8bM9MHPGl_wcIB1ZHq7u9UGcyzxed_OftjrX3ta69Oc_5lxfpjen7C06QjsoVnsQm9Cg29SyDvtSyyiwDm5BsYLZmhKUWwRPm9huEp6mvvdV1ZWwa7YFQGuza6k-Jbs_Td-2FTSSFjWdnevwAWlV9Y5Uxs1ocayPjWPVlqdoaGkvd63m7bu01zcYIVJ2Tl0r3f-rB8oxQgdZew6zS-Acr_diW_4nS9SvJaevwuL2gdWw9rxeL_K6xp0ZKy8oXD8qWTSmsmBmvnTmxp2I1876RmRZxdVD-kKnJ2qkLo-xok9kPM6GV-UGc6TMm3hW5vdv-kHnZM-ZtJdIMxvl3z9yRZnLpBUaZWNZSFEUuOzJMdVQliMtMQU_EuZxkXDpxaspkSD2FPPsOYZqx-jsK174tWIKavj6aYsgSzMJHBFMgXQKcZgmnGLZ0sDKzNIXwZRAZ1zTyliCqaD3H-EswNqTUbRSswtQshNwloHLNF6yNnElOZ5JQWiVTHxlvKENqMmRDmdqHJohuKFP_3IUtk6m2bkeaMqtVZrJsrZ3qnupXO1oPi-mgUstkXLqEA3SRdGXWdPzpN4x_A-6PRF5l9yZQz-fu5FPD6QQ7248_4_03uD7p9w==",
-      "pinnacle": "eJztWttu27oSfa6_ghBQYG-UacSrpCLuhuPESdokTewkvbwUtEXbbCTKlSgn7tcfUPJFzrYdB21PW5wDAwRFriG5hjNDeqS9f-7jCIxlmqlE1x300nWA1L0kVHpQd66vWju-88_r2t6FMMN3_f1cRbbnde3ZXlEHkRzLqO4E3AFGpANpbmZDkc-uA3qRyLJzEcu6cyXjUSRSB4isJ3XYXPQcK5kmo6HQxgGxULqT9G6lOUqTfFR3kAO6QofK1J3zREsHjIQ2Q5noM_ElSY-SsO5EuRapyipdSk-7Bmluhrd55ICxkndnSSjrTrNx2uw4r2vPnu1dRGIi044RBmRGmLrTTOKu0jI8uOg4YCyiXNYdjBFi6KVLfZcG2NldLXmVGBE9XexU9eVcxEcYrQMeapkOJp2hklE4F0A04BsXdHh8MQdTF7n4JScuphwhuk7uYjjJVE9EZ-JexXl8rMyVuJV6MSch7tpVtlQq2zJTmZnjvbUrbCZR-BDM1itqMDRa6cHWEs2hSLKt0WdCi2ZSgZK1JC30Wqcyk-lYLjYDu8E6ic5IVoD8JSqXsbdbOJGtXaVSAtEzaiw7I9mzdl8MZR-ASaWs-BWZOdZJWHfYkkPZFtcBOgllVneQSxBEyGUQEcwgDhCBBHEPEkYIJJxSSJFPISWBBxkmBDKPEsgxcSHHfgA5YQHklHLIPU6hRzxb-D70GGPQC4gPA-JzGFCCIXKL6VwauBC5zGN2at-HCFHsQoSJF0BEXDeAiLoY2ZJ5EFHEbN33XIhoQFyImMspRIzadXPPjuN5xJa-lQo4YRC7GPsQu4whiK1FQowoIhCjgPkQY-wziDEnHsTU9QnENEAUYsYtnqOAQ8wZJhBzz7Zzz6qHe9SFmPucQ-xhl0DsMU6t2oIAEhdjBokbUBcSRD0ECfI9BgmmjEFCsO9BQiixdeoFkBBOECTEs70UMQ8SSl3XloRCQjlHkDDGOCSc2xYe0AASL7BzBZz6kAQB4pC6hNuSIRdSRD0MKUU-gZRSHEBKucshpV7gFaVtCVzflozZknuQ8sDKepghSH27TuoTjiFzKbalb-sEIR8ygr0AMuIFBDLKmQcZoz6DjHEa2NLjkLHA5ZD52OJ96mJb2l7f4wRylwQ-5AgVJeYYckRRYEsPQY4YZpBjF3nWyCyeBNOS2dLjkDOXUMgZcv3CA57tXbdPi8qzoTGj7NXu7t3d3cuRMMOkL-9VJF_2knh3JLJMjeVOdquiaMc6zG6j0WjsD64b4d3l8X7rsHV6aYYHLf_82yX1D1uD9mm7fd-K_Y83Q9U-Ou99Oh2OsuMz2iP7-OD47uT2q7r6-GbiJzsquniLGpk-2O-emUN8f9Udnbs93voy6rwzA__0-ui4fR229PXk29Vd-7KNzjvX_ObmPuqdvz9C8hC3Op8OzuObI9kVrVHy6f3QFRdvvl7iPOsNAnz4IR33T8537unJ8WCUN-_peX8Q5K3ux0-DYfL2-NPH9PbL_dfLm0_tcZw3u94bnOsvXDXeTj6kH3F-8dUL0vHOuPt2p5tySS5SdTV-s-Pz7Arff_Uu-qbRd9XxzSBUAX5__Kl_PlIUp7cnebvNPo5TL_ffea435p8bff_2-Fv8WXd3QsL4BX37ObpsNBr1erERu7Od2CtP6KzclulTEXRs_LHhwwHKyNg-oWn4_zeu8MMK0FsP9DCrAP11wMLnKsBgLdC63AKI3XXAwnorwOmZ8Gxvt6KCvV0bpYt4bsO4rXSsGZadRRVILbqRDOuOSXPpgCxKTN3ZT8IJaKRxkqflzadRHgBWYnYCPNs7kjEYlPOfSSNCYcTuiZFxtntkiwJ9JOP5AXkldZiqKGtE5oMDCod4sqwDtIinJ9G8E8x6QdIHh72e1CZVPWUmzuwaiJEDvuYiUmZSaHX2YOc_kH2RR8Z5qIoVvHefRLyTj0ZJajojGUVXiZHxY6RLvJWsiCz4Fq1g2vwbEGvc2fuXDBthKMP5ZhyIWAzk1lRXCV9E-dJGzyYCBRgs9n0211QZiP96ZcwXdyG1NKkwKtFbK2OV8FplLNSwNNVvpIvDSMZSGxG1kp4lsaUWlsXW8p_DwHT434B5M9FF9BFGhof9vuyZrVmvEl2wrvaCWfdPiAF7JaPHDohjGcXSfP_Z0Eh7W54EBbJiBfbxN4iB_w_u_wvBvSUyI9OmyIzSg63ZL6SqfMtWMB_s1znxeylGiQbo-924FYlYHohsuKUzV_AVxdhGULb-Dg6Q9oSWnTx9ir1XZZaCldASTNt_JbdmJNLiXrzVNs3RlXNo1jTzyv-61R5FyVhm32-zzUSHuZV_gj6WRJYO50r7b2C7-5HIRkMZP0psbrkViQWvSuOvi1L7SWJ-wHYfSCPTWOmtLuSrZRaKedDxU5UzrWWzZOyNknfgW5LEH4qMqq19nNdOy5UQZ_6n38LtQ0Fvmsi19Y4081yufQaqzIm8rrULD38F2o32Ya0zsW8uMpXJEHyRdzICqNZMuiIy4I19rBWyxbSvgM9rJ_Eosn-9s1fArXnPgdK9VAorHZdpe2BfLNT8VT3lmwRQvkqoIVzFlNej8kpQo9Uee5CCIo9dqM2u5wEp73FS-I8j5T9OivxxpILHSdE_jRR2HyfF_jhS6HFS_E8jtZHTXXFZrt0kKgSdnhyZVD6kdFmG-1cAu8v0fHftChFbs0S2JPPwX9G6bdnEIOn3h0KHteZQxXakzkilysy0uC0XvrSu5Z14gVwXmGR5B19Q9tw22peqoHzrKXRvHQOyicGwyDrUjvNuqjLQVGkvkmbLlePamdIq0RkYirEEf2F_Bwd_r7W7ZaOyL1bt2mU6Lo58m4FRPSV1b2JTzuUBvZm-fQFdpf80tdBNaukm4aR2I0QE2nIgIiU2qWT6euAV2N-Z_5b19BcmO5guqUYWCSdL9V2_L1OlB1ntxV-I7SD-d8FCRFElH7egs0YpG41oqpiFyT-qHbZJO4Pi_0Ktk6Q9mcoUlP8fnmw1oRTRKquZ-uML5D4HvaFdpF28vVinMsuWnf0nGsjGi1vXXqEXGihu1FsrAC3t1VkyLnZ5GqWW3cTysTYotSyz0cDmK2tk0wgvbK-laT-KWMX_CXaw8aLXlZGpNYdCabBvq9sGvKdt2jo2qxe88RIn4tyGt3d6cg8aZX3rNdNiySfayChSA1ksbROPlUp-IpmNlzcbM1Dt3chGB6UHP0n7P5AN2nhts3Twj6bz0NN_KJ3q5eascXTSXOITWc_tRyK7rR2osdKy9OVW0bItuTUz440zx_ZoLWc-NDLVIipP2x8yNdk4dW6UHW06-1EqtDI_iDN9wsT7IrO35B8yL3vCvI1YmuEk--6ZO9JMr8_AKBPJSrIjz2RH9hIdlqnmIufQF1Emp7mbTpSYIq1STUbPv5KY5b7-jcKVLx9WoGZvp2YYsgKz9InDDEhXAGf5xhmGrRysyFHNIHwVREaVFXkrEGWMX2D8FRgbbKo6CtZhKhpC7gpQsedL2kbONDs0TU2tk6mOjLeUIRUZsqVM5TMYRLeUqX6Mw1bJlKbbkabIjxU5MVtrJrqvBqVF61E-G1RqGU8Kl3CAzuOuTOuOP_s-9V_Aw7HIyjzhDIqm3-_s7c4m2Nt9-L3yfwCEgjIu"
+      "maps-red": "eJzdW21v2zgS_lz_CkJAcVmUTviqlyLZg-O87iZtYidps18WjETbaijJpSin7qL__UDJdmTXdpzb7rU9BCBo8hmSM5wZjobM7r8_JQqMpM7jLN1z8DZygEzDLIrT_p5zfXXU9J1__9rYvRBm8La3X8TK9vzaeLFb1oGSI6n2nAA5wAjdl-ZmOhT9EzkgVCLP34hE7jlXMhkqoR0g8lCmUfux5ySWOhsORGockIg47WbhvTTHOiuGew52wJ1Io9jsOW-yVDpgKFIzkFl6Lj5k-jiL9hxVpELHea0rTiddfV2YwX2hHDCK5cN5Fsk9p906a3edXxsvXuxeKDGWumuEAbkRZs9pZ8ldnMro4KLrgJFQhdxzSEB8GmxTyihBPnN2lpNeZUao_4LuLO7JGY3rE38V8DCVuj_uDmKpohkBxi5au6LDk4sZmBJK_W0SeJ6LCQlW0V0MxnkcCnUuPsVJkZzE5krcy_RxTkK8lcRHsZYdmce5meE9dxW4naloEcxXC6o_MGmc9jemaA9Eli-gCV2FPhepaGc1KF25bgu9TrXMpR7J2mb4eBVFdyhrQL5dyW93p7QiW7vSUgIRmngku0MZWsUvR7I_gNFS1gyLTi3rNNpz-JxF2RbkgDSLZL7nYEQxxBhxSAJMIcWuBymnFFKXMciwzyCjgQc5oRRyj1HoEoqgS3kAXcZc6Hougx71bOH70OOcQy-gPgyo78KAUQIxKidBLEAQI-5xO6HvQ4wZQRAT6gUQU4QCiBki2Jbcg5hhbuu-hyBmAUUQc-QyiDlDHGLXs-N4HrWlb6kCl3JIECE-JIhzDAmmFEGCGaaQ4ID7kBDic0iISz1IuGsxLg5cSFxOKCSuh5ktCbclQ5C4vutC4hFEIfG4y6yUggBSRAiHFAUMQYp9j0NKGOeQUuJ70NqzrTMvgJS6FENKPdvLMPcgZYwySJnrYkg55y6krmtb3IAFkHqBHT9wmQ9pEGAXMkRdW3KMIMPMI5Ax7FPIGCMBZMxFLmTMC7yytC0B8m3JuS1dDzI3sLQe4Rgyn7oEcsSILX1bpxj7kFPiBZBTL6CQM5d7kHPmc8i5ywJbei7kPEAu5D6xeJ8hYkvb63suhS6igQ9djMuS4cCWHoYu5oRDlyDsWd2xSBpMSm5Lz4UuR5RBl2Pklzr9Yve6c1ZWXgyMGeavd3YeHh62h8IMsp78FCu5HWbJzlDkeTySzfw-VqppTWCn1Wq19vvXrbuHy5P9o8Oz28tPvYMQvb3Y37897KLrsPPH6Pjo9hZ_ui-Ok4fw8-BzeHJ73mvF3Y-_vemnZ-MP7u_Xvr5uj8Pzo3yMru6O3hT3tPM5e_dWnbrk4MFc3kZHHfQuujp7c7F_tH9yjX-7Gt68P755wLd37y4__6E6aUIGQhzfZNHxh7G4f6P1yelFNDjy-9Q76fdlO2FnJ33cPCDsxgyy30_-uNX3Hz59vLz5ozNKivad9xsp0g9u3Pp9_F7fkuLioxfoUXN093vzTruSXuj4avRWHwa5KD5T7_IkOB3g25PbUaQG5P1ncVu8-cjbZ_fX8t2Z2_RGB8Wf2t__c3zZe3vXjEac9tLsz75u3rRarVLgO1OJ71aHa16Jf_KrdBfWc1jrd0BsZGJ_4Yn_-xpX2lUN6K0GeoTXgP4qYGlJNWCwEmjN6RFI0CpgqaU14MQ1v9jdqYlgd8f619ITWwdsK12rblVnWQUyFXdKRnuO0YV0QK4ys-fsZ9EYtHSSFboKWlqV67YUU9_9YvdYJqBfzX8ujYiEETunRib5zrEtSvSxTGYn25VMIx2rvKXMeweUiv9sWgekIpmcIbNOMO0FWQ8chqFMjY7D2IydaQRHkAM-FkLFZjz3w85_IHuiUMZZFMUSvneexXi3GA4zbbpDqdRVZmTyFNMV3lLWSB75LVvBpPkHYKz1YAMnGbWiSEazzTgQiejLjVldRnyhirmNnk4ESjB43PfpXBNh4O8ojNmiLmQqjRYmztKNhbCceJmmzwF-AB04TIbZg9TP2e7YLl6oM7v4OpOzoSZsud-Pq3aWlk5EGBkd9noyNBszuIz0kcd6L5h2_wPbuFtx9JSfP5Eqkebvu_iWDjd06CWyZtn25w-gxv-_Pvpb--a53Vvvjr8n30ciN1K3RW7itL8xw49UdTarVjAb7PvZ6zsphlkK8N-32CMlEnkg8sGGdlvD1wRjG0HV-gPseUuHIpXdQj9Hxes0c35JpBJM2r8nb20ldBnJbrRNM3TtyJk2TYOk_7nWHqtsJPO_r7PtLI0KS_8MecyRzJ3DtfYfQHf3lciHA5k8ydhMc2sUj3zVGr-fl9rPMvMNtvtAGqmTON0olF5O8yiYhY5_VDiTWj5NfN7E8gF8zrLkfZm9tLXbWe2sWgl1Zp_pFm5_lOxNkqa23pVmlje1v0FcZTF-bXRKC38NOq3OYaM7ttcEeZzLCHyQD1IB3Ghnd0IZ8Jv92Shpy2lfA580TpOhsh_L-WuAGu5LEKehlsJSJ1WGHNgcfsNb1lMl7UGVtW9gXMdUkVAVEjRovccepKBMGZdis-tZYMp7miny0zHlP80U_emYCp5miv1sTBH0NFP8p2MKP82U-7MxtZanhzJYbrwdCgW6oRwaLRdZuqzc_WtA0AJ7fOUKMVmxRIbqHYtfRau2ZR0Hg_LzvHFS3Ok4B-1Yh0qaDXkgjfM4jbM0BwMxkmCL0Cbhv6zcNTy3eHsDCDrlBWB5YNpURRzGMg3HNsVaHW-NVz4CJpsf55WVgsmAvSgF1eWkSMPHdnsnWm9fLhW6Tip3WTRu3AihQEf2hYrFOolMsuGvwX5z9jcvpi0cNAmak4wsEzOW07e9ntRx2s8br7YwbmLyS8mFUAocKpnI1JTLmLKzXCbzijFvClO5PKrLk8Jh64TTL2PtRjfTodRSgyr2frbORFKoZToz0eVX_ksQDuwa7dptTKplns_byT-nHXy9dmSmxn8Zi27Mvj9nBNmo3OGJeeMF8-5ZDvoylVU2FticXoPwNSMslQiZcG4v859mfW20dyeVabQHIk7Bvq1u6uyetVPPW-_aQM4aFq78cydO-__Mep9vX2vjNLtm8o3XvKj1_8Wa62HY9ZvTy-vDxrnQYyVT-a8cHAmlRDhunIlhnINWUqw7RlDjRuhYpOY1uNAS4G26vdBEttHXTeTrJrfe1C60lqlpdOTHItYyr6YGbE5OuPGXEf38tTBGx3eFkV9ebRHUpOgXK4_T1Eil4r60cpgBRXj_5dWWj5qYVLBWGBZahGPQETZf1_hrNFkDhgTSLxVhqGNjXwF9ebWFGWpiF1We_VjZCAi0J92ga3R8L8F5oUw8VLHUj8MxyL8ejGDUJGzzwUr6SPYsT_mED1TxcTgS9knMlI0tjJp43huXCgI6IoqLvMbm4qpc9BIo658XF9IuXfgjJVmk5JtSUrhEGuwp6nn4AmoSuLQLpawJVI2NVYEg-toAzuIslWOr_x2ZZDqXjYs4TUWoJLiyF03TI3i1ISwNHtYpuW2iX1sH3cZLYCRYZh_z1jAv37oxzHmSBRXfIgg1CZ8Paqrr_EUomTvVuqZIgUgjsK-y8B50ZJiNpB7P6_wW9lGTkPWjW-Azx8bz6r-cQQKnosAuamJ_CZa_BFpGRfj1ATzPO2RfmoSD6XvASdwCjL1rBj2dJeBCZx9kaGIlQat0NDUr41-amKNnUr_iLyfKb1ddCmKlRte_bc5bx6ftuXNI2fijp0R-3ziIR3Eqq4jkqGzZ9FBaMTNZO3Nivw2qmQ-N1KlQ1efCN5marp26MLEdbTL7sRZpbL4Rz-wZE--L3H4kf5N5-TPmbSXSDMb53565K83k6xmY2ChZy3UWuezKMEuj6qapTDn2hMrlJHXbVZkps6r1u6jZs6Zp6ruGmt4wzx4qLcHMvTaaAukS4PQiYYphSwcrk89TCF8Gkaq2IncJwoZ2dc68VRjyiPGXYKpQ6xETLMFM5FgbCaMlsHLP56SNnUlyeJKZXkVTH5lsSENrNHRDmtq7Ncw2pKm_nuPLaCrV7UpTpsfLlLittbO0F_crjU6HxXRQmcpkPH1YUiR3Uu85_vRJ9FfASYD1CPX8yXPz3Z3pBLs7i_8b8B-BzlpN",
+      "pinnacle": "eJztW21PG7kW_tz8Cmuk6lLhgN9npoJdhUCAFigkwG77ZWUmTuIyL-mMJ5Bd9b9feSYvE0gg3G3vtrpXSJZjP8f2c3yOfcY2O7_eRyEYqTTTSbzr4C3kABUHSVfH_V3n6rJV95xff6ntnEsz-NDby3Voa36pvdop8iBUIxXuOr5wgJFpX5nraVP0D-SAIJRZdiYjtetcqmgYytQBMgtU3G3Oa460SpPhQMbGAZHUcScJbpU5TJN8uOtgB9zIuKvNrnOWxMoBQxmbgUriU_k5SQ-T7q4T5rFMdVap0vGkqp_mZnCbhw4YaXV3mnTVrtNsnDQ7zi-1V692zkM5VmnHSAMyI82u00yiGx2r7v55xwEjGeZq1_Gx8ATbIswXHPm-s71c9DIxMvwP5E50T81kPIzoKuBBrNL-uDPQKuzOBDDxyZMjOjg6n4GZQNTdoh7nHJOVYueDcaYDGZ7Kex3l0ZE2l_JWxfMuGRIrhVs6VW2V6czM8K5YBW4mYfchmK_WU39gYh3315ZoDmSSrY0-lbFsJhUoW0nSQq_iVGUqHan5XBDkrpLoDFUFKLZwOYyd7cKLbO4yVQrIwOiR6gxVYA2_aMr-ACZVquJYdOpZx91dhy94lC1BDoiTrsp2HYwohhgjDjElHBIfU0ixcCHllEIqGIMMewwy6ruQE0ohdxmFglAEBfF8KCj3oWBMQOEKBl3q2sTzoMs5h65PPehTT0CfUQIxKrpDzEcQI-5y27XnQYwZQRAT6voQU4R8iBki2KbchZhhbvOeiyBmPkUQcyQYxJzZcQvXtuO61KaelfIF5ZAgQjxIEOcYEkwpggQzTCHBPvcgIcTjkBBBXUgY8igkzMcMEi4sXmBfQCI4oZAI15YL16pHuAxBIjwhIHEJopC4XDCrNt-HFBHCIUU-Q5Bi5mJIsedySAnjHFJKPBdSyqjNM9eHlAqKIaWurWWYu5AyhpBNKYOUCYEh5ZwLSIWwJcJnPqSub_vyBfMg9X0sIENU2JRjBBlmLoGMYY9CxhjxIWMCCciY67tFakt85NmUc5sKFzLhW1mXcAyZZ8fJPCoI5IgRm3o2TzH2IKfE9SGnrk8hZ4K7kHPmcci5YL5NXQE595GA3CMW7zFEbGprPVdQKBD1PSgwLlIiCBSYYd-mLoYCc8KhIAi71sgsnvqTlNvUFVBwRBkUHCOv8IBXO1ftkyLzamDMMHu7vX13d7c1lGaQ9NS9DtVWkETbQ5lleqTq2a0Ow7p1mO1Go9HY6181uncXR3utg9bJhRnst7yzPy-Yd9Dqt0_a7ftW5H28Huj24Vnw6WQwzI5OWUD3yP7R3fHtF3358d3YS-o6PH-PG1m8v3dzag7I_eXN8AwFovV52Plg-t7J1eFR-6rbiq_Gf17etS_a-KxzJa6v78Pg7LdDrA5Iq_Np_yy6PlQ3sjVMPv02QPL83ZcLkmdB3ycHv6ej3vFZ_Z4dH_WHefOenfX6ft66-fipP0jeH336mN5-vv9ycf2pPYry5o37juTxZ6Eb78e_px9Jfv7F9dNRfXTzvn6TCkXPU305elf3RHZJ7r-45z3T6CF9dN3vap_8dvSpdzbUjKS3x3m7zT-OUjf3PrjIHYk_Gj3v9ujP6I_4pt6lXJyz93-EF41GY3e3mIjt6UzslFt0Vk7L5Fex6Nj1xy4fDtBGRfYXniz_j3GFH1aA7mqgS3gF6K0CFj5XAforgdbl5kCCVgEL660A8QS4s11Rwc62XaWL9dwu4zbTsWZYVhZZoGJ5E6rurmPSXDkgCxOz6-wl3TFopFGSp2Xo0yg3ACsx3QFe7RyqCPTL_k-VkV1p5PaxUVG2fWiTAn2ootkGeanibqrDrBGa3x1QOMSLZR0Qy2iyE80qwbQWJD1wEAQqNqkOtBk70ziQYAd8yWWozbjQ6vSH7X9f9WQeGuehKpbw3n4R8U4-HCap6QxVGF4mRkXPkS7xVrIiMudblIJJ8Q9ArHFn4y_VbXS7qjubjH0Zyb5am-oy4fMwX5joaUegAIP5vE_7migDi39eGbPBnatYmVQancRrK2OZ8EplzNWw0NUPpIuDUEUqNjJsJYElsaYWFsVW8p_BwKT5H4l5NEzuVLo-5RK_muu0ve_Acack8dyecKTCSJm_vx000mDNxb9AVpRhf_4Ay97_1_P_hfW8JTOj0qbMjI77a7OfS1X5lqVg1th3mOs1nfg3JYdJDPDfd-NWKCO1L7PBms5cwVcUYwtBWfojOEAayFh18vQl9l6VWVisZKzApPyf5NYMZVqEwmtN0ww9pzIrmnrlf91qD8NkpLK_b7PNJO7mVv4F-lgQqShlofwHsN29UGbDgYqeJTaz3IrEnFel8J9bpfaSxHyD6d5XRqWRjteKwZfLzBXzoOK7KmeSy6bnr9da3YE_kyT6vThEtbmPs9xJORLqzL7zLdz-KOhNzm5tvqPM7PjW_ga6PAb5pdYuPPwtaDfaB7XO2N5WZDpTXfBZ3akQ4FozuZGhAe_sz1ohW3T7FniidhwNQ_u1nb0FqOa-BjoOUiWtdFSe1AN7lVDzltWUdwegvDyoYVLFlOFRGRLUWLXGbqSgOLou1GbH84CU-zwp8tOR8p4nRX86Uv7zpNjPRoqg50nxn44Ufp6U-NlIPcnprgiWa9eJ7oJOoIYmVQ8pXZTL_VtA0CI9D60cIeYrhsgXZB5-Fa2alqcYDIpv9tpRfpPqDDR1GoTKrMmB1E51rJM4AwM5UmCDeHXiv1k5a4tTYm8iQbu4iCw2THDQ6-lAqzgY2zPacnurbWKEgEkWG9pk_LUttDe2oLwllXEwL7eXs9Xy5WqhT6nlJumOa9dShqCt-jLU8imVTM7T34K9-uxvUU8bhNYJW1CN6vVUYCzVD72eSnXcz2qbG5jXsXhTsJBhWDnAmtNZoRSxYBqLzjBVzNxgntUOe0o7_SLarnWSNFCpSkEZfb_YarpKhsusZmLNmxi9BsHADtIO3oalqcqyRVf5jgbCnzaQxFQ0UMSjaysAL8zVaTIqZnni44tuYvlYG1SxKo9vQSqNqtGnWti0tZamfUWwjP8L7ODJ2O9GhabWHEgdgz2bXXfpe9mkrWKzfMBPxnXWzXDtw9A6lI7732nAT2n5hWyeDOgsG_Kt2Tz0jW_JphrJXZ0dX1wd1E5lOg5VrP6VgZYMQxmMaydyqDPQiPJHOxGZc0K1a5lqGZu34DxVAG_RrQdFZAs9LiKPi0S1qJmnqYpNra2-5DpVWdk1YAsaxLW_jOxnb6Uxqb7Jjfq6uUFQnaI3VhfHsVFhqPvK6mEGlMHt180ND9UxKWGNIMhTGYxBW9ojv9pfo8kYMCSQfi0Fg1Qb-6Dp6-YGZqiOBSr3hsPQBlGgOakGHZPqWwVO89DoYahVOm-OQf64MYJRnbD1Gyvku6pnOWUTHqjkcTCS9nHPlMYGRnXM3zwKU0BbdnWeVWg-HJXdwEK7vj8cSLPYAuaS5KEkX1eSwiXaYM9JL8IfoCaxTzMPQ-sbZWFtVSyJHjvAiU5iNbb231ZRkmaqdq7jWAahApf2Qme6h692hKXhx1NGbovoY--gW3gJjPjL_GPRGxb1W3WGhSXmgYlvEITqhKMFYymfFDyEksVY2eQxkHEX7IVJcAvaKkhGKh0v2vwG9lCdkKdbt8AXto0XzX85QQKnqsAC1bG3BMtfg1R18-Dx9r3IHbKvdcLB9GnjJO4Bxt6PgF6aROA8TT6rwOhQgUax0FS8jH-tY45eKL3JX0-M3466UMRKi65-Hp02Do-bCztUaKOXXiiz29q-HulYlfFMqyhZd7ta0TN5sufIfl6UPR8YlcYyLL84vknX9Mmuc6Nta5PeD1MZa_ONOLMXdLwnM_ud_U365S_otxEpMxhnf7vnjjKTD3BgtAlV5bg0z1RHBUncLS-rilPLngwzNTn97YSJKQ5mq9dZs6dV09PzCmp6cz17LLUEs_DiaQqkS4DTu4gphi1trDi_nkL4MogKKyMSSxA26Ksyc1dhyBzjLcGUodYc4y_BTPRYaQmjJbBizhe0jZ3J-fLkcHuVTLVlsqYMrcjQNWUqb-cwW1Om-oKPL5MpTbejTHHCXpyq21wziXu6X1p0PMynjapYRePCJRwQ59GNSncdb2Ilj4GTAKsCxZNHfzvb0w52th_-l8O_AU7Ol40="
     }
   },
   "patch": "3.30.0",
   "guide": {
     "summary": {
-      "text": "Arc Totem Hierophant runs Lightning Tendrils of Eccentricity on two Spell Totems as its default clear and boss link, and keeps Arc in a four-link helmet for open layouts. The measured link runs 91.0k at red maps and 221.2k at pinnacle per totem. The channel covers a semicircle in front of the totem, and every fifth pulse is stronger (a much larger area and an automatic critical strike), so the same link clears packs and delivers the boss hit. No unique is required.",
+      "text": "Arc Totem Hierophant runs Lightning Tendrils of Eccentricity on two Spell Totems as its default clear and boss link, with Marylene's Fallacy for the guaranteed critical strike and Lioneye's Remorse for the armour, and keeps Arc in a four-link helmet for open layouts. The measured link runs 292.8k at red maps and 916.9k at pinnacle per totem. The channel covers a semicircle in front of the totem, and every fifth pulse is stronger (a much larger area and an automatic critical strike), so the same link clears packs and delivers the boss hit. No expensive unique is required.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8684,10 +8773,11 @@
       "facts": [
         "mainSkill",
         "ascendancyId",
+        "uniques.core",
         "gates.maps-red.metrics.dps",
         "gates.pinnacle.metrics.dps"
       ],
-      "factsHash": "e0105ec15bf252e8"
+      "factsHash": "f106c8602023a03b"
     },
     "leveling": {
       "text": "Level with Rolling Magma, then self-cast Lightning Tendrils: the channel hits harder than self-cast Arc before the totem links, and it is the same skill the default link upgrades. The first checkpoint measures 377 life and 49 damage; the second measures 773 damage. Put the Tendrils on Spell Totem, put Arc in the helmet as a three-link alongside the totem body, add Faster Casting when the helmet becomes a four-link, and transfigure a Tendrils at the Divine Font in the Merciless Labyrinth for the upgraded version.",
@@ -8704,7 +8794,7 @@
       "factsHash": "6c4e78219b44a6cc"
     },
     "maps": {
-      "text": "At red maps the default link measures 91.0k per totem with 28081 effective life and 11285 physical max hit. It runs Concentrated Effect for that number, so swap the support for Increased Area of Effect (or use the Arc helmet) when a pack is spread; the swap costs some damage, and the Arc helmet's damage is not measured here. The channel covers a semicircle in front of the totem, so the totem clears the pack it is placed in; Arc swaps into the four-link helmet when an open layout wants a chain. Blasphemy with Conductivity is the damage aura, and Determination with a Granite and a Basalt flask is the physical layer. Cap the elemental resistances and keep both totems ahead of you. The tree's fire and cold walkers are planner artifacts: their damage and cast-speed lines are fire/cold-scoped, so a hand-built tree should cut them for a lightning or life cluster.",
+      "text": "At red maps the default link measures 292.8k per totem with 32338 effective life and 12279 physical max hit. It runs Concentrated Effect for that number, so swap the support for Increased Area of Effect (or use the Arc helmet) when a pack is spread; the swap costs some damage, and the Arc helmet's damage is not measured here. This is the step where the uniques arrive: Marylene's Fallacy turns the stronger pulse into the boss hit and Lioneye's Remorse is the armour and life behind the flasks. The channel covers a semicircle in front of the totem, so the totem clears the pack it is placed in; Arc swaps into the four-link helmet when an open layout wants a chain. Blasphemy with Conductivity is the damage aura, and Determination with a Granite and a Basalt flask is the physical layer. Cap the elemental resistances and keep both totems ahead of you. The tree's fire and cold walkers are planner artifacts: their damage and cast-speed lines are fire/cold-scoped, so a hand-built tree should cut them for a lightning or life cluster.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8713,12 +8803,13 @@
       "facts": [
         "gates.maps-red.metrics.dps",
         "gates.maps-red.metrics.ehp",
-        "gates.maps-red.metrics.maxHit"
+        "gates.maps-red.metrics.maxHit",
+        "uniques.core"
       ],
-      "factsHash": "68d92c517cc4d2a7"
+      "factsHash": "c0ff54145a364b1d"
     },
     "bossing": {
-      "text": "Pinnacle measures 221.2k per totem with 40103 effective life and 13301 physical max hit. Place both Tendrils totems before the burst (they expire on a timer, so recast them before they run out) and keep Conductivity on the boss. Replace a totem after every phase that clears the arena; the stronger pulse is the damage window, so the totem has to be channelling before the boss commits to a slam.",
+      "text": "Pinnacle measures 916.9k per totem with 46037 effective life and 14062 physical max hit. Place both Tendrils totems before the burst (they expire on a timer, so recast them before they run out) and keep Conductivity on the boss. Replace a totem after every phase that clears the arena; the stronger pulse is the damage window, so the totem has to be channelling before the boss commits to a slam. Awakened Empower in the six-link is the pinnacle damage bill; the red-map paste uses the regular support and keeps the import cheap.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -8729,7 +8820,7 @@
         "gates.pinnacle.metrics.ehp",
         "gates.pinnacle.metrics.maxHit"
       ],
-      "factsHash": "10e60038dc07e405"
+      "factsHash": "a25c8be466cada6f"
     }
   },
   "pipeline": {
@@ -8737,6 +8828,6 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T12:52:42.952Z"
+    "checkedAt": "2026-11-27T13:33:34.186Z"
   }
 }
