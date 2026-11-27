@@ -86,3 +86,15 @@ jobs:
         run: |
           git status --porcelain -- src/generated
           test -z "$(git status --porcelain -- src/generated)"
+      - name: Upload the regenerated reports
+        # When the drift step fails, the runner's own output is what the author
+        # needs back. `gh run download <run> -n generated-builds` puts it in
+        # place, so the reports come from the oracle instead of being re-run
+        # locally.
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: generated-builds
+          path: src/generated/builds
+          if-no-files-found: warn
+          retention-days: 7
