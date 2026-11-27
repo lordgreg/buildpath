@@ -2,6 +2,16 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.74.4 — 2026-11-27
+
+Guide navigation and swap hints read as one page.
+
+- The sticky **Step** picker on a build page now uses the same row styling as the **On this page** links: no second bordered box around a set of bordered chips, and the active step is marked with the same gold treatment as the site nav.
+- The **Step plan** panel no longer repeats its own heading and checkpoint chip directly under the section that already names both. **Goals this step**, **Attributes to look for** and **Crafting this step** are unchanged.
+- Mid-leveling gem swaps are now a highlighted **Swap** card instead of a line of body text. Both gems are linked to the wiki and coloured by their socket colour, so **Cleave → Sunder** reads as a red-to-red swap.
+- Swap gems now carry their gem data. **Sunder** had no colour, description or quest source because only gems in a leveling bracket's skill groups were described; the compiler now includes every gem a swap names.
+- 703 tests.
+
 ## 0.74.3 — 2026-11-27
 
 Two-handed melee filters drop shields.
