@@ -2,6 +2,7 @@ import type { CharacterClass, ItemSlot, SlotSpec } from '../archetypes/types.ts'
 import type { BuildGuide } from './guide.ts';
 import type { BuildMedal, BuildRatings } from './ratings.ts';
 import type { Staleness } from './staleness.ts';
+import type { BuildStepRoot } from './steps.ts';
 import type { FamilyId } from '../../meta/types.ts';
 
 /** What a build seed compiles to on the site. */
@@ -108,7 +109,7 @@ export interface BuildIndexEntry {
   /** Hash of the seed it was compiled from; changes when the seed changes. */
   seedHash: string;
   /** Gate results per checkpoint, so `builds.html` needs only the index. */
-  steps?: BuildStepSummary[];
+  gateSteps?: BuildStepSummary[];
   /** Differentiators for the catalogue: SSF, playstyle, measured defence. */
   chips?: BuildChip[];
   /** Editorial 1–10 ratings and the derived medal. */
@@ -397,6 +398,13 @@ export interface Build extends BuildIndexEntry {
   pros: BuildTradeoff[];
   cons: BuildTradeoff[];
   leveling: { swaps?: LevelingSwap[]; brackets: LevelingBracket[] };
+  /**
+   * Guide steps as three roots of authored sub-steps (D32–D37, PLAN-BUILDS.md
+   * §9.3). Absent until a seed migrates off `leveling.brackets`.
+   */
+  steps?: BuildStepRoot[];
+  /** Pre-refactor step id to the sub-step that replaced it, so old links land. */
+  stepAliases?: Record<string, string>;
   ascendancyOrder: AscendancyPoint[];
   bandit: BuildBandit;
   pantheon: { major: string; minor: string; note?: string };

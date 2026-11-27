@@ -244,7 +244,7 @@ describe('compiled build seeds', () => {
     ) as {
       builds: {
         id: string;
-        steps?: { id: string; pass: boolean; level: number; dps: number }[];
+        gateSteps?: { id: string; pass: boolean; level: number; dps: number }[];
       }[];
     };
     for (const entry of committed.builds) {
@@ -254,10 +254,10 @@ describe('compiled build seeds', () => {
         gates?: Record<string, { pass: boolean; level: number; metrics: { dps: number } }>;
       };
       if (!full.gates) {
-        expect(entry.steps, entry.id).toBeUndefined();
+        expect(entry.gateSteps, entry.id).toBeUndefined();
         continue;
       }
-      expect(entry.steps, entry.id).toEqual(
+      expect(entry.gateSteps, entry.id).toEqual(
         Object.entries(full.gates).map(([id, gate]) => ({
           id,
           pass: gate.pass,

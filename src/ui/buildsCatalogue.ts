@@ -135,9 +135,9 @@ export function filterBuilds(builds: BuildIndexEntry[], state: CatalogueState): 
 
 /** The red-map damage the card shows; a build without that step uses its best. */
 export function catalogueDps(build: BuildIndexEntry): number {
-  const red = build.steps?.find((step) => step.id === 'maps-red');
+  const red = build.gateSteps?.find((step) => step.id === 'maps-red');
   if (red) return red.dps;
-  return build.steps?.reduce((best, step) => Math.max(best, step.dps), 0) ?? 0;
+  return build.gateSteps?.reduce((best, step) => Math.max(best, step.dps), 0) ?? 0;
 }
 
 function newestKey(build: BuildIndexEntry): string {

@@ -20,6 +20,7 @@ import {
   applyBuildStaleness,
   leagueWindowOpen,
 } from '../../src/core/builds/staleness.ts';
+import { resolveSteps } from '../../src/core/builds/steps.ts';
 
 const root = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
 const seedsDir = resolve(root, 'src/builds');
@@ -580,6 +581,21 @@ for (const file of files) {
   checkAvailability(seed, file);
   checkSwaps(seed, file);
   checkSeason(seed, file);
+  // Guide steps are authored, so every rule about them is a seed error: a
+  // trigger gem the character cannot hold, a gap between levels, or a step
+  // that claims to be unmeasured without saying why.
+  const steps = seed.steps
+    ? resolveSteps(seed.steps, {
+        requiredLevel: gemLevel1,
+        knownBudgets: Object.keys(budgets),
+      })
+    : null;
+  if (steps?.errors.length) {
+    console.error(
+      `build seed invalid: ${file}\n${steps.errors.map((error) => `  ${error}`).join('\n')}`,
+    );
+    process.exit(1);
+  }
   const wickerman = resolveWickerman(seed, file);
   const stepPlans = resolveStepPlans(seed, file);
   if (`${seed.id}.yaml` !== file) {
@@ -647,6 +663,7 @@ for (const file of files) {
     })),
     wickerman,
     stepPlans,
+    ...(steps ? { steps: steps.roots, stepAliases: steps.aliases } : {}),
     gemInfo: describeGems(seed),
     seedHash,
   });
@@ -812,7 +829,7 @@ const index = {
     // checkpoint's pass flag and damage travel with it.
     ...(build.gates
       ? {
-          steps: Object.entries(build.gates).map(([id, gate]) => ({
+          gateSteps: Object.entries(build.gates).map(([id, gate]) => ({
             id,
             pass: gate.pass,
             level: gate.level,

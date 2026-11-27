@@ -167,6 +167,7 @@
     "leveling": {
       "type": "object",
       "additionalProperties": false,
+      "description": "Leveling brackets, the pre-`steps` form (D32-D37). The last bracket must end at 100.",
       "required": [
         "brackets"
       ],
@@ -235,54 +236,7 @@
               "skillGroups": {
                 "type": "array",
                 "minItems": 1,
-                "items": {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "required": [
-                    "slot",
-                    "gems"
-                  ],
-                  "properties": {
-                    "slot": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "gems": {
-                      "type": "array",
-                      "minItems": 1,
-                      "items": {
-                        "oneOf": [
-                          {
-                            "type": "string",
-                            "minLength": 2
-                          },
-                          {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "required": [
-                              "name"
-                            ],
-                            "properties": {
-                              "name": {
-                                "type": "string",
-                                "minLength": 2
-                              },
-                              "maxLevel": {
-                                "type": "integer",
-                                "minimum": 1,
-                                "maximum": 40
-                              },
-                              "note": {
-                                "type": "string",
-                                "minLength": 4
-                              }
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
+                "items": { "$ref": "#/$defs/skillGroup" }
               },
               "flasks": {
                 "$ref": "#/$defs/flaskList"
@@ -290,6 +244,17 @@
             }
           }
         }
+      }
+    },
+    "steps": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "description": "Guide steps as three roots over authored sub-steps (D32-D37, PLAN-BUILDS.md 9.3). A sub-step is authored, never generated from its trigger; `level` is the level it is read and measured at and it covers up to the next sub-step's level minus one. Optional while the seeds migrate: PR 1 accepts it alongside `leveling`.",
+      "properties": {
+        "leveling": { "$ref": "#/$defs/stepRoot" },
+        "maps": { "$ref": "#/$defs/stepRoot" },
+        "endgame": { "$ref": "#/$defs/stepRoot" }
       }
     },
     "ascendancyOrder": {
@@ -376,54 +341,7 @@
     "skillGroups": {
       "type": "array",
       "minItems": 1,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "slot",
-          "gems"
-        ],
-        "properties": {
-          "slot": {
-            "type": "string",
-            "minLength": 1
-          },
-          "gems": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "oneOf": [
-                {
-                  "type": "string",
-                  "minLength": 2
-                },
-                {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "required": [
-                    "name"
-                  ],
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "minLength": 2
-                    },
-                    "maxLevel": {
-                      "type": "integer",
-                      "minimum": 1,
-                      "maximum": 40
-                    },
-                    "note": {
-                      "type": "string",
-                      "minLength": 4
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        }
-      }
+      "items": { "$ref": "#/$defs/skillGroup" }
     },
     "flasks": {
       "type": "object",
@@ -508,6 +426,152 @@
     }
   },
   "$defs": {
+    "stepRoot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sub"],
+      "properties": {
+        "default": { "$ref": "#/$defs/stepDefaults" },
+        "sub": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Ordered sub-steps; levels ascend and the first of the leveling root opens the character.",
+          "items": { "$ref": "#/$defs/stepSub" }
+        }
+      }
+    },
+    "stepDefaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Checkpoint defaults every sub-step in the root inherits unless it overrides them.",
+      "properties": {
+        "budget": { "type": "string", "minLength": 1 },
+        "gemLevelCap": { "type": "integer", "minimum": 1, "maximum": 40 },
+        "gemQuality": { "type": "integer", "minimum": 0, "maximum": 40 },
+        "labs": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "points": { "type": "integer", "minimum": 1, "maximum": 130 },
+        "enemyLevel": { "type": "integer", "minimum": 1, "maximum": 100 }
+      }
+    },
+    "stepTrigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from"],
+      "maxProperties": 2,
+      "description": "What made the step start: `from` plus at most one of the six triggers. No kind named is a level boundary.",
+      "properties": {
+        "from": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 100,
+          "description": "Must be the previous sub-step's level."
+        },
+        "skill": { "type": "string", "minLength": 2 },
+        "support": { "type": "string", "minLength": 2 },
+        "link": { "type": "integer", "minimum": 3, "maximum": 6 },
+        "jewel": { "type": "string", "minLength": 3 },
+        "slot": {
+          "enum": [
+            "weapon",
+            "offhand",
+            "helmet",
+            "body",
+            "gloves",
+            "boots",
+            "belt",
+            "amulet",
+            "ring",
+            "quiver",
+            "jewel",
+            "flask"
+          ]
+        },
+        "budget": { "type": "string", "minLength": 1 }
+      }
+    },
+    "stepSub": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "level", "main", "watch"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "description": "Stable step id; the URL, the PoB paste key and the gate report all use it."
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 100,
+          "description": "The level the step is read and measured at."
+        },
+        "main": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The skill the step is built around; it must be usable at `level`."
+        },
+        "gems": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/skillGroup" }
+        },
+        "flasks": { "$ref": "#/$defs/flaskList" },
+        "watch": {
+          "type": "string",
+          "minLength": 20,
+          "description": "What changes here, in the guide's own words. Numbers only through {{steps.<id>.metrics.*}}."
+        },
+        "measure": {
+          "type": "boolean",
+          "description": "True when the step gets a PoB checkpoint and a gate report."
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 8,
+          "description": "Why an unmeasured step is editorial only. Required when `measure` is not true."
+        },
+        "trigger": { "$ref": "#/$defs/stepTrigger" },
+        "aliases": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 3 },
+          "description": "Pre-refactor step ids this step replaces, so old share links still land."
+        },
+        "budget": { "type": "string", "minLength": 1 },
+        "gemLevelCap": { "type": "integer", "minimum": 1, "maximum": 40 },
+        "gemQuality": { "type": "integer", "minimum": 0, "maximum": 40 },
+        "labs": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "points": { "type": "integer", "minimum": 1, "maximum": 130 },
+        "enemyLevel": { "type": "integer", "minimum": 1, "maximum": 100 }
+      }
+    },
+    "skillGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slot", "gems"],
+      "properties": {
+        "slot": { "type": "string", "minLength": 1 },
+        "gems": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              { "type": "string", "minLength": 2 },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name"],
+                "properties": {
+                  "name": { "type": "string", "minLength": 2 },
+                  "maxLevel": { "type": "integer", "minimum": 1, "maximum": 40 },
+                  "note": { "type": "string", "minLength": 4 }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
     "ratings": {
       "type": "object",
       "additionalProperties": false,

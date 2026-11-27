@@ -56,7 +56,7 @@ function titleCase(slug: string): string {
 }
 
 function step(entry: BuildIndexEntry, id: string): BuildStepSummary | undefined {
-  return entry.steps?.find((candidate) => candidate.id === id);
+  return entry.gateSteps?.find((candidate) => candidate.id === id);
 }
 
 function ChipRow({ chips, bare = false }: { chips: BuildChip[]; bare?: boolean }) {
@@ -190,9 +190,9 @@ function BuildCard({ build }: { build: BuildIndexEntry }) {
         <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-400">{build.summary}</p>
 
         {build.chips && <ChipRow chips={build.chips} />}
-        {build.steps && (
+        {build.gateSteps && (
           <p className="mt-2 text-[10px] text-zinc-600">
-            {build.steps.filter((entry) => entry.pass).length}/{build.steps.length} checkpoints
+            {build.gateSteps.filter((entry) => entry.pass).length}/{build.gateSteps.length} checkpoints
             passed
           </p>
         )}
