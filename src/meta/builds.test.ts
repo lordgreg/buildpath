@@ -1017,6 +1017,45 @@ describe('gear jewel affixes', () => {
   });
 });
 
+describe('gem level caps', () => {
+  it('caps Awakened and exceptional supports at their game levels', () => {
+    const files = readdirSync(seedsDir).filter((name) => name.endsWith('.yaml'));
+    for (const file of files) {
+      const seed = parse(readFileSync(resolve(seedsDir, file), 'utf8')) as {
+        id: string;
+        leveling: {
+          brackets: Array<{
+            skillGroups?: Array<{
+              gems: Array<string | { name: string; maxLevel?: number }>;
+            }>;
+          }>;
+        };
+      };
+      for (const bracket of seed.leveling.brackets) {
+        for (const group of bracket.skillGroups ?? []) {
+          for (const gem of group.gems) {
+            const name = typeof gem === 'string' ? gem : gem.name;
+            const awakened = name.startsWith('Awakened ');
+            const exceptional =
+              name === 'Empower' || name === 'Enhance' || name === 'Enlighten';
+            if (!awakened && !exceptional) continue;
+            const cap = awakened
+              ? name === 'Awakened Empower' ||
+                name === 'Awakened Enhance' ||
+                name === 'Awakened Enlighten'
+                ? 4
+                : 5
+              : 3;
+            const maxLevel = typeof gem === 'string' ? undefined : gem.maxLevel;
+            expect(maxLevel, `${seed.id}: ${name}`).toBeDefined();
+            expect(maxLevel!, `${seed.id}: ${name}`).toBeLessThanOrEqual(cap);
+          }
+        }
+      }
+    }
+  });
+});
+
 describe('gate calibration', () => {
   const calibration = JSON.parse(
     readFileSync(resolve(root, 'src/generated/builds/calibration.json'), 'utf8'),

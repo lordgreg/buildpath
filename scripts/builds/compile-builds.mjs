@@ -717,7 +717,10 @@ function chipsFor(build) {
     chips.push({
       label: 'SSF',
       kind: 'ssf',
-      title: 'Verified against self-found budgets with no required unique.',
+      title:
+        (build.uniques?.core?.length ?? 0) > 0
+          ? 'Verified against self-found budgets; the required uniques are cheap drops, not chase items.'
+          : 'Verified against self-found budgets with no required unique.',
     });
   }
   if (build.season) {
