@@ -17,6 +17,22 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.76.0',
+    date: '2026-11-27',
+    title: 'Catalogue controls stick, and leveling says when to switch',
+    notes: [
+      "**The catalogue remembers every control.** Card/list view, order, direction and the class and tag filters now survive a trip to the filter builder. They were stored under the same `localStorage` key the builder deletes as a legacy saved-build entry, so the view reset to cards every time you came back.",
+      "**Leveling this step is an instruction list.** A step now says what to use, where each gem comes from, and when the next gem takes over — instead of listing the bracket's end state as if you already had it. At Boneshatter's level-12 step it reads **use Cleave — vendor, Act 1 after Enemy at the Gate**, then **at level 12 swap to Sunder — quest reward, The Siren's Cadence**.",
+      "**Hand-offs are derived, not hand-written.** Only one build in the catalogue carried a `leveling.swaps` entry, so the change from Rolling Magma to Arc, Cleave to Cyclone, Double Strike to Flicker Strike, Rolling Magma to Righteous Fire, Freezing Pulse to Winter Orb and the rest was never explained. The panel now works every change out from the gem level table, including the next bracket's main skill when it becomes usable early.",
+      "**Gem sources are right for the class.** A reviewed `gem-sources.yaml` fills the gaps in RePoE's single-quest export: the Marauder gets **Boneshatter** from **Sever the Right Hand**, **Cleave** is on the Act 1 vendor after **Enemy at the Gate**, and transfigured gems are marked as **Divine Font** instead of being sold as quest rewards.",
+      "**The panel is leveling-only.** Map and pinnacle steps no longer say \"play these until level 100\"; the gems table already lists what the checkpoint measured. A guide with no level-12 bracket is clamped to the checkpoint instead of showing its level-28 bracket.",
+      "The seed-level leveling fixes that need a full PoB re-verify are recorded in `PLAN-BUILDS.md`.",
+      "742 tests.",
+    ],
+    commits: [],
+    compare: 'v0.75.2...v0.76.0',
+  },
+  {
     version: '0.75.2',
     date: '2026-11-27',
     title: 'Catalogue tags say what each build does',
