@@ -39,19 +39,19 @@ guide:
   summary:
     text: >-
       Cyclone Juggernaut is a two-handed melee build that measures
-      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.pinnacle.metrics.dps|dps}} at
+      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.endgame-pinnacle.metrics.dps|dps}} at
       pinnacle. Armour, endurance charges and the ascendancy carry the defence;
       the rare axe carries the damage, and no unique is required.
-    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.endgame-pinnacle.metrics.dps]
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   leveling:
     text: >-
       Level with Cleave until Cyclone unlocks, then switch to the two-handed
       axe and keep spinning. The first checkpoint measures
-      {{gates.until-12.metrics.life|int}} life and {{gates.until-12.metrics.dps|dps}} damage;
-      the second measures {{gates.until-28.metrics.dps|dps}}. Enduring Cry and a mana
+      {{gates.leveling-1-12.metrics.life|int}} life and {{gates.leveling-1-12.metrics.dps|dps}} damage;
+      the second measures {{gates.leveling-12-28.metrics.dps|dps}}. Enduring Cry and a mana
       flask cover the early sustain.
-    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+    facts: [gates.leveling-1-12.metrics.life, gates.leveling-1-12.metrics.dps, gates.leveling-12-28.metrics.dps]
   maps:
     text: >-
       At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
@@ -61,12 +61,12 @@ guide:
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
   bossing:
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
-      {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Hold the spin through
+      Pinnacle measures {{gates.endgame-pinnacle.metrics.dps|dps}} damage with
+      {{gates.endgame-pinnacle.metrics.ehp|int}} effective life and
+      {{gates.endgame-pinnacle.metrics.maxHit|int}} physical max hit. Hold the spin through
       small hits, then move out of the telegraphed slams instead of trying to
       out-armour them.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+    facts: [gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit]
 
 gearProfile: melee
 
@@ -88,78 +88,196 @@ tree:
     - increased area of effect
     - increased melee damage
 
-leveling:
-  brackets:
-    - until: 12
-      skills: [Cleave]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Cleave, Ruthless, Faster Attacks]
-        - slot: Weapon 1
-          gems: [Leap Slam, Enduring Cry]
-        - slot: Helmet
-          gems: [Decoy Totem]
-        - slot: Boots
-          gems: [Blood and Sand]
-      flasks:
-        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
-        - { slot: mana, name: "Small Mana Flask", note: "Slam attacks are mana-hungry." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
-    - until: 28
-      skills: [Cyclone]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Cyclone, Melee Physical Damage, Close Combat, Faster Attacks]
-        - slot: Weapon 1
-          gems: [Leap Slam, Enduring Cry]
-        - slot: Helmet
-          gems: [Decoy Totem, Blood and Sand]
-        - slot: Boots
-          gems: [Determination]
-      flasks:
-        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
-        - { slot: utility, name: "Granite Flask", note: "Armour is the defensive layer." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 68
-      skills: [Cyclone]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Cyclone, Melee Physical Damage, Brutality, Pulverise, Faster Attacks]
-        - slot: Weapon 1
-          gems: [Leap Slam, Enduring Cry]
-        - slot: Helmet
-          gems: [Determination, Blood and Sand]
-        - slot: Gloves
-          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
-        - slot: Boots
-          gems: [Decoy Totem]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
-        - { slot: utility, name: "Granite Flask", note: "Iron Skin suffix." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 100
-      skills: [Cyclone]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Cyclone, Melee Physical Damage, Brutality, Pulverise, Close Combat, Faster Attacks]
-        - slot: Weapon 1
-          gems: [Leap Slam, Enduring Cry]
-        - slot: Helmet
-          gems: [Determination, Blood and Sand]
-        - slot: Gloves
-          gems: [{ name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only." }, Immortal Call]
-        - slot: Boots
-          gems: [Decoy Totem]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
-        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+# Steps (PLAN-BUILDS.md §9.3). Each step is read and measured at its `level`;
+# the pre-refactor checkpoints survive as `aliases`, so old links still land.
+steps:
+  leveling:
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Cleave
+        measure: true
+        aliases: [until-12]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Cleave
+              - Ruthless
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Decoy Totem
+          - slot: Boots
+            gems:
+              - Blood and Sand
+        flasks:
+          - slot: life
+            name: Medium Life Flask
+            note: Small until level 3.
+          - slot: mana
+            name: Small Mana Flask
+            note: Slam attacks are mana-hungry.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Act 2 quest reward.
+      - id: leveling-12-28
+        level: 28
+        main: Cyclone
+        trigger: { from: 12, skill: Cyclone }
+        measure: true
+        aliases: [until-28]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Cyclone
+              - Melee Physical Damage
+              - Close Combat
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Decoy Totem
+              - Blood and Sand
+          - slot: Boots
+            gems:
+              - Determination
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Granite Flask
+            note: Armour is the defensive layer.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+      - id: leveling-38-68
+        level: 68
+        main: Cyclone
+        trigger: { from: 28 }
+        measure: true
+        aliases: [until-68]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Cyclone
+              - Melee Physical Damage
+              - Brutality
+              - Pulverise
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Determination
+              - Blood and Sand
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: Level 1-5 only.
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Decoy Totem
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Instant prefix.
+          - slot: mana
+            name: Hallowed Mana Flask
+            note: Drops from level 42.
+          - slot: utility
+            name: Granite Flask
+            note: Iron Skin suffix.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+  maps:
+    sub:
+      - id: maps-white
+        level: 80
+        main: Cyclone
+        trigger: { from: 68 }
+        measure: true
+        aliases: [maps-early]
+        gems: &id001
+          - slot: Body Armour
+            gems:
+              - Cyclone
+              - Melee Physical Damage
+              - Brutality
+              - Pulverise
+              - Close Combat
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Determination
+              - Blood and Sand
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: Level 1-5 only.
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Decoy Totem
+        flasks: &id002
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: Drops from level 65.
+          - slot: utility
+            name: Granite Flask
+            note: Iron Skin.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+      - id: maps-red
+        level: 90
+        main: Cyclone
+        trigger: { from: 80 }
+        measure: true
+        gems: *id001
+        flasks: *id002
+  endgame:
+    sub:
+      - id: endgame-pinnacle
+        level: 96
+        main: Cyclone
+        trigger: { from: 90 }
+        measure: true
+        aliases: [pinnacle]
+        gems: *id001
+        flasks: *id002
 
 ascendancyOrder:
   - { node: unflinching, lab: 1 }

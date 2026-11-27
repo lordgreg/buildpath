@@ -183,7 +183,7 @@
       65034
     ],
     "checkpoints": {
-      "until-12": [
+      "leveling-1-12": [
         4397,
         8948,
         21678,
@@ -196,7 +196,7 @@
         57226,
         57264
       ],
-      "until-28": [
+      "leveling-12-28": [
         1031,
         2292,
         4397,
@@ -227,7 +227,7 @@
         61320,
         63799
       ],
-      "until-68": [
+      "leveling-38-68": [
         1031,
         1767,
         1822,
@@ -306,7 +306,7 @@
         63799,
         63976
       ],
-      "maps-early": [
+      "maps-white": [
         1031,
         1767,
         1822,
@@ -503,7 +503,7 @@
         63976,
         65034
       ],
-      "pinnacle": [
+      "endgame-pinnacle": [
         1031,
         1767,
         1822,
@@ -616,255 +616,461 @@
       ]
     }
   },
-  "leveling": {
-    "brackets": [
-      {
-        "until": 12,
-        "skills": [
-          "Summon Skeletons"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Summon Skeletons",
-              "Minion Damage",
-              "Added Fire Damage"
-            ]
+  "steps": [
+    {
+      "id": "leveling",
+      "sub": [
+        {
+          "id": "leveling-1-12",
+          "level": 12,
+          "main": "Summon Skeletons",
+          "measure": true,
+          "aliases": [
+            "until-12"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Summon Skeletons",
+                "Minion Damage",
+                "Added Fire Damage"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Flame Dash",
+                "Arcane Surge"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Clarity"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Medium Life Flask",
+              "note": "Small until level 3."
+            },
+            {
+              "slot": "mana",
+              "name": "Small Mana Flask",
+              "note": "Skeletons are expensive early."
+            },
+            {
+              "slot": "utility",
+              "name": "Quicksilver Flask",
+              "note": "Act 2 quest reward."
+            }
+          ],
+          "root": "leveling",
+          "from": 1,
+          "band": "until-12"
+        },
+        {
+          "id": "leveling-12-28",
+          "level": 28,
+          "main": "Summon Skeletons",
+          "trigger": {
+            "from": 12
           },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Flame Dash",
-              "Arcane Surge"
-            ]
+          "measure": true,
+          "aliases": [
+            "until-28"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Summon Skeletons",
+                "Minion Damage",
+                "Minion Speed",
+                "Minion Life"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Flesh Offering",
+                "Desecrate"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Clarity",
+                "Convocation"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Flame Dash",
+                "Arcane Surge"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Giant Life Flask",
+              "note": "Drops from level 24."
+            },
+            {
+              "slot": "mana",
+              "name": "Greater Mana Flask",
+              "note": "Drops from level 12."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "leveling",
+          "from": 13,
+          "band": "until-28"
+        },
+        {
+          "id": "leveling-38-68",
+          "level": 68,
+          "main": "Summon Stone Golem",
+          "trigger": {
+            "from": 28,
+            "skill": "Summon Stone Golem"
           },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Clarity"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Medium Life Flask",
-            "note": "Small until level 3."
+          "measure": true,
+          "aliases": [
+            "until-68"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Summon Stone Golem",
+                "Minion Damage",
+                "Minion Life",
+                "Minion Speed",
+                "Feeding Frenzy",
+                "Elemental Focus"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Flesh Offering",
+                "Generosity"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Desecrate"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only."
+                },
+                "Immortal Call"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Flame Dash",
+                "Arcane Surge"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Hallowed Mana Flask",
+              "note": "Drops from level 42."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "leveling",
+          "from": 29,
+          "band": "until-68"
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "sub": [
+        {
+          "id": "maps-white",
+          "level": 80,
+          "main": "Summon Stone Golem",
+          "trigger": {
+            "from": 68
           },
-          {
-            "slot": "mana",
-            "name": "Small Mana Flask",
-            "note": "Skeletons are expensive early."
+          "measure": true,
+          "aliases": [
+            "maps-early"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Summon Stone Golem",
+                "Minion Damage",
+                "Minion Life",
+                "Minion Speed",
+                "Feeding Frenzy",
+                "Elemental Focus"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Flesh Offering",
+                "Generosity"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Desecrate"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only."
+                },
+                "Immortal Call"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Flame Dash",
+                "Arcane Surge"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Eternal Mana Flask",
+              "note": "Drops from level 65."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "maps",
+          "from": 69,
+          "band": "maps-early"
+        },
+        {
+          "id": "maps-red",
+          "level": 90,
+          "main": "Summon Stone Golem",
+          "trigger": {
+            "from": 80
           },
-          {
-            "slot": "utility",
-            "name": "Quicksilver Flask",
-            "note": "Act 2 quest reward."
-          }
-        ]
-      },
-      {
-        "until": 28,
-        "skills": [
-          "Summon Skeletons"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Summon Skeletons",
-              "Minion Damage",
-              "Minion Speed",
-              "Minion Life"
-            ]
+          "measure": true,
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Summon Stone Golem",
+                "Minion Damage",
+                "Minion Life",
+                "Minion Speed",
+                "Feeding Frenzy",
+                "Elemental Focus"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Flesh Offering",
+                "Generosity"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Desecrate"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only."
+                },
+                "Immortal Call"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Flame Dash",
+                "Arcane Surge"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Eternal Mana Flask",
+              "note": "Drops from level 65."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "maps",
+          "from": 81,
+          "band": "maps-red"
+        }
+      ]
+    },
+    {
+      "id": "endgame",
+      "sub": [
+        {
+          "id": "endgame-pinnacle",
+          "level": 96,
+          "main": "Summon Stone Golem",
+          "trigger": {
+            "from": 90
           },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Flesh Offering",
-              "Desecrate"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Clarity",
-              "Convocation"
-            ]
-          },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Flame Dash",
-              "Arcane Surge"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Giant Life Flask",
-            "note": "Drops from level 24."
-          },
-          {
-            "slot": "mana",
-            "name": "Greater Mana Flask",
-            "note": "Drops from level 12."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance."
-          }
-        ]
-      },
-      {
-        "until": 68,
-        "skills": [
-          "Summon Stone Golem"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Summon Stone Golem",
-              "Minion Damage",
-              "Minion Life",
-              "Minion Speed",
-              "Feeding Frenzy",
-              "Elemental Focus"
-            ]
-          },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Flesh Offering",
-              "Generosity"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Desecrate"
-            ]
-          },
-          {
-            "slot": "Gloves",
-            "gems": [
-              {
-                "name": "Cast when Damage Taken",
-                "maxLevel": 5,
-                "note": "Level 1-5 only."
-              },
-              "Immortal Call"
-            ]
-          },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Flame Dash",
-              "Arcane Surge"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Divine Life Flask",
-            "note": "Instant prefix."
-          },
-          {
-            "slot": "mana",
-            "name": "Hallowed Mana Flask",
-            "note": "Drops from level 42."
-          },
-          {
-            "slot": "utility",
-            "name": "Quartz Flask",
-            "note": "Phasing."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance."
-          }
-        ]
-      },
-      {
-        "until": 100,
-        "skills": [
-          "Summon Stone Golem"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Summon Stone Golem",
-              "Minion Damage",
-              "Minion Life",
-              "Minion Speed",
-              "Feeding Frenzy",
-              "Elemental Focus"
-            ]
-          },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Flesh Offering",
-              "Generosity"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Desecrate"
-            ]
-          },
-          {
-            "slot": "Gloves",
-            "gems": [
-              {
-                "name": "Cast when Damage Taken",
-                "maxLevel": 5,
-                "note": "Level 1-5 only."
-              },
-              "Immortal Call"
-            ]
-          },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Flame Dash",
-              "Arcane Surge"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Divine Life Flask",
-            "note": "Keep the instant prefix."
-          },
-          {
-            "slot": "mana",
-            "name": "Eternal Mana Flask",
-            "note": "Drops from level 65."
-          },
-          {
-            "slot": "utility",
-            "name": "Quartz Flask",
-            "note": "Phasing."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance."
-          }
-        ]
-      }
-    ]
-  },
+          "measure": true,
+          "aliases": [
+            "pinnacle"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Summon Stone Golem",
+                "Minion Damage",
+                "Minion Life",
+                "Minion Speed",
+                "Feeding Frenzy",
+                "Elemental Focus"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Flesh Offering",
+                "Generosity"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Desecrate"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only."
+                },
+                "Immortal Call"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Flame Dash",
+                "Arcane Surge"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Eternal Mana Flask",
+              "note": "Drops from level 65."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance."
+            }
+          ],
+          "root": "endgame",
+          "from": 91,
+          "band": "pinnacle"
+        }
+      ]
+    }
+  ],
   "ascendancyOrder": [
     {
       "node": "liege-of-the-primordial",
@@ -895,7 +1101,7 @@
   },
   "status": "verified",
   "gates": {
-    "until-12": {
+    "leveling-1-12": {
       "pass": true,
       "level": 12,
       "budget": "starting (3-link)",
@@ -1223,7 +1429,7 @@
         "status": "within-bound"
       }
     },
-    "until-28": {
+    "leveling-12-28": {
       "pass": true,
       "level": 28,
       "budget": "early (4-link)",
@@ -1774,7 +1980,7 @@
         "status": "within-bound"
       }
     },
-    "until-68": {
+    "leveling-38-68": {
       "pass": true,
       "level": 68,
       "budget": "ssf-start (5-link)",
@@ -2937,7 +3143,7 @@
         "status": "within-bound"
       }
     },
-    "maps-early": {
+    "maps-white": {
       "pass": true,
       "level": 80,
       "budget": "ssf-start (5-link)",
@@ -5827,7 +6033,7 @@
         "status": "within-bound"
       }
     },
-    "pinnacle": {
+    "endgame-pinnacle": {
       "pass": true,
       "level": 96,
       "budget": "trade (6-link)",
@@ -7488,12 +7694,12 @@
     "checkpoint": "maps-red",
     "code": "eJzVWmtvGykX_lz_CjTSSvuqpOE-TBV35TiJkzZpLk7Sbb-ssI1tmrm4M4wT99e_YmZ8S23H2W3VVpYQA88BnsPhcADv_fUQhWCs08wkcd3Dr5AHdNxNeiYe1L2b66Md6f31prZ3oezwvL-fm9DVvKm92CvyINRjHda9AHnAqnSg7e20KfoP8kA3VFn2XkW67n0wtjv0gMq6Ou415-WHoY50bFVoMuuBSJm4nXTvtG2lST6qe9gDHRX3jK1775NYe2CkYjvUSXymPidpK-nVvTCPVWqyhSoTV1WDNLfDuzz0wNjo-7Okp-tes3HabHtvai9e7F2EaqLTtlUWZFbZutdMoo6Jde_gou2BsQpzXfd8zvErwgIsKZacerurRa8Tq8J_IXdq-nomIwIp1wEPY50OJu2h0WFvJoAlWStQjOjw-GIGpoIw8goFmFJMArxO7mI4yUxXhWfqwUR5dGzstbrT8bxPysVaOkcm1Vc6KyZzpoh14GYS9rYGn5rB0MYmHmzf_FAl2SM0WTvyMxWrZrIAxb7YhL2JU53pdKznsxHIta23R3oBiF5hIThCVeoXUnu7xZpyuetUa6C61ox1e6S7bhkUzboPYFOtF5YZna6zk17do0srzJUgD8RJT2d1DyOKIfaFD7EkBBISEEix8CEVXEBGAx8yjghkAfYh9xmFAnECBaEICl8w6GNMoE-lhH5AJZQBkzCgUkCMiqYRCxDEiPscYhQgBjFFKICYSskhZoj7EHMkGMScIQ6xQIRCLHyH933qUkkwxNIXAcRSCg5xwAOXCsohQZwJSDARBBJMEXYpRZBg1yPBwpeQYOmQOOASEo5cKnAgIBGcUEiEzxAkPkEUEl9g7FIeQOL7UkLiBySAJMBBACmWPoeUEIwgJYxzSCmjReoHkFLXDqV-Ue5LCimTEkHKZcCcOhmBVAjq8gHmLmUBpD7GDFKfC5cXPobUD1xfEgcI0kAwCRmighSpgAwTQSHDzCeQ4UAGkBEhBWRMIJf6QQAZp9iHTAQYQeYTjiHzKSaQSd-XkCMpCOSUYOpSP4CcMeZDzkmRMskh51IIyHmABOQ-DtzUE-LyRDDIJcHSpczlGSKQS184y6CBhAITHkCBKUFQYIZdXnAKBZaUQeHoQUEDh6eBL6DgiLLCkl_s3VydFpkXQ2tH2evd3fv7-1cjZYdJXz-YUL_qJtHuSGWZGeud7M6E4Y4z_N1Go9HYH5w1OpeXx_t59_h48BkdHMnz9v6hPfz08fr91afxkbj8eDscZS056NJ92TwZX959Md3xu4tkdD358vHMHpKL687o3A7k6U3r-OqmdxTfhFftztGZQZOvN4dvrw_CM3yD395c4XZ-e2NvH6Jj8ym8iiMyROrufUrI_Wnn5MG2_j656J-8D1DsHw9GefOBXZwNgvwgYMPG5wN1Pk6kujs4v7z9dCDustb1W341DttCsbfkS6zE8FScNEaND9H4C9tJxzsP-53uTv72nKFT8e7hi39Be40-lv98HPcSQaLTfqe38476B59Vfn7Im6eh2RnnPhqPzfk_qXz_94MZ39Gd3piLC_au0WjUC2XvTrW9V26uWan66qtwEM5XuKXuAWN15L5w5Vi_xRVragEo1gGLRbAA9NcBC1tfAMp1wMLMFoDBeqBc7JqgCri3u6CCvV3nUQvf61yuy7SdqZWVRRboWHVC3at7Ns21B7IwsXVvP-lNQCONkjwtg5ZG6aydxNRbv9hr6QgMyv7PtFU9ZdXuidVRtttySYFu6aidR1ESt20S61YS6sgDhb1vJ3aVdO8qqVhF1XZRVoGiSVDVVqEaQR74kqvQ2MnSh-vtQPdVHlrvMecVBHefyXA0SlJ7ZmKTxAcqUgP9FMlSoqWjZaE5x7IcTCt-GXplQPcscqXIN9TK4l-GWBXCPItZJfMNtar8F-B2pLU70hylOv462ZrdI6k5v6oCTGt-AYazE9ZR0s2zrSk-FptznNWAquoHkNwrWTzlhz9oNUpigP-7Ez4KdTY87_d1auLBlh74kcyCFbgKMK_5BaygpWOdJpmx2xv5osic22Lpz5v4Yx1G2v73aT_Qme6myj7psr_Fz1WyUPjzNNIKk7HOvkc0Usx_U2X2w1BXG291A7Cl4TjZ82XJubJcJbgf6unWDSpEpTn-E5bISRQlqVVhU4XhlnawLDJnNy0HZcXPM4f9JLHfwRqOQhXpA5UNt3aJM_yiO1SRBmXpL-AKG2lXxbqdp8-IQpdk5szKYlCV_9DZrnLZ9H7o1uh78DVJor-LSx6X-zjLnZYjod7sbOPg7qNgV90tuXxb29n1kvsGpjz6valdqdTYyWtw1bg6rLUn7m41M5nugc_6XocA11pDldlwAg4nGrx1ZbWigaLv10CS2kk0Ck3X2Ow1QLUy8stAT6sQcP4HMHE31co1WDqCGWKoxhpgtohoWKu6d2XYWHspEbAJiMr7ySJMLjTlen_EQzzNg_wOPPynedDfgYd8mgf7HXgET_PgvwEPgp7mIX4DHngTjfvijFBrJvE4uXNnsw8q7j2mcFm66NeAoGU6L7EbQwEESR-oMATTM2yx-bp94rmcKVpEbDNPm_gl_f7QMWoOTeTotUcmNRaUL0Xb81yh7JcM_eEK3aMOKB9SVNydl7v3m8Xy1YOnmwY_LOL42nHeSU0GmibthtpuOWiyrNU_Cd0h_H9rVYuXtO6ecNzYdTpW1k3nYb9vukbH3Ymb53Kv_YFaYZu00kl6k9qtUiG40gMVGrVJI9V95muwvzP7LavpTxzsELSkGd3v6651TKen1Kz28k-MdzD5X8HCGfr8oD-ns1onbEm35VPl1AKnepk94D2tnI3hx6A46NTaSdrVqU5BefB5ts0Ua3WFzVQL9qX8A3SHboxu7C4QTHWWOc8UhnPMj7KOjXFLx4X2c_5FpL81fbm0CJJxMcOVw11eIY6Osz933i-XiDvi1gjf0MJKjZCKuXuOfZr6xlCno0NbO9XKDh1x9_FD_NvzRrwxqFFR7jzaeTx5AI0yv_WQCXejOImtDkMz0MXQNtBYucCeZ3cb4xrnJXDtfOT8gYkHP3RreYazwBuDGDdo8p0H_ViX_2bQiyHLWaN10lwadejWXj9U2V3twIxNrMvVeFSUbEthTc9kY8-R2xfLng-tTmMVllvld-mabuw6t8a1VvV-mavUfv0-_bJn9NuItB1OMvtfe25rW8WmwBob6oWzf57ptu4mca-8vi6O4H0VZrq6m2mHiS0uGRYvuGdPntNLj29RZOG9cwVqemc6xdAVmKWHzSmQrQBOrxunGL6yseIOagoRqyA6XBiRvwJROs05Rq7AuJW9qKNgHWZBQxitABVzvqRt7FWXJdVNzTqZxZbJljKLL950S5nF53S2SqY0w7a2xdVPcd3jcs0k7ptBaZ3xKJ82qmMdTQrz9kCcRx2d1r3Zv5i-AR6Olfvb0RzqS4GqPy9NO9jbffxnwf8DeVOpbw==",
     "byStep": {
-      "until-12": "eJzFWG1z2jgQ_hx-hUYz_XQQsI15yeB2HJKSzIQ2jZP27r7cKPZidMgSJ8kQ7tffSDbg9IAkTe76hdHLs7vP7kqrNYMPDxlDC5CKCh5g57iFEfBYJJSnAb67_djo4Q_va4NroqefJ6c5ZWbnfe1oYMeIwQJYgB0XI01kCvrrWpX3RwujmBGlPpEMAvyN6niKEVEx8GS4XT9nkAHXhFGlMcoI5ZGIZ6BHUuTzADsY3ROeUB3gT4IDRnPC9RQEH5M_hRyJJMAs50RSVdmivNxKZa6ns5xhtKCwHIsEAjwMr4YRfl87OhpcM7ICGWmikdJEB3gosnvKITm7jjBaEJZDgJ3Ose97ft_r-ri5W-xWaMJeKHNFJ7DBe-32Ptw5B5muoikFlmzw7X7nIJfzi-sNttNxjn2_3fM81_Vcd5_c9XSlaEzYmDzQLM8uqL4lM-AbNb12a5_oRyrhBpRNYIlutHv70EPBkuejr2g61Zzy9AUGpkSo7-GdvezHhJOhqGD3KjbIOy5BgVzANhlOb6_uaA4VoHtcZHnQtJfHjG4lACKxpguI5hCb8241mQnSEqByn7z1hbpMAuw9ukpmpYURFwmoALe9frfe67d7dafTcr2663S6vbrb7bv9uuf0un7dc12nVfc6ftute12_06_77Xa7W_e7rtsxv5225XE0uLu5soOjqdZzddJsLpfL4znRUzGBB8rgOBZZc06UogtoqBllrGFoN8MwDE_TcTicnuvLxc2dzFq_Ty4_9Vui05ipiwnVjWUYhoE10iytDJrGbxshExgziIxKVcTEDBFwcs8gCbCWOWCkmNABPhXJCoUyE7ksakhYhNRIrGN6NBhBhlLITLDGoElCNGleashUc2R-LHoEWZRnmeDRDBhowRVG1q0XS3GSlTkttlBlb102MforJ4zqlU1fOTaWzmBCcqbx9-7u8K35QufmcyH1mHIq-BnJSApPOVhIjCB7LLT1r1hH643SOfenORcmCSSmKL3Qv3_JbV20W8js_XduDgo_njrr34DMBUfO6w_6R0YyOCNq-swjXsFvI2MXUbH60491KGPCIcrlS7Jelalk3C6jcr30zP-_k30BLAP9-lQPGZFUr56Z6A16G47N0pvneBuJcqTWD-NXCkv0txDZr9aGGf22GV0VPDy8eS4M3EysQ-WjasYR6M27auaIJsX8xrp0gsbh6HJYi1ame1RUQYKW9o7VziSd6KUQCfpGeFKzwtbuCXLc2pfC5xPUql1mc0ZjqpWZ_OIgLQocEhNEGENlhSwSbUJt_Tb6HrNyD7Ka2sNQu8jvJVVoSGXMQD-blesbWlnR3iHTfu4h4R0kcS-SVe0rIQzdQEoYJQcIFJ28OkGnjdPG6Y_yaR_kkzKxAFWLhIxBgkSjYv7sXLnvDA1b2YuekfB4HxP_icgIXSFyaqevyI7jv0OUxxKI0T4WC_uhhGxPuYdg5zBBYLp2BURPDT0zefOz0z1IgGS5ObGf-eoBhcX4hXnafA48nazeQSqS8tSpfZ6bc0x5-vaR6D9p3v0B82UYzDfU0xFwWgc5iMlkasra7ZKmKJpTSTUqvjPfPhrO4XrL6ATQhBE1q40hoaUu9NGuPJPMHsOHS2pGOCkNR5mt1GbhLewerqK5pkZZafpLTuOZomwB8pW2I9Dl84Y01Qwqz3GuIIJY8KRoIO2rOCFMQdlJRExo--BXW0yqi95i049VUOveZI1xd2AefZitgd4OYFG2t5j2TmVCVyD-LgiwCqPODkRRd7aY7g6MuZJV73v7MO4W09-BKeNYQTmtHTCb8kfRdnDZv5TN0z6Zqmb3mTJeRcbbJVMcqQi07axsN2VGQ8EnNC1OGp_na6XAIVvZk4oRz7N7kFZvczfwfEHM3xlbqOf1y_9E1voHze__bPwHUCWFjw==",
-      "until-28": "eJzFWW1z2rgW_hx-hcYz-2mdYFv4LQPdIaQlmQtpGqft7n7ZUewDaCNLXEuG0l9_R7IBpwWS3GQ3k5mMXp4jPY-OjnRkur99yxlaQCGp4D3LPXEsBDwVGeXTnvX59sNxZP32rtW9Jmr2cXJWUqZ73rWOuqaMGCyA9SwvspAixRTUl_VQ-C_HQikjUl6RHHrWV6rSmYWITIFng237ewY5cEUYlcpCOaE8Eek9qGEhynnPci10R3hGVc-6EhwsNCdczUDwMflbFEOR9SxWclJQ2eiivO6aFqWa3ZfMQgsKy7HIoGcN-qNBYr1rHR11rxlZQZEoopBURPWsgcjvKIfs_Dqx0IKwEnpWxz2Jgij0rfZum1uhCHuOwYhOYAN2Xa-zD_ieQzFdJTMKLNsYBD4-yOT9xfV2cD92Tzqx74Shj6O9hK5nK0lTwsbkG83L_IKqW3IPfDtMGIb7bD_QAm5AGufV8GPs7EMPBMuejh7R6UxxyqfPmGBGhPwR7u1VPiacDEQD6waHoJ95ARKKBWzdgfHepUnm0AB6J5Wfu20TObp0WwAgkiq6gGQOqd7sZiRdQaoAaAQTXkfTZdaz8IM40i2OhbjIQPYs18Gu7XmxZ3dwHNohjiI7jHFkR3Ensl3sOLHtBo6HbTcOsG97LnZc23ODMLK90HOw7YWBH9teGHuxjd0o9G3sea5jYxz6vo0Dv-PZOPSD2MZhELo2joNOZHdCz3ftThSGke1jL4xtv9PphLYfel6g_wcdO3BwHNmBiz3HDnAYx0bvUffzzcgUjmZKzeVpu71cLk_mRM3EBL5RBiepyNtzIiVdwLG8p4wd6-Vp9_v9_tl03L_of7oYXH-6Gd18Ty-WlzQ-H93cjq5ur74kJbm_kgPP-XNyeRU74vru7yJIln-OeV4OOvdh8B_n7K8JVcfL4Dhc0Ot73O_3e4ZUu2bVbWt_GM9ph-lCoinIyle6iICTOwZZz1JFCRaSTKiedSayFeoXuSiL6mDrV67WFmtfH3WHkKMp5NqJY1AkI4q0LxXksj3U_wx6CHlS5rngyT0wUIJLC5lleLYVJ3m916ou1Oirz3LfQv8tCaNqZbZVXdYzncOElExZP8rdoa39THHzuSjUmHIq-DnJyRQeE1hZDCF_aLTVV7WjdUctLnhjcfWZ8Cxttc1P0ur2Whl-Y2XVrfYsYZXJT7qq5leX1a14Pxa1X4HMBUfuy0P2AwM5-ziZQEH59IkB-4PNdm1MB9r2vF2wnoOEtCDqUW__jN_KaTTWSjr_tqMvgOWgXu7mASMFVasnrsYGvV2LTdPb-XQg-EKkRFHBn6pja3EFywdymmOt3wf_tnPPhFDyNUKY5HBO5OzJ4bvBN0OX5ICq1je_Y_tFSjgkZfGMK_aBzVZX1Yzq9lpZ_A94ui7Jdc78hcISfRci_93MoUt_bEqj9b2xydg0XFeMtjrf1uUE1Cbl1nVEs6p-Y-LxFI37w8tBK1npV6WkEjK0NJdD67ygE7UUIkNfCc9axtjMe4o6futTpfkUOa3LfM5oSpXUlV9dpESFQ2KCCGNofZObjaxX3ejW4z1k5R1kNTMnWeuivCuoRANapAzUk1kFjqaVV28_c_m2fsXOL7pRP-5Q9ZoiPIU95PBBcnciW7W-EMLQDUwJo-QAserlL0_R2bH5e5yp5_-CKE8LIHqu6sGMqhfzHradg2ynTCxAthJRpFBAgYZV_QVruZuF_8iaCdUgYQ6zl3DwnOYqjcXCfHKpEsg9BIPDBIGp1giImml6uvLqKxQeJEDyUu_xj3z1DfWr8qsziA4y0GmY2_o41xub8ulrhNvme8fjMRc_ys37P7jVPPRXmscpuM5BDmIymenD8Q9YomROC6rWcfnqjnIPH9qMTgBNGJH3rSElXJmh0AfT8EQue-Y9fCznhJP1vAUQBQXSH5FeZebDZ26pqB6snryfg5qtpHrhxAmo-oZEiioGjRu9lJBAKnhWPZ7MxTohTEKdbSVMKJM4NJ9XVFVJyyaRaaDWufka4-3APPi8sgbiHcDqDN9iOjsHM_niGuLvggBrMAp2IKqDaIsJd2B0PDbVR_sw3hYT78DU69hAuc4OmHH5g9V2rToFqvOvfTbNkb0n2uCGDd5lU22pBJRJzkxCpksDwSd0Wu00Pi_XgwKHfGV2qoV4md9BYX5paO8Gvl8Qad4ca2gUB_UX1_X43faPv2P8Dwm98g0=",
-      "until-68": "eJzNWmtz2joT_lx-hcYz51OVYEm-ZqBnCEkgbWguJOlpv5xRYAEF2aK2DCW__oxsE0hKCHmbvukwo5GlZ7UX7a5XMrW_f0QSTSFJhYrrFtm1LQRxT_VFPKxbV5dHO4H194dK7Yzr0elgPxPSzHyovKvlfSRhCrJueYGFNE-GoK8XS7F_bQv1JE_TzzyCuvVF6N7IQjztQdxvLscPJUQQay5Fqi0UcRF3VW8MupWobFK3iIVueNwXum59VjFYaMJjPQIVd_itSlqqX7dkFvNEpCtTIi6nhkmmR-NMWmgqYNZRfahbzcZJs2t9qLx7VzuTfA5JV3ONUs113Wqq6EbE0D8461poymUGdYswJ9wNPeKQwHet6nrCS6W5fDHViRjAPQUNgyeBhzEkw3l3JED2V1gwZ6M8h-2zJdixqb1r-8R3bccOnqI7G81T0eOyw3-IKIvaQl_yMcT3y3iu8yTPI5HABaT5Ppbwp1VvKtnfGnwihiMdi3i4_fIjrtJHaPIkusNj3lSrUC_chL2KE0ghmcJyM4Kn96I7gRWgvUs8z7XtsvVzqlo1DyfTu0wAEO9pMYXuBHomAvJlzQPSCcBKhLFFiB336xZ7EFxmxLZQrPqQ1i1iM4KJ7_mYBJRiSkOKmed62GGhjx3XptjzPQf7hFDssyDAfsgCHIROgEMWeJjYTmhjYru-i4kd2g4mzLZDTFgQuJg4tutj4tqeg4lnU4aJ5xuk7zPTBpRgEgSei0nohqb1mIup7ToepoR6FFPCbGJaZmNKDBdKPD_AlAQGSUI3wNS1Tev5jo2pT22Gqe8RYlo3xNQPaYhpSMIQMxN0mFFKbMyYw1zT-iFmzHdN3w8YZk4Q2Ji5QegYUzjGIB4z_ZC4mPmEOJj5rhdi5ns-wcwPzcqh5wTYsZnnYYdQj2GHhEGIHeoFHnZ86hLs-IxQ7AS-H2CXUcJM64fYdRzHx65L8zbwPOz6JPSx61Nq-tRzsBtQx7SOTbEb-B7Dns3CAHuEuiH2CKM2NkklxJ4RCHss9L3cQd7Vri5O8s67kdaTdK9anc1muxOuR2oAP4SE3Z6KqhOepmIKO-lYSLlj_KnaaDQa-8NO46px3t7Peu328NY-GA8vTi5aX1rR7Ga-f9drz45F2Ox-_3SmJpfz7187-pCeXd5MTvVof2Rfty--kY_p1fzk8uTz-bnsnF7dXV9eyYv29Sf3ukv-aX2Fj6rfmhzwUKdNan_rDcNgyFh3OMmaP5yzm-G_cHx-PKO3iXfWmjTuxmffu7NvnVi2drjzkWaquzPe53wn-3jq2Cfep7uQnbfDwRm9TQY3_Z1PzD-4HZ2eC_frNPGz8MR3bqfev2O2A8NGo1Gv5waqLixUK14xaWGu8imPlTyQjB9YSGiIzOMibfwMzB1gBeiVwFp1Zf1a1URuHuMmtE2na2xfTOZdBDG_kdCvWzrJwEKpVLpu7av-HDWSSGVJ8V5sFEnBUCyywrtaCyI0LPh3QPM-17x6rCFKqy3T5OgWRN0silTc1SqGlpIQWSh3gO3ILlRvXFLFPCrTUjGF8iVROVtWAySw0PeMS6HneRIq-4bZAQx4JrX1WOU1-lVfqOBkohLdEbFQ8QGP-BCe07GgaEH0kGipYjGOFhML7cI31q6oGl6kW0Hyk2bF8J-iV_mefJFiJc1PmpXjb6_aEYCpmI8SiO_mWyv3iGqpXjmBFjNvr-B9_X6kelm6tYaPyZYq3s-gcur1dawVSjyXgb8An6gYkV9Pv0cS0tHpYACJiIdb5t5HNCs-YCbQcubtfaAFMSQqFXp7D18lWaq2Ovpm294GGYH-9U0_gBR6CdfPJuuf8UuLrAy-mUFaUk0hfY0iJN_9Jk_1lxGUL9zyfLml2xja04eUS1uZSTQbweKVjUpEaTj3_x8fx1GkEs1lk0u5pRc8JFkqtxhHxcTrl1pbOsO-UvoVfOFI8ggOeDraOhve41czIY8AFaNvnwUbSY_H0M2SF5SeD2iWihXDqBz_nYFf9tLF1cO1gBm6Uyr6J-dhel_veyeFIMy6P84YuHnIlSuvLUy_C_r-5sI8I1GcpD5ULngi9HwPXTQuDivdubmxS0UKfXQLM5CIVFojnmo5R4dzQB_NWCVfIOe9h3xaOY4mUvSETveQXSnqvRT1gUvkun8hEfcS4GbBIgncI0Z8Cog4q4iG1rw3LorF3CqG0yOZvedlpn-azJtEnuVFTaWp4qkam1LyC4_7j8U9L1xrDxH7oejvCdKqACI1QFxKtKi485Rh3LvynroGdRxrkFIMIe7BE5LSTZKqwWBkZGuORGQE7U5EIjQqbkG3lziwjTBRcaGZH3kq7x37LzNobixRcUvIjZCLcXM5uTq-Xni2SfhRXkRU2tlNIlLUFElPgv4DhHY2CX2j-vPKNecSXcCQS8E3CVzeceyh_Z3y97wORtSlKxe32osNXehxf9n7vDIb88kwr1oqXZX0IIEEFVXMH7AFGzPKjXm9LoXO37Zby0wf5JKOmuYnqTJXvKelkOZqfJ30LzC8v1EFkLpyAlyPjALm4bfY_Cl11kscbJKYR5mJztN4_gM1iv7WIq_JdZvUWGvkl_lPuEkVcyQkldOJiWERD3-ru7_AYYj9nND0lYV-bMv_RejVF2mn0TpuPpBaigGggeTpuHIgpiKGXAB0lI9sq8ITnOlGzhGPecm5zaVUMxPtZuxVeLONvDMtzGol-_OMJ_rudfg6L-DbiECP5qn-Vc5d0GXJhLTQElZK6SyFLvRU3C-ugfKKdsBlCuVBpyuVzkv21Yui-28BiyPEzyi6RNE1qMXtwwLD1mAefBpYAJ01wMXJfYFx1y6WH-gWEG8dBOSKRP4aRJE1l5hgDcaE9qqNwqcwKxYi9hpQvucPrE2s8uxRHnyeolldmW5Js_qFh21Js_r5yFlHU7hhF3R-kspPT6bXVPFADAvvjCfZYlGIIZrn7m2hOItuIMn_clFdDzyccvOBeAl1fBaWn5kXDGrVx__o-A8FFbwA",
-      "maps-early": "eJzNWl1T2zgXvia_QuOZvaoo1oclu0O6EwIEWqBA-Njdmx2RnCRqZDu1lUD669-R7ZBAkxB2uy-dzGhk6Tk6z5GOjo_k7P7-EBs0gSzXaVL3yHvfQ5B00q5O-nXv-upwO_R-_1jbPVd28KW3N9bG9Xysbe0WdWRgAqbuhb6HrMr6YG9mQ7G_fQ91jMrzMxVD3bvVtjPwkMo7kHSb8_YDAzEkVhmdWw_FSifttDME28rS8ajuEQ_dqaSrbd07SxPw0EgldgBpcqq-plkr7dY9M05UpvOFLp1UXf1sbAfDsfHQRMP9adqFutdsnDTb3sfa1tbuuVFTyNpWWZRbZeteM43vdALd_fO2hybKjKHukSCS7yURTASS-MLbWS56lVpl_oHcie7BowyTzF8FPEgg60_bAw2mO1fC6UqBgtHB0fkjmBJC5HtOueBMhMEqufPBNNcdZU7Vg47H8ZG2V2oIyeMwMqJsleyhzuAS8mItZ_CVipqp6W4MPtH9gU100t98-IFK82doshJ9qhLVTBehcuWaOex1kkEO2QTmixGtXov2CBaA_nsiROD7VSkLqd2dYku52lUGgFTH6gm0R9Bxu6AY1j0gmwEs7DI222bH3brHnmww1-J7KEm7kNc94jOCiRQSk5BSTGlEMROBwJxFEvPAp5hHROJAcoaFH1AspOBYEkKxZGGIZcRCHEY8xBELBSZ-MaDPIx8TP5ABJn7kc0yY70eYsDAMMOF-IDEJfMExET5lmAjpkFIyV4aUYBKGIsAkCiJXChZg6gdcYEqooJgS5hNXMh9T4rRQImSIKQkdkkRBiGngu1KQSGAqJPcxldRnmEpBiCuDCFMZ0QjTiEQRZiSUAWaUEh8zxlngShlhxmTg6jJkmPEw9DELwoi7WeJurgRz9YgEmElCOGYyEBFmUkiCmYzcyCGJfMwiwUPMfSZoUQrMCRUMcxKFEeZUhAJzLqMI84ARibmIiI-5pAHBXDJCMQ-lDHHAKGGulBEOOOcSBwEtylAIHASRL3AgSeTWjFJXp4LjIKTcldynOAilcIvJohALQoMIC8KojwXhxNVDxrFw1LFgkUOySAosAp_xwuO2dq8vT4rK1sDaUf5hZ-f-_v79SNlB2oMHbeB9J413RirP9QS286E2Zts56E6j0Wjs9U8bf_QvjvbGnaOj_ld_f9i_PLls3R58v769e4BhK76_m-597xzdH-uo2f72aRqm29qcfx71p_7Vn9HZeCjoQevo8rp7mFzHD1fH9jQne83r--Dq7OasfXPQvc7MzclN568Bj_-6VkeX3y7o5O6uYW3rj-Pz3vFZ5Kef7_o57FN-zvRB8_QsFdtfH75dnAb7Ypi3rj4FlxPTFop_ot8SJQYn4uJwlInx3_Lg0H4XfCi_XkzS7Jx1Gz0S_q2-2JFmlPW03b7n_Gp4PL49Edty0t7ePpbbkwc9GbLt7iQQ5_xzo9GoF5O4M5vF3fLdlpdTWj0VG9Tt1cKDPaQtxO5xFqt-BBauuACsAtXW7s7C-Ls7LlwUgcXFE1dpu_UpO4sqgkTdGejWPZuNwUO5SW3d20u7U9TI4nSclS_kRhmJnMQsFG3ttiBG_VL_KVjVVVbtHFuI852WKwp0C-L2OI7TpG3TBFqpgdhDhZNsJnaZdoaVVKLiKhaWXagYElW9VRpCfQ99Gyuj7bSIfFXdKduHnhob6z03eYl9O680cDRKM3uqE50m-ypWfXjJxlKiBfFTobmJZTuadfwq1pWpyqtsK0V-sKxs_lXsql7OrzKskvnBsqr97U07BHCp-mEGyffpxsY9k5qbV3WgWc_bG_h4cDhMO-N8Ywufi81NfOxBVdfPt3G3NOKlCHwLapQmiPz78HtoIB986fUg00l_w9j7TGbBB1wHmve8vQ-0IIEszbXd3MMXReamLba-2bIfgYnB_vtF34ccOpmyLwbrH_HzGVlofLMJaZl0AvnPSEKK1W-q3N4OoHrhVofaDd3GyX55KjmfK9eJ7gcwe2WjClFNXPD_3x_HcZxmVpmmMmZDL3gqMjdu1o7Kjjdzhr00tT_BFw6NimFf5YONo-EjfjESqhhQ2fr2UbCRdVQC7XH2itTziczcsLIZVe3_5VpXtXx233Gj4R59T9P4j0KHq_35WDspiTDv8Tjj4O6hMK66K3H1NtjH6xL3jHR5kvpYu1SZttMP6LJxeVBrT91VYa5z6KKvcA8GkVproHJrpuhgCuiTa6sVAxS6PyBJa8fxyOiOtvkH5NfKfC9HXVAGBcFvSCedDJQbsAwCj4iBmgAifBHRsFZ1hmWyWMyK0_SMs3iZM_3VOK-jfF8kNbVmmkzSoUslb1XSfU73onStD4j4T6m_I8imJRClPaSMQbOMuwgZzr1r72jgUMeJBWN0H5IOrGBK1zFNe72B49Yc6NgRbY90pi0qr143Zxz6jkxc3qIWR57aO-7_5hrdNSkqryaVIzlrdzeii-3LybN15AdFElE7Gt9lOkdNnXUM2F-ANF9H-i7tTms3Shl0CX1ltFpHuLrj-ID2tqvfyzY4qnNXLq_SZws6s-PxhvllY9bGk36RtdTaadaBDDJUZjG_wBKsjSh37vU6J128bTfmTJ_EktN0UpykqljxjlYk3X38MvavmHi51gQwtnYCyg6cAe7hP5nzVeYsZxyuY6zisdudX5LpA2qU9Y0pL4l168xYOsmv859onSnuSEhqX0ZuD-uk_5-6-yschvgvkaY_mfTzufwnpBdfpKeN1nHzCWuje4B6RuXD2r6e6AQKAuiwaNnUhBWa6VrNsUpUpfnAQpYog9y3sJ-jmq1VPbbajVZpvxirzH7_OXr5K_Q2YrCDaW7_reY22CpjQlZbAwuZ9DiHNnTSpFveAhUJbU-ZHKpzTtuktsjYF--JHj8FzE4QP6LoHEWXoGaXDzMMW4J58mVgBuRLgLOD-wwTLB2sOM_NIGIZBMwCI7kEUQbNOSZcgnE7e3GOolWYhRki_hJQseZPZpt41dGjOvesklkcmW4owxZk2IYyix-F-DKZ0g3bYIuDVHF4crVmmvR0v_TOZDSeDQoJxNPCvT2UjOM7yBa-t_8APJgo91F6DhU-japP2zMFuzvP_0nyP4xf2AQ=",
+      "leveling-1-12": "eJzFWG1z2jgQ_hx-hUYz_XQQsI15yeB2HJKSzIQ2jZP27r7cKPZidMgSJ8kQ7tffSDbg9IAkTe76hdHLs7vP7kqrNYMPDxlDC5CKCh5g57iFEfBYJJSnAb67_djo4Q_va4NroqefJ6c5ZWbnfe1oYMeIwQJYgB0XI01kCvrrWpX3RwujmBGlPpEMAvyN6niKEVEx8GS4XT9nkAHXhFGlMcoI5ZGIZ6BHUuTzADsY3ROeUB3gT4IDRnPC9RQEH5M_hRyJJMAs50RSVdmivNxKZa6ns5xhtKCwHIsEAjwMr4YRfl87OhpcM7ICGWmikdJEB3gosnvKITm7jjBaEJZDgJ3Ose97ft_r-ri5W-xWaMJeKHNFJ7DBe-32Ptw5B5muoikFlmzw7X7nIJfzi-sNttNxjn2_3fM81_Vcd5_c9XSlaEzYmDzQLM8uqL4lM-AbNb12a5_oRyrhBpRNYIlutHv70EPBkuejr2g61Zzy9AUGpkSo7-GdvezHhJOhqGD3KjbIOy5BgVzANhlOb6_uaA4VoHtcZHnQtJfHjG4lACKxpguI5hCb8241mQnSEqByn7z1hbpMAuw9ukpmpYURFwmoALe9frfe67d7dafTcr2663S6vbrb7bv9uuf0un7dc12nVfc6ftute12_06_77Xa7W_e7rtsxv5225XE0uLu5soOjqdZzddJsLpfL4znRUzGBB8rgOBZZc06UogtoqBllrGFoN8MwDE_TcTicnuvLxc2dzFq_Ty4_9Vui05ipiwnVjWUYhoE10iytDJrGbxshExgziIxKVcTEDBFwcs8gCbCWOWCkmNABPhXJCoUyE7ksakhYhNRIrGN6NBhBhlLITLDGoElCNGleashUc2R-LHoEWZRnmeDRDBhowRVG1q0XS3GSlTkttlBlb102MforJ4zqlU1fOTaWzmBCcqbx9-7u8K35QufmcyH1mHIq-BnJSApPOVhIjCB7LLT1r1hH643SOfenORcmCSSmKL3Qv3_JbV20W8js_XduDgo_njrr34DMBUfO6w_6R0YyOCNq-swjXsFvI2MXUbH60491KGPCIcrlS7Jelalk3C6jcr30zP-_k30BLAP9-lQPGZFUr56Z6A16G47N0pvneBuJcqTWD-NXCkv0txDZr9aGGf22GV0VPDy8eS4M3EysQ-WjasYR6M27auaIJsX8xrp0gsbh6HJYi1ame1RUQYKW9o7VziSd6KUQCfpGeFKzwtbuCXLc2pfC5xPUql1mc0ZjqpWZ_OIgLQocEhNEGENlhSwSbUJt_Tb6HrNyD7Ka2sNQu8jvJVVoSGXMQD-blesbWlnR3iHTfu4h4R0kcS-SVe0rIQzdQEoYJQcIFJ28OkGnjdPG6Y_yaR_kkzKxAFWLhIxBgkSjYv7sXLnvDA1b2YuekfB4HxP_icgIXSFyaqevyI7jv0OUxxKI0T4WC_uhhGxPuYdg5zBBYLp2BURPDT0zefOz0z1IgGS5ObGf-eoBhcX4hXnafA48nazeQSqS8tSpfZ6bc0x5-vaR6D9p3v0B82UYzDfU0xFwWgc5iMlkasra7ZKmKJpTSTUqvjPfPhrO4XrL6ATQhBE1q40hoaUu9NGuPJPMHsOHS2pGOCkNR5mt1GbhLewerqK5pkZZafpLTuOZomwB8pW2I9Dl84Y01Qwqz3GuIIJY8KRoIO2rOCFMQdlJRExo--BXW0yqi95i049VUOveZI1xd2AefZitgd4OYFG2t5j2TmVCVyD-LgiwCqPODkRRd7aY7g6MuZJV73v7MO4W09-BKeNYQTmtHTCb8kfRdnDZv5TN0z6Zqmb3mTJeRcbbJVMcqQi07axsN2VGQ8EnNC1OGp_na6XAIVvZk4oRz7N7kFZvczfwfEHM3xlbqOf1y_9E1voHze__bPwHUCWFjw==",
+      "leveling-12-28": "eJzFWW1z2rgW_hx-hcYz-2mdYFv4LQPdIaQlmQtpGqft7n7ZUewDaCNLXEuG0l9_R7IBpwWS3GQ3k5mMXp4jPY-OjnRkur99yxlaQCGp4D3LPXEsBDwVGeXTnvX59sNxZP32rtW9Jmr2cXJWUqZ73rWOuqaMGCyA9SwvspAixRTUl_VQ-C_HQikjUl6RHHrWV6rSmYWITIFng237ewY5cEUYlcpCOaE8Eek9qGEhynnPci10R3hGVc-6EhwsNCdczUDwMflbFEOR9SxWclJQ2eiivO6aFqWa3ZfMQgsKy7HIoGcN-qNBYr1rHR11rxlZQZEoopBURPWsgcjvKIfs_Dqx0IKwEnpWxz2Jgij0rfZum1uhCHuOwYhOYAN2Xa-zD_ieQzFdJTMKLNsYBD4-yOT9xfV2cD92Tzqx74Shj6O9hK5nK0lTwsbkG83L_IKqW3IPfDtMGIb7bD_QAm5AGufV8GPs7EMPBMuejh7R6UxxyqfPmGBGhPwR7u1VPiacDEQD6waHoJ95ARKKBWzdgfHepUnm0AB6J5Wfu20TObp0WwAgkiq6gGQOqd7sZiRdQaoAaAQTXkfTZdaz8IM40i2OhbjIQPYs18Gu7XmxZ3dwHNohjiI7jHFkR3Ensl3sOLHtBo6HbTcOsG97LnZc23ODMLK90HOw7YWBH9teGHuxjd0o9G3sea5jYxz6vo0Dv-PZOPSD2MZhELo2joNOZHdCz3ftThSGke1jL4xtv9PphLYfel6g_wcdO3BwHNmBiz3HDnAYx0bvUffzzcgUjmZKzeVpu71cLk_mRM3EBL5RBiepyNtzIiVdwLG8p4wd6-Vp9_v9_tl03L_of7oYXH-6Gd18Ty-WlzQ-H93cjq5ur74kJbm_kgPP-XNyeRU74vru7yJIln-OeV4OOvdh8B_n7K8JVcfL4Dhc0Ot73O_3e4ZUu2bVbWt_GM9ph-lCoinIyle6iICTOwZZz1JFCRaSTKiedSayFeoXuSiL6mDrV67WFmtfH3WHkKMp5NqJY1AkI4q0LxXksj3U_wx6CHlS5rngyT0wUIJLC5lleLYVJ3m916ou1Oirz3LfQv8tCaNqZbZVXdYzncOElExZP8rdoa39THHzuSjUmHIq-DnJyRQeE1hZDCF_aLTVV7WjdUctLnhjcfWZ8Cxttc1P0ur2Whl-Y2XVrfYsYZXJT7qq5leX1a14Pxa1X4HMBUfuy0P2AwM5-ziZQEH59IkB-4PNdm1MB9r2vF2wnoOEtCDqUW__jN_KaTTWSjr_tqMvgOWgXu7mASMFVasnrsYGvV2LTdPb-XQg-EKkRFHBn6pja3EFywdymmOt3wf_tnPPhFDyNUKY5HBO5OzJ4bvBN0OX5ICq1je_Y_tFSjgkZfGMK_aBzVZX1Yzq9lpZ_A94ui7Jdc78hcISfRci_93MoUt_bEqj9b2xydg0XFeMtjrf1uUE1Cbl1nVEs6p-Y-LxFI37w8tBK1npV6WkEjK0NJdD67ygE7UUIkNfCc9axtjMe4o6futTpfkUOa3LfM5oSpXUlV9dpESFQ2KCCGNofZObjaxX3ejW4z1k5R1kNTMnWeuivCuoRANapAzUk1kFjqaVV28_c_m2fsXOL7pRP-5Q9ZoiPIU95PBBcnciW7W-EMLQDUwJo-QAserlL0_R2bH5e5yp5_-CKE8LIHqu6sGMqhfzHradg2ynTCxAthJRpFBAgYZV_QVruZuF_8iaCdUgYQ6zl3DwnOYqjcXCfHKpEsg9BIPDBIGp1giImml6uvLqKxQeJEDyUu_xj3z1DfWr8qsziA4y0GmY2_o41xub8ulrhNvme8fjMRc_ys37P7jVPPRXmscpuM5BDmIymenD8Q9YomROC6rWcfnqjnIPH9qMTgBNGJH3rSElXJmh0AfT8EQue-Y9fCznhJP1vAUQBQXSH5FeZebDZ26pqB6snryfg5qtpHrhxAmo-oZEiioGjRu9lJBAKnhWPZ7MxTohTEKdbSVMKJM4NJ9XVFVJyyaRaaDWufka4-3APPi8sgbiHcDqDN9iOjsHM_niGuLvggBrMAp2IKqDaIsJd2B0PDbVR_sw3hYT78DU69hAuc4OmHH5g9V2rToFqvOvfTbNkb0n2uCGDd5lU22pBJRJzkxCpksDwSd0Wu00Pi_XgwKHfGV2qoV4md9BYX5paO8Gvl8Qad4ca2gUB_UX1_X43faPv2P8Dwm98g0=",
+      "leveling-38-68": "eJzNWmtz2joT_lx-hcYz51OVYEm-ZqBnCEkgbWguJOlpv5xRYAEF2aK2DCW__oxsE0hKCHmbvukwo5GlZ7UX7a5XMrW_f0QSTSFJhYrrFtm1LQRxT_VFPKxbV5dHO4H194dK7Yzr0elgPxPSzHyovKvlfSRhCrJueYGFNE-GoK8XS7F_bQv1JE_TzzyCuvVF6N7IQjztQdxvLscPJUQQay5Fqi0UcRF3VW8MupWobFK3iIVueNwXum59VjFYaMJjPQIVd_itSlqqX7dkFvNEpCtTIi6nhkmmR-NMWmgqYNZRfahbzcZJs2t9qLx7VzuTfA5JV3ONUs113Wqq6EbE0D8461poymUGdYswJ9wNPeKQwHet6nrCS6W5fDHViRjAPQUNgyeBhzEkw3l3JED2V1gwZ6M8h-2zJdixqb1r-8R3bccOnqI7G81T0eOyw3-IKIvaQl_yMcT3y3iu8yTPI5HABaT5Ppbwp1VvKtnfGnwihiMdi3i4_fIjrtJHaPIkusNj3lSrUC_chL2KE0ghmcJyM4Kn96I7gRWgvUs8z7XtsvVzqlo1DyfTu0wAEO9pMYXuBHomAvJlzQPSCcBKhLFFiB336xZ7EFxmxLZQrPqQ1i1iM4KJ7_mYBJRiSkOKmed62GGhjx3XptjzPQf7hFDssyDAfsgCHIROgEMWeJjYTmhjYru-i4kd2g4mzLZDTFgQuJg4tutj4tqeg4lnU4aJ5xuk7zPTBpRgEgSei0nohqb1mIup7ToepoR6FFPCbGJaZmNKDBdKPD_AlAQGSUI3wNS1Tev5jo2pT22Gqe8RYlo3xNQPaYhpSMIQMxN0mFFKbMyYw1zT-iFmzHdN3w8YZk4Q2Ji5QegYUzjGIB4z_ZC4mPmEOJj5rhdi5ns-wcwPzcqh5wTYsZnnYYdQj2GHhEGIHeoFHnZ86hLs-IxQ7AS-H2CXUcJM64fYdRzHx65L8zbwPOz6JPSx61Nq-tRzsBtQx7SOTbEb-B7Dns3CAHuEuiH2CKM2NkklxJ4RCHss9L3cQd7Vri5O8s67kdaTdK9anc1muxOuR2oAP4SE3Z6KqhOepmIKO-lYSLlj_KnaaDQa-8NO46px3t7Peu328NY-GA8vTi5aX1rR7Ga-f9drz45F2Ox-_3SmJpfz7187-pCeXd5MTvVof2Rfty--kY_p1fzk8uTz-bnsnF7dXV9eyYv29Sf3ukv-aX2Fj6rfmhzwUKdNan_rDcNgyFh3OMmaP5yzm-G_cHx-PKO3iXfWmjTuxmffu7NvnVi2drjzkWaquzPe53wn-3jq2Cfep7uQnbfDwRm9TQY3_Z1PzD-4HZ2eC_frNPGz8MR3bqfev2O2A8NGo1Gv5waqLixUK14xaWGu8imPlTyQjB9YSGiIzOMibfwMzB1gBeiVwFp1Zf1a1URuHuMmtE2na2xfTOZdBDG_kdCvWzrJwEKpVLpu7av-HDWSSGVJ8V5sFEnBUCyywrtaCyI0LPh3QPM-17x6rCFKqy3T5OgWRN0silTc1SqGlpIQWSh3gO3ILlRvXFLFPCrTUjGF8iVROVtWAySw0PeMS6HneRIq-4bZAQx4JrX1WOU1-lVfqOBkohLdEbFQ8QGP-BCe07GgaEH0kGipYjGOFhML7cI31q6oGl6kW0Hyk2bF8J-iV_mefJFiJc1PmpXjb6_aEYCpmI8SiO_mWyv3iGqpXjmBFjNvr-B9_X6kelm6tYaPyZYq3s-gcur1dawVSjyXgb8An6gYkV9Pv0cS0tHpYACJiIdb5t5HNCs-YCbQcubtfaAFMSQqFXp7D18lWaq2Ovpm294GGYH-9U0_gBR6CdfPJuuf8UuLrAy-mUFaUk0hfY0iJN_9Jk_1lxGUL9zyfLml2xja04eUS1uZSTQbweKVjUpEaTj3_x8fx1GkEs1lk0u5pRc8JFkqtxhHxcTrl1pbOsO-UvoVfOFI8ggOeDraOhve41czIY8AFaNvnwUbSY_H0M2SF5SeD2iWihXDqBz_nYFf9tLF1cO1gBm6Uyr6J-dhel_veyeFIMy6P84YuHnIlSuvLUy_C_r-5sI8I1GcpD5ULngi9HwPXTQuDivdubmxS0UKfXQLM5CIVFojnmo5R4dzQB_NWCVfIOe9h3xaOY4mUvSETveQXSnqvRT1gUvkun8hEfcS4GbBIgncI0Z8Cog4q4iG1rw3LorF3CqG0yOZvedlpn-azJtEnuVFTaWp4qkam1LyC4_7j8U9L1xrDxH7oejvCdKqACI1QFxKtKi485Rh3LvynroGdRxrkFIMIe7BE5LSTZKqwWBkZGuORGQE7U5EIjQqbkG3lziwjTBRcaGZH3kq7x37LzNobixRcUvIjZCLcXM5uTq-Xni2SfhRXkRU2tlNIlLUFElPgv4DhHY2CX2j-vPKNecSXcCQS8E3CVzeceyh_Z3y97wORtSlKxe32osNXehxf9n7vDIb88kwr1oqXZX0IIEEFVXMH7AFGzPKjXm9LoXO37Zby0wf5JKOmuYnqTJXvKelkOZqfJ30LzC8v1EFkLpyAlyPjALm4bfY_Cl11kscbJKYR5mJztN4_gM1iv7WIq_JdZvUWGvkl_lPuEkVcyQkldOJiWERD3-ru7_AYYj9nND0lYV-bMv_RejVF2mn0TpuPpBaigGggeTpuHIgpiKGXAB0lI9sq8ITnOlGzhGPecm5zaVUMxPtZuxVeLONvDMtzGol-_OMJ_rudfg6L-DbiECP5qn-Vc5d0GXJhLTQElZK6SyFLvRU3C-ugfKKdsBlCuVBpyuVzkv21Yui-28BiyPEzyi6RNE1qMXtwwLD1mAefBpYAJ01wMXJfYFx1y6WH-gWEG8dBOSKRP4aRJE1l5hgDcaE9qqNwqcwKxYi9hpQvucPrE2s8uxRHnyeolldmW5Js_qFh21Js_r5yFlHU7hhF3R-kspPT6bXVPFADAvvjCfZYlGIIZrn7m2hOItuIMn_clFdDzyccvOBeAl1fBaWn5kXDGrVx__o-A8FFbwA",
+      "maps-white": "eJzNWl1T2zgXvia_QuOZvaoo1oclu0O6EwIEWqBA-Njdmx2RnCRqZDu1lUD669-R7ZBAkxB2uy-dzGhk6Tk6z5GOjo_k7P7-EBs0gSzXaVL3yHvfQ5B00q5O-nXv-upwO_R-_1jbPVd28KW3N9bG9Xysbe0WdWRgAqbuhb6HrMr6YG9mQ7G_fQ91jMrzMxVD3bvVtjPwkMo7kHSb8_YDAzEkVhmdWw_FSifttDME28rS8ajuEQ_dqaSrbd07SxPw0EgldgBpcqq-plkr7dY9M05UpvOFLp1UXf1sbAfDsfHQRMP9adqFutdsnDTb3sfa1tbuuVFTyNpWWZRbZeteM43vdALd_fO2hybKjKHukSCS7yURTASS-MLbWS56lVpl_oHcie7BowyTzF8FPEgg60_bAw2mO1fC6UqBgtHB0fkjmBJC5HtOueBMhMEqufPBNNcdZU7Vg47H8ZG2V2oIyeMwMqJsleyhzuAS8mItZ_CVipqp6W4MPtH9gU100t98-IFK82doshJ9qhLVTBehcuWaOex1kkEO2QTmixGtXov2CBaA_nsiROD7VSkLqd2dYku52lUGgFTH6gm0R9Bxu6AY1j0gmwEs7DI222bH3brHnmww1-J7KEm7kNc94jOCiRQSk5BSTGlEMROBwJxFEvPAp5hHROJAcoaFH1AspOBYEkKxZGGIZcRCHEY8xBELBSZ-MaDPIx8TP5ABJn7kc0yY70eYsDAMMOF-IDEJfMExET5lmAjpkFIyV4aUYBKGIsAkCiJXChZg6gdcYEqooJgS5hNXMh9T4rRQImSIKQkdkkRBiGngu1KQSGAqJPcxldRnmEpBiCuDCFMZ0QjTiEQRZiSUAWaUEh8zxlngShlhxmTg6jJkmPEw9DELwoi7WeJurgRz9YgEmElCOGYyEBFmUkiCmYzcyCGJfMwiwUPMfSZoUQrMCRUMcxKFEeZUhAJzLqMI84ARibmIiI-5pAHBXDJCMQ-lDHHAKGGulBEOOOcSBwEtylAIHASRL3AgSeTWjFJXp4LjIKTcldynOAilcIvJohALQoMIC8KojwXhxNVDxrFw1LFgkUOySAosAp_xwuO2dq8vT4rK1sDaUf5hZ-f-_v79SNlB2oMHbeB9J413RirP9QS286E2Zts56E6j0Wjs9U8bf_QvjvbGnaOj_ld_f9i_PLls3R58v769e4BhK76_m-597xzdH-uo2f72aRqm29qcfx71p_7Vn9HZeCjoQevo8rp7mFzHD1fH9jQne83r--Dq7OasfXPQvc7MzclN568Bj_-6VkeX3y7o5O6uYW3rj-Pz3vFZ5Kef7_o57FN-zvRB8_QsFdtfH75dnAb7Ypi3rj4FlxPTFop_ot8SJQYn4uJwlInx3_Lg0H4XfCi_XkzS7Jx1Gz0S_q2-2JFmlPW03b7n_Gp4PL49Edty0t7ePpbbkwc9GbLt7iQQ5_xzo9GoF5O4M5vF3fLdlpdTWj0VG9Tt1cKDPaQtxO5xFqt-BBauuACsAtXW7s7C-Ls7LlwUgcXFE1dpu_UpO4sqgkTdGejWPZuNwUO5SW3d20u7U9TI4nSclS_kRhmJnMQsFG3ttiBG_VL_KVjVVVbtHFuI852WKwp0C-L2OI7TpG3TBFqpgdhDhZNsJnaZdoaVVKLiKhaWXagYElW9VRpCfQ99Gyuj7bSIfFXdKduHnhob6z03eYl9O680cDRKM3uqE50m-ypWfXjJxlKiBfFTobmJZTuadfwq1pWpyqtsK0V-sKxs_lXsql7OrzKskvnBsqr97U07BHCp-mEGyffpxsY9k5qbV3WgWc_bG_h4cDhMO-N8Ywufi81NfOxBVdfPt3G3NOKlCHwLapQmiPz78HtoIB986fUg00l_w9j7TGbBB1wHmve8vQ-0IIEszbXd3MMXReamLba-2bIfgYnB_vtF34ccOpmyLwbrH_HzGVlofLMJaZl0AvnPSEKK1W-q3N4OoHrhVofaDd3GyX55KjmfK9eJ7gcwe2WjClFNXPD_3x_HcZxmVpmmMmZDL3gqMjdu1o7Kjjdzhr00tT_BFw6NimFf5YONo-EjfjESqhhQ2fr2UbCRdVQC7XH2itTziczcsLIZVe3_5VpXtXx233Gj4R59T9P4j0KHq_35WDspiTDv8Tjj4O6hMK66K3H1NtjH6xL3jHR5kvpYu1SZttMP6LJxeVBrT91VYa5z6KKvcA8GkVproHJrpuhgCuiTa6sVAxS6PyBJa8fxyOiOtvkH5NfKfC9HXVAGBcFvSCedDJQbsAwCj4iBmgAifBHRsFZ1hmWyWMyK0_SMs3iZM_3VOK-jfF8kNbVmmkzSoUslb1XSfU73onStD4j4T6m_I8imJRClPaSMQbOMuwgZzr1r72jgUMeJBWN0H5IOrGBK1zFNe72B49Yc6NgRbY90pi0qr143Zxz6jkxc3qIWR57aO-7_5hrdNSkqryaVIzlrdzeii-3LybN15AdFElE7Gt9lOkdNnXUM2F-ANF9H-i7tTms3Shl0CX1ltFpHuLrj-ID2tqvfyzY4qnNXLq_SZws6s-PxhvllY9bGk36RtdTaadaBDDJUZjG_wBKsjSh37vU6J128bTfmTJ_EktN0UpykqljxjlYk3X38MvavmHi51gQwtnYCyg6cAe7hP5nzVeYsZxyuY6zisdudX5LpA2qU9Y0pL4l168xYOsmv859onSnuSEhqX0ZuD-uk_5-6-yschvgvkaY_mfTzufwnpBdfpKeN1nHzCWuje4B6RuXD2r6e6AQKAuiwaNnUhBWa6VrNsUpUpfnAQpYog9y3sJ-jmq1VPbbajVZpvxirzH7_OXr5K_Q2YrCDaW7_reY22CpjQlZbAwuZ9DiHNnTSpFveAhUJbU-ZHKpzTtuktsjYF--JHj8FzE4QP6LoHEWXoGaXDzMMW4J58mVgBuRLgLOD-wwTLB2sOM_NIGIZBMwCI7kEUQbNOSZcgnE7e3GOolWYhRki_hJQseZPZpt41dGjOvesklkcmW4owxZk2IYyix-F-DKZ0g3bYIuDVHF4crVmmvR0v_TOZDSeDQoJxNPCvT2UjOM7yBa-t_8APJgo91F6DhU-japP2zMFuzvP_0nyP4xf2AQ=",
       "maps-red": "eJzVWmtvGykX_lz_CjTSSvuqpOE-TBV35TiJkzZpLk7Sbb-ssI1tmrm4M4wT99e_YmZ8S23H2W3VVpYQA88BnsPhcADv_fUQhWCs08wkcd3Dr5AHdNxNeiYe1L2b66Md6f31prZ3oezwvL-fm9DVvKm92CvyINRjHda9AHnAqnSg7e20KfoP8kA3VFn2XkW67n0wtjv0gMq6Ou415-WHoY50bFVoMuuBSJm4nXTvtG2lST6qe9gDHRX3jK1775NYe2CkYjvUSXymPidpK-nVvTCPVWqyhSoTV1WDNLfDuzz0wNjo-7Okp-tes3HabHtvai9e7F2EaqLTtlUWZFbZutdMoo6Jde_gou2BsQpzXfd8zvErwgIsKZacerurRa8Tq8J_IXdq-nomIwIp1wEPY50OJu2h0WFvJoAlWStQjOjw-GIGpoIw8goFmFJMArxO7mI4yUxXhWfqwUR5dGzstbrT8bxPysVaOkcm1Vc6KyZzpoh14GYS9rYGn5rB0MYmHmzf_FAl2SM0WTvyMxWrZrIAxb7YhL2JU53pdKznsxHIta23R3oBiF5hIThCVeoXUnu7xZpyuetUa6C61ox1e6S7bhkUzboPYFOtF5YZna6zk17do0srzJUgD8RJT2d1DyOKIfaFD7EkBBISEEix8CEVXEBGAx8yjghkAfYh9xmFAnECBaEICl8w6GNMoE-lhH5AJZQBkzCgUkCMiqYRCxDEiPscYhQgBjFFKICYSskhZoj7EHMkGMScIQ6xQIRCLHyH933qUkkwxNIXAcRSCg5xwAOXCsohQZwJSDARBBJMEXYpRZBg1yPBwpeQYOmQOOASEo5cKnAgIBGcUEiEzxAkPkEUEl9g7FIeQOL7UkLiBySAJMBBACmWPoeUEIwgJYxzSCmjReoHkFLXDqV-Ue5LCimTEkHKZcCcOhmBVAjq8gHmLmUBpD7GDFKfC5cXPobUD1xfEgcI0kAwCRmighSpgAwTQSHDzCeQ4UAGkBEhBWRMIJf6QQAZp9iHTAQYQeYTjiHzKSaQSd-XkCMpCOSUYOpSP4CcMeZDzkmRMskh51IIyHmABOQ-DtzUE-LyRDDIJcHSpczlGSKQS184y6CBhAITHkCBKUFQYIZdXnAKBZaUQeHoQUEDh6eBL6DgiLLCkl_s3VydFpkXQ2tH2evd3fv7-1cjZYdJXz-YUL_qJtHuSGWZGeud7M6E4Y4z_N1Go9HYH5w1OpeXx_t59_h48BkdHMnz9v6hPfz08fr91afxkbj8eDscZS056NJ92TwZX959Md3xu4tkdD358vHMHpKL687o3A7k6U3r-OqmdxTfhFftztGZQZOvN4dvrw_CM3yD395c4XZ-e2NvH6Jj8ym8iiMyROrufUrI_Wnn5MG2_j656J-8D1DsHw9GefOBXZwNgvwgYMPG5wN1Pk6kujs4v7z9dCDustb1W341DttCsbfkS6zE8FScNEaND9H4C9tJxzsP-53uTv72nKFT8e7hi39Be40-lv98HPcSQaLTfqe38476B59Vfn7Im6eh2RnnPhqPzfk_qXz_94MZ39Gd3piLC_au0WjUC2XvTrW9V26uWan66qtwEM5XuKXuAWN15L5w5Vi_xRVragEo1gGLRbAA9NcBC1tfAMp1wMLMFoDBeqBc7JqgCri3u6CCvV3nUQvf61yuy7SdqZWVRRboWHVC3at7Ns21B7IwsXVvP-lNQCONkjwtg5ZG6aydxNRbv9hr6QgMyv7PtFU9ZdXuidVRtttySYFu6aidR1ESt20S61YS6sgDhb1vJ3aVdO8qqVhF1XZRVoGiSVDVVqEaQR74kqvQ2MnSh-vtQPdVHlrvMecVBHefyXA0SlJ7ZmKTxAcqUgP9FMlSoqWjZaE5x7IcTCt-GXplQPcscqXIN9TK4l-GWBXCPItZJfMNtar8F-B2pLU70hylOv462ZrdI6k5v6oCTGt-AYazE9ZR0s2zrSk-FptznNWAquoHkNwrWTzlhz9oNUpigP-7Ez4KdTY87_d1auLBlh74kcyCFbgKMK_5BaygpWOdJpmx2xv5osic22Lpz5v4Yx1G2v73aT_Qme6myj7psr_Fz1WyUPjzNNIKk7HOvkc0Usx_U2X2w1BXG291A7Cl4TjZ82XJubJcJbgf6unWDSpEpTn-E5bISRQlqVVhU4XhlnawLDJnNy0HZcXPM4f9JLHfwRqOQhXpA5UNt3aJM_yiO1SRBmXpL-AKG2lXxbqdp8-IQpdk5szKYlCV_9DZrnLZ9H7o1uh78DVJor-LSx6X-zjLnZYjod7sbOPg7qNgV90tuXxb29n1kvsGpjz6valdqdTYyWtw1bg6rLUn7m41M5nugc_6XocA11pDldlwAg4nGrx1ZbWigaLv10CS2kk0Ck3X2Ow1QLUy8stAT6sQcP4HMHE31co1WDqCGWKoxhpgtohoWKu6d2XYWHspEbAJiMr7ySJMLjTlen_EQzzNg_wOPPynedDfgYd8mgf7HXgET_PgvwEPgp7mIX4DHngTjfvijFBrJvE4uXNnsw8q7j2mcFm66NeAoGU6L7EbQwEESR-oMATTM2yx-bp94rmcKVpEbDNPm_gl_f7QMWoOTeTotUcmNRaUL0Xb81yh7JcM_eEK3aMOKB9SVNydl7v3m8Xy1YOnmwY_LOL42nHeSU0GmibthtpuOWiyrNU_Cd0h_H9rVYuXtO6ecNzYdTpW1k3nYb9vukbH3Ymb53Kv_YFaYZu00kl6k9qtUiG40gMVGrVJI9V95muwvzP7LavpTxzsELSkGd3v6651TKen1Kz28k-MdzD5X8HCGfr8oD-ns1onbEm35VPl1AKnepk94D2tnI3hx6A46NTaSdrVqU5BefB5ts0Ua3WFzVQL9qX8A3SHboxu7C4QTHWWOc8UhnPMj7KOjXFLx4X2c_5FpL81fbm0CJJxMcOVw11eIY6Osz933i-XiDvi1gjf0MJKjZCKuXuOfZr6xlCno0NbO9XKDh1x9_FD_NvzRrwxqFFR7jzaeTx5AI0yv_WQCXejOImtDkMz0MXQNtBYucCeZ3cb4xrnJXDtfOT8gYkHP3RreYazwBuDGDdo8p0H_ViX_2bQiyHLWaN10lwadejWXj9U2V3twIxNrMvVeFSUbEthTc9kY8-R2xfLng-tTmMVllvld-mabuw6t8a1VvV-mavUfv0-_bJn9NuItB1OMvtfe25rW8WmwBob6oWzf57ptu4mca-8vi6O4H0VZrq6m2mHiS0uGRYvuGdPntNLj29RZOG9cwVqemc6xdAVmKWHzSmQrQBOrxunGL6yseIOagoRqyA6XBiRvwJROs05Rq7AuJW9qKNgHWZBQxitABVzvqRt7FWXJdVNzTqZxZbJljKLL950S5nF53S2SqY0w7a2xdVPcd3jcs0k7ptBaZ3xKJ82qmMdTQrz9kCcRx2d1r3Zv5i-AR6Olfvb0RzqS4GqPy9NO9jbffxnwf8DeVOpbw==",
-      "pinnacle": "eJzVWmtv4jgX_lx-hRVppV2NmfqeZFRmRaGlnaVXetnOl5EbDKTNhUkcWubXv3ISSugApe92NDNCshz7Obaf4-Nj-5idvx_DAExUkvpx1LDwe2QBFXlx34-GDevyYr_uWH9_rO2cSj06GexmfmBqPta2dvI8CNREBQ3LFRbQMhkqfTVrin5BFvACmabHMlQN69rX3sgCMvVU1G_Ny_cCFapIy8BPtQVC6Ue92LtXupPE2bhhYQvcyqjv64Z1HEfKAmMZ6ZGKoyN5FyeduN-wgiySiZ9WqvyorBommR7dZ4EFJr56OIr7qmG1mt1Wz_pY29raOQ3kVCU9LTVItdQNqxWHt36k-u3TngUmMshUw8KUYfaeY4YJcgS2tpeLXsRaBv-HXNcfqCcZIRhaBdyLVDKc9ka-CvpPAgQhsXZEewenT2BGhGu_dwQXlDLkrpI7HU1T35PBkXz0wyw88PWFvFdRhRhFZJXwvp-oc5Xmk1nibb4K3IqD_sbgrj8c6ciPhps3P5JxujH6SEayFVeg2F6pWoO9jBKVqmSi5rOBEV0p0hurChK9x0JwhMrUzqV2tvNFZXIXiVJAetqfqN5YeWYd5M2aD6ATpSrrjM4W2mG_YdGFJWZKkAWiuK_SfHgYYlvYEDuEQEJcAikWNqSCC8ioa0PGEYHMxTbkNqNQIE6gIBRBQbkLhS0YtDEm0KaOA22XOtBxmQNd6giIUd4-Yi6CGHGbQ4xcxCCmCLkQU8fhEDPEbYg5EgxizhCHWCBCIRa2wds2NalDMMSOLVyIHUdwiF3umlRQDgniTJiUY0gwEQQSTJHJU4ogwQxTSLDpnWBhO5Bgx0hhlzuQcGRSgV0BieCEQiJshiCxCaKQ2AJjk3IXEtt2HEhsl7iQuNh1IcWOzSElBCNICeMcUspontoupNS0Q6mdl9sOhZQ5DoKUOy4z-mUEUiGoybuYm5S5kNoYM0htLkxe2BhS2zV9OdhFkLqCOZAhKkieCsgwERQyzGwCGXYdFzIiHAEZE8iktutCxim2IRMuRpDZhGPIbIoJZI5tO5AjRxDIKcHUpLYLOWPMhpyTPGUOh5w7QkDOXSQgt7FrbIEQkyeCQe4Q7JiUmTxDxKTMhdyxhTEY6jpQYJynxNgMpgRBgRk2ecEpFNihDApDFQrqGinq2gIKjijLzXxr5_K8m2e2RlqP0w_b2w8PD-_HUo_igXr0A_Xei8PtsUxTf6Lq6b0fBHWzKrabzWZzd3jU9IZnB7uZd3AwvEPtfeekt7un9z7fXByff57si7Obq9Hdv53w4Xa6-807eDj03Vbv66epE9f94PSf8XCKLm7c4-xekPaDPrvp75-j637vav9TejntXnSPz86C3YPLB35xfHXcuxRXl-e4l11d6qvH8MD_HJxHIRkheX-cEPLQvT181J1_D08Hh8cuiuyD4ThrPbLTo6GbtV02at615ckkduR9--Ts6nNb3Kedi0_8fBL0hGSfyNdIilFXHDbHzetw8pXVk0n9cffWq2efThjqin8ev9qntN8cYOfLzaQfCxJ2B7f9-j_Ubt_J7GSPt7r3l-q6K-r2pJ25XZvdTcSX9pVzk_DjL9FtXd3VW8NmM1f89kzzO8U2nBbTUH7lnsQ4FeMTLOBrFZovXDrV73H5WqsAxSpgvjgqQHsVMF8DFaCzCpibXAXorgY61a5JuQNv7WxXVLCzbVxv7qSNbzaZnjG7ojLPAhXJ20D1G5ZOMmWBNIh1w9qN-1PQTMI4S4rjTbPw6kZi5ta3djoqBMOi_yOlZV9quX2oVZhud0ySozsq7GVhGEc9HUeqEwcqtEBu-5uJncfefSkVybDcV4oqkDcJytryUEewBb5mMvD1NNfK7MP01lYDmQXaes55CcHtVzIcj-NEH_mRH0dtGcqheolkIdFR4aLQnGNRDmYVvwy94uj3KnKFyHfUiuJfhlh51nkVs1LmO2pl-S_AbV8pc_nZT1T0bboxu2dSc35lBZjV_AIMn-5i-7GXpRtTfC425_hUA8qqH0Byp2Dxkh--VnIcRwD_dye8H6h0dDIYqMSPhht64GcyFSswFWBe8wtYQUdFKolTX29u5FWRObdq6c-b-AMVhEr_92lvq1R5idQvuuzv8XOVVAp_nkY6QTxR6VucRvL5b8lUX49UufGWsYINDcfInixKzpVlKsHDSM22blAiSs3xn7BEDsMwTrQMWjIINrSDRZE5u1k5KCp-njnsxrF-A2vYD2So2jIdbewSn_BVdyhDBYrSX8AVNhNPRqqXJa84hS7IzJkVxaAs_6GzXebSWSDpylcP4Fsch__m0SCTu3nKdYuRUOvpbmPg5iNnVwahTL6n9FMcynwDv7j6faydy8TX0w_gvHm-V-tNTRQ29VPVB3fqQQUA1zojmepgCvamCnwyZbW8gbzvD8ARtcNwHPier9MPANWKk18K-koGwEZ_AD_yEiVNg4UjeEKM5EQB7FQRTa2ld18cGxdxbKGlsIhu5kfnXHtmRM-4iZe5kd-Vm_0yN_q7cnNe5sZ-V27uy9z4b8qNoJe5id-UG15H7SG_m9RacTSJ782d8FpG_ee0zoqt4QMgaJHiOwx0XABBPAAyCMDs7pxv-mZ_eq0eXj936_jFg8HIMGqN_NDQ6439xNegeMvamKdYGFPxHDZr4x1GyGhhYaTvGP_DFJpnJlC8A8nIW8WArmMwyi8RtYPsNvFT0PITL1B6w5GTRdX-SZw6cf9aqV9MqlXmpcmMXSUTqc2c7g0GvueryJuayS42-vX0zZNclf7r1MLWqeU27k9rV1IG4FwNZeDLdSopo6kfwG796beopz8JrRO2oBo1GChPG6qzO3Jae_cn5nUs_spZGHOfhxnmdFYoZa0RlYp5eml8WTtrTz_D_J5V68WJpxKVgOLe9WqryZfsEqsp1-07jP4A3sgM0gzeHEQTlabGawVBBfSjDGTtIenW3C3mGsivGhsrAC_M1VE8yWe5dMeLy8TwMTZoIg7FOjGX7Bpd18I7U2tommfiZfxfYQdrT1O3KtC1rpJ6ZFRgPjZ37a-ZtlV8lg957SFJhplxcCfR9BE0i_zGY2b5kA8jrYLAH6p8aOt4LFXzK8msPRUZr4FrJ2PjH_xo-IO0_4Zs8NqDkKFD3prO87X-pnSqh5-jZuewtcAnMGt3EMj0vtb2J36kitW8n5dsSm5Fz2Rtz6HZXIue97RKIhkU--2bdE3Xdp1p37RW9n6WyUR_e5t-2Sv6bYZKj6ap_q8995QuT7lA-zpQlehFlqqe8uKoXwTg8yDCQAapKqNLvSDWeZikGqJ_erSdhW2-R5HKi-0S1CzqO8PQJZiFp9kZkC0BzgKmMwxf2lgeRZtBxDKICiojspcgClc7xzhLMGbNV3XkrsJUNITRElA-5wvaxlYZ7iljTatkqi2TDWWqb_Z0Q5nqHwLYMpnCDHtK58GrPGBlcq04GvjDwjqjcTZrVEUqnObmbYEoC29V0rCccr6_B-5NpPmHVQWKy78G7GzPOtjZfv7HyP8BhxD3lw=="
+      "endgame-pinnacle": "eJzVWmtv4jgX_lx-hRVppV2NmfqeZFRmRaGlnaVXetnOl5EbDKTNhUkcWubXv3ISSugApe92NDNCshz7Obaf4-Nj-5idvx_DAExUkvpx1LDwe2QBFXlx34-GDevyYr_uWH9_rO2cSj06GexmfmBqPta2dvI8CNREBQ3LFRbQMhkqfTVrin5BFvACmabHMlQN69rX3sgCMvVU1G_Ny_cCFapIy8BPtQVC6Ue92LtXupPE2bhhYQvcyqjv64Z1HEfKAmMZ6ZGKoyN5FyeduN-wgiySiZ9WqvyorBommR7dZ4EFJr56OIr7qmG1mt1Wz_pY29raOQ3kVCU9LTVItdQNqxWHt36k-u3TngUmMshUw8KUYfaeY4YJcgS2tpeLXsRaBv-HXNcfqCcZIRhaBdyLVDKc9ka-CvpPAgQhsXZEewenT2BGhGu_dwQXlDLkrpI7HU1T35PBkXz0wyw88PWFvFdRhRhFZJXwvp-oc5Xmk1nibb4K3IqD_sbgrj8c6ciPhps3P5JxujH6SEayFVeg2F6pWoO9jBKVqmSi5rOBEV0p0hurChK9x0JwhMrUzqV2tvNFZXIXiVJAetqfqN5YeWYd5M2aD6ATpSrrjM4W2mG_YdGFJWZKkAWiuK_SfHgYYlvYEDuEQEJcAikWNqSCC8ioa0PGEYHMxTbkNqNQIE6gIBRBQbkLhS0YtDEm0KaOA22XOtBxmQNd6giIUd4-Yi6CGHGbQ4xcxCCmCLkQU8fhEDPEbYg5EgxizhCHWCBCIRa2wds2NalDMMSOLVyIHUdwiF3umlRQDgniTJiUY0gwEQQSTJHJU4ogwQxTSLDpnWBhO5Bgx0hhlzuQcGRSgV0BieCEQiJshiCxCaKQ2AJjk3IXEtt2HEhsl7iQuNh1IcWOzSElBCNICeMcUspontoupNS0Q6mdl9sOhZQ5DoKUOy4z-mUEUiGoybuYm5S5kNoYM0htLkxe2BhS2zV9OdhFkLqCOZAhKkieCsgwERQyzGwCGXYdFzIiHAEZE8iktutCxim2IRMuRpDZhGPIbIoJZI5tO5AjRxDIKcHUpLYLOWPMhpyTPGUOh5w7QkDOXSQgt7FrbIEQkyeCQe4Q7JiUmTxDxKTMhdyxhTEY6jpQYJynxNgMpgRBgRk2ecEpFNihDApDFQrqGinq2gIKjijLzXxr5_K8m2e2RlqP0w_b2w8PD-_HUo_igXr0A_Xei8PtsUxTf6Lq6b0fBHWzKrabzWZzd3jU9IZnB7uZd3AwvEPtfeekt7un9z7fXByff57si7Obq9Hdv53w4Xa6-807eDj03Vbv66epE9f94PSf8XCKLm7c4-xekPaDPrvp75-j637vav9TejntXnSPz86C3YPLB35xfHXcuxRXl-e4l11d6qvH8MD_HJxHIRkheX-cEPLQvT181J1_D08Hh8cuiuyD4ThrPbLTo6GbtV02at615ckkduR9--Ts6nNb3Kedi0_8fBL0hGSfyNdIilFXHDbHzetw8pXVk0n9cffWq2efThjqin8ev9qntN8cYOfLzaQfCxJ2B7f9-j_Ubt_J7GSPt7r3l-q6K-r2pJ25XZvdTcSX9pVzk_DjL9FtXd3VW8NmM1f89kzzO8U2nBbTUH7lnsQ4FeMTLOBrFZovXDrV73H5WqsAxSpgvjgqQHsVMF8DFaCzCpibXAXorgY61a5JuQNv7WxXVLCzbVxv7qSNbzaZnjG7ojLPAhXJ20D1G5ZOMmWBNIh1w9qN-1PQTMI4S4rjTbPw6kZi5ta3djoqBMOi_yOlZV9quX2oVZhud0ySozsq7GVhGEc9HUeqEwcqtEBu-5uJncfefSkVybDcV4oqkDcJytryUEewBb5mMvD1NNfK7MP01lYDmQXaes55CcHtVzIcj-NEH_mRH0dtGcqheolkIdFR4aLQnGNRDmYVvwy94uj3KnKFyHfUiuJfhlh51nkVs1LmO2pl-S_AbV8pc_nZT1T0bboxu2dSc35lBZjV_AIMn-5i-7GXpRtTfC425_hUA8qqH0Byp2Dxkh--VnIcRwD_dye8H6h0dDIYqMSPhht64GcyFSswFWBe8wtYQUdFKolTX29u5FWRObdq6c-b-AMVhEr_92lvq1R5idQvuuzv8XOVVAp_nkY6QTxR6VucRvL5b8lUX49UufGWsYINDcfInixKzpVlKsHDSM22blAiSs3xn7BEDsMwTrQMWjIINrSDRZE5u1k5KCp-njnsxrF-A2vYD2So2jIdbewSn_BVdyhDBYrSX8AVNhNPRqqXJa84hS7IzJkVxaAs_6GzXebSWSDpylcP4Fsch__m0SCTu3nKdYuRUOvpbmPg5iNnVwahTL6n9FMcynwDv7j6faydy8TX0w_gvHm-V-tNTRQ29VPVB3fqQQUA1zojmepgCvamCnwyZbW8gbzvD8ARtcNwHPier9MPANWKk18K-koGwEZ_AD_yEiVNg4UjeEKM5EQB7FQRTa2ld18cGxdxbKGlsIhu5kfnXHtmRM-4iZe5kd-Vm_0yN_q7cnNe5sZ-V27uy9z4b8qNoJe5id-UG15H7SG_m9RacTSJ782d8FpG_ee0zoqt4QMgaJHiOwx0XABBPAAyCMDs7pxv-mZ_eq0eXj936_jFg8HIMGqN_NDQ6439xNegeMvamKdYGFPxHDZr4x1GyGhhYaTvGP_DFJpnJlC8A8nIW8WArmMwyi8RtYPsNvFT0PITL1B6w5GTRdX-SZw6cf9aqV9MqlXmpcmMXSUTqc2c7g0GvueryJuayS42-vX0zZNclf7r1MLWqeU27k9rV1IG4FwNZeDLdSopo6kfwG796beopz8JrRO2oBo1GChPG6qzO3Jae_cn5nUs_spZGHOfhxnmdFYoZa0RlYp5eml8WTtrTz_D_J5V68WJpxKVgOLe9WqryZfsEqsp1-07jP4A3sgM0gzeHEQTlabGawVBBfSjDGTtIenW3C3mGsivGhsrAC_M1VE8yWe5dMeLy8TwMTZoIg7FOjGX7Bpd18I7U2tommfiZfxfYQdrT1O3KtC1rpJ6ZFRgPjZ37a-ZtlV8lg957SFJhplxcCfR9BE0i_zGY2b5kA8jrYLAH6p8aOt4LFXzK8msPRUZr4FrJ2PjH_xo-IO0_4Zs8NqDkKFD3prO87X-pnSqh5-jZuewtcAnMGt3EMj0vtb2J36kitW8n5dsSm5Fz2Rtz6HZXIue97RKIhkU--2bdE3Xdp1p37RW9n6WyUR_e5t-2Sv6bYZKj6ap_q8995QuT7lA-zpQlehFlqqe8uKoXwTg8yDCQAapKqNLvSDWeZikGqJ_erSdhW2-R5HKi-0S1CzqO8PQJZiFp9kZkC0BzgKmMwxf2lgeRZtBxDKICiojspcgClc7xzhLMGbNV3XkrsJUNITRElA-5wvaxlYZ7iljTatkqi2TDWWqb_Z0Q5nqHwLYMpnCDHtK58GrPGBlcq04GvjDwjqjcTZrVEUqnObmbYEoC29V0rCccr6_B-5NpPmHVQWKy78G7GzPOtjZfv7HyP8BhxD3lw=="
     }
   },
   "pipeline": {
@@ -7501,7 +7707,7 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T12:56:15.682Z"
+    "checkedAt": "2026-11-27T16:11:25.925Z"
   },
   "filter": {
     "slots": {
@@ -7697,7 +7903,7 @@
     }
   },
   "stepPlans": {
-    "until-12": {
+    "leveling-1-12": {
       "goals": [
         "Level with Summon Stone Golem; life and a 3-link matter more than minion damage in Act 1.",
         "Keep the weapon current, but do not spend currency on a rare yet."
@@ -7729,7 +7935,7 @@
         }
       ]
     },
-    "until-28": {
+    "leveling-12-28": {
       "goals": [
         "Swap to Summon Stone Golem and add Minion Damage; the minions start carrying packs.",
         "Take Golem Commander when the first lab allows it."
@@ -7771,7 +7977,7 @@
         }
       ]
     },
-    "until-68": {
+    "leveling-38-68": {
       "goals": [
         "Six-link Summon Stone Golem and reach 2,000 life; cap elemental resistances first.",
         "The 6-link is the largest damage step; do not skip it for a rare chest."
@@ -7816,7 +8022,7 @@
         }
       ]
     },
-    "maps-early": {
+    "maps-white": {
       "goals": [
         "A 5-link clears white maps; start saving for the 6-link body.",
         "Cap resistances and reach 3,000 life before red maps."
@@ -7904,7 +8110,7 @@
         }
       ]
     },
-    "pinnacle": {
+    "endgame-pinnacle": {
       "goals": [
         "Cap chaos resistance at 75% and reach 5,000 life before pinnacle bosses.",
         "Use 21/20 Summon Stone Golem and awakened minion supports; defence stays the priority."
@@ -7949,6 +8155,13 @@
         }
       ]
     }
+  },
+  "stepAliases": {
+    "until-12": "leveling-1-12",
+    "until-28": "leveling-12-28",
+    "until-68": "leveling-38-68",
+    "maps-early": "maps-white",
+    "pinnacle": "endgame-pinnacle"
   },
   "gemInfo": {
     "Added Fire Damage": {
@@ -8335,7 +8548,7 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "57608254343f",
+  "seedHash": "4bae81773da3",
   "guide": {
     "summary": {
       "text": "Stone Golem Elementalist is a low-APM minion build that measures 22.7k at red maps and 40.2k at pinnacle. The golems are permanent and no unique is required.",
@@ -8345,20 +8558,20 @@
         "mainSkill",
         "ascendancyId",
         "gates.maps-red.metrics.dps",
-        "gates.pinnacle.metrics.dps"
+        "gates.endgame-pinnacle.metrics.dps"
       ],
-      "factsHash": "4d0b8300d33d31fd"
+      "factsHash": "62476dd0619b0f07"
     },
     "leveling": {
       "text": "Level with skeletons until the golem gem unlocks, then bring the Stone Golems with you. The first checkpoint measures 344 life and 50 damage; the second measures 126.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
-        "gates.until-12.metrics.life",
-        "gates.until-12.metrics.dps",
-        "gates.until-28.metrics.dps"
+        "gates.leveling-1-12.metrics.life",
+        "gates.leveling-1-12.metrics.dps",
+        "gates.leveling-12-28.metrics.dps"
       ],
-      "factsHash": "559c8ae99410a415"
+      "factsHash": "fbc2d2aa5b34ae1c"
     },
     "maps": {
       "text": "At red maps the build measures 22.7k damage, 36242 effective life and 13563 physical max hit. Keep the golems between you and the pack, cap the resistances, and let the filter hide the rest.",
@@ -8376,11 +8589,11 @@
       "status": "auto-retry",
       "signed": null,
       "facts": [
-        "gates.pinnacle.metrics.dps",
-        "gates.pinnacle.metrics.ehp",
-        "gates.pinnacle.metrics.maxHit"
+        "gates.endgame-pinnacle.metrics.dps",
+        "gates.endgame-pinnacle.metrics.ehp",
+        "gates.endgame-pinnacle.metrics.maxHit"
       ],
-      "factsHash": "1315111602d015d4"
+      "factsHash": "36cec2fa9491bac8"
     }
   },
   "medal": "A"

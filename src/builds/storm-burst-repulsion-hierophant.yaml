@@ -50,77 +50,172 @@ tree:
     - increased maximum mana
     - increased elemental damage
 
-leveling:
-  # The transfigured gem is not a quest reward: it only comes from the Divine
-  # Font at the end of a Labyrinth (or another player), so Rolling Magma on the
-  # totems carries the campaign and the swap waits for the Merciless Lab.
-  swaps:
-    - gem: Storm Burst of Repulsion
-      fromLevel: 68
-      replaces: Rolling Magma
-      note: "After the campaign, transform a Storm Burst at the Divine Font in the Merciless Labyrinth or buy the gem in trade."
-  brackets:
-    - until: 12
-      skills: [Rolling Magma, Flame Dash]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Rolling Magma, Added Lightning Damage, Arcane Surge]
-        - slot: Weapon 1
-          gems: [Flame Dash]
-        - slot: Helmet
-          gems: [Clarity]
-      flasks:
-        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
-        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
-    - until: 28
-      skills: [Rolling Magma, Flame Dash]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Rolling Magma, Added Lightning Damage, Faster Casting, Controlled Destruction]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
-        - slot: Shield
-          gems: [Clarity]
-      flasks:
-        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
-    - until: 68
-      skills: [Rolling Magma, Flame Dash]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Rolling Magma, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
-        - slot: Shield
-          gems: [Determination]
-        - slot: Helmet
-          gems: [Clarity]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
-        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
-        - { slot: utility, name: "Quartz Flask", note: "Phasing out of a pack." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
-    - until: 100
-      skills: [Storm Burst of Repulsion, Flame Dash]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Storm Burst of Repulsion, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction, Elemental Focus]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
-        - slot: Shield
-          gems: [Determination]
-        - slot: Helmet
-          gems: [Clarity]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
-        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
-        - { slot: utility, name: "Quartz Flask", note: "Phasing out of a pack." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance for pinnacle bosses." }
+# Steps (PLAN-BUILDS.md §9.3). Each step is read and measured at its `level`;
+# the pre-refactor checkpoints survive as `aliases`, so old links still land.
+steps:
+  leveling:
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Rolling Magma
+        measure: true
+        aliases: [until-12]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Rolling Magma
+              - Added Lightning Damage
+              - Arcane Surge
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - Clarity
+        flasks:
+          - slot: life
+            name: Medium Life Flask
+            note: Small until level 3.
+          - slot: mana
+            name: Small Mana Flask
+            note: Spells are expensive early.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Act 2 quest reward.
+      - id: leveling-12-28
+        level: 28
+        main: Rolling Magma
+        trigger: { from: 12 }
+        measure: true
+        aliases: [until-28]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Rolling Magma
+              - Added Lightning Damage
+              - Faster Casting
+              - Controlled Destruction
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+          - slot: Shield
+            gems:
+              - Clarity
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance from level 18.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Movement, not damage.
+      - id: leveling-38-68
+        level: 68
+        main: Rolling Magma
+        trigger: { from: 28 }
+        measure: true
+        aliases: [until-68]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Rolling Magma
+              - Spell Totem
+              - Added Lightning Damage
+              - Lightning Penetration
+              - Controlled Destruction
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+          - slot: Shield
+            gems:
+              - Determination
+          - slot: Helmet
+            gems:
+              - Clarity
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Drops from level 60; instant prefix.
+          - slot: mana
+            name: Hallowed Mana Flask
+            note: Drops from level 42.
+          - slot: utility
+            name: Granite Flask
+            note: Armour against physical hits.
+          - slot: utility
+            name: Quartz Flask
+            note: Phasing out of a pack.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance until it is capped.
+        watch: After the campaign, transform a Storm Burst at the Divine Font in the Merciless Labyrinth or buy the gem in trade.
+  maps:
+    sub:
+      - id: maps-white
+        level: 80
+        main: Storm Burst of Repulsion
+        trigger: { from: 68, skill: Storm Burst of Repulsion }
+        measure: true
+        aliases: [maps-early]
+        gems: &id001
+          - slot: Body Armour
+            gems:
+              - Storm Burst of Repulsion
+              - Spell Totem
+              - Added Lightning Damage
+              - Lightning Penetration
+              - Controlled Destruction
+              - Elemental Focus
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+          - slot: Shield
+            gems:
+              - Determination
+          - slot: Helmet
+            gems:
+              - Clarity
+        flasks: &id002
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: Drops from level 65.
+          - slot: utility
+            name: Granite Flask
+            note: Armour against physical hits.
+          - slot: utility
+            name: Quartz Flask
+            note: Phasing out of a pack.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance for pinnacle bosses.
+      - id: maps-red
+        level: 90
+        main: Storm Burst of Repulsion
+        trigger: { from: 80 }
+        measure: true
+        gems: *id001
+        flasks: *id002
+  endgame:
+    sub:
+      - id: endgame-pinnacle
+        level: 96
+        main: Storm Burst of Repulsion
+        trigger: { from: 90 }
+        measure: true
+        aliases: [pinnacle]
+        gems: *id001
+        flasks: *id002
 
 ascendancyOrder:
   - { node: pursuit-of-faith, lab: 1 }
@@ -141,19 +236,19 @@ guide:
   summary:
     text: >-
       Storm Burst of Repulsion Totems measure {{gates.maps-red.metrics.dps|dps}}
-      at red maps and {{gates.pinnacle.metrics.dps|dps}} at pinnacle. Two Spell
+      at red maps and {{gates.endgame-pinnacle.metrics.dps|dps}} at pinnacle. Two Spell
       Totems channel the bouncing orbs while you position, and the build needs
       no unique.
-    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.endgame-pinnacle.metrics.dps]
   leveling:
     text: >-
       Rolling Magma carries the campaign. Storm Burst of
       Repulsion is transfigured, so it only arrives from the Divine Font in the
       Merciless Labyrinth or from trade after the campaign. The first checkpoint
-      measures {{gates.until-12.metrics.life|int}} life and
-      {{gates.until-12.metrics.dps|dps}} damage; the second measures
-      {{gates.until-28.metrics.dps|dps}}.
-    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+      measures {{gates.leveling-1-12.metrics.life|int}} life and
+      {{gates.leveling-1-12.metrics.dps|dps}} damage; the second measures
+      {{gates.leveling-12-28.metrics.dps|dps}}.
+    facts: [gates.leveling-1-12.metrics.life, gates.leveling-1-12.metrics.dps, gates.leveling-12-28.metrics.dps]
   maps:
     text: >-
       At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
@@ -163,11 +258,11 @@ guide:
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
   bossing:
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
-      {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Place both totems
+      Pinnacle measures {{gates.endgame-pinnacle.metrics.dps|dps}} damage with
+      {{gates.endgame-pinnacle.metrics.ehp|int}} effective life and
+      {{gates.endgame-pinnacle.metrics.maxHit|int}} physical max hit. Place both totems
       before the burst window and refresh them after every immunity phase.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+    facts: [gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit]
 changelog:
   - season: covens
     date: "2026-11-26"

@@ -42,19 +42,19 @@ guide:
   summary:
     text: >-
       Summon Skeletons Necromancer is a league-start minion build that measures
-      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.pinnacle.metrics.dps|dps}} at
+      {{gates.maps-red.metrics.dps|dps}} at red maps and {{gates.endgame-pinnacle.metrics.dps|dps}} at
       pinnacle. Gem levels and minion supports carry the damage, the skeletons
       take the hits, and no unique is required.
-    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.endgame-pinnacle.metrics.dps]
     signed: { by: maintainer, at: "2026-11-26T00:00:00Z" }
   leveling:
     text: >-
       Level with skeletons and a minion damage support, then keep the swarm
       between you and the pack. The first checkpoint measures
-      {{gates.until-12.metrics.life|int}} life and {{gates.until-12.metrics.dps|dps}} damage;
-      the second measures {{gates.until-28.metrics.dps|dps}}. A mana flask covers the
+      {{gates.leveling-1-12.metrics.life|int}} life and {{gates.leveling-1-12.metrics.dps|dps}} damage;
+      the second measures {{gates.leveling-12-28.metrics.dps|dps}}. A mana flask covers the
       expensive early summons.
-    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+    facts: [gates.leveling-1-12.metrics.life, gates.leveling-1-12.metrics.dps, gates.leveling-12-28.metrics.dps]
   maps:
     text: >-
       At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
@@ -65,11 +65,11 @@ guide:
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
   bossing:
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
-      {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Refresh the skeletons
+      Pinnacle measures {{gates.endgame-pinnacle.metrics.dps|dps}} damage with
+      {{gates.endgame-pinnacle.metrics.ehp|int}} effective life and
+      {{gates.endgame-pinnacle.metrics.maxHit|int}} physical max hit. Refresh the skeletons
       before the burst, keep Flesh Offering up, and move when the boss turns.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+    facts: [gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit]
 
 minionCount: 6
 
@@ -81,156 +81,217 @@ tree:
     - minions have increased attack speed
     - maximum life
 
-leveling:
-  brackets:
-    - until: 12
-      skills:
-        - Raise Zombie
-        - Summon Skeletons
-      skillGroups:
-        - slot: Body Armour
-          gems:
-            - Summon Skeletons
-            - Minion Damage
-        - slot: Weapon 1
-          gems:
-            - Summon Raging Spirit
-        - slot: Shield
-          gems:
-            - Clarity
-        - slot: Helmet
-          gems:
-            - Flesh Offering
-        - slot: Gloves
-          gems:
-            - Raise Zombie
-        - slot: Boots
-          gems:
-            - Flame Dash
-            - Arcane Surge
-      flasks:
-        - { slot: life, name: "Medium Life Flask", note: "Small until level 3, then medium." }
-        - { slot: mana, name: "Small Mana Flask", note: "Skeletons are expensive early." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
-
-    - until: 28
-      skills:
-        - Summon Skeletons
-        - Summon Raging Spirit
-        - Flesh Offering
-      skillGroups:
-        - slot: Body Armour
-          gems:
-            - Summon Skeletons
-            - Minion Damage
-            - Melee Physical Damage
-            - Minion Speed
-        - slot: Weapon 1
-          gems:
-            - Flesh Offering
-            - Desecrate
-        - slot: Helmet
-          gems:
-            - Summon Raging Spirit
-        - slot: Gloves
-          gems:
-            - Raise Zombie
-        - slot: Shield
-          gems:
-            - Clarity
-            - Convocation
-        - slot: Boots
-          gems:
-            - Flame Dash
-            - Faster Casting
-            - Arcane Surge
-      flasks:
-        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24; medium is too small by now." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
-
-    - until: 68
-      skills:
-        - Summon Skeletons
-        - Flesh Offering
-        - Desecrate
-      skillGroups:
-        - slot: Body Armour
-          gems:
-            - Summon Skeletons
-            - Minion Damage
-            - Multistrike
-            - Melee Physical Damage
-            - Brutality
-            - Feeding Frenzy
-        - slot: Weapon 1
-          gems:
-            - Flesh Offering
-            - Generosity
-        - slot: Shield
-          gems:
-            - Clarity
-            - Convocation
-        - slot: Helmet
-          gems:
-            - Desecrate
-        - slot: Gloves
-          gems:
-            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
-            - Immortal Call
-        - slot: Boots
-          gems:
-            - Flame Dash
-            - Faster Casting
-            - Arcane Surge
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
-        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
-        - { slot: utility, name: "Quartz Flask", note: "Phasing through your own minions." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
-
-    - until: 100
-      skills:
-        - Summon Skeletons
-        - Flesh Offering
-        - Desecrate
-      skillGroups:
-        - slot: Body Armour
-          gems:
-            - Summon Skeletons
-            - Minion Damage
-            - Multistrike
-            - Melee Physical Damage
-            - Brutality
-            - Feeding Frenzy
-        - slot: Weapon 1
-          gems:
-            - Flesh Offering
-            - Generosity
-        - slot: Shield
-          gems:
-            - Clarity
-            - Convocation
-        - slot: Helmet
-          gems:
-            - Desecrate
-        - slot: Gloves
-          gems:
-            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
-            - Immortal Call
-        - slot: Boots
-          gems:
-            - Flame Dash
-            - Faster Casting
-            - Arcane Surge
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
-        - { slot: utility, name: "Granite Flask", note: "Iron Skin suffix." }
-        - { slot: utility, name: "Jade Flask", note: "Evasion against attack-based bosses." }
-        - { slot: utility, name: "Amethyst Flask", note: "Swap for a damage flask once chaos is capped." }
+# Steps (PLAN-BUILDS.md §9.3). Each step is read and measured at its `level`;
+# the pre-refactor checkpoints survive as `aliases`, so old links still land.
+steps:
+  leveling:
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Raise Zombie
+        measure: true
+        aliases: [until-12]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Summon Skeletons
+              - Minion Damage
+          - slot: Weapon 1
+            gems:
+              - Summon Raging Spirit
+          - slot: Shield
+            gems:
+              - Clarity
+          - slot: Helmet
+            gems:
+              - Flesh Offering
+          - slot: Gloves
+            gems:
+              - Raise Zombie
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
+        flasks:
+          - slot: life
+            name: Medium Life Flask
+            note: Small until level 3, then medium.
+          - slot: mana
+            name: Small Mana Flask
+            note: Skeletons are expensive early.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Act 2 quest reward.
+      - id: leveling-12-28
+        level: 28
+        main: Summon Skeletons
+        trigger: { from: 12, skill: Summon Skeletons }
+        measure: true
+        aliases: [until-28]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Summon Skeletons
+              - Minion Damage
+              - Melee Physical Damage
+              - Minion Speed
+          - slot: Weapon 1
+            gems:
+              - Flesh Offering
+              - Desecrate
+          - slot: Helmet
+            gems:
+              - Summon Raging Spirit
+          - slot: Gloves
+            gems:
+              - Raise Zombie
+          - slot: Shield
+            gems:
+              - Clarity
+              - Convocation
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Faster Casting
+              - Arcane Surge
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24; medium is too small by now.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance from level 18.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Movement, not damage.
+      - id: leveling-38-68
+        level: 68
+        main: Summon Skeletons
+        trigger: { from: 28 }
+        measure: true
+        aliases: [until-68]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Summon Skeletons
+              - Minion Damage
+              - Multistrike
+              - Melee Physical Damage
+              - Brutality
+              - Feeding Frenzy
+          - slot: Weapon 1
+            gems:
+              - Flesh Offering
+              - Generosity
+          - slot: Shield
+            gems:
+              - Clarity
+              - Convocation
+          - slot: Helmet
+            gems:
+              - Desecrate
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: 'Level 1-5 only: higher levels need bigger hits before it triggers.'
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Faster Casting
+              - Arcane Surge
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Drops from level 60; instant prefix.
+          - slot: mana
+            name: Hallowed Mana Flask
+            note: Drops from level 42.
+          - slot: utility
+            name: Granite Flask
+            note: Armour against physical hits.
+          - slot: utility
+            name: Quartz Flask
+            note: Phasing through your own minions.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance until it is capped.
+  maps:
+    sub:
+      - id: maps-white
+        level: 80
+        main: Summon Skeletons
+        trigger: { from: 68 }
+        measure: true
+        aliases: [maps-early]
+        gems: &id001
+          - slot: Body Armour
+            gems:
+              - Summon Skeletons
+              - Minion Damage
+              - Multistrike
+              - Melee Physical Damage
+              - Brutality
+              - Feeding Frenzy
+          - slot: Weapon 1
+            gems:
+              - Flesh Offering
+              - Generosity
+          - slot: Shield
+            gems:
+              - Clarity
+              - Convocation
+          - slot: Helmet
+            gems:
+              - Desecrate
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: 'Level 1-5 only: higher levels need bigger hits before it triggers.'
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Faster Casting
+              - Arcane Surge
+        flasks: &id002
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: Drops from level 65.
+          - slot: utility
+            name: Granite Flask
+            note: Iron Skin suffix.
+          - slot: utility
+            name: Jade Flask
+            note: Evasion against attack-based bosses.
+          - slot: utility
+            name: Amethyst Flask
+            note: Swap for a damage flask once chaos is capped.
+      - id: maps-red
+        level: 90
+        main: Summon Skeletons
+        trigger: { from: 80 }
+        measure: true
+        gems: *id001
+        flasks: *id002
+  endgame:
+    sub:
+      - id: endgame-pinnacle
+        level: 96
+        main: Summon Skeletons
+        trigger: { from: 90 }
+        measure: true
+        aliases: [pinnacle]
+        gems: *id001
+        flasks: *id002
 
 ascendancyOrder:
   - node: mindless-aggression

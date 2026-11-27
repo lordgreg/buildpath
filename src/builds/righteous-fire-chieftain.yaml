@@ -86,116 +86,255 @@ tree:
     - increased armour
     - fire resistance
 
-leveling:
-  brackets:
-    - until: 12
-      skills: [Rolling Magma]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Rolling Magma, Added Fire Damage, Arcane Surge]
-        - slot: Weapon 1
-          gems: [Flame Dash, Enduring Cry]
-        - slot: Helmet
-          gems: [Clarity]
-      flasks:
-        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
-        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
-    # Fire Trap is the campaign skill: it uses the same fire/burning/life tree
-    # as RF and does enough damage to clear the act and white-map gates without
-    # pretending a level-28 character can pay RF's self-burn.
-    - until: 28
-      skills: [Fire Trap]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Fire Trap, Elemental Focus, Efficacy, Concentrated Effect]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge, Enduring Cry]
-        - slot: Helmet
-          gems: [Malevolence]
-        - slot: Gloves
-          gems: [Flammability]
-      flasks:
-        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12; Fire Trap is mana-hungry." }
-        - { slot: utility, name: "Sulphur Flask", note: "Damage and consecrated ground." }
-        - { slot: utility, name: "Granite Flask", note: "Armour." }
-    - until: 68
-      skills: [Fire Trap]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Fire Trap, Burning Damage, Elemental Focus, Swift Affliction, Concentrated Effect]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge, Enduring Cry]
-        - slot: Helmet
-          gems: [Malevolence]
-        - slot: Gloves
-          gems: [Flammability]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: utility, name: "Sulphur Flask", note: "Damage and consecrated ground." }
-        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    # White maps still run the five-link the ssf-start budget actually has. The
-    # RF switch and the sixth link are the red-map step.
-    - until: 80
-      skills: [Fire Trap]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Fire Trap, Burning Damage, Elemental Focus, Swift Affliction, Concentrated Effect]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge, Enduring Cry]
-        - slot: Helmet
-          gems: [Malevolence]
-        - slot: Gloves
-          gems: [Flammability]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: utility, name: "Sulphur Flask", note: "Damage and consecrated ground." }
-        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    # This is the red-map switch. Stay on Fire Trap until the red-map set is
-    # complete: the six-link, capped fire resistance, three Enduring Cry charges
-    # and the boots/helmet implicits. Purity of Fire, Vitality and the charges
-    # make the measured self-burn net positive; Enduring Cry's regeneration adds
-    # margin while the warcry buff is up. Vitality stays at 14 so Malevolence
-    # and Purity of Fire fit the mana bar.
-    - until: 90
-      skills: [Righteous Fire]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Righteous Fire, Lifetap, Swift Affliction, Burning Damage, Elemental Focus, Concentrated Effect]
-        - slot: Weapon 1
-          gems: [Flame Dash, Lifetap, Enduring Cry]
-        - slot: Helmet
-          gems: [Malevolence, Purity of Fire, { name: Vitality, maxLevel: 14, note: "Level 14 is the reservation cap; higher levels eat the mana bar." }]
-        - slot: Gloves
-          gems: [Flammability, Lifetap]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: utility, name: "Sulphur Flask", note: "Damage and consecrated ground." }
-        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 100
-      skills: [Righteous Fire]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Righteous Fire, Lifetap, Swift Affliction, Burning Damage, Elemental Focus, Concentrated Effect]
-        - slot: Weapon 1
-          gems: [Flame Dash, Lifetap, Enduring Cry]
-        - slot: Helmet
-          gems: [Malevolence, Purity of Fire, { name: Vitality, maxLevel: 14, note: "Level 14 is the reservation cap; higher levels eat the mana bar." }]
-        - slot: Gloves
-          gems: [Flammability, Lifetap]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: utility, name: "Sulphur Flask", note: "Damage and consecrated ground." }
-        - { slot: utility, name: "Granite Flask", note: "Iron Skin." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+# Steps (PLAN-BUILDS.md §9.3). Each step is read and measured at its `level`;
+# the pre-refactor checkpoints survive as `aliases`, so old links still land.
+steps:
+  leveling:
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Rolling Magma
+        measure: true
+        aliases: [until-12]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Rolling Magma
+              - Added Fire Damage
+              - Arcane Surge
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Clarity
+        flasks:
+          - slot: life
+            name: Medium Life Flask
+            note: Small until level 3.
+          - slot: mana
+            name: Small Mana Flask
+            note: Spells are expensive early.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Act 2 quest reward.
+      - id: leveling-12-28
+        level: 28
+        main: Fire Trap
+        trigger: { from: 12, skill: Fire Trap }
+        measure: true
+        aliases: [until-28]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Fire Trap
+              - Elemental Focus
+              - Efficacy
+              - Concentrated Effect
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Malevolence
+          - slot: Gloves
+            gems:
+              - Flammability
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12; Fire Trap is mana-hungry.
+          - slot: utility
+            name: Sulphur Flask
+            note: Damage and consecrated ground.
+          - slot: utility
+            name: Granite Flask
+            note: Armour.
+      - id: leveling-38-68
+        level: 68
+        main: Fire Trap
+        trigger: { from: 28 }
+        measure: true
+        aliases: [until-68]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Fire Trap
+              - Burning Damage
+              - Elemental Focus
+              - Swift Affliction
+              - Concentrated Effect
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Malevolence
+          - slot: Gloves
+            gems:
+              - Flammability
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Instant prefix.
+          - slot: utility
+            name: Sulphur Flask
+            note: Damage and consecrated ground.
+          - slot: utility
+            name: Granite Flask
+            note: Iron Skin.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+  maps:
+    sub:
+      - id: maps-white
+        level: 80
+        main: Fire Trap
+        trigger: { from: 68 }
+        measure: true
+        aliases: [maps-early]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Fire Trap
+              - Burning Damage
+              - Elemental Focus
+              - Swift Affliction
+              - Concentrated Effect
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Malevolence
+          - slot: Gloves
+            gems:
+              - Flammability
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Instant prefix.
+          - slot: utility
+            name: Sulphur Flask
+            note: Damage and consecrated ground.
+          - slot: utility
+            name: Granite Flask
+            note: Iron Skin.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+      - id: maps-red
+        level: 90
+        main: Righteous Fire
+        trigger: { from: 80, skill: Righteous Fire }
+        measure: true
+        gems:
+          - slot: Body Armour
+            gems:
+              - Righteous Fire
+              - Lifetap
+              - Swift Affliction
+              - Burning Damage
+              - Elemental Focus
+              - Concentrated Effect
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Lifetap
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Malevolence
+              - Purity of Fire
+              - name: Vitality
+                maxLevel: 14
+                note: Level 14 is the reservation cap; higher levels eat the mana bar.
+          - slot: Gloves
+            gems:
+              - Flammability
+              - Lifetap
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Instant prefix.
+          - slot: utility
+            name: Sulphur Flask
+            note: Damage and consecrated ground.
+          - slot: utility
+            name: Granite Flask
+            note: Iron Skin.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+  endgame:
+    sub:
+      - id: endgame-pinnacle
+        level: 96
+        main: Righteous Fire
+        trigger: { from: 90 }
+        measure: true
+        aliases: [pinnacle]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Righteous Fire
+              - Lifetap
+              - Swift Affliction
+              - Burning Damage
+              - Elemental Focus
+              - Concentrated Effect
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Lifetap
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Malevolence
+              - Purity of Fire
+              - name: Vitality
+                maxLevel: 14
+                note: Level 14 is the reservation cap; higher levels eat the mana bar.
+          - slot: Gloves
+            gems:
+              - Flammability
+              - Lifetap
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: utility
+            name: Sulphur Flask
+            note: Damage and consecrated ground.
+          - slot: utility
+            name: Granite Flask
+            note: Iron Skin.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
 
 ascendancyOrder:
   # Ngamahu's strength helps the life shell and its jewel conversion adds fire
@@ -223,19 +362,19 @@ guide:
       Rolling Magma, then Fire Trap, and switches to Righteous Fire at red maps.
       It measures
       {{gates.maps-red.metrics.dps|dps}} DPS at red maps and
-      {{gates.pinnacle.metrics.dps|dps}} DPS at pinnacle. Purity of Fire,
+      {{gates.endgame-pinnacle.metrics.dps|dps}} DPS at pinnacle. Purity of Fire,
       Vitality, three Enduring Cry charges and the boots' life-regeneration
       implicit keep the self-burn net positive; Enduring Cry's regeneration adds
       margin while the warcry buff is up. Malevolence and Flammability carry the
       bossing damage, and no unique is required.
-    facts: [mainSkill, ascendancyId, config, leveling, uniques, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps, gates.maps-red.gems, gates.pinnacle.gems, gates.maps-red.gear, gates.pinnacle.gear]
+    facts: [mainSkill, ascendancyId, config, steps, uniques, gates.maps-red.metrics.dps, gates.endgame-pinnacle.metrics.dps, gates.maps-red.gems, gates.endgame-pinnacle.gems, gates.maps-red.gear, gates.endgame-pinnacle.gear]
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   leveling:
     text: >-
       Level with Rolling Magma into Fire Trap; the first checkpoint measures
-      {{gates.until-12.metrics.life|int}} life and
-      {{gates.until-12.metrics.dps|dps}} DPS, and the second measures
-      {{gates.until-28.metrics.dps|dps}} DPS with Fire Trap. Fire Trap carries
+      {{gates.leveling-1-12.metrics.life|int}} life and
+      {{gates.leveling-1-12.metrics.dps|dps}} DPS, and the second measures
+      {{gates.leveling-12-28.metrics.dps|dps}} DPS with Fire Trap. Fire Trap carries
       the campaign and white maps; stay on it until the red-map set is complete:
       the six-link, capped fire resistance, three Enduring Cry charges, and the
       boots life-regeneration and helmet reservation-efficiency implicits. The
@@ -243,7 +382,7 @@ guide:
       switch until it is complete. Without the charges the burn is net negative;
       with them, Purity of Fire and Vitality make the degen sustainable, and
       Enduring Cry's regeneration adds margin while the warcry buff is up.
-    facts: [config, gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps, gates.maps-red.gear, gates.maps-red.gems, gates.maps-red.metrics.resists]
+    facts: [config, gates.leveling-1-12.metrics.life, gates.leveling-1-12.metrics.dps, gates.leveling-12-28.metrics.dps, gates.maps-red.gear, gates.maps-red.gems, gates.maps-red.metrics.resists]
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   maps:
     text: >-
@@ -270,10 +409,10 @@ guide:
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   bossing:
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} DPS with
-      {{gates.pinnacle.metrics.ehp|k}} effective life,
-      {{gates.pinnacle.metrics.maxHit|k}} physical max hit and
-      {{gates.pinnacle.metrics.chaosResist|res}} chaos resistance. Stand in the
+      Pinnacle measures {{gates.endgame-pinnacle.metrics.dps|dps}} DPS with
+      {{gates.endgame-pinnacle.metrics.ehp|k}} effective life,
+      {{gates.endgame-pinnacle.metrics.maxHit|k}} physical max hit and
+      {{gates.endgame-pinnacle.metrics.chaosResist|res}} chaos resistance. Stand in the
       aura, keep Flammability on the boss, and move for the slams and the
       mechanics that would kill you; use the stationary windows only when the
       fight lets you. The measured damage does not include Ramako's stationary
@@ -291,7 +430,7 @@ guide:
       not drop it for a damage flask unless the gear adds the missing chaos
       resistance. The measured single-target number is below the dedicated boss
       builds.
-    facts: [config, ascendancyOrder, gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit, gates.pinnacle.metrics.chaosResist, gates.pinnacle.metrics.resists, gates.pinnacle.gear, gates.pinnacle.gems, gates.pinnacle.flasks]
+    facts: [config, ascendancyOrder, gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit, gates.endgame-pinnacle.metrics.chaosResist, gates.endgame-pinnacle.metrics.resists, gates.endgame-pinnacle.gear, gates.endgame-pinnacle.gems, gates.endgame-pinnacle.flasks]
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
 
 changelog:

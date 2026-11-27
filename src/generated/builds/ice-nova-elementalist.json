@@ -184,7 +184,7 @@
       65034
     ],
     "checkpoints": {
-      "until-12": [
+      "leveling-1-12": [
         4397,
         8948,
         21678,
@@ -197,7 +197,7 @@
         57226,
         57264
       ],
-      "until-28": [
+      "leveling-12-28": [
         1031,
         4184,
         4397,
@@ -228,7 +228,7 @@
         60398,
         61320
       ],
-      "until-68": [
+      "leveling-38-68": [
         1031,
         1203,
         1767,
@@ -307,7 +307,7 @@
         63799,
         63976
       ],
-      "maps-early": [
+      "maps-white": [
         1031,
         1203,
         1767,
@@ -504,7 +504,7 @@
         63976,
         65034
       ],
-      "pinnacle": [
+      "endgame-pinnacle": [
         1031,
         1203,
         1767,
@@ -620,282 +620,493 @@
       ]
     }
   },
-  "leveling": {
-    "brackets": [
-      {
-        "until": 12,
-        "skills": [
-          "Freezing Pulse",
-          "Frost Bomb"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Freezing Pulse",
-              "Added Cold Damage"
-            ]
+  "steps": [
+    {
+      "id": "leveling",
+      "sub": [
+        {
+          "id": "leveling-1-12",
+          "level": 12,
+          "main": "Freezing Pulse",
+          "measure": true,
+          "aliases": [
+            "until-12"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Freezing Pulse",
+                "Added Cold Damage"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Frost Bomb"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Clarity"
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Frostblink",
+                "Arcane Surge"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Medium Life Flask",
+              "note": "Small until level 3."
+            },
+            {
+              "slot": "mana",
+              "name": "Small Mana Flask",
+              "note": "Spells are expensive early."
+            },
+            {
+              "slot": "utility",
+              "name": "Quicksilver Flask",
+              "note": "Act 2 quest reward."
+            }
+          ],
+          "root": "leveling",
+          "from": 1,
+          "band": "until-12"
+        },
+        {
+          "id": "leveling-12-28",
+          "level": 28,
+          "main": "Ice Nova",
+          "trigger": {
+            "from": 12,
+            "skill": "Ice Nova"
           },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Frost Bomb"
-            ]
+          "measure": true,
+          "aliases": [
+            "until-28"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Ice Nova",
+                "Added Cold Damage",
+                "Controlled Destruction",
+                "Faster Casting"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Frost Bomb",
+                "Frostblink"
+              ]
+            },
+            {
+              "slot": "Shield",
+              "gems": [
+                "Hatred",
+                "Clarity"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Ice"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Giant Life Flask",
+              "note": "Drops from level 24."
+            },
+            {
+              "slot": "mana",
+              "name": "Greater Mana Flask",
+              "note": "Drops from level 12."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance from level 18."
+            },
+            {
+              "slot": "utility",
+              "name": "Quicksilver Flask",
+              "note": "Movement, not damage."
+            }
+          ],
+          "root": "leveling",
+          "from": 13,
+          "band": "until-28"
+        },
+        {
+          "id": "leveling-38-68",
+          "level": 68,
+          "main": "Ice Nova",
+          "trigger": {
+            "from": 28
           },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Clarity"
-            ]
+          "measure": true,
+          "aliases": [
+            "until-68"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Ice Nova",
+                "Added Cold Damage",
+                "Spell Echo",
+                "Increased Critical Strikes",
+                "Cold Penetration"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Frost Bomb",
+                "Frostblink"
+              ]
+            },
+            {
+              "slot": "Shield",
+              "gems": [
+                "Hatred",
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Ice",
+                "Clarity"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+                },
+                "Immortal Call"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Drops from level 60; instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Hallowed Mana Flask",
+              "note": "Drops from level 42."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Armour against physical hits."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing out of the pack."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance until it is capped."
+            }
+          ],
+          "root": "leveling",
+          "from": 29,
+          "band": "until-68"
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "sub": [
+        {
+          "id": "maps-white",
+          "level": 80,
+          "main": "Ice Nova",
+          "trigger": {
+            "from": 68
           },
-          {
-            "slot": "Boots",
-            "gems": [
-              "Frostblink",
-              "Arcane Surge"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Medium Life Flask",
-            "note": "Small until level 3."
+          "measure": true,
+          "aliases": [
+            "maps-early"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Ice Nova",
+                "Added Cold Damage",
+                "Spell Echo",
+                "Increased Critical Strikes",
+                "Increased Critical Damage",
+                "Cold Penetration"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Frost Bomb",
+                "Frostblink"
+              ]
+            },
+            {
+              "slot": "Shield",
+              "gems": [
+                "Hatred",
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Ice",
+                "Clarity"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+                },
+                "Immortal Call"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Eternal Mana Flask",
+              "note": "Drops from level 65."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Armour against physical hits."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing out of the pack."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance for pinnacle bosses."
+            }
+          ],
+          "root": "maps",
+          "from": 69,
+          "band": "maps-early"
+        },
+        {
+          "id": "maps-red",
+          "level": 90,
+          "main": "Ice Nova",
+          "trigger": {
+            "from": 80
           },
-          {
-            "slot": "mana",
-            "name": "Small Mana Flask",
-            "note": "Spells are expensive early."
+          "measure": true,
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Ice Nova",
+                "Added Cold Damage",
+                "Spell Echo",
+                "Increased Critical Strikes",
+                "Increased Critical Damage",
+                "Cold Penetration"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Frost Bomb",
+                "Frostblink"
+              ]
+            },
+            {
+              "slot": "Shield",
+              "gems": [
+                "Hatred",
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Ice",
+                "Clarity"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+                },
+                "Immortal Call"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Eternal Mana Flask",
+              "note": "Drops from level 65."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Armour against physical hits."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing out of the pack."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance for pinnacle bosses."
+            }
+          ],
+          "root": "maps",
+          "from": 81,
+          "band": "maps-red"
+        }
+      ]
+    },
+    {
+      "id": "endgame",
+      "sub": [
+        {
+          "id": "endgame-pinnacle",
+          "level": 96,
+          "main": "Ice Nova",
+          "trigger": {
+            "from": 90
           },
-          {
-            "slot": "utility",
-            "name": "Quicksilver Flask",
-            "note": "Act 2 quest reward."
-          }
-        ]
-      },
-      {
-        "until": 28,
-        "skills": [
-          "Ice Nova",
-          "Frost Bomb",
-          "Frostblink"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Ice Nova",
-              "Added Cold Damage",
-              "Controlled Destruction",
-              "Faster Casting"
-            ]
-          },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Frost Bomb",
-              "Frostblink"
-            ]
-          },
-          {
-            "slot": "Shield",
-            "gems": [
-              "Hatred",
-              "Clarity"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Herald of Ice"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Giant Life Flask",
-            "note": "Drops from level 24."
-          },
-          {
-            "slot": "mana",
-            "name": "Greater Mana Flask",
-            "note": "Drops from level 12."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance from level 18."
-          },
-          {
-            "slot": "utility",
-            "name": "Quicksilver Flask",
-            "note": "Movement, not damage."
-          }
-        ]
-      },
-      {
-        "until": 68,
-        "skills": [
-          "Ice Nova",
-          "Frost Bomb",
-          "Frostblink"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Ice Nova",
-              "Added Cold Damage",
-              "Spell Echo",
-              "Increased Critical Strikes",
-              "Cold Penetration"
-            ]
-          },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Frost Bomb",
-              "Frostblink"
-            ]
-          },
-          {
-            "slot": "Shield",
-            "gems": [
-              "Hatred",
-              "Determination"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Herald of Ice",
-              "Clarity"
-            ]
-          },
-          {
-            "slot": "Gloves",
-            "gems": [
-              {
-                "name": "Cast when Damage Taken",
-                "maxLevel": 5,
-                "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
-              },
-              "Immortal Call"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Divine Life Flask",
-            "note": "Drops from level 60; instant prefix."
-          },
-          {
-            "slot": "mana",
-            "name": "Hallowed Mana Flask",
-            "note": "Drops from level 42."
-          },
-          {
-            "slot": "utility",
-            "name": "Granite Flask",
-            "note": "Armour against physical hits."
-          },
-          {
-            "slot": "utility",
-            "name": "Quartz Flask",
-            "note": "Phasing out of the pack."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance until it is capped."
-          }
-        ]
-      },
-      {
-        "until": 100,
-        "skills": [
-          "Ice Nova",
-          "Frost Bomb",
-          "Frostblink"
-        ],
-        "skillGroups": [
-          {
-            "slot": "Body Armour",
-            "gems": [
-              "Ice Nova",
-              "Added Cold Damage",
-              "Spell Echo",
-              "Increased Critical Strikes",
-              "Increased Critical Damage",
-              "Cold Penetration"
-            ]
-          },
-          {
-            "slot": "Weapon 1",
-            "gems": [
-              "Frost Bomb",
-              "Frostblink"
-            ]
-          },
-          {
-            "slot": "Shield",
-            "gems": [
-              "Hatred",
-              "Determination"
-            ]
-          },
-          {
-            "slot": "Helmet",
-            "gems": [
-              "Herald of Ice",
-              "Clarity"
-            ]
-          },
-          {
-            "slot": "Gloves",
-            "gems": [
-              {
-                "name": "Cast when Damage Taken",
-                "maxLevel": 5,
-                "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
-              },
-              "Immortal Call"
-            ]
-          }
-        ],
-        "flasks": [
-          {
-            "slot": "life",
-            "name": "Divine Life Flask",
-            "note": "Keep the instant prefix."
-          },
-          {
-            "slot": "mana",
-            "name": "Eternal Mana Flask",
-            "note": "Drops from level 65."
-          },
-          {
-            "slot": "utility",
-            "name": "Granite Flask",
-            "note": "Armour against physical hits."
-          },
-          {
-            "slot": "utility",
-            "name": "Quartz Flask",
-            "note": "Phasing out of the pack."
-          },
-          {
-            "slot": "utility",
-            "name": "Amethyst Flask",
-            "note": "Chaos resistance for pinnacle bosses."
-          }
-        ]
-      }
-    ]
-  },
+          "measure": true,
+          "aliases": [
+            "pinnacle"
+          ],
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Ice Nova",
+                "Added Cold Damage",
+                "Spell Echo",
+                "Increased Critical Strikes",
+                "Increased Critical Damage",
+                "Cold Penetration"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Frost Bomb",
+                "Frostblink"
+              ]
+            },
+            {
+              "slot": "Shield",
+              "gems": [
+                "Hatred",
+                "Determination"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Herald of Ice",
+                "Clarity"
+              ]
+            },
+            {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+                },
+                "Immortal Call"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Divine Life Flask",
+              "note": "Keep the instant prefix."
+            },
+            {
+              "slot": "mana",
+              "name": "Eternal Mana Flask",
+              "note": "Drops from level 65."
+            },
+            {
+              "slot": "utility",
+              "name": "Granite Flask",
+              "note": "Armour against physical hits."
+            },
+            {
+              "slot": "utility",
+              "name": "Quartz Flask",
+              "note": "Phasing out of the pack."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance for pinnacle bosses."
+            }
+          ],
+          "root": "endgame",
+          "from": 91,
+          "band": "pinnacle"
+        }
+      ]
+    }
+  ],
   "ascendancyOrder": [
     {
       "node": "shaper-of-winter",
@@ -926,7 +1137,7 @@
   },
   "status": "verified",
   "gates": {
-    "until-12": {
+    "leveling-1-12": {
       "pass": true,
       "level": 12,
       "budget": "starting (3-link)",
@@ -1257,7 +1468,7 @@
         "status": "within-bound"
       }
     },
-    "until-28": {
+    "leveling-12-28": {
       "pass": true,
       "level": 28,
       "budget": "early (4-link)",
@@ -1813,7 +2024,7 @@
         "status": "within-bound"
       }
     },
-    "until-68": {
+    "leveling-38-68": {
       "pass": true,
       "level": 68,
       "budget": "ssf-start (5-link)",
@@ -2988,7 +3199,7 @@
         "status": "within-bound"
       }
     },
-    "maps-early": {
+    "maps-white": {
       "pass": true,
       "level": 80,
       "budget": "ssf-start (5-link)",
@@ -5911,7 +6122,7 @@
         "status": "within-bound"
       }
     },
-    "pinnacle": {
+    "endgame-pinnacle": {
       "pass": true,
       "level": 96,
       "budget": "trade (6-link)",
@@ -7624,12 +7835,12 @@
     "checkpoint": "maps-red",
     "code": "eJzVWm1vGjkQ_hx-hbXSSXeqadav661CT0ASkh40aWia632pzK4BJ_tCdw0p9-tP3oVkSYGQa6u0QrK89jP2PGN7bI85-PNLHIGZynKdJg0HvXQdoJIgDXUyajiX74_rwvnzde3gXJrx2bA11ZGteV3bOyjyIFIzFTUc33WAkdlImQ_Lpsgn1wFBJPP8rYxVw7nSJhg7QOaBSsL2fflRpGKVGBnp3Dggljrpp8GNMp0snU4aDnLAQCahNg3nbZooB0xkYsYqTXryOs06adhwomkiM51XqnSyqBplUzO-mUYOmGl120tD1XDazW6777yu7e0dnEdyrrK-kQbkRpqG007jgU5UeHjed8BMRlPVcHyGEX_JXcJd3xXC2V8v-j41Mvofcl09VHcynG4GHiUqG837Y62i8E4AcYy2anR0cn4Hpsgl3kssGBWEMm-T3Pl4nutARj35RcfT-ESb9_JGJfd9Ep_hTcLHOlMXKi8Gc4H32CZwO43CncFdPRqbRCej3ZsfyzR_gMZkE7onE9lOqw1vHAoLvUwylatspu4Ho04E3yTSn6gKEr_0PUSxYEVaCh3sF0vK5t5nSgEZGD1T_YkK7CooWrUfwGRKVVYZWS6z07DhkJUFZktcByRpqPKGg1yCIMIugcjjHkQCY0gQ9yDhjEOKBIWU-B6kzMWQ-siDzKMEcpdhyDFxISfMh9zjFHoIYegRIaDnEwGFTwX0ieAQuUUnLvVdiFzmMYgQxS5EmNo8cV0fIiIEg4i6zIOIuZxCxKjLIOIuJhBxzyI9j9hUYASR8LgPkRCcQeQz36acMIhdRjnErmAYYkRcZFPiQoy4JyBGwmKQzwTEzLUpRz6HmDNMIOYedSH2rDWwx5kPsecJAbHwGIXYR74PiYsxgwQJj0GCMXIhwZQxSAj1fEiIbYEQryjxBIGEco4gYdjmmfCpNSzFNhUMEs6JLfGpD4mHEIXEY9zmuYcg8Xzbo0C-C4nPqYDUJRwXKYfUFciFFGFOIEXUw5AiX_iQYk59SCl3OaTUZwxS7lukhxmCVBQtCM8TkPqYUchcwTFkBCNiU8-HjFLqQcZwkVLBIGO-yyHzkG_HH2Obx5xCJjASNqU2T10MmfC4nR7EF5AjbOcGItiFHFFk85wRyJEgFHJLD3LiWzzxPQ45cwkt5vTeweVFt8jsjY2Z5K_2929vb19OpBmnQ_VFR-plkMb7E5nneqbq-Y2OorpdAvvNZrPZGvWag9t3J61ur8NuA3V4LM76rdbHo757EY176DgWf09a46vO20AOWrPTk7e3w6buum_-SpPu_Jr_dSny5LDt9cwRPn8_mJyZkehedk4uLsPj5DK66A-Oe9qd_3t59OYiPO6hS_TmMos-dD8E_4xp_M_lP8ykYWdyOGia_Pqk1Q9GPj76e344DN_Uv9DuyUjMDzE9J2N89calt_g642f8o5A3x1fv6pNu62auLgfschpP2-HnCZ4m-PO4y0-bk-ZVHEtaz9iUnGf6_ezsc13nrfjLZ--chM0hEp8-zsKJJpgMtanfUpxdj8_eafZxlnlTv-vR6xn_dPhBfMzY20_JoK6u6-1Rs1kYfH9p8YNyp81L8y--CndhPYdd8w7QRsX2Cy0829e4Yl1VgN4mYLEEKkCxCVjM9ArQ3wQspto9ELubgaLa9XLP3DvYr5jgYN_618ITWwdsM3073crKIgtUIgeRChuOyabKAXmUmobTSsM5aGZxOs3KE0yzdN1WYum79w46Kgajsv-eMjKURu6fGhXn-x2bFOiOik8D9TadSQcUU31ndCLjxV5xGihQli0OZ9h1wOepjLSZr3zYtg_VUE4j4zwktobF_pNo9KeTSZqZZhiq0G7zhzKWI_UYq1Koo-Kv5O75FVXA1oFl5U9AtD9RUXQUjNOdKfamkdGBtAeOe3JFM6Bs5ydgdZoEmZK5CtuZtspGfZPpG5XvTHJzA5UJu8SAJQjcoX5GGzxxKm-U32qBn2hq26V2rhJlMml0muxM_Cu5e8LF6l2p-wE8D0oij3nvKyUnaQLQt7vu4yzNTSuNBzs67wr-3jRFIShLn3PwCz0GkU5unsJmIfCAzqL0-cZ4eWv-1hE-kSaz17idDLIE3xtjWfKc43qojMpiney0ltfL3BN6UPF8A3yioliZ7zDAKpNReDY8DR518OskKkNdFIN0CIqK5xzxdiQzbeY78rlDV7z1suj5xrcTpTN7HvjW8V1uaTI3V2OVlLvsIry167Ymc3O2KlkxlcwNuB2rZLGBgwViYTn2DMN_GsdpZmTUllG0661iRaRyTlmUg7Lih06HRS5fxsM-aHUL_k3T-O8iqGVzH-9y3VIT4tzd3izcfhTsFrE0m-8rcxdOs99Al5fb17WLYpK_AhfNi6Naf25Dybm2Z7JrdasigGrtdCAjA97Yz1ohW3T7CghcO40nkQ60yV8Bt8Z_A_ruRBeXUVRg47w1xKpVlTtMDaFqTXkNWFS9sHUmBZ3IKvDwkAyKe8Qk0ior7GcVe8DOe5wd_nXZicfZkV-Xnf84O_rLssPu4-zYr8sOPc6O_7LstpK7Le5UtbOJbTBQE5Oph9zelZvEK4DdBzzZRp2pu5EoXqmxu3Dx4lJ7gVlB8-mjt41fOhyOZRLW2mMd62QE-hOdaQPKa8bOTF8I16q2MpYvLEeTAvuOBsq3K5kE9-UF6Ur5euXJNuXHxVm5djIdZDoHbZ0FkTI7Ko1rPZ3oNMnBWM4U-B2TOmZ_bJ6ZKwNmn82s7iqbFRcGcDQc6kCrJJjbg3K53_9Aq9BtVhmk4bz2QcoIXKiRjLTcZpFF1PgVaNXvfqtm-h35deyuWEYNhyowlunZcKgynYzy2ovfEaoj_EfBQtrQ3_I5vEJnvU1WF0P5OrycgUu73L2ZPm4cts04o-L4XeunWaAylYHyOP7kORMqGa2bM0uXJH4DwdjqaHW3J-5M5fkDt_XDZsfWM-AgTU2Ff6v43JW-WFkE6awY4YV_Wl0hlo6dfypRZWAMZNKoGmZbWlhrEbxgbl_AH6e-9YA4UJGptcdSJ6Blsz_Euz1N361HPhlPrT87S-ZfQLPM76wyZlaL08SoKNIjVai2hcba5fW0Wbf1fGd9BCp30QudjH7oxvIEV4G2Htus0vg7K_3Qlv9H6eqBpdfsnLZXtI7syhtGMr-pHeqZTlS5Fo-Lkl0pbOgZb-05trti2fORUVkio3Kj_C5dk61dT422rS1672Qy0eY7caZP6PjdVGbm3-_TL3tCv81YmfE8N9_ac1-ZxZEYGG0iVQl7THPVV0GahOUrQxF9GMooV4uwVT9KTRFgqb5D3D18LyM9X6Nw5TF7DWoZDl1iyBrMyqv1EkjXAJextyWGrW0sNRUIXwdRUUUjbw2i9Nb3GLEGY11K1Ub-JkzFQshdAyrGfMXayFnEiRZBqk0y1ZbxjjLVvzOQHWWq_5WgO8qwigxbJ1NO3b4yRaSsiI7ZXDtNhnpUzuhkMl02qhIVz4sl4YBkGg9U1nDE8h90XwGPZjIvHwgWUE9wd_HftmUHB_sP_0r6H4QFVoU=",
     "byStep": {
-      "until-12": "eJy9WFtz2jgUfg6_QqOZPi0EfOGWgXaAJCQzoU3jpN192hH2wWiRJVaSIfTX70g24GSBhJbpi-dI-s5VR0dH7nx6ThhagFRU8C52zmsYAQ9FRHncxU-P15UW_vSx1Lknevpl0k8pMysfS2cdSyMGC2Bd7LgYaSJj0N_Wory_axiFjCj1mSTQxd-pDqcYERUCjwbb-SsGCXBNGFUao4RQHohwBnooRTrvYgejMeER1V38WXDAaE64noLgI_KPkEMRdTFLOZFUFZYoz5dimerpLGUYLSgsRyKCLh707gYB_lg6O-vcM7ICGWiikdJEd_FAJGPKIbq8DzBaEJZCFzfd85bn1nF1N8uj0IQdgb-jE9hgPd_fh7viIONVMKXAog3ebxy24-rmfoNteM3zWsv1W3XH8VrNfXz305WiIWEj8kyTNLmh-pHMgG_EtGrtfazXVMIDKLtxObrit_ahB4JF70ff0XiqOeXxEQqmRKjX8EZtH3xEOBmIAnavYIN84hIUyAVsN8Op75UdzKEIPG_5Dafu5V_L1KnaA2SoRwmASKjpAoI5hCbnrVQzQFoCFM6Utz5Ut1EXey-Ok5mpYcRFBKqLfa_dLLfafqvsNGquV3adRrNVdpuNervsOa1mvey5rlMre42675a9Zr3RLtd932-W603XbZhvw7d2nHWeHu4scTbVeq4uqtXlcnk-J3oqJvBMGZyHIqnOiVJ0ARU1o4xVjNnVXq_X68ej3mB6pW8XD08yWd5Nbj-3a6JRmambCdWVZa_X61ol1VxLp2r8thEygTFEYESqLCaGRMDJmEHUxVqmgJFiQndxX0Qr1JOJSGVWR3pZSA3HOqZnnSEkKIbEBGsEmkREk-qthkRVh-Zj0UNIriXAD8rj-5Qpo8FMH8nDSZLv53oB5St50axj9G9KGNUru3E5bbRcwoSkTOPXju7wqnqUW0E6nwupe1EEkTmPlyQh8Zv-ZUxDSP7Ht_XRLiGzhtaLuZvuydzsZH68lQjfgcwFR84pskAo3RfJ-N0ZsMEXd18ojbLZPCT-7w7JDbAE9K8HZMCIpHr1znBs0NtgbKbWjcPvjkRfCK1OlBljRvnsmNTIGV7lRj578tw4uirIkHAIUnlMRSjyFKqBnUb5_Mnr3Xavc0qt79FvFJbohxDJn1aHof7aUHeZHR7e3C4GbgbWt_wONnQAenMNmzGiUTZ-sOl7gUa94e2gFKxMw6mogggtbdUpXUo60UshIvSd8Khkma3eC-S4pa-ZzxeoVrpN5oyGVCsz8GofEOWhBGJEBXNgLC-j1lsj5aUt7kFbpva4l27SsaQKDagMGej32vKHW0daoCTrB5HpV_cY4R00YiyiVekbIQw9QEwYJQcMyFp-dYH6lX6l_7P2-AftiZlYgCoFQoYgQaJhNn5vVBz3gzHD9LwoazIJD_dZUn8jMkIXDLEl6Vd2x6kXs2ckFvZFhWwTusfAxmEDgenSYEooR31DnjxzmgfVkyQ1-fqFr55RL6OP3KXN6-HtrWodNEVSHjulL3OTxZTHp49E-0317k-oz8Ng27E3I-DUDtogJpOpKWWPSxqjYE4l1Sh7lp4-Gs7hGsvoBNCEETUrjSCiuSx0bWfeacwexYcLakI4yRUHCWEMmSfhSfQerqGppkZYrvprSsOZomwB8hd1B6DzKw1pqhkUruBUQQCh4FHWRtubcELMuyXrKQImtL3pi4021VmXsek8Cqh177nGuDswL95ua6C3A5gV7S3G3ynMtnhrSH0XBFjBosYORFZ3tpjmDow5kkXvW_sw7hbT3oHJ41hAObUdMLvlL6Lt4LxnyRumfTxFye47ebwCj7eLJ0upALTtpmwHZaiB4BMaZ5nG5-laKHBIVjZTMeJpMgZp5VZ3A68WxPzx2EI9r53_NlnL71Rf_5P8D39ukBg=",
-      "until-28": "eJzFWdtu4zgSfY6_ghAwT6PEul8CuweO00mMya2jdPf204KWyjY3FOkhKae9X78gJcdKj-24J94ZBDB4OVU8VUUWi0rvt-8lRQsQknDWt9wTx0LAcl4QNu1bnx8vjhPrtw-d3j1Ws7vJWUWonvnQOeqZNqKwANq3vMRCCospqC8rVf6_HQvlFEt5i0voW1-JymcWwjIHVgzX4x8plMAUpkQqC5WYsIznT6AuBa_mfcu10Bizgqi-dcsZWGiOmZoBZzf4P1xc8qJv0YphQWRrirBmaioqNXuqqIUWBJ5veAF9azi4HmbWh87RUe-e4iWITGGFpMKqbw15OSYMivP7zEILTCvoW1HknqRJGgep68RuYHU3iz5yhelfkLsmE3iRcZ003gb8yEBMl9mMAC1eBMIk2Uno49X9WnkUhCdJnPqh54duuk3ufraUJMf0Bn8nZVVeEfWIn4C11CThNtkLIuABpAllAz92t6KHnBb7o6_JdKYYYdOfWGCGufwR7m2F32CGh7yF9bxd0M9MgASxgHU4tgYvm0ML5p6kYewGXmJ-60j0uuZE6dajAEA4V2QB2RxyfQiMVt1BSgC0Dpm_OmWjom_5r86XHnEsxHgBUm8t37UDNwnswE9jO079xE7SILFdN_Ac2_UdJ7XdyPF8200jP7Q913dc23OjOLG92HN824ujMLV9x_NC23eTOLR9z3Md2_fjMLT9IIpc24_CwLP9OIxS24-j2LX9NAoSOwjSMLSDxI88O0jiOLHDIAhiO4w9L9K_UWBHjp8mduT6nmMMPup9frg2jaOZUnN52u0-Pz-fzLGa8Ql8JxROcl5251hKsoBj-UQoPdb-6Q4Gg8HZ9GZwNfh09fFi-nD9kAxHi0-SnV8_PF7fPt5-ySr8dCuH_reHyeg2dfj9eOZ9vVvMr8-eloCD34_Hi7s_jok6_t2Pz0VcHY8Gg0HfkOo2rHpdHRATOh0x3cg0BVkHSzcRMDymUPQtJSqwkKRc9a0zXizRQJS8EnXGG9Sx1hKrYB_1LqFEUyh1FG9A4QIr3B0pKGX3Uv8Y9CWUoxxu-QJbyJi_N5rhstlcoxxQPdYk89BCf1SYErU0-6dpa83nMMEVVdaPZm2woftTRmTVfM6FGhQFFDornOMST-Etm2qhSyj_JLe2zkwhPYdWk42Z0T9m5pAzJTilUJyDVKLKFeFsb2O3SK9NXgPQK0Rjt_-P2X2BpQIxxFIRNt3b3rVU28h6FL0oO7hxvZr9W2f5K-A5Z8h9_0G-EFyqM16O9zzKLXzLLXoQ1aONS5K_P96GxZgS9vQztjQCPxjTjB7cmD3ju6q33hvdK6yErgD2cscKvHbFamRVb__9MR1SLIha7mnBC7qVllZDB79m9gzlFdAS1AFCCQLT4m4yyt-8oTZJtIJqhhGfIDPR-CX4P_ilaclVdfmFwDP6L-flv8wauvXtpXW9SqUvpY2G644xralMdTsD9VKc6j4iRd1_MKE-RTeDy9Gwky31u0wSCQV6Nvmycy7IRD1zXqCvmBUdI2zWPUVB2PlU23yKnM6onFOSEyV1J3R-QYTlArBWlc2B0uZW7_ivplr3vfGD1v-apbeT5cxslc5VNRZEoiEROQW1L8tfIwcpjsr6_YT0A6_zq-anONIPJFS_SDDLt5Hzd5Ib82LZ-YIxRQ8wxZTgHcTqt7Q8RWfH5u9tpl7YdmT96ER1FtzCNtjJdkr5AmQn4yIHAQJd1v13-HIzi_ANn3HVInFmuu_g4L3abjd8YT5iIPPM20Iw2k0QqOoMZ5gwdKabB_dPvHN5XFZ6h9-x5Xc0qNsHZ5DsZCAIm7qdu7ne1oRND3HYXr4YvH3i0je5eX-BW8PDZKM3KbjOTg58MpnpVPkNnlE2J4Ko1ak8eKDc3SmckgmgCcXyqXNJMFNGFbowA3ty2bLu7qRcYoZX6wrAuvzXn2EOsvLujFspopU1iw9KULOlVAdZeHfyfL3wp4rkT5LQBYh3rp2Bau5qpIii0KotKgkZ5JwV9cvGXPETTCU0RVJGuTI1TPvtQ1RdNr0UlS3UquxaYbwNmFdfRFZAfwOwvj3WmGCjMq5akHATBGiLUbQBUSfBNSbegNG5oG19sg3jrTHpBkzjxxbKdTbATMhfedu1mmKsqQS3ybQ1e3vK-C0Zf0-ZoCUTbJKpt2EGypSWppzUrSFnEzKtdyebVyulwKBcmt1tIVaVYxDmPw3dzcCPCyzrLyENNEmj5svqSn-v--P_Mf4HBjrmPA==",
-      "until-68": "eJzVWltz2roWfg6_QuOZ81RRrJsvndA9hNzoDkkakma3Lx2BBaiRLWoLKP31Z2Sb4KRAyG72yT6TGY0sfUta31q6LC2y_8ePWIGZSDOpk6aD3roOEMlARzIZNZ2b6-N64PzxvrZ_yc34Yngwlcr2vK_t7ed1oMRMqKbjBQ4wPB0J82k5FPnqOmCgeJad81g0nVtpBmMH8Gwgkqi9aj9SIhaJ4UpmxgExl0lPD-6EOUn1dNJ0kAP6PImkaTrnOhEOmPDEjIVOuvybTk901HTUNOGpzCpdMim7RunUjO-mygEzKeZdHYmm026dtXvO-9re3v6l4guR9gw3IDPcNJ22jvsyEdHhZc8BM66moukQwrzgbUgC7OMw9JzGetFrbbj6G3JncihWMtT3NwGPEpGOFr2xFCq6F0AopFs1Ojq9XIH9wKNvXRIw5iEcbJK7HC8yOeCqy3_IeBqfSnPN70RyP0yA6EY2xzIVVyLLfVnCfbYJ3NYq2hl8Jkdjk8hktPvwY66zR2i0Ed3lCW_rCpRt9ISF3iSpyEQ6Eytf1Km3cfTeRFSQ-G2IA-YjWpS50H4j31G2dp0KAfjAyJnoTcTAboJ8VPsBTCpEZZOR5S7rRE2HPNhftsV1QKIjkTUd5BIEEXYJRL7nQxRgDInHPEhRQCEloQ8pczH0fI9CHyEMfRIE0A9JAIOQBjAkgQeRS0MXIpf5DCJEsQsRprZOXDeEiAQBg4i6zIeIuR6FyHMxgcjzLcb3iS0DjCAKAo9BFLLQlh5hELuMehC7AcMQI-IiWxIXYuT5AcQosBgUsgBi5trS86kLsW8ZYd9jIcSBzyjEIQpDSFyMGSQo8BkkGCMXEkL9EBLiM2bLgEBCPQ9BwrCtsyCk1h7UWsUjFBIfIVsyL4TE93wEiR_akUOPBpC6xPMgdQPkQoqwRyBF1MeQojAIIaUhY5D6mCFIA-JhSAPfDyANMaOQEYyILf0QMkqpDxnDtvRRaEuMPVt6FLIAU1tSF0MW-B6BnkvCAHoIsxB6iGAXeoiiEHpWOeiR0PfytbK3f3N1llf2xsZMsneNxnw-fzvhZqyH4odU4u1Ax40JzzI5E_XsTipVt0ur0Wq1Wgejbutm9PH04Kx7wuYDcXg3-nh7cGSOvnzm_YNZ5_R8PmzJM_fDn1rXpbo8-zCfT3-eXZ1_c7F3nX7--Dk6vnJvo17_uCvdxc-bow9X0XEX3aAPN6n6dPZp8GVM47HL786zNjnoDUYhPvprcTiM_mz_oJf90Vdx-uVzcv3tkF_MdMDvLr_35l-6iTqpc_oBTxP8fXzmdVqT1u0s9uX17OJ7XWYH8c-QfDwNh5cEk6E09Tml13ed6e2ZV_dnvXq949dn7PxrolutVjM3UmNppf3i0skKk5Vf-dbJ95VdEQ6QRsT2E5XH36_AfClUgOURsrffqIy_37AbOd_ydqfbSs_av-jMq0AkvK9E1HRMOhUOyJQ2TedARwvQSmM9TYubslWcEVZieUjs7Z-IGIyK-bvC8Igb3ugYEWeNE1vk6BMRdwbiXM-4A3Lf74xOeFweSp2BAEVbGQSg0AHfp1xJs8gPnrJuhz4UQz5VxnnMaw2JxrNY9KaTiU5NK4pEZK-TQx7zkXiKVCF0IuJf5Fb08i5g-8Cy8_V59iZCqaPBWO_MsDtVRg64vddW3PJhQDHOklTwaqQ6ySAVPBNRO5VWV9UzqbwT2c4cNw9QWa1LDFiCwD3q9f1ql9mlSIRJuZE62Zn5L3IrwvnKfdD38jT3Cx5PnVu3gk90AtDvH1rHqc7MgY77Ox5bFfzKMnkjKFpf0fW5Gn0lk7vnkCkFHrEpW1_Nw8tXye_695Sb1MbJO9ljCV7ZYtnyil49FEaksUx22sfrZVZ8HnW8mntPhYqFeQH3ipSr6GLYGTx5Ra-TqDg6bwZ6CPKOV_R3W_FUmsWOdO7RlXN62fRq3j1Remavwd_17vIu45m5HYukiJrK1MGu9xnPzMVDyYqleGbAfCySMiADJaI0HPvfO78Txzo1XLW5UrsG0g9EKvFJ2Q6KjpePylaLoaxly1TDJynm4KfW8V_5HLb2-b52VihCnPv3ioXbj5xcmaaw9Z4w95kK-w1k8VR6X7vKV_g7cNW6Oqr1FjZJl0kbin0Tc6EAqrV1nysDPtjPWi6bT_sO-LjWiSdKDqTJ3gG35v0HyPtALi7yU8Bm0GqIVbsqYXsNoWpPEfqWXW9sn9HgRFkFHkeGII-dJ0qKNLefVewRO_9pdvj_l902cvM8pqtdTOyAAzExqXjM7WOxWN8B5D7iyTbqTN2NRPGDHnsW5Em1Dcrjbcrr4XDMk6jWHstYJiPQm8hUGlBEMTvTeBO41rwPHPXGEjAa2DwoKHKPPBms2nNGlfb1ypNtyo_zy7h2Ou2nMgNtmQ6UMP8Cpek2pfs6WtQ-ca7AlRhxJfk2hctcyTtwUC__nubwcOEUufKlQ5c87lPIT5Nh28iM8guz1tPpQKQiBcUF-i9wwdbDtq-1qSh9kH_uqjN-sGW7epb_aFPuwDe4VNIm3Ndp_wzDbz1R-0KZWnvMZQIObPUfsfgmMuv1Dbbpy-Op3ZsXyeIHaBX1nVXGzGrRSYxQSo5ErtoWGmtN_LzVE26jkspkhIrj_komo390sT9juSD3KaXxCyv92JZ_R-nqzdptnXTaD7RWcijAUPHsrnYoZzIRuQLgOG_ZlcKGmfHWmWOe8HLmU66Untu9btteZG6yde6pkXa0cvqTlCfSvBBp-oyJP055an6-zLzsGfO2YmHGi8z87sw9YcrgDRhplKg8FKaZ6ImBTqIiH5fH60OuMlE-83pKm_xFUs3Y3f-UsXwa_YrCKxReg1omD5YYsgbz4JeNJZCuAS7fqksMWzuYNhWItw4iVEUjfw2iOK5XmGANxp4pVRuFmzAVCyF3DSj3-QNrI6d8WZXPuk0y1ZHxjjLVH6jIjjLVX7_ojjKsIsPWyRRLtydM_rbM35O21tbJUI6KFZ1MpstBRSLiRb4lHJBM475I8_87aawHHs14VmTTSij1SVj-0L6cYL_x-N9a_gsHBQde",
-      "maps-early": "eJzVWltz2roWfg6_QuOZ81SlWFfbndA9hCQkLbmSpKd92SNAgBJZpraApr9-j2yTOCkQstue9AwzGl2-Ja1vLWnpYnb--hZrMJNpphLT8NBb3wPS9JOBMqOGd3V5sB16f72v7ZwJOz4d7k6Vdi3va1s7eR5oOZO64YW-B6xIR9JeL7oif_se6GuRZScilg3vk7L9sQdE1pdm0Hqo39cylsYKrTLrgVgo0036t9K202Q6aXjIAz1hBso2vJPESA9MhLFjmZhjcZOk7WTQ8PTUiFRllSZlyqZROrXj26n2wEzJ-XEykA2v1ey0ut772tbWzpkWdzLtWmFBZoVteK0k7ikjB3tnXQ_MhJ7KhsdYSMjbkBHO_TBCXn256GVihf4Xch01lPcylDC-CrhvZDq6646V1IN7AUQQW6vR_uHZPRgHLAjeIhL4YcRXa3Q2vstUX-hj8U3F0_hQ2UtxK819N1GEglWyByqVFzLLfVnCg5UKthI92BjcUaOxNcqMNu9-LJLsCXq1tY6FEa2k2nG4DnplUpnJdCYffLHN_JU27U5kBYnfRgGiOGR5Wnh8p56vKJe7TKUEom_VTHYnsu8WQd6rKwCbSllZZGSxyo4GDY88Wl-uxveASQYya3jIJwgi7BOIAh5AFGIMCWccUhRSSEkUQMp8DGmEAsgCSiD3GYY84BQGCGEYkDCEQURCGEY0hBEJOUR-3qtPIx8inwUMIkSxDxGmLk98P4KIhCGDiPosgIj5nELEfUwg4oHDBAFxaYgRRGHIGUQRi1zKCYPYZ5RD7IcMQ4yIj1xKfIgRD0KIUegwKGIhxMx3KUcRh5gH1Ic4cGRxwFkEcRgwCnGEoggSH2MGCQoDBgnGyIeE0CCChASMuTQkkFDOESQMuzwLI-pMRXODhQwSzgmFJEDIpYxHkAQ8QJAEkes_RJEPScRpCKlPOM5TDqkfIh9ShDmBFNEAQ4qiMIKURoxByiPXGmCGIA1zqTAIQkgjzChkBCPi0iCCjFIaQMZwnkY-hyxAkfMZxi6POYUsxNSl1MeQhQF3ziRRCDnCLIIcEexDjihyec4I5CgkFHJHAHISOTyJAg458wnNJ9_WztVFJ89sja2dZO_q9fl8_nYi7DgZym9Ky7f9JK5PRJapmdzObpXW226u1pvNZnN3dNz83Dw_3O0ct9m8L_duR-efdvft_pfPlycXX2YH_Fz0dmdHhyfzYVN1_A8fE9O5u-Efr8LM7LWCY7uPzy57k1M73h3714cXX9CH7Oquc9k5OT_XB_7V9-vLK92dXl_Z62_xofqiL5JBe7LXa9r5lTk6G4wPwhEh3VEm9zA9I2P86YNP5_gm5af8cyhuz75251-OjW5vX3cm6ciIr4N0En1Nutuq-fH8IGVTcpaqy9np122V7cbfI3J-GA3PcNwZ9gbbH0mwdzM-PVfs8ywNplEnoDcz_vfedfg5ZSd_m962vNlujZrN3JD1hSV3ip0uK8xalvL16pZuPpc9oKyMXRGVG8OPwHw6VoBlcN7aqVf636m76JHHGRdeXKbrfFQ05lkgjehpOWh4Np1KD2Q6sQ1vNxncgWYaJ9O02J6bRWByEovItLXTljEYFeMfSysGwor6kZVxVm-7JEe3ZXzUlyfJTHggnx8bo42Iy0h41JegqCtPHtj3wNep0Mre5dGuzLuu9-RQTLX1nvJaQqL-Ihbd6WSSpLY5GMiB28P2RCxG8jlShVBbxj_IPdDLm4BrA4vG1-fZnUit9_vjZGOGx1NtVV-4zfSBW94NKPp5fVJHpp9KkclBK1VOV921qbqV2cYcV3dQma0LDFiAwD3qDzTBC-fxSvm1Bvhz5rVbZmfSSJsKqxKzMe8f5B745iv3Uduvp7lT8Hgubn-SYpIYgH4-aB-kSWZ3k7i3Ydiu4B8sk1eCovYVXZ-r0dPK3L6ETCnwhE1Z-2oeXlwFf9a_h8Km7nKykT0W4AdbLGpe0at70so0Vmajdbxc5oHPk4ZXc--h1LG0v8C9MhV6cDo86j8b2pdJVBydV4NkCPKGV_R3S4tU2bsN6dyjK3F6UfVq3m3rZOaOAT_r3cVeJjL7aSxNsbuW7zWb7mcis6ePJSuWEpkF87E05cYNSkRpOPa_d_5RHCepFboltN70IvFIpHI8KetB0fA7J0OZyxbvO9dKzsH3JIn_m4_hcp_vc51CEeLd39cc3BVycuXbkMt3pb1_HnJloIqr4vvaRT7D34GL5sV-rXvnXkYz5U5iN3IuNUC1VtIT2oIPrljLZfNh34EA147iiVZ9ZbN3wK_x_wB1f46Li0dB4J4ta4hVmyrXlhpC1Zbi6F82vXFtNgFt7RR4ejIG-d1hopVMc_s5xZ6wC55nh_9_2a0jN8_PdLXTieuwLyc2lU-5nReT9R1A_hOebKXO1F9JFD9qcbEgf8lcoTxep3wyHI6FGdRaYxUrMwLdiUqVBcUpZmMab0LfmfeRo944AjYB7vEZFA--wvQf6nNGlfrlypN1yo_zzbh2OO2lKgMtlfa1tH-A0nSd0r1kcFe7FkKDCzkSWol1CpdvRe_A7nb5e57D44lTfKBYOHTB4_7d_nkybB2ZUb5h1rpJ2pepTEGxgf4BLlgbbHtJYitK7-bFTXXGj5bscTLLv5SVK_ANLpV0XzmWaf8Cw6-NqD2pba01FsqAXZf9LRZfRWa5vuE6fUU8dWvz1Nx9A80iv7HKmDktjoyVWquRzFVbQ2OpiV82e6J1VFJlRqgI9xfKjH7rZH_BdEH-c0rjX6z0U1v-G6WrO-txs33UeqS1VkMJhlpkt7U9NVNG5gqAg7xmUworRsZrR46FEeXI-1amRmjgPjD-mqHJ2qGnVrneytHbqTDK_iLO9AUDn09Far__mnHZC8ZtxtKO7zL7syN3pS3PbsAqq2XlnjDNZFf2EzMonuPy4_pQ6EyWt7yuTmx-Iak-2N1_yVncjH5E4QcUXoJavB0sMGQJ5tGHnQWQLgEurqoLDFvaWWIrEL4MInVFo2AJoojWD5hwCcaFlKqNolWYioWQvwSU-_yRtZFXXqzKW90qmWrPeEMZUpEhG8pUv-nRDWVYRYYtkymmblfa_GqZXyddrpWYoRoVM9pMpotOpZHxXb4kPGCmcU-mlT9c_ADcn4mseEwrodzHUfnnhsUAO_WnfyX6B0ZWfOA=",
+      "leveling-1-12": "eJy9WFtz2jgUfg6_QqOZPi0EfOGWgXaAJCQzoU3jpN192hH2wWiRJVaSIfTX70g24GSBhJbpi-dI-s5VR0dH7nx6ThhagFRU8C52zmsYAQ9FRHncxU-P15UW_vSx1Lknevpl0k8pMysfS2cdSyMGC2Bd7LgYaSJj0N_Wory_axiFjCj1mSTQxd-pDqcYERUCjwbb-SsGCXBNGFUao4RQHohwBnooRTrvYgejMeER1V38WXDAaE64noLgI_KPkEMRdTFLOZFUFZYoz5dimerpLGUYLSgsRyKCLh707gYB_lg6O-vcM7ICGWiikdJEd_FAJGPKIbq8DzBaEJZCFzfd85bn1nF1N8uj0IQdgb-jE9hgPd_fh7viIONVMKXAog3ebxy24-rmfoNteM3zWsv1W3XH8VrNfXz305WiIWEj8kyTNLmh-pHMgG_EtGrtfazXVMIDKLtxObrit_ahB4JF70ff0XiqOeXxEQqmRKjX8EZtH3xEOBmIAnavYIN84hIUyAVsN8Op75UdzKEIPG_5Dafu5V_L1KnaA2SoRwmASKjpAoI5hCbnrVQzQFoCFM6Utz5Ut1EXey-Ok5mpYcRFBKqLfa_dLLfafqvsNGquV3adRrNVdpuNervsOa1mvey5rlMre42675a9Zr3RLtd932-W603XbZhvw7d2nHWeHu4scTbVeq4uqtXlcnk-J3oqJvBMGZyHIqnOiVJ0ARU1o4xVjNnVXq_X68ej3mB6pW8XD08yWd5Nbj-3a6JRmambCdWVZa_X61ol1VxLp2r8thEygTFEYESqLCaGRMDJmEHUxVqmgJFiQndxX0Qr1JOJSGVWR3pZSA3HOqZnnSEkKIbEBGsEmkREk-qthkRVh-Zj0UNIriXAD8rj-5Qpo8FMH8nDSZLv53oB5St50axj9G9KGNUru3E5bbRcwoSkTOPXju7wqnqUW0E6nwupe1EEkTmPlyQh8Zv-ZUxDSP7Ht_XRLiGzhtaLuZvuydzsZH68lQjfgcwFR84pskAo3RfJ-N0ZsMEXd18ojbLZPCT-7w7JDbAE9K8HZMCIpHr1znBs0NtgbKbWjcPvjkRfCK1OlBljRvnsmNTIGV7lRj578tw4uirIkHAIUnlMRSjyFKqBnUb5_Mnr3Xavc0qt79FvFJbohxDJn1aHof7aUHeZHR7e3C4GbgbWt_wONnQAenMNmzGiUTZ-sOl7gUa94e2gFKxMw6mogggtbdUpXUo60UshIvSd8Khkma3eC-S4pa-ZzxeoVrpN5oyGVCsz8GofEOWhBGJEBXNgLC-j1lsj5aUt7kFbpva4l27SsaQKDagMGej32vKHW0daoCTrB5HpV_cY4R00YiyiVekbIQw9QEwYJQcMyFp-dYH6lX6l_7P2-AftiZlYgCoFQoYgQaJhNn5vVBz3gzHD9LwoazIJD_dZUn8jMkIXDLEl6Vd2x6kXs2ckFvZFhWwTusfAxmEDgenSYEooR31DnjxzmgfVkyQ1-fqFr55RL6OP3KXN6-HtrWodNEVSHjulL3OTxZTHp49E-0317k-oz8Ng27E3I-DUDtogJpOpKWWPSxqjYE4l1Sh7lp4-Gs7hGsvoBNCEETUrjSCiuSx0bWfeacwexYcLakI4yRUHCWEMmSfhSfQerqGppkZYrvprSsOZomwB8hd1B6DzKw1pqhkUruBUQQCh4FHWRtubcELMuyXrKQImtL3pi4021VmXsek8Cqh177nGuDswL95ua6C3A5gV7S3G3ynMtnhrSH0XBFjBosYORFZ3tpjmDow5kkXvW_sw7hbT3oHJ41hAObUdMLvlL6Lt4LxnyRumfTxFye47ebwCj7eLJ0upALTtpmwHZaiB4BMaZ5nG5-laKHBIVjZTMeJpMgZp5VZ3A68WxPzx2EI9r53_NlnL71Rf_5P8D39ukBg=",
+      "leveling-12-28": "eJzFWdtu4zgSfY6_ghAwT6PEul8CuweO00mMya2jdPf204KWyjY3FOkhKae9X78gJcdKj-24J94ZBDB4OVU8VUUWi0rvt-8lRQsQknDWt9wTx0LAcl4QNu1bnx8vjhPrtw-d3j1Ws7vJWUWonvnQOeqZNqKwANq3vMRCCospqC8rVf6_HQvlFEt5i0voW1-JymcWwjIHVgzX4x8plMAUpkQqC5WYsIznT6AuBa_mfcu10Bizgqi-dcsZWGiOmZoBZzf4P1xc8qJv0YphQWRrirBmaioqNXuqqIUWBJ5veAF9azi4HmbWh87RUe-e4iWITGGFpMKqbw15OSYMivP7zEILTCvoW1HknqRJGgep68RuYHU3iz5yhelfkLsmE3iRcZ003gb8yEBMl9mMAC1eBMIk2Uno49X9WnkUhCdJnPqh54duuk3ufraUJMf0Bn8nZVVeEfWIn4C11CThNtkLIuABpAllAz92t6KHnBb7o6_JdKYYYdOfWGCGufwR7m2F32CGh7yF9bxd0M9MgASxgHU4tgYvm0ML5p6kYewGXmJ-60j0uuZE6dajAEA4V2QB2RxyfQiMVt1BSgC0Dpm_OmWjom_5r86XHnEsxHgBUm8t37UDNwnswE9jO079xE7SILFdN_Ac2_UdJ7XdyPF8200jP7Q913dc23OjOLG92HN824ujMLV9x_NC23eTOLR9z3Md2_fjMLT9IIpc24_CwLP9OIxS24-j2LX9NAoSOwjSMLSDxI88O0jiOLHDIAhiO4w9L9K_UWBHjp8mduT6nmMMPup9frg2jaOZUnN52u0-Pz-fzLGa8Ql8JxROcl5251hKsoBj-UQoPdb-6Q4Gg8HZ9GZwNfh09fFi-nD9kAxHi0-SnV8_PF7fPt5-ySr8dCuH_reHyeg2dfj9eOZ9vVvMr8-eloCD34_Hi7s_jok6_t2Pz0VcHY8Gg0HfkOo2rHpdHRATOh0x3cg0BVkHSzcRMDymUPQtJSqwkKRc9a0zXizRQJS8EnXGG9Sx1hKrYB_1LqFEUyh1FG9A4QIr3B0pKGX3Uv8Y9CWUoxxu-QJbyJi_N5rhstlcoxxQPdYk89BCf1SYErU0-6dpa83nMMEVVdaPZm2woftTRmTVfM6FGhQFFDornOMST-Etm2qhSyj_JLe2zkwhPYdWk42Z0T9m5pAzJTilUJyDVKLKFeFsb2O3SK9NXgPQK0Rjt_-P2X2BpQIxxFIRNt3b3rVU28h6FL0oO7hxvZr9W2f5K-A5Z8h9_0G-EFyqM16O9zzKLXzLLXoQ1aONS5K_P96GxZgS9vQztjQCPxjTjB7cmD3ju6q33hvdK6yErgD2cscKvHbFamRVb__9MR1SLIha7mnBC7qVllZDB79m9gzlFdAS1AFCCQLT4m4yyt-8oTZJtIJqhhGfIDPR-CX4P_ilaclVdfmFwDP6L-flv8wauvXtpXW9SqUvpY2G644xralMdTsD9VKc6j4iRd1_MKE-RTeDy9Gwky31u0wSCQV6Nvmycy7IRD1zXqCvmBUdI2zWPUVB2PlU23yKnM6onFOSEyV1J3R-QYTlArBWlc2B0uZW7_ivplr3vfGD1v-apbeT5cxslc5VNRZEoiEROQW1L8tfIwcpjsr6_YT0A6_zq-anONIPJFS_SDDLt5Hzd5Ib82LZ-YIxRQ8wxZTgHcTqt7Q8RWfH5u9tpl7YdmT96ER1FtzCNtjJdkr5AmQn4yIHAQJd1v13-HIzi_ANn3HVInFmuu_g4L3abjd8YT5iIPPM20Iw2k0QqOoMZ5gwdKabB_dPvHN5XFZ6h9-x5Xc0qNsHZ5DsZCAIm7qdu7ne1oRND3HYXr4YvH3i0je5eX-BW8PDZKM3KbjOTg58MpnpVPkNnlE2J4Ko1ak8eKDc3SmckgmgCcXyqXNJMFNGFbowA3ty2bLu7qRcYoZX6wrAuvzXn2EOsvLujFspopU1iw9KULOlVAdZeHfyfL3wp4rkT5LQBYh3rp2Bau5qpIii0KotKgkZ5JwV9cvGXPETTCU0RVJGuTI1TPvtQ1RdNr0UlS3UquxaYbwNmFdfRFZAfwOwvj3WmGCjMq5akHATBGiLUbQBUSfBNSbegNG5oG19sg3jrTHpBkzjxxbKdTbATMhfedu1mmKsqQS3ybQ1e3vK-C0Zf0-ZoCUTbJKpt2EGypSWppzUrSFnEzKtdyebVyulwKBcmt1tIVaVYxDmPw3dzcCPCyzrLyENNEmj5svqSn-v--P_Mf4HBjrmPA==",
+      "leveling-38-68": "eJzVWltz2roWfg6_QuOZ81RRrJsvndA9hNzoDkkakma3Lx2BBaiRLWoLKP31Z2Sb4KRAyG72yT6TGY0sfUta31q6LC2y_8ePWIGZSDOpk6aD3roOEMlARzIZNZ2b6-N64PzxvrZ_yc34Yngwlcr2vK_t7ed1oMRMqKbjBQ4wPB0J82k5FPnqOmCgeJad81g0nVtpBmMH8Gwgkqi9aj9SIhaJ4UpmxgExl0lPD-6EOUn1dNJ0kAP6PImkaTrnOhEOmPDEjIVOuvybTk901HTUNOGpzCpdMim7RunUjO-mygEzKeZdHYmm026dtXvO-9re3v6l4guR9gw3IDPcNJ22jvsyEdHhZc8BM66moukQwrzgbUgC7OMw9JzGetFrbbj6G3JncihWMtT3NwGPEpGOFr2xFCq6F0AopFs1Ojq9XIH9wKNvXRIw5iEcbJK7HC8yOeCqy3_IeBqfSnPN70RyP0yA6EY2xzIVVyLLfVnCfbYJ3NYq2hl8Jkdjk8hktPvwY66zR2i0Ed3lCW_rCpRt9ISF3iSpyEQ6Eytf1Km3cfTeRFSQ-G2IA-YjWpS50H4j31G2dp0KAfjAyJnoTcTAboJ8VPsBTCpEZZOR5S7rRE2HPNhftsV1QKIjkTUd5BIEEXYJRL7nQxRgDInHPEhRQCEloQ8pczH0fI9CHyEMfRIE0A9JAIOQBjAkgQeRS0MXIpf5DCJEsQsRprZOXDeEiAQBg4i6zIeIuR6FyHMxgcjzLcb3iS0DjCAKAo9BFLLQlh5hELuMehC7AcMQI-IiWxIXYuT5AcQosBgUsgBi5trS86kLsW8ZYd9jIcSBzyjEIQpDSFyMGSQo8BkkGCMXEkL9EBLiM2bLgEBCPQ9BwrCtsyCk1h7UWsUjFBIfIVsyL4TE93wEiR_akUOPBpC6xPMgdQPkQoqwRyBF1MeQojAIIaUhY5D6mCFIA-JhSAPfDyANMaOQEYyILf0QMkqpDxnDtvRRaEuMPVt6FLIAU1tSF0MW-B6BnkvCAHoIsxB6iGAXeoiiEHpWOeiR0PfytbK3f3N1llf2xsZMsneNxnw-fzvhZqyH4odU4u1Ax40JzzI5E_XsTipVt0ur0Wq1Wgejbutm9PH04Kx7wuYDcXg3-nh7cGSOvnzm_YNZ5_R8PmzJM_fDn1rXpbo8-zCfT3-eXZ1_c7F3nX7--Dk6vnJvo17_uCvdxc-bow9X0XEX3aAPN6n6dPZp8GVM47HL786zNjnoDUYhPvprcTiM_mz_oJf90Vdx-uVzcv3tkF_MdMDvLr_35l-6iTqpc_oBTxP8fXzmdVqT1u0s9uX17OJ7XWYH8c-QfDwNh5cEk6E09Tml13ed6e2ZV_dnvXq949dn7PxrolutVjM3UmNppf3i0skKk5Vf-dbJ95VdEQ6QRsT2E5XH36_AfClUgOURsrffqIy_37AbOd_ydqfbSs_av-jMq0AkvK9E1HRMOhUOyJQ2TedARwvQSmM9TYubslWcEVZieUjs7Z-IGIyK-bvC8Igb3ugYEWeNE1vk6BMRdwbiXM-4A3Lf74xOeFweSp2BAEVbGQSg0AHfp1xJs8gPnrJuhz4UQz5VxnnMaw2JxrNY9KaTiU5NK4pEZK-TQx7zkXiKVCF0IuJf5Fb08i5g-8Cy8_V59iZCqaPBWO_MsDtVRg64vddW3PJhQDHOklTwaqQ6ySAVPBNRO5VWV9UzqbwT2c4cNw9QWa1LDFiCwD3q9f1ql9mlSIRJuZE62Zn5L3IrwvnKfdD38jT3Cx5PnVu3gk90AtDvH1rHqc7MgY77Ox5bFfzKMnkjKFpf0fW5Gn0lk7vnkCkFHrEpW1_Nw8tXye_695Sb1MbJO9ljCV7ZYtnyil49FEaksUx22sfrZVZ8HnW8mntPhYqFeQH3ipSr6GLYGTx5Ra-TqDg6bwZ6CPKOV_R3W_FUmsWOdO7RlXN62fRq3j1Remavwd_17vIu45m5HYukiJrK1MGu9xnPzMVDyYqleGbAfCySMiADJaI0HPvfO78Txzo1XLW5UrsG0g9EKvFJ2Q6KjpePylaLoaxly1TDJynm4KfW8V_5HLb2-b52VihCnPv3ioXbj5xcmaaw9Z4w95kK-w1k8VR6X7vKV_g7cNW6Oqr1FjZJl0kbin0Tc6EAqrV1nysDPtjPWi6bT_sO-LjWiSdKDqTJ3gG35v0HyPtALi7yU8Bm0GqIVbsqYXsNoWpPEfqWXW9sn9HgRFkFHkeGII-dJ0qKNLefVewRO_9pdvj_l902cvM8pqtdTOyAAzExqXjM7WOxWN8B5D7iyTbqTN2NRPGDHnsW5Em1Dcrjbcrr4XDMk6jWHstYJiPQm8hUGlBEMTvTeBO41rwPHPXGEjAa2DwoKHKPPBms2nNGlfb1ypNtyo_zy7h2Ou2nMgNtmQ6UMP8Cpek2pfs6WtQ-ca7AlRhxJfk2hctcyTtwUC__nubwcOEUufKlQ5c87lPIT5Nh28iM8guz1tPpQKQiBcUF-i9wwdbDtq-1qSh9kH_uqjN-sGW7epb_aFPuwDe4VNIm3Ndp_wzDbz1R-0KZWnvMZQIObPUfsfgmMuv1Dbbpy-Op3ZsXyeIHaBX1nVXGzGrRSYxQSo5ErtoWGmtN_LzVE26jkspkhIrj_komo390sT9juSD3KaXxCyv92JZ_R-nqzdptnXTaD7RWcijAUPHsrnYoZzIRuQLgOG_ZlcKGmfHWmWOe8HLmU66Untu9btteZG6yde6pkXa0cvqTlCfSvBBp-oyJP055an6-zLzsGfO2YmHGi8z87sw9YcrgDRhplKg8FKaZ6ImBTqIiH5fH60OuMlE-83pKm_xFUs3Y3f-UsXwa_YrCKxReg1omD5YYsgbz4JeNJZCuAS7fqksMWzuYNhWItw4iVEUjfw2iOK5XmGANxp4pVRuFmzAVCyF3DSj3-QNrI6d8WZXPuk0y1ZHxjjLVH6jIjjLVX7_ojjKsIsPWyRRLtydM_rbM35O21tbJUI6KFZ1MpstBRSLiRb4lHJBM475I8_87aawHHs14VmTTSij1SVj-0L6cYL_x-N9a_gsHBQde",
+      "maps-white": "eJzVWltz2roWfg6_QuOZ81SlWFfbndA9hCQkLbmSpKd92SNAgBJZpraApr9-j2yTOCkQstue9AwzGl2-Ja1vLWnpYnb--hZrMJNpphLT8NBb3wPS9JOBMqOGd3V5sB16f72v7ZwJOz4d7k6Vdi3va1s7eR5oOZO64YW-B6xIR9JeL7oif_se6GuRZScilg3vk7L9sQdE1pdm0Hqo39cylsYKrTLrgVgo0036t9K202Q6aXjIAz1hBso2vJPESA9MhLFjmZhjcZOk7WTQ8PTUiFRllSZlyqZROrXj26n2wEzJ-XEykA2v1ey0ut772tbWzpkWdzLtWmFBZoVteK0k7ikjB3tnXQ_MhJ7KhsdYSMjbkBHO_TBCXn256GVihf4Xch01lPcylDC-CrhvZDq6646V1IN7AUQQW6vR_uHZPRgHLAjeIhL4YcRXa3Q2vstUX-hj8U3F0_hQ2UtxK819N1GEglWyByqVFzLLfVnCg5UKthI92BjcUaOxNcqMNu9-LJLsCXq1tY6FEa2k2nG4DnplUpnJdCYffLHN_JU27U5kBYnfRgGiOGR5Wnh8p56vKJe7TKUEom_VTHYnsu8WQd6rKwCbSllZZGSxyo4GDY88Wl-uxveASQYya3jIJwgi7BOIAh5AFGIMCWccUhRSSEkUQMp8DGmEAsgCSiD3GYY84BQGCGEYkDCEQURCGEY0hBEJOUR-3qtPIx8inwUMIkSxDxGmLk98P4KIhCGDiPosgIj5nELEfUwg4oHDBAFxaYgRRGHIGUQRi1zKCYPYZ5RD7IcMQ4yIj1xKfIgRD0KIUegwKGIhxMx3KUcRh5gH1Ic4cGRxwFkEcRgwCnGEoggSH2MGCQoDBgnGyIeE0CCChASMuTQkkFDOESQMuzwLI-pMRXODhQwSzgmFJEDIpYxHkAQ8QJAEkes_RJEPScRpCKlPOM5TDqkfIh9ShDmBFNEAQ4qiMIKURoxByiPXGmCGIA1zqTAIQkgjzChkBCPi0iCCjFIaQMZwnkY-hyxAkfMZxi6POYUsxNSl1MeQhQF3ziRRCDnCLIIcEexDjihyec4I5CgkFHJHAHISOTyJAg458wnNJ9_WztVFJ89sja2dZO_q9fl8_nYi7DgZym9Ky7f9JK5PRJapmdzObpXW226u1pvNZnN3dNz83Dw_3O0ct9m8L_duR-efdvft_pfPlycXX2YH_Fz0dmdHhyfzYVN1_A8fE9O5u-Efr8LM7LWCY7uPzy57k1M73h3714cXX9CH7Oquc9k5OT_XB_7V9-vLK92dXl_Z62_xofqiL5JBe7LXa9r5lTk6G4wPwhEh3VEm9zA9I2P86YNP5_gm5af8cyhuz75251-OjW5vX3cm6ciIr4N0En1Nutuq-fH8IGVTcpaqy9np122V7cbfI3J-GA3PcNwZ9gbbH0mwdzM-PVfs8ywNplEnoDcz_vfedfg5ZSd_m962vNlujZrN3JD1hSV3ip0uK8xalvL16pZuPpc9oKyMXRGVG8OPwHw6VoBlcN7aqVf636m76JHHGRdeXKbrfFQ05lkgjehpOWh4Np1KD2Q6sQ1vNxncgWYaJ9O02J6bRWByEovItLXTljEYFeMfSysGwor6kZVxVm-7JEe3ZXzUlyfJTHggnx8bo42Iy0h41JegqCtPHtj3wNep0Mre5dGuzLuu9-RQTLX1nvJaQqL-Ihbd6WSSpLY5GMiB28P2RCxG8jlShVBbxj_IPdDLm4BrA4vG1-fZnUit9_vjZGOGx1NtVV-4zfSBW94NKPp5fVJHpp9KkclBK1VOV921qbqV2cYcV3dQma0LDFiAwD3qDzTBC-fxSvm1Bvhz5rVbZmfSSJsKqxKzMe8f5B745iv3Uduvp7lT8Hgubn-SYpIYgH4-aB-kSWZ3k7i3Ydiu4B8sk1eCovYVXZ-r0dPK3L6ETCnwhE1Z-2oeXlwFf9a_h8Km7nKykT0W4AdbLGpe0at70so0Vmajdbxc5oHPk4ZXc--h1LG0v8C9MhV6cDo86j8b2pdJVBydV4NkCPKGV_R3S4tU2bsN6dyjK3F6UfVq3m3rZOaOAT_r3cVeJjL7aSxNsbuW7zWb7mcis6ePJSuWEpkF87E05cYNSkRpOPa_d_5RHCepFboltN70IvFIpHI8KetB0fA7J0OZyxbvO9dKzsH3JIn_m4_hcp_vc51CEeLd39cc3BVycuXbkMt3pb1_HnJloIqr4vvaRT7D34GL5sV-rXvnXkYz5U5iN3IuNUC1VtIT2oIPrljLZfNh34EA147iiVZ9ZbN3wK_x_wB1f46Li0dB4J4ta4hVmyrXlhpC1Zbi6F82vXFtNgFt7RR4ejIG-d1hopVMc_s5xZ6wC55nh_9_2a0jN8_PdLXTieuwLyc2lU-5nReT9R1A_hOebKXO1F9JFD9qcbEgf8lcoTxep3wyHI6FGdRaYxUrMwLdiUqVBcUpZmMab0LfmfeRo944AjYB7vEZFA--wvQf6nNGlfrlypN1yo_zzbh2OO2lKgMtlfa1tH-A0nSd0r1kcFe7FkKDCzkSWol1CpdvRe_A7nb5e57D44lTfKBYOHTB4_7d_nkybB2ZUb5h1rpJ2pepTEGxgf4BLlgbbHtJYitK7-bFTXXGj5bscTLLv5SVK_ANLpV0XzmWaf8Cw6-NqD2pba01FsqAXZf9LRZfRWa5vuE6fUU8dWvz1Nx9A80iv7HKmDktjoyVWquRzFVbQ2OpiV82e6J1VFJlRqgI9xfKjH7rZH_BdEH-c0rjX6z0U1v-G6WrO-txs33UeqS1VkMJhlpkt7U9NVNG5gqAg7xmUworRsZrR46FEeXI-1amRmjgPjD-mqHJ2qGnVrneytHbqTDK_iLO9AUDn09Far__mnHZC8ZtxtKO7zL7syN3pS3PbsAqq2XlnjDNZFf2EzMonuPy4_pQ6EyWt7yuTmx-Iak-2N1_yVncjH5E4QcUXoJavB0sMGQJ5tGHnQWQLgEurqoLDFvaWWIrEL4MInVFo2AJoojWD5hwCcaFlKqNolWYioWQvwSU-_yRtZFXXqzKW90qmWrPeEMZUpEhG8pUv-nRDWVYRYYtkymmblfa_GqZXyddrpWYoRoVM9pMpotOpZHxXb4kPGCmcU-mlT9c_ADcn4mseEwrodzHUfnnhsUAO_WnfyX6B0ZWfOA=",
       "maps-red": "eJzVWm1vGjkQ_hx-hbXSSXeqadav661CT0ASkh40aWia632pzK4BJ_tCdw0p9-tP3oVkSYGQa6u0QrK89jP2PGN7bI85-PNLHIGZynKdJg0HvXQdoJIgDXUyajiX74_rwvnzde3gXJrx2bA11ZGteV3bOyjyIFIzFTUc33WAkdlImQ_Lpsgn1wFBJPP8rYxVw7nSJhg7QOaBSsL2fflRpGKVGBnp3Dggljrpp8GNMp0snU4aDnLAQCahNg3nbZooB0xkYsYqTXryOs06adhwomkiM51XqnSyqBplUzO-mUYOmGl120tD1XDazW6777yu7e0dnEdyrrK-kQbkRpqG007jgU5UeHjed8BMRlPVcHyGEX_JXcJd3xXC2V8v-j41Mvofcl09VHcynG4GHiUqG837Y62i8E4AcYy2anR0cn4Hpsgl3kssGBWEMm-T3Pl4nutARj35RcfT-ESb9_JGJfd9Ep_hTcLHOlMXKi8Gc4H32CZwO43CncFdPRqbRCej3ZsfyzR_gMZkE7onE9lOqw1vHAoLvUwylatspu4Ho04E3yTSn6gKEr_0PUSxYEVaCh3sF0vK5t5nSgEZGD1T_YkK7CooWrUfwGRKVVYZWS6z07DhkJUFZktcByRpqPKGg1yCIMIugcjjHkQCY0gQ9yDhjEOKBIWU-B6kzMWQ-siDzKMEcpdhyDFxISfMh9zjFHoIYegRIaDnEwGFTwX0ieAQuUUnLvVdiFzmMYgQxS5EmNo8cV0fIiIEg4i6zIOIuZxCxKjLIOIuJhBxzyI9j9hUYASR8LgPkRCcQeQz36acMIhdRjnErmAYYkRcZFPiQoy4JyBGwmKQzwTEzLUpRz6HmDNMIOYedSH2rDWwx5kPsecJAbHwGIXYR74PiYsxgwQJj0GCMXIhwZQxSAj1fEiIbYEQryjxBIGEco4gYdjmmfCpNSzFNhUMEs6JLfGpD4mHEIXEY9zmuYcg8Xzbo0C-C4nPqYDUJRwXKYfUFciFFGFOIEXUw5AiX_iQYk59SCl3OaTUZwxS7lukhxmCVBQtCM8TkPqYUchcwTFkBCNiU8-HjFLqQcZwkVLBIGO-yyHzkG_HH2Obx5xCJjASNqU2T10MmfC4nR7EF5AjbOcGItiFHFFk85wRyJEgFHJLD3LiWzzxPQ45cwkt5vTeweVFt8jsjY2Z5K_2929vb19OpBmnQ_VFR-plkMb7E5nneqbq-Y2OorpdAvvNZrPZGvWag9t3J61ur8NuA3V4LM76rdbHo757EY176DgWf09a46vO20AOWrPTk7e3w6buum_-SpPu_Jr_dSny5LDt9cwRPn8_mJyZkehedk4uLsPj5DK66A-Oe9qd_3t59OYiPO6hS_TmMos-dD8E_4xp_M_lP8ykYWdyOGia_Pqk1Q9GPj76e344DN_Uv9DuyUjMDzE9J2N89calt_g642f8o5A3x1fv6pNu62auLgfschpP2-HnCZ4m-PO4y0-bk-ZVHEtaz9iUnGf6_ezsc13nrfjLZ--chM0hEp8-zsKJJpgMtanfUpxdj8_eafZxlnlTv-vR6xn_dPhBfMzY20_JoK6u6-1Rs1kYfH9p8YNyp81L8y--CndhPYdd8w7QRsX2Cy0829e4Yl1VgN4mYLEEKkCxCVjM9ArQ3wQspto9ELubgaLa9XLP3DvYr5jgYN_618ITWwdsM3073crKIgtUIgeRChuOyabKAXmUmobTSsM5aGZxOs3KE0yzdN1WYum79w46Kgajsv-eMjKURu6fGhXn-x2bFOiOik8D9TadSQcUU31ndCLjxV5xGihQli0OZ9h1wOepjLSZr3zYtg_VUE4j4zwktobF_pNo9KeTSZqZZhiq0G7zhzKWI_UYq1Koo-Kv5O75FVXA1oFl5U9AtD9RUXQUjNOdKfamkdGBtAeOe3JFM6Bs5ydgdZoEmZK5CtuZtspGfZPpG5XvTHJzA5UJu8SAJQjcoX5GGzxxKm-U32qBn2hq26V2rhJlMml0muxM_Cu5e8LF6l2p-wE8D0oij3nvKyUnaQLQt7vu4yzNTSuNBzs67wr-3jRFIShLn3PwCz0GkU5unsJmIfCAzqL0-cZ4eWv-1hE-kSaz17idDLIE3xtjWfKc43qojMpiney0ltfL3BN6UPF8A3yioliZ7zDAKpNReDY8DR518OskKkNdFIN0CIqK5xzxdiQzbeY78rlDV7z1suj5xrcTpTN7HvjW8V1uaTI3V2OVlLvsIry167Ymc3O2KlkxlcwNuB2rZLGBgwViYTn2DMN_GsdpZmTUllG0661iRaRyTlmUg7Lih06HRS5fxsM-aHUL_k3T-O8iqGVzH-9y3VIT4tzd3izcfhTsFrE0m-8rcxdOs99Al5fb17WLYpK_AhfNi6Naf25Dybm2Z7JrdasigGrtdCAjA97Yz1ohW3T7CghcO40nkQ60yV8Bt8Z_A_ruRBeXUVRg47w1xKpVlTtMDaFqTXkNWFS9sHUmBZ3IKvDwkAyKe8Qk0ior7GcVe8DOe5wd_nXZicfZkV-Xnf84O_rLssPu4-zYr8sOPc6O_7LstpK7Le5UtbOJbTBQE5Oph9zelZvEK4DdBzzZRp2pu5EoXqmxu3Dx4lJ7gVlB8-mjt41fOhyOZRLW2mMd62QE-hOdaQPKa8bOTF8I16q2MpYvLEeTAvuOBsq3K5kE9-UF6Ur5euXJNuXHxVm5djIdZDoHbZ0FkTI7Ko1rPZ3oNMnBWM4U-B2TOmZ_bJ6ZKwNmn82s7iqbFRcGcDQc6kCrJJjbg3K53_9Aq9BtVhmk4bz2QcoIXKiRjLTcZpFF1PgVaNXvfqtm-h35deyuWEYNhyowlunZcKgynYzy2ovfEaoj_EfBQtrQ3_I5vEJnvU1WF0P5OrycgUu73L2ZPm4cts04o-L4XeunWaAylYHyOP7kORMqGa2bM0uXJH4DwdjqaHW3J-5M5fkDt_XDZsfWM-AgTU2Ff6v43JW-WFkE6awY4YV_Wl0hlo6dfypRZWAMZNKoGmZbWlhrEbxgbl_AH6e-9YA4UJGptcdSJ6Blsz_Euz1N361HPhlPrT87S-ZfQLPM76wyZlaL08SoKNIjVai2hcba5fW0Wbf1fGd9BCp30QudjH7oxvIEV4G2Htus0vg7K_3Qlv9H6eqBpdfsnLZXtI7syhtGMr-pHeqZTlS5Fo-Lkl0pbOgZb-05trti2fORUVkio3Kj_C5dk61dT422rS1672Qy0eY7caZP6PjdVGbm3-_TL3tCv81YmfE8N9_ac1-ZxZEYGG0iVQl7THPVV0GahOUrQxF9GMooV4uwVT9KTRFgqb5D3D18LyM9X6Nw5TF7DWoZDl1iyBrMyqv1EkjXAJextyWGrW0sNRUIXwdRUUUjbw2i9Nb3GLEGY11K1Ub-JkzFQshdAyrGfMXayFnEiRZBqk0y1ZbxjjLVvzOQHWWq_5WgO8qwigxbJ1NO3b4yRaSsiI7ZXDtNhnpUzuhkMl02qhIVz4sl4YBkGg9U1nDE8h90XwGPZjIvHwgWUE9wd_HftmUHB_sP_0r6H4QFVoU=",
-      "pinnacle": "eJzVWmtvGjkX_hx-hTXSSruqacbX8VShKyAJSTd3cmn7ZeXMGHAzFzpjoOyvf-UZSIYUCHmbKq2QLI_9HNvPOfaxfczO39_iCIxVlus0aTjoresAlQRpqJN-w7m63K8L5-_3tZ0zaQanvdZIR7bmfW1rp8iDSI1V1HB87gAjs74y1_OmyL-uA4JI5vmJjFXDudEmGDhA5oFKwvZD-V6kYpUYGencOCCWOummwZ0ynSwdDRsOcsCtTEJtGs5JmigHDGViBipNjuWXNOukYcOJRonMdF6p0smsqp-NzOBuFDlgrNXkOA1Vw2k3j9pd531ta2vnLJJTlXWNNCA30jScdhrf6kSFu2ddB4xlNFINByHf89hbTlyEKWHO9nLRy9TI6P-QO9I9dS_j-cxfBdxLVNafdgdaReFDJ4J5a0e0d3B2D-au8MRbQSgTFLloldzZYJrrQEbH8puOR_GBNpfyTiUPfXLh41XC-zpTFyovjDknxVeB22kUPgavUVR_YBKd9DeWaA9kmm-MPpaJbKcVqFipIQu9SjKVq2ysHoxRJ6tFukNVQZK3LvMQxaJIS5PvbBdLyuYuM6WADIweq-5QBXYVFK3aD2AypSqrjMyX2WHYcMjCArMlrgOSNFR5w0EuQRBhl0DkcQ8igTEkiHuQcMYhRYJCSnwPUuZiSH3kQeZRArnLMOSYuJAT5kNOKYfc4xR6CGHoESGg5xMBhU8F9IngELlFTy71XYhc5jGIEMUuRJjaPHFdHyIiBIOIusyDiLmcQsSoyyDiLiYQcc8iPY_YVGAEkfC4D5EQnEHkM9-mnDCIXUa5TRmC2BUMQ4yIi2xKXIgRRQRixD0BMRIWj3wmIGauTTnyOcScYQIx96gLsWfVgz3OfIg9TwiIhccoxD7yfUhcjBkkSHgMEoyRCwmmjEFCqOdDQmwLhHhFiScIJJRzBAnDNs-ET62mKbapYJBwTmyJT31IPIQoJB7jNs89BInn2x4F8l1IfE4FpC7huEg5pK5ALqQIcwIpoh6GFPnChxRz6kNKKbYpdzmk1GcMUu5bvIcZglQU7QjPE5D6mFHIXMExZAQhARnBiNjU8yGjlHqQMVykVDDImG2fMd_lkHnIt1MEY5vHnEImsG1BYGrz1MU2tXjhcTuPiC8gR6hIsZ1KiGAXckSRzXNGIEeCUMgteciJb6WI73HImUtosQS2dq4ujorM1sCYYf5ue3symbwdSjNIe-qbjtTbII23hzLP9VjV8zsdRXW7YrabzWaz1T9uhpPzg9bRcYdNArW7L067rdanva57EQ2O0X4sPg5bg5vOSfD5aDDMO6IfkJZoH47P777qYPzPWTq8nE6D46N86l5-8k9GdxzvTsz5p3D_wr0Ju9f7H_Kr6dHl0cn5edQ6uPp4cXlyfdK94tdXWXR9dB18HtD489VnZtKwM9y9bZr8y0GrG_R9vPdxutsLP9S_0aODvpjuYnpGBvjmg0sn-EvGT_knIe_2b87rw6PW3VRd3bKrUTxqh1-HeJTgr4MjftgcNm_iWOKT7Asfx15QH304FTzj_0w6t50s9-v_-eT8wO-d4SPy-VM41ASTnjb1CcXZl8HpuWb7B5Guj0fexBt36_VDrz6eoF7nn_plj-F_k_TfftpsNhuNwhDbc0vslBt2Xppl9lV4HeuArOtwgDYqtl9othd8jytWYwXorQIWC6cCFKuAxfqoAP1VwGIKPgCxuxooql3jmbff2tmuqGBn27rpwqFbP24zXTsNy8oiC1QibyMVNhyTjZQD8ig1DaeVhlPQzOJ0lJUHoWa5A1iJ-RawtdNRMeiX_R8rI0Np5PahUXG-3bFJge6o-DBQJ-lYOqBYAhujExnPtpzDQIGybHbGw8gBX0cy0mZa6Gj-YdveVT05iozzmNgSFtvPotEdDYdpZpphqEJ7WtiVseyrp1iVQh0Vfyf3wK-oArYOzCt_AaLdoYqivWCQbkzxeBQZHUh7bnkgVzQDynZ-AVaHSZApmauwnWk72KhrMn2n8o1Jrm6gMmHnGDAHgXvUr6iDZ07llfJrNfALTW271M5UokwmjU6TjYl_J_dAuFi9C3U_gedOSeQp732j5DBNAPpx172fpblppfHths67gn9QTVEIytLXNH4xjttIJ3fPYTMTeERnVvp6Np5fvn_UwgfSZPY2uJFC5uAHZcxLXtOuu8qoLNbJRmt5ucwDoUcVr2fgAxXFyryAgVUmo_C0dxg86eCXSVRMXRSDtAeKite0eDuSmTbTDfncoyveel70evbtROnYngd-1L7zLU3m5magknKXnUXJNt3WZG5OFyUrqpK5AZOBSmYbOJghZppjr2D-wzhOMyOjtoyiTW8VCyKVc8qsHJQVP3U6zHL5PKx2rdUE_Jem8cciNmZzn-5zR-VIiHN_e7Nw-1Gwm4XkbL6rzH1Uzn4DXV5u39cuikn-Dlw0L_Zq3amNSOfansm-qImKAKq101sZGfDBftYK2aLbd0Dw2mE8jHSgTf4OuDXvD6DvT3RxGYwFNlxcQ7xaVbnD1BCu1pTXgFnVG1tnUtCJ7AAeH5JBcY8YRlplhf7swB6x855mh39fduJpduT3Zec_zY7-tuyw-zQ79vuyQ0-z478tu7XkJsWdqnad6hB0AzU0mXrM7bzcJN4B7C7yFO7KMTN3JVG2UGN34eLhpvaGsILm8623jl_a6w1kEtbaAx3rpA-6Q51pA8prxsZM-QKd8plw3sYb5Lp23AuGfkNnZCzz8n1MJoFawYCsYzAoDsy1g9FtpnPQ1lkQKbPhyHHtWCc6TXIwkGMF_sSijv2_Vk_PhUlon-Ds2FU2Lm4NYK_X04FWSTC1p-Vy019P3z5VVuk_Ty10nVpu03Bau5YyAheqLyMt16lkFjt-B1r1-9-inv7EpI7pgmpUr6cCY6me9noq00k_r735E7E64n8VLKQNAM7f1it0Vihl7SSaKeb-BfZp7bB12ukXp_BaN80ClakMlKfyZ8-aUMlo2ay590zuHyAY2EHawduTd6by_LH7-mkTZO1h8DZNTUUDreJzUwWgBVsdp-PCyjNPtbhMLB87B1WiyhAZyKRRNbKuhTe21tK0z-fL-D9jHqw9M96qyNTaA6kT0LLZTR3e84y2is3yAa89Bsp4ZN3baTL9BpplfuMx02LIh4lRUaT7qhjaOh5LlfxMMmtPfdZnoNrp0HoHnfR_kvZfkA1ae8yzdPBL03m80l-UTvXoc9zsHLYX-ER25fYimd_VdvVYJ6pcy_tFyabkVvSM1_Yc26217HnPqCyRUbnbvkjXZG3XI6Nta7PeO5lMtHkhzvQZHZ-PZGb-e5l-2TP6bcbKDKa5-dGeu8rMDtfAaBOpSgBllKuuCtIkLN8rijhGT0a5mgXAulFqilBN9UXj_gl9HjP6HoUrz-JLUPPA6hxDlmAW3r_nQLoEOI_izTFsaWOpqUD4MoiKKiPyliBKH_-AEUsw1tlUdeSvwlQ0hNwloMLmC9pGziziNAt3rZKptow3lKn-MYJsKFP91wXdUIZVZNgymXLqdpUpYm5FnM3m2mnS0_1yRifD0bxRlah4WiwJBySj-FZlDUfM5sj3wL2xzMunhjkUzf7csbM972Bn-_F_W_8HyqJ_Zw=="
+      "endgame-pinnacle": "eJzVWmtvGjkX_hx-hTXSSruqacbX8VShKyAJSTd3cmn7ZeXMGHAzFzpjoOyvf-UZSIYUCHmbKq2QLI_9HNvPOfaxfczO39_iCIxVlus0aTjoresAlQRpqJN-w7m63K8L5-_3tZ0zaQanvdZIR7bmfW1rp8iDSI1V1HB87gAjs74y1_OmyL-uA4JI5vmJjFXDudEmGDhA5oFKwvZD-V6kYpUYGencOCCWOummwZ0ynSwdDRsOcsCtTEJtGs5JmigHDGViBipNjuWXNOukYcOJRonMdF6p0smsqp-NzOBuFDlgrNXkOA1Vw2k3j9pd531ta2vnLJJTlXWNNCA30jScdhrf6kSFu2ddB4xlNFINByHf89hbTlyEKWHO9nLRy9TI6P-QO9I9dS_j-cxfBdxLVNafdgdaReFDJ4J5a0e0d3B2D-au8MRbQSgTFLloldzZYJrrQEbH8puOR_GBNpfyTiUPfXLh41XC-zpTFyovjDknxVeB22kUPgavUVR_YBKd9DeWaA9kmm-MPpaJbKcVqFipIQu9SjKVq2ysHoxRJ6tFukNVQZK3LvMQxaJIS5PvbBdLyuYuM6WADIweq-5QBXYVFK3aD2AypSqrjMyX2WHYcMjCArMlrgOSNFR5w0EuQRBhl0DkcQ8igTEkiHuQcMYhRYJCSnwPUuZiSH3kQeZRArnLMOSYuJAT5kNOKYfc4xR6CGHoESGg5xMBhU8F9IngELlFTy71XYhc5jGIEMUuRJjaPHFdHyIiBIOIusyDiLmcQsSoyyDiLiYQcc8iPY_YVGAEkfC4D5EQnEHkM9-mnDCIXUa5TRmC2BUMQ4yIi2xKXIgRRQRixD0BMRIWj3wmIGauTTnyOcScYQIx96gLsWfVgz3OfIg9TwiIhccoxD7yfUhcjBkkSHgMEoyRCwmmjEFCqOdDQmwLhHhFiScIJJRzBAnDNs-ET62mKbapYJBwTmyJT31IPIQoJB7jNs89BInn2x4F8l1IfE4FpC7huEg5pK5ALqQIcwIpoh6GFPnChxRz6kNKKbYpdzmk1GcMUu5bvIcZglQU7QjPE5D6mFHIXMExZAQhARnBiNjU8yGjlHqQMVykVDDImG2fMd_lkHnIt1MEY5vHnEImsG1BYGrz1MU2tXjhcTuPiC8gR6hIsZ1KiGAXckSRzXNGIEeCUMgteciJb6WI73HImUtosQS2dq4ujorM1sCYYf5ue3symbwdSjNIe-qbjtTbII23hzLP9VjV8zsdRXW7YrabzWaz1T9uhpPzg9bRcYdNArW7L067rdanva57EQ2O0X4sPg5bg5vOSfD5aDDMO6IfkJZoH47P777qYPzPWTq8nE6D46N86l5-8k9GdxzvTsz5p3D_wr0Ju9f7H_Kr6dHl0cn5edQ6uPp4cXlyfdK94tdXWXR9dB18HtD489VnZtKwM9y9bZr8y0GrG_R9vPdxutsLP9S_0aODvpjuYnpGBvjmg0sn-EvGT_knIe_2b87rw6PW3VRd3bKrUTxqh1-HeJTgr4MjftgcNm_iWOKT7Asfx15QH304FTzj_0w6t50s9-v_-eT8wO-d4SPy-VM41ASTnjb1CcXZl8HpuWb7B5Guj0fexBt36_VDrz6eoF7nn_plj-F_k_TfftpsNhuNwhDbc0vslBt2Xppl9lV4HeuArOtwgDYqtl9othd8jytWYwXorQIWC6cCFKuAxfqoAP1VwGIKPgCxuxooql3jmbff2tmuqGBn27rpwqFbP24zXTsNy8oiC1QibyMVNhyTjZQD8ig1DaeVhlPQzOJ0lJUHoWa5A1iJ-RawtdNRMeiX_R8rI0Np5PahUXG-3bFJge6o-DBQJ-lYOqBYAhujExnPtpzDQIGybHbGw8gBX0cy0mZa6Gj-YdveVT05iozzmNgSFtvPotEdDYdpZpphqEJ7WtiVseyrp1iVQh0Vfyf3wK-oArYOzCt_AaLdoYqivWCQbkzxeBQZHUh7bnkgVzQDynZ-AVaHSZApmauwnWk72KhrMn2n8o1Jrm6gMmHnGDAHgXvUr6iDZ07llfJrNfALTW271M5UokwmjU6TjYl_J_dAuFi9C3U_gedOSeQp732j5DBNAPpx172fpblppfHths67gn9QTVEIytLXNH4xjttIJ3fPYTMTeERnVvp6Np5fvn_UwgfSZPY2uJFC5uAHZcxLXtOuu8qoLNbJRmt5ucwDoUcVr2fgAxXFyryAgVUmo_C0dxg86eCXSVRMXRSDtAeKite0eDuSmTbTDfncoyveel70evbtROnYngd-1L7zLU3m5magknKXnUXJNt3WZG5OFyUrqpK5AZOBSmYbOJghZppjr2D-wzhOMyOjtoyiTW8VCyKVc8qsHJQVP3U6zHL5PKx2rdUE_Jem8cciNmZzn-5zR-VIiHN_e7Nw-1Gwm4XkbL6rzH1Uzn4DXV5u39cuikn-Dlw0L_Zq3amNSOfansm-qImKAKq101sZGfDBftYK2aLbd0Dw2mE8jHSgTf4OuDXvD6DvT3RxGYwFNlxcQ7xaVbnD1BCu1pTXgFnVG1tnUtCJ7AAeH5JBcY8YRlplhf7swB6x855mh39fduJpduT3Zec_zY7-tuyw-zQ79vuyQ0-z478tu7XkJsWdqnad6hB0AzU0mXrM7bzcJN4B7C7yFO7KMTN3JVG2UGN34eLhpvaGsILm8623jl_a6w1kEtbaAx3rpA-6Q51pA8prxsZM-QKd8plw3sYb5Lp23AuGfkNnZCzz8n1MJoFawYCsYzAoDsy1g9FtpnPQ1lkQKbPhyHHtWCc6TXIwkGMF_sSijv2_Vk_PhUlon-Ds2FU2Lm4NYK_X04FWSTC1p-Vy019P3z5VVuk_Ty10nVpu03Bau5YyAheqLyMt16lkFjt-B1r1-9-inv7EpI7pgmpUr6cCY6me9noq00k_r735E7E64n8VLKQNAM7f1it0Vihl7SSaKeb-BfZp7bB12ukXp_BaN80ClakMlKfyZ8-aUMlo2ay590zuHyAY2EHawduTd6by_LH7-mkTZO1h8DZNTUUDreJzUwWgBVsdp-PCyjNPtbhMLB87B1WiyhAZyKRRNbKuhTe21tK0z-fL-D9jHqw9M96qyNTaA6kT0LLZTR3e84y2is3yAa89Bsp4ZN3baTL9BpplfuMx02LIh4lRUaT7qhjaOh5LlfxMMmtPfdZnoNrp0HoHnfR_kvZfkA1ae8yzdPBL03m80l-UTvXoc9zsHLYX-ER25fYimd_VdvVYJ6pcy_tFyabkVvSM1_Yc26217HnPqCyRUbnbvkjXZG3XI6Nta7PeO5lMtHkhzvQZHZ-PZGb-e5l-2TP6bcbKDKa5-dGeu8rMDtfAaBOpSgBllKuuCtIkLN8rijhGT0a5mgXAulFqilBN9UXj_gl9HjP6HoUrz-JLUPPA6hxDlmAW3r_nQLoEOI_izTFsaWOpqUD4MoiKKiPyliBKH_-AEUsw1tlUdeSvwlQ0hNwloMLmC9pGziziNAt3rZKptow3lKn-MYJsKFP91wXdUIZVZNgymXLqdpUpYm5FnM3m2mnS0_1yRifD0bxRlah4WiwJBySj-FZlDUfM5sj3wL2xzMunhjkUzf7csbM972Bn-_F_W_8HyqJ_Zw=="
     }
   },
   "pipeline": {
@@ -7637,7 +7848,7 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T12:53:58.022Z"
+    "checkedAt": "2026-11-27T16:02:06.826Z"
   },
   "filter": {
     "slots": {
@@ -7834,7 +8045,7 @@
     }
   },
   "stepPlans": {
-    "until-12": {
+    "leveling-1-12": {
       "goals": [
         "Level with Freezing Pulse; life and a 3-link first.",
         "Do not buy crit gear before Ice Nova is available at level 12."
@@ -7866,7 +8077,7 @@
         }
       ]
     },
-    "until-28": {
+    "leveling-12-28": {
       "goals": [
         "Switch to Ice Nova and add Controlled Destruction and Faster Casting.",
         "Take the first two labs when they unlock; Shaper of Winter is the freeze."
@@ -7908,7 +8119,7 @@
         }
       ]
     },
-    "until-68": {
+    "leveling-38-68": {
       "goals": [
         "Five-link Ice Nova with Spell Echo and Increased Critical Strikes.",
         "Reach 2,000 life and cap elemental resistances before adding crit multi."
@@ -7952,7 +8163,7 @@
         }
       ]
     },
-    "maps-early": {
+    "maps-white": {
       "goals": [
         "Reach 3,000 life and cap resistances in white maps.",
         "Add Cold Penetration; keep Frost Bomb for exposure on rares."
@@ -8039,7 +8250,7 @@
         }
       ]
     },
-    "pinnacle": {
+    "endgame-pinnacle": {
       "goals": [
         "Cap chaos resistance at 75% and reach 5,000 life.",
         "Use 21/20 gems and keep a +1 cold gems sceptre for bosses."
@@ -8083,6 +8294,13 @@
         }
       ]
     }
+  },
+  "stepAliases": {
+    "until-12": "leveling-1-12",
+    "until-28": "leveling-12-28",
+    "until-68": "leveling-38-68",
+    "maps-early": "maps-white",
+    "pinnacle": "endgame-pinnacle"
   },
   "gemInfo": {
     "Added Cold Damage": {
@@ -8496,7 +8714,7 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "1dee185a7162",
+  "seedHash": "fe3a16311f12",
   "guide": {
     "summary": {
       "text": "Ice Nova Elementalist measures 95.2k at red maps and 119.8k at pinnacle. Critical strikes and the Elementalist cold package carry the build, and no unique is required.",
@@ -8506,20 +8724,20 @@
         "mainSkill",
         "ascendancyId",
         "gates.maps-red.metrics.dps",
-        "gates.pinnacle.metrics.dps"
+        "gates.endgame-pinnacle.metrics.dps"
       ],
-      "factsHash": "f61a350060b39944"
+      "factsHash": "079ed8741be4d8a9"
     },
     "leveling": {
       "text": "Level with Freezing Pulse, then switch to Ice Nova as soon as it unlocks. The first checkpoint measures 344 life and 73 damage; the second measures 662.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
-        "gates.until-12.metrics.life",
-        "gates.until-12.metrics.dps",
-        "gates.until-28.metrics.dps"
+        "gates.leveling-1-12.metrics.life",
+        "gates.leveling-1-12.metrics.dps",
+        "gates.leveling-12-28.metrics.dps"
       ],
-      "factsHash": "8d0f14f9116284cd"
+      "factsHash": "96014a26a56acc7c"
     },
     "maps": {
       "text": "At red maps the build measures 95.2k damage, 41037 effective life and 13952 physical max hit. Step into the pack, cast once, and keep moving while the freeze buys the next cast.",
@@ -8537,11 +8755,11 @@
       "status": "auto-retry",
       "signed": null,
       "facts": [
-        "gates.pinnacle.metrics.dps",
-        "gates.pinnacle.metrics.ehp",
-        "gates.pinnacle.metrics.maxHit"
+        "gates.endgame-pinnacle.metrics.dps",
+        "gates.endgame-pinnacle.metrics.ehp",
+        "gates.endgame-pinnacle.metrics.maxHit"
       ],
-      "factsHash": "bfb2daeaf2d6a013"
+      "factsHash": "52095e060f9c0321"
     }
   },
   "medal": "A"

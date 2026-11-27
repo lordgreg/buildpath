@@ -91,149 +91,275 @@ tree:
     - increased maximum mana
     - totem damage
 
-leveling:
-  # The transfigured gem is not a quest reward: it comes from the Divine Font
-  # at the end of a Labyrinth or from another player, so the base Lightning
-  # Tendrils carries the campaign and the transfigured upgrade waits until the
-  # Merciless Labyrinth.
-  swaps:
-    - gem: Lightning Tendrils of Eccentricity
-      fromLevel: 69
-      replaces: Lightning Tendrils
-      note: "Transfigure a Lightning Tendrils at the Divine Font in the Merciless Labyrinth, or buy one; the base gem carries the campaign."
-  brackets:
-    - until: 12
-      skills: [Rolling Magma]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Rolling Magma, Added Lightning Damage, Arcane Surge]
-        - slot: Weapon 1
-          gems: [Flame Dash]
-        - slot: Helmet
-          gems: [Clarity]
-      flasks:
-        - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
-        - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
-    - until: 28
-      skills: [Lightning Tendrils]
-      skillGroups:
-        # The base channel out-damages self-cast Arc before the totem links,
-        # and it is the same skill the default link upgrades, so the muscle
-        # memory carries over.
-        - slot: Body Armour
-          gems: [Lightning Tendrils, Added Lightning Damage, Controlled Destruction, Arcane Surge]
-        - slot: Weapon 1
-          gems: [Flame Dash]
-        - slot: Helmet
-          gems: [Clarity]
-      flasks:
-        - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
-        - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
-        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
-    - until: 68
-      skills: [Lightning Tendrils, Arc]
-      skillGroups:
-        - slot: Body Armour
-          gems: [Lightning Tendrils, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction]
-        - slot: Helmet
-          gems: [Arc, Spell Totem, Added Lightning Damage]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge, { name: Clarity, maxLevel: 5, note: "Keep it low: the reservation buys regeneration, not a pool." }]
-        - slot: Boots
-          gems: [Determination]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
-        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
-    - until: 80
-      skills: [Lightning Tendrils of Eccentricity, Arc]
-      skillGroups:
-        # White maps still run the five-link the ssf-start budget has. The
-        # six-link, the uniques and the four-link Arc are the red-map step.
-        - slot: Body Armour
-          gems: [{ name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }, Spell Totem, Added Lightning Damage, Lightning Penetration, Elemental Focus]
-        - slot: Helmet
-          gems: [Arc, Spell Totem, Added Lightning Damage]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge, { name: Clarity, maxLevel: 5, note: "Keep it low." }]
-        - slot: Boots
-          gems: [Determination]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
-        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
-    - until: 90
-      skills: [Lightning Tendrils of Eccentricity, Arc]
-      skillGroups:
-        # The red-map paste: the six-link default link plus the four-link Arc
-        # clear swap, both on Spell Totem. Regular Empower and one Awakened
-        # support are the trade week-one bill; a solo-self-found start swaps the
-        # Awakened support for Added Lightning Damage. The uniques are the
-        # red-map reward.
-        - slot: Body Armour
-          gems:
-            - { name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }
-            - Spell Totem
-            # Awakened supports cap at level 5 and Empower at level 3: the gem
-            # tables list 20 rows for every gem, so without the cap the gate
-            # would measure a gem level the game cannot produce.
-            - { name: Awakened Added Lightning Damage, maxLevel: 5 }
-            - Lightning Penetration
-            - { name: Empower, maxLevel: 3 }
-            - Concentrated Effect
-        - slot: Helmet
-          gems: [Arc, Spell Totem, Added Lightning Damage, Faster Casting]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge, { name: Clarity, maxLevel: 1, note: "Low reservation; buy a fresh level 1, since the campaign gem cannot be unlevelled." }]
-        - slot: Gloves
-          gems: [Conductivity, Blasphemy]
-        - slot: Boots
-          gems: [Determination]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "The aura package leaves little room." }
-        - { slot: utility, name: "Granite Flask", note: "Armour." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 100
-      skills: [Lightning Tendrils of Eccentricity, Arc]
-      skillGroups:
-        # Pinnacle moves the default gem to 21/20, swaps the damage supports to
-        # their Awakened versions and trades Concentrated Effect for Awakened
-        # Elemental Focus. Same six-link body, same job. Awakened supports cap
-        # at level 5 and Awakened Empower at level 4.
-        - slot: Body Armour
-          gems:
-            - { name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }
-            - Spell Totem
-            - { name: Awakened Added Lightning Damage, maxLevel: 5 }
-            - { name: Awakened Lightning Penetration, maxLevel: 5 }
-            - { name: Awakened Elemental Focus, maxLevel: 5 }
-            - { name: Awakened Empower, maxLevel: 4 }
-        - slot: Helmet
-          gems:
-            - Arc
-            - Spell Totem
-            - { name: Awakened Added Lightning Damage, maxLevel: 5 }
-            - Faster Casting
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge, { name: Clarity, maxLevel: 1, note: "Low reservation; a fresh level 1." }]
-        - slot: Gloves
-          gems: [Conductivity, Blasphemy]
-        - slot: Boots
-          gems: [Determination]
-      flasks:
-        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "The aura package leaves little room." }
-        - { slot: utility, name: "Granite Flask", note: "Armour." }
-        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+# Steps (PLAN-BUILDS.md §9.3). Each step is read and measured at its `level`;
+# the pre-refactor checkpoints survive as `aliases`, so old links still land.
+steps:
+  leveling:
+    sub:
+      - id: leveling-1-12
+        level: 12
+        main: Rolling Magma
+        measure: true
+        aliases: [until-12]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Rolling Magma
+              - Added Lightning Damage
+              - Arcane Surge
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - Clarity
+        flasks:
+          - slot: life
+            name: Medium Life Flask
+            note: Small until level 3.
+          - slot: mana
+            name: Small Mana Flask
+            note: Spells are expensive early.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Act 2 quest reward.
+      - id: leveling-12-28
+        level: 28
+        main: Lightning Tendrils
+        trigger: { from: 12, skill: Lightning Tendrils }
+        measure: true
+        aliases: [until-28]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Lightning Tendrils
+              - Added Lightning Damage
+              - Controlled Destruction
+              - Arcane Surge
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - Clarity
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance from level 18.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Movement, not damage.
+      - id: leveling-38-68
+        level: 68
+        main: Lightning Tendrils
+        trigger: { from: 28 }
+        measure: true
+        aliases: [until-68]
+        gems:
+          - slot: Body Armour
+            gems:
+              - Lightning Tendrils
+              - Spell Totem
+              - Added Lightning Damage
+              - Lightning Penetration
+              - Controlled Destruction
+          - slot: Helmet
+            gems:
+              - Arc
+              - Spell Totem
+              - Added Lightning Damage
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+              - name: Clarity
+                maxLevel: 5
+                note: 'Keep it low: the reservation buys regeneration, not a pool.'
+          - slot: Boots
+            gems:
+              - Determination
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Drops from level 60; instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: Drops from level 65.
+          - slot: utility
+            name: Granite Flask
+            note: Armour against physical hits.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance until it is capped.
+  maps:
+    sub:
+      - id: maps-white
+        level: 80
+        main: Lightning Tendrils of Eccentricity
+        trigger: { from: 68, skill: Lightning Tendrils of Eccentricity }
+        measure: true
+        aliases: [maps-early]
+        gems:
+          - slot: Body Armour
+            gems:
+              - name: Lightning Tendrils of Eccentricity
+                note: 'Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row.'
+              - Spell Totem
+              - Added Lightning Damage
+              - Lightning Penetration
+              - Elemental Focus
+          - slot: Helmet
+            gems:
+              - Arc
+              - Spell Totem
+              - Added Lightning Damage
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+              - name: Clarity
+                maxLevel: 5
+                note: Keep it low.
+          - slot: Boots
+            gems:
+              - Determination
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: Drops from level 65.
+          - slot: utility
+            name: Granite Flask
+            note: Armour against physical hits.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance until it is capped.
+      - id: maps-red
+        level: 90
+        main: Lightning Tendrils of Eccentricity
+        trigger: { from: 80 }
+        measure: true
+        gems:
+          - slot: Body Armour
+            gems:
+              - name: Lightning Tendrils of Eccentricity
+                note: 'Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row.'
+              - Spell Totem
+              - name: Awakened Added Lightning Damage
+                maxLevel: 5
+              - Lightning Penetration
+              - name: Empower
+                maxLevel: 3
+              - Concentrated Effect
+          - slot: Helmet
+            gems:
+              - Arc
+              - Spell Totem
+              - Added Lightning Damage
+              - Faster Casting
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+              - name: Clarity
+                maxLevel: 1
+                note: Low reservation; buy a fresh level 1, since the campaign gem cannot be unlevelled.
+          - slot: Gloves
+            gems:
+              - Conductivity
+              - Blasphemy
+          - slot: Boots
+            gems:
+              - Determination
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Keep the instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: The aura package leaves little room.
+          - slot: utility
+            name: Granite Flask
+            note: Armour.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
+  endgame:
+    sub:
+      - id: endgame-pinnacle
+        level: 96
+        main: Lightning Tendrils of Eccentricity
+        trigger: { from: 90 }
+        measure: true
+        aliases: [pinnacle]
+        gems:
+          - slot: Body Armour
+            gems:
+              - name: Lightning Tendrils of Eccentricity
+                note: 'Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row.'
+              - Spell Totem
+              - name: Awakened Added Lightning Damage
+                maxLevel: 5
+              - name: Awakened Lightning Penetration
+                maxLevel: 5
+              - name: Awakened Elemental Focus
+                maxLevel: 5
+              - name: Awakened Empower
+                maxLevel: 4
+          - slot: Helmet
+            gems:
+              - Arc
+              - Spell Totem
+              - name: Awakened Added Lightning Damage
+                maxLevel: 5
+              - Faster Casting
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+              - name: Clarity
+                maxLevel: 1
+                note: Low reservation; a fresh level 1.
+          - slot: Gloves
+            gems:
+              - Conductivity
+              - Blasphemy
+          - slot: Boots
+            gems:
+              - Determination
+        flasks:
+          - slot: life
+            name: Divine Life Flask
+            note: Instant prefix.
+          - slot: mana
+            name: Eternal Mana Flask
+            note: The aura package leaves little room.
+          - slot: utility
+            name: Granite Flask
+            note: Armour.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical damage reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
 
 ascendancyOrder:
   # Pursuit of Faith is the second totem, so it comes first. Ritual of
@@ -285,26 +411,26 @@ guide:
       Remorse for the armour, and keeps
       Arc in a four-link helmet for open layouts. The measured link runs
       {{gates.maps-red.metrics.dps|dps}} at red maps and
-      {{gates.pinnacle.metrics.dps|dps}} at pinnacle per totem. The channel
+      {{gates.endgame-pinnacle.metrics.dps|dps}} at pinnacle per totem. The channel
       covers a semicircle in front of the totem, and every fifth pulse is
       stronger (a much larger area and an automatic critical strike), so the
       same link clears packs and delivers the boss hit. No expensive unique is
       required.
-    facts: [mainSkill, ascendancyId, uniques.core, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+    facts: [mainSkill, ascendancyId, uniques.core, gates.maps-red.metrics.dps, gates.endgame-pinnacle.metrics.dps]
   leveling:
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
     text: >-
       Level with Rolling Magma, then self-cast Lightning Tendrils: the channel
       hits harder than self-cast Arc before the totem links, and it is the same
       skill the default link upgrades. The first checkpoint measures
-      {{gates.until-12.metrics.life|int}} life and
-      {{gates.until-12.metrics.dps|dps}} damage; the second measures
-      {{gates.until-28.metrics.dps|dps}} damage. Put the Tendrils on Spell
+      {{gates.leveling-1-12.metrics.life|int}} life and
+      {{gates.leveling-1-12.metrics.dps|dps}} damage; the second measures
+      {{gates.leveling-12-28.metrics.dps|dps}} damage. Put the Tendrils on Spell
       Totem, put Arc in the helmet as a three-link alongside the totem body,
       transfigure a Tendrils at the Divine Font in the Merciless Labyrinth for
       the upgraded version, and add Faster Casting when the helmet becomes a
       four-link at red maps.
-    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+    facts: [gates.leveling-1-12.metrics.life, gates.leveling-1-12.metrics.dps, gates.leveling-12-28.metrics.dps]
   maps:
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
     text: >-
@@ -333,9 +459,9 @@ guide:
   bossing:
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} per totem with
-      {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Place both
+      Pinnacle measures {{gates.endgame-pinnacle.metrics.dps|dps}} per totem with
+      {{gates.endgame-pinnacle.metrics.ehp|int}} effective life and
+      {{gates.endgame-pinnacle.metrics.maxHit|int}} physical max hit. Place both
       Tendrils totems before the burst (they expire on a timer, so recast them
       before they run out) and keep Conductivity on the boss. Replace a totem
       after every phase that clears the arena; the stronger pulse is the damage
@@ -344,7 +470,7 @@ guide:
       red-map paste uses the regular support and keeps the import cheap.
       Awakened Elemental Focus cannot inflict ailments, so this link does not
       shock; the red-map link can.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+    facts: [gates.endgame-pinnacle.metrics.dps, gates.endgame-pinnacle.metrics.ehp, gates.endgame-pinnacle.metrics.maxHit]
 changelog:
   - season: covens
     date: "2026-11-26"
