@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import type { BuildChip, BuildIndexEntry, BuildStepSummary } from '../core/builds/types.ts';
+import { discardLegacyBuilds } from './presets/storage.ts';
 import {
   catalogueDps,
   catalogueOptions,
@@ -99,8 +100,23 @@ describe('catalogue settings', () => {
       classes: ['Witch'],
       tags: ['SSF'],
     });
-    data.set('filterpath.builds.v1', '{not json');
+    saveCatalogueState(state({ view: 'list' }));
+    data.set([...data.keys()][0]!, '{not json');
     expect(readCatalogueState()).toEqual(DEFAULT_CATALOGUE_STATE);
+  });
+
+  it('ignores the legacy saved-build key', () => {
+    data.set('filterpath.builds.v1', '[]');
+    expect(readCatalogueState()).toEqual(DEFAULT_CATALOGUE_STATE);
+  });
+
+  it('keeps its own key when the builder discards legacy saved builds', () => {
+    // The builder deletes `filterpath.builds.v1` on load. The catalogue used to
+    // share that key, so opening the filter page reset the card/list choice.
+    saveCatalogueState(state({ view: 'list', sort: 'dps' }));
+    data.set('filterpath.builds.v1', '[]');
+    discardLegacyBuilds();
+    expect(readCatalogueState()).toEqual(state({ view: 'list', sort: 'dps' }));
   });
 
   it('keeps only selections that still exist', () => {

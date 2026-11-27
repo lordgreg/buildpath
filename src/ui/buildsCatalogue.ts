@@ -33,7 +33,10 @@ export const DEFAULT_CATALOGUE_STATE: CatalogueState = {
   tags: [],
 };
 
-const STORAGE_KEY = 'filterpath.builds.v1';
+// Not `filterpath.builds.v1`: that is the legacy saved-build key the builder
+// deletes on load, which used to wipe the catalogue controls every time the
+// reader opened the filter page and came back.
+const STORAGE_KEY = 'filterpath.catalogue.v1';
 
 const MEDAL_RANK: Record<BuildMedal, number> = {
   C: 1,
