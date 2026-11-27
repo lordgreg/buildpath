@@ -2,7 +2,7 @@
 
 > Revision 25. The completed phase narratives, spike table and revision history
 > were removed; the shipped state is summarised in §11, and the next breadth
-> pass is the 15-build backlog in §16. Normative decisions, requirements and
+> pass is the 10-build backlog in §16. Normative decisions, requirements and
 > architecture are unchanged.
 
 Verified build guides, with the loot filter as one output instead of the whole
@@ -497,7 +497,7 @@ recalc, record `ablationDrop`. Full subset search is 2ⁿ and is out of scope.
 **Calibration runs in both directions** — the gates' own regression test:
 
 - **Every published build at every checkpoint is a must-pass observation**:
-  16 builds × 6 checkpoints = 96, each **re-geared per checkpoint by
+  21 builds × 6 checkpoints = 126, each **re-geared per checkpoint by
   the same synthesiser** (§7.7), including the Dad-profile builds. A failure
   means the gate is too strict; re-gearing is what stops a trade-geared build
   from trivially clearing an `ssf-start` gate.
@@ -593,16 +593,18 @@ deploy.
 
 ## 11. Status and next work
 
-**Shipped baseline.** P0–P7 are complete. The catalogue has sixteen verified
-builds across nine ascendancies; every one passes all six checkpoints, the
-calibrated must-pass set is 16 × 6 = 96 observations, and the ten must-fail
+**Shipped baseline.** P0–P7 are complete. The catalogue has twenty-one verified
+builds across ten ascendancies; every one passes all six checkpoints, the
+calibrated must-pass set is 21 × 6 = 126 observations, and the ten must-fail
 mutations and the unique-ablation probe are green. Patch facts, delisting, the
 league window, per-section prose with `factsHash`, the Dad profile, ratings,
-season tags and per-build changelogs shipped in 0.69.0.
+season tags and per-build changelogs shipped in 0.69.0. The first breadth batch
+(Storm Burst of Repulsion, Poison Ranged Animate Weapons, Penance Brand, Ice
+Nova and Smite of Divine Judgement) shipped in 0.75.0.
 
-What remains is breadth: prove the 15 builds in §16 through the same chain. A
-build that does not pass every gate stays a draft and is not published (R2).
-No phase is open; the backlog is the only planned work.
+What remains is breadth: prove the 10 remaining builds in §16 through the same
+chain. A build that does not pass every gate stays a draft and is not published
+(R2). No phase is open; the backlog is the only planned work.
 
 ## 12. Testing
 
@@ -654,7 +656,7 @@ No phase is open; the backlog is the only planned work.
 - Seeds: every `src/builds/*.yaml` validates against the schema and resolves to
   exactly one build; an orphan seed or an orphan generated build fails the build.
 - Calibration: every published build at every checkpoint is a must-pass
-  observation (16 × 6 = 96, including the Dad-profile builds), plus
+  observation (21 × 6 = 126, including the Dad-profile builds), plus
   the ten must-fail mutations and the unique-ablation probe.
 
 ### 12.2 The prose claim check (R1)
@@ -707,7 +709,7 @@ rounding rule:
 
 ## 14. Open items
 
-- **Breadth depth** (D1): the 15-build backlog in §16 is the next breadth pass.
+- **Breadth depth** (D1): the 10-build backlog in §16 is the next breadth pass.
   Publish only the ones that pass every gate, and keep popularity claims off the
   site; the external signals are editorial input, not page copy.
 - **True third filter phase** (D10): ~18 new preset entries, goldens, audit
@@ -732,16 +734,19 @@ The P0 spikes are closed:
 - **S6 pass** — PoB item text carries display mods, not mod ids. Gear synthesis
   asserts parsed-mod count and stat delta per line, so a silently dropped line
   fails the build.
-- **Calibration** — 96 must-pass observations (16 builds × 6 checkpoints), ten
+- **Calibration** — 126 must-pass observations (21 builds × 6 checkpoints), ten
   must-fail mutations and one unique-ablation probe are green.
 
 The full spike output and pre-0.69 revision history remain in git history and
 `CHANGELOG.md`.
 
-## 16. Backlog — 15 builds for 3.30 Covens
+## 16. Backlog — the 10 remaining builds for 3.30 Covens
 
-This is the next breadth pass. It is deliberately a backlog, not a popularity
-claim: each seed must still pass the gates in §8 before it publishes (D1, D2).
+The first breadth batch shipped in 0.75.0: Storm Burst of Repulsion, Poison
+Ranged Animate Weapons, Penance Brand, Ice Nova and Smite of Divine Judgement
+are in the catalogue with their gate reports and PoB codes. The ten seeds below
+are the rest of the pass. It is deliberately a backlog, not a popularity claim:
+each seed must still pass the gates in §8 before it publishes (D1, D2).
 
 **Selection filter.** Patch 3.30 Covens only; no Standard and no 3.29-or-older
 builds. Signals are the Maxroll 3.30 league-starter tier, live poe.ninja Covens
@@ -751,39 +756,30 @@ found, rounded.
 
 | # | Seed id | Build | Class / ascendancy | Family | Main skill | Signals | Source |
 |---|---|---|---|---|---|---|---|
-| 1 | `storm-burst-repulsion-hierophant` | Storm Burst of Repulsion Totems | Templar / Hierophant | caster | Storm Burst of Repulsion | Maxroll **S**; 3.0% Covens, 7.3% SSF; 136k views | [Maxroll](https://maxroll.gg/poe/build-guides/storm-burst-of-repulsion-totem-hierophant-league-starter) · [YouTube](https://www.youtube.com/watch?v=pwGUXX86mrA) |
-| 2 | `poison-ranged-animate-weapon-necromancer` | Poison Ranged Animate Weapons | Witch / Necromancer | minion | Animate Weapon of Ranged Arms | Maxroll **S**; 3.0%; 123k views | [Maxroll](https://maxroll.gg/poe/build-guides/poison-ranged-animate-weapons-league-starter) · [YouTube](https://www.youtube.com/watch?v=DD5NUutEuPI) |
-| 3 | `static-strike-guardian` | Static Strike Guardian | Templar / Guardian | melee | Static Strike | 5.6% SSF; **270k views** | [YouTube](https://www.youtube.com/watch?v=MI3e0Gz6R6s) · [Reddit](https://www.reddit.com/r/PathOfExileBuilds/comments/1xtf3nx/my_330_static_strike_guardian_leaguestarter/) |
-| 4 | `ethereal-knives-massacre-elementalist` | Ethereal Knives of the Massacre | Witch / Elementalist | caster | Ethereal Knives of the Massacre | 4.1% Covens; ~76k views | [poe.ninja](https://poe.ninja/poe1/builds/covens?class=Elementalist&skills=Ethereal+Knives+of+the+Massacre) · [Mobalytics](https://mobalytics.gg/poe/builds/ignite-ethereal-knives-elementalist-build-league-starter-to-endgame) |
-| 5 | `incinerate-venting-elementalist` | Incinerate of Venting | Witch / Elementalist | caster | Incinerate of Venting | 3.6% SSF; 119k views | [YouTube](https://www.youtube.com/watch?v=2NYMoUk7LIM) |
-| 6 | `earthshatter-luminary` | Facebreaker Luminary | Scion / Luminary | melee | Earthshatter | Maxroll **S**; 32k+ views | [Maxroll](https://maxroll.gg/poe/build-guides/facebreaker-luminary-league-starter) · [YouTube](https://www.youtube.com/watch?v=mPJxGsFCZZA) |
-| 7 | `scorching-ray-immolation-chieftain` | Scorching Ray of Immolation | Marauder / Chieftain | caster | Scorching Ray of Immolation | 3.1% Covens; 80k views | [Mobalytics](https://mobalytics.gg/poe/builds/cws-chieftain-3-30-emiracles) · [pobarchives](https://pobarchives.com/build/pWBkU3QX) |
-| 8 | `smite-divine-judgement-inquisitor` | Smite of Divine Judgement | Templar / Inquisitor | melee | Smite of Divine Judgement | Maxroll **S**; 55k+ views | [Maxroll](https://maxroll.gg/poe/build-guides/smite-of-divine-judgement-league-starter) |
-| 9 | `tornado-shot-deadeye` | Tornado Shot | Ranger / Deadeye | bow | Tornado Shot | ~4% snapshot; 133k views | [poe.ninja](https://poe.ninja/poe1/builds/covens?skills=Tornado+Shot) |
-| 10 | `divine-retribution-gladiator` | Divine Retribution | Duelist / Gladiator | caster | Divine Retribution | 2.1% Covens; 124k series views | [YouTube](https://www.youtube.com/watch?v=OBWHGBy70xw) · [poe.ninja](https://poe.ninja/poe1/builds/covens?class=Gladiator&skills=Divine+Retribution) |
-| 11 | `lightning-tendrils-eccentricity-elementalist` | Lightning Tendrils of Eccentricity | Witch / Elementalist | caster | Lightning Tendrils of Eccentricity | 2.5% Covens; 97k views | [YouTube](https://www.youtube.com/watch?v=sOKiVtyhb8M) |
-| 12 | `toxic-rain-pathfinder` | Toxic Rain | Ranger / Pathfinder | bow | Toxic Rain | ~5% snapshot; 61k views | [Mobalytics](https://mobalytics.gg/poe/builds/toxic-rain-pathfinder) · [YouTube](https://www.youtube.com/watch?v=GsDMr2NZRao) |
-| 13 | `venom-gyre-trickster` | Venom Gyre | Shadow / Trickster | hybrid | Venom Gyre | ~2% snapshot; 157k views | [YouTube](https://www.youtube.com/watch?v=zZEUXtXnKmE) |
-| 14 | `penance-brand-elementalist` | Penance Brand Ignite | Witch / Elementalist | caster | Penance Brand | Maxroll **A**; 56–68k views | [Maxroll](https://maxroll.gg/poe/build-guides/penance-brand-ignite-elementalist) · [YouTube](https://www.youtube.com/watch?v=CqWuqGUPQak) |
-| 15 | `ice-nova-elementalist` | Ice Nova | Witch / Elementalist | caster | Ice Nova | Maxroll **A**; 61k views | [Maxroll](https://maxroll.gg/poe/build-guides/ice-nova-elementalist-league-starter) · [YouTube](https://www.youtube.com/watch?v=WcKrpMgiTrg) |
+| 1 | `static-strike-guardian` | Static Strike Guardian | Templar / Guardian | melee | Static Strike | 5.6% SSF; **270k views** | [YouTube](https://www.youtube.com/watch?v=MI3e0Gz6R6s) · [Reddit](https://www.reddit.com/r/PathOfExileBuilds/comments/1xtf3nx/my_330_static_strike_guardian_leaguestarter/) |
+| 2 | `ethereal-knives-massacre-elementalist` | Ethereal Knives of the Massacre | Witch / Elementalist | caster | Ethereal Knives of the Massacre | 4.1% Covens; ~76k views | [poe.ninja](https://poe.ninja/poe1/builds/covens?class=Elementalist&skills=Ethereal+Knives+of+the+Massacre) · [Mobalytics](https://mobalytics.gg/poe/builds/ignite-ethereal-knives-elementalist-build-league-starter-to-endgame) |
+| 3 | `incinerate-venting-elementalist` | Incinerate of Venting | Witch / Elementalist | caster | Incinerate of Venting | 3.6% SSF; 119k views | [YouTube](https://www.youtube.com/watch?v=2NYMoUk7LIM) |
+| 4 | `earthshatter-luminary` | Facebreaker Luminary | Scion / Luminary | melee | Earthshatter | Maxroll **S**; 32k+ views | [Maxroll](https://maxroll.gg/poe/build-guides/facebreaker-luminary-league-starter) · [YouTube](https://www.youtube.com/watch?v=mPJxGsFCZZA) |
+| 5 | `scorching-ray-immolation-chieftain` | Scorching Ray of Immolation | Marauder / Chieftain | caster | Scorching Ray of Immolation | 3.1% Covens; 80k views | [Mobalytics](https://mobalytics.gg/poe/builds/cws-chieftain-3-30-emiracles) · [pobarchives](https://pobarchives.com/build/pWBkU3QX) |
+| 6 | `tornado-shot-deadeye` | Tornado Shot | Ranger / Deadeye | bow | Tornado Shot | ~4% snapshot; 133k views | [poe.ninja](https://poe.ninja/poe1/builds/covens?skills=Tornado+Shot) |
+| 7 | `divine-retribution-gladiator` | Divine Retribution | Duelist / Gladiator | caster | Divine Retribution | 2.1% Covens; 124k series views | [YouTube](https://www.youtube.com/watch?v=OBWHGBy70xw) · [poe.ninja](https://poe.ninja/poe1/builds/covens?class=Gladiator&skills=Divine+Retribution) |
+| 8 | `lightning-tendrils-eccentricity-elementalist` | Lightning Tendrils of Eccentricity | Witch / Elementalist | caster | Lightning Tendrils of Eccentricity | 2.5% Covens; 97k views | [YouTube](https://www.youtube.com/watch?v=sOKiVtyhb8M) |
+| 9 | `toxic-rain-pathfinder` | Toxic Rain | Ranger / Pathfinder | bow | Toxic Rain | ~5% snapshot; 61k views | [Mobalytics](https://mobalytics.gg/poe/builds/toxic-rain-pathfinder) · [YouTube](https://www.youtube.com/watch?v=GsDMr2NZRao) |
+| 10 | `venom-gyre-trickster` | Venom Gyre | Shadow / Trickster | hybrid | Venom Gyre | ~2% snapshot; 157k views | [YouTube](https://www.youtube.com/watch?v=zZEUXtXnKmE) |
 
 **Already covered, so excluded.** Righteous Fire, Lightning Arrow, Cyclone,
 Boneshatter, Flicker Strike, Arc, Summon Raging Spirit, Summon Skeletons, Raise
 Spectre, Animate Weapon (melee), Absolution, Ice Shot, Winter Orb, Essence Drain
-and Summon Stone Golem. Near-duplicate variants also excluded: Cyclone of
-Tumult, Flicker Strike Berserker, Forged Frostbearer and Wretched Defiler
-Spectres, and Poison SRS. Poison Ranged Animate Weapons is the transfigured
-`Animate Weapon of Ranged Arms`, not the melee Animate Weapon already shipped.
+and Summon Stone Golem, plus the five builds shipped from this backlog in
+0.75.0. Near-duplicate variants also excluded: Cyclone of Tumult, Flicker Strike
+Berserker, Forged Frostbearer and Wretched Defiler Spectres, and Poison SRS.
 
-**Suggested batches.** Three batches of five keep the pipeline runs reviewable:
+**Suggested batches.** Two batches of five keep the pipeline runs reviewable:
 
-1. **Caster/minion first** — Storm Burst, Poison Ranged Animate Weapons,
-   Penance Brand, Ice Nova, Smite. These reuse the existing `spell` and `caster`
-   profiles.
-2. **SSF/attack** — Static Strike, Incinerate, Lightning Tendrils, Toxic Rain,
+1. **SSF/attack** — Static Strike, Incinerate, Lightning Tendrils, Toxic Rain,
    Venom Gyre. Toxic Rain reuses `bow`; Venom Gyre needs a claw profile or a
    reviewed filter override.
-3. **Special gear** — Facebreaker Luminary, Scorching Ray, Ethereal Knives,
+2. **Special gear** — Facebreaker Luminary, Scorching Ray, Ethereal Knives,
    Divine Retribution, Tornado Shot. Facebreaker is unarmed (no weapon slot) and
    needs a reviewed profile/override; Scorching Ray can reuse `rf`; Tornado Shot
    reuses `bow`.
@@ -794,7 +790,7 @@ Spectres, and Poison SRS. Poison Ranged Animate Weapons is the transfigured
 - carry `season: covens` and a changelog entry whose newest season matches;
 - pass all six checkpoints, or stay a draft with its failures named;
 - publish a `maps-red` PoB code and a matching `.pob` asset;
-- add six must-pass calibration observations (96 → 186 across 31 builds) and
+- add six must-pass calibration observations (126 → 186 across 31 builds) and
   re-run the must-fail set;
 - not duplicate a `(main skill, ascendancy)` pair (D26);
 - carry generated 16:9 header art and per-step pobb.in pastes at release.
