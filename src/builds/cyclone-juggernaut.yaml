@@ -96,6 +96,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Cleave
+        grade: B
         measure: true
         aliases: [until-12]
         gems:
@@ -127,6 +128,7 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Cyclone
+        grade: B
         trigger: { from: 12, skill: Cyclone }
         measure: true
         aliases: [until-28]
@@ -164,10 +166,62 @@ steps:
           - slot: utility
             name: Amethyst Flask
             note: Chaos resistance.
+      - id: leveling-28-38
+        level: 38
+        main: Cyclone
+        grade: C
+        trigger: { from: 28 }
+        points: 42
+        measure: true
+        watch: >-
+          Brutality and Pulverise replace Close Combat and Faster Attacks in the four-link.
+          Determination and Cast when Damage Taken with Immortal Call come online; the fifth link
+          waits for 68 and the sixth for red maps.
+        gems:
+          - slot: Body Armour
+            gems:
+              - Cyclone
+              - Melee Physical Damage
+              - Brutality
+              - Pulverise
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Determination
+              - Blood and Sand
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: Level 1-5 only.
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Decoy Totem
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Granite Flask
+            note: Armour is the defensive layer.
+          - slot: utility
+            name: Basalt Flask
+            note: Physical reduction.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
       - id: leveling-38-68
         level: 68
         main: Cyclone
-        trigger: { from: 28 }
+        grade: B
+        trigger: { from: 38, link: 5 }
         measure: true
         aliases: [until-68]
         gems:
@@ -216,10 +270,11 @@ steps:
       - id: maps-white
         level: 80
         main: Cyclone
+        grade: A
         trigger: { from: 68 }
         measure: true
         aliases: [maps-early]
-        gems: &id001
+        gems:
           - slot: Body Armour
             gems:
               - Cyclone
@@ -227,7 +282,6 @@ steps:
               - Brutality
               - Pulverise
               - Close Combat
-              - Faster Attacks
           - slot: Weapon 1
             gems:
               - Leap Slam
@@ -264,19 +318,71 @@ steps:
       - id: maps-red
         level: 90
         main: Cyclone
+        grade: A
         trigger: { from: 80 }
         measure: true
-        gems: *id001
+        gems:
+          - slot: Body Armour
+            gems:
+              - Cyclone
+              - Melee Physical Damage
+              - Brutality
+              - Pulverise
+              - Close Combat
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Determination
+              - Blood and Sand
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: Level 1-5 only.
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Decoy Totem
         flasks: *id002
   endgame:
     sub:
       - id: endgame-pinnacle
         level: 96
         main: Cyclone
+        grade: S
         trigger: { from: 90 }
         measure: true
         aliases: [pinnacle]
-        gems: *id001
+        gems:
+          - slot: Body Armour
+            gems:
+              - Cyclone
+              - Melee Physical Damage
+              - Brutality
+              - Pulverise
+              - Close Combat
+              - Faster Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Determination
+              - Blood and Sand
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: Level 1-5 only.
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Decoy Totem
         flasks: *id002
 
 ascendancyOrder:
@@ -298,3 +404,7 @@ changelog:
     date: "2026-11-26"
     notes:
       - "First guide for the Covens league."
+  - season: covens
+    date: "2026-11-27"
+    notes:
+      - "A 28-38 step now shows the four-link and the gems that unlock at 38; the fifth link waits for 68 and the sixth for red maps."

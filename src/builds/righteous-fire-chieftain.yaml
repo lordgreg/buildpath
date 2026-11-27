@@ -94,6 +94,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Rolling Magma
+        grade: B
         measure: true
         aliases: [until-12]
         gems:
@@ -122,6 +123,7 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Fire Trap
+        grade: B
         trigger: { from: 12, skill: Fire Trap }
         measure: true
         aliases: [until-28]
@@ -156,10 +158,52 @@ steps:
           - slot: utility
             name: Granite Flask
             note: Armour.
+      - id: leveling-28-38
+        level: 38
+        main: Fire Trap
+        grade: C
+        trigger: { from: 28 }
+        points: 42
+        measure: true
+        watch: >-
+          Burning Damage and Swift Affliction replace Efficacy and Concentrated Effect in the
+          four-link. The fifth link waits for 68 and the sixth for red maps.
+        gems:
+          - slot: Body Armour
+            gems:
+              - Fire Trap
+              - Burning Damage
+              - Elemental Focus
+              - Swift Affliction
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+              - Arcane Surge
+              - Enduring Cry
+          - slot: Helmet
+            gems:
+              - Malevolence
+          - slot: Gloves
+            gems:
+              - Flammability
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12; Fire Trap is mana-hungry.
+          - slot: utility
+            name: Sulphur Flask
+            note: Damage and consecrated ground.
+          - slot: utility
+            name: Granite Flask
+            note: Armour.
       - id: leveling-38-68
         level: 68
         main: Fire Trap
-        trigger: { from: 28 }
+        grade: B
+        trigger: { from: 38, link: 5 }
         measure: true
         aliases: [until-68]
         gems:
@@ -202,6 +246,7 @@ steps:
       - id: maps-white
         level: 80
         main: Fire Trap
+        grade: A
         trigger: { from: 68 }
         measure: true
         aliases: [maps-early]
@@ -243,6 +288,7 @@ steps:
       - id: maps-red
         level: 90
         main: Righteous Fire
+        grade: A
         trigger: { from: 80, skill: Righteous Fire }
         measure: true
         gems:
@@ -291,6 +337,7 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Righteous Fire
+        grade: S
         trigger: { from: 90 }
         measure: true
         aliases: [pinnacle]
@@ -448,3 +495,4 @@ changelog:
       - "Malevolence is the damage aura and Flammability is the fire-resistance curse; Enduring Cry charges and the listed flasks keep the physical and self-burn numbers honest, and the build still needs no unique and no Awakened gem."
       - "The shared jewel-affix correction replaced the illegal weapon-scale jewel rolls with legal jewel caps. The corrected build measures 212.0k RF DPS at pinnacle and 122.1k at red maps; ratings are tankiness 9, single target 7, clear 7, cost 9 (S), not S+."
       - "Sustain was measured with the pinned oracle plus a scratch copy that prints LifeRegenRecovery and NetLifeRegen: maps-red gross 1,286.6/s, degen 1,181.5/s and net +105.1/s; pinnacle gross 1,577/s, degen 1,437/s and net +140/s; the Fire Trap checkpoints have no RF degen. The degen uses 90% of maximum life and 70% of maximum energy shield per second, 80% fire resistance and three endurance charges (12% less elemental damage taken)."
+      - "A 28-38 step now shows the four-link and the gems that unlock at 38; the fifth link waits for 68 and the sixth for red maps."

@@ -9,8 +9,10 @@ Endgame (`stepView`), so the navigation never changed while the data moved.
 
 Measured steps carry the band they inherit (`bandFor`): a level-38 step is
 measured on the level-28 budget rather than an invented one, which under-points
-rather than over-points. Calibration keeps one observation per band per build,
-so a second step in the same band does not grow the report.
+rather than over-points. A step that needs its real level budget says so with
+`points` (see [Points](#points)); Boneshatter's 28-38 step does, so its tree is
+not a copy of the level-28 one. Calibration keeps one observation per band per
+build, so a second step in the same band does not grow the report.
 
 ## What the page shows
 
@@ -67,16 +69,16 @@ steps:
 
       - id: leveling-28-38
         level: 38
-        main: Boneshatter
-        trigger: { from: 28, skill: Boneshatter }
-        watch: "Boneshatter now, four links only. If it feels bad, stay on Sunder two more levels."
+        main: Sunder
+        trigger: { from: 28 }
+        watch: "Stay on Sunder until Brutality; Boneshatter starts in the next step."
         measure: true
 
       - id: leveling-38-68
         level: 68
         main: Boneshatter
-        trigger: { from: 38, support: Brutality }
-        watch: "Added Fire Damage out, Brutality in, Pulverise as the fifth link."
+        trigger: { from: 38, skill: Boneshatter }
+        watch: "Brutality replaces Added Fire Damage; Pulverise is the fifth link at 68."
         measure: true
 
   maps:
@@ -134,6 +136,41 @@ Only the first leveling step has no trigger — it opens the character.
 - R2 therefore reads "a gate report for every measured sub-step", not "for
   every step".
 
+### Points
+
+A measured step takes `points` from the checkpoint band at or below its level
+(`src/builds/config/checkpoints.yaml`, D30). That keeps two steps inside one
+band from claiming different budgets, but a step well inside a band would draw
+the same tree as the step before it. A step that must show its own points sets
+`points` explicitly, reviewed like the band table:
+
+```yaml
+- id: leveling-28-38
+  level: 38
+  points: 42   # 37 level points + quest points by act 5
+  measure: true
+```
+
+The gate thresholds still come from the band (`until-28` here), so the
+override moves the tree, not the floor. Re-run `builds:verify -- --build=<id>`
+and republish that build's pastes: the tree changes the PoB code.
+
+### Grade
+
+`grade: S | A | B | C | D` is authored, not measured: how the stretch plays.
+S is a power spike or a very smooth stretch, D is the slog the guide warns
+about. It is shown on the step picker and in "What changes here" and is a
+guide opinion, so it is excluded from the mechanics hash: changing a grade
+never invalidates a gate report.
+
+```yaml
+- id: leveling-28-38
+  level: 38
+  main: Sunder
+  grade: D   # the rough stretch: no Brutality yet
+  measure: true
+```
+
 ### Advice
 
 - `watch` is authored inline: what changes *here*. Optional — a step that only
@@ -171,7 +208,7 @@ an unknown id unchanged. The map stays until 1.0.
 
 ## Cost
 
-Measured on this repo: one build's six checkpoints take **14.5 s** through the
+Measured on this repo: one build's measured steps take **14.5 s** through the
 real PoB oracle, and CI drives the same scripts against the pinned PoB, so a
 local run and a CI run agree. `builds:verify` over 21 builds is therefore a
 ~5-minute job with a 45-minute ceiling; three times the measured steps still
@@ -200,7 +237,7 @@ Boneshatter is the reference build and the one place the split is authored
 rather than mechanical. Its `until-28` bracket listed Boneshatter to a level-13
 reader, and the switch that mattered lived in `swaps`. It is now
 `leveling-1-12` (Cleave), `leveling-12-28` (Sunder, measured at 28),
-`leveling-28-38` (Boneshatter, four links, Brutality and CWDT) and
-`leveling-38-68` (fifth link, Pulverise). The 28-38 step is its own measurement,
-which is what makes the playtest's "the switch is a pain" a number instead of a
-feeling.
+`leveling-28-38` (Sunder, four links, CWDT and the curse at 38) and
+`leveling-38-68` (Boneshatter from 39, Brutality and the fifth link at 68).
+The 28-38 step is its own measurement, which is what makes the playtest's "the
+switch is a pain" a number instead of a feeling, and the step grade marks it D.

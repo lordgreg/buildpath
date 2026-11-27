@@ -25,6 +25,14 @@ export type StepRootId = (typeof STEP_ROOTS)[number];
 export const STEP_TRIGGERS = ['skill', 'support', 'link', 'jewel', 'slot', 'budget'] as const;
 export type StepTriggerKind = (typeof STEP_TRIGGERS)[number];
 
+/**
+ * How a step plays, authored by the maintainer: S is a power spike or a very
+ * smooth stretch, D is the slog you warn people about. It is a guide opinion,
+ * not a gate metric, so it never enters the mechanics hash.
+ */
+export const STEP_GRADES = ['S', 'A', 'B', 'C', 'D'] as const;
+export type StepGrade = (typeof STEP_GRADES)[number];
+
 /** Item slots a `slot` trigger may name. Mirrors RePoE's equip slots. */
 export const STEP_SLOTS: readonly ItemSlot[] = [
   'weapon',
@@ -78,6 +86,8 @@ export interface SeedSubStep extends StepDefaults {
   level: number;
   /** The skill the step is built around; it must be usable at `level`. */
   main: string;
+  /** How the step plays (S best to D harshest), authored for the guide. */
+  grade?: StepGrade;
   /** Gem groups by equipment slot, the same shape the gate measures. */
   gems?: SkillGroup[];
   flasks?: FlaskChoice[];
@@ -177,6 +187,10 @@ export function resolveSteps(steps: SeedSteps, options: ResolveStepsOptions): Re
       if (!Number.isInteger(step.level) || step.level < 2 || step.level > 100) {
         errors.push(`${where}: level must be an integer between 2 and 100`);
         continue;
+      }
+
+      if (step.grade !== undefined && !STEP_GRADES.includes(step.grade)) {
+        errors.push(`${where}: grade must be one of ${STEP_GRADES.join(', ')}`);
       }
 
       // Only the first leveling step opens the character and takes no trigger;
@@ -383,7 +397,8 @@ export interface ResolvedStep {
  * A level-38 step therefore inherits the level-28 budget rather than an invented
  * one, and a level-85 step the level-80 one. That under-points rather than
  * over-points, which is the safe direction for a floor: the step is measured
- * with less than the player has, never more.
+ * with less than the player has, never more. A step that must show its own
+ * level's points sets `points`; its gate thresholds still come from the band.
  */
 export function bandFor(level: number, bands: readonly CheckpointBand[]): CheckpointBand {
   const sorted = [...bands].sort((a, b) => a.level - b.level);

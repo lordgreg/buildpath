@@ -598,18 +598,20 @@ describe('published build data', () => {
     }
   });
 
-  it('tells Boneshatter players to use Sunder before the main skill unlocks', () => {
+  it('tells Boneshatter players to stay on Sunder until Brutality is in the link', () => {
     const build = compiled.find((entry) => entry.id === 'boneshatter-juggernaut');
     expect(build, 'boneshatter-juggernaut').toBeDefined();
     const steps = stepsOf(build!);
-    const sunder = steps.find((step) => step.main === 'Sunder');
-    expect(sunder, 'Sunder has its own step').toBeDefined();
-    // Boneshatter unlocks at 28, so the step read at 28 is Sunder and the
-    // switch is the step after it.
-    expect(sunder!.level).toBe(28);
-    const next = steps[steps.indexOf(sunder!) + 1];
-    expect(next?.main, 'the step after Sunder').toBe('Boneshatter');
-    expect(next?.level).toBe(38);
+    // Boneshatter unlocks at 28, but the swap waits for Brutality at 38: the
+    // 28-38 step is the Sunder stretch, and the next step (read at 68) opens
+    // with the Boneshatter swap at 39.
+    const sunders = steps.filter((step) => step.main === 'Sunder');
+    expect(sunders.map((step) => step.level), 'Sunder owns the 28 and 38 steps').toEqual([
+      28, 38,
+    ]);
+    const next = steps[steps.indexOf(sunders.at(-1)!) + 1];
+    expect(next?.main, 'the step after the Sunder stretch').toBe('Boneshatter');
+    expect(next?.id).toBe('leveling-38-68');
   });
 
   it('tells Boneshatter players the 4-link support progression', () => {
@@ -621,15 +623,17 @@ describe('published build data', () => {
         .find((group) => group.slot === 'Body Armour')!
         .gems.map((gem) => (typeof gem === 'string' ? gem : gem.name));
 
-    // The rough patch: four links, Brutality in, Added Fire Damage out.
+    // The rough patch: stay on the Sunder four-link, no Brutality yet.
     expect(bodyOf('leveling-28-38')).toEqual([
-      'Boneshatter',
+      'Sunder',
       'Melee Physical Damage',
-      'Brutality',
+      'Added Fire Damage',
       'Faster Attacks',
     ]);
-    // The payoff: Pulverise is the fifth link.
-    expect(bodyOf('leveling-38-68')).toContain('Pulverise');
+    // The payoff: Boneshatter with Brutality, then Pulverise as the fifth link.
+    expect(bodyOf('leveling-38-68')).toEqual(
+      expect.arrayContaining(['Boneshatter', 'Brutality', 'Pulverise']),
+    );
   });
 
   it('names a colour for every gem the guide shows', () => {
@@ -970,7 +974,22 @@ describe('guide prose', () => {
   );
 
   function factsHash(build: unknown, facts: string[]): string {
-    const declared = [...facts].sort().map((path) => [path, getGuidePath(build, path)]);
+    const declared = [...facts].sort().map((path) => {
+      let value = getGuidePath(build, path);
+      // Grades are editorial, so the production hash leaves them out of the
+      // `steps` fact; editing one must not stale a signed section.
+      if (path === 'steps' && Array.isArray(value)) {
+        const roots = value as Array<{
+          [key: string]: unknown;
+          sub?: Array<Record<string, unknown>>;
+        }>;
+        value = roots.map((root) => ({
+          ...root,
+          sub: (root.sub ?? []).map(({ grade: _grade, ...rest }) => rest),
+        }));
+      }
+      return [path, value];
+    });
     return createHash('sha256').update(JSON.stringify(declared)).digest('hex').slice(0, 16);
   }
 

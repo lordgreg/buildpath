@@ -229,6 +229,49 @@
         61525,
         63965
       ],
+      "leveling-28-38": [
+        2913,
+        3167,
+        6359,
+        6764,
+        7388,
+        9386,
+        10575,
+        13009,
+        14057,
+        14151,
+        15064,
+        15405,
+        17735,
+        17821,
+        20228,
+        26523,
+        26866,
+        27564,
+        29199,
+        31875,
+        33631,
+        35556,
+        36634,
+        37999,
+        39648,
+        39916,
+        40366,
+        41472,
+        44606,
+        44799,
+        44908,
+        44967,
+        47251,
+        50422,
+        50862,
+        58402,
+        58763,
+        60398,
+        61471,
+        61525,
+        63965
+      ],
       "leveling-38-68": [
         1031,
         2913,
@@ -629,6 +672,7 @@
           "id": "leveling-1-12",
           "level": 12,
           "main": "Rolling Magma",
+          "grade": "B",
           "measure": true,
           "aliases": [
             "until-12"
@@ -680,6 +724,7 @@
           "id": "leveling-12-28",
           "level": 28,
           "main": "Lightning Tendrils",
+          "grade": "B",
           "trigger": {
             "from": 12,
             "skill": "Lightning Tendrils"
@@ -738,11 +783,87 @@
           "band": "until-28"
         },
         {
+          "id": "leveling-28-38",
+          "level": 38,
+          "main": "Lightning Tendrils",
+          "grade": "C",
+          "trigger": {
+            "from": 28
+          },
+          "points": 42,
+          "measure": true,
+          "watch": "Spell Totem and Lightning Penetration replace Controlled Destruction and Arcane Surge in the four-link; a second Spell Totem setup for Arc moves to the helmet, and Determination comes online. The fifth link waits for 68 and the sixth for red maps.",
+          "gems": [
+            {
+              "slot": "Body Armour",
+              "gems": [
+                "Lightning Tendrils",
+                "Spell Totem",
+                "Added Lightning Damage",
+                "Lightning Penetration"
+              ]
+            },
+            {
+              "slot": "Helmet",
+              "gems": [
+                "Arc",
+                "Spell Totem",
+                "Added Lightning Damage"
+              ]
+            },
+            {
+              "slot": "Weapon 1",
+              "gems": [
+                "Flame Dash",
+                "Arcane Surge",
+                {
+                  "name": "Clarity",
+                  "maxLevel": 5,
+                  "note": "Keep it low: the reservation buys regeneration, not a pool."
+                }
+              ]
+            },
+            {
+              "slot": "Boots",
+              "gems": [
+                "Determination"
+              ]
+            }
+          ],
+          "flasks": [
+            {
+              "slot": "life",
+              "name": "Giant Life Flask",
+              "note": "Drops from level 24."
+            },
+            {
+              "slot": "mana",
+              "name": "Greater Mana Flask",
+              "note": "Drops from level 12."
+            },
+            {
+              "slot": "utility",
+              "name": "Amethyst Flask",
+              "note": "Chaos resistance from level 18."
+            },
+            {
+              "slot": "utility",
+              "name": "Quicksilver Flask",
+              "note": "Movement, not damage."
+            }
+          ],
+          "root": "leveling",
+          "from": 29,
+          "band": "until-28"
+        },
+        {
           "id": "leveling-38-68",
           "level": 68,
           "main": "Lightning Tendrils",
+          "grade": "B",
           "trigger": {
-            "from": 28
+            "from": 38,
+            "link": 5
           },
           "measure": true,
           "aliases": [
@@ -814,7 +935,7 @@
             }
           ],
           "root": "leveling",
-          "from": 29,
+          "from": 39,
           "band": "until-68"
         }
       ]
@@ -826,6 +947,7 @@
           "id": "maps-white",
           "level": 80,
           "main": "Lightning Tendrils of Eccentricity",
+          "grade": "A",
           "trigger": {
             "from": 68,
             "skill": "Lightning Tendrils of Eccentricity"
@@ -910,6 +1032,7 @@
           "id": "maps-red",
           "level": 90,
           "main": "Lightning Tendrils of Eccentricity",
+          "grade": "A",
           "trigger": {
             "from": 80
           },
@@ -1010,6 +1133,7 @@
           "id": "endgame-pinnacle",
           "level": 96,
           "main": "Lightning Tendrils of Eccentricity",
+          "grade": "S",
           "trigger": {
             "from": 90
           },
@@ -2064,6 +2188,701 @@
           "gems": [
             {
               "name": "Clarity",
+              "level": 5
+            }
+          ]
+        }
+      ],
+      "flasks": [
+        {
+          "slot": "life",
+          "name": "Giant Life Flask",
+          "note": "Drops from level 24."
+        },
+        {
+          "slot": "mana",
+          "name": "Greater Mana Flask",
+          "note": "Drops from level 12."
+        },
+        {
+          "slot": "utility",
+          "name": "Amethyst Flask",
+          "note": "Chaos resistance from level 18."
+        },
+        {
+          "slot": "utility",
+          "name": "Quicksilver Flask",
+          "note": "Movement, not damage."
+        }
+      ],
+      "repair": {
+        "added": [],
+        "removed": [],
+        "evals": 1,
+        "nodeDelta": 0,
+        "status": "within-bound"
+      }
+    },
+    "leveling-28-38": {
+      "pass": true,
+      "level": 38,
+      "budget": "early (4-link)",
+      "gateProfile": "standard",
+      "thresholds": {
+        "resists": false,
+        "life": 700,
+        "dps": 350
+      },
+      "metrics": {
+        "dps": 432,
+        "minionCount": 1,
+        "dpsSource": "player",
+        "life": 1474,
+        "energyShield": 627,
+        "ehp": 1893,
+        "maxHit": 2164,
+        "resists": [
+          -30,
+          -30,
+          -30
+        ],
+        "chaosResist": -25,
+        "manaUnreserved": 89,
+        "manaCost": 12,
+        "nodes": 41,
+        "sockets": 0,
+        "ascendancy": 1
+      },
+      "failures": [],
+      "tree": {
+        "edges": [
+          [
+            2913,
+            50862
+          ],
+          [
+            3167,
+            6359
+          ],
+          [
+            6764,
+            40366
+          ],
+          [
+            7388,
+            60398
+          ],
+          [
+            7388,
+            36634
+          ],
+          [
+            10575,
+            29199
+          ],
+          [
+            13009,
+            60398
+          ],
+          [
+            9386,
+            14057
+          ],
+          [
+            6764,
+            14057
+          ],
+          [
+            14151,
+            27564
+          ],
+          [
+            15405,
+            33631
+          ],
+          [
+            13009,
+            17735
+          ],
+          [
+            17735,
+            58402
+          ],
+          [
+            17821,
+            39648
+          ],
+          [
+            20228,
+            61525
+          ],
+          [
+            26866,
+            44908
+          ],
+          [
+            17735,
+            27564
+          ],
+          [
+            15064,
+            29199
+          ],
+          [
+            31875,
+            60398
+          ],
+          [
+            35556,
+            44908
+          ],
+          [
+            29199,
+            37999
+          ],
+          [
+            35556,
+            39916
+          ],
+          [
+            20228,
+            39916
+          ],
+          [
+            40366,
+            58763
+          ],
+          [
+            41472,
+            61471
+          ],
+          [
+            41472,
+            44799
+          ],
+          [
+            26523,
+            44606
+          ],
+          [
+            2913,
+            44908
+          ],
+          [
+            44967,
+            50422
+          ],
+          [
+            7388,
+            47251
+          ],
+          [
+            50422,
+            50862
+          ],
+          [
+            44606,
+            50862
+          ],
+          [
+            15405,
+            50862
+          ],
+          [
+            3167,
+            50862
+          ],
+          [
+            10575,
+            58402
+          ],
+          [
+            6764,
+            58402
+          ],
+          [
+            39648,
+            60398
+          ],
+          [
+            26866,
+            61471
+          ],
+          [
+            61525,
+            63965
+          ],
+          [
+            14151,
+            63965
+          ]
+        ],
+        "nodes": [
+          {
+            "id": 2913,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -4436,
+            "y": -709
+          },
+          {
+            "id": 3167,
+            "name": "Life Regeneration",
+            "notable": false,
+            "x": -4656,
+            "y": -189
+          },
+          {
+            "id": 6359,
+            "name": "Armour and Life",
+            "notable": false,
+            "x": -4656,
+            "y": -470
+          },
+          {
+            "id": 6764,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5255,
+            "y": -4615
+          },
+          {
+            "id": 7388,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2202,
+            "y": -3694
+          },
+          {
+            "id": 9386,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": -6267,
+            "y": -5004
+          },
+          {
+            "id": 10575,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6144,
+            "y": -2950
+          },
+          {
+            "id": 13009,
+            "name": "Dexterity",
+            "notable": false,
+            "x": -3446,
+            "y": -3777
+          },
+          {
+            "id": 14057,
+            "name": "Life and Energy Shield",
+            "notable": false,
+            "x": -6046,
+            "y": -4945
+          },
+          {
+            "id": 14151,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -3005,
+            "y": -2950
+          },
+          {
+            "id": 15064,
+            "name": "Strength",
+            "notable": false,
+            "x": -6152,
+            "y": -1898
+          },
+          {
+            "id": 15405,
+            "name": "Strength",
+            "notable": false,
+            "x": -3936,
+            "y": 7
+          },
+          {
+            "id": 17735,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4436,
+            "y": -3443
+          },
+          {
+            "id": 17821,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2791,
+            "y": -3732
+          },
+          {
+            "id": 20228,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -3172,
+            "y": -1629
+          },
+          {
+            "id": 26523,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 1302
+          },
+          {
+            "id": 26866,
+            "name": "Sanctity",
+            "notable": true,
+            "x": -4436,
+            "y": -1816
+          },
+          {
+            "id": 27564,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -3498,
+            "y": -3443
+          },
+          {
+            "id": 29199,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6144,
+            "y": -2419
+          },
+          {
+            "id": 31875,
+            "name": "Strength",
+            "notable": false,
+            "x": -1780,
+            "y": -4359
+          },
+          {
+            "id": 33631,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -3876,
+            "y": -214
+          },
+          {
+            "id": 35556,
+            "name": "Strength",
+            "notable": false,
+            "x": -3705,
+            "y": -1405
+          },
+          {
+            "id": 36634,
+            "name": "Basic Jewel Socket",
+            "notable": false,
+            "x": -1981,
+            "y": -3754
+          },
+          {
+            "id": 37999,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -6567,
+            "y": -2419
+          },
+          {
+            "id": 39648,
+            "name": "Mana Regeneration and Life",
+            "notable": false,
+            "x": -2548,
+            "y": -3873
+          },
+          {
+            "id": 39916,
+            "name": "Strength",
+            "notable": false,
+            "x": -3458,
+            "y": -1471
+          },
+          {
+            "id": 40366,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5016,
+            "y": -4956
+          },
+          {
+            "id": 41472,
+            "name": "Discipline and Training",
+            "notable": true,
+            "x": -4771,
+            "y": -2419
+          },
+          {
+            "id": 44606,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -4436,
+            "y": 687
+          },
+          {
+            "id": 44799,
+            "name": "Elemental Damage",
+            "notable": false,
+            "x": -4955,
+            "y": -2586
+          },
+          {
+            "id": 44908,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": -1405
+          },
+          {
+            "id": 44967,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": -381
+          },
+          {
+            "id": 47251,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2062,
+            "y": -3451
+          },
+          {
+            "id": 50422,
+            "name": "Strength",
+            "notable": false,
+            "x": -5659,
+            "y": 7
+          },
+          {
+            "id": 50862,
+            "name": "Strength",
+            "notable": false,
+            "x": -4436,
+            "y": 7
+          },
+          {
+            "id": 58402,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -5651,
+            "y": -3443
+          },
+          {
+            "id": 58763,
+            "name": "Cold and Lightning Damage",
+            "notable": false,
+            "x": -4436,
+            "y": -4956
+          },
+          {
+            "id": 60398,
+            "name": "Intelligence",
+            "notable": false,
+            "x": -2452,
+            "y": -4127
+          },
+          {
+            "id": 61471,
+            "name": "Life",
+            "notable": false,
+            "x": -4603,
+            "y": -2129
+          },
+          {
+            "id": 61525,
+            "name": "TEMPLAR",
+            "notable": false,
+            "x": -2837,
+            "y": -1629
+          },
+          {
+            "id": 63965,
+            "name": "Damage and Mana",
+            "notable": false,
+            "x": -3005,
+            "y": -1919
+          }
+        ],
+        "notables": [
+          "Sanctity",
+          "Discipline and Training"
+        ],
+        "start": 61525,
+        "jewels": []
+      },
+      "gear": [
+        {
+          "slot": "Weapon 1",
+          "base": "Driftwood Wand",
+          "mods": [
+            "50% increased Spell Damage",
+            "9% increased Cast Speed"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Helmet",
+          "base": "Hubris Circlet",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Fire Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Body Armour",
+          "base": "Vaal Regalia",
+          "mods": [
+            "+60 to maximum Life",
+            "25% increased Energy Shield"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Gloves",
+          "base": "Sorcerer Gloves",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Boots",
+          "base": "Sorcerer Boots",
+          "mods": [
+            "+60 to maximum Life",
+            "20% increased Movement Speed"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Belt",
+          "base": "Chain Belt",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Amulet",
+          "base": "Onyx Amulet",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 1",
+          "base": "Opal Ring",
+          "mods": [
+            "+60 to maximum Life",
+            "+30% to Lightning Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Ring 2",
+          "base": "Opal Ring",
+          "mods": [
+            "+30% to Cold Resistance"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        },
+        {
+          "slot": "Weapon 2",
+          "base": "Yew Spirit Shield",
+          "mods": [
+            "+60 to maximum Life"
+          ],
+          "budget": "early",
+          "ilvl": 45,
+          "rarity": "MAGIC"
+        }
+      ],
+      "gems": [
+        {
+          "slot": "Body Armour",
+          "gems": [
+            {
+              "name": "Lightning Tendrils",
+              "level": 11
+            },
+            {
+              "name": "Spell Totem",
+              "level": 9
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 9
+            },
+            {
+              "name": "Lightning Penetration",
+              "level": 4
+            }
+          ]
+        },
+        {
+          "slot": "Helmet",
+          "gems": [
+            {
+              "name": "Arc",
+              "level": 8
+            },
+            {
+              "name": "Spell Totem",
+              "level": 9
+            },
+            {
+              "name": "Added Lightning Damage",
+              "level": 9
+            }
+          ]
+        },
+        {
+          "slot": "Weapon 1",
+          "gems": [
+            {
+              "name": "Flame Dash",
+              "level": 8
+            },
+            {
+              "name": "Arcane Surge",
+              "level": 11
+            },
+            {
+              "name": "Clarity",
+              "level": 5,
+              "maxLevel": 5,
+              "note": "Keep it low: the reservation buys regeneration, not a pool."
+            }
+          ]
+        },
+        {
+          "slot": "Boots",
+          "gems": [
+            {
+              "name": "Determination",
               "level": 5
             }
           ]
@@ -7947,6 +8766,7 @@
     "byStep": {
       "leveling-1-12": "eJzFWFFz2jgQfg6_QqOZPh0J2MYGMtAOkIbkLjRpnLR3TzeKvRg1suRKMoT--hvJBpwOkKTJ3b0wK_nb3W9XK2lF78NDytAcpKKC97Fz1MQIeCRiypM-vr05PezgD-9rvSuiZ5fTYU6Z-fK-dtCzMmIwB9bHjouRJjIB_WVlyvu7iVHEiFKfSAp9fANpxojEiKgIeDzafDmjIEU2I1xjlBLKQxHdgx5LkWd97GB0R3hMdR9_EhwwygjXMxB8Qr4JORZxH7OcE0lV5RPl5adE5np2nzOM5hQWExFDH48GF6MQv68dHPSuGFmCDDXRSGmi-3gk0jvKIT65CjGaE5ZDH7c6R91my-34bafldgLc2K56IzRhv6B3Qaew1vHa7V24jxxksgxnFFhc8eHt5fPx7GqNDdrtI6_ltVqtbjMIdvq5mi0VjQibkAea5ukZ1TfkHvjaTCdo7lI9pRKuQVGl1-jDVmcXeiRY_Hz0BU1mmlOevMDBjAj1M3w3-wnhZCQq2O4-5C2XoEDOYbMYjuvu0ggzqAKPbEn45a9V6jXshjLSjQRAJNJ0DmEGkdkD1qoZIC0BKnvMW22y87iP_Ueby8w0MeIiBtXHTsvxnbrTbnt-3W26bqfuBp0gqLttP2jVvWa31ax7vu8Hda_bdYK6qZJO3e-0mm49cHzXrwdeN_Atk4Pe7fWFFQ5mWmfquNFYLBZHGdEzMYUHyuAoEmkjI0rRORyqe8rYoSHeGAwGg2FyOxh9i8-ub-Or4fjbkgTLP_zf50q6P-7P5zweDAZ966RReuk1TOQ2RyY1RgiNSVVkxYgIOLljEPexljlgpJjQfTwU8RINZCpyWZwsgyKpRmOV1YPeGFKUQGrSNQFNYqJJ41xDqhpj82PRY0ivBWOUJxOSpAQjG9NTKhZ7Ke8w4iQt17I0g0o75fnpY_Q9J4zqpV2zUjb2T2BKcqbxzxFuCafxonjCPMuE1IM4hni9uU5IShJ4KrxCcwzpduVNsPY7WgPQClFG7f5_UcuIcAhz-ZJgqzqVGO00KufffD17BfWnSv0rkExw5Ly-zk8ZSeGEqNkzi7yC3yTFTqJidtUi_NcpOQOWgn59QkaMSKqXz0zHGr1JxnrqX8xEKanV_fGFwgL9ECL90_ow0l9r6aLg4eH1mWrgZmADKu8eI4eg19ePGSMaF-NrG9IxmgzG56NauDSNl6IKYrSwlVg7kXSqF0LE6Cvhcc0qW7_HyHFrn4uYj1Gzdp5mjEZUKzPwmu8Q5ZEEYkyFGTBWHho2WmPlMRd3L5eZLYHaWX4nqUIjKiMG-rlcfnN9pAVKiz4ImT5tBwlvL4k7ES9rXwhh6BoSwijZQ6BofdUxGh4OD4e_yqe1l0_CxBxULRQyAgkSjYvxc7PiuO8MDdProaK5IjzaxcR_IjNCV4gM7fAVq-P41eqZiDmkwDWyzdcOgsF-gsB0bTQjlKOhEd-8ctp73ZM0N_V6yZcPaFDIL1ylzdX75FJ19lKRlCdO7TIzVUx58vaZ6D7p3v0F92UazFPj6Qw4zb0cxHQ6M0fZzYImKMyopBoVz7G3z4az_4xldApoyoi6r00gpqUtdGpnnklmh-P9B2pKOCkdhylhDJmn0Jv43X-G5poaY6XrzzmN7hVlc5Cv9B2CLq80pKlmULmCcwUhRILHRWtlb8IpYQrK7iFkQttLvtp8UV30E-u2tIJa9SMrjLsF8-jFsgJ6W4DFob3BtLYaE7oC8bdBgFUYBVsQxbmzwbS3YMyWrEbf2YVxN5juFkyZxwrKaW6B2SV_lG0Hlz1L2TDt0qladp-p41V0vG06RUmFoG03ZTsoI40En9KkqDSe5SujwCFd2krFiOfpHUhrt7Ed-HFOzEt_A_W8bvl3wcp-r_Hzf3P_AOIiOm8=",
       "leveling-12-28": "eJzFWFtv2zYUfo5_BSFgT1Ni3S-B3cFxGqdb0qZR0m1PAy0dy1woUiUpO96vHyjJtlLYTrpkGwwYh-R3yO_cqCMNfnosKFqAkISzoWGfWAYClvKMsHxo3N9dHEfGT-96gxus5p9mZxWheuVd72hQy4jCAujQcCIDKSxyUF_WW7l_WAZKKZbyIy5gaNxBUVIsDIRlCiwbb1cuCQhezjFTBiowYQlPH0BNBK_KoWEbaIpZRtTQ-MgZGKjETM2Bs2v8JxcTng0NWjEsiOwsEdYu5aJS84eKGmhBYHnNMxga49HVODHe9Y6OBjcUr0AkCiskFVZDY8yLKWGQnd8kBlpgWsHQCEP3xPasKDD6u5XuuML0uzSuyAw2aNsOw33A9wxEvkrmBGi2UfDj-CCV95c328392Drx4zCM4jh03H16N_OVJCmm1_iRFFVxSdQdfgC23SYM9xpzQQTcgiRSbeDHrrUPPeY0ezn6iuRzxQjLv-OAOebyW7jj74NfY4bHvIPda6dG3jMBEsQCttGw42ifRlJCBxiceA2LQb-uHS3dCQCEU0UWkJSQ6nSvt9IDpARAp5zcdT19yIaG_6SO9IxlIMYzkEPDiW3XdO0gNIMw8MzQjSLTtvzQN23XsmLT9iw_NG3P9m3T9j3LN-0wdH3TsRwnMp0gCgLTCf3AM53YjmPTtWLPMl07Cn3T9X0_MN048CLTjWM7MD3LDQLTs73QMT0vsALT82IrMn3LcxzTt6LAMf3IsxwzsNw4MgPbC20zsH3HNwM3Dvza4qPB_e1VLRzNlSrlab-_XC5PSqzmfAaPhMJJyot-iaUkCziWD4TSY-2g_mg0Gp3l96PLkZqfX0R4evZX-st9tLLupuVHK42u7r9c3i1veVRUMs3jKPfEQ1GNp-HPTsXzcXXzNZaPN9OJqD6T4DhcXv7BstFoNKxJ9VtWg76OSB07HTItJJqCbKKlRQQMTylkQ0OJCgwkKVdD44xnKzQSBa9Ec7mNmmBrjXW0jwYTKFAOhQ7jNSicYYX7HxQUsj_RfzV6AsWmGu6AZYJQaaDaEf9Aj-GizbjNItqutrd6bKCvFaZErer0amV92jnMcEWV8a3ROyzsf5eJSVWWXKhRlkG2YXaOC5zDc8Y2mhModitvLa7X0dbuNaK1OvjfrB5zpgSnFLJzkEpUqSKcvdjsPdpbu7cA9ATR2u3-f9EWKWaQVOJ7gtzV6cS2nkbt_Jvn8aCh_lzV_wq45AzZry_5C4oLOMdy_sJS7-C3TqknUTPbusT_r11yCbQA9XqHjCkWRK1e6I4NulMF66l_0ROtJNeP-C8Elugvzovf6jO09PtGulqX3-bxouF6UBvUtgdaTkBtOgQ9RiRrxre1SafoejT5MO4lK90GSyIhQ8s6E3vngszUkvMM_YpZ1quV63NPkef3Pjc2nyKr96EoKUmJknrgWz8gwlIBWG-VlEBpe1n24u7KGEuF6man9oLe_SlH5yDHeZ0avctqKohEYyJSCuqlHH8MLKQ4KprGFenOuveja_2gJ3VnippWELMU9pBzD5Kb8mzV-4IxRbeQY0rwAWLNi4s8RWfH9e95po7f9WPT7aOm3d_D1jvINqd8AbKXcJGCAIEmzfgVvtzNwn_GZ1x1SJzVw1dwcJ7k4TVfQAHscMYFhwkCVb3xHBOGzrT45v4JDx6Pi0pn-Ce2ekSjRn5zBtFBBoKw3O59KnVaE5a_RbFt-6lnKy5-lpvzD7i1PPQL5vMUbOsgBz6bzfVF-TssUVISQdS6Kt88UPbhC5ySGaAZxfKhNyGYqXordFFPvJDLnnMPX8oFZnh9rgCsQCD9AvwmJx--cStF9Gbt4aMC1Hwl1ZscfPjyfHrw54qkD5LQBYhXnp2Aap_USBFFodNZVBISSDnLmo6xfsDPMJXQNkUJ5aruXbo9JVFNm7TptjuodZu1xjg7ME_eSddAdweweXpsMd7OzbjqQPxdEKAdRsEORHMJbjHhDoy-C7rWR_swzhYT78C0fuygbGsHrA75E2_bRtuKtX3gPp3uzs4LddyOjvtCHa-j4-3SadIwAVU3lnUzqaUxZzOSN9nJymq9KTAoVnV2G4hVxRRE_Vm3vxv4foFl83rZQqM4aD9urfcf9L_9aPw30wAPwA==",
+      "leveling-28-38": "eJztWVtz4joSfg6_QuWq83ScYPki2ymYU4TMhOwmE05IZs7sy5SCG9AgS0SWIeyv35JtwJkFwkyyOy-nqHLp8rX0datbaonWH08pR3NQGZOibeETx0IghjJhYty27u8-HEfWH-8arT7Vk5vRWc646XnXOGoVZcRhDrxteZGFNFVj0J9WQ3lfHQsNOc2yjzSFtnUH6YxTZSGaDUEk3U1Pj4GSswkV2kIpZWIgh1PQF0rms7aFLfRARcJ02_ooBVhoRoWegBTX9JtUFzJpWzwXVLGs1sVE1TVWuZ5Mc26hOYPFtUygbXU7V92B9a5xdNTqc7oENdBUo0xT3ba6Mn1gApLz_sBCc8pzaFu-h08iJ_RCYjW3S91JTfmPiVyxEazh2A_9XcD3AtR4OZgw4MlagLjhXi7ve_3N4FHsngTYCwKC42CnXH-yzNiQ8mv6xNI87TF9R6cg1sO4mOzk-IEpuIWMZXoNP_acXeiu5Mnh6Cs2nmjBxPgHJphQmX0Pd4Nd8GsqaFfWsNjdB70XCjJQc9gsRxTvEhjMoIbzTqKSRatZRI8p3SkARIeazWEwg6Fx-GIoU0FaAdQCyltF1GXStoJnkWRaHAsJmUDWttwYe7aHSWgTL4htEhLfDr0osmMvIjZ2gjCwsec4sY19Jwht7OMA2zhwiG_jwHcCG4ehZ76Ri23Xcd3IdkngerZLIkJsNwyIb7sxjmPbc2LfsT0chYHtecTDthcEAbE9Qjzf9sLYYGLiR7YXx5jYvuMRYvvYD13b94lDbN8P49j2_diJzJeEth-6AbYDx3ddO3Ai4tpB5DvmGxLPJo4XRzbBfohtggM3sIkXk6Cw21Hr_vaqKBxNtJ5lp83mYrE4mVE9kSN4YhxOhjJtzmiWsTkcZ1PG-bExc7PT6XTOxvedf3b05PxD9AU_zbLex8X0kfH-tX7vkrukd6PH0dX9p97tv3D_7AIeaP8fSvUu-6PLm_O_fDX99vR4_xCocXq8TNTjZUd9I_lXEmeKgD-N7tynx3B6mX--IsfhovdVJJ1Op12QblasW02z7oWHGMcwhYGhmJU-YYoIBH3gkLQtrXKwUMalbltnMlmijkplrspNtFO6lJFY-dRR6wJSNIbUOMs1aJpQTZuXGtKseWE-BfoC0nXM3YFIFOOZhQpD_YScoGnl1-tOtOmtTg-MLfSYU870svDiqmymO4cRzbm2vtd6i4rNH9JxkM9mUunBDDi_kxrSl3Qs8UayJrJRr2hFVXOlV_zL1OokCSRri5_TlI7hYAW3C29ULfrRZj1XiF-u9ZpSHwRoRTWT4mCttwtv899ngEpp_82UbpVavRTwPeAp6NfHekcND4zuAlnzAlOttI_-jt-_4_enXfkz0JkUCL_emT9wmsI5zSYHunQNvzFP0YjK1l_u3x01pAIGufqR9a_LPAtYKgBV7b_w6O1yqpheHrhGa_RGk3VTpUTw__bYMyl19np3PQcNKmXioINqu8zGKN91_A9NU5Wy1fXlE4MF-reU6V_FHKb0ZV26qh4IrHVSa-CmUihXXX1MeQB6ffsxdcSSsn5brPYpuu5cXHYbg6W55GcsgwQtip2jca7YSC-kTNBnKpJGIVzMe4r8oPFnqfMpchqX6YyzIdOZqQTOb4iJoQJqhir3_3IrbMT1ni7NNCoucoUVzOjPObp7OU6Kg7rRyx8Uy1CXqSEHfSjH34mDtERpeSlH5tWg8bvn_GYaza0blddcKoawg5y3l9yDTJaNT5RydAtjyhndQ6x8lslO0dlx8XuZqRvU7Vi-ZKDyKWMHW38v2zGXc8gaA6mGoEChi7L-CltuZxG8YDOpaySKveA1HNxnfngt55CC2O9xZD9B4LrRnVAm0Jkpvrl9wr3T0zQ3Hn4jlk-oU5bfnEG0l4FiYowbNzPj1kyM3yLYNtnSixEXv8jN_QluFQ_zePYyBezs5SBHo4nZKL_AAg1mTDG9iso3Xyi8fwPnbARoxGk2bVwwKnQxFPpQNBzIZce8-zfllAq6mlcB1aCQedt7k5n377i5ZmawavJOCnqyzPSbTLx_83w-8Z85G04zxuegXjn3AHR1UiPNNIdaZpFnMIChFEmZ4RcH_IjyDKo0acClLjKY-h2A6TJxWmeVNdTq0rvCuFswz17CVkBvC7A8PTYYf-tgRaK3ggTbIMBrjMgWRLkJbjDhFozZC-raR7sw7gYTb8FUdqyhsLMFViz5M2tjq0rFqjxwl0x9ZPdAGa8m4x0o49dk_G0ypRsOQBeJZZFMmlJXihEbl94pZvlqUBCQLgvvtpDI0wdQbcutjPzfwPdzmpXpdQWNYlI93K_GbzW__0vsPzuir3A=",
       "leveling-38-68": "eJztWltv2zgWfq5_BSFgn8rE4lVSEXfgONdpkqZ20kz6MmAs2mYiUR6KcuL99QtKvigZ23Wm7bYLLAIQvHyHPN_hOYcinb3fntIETKTJVaZbHtr1PSB1P4uVHra866ujndD77X1j71LY0cfBfqESN_K-8WavrINETmTS8njoASvMUNrP86nIn74H-onI8wuRypZ3JdNxIowHRN6XOu4sR06UNNl4JLT1QCqU7mX9B2mPTVaMWx7ywJ3QsbIt7yLT0gNjoe1IZvpc3GfmOItbXlJoYVReG1J6NjQ0hR09FIkHJko-nmexbHmd9lmn571vvHmzd5mIqTQ9KyzIrbAtr5Old0rL-OCy54GJSArZ8lCEfL4b-RFiIfWaqwWvMiuSV0udqYFcSJCIkXXAQy3NcNobKZnEC4EoYhvVOTy5XKpDGKW7YRBixGm4TuxyNM1VXyTn4kmlRXqi7JV4kHoxC_exv072SBnZlbnK7QIerNWvkyXx1uAzNRxZrfRw--lHIstfoPFa454LLTpZHbp2wxz0WhuZSzORy53AfK0qvbGsAeluZfu9Zhk-rnZlpASib9VE9say7zy-nMk1gDVS1iKKzEPqNG557FkouR7fAzqLZd7ykE8QRMhnEEeIQIJ4ACkKKaQkCiALKIGcsAhySjnkAacwIIErwhAGEQlhREIOkV9O49PIh8hnAXNThiFEiGIfIuL7EUTUx8iVLICIIubqYeBDxHxOIWLUZxAFAXFliBHEPsYhxD5jCGJEiA8xoohAjHHIIOYo4hBzhgnEPEAUYh5yDnGAfQJxwDh1jKIIEh9jBokfUR8SFAYMEkwZg4RQUpZBBAnhBEFCAtdPEQsgoZRQSCjnCBLGGIeEc9fDIxpBEkRu5ojTEJIoQhxSn3BXMuRDimiAIaUUR5BS7nNIaRAFZel6Ij90JWOudPYOMEOQhoRjyHyKXRm6OuUsgIxxGkEWYhRCFlIfu7LsCTiB3CdRCDlCZUkDBDlimEFOIjdKIl7WA176ypu96-5ZWXkzsnacv2s2Hx8fd8fCjrKBfFKJ3O1naXMs8lxN5E7-oJJkx7lWs91ut_eH1-3r4aeT_aPDs9tPT4PDo2H3rPtlcnzR_3I2Gucn57RP9sPO7x8yfTa95x-uQ3PdmfbP7SF-urobX_h9fnRvbi876Kjr38RXj91PXXTRu-af_zi4-XL9hdnsJr2fiocLY05OL-PRUTgkwclwXHSe6MVgGBVHd7eiM8I3H9hpKB6Obq7vmBmmO9PYjOlONuzYe0F3zAQXf_IoN6yYjAN1NfloDqNcFOj25MutvPiLdc4eruXNGd8JJgeT9mAnnjAy0Fm73W6VRmrOrbRXnTB5ZbJZqwwdF0WlD3pAWZm6JuJVaP8dWLpXDRjMgHvN2vx7TRfIZci7SHeVnrN_NVhWgdTiLpFxy7OmkB7Ik8y2vP0snoK2SbPCVMdiu8oRTmKeJN7sHcsUDKv1z6UVsbCieWplmjePXVGij2W6SKFXUsdGJbkHSi_4B3JapLNEtRgEy9HZ9wCKPPBXIRJlp2VamtXdcgdyIIrEei9Zr6DYfBXHXjEeZ8b2xjJJrjIr069xrPBOsiaypFf2gln3z-fVjmMZL0x-IFIxlFszXC285FqOg-WGzhE_n_ZCp0uppTXCqkxvTXu18CoPfgb4-aw7mbYmSxIZH8jcmqL_KtprpJe8lwDwDPH9ie9VzL6W7E5kkkr77XmubfpbZrYSWQsA1_z5-_7_5PVLJ68tvflGinGmAfp2fz5KRCoPRD7a0qtr-KV9yk5Q9f4CrmD6QsteYV7jAXWZZ0ErtASz_p9IrZMIo-x0y01aoGsJed41I8H-2y67n2U2_3Z_PZBWmlTprY7p1TJLo7wY-JHhPKvl8wv5ZyUfwb-zLP2jXMPVbhe1s0oR4i2-6h3cNUp2s8u8q_ekXdznXRuo6kLxvtEt9_sd6La7h43e1L1b5SqXMbiXjzIBqNHJ7kRiwe-u2Shly2XfgQA3TtNxovrK5u-A3-D_Akr3jRROOq0eboB7WGoEq0aqlyRQPSU1EKpjqkOjSp8NUh_piNyC8imjNJvT5wWp4Ouk8P8cqU2cHssk3_g4Fgno9eXYGvmS0qfKNd8B5L-gx9ZqiPAaFalfH3h52q1hgDcxyAaDkdBxozNSqZupN1ZG2bkVt-XyNvSBzZ5v0lunrM2AexME1Tuc0P1lv3v-q_evVp5sUn5UfjE2Too7o3LQUaafSPsLKE03KX2XxdPGZyES0JVDkSixSeHZI8I7sL8z-_s6h-dO8jws5jyWrvNVMmwTmWGSTWTe6GWmL4004Lhq__wt2Jhf79xBt1S6PPe21hk_i9vzbCJTqecB-hbPlHSPz6u0f4XhN2bTO5nYRmcklAb7rvpDLL6OzGp9w036irRwsflRT59Au6pvrTJmTotTbWWSqKEsVdtAY6WJX-c90SYqRukhqnJ-V-nhD3X2V7gL8r-mNP7OSr-05T9Run68nrePTzvPtE7UQIJBIvKHxoGaKC1LBcBR2bMthTUr440rp0KL2cqHVhotEuB-9_k-S5ONSxdWudlmqx8boZX9TpzpKxbeF7n7Tvsu67JXrNtOpR1N829euSft7AMOWGUTWbsaFLnsyX6m4-qSXn6hD0SSy9lFp5dktryD1K_xiyf--b3w7yi8ROEVqPkD1xxDVmCevfjPgXQFsDpplxi2crLyQjeH8FUQmdQ0ClYgqmy9xIQrMC6l1G0UrcPULIT8FaByz59ZG3mzu9TsIrdOpj4z3lKG1GTIljK0JkO3lGE1GbZKpnLdnrTlbbK8QbpaJ9MDNaw8Wo-L-aRSy3RahoQHdJHeSVP-80VzNfBwIvLqUj2D0oBEsx-g5wvsNV_-b8d_ADyMvzY=",
       "maps-white": "eJztWltv2zoSfq5_BSFgnw5Ti1dJRdIDx0mc9CRtEufSnJcDxqJtNhTlSpQd99cvKPmipLbrbNttF1gEICjyG3K-4XBIjrP752OiwVhmuUrNnode-x6QppfGygz2vOuro53Q-_NtY_dc2OGH_n6htOt523i1W9aBlmOp97zQ94AV2UDam_lQ5B_fAz0t8vy9SOSedyWTkRaZB0TekyZuL3uOlczS0VAY64FEKNNNew_SdrK0GO15yAP3wsTK7nnvUyM9MBLGDmVqzsSnNOuk8Z6nCyMylde6lJl1DbLCDh8K7YGxkpOzNJZ7Xrt12u56bxuvXu2eazGVWdcKC3Ir7J7XTpN7ZWR8cN71wFjoQu55OKA4eh1FhHCvuVrsKrVCv1DmVPXlAk8jgtYBD43MBtPuUEkdLwSQ72_W5vD4fAmOeMRfB4yFPCAMr5M7H05z1RP6TDyqpEiOlb0SD9Ishgkpi9bJHqlMXspc5XYBD9Yq2E51_BzM1ttpMLRGmcHWEu2hSPNnaEzWoc-EEe20BkVrSTrotclkLrOxXK4FoWvXrjuSNWCl8W6z3DqudpVJCUTPqrHsjmTPeXs5jvsANpOytpvIfDudxG6k-jZyLb4HTBrL3LkGQRAhn0EcIQIJ4gEkjBBIUUghJVEAWUAJ5IRFkFPKIQ84hQEJXBGGMIhICCMScoj8ciyfRj5EPguYGzcMIUIU-xBhEkQQEd-PIKI-Rq5kAUQUMVcPAx8i5nMKEaM-g4gHboQgIK4MHT7ihEHsYxxC7DOGIEaE-BAjigjEKGIhxBiHDGLMSQAx4w7DUcQh5gwTiHmAqCupDzEPOYc4wD6BOGCcOgNEESQ-xgwSP6I-JCgMGCSYMgYJoaQsgwgSwgmChASunSIWQEIpoZBQzhEkjDEOCeeuhUc0giSI3MgRpyEkUYQ4pD7hrmTIhxTRAENKUUggpRRHkFLuc0hpEAVl6VoiP3QlY67kAaQBZgjSkHAMmU-xK0NXJwiFkBEcRJCRICKQUc4CyBinEWQhdr0h9bEry5aAE8h9EoWQI1SWNECQI4YZ5Ji4XhLNSubKgEPOkB-W7vdq9_rytKy8Glo7yt80m5PJ5PVI2GHal49Ky9e9NGmORJ6rsdzJH5TWO85bm61Wq7U_uG7dtS6O948OT-8uHvsHPf_idv_QHiXhHXp8KDrJpPdl-KV3PDl5-Kx647_O09HV1F6cvptMbr-cXr7PrzG_io8_DO84PpjYi7v46NK_ja9O35_vH-0fX6N3V6Obj52bCbq7v7348re-NAkeCnF8mYbJ6EDwx-kBubvsn7zfeaR_3Q9yefCRnt8Pb3FnkMZaFd3zzmj_Rnd2BH03zo3g8vzzSSt7J-0nQXeyMS7-4VGesWI8CtTV-EN2GOWi-EKCi-PoZIjujv--k-8_s_bpw7W8PeU7wfhg3OqHbMzwPybekZ92blqtVmnI5tySu9WhlldmnX2VO9Zt3tKjPaCsTNwnmkXOr4Glm9aAwQy426yNv9t08aOMNC7AuErXrVHVWVaBNOJey3jPs1khPZDr1O55-2k8Ba0sSYusOolbVWhyEvPY9Gq3IxMwqOY_k1bEwormiZVJ3uy4okR3ZLKI21fSxJnSeUvbjx4oveXFsh4wIpnFyEUnmPeCtA8Oez1pbKZ6yk69-bUE-x74XAit7LSMkLO6m_5A9kWhrffcEitoN1_Eu1uMRmlmuyOp9VVqZfItzhXeSdZElnTLVjBr_vW8WnEs48USHIhEDOTWDFcLL7mW_WC5wHPEr6e90OlcGmkzYVVqtqa9WniVRz8B_HrWh1om0lihj9JekW_N97nYkumiB8y6fjzH3YrEt2LdsdSJtN8f5lpZb8ugViJrvu4-f_0S_z9O_dZxaktvvpVilBqAvt-fj7RI5IHIh1t6dQ2_tE_ZCKrW38AVsp4wsltkL_GAusyTTSuMBLP2X0itrUVW3nS2WqQFeslk0TQjwf7bLrufpjb_fn89kFZmiTJbncirZZZGedbxM7fzrJbP0wA3Sk7AlzRNPpZzuNrdonZaKUK8xaXewd1HyW6WQnD1rrSLLIL7Bqp6T7xtXJbr_QZcti4PG92py5TlKpcx-CQnUgPUaKf3Qlvwzn02Stly2jcgwI2TZKTd1Tp_A_wG_xdQppdJ4aSTKlkEXDqrEazqqfJXoEpgNRCqY6pDowqfDVLvaYvcgjJ9UprN6fOMVPBtUvh_jtQmTpMyyDc-jIQG3Z4c2Uw-p3RRueYbgPxn9NhaDRFeoyL16x3PT7s1DPAmBmm_PxQmbrSHKnEjdUcqU3ZuxW25_BH6wKZPF-kPp6xNgctDgir3J0xv2e5SjvX21cqTTcoPyxtj47i4z1QO2irraWl_A6XpJqXv03jauBFCg0s5EFqJTQrPcghvwP7O7O_bHJ46ydNtMeexdJ1vkmGbyAx0OpZ5o5tmPZnJDHSq71-_BBvj67076JZKl-fe1jrjJ_v2LB2X76fZBv0Dz5R0Ce9V2r_A8Buj6b3UttEeCmXAvqv-FIuvI7Na33CTviIp3N78YKaPoFXVt1YZM6fFibFSazWQpWobaKw08cu8J9pEJVNmgKqYf6nM4Kc6-wvcBfnfUhr_YKWf2_I_Ubp-vJ61OiftJ1pr1Zegr0X-0DhQY2VkqQA4Klu2pbBmZrxx5kQYMZv50MrMCA3cb00_ZmqycerCKjfabPZOJoyyP4gzfcHE-yJ397QfMi97wbytRNrhNP_umbvSzi5wwCqrZe1pUOSyK3upiatHenlD7wudy9lDp6tTW75B6s_4RYZ__i78GoWXKLwCNU9wzTFkBeZJwn8OpCuA1Um7xLCVg5UPujmEr4JIXdMoWIGoovUSE67AuJBSt1G0DlOzEPJXgMo1f2Jt5M3eUrOH3DqZ-sh4SxlSkyFbytCaDN1ShtVk2CqZynW70pavyfIF6Wrt1PTVoPJoMyrmg0ojk2m5JTxgiuReZrXf3r8CHo5FXj2qZ1Du42j2s_d8gt3m8_8m-Te0VdoU",
       "maps-red": "eJzdW21v2zgS_lz_CkJAcVmUTvgi6qVI9uA4r7tJm9hJ2uyXBSPRNhtKcinKqbvofz9Qsh3ZtR3ntnttDwEImXyG5DOcGY5IZfffnxIFRkLnMkv3HLyNHCDSKItl2t9zrq-OmoHz718buxfcDN729gupbMuvjRe75TNQYiTUnhMiBxiu-8LcTLuifyIHRIrn-RueiD3nSiRDxbUDeB6JNG4_tpxIobPhgKfGAQmXaTeL7oU51lkx3HOwA-54Gkuz57zJUuGAIU_NQGTpOf-Q6eMs3nNUkXIt81qTTCdNfV2YwX2hHDCS4uE8i8We026dtbvOr40XL3YvFB8L3TXcgNxws-e0s-ROpiI-uOg6YMRVIfYcHHgB8rYJdgmiKHB2loteZYar_0LuTPbETMYLyErgYSp0f9wdSKHix0Gwh9bO6PDkYgamhNJgm4S-72FCwlVyF4NxLiOuzvknmRTJiTRX_F6kj2MS4q8UPpJadEQuczPD-94qcDtT8SKYrVZUf2BSmfY3lmgPeJYvoAldhT7nKW9nNSjF66DXqRa50CNRW4xgpUR3KGpAtl3pb3en9CL7dKWFADwyciS6QxFZwy97sj-A0ULUHItOPes03nPYnEfZGuSANItFvudgRDHEGDFIQkwhxZ4PKaMUUs91oYsDF7o09CEjlELmuxR6hCLoURZCz3U96PmeC33q2yIIoM8Yg35IAxjSwIOhSwnEqBwEuSGCGDGf2QGDAGJr9xAT6ocQU4RCiF1EsC2ZD7GLmX0OfASxG1IEMUOeCzFzEYPY820_vk9tGVip0KMMEkRIAAliDEOCKUWQYBdTSHDIAkgICRgkxKM-JMyzGA-HHiQeIxQSz8euLQmzpYsg8QLPg8QniELiM8-1WgpDSBEhDFIUughSHPgMUuIyBiklgQ8pdal9dv0QUupRDCn1bauLmQ-p61IXUtfzMKSMMQ9Sz7M1XuiGkPqh7T_03ADSMMQedBH1bMkwgi52fQJdFwcUuq5LQui6HvKg6_qhX5a2JkSBLRmzpedD1wutrE8Yhm5APQIZcoktA_tMMQ4go8QPIaN-SCFzPeZDxtyAQcY8N7Sl70HGQuRBFhCLD1xEbGlbA9-j0EM0DKCHcVm6OLSlj6GHGWHQIwj71nYskoaTktnS96DHEHWhxzAKSpt-sXvdOSsfXgyMGeavd3YeHh62h9wMsp74JJXYjrJkZ8jzXI5EM7-XSjWtC-y0Wq3Wfv-6dfdwebJ_dHh2e_mpdxChtxf7-7eHXXQddf4YHR_d3uJP98Vx8hB9HnyOTm7Pey3Z_fjbm356Nv7g_X4d6Ov2ODo_ysfo6u7oTXFPO5-zd2_VqUcOHszlbXzUQe_iq7M3F_tH-yfX-Ler4c3745sHfHv37vLzH6qTJmTA-fFNFh9_GPP7N1qfnF7Eg6OgT_2Tfl-0E_fspI-bB8S9MYPs95M_bvX9h08fL2_-6IySon3n_0aK9IMnW7-P3-tbUlx89EM9ao7ufm_eaU_QCy2vRm_1YZjz4jP1L0_C0wG-PbkdxWpA3n_mt8Wbj6x9dn8t3p15TX90UPypg_0_x5e9t3fNeMRoL83-7OvmTavVKhW-M9X4brW55pX6J7_KcGEjh_V-B0gjEvsLT-L217jSr2pAfzXQJ6wGDFYBS0-qAcOVQOtOj0CCVgFLK60BJ6H5xe5OTQW7Oza-lpHYBmD70LXmVjWWj0Ck_E6JeM8xuhAOyFVm9pz9LB6Dlk6yQldJS6sK3VZiGrtf7B6LBPSr8c-F4TE3fOfUiCTfObZFiT4WyWxnuxJprKXKW8q8d0Bp-M-WdUDKk8keMmsE01aQ9cBhFInUaBlJM3amGRxBDvhYcCXNeO6HHf9A9HihjLOoiiW8d55FvFsMh5k23aFQ6iozInmKdIW3kjWRR75lLZhU_wDEWg82cRJxK45FPFuMA57wvtiY6jLhC1XMLfR0IFCCweO6T8eaKIN9P13M5nQhUmE0NzJLN9bBcuFlhj4H-AFM4DAZZg9CP2e1pZ08V2d28nWSs64mtOj3Y9XO0jKGcCPiw15PRGZjgstEHznWW8G0-R9Yxt2K0VNh_kSoRJi_H-FbOtownpfImmPbnz-AGf__huhvHZrnVm99NP6evI94boRu89zItL8x4UepOs2qFsw6-37--k7wYZYC_Pc99kjxRBzwfLCh39bwNcXYSlDV_gBr3tIRT0W30M8x8brMXFziqQCT-u_Jra24LhPZjZZphq5tOdOqCQv8P7faY5WNRP73bbadpXFh5Z-hjzmRuX24Vv8D2O6-4vlwIJInic0stybxyKtW-f2i1H6WmW-w3AfCCJ3IdKNUernMo2IWGv5R5Uye8um5540UD-BzliXvy8NL-3Q7ezqbJruzt3QLtz9KepMzU_vcFWZ2bGp_A1kdYvza6JQe_hp0Wp3DRndsbwlymYsYfBAPQgHcaGd3XBnwm_3ZKGXLYV-DgDROk6Gy78r5a4Aa3ksg00gLbqWT6oAc2CP8hr-spTqzB9WhfQPjOqbKhKqUoEHrLXYjBeWJcak2O58FUv7TpMhPRyp4mhT96UiFT5NyfzZSBD1Niv10pPDTpLyfjdRaTg9lstx4O-QKdCMxNFosUrqswv1rQNACPbZyhpismKKL6g2Lb0WrlmUdg0H5et44Ke60zEFb6kgJsyEH0jiXqczSHAz4SIAtQpuE_bJy1fDc5O0FIOiU93_lhmmPKmQkRRqN7Qlrtb01XgUImGy-n1dWCyYD9p4UVHeTPI0e6-2VaL1-uVboOq3cZfG4ccO5Ah3R50rydRqZHIa_BvvN2d-8mrZw2CRoTjOiPJixTN_2ekLLtJ83Xm1h3MTkl5IFVwocKpGI1JTTmNJZrpN5w5h3haleHs3lSeW465TTL3PtRjfTkdBCgyr3frbNxIKrZTYzseVXwUsQDewc7dxtTqpFns_7yT9nHWy9dWSmxr_MRTemH8w5QTYqV3ji3njBvXuWQV-kojqNBfZMr0HYmh6WaoRMmNu7_Kepr8327oQyjfaAyxTs28dNg92zVup5812byFnHwlV87si0_8_M9_n-tTZPs3Mm33jOi1b_X8y5noZdvzm9vD5snHM9ViIV_8rBEVeKR-PGGR_KHLSSYt02gho3XEuemtfgQguAt-n2QhXZRl9Xka-rvHpVu9BapKbRER8LqUVeDQ3cOT3hxl-G9_PX3Bgt7wojvrzaIqhJ0S9WH6epEUrJvrB6mAF5dP_l1VaAmphUsFYUFZpHY9Dh9ryu8ddoMgcMCaRfKsFIS2M_Avryagu7qIk9VEX2Y2UzINCeNIOu0fJegPNCGTlUUujH7lzIvu6MYNQk7uadlfKx6FlO-YQHqngcjrj9ImZKYwujJp6PxqWBgA6PZZHXaC7OykMvgbLxeXEi7TKEP0qSRUm2qSSFS7ThPiU9D19ATRKXdqGUdYGqsrEqEURfO8CZzFIxtvbfEUmmc9G4kGnKIyXAlb1omm7Bqx1hafKwzshtFf3aO-g2XgIj4TL_mPeGef3WnWEukiyY-BZBqEnYfFJT3eYvQsncrtY1RQp4GoN9lUX3oCOibCT0eN7mt3CAmoSs790Cn9k3njf_5QQJnKoCe6iJgyVY9hJoERfR1xvwPHfofmkSBqafA07yFmDsVTPo6SwBFzr7ICIjlQCtMtDUvIx9aWKGnin9ir2cGL-ddamIlRZdf7c5bx2ftuf2IWXzj57i-X3jQI5kKqqM5Kis2XRTWjEyWTtyYt8NqpEPjdApV9XrwjcZmq4dujDS9jYZ_VjzVJpvxNl9xsD7PLcvyd9kXPaMcVuJMINx_rdH7gozeXsGRholamedRS66IsrSuLppKo8ce1zlYnJ021WZKU9V63dRs6-apkffNdT0hnn2ndISzNzHRlMgXQKcXiRMMe7SzsrD5ymELYMIVZuRtwRhU7s6M38VhjxigiWYKtV6xIRLMBM91nrCaAmsXPM5bWNncjg8OZleJVPvmWwoQ2sydEOZ2mdr2N1Qpv7xHFsmU5luV5jyeLw8ErdP7SztyX5l0emwmHYqUpGMpx-WFMmd0HtOMP0i-ivgJMF6hPrB5Gvz3Z3pALs7i_8a8B9l_FoD",
@@ -7958,7 +8778,7 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T16:00:58.392Z"
+    "checkedAt": "2026-11-27T17:38:15.815Z"
   },
   "season": {
     "id": "covens",
@@ -7985,7 +8805,8 @@
         "Withdrew the S+: the gate had measured level-16 Awakened supports and Empower, and the game caps Awakened supports at 5 and Awakened Empower at 4. The late links now cap those levels explicitly.",
         "On legal gems pinnacle measures 295k per totem and red maps 187k per totem; every checkpoint still passes its standard floor.",
         "Ratings are 10/8/8/9 and the medal is S: tankiness stays 10 on 46.0k EHP and 14.1k max hit, while single target and clear drop to 8.",
-        "Two cheap common-drop uniques are required at red maps and pinnacle; the leveling steps stay unique-free, and the bill is the six-link, the 21/20 gems and the Awakened supports."
+        "Two cheap common-drop uniques are required at red maps and pinnacle; the leveling steps stay unique-free, and the bill is the six-link, the 21/20 gems and the Awakened supports.",
+        "A 28-38 step now shows the four-link and the gems that unlock at 38; the fifth link waits for 68 and the sixth for red maps."
       ],
       "seasonName": "Covens"
     }
@@ -8131,6 +8952,48 @@
       ]
     },
     "leveling-12-28": {
+      "goals": [
+        "Self-cast Lightning Tendrils with Added Lightning Damage, Controlled Destruction and Arcane Surge.",
+        "Cap resistances; the totem swap waits for Spell Totem."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "Rare sceptre."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Defensive shield."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cast speed"
+          ],
+          "note": "Bench cast speed."
+        }
+      ]
+    },
+    "leveling-28-38": {
       "goals": [
         "Self-cast Lightning Tendrils with Added Lightning Damage, Controlled Destruction and Arcane Surge.",
         "Cap resistances; the totem swap waits for Spell Totem."
@@ -8844,7 +9707,7 @@
       "qualityWorth": "optional"
     }
   },
-  "seedHash": "0970dd0ee428",
+  "seedHash": "0a96f40bff74",
   "guide": {
     "summary": {
       "text": "Arc Totem Hierophant runs Lightning Tendrils of Eccentricity on two Spell Totems as its default clear and boss link, with Marylene's Fallacy multiplying the stronger pulse's guaranteed critical strike and Lioneye's Remorse for the armour, and keeps Arc in a four-link helmet for open layouts. The measured link runs 186.8k at red maps and 294.6k at pinnacle per totem. The channel covers a semicircle in front of the totem, and every fifth pulse is stronger (a much larger area and an automatic critical strike), so the same link clears packs and delivers the boss hit. No expensive unique is required.",

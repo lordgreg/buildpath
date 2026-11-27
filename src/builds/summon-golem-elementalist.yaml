@@ -57,6 +57,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Summon Skeletons
+        grade: B
         measure: true
         aliases: [until-12]
         gems:
@@ -85,6 +86,7 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Summon Skeletons
+        grade: B
         trigger: { from: 12 }
         measure: true
         aliases: [until-28]
@@ -117,10 +119,56 @@ steps:
           - slot: utility
             name: Amethyst Flask
             note: Chaos resistance.
+      - id: leveling-28-38
+        level: 38
+        main: Summon Stone Golem
+        grade: B
+        trigger: { from: 28 }
+        points: 42
+        measure: true
+        watch: >-
+          Swap to Summon Stone Golem at 34 with Minion Damage, Minion Life and Minion Speed.
+          Generosity, Desecrate and Cast when Damage Taken with Immortal Call come online; the
+          fifth link waits for 68 and the sixth for red maps.
+        gems:
+          - slot: Body Armour
+            gems:
+              - Summon Stone Golem
+              - Minion Damage
+              - Minion Life
+              - Minion Speed
+          - slot: Weapon 1
+            gems:
+              - Flesh Offering
+              - Generosity
+          - slot: Helmet
+            gems:
+              - Desecrate
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: Level 1-5 only.
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
       - id: leveling-38-68
         level: 68
         main: Summon Stone Golem
-        trigger: { from: 28, skill: Summon Stone Golem }
+        grade: B
+        trigger: { from: 38, link: 5 }
         measure: true
         aliases: [until-68]
         gems:
@@ -131,7 +179,6 @@ steps:
               - Minion Life
               - Minion Speed
               - Feeding Frenzy
-              - Elemental Focus
           - slot: Weapon 1
             gems:
               - Flesh Offering
@@ -167,10 +214,11 @@ steps:
       - id: maps-white
         level: 80
         main: Summon Stone Golem
+        grade: A
         trigger: { from: 68 }
         measure: true
         aliases: [maps-early]
-        gems: &id001
+        gems:
           - slot: Body Armour
             gems:
               - Summon Stone Golem
@@ -178,7 +226,6 @@ steps:
               - Minion Life
               - Minion Speed
               - Feeding Frenzy
-              - Elemental Focus
           - slot: Weapon 1
             gems:
               - Flesh Offering
@@ -212,19 +259,71 @@ steps:
       - id: maps-red
         level: 90
         main: Summon Stone Golem
+        grade: A
         trigger: { from: 80 }
         measure: true
-        gems: *id001
+        gems:
+          - slot: Body Armour
+            gems:
+              - Summon Stone Golem
+              - Minion Damage
+              - Minion Life
+              - Minion Speed
+              - Feeding Frenzy
+              - Elemental Focus
+          - slot: Weapon 1
+            gems:
+              - Flesh Offering
+              - Generosity
+          - slot: Helmet
+            gems:
+              - Desecrate
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: Level 1-5 only.
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
         flasks: *id002
   endgame:
     sub:
       - id: endgame-pinnacle
         level: 96
         main: Summon Stone Golem
+        grade: S
         trigger: { from: 90 }
         measure: true
         aliases: [pinnacle]
-        gems: *id001
+        gems:
+          - slot: Body Armour
+            gems:
+              - Summon Stone Golem
+              - Minion Damage
+              - Minion Life
+              - Minion Speed
+              - Feeding Frenzy
+              - Elemental Focus
+          - slot: Weapon 1
+            gems:
+              - Flesh Offering
+              - Generosity
+          - slot: Helmet
+            gems:
+              - Desecrate
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: Level 1-5 only.
+              - Immortal Call
+          - slot: Boots
+            gems:
+              - Flame Dash
+              - Arcane Surge
         flasks: *id002
 
 ascendancyOrder:
@@ -278,3 +377,7 @@ changelog:
     date: "2026-11-26"
     notes:
       - "First guide for the Covens league."
+  - season: covens
+    date: "2026-11-27"
+    notes:
+      - "A 28-38 step now shows the four-link and the gems that unlock at 38; the fifth link waits for 68 and the sixth for red maps."

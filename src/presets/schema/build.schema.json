@@ -545,6 +545,10 @@
         "gemQuality": { "type": "integer", "minimum": 0, "maximum": 40 },
         "labs": { "type": "integer", "minimum": 0, "maximum": 4 },
         "points": { "type": "integer", "minimum": 1, "maximum": 130 },
+        "grade": {
+          "enum": ["S", "A", "B", "C", "D"],
+          "description": "How the step plays, authored for the guide: S is a power spike or a very smooth stretch, D is the slog. Editorial, so it never invalidates the measured gates."
+        },
         "enemyLevel": { "type": "integer", "minimum": 1, "maximum": 100 }
       }
     },

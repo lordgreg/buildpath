@@ -31,6 +31,7 @@ const authored: BuildStepRoot[] = [
         level: 12,
         main: 'Cleave',
         watch: 'Cleave carries the first acts.',
+        grade: 'B',
         measure: true,
       },
       {
@@ -105,6 +106,7 @@ describe('step view of a migrated build', () => {
       measured: true,
       gateKey: 'leveling-1-12',
       watch: 'Cleave carries the first acts.',
+      grade: 'B',
     });
   });
 

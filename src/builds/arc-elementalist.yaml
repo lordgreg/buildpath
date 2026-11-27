@@ -97,6 +97,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Rolling Magma
+        grade: B
         measure: true
         aliases: [until-12]
         gems:
@@ -126,6 +127,7 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Arc
+        grade: B
         trigger: { from: 12, skill: Arc }
         measure: true
         aliases: [until-28]
@@ -161,10 +163,59 @@ steps:
           - slot: utility
             name: Amethyst Flask
             note: Chaos resistance.
+      - id: leveling-28-38
+        level: 38
+        main: Arc
+        grade: C
+        trigger: { from: 28 }
+        points: 42
+        measure: true
+        watch: >-
+          Lightning Penetration replaces Faster Casting in the four-link. Determination,
+          Conductivity and Enduring Cry come online; the fifth link waits for 68 and the sixth for
+          red maps.
+        gems:
+          - slot: Body Armour
+            gems:
+              - Arc
+              - Added Lightning Damage
+              - Lightning Penetration
+              - Arcane Surge
+          - slot: Weapon 1
+            gems:
+              - Flame Dash
+          - slot: Helmet
+            gems:
+              - name: Clarity
+                maxLevel: 5
+                note: Low level keeps the reservation small.
+          - slot: Boots
+            gems:
+              - Determination
+          - slot: Gloves
+            gems:
+              - Conductivity
+              - Wave of Conviction
+              - Physical to Lightning
+              - Enduring Cry
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Movement is a defensive stat while leveling.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance.
       - id: leveling-38-68
         level: 68
         main: Arc
-        trigger: { from: 28 }
+        grade: B
+        trigger: { from: 38, link: 5 }
         measure: true
         aliases: [until-68]
         gems:
@@ -213,6 +264,7 @@ steps:
       - id: maps-white
         level: 80
         main: Arc
+        grade: A
         trigger: { from: 68 }
         measure: true
         aliases: [maps-early]
@@ -258,6 +310,7 @@ steps:
       - id: maps-red
         level: 90
         main: Arc
+        grade: A
         trigger: { from: 80 }
         measure: true
         gems:
@@ -305,6 +358,7 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Arc
+        grade: S
         trigger: { from: 90 }
         measure: true
         aliases: [pinnacle]
@@ -487,3 +541,4 @@ changelog:
       - "Enduring Cry fills the three charges the tree can hold; the resistance passives pay for the strict resistance cap."
       - "Heart of Destruction's Convergence is declared for the pinnacle window; with Convergence off the same gear and tree give about 520k (676k / 1.30)."
       - "Pinnacle now measures 676k DPS, 6.8k life, 53.4k EHP, 14.0k physical max hit with chaos capped; red maps measure 541k DPS. Ratings 10/10/9/9."
+      - "A 28-38 step now shows the four-link and the gems that unlock at 38; the fifth link waits for 68 and the sixth for red maps."

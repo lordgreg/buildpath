@@ -249,7 +249,11 @@ Rules:
   and measured at, its gem groups and flasks, an optional `watch`, and
   `measure`; it inherits the reviewed **checkpoint band** at or below its level
   (`src/builds/config/checkpoints.yaml`), which supplies passive points, labs,
-  gear budget, gem cap and the gate thresholds. The band ids
+  gear budget, gem cap and the gate thresholds. A step that needs its real
+  level budget overrides `points`; the thresholds still come from the band.
+  A step may carry an authored `grade` (S–D) for how it plays; it is editorial
+  and excluded from the mechanics hash.
+  The band ids
   (`until-12 | until-28 | until-68 | maps-early | maps-red | pinnacle`) are the
   reviewed budget table, not the guide's step list. A step id is authored and
   stable; `stepAliases` maps a pre-0.79 id onto the step that replaced it.

@@ -57,6 +57,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Static Strike
+        grade: B
         measure: true
         aliases: [until-12]
         gems:
@@ -84,6 +85,7 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Static Strike
+        grade: B
         trigger: { from: 12 }
         measure: true
         aliases: [until-28]
@@ -115,10 +117,58 @@ steps:
           - slot: utility
             name: Quicksilver Flask
             note: Movement, not damage.
+      - id: leveling-28-38
+        level: 38
+        main: Static Strike
+        grade: C
+        trigger: { from: 28 }
+        points: 42
+        measure: true
+        watch: >-
+          The four-link is unchanged at 38. Determination and Cast when Damage Taken with Immortal
+          Call come online; the fifth link waits for 68 and the sixth for red maps.
+        gems:
+          - slot: Body Armour
+            gems:
+              - Static Strike
+              - Shockwave
+              - Added Lightning Damage
+              - Elemental Damage with Attacks
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - War Banner
+          - slot: Helmet
+            gems:
+              - Clarity
+              - Herald of Thunder
+          - slot: Boots
+            gems:
+              - Determination
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: 'Level 1-5 only: higher levels need bigger hits before it triggers.'
+              - Immortal Call
+        flasks:
+          - slot: life
+            name: Giant Life Flask
+            note: Drops from level 24.
+          - slot: mana
+            name: Greater Mana Flask
+            note: Drops from level 12.
+          - slot: utility
+            name: Amethyst Flask
+            note: Chaos resistance from level 18.
+          - slot: utility
+            name: Quicksilver Flask
+            note: Movement, not damage.
       - id: leveling-38-68
         level: 68
         main: Static Strike
-        trigger: { from: 28 }
+        grade: B
+        trigger: { from: 38, link: 5 }
         measure: true
         aliases: [until-68]
         gems:
@@ -168,10 +218,11 @@ steps:
       - id: maps-white
         level: 80
         main: Smite of Divine Judgement
+        grade: A
         trigger: { from: 68, skill: Smite of Divine Judgement }
         measure: true
         aliases: [maps-early]
-        gems: &id001
+        gems:
           - slot: Body Armour
             gems:
               - Smite of Divine Judgement
@@ -179,7 +230,6 @@ steps:
               - Added Lightning Damage
               - Elemental Damage with Attacks
               - Increased Critical Strikes
-              - Multistrike
           - slot: Weapon 1
             gems:
               - Leap Slam
@@ -216,19 +266,71 @@ steps:
       - id: maps-red
         level: 90
         main: Smite of Divine Judgement
+        grade: A
         trigger: { from: 80 }
         measure: true
-        gems: *id001
+        gems:
+          - slot: Body Armour
+            gems:
+              - Smite of Divine Judgement
+              - Shockwave
+              - Added Lightning Damage
+              - Elemental Damage with Attacks
+              - Increased Critical Strikes
+              - Multistrike
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - War Banner
+          - slot: Helmet
+            gems:
+              - Clarity
+              - Herald of Thunder
+          - slot: Boots
+            gems:
+              - Determination
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: 'Level 1-5 only: higher levels need bigger hits before it triggers.'
+              - Immortal Call
         flasks: *id002
   endgame:
     sub:
       - id: endgame-pinnacle
         level: 96
         main: Smite of Divine Judgement
+        grade: S
         trigger: { from: 90 }
         measure: true
         aliases: [pinnacle]
-        gems: *id001
+        gems:
+          - slot: Body Armour
+            gems:
+              - Smite of Divine Judgement
+              - Shockwave
+              - Added Lightning Damage
+              - Elemental Damage with Attacks
+              - Increased Critical Strikes
+              - Multistrike
+          - slot: Weapon 1
+            gems:
+              - Leap Slam
+              - War Banner
+          - slot: Helmet
+            gems:
+              - Clarity
+              - Herald of Thunder
+          - slot: Boots
+            gems:
+              - Determination
+          - slot: Gloves
+            gems:
+              - name: Cast when Damage Taken
+                maxLevel: 5
+                note: 'Level 1-5 only: higher levels need bigger hits before it triggers.'
+              - Immortal Call
         flasks: *id002
 
 ascendancyOrder:
@@ -283,3 +385,7 @@ changelog:
     date: "2026-11-26"
     notes:
       - "First guide for the Covens league."
+  - season: covens
+    date: "2026-11-27"
+    notes:
+      - "A 28-38 step now shows the four-link and the gems that unlock at 38; the fifth link waits for 68 and the sixth for red maps."

@@ -9,7 +9,7 @@
  * Pure, so the grouping and the old-link resolution can be tested without a DOM.
  */
 import { STEP_ROOTS } from './steps.ts';
-import type { BuildStepRoot, StepRootId } from './steps.ts';
+import type { BuildStepRoot, StepGrade, StepRootId } from './steps.ts';
 
 export const STEP_ROOT_LABELS: Record<StepRootId, string> = {
   leveling: 'Leveling',
@@ -43,6 +43,8 @@ export interface StepViewStep {
   gateKey?: string;
   /** What changes at this step. Authored on a migrated seed. */
   watch?: string;
+  /** How the step plays, S best to D harshest. Authored, never generated. */
+  grade?: StepGrade;
   /** Why an editorial step is unmeasured. */
   reason?: string;
 }
@@ -74,6 +76,7 @@ export function stepView(build: StepViewSource): StepViewRoot[] {
         measured: step.measure,
         ...(step.measure ? { gateKey: step.id } : {}),
         ...(step.watch ? { watch: step.watch } : {}),
+        ...(step.grade ? { grade: step.grade } : {}),
         ...(step.reason ? { reason: step.reason } : {}),
       })),
     }));

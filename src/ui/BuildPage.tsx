@@ -18,6 +18,7 @@ import {
 } from '../core/builds/stepView.ts';
 import { BANDITS } from '../meta/pantheon.ts';
 import { getPobLink } from '../meta/pob-links.ts';
+import type { StepGrade } from '../core/builds/steps.ts';
 import AscendancyPanel from './AscendancyPanel.tsx';
 import InventoryPanel from './InventoryPanel.tsx';
 import PantheonPanel from './PantheonPanel.tsx';
@@ -199,6 +200,36 @@ const STATUS_HELP: Record<GuideSection['status'], string> = {
   'auto-retry': 'Generated from declared facts and passing checks, but not signed; treated as a draft.',
   stale: 'The declared facts moved after sign-off; the section is not published until re-signed.',
 };
+
+const GRADE_STYLE: Record<StepGrade, string> = {
+  S: 'border-gold-400/60 bg-gold-400/15 text-gold-200',
+  A: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300',
+  B: 'border-sky-500/40 bg-sky-500/10 text-sky-300',
+  C: 'border-amber-500/40 bg-amber-500/10 text-amber-300',
+  D: 'border-rose-500/40 bg-rose-500/10 text-rose-300',
+};
+
+const GRADE_HELP: Record<StepGrade, string> = {
+  S: 'Power spike, or a very smooth stretch.',
+  A: 'Comfortable; the build is ahead of the content.',
+  B: 'Steady; normal gear and play.',
+  C: 'Rough; keep spending low and push through.',
+  D: 'The slog; the guide warns about this stretch.',
+};
+
+/** The authored play-feel grade for a guide step, not a gate metric. */
+function StepGradeBadge({ grade, small = false }: { grade: StepGrade; small?: boolean }) {
+  return (
+    <span
+      title={`Step grade ${grade}: ${GRADE_HELP[grade]}`}
+      className={`inline-flex items-center justify-center rounded border font-semibold uppercase tracking-wide ${GRADE_STYLE[grade]} ${
+        small ? 'px-1 py-0 text-[9px]' : 'px-1.5 py-0.5 text-[10px]'
+      }`}
+    >
+      {grade}
+    </span>
+  );
+}
 
 function GuideStatus({ section }: { section: GuideSection }) {
   const colour =
@@ -546,6 +577,7 @@ export default function BuildPage() {
         )}
       </header>
 
+
       {build.guide && (
         <section aria-labelledby="guide">
           <h2 id="guide" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -627,6 +659,11 @@ export default function BuildPage() {
                   }
                 >
                   {stepRangeLabel(entry)}
+                  {entry.grade && (
+                    <span className="ml-1 inline-flex align-middle">
+                      <StepGradeBadge grade={entry.grade} small />
+                    </span>
+                  )}
                   {!entry.measured && (
                     <span className="ml-1 text-[10px] text-zinc-600">not measured</span>
                   )}
@@ -635,6 +672,18 @@ export default function BuildPage() {
             </div>
           ))}
         </div>
+        <p className="mt-2 text-[10px] leading-relaxed text-zinc-600">
+          <span className="mr-1 inline-flex align-middle">
+            <StepGradeBadge grade="S" small />
+          </span>{' '}
+          to{' '}
+          <span className="mx-1 inline-flex align-middle">
+            <StepGradeBadge grade="D" small />
+          </span>{' '}
+          is how the step plays, authored by the maintainer: S is a power spike
+          or a very smooth stretch, D is the slog the guide warns about. It is a
+          play-feel grade, not a gate result.
+        </p>
       </section>
 
       {build.stepPlans?.[step] && (
@@ -825,8 +874,11 @@ export default function BuildPage() {
             What changes here
           </h2>
           {current && (
-            <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-zinc-500">
-              {STEP_ROOT_LABELS[current.root]} · {stepRangeLabel(current)}
+            <p className="mt-2 flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-zinc-500">
+              <span>
+                {STEP_ROOT_LABELS[current.root]} · {stepRangeLabel(current)}
+              </span>
+              {current.grade && <StepGradeBadge grade={current.grade} />}
             </p>
           )}
           {current?.watch && (
@@ -1261,7 +1313,10 @@ export default function BuildPage() {
                                 : 'flex w-full items-center justify-between gap-2 rounded-md border border-ink-700 bg-ink-800/40 px-2 py-1 text-left text-[11px] text-zinc-500 transition-colors hover:border-ink-500 hover:text-zinc-200 lg:border-transparent lg:bg-transparent lg:px-2.5 lg:py-1.5 lg:hover:bg-ink-800/70'
                             }
                           >
-                            <span className="truncate">{stepRangeLabel(entry)}</span>
+                            <span className="flex min-w-0 items-center gap-1">
+                              <span className="truncate">{stepRangeLabel(entry)}</span>
+                              {entry.grade && <StepGradeBadge grade={entry.grade} small />}
+                            </span>
                             <span
                               className={
                                 !entry.measured
