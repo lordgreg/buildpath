@@ -1,9 +1,10 @@
 # BuildPath — Plan
 
-> Revision 25. The completed phase narratives, spike table and revision history
-> were removed; the shipped state is summarised in §11, and the next breadth
-> pass is the 10-build backlog in §16. Normative decisions, requirements and
-> architecture are unchanged.
+> Revision 26. Revision 25 removed the completed phase narratives, spike table
+> and revision history; the shipped state is summarised in §11, and the next
+> breadth pass is the 10-build backlog in §16. Revision 26 records the step
+> model (D32–D37) that shipped in 0.79.0: §7.1, §8, §9 and §10 describe the
+> three roots and their sub-steps instead of the six checkpoint keys.
 
 Verified build guides, with the loot filter as one output instead of the whole
 product.
@@ -95,7 +96,7 @@ say that, not the reverse.
 | D21 | Filter output is deterministic **for a fixed preset hash**, not byte-stable across economy deploys — the economy snapshot is part of the preset hash by design. See §7.6. |
 | D22 | `verifiedAt` and gate files are rewritten only when a value moves (no daily churn), through a rolling PR. |
 | D23 | Gear at each checkpoint is **synthesised** from a reviewed budget file plus per-build overrides, never hand-written per build. Unknown mod ids fail the build (§7.7). |
-| D24 | The published PoB code is the `maps-red` gear set, and the page says so. One code, one named checkpoint. |
+| D24 | The published PoB code is the gear set of the step in the `maps-red` band, and the page says so. One code per measured step, one named step quoted in the header. |
 | D25 | `factsHash` covers a **declared** input list per guide section, not every resolvable path. |
 | D26 | One build per (main skill, ascendancy). A second seed for a pair is rejected, never published as a near-duplicate under a suffixed id. |
 | D27 | The game patch identity comes from the PoB tag. While PoB has no tag for the live patch, nothing is verified and the site says **"waiting for PoB"** rather than verifying against last patch's data. |
@@ -174,33 +175,37 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
   "ascendancyOrder": [ { "node": "gathering-winds", "lab": 1 }, { "node": "…", "lab": 2 } ],
   "mainSkill": "Lightning Arrow",
 
-  "leveling": {
-    "brackets": [
-      { "until": 12,  "skills": ["…"] },
-      { "until": 28,  "skills": ["…"] },
-      { "until": 68,  "skills": ["…"] }
-    ]
-  },
+  // Three roots of authored sub-steps (D32-D37). `level` is the level the step
+  // is read and measured at; `from` is computed; `band` is the reviewed
+  // checkpoint whose budget and gate thresholds it inherits.
+  "steps": [
+    { "id": "leveling", "sub": [
+      { "id": "leveling-1-12",  "level": 12, "from": 1,  "main": "…", "measure": true, "band": "until-12" },
+      { "id": "leveling-38-68", "level": 68, "from": 39, "main": "…", "measure": true, "band": "until-68" }
+    ] },
+    { "id": "maps",    "sub": [ { "id": "maps-red",         "level": 90, "from": 81, "main": "…", "measure": true, "band": "maps-red" } ] },
+    { "id": "endgame", "sub": [ { "id": "endgame-pinnacle", "level": 96, "from": 91, "main": "…", "measure": true, "band": "pinnacle" } ] }
+  ],
+  "stepAliases": { "until-12": "leveling-1-12", "until-68": "leveling-38-68", "pinnacle": "endgame-pinnacle" },
   "bandit": "kill-all",
   "pantheon": { "major": "lunaris", "minor": "gruthkul", "note": "…" },
 
+  // Keyed by step id, so the tree, the gate report and the page agree.
   "tree": {
     "endgame": [12345, 67890],
     "checkpoints": {
-      "until-12": [], "until-28": [], "until-68": [],
-      "maps-early": [], "maps-red": [], "pinnacle": []
+      "leveling-1-12": [], "leveling-38-68": [],
+      "maps-red": [], "endgame-pinnacle": []
     },
-    "respec": [ { "atStep": "until-68", "taken": [], "dropped": [] } ]
+    "respec": [ { "atStep": "leveling-38-68", "taken": [], "dropped": [] } ]
   },
-  // The budget each checkpoint's gear is synthesised from; the shipped JSON
-  // carries the resulting items, gems and flasks under gates[cp].
+  // The budget each measured step is synthesised from; the shipped JSON carries
+  // the resulting items, gems and flasks under gates[<step id>].
   "gearSets": {
-    "until-12":   { "budget": "starting",   "items": [], "gemLevels": { "main": "…" } },
-    "until-28":   { "budget": "early",      "items": [], "gemLevels": { "main": "…" } },
-    "until-68":   { "budget": "ssf-start",  "items": [], "gemLevels": { "main": "…" } },
-    "maps-early": { "budget": "ssf-start",  "items": [], "gemLevels": { "main": "…" } },
-    "maps-red":   { "budget": "ssf-week1",  "items": [], "gemLevels": { "main": "…" } },
-    "pinnacle":   { "budget": "trade",      "items": [], "gemLevels": { "main": "…" } }
+    "leveling-1-12":   { "budget": "starting",  "gemLevels": { "main": "…" } },
+    "leveling-38-68":  { "budget": "ssf-start", "gemLevels": { "main": "…" } },
+    "maps-red":        { "budget": "ssf-week1", "gemLevels": { "main": "…" } },
+    "endgame-pinnacle":{ "budget": "trade",     "gemLevels": { "main": "…" } }
   },
   "links": {
     "leveling": [ { "gem": "Lightning Arrow", "supports": ["…"] } ],
@@ -223,7 +228,7 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
       "metrics": { "dps": 141545, "life": 5674, "ehp": 30792, "maxHit": 8729 },
       "failures": []
     }
-    // all six checkpoint keys are required, each with pass: true
+    // every measured step is required, each with pass: true
   },
   "repair": { "added": [], "removed": [], "evals": 812, "nodeDelta": 8, "status": "within-bound" },
   "guide": {
@@ -239,18 +244,21 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
 
 Rules:
 
-- **Checkpoints** are a closed enum defined by `src/builds/config/checkpoints.yaml`
-  (shipped: `until-12 | until-28 | until-68 | maps-early | maps-red |
-  pinnacle`). A checkpoint is a level bracket — level, passive points, labs,
-  gear budget and gem cap — so one key drives the gate report, the tree, the
-  gems and the gear. Earlier revisions split "gate checkpoints" from "guide
-  steps"; P1 shipped one enum, and the page uses the same key as its step. The
-  five-key `act5 | act10 | …` set never shipped.
-- `tree.checkpoints[cp]` is a **subset** of `tree.endgame`, asserted by test
-  with valid topological order.
-- `gearSets` is keyed by the same checkpoint enum and names one `budget`; the
-  items are synthesised from `src/builds/gear/<budget>.yaml` (§7.7), so six
-  hand-written item sets per build are never needed.
+- **Steps** are the axis: three roots (`leveling | maps | endgame`) over
+  authored sub-steps (D32–D37, §9.3). A sub-step carries the level it is read
+  and measured at, its gem groups and flasks, an optional `watch`, and
+  `measure`; it inherits the reviewed **checkpoint band** at or below its level
+  (`src/builds/config/checkpoints.yaml`), which supplies passive points, labs,
+  gear budget, gem cap and the gate thresholds. The band ids
+  (`until-12 | until-28 | until-68 | maps-early | maps-red | pinnacle`) are the
+  reviewed budget table, not the guide's step list. A step id is authored and
+  stable; `stepAliases` maps a pre-0.79 id onto the step that replaced it.
+- `tree.checkpoints[step]` is a **subset** of `tree.endgame`, asserted by test
+  with valid topological order, for every measured step.
+- `gearSets` is keyed by step id and names one `budget`, taken from the step's
+  band unless the step overrides it; the items are synthesised from
+  `src/builds/gear/<budget>.yaml` (§7.7), so hand-written item sets are never
+  needed.
 - `uniques[].displayName` may be a unique item name; `uniques[].baseType` is the
   base the filter highlights, and it must be the base `filter.slots[slot]`
   resolves to — asserted by test, so there is exactly one source of truth for
@@ -260,21 +268,24 @@ Rules:
   XML the user imports.
 - `filter.slots` uses the existing `SlotSpec` shape, so the filter derives from
   the build the same way it derives from an ascendancy today.
-- `gates` requires **all six** checkpoint keys and every one `pass: true`;
-  anything else leaves the build unpublished (R2).
+- `gates` requires a key for **every measured step**, each with `pass: true`;
+  anything else leaves the build unpublished (R2). An unmeasured sub-step
+  carries a `reason` and no gate.
 - `gearSets[cp].items` is produced by the synthesiser (§7.7). A build YAML only
   carries overrides — the slot whose base the build actually needs.
-- `pob.code` is the XML of the `maps-red` gear set (D24), so the code a reader
-  imports matches the checkpoint the page calls "what we tested".
+- `pob.code` is the XML of the step whose band is `maps-red` (D24), so the code
+  a reader imports matches the gear the page calls "what we tested".
+- `pob.byStep` carries one code per measured step, keyed by step id like the
+  gate report and the tree.
 - `id` is unique across the catalogue: exactly one build per (main skill,
   ascendancy). A second seed for the same pair is rejected, never published as a
   near-duplicate under a suffixed id (D26).
 - `ascendancyOrder` entries carry the lab that grants them, and each
-  checkpoint's `labs` count in `checkpoints.yaml` bounds how many may be
-  allocated: `until-12` and `until-28` assume no lab (the normal lab lands
-  around level 33), `until-68` assumes labs 1–3, and `maps-early` onward assume
-  all four. A gate therefore never evaluates a tree with ascendancy points the
-  player cannot have (D29).
+  step's **band** `labs` count in `checkpoints.yaml` bounds how many may be
+  allocated: the `until-12` and `until-28` bands assume no lab (the normal lab
+  lands around level 33), `until-68` assumes labs 1–3, and `maps-early` onward
+  assume all four. A gate therefore never evaluates a tree with ascendancy
+  points the player cannot have (D29).
 - `patch` is the game version of the PoB tag we verified against. With no PoB
   tag for the live league, every build is delisted and the site says **"waiting
   for PoB"** (D27) — verifying against last patch's data would be a silent lie.
@@ -308,7 +319,7 @@ hand-curated seeds (src/builds/*.yaml) — editorial input, reviewed by PR
 |---|---|
 | `scripts/builds/patch-facts.mjs` | Diff PoB `TreeData`/`Gems` between two pinned tags; write the fact set. |
 | `scripts/builds/pipeline.mjs` | Shared gear synthesis, gem levels, XML serialisation, oracle call and PoB-code encoding. |
-| `scripts/builds/verify.mjs` | Seed → one endgame plan → per-checkpoint pruning, PoB evaluation, bounded repair, gate evaluation and leave-one-out ablation. |
+| `scripts/builds/verify.mjs` | Seed → one endgame plan → per-step pruning, PoB evaluation, bounded repair, gate evaluation and leave-one-out ablation. |
 | `scripts/builds/calibrate.mjs` | Must-pass and must-fail gates in both directions; commits `builds/calibration.json`. |
 | `scripts/builds/compile-builds.mjs` | Resolve prose and `factsHash`, compile the seeds to JSON, apply staleness. |
 | `scripts/builds/sign-guide.mjs` | Stamp a guide section's sign-off in the seed (`builds:sign`). |
@@ -403,8 +414,7 @@ published `build.html#build=…` link keeps working until 1.0.
 (main skill, ascendancy) (D26).
 
 **Seeds** — `src/builds/<id>.yaml` is the editorial input: main skill,
-ascendancy, intended links and gear budget per checkpoint, leveling brackets and
-prose. It is reviewed by PR like any preset. The pipeline never invents a seed;
+ascendancy, intended links and gear budget per step, the step tree and prose. It is reviewed by PR like any preset. The pipeline never invents a seed;
 it proves, repairs within bounds, and either passes or rejects it.
 
 
@@ -479,19 +489,21 @@ hand-writing six item sets per build does not scale to 19 ascendancies.
 
 Config lives in `scripts/builds/gates.yaml` (D20), marked `calibrated: true`;
 that file is the only source of thresholds and the calibration report hashes it.
-The table below mirrors it at 0.69.0:
+The table below mirrors it at 0.79.0:
 
-| Checkpoint | Gear budget | Gates |
+| Band | Gear budget | Gates |
 |---|---|---|
 | `until-12` | `starting` (3-link) | life ≥ 250, DPS ≥ 25; resistances not required yet |
 | `until-28` | `early` (4-link) | life ≥ 700, DPS ≥ 350; resistances not required yet |
 | `until-68` | `ssf-start` (5-link) | resistances capped (75 after penalty), life ≥ 2000, max phys hit ≥ 2000, DPS ≥ 8000 |
 | `maps-early` | `ssf-start` (5-link) | resistances capped, life ≥ 3000, EHP ≥ 8000, max phys hit ≥ 4000, DPS ≥ 20000 |
-| `maps-red` | `ssf-week1` (6-link) | resistances capped, life ≥ 4500, EHP ≥ 12000, max phys hit ≥ 6000, DPS ≥ 120000 |
-| `pinnacle` | `trade` (6-link) | chaos resistance 75, life ≥ 5000, EHP ≥ 14000, max phys hit ≥ 7000, DPS ≥ 150000 |
+| `maps-red` | `ssf-week1` (6-link) | resistances capped, life ≥ 4500, EHP ≥ 12000, max phys hit ≥ 6000, DPS ≥ 80000 |
+| `pinnacle` | `trade` (6-link) | chaos resistance 75, life ≥ 5000, EHP ≥ 14000, max phys hit ≥ 7000, DPS ≥ 125000 |
 
-A `dad` profile in the same file lowers only the damage floor; the defensive
-gates are unchanged and the page labels the profile.
+A measured sub-step applies the row of the band it sits in (D37): the band is
+the reviewed budget, the step is where the guide is read. A `dad` profile in the
+same file lowers only the damage floor; the defensive gates are unchanged and
+the page labels the profile.
 
 **Honest-config whitelist** — one fixed config per archetype, recorded in
 `Build.config` and enforced by test: only self-applied buffs, declared flask
@@ -503,9 +515,10 @@ recalc, record `ablationDrop`. Full subset search is 2ⁿ and is out of scope.
 
 **Calibration runs in both directions** — the gates' own regression test:
 
-- **Every published build at every checkpoint is a must-pass observation**:
-  21 builds × 6 checkpoints = 126, each **re-geared per checkpoint by
-  the same synthesiser** (§7.7), including the Dad-profile builds. A failure
+- **Every published build is a must-pass observation in every band**: 21 builds
+  × 6 bands = 126, each **re-geared by the same synthesiser** (§7.7), including
+  the Dad-profile builds. Calibration samples one measured step per band per
+  build (D37), so 127 measured steps still make 126 observations. A failure
   means the gate is too strict; re-gearing is what stops a trade-geared build
   from trivially clearing an `ssf-start` gate.
 - **10 must-fail builds** (uncapped res at `maps-red`, `until-68` tree at T16,
@@ -518,18 +531,18 @@ Numeric comparisons use an explicit tolerance (integers exact, percentages
 
 ## 9. The build page
 
-**Guide steps** are the checkpoint keys (`until-12 | until-28 | until-68 |
-maps-early | maps-red | pinnacle`), mapped onto the two filter phases (§10). A
-step is a level bracket, not a filter phase; the page never calls one a "phase".
+**Guide steps** are three roots — Leveling, Maps, Endgame — over authored
+sub-steps (D32–D37, §9.3), mapped onto the two filter phases (§10). A step is a
+level window, not a filter phase; the page never calls one a "phase".
 
 | Ask | Where it lives |
 |---|---|
-| Leveling skills | `leveling.brackets` (reviewed YAML, gem names registry-checked) |
+| Gems and flasks per step | `steps.<root>.sub[].gems` / `.flasks` (reviewed YAML, gem names registry-checked) |
 | Pantheon | `pantheon` — default + situational note |
 | Ascendancy 1→4 | `ascendancyOrder`, with lab breakpoints tied to tree checkpoints |
 | Optional uniques | `uniques.core` vs `uniques.optional`, split by ablation, with the SSF source |
 | Passive tree path | `tree.checkpoints` as an ordered path; `tree.respec` marks the respec boundary |
-| Works at every stage | the gate strip: until-12 / until-28 / until-68 / early maps / red maps / pinnacle, each pass/fail |
+| Works at every stage | the gate strip: every measured step, each pass/fail; an editorial step is labelled `not measured` and shows the nearest measured step's numbers |
 | SSF | the SSF gate result and each core unique's self-found route |
 | Filter while leveling | the step's filter download, right where that step starts |
 
@@ -554,11 +567,11 @@ Stale or failed builds render a banner and are excluded from `builds.html`
 ### 9.2 Covens Wickerman, step plans and gem quality
 
 - Every seed declares a `stepPlan` profile. `src/builds/config/step-plans.yaml`
-  resolves, for every checkpoint, the **goals** for that step, the **attributes
-  to look for** by slot, and the **crafting** recipes that are actually
-  available. The compiler validates that every checkpoint is covered and that
-  every slot has at least one modifier; the page renders it under the step
-  picker.
+  resolves, for every **band**, the **goals** for that step, the **attributes to
+  look for** by slot, and the **crafting** recipes that are actually available.
+  The compiler validates that every band is covered and that every slot has at
+  least one modifier, then emits one plan per sub-step from its band's entry, so
+  the page renders a plan under every step it shows.
 - Every seed declares a `wickerman.profile`. `src/builds/config/viscera.yaml`
   holds the reviewed Viscera registry and maps each profile to the best item for
   the leveling, maps and bossing phases, one item for each of the four slots
@@ -566,12 +579,12 @@ Stale or failed builds render a banner and are excluded from `builds.html`
   its slot and the named tier, then resolves effect, source and area into the
   build JSON; the page renders the four slots for the selected step's phase.
 - **Gem quality and Vaal corruption are endgame investments.** They are measured
-  and shown only at `maps-red` and `pinnacle`; earlier checkpoints use 0%
+  and shown only in the `maps-red` and `pinnacle` bands; earlier bands use 0%
   quality and an uncorrupted level cap. A guide built around a Vaal gem may set
   `gemQualityFrom: leveling`, which is the only exception.
-- `gateThresholdsHash` covers the checkpoint config as well as the gate
-  thresholds, so changing quality, gem caps, levels or budgets invalidates the
-  calibration report and forces a re-run.
+- `gateThresholdsHash` covers the band config as well as the gate thresholds, so
+  changing quality, gem caps, levels or budgets invalidates the calibration
+  report and forces a re-run.
 
 ### 9.3 Steps: three roots and sub-steps
 
@@ -622,18 +635,15 @@ replaced it, and `resolveStepAlias` is the only reader; the table lives until
 nothing, and the band's step plan carries the gear advice. The reference is
 `docs/STEPS.md`.
 
-Until every seed migrates, the page projects the six checkpoints onto the three
-roots (`stepView`), so the navigation is the same for both shapes: Leveling
-holds `until-12/28/68`, Maps `maps-early/red`, Endgame `pinnacle`. Migrating a
-seed swaps the source of that view and moves nothing on screen.
-
-**Migration order.** PR 1 (this one) ships the schema, the resolver and the
-alias table, and adds `steps` to compiled JSON while `leveling` stays required,
-so no gate number moves. PR 2 re-keys the pipeline (specs, gates, tree, PoB
-codes, calibration bands). PR 3 rebuilds the step picker, folds "Leveling this
-step" into the sub-step card, and only then makes `leveling` optional, because
-the page is its last reader. PR 4 migrates the seeds. PR 5 updates this plan,
-AGENTS and the changelog.
+**Shipped in 0.79.0.** All 21 seeds declare `steps`; `leveling.brackets`
+survives only as the pre-migration shape the schema still accepts. The page
+reads the tree directly (`stepView`), and if a seed ever has no `steps` it
+projects the six bands onto the same three roots, so the navigation is the same
+either way. Every number at every pre-0.79 checkpoint is unchanged: the
+migration moved structure, not values. Boneshatter is the one build whose split
+is authored rather than mechanical — Sunder is the level-28 measurement and the
+28–38 switch is its own step, which is why the playtest's "the switch is a pain"
+is now a number.
 
 The catalogue's per-checkpoint strip is `gateSteps`, not `steps`: the index
 carries a gate summary, and `steps` now means the guide tree everywhere.
@@ -644,35 +654,39 @@ Rename to BuildPath (D11, D13) is landed: the repository, `package.json`, all
 page titles, workflows, docs and the `base` path carry BuildPath. One Pages
 deploy.
 
-- `builds.html` — the catalogue: verified builds with the six-step pass/fail
+- `builds.html` — the catalogue: verified builds with the per-step pass/fail
   strip, red-map and pinnacle damage, and links to the guide and its filter. It
   reads `builds/index.json` alone (§7.2) and has no popularity widget, because
   there is no population data (D1, §7.4). A league selector waits for a second
   league to exist.
-- `build.html#build=<id>&step=<until-12|until-28|until-68|maps-early|maps-red|pinnacle>`
-  — the page above. Hash routes, same no-router rule as the builder; `step` holds
-  one of the six checkpoint ids, the same key the gate report uses. The
-  `act1…act10` step set in the early revisions never shipped.
+- `build.html#build=<id>&step=<sub-step id>` — the page above. Hash routes, same
+  no-router rule as the builder; `step` holds a sub-step id, the same key the
+  gate report and `pob.byStep` use. A pre-0.79 id (`until-28`, `pinnacle`) still
+  resolves through `stepAliases`, and an id that no longer exists falls back to
+  the first measured step. The `act1…act10` step set in the early revisions
+  never shipped.
 - `index.html` — the existing builder, introduced as "Filter", with
   `mode=build&build=<id>` preselecting a build.
 - Filter phase mapping (D10):
 
-| Guide step | Filter |
+| Root | Filter |
 |---|---|
-| Acts 1–10 | `leveling` × `soft` |
-| Early maps | `leveling` × `strict` |
-| Endgame / bossing | `endgame` × `strict` or `uber` |
+| Leveling | `leveling` × `soft` |
+| Maps | `leveling` × `strict` in white maps, `endgame` × `strict` from red maps |
+| Endgame | `endgame` × `strict` or `uber` |
 
 ## 11. Status and next work
 
 **Shipped baseline.** P0–P7 are complete. The catalogue has twenty-one verified
-builds across ten ascendancies; every one passes all six checkpoints, the
-calibrated must-pass set is 21 × 6 = 126 observations, and the ten must-fail
-mutations and the unique-ablation probe are green. Patch facts, delisting, the
-league window, per-section prose with `factsHash`, the Dad profile, ratings,
-season tags and per-build changelogs shipped in 0.69.0. The first breadth batch
-(Storm Burst of Repulsion, Poison Ranged Animate Weapons, Penance Brand, Ice
-Nova and Smite of Divine Judgement) shipped in 0.75.0.
+builds across ten ascendancies; every one passes all 127 measured steps, the
+calibrated must-pass set is 21 × 6 = 126 observations (one per band, D37), and
+the ten must-fail mutations and the unique-ablation probe are green. Patch
+facts, delisting, the league window, per-section prose with `factsHash`, the Dad
+profile, ratings, season tags and per-build changelogs shipped in 0.69.0. The
+first breadth batch (Storm Burst of Repulsion, Poison Ranged Animate Weapons,
+Penance Brand, Ice Nova and Smite of Divine Judgement) shipped in 0.75.0. The
+step model — three roots, authored sub-steps, bands and aliases — shipped in
+0.79.0.
 
 What remains is breadth: prove the 10 remaining builds in §16 through the same
 chain. A build that does not pass every gate stays a draft and is not published
@@ -684,14 +698,19 @@ chain. A build that does not pass every gate stays a draft and is not published
 
 - Gate report golden per build, with the pinned PoB ref, LuaJIT version and
   runner image recorded in the golden's header; numeric tolerance explicit.
-- Tree subset test: every checkpoint ⊆ `endgame`, connected from the class
-  start, with a valid allocation order.
+- Tree subset test: every measured step's tree ⊆ `endgame`, connected from the
+  class start, with a valid allocation order.
 - Repair record test: every checkpoint publishes `evals`, `nodeDelta` and a
   `within-bound`/`exceeded` status; the pure bound, score and seeded shuffle are
   tested without Lua.
 - Calibration test: the committed report's hash matches the current thresholds,
   every must-pass passes, every must-fail fails for its named defect, and the
   unique-ablation probe parses real mods and records a drop.
+- Step test: ids are unique, levels ascend inside and across roots, only the
+  first leveling step omits a trigger, `trigger.from` is the previous level, a
+  trigger names at most one kind, `main` and every listed gem are usable at the
+  step's level, an unmeasured step has a reason, and an alias may not shadow a
+  step id.
 - Gear-slot test: every gem group's slot exists in that checkpoint's gear, with
   `Shield` mapped to PoB's `Weapon 2`.
 - Jewel-pin test: every `tree.jewels` entry points at a socket in the checkpoint
@@ -727,9 +746,9 @@ chain. A build that does not pass every gate stays a draft and is not published
 - Filter: existing golden/audit suites extend to `mode=build`.
 - Seeds: every `src/builds/*.yaml` validates against the schema and resolves to
   exactly one build; an orphan seed or an orphan generated build fails the build.
-- Calibration: every published build at every checkpoint is a must-pass
-  observation (21 × 6 = 126, including the Dad-profile builds), plus
-  the ten must-fail mutations and the unique-ablation probe.
+- Calibration: every published build is a must-pass observation in every band
+  (21 × 6 = 126, including the Dad-profile builds), plus the ten must-fail
+  mutations and the unique-ablation probe.
 
 ### 12.2 The prose claim check (R1)
 
@@ -808,7 +827,7 @@ The P0 spikes are closed:
 - **S6 pass** — PoB item text carries display mods, not mod ids. Gear synthesis
   asserts parsed-mod count and stat delta per line, so a silently dropped line
   fails the build.
-- **Calibration** — 126 must-pass observations (21 builds × 6 checkpoints), ten
+- **Calibration** — 126 must-pass observations (21 builds × 6 bands), ten
   must-fail mutations and one unique-ablation probe are green.
 
 The full spike output and pre-0.69 revision history remain in git history and
@@ -862,10 +881,10 @@ Berserker, Forged Frostbearer and Wretched Defiler Spectres, and Poison SRS.
 
 - validate against `src/presets/schema/build.schema.json`;
 - carry `season: covens` and a changelog entry whose newest season matches;
-- pass all six checkpoints, or stay a draft with its failures named;
+- pass every measured step, or stay a draft with its failures named;
 - publish a `maps-red` PoB code and a matching `.pob` asset;
-- add six must-pass calibration observations (126 → 186 across 31 builds) and
-  re-run the must-fail set;
+- add six must-pass calibration observations, one per band (126 → 186 across 31
+  builds), and re-run the must-fail set;
 - not duplicate a `(main skill, ascendancy)` pair (D26);
 - carry generated 16:9 header art and per-step pobb.in pastes at release.
 
@@ -875,29 +894,14 @@ Cyclone of Tumult 3.5%, Void Shockwave 3.1%, Scorching Ray 3.1%); refreshing the
 snapshot with `npm run meta:add` is a separate task and is not required to start
 these seeds.
 
-### Leveling seed truth (shipped 0.77.0)
+### Leveling seed truth (superseded in 0.79.0)
 
-The guide panel resolves a step into "use this, switch at that level" from the
-gem level table, and the seeds now describe a bracket the game allows:
-
-- `penance-brand-elementalist` gained the `until: 12` bracket its gate already
-  measured, so the level-12 step no longer borrows the level-28 bracket.
-- `smite-divine-judgement-inquisitor` and `storm-burst-repulsion-hierophant`
-  level with the base skill (Static Strike, Rolling Magma) through the
-  campaign. A transfigured gem only comes from the Divine Font or another
-  player, so the swap is a level-68 card naming the Merciless Labyrinth.
-- `poison-ranged-animate-weapon-necromancer` levels the melee Animate Weapon,
-  keeps it through a new `until: 80` bracket, and swaps to the ranged
-  transfigured version at level 80, as the guide recommends.
-- `summon-skeletons-necromancer` needed no seed change: the panel derives
-  Raise Zombie → Summon Skeletons from the gem levels, so a bracket headline
-  may differ from the measured gem without the page claiming a skill the
-  character cannot hold.
-
-Each changed seed moves `seedHash`, so the carried gates were dropped and
-`builds:verify` re-proved all six checkpoints; `builds:publish-pobs` replaced
-the pastes whose code changed. No gate threshold moved, so calibration was a
-re-run, not a retune.
+0.77.0 resolved a step into "use this, switch at that level" from the gem level
+table, which exposed brackets that listed a skill the character could not hold
+yet. The step model (D32–D37, §9.3) removes the class of bug: `main` and every
+listed gem are validated against the step's own level at compile time, and a
+switch is its own sub-step instead of a card inside one long bracket. The
+per-seed history is in `CHANGELOG.md`.
 
 ## 17. Links
 
