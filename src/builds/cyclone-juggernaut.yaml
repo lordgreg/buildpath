@@ -70,6 +70,13 @@ guide:
 
 gearProfile: melee
 
+# The melee family filter keeps a shield slot; this build is a two-hander.
+filter:
+  slots:
+    weapon:
+      itemClasses: ["Two Hand Axe"]
+    offhand: null
+
 tree:
   keystones:
     - Resolute Technique

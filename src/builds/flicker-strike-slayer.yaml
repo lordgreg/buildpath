@@ -38,6 +38,13 @@ ratings:
 
 gearProfile: melee
 
+# The melee family filter keeps a shield slot; this build is a two-hander.
+filter:
+  slots:
+    weapon:
+      itemClasses: ["Two Hand Axe"]
+    offhand: null
+
 config:
   - { name: useFrenzyCharges, value: 'boolean="true"' }
   - { name: overrideFrenzyCharges, value: 'number="3"' }
