@@ -17,6 +17,18 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.74.3',
+    date: '2026-11-27',
+    title: 'Two-handed melee filters drop shields',
+    notes: [
+      "**Cyclone Juggernaut** and **Flicker Strike Slayer** now carry a build-specific filter: only two-hand axes are highlighted and shields are hidden, matching the axe they actually wear.",
+      "The build pages stopped showing the illegal offhand in 0.74.2; this closes the same gap in the downloadable filter.",
+      "702 tests.",
+    ],
+    commits: [],
+    compare: 'v0.74.2...v0.74.3',
+  },
+  {
     version: '0.74.2',
     date: '2026-11-27',
     title: 'Two-handed builds stop carrying a shield',

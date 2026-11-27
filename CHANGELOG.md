@@ -2,6 +2,14 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.74.3 — 2026-11-27
+
+Two-handed melee filters drop shields.
+
+- **Cyclone Juggernaut** and **Flicker Strike Slayer** now carry a build-specific filter: only two-hand axes are highlighted and shields are hidden, matching the axe they actually wear.
+- The build pages stopped showing the illegal offhand in 0.74.2; this closes the same gap in the downloadable filter.
+- 702 tests.
+
 ## 0.74.2 — 2026-11-27
 
 Two-handed builds stop carrying a shield.
