@@ -2,6 +2,13 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.77.2 — 2026-11-27
+
+Caster-only rings stay off attack builds.
+
+- **Moonstone Ring is hidden on attack builds.** Its implicit is 7-10% increased Cast Speed, a dead stat for melee, bow and claw characters, so normal and magic Moonstone Rings are now excluded for the melee, bow and hybrid profiles and the six legacy attack builds. Rare Moonstone Rings stay visible because explicit life and resists can still make one worth identifying; caster and minion builds keep the base, and uniques are unaffected.
+- 759 tests.
+
 ## 0.77.1 — 2026-11-27
 
 Guide tabs name the build, and minion-only rings stay off other builds.
