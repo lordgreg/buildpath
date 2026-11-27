@@ -80,6 +80,7 @@ jobs:
           npm run builds:build
           npm run builds:calibrate
           npm run builds:verify
+          npm run builds:no-flasks
           npm run builds:check
       - name: Committed build data matches the pipeline
         # A report that only exists on the runner is not evidence (D22, P2).

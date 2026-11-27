@@ -108,7 +108,7 @@ say that, not the reverse.
 | D33 | `level` on a sub-step is the level it is read **and measured at**; the step covers up to the next sub-step's level minus one. Contiguity from level 1 is enforced by the compiler, so the empty 69–79 stretch the `until` brackets left behind cannot exist. |
 | D34 | Six triggers may start a sub-step: `skill`, `support`, `link`, `jewel`, `slot`, `budget`. `level` is the boundary every step has, not a trigger. A trigger naming no kind is a level boundary. Anything the six cannot express is a `reason` line on the nearest sub-step. |
 | D35 | A sub-step is measured only when it declares `measure: true`. An unmeasured sub-step requires a `reason` and renders as "not measured"; R2 applies to measured sub-steps. PoB runs do not grow with editorial steps. |
-| D36 | `watch` (what changes at this step) is authored inline in the seed. `lookFor` and `crafting` stay in `step-plans.yaml`, re-keyed per **root band** rather than per checkpoint. |
+| D36 | `watch` (what changes at this step) is authored inline in the seed. `lookFor` and `crafting` stay in `step-plans.yaml`, keyed by **checkpoint band**; a profile may add a step-id key that wins when two steps share a band and need different advice. |
 | D37 | Thresholds are per root band with per-sub-step overrides, and calibration samples **one sub-step per band per build**, so measured steps can grow without silently growing the calibration set. |
 
 ## 5. Requirements

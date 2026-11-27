@@ -861,11 +861,50 @@ profiles:
         - slot: "Weapon"
           mods: ["Attack speed"]
           note: "Bench attack speed if the axe has a free suffix."
+    leveling-12-28:
+      goals:
+        - "Sunder is the main skill from 28; self-cast Vulnerability once it is available and keep Enduring Cry on a movement or left-click bind."
+        - "Boneshatter unlocks at 28 but keeps the same four links, so it is not a damage jump until Brutality is in the link; keep the four-link and save for the axe."
+        - "Keep a mana flask: the magic axe cannot carry leech."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "The weapon is the build."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link is enough."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances"]
+          note: "Fix resists before damage."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Physical damage %"]
+          note: "Bench physical damage % on a free prefix."
+    leveling-28-38:
+      goals:
+        - "Stay on Sunder through 38: this step is the Sunder measurement, not a Boneshatter step."
+        - "Brutality is already usable at 38, but the guide swaps at 39 when the next step opens; a better axe is an upgrade, not a gate."
+        - "Cast when Damage Taken brings Vulnerability and Immortal Call at 38; keep their levels capped to the trigger."
+        - "Herald of Purity and Determination come online here; the mana flask pays for them until the axe carries leech."
+      lookFor:
+        - slot: "Weapon"
+          mods: ["Physical damage %", "Added physical damage", "Attack speed"]
+          note: "The weapon is the build."
+        - slot: "Body Armour"
+          mods: ["Life", "Elemental resistances"]
+          note: "4-link is enough."
+        - slot: "Rings"
+          mods: ["Life", "Elemental resistances"]
+          note: "Fix resists before damage."
+      crafting:
+        - slot: "Weapon"
+          mods: ["Physical damage %"]
+          note: "Bench physical damage % on a free prefix."
     until-28:
       goals:
-        - "Swap to Boneshatter and self-cast Vulnerability; keep Enduring Cry on a movement or left-click bind."
-        - "The trauma stacks are the damage; do not stand in the hit."
-        - "Keep a mana flask: the magic axe cannot carry leech, and the auras already reserve most of the bar."
+        - "Sunder is the main skill from 28; self-cast Vulnerability once it is available and keep Enduring Cry on a movement or left-click bind."
+        - "Boneshatter unlocks at 28 but keeps the same four links, so it is not a damage jump until Brutality is in the link; keep the four-link and save for the axe."
+        - "Keep a mana flask: the magic axe cannot carry leech."
       lookFor:
         - slot: "Weapon"
           mods: ["Physical damage %", "Added physical damage", "Attack speed"]
@@ -883,9 +922,9 @@ profiles:
     until-68:
       goals:
         - "A 4-link is enough until level 38: swap Added Fire Damage for Brutality, then add Pulverise as the fifth link when you have one."
-        - "Keep a mana flask until the axe carries leech; do not add Herald of Purity before then."
+        - "Boneshatter starts at 39; Herald of Purity and Determination are the auras, and until the axe carries leech, run a mana flask in place of the Silver Flask."
         - "5-link Boneshatter and reach 2,000 life; the 6-link is the maps-red step, not this one."
-        - "Take the labs when they unlock; Unbreakable is the normal-lab defence step."
+        - "Take the labs when they unlock: Unflinching at the normal lab, Unbreakable at the cruel lab, then Undeniable and Unrelenting."
       lookFor:
         - slot: "Body Armour"
           mods: ["5-link", "Life", "Elemental resistances"]

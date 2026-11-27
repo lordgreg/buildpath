@@ -799,7 +799,7 @@
             "from": 12,
             "skill": "Sunder"
           },
-          "watch": "Sunder clears packs and hits single targets harder than Cleave, so it stays the main skill until 28. Boneshatter unlocks at 28 and keeps the same four links, so the swap is not a damage jump on its own, and it also asks you to stand still and stack trauma. That is what makes the next stretch feel bad; do not fix it with currency.",
+          "watch": "Sunder clears packs and hits single targets harder than Cleave, so it carries you from 12. Boneshatter unlocks at 28 but keeps the same four links and asks you to stand still and stack trauma, so it is not a damage jump until Brutality is in the link. Stay on Sunder into the next step and do not fix the stretch with currency.",
           "measure": true,
           "aliases": [
             "until-28"
@@ -884,7 +884,8 @@
             "from": 28
           },
           "points": 42,
-          "watch": "Stay on Sunder through 38. Boneshatter only makes sense once Brutality is in the link at 39: before that, the four links and the missing axe are what make this stretch feel bad, so spend nothing to fix it and save for the axe. Cast when Damage Taken brings the curse at 38.",
+          "labs": 1,
+          "watch": "Stay on Sunder through 38: this step is the Sunder measurement, not a Boneshatter step. Brutality is already usable at 38, but the guide swaps at 39 when the next step opens. The four links and the missing axe are what make this stretch feel bad, so spend nothing to fix it and save for the axe. Cast when Damage Taken brings Vulnerability and Immortal Call at 38; Herald of Purity and Determination come online here too, with the mana flask paying for them until the axe has leech.",
           "measure": true,
           "gems": [
             {
@@ -906,7 +907,10 @@
             {
               "slot": "Helmet",
               "gems": [
-                "Herald of Purity",
+                {
+                  "name": "Herald of Purity",
+                  "note": "The mana flask pays for this until the axe carries leech."
+                },
                 "Determination"
               ]
             },
@@ -977,7 +981,7 @@
             "from": 38,
             "skill": "Boneshatter"
           },
-          "watch": "Boneshatter starts at 39, with Brutality replacing Added Fire Damage. The fifth link is Pulverise and it waits for 68. Keep a mana flask until the axe carries leech, and do not add Herald of Purity before it does. Take the labs as they unlock; Unbreakable is the normal-lab defence step.",
+          "watch": "Boneshatter starts at 39, with Brutality replacing Added Fire Damage. The fifth link is Pulverise and it waits for 68. Herald of Purity and Determination are the auras; until the axe carries leech, run a mana flask in place of the Silver Flask and drop it once leech is online. Take the labs as they unlock: Unflinching at the normal lab, Unbreakable at the cruel lab.",
           "measure": true,
           "aliases": [
             "until-68"
@@ -2375,8 +2379,8 @@
         "dpsSource": "player",
         "life": 1273,
         "energyShield": 0,
-        "ehp": 1312,
-        "maxHit": 2388,
+        "ehp": 1319,
+        "maxHit": 2465,
         "resists": [
           -60,
           -30,
@@ -2387,7 +2391,7 @@
         "manaCost": 18,
         "nodes": 41,
         "sockets": 0,
-        "ascendancy": 1
+        "ascendancy": 3
       },
       "failures": [],
       "tree": {
@@ -2988,7 +2992,8 @@
           "gems": [
             {
               "name": "Herald of Purity",
-              "level": 7
+              "level": 7,
+              "note": "The mana flask pays for this until the axe carries leech."
             },
             {
               "name": "Determination",
@@ -8842,7 +8847,7 @@
     "byStep": {
       "leveling-1-12": "eJzFWFtz2jgUfo5_hUYzfVoS8I1LBtoxJKHphCaN03b3aUdBB9BGlryWDGF__Y5kA04LhDbZ7gtzJH1H5zufbsd03z0mHM0hU0yKHnZPGhiBGEvKxLSHP99dHLfxu7dO94bo2fWknzNuRt46R11rIw5z4D3sehhpkk1Bf1lN5f_ZwGjMiVIfSQI9PCIZySlkGBE1BkEHm6EP-XQKmSC5xighTMRy_AB6mMk87WEXo3siKNM9_FEKwCglQs9AihH5S2ZDSXuY54JkTFWGmCiHplmuZw85x2jOYDGSFHp4EF0NYvzWOTrq3nCyhCzWRCOlie7hgUzumQB6dhNjNCc8hx4OGiedVtsLPK_VCnF9u-Od1IT_sNcVm8DGw9uJOxeQTZfxjAGna3xjL5fz9zdrpNdxT9qdwAtDt-M33V1-N7OlYmPCR-SRJXnynuk78gBiQ7C1M-QFy-AWFFN6jT5u7kQPJKffooP2bpGmMy2YmB7uMpgRqQ7nMyKCDGQF6-6FfhYZKMjmQCsOO1WNU6gCT_yWRXbr9gQZ6y4DQGSs2RziFMZmz9upTAPpDKByqPzVqbqk9mxUDpPpaWAkJAXVw81O2611Qtetua1WM6x5frvt1rxm6Pk132167ZrfDAO_FjSaoV8LWm4rrAWdwPVqYaPTCGphOwg6lsdR9_PtlTWOZlqn6rReXywWJynRMzmBR8bhZCyTekqUYnM4Vg-M82NDux5FUdSfnkeDmb74EFMaf4V7CJbX87D1cfHpbuhd395GUdSzQepllG7d5G0VMsIYIzZTqkITYyIQ5J4D7WGd5YCR4lL3cF_SJYqyROZZcY9EhaTGY6XpUXcICZpCYsQagSaUaFK_1JCo-tD8WPQQkgEHMjdTm_ahYEGScgVXPeX9GGL0d04400u7RKVtpj2DCcm5xt-mtIV__YcSiPM0lZmOKAVqTucZScj02YQKpyEk3_ltcrNDyIyh1WCZpve_pXlBlIYs0pqMH9TBSVa9qhkW_Wg93aun1y34P7ejvwJJpUDuy7fzFZA05iQ5cENv4BtRTB8qOlev_q9f7nNB84yJ6SBbHpjKE49NNqtuZPtfPaEDF_g98AT0y5f3DMZyeSc1HLrAVYeNKLYXld2lJsGv1qQvpVYvl6TPpaSRoDER9EBRnrpsZLH9iAiKipH_8DooLbUqC74wWKB_pEx-tzGM9cfauip4-Hj9WBq4adjkypLC2DHodVVh2ojRon1LMqaXp2gUDS8HTrw09bNiCiha2LvHibUUgKJHcKyfDXmKXM_5VKR7ihrOZZJyNmZamUZEqUJtpCVym2hVUZYPhRO-QUyMMyAmQnG9IlsfWRFMhKcUvb0UZ_b0OAPDsDhJh5L8zQsNw6QodJEpw3cw8PcyuJd06QxmoHTKid6nUfFNo05R_7h_3P9ZNsFeNlMu56CcG0OFoiHJheag1euLEj4jitTKiTUAR8PM1EEvouA-2TQjOYcEhN67bZr7-QHXzhUQPYMM9U3j1QVq7SVAkpyDdq7F8hFFhX0oA9d7YyisP4lQ8ZFDxHgXlfZeKuYJdJ3rlHB0y8T09ZXoPBve-4nwpQzmO_J5BdzGXg6cTQBNOFEPzggoK9NBF7bnQEI7Au-_YRMiSBk4TgjnyHxbvkrc_ddmrpmZrAz9KWfjB8X4HLIXxo5Bl-8K0kxzqLyDuYIYxlLQoqK1z9GEcAXlmx5zqe2DW615mS5e-XWNWEGtCqcVxtuCefI9uAL6W4BDe29uMMHWyWxVsoKE2yDAK4yaWxDFYd9gWlsw5hxUs2_vwngbTGcLxq7lExkbuKwIynJkl09lYtc90Mev-HjbfIq9EoO2tYqtT4w1kGLCpsUWEmm-mhQEJEu7BTESeXIPWQ-75dJ9DzyfE_P3yAbq-53yP5bV_N36t_9g_gtGJaMM",
       "leveling-12-28": "eJzFWe9T4zYT_kz-Co1n-qmG-LcdJrmOEyBcS-4ohmvv0zsiXhK9yFIqyYH0r-9IjhNDk5AeaW-YYVarZ6VndyV5pXR_ei4omoOQhLOe5Z44FgI25jlhk551d3txnFg_fWh1r7Gafn7ol4Tqng-to66REYU50J7lJRZSWExAfamH8v_nWGhMsZSfcAE9a4QFLnMQFsJyDCwfrLt-LicTEAyXykIFJizj40dQQ8HLWc9yLXSPWU5Uz_rEGVhohpmaAmcj_H8uhjzvWbRkWBDZ6CJs2TURpZo-ltRCcwJPI55DzxqkV4PM-tA6OupeU7wAkSmskFRY9awBL-4Jg_zsOrPQHNMSepYbusFJHEZe7MVJGFjtzaa3XGH6DXZX5AHWNk4n3AY8ZyAmi2xKgOYrA2cnnfPL6xUyCTsnkRt5Xif0vHgrnevpQpIxpiP8TIqyuCTqFj8CWzOM4mSb7QURcAOSSLWCH0dbGQ44zV-j_a3oKzKZKkbYZH-TwRRz-RrubY3vCDM84A2sG--C3jEBEsQc1slI_G0G2QwaOPfECyKnItJtm52kpVsBgPBYkTlkMxjrtW9G0w2kBEBjc_n17vqYmz3S2FRa41iI8Rxkz_KCMLCjIIjsqJO4did0Xdt1PM-13TDwE9uN4yi0PScMXdvzk8S1vSj0fNtLYi-xfccLXdt3ncSxfTfSmjDwI9uPwsC3_SSOYztwotC3Ay9xHDvw_Tiwg9iNQzvouHFiB53A9ezQCTz9P4wdO3SSSMsdJ7DDJAg6duS6ncSOgsSNjMdH3bubKyMcTZWaydN2--np6WSG1ZQ_wDOhcDLmRXuGpSRzOJaPhNJjHaB2mqZpf3KeXqbFb8MsuL_J7tjPx05yS_uXv99RVvhpkBMV4styRIrF53mYh0x6bPQLLZ_6ot8f3XrPX8VQyPuv4cXl_GzuPKVp2jOk2ktW3bbOiMmdTpkWMk1BVtnSIgKG7ynkPUuJEiwkKVc9q8_zBUpFwUtRnXRplWxtUWf7qDuEAk2g0GkcgcI5Vrj9UUEh20P9z6CHUGQlM8ep8X5fMMPFcm3VmuUJHlrojxJTohZm8SxlPewZPOCSKuu1Sxv4t_-hA7MZF2oEFKA-dc5wgSfwllOV4RCKjbZrH003qvtRDVi67H83l9M8h1wflv_Q3b_ZrV01XUj3vXYz-m5uXmCpQKRK4fGj3NvJplXTw0qPVsMd3L1uxf-tTfwb4BlnyH3_Dr4CPMsoLvbcw2v4Oihahyrl99vI5ywvBWGTgVjs6coLi7U3tRoZ_cEd2jPBl0ALUO9P7xmM-eKWK9g3wU2DdVCMFi3Vy5gk_32S-5TzPGV5hlm-pz8vTdYeGT3CLEdVz8HP4z0T3edcyUPkWYEoCMOKcLZ3ql_YNLP9oqO-X_3XoRlSPocDxOZLSRkIfE803z1j8wmeXpmtw_Oq418Mz1KSdWH-hcAT-pPz4nczh5a-rqSregWvikIN1w3j37Ko13IGalXX6zYiedW-wYKoxSkapcOPg1a20DdZSSTk6Ml8cFqXgHNZYIbSZ2gZUzPrKQrC1q-Vx6fIaX0sZpSMiZK6kea5RJ6DFEeB87oQanV-QISNBWA9S_VdReaiYgKhp3hJ09tJc2qOzdYN4DkIVB2i-_L8MTIci-rOifSVeAsHfyeHe54vWlnJ0DXFaleUqicGeYr6x-bvW-kEO-lMzC5qDUss9LMJGuKSKQpKHj4u4Rtx4Uq2UqbIHyWgodA5ehcJz2munRGfQwFM7Vw90W6GQFXrCrCagkB93Th4iOKdBHBRUlCtz2zxjNJKPjiDZCcDXfm4rc8zTNENYZP3TP-j7_yglatHE1Q9g2A23sat8yY37xu4LXnop563KbjOTg6UPAB6oFg-toYEM2VcRRdGsSefLfPuPn8LzHA9rwCsLyH6_ecgM-8-UktlvnOryTEj6jAe7z5GX87bxxJTdZBpdx-XL6dNC1DThXzvxBmo5TcWKaIoNGqCUkIGY87y6kpnPs0PmEpY1jgZ5crUHs1LH1FV1bOqnxuo-uZQY7wNmBdvQDXQ3wCsS7AaE2wczFSwNSTcBAHaYBRtQFSn3RoTb8DoTd_0PtmG8daYzgaMyeWLMDrWsjpalmbbbBoDu-6eNn7DxtvTJmjY-HvahA2bYJNNtSYzUKY-NDWhlgacPZBJtVTZrKwHBQbFwix1C7GyuAdhfmFpbwaez7GsLhFLaNKJli_L9fjd9uvfb_4CIzw9pQ==",
-      "leveling-28-38": "eJzFWW1TIrkW_iy_ItVV-2lb6fQ7FsxWi4rOyKjgjHv3y1akD5BrOsFOGmR-_a30CyALyKzesayy0snz5Lzk5OQkNP94ThiaQiqp4C0DH1kGAj4QMeWjlvHt7vwwNP74VGveEDW-Hp5klOmRT7WDZt5GDKbAWoYTGkiRdATqezWV87dloAEjUn4lCbSMLklJFkNqICIHwOP2cuhzNhpBykmmDJQQyvti8Aiqk4ps0jKwgR4Ij6lqGV8FBwNNCFdjELxL_ivSjohbBss4SalcGaK8HBqlmRo_ZsxAUwqzroihZbSjq3bf-FQ7OGjeMDKHtK-IQlIR1TLaInmgHOLTm76BpoRloI2zrKPQ8X1sO9gz6puZd0IR9vO0KzqEBQXbgbMNeMYhHc37YwosXhCsndqcXdwsp3YwPgoc1wqDELvBNt7NeC7pgLAueaZJllxQdUcegS-msZ0w3MY9pyn0QFKpFvBDf6uGbcHidbSzFX1FR2PFKR_tT2mPiZDrcHvrQnQJJ22xgsVbDdXQbzwFCekUlovhb_VqfwIrOHzkOLhUpFnP95Fu3aUAiAwUnUJ_AgMd-fls-gOpFGBlaznV3rqM8x2ysqV0j2UgLmKQLcN2Pdd0sB-Yvuv6pt8IsRm4rmU2PIxNbNk2NrHrW76JPdfy9H8nNLEfeL6Jg8D3TNvyPGzqdcem7Xu2Y9oBdi3TDhwLm3boBp5ph4EdmnbD8RzTsWwPmw62QksLtkPTcQLXMh3PdXzT8T3XMZ0wCALTtXzPMV07tCzT1SDTdW3LNt0AB57pNnAQmm7DxbbpWa6t_3uBZXpW6Ot2w3JNL3Tdhulj3AhN37FD2_TdEPu53w6a33pXeeNgrNREHtfrs9nsaELUWAzhmTI4GoikPiFS0ikcykfK2KF2cz2KouhkdBZ9iZL70_Pwr6uxOr_oRezzfKiub93w6u75-vbP3m0P489_eerppPPEHn6o2fXFl0lMlUcusu4onH95uPT_Zk4CP8hg9nTvyycZkdnt3VlD3n95fgo69nWvF8wCpzu1ZlEUtXKl66XWzbpe9zxCdGDoRl-rKIuY0E0EnDwwiFuGSjMwkGRCtYwTEc9RlCYiS4tsGhUhpRlVTB00O5CgESQ6WLqgSEwUqV8qSGS9o__l6A4k_YznKTv3zr5gTpIygque8pQIDfSUEUbVPA_Rsq2nPYUhyZgy1k3aoH_9Jw2YTESqusAAqtx2ShIygteMKogdSDZylzbmw6gaRxWgNDn4MJOjOIZYp-SfNPcfvKWp-RDSY-tmNj7MzHMiFaSRUmTwKPc2cpW1amHRjxbTvbt5zUL_1zbxPZCJ4Ai_fQdfAZn0GUn23MNL-NIpug8VnR-3kc94nKWUj9rpfE9TXjCW1lTdKO9_d4P2XOALYAmoty_vBaSExdfDmyylal_PrJOWzilGkBiiauzj8tgpKEgTyomigu9p2RpnadjaQGmV96uXvcPEFOR7nMt5JmsTqe7HwItsXFbqe6ZAzb1-yVy6Sw-i2Rh4mehRiSj9hn99NFwmiUgVYW3C2J7B8JKyNK7qR8VAdYX99TZ9zxiHlDxQtv_e_QqzNdrSsLWBjwryEyHUO8T4KQzE_E4o2PfsWiWs7vyBmKOyu4pf6__gk7Ilq7vcdwoz9EOI5M9chm79Z9G6qoJuUeFruP7IDSvvgbrdB7W4CupvROPiu0d0hj5G3ahz2a715_rpQ1IJMZrl1UPtAkgsE8JR9Ay1nJpLPUauV7stLD5GVu0ymTA6oErqjyiOJbItpARyrfWqttb4DVE-SIFoKUWRhPK7be4ILeKlmvZONcf5GVjrAZlCiooTcV89f_dzHZPimQLpV5QtOjg7dXgQ8bzWzzi6YUTt8lLxJiWP0clh_vdv1XF3qjPKz4daJyOpfmdDHZJxxUDJ9_eL94pfhJK1iCv6lAHqpHqN3qSEba3GTldMIQGudkaPv1tDYKp2BUSNIUUn-uPdXRTsVIAkGQNVu-bzZxQV7XfXINypgS5jce16QhjqUT56i_jfHes33bl4Z0PFyxnhg226NV7Vzf4XupV66NfB11XA1k4dGB0CGjIiH2sdSrjKTUXnecee-myRuzv_JoSTSm4KRN8o9ZPhu0jenVIzlZ_9C-GEU_U-Fu9Ooy_lnhBJmHoXsbvT5UuxUQJqPJdvFdwHVZ6xSFHFYKUmyCT0YSB4XNzP86N5SJiEsrLpM6Hy0mP1Bk9VUessqsMVVHUNrDD2BsyLB70K6GwAVpeLCuNunCyvzSqItwkCbEUjfwOiyHZLTLABozf9qvXhNoy9xDQ2YPK1fOFGyyiro7I028ZZmRjjPTnOCsfek-OucJw9Od4Kx93EKWKyDyqvD_OaULfagg_pqAhVPsmqSYFDMs9D3UA8Sx4gbRl29fPFP4BnUyKL63EJDRt--WNENX-zvv6D3_8AjWX1rA==",
+      "leveling-28-38": "eJzFWVtz4rgSfg6_QuWqfVon2PKVFMyWQwjJbpjkhGR2dl9OKbgBTWSJWDKE-fWn5AsQFgiz4UyKKkpWfy193W61WnLzt5eEoSmkkgreMuwTy0DAByKmfNQyHu4vjkPjt0-15i1R45vhWUaZlnyqHTXzNmIwBdYynNBAiqQjUF-qoZz_WgYaMCLlZ5JAy-iRlGQxpAYicgA8bi9Fv2ejEaScZMpACaG8LwZPoLqpyCYtwzbQI-ExVS3js-BgoAnhagyC98g3kXZF3DJYxklK5YqI8lI0SjM1fsqYgaYUZj0RQ8toR9ftvvGpdnTUvGVkDmlfEYWkIqpltEXySDnE57d9A00Jy0AbZ1knoeP7NnZsz6hv1rwXirAfV7umQ1io2DhwtgE7HNLRvD-mwOKFgrWTTefydjm0YzdOMA6wh30rDLbp3Y7nkg4I65EXmmTJJVX35An4Yhjs-ltNuaAp3IGkUi3gx_5Whm3B4nW0sxV9TUdjxSkf7a_SHhMh1-F4K_se4aQtVrB2uAv6wFOQkE5h-TL8rV7tT2AFZ584jl0SadbzdaRb9ykAIgNFp9CfwEBHfj6afkAqBVhZWk61tq7ifIWsLCndYxmIixhky7ADxzWx67mmY_uB6buub_qN0DYD17XMhmfbpm1hbJu261u-aXuu5el_JzRtP_B80w4C3zOx5Xm2iZ0wtE3se9gxcWC7lokDx7JNHLqBZ-IwwKGJG47nmI6FPdt0bCu09MQ4NB0ncC3T8VzHNx3fcx3TCYMgMF3L9xzTxaFlma4Gma6LLWy6gR14ptuwtbRhB6HpNlwbm57lYv3vBZbpWaGv2w3LNb3QdRumb9uN0PQdHGLTd0Pbz1141Hy4u84bR2OlJvK0Xp_NZicTosZiCC-UwclAJPUJkZJO4Vg-UcaOtcfrURRFZ6NO9Mfosdv--6_e15enrGs9xJ32A__92PLOv83Ubcc7iy_OLr8-MJ5g0SHPX6Y3TuQOnhn-w2EC3Pn596uJ_JYef4W_g8-T7-3J4_P8eRZdRl3Z6bzcPl5QSbIX9e3pAcKbxvfrRi-Kopx4vWTerOswyANGx4lu9DVNWYSIbiLg5JFB3DJUmoGBJBOqZZyJeI6iNBFZWiTXqIgwrVGF2FGzCwkaQaJjpweKxESR-pWCRNa7-i9HdyHpZzzP4LmH9gVzkpQBXfWUm0ZooOeMMKrmecSWbT3sOQxJxpSxbtIG_vUfNGAyEanqAQOoUt05ScgI3jKqUOxCslF3aWMuRpUcVYDS5ODDTI7iGGKdoX_Q3H_oLU3NRUjL1s1sfJiZF0QqSCOlyOBJ7m3kqtaqhUU_Wgx3cPOaBf-3FvGfQCaCI_v9K_gayKTPSLLnGl7Cl07Rfajo_LiF3OFxllI-aqfzPU15pbG0pupGef_BDdrzBV8CS0C9__VeQkpYfDO8zVKq9vXMutLSOYUEiSGqZB-Xx85BQZpQThQVfE_L1nSWhq0JSqu8n_3au0xMQR5iX84zWZtI9ecYeJGNy8J9zxSodW9eay7dpYVoNgZeJnpUIkq_2T8_Gq6SRKSKsDZhbM9geK2yNK7qR4WgOtH-fJu-ZIxDSh4p23_tfobZmtrSsDXBRwX5mRDqADF-DgMxvxcK9t27VhVWV_5AzFHZXcWv9X_wSdmS1dHuC4UZ-i5E8jWfQ7f-WrSuq6BbVPgarh9yw8pjoW73QS1OhvoZ0bh4viM6Q5-iXtS9atf6c30TIqmEGM3y6qF2CSSWCeEoeoFarprPeopcr_afwuJTZNWukgmjA6qkfojiWCJsISWQa61XtbXGL4jyQQpEz1IUSSg_6uaO0FO8pol30hzne2DtDsgUUlTsiPvy_NXPOSbFrQXSlypbODg7OTyKeF7rZxzdMqJ2eam4opKn6Ow4__1bOu5OOqN8f6h1M5LqazfUJRlXDJQ8vF-8N_wilKxFXNHnDFA31e_oXSSwtRo7PTGFBLjaGT3-bobAVO0aiBpDis70w8FdFOwkQJKMgard8PkLior2wRmEOxnoMtau3UwIQ3eUj94z_a-O9YvuXFy7oeIijfDBNm6NN7nhf8Gt5KEvC9-mYFs7OTA6BDRkRD7VupRwlZuKLvKOPflsmXd3_k0IJ9W8KRB9otQ3iAeZeXdKzVS-9y8mJ5yqw1i8O42-nveMSMLUQabdnS5fTxsloMZz-d6J-6DKPRYpqhis1ASZhD4MBI-L83m-NQ8Jk1BWNn0mVF56rJ7gqSpqnUV1uIKqjoEVBm_AvLrQq4DOBmB1uKgw7sbB8tqsgnibIMBWGPkbEEW2W2KCDRi96FetD7dh8BLT2IDJ3-UrN1pGWR2Vpdk2nZWBbXtPHWdFB--p467oOHvqeCs67iadIib7oPL6MK8Jdast-JCOilDlk6waFDgk8zzUDcSz5BHSloGrrxn_AHamRBbH4xIaNvzy20Q1frO-_v3vf9Nd-a0=",
       "leveling-38-68": "eJzNWm1z2rgW_hx-hcYz-2nVYr1YtjuhO0BS0jZsUki6ab_sCHwCbmyZ2jKE_vo7sk1wcoGQTe7mTmY0ss55JD06OkfSIYd_3MYRmkOahYlqWeStbSFQ4yQI1aRlXV58eONZf7xvHJ5LPT277uRhZCTvGweHRR1FMIeoZQnPQlqmE9BfV12xv20LjSOZZX_KGFpWX6YyDyC1kMzGoILuWvQpn0wgVTLXFoplqIbJ-AZ0L03yWcsiFhpJFYS6Zf2ZKLDQTCo9hUT15Y8k7SVBy4pyJdMwq4lCVYkmaa6nN3lkoXkIi34SQMvqtk-7Q-t94-Dg8DySS0iHWmqUaalbVjeJR6GC4Oh8aKG5jHJoWYQy5jlvhWszQWxhNTdDLxIto3-AOw2v4Q7DmMu2KR4rSCfL4TSEKLgD2Dunc3xyvp6O4GY2gjDHZdzdhjufLrNwLKO-vA3jPD4J9YW8AXXXjcuZsw37IUxhAFmY6bX6Vt7dJAoeKm_t-TScTLUK1WRvRHcqk-yBttg6mb5UspvUVBnZpXqpUsggncPaEIRs7Xw4g5oifUts4ZXdHzYLNzK1ixQAybEO5zCcwdhs_KI384F0ClDzLLZyrY9B4SA1jzIttoVUEkDWsojLOKbc4ZgR4WImOMcOZQwL5vhYcC6wcAnFwvcIdjm3se8QgolNKcGEC1tg4tguw8ThtmNK5mEiXEeY0nUwcV3hYGrbxMPUdhyCKeGEYcps6mLKPI9g6giPYiqILzAV1LUxFQ5lmAqXOqbkNqYuKUpmE0w97jqYei71MPWZwzCzqUMws5lnY0bsohTUw4z4gmBGCXEwY9z1MWOCEcyY6ZNx4hLMOLVdzBzOBGbC4Qwz4XMfM891Xcxt4TDMqWfbmBsY5pza1JS-i7nwitInNuYucR3MfWL0feJ6mPucUMx9xyXYsTml2LEd18aO7QlT922OHeL7HnYYIab0iMCOwz0HO45wBXY8zn3s-MwW2PF96mFhc5diQYjvYUFtSrCgnPpYMOpRLJhLje18V2DBKbGx4KZP4diMF9vl4PBycFpUDqZaz7J3zeZisXg7k3qaXMNtGMHbcRI3ZzLLwjm8yW7CKHpjdlez3W63O5Pj9uVk1Ot-_9a_WnDvw8nxN3J7k_d-TEaDgf3l03Cs3Iubs7P82Du9uD37cjXoTG2-vDwOLmZf1a-ry-jmMv5--X3mqJhOI3ky-Nnp_YxGv_Ti7OTzLAg1TU-iBPitR6_Ir0kGR1f8vD-9yj8oPst-pG--fP0eOCqjqv85ytPPP3V3NL7Vv9x2e9yWiy8XncS7oLff0l6ajb4tb93za_2R01P2_fpsMHBE-rN3tuDuwl0Ors8D_9cpF3-r5I0-9fvn_HO73W4Vi9RcrdJhedZk5ZJVX4X3GEcq9qyFQg1x4WlVsNmk6FKnpliFgoPDZq3_w6bx5cLrjbObytCsfyksqgiUHEUQtCyd5mChLEp0y-okwRK10zjJ0_KAbJdhwiBWceLgsAcxmpTj90HLQGrZ_Kghzpo9UxTaPYg7iYJsKrU2R3Fh_ychlIyr-HSvuboHEN9CP3MZhXpZhKGqbkY4gmuZR9p6SHEDn-aTCA3z2SxJdR8igNXhdSRjOYHH-JXAHsQbsWumhRit5Gil8PqcO2mui8H2ZlpD1Cy5blxx8l6N03kezSENs_2tV0OsOdUaX99OH2SmIW1rLcc32d686qg6tbId3XX38vwOSwKPxaW_QM4Shcjzg9IpyNkwkvGeEWmtvl4V04bKxlc0-LEK8jRUk276qE9uQqzprJpR0f5qJj6BKAb9fAOfQCqj4Oz6PE_3CFdbQOvVKSUouUYr2Sva_Ag0pHGopA4TtSe1B5g1sweCVzN8L0rmkD3f8FU468pM_zUFVZ6d1YtyzzhosGf3kev1MkK0mIKqjmVUaVQL5_z72-FjHCepllFXRtGeu-E-ZE1u1Y5KQcXJ_fc5fc0jBakchftcNirMn7B4AFsTeyCoiL3cpWPPTd5JEv0Ce_wIxsnyItGw7_lVB9Rdf5wsUdX8v3T8qpat0g5fQ1igX0kSXxVjmNq3u9ppORFm3T1cjLr5KIhVKQtTH4K-y1qYbxSWb6b3jYE0QfodGrQHx43h0iTpsjCDAP2ABUSINLppGGeJQp_Md6MAF-O-Qy5tfIxnUTgOdfYO2Q3xGwrVOAVp4HGZo0ImhdbgdUl5OUJF5qVB7oke3OOLlTEjPpi3eHze9P9x3rumvSgubI32DG5RNwI5h_ThpL-UG-wdIvZ9AoTbu2bTDoIMMRvpBAn7v6SEbSVpv2W_FQf5ClJJq3B-CjCeQoBkhkzibQtruov1tLjDNI61yTFHqJOnk0SB3pv5715B657Rfqd20Vi-yhu_m8XRCTIJUFQmHaUaw127yXXW2zezYLtYjJJg2ehFSRomeYbOI6lhF4Mq7_AOdd5Uf_-Y1F3u9Z8z47uYTYqrRmM4C28gQOXF43nG8eo0duy9bSS2mXMzuZ0RbmSOmMZFqKVCvdS43P7cqFOfeT-ZQwxKr-b-KPHH2G2062aKO4PhCCLdOAWpp5Cijvl4OeNtdSxacTNZ_sfn7-6av4zzCHTjTC1vUbusP4vAPm7zTD7eLj7m2UgaZzMZoUGoJi9CZltg20zyaWT8x8jQFybzJId4Ihli19j0272P3Xt0ovAa0HUks5vGUTgPFRQzQx-Kln25bRmZ7Bw518Vluxp8GJr02MuMS58wbi-VKtQvRJg9YeCOzGSkX2Zc_oRx2zHo6TJ79shD0NX9DulQR1C7_-cZDGGcqKDMxxXX8GsZZVC9YoZRootnRj1jd_dTxeolWNNaJX1WOnSDzr3fJFaKbIPiKpGw0uEbOyveYSsVZ5MKRLUZiQ0aZehe67gbdEwIqbP3tunQtY6_Qacw5r1ltK3qJVQ9w7Zhah0TsieG1TB0TwyvYdiemPovWHwTptyTQ9DFW7B4_5laN1HX4aTcqmqWrzoFBfGy2OsWUnk8grT4R5HmZsXjuczKXFilyl3mVz-SrwY4bD78P5T_ADRV9x8=",
       "maps-white": "eJzNWm1T27oS_kx-hcYz59MRoDfLdof0TggQ2kOAEigtXzoi3iQufkltOSH99XdkO8RwkhAO3MMdZjSydh-tHq20kjbs_ec-CtEE0ixI4qZFd4iFIO4nfhAPm9bV5dG2a_3nY2PvXOnR2WA_D0Ij-djY2ivqKIQJhE3LJRbSKh2C_jrviv8gFuqHKstOVQRNq6tSlfuQWkhlfYj99kL0OR8OIY1Vri0UqSDuJf070J00ycdNi1roVsV-oJvWaRKDhcYq1iNI4q76maSdxG9aYR6rNMhqoiCuRMM016O7PLTQJIBpN_GhabVbJ-2e9bGxtbV3HqoZpD2tNMq00k2rnUS3QQz-wXnPQhMV5tC0qO0yKXY4FUxQQa3d5dDLRKvwH-BOggE8YATjYpXiYQzpcNYbBRD6DwCydjiHx-cPmoy60t0hTEibktXDOR_NsqCvwq66D6I8Og70pbqD-KEbj7n2KuxRkMIFZEGmH9QduUq5nYT-U-WVPZ8Ew5GOg3i4MaI9Ukn2VHvl3HZVrNpJTZWvnCCjehWnkEE6gYUjKF85lN4Yaopsh9quywvlvd1iG5naZQqAVF8HE-iNoW8WftGb-UA6BajtLD7fWp_8YoPUdpRpIRaKEx-ypkUdLjATtsCcSgdzKQS2GefYdgTHklKOJbc9LIWQWDqUYem5FDtCEOzZlGJKGDOl8AimzCEMUyGJxFR4nGBqE4djagtim5K7mErHlqZ0bEwdR9qYEUJdzIhtU8yooBwzTpiDGXddipktXYaZpJ7ETDKHYCZtxjGTDrNNKQhmDi1KTihmrnBszFyHuZi5ruNi5nGbY06YTTEn3CWYU1KUkrmYU09SzBmlNuacuQ7mXDge5lxyijk3_XNBHYq5YMTB3BZcYm57tou5tAXHXHrCw9x1HAcLIm2OBXMJwcKAsRCMMFN6DhbSLUqPEiwc6thYuMai8KhBedRxsfAEZVh4tkOxTQRj2Ca2Q7BNXGnqHhHYpp7nYptTakqXSmzbwrWxbUvH1D0ise14Nse2y4yOK4SHbY-bds9jLpZEOMy413OxZIRRLJlgHpacuQxL7jDjd8-RWApGCZbCWJE24aJYdFt7VxcnRWVrpPU4-7C7O51Od8ZKj5IB3Ach7PSTaHessiyYwHZ2F4Thtlmju61Wq7U_PGx9G9522jffu9-mwj06Pry-vR-MOqf9m5NRIjrkyj9sX8Wft0my_bMDZ1-EvPqZjs7bxL28OyJfvvtn3XD_-Ep-vXEp_Xxz9Dn62lFwY-vk5npE1PDi1_jadfoHo-nv-K-xH2iWHocJiHuXfaO_h0No34vTwdCdHYG4HgTRrOsn8sfd0fU3uHFOx7_b49tfs1_pl4h3b_vbk88_Wq1-S02_XO4n7iW7_5520uz2--zeOR_oT4Kd8JvB6TgQ0fFPlV9c2DL91TmbCmfqzC4G5773-0TIH3GyrU-87rn4q9VqNYtJ3J3P4l55omXllFZfxR4127VY_RYKNETFfq7iyDJFh9k1xSq0bu3t1vrf2zURo4gtJqSYSs_4pxQWVQSxug3Bb1o6zcFCWZjoprWf-DPUSqMkT8tjuFUGI4OYR6OtvQ5EaFja74JWvtJq95OGKNvtmKLQ7kC0n8SQjZTW5sAv1seLELGKqij4qLm6bTBioV-5CgM9K4JdVTcWDmCg8lBbTyku4bP7IkK9fDxOUt2FEGB-RB6oSA3hOX4lsAPRUuyCaSFGczmaK7w_5_0014WxjZnWEDVPLhrfn9N5Hk4gDbLNvVdDLDjVGt-f05HKNKQtrVX_LtuYVx1Vp1a2o4fu3p7fXkngubh0DWqcxIi-PiidgBr3QhVtGJEW6otZMW2obHxHhx_Gfp4G8bCdPrsnlyEWdObNqGh_NxcfQxiBfr2DjyFVoX82OM_TDcLVCtBidkoJSgZoLntHnx-AhjQKYqWDJN6Q2hPMgtkTwbs5vhMmE8he7_gqnLVVpq9HEJdnZ_Vu3TAOGuzZY-RivowQTUcQV8cyqjSqibP__eXwKYqSVKuwrcJww9XwGLIgN29HpaDi5Pz7nL7mYQypug02uWxUmFOYPoEtiD0RzHNV__Yi308S_QZr_AD6yewy0bDp-VUH1Ld-P5mhqvl_ufGrWjZPbnwNYIp-J0n0rbBhat8faiflQLj18HAx6uajIFYlRky9B_ohN2K-UVC-mT42LpQJ0h_QRevisNGbmVRgFmTgo58whRDRRjsNoiyJ0Wfz3SjAhd0PyGGNT9E4DPqBzj4g0pB_oCDup6AMPCozYcgk6hqiLikvR6jI7zToI9GTe3wxM8bik3HL58fN_h_HvW7Y0-LC1miN4R61Q1ATSJ8O-ku5wD4gSh4ToIKsG03L9zPECdIJkuRvUspXkiQ7_I_iIJ9DKmkVzk8A-iPwkcqQSe-tYM3WsR4Vd5jGoTaZ7BDt5-kwiUFvzPxPt6D1yGl_MlI0lq_yxp9mcnSCTJoVlalNFffhod1kVOvty1nwdSxuE3_W6IRJGiR5hs5DpWEdgyrv8AHtb1d__5jUQ4b3nzMT65gNi6tGozcO7sBH5cXjdc5x6zTWrL1VJFa5czm5tRHu1hwxjctAqxh1UrPlNufG7PrIu8kEIoj1fOzPEn-O3VK_Lqe4NhjeQqgbJ6D0CFK0bz7eznkrNxaruJnfEp4fv7Nu_CrKQ9CNs3h2j1pl_VUENtk2r-TjruNjno20cTZWIboI4uGbkFkV2JaTfBkZ7zky7I3JvGhDvJAMJTU23VbnU_sRnTAYABqEKrtrHASTIIZiZOioaNmU2wrLdK3lXBeX7cp4LzDpsbexy15gt5OqONBvRJi_wPC-ylSo38aueIHdVgR6NMtebbkHurrfIR3oEGr3_zyDHvST2C_zccU1fKDCDKpXTC9MdPHMqGfsHn6qmL8Ea1rzpM9chy3RefSbxFyRL1GcJxLmOmJpZ8U7bK5iL1OBsDYiuUSjDN0LHWeJjgkhdfbuKh220PGW6BTOfDSNxKpeQtUzbBWm1jGlG2J4DcM2xIgahm-Iqf-CJZZhyjXZA128BYv3n6m1k3gQDMulGo_zeacQQzQr1rqF4jy6hbT2XwF_UzycqKzMhVWqkjCv-il-bmBv9-l_u_wXKAQNyg==",
       "maps-red": "eJzNWm9T2zgTf918Co1nbp67OQH6b7tDehMCDW2h0ARa2jc3SrJJDP4TbDkhfPobOQlxaBLCtfeUYUYjS7-19rdabdYr9v-6i0I0gjQLkrjq0F3iIIg7STeI-1Xn8uLtjuf89aayf67N4Kx3kAehnXlTebVf9FEIIwirjk8cZHTaB_N5_ir-N3FQJ9RZ9lFHUHVOdarzLqQO0lkH4m59MfU-7_chjXVuHBTpIG4lnRswjTTJh1WHOqit425gqs7HJAYHDXVsBpDEp_o6SRtJt-qEeazTICtNBfFsqp_mZnCThw4aBTA-TbpQdeq1k3rLeVN59Wr_PNQTSFtGG5QZbapOPYnaQQzdw_OWg0Y6zKHqCO5LwXalIp7rS9_ZWy16kRgd_gu5k6AHDzJSUroOeBRD2p-0BgGE3QcBslGdo-PzByQnjMhdj1GmFPHEOrnzwSQLOjo81XdBlEfHgbnQNxA_vIYyxt11wm-DFJqQBZl5wLtqHbiehN3HYLneSv2BiYO4v7VEfaCT7DF6Le1THet6UoJyvgl6GaeQQTqCxU5QuVaV1hBKQLarBCF0it7fKw6S7V2kAEh3TDCC1hA61vWL19kHZFKA0tni88P1rlsckdKZsiPEQXHShazqUJcLzIQUmFPlYq6EwIL7Lha-IFgyzrF0BceKUo4V4wQr5vlYceljJYTCyqUMK9-j2OWeh10hCPYlpdj3XYUpYYxiSoRPMGWCuJgylzBMhSIKU-FzgqkkLsdUCiJtyz1MlSuVbV2Jqesq23qMYkYI9TAjUlLMKOcEMyoox4wT5tqWe5hxz6OYSeUxzBT1FWaKuQQzJRnHTLlM2lYQzFxatJxQzDzhSsw8l3mYeZ7rYeZzyTEnTFJsX0wwp6RoFfMwp54rMae-opgzSiXmnHku5ly4PuZccYo5t6twQV2KuWDExVwKrjCXvvQwV1JwzJXiAnPlCx9zz3VdzH0lPCyIkhwL5hGChX0RFoIRZlu7N8orWp8SLFzqSixcq6fwrA7Cp1bWp65nd5EyLHzpUiyJYAxLIl2CJfGU7ftEYEl938OSU2pbjyospfAkllK5tu8ThaXrS46lxyzGE8LH0ud23PeZhxXhvm2Fy6yj2D4jjGLFBLO-wjyGFXcZx4pbr1CCUYKVsGspSbgoHPnV_mXzpOi8GhgzzF7v7Y3H492hNoOkB3dBCLudJNob6iwLRrCT3QRhuGP9fq9Wq9UO-ke19qd2o_7t6-nVWHhHLXJxcdC8ext5V6I5-NJ4f_SV3t3kjet-u9m87xw3a-H7SVu83yHJzvUBP_0m5OH1sHWWH3knF3dnn66aBwPypXtx_f5Tk35sXarP3zwa71xdhjeX0bfLb0MZR2wQ6uPm7UHjNmzfm_HZ8eFZ5zZkH7jO4MvAvT6eHPY-hn5HvDvuZ3B4Jc5PB1f521gMs-tjfTYSnr55--UKvqX9OGPx6YcwTz_cmnq7c2fulbhxJ71x7bjWyI6Oxvr8yM--fLi7dRvsNIN77rbOPgY-u7rXX_P3A8HSm0uAWzW4Tt18LNyxO2n2zrv-_YlQf8fJjjnxT8_Fh1qtVi2MvTe39v709zSbmn72VMQHGyrsmXdQYCAqQskshn2PK85aCajWA10mS0B3LdCeyRLQWwcsjlsJ6K8F2tO2ALLZj-Or_b2SCfb3bEAtQq-NuLbTsq42nSy6CGLdDqFbdUyag4OyMDFV5yDpTlAtjZI8neYptWmsthLzYP1qvwER6k_XPwWju9rovXcGomyvYZsC3YDoIIkhG2hjbEZUuPqzJGIdzX4kloZn6RgjDrrNdRiYydKDXeIQejoPjfOY4wpCe89i1MqHwyQ1pxACzJOIQx3pPjxFcCrYgGil7IJqMY3m82gOeAGkD9LcFIttTbUkUdrLxeALIHWehyNIg2z7_StJLEiVBl8AqXqYZGCzfG22prUksyBWDKP5-Avg9lZnBtKaMbpzk23NrixVpjcdRw-v-w8I7k8ZPBV4v4AeJjGiPx51T0APW6GOtgy5C_jCLHYMTQd_5ZYfxd08DeJ-PX0y5qySWPCZD6Ni_Ndt8jGEEZgf3-JjSHXYPeud5-kW8XiN0MI80xmU9NB87lfu-iEYSKMg1iZI4i25PZJZUHs08eu2vhEmI8h-fOvnIV5n5ssA4ml-MKtebBvqdWbOliVLAV9nBo0HEM9SDzRDzCwnf4FDvIuiJDU6rOsw3NIflkUW7ObjaDoxI-X-AlKf8zCGVLeDbTKqmcxHGD8SWzB7NDFj5v3f_fwgScxPcPND6CSTi8TAtj9jZYHy8e8kEzQb_k8P_6yXzYtcnwMYo_skia6KSpXtfX3onUw14c7DF5qF24eC2axAZvstMA81MvuMgukH7JtKU9tQ_Ro1a82jSmtii8JZkEEXXcMYQkQr9TSIsiRG7-1zpRAu1n2NPFZ5Fw3DoBOY7DUiFfUbCuJOCtqKR9OaKLIl24ooz0yzJFQU-ip0aerR90phGbviI73V03qzl6i3-7Te_CXq7T2tt3iJevtP6y1foN6MPK23eoF6001qj4sPk0ptCHeoHoIeQfpY6U_TAPoaMbJMgAqySZtat5shTpBJkCLfzVK-liTZ5b8V6epcZDY7S1lOADoD6CKdIXuPsW63NrEeFJl6pZ7EtzmkSfq_DE2T9y25s8rvnO5w9keZg1UG2QsYdNTrBZ0A4s6k8jvjO0z-sYLrzA5_eoWFlvb_T0aKwWmlrvKntbNJkL2aQtPrIB134GHc3kKVx1cbhG8ySDvpTion0A-SGJ2H2sAmQ8wqka_Rwc7D3yPrMLHD1BLrRpi0dfidGyxl8GigM_Q783Y4WbZYnmprVOiY59jr4cLt3xtNbDJav0j6K-cpdPI0S1LU0HlsQjDZ1m5E6YZTIJdPwffuPyW_yiBe2R4bjto6a6xzudVW2piwtG3KWDmwYdEkMaCLFHR3ewt5S0csGUEEsZlpz8RvqDOwihVsR0nQRUdhgbBRIwhtL6swueEdT5vvKRutdLPVhtqYIbUhNJUT0GYAKTqwD9sG4u05fBdC2IybvWl-Wv-NmZKO8hBM5Sye3KHatP9DBLY5xT_IZ2MGZUtKtHI21CFqBnH_p5BZF8JXk3wemY1plSXDfjKZZx2IZ5Kh5WTrtNZ4V1-iEwY9QL1QZzeVw2AUxFBoht4WI9tyW7My3bhybopv8NnircDeDPycddkz1m2kOg7MTyLMn7Hwgc50aH7OuuIZ69YiMINJ9sMrt8DMkmJkAhNCqSiQZ9CCThJ3p8X64tu8p8MMZrWNVpiYovhQLuc_3OjOC0Ql1Lwe_HCZuwKzdCM7B_IVwHmFcY4RK19WVGfmELkKAmFJI7UCMQ3dC4y7AmNDSJm9tw7DFhh_BabYzCUzEmdWHpnVZtbJlF5M6ZYyvCTDtpQp3cVTvqVM-T8CxCqZqU-2wBQFoqIoZHv1JO4F_amrxsN8_lKIIZoUvu6gOI_akFYdb_6vXd8Bj0Y6m1bJZ1DXU2T2f1rzBfb3Hv8z5D9gW_Zx",
@@ -8854,7 +8859,7 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T17:46:24.311Z"
+    "checkedAt": "2026-11-27T19:29:09.256Z"
   },
   "season": {
     "id": "covens",
@@ -8882,10 +8887,13 @@
       "date": "2026-11-27",
       "notes": [
         "The 28-38 step now draws its own 41-point passive tree instead of repeating the level-28 tree; the 42-point budget is the step's reviewed override, not a derived count.",
-        "The 29-68 leveling step now shows the support progression: a 4-link until level 38, then swap Added Fire Damage for Brutality and add Pulverise as the fifth link.",
-        "The 29-68 step plan tells you to keep a mana flask until the axe carries leech and to hold Herald of Purity until then.",
-        "Boneshatter starts at 39, once Brutality is in the link; the 28-38 step stays on Sunder, because swapping before Brutality was the rough patch.",
-        "The switch to Boneshatter is now a step with its own gate report instead of prose inside one long bracket, because a playtest found that stretch the hardest part of the build."
+        "The 39-68 leveling step shows the support progression: a 4-link until level 38, then swap Added Fire Damage for Brutality and add Pulverise as the fifth link.",
+        "The 39-68 step plan keeps a mana flask until the axe carries leech; Herald of Purity is part of the level-38 setup and the flask pays for it.",
+        "Boneshatter starts at 39, with Brutality in the link; the 28-38 step stays on Sunder and is the Sunder measurement, because swapping before the next step was the rough patch.",
+        "The switch to Boneshatter is now a step with its own gate report instead of prose inside one long bracket, because a playtest found that stretch the hardest part of the build.",
+        "Brutality is already usable at 38; the 39 swap is the guide's step boundary, and a better axe is an upgrade rather than a gate.",
+        "Ascendancy labs are named correctly: Unflinching normal, Unbreakable cruel, then Undeniable and Unrelenting.",
+        "The stale pinnacle comment is gone; the page keeps reading the committed gate values."
       ],
       "seasonName": "Covens"
     }
@@ -9041,9 +9049,9 @@
     },
     "leveling-12-28": {
       "goals": [
-        "Swap to Boneshatter and self-cast Vulnerability; keep Enduring Cry on a movement or left-click bind.",
-        "The trauma stacks are the damage; do not stand in the hit.",
-        "Keep a mana flask: the magic axe cannot carry leech, and the auras already reserve most of the bar."
+        "Sunder is the main skill from 28; self-cast Vulnerability once it is available and keep Enduring Cry on a movement or left-click bind.",
+        "Boneshatter unlocks at 28 but keeps the same four links, so it is not a damage jump until Brutality is in the link; keep the four-link and save for the axe.",
+        "Keep a mana flask: the magic axe cannot carry leech."
       ],
       "lookFor": [
         {
@@ -9084,9 +9092,10 @@
     },
     "leveling-28-38": {
       "goals": [
-        "Swap to Boneshatter and self-cast Vulnerability; keep Enduring Cry on a movement or left-click bind.",
-        "The trauma stacks are the damage; do not stand in the hit.",
-        "Keep a mana flask: the magic axe cannot carry leech, and the auras already reserve most of the bar."
+        "Stay on Sunder through 38: this step is the Sunder measurement, not a Boneshatter step.",
+        "Brutality is already usable at 38, but the guide swaps at 39 when the next step opens; a better axe is an upgrade, not a gate.",
+        "Cast when Damage Taken brings Vulnerability and Immortal Call at 38; keep their levels capped to the trigger.",
+        "Herald of Purity and Determination come online here; the mana flask pays for them until the axe carries leech."
       ],
       "lookFor": [
         {
@@ -9128,9 +9137,9 @@
     "leveling-38-68": {
       "goals": [
         "A 4-link is enough until level 38: swap Added Fire Damage for Brutality, then add Pulverise as the fifth link when you have one.",
-        "Keep a mana flask until the axe carries leech; do not add Herald of Purity before then.",
+        "Boneshatter starts at 39; Herald of Purity and Determination are the auras, and until the axe carries leech, run a mana flask in place of the Silver Flask.",
         "5-link Boneshatter and reach 2,000 life; the 6-link is the maps-red step, not this one.",
-        "Take the labs when they unlock; Unbreakable is the normal-lab defence step."
+        "Take the labs when they unlock: Unflinching at the normal lab, Unbreakable at the cruel lab, then Undeniable and Unrelenting."
       ],
       "lookFor": [
         {
@@ -9797,7 +9806,7 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "c7db03a92339",
+  "seedHash": "808ef30bd3d8",
   "guide": {
     "summary": {
       "text": "Boneshatter Juggernaut is a two-handed melee build that measures 439.5k at red maps and 660.4k at pinnacle. The rare axe, armour rolls and Herald of Purity carry the damage, the ascendancy makes the trauma survivable, and no unique is required.",
@@ -9815,7 +9824,7 @@
       "factsHash": "3caf509afb8983b2"
     },
     "leveling": {
-      "text": "Level with Cleave and Added Fire Damage until Sunder is available, then stay on Sunder until Brutality unlocks; Boneshatter becomes worth the swap once Brutality is in the link and the character has a two-handed axe. The first checkpoint measures 425 life and 41 damage; the second measures 1.5k with a self-cast Vulnerability. The mana flask covers you until the rare axe carries leech; the Silver Flask comes with that axe.",
+      "text": "Level with Cleave and Added Fire Damage until Sunder is available, then stay on Sunder for the measured stretch. Brutality is already usable before the swap; the guide moves to Boneshatter at the next step, because the Sunder checkpoint is what the gate measures. A better two-handed axe is an upgrade, not a gate. The first checkpoint measures 425 life and 41 damage; the second measures 1.5k with a self-cast Vulnerability. The mana flask covers you until the rare axe carries leech; the Silver Flask comes with that axe.",
       "status": "auto-retry",
       "signed": null,
       "facts": [

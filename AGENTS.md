@@ -44,6 +44,7 @@ npm run builds:patch-facts # content hashes of the pinned tree and gem data
 npm run builds:sign -- --build <id> --section summary --by "name"
 npm run builds:calibrate  # must-pass + must-fail gates, committed report
 npm run builds:verify     # PoB gates per checkpoint + the published PoB code
+npm run builds:no-flasks  # same trees with all flasks disabled, committed report
 npm run builds:publish-pobs # release only: create pobb.in pastes and link map
 npm run builds:check      # every published code loads in PoB with the same counts
 ```
@@ -157,6 +158,7 @@ Related workflows:
 | Gate thresholds, checkpoints, leveling budgets | `scripts/builds/gates.yaml`, `src/builds/config/checkpoints.yaml` |
 | Where a leveling gem comes from (quest, vendor, Siosa, Divine Font) | `src/builds/config/gem-sources.yaml` |
 | Guide steps: roots, sub-steps, triggers, aliases | `src/core/builds/steps.ts`, `docs/STEPS.md` |
+| Review a build: audit, owner questions, proof, better version | `docs/BUILD-REVIEW.md` |
 | Pantheon and bandit data | `src/builds/config/pantheon.yaml` |
 | Build header art and one-click PoB assets | `public/builds/` |
 | Change filter output | `src/core/filter/` (esp. `generate.ts`, `emit.ts`) |
