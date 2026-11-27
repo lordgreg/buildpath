@@ -125,6 +125,17 @@ leveling:
       untilLevel: 28
       replaces: Cleave
       note: "Sunder clears packs and hits single targets harder than Cleave until Boneshatter unlocks."
+    # The 29-68 step is a level-68 snapshot, so the link it lists is not
+    # available at 29. These two swaps are the missing support progression.
+    - gem: Pulverise
+      fromLevel: 31
+      kind: support
+      note: "The fifth link only. At four links Added Fire Damage is the stronger single-target support."
+    - gem: Brutality
+      fromLevel: 38
+      kind: support
+      replaces: Added Fire Damage
+      note: "Brutality deals no elemental damage, so Added Fire Damage has to come out. The four-link becomes Boneshatter - Melee Physical Damage - Brutality - Faster Attacks."
   brackets:
     - until: 12
       skills:
@@ -327,6 +338,11 @@ changelog:
       - "Small armour slots use the glove/boot armour scale and a Leather Belt; the Melee Splash swap is part of the maps-red plan, not a hidden rating claim."
       - "The leveling filter hides Chain Belts and normal/magic Paua Rings; rare Paua Rings still show, because a rare can roll life and resists."
       - "Step plans stop recommending crit multi on a Resolute Technique build and stop calling the 5-link a 6-link."
+  - season: covens
+    date: "2026-11-27"
+    notes:
+      - "The 29-68 leveling step now shows the support progression: a 4-link until level 38, then swap Added Fire Damage for Brutality and add Pulverise as the fifth link."
+      - "The 29-68 step plan tells you to keep a mana flask until the axe carries leech and to hold Herald of Purity until then."
 
 
 

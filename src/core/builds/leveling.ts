@@ -10,6 +10,8 @@ export interface LevelingUpgrade {
   untilLevel?: number;
   /** The gem it replaces, when the step knows it. */
   replaces?: string;
+  /** Support swaps change a link, not the main skill. */
+  kind?: 'skill' | 'support';
   note?: string;
   /** True when the change lands exactly on the step's last level. */
   atBoundary: boolean;
@@ -65,8 +67,10 @@ export function levelingStep(
     swap.fromLevel <= at && (swap.untilLevel ?? 101) > at;
 
   // A swap made inside an earlier bracket is part of the starting set, and the
-  // gem it replaced is gone.
-  const done = swaps.filter((swap) => activeAt(swap, from));
+  // gem it replaced is gone. Support swaps are link changes: they belong in the
+  // upgrade cards, never in the main-skill list.
+  const skillSwaps = swaps.filter((swap) => swap.kind !== 'support');
+  const done = skillSwaps.filter((swap) => activeAt(swap, from));
   const replaced = new Set(
     done.map((swap) => swap.replaces).filter((gem): gem is string => Boolean(gem)),
   );

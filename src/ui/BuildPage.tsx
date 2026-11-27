@@ -750,7 +750,7 @@ export default function BuildPage() {
       {gate?.tree && (
         <section aria-labelledby="tree">
           <h2 id="tree" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            Passive tree at {step}
+            Passive tree at level {gate.level}
           </h2>
           <div className="mt-3">
             <TreeThumbnail tree={gate.tree} label={step} />
@@ -761,7 +761,7 @@ export default function BuildPage() {
       {gate?.gear && (
         <section aria-labelledby="gear">
           <h2 id="gear" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            Gear at {step}
+            Gear at level {gate.level}
           </h2>
           <p className="mt-1 text-[11px] text-zinc-600">
             Budget gear, not hand-picked items: the gate was measured on exactly
@@ -832,7 +832,11 @@ export default function BuildPage() {
                   >
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                       <span className="rounded bg-gold-400/15 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-gold-200">
-                        {upgrade.replaces ? 'Swap' : 'Add'}
+                        {upgrade.kind === 'support'
+                          ? 'Support'
+                          : upgrade.replaces
+                            ? 'Swap'
+                            : 'Add'}
                       </span>
                       <span className="text-[11px] text-zinc-400">
                         {upgrade.atBoundary ? 'At' : 'From'} level{' '}
@@ -888,7 +892,7 @@ export default function BuildPage() {
       {gate?.gems && (
         <section aria-labelledby="gems">
           <h2 id="gems" className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            Gems at {step}
+            Gems at level {gate.level}
           </h2>
           {!showGemQuality && (
             <p className="mt-1 text-[11px] leading-relaxed text-zinc-600">

@@ -297,6 +297,7 @@ describe('published build data', () => {
             fromLevel: number;
             untilLevel?: number;
             replaces?: string;
+            kind?: 'skill' | 'support';
             note?: string;
           }[];
           brackets: {
@@ -546,6 +547,27 @@ describe('published build data', () => {
       fromLevel: 12,
       untilLevel: 28,
       replaces: 'Cleave',
+      note: expect.any(String),
+    });
+  });
+
+  it('tells Boneshatter players the 4-link support progression', () => {
+    const build = compiled.find((entry) => entry.id === 'boneshatter-juggernaut');
+    expect(build, 'boneshatter-juggernaut').toBeDefined();
+    const swaps = build!.leveling.swaps ?? [];
+    // Pulverise is a fifth-link option at 31, and Brutality replaces Added
+    // Fire Damage at 38 because Brutality deals no elemental damage.
+    expect(swaps).toContainEqual({
+      kind: 'support',
+      gem: 'Pulverise',
+      fromLevel: 31,
+      note: expect.any(String),
+    });
+    expect(swaps).toContainEqual({
+      kind: 'support',
+      gem: 'Brutality',
+      fromLevel: 38,
+      replaces: 'Added Fire Damage',
       note: expect.any(String),
     });
   });
@@ -1287,6 +1309,7 @@ describe('leveling availability', () => {
             fromLevel: number;
             untilLevel?: number;
             replaces?: string;
+            kind?: 'skill' | 'support';
             note?: string;
           }[];
           brackets: {

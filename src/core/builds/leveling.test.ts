@@ -159,6 +159,39 @@ describe('levelingStep', () => {
     expect(levelingStep(leveling, 1, required, { level: 28 })?.startSkills).toContain('Sunder');
     expect(levelingStep(leveling, 2, required, { level: 68 })?.startSkills).toContain('Sunder');
   });
+
+  it('shows a support swap as an upgrade without promoting it to the main skill', () => {
+    const support: LevelingSwap = {
+      kind: 'support',
+      gem: 'Brutality',
+      fromLevel: 38,
+      replaces: 'Added Fire Damage',
+    };
+    const step = levelingStep(
+      {
+        swaps: [sunder, support],
+        brackets: [
+          { until: 12, skills: ['Cleave'] },
+          { until: 28, skills: ['Boneshatter', 'Enduring Cry'] },
+          { until: 68, skills: ['Boneshatter', 'Enduring Cry'] },
+        ],
+      },
+      2,
+      (gem) =>
+        ({
+          Cleave: 1,
+          Sunder: 12,
+          'Enduring Cry': 10,
+          Boneshatter: 28,
+          'Added Fire Damage': 8,
+          Brutality: 38,
+        })[gem],
+      { level: 68, from: 29 },
+    );
+    // Brutality is a link change, so it must not lead the "Use" list.
+    expect(step?.startSkills).toEqual(['Boneshatter', 'Enduring Cry']);
+    expect(step?.upgrades).toContainEqual({ ...support, atBoundary: false });
+  });
 });
 
 describe('levelingPlan', () => {

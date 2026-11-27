@@ -148,6 +148,11 @@ export interface LevelingSwap {
   untilLevel?: number;
   /** The gem this one replaces while it is used. */
   replaces?: string;
+  /**
+   * What kind of gem this is. A support swap is a link change, not a new main
+   * skill, so it must not become the step's lead skill. Defaults to `skill`.
+   */
+  kind?: 'skill' | 'support';
   note?: string;
 }
 

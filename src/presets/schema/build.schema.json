@@ -198,6 +198,11 @@
                 "minLength": 2,
                 "description": "The gem this one replaces while it is used."
               },
+              "kind": {
+                "type": "string",
+                "enum": ["skill", "support"],
+                "description": "Support swaps change a link; they never become the step's main skill."
+              },
               "note": { "type": "string", "minLength": 4 }
             }
           }

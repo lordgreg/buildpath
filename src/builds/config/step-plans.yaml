@@ -882,12 +882,14 @@ profiles:
           note: "Bench physical damage % on a free prefix."
     until-68:
       goals:
+        - "A 4-link is enough until level 38: swap Added Fire Damage for Brutality, then add Pulverise as the fifth link when you have one."
+        - "Keep a mana flask until the axe carries leech; do not add Herald of Purity before then."
         - "5-link Boneshatter and reach 2,000 life; the 6-link is the maps-red step, not this one."
         - "Take the labs when they unlock; Unbreakable is the normal-lab defence step."
       lookFor:
         - slot: "Body Armour"
           mods: ["5-link", "Life", "Elemental resistances"]
-          note: "The 5-link is enough for the campaign; do not pay for a 6-link yet."
+          note: "The 4-link is enough until 38; the 5-link is the campaign target, not a level-30 requirement."
         - slot: "Weapon"
           mods: ["Physical damage %", "Added physical damage", "Attack speed"]
           note: "Do not replace a good rare with a worse unique."
