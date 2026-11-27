@@ -371,7 +371,16 @@ if (gates.calibrated === true && !calibrated) {
   );
 }
 
-const files = readdirSync(seedsDir).filter((name) => name.endsWith('.yaml'));
+// `--build=<id>` proves one seed while iterating on it; CI runs every seed.
+const onlyBuild = process.argv
+  .find((arg) => arg.startsWith('--build='))
+  ?.slice('--build='.length);
+const files = readdirSync(seedsDir)
+  .filter((name) => name.endsWith('.yaml'))
+  .filter((name) => !onlyBuild || name === `${onlyBuild}.yaml`);
+if (onlyBuild && files.length === 0) {
+  throw new Error(`no seed for --build=${onlyBuild}`);
+}
 for (const file of files) {
   const seed = readYaml(resolve(seedsDir, file));
   seed.ascendancyName = ascendancyName(seed);
