@@ -2,10 +2,10 @@
 
 Reference for the step model (D32–D37, [PLAN-BUILDS.md](../PLAN-BUILDS.md) §9.3).
 
-**Status:** PR 3 of 5. The page reads the three roots and `leveling` is now
-optional in the schema. An unmigrated seed's six checkpoints are projected onto
-Leveling, Maps and Endgame (`stepView`), so the navigation is the same for both
-shapes and migrating a seed in PR 4 moves nothing on screen.
+**Status:** PR 4 of 5. All 21 seeds declare `steps`; `leveling` survives only
+as the pre-migration shape the schema still accepts. An unmigrated seed's six
+checkpoints are projected onto Leveling, Maps and Endgame (`stepView`), so the
+navigation never changed while the data moved.
 
 Measured steps carry the band they inherit (`bandFor`): a level-38 step is
 measured on the level-28 budget rather than an invented one, which under-points
@@ -136,8 +136,10 @@ Only the first leveling step has no trigger — it opens the character.
 
 ### Advice
 
-- `watch` is authored inline: what changes *here*. Numbers only through
-  `{{steps.<id>.metrics.*}}`, and only on a measured step.
+- `watch` is authored inline: what changes *here*. Optional — a step that only
+  continues the same setup says nothing, and the step plan carries the gear
+  advice. Numbers only through `{{steps.<id>.metrics.*}}`, and only on a
+  measured step.
 - `lookFor` and `crafting` stay in `src/builds/config/step-plans.yaml`, keyed by
   root band (`leveling-early`, `leveling-late`, `maps-early`, `maps-red`,
   `endgame`), so eight minion builds do not repeat themselves.
@@ -176,17 +178,29 @@ local run and a CI run agree. `builds:verify` over 21 builds is therefore a
 fits. Calibration samples one measured step per root band per build (D37), so it
 does not grow with the step count.
 
-## Migrating a seed (PR 4)
+## Migrating a seed (PR 4, done)
 
-1. Replace `leveling` with `steps`. The schema now accepts either, not both.
-2. Split the old brackets where the *change* happens, not where the bracket
-   ended: a gem swap, a link count, a jewel, a slot or a budget.
-3. Give every step a `level` and a `watch` line.
-4. Mark the steps PoB can measure; put `reason` on the rest.
-5. Add `aliases` for each old checkpoint id it replaces.
-6. `npm run builds:build` — the resolver names the rule you broke.
+The mechanical mapping used for the catalogue:
 
-Boneshatter is the reference build: its `until-28` bracket listed Boneshatter to
-a level-13 reader, and its real switch lived in `swaps`. The migrated form is
-`leveling-1-12` (Cleave), `leveling-12-28` (Sunder), `leveling-28-38`
-(Boneshatter, four links) and `leveling-38-68` (Brutality, fifth link, CWDT).
+| Old bracket | Step read at | Alias |
+|---|---|---|
+| `until: 12` | `leveling-1-12` (12) | `until-12` |
+| `until: 28` | `leveling-12-28` (28) | `until-28` |
+| `until: 68` | `leveling-38-68` (68) | `until-68` |
+| `bracketFor(80)` | `maps-white` (80) | `maps-early` |
+| `bracketFor(90)` | `maps-red` (90) | — |
+| `bracketFor(96)` | `endgame-pinnacle` (96) | `pinnacle` |
+
+The step keeps the bracket's gem groups and flasks, so the gate measures what it
+measured before; only the id, the alias and the band lookup are new. A swap's
+own `note` becomes the `watch` line of the step whose level covers it: the
+migration invents no prose.
+
+Boneshatter is the reference build and the one place the split is authored
+rather than mechanical. Its `until-28` bracket listed Boneshatter to a level-13
+reader, and the switch that mattered lived in `swaps`. It is now
+`leveling-1-12` (Cleave), `leveling-12-28` (Sunder, measured at 28),
+`leveling-28-38` (Boneshatter, four links, Brutality and CWDT) and
+`leveling-38-68` (fifth link, Pulverise). The 28-38 step is its own measurement,
+which is what makes the playtest's "the switch is a pain" a number instead of a
+feeling.

@@ -618,7 +618,9 @@ The compiler proves, in `src/core/builds/steps.ts`:
 
 `aliases` on a sub-step map a pre-refactor id (`until-28`) onto the step that
 replaced it, and `resolveStepAlias` is the only reader; the table lives until
-1.0. The reference is `docs/STEPS.md`.
+1.0. `watch` is optional: a step that only continues the same setup says
+nothing, and the band's step plan carries the gear advice. The reference is
+`docs/STEPS.md`.
 
 Until every seed migrates, the page projects the six checkpoints onto the three
 roots (`stepView`), so the navigation is the same for both shapes: Leveling
