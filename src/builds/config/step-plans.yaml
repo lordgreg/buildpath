@@ -1498,7 +1498,7 @@ profiles:
     until-12:
       goals:
         - "Level with Rolling Magma; life, fire resistance and a 3-link first."
-        - "Do not switch to Righteous Fire until the fire resistance and regen are ready."
+        - "Do not plan the Righteous Fire swap yet; the campaign runs on Fire Trap."
       lookFor:
         - slot: "Weapon"
           mods: ["Fire damage", "Cast speed"]
@@ -1511,8 +1511,8 @@ profiles:
           note: "Keep moving."
     until-28:
       goals:
-        - "Swap to Righteous Fire with Lifetap, Elemental Focus, Controlled Destruction."
-        - "Cap fire resistance and keep a life flask for the degen."
+        - "Swap to Fire Trap with Elemental Focus, Efficacy and Concentrated Effect."
+        - "Keep Malevolence and Flammability up; cap fire resistance."
       lookFor:
         - slot: "Weapon"
           mods: ["Fire damage", "Damage over time multiplier"]
@@ -1529,17 +1529,17 @@ profiles:
           note: "Bench fire damage."
     until-68:
       goals:
-        - "Six-link Righteous Fire and reach 2,000 life; cap all resistances."
-        - "Armour and life regeneration are the defence, not block."
+        - "Five-link Fire Trap and reach 2,000 life; cap all resistances."
+        - "Armour, a sulphur flask and life regeneration are the defence."
       lookFor:
         - slot: "Body Armour"
-          mods: ["6-link", "Life", "Fire resistance"]
-          note: "6-link."
+          mods: ["5-link", "Life", "Fire resistance"]
+          note: "Five-link Fire Trap."
         - slot: "Weapon"
           mods: ["Fire damage", "Damage over time multiplier"]
           note: "Sceptre is the damage slot."
         - slot: "Jewels"
-          mods: ["Life", "Fire damage"]
+          mods: ["Life", "Fire damage", "Damage over time multiplier"]
           note: "Life first."
       crafting:
         - slot: "Body Armour"
@@ -1547,7 +1547,7 @@ profiles:
           note: "Craft the missing resistance."
     maps-early:
       goals:
-        - "A 5-link clears white maps; start the 6-link."
+        - "A 5-link Fire Trap clears white maps; start the 6-link."
         - "Reach 3,000 life, cap resistances and keep armour."
       lookFor:
         - slot: "Weapon"
@@ -1565,17 +1565,17 @@ profiles:
           note: "Bench fire damage."
     maps-red:
       goals:
-        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
-        - "Maximum fire resistance and armour are the red-map upgrades."
+        - "Switch to six-link Righteous Fire with Lifetap at red maps."
+        - "Add Purity of Fire and level-14 Vitality; cap chaos at 75%."
       lookFor:
         - slot: "Weapon"
           mods: ["Fire damage", "Damage over time multiplier"]
           note: "Sceptre."
         - slot: "Body Armour"
           mods: ["6-link", "Life", "Fire resistance"]
-          note: "6-link."
+          note: "Six-link RF."
         - slot: "Jewels"
-          mods: ["Life", "Fire damage"]
+          mods: ["Life", "Fire damage", "Damage over time multiplier"]
           note: "Life."
       crafting:
         - slot: "Body Armour"
@@ -1593,7 +1593,7 @@ profiles:
           mods: ["Life", "Chaos resistance", "Fire damage"]
           note: "Fix chaos resistance."
         - slot: "Jewels"
-          mods: ["Life", "Fire damage"]
+          mods: ["Life", "Fire damage", "Damage over time multiplier"]
           note: "Keep life."
       crafting:
         - slot: "Amulet"
