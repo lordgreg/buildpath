@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.78.1',
+    date: '2026-11-27',
+    title: 'Boneshatter leveling shows the 4-link support progression',
+    notes: [
+      "**Boneshatter's 29-68 step now names the link progression.** The step shows a 4-link until level 38, then swap Added Fire Damage for Brutality, and add Pulverise as the fifth link when you have one. Brutality is a replacement, not an addition: it deals no elemental damage, so Added Fire must come out.",
+      "**Support swaps render as upgrade cards.** A leveling swap can be marked `kind: support`, so it appears in the step's instructions without becoming the step's main skill.",
+      "**Step headings name the level, not the checkpoint id.** Gems, gear and the passive tree now read \"at level 68\" instead of \"at until-68\", so the end-of-bracket snapshot is not mistaken for the current level.",
+      "**Mana advice is explicit.** The step plan tells you to keep a mana flask and hold Herald of Purity until the axe carries leech; two reservation auras plus a 4-link attack is not playable without it.",
+      "762 tests.",
+    ],
+    commits: [],
+    compare: 'v0.78.0...v0.78.1',
+  },
+  {
     version: '0.78.0',
     date: '2026-11-27',
     title: 'Legal jewels, two S+ builds and an honest RF',
