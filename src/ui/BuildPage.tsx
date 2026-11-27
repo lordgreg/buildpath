@@ -69,6 +69,29 @@ function gemColour(colour: string | null | undefined): string {
   return GEM_COLOURS[colour ?? 'w'] ?? GEM_COLOURS.w;
 }
 
+/** A gem name that links to its wiki page and carries the gem's socket colour. */
+function GemLink({
+  name,
+  colour,
+  strong = false,
+}: {
+  name: string;
+  colour: string | null | undefined;
+  strong?: boolean;
+}) {
+  return (
+    <a
+      href={wikiUrl(name)}
+      target="_blank"
+      rel="noreferrer noopener"
+      className={strong ? 'font-semibold underline-offset-2 hover:underline' : 'underline-offset-2 hover:underline'}
+      style={{ color: gemColour(colour) }}
+    >
+      {name}
+    </a>
+  );
+}
+
 function n(value: number): string {
   return value.toLocaleString('en-US');
 }
@@ -734,14 +757,7 @@ export default function BuildPage() {
             {bracket.skills.map((skill, index) => (
               <span key={skill}>
                 {index > 0 && <span className="text-zinc-600"> · </span>}
-                <a
-                  href={wikiUrl(skill)}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="underline-offset-2 hover:underline"
-                >
-                  {skill}
-                </a>
+                <GemLink name={skill} colour={build.gemInfo?.[skill]?.color} />
               </span>
             ))}
           </p>
@@ -750,55 +766,58 @@ export default function BuildPage() {
             {bracket.until < 100 ? ', then move to the next step' : ' — the endgame step.'}
           </p>
           {swaps.length > 0 && (
-            <ul className="mt-3 space-y-1.5 text-xs leading-relaxed">
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
               {swaps.map((swap) => {
                 const info = build.gemInfo?.[swap.gem];
                 const atBoundary = swap.fromLevel === bracket.until;
                 return (
                   <li
                     key={swap.gem}
-                    className="rounded border border-ink-700/70 bg-ink-900/40 px-2.5 py-2 text-zinc-400"
+                    className="rounded-md border border-gold-400/30 bg-gold-400/[0.06] px-3 py-2.5"
                   >
-                    <span className="text-zinc-300">
-                      {atBoundary ? 'At' : 'Since'} level {swap.fromLevel}:{' '}
-                      {swap.replaces ? (
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      <span className="rounded bg-gold-400/15 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-gold-200">
+                        Swap
+                      </span>
+                      <span className="text-[11px] text-zinc-400">
+                        {atBoundary ? 'At' : 'From'} level{' '}
+                        <span className="font-semibold text-zinc-200">{swap.fromLevel}</span>
+                        {swap.untilLevel !== undefined && (
+                          <>
+                            <span className="mx-1 text-zinc-600">·</span>
+                            until level{' '}
+                            <span className="font-semibold text-zinc-200">{swap.untilLevel}</span>
+                          </>
+                        )}
+                      </span>
+                    </div>
+                    <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+                      {swap.replaces && (
                         <>
-                          swap{' '}
-                          <a
-                            href={wikiUrl(swap.replaces)}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            className="underline-offset-2 hover:underline"
-                          >
-                            {swap.replaces}
-                          </a>{' '}
-                          for{' '}
+                          <GemLink
+                            name={swap.replaces}
+                            colour={build.gemInfo?.[swap.replaces]?.color}
+                          />
+                          <span aria-hidden className="text-zinc-500">
+                            →
+                          </span>
                         </>
-                      ) : (
-                        <>add{' '}</>
                       )}
-                      <a
-                        href={wikiUrl(swap.gem)}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="font-semibold underline-offset-2 hover:underline"
-                        style={{ color: gemColour(info?.color) }}
-                      >
-                        {swap.gem}
-                      </a>
-                    </span>
+                      <GemLink name={swap.gem} colour={info?.color} strong />
+                    </p>
                     {info && (
-                      <span className="text-zinc-600">
-                        {' '}·{' '}
+                      <p className="mt-1 text-[10px] text-zinc-500">
                         {info.quest
                           ? info.free
                             ? `Quest reward · ${info.quest.quest}`
                             : `Vendor after ${info.quest.quest}`
                           : `Unlocks at character level ${info.requiredLevel}`}
-                      </span>
+                      </p>
                     )}
                     {swap.note && (
-                      <span className="mt-1 block text-[11px] text-zinc-500">{swap.note}</span>
+                      <p className="mt-1.5 text-[11px] leading-relaxed text-zinc-400">
+                        {swap.note}
+                      </p>
                     )}
                   </li>
                 );
@@ -1102,33 +1121,47 @@ export default function BuildPage() {
         >
           {/* Kept in the sticky menu so a reader can move between checkpoints
               while reading gems or gear, without returning to the step block
-              at the top of the page. */}
-          <div className="mb-4 rounded-lg border border-ink-700 bg-ink-900/60 p-2">
-            <p className="mb-1.5 text-[10px] uppercase tracking-[0.2em] text-zinc-600">
+              at the top of the page. Rows follow the site nav instead of
+              nesting bordered chips inside a second bordered box, so the
+              picker reads as part of the same menu as the page links. */}
+          <div className="mb-5">
+            <p className="mb-2 text-[10px] uppercase tracking-[0.2em] text-zinc-600">
               Step
             </p>
-            <div className="flex flex-wrap gap-1 lg:flex-col">
-              {gates.map(([checkpoint, entry]) => (
-                <button
-                  key={checkpoint}
-                  type="button"
-                  aria-pressed={checkpoint === step}
-                  aria-label={`Read the ${checkpoint} step, level ${entry.level}`}
-                  onClick={() => {
-                    setStepOverride(checkpoint);
-                    writeStep(build.id, checkpoint);
-                  }}
-                  className={
-                    checkpoint === step
-                      ? 'rounded border border-gold-400 bg-gold-400/10 px-2 py-1 text-left text-[11px] text-gold-200 lg:w-full'
-                      : 'rounded border border-ink-700 bg-ink-800/40 px-2 py-1 text-left text-[11px] text-zinc-400 hover:border-ink-500 lg:w-full'
-                  }
-                >
-                  {checkpoint}
-                  <span className="ml-1 text-zinc-500">lv {entry.level}</span>
-                </button>
-              ))}
-            </div>
+            <ul className="flex flex-wrap gap-1 lg:flex-col lg:gap-0.5">
+              {gates.map(([checkpoint, entry]) => {
+                const current = checkpoint === step;
+                return (
+                  <li key={checkpoint} className="lg:w-full">
+                    <button
+                      type="button"
+                      aria-pressed={current}
+                      aria-label={`Read the ${checkpoint} step, level ${entry.level}`}
+                      onClick={() => {
+                        setStepOverride(checkpoint);
+                        writeStep(build.id, checkpoint);
+                      }}
+                      className={
+                        current
+                          ? 'flex w-full items-center justify-between gap-2 rounded-md border border-gold-400/40 bg-gold-400/10 px-2 py-1 text-left text-[11px] font-medium text-gold-200 lg:px-2.5 lg:py-1.5'
+                          : 'flex w-full items-center justify-between gap-2 rounded-md border border-ink-700 bg-ink-800/40 px-2 py-1 text-left text-[11px] text-zinc-500 transition-colors hover:border-ink-500 hover:text-zinc-200 lg:border-transparent lg:bg-transparent lg:px-2.5 lg:py-1.5 lg:hover:bg-ink-800/70'
+                      }
+                    >
+                      <span className="truncate">{checkpoint}</span>
+                      <span
+                        className={
+                          current
+                            ? 'text-[10px] tabular-nums text-gold-300/80'
+                            : 'text-[10px] tabular-nums text-zinc-600'
+                        }
+                      >
+                        lv {entry.level}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
           <p className="mb-2 text-[10px] uppercase tracking-[0.2em] text-zinc-600">
             On this page
