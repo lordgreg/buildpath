@@ -971,6 +971,30 @@ describe('catalogue chips', () => {
   }
 });
 
+describe('gear jewel affixes', () => {
+  it('uses only jewel-scoped affixes on jewels', () => {
+    const affixes = parse(
+      readFileSync(resolve(seedsDir, 'gear/affixes.yaml'), 'utf8'),
+    ) as Record<string, { mod: string }>;
+    const profiles = parse(
+      readFileSync(resolve(seedsDir, 'gear/profiles.yaml'), 'utf8'),
+    ) as {
+      profiles: Record<
+        string,
+        Record<string, { jewels?: { affixes?: string[] } }>
+      >;
+    };
+    for (const [profile, budgets] of Object.entries(profiles.profiles)) {
+      for (const [budget, def] of Object.entries(budgets)) {
+        for (const key of def.jewels?.affixes ?? []) {
+          expect(key.endsWith('-jewel'), `${profile}/${budget}: ${key}`).toBe(true);
+          expect(affixes[key], `${profile}/${budget}: ${key}`).toBeDefined();
+        }
+      }
+    }
+  });
+});
+
 describe('gate calibration', () => {
   const calibration = JSON.parse(
     readFileSync(resolve(root, 'src/generated/builds/calibration.json'), 'utf8'),

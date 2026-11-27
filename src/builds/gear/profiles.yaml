@@ -80,7 +80,7 @@ profiles:
         amulet: { base: "Onyx Amulet", affixes: [life, added-lightning-attack, resist-lightning, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, added-lightning-attack, resist-fire, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-fire, resist-chaos] }
-      jewels: { count: 2, base: "Viridian Jewel", affixes: [life, attack-speed, projectile-damage, crit-multi] }
+      jewels: { count: 2, base: "Viridian Jewel", affixes: [life-jewel, attack-speed-jewel, projectile-damage-jewel] }
     ssf-week1:
       slots:
         weapon: { base: "Spine Bow", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
@@ -93,7 +93,7 @@ profiles:
         amulet: { base: "Onyx Amulet", affixes: [life, added-lightning-attack, resist-lightning, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, added-lightning-attack, resist-fire, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-fire, resist-chaos] }
-      jewels: { count: 6, base: "Viridian Jewel", affixes: [life, attack-speed, projectile-damage, crit-multi] }
+      jewels: { count: 6, base: "Viridian Jewel", affixes: [life-jewel, attack-speed-jewel, projectile-damage-jewel] }
     trade:
       slots:
         weapon: { base: "Spine Bow", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
@@ -106,7 +106,7 @@ profiles:
         amulet: { base: "Onyx Amulet", affixes: [life, added-lightning-attack, resist-lightning, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, added-lightning-attack, resist-fire, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-fire, resist-chaos] }
-      jewels: { count: 6, base: "Viridian Jewel", affixes: [life, attack-speed, projectile-damage, crit-multi] }
+      jewels: { count: 6, base: "Viridian Jewel", affixes: [life-jewel, attack-speed-jewel, projectile-damage-jewel] }
 
   # Melee: strength armour, a two-handed axe and no offhand. Boneshatter needs
   # an axe or mace, so the one-hander-plus-shield default does not fit.
@@ -139,7 +139,7 @@ profiles:
         amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
-      jewels: { count: 2, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+      jewels: { count: 2, base: "Crimson Jewel", affixes: [life-jewel, attack-speed-jewel, phys-damage-jewel] }
     ssf-week1:
       slots:
         weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed] }
@@ -152,7 +152,7 @@ profiles:
         amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
-      jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life-jewel, attack-speed-jewel, phys-damage-jewel] }
     trade:
       slots:
         weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed] }
@@ -165,7 +165,7 @@ profiles:
         amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
-      jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life-jewel, attack-speed-jewel, phys-damage-jewel] }
 
   # Boneshatter uses the melee shell's two-hander but adds an armour roll on the
   # small slots, a chaos belt and mana leech on the axe. Herald of Purity and
@@ -200,7 +200,7 @@ profiles:
         amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
-      jewels: { count: 2, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+      jewels: { count: 2, base: "Crimson Jewel", affixes: [life-jewel, attack-speed-jewel, phys-damage-jewel] }
     ssf-week1:
       slots:
         weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
@@ -213,7 +213,7 @@ profiles:
         amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
-      jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life-jewel, attack-speed-jewel, phys-damage-jewel] }
     trade:
       slots:
         weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
@@ -226,7 +226,7 @@ profiles:
         amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
-      jewels: { count: 6, base: "Crimson Jewel", affixes: [life, attack-speed, phys-damage-jewel] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life-jewel, attack-speed-jewel, phys-damage-jewel] }
 
   # Elemental spell casters: Arc, Arc totems, and the same shell for a fire
   # caster. The shared caster body slots already carry life and resistances.
@@ -243,17 +243,17 @@ profiles:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, lightning-damage] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
-      jewels: { count: 2, base: "Cobalt Jewel", affixes: [spell-damage, cast-speed, crit-multi, life] }
+      jewels: { count: 2, base: "Cobalt Jewel", affixes: [life-jewel, energy-shield-jewel, spell-damage-jewel, cast-speed-jewel] }
     ssf-week1:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, lightning-damage] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
-      jewels: { count: 6, base: "Cobalt Jewel", affixes: [spell-damage, cast-speed, crit-multi, life] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [life-jewel, energy-shield-jewel, spell-damage-jewel, cast-speed-jewel] }
     trade:
       slots:
         weapon: { base: "Void Sceptre", affixes: [spell-damage, cast-speed, lightning-damage] }
         offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
-      jewels: { count: 6, base: "Cobalt Jewel", affixes: [spell-damage, cast-speed, crit-multi, life] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [life-jewel, energy-shield-jewel, spell-damage-jewel, cast-speed-jewel] }
 
   # Chaos damage over time shares the spell shell but rolls chaos and DoT.
   chaos:
@@ -269,17 +269,17 @@ profiles:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, chaos-damage] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
-      jewels: { count: 2, base: "Cobalt Jewel", affixes: [chaos-damage, dot-multi, cast-speed, life] }
+      jewels: { count: 2, base: "Cobalt Jewel", affixes: [life-jewel, chaos-damage-jewel, dot-multi-jewel, cast-speed-jewel] }
     ssf-week1:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, chaos-damage, dot-multi] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
-      jewels: { count: 6, base: "Cobalt Jewel", affixes: [chaos-damage, dot-multi, cast-speed, life] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [life-jewel, chaos-damage-jewel, dot-multi-jewel, cast-speed-jewel] }
     trade:
       slots:
         weapon: { base: "Void Sceptre", affixes: [spell-damage, cast-speed, chaos-damage, dot-multi] }
         offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
-      jewels: { count: 6, base: "Cobalt Jewel", affixes: [chaos-damage, dot-multi, cast-speed, life] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [life-jewel, chaos-damage-jewel, dot-multi-jewel, cast-speed-jewel] }
 
   # Cold spells: the same sceptre-and-spirit-shield shell as `spell`, but the
   # damage roll is cold and the endgame sceptre carries crit multi, because a
@@ -301,17 +301,17 @@ profiles:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cold-damage, cast-speed] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
-      jewels: { count: 2, base: "Cobalt Jewel", affixes: [cold-damage, spell-damage, crit-multi, life] }
+      jewels: { count: 2, base: "Cobalt Jewel", affixes: [life-jewel, cold-damage-jewel, spell-damage-jewel, crit-multi-jewel] }
     ssf-week1:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cold-damage, cast-speed, crit-multi] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
-      jewels: { count: 6, base: "Cobalt Jewel", affixes: [cold-damage, spell-damage, crit-multi, life] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [life-jewel, cold-damage-jewel, spell-damage-jewel, crit-multi-jewel] }
     trade:
       slots:
         weapon: { base: "Void Sceptre", affixes: [spell-damage, cold-damage, cast-speed, crit-multi] }
         offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
-      jewels: { count: 6, base: "Cobalt Jewel", affixes: [cold-damage, spell-damage, crit-multi, life] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [life-jewel, cold-damage-jewel, spell-damage-jewel, crit-multi-jewel] }
 
   # Fire DoT and ignite: a fire sceptre with Damage over Time Multiplier on the
   # same caster shell. Penance Brand and other ignite spells scale through the
@@ -333,17 +333,17 @@ profiles:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi, cast-speed] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
-      jewels: { count: 2, base: "Cobalt Jewel", affixes: [fire-damage, dot-multi, cast-speed, life] }
+      jewels: { count: 2, base: "Cobalt Jewel", affixes: [life-jewel, fire-damage-jewel, dot-multi-jewel, cast-speed-jewel] }
     ssf-week1:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi, cast-speed] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
-      jewels: { count: 6, base: "Cobalt Jewel", affixes: [fire-damage, dot-multi, cast-speed, life] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [life-jewel, fire-damage-jewel, dot-multi-jewel, cast-speed-jewel] }
     trade:
       slots:
         weapon: { base: "Void Sceptre", affixes: [fire-damage, dot-multi, cast-speed] }
         offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
-      jewels: { count: 6, base: "Cobalt Jewel", affixes: [fire-damage, dot-multi, cast-speed, life] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [life-jewel, fire-damage-jewel, dot-multi-jewel, cast-speed-jewel] }
 
   # Lightning strike attacks: a two-hand mace. The mace is required by Shockwave
   # Support, and the added lightning is what Smite converts into its second,
@@ -380,7 +380,7 @@ profiles:
         gloves: { base: "Spiked Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
         boots: { base: "Titan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
         belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
-      jewels: { count: 2, base: "Crimson Jewel", affixes: [added-lightning-attack, attack-speed, life, crit-multi] }
+      jewels: { count: 2, base: "Crimson Jewel", affixes: [life-jewel, lightning-damage-jewel, attack-speed-jewel, crit-multi-jewel] }
     ssf-week1:
       slots:
         weapon: { base: "Coronal Maul", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
@@ -390,7 +390,7 @@ profiles:
         gloves: { base: "Precursor Gauntlets", affixes: [life, attack-speed, resist-cold, resist-fire] }
         boots: { base: "Brimstone Treads", affixes: [movement-speed, life, resist-cold, resist-lightning] }
         belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
-      jewels: { count: 6, base: "Crimson Jewel", affixes: [added-lightning-attack, attack-speed, life, crit-multi] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life-jewel, lightning-damage-jewel, attack-speed-jewel, crit-multi-jewel] }
     trade:
       slots:
         weapon: { base: "Impact Force Propagator", affixes: [phys-pct, added-phys, added-lightning-attack, attack-speed, crit-multi] }
@@ -400,7 +400,7 @@ profiles:
         gloves: { base: "Leviathan Gauntlets", affixes: [life, attack-speed, resist-cold, resist-fire] }
         boots: { base: "Leviathan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
         belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
-      jewels: { count: 6, base: "Crimson Jewel", affixes: [added-lightning-attack, attack-speed, life, crit-multi] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life-jewel, lightning-damage-jewel, attack-speed-jewel, crit-multi-jewel] }
 
   # Righteous Fire: armour, life and fire/DoT on a sceptre and shield. It uses
   # the same strength armour bases as the melee profile, not the caster set.
@@ -432,7 +432,7 @@ profiles:
         gloves: { base: "Spiked Gloves", affixes: [life, resist-cold, resist-fire] }
         boots: { base: "Titan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
         belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
-      jewels: { count: 2, base: "Crimson Jewel", affixes: [fire-damage, dot-multi, life, resist-fire] }
+      jewels: { count: 2, base: "Crimson Jewel", affixes: [life-jewel, fire-damage-jewel, dot-multi-jewel, resist-fire-jewel] }
     ssf-week1:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi] }
@@ -442,7 +442,7 @@ profiles:
         gloves: { base: "Precursor Gauntlets", affixes: [life, resist-cold, resist-fire] }
         boots: { base: "Brimstone Treads", affixes: [movement-speed, life, resist-cold, resist-lightning] }
         belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
-      jewels: { count: 6, base: "Crimson Jewel", affixes: [fire-damage, dot-multi, life, resist-fire] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life-jewel, fire-damage-jewel, dot-multi-jewel, resist-fire-jewel] }
     trade:
       slots:
         weapon: { base: "Void Sceptre", affixes: [fire-damage, dot-multi] }
@@ -452,4 +452,4 @@ profiles:
         gloves: { base: "Leviathan Gauntlets", affixes: [life, resist-cold, resist-fire] }
         boots: { base: "Leviathan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
         belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
-      jewels: { count: 6, base: "Crimson Jewel", affixes: [fire-damage, dot-multi, life, resist-fire] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [life-jewel, fire-damage-jewel, dot-multi-jewel, resist-fire-jewel] }

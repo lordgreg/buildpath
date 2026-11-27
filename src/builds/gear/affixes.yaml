@@ -92,6 +92,48 @@ added-lightning-attack:
 phys-damage-jewel:
   mod: "{v}% increased Physical Damage"
   tiers: { 1: 16, 2: 14, 3: 12, 4: 8 }
+# Every other jewel affix is scoped to a jewel for the same reason. The caps
+# come from the pinned PoB jewel mod data (Data/ModJewel.lua), not from the
+# weapon or armour tables. A rare jewel has two prefixes and two suffixes.
+life-jewel:
+  mod: "{v}% increased maximum Life"
+  tiers: { 1: 7, 2: 6, 3: 5, 4: 4 }
+attack-speed-jewel:
+  mod: "{v}% increased Attack Speed"
+  tiers: { 1: 5, 2: 4, 3: 3, 4: 2 }
+projectile-damage-jewel:
+  mod: "{v}% increased Projectile Damage"
+  tiers: { 1: 12, 2: 11, 3: 10, 4: 8 }
+crit-multi-jewel:
+  mod: "+{v}% to Global Critical Strike Multiplier"
+  tiers: { 1: 12, 2: 11, 3: 10, 4: 8 }
+spell-damage-jewel:
+  mod: "{v}% increased Spell Damage"
+  tiers: { 1: 12, 2: 11, 3: 10, 4: 8 }
+cast-speed-jewel:
+  mod: "{v}% increased Cast Speed"
+  tiers: { 1: 4, 2: 3, 3: 2, 4: 2 }
+chaos-damage-jewel:
+  mod: "{v}% increased Chaos Damage"
+  tiers: { 1: 13, 2: 12, 3: 10, 4: 8 }
+dot-multi-jewel:
+  mod: "+{v}% to Damage over Time Multiplier"
+  tiers: { 1: 6, 2: 5, 3: 4, 4: 3 }
+cold-damage-jewel:
+  mod: "{v}% increased Cold Damage"
+  tiers: { 1: 16, 2: 15, 3: 14, 4: 10 }
+fire-damage-jewel:
+  mod: "{v}% increased Fire Damage"
+  tiers: { 1: 16, 2: 15, 3: 14, 4: 10 }
+lightning-damage-jewel:
+  mod: "{v}% increased Lightning Damage"
+  tiers: { 1: 16, 2: 15, 3: 14, 4: 10 }
+resist-fire-jewel:
+  mod: "+{v}% to Fire Resistance"
+  tiers: { 1: 15, 2: 14, 3: 12, 4: 9 }
+energy-shield-jewel:
+  mod: "{v}% increased maximum Energy Shield"
+  tiers: { 1: 8, 2: 7, 3: 6, 4: 4 }
 projectile-damage:
   mod: "{v}% increased Projectile Damage"
   tiers: { 1: 40, 2: 30, 3: 22, 4: 12 }
