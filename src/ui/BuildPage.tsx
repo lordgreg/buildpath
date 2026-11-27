@@ -19,6 +19,7 @@ import TreeThumbnail from './TreeThumbnail.tsx';
 import WickermanPanel, { wickermanPhase } from './WickermanPanel.tsx';
 import StepPlanPanel from './StepPlanPanel.tsx';
 import { copyText } from './download.ts';
+import { buildGuideTitle } from './buildTitle.ts';
 import { APP_VERSION } from '../version.ts';
 
 const builds = import.meta.glob<{ default: Build }>(
@@ -367,6 +368,12 @@ export default function BuildPage() {
   }, []);
 
   const build = useMemo(() => buildById(id), [id]);
+
+  // Name the build in the browser tab so open guides are distinguishable.
+  useEffect(() => {
+    document.title = buildGuideTitle(build?.name);
+  }, [build]);
+
   if (!build) {
     return (
       <main className="mx-auto max-w-3xl px-5 py-12">
