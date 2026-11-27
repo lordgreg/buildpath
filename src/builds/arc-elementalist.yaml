@@ -10,44 +10,80 @@ ascendancyId: elementalist
 family: caster
 mainSkill: Arc
 flagship: false
-gateProfile: dad
+gateProfile: standard
 summary: >-
-  Self-cast Arc on the Elementalist shell. Arc clears packs without aiming, the
-  exposure and shock package turns lightning into a real single-target tool, and
-  the gear is the same spell sceptre and shield the totem build uses. No
-  required unique.
+  Arc Elementalist casts one lightning spell and lets the chains do the aiming,
+  then pays for the single target with the tools the ascendancy already owns.
+  Shaper of Storms guarantees the shock, Mastermind of Discord makes the Wave of
+  Conviction exposure stronger, and Elemental Overload keeps its damage bonus up
+  from Arc's own critical strikes. The defence is a large life pool, capped
+  resistances, Saffell's Frame's maximum resistances, Determination armour,
+  Arctic Armour while stationary and the endurance charges from Enduring Cry.
+  Cerberus Limb and Saffell's Frame are the only required uniques, both cheap.
 
 pros:
-  - { weight: 3, text: "Arc clears packs without precise aiming." }
-  - { weight: 3, text: "No required unique; spell damage and gem levels carry the build." }
-  - { weight: 2, text: "Elementalist exposure and shock improve the boss fight." }
-  - { weight: 2, text: "The same spell gear works for the totem and self-cast versions." }
-  - { weight: 2, text: "A simple first caster for a new league." }
-  - { weight: 1, text: "The build can pivot to a different lightning spell without new gear." }
+  - { weight: 3, text: "Arc clears packs without precise aiming; the chains finish what the first hit starts." }
+  - { weight: 3, text: "Very hard to kill for a self-cast caster: capped chaos at pinnacle, maximum resistances, endurance charges and Arctic Armour." }
+  - { weight: 3, text: "Single target is real once the exposure, curse, shock and Convergence are up; the gate measures well past the S+ baseline." }
+  - { weight: 2, text: "Cerberus Limb and Saffell's Frame are both cheap uniques rather than build-defining chase items." }
+  - { weight: 2, text: "The rare body armour is the expensive slot, and the same shell fits another lightning spell." }
+  - { weight: 1, text: "Elementalist supplies shock and exposure without a second six-link." }
 cons:
-  - { weight: 3, text: "Self-casting means you stand still for the damage." }
-  - { weight: 3, text: "Single-target needs the shock and exposure window." }
-  - { weight: 2, text: "Clear speed is slower than a bow or a well-geared melee build." }
-  - { weight: 2, text: "Mana is tight before leech and reduced cost are online." }
-  - { weight: 1, text: "Elemental reflect maps are a hard no." }
-  - { weight: 1, text: "A six-link is a large damage step." }
+  - { weight: 3, text: "Self-casting roots you while Arc repeats, so movement has to be planned around the cast; Arctic Armour rewards standing still." }
+  - { weight: 3, text: "The big number assumes the exposure, curse, shock and Convergence window; drop one and single target falls fast." }
+  - { weight: 2, text: "Mana is tight: Inspiration and the mana flask are part of the build, not a luxury, and the boss rotation spends the bar." }
+  - { weight: 2, text: "The physical layer is armour and endurance charges, not a conversion unique; keep Enduring Cry and the flasks up." }
+  - { weight: 2, text: "The Amethyst Flask is mandatory at red maps: chaos resistance is positive with it and negative without it, while the endgame chaos suffixes overcap by pinnacle." }
+  - { weight: 1, text: "Arc's chains are the whole clear mechanic; there is no second damage aura or explosion." }
+  - { weight: 1, text: "The effective-life figure includes Bastion of Elements' Primal Aegis, which refreshes but does not cover a physical one-shot." }
 
 ratings:
-  tankiness: 4
-  singleTarget: 6
-  clear: 8
-  cost: 8
+  # Measured by `builds:verify` on the corrected, legal jewel affixes, not
+  # estimated. Pinnacle sits at 676k DPS, 6.8k life, 53.4k EHP and 14.0k
+  # physical max hit with chaos capped; red maps measure 541k DPS. Tankiness is
+  # 10: EHP is 36% above the corrected Boneshatter baseline (39.3k), life is
+  # within 2% and the max hit is 8% below it, with capped chaos and maximum
+  # resistances. Single target is 10 at 676k against the same 660k baseline;
+  # both numbers are snapshots (the baseline's trauma stacks, this build's
+  # Convergence window). Without Convergence the same build measures 520k,
+  # which is still above the 500k floor, so the 10 is a window rating and the
+  # 9 floor is measured. Clear is 9 (chains, no aiming, not bow-fast) and cost
+  # is 9 (two cheap uniques; the six-link and the 21/20 gems are the bill).
+  tankiness: 10
+  singleTarget: 10
+  clear: 9
+  cost: 9
 
 gearProfile: spell
 
+# Saffell's Frame is the only unique in the measured gear, and its base is a
+# strength/intelligence shield while the leveling shields are intelligence
+# bases. The filter has to name every shield the build wears. D15: the filter
+# follows the build.
+filter:
+  slots:
+    offhand:
+      itemClasses: ["Shield"]
+      bases: ["Twig Spirit Shield", "Yew Spirit Shield", "Chiming Spirit Shield", "Branded Kite Shield"]
+
 tree:
+  # Elemental Overload is the cheap crit package: Arc already lands critical
+  # strikes, and the keystone converts them into a flat more-multiplier without
+  # spending points on critical multiplier. It is deferred at the first steps
+  # and bought once the budget can afford the path.
+  keystones:
+    - Elemental Overload
+  # Lightning first, then life, elemental, spell and cast speed; the
+  # resistance passives come last because the gear and Saffell's cover most of
+  # the cap. Mana is not a target: Determination and Arctic Armour reserve most
+  # of the bar and the flask covers the rest.
   targets:
     - increased lightning damage
-    - increased cast speed
     - increased maximum life
     - increased elemental damage
     - increased spell damage
-    - increased maximum mana
+    - increased cast speed
+    - resistance
 
 leveling:
   brackets:
@@ -59,7 +95,8 @@ leveling:
         - slot: Weapon 1
           gems: [Flame Dash]
         - slot: Helmet
-          gems: [Clarity]
+          gems:
+            - { name: Clarity, maxLevel: 5, note: "Low level keeps the reservation small." }
       flasks:
         - { slot: life, name: "Medium Life Flask", note: "Small until level 3." }
         - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
@@ -68,47 +105,99 @@ leveling:
       skills: [Arc]
       skillGroups:
         - slot: Body Armour
-          gems: [Arc, Added Lightning Damage, Faster Casting, Elemental Focus]
+          gems: [Arc, Added Lightning Damage, Faster Casting, Arcane Surge]
         - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
+          gems: [Flame Dash]
         - slot: Helmet
-          gems: [Clarity]
+          gems:
+            - { name: Clarity, maxLevel: 5, note: "Low level keeps the reservation small." }
+        - slot: Gloves
+          gems: [Wave of Conviction, Physical to Lightning]
       flasks:
         - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
         - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement is a defensive stat while leveling." }
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
     - until: 68
       skills: [Arc]
       skillGroups:
         - slot: Body Armour
-          gems: [Arc, Added Lightning Damage, Lightning Penetration, Controlled Destruction, Elemental Focus, Faster Casting]
+          gems: [Arc, Added Lightning Damage, Lightning Penetration, Arcane Surge, Inspiration]
         - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
+          gems: [Flame Dash]
         - slot: Helmet
-          gems: [Clarity]
+          gems:
+            - { name: Clarity, maxLevel: 5, note: "Low level keeps the reservation small." }
         - slot: Boots
           gems: [Determination]
+        - slot: Gloves
+          gems: [Conductivity, Wave of Conviction, Physical to Lightning, Enduring Cry]
       flasks:
         - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
         - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
-        - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Granite Flask", note: "Armour is half of the physical layer." }
+        - { slot: utility, name: "Quicksilver Flask", note: "The Basalt Flask starts at the map steps." }
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 100
+    # White maps still run the five-link the ssf-start budget actually has. The
+    # six-link is the maps-red step; a bracket with six gems at level 80 would
+    # measure a link the character does not own.
+    - until: 80
       skills: [Arc]
       skillGroups:
         - slot: Body Armour
-          gems: [Arc, Added Lightning Damage, Lightning Penetration, Controlled Destruction, Elemental Focus, Faster Casting]
+          gems: [Arc, Added Lightning Damage, Lightning Penetration, Arcane Surge, Inspiration]
         - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
+          gems: [Flame Dash]
         - slot: Helmet
-          gems: [Clarity]
+          gems: [Arctic Armour]
+        - slot: Gloves
+          gems: [Conductivity, Wave of Conviction, Physical to Lightning, Enduring Cry]
+        - slot: Boots
+          gems: [Determination]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "White maps still use the budget flask." }
+        - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 90
+      skills: [Arc]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Arc, Added Lightning Damage, Lightning Penetration, Arcane Surge, Inspiration, Spell Echo]
+        - slot: Weapon 1
+          gems: [Flame Dash]
+        - slot: Helmet
+          gems: [Arctic Armour]
+        - slot: Gloves
+          gems: [Conductivity, Wave of Conviction, Physical to Lightning, Enduring Cry]
         - slot: Boots
           gems: [Determination]
       flasks:
         - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
         - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
         - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 100
+      skills: [Arc]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Arc, Added Lightning Damage, Lightning Penetration, Arcane Surge, Inspiration, Spell Echo]
+        - slot: Weapon 1
+          gems: [Flame Dash]
+        - slot: Helmet
+          gems: [Arctic Armour]
+        - slot: Gloves
+          gems: [Conductivity, Wave of Conviction, Physical to Lightning, Enduring Cry]
+        - slot: Boots
+          gems: [Determination]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "The build does not work without it." }
+        - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Free slot at pinnacle: the chaos suffixes already reach the cap." }
 
 ascendancyOrder:
   - { node: shaper-of-storms, lab: 1 }
@@ -120,42 +209,131 @@ bandit: kill-all
 pantheon:
   major: lunaris
   minor: gruthkul
-  note: Gruthkul reduces the physical hits that catch a caster in a bad position.
+  note: Gruthkul reduces the physical hits that catch a caster in a bad position; Lunaris covers the projectiles you cannot see.
 uniques:
-  core: []
+  core:
+    - displayName: "Cerberus Limb"
+      slot: weapon
+      baseType: "Blood Sceptre"
+      ssfSource: "Common Delve boss drop; the spell damage and cast speed matter, the shield leech is a bonus."
+    - displayName: "Saffell's Frame"
+      slot: offhand
+      baseType: "Branded Kite Shield"
+      ssfSource: "Common map-tier drop; the maximum resistances matter more than the spell damage roll."
   optional: []
+
+# What PoB was evaluated with. The seven input names and types were checked
+# against the pinned PoB's ConfigOptions.lua: the three booleans are `check`,
+# the three counts are `count` (conditionStationary is seconds, not a boolean)
+# and the exposure selector is a `list`, so none of them is silently dropped.
+# This config is global to every checkpoint: the early steps are measured with
+# the same inputs even though their sources arrive later, and the early gates
+# are far above their floors. Shaper of Storms makes every hit shock for at
+# least the listed effect, and the Wave of Conviction cast applies the lightning
+# exposure; the Physical to Lightning link is what makes that exposure lightning
+# rather than fire. Both are debuffs this build applies itself. The socketed
+# Conductivity carries the curse; removing the gloves group removes the curse
+# and the exposure together. Heart of Destruction grants Convergence when you
+# hit a unique enemy, so the pinnacle figure is the Convergence window; without
+# it the same build measures 520k. Enduring Cry fills the three charges a
+# character can hold without a +1 maximum charge passive, and Arctic Armour only
+# pays out while stationary, which is where a self-cast Arc stands. PoB treats a
+# skill with any critical strike chance as having crit recently, so Elemental
+# Overload needs no separate input; in game Arc lands enough hits in a pack, and
+# the boss rotation wants a critical strike before the burst. The Onyx Amulet
+# and the attribute passives leave the character at 184 strength and 422
+# intelligence, so the Blood Sceptre and Branded Kite Shield requirements are
+# met.
+config:
+  - { name: conditionEnemyShocked, value: 'boolean="true"' }
+  - { name: conditionShockEffect, value: 'number="25"' }
+  - { name: waveOfConvictionExposureType, value: 'string="Lightning"' }
+  - { name: useEnduranceCharges, value: 'boolean="true"' }
+  - { name: overrideEnduranceCharges, value: 'number="3"' }
+  - { name: conditionStationary, value: 'number="2"' }
+  - { name: conditionConvergence, value: 'boolean="true"' }
 
 guide:
   summary:
     text: >-
-      Arc Elementalist is a self-cast lightning build that measures
-      {{gates.maps-red.metrics.dps|dps}} at red maps and
-      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. Exposure and shock carry
-      the single-target, and no unique is required.
-    facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
+      Arc Elementalist casts one lightning spell and lets the chains do the
+      aiming, then pays for the single target with the tools the ascendancy
+      already owns. Shaper of Storms guarantees the shock, Mastermind of Discord
+      makes the Wave of Conviction exposure stronger, and Elemental Overload
+      keeps its damage bonus up from Arc's own critical strikes. The defence is
+      a large life pool, capped resistances, Saffell's Frame's maximum
+      resistances, Determination armour, Arctic Armour while stationary and the
+      endurance charges from Enduring Cry. The build measures
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle with
+      {{gates.pinnacle.metrics.ehp|int}} effective life and
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Two cheap uniques
+      are required. The quoted map and pinnacle numbers assume the declared
+      shock, exposure, Elemental Overload, Convergence, endurance charges,
+      active flasks and stationary Arctic Armour.
+    facts: [mainSkill, ascendancyId, gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   leveling:
     text: >-
-      Level with Rolling Magma, then switch to Arc as soon as it is available.
-      The first checkpoint measures {{gates.until-12.metrics.life|int}} life and
-      {{gates.until-12.metrics.dps|dps}} damage; the second measures
-      {{gates.until-28.metrics.dps|dps}}.
-    facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
+      Level with Rolling Magma until Arc unlocks, then hold Arc and let it
+      chain. Wave of Conviction linked to Physical to Lightning applies the
+      lightning exposure once the gem pair is available, Conductivity arrives
+      with the curse package, and Determination plus Enduring Cry start the
+      physical layer. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life; the second measures
+      {{gates.until-28.metrics.life|int}}. The gate strip's early damage numbers
+      use the same global PoB config as the endgame steps, so read them as a
+      like-for-like comparison rather than a leveling rotation. Drop Clarity for
+      Arctic Armour when the reservation fits, and treat the mana flask as a
+      slot you never remove.
+    facts: [gates.until-12.metrics.life, gates.until-28.metrics.life]
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   maps:
     text: >-
       At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
       {{gates.maps-red.metrics.ehp|int}} effective life and
-      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep the
-      resistances capped and let the filter hide the rest.
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep Conductivity
+      and the Wave of Conviction exposure up, refresh the mana flask, and let
+      the chains clear the pack. Keep the Physical to Lightning link: it is what
+      makes the exposure lightning. The Onyx Amulet's attributes cover
+      Cerberus Limb's strength requirement. The Amethyst Flask is what keeps
+      chaos resistance positive at this step; Enduring Cry and the granite and
+      basalt flasks are the physical layer, and Arctic Armour pays out while you
+      stand and cast, so the effective life figure assumes the flasks are up and
+      you are stationary.
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   bossing:
     text: >-
       Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
       {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Apply the shock
-      and exposure before the burst, then move out of the slam.
-    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit, and chaos
+      resistance is capped at {{gates.pinnacle.metrics.chaosResist|res}} by the
+      endgame chaos suffixes and Saffell's Frame's maximum resistances. Open
+      with Wave of Conviction to apply the exposure, keep the Physical to
+      Lightning link so the exposure is lightning, and reapply the wave between
+      Arc bursts. Keep Conductivity on the boss and cast Arc through the shock
+      and exposure window; land a critical strike first so Elemental Overload
+      is up, because the measured damage includes it. The pinnacle figure is
+      the Heart of Destruction Convergence window; without Convergence the
+      damage is still above the single-target floor. The measured damage assumes the exposure, curse and
+      shock this build applies itself, so apply them before the burst rather
+      than casting into a naked target. The rotation spends the mana bar, so
+      start it on a full flask.
+    facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit, gates.pinnacle.metrics.chaosResist]
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
+
 changelog:
   - season: covens
     date: "2026-11-26"
     notes:
       - "First guide for the Covens league."
+  - season: covens
+    date: "2026-11-27"
+    notes:
+      - "Re-measured the whole build after the jewel affix caps were fixed: the tree takes lightning and life first, Elemental Overload replaces the old support package, and the shock and exposure the ascendancy applies are declared in the PoB config."
+      - "Added Wave of Conviction with Physical to Lightning so Mastermind of Discord's exposure is real, and kept Conductivity as the curse."
+      - "Inspiration replaces Faster Casting in the measured six-link, which raises damage and cuts the mana cost; Spell Echo is part of the red-map set."
+      - "The physical layer is Determination, Arctic Armour, Enduring Cry and the granite and basalt flasks; Cerberus Limb and Saffell's Frame are the two required uniques."
+      - "Enduring Cry fills the three charges the tree can hold; the resistance passives pay for the strict resistance cap."
+      - "Heart of Destruction's Convergence is declared for the pinnacle window; the same build measures about 500k without it."
+      - "Pinnacle now measures 676k DPS, 6.8k life, 53.4k EHP, 14.0k physical max hit with chaos capped; red maps measure 541k DPS. Ratings 10/10/9/9."
