@@ -17,6 +17,21 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.77.0',
+    date: '2026-11-27',
+    title: 'Leveling levels the gem you can actually have',
+    notes: [
+      "**The transfigured guides level with the base skill.** Smite of Divine Judgement, Storm Burst of Repulsion and Animate Weapon of Ranged Arms are no longer in the early brackets: a transfigured gem only comes from the Divine Font or another player. Static Strike, Rolling Magma and the melee Animate Weapon carry the campaign, and the swap is a card at the level it becomes possible, naming the Merciless Labyrinth or trade.",
+      "**Animate Weapon of Ranged Arms waits for level 80**, as the guide recommends. White maps keep the melee version, and a new `until: 80` bracket measures it, so no checkpoint describes a gem the character cannot own.",
+      "**Penance Brand gains the level-12 bracket** its gate already measured, so the level-12 step stops borrowing the level-28 bracket.",
+      "**A leveling step that introduces nothing new is hidden**, and a swap that already happened is not repeated in the next step.",
+      "The four changed guides were re-verified against the pinned PoB oracle, calibration was regenerated, and the changed PoB codes were republished to pobb.in.",
+      "746 tests.",
+    ],
+    commits: [],
+    compare: 'v0.76.0...v0.77.0',
+  },
+  {
     version: '0.76.0',
     date: '2026-11-27',
     title: 'Catalogue controls stick, and leveling says when to switch',
