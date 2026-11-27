@@ -726,6 +726,12 @@ export default function BuildPage() {
               </span>
             )}
           </p>
+          <p className="mt-1 text-[10px] leading-relaxed text-zinc-600">
+            Measured with this step&apos;s listed flasks active. A separate
+            no-flask run is recorded for every build in the validation report.
+            PoB config: enemy level from the checkpoint and enemy evasion from
+            the pinned table; no Trauma, Rage or Endurance Charge overrides.
+          </p>
           <article
             className={
               gate.pass
