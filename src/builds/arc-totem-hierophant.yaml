@@ -8,48 +8,97 @@ name: Arc Totem Hierophant
 class: Templar
 ascendancyId: hierophant
 family: caster
-mainSkill: Arc
+# The default measured link is Lightning Tendrils of Eccentricity on two Spell
+# Totems; Arc keeps the four-link helmet for open layouts. One totem can only
+# cast one skill, so the gate measures one link: it measures the default link,
+# and the guide says so in the open. The id stays arc-totem-hierophant because
+# it is a frozen share-link slug, and the name stays because Arc is still the
+# guide's clear swap.
+mainSkill: Lightning Tendrils of Eccentricity
 flagship: false
-gateProfile: dad
+# The Dad chip is a playstyle label, not a lower bar. The build clears the
+# standard floors at every checkpoint, so it is measured on them; the Dad
+# damage floor would hide how far the measured numbers sit above the gate.
+gateProfile: standard
 dad: true
 summary: >-
-  Arc on Spell Totem, with the Hierophant mana and totem package behind it. The
-  totems cast while you move, so the build is easier on the hands than a
-  self-cast Arc and still scales with the same spell gear. No required unique.
+  The Tendrils totem is the default link: Lightning Tendrils of Eccentricity
+  channels a semicircle in front of the totem, and every fifth pulse is stronger
+  (a much larger area and an automatic critical strike), so the same six-link
+  clears packs and kills bosses from two Spell Totems. The measured damage is
+  per totem. Arc drops into the four-link helmet when an open layout wants a
+  chain more than a frontal pulse. The Hierophant totem package pays for both
+  totems, and no unique is required: a rare six-link, a spell sceptre and capped
+  resistances are the core of the bill. For spread packs, swap Concentrated
+  Effect for Increased Area of Effect or use the Arc helmet.
+
+# The gem-sources registry does not yet mark Lightning Tendrils of Eccentricity
+# as transfigured, so the page's gem table inherits the base gem's quest row. The
+# shared arc-totem step plan also still describes the old build: it names Arc and
+# Spell Totem at until-28, a six-link Arc at until-68, crit sceptre and crit multi
+# at maps-red, and gem levels at pinnacle. Both are reviewed shared-config fixes
+# outside this seed; the cons and the guide prose state the Divine Font / trade
+# route and the real links.
 
 pros:
-  - { weight: 3, text: "Totems cast while you move, so positioning is less punishing." }
-  - { weight: 3, text: "No required unique; spell damage and gem levels carry the build." }
-  - { weight: 2, text: "Hierophant mana recovery makes the totem cost sustainable." }
-  - { weight: 2, text: "Arc clears packs without precise aiming." }
-  - { weight: 2, text: "A comfortable first mapping build for a new league." }
-  - { weight: 1, text: "The same spell sceptre and shield serve self-cast and totem versions." }
+  - { weight: 3, text: "One six-link body carries the default link; Arc sits in a four-link helmet for open layouts." }
+  - { weight: 3, text: "No required unique; a rare spell sceptre, rares and a cheap transfigured gem carry the build." }
+  - { weight: 2, text: "Totems channel while you move, so positioning is far less punishing than self-cast." }
+  - { weight: 2, text: "The always-crit pulse makes the boss link a real single-target tool, and two totems fight at once." }
+  - { weight: 2, text: "Determination, Granite and Basalt flasks and Conviction of Power's endurance charges make the life pool real." }
+  - { weight: 1, text: "The channel covers a semicircle in front of the totem, so clear needs no projectile." }
 cons:
-  - { weight: 3, text: "Totem placement and uptime are a second thing to manage." }
-  - { weight: 3, text: "Single-target needs both totems alive through the whole fight." }
-  - { weight: 2, text: "Clear speed is slower than a bow or a well-geared melee build." }
-  - { weight: 2, text: "Mana is tight before the Hierophant package is online." }
-  - { weight: 1, text: "Totems can be killed by area damage." }
-  - { weight: 1, text: "The build wants a six-link for its best damage." }
+  - { weight: 3, text: "Both totems must survive the whole fight; area damage deletes them and the damage stops." }
+  - { weight: 3, text: "The default link needs a transfigured gem from the Divine Font or from trade." }
+  - { weight: 2, text: "Clear is a totem's clear, not a bow build's; you walk between packs and wait for placement." }
+  - { weight: 2, text: "Blasphemy, Determination and Clarity leave only a few casts of unreserved mana; the mana flask is part of the rotation." }
+  - { weight: 2, text: "A phase that pulls you away from the totems costs uptime; the channel only damages what the totem can see." }
+  - { weight: 1, text: "Awakened supports are the real pinnacle bill; the red-map paste uses the regular versions." }
 
 ratings:
-  tankiness: 6
-  singleTarget: 5
-  clear: 6
-  cost: 8
+  # Tankiness and single target are 10s on the measured gates: pinnacle sits at
+  # 9.1k life, 42.8k EHP and 14.1k physical max hit with chaos capped, and the
+  # default link measures 935k per totem. Clear is 9: the default link is also
+  # what clears, and red maps measure 300k per totem on it. That number runs
+  # Concentrated Effect for damage, so swap the support for Increased Area of
+  # Effect (or use the Arc helmet) when a pack is spread; it is a totem's clear
+  # speed, not a bow's, so not 10. Cost is 9: no unique, bench-craft rares, and
+  # the transfigured gem is a cheap trade buy or a Divine Font roll; the six-link
+  # and the Awakened supports are the bill.
+  tankiness: 10
+  singleTarget: 10
+  clear: 9
+  cost: 9
 
 gearProfile: spell
 
 tree:
+  # Life first: the life pool is what turns the flask and Determination layer
+  # into a real max hit. Lightning and cast speed come next so the default link
+  # keeps its damage, and mana raises the Hierophant recovery margin. Measured
+  # alternatives lose more than they gain: elemental before lightning leaves 9.0k
+  # life and 40.9k EHP, dropping cast speed leaves 8.4k life and 39.9k EHP for no
+  # damage gain, and spell damage instead of elemental is flat. The fire and cold
+  # walkers this order buys are a shared-planner artifact (their damage and
+  # cast-speed lines are fire/cold-scoped), not a damage claim.
   targets:
-    - increased lightning damage
-    - totem damage
-    - increased cast speed
     - increased maximum life
-    - increased maximum mana
+    - increased lightning damage
+    - increased cast speed
     - increased elemental damage
+    - increased maximum mana
+    - totem damage
 
 leveling:
+  # The transfigured gem is not a quest reward: it comes from the Divine Font
+  # at the end of a Labyrinth or from another player, so the base Lightning
+  # Tendrils carries the campaign and the transfigured upgrade waits until the
+  # Merciless Labyrinth.
+  swaps:
+    - gem: Lightning Tendrils of Eccentricity
+      fromLevel: 69
+      replaces: Lightning Tendrils
+      note: "Transfigure a Lightning Tendrils at the Divine Font in the Merciless Labyrinth, or buy one; the base gem carries the campaign."
   brackets:
     - until: 12
       skills: [Rolling Magma]
@@ -65,97 +114,189 @@ leveling:
         - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
         - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
     - until: 28
-      skills: [Arc]
+      skills: [Lightning Tendrils]
       skillGroups:
+        # The base channel out-damages self-cast Arc before the totem links,
+        # and it is the same skill the default link upgrades, so the muscle
+        # memory carries over.
         - slot: Body Armour
-          gems: [Arc, Spell Totem, Added Lightning Damage, Faster Casting]
+          gems: [Lightning Tendrils, Added Lightning Damage, Controlled Destruction, Arcane Surge]
         - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
+          gems: [Flame Dash]
         - slot: Helmet
           gems: [Clarity]
       flasks:
         - { slot: life, name: "Giant Life Flask", note: "Drops from level 24." }
         - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
+        - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
     - until: 68
-      skills: [Arc]
+      skills: [Lightning Tendrils, Arc]
       skillGroups:
         - slot: Body Armour
-          gems: [Arc, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction, Elemental Focus]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
+          gems: [Lightning Tendrils, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction]
         - slot: Helmet
-          gems: [Clarity]
+          gems: [Arc, Spell Totem, Added Lightning Damage]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge, { name: Clarity, maxLevel: 5, note: "Keep it low: the reservation buys regeneration, not a pool." }]
+        - slot: Boots
+          gems: [Determination]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    - until: 80
+      skills: [Lightning Tendrils of Eccentricity, Arc]
+      skillGroups:
+        # White maps still run the five-link the ssf-start budget has. The
+        # six-link and the four-link Arc are the red-map step.
+        - slot: Body Armour
+          gems: [{ name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }, Spell Totem, Added Lightning Damage, Lightning Penetration, Elemental Focus]
+        - slot: Helmet
+          gems: [Arc, Spell Totem, Added Lightning Damage]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge, { name: Clarity, maxLevel: 5, note: "Keep it low." }]
         - slot: Boots
           gems: [Determination]
       flasks:
         - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
-        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
-        - { slot: utility, name: "Granite Flask", note: "Armour." }
-        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
-    - until: 100
-      skills: [Arc]
+        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    - until: 90
+      skills: [Lightning Tendrils of Eccentricity, Arc]
       skillGroups:
+        # The red-map paste: the six-link default link plus the four-link Arc
+        # clear swap, both on Spell Totem, with the regular supports so the
+        # import stays self-fundable.
         - slot: Body Armour
-          gems: [Arc, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction, Elemental Focus]
-        - slot: Weapon 1
-          gems: [Flame Dash, Arcane Surge]
+          gems: [{ name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }, Spell Totem, Added Lightning Damage, Lightning Penetration, Elemental Focus, Concentrated Effect]
         - slot: Helmet
-          gems: [Clarity]
+          gems: [Arc, Spell Totem, Added Lightning Damage, Faster Casting]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge, { name: Clarity, maxLevel: 1, note: "Low reservation; the mana bar pays for two totems and Blasphemy." }]
+        - slot: Gloves
+          gems: [Conductivity, Blasphemy]
         - slot: Boots
           gems: [Determination]
       flasks:
         - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
-        - { slot: mana, name: "Eternal Mana Flask", note: "Drops from level 65." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "The aura package leaves little room." }
         - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
+    - until: 100
+      skills: [Lightning Tendrils of Eccentricity, Arc]
+      skillGroups:
+        # Pinnacle moves the default gem to 21/20 and swaps the three damage
+        # supports to their Awakened versions. Same links, same job.
+        - slot: Body Armour
+          gems: [{ name: Lightning Tendrils of Eccentricity, note: "Transfigured gem: Divine Font in the Merciless Labyrinth or trade, not the Act 1 quest row." }, Spell Totem, Awakened Added Lightning Damage, Awakened Lightning Penetration, Awakened Elemental Focus, Concentrated Effect]
+        - slot: Helmet
+          gems: [Arc, Spell Totem, Awakened Added Lightning Damage, Faster Casting]
+        - slot: Weapon 1
+          gems: [Flame Dash, Arcane Surge, { name: Clarity, maxLevel: 1, note: "Low reservation." }]
+        - slot: Gloves
+          gems: [Conductivity, Blasphemy]
+        - slot: Boots
+          gems: [Determination]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
+        - { slot: mana, name: "Eternal Mana Flask", note: "The aura package leaves little room." }
+        - { slot: utility, name: "Granite Flask", note: "Armour." }
+        - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
 
 ascendancyOrder:
+  # Pursuit of Faith is the second totem, so it comes first. Ritual of
+  # Awakening and Arcane Blessing are the damage layer; Conviction of Power
+  # is the endurance charges that make the life pool stay up.
   - { node: pursuit-of-faith, lab: 1 }
   - { node: ritual-of-awakening, lab: 2 }
-  - { node: divine-guidance, lab: 3 }
-  - { node: sanctuary-of-thought, lab: 4 }
+  - { node: arcane-blessing, lab: 3 }
+  - { node: conviction-of-power, lab: 4 }
 
 bandit: kill-all
 pantheon:
   major: lunaris
   minor: gruthkul
-  note: Gruthkul reduces the physical hits that catch a stationary caster.
+  note: Gruthkul reduces the physical hits that catch you while the next totem is placed.
 uniques:
   core: []
   optional: []
 
 guide:
   summary:
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
     text: >-
-      Arc Totem Hierophant is a spell-totem build that measures
+      Arc Totem Hierophant runs Lightning Tendrils of Eccentricity on two Spell
+      Totems as its default clear and boss link, and keeps Arc in a four-link
+      helmet for open layouts. The measured link runs
       {{gates.maps-red.metrics.dps|dps}} at red maps and
-      {{gates.pinnacle.metrics.dps|dps}} at pinnacle. The totems cast while you
-      position, and no unique is required.
+      {{gates.pinnacle.metrics.dps|dps}} at pinnacle per totem. The channel
+      covers a semicircle in front of the totem, and every fifth pulse is
+      stronger (a much larger area and an automatic critical strike), so the
+      same link clears packs and delivers the boss hit. No unique is required.
     facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
   leveling:
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
     text: >-
-      Level with Rolling Magma, then switch to Arc and Spell Totem when both are
-      available. The first checkpoint measures {{gates.until-12.metrics.life|int}}
-      life and {{gates.until-12.metrics.dps|dps}} damage; the second measures
-      {{gates.until-28.metrics.dps|dps}}.
+      Level with Rolling Magma, then self-cast Lightning Tendrils: the channel
+      hits harder than self-cast Arc before the totem links, and it is the same
+      skill the default link upgrades. The first checkpoint measures
+      {{gates.until-12.metrics.life|int}} life and
+      {{gates.until-12.metrics.dps|dps}} damage; the second measures
+      {{gates.until-28.metrics.dps|dps}} damage. Put the Tendrils on Spell
+      Totem, put Arc in the helmet as a three-link alongside the totem body, add
+      Faster Casting when the helmet becomes a four-link, and transfigure a
+      Tendrils at the Divine Font in the Merciless Labyrinth for the upgraded
+      version.
     facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]
   maps:
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
     text: >-
-      At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
-      {{gates.maps-red.metrics.ehp|int}} effective life and
-      {{gates.maps-red.metrics.maxHit|int}} physical max hit. Keep both totems
-      down, cap the elemental resistances, and let the filter hide the rest.
+      At red maps the default link measures {{gates.maps-red.metrics.dps|dps}}
+      per totem with {{gates.maps-red.metrics.ehp|int}} effective life and
+      {{gates.maps-red.metrics.maxHit|int}} physical max hit. It runs
+      Concentrated Effect for that number, so swap the support for Increased
+      Area of Effect (or use the Arc helmet) when a pack is spread; the swap
+      costs some damage, and the Arc helmet's damage is not measured here. The
+      channel covers a semicircle in front of the totem, so the totem clears the
+      pack it is placed in; Arc swaps into the four-link helmet when an open
+      layout wants a chain. Blasphemy with Conductivity is the damage aura, and
+      Determination with a Granite and a Basalt flask is the physical layer. Cap
+      the elemental resistances and keep both totems ahead of you. The tree's
+      fire and cold walkers are planner artifacts: their damage and cast-speed
+      lines are fire/cold-scoped, so a hand-built tree should cut them for a
+      lightning or life cluster.
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
   bossing:
+    signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
     text: >-
-      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} damage with
+      Pinnacle measures {{gates.pinnacle.metrics.dps|dps}} per totem with
       {{gates.pinnacle.metrics.ehp|int}} effective life and
-      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Place the totems
-      before the burst and be ready to replace them after every phase.
+      {{gates.pinnacle.metrics.maxHit|int}} physical max hit. Place both
+      Tendrils totems before the burst (they expire on a timer, so recast them
+      before they run out) and keep Conductivity on the boss. Replace a totem
+      after every phase that clears the arena; the stronger pulse is the damage
+      window, so the totem has to be channelling before the boss commits to a
+      slam.
     facts: [gates.pinnacle.metrics.dps, gates.pinnacle.metrics.ehp, gates.pinnacle.metrics.maxHit]
 changelog:
   - season: covens
     date: "2026-11-26"
     notes:
       - "First guide for the Covens league."
+  - season: covens
+    date: "2026-11-27"
+    notes:
+      - "The default link is Lightning Tendrils of Eccentricity on Spell Totems: its wide pulse clears and its always-crit larger pulse bosses. Arc keeps the four-link helmet for open layouts."
+      - "The gate report measures the default link at red maps and pinnacle; the published paste holds both links, and the four-link Arc is the clear swap."
+      - "Lightning Tendrils, self-cast and then on Spell Totem, carries the campaign; the transfigured version takes over at the Merciless Labyrinth."
+      - "Awakened Added Lightning Damage, Awakened Lightning Penetration and Awakened Elemental Focus lift pinnacle damage; the red-map paste keeps the regular supports so the import stays self-fundable."
+      - "Arcane Blessing and Blasphemy with Conductivity are the damage layers; Determination, a Granite flask, a Basalt flask and Conviction of Power are the physical layer."
+      - "The tree buys life first and reaches a nine-thousand-life pool at pinnacle; chaos resistance is capped and every checkpoint now passes the standard floors rather than the lower Dad damage floor."
+      - "Ratings move from 6/6/5/8 to 10/10/9/9 on the measured gates; the medal moves from B to S+."
