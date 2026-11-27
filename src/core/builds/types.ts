@@ -164,11 +164,12 @@ export interface LevelingBracket {
  * Where a gem comes from for this build's class. `reward` is a free quest
  * reward, `vendor` is the town vendor pool that the quest opens, `siosa` is the
  * Act 3 Library vendor who stocks every gem the completed quests unlock,
+ * `lilly` is the Act 6 vendor who sells the gems Siosa is too early for,
  * `divine-font` is a transfigured gem and `level` means the data names no
  * quest, so the only honest advice is the level gate.
  */
 export interface GemSource {
-  kind: 'reward' | 'vendor' | 'siosa' | 'divine-font' | 'level';
+  kind: 'reward' | 'vendor' | 'siosa' | 'lilly' | 'divine-font' | 'level';
   /** Act the quest or vendor is in; null when no quest is named. */
   act: number | null;
   /** Quest that grants the gem or opens the vendor stock. */

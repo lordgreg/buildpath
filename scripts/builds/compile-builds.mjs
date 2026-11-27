@@ -501,6 +501,7 @@ function sourceForGem(name, className, entry) {
     return { kind: 'vendor', act: vendor.act ?? null, quest: vendor.quest ?? null };
   }
   if (extra.siosa) return { kind: 'siosa', act: 3, quest: 'A Fixture of Fate' };
+  if (extra.lilly) return { kind: 'lilly', act: 6, quest: 'Fallen from Grace' };
   const quest = entry.quest ?? null;
   if (quest) {
     return {

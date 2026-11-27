@@ -12,8 +12,10 @@
 # `vendor` lists the classes that can buy it from that act's vendor once the
 # quest is done. A gem with neither, but a vendor entry for another class, is
 # stocked by Siosa in the Act 3 Library after A Fixture of Fate. `siosa: true`
-# says that is the only route. `transfigured: true` marks a gem that only the
-# Divine Font at the end of a Labyrinth (or another player) can supply.
+# says that is the only route; `lilly: true` says the classes missing from
+# `vendor` buy it from Lilly Roth in Act 6 after Fallen from Grace.
+# `transfigured: true` marks a gem that only the Divine Font at the end of a
+# Labyrinth (or another player) can supply.
 schemaVersion: 1
 gems:
   Boneshatter:
@@ -55,6 +57,7 @@ gems:
       act: 4
       quest: "Breaking the Seal"
       classes: [Duelist, Marauder, Scion, Templar]
+    lilly: true
   Increased Critical Damage:
     vendor:
       act: 2

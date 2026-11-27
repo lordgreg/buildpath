@@ -50,6 +50,14 @@ tree:
     - increased critical strike multiplier
 
 leveling:
+  # The transfigured gem is not a quest reward: it only comes from the Divine
+  # Font at the end of a Labyrinth (or another player). Static Strike carries
+  # the campaign, and the swap waits until the Merciless Lab is reachable.
+  swaps:
+    - gem: Smite of Divine Judgement
+      fromLevel: 68
+      replaces: Static Strike
+      note: "After the campaign, transform a Smite at the Divine Font in the Merciless Labyrinth or buy the gem in trade."
   brackets:
     - until: 12
       skills: [Static Strike, Ancestral Call]
@@ -65,10 +73,10 @@ leveling:
         - { slot: mana, name: "Small Mana Flask", note: "Attacks are mana-hungry before leech." }
         - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
     - until: 28
-      skills: [Smite of Divine Judgement, Ancestral Call]
+      skills: [Static Strike, Ancestral Call]
       skillGroups:
         - slot: Body Armour
-          gems: [Smite of Divine Judgement, Shockwave, Added Lightning Damage, Elemental Damage with Attacks]
+          gems: [Static Strike, Shockwave, Added Lightning Damage, Elemental Damage with Attacks]
         - slot: Weapon 1
           gems: [Leap Slam, War Banner]
         - slot: Helmet
@@ -79,10 +87,10 @@ leveling:
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
         - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
     - until: 68
-      skills: [Smite of Divine Judgement, War Banner]
+      skills: [Static Strike, War Banner]
       skillGroups:
         - slot: Body Armour
-          gems: [Smite of Divine Judgement, Shockwave, Added Lightning Damage, Elemental Damage with Attacks, Increased Critical Strikes]
+          gems: [Static Strike, Shockwave, Added Lightning Damage, Elemental Damage with Attacks, Increased Critical Strikes]
         - slot: Weapon 1
           gems: [Leap Slam, War Banner]
         - slot: Helmet
@@ -146,10 +154,11 @@ guide:
     facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
   leveling:
     text: >-
-      Level with Static Strike, then switch to Smite of Divine Judgement once the
-      links are in place; Shockwave carries the area damage and Ancestral Call
-      covers the campaign. The first checkpoint measures
-      {{gates.until-12.metrics.life|int}} life and
+      Static Strike carries the whole campaign. Smite of Divine Judgement is a
+      transfigured gem, so it only arrives from the Divine Font in the Merciless
+      Labyrinth or from trade after the campaign; Shockwave carries the area
+      damage and Ancestral Call covers the campaign. The first checkpoint
+      measures {{gates.until-12.metrics.life|int}} life and
       {{gates.until-12.metrics.dps|dps}} damage; the second measures
       {{gates.until-28.metrics.dps|dps}}.
     facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]

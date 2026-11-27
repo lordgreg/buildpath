@@ -51,12 +51,20 @@ tree:
     - increased maximum life
 
 leveling:
+  # Animate Weapon of Ranged Arms is transfigured: it only comes from the Divine
+  # Font (or another player), and the guide recommends level 80 before the
+  # swap. The melee Animate Weapon carries the campaign.
+  swaps:
+    - gem: Animate Weapon of Ranged Arms
+      fromLevel: 80
+      replaces: Animate Weapon
+      note: "Level 80 is the guide's recommendation: transform a normal Animate Weapon at the Divine Font in the Lord's Labyrinth, or buy the gem in trade."
   brackets:
     - until: 12
-      skills: [Summon Skeletons, Animate Weapon of Ranged Arms]
+      skills: [Animate Weapon, Summon Skeletons]
       skillGroups:
         - slot: Body Armour
-          gems: [Animate Weapon of Ranged Arms, Minion Damage, Chance to Poison]
+          gems: [Animate Weapon, Minion Damage, Chance to Poison]
         - slot: Weapon 1
           gems: [Summon Skeletons]
         - slot: Helmet
@@ -68,10 +76,10 @@ leveling:
         - { slot: mana, name: "Small Mana Flask", note: "Animating is expensive early." }
         - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
     - until: 28
-      skills: [Animate Weapon of Ranged Arms, Flesh Offering, Desecrate]
+      skills: [Animate Weapon, Flesh Offering, Desecrate]
       skillGroups:
         - slot: Body Armour
-          gems: [Animate Weapon of Ranged Arms, Minion Damage, Chance to Poison, Minion Speed]
+          gems: [Animate Weapon, Minion Damage, Chance to Poison, Minion Speed]
         - slot: Weapon 1
           gems: [Flesh Offering, Desecrate]
         - slot: Shield
@@ -84,10 +92,10 @@ leveling:
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
         - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
     - until: 68
-      skills: [Animate Weapon of Ranged Arms, Flesh Offering, Desecrate]
+      skills: [Animate Weapon, Flesh Offering, Desecrate]
       skillGroups:
         - slot: Body Armour
-          gems: [Animate Weapon of Ranged Arms, Minion Damage, Chance to Poison, Vile Toxins, Deadly Ailments]
+          gems: [Animate Weapon, Minion Damage, Chance to Poison, Vile Toxins, Deadly Ailments]
         - slot: Weapon 1
           gems: [Flesh Offering, Desecrate]
         - slot: Shield
@@ -100,6 +108,29 @@ leveling:
           gems: [Flame Dash, Arcane Surge]
       flasks:
         - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
+        - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
+        - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
+        - { slot: utility, name: "Quartz Flask", note: "Phasing through your own minions." }
+        - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance until it is capped." }
+    # The guide recommends level 80 before the transfigured gem, so white maps
+    # still run the melee Animate Weapon the campaign was levelled on.
+    - until: 80
+      skills: [Animate Weapon, Flesh Offering, Desecrate]
+      skillGroups:
+        - slot: Body Armour
+          gems: [Animate Weapon, Minion Damage, Chance to Poison, Vile Toxins, Deadly Ailments]
+        - slot: Weapon 1
+          gems: [Flesh Offering, Desecrate]
+        - slot: Shield
+          gems: [Determination, Clarity]
+        - slot: Gloves
+          gems:
+            - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+            - Immortal Call
+        - slot: Boots
+          gems: [Flame Dash, Arcane Surge]
+      flasks:
+        - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
         - { slot: mana, name: "Hallowed Mana Flask", note: "Drops from level 42." }
         - { slot: utility, name: "Granite Flask", note: "Armour against physical hits." }
         - { slot: utility, name: "Quartz Flask", note: "Phasing through your own minions." }
@@ -150,9 +181,10 @@ guide:
     facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
   leveling:
     text: >-
-      Level with Summon Skeletons until ranged weapons start dropping, then
-      animate every bow you find. The first checkpoint measures
-      {{gates.until-12.metrics.life|int}} life and
+      Level the melee Animate Weapon through the campaign and into white maps.
+      Animate Weapon of Ranged Arms is transfigured, so it only arrives from the
+      Divine Font or from trade, and the guide recommends the swap only then.
+      The first checkpoint measures {{gates.until-12.metrics.life|int}} life and
       {{gates.until-12.metrics.dps|dps}} damage; the second measures
       {{gates.until-28.metrics.dps|dps}}.
     facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]

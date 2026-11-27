@@ -7,7 +7,7 @@ import type {
 } from '../core/builds/types.ts';
 import { BUILD_VERSION, BUILDS } from '../meta/builds.ts';
 import { GUIDE_SECTIONS, type GuideSection } from '../core/builds/guide.ts';
-import { levelingStep } from '../core/builds/leveling.ts';
+import { levelingPlan } from '../core/builds/leveling.ts';
 import { BANDITS } from '../meta/pantheon.ts';
 import { getPobLink } from '../meta/pob-links.ts';
 import AscendancyPanel from './AscendancyPanel.tsx';
@@ -107,6 +107,7 @@ function gemSourceLabel(info: GemAvailability | undefined): string | null {
     return ['Vendor', actPart, quest ? `after ${quest}` : null].filter(Boolean).join(' · ');
   }
   if (kind === 'siosa') return 'Siosa · Act 3 Library, after A Fixture of Fate';
+  if (kind === 'lilly') return 'Lilly Roth · Act 6, after Fallen from Grace';
   if (kind === 'divine-font') return 'Divine Font · end of any Labyrinth, or trade';
   return `Buy it at level ${info.requiredLevel}`;
 }
@@ -398,25 +399,15 @@ export default function BuildPage() {
     step === 'maps-red' || step === 'pinnacle' || build.gemQualityFrom === 'leveling';
   // A guide step is a leveling bracket: show the gems you level with at that
   // step, so there is no separate "leveling" section repeating the same thing.
-  // A map step is not a leveling step, and "play these until 100" there was
-  // noise; the gems table already lists what the checkpoint measured.
-  const isLevelingStep = step.startsWith('until-');
-  const levelingSteps = Object.keys(build.gates ?? {}).filter((id) => id.startsWith('until-'));
-  const levelingPosition = levelingSteps.indexOf(step);
-  const previousLevel =
-    levelingPosition > 0 ? build.gates?.[levelingSteps[levelingPosition - 1]!]?.level : undefined;
-  const bracketIndex = build.leveling.brackets.findIndex(
-    (entry) => gate !== undefined && entry.until >= gate.level,
-  );
-  const resolvedBracket = bracketIndex >= 0 ? bracketIndex : build.leveling.brackets.length - 1;
-  const leveling = isLevelingStep
-    ? levelingStep(
-        build.leveling,
-        resolvedBracket,
-        (gem) => build.gemInfo?.[gem]?.requiredLevel,
-        { level: gate?.level, from: previousLevel === undefined ? 1 : previousLevel + 1 },
-      )
-    : null;
+  // A map step is not a leveling step, and a step that introduces no gem the
+  // reader has not already been told about and has no swap has nothing left to
+  // say, so it is hidden too.
+  const leveling = levelingPlan(
+    build.leveling,
+    Object.entries(build.gates ?? {}).map(([id, entry]) => ({ id, level: entry.level })),
+    (gem) => build.gemInfo?.[gem]?.requiredLevel,
+  ).find((entry) => entry.id === step);
+  const showLeveling = Boolean(leveling && !leveling.redundant);
 
   return (
     <div className="min-h-dvh">
@@ -777,7 +768,7 @@ export default function BuildPage() {
         </section>
       )}
 
-      {leveling && (
+      {showLeveling && leveling && (
         <section aria-labelledby="leveling">
           <h2
             id="leveling"
@@ -1228,7 +1219,7 @@ export default function BuildPage() {
               ['tree', 'Passive tree'],
               ['gear', 'Gear'],
               ['gems', 'Gems'],
-              ...(isLevelingStep ? ([['leveling', 'Leveling this step']] as [string, string][]) : []),
+              ...(showLeveling ? ([['leveling', 'Leveling this step']] as [string, string][]) : []),
               ['ascendancy', 'Ascendancy'],
               ['pantheon', 'Pantheon'],
               ['bandit', 'Bandit'],

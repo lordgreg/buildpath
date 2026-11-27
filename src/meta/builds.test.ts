@@ -1317,7 +1317,7 @@ describe('leveling availability', () => {
         const source = build.gemInfo?.[name]?.source;
         expect(source, `${build.class}: ${name} has no source`).toBeDefined();
         expect(
-          ['reward', 'vendor', 'siosa', 'divine-font', 'level'],
+          ['reward', 'vendor', 'siosa', 'lilly', 'divine-font', 'level'],
           `${build.class}: ${name} has an unknown source`,
         ).toContain(source!.kind);
         if (source!.kind === 'reward' || source!.kind === 'vendor') {

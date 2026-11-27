@@ -129,3 +129,48 @@ export function levelingStep(
 
   return { from, until, startSkills, upgrades };
 }
+
+/** One leveling checkpoint, read in order, with what is new to the reader. */
+export interface LevelingPlanStep extends LevelingStep {
+  /** The checkpoint id, e.g. `until-28`. */
+  id: string;
+  /** Start skills the reader has not been told about in an earlier step. */
+  newSkills: string[];
+  /** True when the step has nothing the reader has not already been told. */
+  redundant: boolean;
+}
+
+/**
+ * The whole leveling plan, one entry per checkpoint. A step only repeats a gem
+ * the reader has already seen if it is still in use, and a step with neither a
+ * new gem nor a swap is `redundant`, so the page can hide it.
+ */
+export function levelingPlan(
+  leveling: { swaps?: LevelingSwap[]; brackets: LevelingBracket[] },
+  checkpoints: { id: string; level: number }[],
+  requiredLevel: (gem: string) => number | undefined,
+): LevelingPlanStep[] {
+  const plan: LevelingPlanStep[] = [];
+  const introduced = new Set<string>();
+  let previousLevel: number | undefined;
+  for (const checkpoint of checkpoints) {
+    const index = leveling.brackets.findIndex((entry) => entry.until >= checkpoint.level);
+    const resolved = index >= 0 ? index : leveling.brackets.length - 1;
+    const step = levelingStep(leveling, resolved, requiredLevel, {
+      level: checkpoint.level,
+      from: previousLevel === undefined ? 1 : previousLevel + 1,
+    });
+    previousLevel = checkpoint.level;
+    if (!step) continue;
+    const newSkills = step.startSkills.filter((gem) => !introduced.has(gem));
+    for (const gem of step.startSkills) introduced.add(gem);
+    for (const upgrade of step.upgrades) introduced.add(upgrade.gem);
+    plan.push({
+      ...step,
+      id: checkpoint.id,
+      newSkills,
+      redundant: newSkills.length === 0 && step.upgrades.length === 0,
+    });
+  }
+  return plan;
+}

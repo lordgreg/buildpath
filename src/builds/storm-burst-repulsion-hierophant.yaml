@@ -51,6 +51,14 @@ tree:
     - increased elemental damage
 
 leveling:
+  # The transfigured gem is not a quest reward: it only comes from the Divine
+  # Font at the end of a Labyrinth (or another player), so Rolling Magma on the
+  # totems carries the campaign and the swap waits for the Merciless Lab.
+  swaps:
+    - gem: Storm Burst of Repulsion
+      fromLevel: 68
+      replaces: Rolling Magma
+      note: "After the campaign, transform a Storm Burst at the Divine Font in the Merciless Labyrinth or buy the gem in trade."
   brackets:
     - until: 12
       skills: [Rolling Magma, Flame Dash]
@@ -66,10 +74,10 @@ leveling:
         - { slot: mana, name: "Small Mana Flask", note: "Spells are expensive early." }
         - { slot: utility, name: "Quicksilver Flask", note: "Act 2 quest reward." }
     - until: 28
-      skills: [Storm Burst of Repulsion, Flame Dash]
+      skills: [Rolling Magma, Flame Dash]
       skillGroups:
         - slot: Body Armour
-          gems: [Storm Burst of Repulsion, Spell Totem, Added Lightning Damage, Faster Casting]
+          gems: [Rolling Magma, Added Lightning Damage, Faster Casting, Controlled Destruction]
         - slot: Weapon 1
           gems: [Flame Dash, Arcane Surge]
         - slot: Shield
@@ -80,10 +88,10 @@ leveling:
         - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance from level 18." }
         - { slot: utility, name: "Quicksilver Flask", note: "Movement, not damage." }
     - until: 68
-      skills: [Storm Burst of Repulsion, Flame Dash]
+      skills: [Rolling Magma, Flame Dash]
       skillGroups:
         - slot: Body Armour
-          gems: [Storm Burst of Repulsion, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction]
+          gems: [Rolling Magma, Spell Totem, Added Lightning Damage, Lightning Penetration, Controlled Destruction]
         - slot: Weapon 1
           gems: [Flame Dash, Arcane Surge]
         - slot: Shield
@@ -139,9 +147,10 @@ guide:
     facts: [mainSkill, ascendancyId, gates.maps-red.metrics.dps, gates.pinnacle.metrics.dps]
   leveling:
     text: >-
-      Level with Rolling Magma, then put Storm Burst of Repulsion on Spell Totem
-      as soon as both gems are available. The first checkpoint measures
-      {{gates.until-12.metrics.life|int}} life and
+      Rolling Magma carries the campaign. Storm Burst of
+      Repulsion is transfigured, so it only arrives from the Divine Font in the
+      Merciless Labyrinth or from trade after the campaign. The first checkpoint
+      measures {{gates.until-12.metrics.life|int}} life and
       {{gates.until-12.metrics.dps|dps}} damage; the second measures
       {{gates.until-28.metrics.dps|dps}}.
     facts: [gates.until-12.metrics.life, gates.until-12.metrics.dps, gates.until-28.metrics.dps]

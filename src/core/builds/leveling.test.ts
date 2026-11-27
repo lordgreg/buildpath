@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { levelingStep } from './leveling.ts';
+import { levelingPlan, levelingStep } from './leveling.ts';
 import type { LevelingSwap } from './types.ts';
 
 const sunder: LevelingSwap = {
@@ -158,5 +158,46 @@ describe('levelingStep', () => {
     };
     expect(levelingStep(leveling, 1, required, { level: 28 })?.startSkills).toContain('Sunder');
     expect(levelingStep(leveling, 2, required, { level: 68 })?.startSkills).toContain('Sunder');
+  });
+});
+
+describe('levelingPlan', () => {
+  const checkpoints = [
+    { id: 'until-12', level: 12 },
+    { id: 'until-28', level: 28 },
+    { id: 'until-68', level: 68 },
+  ];
+  const plan = levelingPlan(boneshatter, checkpoints, required);
+
+  it('marks a gem as new only in the step that introduces it', () => {
+    expect(plan[0]?.newSkills).toEqual(['Cleave']);
+    // Sunder is introduced by the level-12 swap card, Enduring Cry is new here.
+    expect(plan[1]?.newSkills).toEqual(['Enduring Cry']);
+    // Boneshatter was introduced by the level-28 swap card.
+    expect(plan[2]?.newSkills).toEqual([]);
+  });
+
+  it('marks a step with nothing new as redundant so the page can hide it', () => {
+    expect(plan[0]?.redundant).toBe(false);
+    expect(plan[1]?.redundant).toBe(false);
+    expect(plan[2]?.redundant).toBe(true);
+  });
+
+  it('keeps the checkpoint id on every step', () => {
+    expect(plan.map((step) => step.id)).toEqual(['until-12', 'until-28', 'until-68']);
+  });
+
+  it('handles a guide whose first bracket ends after the first checkpoint', () => {
+    const steps = levelingPlan(
+      { brackets: [{ until: 28, skills: ['Rolling Magma', 'Flame Wall'] }, { until: 100, skills: ['Penance Brand'] }] },
+      [{ id: 'until-12', level: 12 }, { id: 'until-28', level: 28 }, { id: 'until-68', level: 68 }],
+      (gem) => ({ 'Rolling Magma': 1, 'Flame Wall': 4, 'Penance Brand': 28 })[gem],
+    );
+    expect(steps[0]?.newSkills).toEqual(['Rolling Magma']);
+    expect(steps[0]?.upgrades.map((upgrade) => upgrade.gem)).toEqual(['Flame Wall']);
+    expect(steps[1]?.newSkills).toEqual([]);
+    // Penance Brand was introduced by the level-28 swap, so the last step has
+    // nothing left to say.
+    expect(steps[2]?.redundant).toBe(true);
   });
 });
