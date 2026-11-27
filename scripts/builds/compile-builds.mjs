@@ -66,8 +66,12 @@ const viscera = parse(
 const stepPlanConfig = parse(
   readFileSync(resolve(seedsDir, 'config/step-plans.yaml'), 'utf8'),
 );
-const checkpointIds = Object.keys(
-  parse(readFileSync(resolve(seedsDir, 'config/checkpoints.yaml'), 'utf8')).checkpoints ?? {},
+const checkpointConfig = parse(
+  readFileSync(resolve(seedsDir, 'config/checkpoints.yaml'), 'utf8'),
+).checkpoints ?? {};
+const checkpointIds = Object.keys(checkpointConfig);
+const budgets = parse(
+  readFileSync(resolve(seedsDir, 'gear/budgets.yaml'), 'utf8'),
 );
 const visceraByName = new Map(
   (viscera.items ?? []).map((item) => [item.name, item]),
@@ -103,6 +107,85 @@ const baseItems = new Map(
     readFileSync(resolve(root, 'src/core/data/base-types.json'), 'utf8'),
   ).items.map((item) => [item.name, item]),
 );
+
+const ARMOUR_SLOTS = new Set(['helmet', 'body', 'gloves', 'boots']);
+const DEFENCE_TAGS = new Set([
+  'int_armour',
+  'str_armour',
+  'dex_armour',
+  'str_int_armour',
+  'str_dex_armour',
+  'dex_int_armour',
+]);
+
+/**
+ * A build's filter is generated from the gear the PoB gates measured, not from
+ * the ascendancy default. The seed may still override a slot (D15), but a slot
+ * the seed leaves out is derived from the same profiles and budgets the
+ * verifier used, so a build can never publish a filter that hides its own gear.
+ */
+function deriveGearFilter(seed) {
+  const profile = gearProfiles[seed.gearProfile ?? 'caster'] ?? {};
+  const collected = new Map();
+  let offhandRemoved = false;
+  const add = (slot, baseName) => {
+    if (!baseName) return;
+    if (!collected.has(slot)) collected.set(slot, new Set());
+    collected.get(slot).add(baseName);
+  };
+  for (const checkpoint of Object.values(checkpointConfig)) {
+    const budget = budgets[checkpoint.budget];
+    if (!budget) continue;
+    const override = profile[checkpoint.budget] ?? {};
+    const slots = { ...(budget.slots ?? {}), ...(override.slots ?? {}) };
+    for (const slot of ['weapon', 'helmet', 'body', 'gloves', 'boots', 'belt', 'amulet']) {
+      const spec = slots[slot];
+      if (spec) add(slot, spec.base);
+    }
+    for (const ring of ['ring1', 'ring2']) {
+      const spec = slots[ring];
+      if (spec) add('ring', spec.base);
+    }
+    if (slots.offhand === null) offhandRemoved = true;
+    else if (slots.offhand) add('offhand', slots.offhand.base);
+    const jewel = override.jewels ?? budget.jewels ?? {};
+    if ((jewel.count ?? 0) > 0) add('jewel', jewel.base ?? 'Ghastly Eye Jewel');
+  }
+  const slots = {};
+  for (const [slot, names] of collected) {
+    const items = [...names].map((name) => baseItems.get(name)).filter(Boolean);
+    if (items.length === 0) continue;
+    const itemClasses = [...new Set(items.map((item) => item.itemClass))].sort();
+    const tags = new Set();
+    if (ARMOUR_SLOTS.has(slot) || slot === 'offhand') {
+      for (const item of items) {
+        for (const tag of item.tags) {
+          if (DEFENCE_TAGS.has(tag)) tags.add(tag);
+        }
+      }
+    }
+    if (slot === 'jewel') {
+      for (const item of items) {
+        for (const tag of item.tags) {
+          if (tag === 'abyss_jewel') continue;
+          if (
+            tag.startsWith('abyss_jewel_') ||
+            ['strjewel', 'dexjewel', 'intjewel'].includes(tag)
+          ) {
+            tags.add(tag);
+          }
+        }
+      }
+    }
+    slots[slot] = {
+      itemClasses,
+      ...(tags.size > 0 ? { tags: [...tags].sort() } : {}),
+    };
+  }
+  if (offhandRemoved) slots.offhand = null;
+  const explicit = seed.filter?.slots ?? {};
+  return { slots: { ...slots, ...explicit } };
+}
 
 /**
  * A bracket is a promise about what you can have at that level, so nothing may
@@ -476,7 +559,14 @@ for (const file of files) {
   // what PoB measured, so it stays out of the hash like the guide prose.
   const hashedLeveling = { ...mechanics.leveling };
   delete hashedLeveling.swaps;
-  const seedHash = hashOf({ ...mechanics, leveling: hashedLeveling });
+  // The profile's bases and affixes are part of what PoB measured, so a change
+  // to profiles.yaml must invalidate the gates the same way a seed edit does.
+  const gearProfileHash = hashOf(gearProfiles[seed.gearProfile ?? 'caster'] ?? {});
+  const seedHash = hashOf({
+    ...mechanics,
+    leveling: hashedLeveling,
+    gearProfileHash,
+  });
   seedById.set(seed.id, seed);
   // Verification writes gates, the published PoB code and the pipeline stamp
   // into the same file. Keep them when the seed has not changed, so compiling
@@ -500,6 +590,7 @@ for (const file of files) {
   builds.push({
     ...mechanics,
     ...carried,
+    filter: deriveGearFilter(seed),
     ...(carried.gates ? {} : { status: 'draft' }),
     season: leaguesById.get(seedSeason),
     changelog: seedChangelog.map((entry) => ({

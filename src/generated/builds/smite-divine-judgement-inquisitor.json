@@ -921,12 +921,12 @@
         "dps": 35,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 347,
-        "energyShield": 429,
-        "ehp": 544,
-        "maxHit": 776,
+        "life": 372,
+        "energyShield": 0,
+        "ehp": 255,
+        "maxHit": 413,
         "resists": [
-          -48,
+          -60,
           -48,
           -48
         ],
@@ -1078,7 +1078,7 @@
         },
         {
           "slot": "Helmet",
-          "base": "Hubris Circlet",
+          "base": "Cone Helmet",
           "mods": [
             "+25 to maximum Life"
           ],
@@ -1088,7 +1088,7 @@
         },
         {
           "slot": "Body Armour",
-          "base": "Vaal Regalia",
+          "base": "Chestplate",
           "mods": [
             "+25 to maximum Life"
           ],
@@ -1098,9 +1098,9 @@
         },
         {
           "slot": "Gloves",
-          "base": "Sorcerer Gloves",
+          "base": "Plated Gauntlets",
           "mods": [
-            "+12% to Fire Resistance"
+            "+25 to maximum Life"
           ],
           "budget": "starting",
           "ilvl": 12,
@@ -1108,7 +1108,7 @@
         },
         {
           "slot": "Boots",
-          "base": "Sorcerer Boots",
+          "base": "Steel Greaves",
           "mods": [
             "+25 to maximum Life",
             "15% increased Movement Speed"
@@ -1119,7 +1119,7 @@
         },
         {
           "slot": "Belt",
-          "base": "Chain Belt",
+          "base": "Leather Belt",
           "mods": [
             "+25 to maximum Life"
           ],
@@ -1235,11 +1235,11 @@
         "minionCount": 1,
         "dpsSource": "player",
         "life": 869,
-        "energyShield": 518,
-        "ehp": 1093,
-        "maxHit": 1387,
+        "energyShield": 0,
+        "ehp": 658,
+        "maxHit": 1041,
         "resists": [
-          -30,
+          -60,
           -30,
           -30
         ],
@@ -1591,10 +1591,9 @@
         },
         {
           "slot": "Helmet",
-          "base": "Hubris Circlet",
+          "base": "Reaver Helmet",
           "mods": [
-            "+60 to maximum Life",
-            "+30% to Fire Resistance"
+            "+60 to maximum Life"
           ],
           "budget": "early",
           "ilvl": 45,
@@ -1602,10 +1601,9 @@
         },
         {
           "slot": "Body Armour",
-          "base": "Vaal Regalia",
+          "base": "Sun Plate",
           "mods": [
-            "+60 to maximum Life",
-            "25% increased Energy Shield"
+            "+60 to maximum Life"
           ],
           "budget": "early",
           "ilvl": 45,
@@ -1613,7 +1611,7 @@
         },
         {
           "slot": "Gloves",
-          "base": "Sorcerer Gloves",
+          "base": "Guarding Gauntlets",
           "mods": [
             "+60 to maximum Life"
           ],
@@ -1623,7 +1621,7 @@
         },
         {
           "slot": "Boots",
-          "base": "Sorcerer Boots",
+          "base": "Antique Greaves",
           "mods": [
             "+60 to maximum Life",
             "20% increased Movement Speed"
@@ -1634,7 +1632,7 @@
         },
         {
           "slot": "Belt",
-          "base": "Chain Belt",
+          "base": "Leather Belt",
           "mods": [
             "+60 to maximum Life"
           ],
@@ -1764,19 +1762,19 @@
         "dps": 4000
       },
       "metrics": {
-        "dps": 4384,
+        "dps": 7110,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 2518,
-        "energyShield": 681,
-        "ehp": 10446,
-        "maxHit": 5486,
+        "life": 2895,
+        "energyShield": 0,
+        "ehp": 9502,
+        "maxHit": 5456,
         "resists": [
           76,
           75,
           75
         ],
-        "chaosResist": 15,
+        "chaosResist": -5,
         "manaUnreserved": -115,
         "manaCost": 31,
         "nodes": 77,
@@ -2652,12 +2650,12 @@
         "start": 61525,
         "jewels": [
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 1",
             "node": 26196
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 2",
             "node": 26725
           }
@@ -2680,7 +2678,7 @@
         },
         {
           "slot": "Helmet",
-          "base": "Hubris Circlet",
+          "base": "Eternal Burgonet",
           "mods": [
             "+80 to maximum Life",
             "+40% to Fire Resistance",
@@ -2692,22 +2690,10 @@
         },
         {
           "slot": "Body Armour",
-          "base": "Vaal Regalia",
+          "base": "Glorious Plate",
           "mods": [
             "+80 to maximum Life",
-            "40% increased Energy Shield",
-            "+40% to Lightning Resistance"
-          ],
-          "budget": "ssf-start",
-          "ilvl": 72,
-          "rarity": "RARE"
-        },
-        {
-          "slot": "Gloves",
-          "base": "Sorcerer Gloves",
-          "mods": [
-            "+80 to maximum Life",
-            "+40% to Fire Resistance",
+            "+40% to Lightning Resistance",
             "+40% to Cold Resistance"
           ],
           "budget": "ssf-start",
@@ -2715,11 +2701,25 @@
           "rarity": "RARE"
         },
         {
+          "slot": "Gloves",
+          "base": "Spiked Gloves",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
           "slot": "Boots",
-          "base": "Sorcerer Boots",
+          "base": "Titan Greaves",
           "mods": [
             "25% increased Movement Speed",
-            "+20% to Chaos Resistance",
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
             "+40% to Lightning Resistance"
           ],
           "budget": "ssf-start",
@@ -2728,7 +2728,7 @@
         },
         {
           "slot": "Belt",
-          "base": "Chain Belt",
+          "base": "Leather Belt",
           "mods": [
             "+80 to maximum Life",
             "+40% to Fire Resistance",
@@ -2777,10 +2777,12 @@
         },
         {
           "slot": "Jewel 1",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 55% increased Damage",
-            "Minions have 14% increased Attack Speed"
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "13% increased Attack Speed",
+            "+80 to maximum Life",
+            "+25% to Critical Strike Multiplier"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -2788,10 +2790,12 @@
         },
         {
           "slot": "Jewel 2",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 55% increased Damage",
-            "Minions have 14% increased Attack Speed"
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "13% increased Attack Speed",
+            "+80 to maximum Life",
+            "+25% to Critical Strike Multiplier"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -2922,19 +2926,19 @@
         "dps": 4500
       },
       "metrics": {
-        "dps": 7760,
+        "dps": 12426,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 3058,
-        "energyShield": 681,
-        "ehp": 12414,
-        "maxHit": 6426,
+        "life": 3471,
+        "energyShield": 0,
+        "ehp": 11509,
+        "maxHit": 6463,
         "resists": [
           76,
           75,
           75
         ],
-        "chaosResist": 15,
+        "chaosResist": -5,
         "manaUnreserved": -111,
         "manaCost": 47,
         "nodes": 89,
@@ -3944,12 +3948,12 @@
         "start": 61525,
         "jewels": [
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 1",
             "node": 6230
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 2",
             "node": 26196
           }
@@ -3972,7 +3976,7 @@
         },
         {
           "slot": "Helmet",
-          "base": "Hubris Circlet",
+          "base": "Eternal Burgonet",
           "mods": [
             "+80 to maximum Life",
             "+40% to Fire Resistance",
@@ -3984,22 +3988,10 @@
         },
         {
           "slot": "Body Armour",
-          "base": "Vaal Regalia",
+          "base": "Glorious Plate",
           "mods": [
             "+80 to maximum Life",
-            "40% increased Energy Shield",
-            "+40% to Lightning Resistance"
-          ],
-          "budget": "ssf-start",
-          "ilvl": 72,
-          "rarity": "RARE"
-        },
-        {
-          "slot": "Gloves",
-          "base": "Sorcerer Gloves",
-          "mods": [
-            "+80 to maximum Life",
-            "+40% to Fire Resistance",
+            "+40% to Lightning Resistance",
             "+40% to Cold Resistance"
           ],
           "budget": "ssf-start",
@@ -4007,11 +3999,25 @@
           "rarity": "RARE"
         },
         {
+          "slot": "Gloves",
+          "base": "Spiked Gloves",
+          "mods": [
+            "+80 to maximum Life",
+            "13% increased Attack Speed",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance"
+          ],
+          "budget": "ssf-start",
+          "ilvl": 72,
+          "rarity": "RARE"
+        },
+        {
           "slot": "Boots",
-          "base": "Sorcerer Boots",
+          "base": "Titan Greaves",
           "mods": [
             "25% increased Movement Speed",
-            "+20% to Chaos Resistance",
+            "+80 to maximum Life",
+            "+40% to Cold Resistance",
             "+40% to Lightning Resistance"
           ],
           "budget": "ssf-start",
@@ -4020,7 +4026,7 @@
         },
         {
           "slot": "Belt",
-          "base": "Chain Belt",
+          "base": "Leather Belt",
           "mods": [
             "+80 to maximum Life",
             "+40% to Fire Resistance",
@@ -4069,10 +4075,12 @@
         },
         {
           "slot": "Jewel 1",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 55% increased Damage",
-            "Minions have 14% increased Attack Speed"
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "13% increased Attack Speed",
+            "+80 to maximum Life",
+            "+25% to Critical Strike Multiplier"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4080,10 +4088,12 @@
         },
         {
           "slot": "Jewel 2",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 55% increased Damage",
-            "Minions have 14% increased Attack Speed"
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "13% increased Attack Speed",
+            "+80 to maximum Life",
+            "+25% to Critical Strike Multiplier"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4218,19 +4228,19 @@
         "dps": 6000
       },
       "metrics": {
-        "dps": 11433,
+        "dps": 30359,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 4395,
-        "energyShield": 748,
-        "ehp": 17359,
-        "maxHit": 8617,
+        "energyShield": 0,
+        "ehp": 15181,
+        "maxHit": 8108,
         "resists": [
           76,
           75,
           75
         ],
-        "chaosResist": 15,
+        "chaosResist": -5,
         "manaUnreserved": -20,
         "manaCost": 47,
         "nodes": 104,
@@ -5411,32 +5421,32 @@
         "start": 61525,
         "jewels": [
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 1",
             "node": 6230
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 2",
             "node": 26196
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 3",
             "node": 26725
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 4",
             "node": 33631
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 5",
             "node": 36634
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 6",
             "node": 61419
           }
@@ -5458,7 +5468,7 @@
         },
         {
           "slot": "Helmet",
-          "base": "Hubris Circlet",
+          "base": "Conqueror's Helmet",
           "mods": [
             "+80 to maximum Life",
             "+40% to Fire Resistance",
@@ -5480,11 +5490,11 @@
         },
         {
           "slot": "Body Armour",
-          "base": "Vaal Regalia",
+          "base": "Legion Plate",
           "mods": [
             "+80 to maximum Life",
-            "40% increased Energy Shield",
-            "+40% to Lightning Resistance"
+            "+40% to Lightning Resistance",
+            "+40% to Cold Resistance"
           ],
           "implicits": [
             {
@@ -5502,11 +5512,12 @@
         },
         {
           "slot": "Gloves",
-          "base": "Sorcerer Gloves",
+          "base": "Precursor Gauntlets",
           "mods": [
             "+80 to maximum Life",
-            "+40% to Fire Resistance",
-            "+40% to Cold Resistance"
+            "13% increased Attack Speed",
+            "+40% to Cold Resistance",
+            "+40% to Fire Resistance"
           ],
           "implicits": [
             {
@@ -5524,11 +5535,12 @@
         },
         {
           "slot": "Boots",
-          "base": "Sorcerer Boots",
+          "base": "Brimstone Treads",
           "mods": [
             "25% increased Movement Speed",
             "+80 to maximum Life",
-            "+20% to Chaos Resistance"
+            "+40% to Cold Resistance",
+            "+40% to Lightning Resistance"
           ],
           "implicits": [
             {
@@ -5546,7 +5558,7 @@
         },
         {
           "slot": "Belt",
-          "base": "Chain Belt",
+          "base": "Leather Belt",
           "mods": [
             "+80 to maximum Life",
             "+40% to Fire Resistance",
@@ -5595,11 +5607,12 @@
         },
         {
           "slot": "Jewel 1",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 55% increased Damage",
-            "Minions have 14% increased Attack Speed",
-            "+80 to maximum Life"
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "13% increased Attack Speed",
+            "+80 to maximum Life",
+            "+25% to Critical Strike Multiplier"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5607,11 +5620,12 @@
         },
         {
           "slot": "Jewel 2",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 55% increased Damage",
-            "Minions have 14% increased Attack Speed",
-            "+80 to maximum Life"
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "13% increased Attack Speed",
+            "+80 to maximum Life",
+            "+25% to Critical Strike Multiplier"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5619,11 +5633,12 @@
         },
         {
           "slot": "Jewel 3",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 55% increased Damage",
-            "Minions have 14% increased Attack Speed",
-            "+80 to maximum Life"
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "13% increased Attack Speed",
+            "+80 to maximum Life",
+            "+25% to Critical Strike Multiplier"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5631,11 +5646,12 @@
         },
         {
           "slot": "Jewel 4",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 55% increased Damage",
-            "Minions have 14% increased Attack Speed",
-            "+80 to maximum Life"
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "13% increased Attack Speed",
+            "+80 to maximum Life",
+            "+25% to Critical Strike Multiplier"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5643,11 +5659,12 @@
         },
         {
           "slot": "Jewel 5",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 55% increased Damage",
-            "Minions have 14% increased Attack Speed",
-            "+80 to maximum Life"
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "13% increased Attack Speed",
+            "+80 to maximum Life",
+            "+25% to Critical Strike Multiplier"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5655,11 +5672,12 @@
         },
         {
           "slot": "Jewel 6",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 55% increased Damage",
-            "Minions have 14% increased Attack Speed",
-            "+80 to maximum Life"
+            "Adds 8 to 75 Lightning Damage to Attacks",
+            "13% increased Attack Speed",
+            "+80 to maximum Life",
+            "+25% to Critical Strike Multiplier"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -5808,13 +5826,13 @@
         "dps": 8000
       },
       "metrics": {
-        "dps": 21097,
+        "dps": 67244,
         "minionCount": 1,
         "dpsSource": "player",
-        "life": 4163,
-        "energyShield": 821,
-        "ehp": 21376,
-        "maxHit": 8544,
+        "life": 5528,
+        "energyShield": 0,
+        "ehp": 27061,
+        "maxHit": 10354,
         "resists": [
           76,
           75,
@@ -7082,32 +7100,32 @@
         "start": 61525,
         "jewels": [
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 1",
             "node": 6230
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 2",
             "node": 26196
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 3",
             "node": 26725
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 4",
             "node": 33631
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 5",
             "node": 36634
           },
           {
-            "base": "Ghastly Eye Jewel",
+            "base": "Crimson Jewel",
             "label": "Jewel 6",
             "node": 61419
           }
@@ -7130,7 +7148,7 @@
         },
         {
           "slot": "Helmet",
-          "base": "Hubris Circlet",
+          "base": "Giantslayer Helmet",
           "mods": [
             "+100 to maximum Life",
             "+45% to Fire Resistance",
@@ -7152,11 +7170,11 @@
         },
         {
           "slot": "Body Armour",
-          "base": "Vaal Regalia",
+          "base": "Royal Plate",
           "mods": [
             "+100 to maximum Life",
-            "60% increased Energy Shield",
-            "+45% to Lightning Resistance"
+            "+45% to Lightning Resistance",
+            "+45% to Cold Resistance"
           ],
           "implicits": [
             {
@@ -7174,11 +7192,12 @@
         },
         {
           "slot": "Gloves",
-          "base": "Sorcerer Gloves",
+          "base": "Leviathan Gauntlets",
           "mods": [
             "+100 to maximum Life",
-            "+45% to Fire Resistance",
-            "+45% to Cold Resistance"
+            "17% increased Attack Speed",
+            "+45% to Cold Resistance",
+            "+45% to Fire Resistance"
           ],
           "implicits": [
             {
@@ -7196,10 +7215,11 @@
         },
         {
           "slot": "Boots",
-          "base": "Sorcerer Boots",
+          "base": "Leviathan Greaves",
           "mods": [
             "30% increased Movement Speed",
-            "+30% to Chaos Resistance",
+            "+100 to maximum Life",
+            "+45% to Cold Resistance",
             "+45% to Lightning Resistance"
           ],
           "implicits": [
@@ -7218,7 +7238,7 @@
         },
         {
           "slot": "Belt",
-          "base": "Chain Belt",
+          "base": "Leather Belt",
           "mods": [
             "+100 to maximum Life",
             "+45% to Fire Resistance",
@@ -7269,11 +7289,12 @@
         },
         {
           "slot": "Jewel 1",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 70% increased Damage",
-            "Minions have 18% increased Attack Speed",
-            "Minions have 40% increased maximum Life"
+            "Adds 10 to 100 Lightning Damage to Attacks",
+            "17% increased Attack Speed",
+            "+100 to maximum Life",
+            "+35% to Critical Strike Multiplier"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7281,11 +7302,12 @@
         },
         {
           "slot": "Jewel 2",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 70% increased Damage",
-            "Minions have 18% increased Attack Speed",
-            "Minions have 40% increased maximum Life"
+            "Adds 10 to 100 Lightning Damage to Attacks",
+            "17% increased Attack Speed",
+            "+100 to maximum Life",
+            "+35% to Critical Strike Multiplier"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7293,11 +7315,12 @@
         },
         {
           "slot": "Jewel 3",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 70% increased Damage",
-            "Minions have 18% increased Attack Speed",
-            "Minions have 40% increased maximum Life"
+            "Adds 10 to 100 Lightning Damage to Attacks",
+            "17% increased Attack Speed",
+            "+100 to maximum Life",
+            "+35% to Critical Strike Multiplier"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7305,11 +7328,12 @@
         },
         {
           "slot": "Jewel 4",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 70% increased Damage",
-            "Minions have 18% increased Attack Speed",
-            "Minions have 40% increased maximum Life"
+            "Adds 10 to 100 Lightning Damage to Attacks",
+            "17% increased Attack Speed",
+            "+100 to maximum Life",
+            "+35% to Critical Strike Multiplier"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7317,11 +7341,12 @@
         },
         {
           "slot": "Jewel 5",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 70% increased Damage",
-            "Minions have 18% increased Attack Speed",
-            "Minions have 40% increased maximum Life"
+            "Adds 10 to 100 Lightning Damage to Attacks",
+            "17% increased Attack Speed",
+            "+100 to maximum Life",
+            "+35% to Critical Strike Multiplier"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7329,11 +7354,12 @@
         },
         {
           "slot": "Jewel 6",
-          "base": "Ghastly Eye Jewel",
+          "base": "Crimson Jewel",
           "mods": [
-            "Minions deal 70% increased Damage",
-            "Minions have 18% increased Attack Speed",
-            "Minions have 40% increased maximum Life"
+            "Adds 10 to 100 Lightning Damage to Attacks",
+            "17% increased Attack Speed",
+            "+100 to maximum Life",
+            "+35% to Critical Strike Multiplier"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -7474,14 +7500,14 @@
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJzVWmtvGjsT_hx-hbXSkc6rmsbXvVRJjwghJDm5NaRN0y-VAQNuvLtk1wuhv_6Vd7ksKRBy2qqtIq2M_Yw9z3g8OzvO3j-PoQYjmaQqjvYd_Bo5QEaduKui_r7z_uao6jv_vK3sXQkzuOwdZErbkbeVnb28DbQcSb3vBMgBRiR9aT7MpqKfkQM6WqTphQjlvnMjw6EWiQNE2pFRt74YOYkeMpUqEycOCIWKWnHnXppmEmfDfQc7oC2irjL7zkUcSQcMRWQGMo7OxZc4acbdfUdnkUhUWhpS0XSon2RmcJ9pB4yUHJ_HXbnv1Gtn9ZbztrKzs3elxUQmLSMMSI0w-049Dtsqkt3Dq5YDRkJnct_BmFH6GgU-45xR19ldLXoTG6H_g9yZ6sm5DKMBXwdsRDLpT1oDJXV3LuAxf6NCjeOrhUIe5cFrxH3kEYqDdXJXg0mqOkKfi0cVZuGxMjfiXkbzaXwXe-tkj1Qir2WqUrPQcC3zeqy7T8Fr2Z-p_sBEKupvLVEfiDh9gsZr0eciEvW4BGVrSVro-yiRqUxGcrEVVYLWSbSGsgTEr32fkWLf9nbzc2RbN4mUQHSMGsnWUHas6-ez2R_AJFKWjhadna2T7r7Dl86U7UEOiOKuTC0LF7ougRhRDDH3CCQBppDRwIMccwJdQhF0GXOhR30fepxz6AXUhz5HCGJECIYYscC2ucchRi7lEBPqBRATDxGIic8JxBShAGKGLJ5hbp8uciHmyKMQc-zaJ0PcPqkPseshap92Ts-zcwZ2ZoII8SFBnGNIUOC6kOCA-5AQ4nNIGOb2SX0KiYsDFxKXE9vmLoPE9Qi3T4Yg8XD-pAhD4uWjvmdn9n3Pt0YIAkgRIRxSRH0EKeLMgxS5AYYUI9uDfY9DSpkXQEpdiiGlHueQMsuUMkwRpIwgD1J7viHlnLuQui5lkHrMdyH1ArtK4AUI0iDALmQI8QAy5DIOGaUeg4wyTCBj2KeQMUYCyHK7MRYgHzIXEw8yN8AIMo9wDJnHCIbMJ5hBFlhZnrPgiBHb5h6CHPkugZxi7ENOiRdATn2fQc6ZzyHnLgsg555HIOc-t_0BciH3GSL2aUd9FzHIA2r7g4D40EXYDaCLaGDbnm1jbNuYYdvmhEMX-x6GLrE-4BLqUujSwOX2ad2Q-diFLkeU5Y69s_f--ixv7AyMGaZvdnfH4_HroTCDuCcflZavO3G4OxRpqkaymt4rrav2HOzWarXaQf99rT0-7tSGd42D8d19nTSuz67f9ZtHd5_OBl87x3fnvZpqoNMqiqtKX_17l45vvzbl-Zd3E3TTPrpAHX74JRlcfk39s5vHy3c3wcEAfTi-Obu4Ojg6OH4vP3141J2Lj9r0rsin95-4iR6bAy2Orx8Omg9auI_jy-PDy04_II2PIu3iC8qojnsnl_VHdtHrB1mD3H1oDT5V_22fJPdfHh9a7eH1KCRu2zt99KL0dth-CN8np9J8EayakAk68zrV7PSSX7Ufb8fvbhrnnRvyeJc0kzSoooPPrd6FCsjt8Sd6EWckPLs_ya6v-eXX6CGL79xxlHgZHnhjb-R-Pj3y-YjTXhR_vjms1vu1Wm7w3ZnF94p3bFqYf_orjxk2fNiY4ABlZGh_zWLmt7j8BJaA7nqgR3gJ6K0D5uesBPTXAu0xKwGDdcDcPxfAWYze2dstmWBv1wbZPBzbKGwbLetuxWDeBDISbS27-45JMumAVMdm3zmIuxNQS8I4m-YutSJ-W4lZAN_Za8oQ9Iv1z6URXWHE7omRYbrbtI8c3ZRhK1RG1rT56IDc2bfCOyAS4fSFkXeAuAcO1UhFEpxm3b4MZWScWZ5GkAMeMqGVmSz9sEsdyp7ItHGeMl1Ba_dlvLLhME5MaxB37sdiJJ-jV8Ct4EKiRHLR-RuQqnW7sjvPTQ5FKPrb81stvKCaj4M5AMwQvwHvhs4dS-hCp1tlBjVjROc-3Zr9rRTDOHoyUZn-fGhKHIyVGYD5Mr-BFU6iTiJFKrv1RBmbM7dMou7l9jZYP8HCDHMMmIHAHPUb2OA800aluUJb016SWTBd6v4J1PYK3Z8L6oVjAvz9Ef1MimFLi3DLgL6AL2xi-0DR-Ss3-1YkByKKZLIllRJ-weVWJGDW--u291jqUJrv39y6Fokyky0NMkcvzDHv-pUbeywTobuXvZtBFnW33t5vpBasiiGbhcwHf91eH8SxSb9_qw-lkUmoImFUHG1poicyCwM9Gfh1xmnqeCR_gHWmcb0uUnM7kFHxsp7WjLZ8IVjZy2XJ0jkRqQHjgYxmecAUMbUc_wWn5iQM48QIXRdab-kPyyKl1_u0HxQDP9Udpq10Vm76oOQYfI3j8GNeM7Ktu3nrrNCEOvPvIgu3P3J201KVbbekmVer7G-gis_Gt5XrPMK9Ade160alNbHl2VTZVOaLHEsNcKU5EKnRE9CYSHBq-yr5BPnab4BPKifhUKuOMukbgCrnKlJxlIKuFBpw_hdQ89yocI05YiBGEmBWRhSJI8hrcZVXPgImBmFR4wS2CJtbyq7-hIf7PA_yJ_DwnudB_wQe_vM82J_AI3ieB_8DeBD0PA_3D-CBN9EY558ElXqcxJHQ4Fxk3xB4VwToN4CgZTKYobJ6s-uVGZNat5sCmmvpotWjmNhR7KNvagEVTNdSX7Ndm2gO8tS4cpy1E5WCuko6WpotiZLlPfmb0Crh_ytrt7QJeMko9koFXOc3KnlaBBq9nuooGXUmNpMs3lorN_OVta6Jgb15AsVtj4g6i357yVTuX20Vuskq7bg7qXwQQoNr2RdaiU0WmVYV34CD6vxv2Ux_46BK0JJlZK8nO8Yyvez1ZKKiflp59TfGVUz-l7MQWoNFOWRBZ7VNlh2uuDcExcXh3C4LT3rWOGyTcfp5EllpxUlHJjIBRVL5Yp_JT_oKn5m6-Sv_L9AZWB2t7jZvTGSaWkfXeoH5Wd6xMZNp20-MBf_8i2Nr-v7SIYhH-Q5Pz-_yCbF0rP_JSCbFEUmEkRXCN8yw0iJkytzejj5PfWPy05baVOoDoSJwYJvbRsQX7dTL9N2Y5Igws_HsMpo8glrR3lplwq0WJ5GRWqu-zFXbQGPl8XqZ123Mc2yMwJXLoY0GKur_HNO_PFRszGmszuQH6_zUlP9BZ1xOYM5rzZP6ktbaHryeFul9ZXqtkh_Fo7xnWwprVsYbVw7tS7FYuWFkUiQekfgxS5ONS2dG2dmmqzcTEdmbpR-yMH3Bwu8ykZivP2Zd9oJ1a6E0g0lqvnflljTT3BIYZbQsfbtnqWzJThx1i2pz_gndEzqV09pLS8cmrxKU69Hz685ZuaKEmpU15zedKzBL15UzIF0BnJWGZhi2crK8tjaD8FUQqUsauSsQRRheYLwVGBssyuz9dRiywAQrMPlmLpkROdMqxrSEsk6mNDHGW8rQkgzZUqZ8o023lCnfq7NVMoVPtqTJ6zh57ca26nHUU_3CVaNhNptURjKc5L7ugCgL2zLZd_ypi3wLbIxEWpQ3p1DPd9H0H5tmC-ztPv3nwf8D-z6xFQ==",
+    "code": "eJzVWttu2zgTvq6fghCw-HdRuuFZUpHswnHSJN2cGqdN05uCsWmbDUU5EmUnffoflHxMbcfdtmiLAAJFfkPONxyOxsNs_3OfGDBUWa5TuxPgFygAyrbTjra9neDt5at6FPzzd237XLr-WXe30MaP_F17tl22gVFDZXaCGAXAyayn3LvJVPQjCkDbyDw_lYnaCS5VMjAyC4DM28p2mrORI3tX6Fy7NAtAIrVtpe1b5Q6ytBjsBDgAN9J2tNsJTlOrAjCQ1vVVak_kpzQ7SDs7gSmszHQ-N6TteKiXFa5_W5gADLUanaQdtRM0G8fNVvB37dmz7XMjH1TWctKB3Em3EzTT5EZb1dk7bwVgKE2hdgKKKI9eRCSMOUchC7aWi16mTpr_IHesu2oqw2jMVwH3rcp6D62-VqYzFUBr1dk_PJ8iMccRfoGR4BiRKF4ld95_yHVbmhN5r5MiOdTuUt4qO50mwihaJftKZ-pC5Tp3U3goVoGbqek8Bq_kfqx7fWe17W0s0ezLNH-Erq9En0grm-kclIXroG9tpnKVDdVsI-pk5Va0BmoOSF_QOBKVO2xvlafIty4zpYBsOz1UrYFqe8cvZ_MvwGVKzR0sOjlZR52dgC-cKN-DAmDTjso9CwGFIBAjiiHmIYEkxhQyGoeQY06gIBRBwZiAIY0iGHLOYRjTCEYcIYgRIRhixGLf5iGHGAnKISY0jCEmISIQk4gTiClCMcQMeTzD3D8FEhBzFFKIORb-yRD3TxpBLEJE_dPPGYZ-ztjPTBAhESSIcwwJioWABMc8goSQiEPCMPdPGlFIBI4FJIIT3-aCQSJCwv2TIUhCXD4pwpCE5WgU-pmjKIy8EeIYUkQIhxTRCEGKOAshRSLGkGLke3AUckgpC2NIqaAYUhpyDinzTCnDFEHKCAoh5YwKSDnnAlIhKIM0ZJGANIz9KnEYI0jjGAvIEOIxZEgwDhmlIYOMMkwgYziikDFGYshKuzEWowgygUkImYgxgiwkHEMWMoIhiwhmkMVelpcsOGLEt3mIIEeRIJBTjCPIKQljyGkUMcg5izjkXLAYch6GBHIecd8fIwF5xBDxTz8aCcQgj6nvj2MSQYGwiKFANPbt0Lcx9m3MsG9zwqHAUYihIN4HBKGCQkFjwf3TuyGLsICCI8pKx362_fbiuGw86zs3yF9ubY1GoxcD6fppV91ro16002RrIPNcD1U9v9XG1P052Go0Go3d3tvGzeiw3Rhc7--Orm-bZP_i-OJN7-DV9Yfj_uf24fVJt6H30es6SuvanP97nY-uPh-ok09vHtDlzatT1OZ7n7L-2ec8Or68P3tzGe_20bvDy-PT891Xu4dv1Yd396Z9-t647jn58PYDd_b-oG_k4cXd7sGdkeJ-dHa4d9buxWT_vcw7-JQyatLu0Vnznp12e3GxT67ftfof6v_eHGW3n-7vWjeDi2FCxE34-j60-dXg5i55m71W7pNk9Yw8oOOwXS9en_Hzm_ur0ZvL_ZP2Jbm_zg6yPK6j3Y-t7qmOydXhB3qaFiQ5vj0qLi742Wd7V6TXYmSzsMD9cBQOxcfXryI-5LRr04-Xe_Vmr9EoDb41sfh29YXNK_OP38qY4cOHjwkB0E4l_g2PY-aXuPIEzgHFamBI-BwwXAUsz9kcMFoJ9MdsDhivApb-OQNOYvSz7a05E2xv-SBbhmMfhX2j5d2tGiybQFl5Y1RnJ3BZoQKQm9TtBLtp5wE0siQtxplLo4rfXmISwJ9tH6gE9Kr1T5STHenk1pFTSb514B8l-kAlrUQ71TDufQBKZ98IHwArk_EHo-wAaRfs6aG2CrwuOj2VKOuCSZZGUADuCmm0e1h48Uvtqa4sjAseM11Ca-vreBWDQZq5Vj9t347kUD1Fr4J7wZnEHMlZ5y9AqtHpqM40N9mTiextzm-58IxqOQ6mADBB_AK8903pWNJUOl1p1284J9u3-cbsr5QcpPbRRPP0p0Nj4mCkXR9Ml_kFrHBk25mSueo0M-18ztxymb5Vm9tg9QQzM0wxYAICU9QvYIOTwjidlwptTHtBZsZ0ofsHUNuudH8qqFeOCfC3R_RjJQctI5MNA_oMPrOJ7wNV58_c7CuZ7UprVbYhlTn8jMuVzMCk9-dt76EyiXLfvrlNIzPtHjY0yBQ9M8e062du7KHKpOmcdS_7he1svL1fSM1YVUM-C5kO_ry93k1Tl3_7Vu8pp7JEW-l0ajc00SOZmYEeDfw84xyYdKi-g3XGcb0pc3fVV7b6WI9rRht-ELzs2aLk3DmRuQOjvrKTPGCMGFuO_4RTc5QkaeakaUpjNvSHRZG5z_u4H1QDP9Qdxq18Um56p9UIfE7T5H1ZM_Kt62nruNKEBtPfRR7uX0p241KVb7eUm1ar_DvQ1c_Gv2sXZYR7CS4aF_u11oMvzubapzKf1EgZgGvNTCd5asFr_14rhct1X4KI1I6SgdFt7fKXANUanU4OIuBSEPIvcmLfPU4Ma5j-AfQ0Z6p6QVmBqz2PkEcmVWUT-MJr7Tnhf_jOR8kVKJORgdEqK03oVXtEUDxNkPzWBMOnCdLfmmD0NEH2WxOMnybIf2eCBD1NUPzOBPE6fqPyh0qtmWaplQacyOILdm-qz8ZLQNAiU8zQPIPJpc-YamUIWhIRaPkoJn4UR-gLQ62zzop9XEezXybstWZq7wqVpdn_clDl8BuSJbUTbXVqc9CXQwX-JLRO-F_zGi7sFV4wjL_sARflXU-ZsIH9ble3tbLtB5_jVt_T5XvuLexS4O_EQHUPJW171u-vv-b7l1uGrrPMTdp5qB2rntfr3Ein1llkXO98CXbr079FM_2J4zpBC5ZR3a5qO8_0rNtVmba9vPb8T4zrmPxVspDGgFmhZkZnvU1mHvOfDcPWGaZXpra180y1iyxPM3AgC-uMcvlX-0xHSbPMZ8au_jz6A7T7Xk-vus9oM5Xn3tmNmWG-tMS6ALLCDqscarl91qZfN_53UW3Xx0WXWgUuMyU7m9smWjgh6bDc_rH2i8fHcwUXqqesyqrzk3k39eFw5QzrHGeVTZY61HLDrE3bbpRxtWMlXV9lYNe_bBpQvyoEkDEbf0X9tMZr8zCZFEa52pl9uAeNqr2xyoR7LY6sU8bonipV-7Gndm3G5cMLrp0NfCDRtvdjTP_1DrM2ifI6k--s83dwcjyfGJ00Do6aC1obfyy7Rua3tfFdUXlQX5U9m1JYsTJeu3Liv6fVyvtOZVXeYuX3WZqsXbpw2s82Xv0gk9Zfl32XhelXLPymkJn7_H3WZV-xbiNRrv-Qu29duaXcODUFTjuj5goSRa5aqp3aTlVCL-sCXWlyNS4otUzqytLHfJF9eoc7qcHMoSa12un17RLMwh3sBEiXACf1rgmGLZ2sLBhOIHwZRJk5jcQSRBWGZ5hwCcYHi3n20SoMmWHiJZhyMxfMiIJxaWZcF1olMzcxxhvK0DkZsqHM_DU93VBm_p8F2DKZyidbypXFqbIg5VvN1HZ1r3JVOygmkyqrkofS1wNgi-RGZTtBNHaRL4H7Q5lXNdsxNIwEGv-31mSB7a3H_w_5f42V9YU=",
     "byStep": {
-      "until-12": "eJzFWG1z2jgQ_hx-hUYz_XQk-AUbyOB2DE1I7iBN46R39-lGsRdQkSVXkknor7-RbV7SAiFNbu4Ls5Ke3X12tZLWdD88pgzNQSoqeIDtEwsj4LFIKJ8E-O72_LiNP7yvda-Jnn4a93LKzMr72lG3kBGDObAA2w5GmsgJ6C9LU-4_FkYxI0pdkRQCfAtpxojEiKgYeNJfr1zybzlVVAuJUUooj0Q8Az2QIs8CbGN0T3hCdYCvBAeMMsL1FAQfka9CDkQSYJZzIqnaWKK8WprIXE9nOcNoTuFhJBIIcD8c9iP8vnZ01L1mZAEy0kQjpYkOcF-k95RD8vE6wmhOWA4Bdpsnfstq2VbLw43tardCE_ZCnSEdwwa-tQt3xkFOFtGUAktW-KbT2cvl7OJ6hfWa7olvux3L7TRbbX-X3vV0oWhM2Ig80jRPL6i-JTPgKzOt1k7VcyrhBhRVeoU-brZ3ofuCJYejh3Qy1ZzyyQscTIlQP8J9axd8RDjpiw3sztQa5B2XoEDOYb0Ztr1z86IMNoEnbgHsNorDY6RbCYBIrOkcogxiU--FJTNAWgJsnCd3eaAukwB7Tw6SmbEw4iIBFWDbtaxO3W7anl23Wy3XqzuW47TrTsvzm3XX8zy_7nY6tl9vNjtWu-61m5ZT923P8eq-3W7Zdd_t-F7B5Kh7dzMshKOp1pk6bTQeHh5OMqKnYgyPlMFJLNJGRpSiczhWM8rYsSHeCMMw7E3uwv7X4c2VlZzfWO0z4i_-8H6fK-l8n13OeRKGYVA4aVReug0TeZEjkxojRMakKrNiRASc3DNIAqxlDhgpJnSAeyJZoFCmIq9ukbBMqtFYZvWoO4AUTSA16RqBJgnRpHGpIVWNgfkp0ANIzQ7SONKSzowDM_syFU7Saj_LebRcWN6XGH3LCaN6UexbJRsfH2FMcqbxj1FuCanxspjyLBNSh0kCyepQfSQpmTwbYqk5gHS78jrYYh2tAGiJqKJ2_r-oeQxKS8L6hLGDw40yKqn-eU9X1lBprgqv-WbhdUv-z9X8n0AywZH9-oIfAskiRtIDi30NXyfFzKFy8s2L_MB8XABLQb8-G31GJNWLA5OxQq9zsZr6DzNRSWr5inyh8IC-C5H-Vfgw0t8raVjycPHqZjVwMygCql4gI0egV4-QGSOalOObIqRTNAoHl_1atDCtlqIKEvRQlGFtRBgDXSuUCn-nyHZqn8tYT5FVu0wzRmOqlRmESaJQG2mBbB8te4_qwigXHbPoWD9dJ2Y61JrEM1UkxDh8StfZS3daVEntIr-XVKE-lfELaP_meMZ_WjZJyDRxO0i4e0nci2RR-0IIQzcwIYySPQTKflidot5x77j3q3yae_lMmJiDqkVCxiBBokE5PjQrtvPO0DCNICo7L8LjXUy8ZzIj9AaRXjF8xe7Y3jtEeSyBGOsjMYcUuEZFZ7aDoL-fIDBd608J5ahnxDevnNZe9yTNTb1-4otHFJbyC3dpfaCe3ar2XiqS8old-5SZKqZ88vaZ6Dzr3vkF91UazHfI8xmwrb0cGB0DGjOiZrURJLQKB50XMwcS2uF4_6WbEk4qx1FKGEPm4-RN_O6_PXNNjbHK9eecxjNF2RzkK31HoKunBmmqGWw8jbmCCGLBk7LfKV6oMWEKqlc9YkIXj-9mR0R1-c6vGsYN1LJPWGKcLZgn3xNLoLsFWN6Ua0xzqzGhNyDeNgiwDUb-FkR52NeY1haMOQeb0bd3YZw1prMFU-zlkzRauGoSqg5ll86GYds-UMfd0HG26ZS1EoEu2peiZTFSX_AxnZQlxLN8aRQ4pIuiBDHieXoP0nwSV5Z-Ap7NifnAXkNdt1N9pS_tdxs__v31L8xsDXM=",
-      "until-28": "eJzFWFtv47YSfo5_BSGgT1Vi3S0F9haKc-1JmjRKdrd9KWhpbHFNkV6ScuLz6w8oybaytR3vSdqFAYOXbzjzzZDDofq_PBcUzUFIwtnAsI8sAwFLeUbYZGA8PpwfhsYvHzr9O6zy2_FJSaie-dA56FdtRGEOdGA4oYEUFhNQH5dLuX9ZBkoplvI3XMDAeIBiRrEwEJYpsGy4nrliX0siieLCQAUmLOHpFNSF4OVsYNgGGmGWETUwfuMMDDTDTOXA2Q3-wsUFzwYGLRkWRLamCGumJqJU-bSkBpoTeLrhGQyMYXw9TIwPnYOD_h3FCxCJwgpJhdXAGPJiRBhkp3eJgeaYljAwXM89CiLPC1zL9Y3uZsEHrjD9bqlrMoaVRBhE23BnDMRkkeQEaLbC-3a405qzy7sV1rYi5yhyAsf2HD_ytsnd5QtJUkxv8DMpyuKSqAc8BbZexg1722TPiYB7kESqFfzQtbahh5xm-6OvySRXjLDJdyjIMZffwp2tkbjBDA95C2tvDYaGPjIBEsQc1uGwnWCbRDKDNvDIsWov9rvVIdKtBwGAcKrIHJIZpHrfV2vpDlICoHWu3OXBusoGhv_iQOkRy0CMZyAHhhPZrum5Uc_suWFo2pbj2KZt-T3ftF3Likzbs33btH3P8k2713N907EcJzSdwHdc0-n5gWc6kR1FpmuHPd903cC1Tdf3_cB0g8D1TLcX6dkosgPT8wJL_0dWaHo9x7dN3_Icx_Qtv2eZvhUGjumHnuWYgeVGoRnYvuObgR32bDNwo8CvKB_0H--vq8ZBrtRMHne7T09PRzOscj6GZ0LhKOVFd4alJHM4lFNC6aH2UDeO4_hk8hhfxio_S6zUHY7Vfx7DhfWQXd4N7fN7Kzz701dCXF7dja9uTz97Yvrl-evjyJ9L8SWYj67Jw_Pd6JxIXPrDa9GbsyyO40FlVLexqt_VIamCp2OmG4k2Qdbh0k0EDI8oZANDiRIMJClXA-OEZwsUi4KXTZqL62hriWW4D_oXUKAJFDqON6BwhhXuXikoZPdC_1XoCyiSgiiIqfpsoMoBe-ENxHDRbK9qAPExOiVzwgD9WmYTKIApY5nSIwN9LTElalFtqaatFZ3CGJdUGd_y3ECq-32sytmMC5XkPJ0-4Tm8Rq6Ga8G1RIvierCh5P4wSnGWQbbKYqe4wJP92W0WXhOt5tEKgJaIhnXww1if0WpLYVpb9ImoPFYKp1O5N_dPgGecfbNQm_xqqqGNnojK0UrNu0e-X5N87bTXdiP77Uf9GvAsobjY86Sv4Wsf6TFUDzb-8P_9PfEJixPMGIg9ibTwayafsEDL0YZK-G-H9hJoAertgR1SLIha7OmOFXrtjNXQjwvqJQhMs9vxQ16ybO_Q_k1qzame0hfTarJh5_0DcW5aclmBfSTwhP7LefG50qFbf6xa18tUsrr8NVx3KopN9abbCahVAaf7iGR1_74K2DG6iS-uhp1koZ8rkkjI0FOVLzqJAqA54KxTyVUqj5Hnd36v6R4jq3NVzChJiZK6Y9vWT4iwVADWyywL-CYZduIsk8ixkOLIszbP-nrSt_52f-jhJo12oraOehBVRW3lTW3qS67OTq55dYA6l-VIEImGRKQU1L6Efw4qNkX9QkH6BdX52bV-0oP6CYLqmh-zFLYY5-40bsSzRecjxhTdwwRTgncYVj9U5TE6Oax-r1vq-G1P1s86VL_rtljr7bR2QvkcZCfhIgUBAl3U_Tf4crMV_is-46plxEnVfYMNzos9fcPn1RW_c8cFuw0EqjrDHBOGTnTz3f3T26keF6Xe4bds8Yziuv3uFoQ7LRCETezO7Uxva8Im73HY1vni1RMXvWqb83_Y1tihvyS8boJt7bSBkjGgMcVy2rkgmKmKKjqvBva0Z4ve3Wm_wAwv9QrACgTSnxfeRfPuJFwqohdrlMcFqHwh1bso3p1gXyr-vSTpVBI6B_FG3Qmo5p5FiigKrbqglJBAyllWV-XV9TzGVEJTsCWUq6oGadftRNXlz6okaqGWJeAS42zAvHjvL4HuBmCds9cYb-NiXLUg_iYI0JZFwQZEnXrWmN4GjD6BbfbhNoyzxkQbMFUsX7jRMpoKqSnPtsm0FrbtPWXcloyzp4zXknE3ydT7KwFV1XtVjadbQ87GZFJvOzYrl4sCg2JRbVsDsbIYgai-inc3A8_mWH_NW0PDKGg-CS7X73e__eb-PyIZfaQ=",
-      "until-68": "eJzNWllv27oSfo5_BSHgPJWpxU1LEffAcdI4bbbGWdq-HNAWY7GhKFei7Li__oCSvCS1Xee2vTkIQIzIbzgLZ7iMs_f3Q6LAWGS5THXLQa9dBwg9SCOphy3n-urdbuD8_baxd8FNfH63X0hlR942dvZKGigxFqrleIEDDM-GwtzMpiL_uA4YKJ7nZzwRLedKJCPFMwfwfCB01FmMHOtvhcylSTMHJFzqXjq4F-YoS4tRy0EO6HMdSdNyzlItHDDi2sQi1af8a5odpVHLUYXmmcyXhqSuh4ZZYeL7QjlgLMXkNI1Ey-m0Tzo9521jZ2fvQvGpyHqGG5AbblpOJ036Uovo4KLngDFXhWg5lAT0tYtJgHBIidNczXmVGq6ez3Yi78ScBTMUrAMeapENp71YChXNGbwAbdTnsHsxxyKXUvbaQ9QPfI-tY7uIp7kccHXKH2RSJF1prvi90PNZGA28dbzvZCYuRS5zM4f7a8GdVEVPwWu1OpHD2Giph1tzdGKe5k_QaC36lGveSZegZK1fLfRaZyIX2VgsVmIXrZ-9NxJLSPQa06BegL1mmUWWusqEAHxg5Fj0RmJgA7-czX4AkwmxlFhkllnHUcthjzLK9rgO0Gkk8pbjeRgilyCImI8hDhGBlIQ-ZIhh6FHqQZ8EAfQZY9APSQCRizGCyKWhC5HLfAYRJn4IEQ4Yhoi4bggRdS2GImZbz_UgYtRlEHm-xfs-YRCFHmEQuxgHELuMIYhRyAKIMQ4YxBQx25KAQOyh0IPYY9jSzKMQez5mtqUuxH7ZE6IwhMTFmEHiksCFBAU-g4RQP4SEeARBQnzGIKGIuJBQ7PqQMMY8SDyPUEh8GniQ-KGdJwyRB6nrshBSigICKaXY0tYWSkM3gNQLkQupjxmC1KcYQRpgRCErdWAuxRgyl_kuZG7gYcgIQgFkBPshZCQIKGTMoyFkzPcxZCxgtid0PcgC6mLb2tHAcylkYYgD6LnIC6HnktDSvqURsjSiyNIMM-ihwEfQw8Qj0COhx2zre9BjLqFluOzsXV-elMRObMwof9NsTiaT1yNu4vROPEglXg_SpDnieS7HYje_l0rt2uhqttvt9v7wun09_HC73x4cvW-b-LDnXh_v3xfds0k0fAg673fddFeqi9N3-fTs4OTyLL8ml9_vzy86aD92b7pXJ2cX--_2uzeDL58Oblj_0_cwuTkS_S_BZfrlNna59zA9IJ8vo28PwZCedIdo9wDTm178ZfcDOw74feJd99k4190iVx4-y7564_7JYLd4f84u-g-3DwfdwzC__fDwzb-4M-07V3__8jnSAyx9_rn4KNm77r1_nn72JjrzCxT7E3_s_XPe340I8y7oh3a73Sqd1Jx5aa86a_LKZfVXmT02kcrYdIA0IrGfswxfBfQxWwLWu97OXnNp_r2mzeUy622yW6Jn_V8NliQQmveViFqOyQrhgFylpuXsp9EUtLMkLeoDsl1tE5Zjtk_s7B2JBAwr-afC8Igb3jw2IsmbR7Yp0Uci6SXSiLYynxxQrv5WeAdontT7UtkB0jtwIMdSC_C-iIYiEdo4s8sACh3wreBKmmm5GdW0lXQg7nihjPPU0BVWNZ9nVjEapZnpxengfsLH4mfWVXDLuOBYsnHR-fI2taNIRPMT8IAnfLi9eauZF5aW42AOADPEy5t9qMqo4qpS6VaauG0MH9znWxt_K_go1U8mWrZ-PlTbDSbSxGAu5uWdcKwHmeC5iDqZNPZe1jOZvBfbu2D9BAsvzDFgBgJz1O93wV5l4882vWrtAPr1He9E8FFP8WTLDW8BX3jI9oGq8wVj4pZn-1xrkW1pyRJ-Ycotz8Cs98UWtytUIsyvL21H8Uya6Zb-mKMX3ph3veCydkXGVXR-dxUXOtp6cX_gWhhVDdkjej74Yiu9n6Ym__WFPhBGZInU3MhUb-mhJzwL_zwZeDHfHKl0LH6Dc-rdvsNzcxsLXR1l9bN9y2PC8p4_5lxKEp4bMImFnp2SNaJ2HPv_p8xxkqSZ4arDldoyGh6zLB1-dT-oBmbBEPyBYKipfPbcv5FiAr6nafKplGGpz3PqpFKEOPMHg4Xbj9K4ulRg6Z4w82qB_Qayequ8bVyWm9sbcNm-PGz0prY4lkt7zn8VE6EAahzFPDdqCg6nAry3fY1yglL2G-DjxnEyUnIgTf4GuI1TqWWqcxAJrgBjfwE5vzhUgTFHxHwsAKLLiOpSBcpaSOkVK-mJzt7Pdcb_NZ03qTwp7zCNK5FlaQZOefGDrh-ruHoDkPtYb0TdZU1mZbmZ0u0oygFxgUmB564eRdiOosD94XbfQGStla8w-8vyPbkJgtNCGTlSUmRrHIE3OSIuz_tGt-hnMgcdmQ2UMFv74lVQGppUJUlgS6aNV9Y_JgW25giqOh_Xg0W_LS8u969WmmxSup9G08YN5wpciiFXkm9SuH7nvwH7u_Xfz214vMRVgRdUFd65HYu1-6kxdJMxw_KsafTSbCAykYHq7PkPLMHGfapvbw8LpcvLxNY640fZfpqOy7fePM5rJW2deJX2z3D8xm2rL5RpdGIuNdi35B_x-DpjVuvrb9KXJ4XNzXM9fQDtit5aZcysFsfaCKXkUJSqbTBjpYufFz3BJlMyqYeocT6yGSz18I8G-zPCJfyZzvg36_zUlf-DzshdUvq0fXTceaS1kncC3Cme3zfqqqBVALwre7Y1YY1ktFFywjWvJXe5UunEprrt-y2y8UbZhZF2tlr8Uca1rYz-FsHkGYI_Fjwz33-PXPoMue1EmHiam1-V3BOmvkoBI40SS1fsIhc9MUh1VFWDypvuHVe5qB9IPZWa8i6_XC-aV-Fnj4ol1KzwMMPgFZhH5fYZkKwAzt5vMwxdOVn5_p1B2CqIUEsaeSsQ1T68wPgrMHa3WLY-WIfBC0y4AlMu5iM3uk792KhfOut4liZGaEsessSDt-ShSzxkS57lH2foKp4qJnvClM-t8ollqU6q7-SwClU9KmaTCi2SaRnrDtBF0hdZ-S8QzdXAwzHPqxJEDaU-Cevff2cC9ppP_8PiX_ERk9I=",
-      "maps-early": "eJzNWmlv2zgT_hz_CkLAflqm5qmjiLuwncNpcztp2n5Z0BZjM6EoV6KcuL_-BSVfSW3X3XbfLAwII_IZzsHhkBx576-nRIOxzHKVmoaH3yAPSNNPY2UGDe_m-nA39P56V9u7EHZ4ftcqlHY972o7eyUNtBxL3fBC5AErsoG0H2dD0b-RB_pa5PmZSGTDu5bJSIvMAyLvSxO3Fz3H5muhcmXTzAOJUKab9h-kPcrSYtTwsAd6wsTKNryz1EgPjISxQ5maU3GfZkdp3PB0YUSm8qUuZaZdg6yww4dCe2Cs5ONpGsuG126etLveu9rOzt6FFhOZda2wILfCNrx2mvSUkfH-RdcDY6EL2fCCgEdvIs5ZECBGfa--mvU6tUL_A74TdSfnPBTxcB3wwMhsMOkOldTxnMEP8UaFDjoXcywmDNM3EcFBxPyQrOO7GE5y1Rf6VDyppEg6yl6LB2kWIhlZa8yhyuSVzFVuF25YC26nOn4J5uvdNBhao8xga472UKT5CzReiz4VRrTTJSgLNkFvTCZzmY3lYip2MV47F92RXELiNyHCU1X26uVCctR1JiUQfavGsjuSfRf75WjuBdhMyqW1RWeL6zhuePzZonItyAMmjWXe8HyfQIwohpgHBJIIU8hoFECOOYE-oQj6jPkwoGEIA845DCIaQowIwRAjFiGIEQ84xMinHGJCgwhiEnICMUUogpghh2SYu6ePfIg5Q9w93Th-4HiDwPFGbgSCCAkhQZxjSFDk-5DgiIeQEBJySBjm7klDComPIx8SnxNHc59B4geEuydDkARlSxgGobMqiiBFhHBIEQ0RpIizAFKMHI3DgENKWRBBSn2KIaUB55AyTBGkjKAAUs65D6nvUwZpwEIf0iByY0ZBhCCNIuxDhhCPIKM0YJAxHFLIGCMRZKXVjEUohMzHJIDMjzCCLCAcQxYwgiELCWaQRQwTyEs9OWLE0TxAkKPQJ5BTjEPIKQkiyGkYMsg5Cznk3GcR5DwICOQ85K49Qj7kIUPEPV1v6CMGeURdexSREPoI-xH0EY0cHTgaY0djhh3NCYc-DgMMfeJm0CfUp9Cnkc_dM_ChzxFlZQTu7N1cnZTEztDaUf62Xn98fHwzEnaY3sknpeWbfprURyLP1Vju5g9K610XsPVms9lsDW6an5sfblvN_tH7ph0edNHNcWt4e9Rlfdoi-53HYxN07_0PN-FIfWv1Tu8vJ-i6d3iG-nz__tFeHPDWEH3sXJ-cXbQOW50b-eXjk-6ffdL27oJ8ufnCrXk6GmrRucqyzv55fxCRg08ij_EZF53J_iCX-5_YRW_48cOhYdnD_dPXbm90NU6I3wvePwVfb_1c--Qsu_fHvZPLsf3ms4fgIRof9lqt08unp4veocpF8Y0Gl53ofUhO6JfPsekTFYjPxaXih52H4Fx-9Yf3WVuOi-C2M94v_s7Ch0_fkr9NvCvvd9uDZrN0ZH3myb1ql8srt07fykXr1q9bmB5QVibubZa1vseVa2QJOM21O3v1peH36i6DlLnGpRhHdN0UVZ0lCaQRPS3jhmezQnog16lteK00noBmlqTFdGduVsnJccyy087ekUzAoJJ_Kq2IhRX1YyuTvH7kHiX6SCbdRFnZ1PaTB8oA2QrvASOSaTYsG0B6B_bVWBkJ3hfxQCbSWG92CiHIA18LoZWdlClwSjtJ-_JOFNp6Lw1dYVX958wqRqM0s91h2n94FGP5I-squGNccCzZuGh8fZuacSzj-b67LxIx2N681cwLS8t-MAeAGeL1zT7QZVQJXal0q-ywaa3oP-RbG38rxSg1LwZatn7eNbUbPCo7BHMxr--EY9PPpMhl3M6UdafBrs3Ug9zeBesHWHhhjgEzEJijXt8Fp4W2Ki_12drqZzwLQ581_37L9irVf5TOq6gE-Ndz-YkUo64WyZapfAFfuMS1garxFaf6VmQtYYzMtrRkCb8w5VZkYNb6apPbkTqR9tentq1FpuxkS3_M0QtvzJtecVo7MhM6Pr-7HhYm3npyv-NaGFV1ucPHvPPVZrqVpjb_9Ynel1ZmiTLCqtRs6aEXPAv_vOh4Nd8c6XQsf4Nzphm9LXJ7O5Sm2qSnZZAttwLHe_6cc2mRiNyCx6E0s_1_ipg6jv__l8xxkqSZFbottN4yGp6zLG3r03ZQdfybwTCl8ln55KOSj-BbmiafShmO-jynTipFqDe_Cjm4eymNm5ZeHN2Vdl59ce9AVbewd7WrMrm9BVfNq4Nad-LqjblyJ5h7-Sg1wLWjocitnoCDiQTvXVutHKCU_RYEpHacjLTqK5u_Bah2qoxKTQ5iKTTg_A-g5keiKjDmiKEYS4DZMqI6LoKytlR6xUl6obP_Y53Jf03nTSo_lmeY2rXMsjQDp6L4TtfLKq7eAoye640ZWtZkVuacKd2M4xxQBGwKfLS6FxPXi0P03b2lhulaK_8k_A_H9-KMC8pD4Ugrma1xBNnkiGG539c6RS9TOWirrK-l3doXf4aloUlV4gWuBl370_nHpsDVcEFVNxWmv2h35drl9tVK001K99J4UvsohAZXciC0EpsUnlYw3oLW7vT3YxueT3FVMQdVyXxux2LufmgM22TMoNxrat0068tMZqDae_4DU7AxT_Xc6WGhdHmY2Fpn8my1n6bj8hY7j_Opkq7uvkr7n3D8xrTVk9rW2kOhDGg58l_x-DpjVusbbNJXJIVbm-dm8gSaFb21yoQ7LY6NlVqrgSxV22DGShf_XPSEm0zJlBng2vnIrWBlBv9qsP9EuEQ_0pn8Zp1fuvIf6IzRktKnzaPj9jOttbqT4E6L_KE2rXc6BcBh2bKtCWsk442SE2HEVPKBlZkRGrgvXr9HNNkourDKjTaVfpQJ40q-v0Uw_QnBl4XI7LffI5f9hNxmIu1wkttfldyVdnqSAlZZLZdO2EUuu7KfmrgqBpUH3Tuhczm9H3V1asuj_HK5aP55YXanWELN6g4zDFmBefYdYQakK4Cz69sMw1YOVl5_ZxC-CiL1kkb-CkSVhheYYAXGJYtl68N1GLLARCsw5WQ-cyPypneN6UVnHc_SwBhvyUOXeMiWPGyJh27Jw5d42CqeKia70pa3rfKG5ah2au7UoApVMypmg0ojk0kZ6x4wRdKT2dKn_e-AB2ORVxWIKdRHJJp-Tp8J2Ku__M_K_wCwAf49",
-      "maps-red": "eJzVWmtvGjsT_hx-hbXSkc6rmsbXvVRJjwghJDm5NaRN0y-VAQNuvLtk1wuhv_6Vd7ksKRBy2qqtIq2M_Yw9z3g8OzvO3j-PoQYjmaQqjvYd_Bo5QEaduKui_r7z_uao6jv_vK3sXQkzuOwdZErbkbeVnb28DbQcSb3vBMgBRiR9aT7MpqKfkQM6WqTphQjlvnMjw6EWiQNE2pFRt74YOYkeMpUqEycOCIWKWnHnXppmEmfDfQc7oC2irjL7zkUcSQcMRWQGMo7OxZc4acbdfUdnkUhUWhpS0XSon2RmcJ9pB4yUHJ_HXbnv1Gtn9ZbztrKzs3elxUQmLSMMSI0w-049Dtsqkt3Dq5YDRkJnct_BmFH6GgU-45xR19ldLXoTG6H_g9yZ6sm5DKMBXwdsRDLpT1oDJXV3LuAxf6NCjeOrhUIe5cFrxH3kEYqDdXJXg0mqOkKfi0cVZuGxMjfiXkbzaXwXe-tkj1Qir2WqUrPQcC3zeqy7T8Fr2Z-p_sBEKupvLVEfiDh9gsZr0eciEvW4BGVrSVro-yiRqUxGcrEVVYLWSbSGsgTEr32fkWLf9nbzc2RbN4mUQHSMGsnWUHas6-ez2R_AJFKWjhadna2T7r7Dl86U7UEOiOKuTC0LF7ougRhRDDH3CCQBppDRwIMccwJdQhF0GXOhR30fepxz6AXUhz5HCGJECIYYscC2ucchRi7lEBPqBRATDxGIic8JxBShAGKGLJ5hbp8uciHmyKMQc-zaJ0PcPqkPseshap92Ts-zcwZ2ZoII8SFBnGNIUOC6kOCA-5AQ4nNIGOb2SX0KiYsDFxKXE9vmLoPE9Qi3T4Yg8XD-pAhD4uWjvmdn9n3Pt0YIAkgRIRxSRH0EKeLMgxS5AYYUI9uDfY9DSpkXQEpdiiGlHueQMsuUMkwRpIwgD1J7viHlnLuQui5lkHrMdyH1ArtK4AUI0iDALmQI8QAy5DIOGaUeg4wyTCBj2KeQMUYCyHK7MRYgHzIXEw8yN8AIMo9wDJnHCIbMJ5hBFlhZnrPgiBHb5h6CHPkugZxi7ENOiRdATn2fQc6ZzyHnLgsg555HIOc-t_0BciH3GSL2aUd9FzHIA2r7g4D40EXYDaCLaGDbnm1jbNuYYdvmhEMX-x6GLrE-4BLqUujSwOX2ad2Q-diFLkeU5Y69s_f--ixv7AyMGaZvdnfH4_HroTCDuCcflZavO3G4OxRpqkaymt4rrav2HOzWarXaQf99rT0-7tSGd42D8d19nTSuz67f9ZtHd5_OBl87x3fnvZpqoNMqiqtKX_17l45vvzbl-Zd3E3TTPrpAHX74JRlcfk39s5vHy3c3wcEAfTi-Obu4Ojg6OH4vP3141J2Lj9r0rsin95-4iR6bAy2Orx8Omg9auI_jy-PDy04_II2PIu3iC8qojnsnl_VHdtHrB1mD3H1oDT5V_22fJPdfHh9a7eH1KCRu2zt99KL0dth-CN8np9J8EayakAk68zrV7PSSX7Ufb8fvbhrnnRvyeJc0kzSoooPPrd6FCsjt8Sd6EWckPLs_ya6v-eXX6CGL79xxlHgZHnhjb-R-Pj3y-YjTXhR_vjms1vu1Wm7w3ZnF94p3bFqYf_orjxk2fNiY4ABlZGh_zWLmt7j8BJaA7nqgR3gJ6K0D5uesBPTXAu0xKwGDdcDcPxfAWYze2dstmWBv1wbZPBzbKGwbLetuxWDeBDISbS27-45JMumAVMdm3zmIuxNQS8I4m-YutSJ-W4lZAN_Za8oQ9Iv1z6URXWHE7omRYbrbtI8c3ZRhK1RG1rT56IDc2bfCOyAS4fSFkXeAuAcO1UhFEpxm3b4MZWScWZ5GkAMeMqGVmSz9sEsdyp7ItHGeMl1Ba_dlvLLhME5MaxB37sdiJJ-jV8Ct4EKiRHLR-RuQqnW7sjvPTQ5FKPrb81stvKCaj4M5AMwQvwHvhs4dS-hCp1tlBjVjROc-3Zr9rRTDOHoyUZn-fGhKHIyVGYD5Mr-BFU6iTiJFKrv1RBmbM7dMou7l9jZYP8HCDHMMmIHAHPUb2OA800aluUJb016SWTBd6v4J1PYK3Z8L6oVjAvz9Ef1MimFLi3DLgL6AL2xi-0DR-Ss3-1YkByKKZLIllRJ-weVWJGDW--u291jqUJrv39y6Fokyky0NMkcvzDHv-pUbeywTobuXvZtBFnW33t5vpBasiiGbhcwHf91eH8SxSb9_qw-lkUmoImFUHG1poicyCwM9Gfh1xmnqeCR_gHWmcb0uUnM7kFHxsp7WjLZ8IVjZy2XJ0jkRqQHjgYxmecAUMbUc_wWn5iQM48QIXRdab-kPyyKl1_u0HxQDP9Udpq10Vm76oOQYfI3j8GNeM7Ktu3nrrNCEOvPvIgu3P3J201KVbbekmVer7G-gis_Gt5XrPMK9Ade160alNbHl2VTZVOaLHEsNcKU5EKnRE9CYSHBq-yr5BPnab4BPKifhUKuOMukbgCrnKlJxlIKuFBpw_hdQ89yocI05YiBGEmBWRhSJI8hrcZVXPgImBmFR4wS2CJtbyq7-hIf7PA_yJ_DwnudB_wQe_vM82J_AI3ieB_8DeBD0PA_3D-CBN9EY558ElXqcxJHQ4Fxk3xB4VwToN4CgZTKYobJ6s-uVGZNat5sCmmvpotWjmNhR7KNvagEVTNdSX7Ndm2gO8tS4cpy1E5WCuko6WpotiZLlPfmb0Crh_ytrt7QJeMko9koFXOc3KnlaBBq9nuooGXUmNpMs3lorN_OVta6Jgb15AsVtj4g6i357yVTuX20Vuskq7bg7qXwQQoNr2RdaiU0WmVYV34CD6vxv2Ux_46BK0JJlZK8nO8Yyvez1ZKKiflp59TfGVUz-l7MQWoNFOWRBZ7VNlh2uuDcExcXh3C4LT3rWOGyTcfp5EllpxUlHJjIBRVL5Yp_JT_oKn5m6-Sv_L9AZWB2t7jZvTGSaWkfXeoH5Wd6xMZNp20-MBf_8i2Nr-v7SIYhH-Q5Pz-_yCbF0rP_JSCbFEUmEkRXCN8yw0iJkytzejj5PfWPy05baVOoDoSJwYJvbRsQX7dTL9N2Y5Igws_HsMpo8glrR3lplwq0WJ5GRWqu-zFXbQGPl8XqZ123Mc2yMwJXLoY0GKur_HNO_PFRszGmszuQH6_zUlP9BZ1xOYM5rzZP6ktbaHryeFul9ZXqtkh_Fo7xnWwprVsYbVw7tS7FYuWFkUiQekfgxS5ONS2dG2dmmqzcTEdmbpR-yMH3Bwu8ykZivP2Zd9oJ1a6E0g0lqvnflljTT3BIYZbQsfbtnqWzJThx1i2pz_gndEzqV09pLS8cmrxKU69Hz685ZuaKEmpU15zedKzBL15UzIF0BnJWGZhi2crK8tjaD8FUQqUsauSsQRRheYLwVGBssyuz9dRiywAQrMPlmLpkROdMqxrSEsk6mNDHGW8rQkgzZUqZ8o023lCnfq7NVMoVPtqTJ6zh57ca26nHUU_3CVaNhNptURjKc5L7ugCgL2zLZd_ypi3wLbIxEWpQ3p1DPd9H0H5tmC-ztPv3nwf8D-z6xFQ==",
-      "pinnacle": "eJzVWtlu2zoTvq6fghBwgPOjTMNdUhH3wHEcJ23cLM7S9KZgLNpmosWRKCfO0_-g5DW1HQdt0RYGCIr8huQ35IxGQ-_89xiFYKjSTCdx1cHvkANU3EkCHfeqzsX5_pbn_PehsnMiTf-4u5vr0PZ8qLzZKeogVEMVVh1fOMDItKfM5WQo-g05oBPKLPssI1V1zlU0CGXqAJl1VBzUZz2H8X2uM22S1AGR1HE76dwp00yTfFB1sANuZBxoU3U-J7FywEDGpq-SuCVvk7SZBFUnzGOZ6myuS8fjrl6am_5dHjpgqNVDKwlU1anXjupt50PlzZudk1COVNo20oDMSFN16kl0o2MV7J20HTCUYa6qDsHId98xyolgyHW2l0ueJ0aGrxc70l01FWFY0FXARqzS3qjd1yoMpgIewWvX0zg4mVsPdcU7KqjLOGdkldxJf5Tpjgxb8lFHeXSgzbm8U_FsSs7YKtl9naozlenMTOGuWAWuJ2HwHMxXq6nXN7GOextL1PsyyTZGt2Qs68kclK3cMQu9iFOVqXSoZluxtXLs9kDN4cg7TBktwTvbhRHZ2nmqFJAdo4eqPVAde-6L0ewDMKlSc3ZFJ4Z1GFQdvmBQtgU5IE4ClVkSAgpBIEYUQ8xdAomPKWTUdyHHnEBBKIKCMQFd6nnQ5ZxD16ce9DhCECNCMMSI-bbOXQ4xEpRDTKjrQ0xcRCAmHicQU4R8iBmyeIa5LQUSEHPkUog5FrZkiNuSehALF1Fb2jFd147pUTuab8cniBAPEsQ5hgT5QkCCfe5BQojHIWGY25J6FBImGIaEMy4g4T6lkAjsC0gEJ7bOBYNEuITbkiFIXFyUFGFI3KLXc-1cnud6Vjm-DykihEOKqIcgRZy5kCLhY0gxsi3YczmklLk-pFRQDCl1OYeUWQ1QhimClBHkQsqEEJByRm3JuYBUCMogdZknIHV9O5fv-ghS38cCMoS4DxkSjENGqcsgowwTyBj2KGSMER-yQquM-ciDTGDiQiZ8jCBzCceQuYxgyDyCGWSe1TPzPORC5ttxeMGLI0ZsnbsIcuQJAjnF2IOcEteHnHoeg5wzj0POBfMh565LIOcet-0-EpB7DBFb2l5PIAa5T2277xMPCoSFDwWivq27to6xrWOGbZ0TDgX2XAwFsadFECooFNQX3Jb2wDIPCyg4oqwwgTc7F2dHReVN35hB9n57--Hh4d1Amn7SVY86VO86SbQ9kFmmh2oru9NhuGUtZrtWq9V2exe1oHfQqQ2uG7sP13d10jg7OjvtNfevvx71nzoH161uTTfQxy2UbOnw5NN19nD11FSt29MROr_Z_4w6fO827R8_Zd7R-ePx6bm_20eXB2eUtzLkNS4awRkPvzQvH7C6wt6368b-bad5-flreBZHpNuQzcskaCYNeX-Zpgc11mnx0R69PgvuH-kF7d6qq77XY0cHPby1R9j51_7lp_2YBfc6Gn3ih568i8TFDTd5tDXqKO7u31-JQfhp9CW9JvnJvZ-Z-hY9SfV5fk68yxSR4X13d7d1-vh4crOvM5k_Uff0wP_okSP69TqIO0S78jo_1Xz_4M49Vveif5vW1TB3rw6Ge_m31Lv78hR9i4Mtdeu3TtinWq1WLTZhe7ILO-XrOSu3ZPxUeBzrfKxHcYA2KrJPeOwUv8cVdjoHFKuBLuFzQHcVsLDGOaC3EmjNcA7orwIWZ3YGJGgM3NmeU8HOtnXRhTO3PtxW2vYIlp1FFahY3oQqqDomzZUDsjAxVWc3CUaglkZJPg57aqX3txIT9_9mp6ki0CvnbykjA2nk9qFRUbbdtEWBbqqoHWmjaqH54oDCADbCOyCW0fh1UzSApAv29FDHCnzMg56KVGycSYhHsAPucxlqMyp0MXmwU-2prsxD4zxnuoTW9ut45YNBkpp2P-ncPciheoleCbeCM4k5krPGP4BULQhUMA1s9mQke5vzWy48o1r0gykATBB_AO9GWBwsGZZrutKmXzNGdu6yjdlfKTlI4mcDzdOfdo2Jgwdt-mA6zR-ghcO4kyqZqaCeamMD7rZJ9Z3aXAerB5ipYYoBExCYov4AHbTy0OisWNDGtBdkZkwXmn8BtZ1y7S859fJgAvzjHv1IyUE7lNGGDn0Gn-nEtoGy8Xdu9pVMd2Ucq3RDKnP4GZcrmYJJ6-_b3gMVRsr8-ObWQ5lqM9pQIVP0TB3Tpt-5sQcqlWFw3D3v53Gw8fZ-JzVjVXbZKGTa-fv2ejdJTPbjW72njEojHUujk3hDFT2TmSnoWcfvU04zTIbqJ2hn7NfrMjNXfRWXL-txwmnDF4KVPV6UnLMTmRnw0FfxJA4YI8aa47_Bag6jKEmNDOsyDDc8D4sic6_3cTsoO37pcRjXskmy6lKrB_CUJNGXIuNka9fT2lG5EupMv4ss3D4U7MaJLltvKzPNddlnoMvPxg-Vs8LDvQdntbNGpT2ymd1M21DmVj2oEOBKsy8zE45AY6TAR9tWKQYo5n4PPFE5jAah7miTvQeo0tKxTuIMBEqGwEX_AD2NjcqjMUX05VAB7M0jysARFJm8RRxbGCkqk6bAZnUL7dkVPeMmXuZG_lZu7svc6N_KzXuZG_tbufkvc-N_KTeCXuYm_lJueB21h-JTxC5cdgzYT9KOAidpMpA9aZL0Ob_T8h3xHhC0yBUv8ptcD02I1oIgAwwBkwAPLe_FRS9G6Lt0hG0ff5NXsLtSSW8p_8dCn33DguKbbxBqla7a-3X66RexfOUgv0l1Buo67YTKbKgWsrhx_xJvi_j_W7l7mMx32QskcFbcHxVxHGh0u7qjVdwZ2dC3fM1W3lqFmWRxoLes1IS9aAPl5ZaMO7N2e6c2375cLXSdWm6SYFS5lDIEZ6onQy3XqWScB30Pdremv0U9_UvoFmELqlHdruoYS_W421WpjntZ5e2_mG9h8b-ChQxDMEvgzOisUIpYOKDlPSkoL0qnipmdvBe1w9Zpp1fEvZW2taZUpaCMg199agrHseTUjM3mLUb_gE7fLtIu3sa6qcoyaw5hOAf6VQdkbfh1Y7-LZhooPpM2VgBe2KtWMix2eWzni2Zi-dgzqGKVlnaSSqMqdN0Ib22vpWkvf5fxf8U5WBun3ajQVOp9qWOwa6ubetPXbdoqNssXvDb4klFu3dtxPHoEtbK-8ZpL934YGxWGuqeKpa3jsVTJrySzNtqyPgNXjgfWO-i494u0_xPZrI2vLBvys9k8N_SfyQbPh1StWvOwvsAntIbbDWV2VxlfJhWmvF-0bEpuxcx47cyRfbOWMzeMSmMZli_bnzI1WTt1brQdbTx7M5WxvU_7KRPTV0x8msvUPP2cedkr5q1FyvRHmfnRmdvKjCNbYLQJ1VzGIs9UW3WSOChz7EXioCvDTI0zTu0wMUVuZD4LP73knSRp5lCTZO70fncJZuGSdgKkS4CThNgEw5YOVmQUJxC-DKLCuRWJJYjSec8w7hKMdSPz7L1VGDLD-EswxWYuqBE549zNOHG0SmZuYIw3lKFzMmRDmfl7fLqhzPy_CdgymfJMtpUpsldFxsrW6knc1b3yqMaDfDKoilU0Ks66A-I8ulFp1fEmf5H7DtgYyqxM6k6gePy_gp3tyQQ728__bfl_qp8VNg=="
+      "until-12": "eJzFWG1z2jgQ_hz_Co1m-ulI8As2kMHtODQhuYM2jZPe3acbxV5ARZZcSSahv_5GtnlJC4Q2ubkvzFp6dvfZ1Upa0Xv3mDE0B6mo4CF2TmyMgCcipXwS4rvbi-MOfvfW6l0TPf04PisoMzNvraNeKSMGc2AhdlyMNJET0J-Xprx_bIwSRpT6QDII8S1kOSMSI6IS4Gl_PXPFvxZUUS0kRhmhPBbJDPRAiiIPsYPRPeEp1SH-IDhglBOupyD4iHwRciDSELOCE0nVxhTl9dREFno6KxhGcwoPI5FCiPvRsB_jt9bRUe-akQXIWBONlCY6xH2R3VMO6fvrGKM5YQWE2GudBG277dhtHze3q90KTdhP6gzpGNb4trsLd85BThbxlAJLV3h7L5Pzy-sV0vX9E9e32y3bCfzWTjbX04WiCWEj8kizIruk-pbMgK_MtBxvl-oFlXADiiq9Qh8HOwn2BUu_R7c6u5M0mWpO-eRwlf6UCHU4nxHhpC82sN19yDsuQYGcw3opHKe9SyPOYRN4UqWw1yy3jpFuJQAiiaZziHNITLWXlswH0hJgYzd5y-10lYbYf7KNzIiNERcpqBA7nm13G07L8Z2G0257fsO1XbfTcNt-0Gp4vu8HDa_bdYJGq9W1Ow2_07LdRuD4rt8InE7baQReN_BLJke9u5thKRxNtc7VabP58PBwkhM9FWN4pAxOEpE1c6IUncOxmlHGjg3xZhRF0dnkLup_Gd58sNOLG7tzToLFH_7vcyXdb7OrOU-jKApLJ83aS69pIi9zZFJjhNiYVFVWjIiAk3sGaYi1LAAjxYQO8ZlIFyiSmSjqMySqkmo0llk96g0gQxPITLpGoElKNGleachUc2B-SvQAMrOCNIm1pDPjwIz-nAonWb2e1ThaTixPS4y-FoRRvSjXrZaNj_cwJgXT-Psot4TU_LmYijwXUkdpCulqU70nGZk8G2KlOYBsu_I62HIerQBoiaijdv-_qHkCSkvC-oSxg8ONcyqp_nFNV9ZQZa4Or_Vq4fUq_s_V_J9AcsGR8_KCHwLJY0ayA4t9DV8nxYyhavDVi_zAfFwCy0C_PBt9RiTViwOTsUKvc7Ea-g8zUUtqeYt8pvCAvgmR_VX6MNLfK2lY8fDw6mQ1cPNRBlTfQEaOQa8uIfONaFp935QhnaJRNLjqW_HCNFqKKkjRQ1mG1ogwBtoqlUp_p8hxrU9VrKfItq6ynNGEamU-ojRVqIO0QE6Alr1HfWBUk66ZdO0fjhMzHGlNkpkqE2IcPqXr7qU7LavE6gsOqKqYQzn_5vrGeVZ1SMj0bzsYeHsZ3It0YfWnoHTOiIY97qtGWJ2is-Oz47NfZdPay2bCxByUdW2opGhACq4ZaPX6SfGfSYrQyoo1AEMDCcRwegEFx3-DKE8kEGN8JOaQAdeobMh28Av28wOmrSEQPQWJzszHqyeovZcAyQqzvz7yxSOKKvlQBo77xlBY76SqOyY82UWls5eKpHziWB9zwtAN5ZPXz0T3WffuL7iv02AeIM9nwLH3cmB0DGjMiJpZI0hpHQ66KEcOJLTD8f7TNiOc1I7jjDCGzKvkVfzuPzYLTY2x2vWngiYzRdkc5At9x6DrOwZpqhls3ImFghgSwdOq0SmvpjFhCurrPGZCl7fuZitEdXXBrzrFDdSyQVhi3C2YJw-JJdDbAhyU5-Ya09pqTOgNiL8NAmyDUbAFUW32Naa9BWP2wWb0nV0Yd43pbsGUa_kkjTauu4O6Ndmls2HYcQ7U8TZ03G06Va3EoMu-pexVjNQXfEwnVQnxvFgaBQ7ZoixBjHiR3YM0b-Ha0g_A8zkxL-s11PO69fN8ab_X_P5fr38BGDQKxg==",
+      "until-28": "eJzFWGtT67YW_Yx_hcYz_VRD_H4wyemYAIE2lBRDz7n90hHxTqITWcqR5EDur78j23lAk5AWbs9kJqPH2tpraeux5fZPzwVFcxCScNYxnRPbRMCGPCds3DEf7i-PY_OnT0Z7gNXkdnRWEqp7PhlH7aqMKMyBdkw3NpHCYgzq9-VQ3p-2iYYUS_krLqBj3kMxo1iYCMshsLy77rlm30oiieLCRAUmLOPDKaie4OWsYzomesQsJ6pj_soZmGiGmZoAZzf4Kxc9nndMWjIsiNzoIqzpGotSTaYlNdGcwNMNz6FjdtN-NzM_GUdH7QHFCxCZwgpJhVXH7PLikTDIzweZieaYltAxPd87CRPfDz3bC8zWdsN7rjD921Z9MoKVRRwmu3AXDMR4kU0I0HyFt_dyubgarJBhEJ3EkR35buIH4U42g8lCkiGmN_iZFGVxRdQ9ngJbDePYvrPL9pIIuANJpFrBj8OdDLuc5q_R3k50n4wnihE2PtykO8Fcvoa7O5XfYIa7fAPr7AyFhj4wARLEHNbBcNxwl0U2g03giWtHFbTdqraQLt0LAISHiswhm8FQr_pqLF1BSgBs7Cpvua2u844ZvNhOusU2EeM5yI7pJo5n-V4SWZEXx5Zju65jOXYQBZbj2XZiOb4TOJYT-HZgOVHkBZZru25suWHgepYbBaFvuYmTJJbnxFFgeV7oOZYXBEFoeWHo-ZYXJbo3SZzQ8v3Q1v-JHVt-5AaOFdi-61qBHUS2Fdhx6FpB7NuuFdpeEluhE7iBFTpx5Fihl4RBJfmo_XDXrwpHE6Vm8rTVenp6OplhNeEjeCYUToa8aM2wlGQOx3JKKD3WM9RK0zQ9Gz-kV6maXGT20OuO1C8P8cK-z68GXefyzo4v_giUEFfXg9H17fkXX0y_Pn97eAzmUnwN5499cv88eLwkEpdBty-iOcvTNO1UpFoNq3ZLh6QKno6ZLmSagqzDpYsIGH6kkHdMJUowkaRcdcwzni9QKgpeNodcWkdbWyzDfdTuQYHGUOg43oDCOVa4da2gkK2e_qvQPSiygihIqfpiomoCDsKbiOGiWV5VA-IjdE7mhAH6uczHUABT5vJAT0z0rcSUqEW1pJqydnQOI1xSZb7WuUVU6--pKmczLlQ24cPpE57DW-JquDZcW2xIXDc2krzvJinNc8hXp9g5LvD4cHXbjddCq360AqAlolEdfjfVF7RaUpjWjD4TNUmVwsOpPFj7Z8Azzl4NtCl-1dXIRk9ETdDKzYdHvl2LfGu317yR8_6t3gc8yyguDtzpa_h6jnQbqhub-Qj-_TXxGYszzBiIA4Vs4NdKPmOBlq2NlPjfDu0V0ALU-wPbpVgQtThwOlbo9WSsmr5fUK9AYJrfju4nJcsPDu1frNaa6i59Ma06G3X-_yHOTUkuM7DfCTyh_3JefKl86NJ_VqX-8ihZXf4ariuVxCZ70-UM1CqB03VE8rp-VwXsFN2kveuukS30Y0USCTl6qs4LI1MAdAI4Nyq7yuUp8gPjt1ruKbKN62JGyZAoqSuOY_-ACBsKwHqYZQLfHIZGmucSuTZSHPn29t5Adwb2X-4P3dwco0ay6aNuRFVSW82mpvpSq7tX66TaQMYd4DkIVG-nQ_X-GFZiivqBgvTzaQcHby-HR54vjKxkaECxgj3e66eoPEVnx9Xvn9Lx99IZUz4HafRKLPTrGvVwyRQFJT9-XoI35oUraaRMkW8loJ7QMXoXCffF-rzh8-q63rt6wv0MgSqjD1hNQKAzXfnwKYr2EsBFSUEZt2zxjNK6_OEM4r0MBGFjx7idYYruCBu_x_2Pnv2Dblzv_vrNjNlwF7fkTW7uP-DW8NDfBd6m4Nh7OVAyAjSiWE6NHsFMVVLRZdVwIJ8dfvcf4gVmeOlXAFYgkP5Y8CGe9x-ppSJ6sMZ5WoCaLKT6EMf7z9GXjn8ryXAqCdXn-vt8Z6CaWxMpoihs3PKlhAyGnOV1jl1dtiNMJTTpV0a5qjKKzSycqDqZWSU4G6hlQrfEuFswL17vS6C3BdirTvI1xt86GFcbkGAbBOgGo3ALoj561phoC0bvwE318S6Mu8YkWzBVLF9Mo202-U6TbO2y2RjYcQ608TZs3ANt_A0bb5tNvb4yUFX2VmVsutTlbETG9bJjs3I5KDAoFtWyNREri0cQ1Rfu1nbgxRzrb3NraJyEzQe-5fjt1uvv5_8DL0xtMg==",
+      "until-68": "eJzVWllv27oSfo5_BSHgPB2m5iJqKeIe2M7aZmucpe3LAW0xNmuKciXKjvvrDyjJS1Lbcdv0BhcBhCH5DWe-4T7O3j8PsQJjkWYy0Q0Hv0EOELqXRFL3G87N9eFu4PzzrrZ3yc3g4r6VS2Vb3tV29goZKDEWquF4gQMMT_vC3M66ov8iB_QUz7JzHouGcy3ikeKpA3jWEzpqL1pO9LdcZtIkqQNiLnUn6Q2FOUqTfNRwsAO6XEfSNJzzRAsHjLg2A5HoM_41SY-SqOGoXPNUZktNUldN_TQ3g2GuHDCWYnKWRKLhtJun7Y7zrrazs3ep-FSkHcMNyAw3DaedxF2pRbR_2XHAmKtcNBwfo_CNR1yEqe_62KmvVr1ODFe_oHcq78VchwQhWwc80CLtTzsDKVQ0V0Ab3Tk4vpwjQ4bIG0w8FlDGULBO73IwzWSPqzP-IOM8Ppbmmg-FnnfDXOat0z2UqbgSmczMIghrwe1ERU_Ba7mfyv7AaKn7W2u0BzzJnqB316LPuObtZAlK146Xhd7oVGQiHYvFQOxivLb3zkgsIfEbzw_LsOzVi1VkpetUCMB7Ro5FZyR6duIXndkCMKkQSwuLzlbWSdRw2KMVZWuQA3QSiazheB6BGFEMMfMJJCGm0KWhDxlmBHqu60GfBgH0GWPQD2kAMSIEQ4zcEEGMmM8gJtQPISYBIxBThEKIXWQxLmb26yEPYuYiBrHnW7zvUwZx6FEGCSIkgAQxhiHBIQsgISRgkLiY2S8NKCQeDj1IPEaszDwXEs8nzH5dBIlf1IQ4DCFFhDBIEQ0QpDjwGaTU9UNIqUcxpNRnDFIXUwSpS5APKWPMg9TzqAup7wYepH5o-wlD7EEXIRZC18UBha7rEitbLq4bogC6XogRdH3CMHR9l2DoBgS7kBU-MOQSAhliPoIMBR6BjGIcQEaJH0JGg8CFjHluCBnzfQIZC5itCZEHWeAiYr-2NfCQC1kYkgB6CHsh9BANrexbGWMrYxdbmREGPRz4GHqEehR6NPSY_foe9BiibjFddvZurk4LYWdgzCh7W69PJpM3I24Gyb14kEq86SVxfcSzTI7FbjaUSu3a2VVvNpvNVv-medP_cNdq9o7eN83goINuTlrD_Ph8EvUfgvb7XZTsSnV5dphNz_dPr86zG3r1fXhx2catAbo9vj49v2wdto5ve18-7d-y7qfvYXx7JLpfgqvky90Ace9huk8_X0XfHoK-e3rcx7v7xL3tDL7sfmAnAR_G3k2XjTN9nGfKI-fpV2_cPe3t5u8v2GX34e5h__ggzO4-PHzzL-9N8x7p718-R7pHpM8_5x8lOzwe-hfJZ2-iUz_HA3_ij71_L7q7EWXepfuh2Ww2iiDVZ1HaK8-arAxZVSpWj11Ixdx0gDQitsXZAl8F9AlbAlab3s5efan_vbpdy8Wqt4vdCh0b_7KxEIHQvKtE1HBMmgsHZCoxDaeVRFPQTOMkrw7IZrlNWI3ZPrGzdyRi0C_tnwnDI254_cSIOKsf2U-BPhJxJ5ZGNJX55IBi9LfCO0DzuNqXigqQ3IN9OZZagPd51Bex0MaZXQZw6IBvOVfSTIvNqJKtpX1xz3NlnKdEV7Cq_xytfDRKUtMZJL3hhI_Fc-xKuFVcaCxxXFS-PqdmFIlofgDu85j3t6e3WnnBtGgHcwCYIV6f9oEqZhVXpUt30gyaxvDeMNua_J3go0Q_6WiZ_byp4g0m0gzA3MzrB-FE91LBMxG1U2nstaxjUjkU24dgfQeLKMwxYAYCc9TLh2Cv5PjcpleOHcC_v-OdCj7qKB5vueEt4IsI2TpQVr7inLjjaYtrLdItmSzhF1TueApmta82uMdCxcL8_tC2FU-lmW4Zjzl6EY151SsO67FIuYou7q8HuY62HtwftBakyiZ7RM8bX22kW0list8f6H1hRBpLzY1M9JYReqKziM-ThleLzZFKxuIFglPt9m2embuB0OVRVr3atzwmrO7FY82lRcIzAyYDoWenZIWoAsf-90vmJI6T1HDV5kptORseqywdflU9KBtmkyH4A5OhkrLZc_9Wign4niTxp8KGlT7PpdPSEerMHwwWbgsFuSpVYOWOMPNsgS0DWb5V3tWuis3tLbhqXh3UOlObHMukPee_iolQANfaqYyzRIP3tlwrlAu7b4FPaifxSMmeNNlbgGrNKMpAAEwCfPbDddFWV5emGqZ_ATm_UJS1oEiA1P4OkEXGZWYJ2MRX7W_C_rKVT24e4CxXRo6UFGkRQuvaE4Le8wTJ_zXBTfwmxe2odi3SNEnBGc9_IPexnLFvAUaPiWIXLROY5fsqpmUcaMHDQ6tbMbGtOEA_xGljcH41EGRTIAbFTaJ2YESquQKtPO0nWpito7FyyGyETAJsOhOUKUSue4t6m7lcrl_tNt3kdjeJprUjlaQyyTNwqbgRm1yusghvQWu3-tuexWKMfpmKu4lKvzjFap2RHIoIlGfab4V_0xxa4_a6EVtNZ-PW2LUXltq1NFyDo1Twn2FjZ_jC87NkXLwuN20Oz_BZOXarSW3cDrtCmdqp4GYgUtCyhT-yPkjFxqben_fY3-Qxj3MlTO1CTx9As5S3dpkw68WJNkIp2ReFa392gQSbqKRS93HtYsQVuJK6_0e3pp-YMOFzPpMX9vkFJjlGS06fNY9O2o-8VvJegHvFs2GtSk5aB8BhUbMthTWW8UbLMde8snzMlUomdv3buhexTTbazo20vVXmj1KubYL2RQzTnzD8Meep-f4ydt2fsNuMhRlMM_O7ljvCVPcuYKRRYummn2eiI3qJjsqkVHHhvucqE9U7raMSUzwpltNW8x8DZm-bJdQs_zHDkBWYR1n_GZCuAM6ekTOMu7Kz4hk-g7BVEKGWPPJWIMp9eIHxV2DsbrHMPliHIQtMuAJTDOajMCKnevNUD651OksdY7ylDl3SIVvquEs6dEud5d-I3FU65ZzsCFO8-oqXnpXaib6X_XKq6lE-61RoEU-Lue4AncddkRb_iVFfDTwY86zMhFRQ16dh9TP0zMBe_ek_evwH9HS-zw==",
+      "maps-early": "eJzVWltv27gSfo5_BSFgn5ZpeJdUxF3YzrXN3UnT9mVBW4zNWKJciXKS_voFJfmS1HHdNj3BgQFhRH5Dzjckh-TI2__cJzGYqCzXqWl6-A3ygDL9NNJm0PSuLvc2A--fd43tM2mHpzftQseu5l1jY7uUQawmKm56AfKAldlA2Y_Tpui_yAP9WOb5iUxU07tUyTiWmQdk3lcm6sxrDs3XQufappkHEqlNN-2PlN3P0mLc9LAHetJE2ja9k9QoD4ylsUOVmmN5m2b7adT04sLITOcLVdrUVYOssMNREXtgotXdcRqpptdpHXW63rvGxsb2WSwfVNa10oLcStv0OmnS00ZFO2ddD0xkXKimhwkj4g0LQp8FmAlva7nqZWpl_At6R_pGzXQo8_FzwF2jssFDd6hVHM0U0Epzdg_O5uZgjsI3iIYYs0A828vZ8CHXfRkfy3udFMmBtpdypMysGcEEfU53T2fqQuU6tzO4_yzvThpHT8H8eScNhtZoM1hbozOUaf4Evfks-lga2UkXoMxfBb0ymcpVNlHzgdjE-FmfdsdqAUneMByGlSnbW-UyctJlphSQfasnqjtWfTfzy9bcC7CZUgsri06X1mHU9PijJeVKkAdMGqm86QlBIEYUQ8x9AkmIKWQ09CHHnEBBKIKCMQF9GgTQ55xDP6QBxIgQDDFiIYIYcZ9DjATlEBPqhxCTgBOIKUIhxAw5JMPcPQUSEHOGuHu6doTvdH3f6YauBYIICSBBnGNIUCgEJDjkASSEBBwShrl70oBCInAoIBGcOJkLBonwCXdPhiDxy5Ig8APHKgwhRYRwSBENEKSIMx9SjJyMA59DSpkfQkoFxZBSn3NIGaYIUkaQDynnXEAqBGWQ-iwQkPqhazP0QwRpGGIBGUI8hIxSn0HGcEAhY4yEkJWsGQtRAJnAxIdMhBhB5hOOIfMZwZAFBDPIQoYJ5KWdHDHiZO4jyFEgCOQU4wBySvwQchoEDHLOAg45FyyEnPs-gZwH3JWHSEAeMETc09UGAjHIQ-rKw5AEUCAsQigQDZ3sOxljJ2OGncwJhwIHPoaCuBEUhAoKBQ0Fd09fQMERZeUM3Ni-ujgqhY2hteP87dbW3d3dm7G0w_RG3etYvemnydZY5rmeqM18pON4003YrVar1WoPrlqfWx-u263-_vuWHe520dVhe3i932V92iY7B3eHxu_eig9XwVh_a_eOb88f0GVv7wT1-c7tnT3b5e0h-nhweXRy1t5rH1ypLx_v4_7Jp9jenJEvV1-4Nff7w1geXGTZwc5pfxCS3U8yj_AJlwcPO4Nc7XxiZ73hxw97hmWj2_uv3d74YpIQ0fPf3_tfr0UeC3KS3YpJ7-h8Yr8JNvJH4WSv124fn9_fn_X2dC6Lb9Q_PwjfB-SIfvkcmT7RvvxcnGu-dzDyT9VXMbzNOmpS-NcHk53i3ywYffqW_GuiTXW72Rm0WqUjt6ae3K72uLxya_1WLlq3ft3C9IC2KnFvuI5a3-PKNbIArGPtxvbWQvPbWy6ClLHGhRgndN0QVZWlCJSRvVhFTc9mhfJAHqe26bXT6AG0siQt6n25VQUnpzGNThvb-yoBg6r_Y2VlJK3cOrQqybf23aNE76ukm2irWrH95IFygqyF94CRSR0NywKQ3oAdPdFGgfdFNFCJMtabnkEI8sDXQsbaPpQhsJZdTzvqRhax9Z4SXcJq6-doFeNxmtnuMO2P7uRE_YhdBXeKc40FjvPC1-fUiiIVzfbdHZnIwfr0livPmZb1YAYAU8Tr096Ny1kl48qka22HLWtlf5SvTf5ayXFqnjS0yH5WVfMGd9oOwayb13fCoelnSuYq6mTautNg12Z6pNZ3wfMNzL0ww4ApCMxQr--C4yK2Oi_tWZv1I5050UfFL89suzL9R-G8mpUA_34sP1Jy3I1lsmYon8PnLnFloCp8xaG-lllbGqOyNZks4OdUrmUGpqWvNrgHKk6U_f2h7cQy0_ZhTX_M0HNvzIpecVgPVCbj6PTmcliYaO3B_U5rTqqqcoePWeWrjXQ7TW3--wO9o6zKEm2k1alZ00NPdOb-eVLxar7Zj9OJegHn1BG9I3N7PVSm2qTrNMiaW4HTPX2subBIZG7B3VCZ6f5fI2rH8f_9kjlMkjSzMu7IOF5zNjxWWdjW63JQVfzJyVBL-TR98lGrO_AtTZNPZR9O-jyTjipDqDe7Cjm4eynJ1akXJ3eVnWVf3DvQ1S3sXeOiDG5vwUXrYrfRfXDZxly7E8ytulMxwI1OppM8NeC9e2-UymW_b4FPGofJONZ9bfO3ADVaUZSDANgU-Py7g7Arro-DDUz_Anp2VKpKQZlRavwdIIdMqlQdcJnExt-E_-UKn5ypQHkIGcdaZaULnWlPCIofEyT_1wRX8bsrT0eNS5VlaQaOZfEdufNqxr4FGD0mihlaJDBNoNZMKz_QkodAy2sxcbU4QN_5aaVzftURZJUjhuVJorFrVWZkDNpFNkiNsmt7Y-mQOQ_ZFLj8MKhystL05-UuFbxYvtxsusrsXho9NPbjNNNpkYOzWFq1yuQ6P_IWtDfr3_os5mP0y1TYKiqDchdrdMd6pCJQ7Wm_5f5Vc-gZs58bseV0VobGnjuwNC61lQbsZ0r-DBs3w-eWH6eT8t68Kjj8gM_SsVtOamU47KnYNo6UtEOVgbZ7-SPrg9Rs3LeMH1vsr7JYJkWsbOPUPNyDViWvbTLhzopDY1Uc64EqTfuzCyRYRSXTZoAbp2MZgwttBn80NP3EhAl_ZDN5YZtfYJJjtGD0cWv_sPPI6ljfKHATy3zUqNOuzgCwV5asS-GZnvHKnhNpZN3zdCtyH95epmuysuvCatda3ft-Jo3LPL9Ix_QnOj4vZGa_vUy_7Cf6bSXKDh9y-7s9d5Wtj13AahurhYN-kauu6qcmqnJS5Xn7Rsa5qq9p3Ti15Y1iMWs1-8oxvdosoKbpjymGLME8-pwxBdIlwOktcophSxsrb-FTCF8GUfGCRWIJogrDc4y_BOOCxSL74DkMmWPCJZhyMB-5EXn1lae-bz2ns9Awxmvq0AUdsqYOW9Cha-rwBR22TKeak11ly0tfedFzUic1N3pQTVUzLqaNKqOSh3Kue8AUSU9lC_8w-A64O5F5lQipoQKRsP6qP-1ge-vpH2f-AyssKMo=",
+      "maps-red": "eJzVWttu2zgTvq6fghCw-HdRuuFZUpHswnHSJN2cGqdN05uCsWmbDUU5EmUnffoflHxMbcfdtmiLAAJFfkPONxyOxsNs_3OfGDBUWa5TuxPgFygAyrbTjra9neDt5at6FPzzd237XLr-WXe30MaP_F17tl22gVFDZXaCGAXAyayn3LvJVPQjCkDbyDw_lYnaCS5VMjAyC4DM28p2mrORI3tX6Fy7NAtAIrVtpe1b5Q6ytBjsBDgAN9J2tNsJTlOrAjCQ1vVVak_kpzQ7SDs7gSmszHQ-N6TteKiXFa5_W5gADLUanaQdtRM0G8fNVvB37dmz7XMjH1TWctKB3Em3EzTT5EZb1dk7bwVgKE2hdgKKKI9eRCSMOUchC7aWi16mTpr_IHesu2oqw2jMVwH3rcp6D62-VqYzFUBr1dk_PJ8iMccRfoGR4BiRKF4ld95_yHVbmhN5r5MiOdTuUt4qO50mwihaJftKZ-pC5Tp3U3goVoGbqek8Bq_kfqx7fWe17W0s0ezLNH-Erq9En0grm-kclIXroG9tpnKVDdVsI-pk5Va0BmoOSF_QOBKVO2xvlafIty4zpYBsOz1UrYFqe8cvZ_MvwGVKzR0sOjlZR52dgC-cKN-DAmDTjso9CwGFIBAjiiHmIYEkxhQyGoeQY06gIBRBwZiAIY0iGHLOYRjTCEYcIYgRIRhixGLf5iGHGAnKISY0jCEmISIQk4gTiClCMcQMeTzD3D8FEhBzFFKIORb-yRD3TxpBLEJE_dPPGYZ-ztjPTBAhESSIcwwJioWABMc8goSQiEPCMPdPGlFIBI4FJIIT3-aCQSJCwv2TIUhCXD4pwpCE5WgU-pmjKIy8EeIYUkQIhxTRCEGKOAshRSLGkGLke3AUckgpC2NIqaAYUhpyDinzTCnDFEHKCAoh5YwKSDnnAlIhKIM0ZJGANIz9KnEYI0jjGAvIEOIxZEgwDhmlIYOMMkwgYziikDFGYshKuzEWowgygUkImYgxgiwkHEMWMoIhiwhmkMVelpcsOGLEt3mIIEeRIJBTjCPIKQljyGkUMcg5izjkXLAYch6GBHIecd8fIwF5xBDxTz8aCcQgj6nvj2MSQYGwiKFANPbt0Lcx9m3MsG9zwqHAUYihIN4HBKGCQkFjwf3TuyGLsICCI8pKx362_fbiuGw86zs3yF9ubY1GoxcD6fppV91ro16002RrIPNcD1U9v9XG1P052Go0Go3d3tvGzeiw3Rhc7--Orm-bZP_i-OJN7-DV9Yfj_uf24fVJt6H30es6SuvanP97nY-uPh-ok09vHtDlzatT1OZ7n7L-2ec8Or68P3tzGe_20bvDy-PT891Xu4dv1Yd396Z9-t647jn58PYDd_b-oG_k4cXd7sGdkeJ-dHa4d9buxWT_vcw7-JQyatLu0Vnznp12e3GxT67ftfof6v_eHGW3n-7vWjeDi2FCxE34-j60-dXg5i55m71W7pNk9Yw8oOOwXS9en_Hzm_ur0ZvL_ZP2Jbm_zg6yPK6j3Y-t7qmOydXhB3qaFiQ5vj0qLi742Wd7V6TXYmSzsMD9cBQOxcfXryI-5LRr04-Xe_Vmr9EoDb41sfh29YXNK_OP38qY4cOHjwkB0E4l_g2PY-aXuPIEzgHFamBI-BwwXAUsz9kcMFoJ9MdsDhivApb-OQNOYvSz7a05E2xv-SBbhmMfhX2j5d2tGiybQFl5Y1RnJ3BZoQKQm9TtBLtp5wE0siQtxplLo4rfXmISwJ9tH6gE9Kr1T5STHenk1pFTSb514B8l-kAlrUQ71TDufQBKZ98IHwArk_EHo-wAaRfs6aG2CrwuOj2VKOuCSZZGUADuCmm0e1h48Uvtqa4sjAseM11Ca-vreBWDQZq5Vj9t347kUD1Fr4J7wZnEHMlZ5y9AqtHpqM40N9mTiextzm-58IxqOQ6mADBB_AK8903pWNJUOl1p1284J9u3-cbsr5QcpPbRRPP0p0Nj4mCkXR9Ml_kFrHBk25mSueo0M-18ztxymb5Vm9tg9QQzM0wxYAICU9QvYIOTwjidlwptTHtBZsZ0ofsHUNuudH8qqFeOCfC3R_RjJQctI5MNA_oMPrOJ7wNV58_c7CuZ7UprVbYhlTn8jMuVzMCk9-dt76EyiXLfvrlNIzPtHjY0yBQ9M8e062du7KHKpOmcdS_7he1svL1fSM1YVUM-C5kO_ry93k1Tl3_7Vu8pp7JEW-l0ajc00SOZmYEeDfw84xyYdKi-g3XGcb0pc3fVV7b6WI9rRht-ELzs2aLk3DmRuQOjvrKTPGCMGFuO_4RTc5QkaeakaUpjNvSHRZG5z_u4H1QDP9Qdxq18Um56p9UIfE7T5H1ZM_Kt62nruNKEBtPfRR7uX0p241KVb7eUm1ar_DvQ1c_Gv2sXZYR7CS4aF_u11oMvzubapzKf1EgZgGvNTCd5asFr_14rhct1X4KI1I6SgdFt7fKXANUanU4OIuBSEPIvcmLfPU4Ma5j-AfQ0Z6p6QVmBqz2PkEcmVWUT-MJr7Tnhf_jOR8kVKJORgdEqK03oVXtEUDxNkPzWBMOnCdLfmmD0NEH2WxOMnybIf2eCBD1NUPzOBPE6fqPyh0qtmWaplQacyOILdm-qz8ZLQNAiU8zQPIPJpc-YamUIWhIRaPkoJn4UR-gLQ62zzop9XEezXybstWZq7wqVpdn_clDl8BuSJbUTbXVqc9CXQwX-JLRO-F_zGi7sFV4wjL_sARflXU-ZsIH9ble3tbLtB5_jVt_T5XvuLexS4O_EQHUPJW171u-vv-b7l1uGrrPMTdp5qB2rntfr3Ein1llkXO98CXbr079FM_2J4zpBC5ZR3a5qO8_0rNtVmba9vPb8T4zrmPxVspDGgFmhZkZnvU1mHvOfDcPWGaZXpra180y1iyxPM3AgC-uMcvlX-0xHSbPMZ8au_jz6A7T7Xk-vus9oM5Xn3tmNmWG-tMS6ALLCDqscarl91qZfN_53UW3Xx0WXWgUuMyU7m9smWjgh6bDc_rH2i8fHcwUXqqesyqrzk3k39eFw5QzrHGeVTZY61HLDrE3bbpRxtWMlXV9lYNe_bBpQvyoEkDEbf0X9tMZr8zCZFEa52pl9uAeNqr2xyoR7LY6sU8bonipV-7Gndm3G5cMLrp0NfCDRtvdjTP_1DrM2ifI6k--s83dwcjyfGJ00Do6aC1obfyy7Rua3tfFdUXlQX5U9m1JYsTJeu3Liv6fVyvtOZVXeYuX3WZqsXbpw2s82Xv0gk9Zfl32XhelXLPymkJn7_H3WZV-xbiNRrv-Qu29duaXcODUFTjuj5goSRa5aqp3aTlVCL-sCXWlyNS4otUzqytLHfJF9eoc7qcHMoSa12un17RLMwh3sBEiXACf1rgmGLZ2sLBhOIHwZRJk5jcQSRBWGZ5hwCcYHi3n20SoMmWHiJZhyMxfMiIJxaWZcF1olMzcxxhvK0DkZsqHM_DU93VBm_p8F2DKZyidbypXFqbIg5VvN1HZ1r3JVOygmkyqrkofS1wNgi-RGZTtBNHaRL4H7Q5lXNdsxNIwEGv-31mSB7a3H_w_5f42V9YU=",
+      "pinnacle": "eJzVWvtP2zob_nn9K6xIRzqfZobvSSa6o1JKYaPjUgZjv0ymcVtDLiVxCt1f_8lJL4G1pZztaJsqRY79vLafx7c3r7vzz0MUgrFKM53EdQe_QQ5QcS8JdDyoO5_O97c85593tZ0TaYbH_d1ch7bkXe3VTpEGoRqrsO74wgFGpgNlLmZV0a_IAb1QZtlHGam6c66iUShTB8isp-KguSg5jO9ynWmTpA6IpI67Se9WmXaa5KO6gx1wLeNAm7rzMYmVA0YyNkOVxB15k6TtJKg7YR7LVGeVIh1PiwZpboa3eeiAsVb3nSRQdafZOGp2nXe1V692TkI5UWnXSAMyI03daSbRtY5VsHfSdcBYhrmqO8IljL1BDGPh-oI728tNzxMjw39hd6T7am7DOfFWAVuxSgeT7lCrMJgboLXdaR2czJHERQK98RAVvis4WWV3MpxkuifDjnzQUR4daHMub1U8rwYjytkq432dqjOV6czM8a5YBW4mYfAUvEalwdDEOh5sbNEcyiTbGN2RsWwmFShz10E_xanKVDpWi5HYWll3d6QqOPYGIw-V4J3tYhXZ1HmqFJA9o8eqO1I9O_GL2uwLMKlSlYVFZyvrMKg7_NGKsjnIAXESqMySEFAIAjGiGGLuEkh8TCGjvgs55gQKQhEUjAnoUs-DLuccuj71oMcRghgRgiFGzLdp7nKIkaAcYkJdH2LiIgIx8TiBmCLkQ8yQxTPM7VMgATFHLoWYY2GfDHH7pB7EwkXUPm2drmvr9Kitzbf1E0SIBwniHEOCfCEgwT73ICHE45AwzO2TehQSJhiGhDMuIOE-pZAI7AtIBCc2zQWDRLiE2ydDkLi4eFKEIXGLUs-1bXme61lxfB9SRAiHFFEPQYo4cyFFwseQ2nGDFHsuh5Qy14eUCoohpS7nkDKrAGWYIkgZQS6kTAgBKWfUPjkXkApBGaQu8wSkrm_b8l0fQer7WECGEPchQ4JxyCh1GWSUYQIZwx6FjDHiQ1aoypiPPMgEJi5kwscIMpdwDJnLCIbMI5hB5lmdmechFzLf1sMLXhwxYtPcRZAjTxDIKcYe5JS4PuTU8xjknHkcci6YDzl3XQI597jN95GA3GOI2Kct9QRikPvU5vs-8aBAWPhQIOrbtGvTGNs0ZtimOeFQYM_FUBA7WwShgkJBfcHt005Y5mEBBUeUFUvg1c6ns6Mi8WpozCh7u719f3__ZiTNMOmrBx2qN70k2h7JLNNjtZXd6jDcsitmu9FoNHYHnxrB4KDXGF21du-vbpukdXZ0djpo7199ORp-6x1cdfoN3ULvt1CypcOTD1fZ_eW3turcnE7Q-fX-R9Tjezfp8Phb5h2dPxyfnvu7Q3RxcEZ5J0Ne61MrOOPh5_bFPVaX2Pt61dq_6bUvPn4Jz-KI9FuyfZEE7aQl7y7S9KDBeh0-2aNXZ8HdA_1E-zfqcugN2NHBAG_tEXb-ZXjxYT9mwZ2OJh_4oSdvI_Hpmps82pr0FHf37y7FKPww-Zxekfzkzs9Mc4uepPo8PyfeRYrI-K6_u9s5fXg4ud7Xmcy_Uff0wH_vkSP65SqIe0S78io_1Xz_4NY9VndieJM21Th3Lw_Ge_nX1Lv9_C36Ggdb6sbvnLAPjUajXgzC9mwUdsrzOSuHZPpW7Dh287E7igO0UZF9w9NN8XtcsU4rQLEa6BJeAbqrgMVqrAC9lUC7DCtAfxWwmLMLIJketq92tisS7GzbLbrYzO0ebhNdOwXLwiIJVCyvQxXUHZPmygFZmJi6s5sEE9BIoySf-j2Ncve3FrPt_9VOW0VgULbfUUYG0sjtQ6OibLttHwW6raJupI1qhOazA4oFsBHeAbGMpsdNkQGSPtjTYx0r8D4PBipSsXFmPh7BDrjLZajNpNBi9mKb2lN9mYfGecp0Ca3tl_HKR6MkNd1h0ru9l2P1HL0Sbg0XFhWSi8zfgFQjCFQwd2z2ZCQHm_NbbrygWpSDOQDMEL8B71ZYTCwZln261GbYMEb2brON2V8qOUriJxVV6c-LpsTBvTZDMG_mN1DhMO6lSmYqaKbaWI-7a1J9qzbXYHUFCxnmGDADgTnqN9Cgk4dGZ0WHNqb9yGbB9FH2f0Btp-z7c5t6OTEB_vEd_UjJUTeU0YYb-gK-0MTmgTLzVw72pUx3ZRyrdEMqFfyCy6VMwSz31w3vgQojZX58cJuhTLWZbCjIHL2QY571Kwf2QKUyDI7758M8DjYe3u-sFqzKIuuFzAt_3VjvJonJfnyo95RRaaRjaXQSbyjRE5uFQE8Kfp047TAZq5-gznRfb8rMXA5VXB7W04jThgeCtT1-bFlZJzIz4H6o4pkfMEVMleO_YNUcRlGSGhk2ZRhuOB8em1SO92k-KAv-0-kwTWWzYNWFVvfgW5JEn4uIk01dzVNHZU-oM_8usnD7UrCbBrpsuqvMPNZl34EuPxvf1c6KHe4tOGuctWrdiQ3tZtq6MjfqXoUA15qpjrIkBu_te60wLtp9CzxRO4xGoe5pk70FqNYIggxgBEwCMELfecU2f-oa1rD7F9Bzr6nMBUUEr_ba2poERGVoFNjIbe015X_ZzCf-FSj8kVGoVVqoaHv3hKN4niP50zm6z3OkfzpH73mO7E_n6D_Pkf_hHAl6nqP4wznidRTvi08XS0L2DNhP0p4CJ2kykgNpkvQp19PyTHkLCHrMG7uoymZ2nzSlXcrCCk4eWl7646L96zmwTp9h4fvX2lrGJivueED5ObChNKTW0bFO4gwM5ViBv4m3Rfz_VUk8GmRMqkX20gmcFXdOhe8HWv2-7mkV9ybWXS6P5hWzhZVq2Ms5UF6Iybi3yLf3cNX85dLQddJcJ8GkdpZMZAhOQmnUOkWmodO3YHdr_nss09-EbhH2SBnV76uesUyP-32V6niQ1V7_jfkWFv8rSMgwBIuYz4LNM5osJti_FoatE2ZQuMm1IzXW0gxlDNoyj02oTPbiSRMoGS6bNNOV8xqjv0BvaDtq-27d41RlmV0RYVgBfa_FuoW0QolVU2q5QmuduWv7lVUVKFXSSrapPPjRbtNJxsUcmPb_8RqybMGZGqhYpeUiSu1cpetqWDt7VsmydFYt12atE3itQlM7UtIMVQp27cumm_DLNgKrgKVjb8yf7_Jan05GeahM7TiePIBGmd64z-WpcBgbFYZ6oIquvXzxvozMWufN7jO4djyyO4qOB_-R-j-RzVo3zbIhP5vNi5bAC9ngqkfWabQPm4_4hHY590OZ3damd1bFAt8vcjYlt6JlvLblyB7GZcsto9JYhuX5_FOaJmubzo22tU1bb6cyttd2P6Vh-oKGT3OZmm8_p132gnYbkTLDSWZ-tOWuMlOHGBhtQlUJjOSZ6qpeEgdlKL-IT_RlmKlpYKsbJqYIwVSD_fO75FksqIKaxYzn18hLMI_ugmdAugQ4i7vNMGxpZUXgcgbhyyAqrPRILEGUm_cC4y7B2G2kyt5bhSELjL8EUwzmIxmRMw0RTeNTq2wqFWO8oQ2t2JANbap_F6Ab2lT_tMCW2ZRzsqtMESQrAmM21Uzivh6UUzUe5bNKVayiSTHXHRDn0bVK6443-yfed8DWWGZl7HgGxdO_L-xszxrY2X76r87_A6CMLQY="
     }
   },
   "pipeline": {
@@ -7489,7 +7515,72 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-27T05:45:30.078Z"
+    "checkedAt": "2026-11-27T09:17:18.829Z"
+  },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Two Hand Mace"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "str_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "str_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "str_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "str_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "strjewel"
+        ]
+      },
+      "offhand": null
+    }
   },
   "season": {
     "id": "covens",
@@ -8283,10 +8374,10 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "ae6de9374b13",
+  "seedHash": "e5563d82b577",
   "guide": {
     "summary": {
-      "text": "Smite of Divine Judgement measures 11.4k at red maps and 21.1k at pinnacle. The Inquisitor critical package ignores elemental resistances, and the build needs no unique.",
+      "text": "Smite of Divine Judgement measures 30.4k at red maps and 67.2k at pinnacle. The Inquisitor critical package ignores elemental resistances, and the build needs no unique.",
       "status": "auto-breadth",
       "signed": null,
       "facts": [
@@ -8295,10 +8386,10 @@
         "gates.maps-red.metrics.dps",
         "gates.pinnacle.metrics.dps"
       ],
-      "factsHash": "3157bb8ce2d1c925"
+      "factsHash": "c5c00c4db3349228"
     },
     "leveling": {
-      "text": "Level with Static Strike, then switch to Smite of Divine Judgement once the links are in place; Shockwave carries the area damage and Ancestral Call covers the campaign. The first checkpoint measures 347 life and 35 damage; the second measures 344.",
+      "text": "Level with Static Strike, then switch to Smite of Divine Judgement once the links are in place; Shockwave carries the area damage and Ancestral Call covers the campaign. The first checkpoint measures 372 life and 35 damage; the second measures 344.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8306,10 +8397,10 @@
         "gates.until-12.metrics.dps",
         "gates.until-28.metrics.dps"
       ],
-      "factsHash": "4a3a6d3fdd3b935a"
+      "factsHash": "7471659490ee5876"
     },
     "maps": {
-      "text": "At red maps the build measures 11.4k damage, 17359 effective life and 8617 physical max hit. Smite into the pack, keep the shield up, and let the second bolt finish the stragglers.",
+      "text": "At red maps the build measures 30.4k damage, 15181 effective life and 8108 physical max hit. Smite into the pack, keep the shield up, and let the second bolt finish the stragglers.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8317,10 +8408,10 @@
         "gates.maps-red.metrics.ehp",
         "gates.maps-red.metrics.maxHit"
       ],
-      "factsHash": "5bfdb0b9dc92487f"
+      "factsHash": "2d7a83b22f17dc27"
     },
     "bossing": {
-      "text": "Pinnacle measures 21.1k damage with 21376 effective life and 8544 physical max hit. Stand in your Consecrated Ground, keep War Banner down, and strike on cooldown.",
+      "text": "Pinnacle measures 67.2k damage with 27061 effective life and 10354 physical max hit. Stand in your Consecrated Ground, keep War Banner down, and strike on cooldown.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -8328,7 +8419,7 @@
         "gates.pinnacle.metrics.ehp",
         "gates.pinnacle.metrics.maxHit"
       ],
-      "factsHash": "7d7856065342a962"
+      "factsHash": "4b2cd48ac6f36eb2"
     }
   },
   "medal": "A"

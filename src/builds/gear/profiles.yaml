@@ -20,12 +20,26 @@ profiles:
     starting:
       slots:
         offhand: { base: "Twig Spirit Shield", affixes: [life] }
+        # A summoner wants Leather Belt's life implicit; the shared Chain Belt
+        # is an energy-shield base and the Necromancer filter hides it.
+        belt: { base: "Leather Belt", affixes: [life] }
     early:
       slots:
         offhand: { base: "Yew Spirit Shield", affixes: [life] }
+        belt: { base: "Leather Belt", affixes: [life] }
     leveling:
       slots:
         offhand: { base: "Bone Spirit Shield", affixes: [life, resist-fire] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-lightning] }
+    ssf-start:
+      slots:
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
+    ssf-week1:
+      slots:
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
+    trade:
+      slots:
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
 
   # Bow: evasion bases, a physical bow with attack speed, and a quiver instead
   # of a shield. Attack speed and projectile damage are what turn the same
@@ -37,6 +51,7 @@ profiles:
       slots:
         weapon: { base: "Long Bow", affixes: [added-lightning, attack-speed] }
         offhand: { base: "Sharktooth Arrow Quiver", affixes: [life] }
+        belt: { base: "Leather Belt", affixes: [life] }
         body: { base: "Strapped Leather", affixes: [life] }
         helmet: { base: "Tricorne", affixes: [life] }
         gloves: { base: "Tinker Gloves", affixes: [life] }
@@ -45,6 +60,7 @@ profiles:
       slots:
         weapon: { base: "Sniper Bow", affixes: [added-lightning, attack-speed] }
         offhand: { base: "Blazing Arrow Quiver", affixes: [life] }
+        belt: { base: "Leather Belt", affixes: [life] }
         body: { base: "Glorious Leather", affixes: [life] }
         helmet: { base: "Hunter Hood", affixes: [life] }
         gloves: { base: "Sharkskin Gloves", affixes: [life] }
@@ -56,6 +72,7 @@ profiles:
       slots:
         weapon: { base: "Spine Bow", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
         offhand: { base: "Primal Arrow Quiver", affixes: [life, added-lightning-attack, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
         body: { base: "Assassin's Garb", affixes: [life, resist-lightning, resist-cold] }
         helmet: { base: "Lion Pelt", affixes: [life, resist-fire, resist-cold] }
         gloves: { base: "Gripped Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
@@ -68,6 +85,7 @@ profiles:
       slots:
         weapon: { base: "Spine Bow", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
         offhand: { base: "Artillery Quiver", affixes: [life, added-lightning-attack, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
         body: { base: "Astral Leather", affixes: [life, resist-lightning, resist-cold] }
         helmet: { base: "Grizzly Pelt", affixes: [life, resist-fire, resist-cold] }
         gloves: { base: "Harpyskin Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
@@ -80,6 +98,7 @@ profiles:
       slots:
         weapon: { base: "Spine Bow", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
         offhand: { base: "Artillery Quiver", affixes: [life, added-lightning-attack, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
         body: { base: "Syndicate's Garb", affixes: [life, resist-lightning, resist-cold] }
         helmet: { base: "Majestic Pelt", affixes: [life, resist-fire, resist-cold] }
         gloves: { base: "Velour Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
@@ -99,6 +118,7 @@ profiles:
         helmet: { base: "Cone Helmet", affixes: [life] }
         gloves: { base: "Plated Gauntlets", affixes: [life] }
         boots: { base: "Steel Greaves", affixes: [life, movement-speed] }
+        belt: { base: "Leather Belt", affixes: [life] }
     early:
       slots:
         weapon: { base: "Headsman Axe", affixes: [added-phys, attack-speed] }
@@ -106,6 +126,7 @@ profiles:
         helmet: { base: "Reaver Helmet", affixes: [life] }
         gloves: { base: "Guarding Gauntlets", affixes: [life] }
         boots: { base: "Antique Greaves", affixes: [life, movement-speed] }
+        belt: { base: "Leather Belt", affixes: [life] }
     ssf-start:
       slots:
         weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed] }
@@ -114,6 +135,7 @@ profiles:
         helmet: { base: "Eternal Burgonet", affixes: [life, resist-fire, resist-cold] }
         gloves: { base: "Spiked Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
         boots: { base: "Titan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
         amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
@@ -126,6 +148,7 @@ profiles:
         helmet: { base: "Conqueror's Helmet", affixes: [life, resist-fire, resist-cold] }
         gloves: { base: "Precursor Gauntlets", affixes: [life, attack-speed, resist-cold, resist-fire] }
         boots: { base: "Brimstone Treads", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
         amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
@@ -138,6 +161,7 @@ profiles:
         helmet: { base: "Giantslayer Helmet", affixes: [life, resist-fire, resist-cold] }
         gloves: { base: "Leviathan Gauntlets", affixes: [life, attack-speed, resist-cold, resist-fire] }
         boots: { base: "Leviathan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
         amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
@@ -155,6 +179,7 @@ profiles:
         helmet: { base: "Cone Helmet", affixes: [life] }
         gloves: { base: "Plated Gauntlets", affixes: [life] }
         boots: { base: "Steel Greaves", affixes: [life, movement-speed] }
+        belt: { base: "Leather Belt", affixes: [life] }
     early:
       slots:
         weapon: { base: "Headsman Axe", affixes: [added-phys, attack-speed] }
@@ -162,6 +187,7 @@ profiles:
         helmet: { base: "Reaver Helmet", affixes: [life] }
         gloves: { base: "Guarding Gauntlets", affixes: [life] }
         boots: { base: "Antique Greaves", affixes: [life, movement-speed] }
+        belt: { base: "Leather Belt", affixes: [life] }
     ssf-start:
       slots:
         weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
@@ -217,14 +243,17 @@ profiles:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, lightning-damage] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+      jewels: { count: 2, base: "Cobalt Jewel", affixes: [spell-damage, cast-speed, crit-multi, life] }
     ssf-week1:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, lightning-damage] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [spell-damage, cast-speed, crit-multi, life] }
     trade:
       slots:
         weapon: { base: "Void Sceptre", affixes: [spell-damage, cast-speed, lightning-damage] }
         offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [spell-damage, cast-speed, crit-multi, life] }
 
   # Chaos damage over time shares the spell shell but rolls chaos and DoT.
   chaos:
@@ -240,14 +269,17 @@ profiles:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, chaos-damage] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+      jewels: { count: 2, base: "Cobalt Jewel", affixes: [chaos-damage, dot-multi, cast-speed, life] }
     ssf-week1:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cast-speed, chaos-damage, dot-multi] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [chaos-damage, dot-multi, cast-speed, life] }
     trade:
       slots:
         weapon: { base: "Void Sceptre", affixes: [spell-damage, cast-speed, chaos-damage, dot-multi] }
         offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [chaos-damage, dot-multi, cast-speed, life] }
 
   # Cold spells: the same sceptre-and-spirit-shield shell as `spell`, but the
   # damage roll is cold and the endgame sceptre carries crit multi, because a
@@ -269,14 +301,17 @@ profiles:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cold-damage, cast-speed] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+      jewels: { count: 2, base: "Cobalt Jewel", affixes: [cold-damage, spell-damage, crit-multi, life] }
     ssf-week1:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [spell-damage, cold-damage, cast-speed, crit-multi] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [cold-damage, spell-damage, crit-multi, life] }
     trade:
       slots:
         weapon: { base: "Void Sceptre", affixes: [spell-damage, cold-damage, cast-speed, crit-multi] }
         offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [cold-damage, spell-damage, crit-multi, life] }
 
   # Fire DoT and ignite: a fire sceptre with Damage over Time Multiplier on the
   # same caster shell. Penance Brand and other ignite spells scale through the
@@ -298,14 +333,17 @@ profiles:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi, cast-speed] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+      jewels: { count: 2, base: "Cobalt Jewel", affixes: [fire-damage, dot-multi, cast-speed, life] }
     ssf-week1:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi, cast-speed] }
         offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [fire-damage, dot-multi, cast-speed, life] }
     trade:
       slots:
         weapon: { base: "Void Sceptre", affixes: [fire-damage, dot-multi, cast-speed] }
         offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
+      jewels: { count: 6, base: "Cobalt Jewel", affixes: [fire-damage, dot-multi, cast-speed, life] }
 
   # Lightning strike attacks: a two-hand mace. The mace is required by Shockwave
   # Support, and the added lightning is what Smite converts into its second,
@@ -315,10 +353,20 @@ profiles:
       slots:
         weapon: { base: "Mallet", affixes: [added-phys, added-lightning-attack] }
         offhand: null
+        body: { base: "Chestplate", affixes: [life] }
+        helmet: { base: "Cone Helmet", affixes: [life] }
+        gloves: { base: "Plated Gauntlets", affixes: [life] }
+        boots: { base: "Steel Greaves", affixes: [life, movement-speed] }
+        belt: { base: "Leather Belt", affixes: [life] }
     early:
       slots:
         weapon: { base: "Steelhead", affixes: [phys-pct, added-phys, added-lightning-attack, attack-speed] }
         offhand: null
+        body: { base: "Sun Plate", affixes: [life] }
+        helmet: { base: "Reaver Helmet", affixes: [life] }
+        gloves: { base: "Guarding Gauntlets", affixes: [life] }
+        boots: { base: "Antique Greaves", affixes: [life, movement-speed] }
+        belt: { base: "Leather Belt", affixes: [life] }
     leveling:
       slots:
         weapon: { base: "Steelhead", affixes: [phys-pct, added-phys, added-lightning-attack, attack-speed] }
@@ -327,14 +375,32 @@ profiles:
       slots:
         weapon: { base: "Terror Maul", affixes: [phys-pct, added-phys, added-lightning, attack-speed, crit-multi] }
         offhand: null
+        body: { base: "Glorious Plate", affixes: [life, resist-lightning, resist-cold] }
+        helmet: { base: "Eternal Burgonet", affixes: [life, resist-fire, resist-cold] }
+        gloves: { base: "Spiked Gloves", affixes: [life, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Titan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
+      jewels: { count: 2, base: "Crimson Jewel", affixes: [added-lightning-attack, attack-speed, life, crit-multi] }
     ssf-week1:
       slots:
         weapon: { base: "Coronal Maul", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
         offhand: null
+        body: { base: "Legion Plate", affixes: [life, resist-lightning, resist-cold] }
+        helmet: { base: "Conqueror's Helmet", affixes: [life, resist-fire, resist-cold] }
+        gloves: { base: "Precursor Gauntlets", affixes: [life, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Brimstone Treads", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [added-lightning-attack, attack-speed, life, crit-multi] }
     trade:
       slots:
         weapon: { base: "Impact Force Propagator", affixes: [phys-pct, added-phys, added-lightning-attack, attack-speed, crit-multi] }
         offhand: null
+        body: { base: "Royal Plate", affixes: [life, resist-lightning, resist-cold] }
+        helmet: { base: "Giantslayer Helmet", affixes: [life, resist-fire, resist-cold] }
+        gloves: { base: "Leviathan Gauntlets", affixes: [life, attack-speed, resist-cold, resist-fire] }
+        boots: { base: "Leviathan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [added-lightning-attack, attack-speed, life, crit-multi] }
 
   # Righteous Fire: armour, life and fire/DoT on a sceptre and shield. It uses
   # the same strength armour bases as the melee profile, not the caster set.
@@ -347,6 +413,7 @@ profiles:
         helmet: { base: "Cone Helmet", affixes: [life] }
         gloves: { base: "Plated Gauntlets", affixes: [life] }
         boots: { base: "Steel Greaves", affixes: [life, movement-speed] }
+        belt: { base: "Leather Belt", affixes: [life] }
     early:
       slots:
         weapon: { base: "Driftwood Sceptre", affixes: [fire-damage, cast-speed] }
@@ -355,6 +422,7 @@ profiles:
         helmet: { base: "Reaver Helmet", affixes: [life, armour] }
         gloves: { base: "Guarding Gauntlets", affixes: [life] }
         boots: { base: "Antique Greaves", affixes: [life, movement-speed] }
+        belt: { base: "Leather Belt", affixes: [life] }
     ssf-start:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi] }
@@ -363,6 +431,8 @@ profiles:
         helmet: { base: "Eternal Burgonet", affixes: [life, armour, resist-fire, resist-cold] }
         gloves: { base: "Spiked Gloves", affixes: [life, resist-cold, resist-fire] }
         boots: { base: "Titan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
+      jewels: { count: 2, base: "Crimson Jewel", affixes: [fire-damage, dot-multi, life, resist-fire] }
     ssf-week1:
       slots:
         weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi] }
@@ -371,6 +441,8 @@ profiles:
         helmet: { base: "Conqueror's Helmet", affixes: [life, armour, resist-fire, resist-cold] }
         gloves: { base: "Precursor Gauntlets", affixes: [life, resist-cold, resist-fire] }
         boots: { base: "Brimstone Treads", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [fire-damage, dot-multi, life, resist-fire] }
     trade:
       slots:
         weapon: { base: "Void Sceptre", affixes: [fire-damage, dot-multi] }
@@ -379,3 +451,5 @@ profiles:
         helmet: { base: "Giantslayer Helmet", affixes: [life, armour, resist-fire, resist-cold] }
         gloves: { base: "Leviathan Gauntlets", affixes: [life, resist-cold, resist-fire] }
         boots: { base: "Leviathan Greaves", affixes: [movement-speed, life, resist-cold, resist-lightning] }
+        belt: { base: "Leather Belt", affixes: [life, resist-fire, resist-chaos] }
+      jewels: { count: 6, base: "Crimson Jewel", affixes: [fire-damage, dot-multi, life, resist-fire] }

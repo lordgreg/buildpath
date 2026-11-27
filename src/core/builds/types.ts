@@ -127,8 +127,10 @@ export interface BuildIndexEntry {
   /** Staleness / waiting state, when the build is delisted (R10). */
   stale?: Staleness;
   /**
-   * Filter slots that override the family/ascendancy defaults (D15). A null
-   * slot removes the default, e.g. a two-handed build has no offhand.
+   * Filter slots for the build. The compiler derives the equipment slots from
+   * the gear profile the gates measured; a seed may override any slot (D15),
+   * and a null slot removes the default, e.g. a two-handed build has no
+   * offhand.
    */
   filter?: { slots: Partial<Record<ItemSlot, SlotSpec | null>> };
 }

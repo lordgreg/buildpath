@@ -7,7 +7,7 @@
 # Selection: mode=build&build=summon-skeletons-necromancer&phase=leveling&strictness=soft&theme=rarity
 # League: Covens
 # Presets: 796364c6795e
-# Rules: 134 - Base types: 140
+# Rules: 134 - Base types: 83
 # Base data: RePoE 1d825f53356023dee0fbb3ec23d94057da8fe0ac (4f01123d)
 # Generated at https://lordgreg.github.io/buildpath/
 # Not affiliated with or endorsed by Grinding Gear Games.
@@ -151,7 +151,7 @@ Hide
 
 # helmet - rare
 Show
-    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Bone Circlet" "Hubris Circlet" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Solaris Circlet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -163,7 +163,7 @@ Show
 
 # body - rare
 Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Conjurer's Vestment" "Destroyer Regalia" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Sage's Robe" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -175,7 +175,7 @@ Show
 
 # gloves - rare
 Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Arcanist Gloves" "Conjurer Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Leyline Gloves" "Nexus Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -187,7 +187,7 @@ Show
 
 # boots - rare
 Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Conjurer Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Nightwind Slippers" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Sorcerer Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -199,7 +199,7 @@ Show
 
 # belt - rare
 Show
-    BaseType == "Leather Belt"
+    Class == "Belts"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -235,7 +235,7 @@ Show
 
 # jewel - rare
 Show
-    BaseType == "Cobalt Jewel"
+    BaseType == "Ghastly Eye Jewel"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 40
@@ -259,7 +259,7 @@ Show
 
 # weapon - rare
 Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Class == "Wands"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 45
@@ -271,7 +271,7 @@ Show
 
 # offhand - rare
 Show
-    BaseType == "Angelic Kite Shield" "Archon Kite Shield" "Branded Kite Shield" "Ceremonial Kite Shield" "Champion Kite Shield" "Etched Kite Shield" "Laminated Kite Shield" "Layered Kite Shield" "Linden Kite Shield" "Mosaic Kite Shield" "Plank Kite Shield" "Reinforced Kite Shield" "Steel Kite Shield"
+    BaseType == "Ancient Spirit Shield" "Bone Spirit Shield" "Brass Spirit Shield" "Chiming Spirit Shield" "Exhausting Spirit Shield" "Fossilised Spirit Shield" "Harmonic Spirit Shield" "Ivory Spirit Shield" "Jingling Spirit Shield" "Lacewood Spirit Shield" "Subsuming Spirit Shield" "Tarnished Spirit Shield" "Thorium Spirit Shield" "Titanium Spirit Shield" "Transfer-attuned Spirit Shield" "Twig Spirit Shield" "Vaal Spirit Shield" "Walnut Spirit Shield" "Yew Spirit Shield"
     Rarity Rare
     ItemLevel >= 1
     SetFontSize 45
@@ -283,7 +283,7 @@ Show
 
 # helmet - magic (area 1-19)
 Show
-    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Bone Circlet" "Hubris Circlet" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Solaris Circlet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet"
     Rarity Magic
     ItemLevel >= 0
     AreaLevel >= 1
@@ -295,7 +295,7 @@ Show
 
 # body - magic (area 1-19)
 Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Conjurer's Vestment" "Destroyer Regalia" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Sage's Robe" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
     Rarity Magic
     ItemLevel >= 0
     AreaLevel >= 1
@@ -307,7 +307,7 @@ Show
 
 # gloves - magic (area 1-19)
 Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Arcanist Gloves" "Conjurer Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Leyline Gloves" "Nexus Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves"
     Rarity Magic
     ItemLevel >= 0
     AreaLevel >= 1
@@ -319,7 +319,7 @@ Show
 
 # boots - magic (area 1-19)
 Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Conjurer Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Nightwind Slippers" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Sorcerer Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes"
     Rarity Magic
     ItemLevel >= 0
     AreaLevel >= 1
@@ -331,7 +331,7 @@ Show
 
 # belt - magic (area 1-19)
 Show
-    BaseType == "Leather Belt"
+    Class == "Belts"
     Rarity Magic
     ItemLevel >= 0
     AreaLevel >= 1
@@ -367,7 +367,7 @@ Show
 
 # jewel - magic (area 1-19)
 Show
-    BaseType == "Cobalt Jewel"
+    BaseType == "Ghastly Eye Jewel"
     Rarity Magic
     ItemLevel >= 0
     AreaLevel >= 1
@@ -391,7 +391,7 @@ Show
 
 # weapon - magic (area 1-19)
 Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Class == "Wands"
     Rarity Magic
     ItemLevel >= 0
     AreaLevel >= 1
@@ -403,7 +403,7 @@ Show
 
 # offhand - magic (area 1-19)
 Show
-    BaseType == "Angelic Kite Shield" "Archon Kite Shield" "Branded Kite Shield" "Ceremonial Kite Shield" "Champion Kite Shield" "Etched Kite Shield" "Laminated Kite Shield" "Layered Kite Shield" "Linden Kite Shield" "Mosaic Kite Shield" "Plank Kite Shield" "Reinforced Kite Shield" "Steel Kite Shield"
+    BaseType == "Ancient Spirit Shield" "Bone Spirit Shield" "Brass Spirit Shield" "Chiming Spirit Shield" "Exhausting Spirit Shield" "Fossilised Spirit Shield" "Harmonic Spirit Shield" "Ivory Spirit Shield" "Jingling Spirit Shield" "Lacewood Spirit Shield" "Subsuming Spirit Shield" "Tarnished Spirit Shield" "Thorium Spirit Shield" "Titanium Spirit Shield" "Transfer-attuned Spirit Shield" "Twig Spirit Shield" "Vaal Spirit Shield" "Walnut Spirit Shield" "Yew Spirit Shield"
     Rarity Magic
     ItemLevel >= 0
     AreaLevel >= 1
@@ -415,7 +415,7 @@ Show
 
 # belt - magic (area 20+)
 Show
-    BaseType == "Leather Belt"
+    Class == "Belts"
     Rarity Magic
     ItemLevel >= 0
     AreaLevel >= 20
@@ -448,7 +448,7 @@ Show
 
 # jewel - magic (area 20+)
 Show
-    BaseType == "Cobalt Jewel"
+    BaseType == "Ghastly Eye Jewel"
     Rarity Magic
     ItemLevel >= 0
     AreaLevel >= 20
@@ -470,7 +470,7 @@ Show
 
 # helmet - normal 4+ links
 Show
-    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Bone Circlet" "Hubris Circlet" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Solaris Circlet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -480,7 +480,7 @@ Show
 
 # helmet - magic 4+ links
 Show
-    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Bone Circlet" "Hubris Circlet" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Solaris Circlet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet"
     Rarity Magic
     LinkedSockets >= 4
     SetFontSize 38
@@ -490,7 +490,7 @@ Show
 
 # helmet - rare 4+ links
 Show
-    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Bone Circlet" "Hubris Circlet" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Solaris Circlet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet"
     Rarity Rare
     LinkedSockets >= 4
     SetFontSize 38
@@ -500,7 +500,7 @@ Show
 
 # body - normal 4+ links
 Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Conjurer's Vestment" "Destroyer Regalia" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Sage's Robe" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -510,7 +510,7 @@ Show
 
 # body - magic 4+ links
 Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Conjurer's Vestment" "Destroyer Regalia" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Sage's Robe" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
     Rarity Magic
     LinkedSockets >= 4
     SetFontSize 38
@@ -520,7 +520,7 @@ Show
 
 # body - rare 4+ links
 Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Conjurer's Vestment" "Destroyer Regalia" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Sage's Robe" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
     Rarity Rare
     LinkedSockets >= 4
     SetFontSize 38
@@ -530,7 +530,7 @@ Show
 
 # gloves - normal 4+ links
 Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Arcanist Gloves" "Conjurer Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Leyline Gloves" "Nexus Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -540,7 +540,7 @@ Show
 
 # gloves - magic 4+ links
 Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Arcanist Gloves" "Conjurer Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Leyline Gloves" "Nexus Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves"
     Rarity Magic
     LinkedSockets >= 4
     SetFontSize 38
@@ -550,7 +550,7 @@ Show
 
 # gloves - rare 4+ links
 Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Arcanist Gloves" "Conjurer Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Leyline Gloves" "Nexus Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves"
     Rarity Rare
     LinkedSockets >= 4
     SetFontSize 38
@@ -560,7 +560,7 @@ Show
 
 # boots - normal 4+ links
 Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Conjurer Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Nightwind Slippers" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Sorcerer Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -570,7 +570,7 @@ Show
 
 # boots - magic 4+ links
 Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Conjurer Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Nightwind Slippers" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Sorcerer Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes"
     Rarity Magic
     LinkedSockets >= 4
     SetFontSize 38
@@ -580,7 +580,7 @@ Show
 
 # boots - rare 4+ links
 Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Conjurer Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Nightwind Slippers" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Sorcerer Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes"
     Rarity Rare
     LinkedSockets >= 4
     SetFontSize 38
@@ -590,7 +590,7 @@ Show
 
 # weapon - normal 4+ links
 Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Class == "Wands"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -600,7 +600,7 @@ Show
 
 # weapon - magic 4+ links
 Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Class == "Wands"
     Rarity Magic
     LinkedSockets >= 4
     SetFontSize 38
@@ -610,7 +610,7 @@ Show
 
 # weapon - rare 4+ links
 Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Class == "Wands"
     Rarity Rare
     LinkedSockets >= 4
     SetFontSize 38
@@ -620,7 +620,7 @@ Show
 
 # offhand - normal 4+ links
 Show
-    BaseType == "Angelic Kite Shield" "Archon Kite Shield" "Branded Kite Shield" "Ceremonial Kite Shield" "Champion Kite Shield" "Etched Kite Shield" "Laminated Kite Shield" "Layered Kite Shield" "Linden Kite Shield" "Mosaic Kite Shield" "Plank Kite Shield" "Reinforced Kite Shield" "Steel Kite Shield"
+    BaseType == "Ancient Spirit Shield" "Bone Spirit Shield" "Brass Spirit Shield" "Chiming Spirit Shield" "Exhausting Spirit Shield" "Fossilised Spirit Shield" "Harmonic Spirit Shield" "Ivory Spirit Shield" "Jingling Spirit Shield" "Lacewood Spirit Shield" "Subsuming Spirit Shield" "Tarnished Spirit Shield" "Thorium Spirit Shield" "Titanium Spirit Shield" "Transfer-attuned Spirit Shield" "Twig Spirit Shield" "Vaal Spirit Shield" "Walnut Spirit Shield" "Yew Spirit Shield"
     Rarity Normal
     LinkedSockets >= 4
     SetFontSize 38
@@ -630,7 +630,7 @@ Show
 
 # offhand - magic 4+ links
 Show
-    BaseType == "Angelic Kite Shield" "Archon Kite Shield" "Branded Kite Shield" "Ceremonial Kite Shield" "Champion Kite Shield" "Etched Kite Shield" "Laminated Kite Shield" "Layered Kite Shield" "Linden Kite Shield" "Mosaic Kite Shield" "Plank Kite Shield" "Reinforced Kite Shield" "Steel Kite Shield"
+    BaseType == "Ancient Spirit Shield" "Bone Spirit Shield" "Brass Spirit Shield" "Chiming Spirit Shield" "Exhausting Spirit Shield" "Fossilised Spirit Shield" "Harmonic Spirit Shield" "Ivory Spirit Shield" "Jingling Spirit Shield" "Lacewood Spirit Shield" "Subsuming Spirit Shield" "Tarnished Spirit Shield" "Thorium Spirit Shield" "Titanium Spirit Shield" "Transfer-attuned Spirit Shield" "Twig Spirit Shield" "Vaal Spirit Shield" "Walnut Spirit Shield" "Yew Spirit Shield"
     Rarity Magic
     LinkedSockets >= 4
     SetFontSize 38
@@ -640,7 +640,7 @@ Show
 
 # offhand - rare 4+ links
 Show
-    BaseType == "Angelic Kite Shield" "Archon Kite Shield" "Branded Kite Shield" "Ceremonial Kite Shield" "Champion Kite Shield" "Etched Kite Shield" "Laminated Kite Shield" "Layered Kite Shield" "Linden Kite Shield" "Mosaic Kite Shield" "Plank Kite Shield" "Reinforced Kite Shield" "Steel Kite Shield"
+    BaseType == "Ancient Spirit Shield" "Bone Spirit Shield" "Brass Spirit Shield" "Chiming Spirit Shield" "Exhausting Spirit Shield" "Fossilised Spirit Shield" "Harmonic Spirit Shield" "Ivory Spirit Shield" "Jingling Spirit Shield" "Lacewood Spirit Shield" "Subsuming Spirit Shield" "Tarnished Spirit Shield" "Thorium Spirit Shield" "Titanium Spirit Shield" "Transfer-attuned Spirit Shield" "Twig Spirit Shield" "Vaal Spirit Shield" "Walnut Spirit Shield" "Yew Spirit Shield"
     Rarity Rare
     LinkedSockets >= 4
     SetFontSize 38
@@ -650,7 +650,7 @@ Show
 
 # helmet - magic RGB links
 Show
-    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Bone Circlet" "Hubris Circlet" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Solaris Circlet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet"
     Rarity Magic
     SocketGroup "RGB"
     SetFontSize 38
@@ -660,7 +660,7 @@ Show
 
 # body - magic RGB links
 Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Conjurer's Vestment" "Destroyer Regalia" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Sage's Robe" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
     Rarity Magic
     SocketGroup "RGB"
     SetFontSize 38
@@ -670,7 +670,7 @@ Show
 
 # gloves - magic RGB links
 Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Arcanist Gloves" "Conjurer Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Leyline Gloves" "Nexus Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves"
     Rarity Magic
     SocketGroup "RGB"
     SetFontSize 38
@@ -680,7 +680,7 @@ Show
 
 # boots - magic RGB links
 Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Conjurer Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Nightwind Slippers" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Sorcerer Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes"
     Rarity Magic
     SocketGroup "RGB"
     SetFontSize 38
@@ -690,7 +690,7 @@ Show
 
 # weapon - magic RGB links
 Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Class == "Wands"
     Rarity Magic
     SocketGroup "RGB"
     SetFontSize 38
@@ -700,7 +700,7 @@ Show
 
 # offhand - magic RGB links
 Show
-    BaseType == "Angelic Kite Shield" "Archon Kite Shield" "Branded Kite Shield" "Ceremonial Kite Shield" "Champion Kite Shield" "Etched Kite Shield" "Laminated Kite Shield" "Layered Kite Shield" "Linden Kite Shield" "Mosaic Kite Shield" "Plank Kite Shield" "Reinforced Kite Shield" "Steel Kite Shield"
+    BaseType == "Ancient Spirit Shield" "Bone Spirit Shield" "Brass Spirit Shield" "Chiming Spirit Shield" "Exhausting Spirit Shield" "Fossilised Spirit Shield" "Harmonic Spirit Shield" "Ivory Spirit Shield" "Jingling Spirit Shield" "Lacewood Spirit Shield" "Subsuming Spirit Shield" "Tarnished Spirit Shield" "Thorium Spirit Shield" "Titanium Spirit Shield" "Transfer-attuned Spirit Shield" "Twig Spirit Shield" "Vaal Spirit Shield" "Walnut Spirit Shield" "Yew Spirit Shield"
     Rarity Magic
     SocketGroup "RGB"
     SetFontSize 38
@@ -748,7 +748,7 @@ Show
 
 # helmet - normal 4+ sockets (area 10+)
 Show
-    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Bone Circlet" "Hubris Circlet" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Solaris Circlet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet"
     Rarity Normal
     AreaLevel >= 10
     Sockets >= 4
@@ -759,7 +759,7 @@ Show
 
 # body - normal 4+ sockets (area 10+)
 Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Conjurer's Vestment" "Destroyer Regalia" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Sage's Robe" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
     Rarity Normal
     AreaLevel >= 10
     Sockets >= 4
@@ -770,7 +770,7 @@ Show
 
 # gloves - normal 4+ sockets (area 10+)
 Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Arcanist Gloves" "Conjurer Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Leyline Gloves" "Nexus Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves"
     Rarity Normal
     AreaLevel >= 10
     Sockets >= 4
@@ -781,7 +781,7 @@ Show
 
 # boots - normal 4+ sockets (area 10+)
 Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Conjurer Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Nightwind Slippers" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Sorcerer Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes"
     Rarity Normal
     AreaLevel >= 10
     Sockets >= 4
@@ -792,7 +792,7 @@ Show
 
 # weapon - normal 4+ sockets (area 10+)
 Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Class == "Wands"
     Rarity Normal
     AreaLevel >= 10
     Sockets >= 4
@@ -803,7 +803,7 @@ Show
 
 # offhand - normal 4+ sockets (area 10+)
 Show
-    BaseType == "Angelic Kite Shield" "Archon Kite Shield" "Branded Kite Shield" "Ceremonial Kite Shield" "Champion Kite Shield" "Etched Kite Shield" "Laminated Kite Shield" "Layered Kite Shield" "Linden Kite Shield" "Mosaic Kite Shield" "Plank Kite Shield" "Reinforced Kite Shield" "Steel Kite Shield"
+    BaseType == "Ancient Spirit Shield" "Bone Spirit Shield" "Brass Spirit Shield" "Chiming Spirit Shield" "Exhausting Spirit Shield" "Fossilised Spirit Shield" "Harmonic Spirit Shield" "Ivory Spirit Shield" "Jingling Spirit Shield" "Lacewood Spirit Shield" "Subsuming Spirit Shield" "Tarnished Spirit Shield" "Thorium Spirit Shield" "Titanium Spirit Shield" "Transfer-attuned Spirit Shield" "Twig Spirit Shield" "Vaal Spirit Shield" "Walnut Spirit Shield" "Yew Spirit Shield"
     Rarity Normal
     AreaLevel >= 10
     Sockets >= 4
@@ -814,7 +814,7 @@ Show
 
 # helmet - normal (area 1-9)
 Show
-    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Bone Circlet" "Hubris Circlet" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Solaris Circlet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet"
     Rarity Normal
     ItemLevel >= 0
     AreaLevel >= 1
@@ -826,7 +826,7 @@ Show
 
 # body - normal (area 1-9)
 Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Conjurer's Vestment" "Destroyer Regalia" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Sage's Robe" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
     Rarity Normal
     ItemLevel >= 0
     AreaLevel >= 1
@@ -838,7 +838,7 @@ Show
 
 # gloves - normal (area 1-9)
 Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Arcanist Gloves" "Conjurer Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Leyline Gloves" "Nexus Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves"
     Rarity Normal
     ItemLevel >= 0
     AreaLevel >= 1
@@ -850,7 +850,7 @@ Show
 
 # boots - normal (area 1-9)
 Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Conjurer Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Nightwind Slippers" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Sorcerer Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes"
     Rarity Normal
     ItemLevel >= 0
     AreaLevel >= 1
@@ -862,7 +862,7 @@ Show
 
 # belt - normal (area 1-9)
 Show
-    BaseType == "Leather Belt"
+    Class == "Belts"
     Rarity Normal
     ItemLevel >= 0
     AreaLevel >= 1
@@ -898,7 +898,7 @@ Show
 
 # jewel - normal (area 1-9)
 Show
-    BaseType == "Cobalt Jewel"
+    BaseType == "Ghastly Eye Jewel"
     Rarity Normal
     ItemLevel >= 0
     AreaLevel >= 1
@@ -910,7 +910,7 @@ Show
 
 # weapon - normal (area 1-9)
 Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Class == "Wands"
     Rarity Normal
     ItemLevel >= 0
     AreaLevel >= 1
@@ -922,7 +922,7 @@ Show
 
 # offhand - normal (area 1-9)
 Show
-    BaseType == "Angelic Kite Shield" "Archon Kite Shield" "Branded Kite Shield" "Ceremonial Kite Shield" "Champion Kite Shield" "Etched Kite Shield" "Laminated Kite Shield" "Layered Kite Shield" "Linden Kite Shield" "Mosaic Kite Shield" "Plank Kite Shield" "Reinforced Kite Shield" "Steel Kite Shield"
+    BaseType == "Ancient Spirit Shield" "Bone Spirit Shield" "Brass Spirit Shield" "Chiming Spirit Shield" "Exhausting Spirit Shield" "Fossilised Spirit Shield" "Harmonic Spirit Shield" "Ivory Spirit Shield" "Jingling Spirit Shield" "Lacewood Spirit Shield" "Subsuming Spirit Shield" "Tarnished Spirit Shield" "Thorium Spirit Shield" "Titanium Spirit Shield" "Transfer-attuned Spirit Shield" "Twig Spirit Shield" "Vaal Spirit Shield" "Walnut Spirit Shield" "Yew Spirit Shield"
     Rarity Normal
     ItemLevel >= 0
     AreaLevel >= 1
@@ -934,7 +934,7 @@ Show
 
 # helmet - normal (area 68+)
 Show
-    BaseType == "Archdemon Crown" "Aventail Helmet" "Bone Circlet" "Bone Helmet" "Crusader Helmet" "Demon Crown" "Divine Crown" "Faithful Helmet" "Great Crown" "Great Helmet" "Hubris Circlet" "Imp Crown" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Magistrate Crown" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Paladin Crown" "Praetor Crown" "Prophet Crown" "Rusted Coif" "Solaris Circlet" "Soldier Helmet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet" "Zealot Helmet"
+    BaseType == "Bone Circlet" "Hubris Circlet" "Iron Circlet" "Lich's Circlet" "Lunaris Circlet" "Mind Cage" "Moonlit Circlet" "Necromancer Circlet" "Solaris Circlet" "Steel Circlet" "Sunfire Circlet" "Torture Cage" "Tribal Circlet" "Vine Circlet"
     Rarity Normal
     ItemLevel >= 84
     AreaLevel >= 68
@@ -945,7 +945,7 @@ Show
 
 # body - normal (area 68+)
 Show
-    BaseType == "Arcane Vestment" "Cabalist Regalia" "Chain Hauberk" "Chainmail Doublet" "Chainmail Tunic" "Chainmail Vest" "Conjurer's Vestment" "Conquest Chainmail" "Crusader Chainmail" "Destroyer Regalia" "Devout Chainmail" "Elegant Ringmail" "Full Chainmail" "Full Ringmail" "Grand Ringmail" "Holy Chainmail" "Latticed Ringmail" "Loricated Ringmail" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Ornate Ringmail" "Paladin's Hauberk" "Ringmail Coat" "Sacred Chainmail" "Sage's Robe" "Saint's Hauberk" "Saintly Chainmail" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
+    BaseType == "Arcane Vestment" "Cabalist Regalia" "Conjurer's Vestment" "Destroyer Regalia" "Mage's Vestment" "Necromancer Silks" "Nightweave Robe" "Occultist's Vestment" "Sage's Robe" "Savant's Robe" "Scholar's Robe" "Silk Robe" "Silken Garb" "Silken Vest" "Silken Wrap" "Simple Robe" "Spidersilk Robe" "Twilight Regalia" "Vaal Regalia" "Widowsilk Robe"
     Rarity Normal
     ItemLevel >= 84
     AreaLevel >= 68
@@ -956,7 +956,7 @@ Show
 
 # gloves - normal (area 68+)
 Show
-    BaseType == "Aetherwind Gloves" "Apothecary's Gloves" "Arcanist Gloves" "Chain Gloves" "Conjurer Gloves" "Crusader Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Legion Gloves" "Leyline Gloves" "Martyr Gloves" "Mesh Gloves" "Nexus Gloves" "Paladin Gloves" "Ringmail Gloves" "Riveted Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Soldier Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves" "Zealot Gloves"
+    BaseType == "Aetherwind Gloves" "Arcanist Gloves" "Conjurer Gloves" "Embroidered Gloves" "Fingerless Silk Gloves" "Leyline Gloves" "Nexus Gloves" "Sage Gloves" "Samite Gloves" "Satin Gloves" "Silk Gloves" "Sorcerer Gloves" "Velvet Gloves" "Warlock Gloves" "Wool Gloves"
     Rarity Normal
     ItemLevel >= 84
     AreaLevel >= 68
@@ -967,7 +967,7 @@ Show
 
 # boots - normal (area 68+)
 Show
-    BaseType == "Arcanist Slippers" "Chain Boots" "Conjurer Boots" "Crusader Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Legion Boots" "Martyr Boots" "Mesh Boots" "Nightwind Slippers" "Paladin Boots" "Ringmail Boots" "Riveted Boots" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Soldier Boots" "Sorcerer Boots" "Two-Toned Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes" "Zealot Boots"
+    BaseType == "Arcanist Slippers" "Conjurer Boots" "Dreamquest Slippers" "Duskwalk Slippers" "Nightwind Slippers" "Sage Slippers" "Samite Slippers" "Satin Slippers" "Scholar Boots" "Silk Slippers" "Sorcerer Boots" "Velvet Slippers" "Warlock Boots" "Wool Shoes"
     Rarity Normal
     ItemLevel >= 84
     AreaLevel >= 68
@@ -978,7 +978,7 @@ Show
 
 # belt - normal (area 68+)
 Show
-    BaseType == "Leather Belt"
+    Class == "Belts"
     Rarity Normal
     ItemLevel >= 84
     AreaLevel >= 68
@@ -1011,7 +1011,7 @@ Show
 
 # jewel - normal (area 68+)
 Show
-    BaseType == "Cobalt Jewel"
+    BaseType == "Ghastly Eye Jewel"
     Rarity Normal
     ItemLevel >= 84
     AreaLevel >= 68
@@ -1022,7 +1022,7 @@ Show
 
 # weapon - normal (area 68+)
 Show
-    BaseType == "Calling Wand" "Convening Wand" "Convoking Wand"
+    Class == "Wands"
     Rarity Normal
     ItemLevel >= 84
     AreaLevel >= 68
@@ -1033,7 +1033,7 @@ Show
 
 # offhand - normal (area 68+)
 Show
-    BaseType == "Angelic Kite Shield" "Archon Kite Shield" "Branded Kite Shield" "Ceremonial Kite Shield" "Champion Kite Shield" "Etched Kite Shield" "Laminated Kite Shield" "Layered Kite Shield" "Linden Kite Shield" "Mosaic Kite Shield" "Plank Kite Shield" "Reinforced Kite Shield" "Steel Kite Shield"
+    BaseType == "Ancient Spirit Shield" "Bone Spirit Shield" "Brass Spirit Shield" "Chiming Spirit Shield" "Exhausting Spirit Shield" "Fossilised Spirit Shield" "Harmonic Spirit Shield" "Ivory Spirit Shield" "Jingling Spirit Shield" "Lacewood Spirit Shield" "Subsuming Spirit Shield" "Tarnished Spirit Shield" "Thorium Spirit Shield" "Titanium Spirit Shield" "Transfer-attuned Spirit Shield" "Twig Spirit Shield" "Vaal Spirit Shield" "Walnut Spirit Shield" "Yew Spirit Shield"
     Rarity Normal
     ItemLevel >= 84
     AreaLevel >= 68
@@ -1283,12 +1283,12 @@ Hide
 
 # Rare gear - slots this build does not use
 Hide
-    Class == "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Hybrid Flasks" "Abyss Jewels"
+    Class == "Bows" "Claws" "Daggers" "One Hand Axes" "One Hand Maces" "One Hand Swords" "Quivers" "Rune Daggers" "Sceptres" "Staves" "Thrusting One Hand Swords" "Two Hand Axes" "Two Hand Maces" "Two Hand Swords" "Warstaves" "Hybrid Flasks" "Jewels"
     Rarity Rare
 
 # Gear - bases this build does not use
 Hide
-    Class == "Belts" "Body Armours" "Boots" "Gloves" "Helmets" "Jewels" "Shields" "Wands"
+    Class == "Abyss Jewels" "Body Armours" "Boots" "Gloves" "Helmets" "Shields"
 
 # League drops - Viscera
 Show
