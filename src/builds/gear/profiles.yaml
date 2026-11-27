@@ -249,6 +249,93 @@ profiles:
         weapon: { base: "Void Sceptre", affixes: [spell-damage, cast-speed, chaos-damage, dot-multi] }
         offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
 
+  # Cold spells: the same sceptre-and-spirit-shield shell as `spell`, but the
+  # damage roll is cold and the endgame sceptre carries crit multi, because a
+  # cold hit build scales through critical strikes rather than added lightning.
+  cold-spell:
+    starting:
+      slots:
+        weapon: { base: "Driftwood Wand", affixes: [spell-damage] }
+        offhand: { base: "Twig Spirit Shield", affixes: [life] }
+    early:
+      slots:
+        weapon: { base: "Driftwood Wand", affixes: [spell-damage, cold-damage] }
+        offhand: { base: "Yew Spirit Shield", affixes: [life] }
+    leveling:
+      slots:
+        weapon: { base: "Driftwood Wand", affixes: [spell-damage, cold-damage] }
+        offhand: { base: "Bone Spirit Shield", affixes: [life, resist-fire] }
+    ssf-start:
+      slots:
+        weapon: { base: "Opal Sceptre", affixes: [spell-damage, cold-damage, cast-speed] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+    ssf-week1:
+      slots:
+        weapon: { base: "Opal Sceptre", affixes: [spell-damage, cold-damage, cast-speed, crit-multi] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+    trade:
+      slots:
+        weapon: { base: "Void Sceptre", affixes: [spell-damage, cold-damage, cast-speed, crit-multi] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
+
+  # Fire DoT and ignite: a fire sceptre with Damage over Time Multiplier on the
+  # same caster shell. Penance Brand and other ignite spells scale through the
+  # multiplier, not cast speed alone, so the endgame weapon rolls both.
+  fire-dot:
+    starting:
+      slots:
+        weapon: { base: "Driftwood Sceptre", affixes: [fire-damage] }
+        offhand: { base: "Twig Spirit Shield", affixes: [life] }
+    early:
+      slots:
+        weapon: { base: "Driftwood Sceptre", affixes: [fire-damage, cast-speed] }
+        offhand: { base: "Yew Spirit Shield", affixes: [life] }
+    leveling:
+      slots:
+        weapon: { base: "Driftwood Sceptre", affixes: [fire-damage, cast-speed] }
+        offhand: { base: "Bone Spirit Shield", affixes: [life, resist-fire] }
+    ssf-start:
+      slots:
+        weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi, cast-speed] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+    ssf-week1:
+      slots:
+        weapon: { base: "Opal Sceptre", affixes: [fire-damage, dot-multi, cast-speed] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [life, resist-fire, resist-cold] }
+    trade:
+      slots:
+        weapon: { base: "Void Sceptre", affixes: [fire-damage, dot-multi, cast-speed] }
+        offhand: { base: "Chiming Spirit Shield", affixes: [energy-shield-pct, life, resist-cold] }
+
+  # Lightning strike attacks: a two-hand mace. The mace is required by Shockwave
+  # Support, and the added lightning is what Smite converts into its second,
+  # area hit. A two-hander carries the damage the one-hand version cannot.
+  melee-lightning:
+    starting:
+      slots:
+        weapon: { base: "Mallet", affixes: [added-phys, added-lightning-attack] }
+        offhand: null
+    early:
+      slots:
+        weapon: { base: "Steelhead", affixes: [phys-pct, added-phys, added-lightning-attack, attack-speed] }
+        offhand: null
+    leveling:
+      slots:
+        weapon: { base: "Steelhead", affixes: [phys-pct, added-phys, added-lightning-attack, attack-speed] }
+        offhand: null
+    ssf-start:
+      slots:
+        weapon: { base: "Terror Maul", affixes: [phys-pct, added-phys, added-lightning, attack-speed, crit-multi] }
+        offhand: null
+    ssf-week1:
+      slots:
+        weapon: { base: "Coronal Maul", affixes: [phys-pct, added-phys, added-lightning, attack-speed] }
+        offhand: null
+    trade:
+      slots:
+        weapon: { base: "Impact Force Propagator", affixes: [phys-pct, added-phys, added-lightning-attack, attack-speed, crit-multi] }
+        offhand: null
+
   # Righteous Fire: armour, life and fire/DoT on a sceptre and shield. It uses
   # the same strength armour bases as the melee profile, not the caster set.
   rf:
