@@ -21,6 +21,50 @@ const seedsDir = resolve(root, 'src/builds');
 
 const PHASES = ['leveling', 'endgame'] as const;
 
+type TestGem = string | { name: string; maxLevel?: number; note?: string };
+interface TestBracket {
+  until: number;
+  skills?: string[];
+  skillGroups?: { slot: string; gems: TestGem[] }[];
+  flasks?: { slot: string; name: string; note?: string }[];
+}
+interface TestStep {
+  id: string;
+  level: number;
+  main: string;
+  measure: boolean;
+  band?: string;
+  gems?: { slot: string; gems: TestGem[] }[];
+  flasks?: TestBracket['flasks'];
+}
+
+/** A build's steps, measured or not, from either shape. */
+function stepsOf(build: unknown): TestStep[] {
+  const steps = (build as { steps?: { sub: TestStep[] }[] }).steps;
+  return (steps ?? []).flatMap((root) => root.sub ?? []);
+}
+
+/**
+ * The leveling brackets of a build, from either shape (D32-D37). A measured
+ * step is the bracket at its own level, so the "usable by this level" promise
+ * is the same one the old brackets made.
+ */
+function bracketsOf(build: unknown): TestBracket[] {
+  const source = build as {
+    leveling?: { brackets: TestBracket[] };
+    steps?: { sub: TestStep[] }[];
+  };
+  if (source.leveling) return source.leveling.brackets;
+  return stepsOf(source)
+    .filter((step) => step.measure)
+    .map((step) => ({
+      until: step.level,
+      skills: [step.main],
+      ...(step.gems ? { skillGroups: step.gems } : {}),
+      ...(step.flasks ? { flasks: step.flasks } : {}),
+    }));
+}
+
 describe('compiled build seeds', () => {
   it('compiles every YAML seed, and nothing else', () => {
     const seedIds = readdirSync(seedsDir)
@@ -128,10 +172,14 @@ describe('compiled build seeds', () => {
       const full = JSON.parse(
         readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
       ) as {
+        steps?: { sub: TestStep[] }[];
         gates?: Record<string, { gems?: { gems: { name: string; quality?: number }[] }[] }>;
       };
+      const bands = new Map(stepsOf(full).map((step) => [step.id, step.band]));
       for (const [checkpoint, gate] of Object.entries(full.gates ?? {})) {
-        const endgame = checkpoint === 'maps-red' || checkpoint === 'pinnacle';
+        // The band decides, so a renamed step cannot quietly gain quality.
+        const band = bands.get(checkpoint) ?? checkpoint;
+        const endgame = band === 'maps-red' || band === 'pinnacle';
         const expected = endgame || seed.gemQualityFrom === 'leveling' ? 20 : 0;
         for (const group of gate.gems ?? []) {
           for (const gem of group.gems) {
@@ -155,17 +203,23 @@ describe('compiled build seeds', () => {
       const full = JSON.parse(
         readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
       ) as {
+        steps?: { sub: { id: string }[] }[];
         stepPlans?: Record<string, {
           goals: string[];
           lookFor: { slot: string; mods: string[]; note?: string }[];
           crafting?: { slot: string; mods: string[]; note?: string }[];
         }>;
       };
+      // A migrated seed gets one plan per sub-step; one that has not keeps the
+      // six checkpoint keys the committed JSON has always had.
+      const expected = full.steps
+        ? full.steps.flatMap((root) => root.sub.map((step) => step.id))
+        : checkpoints;
       expect(full.stepPlans, `${entry.id} stepPlans`).toBeDefined();
-      expect(Object.keys(full.stepPlans ?? {}).sort(), `${entry.id} checkpoints`).toEqual(
-        [...checkpoints].sort(),
+      expect(Object.keys(full.stepPlans ?? {}).sort(), `${entry.id} steps`).toEqual(
+        [...expected].sort(),
       );
-      for (const checkpoint of checkpoints) {
+      for (const checkpoint of expected) {
         const plan = full.stepPlans?.[checkpoint];
         expect(plan, `${entry.id} ${checkpoint}`).toBeDefined();
         expect(plan?.goals.length, `${entry.id} ${checkpoint} goals`).toBeGreaterThan(0);
@@ -251,18 +305,23 @@ describe('compiled build seeds', () => {
       const full = JSON.parse(
         readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
       ) as {
+        steps?: { sub: TestStep[] }[];
         gates?: Record<string, { pass: boolean; level: number; metrics: { dps: number } }>;
       };
       if (!full.gates) {
         expect(entry.gateSteps, entry.id).toBeUndefined();
         continue;
       }
+      // The band travels with the index step so the catalogue never matches on
+      // a seed-chosen id.
+      const bands = new Map(stepsOf(full).map((step) => [step.id, step.band]));
       expect(entry.gateSteps, entry.id).toEqual(
         Object.entries(full.gates).map(([id, gate]) => ({
           id,
           pass: gate.pass,
           level: gate.level,
           dps: gate.metrics.dps,
+          ...(bands.get(id) ? { band: bands.get(id) } : {}),
         })),
       );
     }
@@ -358,8 +417,8 @@ describe('published build data', () => {
 
   it('gives every leveling bracket a gear slot and at least one gem', () => {
     for (const build of compiled) {
-      expect(build.leveling.brackets.length).toBeGreaterThan(0);
-      for (const bracket of build.leveling.brackets) {
+      expect(bracketsOf(build).length).toBeGreaterThan(0);
+      for (const bracket of bracketsOf(build)) {
         const groups = bracket.skillGroups ?? [];
         expect(groups.length, `until ${bracket.until}`).toBeGreaterThan(0);
         for (const group of groups) {
@@ -374,7 +433,7 @@ describe('published build data', () => {
 
   it('lists realistic flasks for every leveling bracket', () => {
     for (const build of compiled) {
-      for (const bracket of build.leveling.brackets) {
+      for (const bracket of bracketsOf(build)) {
         const flasks = bracket.flasks ?? [];
         expect(flasks.length, `until ${bracket.until}`).toBeGreaterThan(0);
         // A build needs a life flask at every step; utility flasks are optional.
@@ -478,7 +537,7 @@ describe('published build data', () => {
   it('explains what every displayed gem does', () => {
     for (const build of compiled) {
       const info = build.gemInfo ?? {};
-      for (const bracket of build.leveling.brackets) {
+      for (const bracket of bracketsOf(build)) {
         for (const group of bracket.skillGroups ?? []) {
           for (const gem of group.gems) {
             const name = typeof gem === 'string' ? gem : gem.name;
@@ -503,7 +562,7 @@ describe('published build data', () => {
       readFileSync(resolve(root, 'src/generated/gem-levels.json'), 'utf8'),
     ).gems as Record<string, { levels: Record<string, number> }>;
     for (const build of compiled) {
-      for (const swap of build.leveling.swaps ?? []) {
+      for (const swap of build.leveling?.swaps ?? []) {
         const entry = gemLevels[swap.gem];
         expect(entry, `${build.class}: unknown swap gem "${swap.gem}"`).toBeDefined();
         expect(
@@ -511,7 +570,7 @@ describe('published build data', () => {
           `${build.class}: ${swap.gem} needs level ${entry!.levels['1']}, swapped at ${swap.fromLevel}`,
         ).toBeGreaterThanOrEqual(entry!.levels['1']);
         expect(
-          build.leveling.brackets.some((bracket) => bracket.until >= swap.fromLevel),
+          bracketsOf(build).some((bracket) => bracket.until >= swap.fromLevel),
           `${build.class}: ${swap.gem} starts after the last bracket`,
         ).toBe(true);
         if (swap.untilLevel !== undefined) {
@@ -521,9 +580,9 @@ describe('published build data', () => {
           expect(swap.untilLevel).toBeLessThanOrEqual(100);
         }
         if (swap.replaces) {
-          const listed = build.leveling.brackets.some(
+          const listed = bracketsOf(build).some(
             (bracket) =>
-              bracket.skills.includes(swap.replaces!) ||
+              (bracket.skills ?? []).includes(swap.replaces!) ||
               (bracket.skillGroups ?? []).some((group) =>
                 group.gems.some(
                   (gem) => (typeof gem === 'string' ? gem : gem.name) === swap.replaces,
@@ -542,40 +601,41 @@ describe('published build data', () => {
   it('tells Boneshatter players to use Sunder before the main skill unlocks', () => {
     const build = compiled.find((entry) => entry.id === 'boneshatter-juggernaut');
     expect(build, 'boneshatter-juggernaut').toBeDefined();
-    expect(build!.leveling.swaps).toContainEqual({
-      gem: 'Sunder',
-      fromLevel: 12,
-      untilLevel: 28,
-      replaces: 'Cleave',
-      note: expect.any(String),
-    });
+    const steps = stepsOf(build!);
+    const sunder = steps.find((step) => step.main === 'Sunder');
+    expect(sunder, 'Sunder has its own step').toBeDefined();
+    // Boneshatter unlocks at 28, so the step read at 28 is Sunder and the
+    // switch is the step after it.
+    expect(sunder!.level).toBe(28);
+    const next = steps[steps.indexOf(sunder!) + 1];
+    expect(next?.main, 'the step after Sunder').toBe('Boneshatter');
+    expect(next?.level).toBe(38);
   });
 
   it('tells Boneshatter players the 4-link support progression', () => {
     const build = compiled.find((entry) => entry.id === 'boneshatter-juggernaut');
     expect(build, 'boneshatter-juggernaut').toBeDefined();
-    const swaps = build!.leveling.swaps ?? [];
-    // Pulverise is a fifth-link option at 31, and Brutality replaces Added
-    // Fire Damage at 38 because Brutality deals no elemental damage.
-    expect(swaps).toContainEqual({
-      kind: 'support',
-      gem: 'Pulverise',
-      fromLevel: 31,
-      note: expect.any(String),
-    });
-    expect(swaps).toContainEqual({
-      kind: 'support',
-      gem: 'Brutality',
-      fromLevel: 38,
-      replaces: 'Added Fire Damage',
-      note: expect.any(String),
-    });
+    const steps = stepsOf(build!);
+    const bodyOf = (id: string) =>
+      (steps.find((step) => step.id === id)?.gems ?? [])
+        .find((group) => group.slot === 'Body Armour')!
+        .gems.map((gem) => (typeof gem === 'string' ? gem : gem.name));
+
+    // The rough patch: four links, Brutality in, Added Fire Damage out.
+    expect(bodyOf('leveling-28-38')).toEqual([
+      'Boneshatter',
+      'Melee Physical Damage',
+      'Brutality',
+      'Faster Attacks',
+    ]);
+    // The payoff: Pulverise is the fifth link.
+    expect(bodyOf('leveling-38-68')).toContain('Pulverise');
   });
 
   it('names a colour for every gem the guide shows', () => {
     for (const build of compiled) {
       const info = build.gemInfo ?? {};
-      for (const bracket of build.leveling.brackets) {
+      for (const bracket of bracketsOf(build)) {
         for (const group of bracket.skillGroups ?? []) {
           for (const gem of group.gems) {
             const name = typeof gem === 'string' ? gem : gem.name;
@@ -588,7 +648,7 @@ describe('published build data', () => {
 
   it('describes and colours every gem named by a leveling swap', () => {
     for (const build of compiled) {
-      for (const swap of build.leveling.swaps ?? []) {
+      for (const swap of build.leveling?.swaps ?? []) {
         for (const name of [swap.gem, swap.replaces].filter(
           (entry): entry is string => Boolean(entry),
         )) {
@@ -968,13 +1028,19 @@ describe('catalogue chips', () => {
       const build = JSON.parse(
         readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
       ) as {
+        steps?: { sub: TestStep[] }[];
         gates?: Record<
           string,
           { pass: boolean; metrics: { maxHit: number; ehp: number; chaosResist: number } }
         >;
       };
-      const red = build.gates?.['maps-red'];
-      const pinnacle = build.gates?.['pinnacle'];
+      const gateForBand = (band: string) =>
+        build.gates?.[band] ??
+        build.gates?.[
+          stepsOf(build).find((step) => step.measure && step.band === band)?.id ?? ''
+        ];
+      const red = gateForBand('maps-red');
+      const pinnacle = gateForBand('pinnacle');
       const measuredHc =
         Boolean(red?.pass && pinnacle?.pass) &&
         red!.metrics.maxHit >= 10000 &&
@@ -1372,7 +1438,7 @@ describe('leveling availability', () => {
 
   it('never lists a gem before the character can use it', () => {
     for (const build of compiled) {
-      for (const bracket of build.leveling.brackets) {
+      for (const bracket of bracketsOf(build)) {
         for (const group of bracket.skillGroups ?? []) {
           for (const gem of group.gems) {
             const name = typeof gem === 'string' ? gem : gem.name;
@@ -1391,13 +1457,13 @@ describe('leveling availability', () => {
   it('names where each leveling gem comes from for the build class', () => {
     for (const build of compiled) {
       const names = new Set<string>();
-      for (const bracket of build.leveling.brackets) {
+      for (const bracket of bracketsOf(build)) {
         for (const gem of bracket.skills ?? []) names.add(gem);
         for (const group of bracket.skillGroups ?? []) {
           for (const gem of group.gems) names.add(typeof gem === 'string' ? gem : gem.name);
         }
       }
-      for (const swap of build.leveling.swaps ?? []) {
+      for (const swap of build.leveling?.swaps ?? []) {
         names.add(swap.gem);
         if (swap.replaces) names.add(swap.replaces);
       }
@@ -1447,7 +1513,7 @@ describe('leveling availability', () => {
       'poison-ranged-animate-weapon-necromancer',
     ]) {
       const build = compiled.find((entry) => entry.id === id);
-      const main = build?.leveling.brackets.at(-1)?.skills?.[0];
+      const main = build ? bracketsOf(build).at(-1)?.skills?.[0] : undefined;
       expect(build?.gemInfo?.[main!]?.source, `${id}: ${main}`).toEqual({
         kind: 'divine-font',
         act: null,
@@ -1458,7 +1524,7 @@ describe('leveling availability', () => {
 
   it('never lists a flask before it starts dropping', () => {
     for (const build of compiled) {
-      for (const bracket of build.leveling.brackets) {
+      for (const bracket of bracketsOf(build)) {
         for (const flask of bracket.flasks ?? []) {
           const base = baseItems.get(flask.name);
           expect(base, `${build.class}: unknown flask "${flask.name}"`).toBeDefined();
@@ -1473,7 +1539,7 @@ describe('leveling availability', () => {
 
   it('keeps a life flask in every bracket', () => {
     for (const build of compiled) {
-      for (const bracket of build.leveling.brackets) {
+      for (const bracket of bracketsOf(build)) {
         expect(
           (bracket.flasks ?? []).some((flask) => flask.slot === 'life'),
           `${build.class}: until ${bracket.until} has no life flask`,
