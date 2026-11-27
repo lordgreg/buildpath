@@ -2,6 +2,15 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.77.1 — 2026-11-27
+
+Guide tabs name the build, and minion-only rings stay off other builds.
+
+- **Arc Totem Hierophant reaches S+.** The guide now measures Lightning Tendrils of Eccentricity on two Spell Totems, with Arc kept as the four-link open-layout swap. All six checkpoints pass on the standard floors.
+- **Build guide tabs name the build.** The browser title now reads e.g. `Boneshatter Juggernaut · BuildPath build guide`, so several open guides are distinguishable.
+- **Bone Ring is hidden on non-minion builds.** Its implicit only helps minions, so normal, magic and rare Bone Rings are now excluded for the caster, bow, melee and hybrid profiles, including legacy links. Minion builds keep the base and uniques are unaffected.
+- 752 tests.
+
 ## 0.77.0 — 2026-11-27
 
 Leveling levels the gem you can actually have.

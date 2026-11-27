@@ -1,5 +1,5 @@
 {
-  "version": "228e9b7a9d39",
+  "version": "45aad0bd25b6",
   "builds": [
     {
       "id": "absolution-guardian",
@@ -473,19 +473,19 @@
       "class": "Templar",
       "ascendancyId": "hierophant",
       "family": "caster",
-      "mainSkill": "Arc",
-      "summary": "Arc on Spell Totem, with the Hierophant mana and totem package behind it. The totems cast while you move, so the build is easier on the hands than a self-cast Arc and still scales with the same spell gear. No required unique.",
+      "mainSkill": "Lightning Tendrils of Eccentricity",
+      "summary": "The Tendrils totem is the default link: Lightning Tendrils of Eccentricity channels a semicircle in front of the totem, and every fifth pulse is stronger (a much larger area and an automatic critical strike), so the same six-link clears packs and kills bosses from two Spell Totems. The measured damage is per totem. Arc drops into the four-link helmet when an open layout wants a chain more than a frontal pulse. The Hierophant totem package pays for both totems, and no unique is required: a rare six-link, a spell sceptre and capped resistances are the core of the bill. For spread packs, swap Concentrated Effect for Increased Area of Effect or use the Arc helmet.",
       "status": "verified",
-      "seedHash": "6fac601a56a5",
+      "seedHash": "4c78766ba934",
       "calibrated": true,
-      "verifiedAt": "2026-11-27T09:14:53.309Z",
+      "verifiedAt": "2026-11-27T12:22:21.315Z",
       "ratings": {
-        "tankiness": 6,
-        "singleTarget": 5,
-        "clear": 6,
-        "cost": 8
+        "tankiness": 10,
+        "singleTarget": 10,
+        "clear": 9,
+        "cost": 9
       },
-      "medal": "B",
+      "medal": "S+",
       "season": {
         "id": "covens",
         "name": "Covens"
@@ -511,9 +511,19 @@
           "title": "The damage comes from summoned totems, not from self-casting."
         },
         {
+          "label": "Hardcore",
+          "kind": "defence",
+          "title": "Passes the published defensive thresholds at red maps and pinnacle. Still a guide, not a guarantee."
+        },
+        {
           "label": "Dad",
           "kind": "note",
           "title": "Easy to play: low-APM, forgiving and a good build to learn the league with."
+        },
+        {
+          "label": "Boss killer",
+          "kind": "note",
+          "title": "Single-target damage is the build’s defining strength."
         }
       ],
       "steps": [
@@ -527,31 +537,31 @@
           "id": "until-28",
           "pass": true,
           "level": 28,
-          "dps": 77
+          "dps": 773
         },
         {
           "id": "until-68",
           "pass": true,
           "level": 68,
-          "dps": 11149
+          "dps": 31150
         },
         {
           "id": "maps-early",
           "pass": true,
           "level": 80,
-          "dps": 15338
+          "dps": 47283
         },
         {
           "id": "maps-red",
           "pass": true,
           "level": 90,
-          "dps": 39029
+          "dps": 299931
         },
         {
           "id": "pinnacle",
           "pass": true,
           "level": 96,
-          "dps": 70767
+          "dps": 934979
         }
       ],
       "filter": {
