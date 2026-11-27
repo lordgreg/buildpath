@@ -865,777 +865,7 @@
     "core": [],
     "optional": []
   },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Sceptre"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Shield"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "intjewel"
-        ]
-      }
-    }
-  },
   "status": "verified",
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "fire-dot",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Goatman's Horn",
-          "tier": "low",
-          "effect": "(8-12)% increased Area of Effect",
-          "source": "Ungulath",
-          "area": "Act 1",
-          "note": "Area for the fire aura and Fire Trap."
-        },
-        "torso": {
-          "name": "Molten Core",
-          "tier": "low",
-          "effect": "+(14-18)% to Fire Resistance",
-          "source": "Hatebeat",
-          "area": "Act 3",
-          "note": "Fire resistance and a little maximum fire resistance."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "low",
-          "effect": "+(30-50) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life for a build that stands in packs."
-        },
-        "lowerLimb": {
-          "name": "Flaming Goat Hoof",
-          "tier": "low",
-          "effect": "(10-15)% increased Fire Damage",
-          "source": "Abberath",
-          "area": "Act 6",
-          "note": "Fire damage from Act 6."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Goatman's Horn",
-          "tier": "med",
-          "effect": "(15-20)% increased Area of Effect",
-          "source": "Ungulath",
-          "area": "Act 1",
-          "note": "More area is more overlap."
-        },
-        "torso": {
-          "name": "Searing Exarch's Descry",
-          "tier": "fixed",
-          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
-          "source": "Searing Exarch",
-          "area": "Pinnacle / Map Boss",
-          "note": "Physical, cold and lightning hits become fire."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "med",
-          "effect": "+(60-80) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life before damage scaling."
-        },
-        "lowerLimb": {
-          "name": "Flaming Goat Hoof",
-          "tier": "med",
-          "effect": "(20-30)% increased Fire Damage",
-          "source": "Abberath",
-          "area": "Act 6",
-          "note": "Fire damage for the aura."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Goatman's Horn",
-          "tier": "high",
-          "effect": "Area Skills have (6-8)% chance to deal Double Damage",
-          "source": "Ungulath",
-          "area": "Act 1",
-          "note": "Area skills can deal double damage."
-        },
-        "torso": {
-          "name": "Searing Exarch's Descry",
-          "tier": "fixed",
-          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
-          "source": "Searing Exarch",
-          "area": "Pinnacle / Map Boss",
-          "note": "The best defensive torso for a fire build."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "high",
-          "effect": "(5-7)% more Maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "More maximum life."
-        },
-        "lowerLimb": {
-          "name": "Flaming Goat Hoof",
-          "tier": "high",
-          "effect": "1% increased Fire Damage per 20 Strength",
-          "source": "Abberath",
-          "area": "Act 6",
-          "note": "Fire damage per Strength."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Rolling Magma and Flame Wall; life and a 3-link first.",
-        "Do not buy brand gear before Penance Brand is available."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Fire damage",
-            "Spell damage"
-          ],
-          "note": "Any fire sceptre."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "A 3-link is enough."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Movement speed is defence."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Switch to Penance Brand with Deadly Ailments and Unbound Ailments.",
-        "Take the first two labs when they unlock; Shaper of Flames ignites everything."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Fire damage",
-            "Cast speed"
-          ],
-          "note": "A rare fire sceptre."
-        },
-        {
-          "slot": "Shield",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Stay defensive; the ignite does the damage."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "4-link",
-            "Life"
-          ],
-          "note": "Four links carry the brand."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Fire damage"
-          ],
-          "note": "Bench fire damage on a free prefix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Five-link the brand and reach 2,000 life; cap elemental resistances first.",
-        "Add Burning Damage and keep Flame Wall for the added fire damage."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Fire damage",
-            "Damage over time multiplier",
-            "Cast speed"
-          ],
-          "note": "The sceptre is the damage slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Five links."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Fire damage"
-          ],
-          "note": "Life before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "Reach 3,000 life and cap resistances in white maps.",
-        "Add Determination and a mana flask until the cost is comfortable."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Fire damage",
-            "Damage over time multiplier",
-            "Cast speed"
-          ],
-          "note": "DoT sceptre."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the six-link."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Resistances before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Rings",
-          "mods": [
-            "Elemental resistances"
-          ],
-          "note": "Bench the resistance the gear is missing."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Ignite Proliferation is the clear link; Swiftbrand speeds the detonation."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Fire Skill Gems",
-            "Fire damage",
-            "Damage over time multiplier"
-          ],
-          "note": "+1 fire gems is the red-map goal."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Six-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Fire damage",
-            "Life"
-          ],
-          "note": "Damage over time first."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Damage over time multiplier"
-          ],
-          "note": "Bench DoT multiplier."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 gems and keep a +1 fire gems sceptre for bosses."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Fire Skill Gems",
-            "Fire damage",
-            "Damage over time multiplier"
-          ],
-          "note": "Gem levels and DoT multi together."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "+1 to Level of all Fire Skill Gems",
-            "Damage over time multiplier",
-            "Life"
-          ],
-          "note": "The amulet carries gem levels."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Fire damage",
-            "Life"
-          ],
-          "note": "Keep life."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Fire Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills gain 39% of Physical Damage as Extra Fire Damage"
-      ],
-      "tags": [
-        "fire",
-        "physical"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Fire Damage",
-      "qualityWorth": "recommended"
-    },
-    "Arcane Surge": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Arcane Surge lasts 4 seconds",
-        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
-        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
-        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
-      ],
-      "tags": [
-        "arcane",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Burning Damage": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills deal 34% more Burning Damage"
-      ],
-      "tags": [
-        "fire"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Burning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Controlled Destruction": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 80% less Critical Strike Chance",
-        "Supported Skills deal 39% more Spell Damage"
-      ],
-      "tags": [
-        "critical",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Deadly Ailments": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "vendor",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills deal 80% less Damage with Hits",
-        "Supported Skills deal 44% more Damage with Ailments"
-      ],
-      "tags": [],
-      "qualityEffect": "Supported Skills deal % increased Damage over Time",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Flame Wall": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Create a wall of fire for a duration, which deals burning damage to everything in its area. Each enemy that enters the wall also receives a secondary burning debuff which persists for a short duration after leaving the wall. Any projectiles fired through the wall by you and allies deal added fire damage and apply the wall's secondary debuff on hit.",
-      "effect": [
-        "Maximum 3 Flame Walls at a time",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 778.7 Base Fire Damage per second",
-        "Secondary Debuff Deals 2595.7 Base Fire Damage per second",
-        "Projectiles which pass through the wall deal 78 to 117 Added Fire Damage",
-        "Base secondary duration is 2.00 seconds",
-        "Wall will be 5.9 meters long",
-        "Base duration is 4.90 seconds"
-      ],
-      "tags": [
-        "area",
-        "duration",
-        "fire",
-        "spell"
-      ],
-      "qualityEffect": "Maximum Flame Walls at a time",
-      "qualityWorth": "recommended"
-    },
-    "Ignite Proliferation": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Ignites caused by Supported Skills spread to other Enemies within 2 metres",
-        "Supported Skills deal 24% more Damage with Ignite"
-      ],
-      "tags": [
-        "area",
-        "fire"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Fire Damage",
-      "qualityWorth": "recommended"
-    },
-    "Penance Brand": {
-      "requiredLevel": 28,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Sever the Right Hand"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy. When the branded enemy reaches 20 energy, a large explosion occurs and the brand is removed. All energy is removed from the enemy when the brand is detached.",
-      "effect": [
-        "Activates every 0.1 seconds while Attached",
-        "Can be Detached for a total Duration of 6.00 seconds",
-        "50% of Physical Damage Converted to Lightning Damage",
-        "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
-        "Deals 2795 to 4192 Physical Damage"
-      ],
-      "tags": [
-        "area",
-        "brand",
-        "duration",
-        "lightning",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "Deals % more Damage with Hits against Branded Enemy",
-      "qualityWorth": "recommended"
-    },
-    "Rolling Magma": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
-      "effect": [
-        "Projectiles can Chain when impacting the ground\nProjectiles do not change direction when Chaining",
-        "Deals 1215 to 1822 Fire Damage",
-        "Chains +3 Times",
-        "+0.4 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "chaining",
-        "fire",
-        "projectile",
-        "spell"
-      ],
-      "qualityEffect": "Chains Times",
-      "qualityWorth": "optional"
-    },
-    "Swiftbrand": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 65% less Attached Duration",
-        "Supported Skills have 65% less Detached Duration",
-        "Supported Skills have 44% more Activation frequency"
-      ],
-      "tags": [
-        "brand"
-      ],
-      "qualityEffect": "Supported Skills have % more Activation frequency",
-      "qualityWorth": "optional"
-    },
-    "Unbound Ailments": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "54% increased Duration of Ailments inflicted with Supported Skills",
-        "Supported Skills deal 19% more Damage with Ailments",
-        "Supported Skills have 54% increased Effect of non-Damaging Ailments on Enemies"
-      ],
-      "tags": [],
-      "qualityEffect": "% increased Duration of Ailments inflicted with Supported Skills",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "a5cf78841ad1",
-  "medal": "A",
-  "stale": {
-    "status": "waiting-for-pob",
-    "reason": "This build has not been verified against a patch fact set."
-  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -8171,6 +7401,7 @@
       }
     }
   },
+  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
@@ -8184,7 +7415,778 @@
       "pinnacle": "eJzVWttu2zgTvq6fghCwwC7KNOJRVBF3YTvHbpymcQ5tbwLaom0mlORKtBP36X9QsmMltR3n3xbbJgDBwzccfjPkiBp55-_72ICJynKdJnUPvfE9oJJeGulkUPcuzve3hPf3u9rOqbTDD_3mWBs38q72aqeoA6MmytS9kHvAymyg7OV8KnLte6BnZJ6fyFjVvStte0MPyLynkqi16N8zKlaJlUbn1gOx1Ekn7d0qe5Cl41HdQx7oyiTStu6dpInywEgmdqjSpC1v0uwgjeqeGScy03llSCezoUE2tsPbsfHARKu7dhqputdqHLc63rvaq1c7p0ZOVdax0oLcSlv3Wmnc1YmKdk87HphIM1Z1j4WYBW9YKELBhAi97eWi56mV5v-QO9Z99SAjfB6sAu4lKhtMO0OtTPQggAQXa1e0d3j6ACYiFOhNGARM-IijVXKnw2mue9K05b2Ox_GhtufyViULnb5gdJXwvs7UmcoLZ87wAV8FbqUmegpmqw01GNpEJ4ONJVpDmeYbo9syka20AkU-WYe9SDKVq2yiFt4g_kq7dEaqAsRvMF_8lS7f2S6OlKudZ0oB2bN6ojoj1XOnoJjVNYDNlKqcMjI_ZkdR3SOPDpjr8T2QpJHK654QDCKfIIiwTyAKeACRwBgSxANIOOOQIkEhJWEAKfMxpCEKIAsogUxgArnPMOSY-JATFkJOKYc84BQGCGEYECFgEBIBRUgFDIngMBRBAJFf6PRp6EPks4BBhCj2IcIBERAR3w8hIsXiqM8CiJjPKUSM-gwi7mMCEQ-cVBAQVwqMIBIBDyESgjOIQha6khMGsc8odyVDEPuCYYgR8ZEriQ8xoohAjHggIEbC4VHIBMSUYAox812do5BDzBkmEPOA-hAHzlw44CyEOAiEgDhEYQiJjzGDBImAQYIx8iEhNAghIU6KkIAxVwoCCeUcQcJESJ2dKXalYJBwTlxPSENIAoQoJAHjrs4DBEkQOi0ChT4kIacCUh-HCFKfcFyUzmGYE0gRDTCkKBQhpJjTEFJKsSu5zyGlIWOQ8hD5kAaYIUhFMYMIAgFpiBmFzBccQ0YQEq7EBDKCUVEGIWSU0gAyhouSCgYZc1oYC30OWYBCt00wdnXMqdstbh6BqatTH7uShpD7JBSQI1SU2O0hRLAPOaLI1TkjkCNBKOSOPOQkDDjkzCe02P6vdi7OjovKq6G1o_zt9vbd3d2bkbTDtK_utVFvemm8PZJ5ridqK7_Vxmy507LdaDQazUG7Ed2doGajt5ffdZPmPW1_umNHe_uDs-Ozg6u9bxdX3Xt5vc8_fr4c3nw66FDZbU6ODk_u-g197L__J41Npzf55zQdnU-nvXbvaOqffw5Pxrcc797Zj5-j_TP_Kupc7r_PL6bH58cnHz-a5uHFp7Pzk8uTzgW_vMjM5fFl70u_eXCov5izJMZDX96e5C08bfcGId77NN3tR_-07ulpexCOd0MamZtd-WGSBqOb-68fL7_s8tv84Pw9O5uYDpf0PbpJ5Nco-7o3SQet26aUX7LPeHz6datrv3F6G3z7Okmzxpdcjr-R4HQgriO_ef3pW6hDfHUoP9vQEpr18w8nXyk9vz0an53xrWCyOw6PA3oz4de7l-Jzxk6uk_R6kDYajXq9cMT23BM75cM6L90yaxURxwUfFy08oK2KXQvNngPf44pTVwEGq4DFkakAxSpgcTIqwHAVsNh8CyD2VwNFVTWePT5f7WxXTLCz7UJ0EcxdDHeVjtuG5WBRBSqRXaOiumezsfJAblJb95ppNAWNLE7HWXkJapTR30nMw_-rnQMVg0Gpv62sjKSV20dWxfn2gSsK9IGKT1Uik55qZjKJPFCcg5eJJDKePXhm_WA2MLvuYeSBr2NptJ0WJps3nJZd1ZdjY72nPJeQ2n4Rq854NEoz27nTfdvdhFqJd5IVkQW1au8vwGtXychMG9q423C-MbenYgt-5QhYDP0CJJvjzN3gdmUsB2pjjkdJL1MyV9ET8QXX2QCYj_wCVI8GibbqNEuN7qtMWp0mmxNeJrtgWw6DJ-O_AOeLpJuOk-jFm_g7uQXX2dDP3cY7JZHngvSVkqM0AejfR-h9I2N1JY3ZMDxX8AvTFJ2g7P0vnV-sY1fmw5eQKfFPyZS9_52H52_X_9a_u8qqLNbJRsd-uUw1kD8a-C9d3TIy03a6IaMH9ILLQ9dP9fGsls_fpS-1ugPf0jT-VLwQu9rnh9pxuRLiPVzbHNw1Ckqz93BX7yj78Cru2kCXt9p3tbOC1Vtw1jjbq3WmLg2V61xF4EbdKQNQrZV2pbHgvWvWCtlC7VsgeO0oHhnd0zZ_C_xa8AfQ88cdiMsMDHA5ohri1SGXZ5k97mqv-R_AprMWSCcqA-c6VqA9NlaPjFZZjVZlWzK3oEhIFFZzy3nCKXieE_7dOInnOZHfjVP4PCf6m3HC_vOc2O_GCT3Pif9mnNZSuituSrXLVEeg01Mjm6mnjD6Wgf4twP5jdsxfyQGzZ0kg9jLPrGOR9vtDmUS11lDH7u2iM9KZtqC8JGzMhz_iU2bx53O8Rr7vGD1y4mta0nTZcVCmr907-AoGZB2DoTKxsrXDcTfTOWjprGeU3XDluNbWiU6THAzlRIE_sdjC4V-rtx6uDrkEuVu7yibFtQXs9fu6p1XSm4K0D8rH83r6hecr9F9mFrrOLN00mtYupTTgTA2k0XKdSWbpnbegufXw_9hOf2Kyhekj06h-X_Wso_qh31eZTgZ57fWfiG0h_lfBQhoDHj59VeisMMraTTQzzMMHkuetw9ZZZ2DSicprnTTrqUxl4KBsv3TXREqaZbtmfpiR_wfoDYvskk2BexnMVJ6702pMBfSzNsjaa1s3TW3FAs2iuakB0CNftdNJ4eVZGHp8TBwftwdVMnuNB5m0qkbWzfDajTqa7uvWMv4v2Adr73ldZWytNZQ6AU1X3TTgvcxpq9gsX_DaS5yMxy68fUim96BR1jdeMy2WfJRYZYweqGJp63gsNfILyay9vbmYgWofRi466GTwk6z_A9mgtRc3Rwf_aDpPT_oPpVO94LQbB0etR3xc5g30jcxva7t6ohNVnuX9omdTcis047WaY_doLTXvWZUl0pRP2x-imqxVPbbazTbTfpDJIg_5QxTTFyj-OJaZ_fZj9LIX6G3Eyg6nuf23mjvKzq7QwGprVCXVMc5VR_XSJCpzjUXGoS9Nrmb5p45JbZFOqWYjH75yzbM536Nw5cvVEtRhcU9cYMgSzKNPVHMgXQIs7wsLDFs6WWorEL4MokxlRcESRBnjFxixBOOCTdVG4SpMxULIXwIqfP7I2sib5YZmialVMtWZ8YYy1W-XZEOZ6odRuqEMq8iwZTLl1u0oW2THioyYq7XSpK8H5Y5ORuP5pCpR8bQ4Eh5IxnFXZXVPzH8T8x1wbyLzMtc5h6LZ99ed7bmCne2nPz37HywjCWI="
     }
   },
-  "patch": "3.30.0",
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:54:42.928Z"
+  },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Sceptre"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Shield"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "intjewel"
+        ]
+      }
+    }
+  },
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "fire-dot",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Goatman's Horn",
+          "tier": "low",
+          "effect": "(8-12)% increased Area of Effect",
+          "source": "Ungulath",
+          "area": "Act 1",
+          "note": "Area for the fire aura and Fire Trap."
+        },
+        "torso": {
+          "name": "Molten Core",
+          "tier": "low",
+          "effect": "+(14-18)% to Fire Resistance",
+          "source": "Hatebeat",
+          "area": "Act 3",
+          "note": "Fire resistance and a little maximum fire resistance."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "low",
+          "effect": "+(30-50) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life for a build that stands in packs."
+        },
+        "lowerLimb": {
+          "name": "Flaming Goat Hoof",
+          "tier": "low",
+          "effect": "(10-15)% increased Fire Damage",
+          "source": "Abberath",
+          "area": "Act 6",
+          "note": "Fire damage from Act 6."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Goatman's Horn",
+          "tier": "med",
+          "effect": "(15-20)% increased Area of Effect",
+          "source": "Ungulath",
+          "area": "Act 1",
+          "note": "More area is more overlap."
+        },
+        "torso": {
+          "name": "Searing Exarch's Descry",
+          "tier": "fixed",
+          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
+          "source": "Searing Exarch",
+          "area": "Pinnacle / Map Boss",
+          "note": "Physical, cold and lightning hits become fire."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "med",
+          "effect": "+(60-80) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life before damage scaling."
+        },
+        "lowerLimb": {
+          "name": "Flaming Goat Hoof",
+          "tier": "med",
+          "effect": "(20-30)% increased Fire Damage",
+          "source": "Abberath",
+          "area": "Act 6",
+          "note": "Fire damage for the aura."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Goatman's Horn",
+          "tier": "high",
+          "effect": "Area Skills have (6-8)% chance to deal Double Damage",
+          "source": "Ungulath",
+          "area": "Act 1",
+          "note": "Area skills can deal double damage."
+        },
+        "torso": {
+          "name": "Searing Exarch's Descry",
+          "tier": "fixed",
+          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
+          "source": "Searing Exarch",
+          "area": "Pinnacle / Map Boss",
+          "note": "The best defensive torso for a fire build."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "high",
+          "effect": "(5-7)% more Maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "More maximum life."
+        },
+        "lowerLimb": {
+          "name": "Flaming Goat Hoof",
+          "tier": "high",
+          "effect": "1% increased Fire Damage per 20 Strength",
+          "source": "Abberath",
+          "area": "Act 6",
+          "note": "Fire damage per Strength."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Rolling Magma and Flame Wall; life and a 3-link first.",
+        "Do not buy brand gear before Penance Brand is available."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Fire damage",
+            "Spell damage"
+          ],
+          "note": "Any fire sceptre."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "A 3-link is enough."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Movement speed is defence."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Switch to Penance Brand with Deadly Ailments and Unbound Ailments.",
+        "Take the first two labs when they unlock; Shaper of Flames ignites everything."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Fire damage",
+            "Cast speed"
+          ],
+          "note": "A rare fire sceptre."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Stay defensive; the ignite does the damage."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "4-link",
+            "Life"
+          ],
+          "note": "Four links carry the brand."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Fire damage"
+          ],
+          "note": "Bench fire damage on a free prefix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Five-link the brand and reach 2,000 life; cap elemental resistances first.",
+        "Add Burning Damage and keep Flame Wall for the added fire damage."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Fire damage",
+            "Damage over time multiplier",
+            "Cast speed"
+          ],
+          "note": "The sceptre is the damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Five links."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Fire damage"
+          ],
+          "note": "Life before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "Reach 3,000 life and cap resistances in white maps.",
+        "Add Determination and a mana flask until the cost is comfortable."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Fire damage",
+            "Damage over time multiplier",
+            "Cast speed"
+          ],
+          "note": "DoT sceptre."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the six-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Resistances before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Rings",
+          "mods": [
+            "Elemental resistances"
+          ],
+          "note": "Bench the resistance the gear is missing."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Ignite Proliferation is the clear link; Swiftbrand speeds the detonation."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Fire Skill Gems",
+            "Fire damage",
+            "Damage over time multiplier"
+          ],
+          "note": "+1 fire gems is the red-map goal."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Six-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Fire damage",
+            "Life"
+          ],
+          "note": "Damage over time first."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Damage over time multiplier"
+          ],
+          "note": "Bench DoT multiplier."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 gems and keep a +1 fire gems sceptre for bosses."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Fire Skill Gems",
+            "Fire damage",
+            "Damage over time multiplier"
+          ],
+          "note": "Gem levels and DoT multi together."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "+1 to Level of all Fire Skill Gems",
+            "Damage over time multiplier",
+            "Life"
+          ],
+          "note": "The amulet carries gem levels."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Fire damage",
+            "Life"
+          ],
+          "note": "Keep life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Fire Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills gain 39% of Physical Damage as Extra Fire Damage"
+      ],
+      "tags": [
+        "fire",
+        "physical"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Fire Damage",
+      "qualityWorth": "recommended"
+    },
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Burning Damage": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal 34% more Burning Damage"
+      ],
+      "tags": [
+        "fire"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Burning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Controlled Destruction": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 80% less Critical Strike Chance",
+        "Supported Skills deal 39% more Spell Damage"
+      ],
+      "tags": [
+        "critical",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Deadly Ailments": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal 80% less Damage with Hits",
+        "Supported Skills deal 44% more Damage with Ailments"
+      ],
+      "tags": [],
+      "qualityEffect": "Supported Skills deal % increased Damage over Time",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Flame Wall": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Create a wall of fire for a duration, which deals burning damage to everything in its area. Each enemy that enters the wall also receives a secondary burning debuff which persists for a short duration after leaving the wall. Any projectiles fired through the wall by you and allies deal added fire damage and apply the wall's secondary debuff on hit.",
+      "effect": [
+        "Maximum 3 Flame Walls at a time",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 778.7 Base Fire Damage per second",
+        "Secondary Debuff Deals 2595.7 Base Fire Damage per second",
+        "Projectiles which pass through the wall deal 78 to 117 Added Fire Damage",
+        "Base secondary duration is 2.00 seconds",
+        "Wall will be 5.9 meters long",
+        "Base duration is 4.90 seconds"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "fire",
+        "spell"
+      ],
+      "qualityEffect": "Maximum Flame Walls at a time",
+      "qualityWorth": "recommended"
+    },
+    "Ignite Proliferation": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Ignites caused by Supported Skills spread to other Enemies within 2 metres",
+        "Supported Skills deal 24% more Damage with Ignite"
+      ],
+      "tags": [
+        "area",
+        "fire"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Fire Damage",
+      "qualityWorth": "recommended"
+    },
+    "Penance Brand": {
+      "requiredLevel": 28,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Sever the Right Hand"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, adding energy to the branded enemy. When the branded enemy reaches 20 energy, a large explosion occurs and the brand is removed. All energy is removed from the enemy when the brand is detached.",
+      "effect": [
+        "Activates every 0.1 seconds while Attached",
+        "Can be Detached for a total Duration of 6.00 seconds",
+        "50% of Physical Damage Converted to Lightning Damage",
+        "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+        "Deals 2795 to 4192 Physical Damage"
+      ],
+      "tags": [
+        "area",
+        "brand",
+        "duration",
+        "lightning",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "Deals % more Damage with Hits against Branded Enemy",
+      "qualityWorth": "recommended"
+    },
+    "Rolling Magma": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
+      "effect": [
+        "Projectiles can Chain when impacting the ground\nProjectiles do not change direction when Chaining",
+        "Deals 1215 to 1822 Fire Damage",
+        "Chains +3 Times",
+        "+0.4 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "chaining",
+        "fire",
+        "projectile",
+        "spell"
+      ],
+      "qualityEffect": "Chains Times",
+      "qualityWorth": "optional"
+    },
+    "Swiftbrand": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 65% less Attached Duration",
+        "Supported Skills have 65% less Detached Duration",
+        "Supported Skills have 44% more Activation frequency"
+      ],
+      "tags": [
+        "brand"
+      ],
+      "qualityEffect": "Supported Skills have % more Activation frequency",
+      "qualityWorth": "optional"
+    },
+    "Unbound Ailments": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "54% increased Duration of Ailments inflicted with Supported Skills",
+        "Supported Skills deal 19% more Damage with Ailments",
+        "Supported Skills have 54% increased Effect of non-Damaging Ailments on Enemies"
+      ],
+      "tags": [],
+      "qualityEffect": "% increased Duration of Ailments inflicted with Supported Skills",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "a5cf78841ad1",
   "guide": {
     "summary": {
       "text": "Penance Brand Ignite measures 43.9k at red maps and 59.3k at pinnacle. One detonation ignites the pack, and Shaper of Flames makes every hit able to start it; no unique is required.",
@@ -8231,11 +8233,5 @@
       "factsHash": "ae0a9fdd02fe2437"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T12:54:42.928Z"
-  }
+  "medal": "A"
 }

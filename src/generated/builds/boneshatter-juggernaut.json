@@ -1110,844 +1110,6 @@
     "optional": []
   },
   "status": "verified",
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league.",
-        "The two-handed gear profile no longer inherits a shield; armour rolls and a chaos belt raise life, EHP and max hit at every map checkpoint.",
-        "Weapon-scoped tree targets stop points going to one-hand and mace-crit notables under Resolute Technique.",
-        "Herald of Purity, Vulnerability, Added Fire Damage and a Silver Flask raise measured DPS across the leveling and map steps; re-rated S+.",
-        "The weapon carries mana leech so the Herald of Purity and Determination reservation is playable; CWDT stays level 5 and the triggered gems are capped to it.",
-        "A mana flask covers the 28-67 stretch before the rare axe can carry leech; the gate report now publishes unreserved mana and mana cost at every step.",
-        "Small armour slots use the glove/boot armour scale and a Leather Belt; the Melee Splash swap is part of the maps-red plan, not a hidden rating claim.",
-        "The leveling filter hides Chain Belts and normal/magic Paua Rings; rare Paua Rings still show, because a rare can roll life and resists.",
-        "Step plans stop recommending crit multi on a Resolute Technique build and stop calling the 5-link a 6-link."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "physical-melee",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "low",
-          "effect": "(10-15)% increased Global Physical Damage",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "Global physical damage."
-        },
-        "torso": {
-          "name": "Bonestalker's Ribcage",
-          "tier": "low",
-          "effect": "(4-5)% reduced Physical Damage taken over time",
-          "source": "Boneshaper",
-          "area": "Act 2",
-          "note": "Physical DoT reduction for Boneshatter."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "low",
-          "effect": "Adds (2-4) to (5-7) Physical Damage to Attacks",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "Flat physical damage to attacks."
-        },
-        "lowerLimb": {
-          "name": "Captain's Leg",
-          "tier": "low",
-          "effect": "(3-4)% increased Movement Speed",
-          "source": "Guard Captain",
-          "area": "Act 3",
-          "note": "Movement speed."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "med",
-          "effect": "(20-30)% increased Global Physical Damage",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "More global physical damage."
-        },
-        "torso": {
-          "name": "Bonestalker's Ribcage",
-          "tier": "med",
-          "effect": "(6-7)% reduced Physical Damage taken over time",
-          "source": "Boneshaper",
-          "area": "Act 2",
-          "note": "Physical DoT reduction."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "med",
-          "effect": "Adds (8-12) to (15-18) Physical Damage to Attacks",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "Flat physical damage to attacks."
-        },
-        "lowerLimb": {
-          "name": "Pocked Leg",
-          "tier": "med",
-          "effect": "(35-50)% increased Armour from Equipped Helmet and Gloves",
-          "source": "Pikerivet",
-          "area": "Act 4",
-          "note": "Armour from helmet and gloves."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "high",
-          "effect": "Hits have (30-50)% chance to ignore Enemy Physical Damage Reduction",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "Hits can ignore enemy physical damage reduction."
-        },
-        "torso": {
-          "name": "Searing Exarch's Descry",
-          "tier": "fixed",
-          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
-          "source": "Searing Exarch",
-          "area": "Pinnacle / Map Boss",
-          "note": "Physical hits are taken as fire, which you can resist."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "high",
-          "effect": "(10-12)% more Maximum Physical Attack Damage",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "More maximum physical attack damage."
-        },
-        "lowerLimb": {
-          "name": "Lithic Haunches",
-          "tier": "high",
-          "effect": "(10-15)% chance to Avoid Physical Damage from Hits",
-          "source": "Boulderback",
-          "area": "Act 9",
-          "note": "Chance to avoid physical damage from hits."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Cleave and Added Fire Damage; Boneshatter unlocks at 28, so do not buy for it yet.",
-        "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Highest physical DPS",
-            "Attack speed"
-          ],
-          "note": "A rare axe is better than any unique here."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "A 3-link is enough."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Movement speed is defence while leveling."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Attack speed"
-          ],
-          "note": "Bench attack speed if the axe has a free suffix."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Swap to Boneshatter and self-cast Vulnerability; keep Enduring Cry on a movement or left-click bind.",
-        "The trauma stacks are the damage; do not stand in the hit.",
-        "Keep a mana flask: the magic axe cannot carry leech, and the auras already reserve most of the bar."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "The weapon is the build."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "4-link is enough."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Fix resists before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %"
-          ],
-          "note": "Bench physical damage % on a free prefix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "5-link Boneshatter and reach 2,000 life; the 6-link is the maps-red step, not this one.",
-        "Take the labs when they unlock; Unbreakable is the normal-lab defence step."
-      ],
-      "lookFor": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "The 5-link is enough for the campaign; do not pay for a 6-link yet."
-        },
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "Do not replace a good rare with a worse unique."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed",
-            "Physical damage"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "A 5-link clears white maps; start the 6-link and upgrade the weapon.",
-        "Reach 3,000 life, cap resistances and fit Herald of Purity with Determination."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed",
-            "Mana leech"
-          ],
-          "note": "Mana leech is what pays for attacks under the reservation auras."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the 6-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed",
-            "Physical damage"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Attack speed"
-          ],
-          "note": "Bench attack speed if the weapon has a free suffix."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 5,500 life and 12,500 max hit.",
-        "Herald of Purity is the damage aura and a level-capped Vulnerability rides on Cast when Damage Taken.",
-        "Swap Close Combat for Melee Splash on pack-heavy maps; keep Close Combat for bosses."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed",
-            "Mana leech"
-          ],
-          "note": "Upgrade the weapon before the jewellery; mana leech keeps the reservation playable."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Armour",
-            "Elemental resistances"
-          ],
-          "note": "6-link is the red-map gate; armour is the other half of max hit."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed",
-            "Physical damage"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %"
-          ],
-          "note": "Bench physical damage %."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 7,000 life.",
-        "Keep Herald of Purity and Vulnerability up; the measured pinnacle uses 21/20 gems, and 20/20 is the budget version."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed",
-            "Mana leech"
-          ],
-          "note": "The endgame weapon is the last big purchase; do not drop mana leech."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Life",
-            "Chaos resistance",
-            "Physical damage"
-          ],
-          "note": "Fix chaos resistance on the amulet."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed",
-            "Physical damage"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Fire Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills gain 39% of Physical Damage as Extra Fire Damage"
-      ],
-      "tags": [
-        "fire",
-        "physical"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Fire Damage",
-      "qualityWorth": "recommended"
-    },
-    "Blood and Sand": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts a buff that grants different bonuses to melee skills depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance.",
-      "effect": [
-        "Melee Skills have 5% less Area of Effect while in Blood Stance",
-        "Melee Skills deal 5% less Area Damage while in Sand Stance",
-        "190% increased Cooldown Recovery Rate",
-        "Melee Skills deal 27% more Area Damage while in Blood Stance",
-        "Melee Skills have 27% more Area of Effect while in Sand Stance"
-      ],
-      "tags": [
-        "low_max_level",
-        "spell",
-        "stance"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Boneshatter": {
-      "requiredLevel": 28,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Sever the Right Hand"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Attack enemies with a forceful melee strike that also hurts you. Successive uses will raise the damage dealt both to enemies and you. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
-      "effect": [
-        "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
-        "Gain 1 Trauma the first time this Attack Hits an Enemy\nTake 194 Physical Damage per Trauma when you gain Trauma\nTrauma lasts 6.0 seconds",
-        "158 to 238 Added Physical Damage",
-        "6% more Damage per Trauma"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "duration",
-        "melee",
-        "physical",
-        "strike"
-      ],
-      "qualityEffect": "% more Damage per Trauma",
-      "qualityWorth": "recommended"
-    },
-    "Brutality": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "reward",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills deal no Elemental Damage",
-        "Supported Skills deal no Chaos Damage",
-        "Supported Skills deal 39% more Physical Damage"
-      ],
-      "tags": [
-        "physical"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Physical Damage",
-      "qualityWorth": "recommended"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Cleave": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "r",
-      "support": false,
-      "description": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
-      "effect": [
-        "When Dual Wielding, Deals 60% Damage from each Weapon combined"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee"
-      ],
-      "qualityEffect": "metres to radius per Nearby Enemy, up to a maximum of +1 metre",
-      "qualityWorth": "recommended"
-    },
-    "Close Combat": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills grant Combat Rush on Hit\nCombat Rush lasts 2 seconds or until you use a Travel Skill",
-        "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
-        "Supported Skills can only be used with Axes or Swords",
-        "Supported Skills deal up to 39% more Melee Damage to Enemies, based on proximity"
-      ],
-      "tags": [
-        "attack",
-        "duration",
-        "melee"
-      ],
-      "qualityEffect": "% increased Damage with Hits to Close Range Enemies",
-      "qualityWorth": "recommended"
-    },
-    "Decoy Totem": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Summons a totem that taunts nearby monsters to attack it.",
-      "effect": [
-        "Totem lasts 8 seconds",
-        "Totems Summoned by this Skill cannot Evade",
-        "Summons a Totem which uses this Skill"
-      ],
-      "tags": [
-        "area",
-        "spell",
-        "totem"
-      ],
-      "qualityEffect": "% more Totem Life",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Enduring Cry": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
-      "effect": [
-        "Grants 1 Endurance Charge per 5 Power to you and Allied Players",
-        "Buff grants 2% of Life Regenerated per second per\n5 power, counting a maximum of 25 Power",
-        "Counts total Power of Enemies in Range",
-        "38% increased Warcry Speed",
-        "Base duration is 3.40 seconds"
-      ],
-      "tags": [
-        "area",
-        "duration",
-        "warcry"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Faster Attacks": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 44% increased Attack Speed"
-      ],
-      "tags": [
-        "attack"
-      ],
-      "qualityEffect": "Supported Skills have % increased Attack Speed",
-      "qualityWorth": "recommended"
-    },
-    "Herald of Purity": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "vendor",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Grants a buff which lets you deal more physical damage. When you kill an enemy while you have this buff, this skill will summon a Sentinel of Purity, or refresh the duration and life of an existing one instead if you have the maximum number of them. The Sentinels of Purity have a single-target melee attack and an area melee attack.",
-      "effect": [
-        "Maximum 4 Summoned Sentinels of Purity",
-        "20% chance to Summon a Sentinel of Purity when you Hit a Rare or Unique Enemy",
-        "Base duration is 12.00 seconds",
-        "Summon a Sentinel of Purity when you Kill an Enemy",
-        "Buff grants 12% more Physical Damage",
-        "Minions deal 95% more Physical Damage",
-        "Minions have 38% more Maximum Life"
-      ],
-      "tags": [
-        "duration",
-        "herald",
-        "minion",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "Minions have % increased Cooldown Recovery Rate",
-      "qualityWorth": "recommended"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "Breaking the Seal"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Leap Slam": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
-      "effect": [
-        "+0.55 seconds to Attack Time",
-        "Base radius is 1.5 metres",
-        "Damaging Hits always Stun Enemies that are on Full Life",
-        "39% increased Stun Duration against Enemies that are on Full Life"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee",
-        "movement",
-        "slam",
-        "travel"
-      ],
-      "qualityEffect": "% increased Stun Duration against Enemies that are on Full Life",
-      "qualityWorth": "recommended"
-    },
-    "Melee Physical Damage": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 10% less Attack Speed",
-        "Supported Skills deal 49% more Melee Physical Damage",
-        "Supported Skills deal 49% more Damage with Bleeding and Poison caused by Melee Hits"
-      ],
-      "tags": [
-        "attack",
-        "melee",
-        "physical"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Melee Physical Damage",
-      "qualityWorth": "recommended"
-    },
-    "Pulverise": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 15% less Attack Speed",
-        "Supported Skills deal 49% more Melee Area Damage",
-        "Supported Skills have 34% increased Area of Effect"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee"
-      ],
-      "qualityEffect": "Supported Skills have % increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Sunder": {
-      "requiredLevel": 12,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Siren's Cadence"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Slams the ground, creating a slow wave of churning terrain that damages enemies in a sequence of areas in front of you. A number of enemies hit by the wave will release a shockwave, damaging other enemies around them. Using the skill again will stop the previous wave. Requires a Mace, Sceptre, Axe, Staff or Unarmed.",
-      "effect": [
-        "Shockwaves deal 40% less Damage",
-        "Wave Areas gain +0.2 metres to radius for each previous Area in Wave",
-        "Wave Damages 5 Areas",
-        "Wave cannot stop before Damaging 2 Areas",
-        "Wave causes Shockwaves from up to 5 Enemies in each Area"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee",
-        "slam"
-      ],
-      "qualityEffect": "Wave Areas gain metres to radius for each previous Area in Wave",
-      "qualityWorth": "recommended"
-    },
-    "Vulnerability": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Curse all targets in an area, causing them to take increased physical damage. Attacks against the cursed enemies have a chance to inflict bleeding.",
-      "effect": [
-        "Attack Hits against Cursed Enemies have 25% chance to inflict Bleeding",
-        "Base duration is 11.80 seconds",
-        "+1 metre to radius",
-        "Cursed enemies take 30% increased Physical Damage"
-      ],
-      "tags": [
-        "area",
-        "curse",
-        "duration",
-        "hex",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "Attack Hits against Cursed Enemies have % chance to Aggravate Bleeding",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "543a8e98a501",
-  "medal": "S+",
-  "stale": {
-    "status": "waiting-for-pob",
-    "reason": "This build has not been verified against a patch fact set."
-  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -8604,6 +7766,7 @@
       }
     }
   },
+  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
@@ -8617,7 +7780,846 @@
       "pinnacle": "eJzNWmtz2jgX_lx-hcYzndmdVYLusjuhO0ASkja3Qtq0_bKjYAFOfKG2DKG__h3ZEJwUCNl232aY0cjSc6TzHEnHx0fs_X0XhWCi0yxI4oaDd5EDdNxP_CAeNpyPl4c7rvP329rehTKj80ErD0Lb87b2aq-og1BPdNhwPOEAo9KhNp8WQ9F_kAP6ocqyMxXphnOqUpX7OnWAyvo69tvLrnf5cKjTWOXGAZEK4l7Sv9Wmkyb5uOFgB1yr2A9MwzlLYu2AsYrNSCfxqbpJ0k7iN5wwj1UaZJWuIJ53DdPcjG7z0AGTQE9PE183nHbzpN1z3tZevdq7CNVMpz2jDMiMMg2nnUTXQaz9_YueAyYqzHXDEQIxRnYpJ5gz7jr11aKXiVHhv5A7CQZ6KeNRug54EOt0OOuNAh369wJoozoHRxf3SOoRV-xKwamQeO0kF6NZFvRVeKrugiiPjgJzqW51fD8K5gThdcKHQaq7Ogsyc4-XYh24nYT-YzBfb6ThyMRBPNxaoj1SSbY1-lTFqp1UoJRsgn6MU53pdKKXC0HQWpv2xroK3HUF4l4B3qsXx8jWLlOtgeqbYKJ7Y923G78YzT4Ak2pdOVl0cbSO_eKAVE6UbUEOiBNfZw0HI4ohlpRBwjiDFAsJqWAMMupJyDyGICeUQi4ZhQJjCgWhCArielBQ7kHBmIBCYgKF52IoqetCyRiC0qMu9DjG0POkgBgRgiFGzEMQY0YQxIQhCTGRiEDMBBIQM48iiDmSFGLOELcldSEWkgtbSg6xlMKWLsGQIIRdSBDnGBJMKYIEM0whwR53IaGISFtSW3ddDAkXLoFEYE9AIohEkAhOKCRCEm5LhiCRuCgJopBIijAkLpMcElcSFxLXlS4kHuUUUkQ4hnZ4BClGRSmICyl2JYcUewJDSjDmkFLiSkgpkx6kVFAMKbVzUSo5h5RhiSFlBElIOaMCUm71p4IzCqkQlEEqPOZB6kopIfUEcyFDglPIiIsQZHY4yBhBxJZ24YRblB5GkEksOWTSastcqwlzqSCQediO4GHp2oXGtoVLDDlihECOuESQI1fYuocY5NjzXMgpxrZ0sYCcM5dDzoW0dQ8JyKXHKeQusRiXMQ9yj9p2zyMuFIh6tmSS2L1k6wQRDAVhxG4n4hIoqCQUCmr3jGAEIyiYnUtwRFmx4V_tfeyeFJVXI2PG2Zt6fTqd7o6VGSUDfReEerefRPWxyrJgoney2yAMd-z5qDebzWZreND0mx-OWtmXd-HwbrB_M-2edM9OD48Orq7vBqPO4Zcvt92bz50eU-ctc3h0NvUPWm77Xa8f7bQH5v1FksX7LXr6lfH9m3HvPD9wTy7vzj987rZG6Mq_vHn3oYvPeh_Fp093Yfz9asD93lW39zXsRnGkr1XnU-J3kgN1e_ZtfOXK_v5o-j1-P_YDQ9KjMNHszh3S718Hn8_bLXZyNMQ7-9-PL65Hn_PDmI2zmyN1PmGuuj28-qy_psM4I_Hp-zBP338z7ev-nfku2K2cDSbnabPZb6rph8tW4l6Suy9pJ82uv8zu5MXAHDNyQr8OzsYBi45uVN7tcpF-65xPcrl_M9mfvDt0PUpPJzfpjr4RaIKm_wyTZrPZaBQLUF-swF75Js7K5Zg_Fb7FuhnrKhwQGB0VbmjuW3_EFSeyAhTrgZLwClCuBdozWwG664DFcawAvbVAew6XQDJ_rb7aq1dMsFe3zrhw29Zb20rPbr-ys6gCHavrUPsNx6S5dkAWJqbhtBJ_BppplORpGeE0Sz9vJRaO_tVeR0dgWM5_qo3ylVH1Y6OjrN6xRYHu6KiVxDobKWNsLFVs_2dJxCqav2AeNM8DOYId8C1XYWBmhRUWD3aKfT1QeWicxxxXEKo_i1EvH4-T1JzqUOtF_LGvIjXUTxEsBTs6Wim7pFp0g0U_WABeAOlWmptisq2pViQqa7lsfAGkLvJwotMg2379KhJLUpXGF0CqHSaZtt8HymxN64HMkljRDBbtL4DbocqMTpvGqP5ttjW7qlSVXtkO7of7DwjulQyecrxXWo2TGOCf97onWo17oYq2dLlL-NIstg2Ujb9zyQ9iP0-DeNhOn_Q5qySWfBbNoGj_fYt8pMNIm59f4iOdqtA_H1zk6Rb-eI3Q0jxlD0gGYNH3O1d9XxudRkGsTJDEW3J7JLOk9qjj9y19J0wmOvv5pV-4eJWZq5GOy_hgnvjY1tWrzJw_lKw4fJUZMB3peB56gDlibjn-GzbEcRQlqVFhW4XhlvvhociS3aIdlB1zUvI3kPqUh7FO1XWwTUQ1lznT00diS2aPOubM3P_7Pm8lifkF23xf95PZZWL0tq-xqkD1-PeTGZg3_6eHf17LFgmyT4Gegu9JEn0usly29uW-dlJqQp37LzQLtw8Fs3lyzdZ72tzn1-wzCMoP2Le1rrKu-g3oNrsHtd7MppOzINM-uNFTHQJca6dBlCUxeGefa4VwMe8b4IracTQOg35gsjcA1eRrEMT9VCsrHpXpVGCTvTVe7SmjJFDkCGtYVLsefa8UlrEzPtJbPK03eYl6y6f1pi9Rb_dpvdlL1Nt7Wm_-AvUm6Gm9xQvUG29Se1p8mNSaY30H2qFWE50-VvpD6UDfAIIeEsASbdKm6fsZYAiYBLjoh14s15JEu-x1Ea4uROa985DlROv-SPtAZcBegaxbrU2sR0WkXusEKjZZcUsCyuB9S-6k9gflO1T8WeVglQH27gYcDAZBP9Bxf1b7g7g7xPtzBde5Hf7CqDDRgw3wFy0by1Rd7S_GX9tHe60FyqskFff1fbu9waq2r7YI3WSR68Sf1brJTIXgIlRGbzLEPBP5BrR27n-PrEO8HYoesO6EybUd_NE2eBDBg5HKwB-UPbZsM0-VNarum2fZ6_6y7t8bjW0y2rCI-msnehIoM1Ix6Kg8NqE22db7CNMNx0A-PAY_7v-S_EqLYMwrFtlw2tbZY92mW22njTHLtY0aq2ZKraN5hpEe-JnTZKIjHZu5_hS9Bv2RVa3gO0kCHxyEBcK6jiC0tayArR1jGxM-ZaeVm221sTYGStc6NLUTrcxIp6BlH7b1x89h8YMrsfax7Oxt9dMMNoZMKspDbWrn8ewONMv6z1HY5jj_JKGNsZRNLuHa-ViFoBvEw1_DZp0zX83yeWw2RliWDfnVbJ51Kp7JBlcDr9Nm57j9gE8YDDQYhCq7re0HkyDWhWbgsGjZltyamfHGmXNTfI_PJ-8F9pbg18xLnjFvJ1VxYH4RYfqMiVsqU6H5NfOyZ8zbjLQZzbKfnrmnzTxABiYwoa4kCPJM93Q_if0ycV98pw9UmOl5nqMXJqZIRFRT-_e3u4tkUQW1yA3fX-yuwDy4nV0A6QrgItu4wLCVgxWZmgWEr4LosKKRWIEovfcSI1dgrA-psnfXYcgS463AFIv5wIzImadK5nmadTKVgTHeUoZWZMiWMpV7eUy3lKn-O4Ctkin3ZE-bIllUJIhsrZ3Eg2BYbtV4nC8G1bGOZsVed0CcR9c6bTjufPl_BB5MVFZmzBdQPP9DwV59McFe_fFfKv8HjD4Jqg=="
     }
   },
-  "patch": "3.30.0",
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:52:57.694Z"
+  },
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league.",
+        "The two-handed gear profile no longer inherits a shield; armour rolls and a chaos belt raise life, EHP and max hit at every map checkpoint.",
+        "Weapon-scoped tree targets stop points going to one-hand and mace-crit notables under Resolute Technique.",
+        "Herald of Purity, Vulnerability, Added Fire Damage and a Silver Flask raise measured DPS across the leveling and map steps; re-rated S+.",
+        "The weapon carries mana leech so the Herald of Purity and Determination reservation is playable; CWDT stays level 5 and the triggered gems are capped to it.",
+        "A mana flask covers the 28-67 stretch before the rare axe can carry leech; the gate report now publishes unreserved mana and mana cost at every step.",
+        "Small armour slots use the glove/boot armour scale and a Leather Belt; the Melee Splash swap is part of the maps-red plan, not a hidden rating claim.",
+        "The leveling filter hides Chain Belts and normal/magic Paua Rings; rare Paua Rings still show, because a rare can roll life and resists.",
+        "Step plans stop recommending crit multi on a Resolute Technique build and stop calling the 5-link a 6-link."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "physical-melee",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "low",
+          "effect": "(10-15)% increased Global Physical Damage",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "Global physical damage."
+        },
+        "torso": {
+          "name": "Bonestalker's Ribcage",
+          "tier": "low",
+          "effect": "(4-5)% reduced Physical Damage taken over time",
+          "source": "Boneshaper",
+          "area": "Act 2",
+          "note": "Physical DoT reduction for Boneshatter."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "low",
+          "effect": "Adds (2-4) to (5-7) Physical Damage to Attacks",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "Flat physical damage to attacks."
+        },
+        "lowerLimb": {
+          "name": "Captain's Leg",
+          "tier": "low",
+          "effect": "(3-4)% increased Movement Speed",
+          "source": "Guard Captain",
+          "area": "Act 3",
+          "note": "Movement speed."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "med",
+          "effect": "(20-30)% increased Global Physical Damage",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "More global physical damage."
+        },
+        "torso": {
+          "name": "Bonestalker's Ribcage",
+          "tier": "med",
+          "effect": "(6-7)% reduced Physical Damage taken over time",
+          "source": "Boneshaper",
+          "area": "Act 2",
+          "note": "Physical DoT reduction."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "med",
+          "effect": "Adds (8-12) to (15-18) Physical Damage to Attacks",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "Flat physical damage to attacks."
+        },
+        "lowerLimb": {
+          "name": "Pocked Leg",
+          "tier": "med",
+          "effect": "(35-50)% increased Armour from Equipped Helmet and Gloves",
+          "source": "Pikerivet",
+          "area": "Act 4",
+          "note": "Armour from helmet and gloves."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "high",
+          "effect": "Hits have (30-50)% chance to ignore Enemy Physical Damage Reduction",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "Hits can ignore enemy physical damage reduction."
+        },
+        "torso": {
+          "name": "Searing Exarch's Descry",
+          "tier": "fixed",
+          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
+          "source": "Searing Exarch",
+          "area": "Pinnacle / Map Boss",
+          "note": "Physical hits are taken as fire, which you can resist."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "high",
+          "effect": "(10-12)% more Maximum Physical Attack Damage",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "More maximum physical attack damage."
+        },
+        "lowerLimb": {
+          "name": "Lithic Haunches",
+          "tier": "high",
+          "effect": "(10-15)% chance to Avoid Physical Damage from Hits",
+          "source": "Boulderback",
+          "area": "Act 9",
+          "note": "Chance to avoid physical damage from hits."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Cleave and Added Fire Damage; Boneshatter unlocks at 28, so do not buy for it yet.",
+        "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Highest physical DPS",
+            "Attack speed"
+          ],
+          "note": "A rare axe is better than any unique here."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "A 3-link is enough."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Movement speed is defence while leveling."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed if the axe has a free suffix."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Swap to Boneshatter and self-cast Vulnerability; keep Enduring Cry on a movement or left-click bind.",
+        "The trauma stacks are the damage; do not stand in the hit.",
+        "Keep a mana flask: the magic axe cannot carry leech, and the auras already reserve most of the bar."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "The weapon is the build."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link is enough."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Fix resists before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %"
+          ],
+          "note": "Bench physical damage % on a free prefix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "5-link Boneshatter and reach 2,000 life; the 6-link is the maps-red step, not this one.",
+        "Take the labs when they unlock; Unbreakable is the normal-lab defence step."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "The 5-link is enough for the campaign; do not pay for a 6-link yet."
+        },
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "Do not replace a good rare with a worse unique."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed",
+            "Physical damage"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link and upgrade the weapon.",
+        "Reach 3,000 life, cap resistances and fit Herald of Purity with Determination."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed",
+            "Mana leech"
+          ],
+          "note": "Mana leech is what pays for attacks under the reservation auras."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed",
+            "Physical damage"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed if the weapon has a free suffix."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 5,500 life and 12,500 max hit.",
+        "Herald of Purity is the damage aura and a level-capped Vulnerability rides on Cast when Damage Taken.",
+        "Swap Close Combat for Melee Splash on pack-heavy maps; keep Close Combat for bosses."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed",
+            "Mana leech"
+          ],
+          "note": "Upgrade the weapon before the jewellery; mana leech keeps the reservation playable."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Armour",
+            "Elemental resistances"
+          ],
+          "note": "6-link is the red-map gate; armour is the other half of max hit."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed",
+            "Physical damage"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %"
+          ],
+          "note": "Bench physical damage %."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 7,000 life.",
+        "Keep Herald of Purity and Vulnerability up; the measured pinnacle uses 21/20 gems, and 20/20 is the budget version."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed",
+            "Mana leech"
+          ],
+          "note": "The endgame weapon is the last big purchase; do not drop mana leech."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Life",
+            "Chaos resistance",
+            "Physical damage"
+          ],
+          "note": "Fix chaos resistance on the amulet."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed",
+            "Physical damage"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Fire Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills gain 39% of Physical Damage as Extra Fire Damage"
+      ],
+      "tags": [
+        "fire",
+        "physical"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Fire Damage",
+      "qualityWorth": "recommended"
+    },
+    "Blood and Sand": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts a buff that grants different bonuses to melee skills depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance.",
+      "effect": [
+        "Melee Skills have 5% less Area of Effect while in Blood Stance",
+        "Melee Skills deal 5% less Area Damage while in Sand Stance",
+        "190% increased Cooldown Recovery Rate",
+        "Melee Skills deal 27% more Area Damage while in Blood Stance",
+        "Melee Skills have 27% more Area of Effect while in Sand Stance"
+      ],
+      "tags": [
+        "low_max_level",
+        "spell",
+        "stance"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Boneshatter": {
+      "requiredLevel": 28,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Sever the Right Hand"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Attack enemies with a forceful melee strike that also hurts you. Successive uses will raise the damage dealt both to enemies and you. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
+      "effect": [
+        "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
+        "Gain 1 Trauma the first time this Attack Hits an Enemy\nTake 194 Physical Damage per Trauma when you gain Trauma\nTrauma lasts 6.0 seconds",
+        "158 to 238 Added Physical Damage",
+        "6% more Damage per Trauma"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "duration",
+        "melee",
+        "physical",
+        "strike"
+      ],
+      "qualityEffect": "% more Damage per Trauma",
+      "qualityWorth": "recommended"
+    },
+    "Brutality": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "reward",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal no Elemental Damage",
+        "Supported Skills deal no Chaos Damage",
+        "Supported Skills deal 39% more Physical Damage"
+      ],
+      "tags": [
+        "physical"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Physical Damage",
+      "qualityWorth": "recommended"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Cleave": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "r",
+      "support": false,
+      "description": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
+      "effect": [
+        "When Dual Wielding, Deals 60% Damage from each Weapon combined"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee"
+      ],
+      "qualityEffect": "metres to radius per Nearby Enemy, up to a maximum of +1 metre",
+      "qualityWorth": "recommended"
+    },
+    "Close Combat": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills grant Combat Rush on Hit\nCombat Rush lasts 2 seconds or until you use a Travel Skill",
+        "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
+        "Supported Skills can only be used with Axes or Swords",
+        "Supported Skills deal up to 39% more Melee Damage to Enemies, based on proximity"
+      ],
+      "tags": [
+        "attack",
+        "duration",
+        "melee"
+      ],
+      "qualityEffect": "% increased Damage with Hits to Close Range Enemies",
+      "qualityWorth": "recommended"
+    },
+    "Decoy Totem": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Summons a totem that taunts nearby monsters to attack it.",
+      "effect": [
+        "Totem lasts 8 seconds",
+        "Totems Summoned by this Skill cannot Evade",
+        "Summons a Totem which uses this Skill"
+      ],
+      "tags": [
+        "area",
+        "spell",
+        "totem"
+      ],
+      "qualityEffect": "% more Totem Life",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Enduring Cry": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
+      "effect": [
+        "Grants 1 Endurance Charge per 5 Power to you and Allied Players",
+        "Buff grants 2% of Life Regenerated per second per\n5 power, counting a maximum of 25 Power",
+        "Counts total Power of Enemies in Range",
+        "38% increased Warcry Speed",
+        "Base duration is 3.40 seconds"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "warcry"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Faster Attacks": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Attack Speed"
+      ],
+      "tags": [
+        "attack"
+      ],
+      "qualityEffect": "Supported Skills have % increased Attack Speed",
+      "qualityWorth": "recommended"
+    },
+    "Herald of Purity": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Grants a buff which lets you deal more physical damage. When you kill an enemy while you have this buff, this skill will summon a Sentinel of Purity, or refresh the duration and life of an existing one instead if you have the maximum number of them. The Sentinels of Purity have a single-target melee attack and an area melee attack.",
+      "effect": [
+        "Maximum 4 Summoned Sentinels of Purity",
+        "20% chance to Summon a Sentinel of Purity when you Hit a Rare or Unique Enemy",
+        "Base duration is 12.00 seconds",
+        "Summon a Sentinel of Purity when you Kill an Enemy",
+        "Buff grants 12% more Physical Damage",
+        "Minions deal 95% more Physical Damage",
+        "Minions have 38% more Maximum Life"
+      ],
+      "tags": [
+        "duration",
+        "herald",
+        "minion",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "Minions have % increased Cooldown Recovery Rate",
+      "qualityWorth": "recommended"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "Breaking the Seal"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Leap Slam": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
+      "effect": [
+        "+0.55 seconds to Attack Time",
+        "Base radius is 1.5 metres",
+        "Damaging Hits always Stun Enemies that are on Full Life",
+        "39% increased Stun Duration against Enemies that are on Full Life"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee",
+        "movement",
+        "slam",
+        "travel"
+      ],
+      "qualityEffect": "% increased Stun Duration against Enemies that are on Full Life",
+      "qualityWorth": "recommended"
+    },
+    "Melee Physical Damage": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 10% less Attack Speed",
+        "Supported Skills deal 49% more Melee Physical Damage",
+        "Supported Skills deal 49% more Damage with Bleeding and Poison caused by Melee Hits"
+      ],
+      "tags": [
+        "attack",
+        "melee",
+        "physical"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Melee Physical Damage",
+      "qualityWorth": "recommended"
+    },
+    "Pulverise": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 15% less Attack Speed",
+        "Supported Skills deal 49% more Melee Area Damage",
+        "Supported Skills have 34% increased Area of Effect"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee"
+      ],
+      "qualityEffect": "Supported Skills have % increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Sunder": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Siren's Cadence"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Slams the ground, creating a slow wave of churning terrain that damages enemies in a sequence of areas in front of you. A number of enemies hit by the wave will release a shockwave, damaging other enemies around them. Using the skill again will stop the previous wave. Requires a Mace, Sceptre, Axe, Staff or Unarmed.",
+      "effect": [
+        "Shockwaves deal 40% less Damage",
+        "Wave Areas gain +0.2 metres to radius for each previous Area in Wave",
+        "Wave Damages 5 Areas",
+        "Wave cannot stop before Damaging 2 Areas",
+        "Wave causes Shockwaves from up to 5 Enemies in each Area"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee",
+        "slam"
+      ],
+      "qualityEffect": "Wave Areas gain metres to radius for each previous Area in Wave",
+      "qualityWorth": "recommended"
+    },
+    "Vulnerability": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Curse all targets in an area, causing them to take increased physical damage. Attacks against the cursed enemies have a chance to inflict bleeding.",
+      "effect": [
+        "Attack Hits against Cursed Enemies have 25% chance to inflict Bleeding",
+        "Base duration is 11.80 seconds",
+        "+1 metre to radius",
+        "Cursed enemies take 30% increased Physical Damage"
+      ],
+      "tags": [
+        "area",
+        "curse",
+        "duration",
+        "hex",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "Attack Hits against Cursed Enemies have % chance to Aggravate Bleeding",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "543a8e98a501",
   "guide": {
     "summary": {
       "text": "Boneshatter Juggernaut is a two-handed melee build that measures 439.5k at red maps and 660.4k at pinnacle. The rare axe, armour rolls and Herald of Purity carry the damage, the ascendancy makes the trauma survivable, and no unique is required.",
@@ -8668,11 +8670,5 @@
       "factsHash": "f1aa919e354c5bab"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T12:52:57.694Z"
-  }
+  "medal": "S+"
 }

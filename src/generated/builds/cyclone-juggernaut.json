@@ -985,747 +985,6 @@
     "optional": []
   },
   "status": "verified",
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "physical-melee",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "low",
-          "effect": "(10-15)% increased Global Physical Damage",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "Global physical damage."
-        },
-        "torso": {
-          "name": "Bonestalker's Ribcage",
-          "tier": "low",
-          "effect": "(4-5)% reduced Physical Damage taken over time",
-          "source": "Boneshaper",
-          "area": "Act 2",
-          "note": "Physical DoT reduction for Boneshatter."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "low",
-          "effect": "Adds (2-4) to (5-7) Physical Damage to Attacks",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "Flat physical damage to attacks."
-        },
-        "lowerLimb": {
-          "name": "Captain's Leg",
-          "tier": "low",
-          "effect": "(3-4)% increased Movement Speed",
-          "source": "Guard Captain",
-          "area": "Act 3",
-          "note": "Movement speed."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "med",
-          "effect": "(20-30)% increased Global Physical Damage",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "More global physical damage."
-        },
-        "torso": {
-          "name": "Bonestalker's Ribcage",
-          "tier": "med",
-          "effect": "(6-7)% reduced Physical Damage taken over time",
-          "source": "Boneshaper",
-          "area": "Act 2",
-          "note": "Physical DoT reduction."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "med",
-          "effect": "Adds (8-12) to (15-18) Physical Damage to Attacks",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "Flat physical damage to attacks."
-        },
-        "lowerLimb": {
-          "name": "Pocked Leg",
-          "tier": "med",
-          "effect": "(35-50)% increased Armour from Equipped Helmet and Gloves",
-          "source": "Pikerivet",
-          "area": "Act 4",
-          "note": "Armour from helmet and gloves."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "high",
-          "effect": "Hits have (30-50)% chance to ignore Enemy Physical Damage Reduction",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "Hits can ignore enemy physical damage reduction."
-        },
-        "torso": {
-          "name": "Searing Exarch's Descry",
-          "tier": "fixed",
-          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
-          "source": "Searing Exarch",
-          "area": "Pinnacle / Map Boss",
-          "note": "Physical hits are taken as fire, which you can resist."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "high",
-          "effect": "(10-12)% more Maximum Physical Attack Damage",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "More maximum physical attack damage."
-        },
-        "lowerLimb": {
-          "name": "Lithic Haunches",
-          "tier": "high",
-          "effect": "(10-15)% chance to Avoid Physical Damage from Hits",
-          "source": "Boulderback",
-          "area": "Act 9",
-          "note": "Chance to avoid physical damage from hits."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops.",
-        "Use Cyclone as soon as it is available; do not chase attack speed over raw damage."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Highest physical DPS",
-            "Attack speed"
-          ],
-          "note": "A rare axe is better than any unique here."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "A 3-link is enough."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Movement speed is defence while leveling."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Attack speed"
-          ],
-          "note": "Bench attack speed if the axe has a free suffix."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Swap to Cyclone; keep Enduring Cry on a movement or left-click bind.",
-        "Cyclone is channeled; area and movement speed matter."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "The weapon is the build."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "4-link is enough."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Fix resists before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %"
-          ],
-          "note": "Bench physical damage % on a free prefix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Six-link Cyclone and reach 2,000 life; cap elemental resistances.",
-        "Take the labs when they unlock; the ascendancy is a large defence step."
-      ],
-      "lookFor": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "The 6-link is the damage step."
-        },
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "Do not replace a good rare with a worse unique."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "A 5-link clears white maps; start the 6-link and upgrade the weapon.",
-        "Reach 3,000 life and cap resistances."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "The weapon is still the main damage slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the 6-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Attack speed"
-          ],
-          "note": "Bench attack speed if the weapon has a free suffix."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Do not stand in the hit; the build is not a tank even with armour."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "Upgrade the weapon before the jewellery."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link is the red-map gate."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %"
-          ],
-          "note": "Bench physical damage %."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 Cyclone and awakened supports; keep the defensive flasks."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical damage %",
-            "Added physical damage",
-            "Attack speed"
-          ],
-          "note": "The endgame weapon is the last big purchase."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Life",
-            "Chaos resistance",
-            "Critical strike multiplier"
-          ],
-          "note": "Fix chaos resistance on the amulet."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Attack speed",
-            "Critical strike multiplier"
-          ],
-          "note": "Life is the defence; armour is the mitigation."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Blood and Sand": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts a buff that grants different bonuses to melee skills depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance.",
-      "effect": [
-        "Melee Skills have 5% less Area of Effect while in Blood Stance",
-        "Melee Skills deal 5% less Area Damage while in Sand Stance",
-        "190% increased Cooldown Recovery Rate",
-        "Melee Skills deal 27% more Area Damage while in Blood Stance",
-        "Melee Skills have 27% more Area of Effect while in Sand Stance"
-      ],
-      "tags": [
-        "low_max_level",
-        "spell",
-        "stance"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Brutality": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "reward",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills deal no Elemental Damage",
-        "Supported Skills deal no Chaos Damage",
-        "Supported Skills deal 39% more Physical Damage"
-      ],
-      "tags": [
-        "physical"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Physical Damage",
-      "qualityWorth": "recommended"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Cleave": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "r",
-      "support": false,
-      "description": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
-      "effect": [
-        "When Dual Wielding, Deals 60% Damage from each Weapon combined"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee"
-      ],
-      "qualityEffect": "metres to radius per Nearby Enemy, up to a maximum of +1 metre",
-      "qualityWorth": "recommended"
-    },
-    "Close Combat": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills grant Combat Rush on Hit\nCombat Rush lasts 2 seconds or until you use a Travel Skill",
-        "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
-        "Supported Skills can only be used with Axes or Swords",
-        "Supported Skills deal up to 39% more Melee Damage to Enemies, based on proximity"
-      ],
-      "tags": [
-        "attack",
-        "duration",
-        "melee"
-      ],
-      "qualityEffect": "% increased Damage with Hits to Close Range Enemies",
-      "qualityWorth": "recommended"
-    },
-    "Cyclone": {
-      "requiredLevel": 28,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Sever the Right Hand"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
-      "effect": [
-        "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-        "20% less Movement Speed"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "channelling",
-        "melee",
-        "movement"
-      ],
-      "qualityEffect": "% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "qualityWorth": "recommended"
-    },
-    "Decoy Totem": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Summons a totem that taunts nearby monsters to attack it.",
-      "effect": [
-        "Totem lasts 8 seconds",
-        "Totems Summoned by this Skill cannot Evade",
-        "Summons a Totem which uses this Skill"
-      ],
-      "tags": [
-        "area",
-        "spell",
-        "totem"
-      ],
-      "qualityEffect": "% more Totem Life",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Enduring Cry": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
-      "effect": [
-        "Grants 1 Endurance Charge per 5 Power to you and Allied Players",
-        "Buff grants 2% of Life Regenerated per second per\n5 power, counting a maximum of 25 Power",
-        "Counts total Power of Enemies in Range",
-        "38% increased Warcry Speed",
-        "Base duration is 3.40 seconds"
-      ],
-      "tags": [
-        "area",
-        "duration",
-        "warcry"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Faster Attacks": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 44% increased Attack Speed"
-      ],
-      "tags": [
-        "attack"
-      ],
-      "qualityEffect": "Supported Skills have % increased Attack Speed",
-      "qualityWorth": "recommended"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "Breaking the Seal"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Leap Slam": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
-      "effect": [
-        "+0.55 seconds to Attack Time",
-        "Base radius is 1.5 metres",
-        "Damaging Hits always Stun Enemies that are on Full Life",
-        "39% increased Stun Duration against Enemies that are on Full Life"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee",
-        "movement",
-        "slam",
-        "travel"
-      ],
-      "qualityEffect": "% increased Stun Duration against Enemies that are on Full Life",
-      "qualityWorth": "recommended"
-    },
-    "Melee Physical Damage": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 10% less Attack Speed",
-        "Supported Skills deal 49% more Melee Physical Damage",
-        "Supported Skills deal 49% more Damage with Bleeding and Poison caused by Melee Hits"
-      ],
-      "tags": [
-        "attack",
-        "melee",
-        "physical"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Melee Physical Damage",
-      "qualityWorth": "recommended"
-    },
-    "Pulverise": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 15% less Attack Speed",
-        "Supported Skills deal 49% more Melee Area Damage",
-        "Supported Skills have 34% increased Area of Effect"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee"
-      ],
-      "qualityEffect": "Supported Skills have % increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Ruthless": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
-        "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds",
-        "Ruthless Blows with Supported Skills deal 98% more Melee Damage",
-        "Ruthless Blows with Supported Skills deal 98% more Damage with\nAilments caused by Melee Hits"
-      ],
-      "tags": [
-        "attack",
-        "melee",
-        "slam",
-        "strike"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Attack Damage",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "06f9e570851b",
-  "medal": "S",
-  "stale": {
-    "status": "waiting-for-pob",
-    "reason": "This build has not been verified against a patch fact set."
-  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -8339,6 +7598,7 @@
       }
     }
   },
+  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
@@ -8352,7 +7612,749 @@
       "pinnacle": "eJzNWmtP4zgX_kx_hRVppX21Bnx3MoJZlVIKDAWmZYYdvoxM47aBXEriFLq__pWTXgLblrIzq0FIkXP8HPs8x_bJ6TF7fz5FIRjrNAuSeN_BO8gBOu4lfhAP9p0vV0fbrvPnx9repTLDi_5BHoS252Nta69og1CPdbjveMIBRqUDbb7OhqLfkQN6ocqycxXpfaetUpX7OnWAyno69huLrtN8MNBprHLjgEgFcTfp3WvTSpN8tO9gB9yq2A_MvnOexNoBIxWboU7itrpL0lbi7zthHqs0yCpdQTztGqS5Gd7noQPGgX5sJ77edxr1s0bX-Vjb2tq7DNVEp12jDMiMMvtOI4lug1j7h5ddB4xVmOt9hzGPe3QHS4GEK5mzu1z1KjEq_Bd6Z0Ffz3W4EGQVsBnrdDDpDgMd-nMFtNac5vHlHEmZxGQHe5RyJjhepXc5nGRBT4Vt9RREeXQcmCt1r-P5MJhywlcpHwWp7ugsyMwcL8UqcCMJ_ZfglSOfBYOhiYN4sLFGY6iSbGN0W8WqkVSh65Bf4lRnOh3rxUIQvpJod6QrQIx3MPUK7N5ucYps6yrVGqieCca6O9I9u--LwewLMKnWlYNFZyfrxC_OR-VAWQlyQJz4Ott3mBQQc0kglpRBwjiDFAsJmccQFBhTKAhFUFDuQcGYgEJiAoXnYiip60LJGIIexxh6nh0KEYIhRsxDEBOGJMREIgIxcZEHMRPITockhZgzxO2TuhALyYV9Sg6xlIJD7FJEIEEIu5AgzjEkmGEKCUVE2id1IaGuiyFhgmFIOOMCEi5cAgn3KIVEYE9AIjixbS4YJEISbp8MQSJx8aQIQyKlncWlGEPiMskhcSWxEle6kHjEI5B4lFNIEeEY2skRpEh4ti0phRQjK8GCuJBiT2BICcYcUkpcCSll0oOUCoohpXZ2yhDyIGVYYkgZQRJSJoSAlDMqIBWcUUiFoAxS4TEPUldKCRkSnEJGXIQgswNBRhkmkDGCiqcnIRNcupAJDyPIJJYcMmltZpIRDJlrvc1cF9kFxnY0D1u8V4zjcYkhR4wQyBGXCHLkCtv2EIMce54LOcXYPqVHIacuFpBz5nLIucsZ5NxDAnLpcQq5y5gHuUetxPOICwViktg95blQEISlfRIMBcHIShjxoKDEJVBQa4OgklAoqN1XgiEpoWB2RsERZcXW39r70jkrGltDY0bZh93dx8fHnZEyw6Svn4JQ7_SSaHeksiwY6-3sPgjDbXtSduv1ev1g0Kz7n497B8Hn1tMguj48cq-uDvrD1tG3b_jpPm_dDW47nb97x516eDq5ZafbKNm-O6DtGzZpXN1fXORN9-zq6eLzX52DIfK3r-5OP3fwRXjdP7_5HuLTb82ju16r0735gqOvLX1743aSm-shUoPOw-j6qXU78scXtM56bT65Pf408gND0uP-na5jro7zdv889Hrs5HiQ6cO_2GV7eB4daXbdH5KHT7cn4vvd08Pnrzc-jzMStz-F-cNNN3t4QKem_4lepsFVfkW881TEj_XjeitrNh_VZdPLrj89PcgWaWf6byq7J_4JI2dUnZlRwKLj-y9aP4jhXXZx4V6498eTTv9Tz_UobY_19vbFmIvL0fn3q8PtxqBeLxZgd7YCe-UnOSuXY_pWRBkbcGwQcUBgdFQEpGmM_SeuOLUVoFgNlIRXgHIl0J7oCtBdBSwOaAXorQTak7kAkun3dWtvt-KCvV0blosAbuO2bXTt9is7iybQsboNtb_vmDTXDsjCxOw7B4k_AfU0SvK0THXqZcS3GrOQv7XX0hEYlPO3tVG-Mmr3xOgo223ZR4Fu6agx6YVFRlRs_Y3RsYqmn5i5aJrFEeyAh1yFgZkUzGcvduhD3Vd5aJyXvJaQ2H0Ti24-GiWpaetQ61nucagiNXiVWKnY0tFS3QXNohvM-sEM8A5IH6S5KSbbmGpFY0GwInwHpC7zcKzTINt8_SoaC1IV4Tsg1QiTTNsfB8psTOuZTuXUWTGYyd8BtyOVGZ3WjVG9-2xjdlWtKr1SDubD_QcE90oGrwXba61GSQzwj0faM61G3VBFG4baBXzhFisDpfBXLnkz9vM0iAeN9NWYs0xjwWcmBoX81y3ysQ4jbX58iQ-10WkUxMoESbyha17oLJzzouNXLvhBmCR-Pfa7KvY3pPVcpfKZsXKgYh-UPb9u0VthMtbZjy_6LLirzFwPdVxmBtNyx6ZBXmXm4rlmJdSrzIDHoY6nSQeYIqae479gP5xEUZIaFTZUGG64H56rLNjN5KDs-HXb4SBJzE_YDYe6l0yuEqM3jfNVherh7yUTMBX_p06ZtrJZ_ehroB_B30kS_VUUgWzr27x1VlpCnfnPFgu3LwWzae3JtrvazMtP9h0E5a-6j7WOSgMz-QA69U6z1p3YYmsWZNoHd_pRhwDXGmkQZUkMTu17rVAu5v0AXFE7iUZh0AtM9gGgmvwNBHEv1cqqR2WtEdhSaI1Xe8o0AhQVtBoW1a4XCX3hGTvjC7vF63aT92i3fN1u-h7tdl-3m71Hu73X7ebv0G6CXrdbvEO78TqzH4vMvVYf6SfQCLUa6_Sl0Z_LAPoBEPScAJZonTV1388AQ8AkwEX_6MVyJckV7l9HY1jkprVWoGKTFZcCoExXNyRDar9Tvk3F_6pG2esHYG8qQLPfD3qBjnuT2u_E3Sbe_5YYPyX2B0YF52cr-gfjv1mhvbUB5U2JinsLub2gqcqXu4Cuc8Ft4k9qnWSiQnAZKqPXMZ8W2D6Ag-353wt3EG-bomc0W2Fyawd_sZDPMnAwVBn4nbKXrqznqbJe1D2z3kHzy6d_7yW2zkuDIp-tnelxoMxQxaCl8tiE2mQb7xRMV-5ctCN_A0n_pY_Amda9ofaByqZsl7lgzYlY5YBV22q5Y9bmFbc2s6v6JbXB4A1eeRYL2slYRzo2U_tbKoiBWOoalYHmk0lVyWG6p-i6wdbun1UeWrqvlrtpbRpzq0NTO9PKDHUKDuzLptHybXHBesDSsTerr5u8NoNRUR5qU7uIJ0-gXrZ_is1rj-oPElqb2thiCK5djFQIOkE8-I9WYC3Lt7FZm_BYNuRns3nTMXgjG1zNg9r11knjGZ8w6GvQD1V2XzsMxkGsC8vAUSHZlNyKmfHamSP7vS5nbhr7Xy5h-Qn_KVOTtVPnJrCjTWdvpSoOzE_iTN8w8YHKVGh-zrzsDfPWI22Gk-yHZ-5qM01ZgQlMqCs_2fNMd3Uvif2y1lz8cu6rMNPTykM3TExRGqhWo-eXkLPSTQU1K2fO7x-XYJ5dIs6AdAlwViabYdjSwYrayQzCl0F0WLFILEGUAXyBkUswNoxU2burMGSB8ZZgisV85kbkTIsX08rJKp3KwBhvqEMrOmRDncr1MaYb6lQvsdkynXJPdrUpyjdFyca2GkncDwblVo1H-WxQHetoUux1B8R5dKvTfced_QfaP4DNscrKCvYMiqf33nu7swn2dl_-C-D_AaAGkk4="
     }
   },
-  "patch": "3.30.0",
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:53:12.580Z"
+  },
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "physical-melee",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "low",
+          "effect": "(10-15)% increased Global Physical Damage",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "Global physical damage."
+        },
+        "torso": {
+          "name": "Bonestalker's Ribcage",
+          "tier": "low",
+          "effect": "(4-5)% reduced Physical Damage taken over time",
+          "source": "Boneshaper",
+          "area": "Act 2",
+          "note": "Physical DoT reduction for Boneshatter."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "low",
+          "effect": "Adds (2-4) to (5-7) Physical Damage to Attacks",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "Flat physical damage to attacks."
+        },
+        "lowerLimb": {
+          "name": "Captain's Leg",
+          "tier": "low",
+          "effect": "(3-4)% increased Movement Speed",
+          "source": "Guard Captain",
+          "area": "Act 3",
+          "note": "Movement speed."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "med",
+          "effect": "(20-30)% increased Global Physical Damage",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "More global physical damage."
+        },
+        "torso": {
+          "name": "Bonestalker's Ribcage",
+          "tier": "med",
+          "effect": "(6-7)% reduced Physical Damage taken over time",
+          "source": "Boneshaper",
+          "area": "Act 2",
+          "note": "Physical DoT reduction."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "med",
+          "effect": "Adds (8-12) to (15-18) Physical Damage to Attacks",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "Flat physical damage to attacks."
+        },
+        "lowerLimb": {
+          "name": "Pocked Leg",
+          "tier": "med",
+          "effect": "(35-50)% increased Armour from Equipped Helmet and Gloves",
+          "source": "Pikerivet",
+          "area": "Act 4",
+          "note": "Armour from helmet and gloves."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "high",
+          "effect": "Hits have (30-50)% chance to ignore Enemy Physical Damage Reduction",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "Hits can ignore enemy physical damage reduction."
+        },
+        "torso": {
+          "name": "Searing Exarch's Descry",
+          "tier": "fixed",
+          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
+          "source": "Searing Exarch",
+          "area": "Pinnacle / Map Boss",
+          "note": "Physical hits are taken as fire, which you can resist."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "high",
+          "effect": "(10-12)% more Maximum Physical Attack Damage",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "More maximum physical attack damage."
+        },
+        "lowerLimb": {
+          "name": "Lithic Haunches",
+          "tier": "high",
+          "effect": "(10-15)% chance to Avoid Physical Damage from Hits",
+          "source": "Boulderback",
+          "area": "Act 9",
+          "note": "Chance to avoid physical damage from hits."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops.",
+        "Use Cyclone as soon as it is available; do not chase attack speed over raw damage."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Highest physical DPS",
+            "Attack speed"
+          ],
+          "note": "A rare axe is better than any unique here."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "A 3-link is enough."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Movement speed is defence while leveling."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed if the axe has a free suffix."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Swap to Cyclone; keep Enduring Cry on a movement or left-click bind.",
+        "Cyclone is channeled; area and movement speed matter."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "The weapon is the build."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link is enough."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Fix resists before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %"
+          ],
+          "note": "Bench physical damage % on a free prefix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Six-link Cyclone and reach 2,000 life; cap elemental resistances.",
+        "Take the labs when they unlock; the ascendancy is a large defence step."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "The 6-link is the damage step."
+        },
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "Do not replace a good rare with a worse unique."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link and upgrade the weapon.",
+        "Reach 3,000 life and cap resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "The weapon is still the main damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed if the weapon has a free suffix."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Do not stand in the hit; the build is not a tank even with armour."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "Upgrade the weapon before the jewellery."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link is the red-map gate."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %"
+          ],
+          "note": "Bench physical damage %."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 Cyclone and awakened supports; keep the defensive flasks."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical damage %",
+            "Added physical damage",
+            "Attack speed"
+          ],
+          "note": "The endgame weapon is the last big purchase."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Life",
+            "Chaos resistance",
+            "Critical strike multiplier"
+          ],
+          "note": "Fix chaos resistance on the amulet."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Attack speed",
+            "Critical strike multiplier"
+          ],
+          "note": "Life is the defence; armour is the mitigation."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Blood and Sand": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts a buff that grants different bonuses to melee skills depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance.",
+      "effect": [
+        "Melee Skills have 5% less Area of Effect while in Blood Stance",
+        "Melee Skills deal 5% less Area Damage while in Sand Stance",
+        "190% increased Cooldown Recovery Rate",
+        "Melee Skills deal 27% more Area Damage while in Blood Stance",
+        "Melee Skills have 27% more Area of Effect while in Sand Stance"
+      ],
+      "tags": [
+        "low_max_level",
+        "spell",
+        "stance"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Brutality": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "reward",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal no Elemental Damage",
+        "Supported Skills deal no Chaos Damage",
+        "Supported Skills deal 39% more Physical Damage"
+      ],
+      "tags": [
+        "physical"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Physical Damage",
+      "qualityWorth": "recommended"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Cleave": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "r",
+      "support": false,
+      "description": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
+      "effect": [
+        "When Dual Wielding, Deals 60% Damage from each Weapon combined"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee"
+      ],
+      "qualityEffect": "metres to radius per Nearby Enemy, up to a maximum of +1 metre",
+      "qualityWorth": "recommended"
+    },
+    "Close Combat": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills grant Combat Rush on Hit\nCombat Rush lasts 2 seconds or until you use a Travel Skill",
+        "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
+        "Supported Skills can only be used with Axes or Swords",
+        "Supported Skills deal up to 39% more Melee Damage to Enemies, based on proximity"
+      ],
+      "tags": [
+        "attack",
+        "duration",
+        "melee"
+      ],
+      "qualityEffect": "% increased Damage with Hits to Close Range Enemies",
+      "qualityWorth": "recommended"
+    },
+    "Cyclone": {
+      "requiredLevel": 28,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Sever the Right Hand"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
+      "effect": [
+        "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+        "20% less Movement Speed"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "channelling",
+        "melee",
+        "movement"
+      ],
+      "qualityEffect": "% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "qualityWorth": "recommended"
+    },
+    "Decoy Totem": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Summons a totem that taunts nearby monsters to attack it.",
+      "effect": [
+        "Totem lasts 8 seconds",
+        "Totems Summoned by this Skill cannot Evade",
+        "Summons a Totem which uses this Skill"
+      ],
+      "tags": [
+        "area",
+        "spell",
+        "totem"
+      ],
+      "qualityEffect": "% more Totem Life",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Enduring Cry": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
+      "effect": [
+        "Grants 1 Endurance Charge per 5 Power to you and Allied Players",
+        "Buff grants 2% of Life Regenerated per second per\n5 power, counting a maximum of 25 Power",
+        "Counts total Power of Enemies in Range",
+        "38% increased Warcry Speed",
+        "Base duration is 3.40 seconds"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "warcry"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Faster Attacks": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Attack Speed"
+      ],
+      "tags": [
+        "attack"
+      ],
+      "qualityEffect": "Supported Skills have % increased Attack Speed",
+      "qualityWorth": "recommended"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "Breaking the Seal"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Leap Slam": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
+      "effect": [
+        "+0.55 seconds to Attack Time",
+        "Base radius is 1.5 metres",
+        "Damaging Hits always Stun Enemies that are on Full Life",
+        "39% increased Stun Duration against Enemies that are on Full Life"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee",
+        "movement",
+        "slam",
+        "travel"
+      ],
+      "qualityEffect": "% increased Stun Duration against Enemies that are on Full Life",
+      "qualityWorth": "recommended"
+    },
+    "Melee Physical Damage": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 10% less Attack Speed",
+        "Supported Skills deal 49% more Melee Physical Damage",
+        "Supported Skills deal 49% more Damage with Bleeding and Poison caused by Melee Hits"
+      ],
+      "tags": [
+        "attack",
+        "melee",
+        "physical"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Melee Physical Damage",
+      "qualityWorth": "recommended"
+    },
+    "Pulverise": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 15% less Attack Speed",
+        "Supported Skills deal 49% more Melee Area Damage",
+        "Supported Skills have 34% increased Area of Effect"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee"
+      ],
+      "qualityEffect": "Supported Skills have % increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Ruthless": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
+        "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds",
+        "Ruthless Blows with Supported Skills deal 98% more Melee Damage",
+        "Ruthless Blows with Supported Skills deal 98% more Damage with\nAilments caused by Melee Hits"
+      ],
+      "tags": [
+        "attack",
+        "melee",
+        "slam",
+        "strike"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Attack Damage",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "06f9e570851b",
   "guide": {
     "summary": {
       "text": "Cyclone Juggernaut is a two-handed melee build that measures 231.2k at red maps and 449.6k at pinnacle. Armour, endurance charges and the ascendancy carry the defence; the rare axe carries the damage, and no unique is required.",
@@ -8403,11 +8405,5 @@
       "factsHash": "e9351ff8e0d11f95"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T12:53:12.580Z"
-  }
+  "medal": "S"
 }

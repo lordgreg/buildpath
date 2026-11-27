@@ -1006,846 +1006,7 @@
     "core": [],
     "optional": []
   },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Bow"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Quiver"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "dexjewel"
-        ]
-      }
-    }
-  },
   "status": "verified",
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "minion",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Bandit Rogue's Head",
-          "tier": "low",
-          "effect": "(4-6)% increased Attack and Cast Speed",
-          "source": "Kraityn",
-          "area": "Act 2",
-          "note": "Attack and cast speed for summoning."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "low",
-          "effect": "+(14-18)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance while gearing."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "low",
-          "effect": "+(30-50) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life for you and your minions to hide behind."
-        },
-        "lowerLimb": {
-          "name": "Sea Witch's Tentacle",
-          "tier": "low",
-          "effect": "Minions deal (10-15)% increased Damage",
-          "source": "Brood Princess",
-          "area": "Act 1",
-          "note": "Minion damage from Act 1."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Bandit Rogue's Head",
-          "tier": "med",
-          "effect": "(8-10)% increased Attack and Cast Speed",
-          "source": "Kraityn",
-          "area": "Act 2",
-          "note": "Keep the summoning speed."
-        },
-        "torso": {
-          "name": "Ornate Torso",
-          "tier": "med",
-          "effect": "Minions have (20-30)% increased maximum Life",
-          "source": "Greust",
-          "area": "Act 7",
-          "note": "Minion life; the aura stays on after they die."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "med",
-          "effect": "+(60-80) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life before damage scaling."
-        },
-        "lowerLimb": {
-          "name": "Sea Witch's Tentacle",
-          "tier": "med",
-          "effect": "Minions deal (20-30)% increased Damage",
-          "source": "Brood Princess",
-          "area": "Act 1",
-          "note": "The default minion damage leg."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Chimera's Head",
-          "tier": "fixed",
-          "effect": "Minions deal (35-50)% increased Damage if you've Hit Recently",
-          "source": "Chimera",
-          "area": "Pinnacle / Map Boss",
-          "note": "Swap to this only if you hit recently; otherwise keep Bandit Rogue's Head."
-        },
-        "torso": {
-          "name": "Ornate Torso",
-          "tier": "high",
-          "effect": "(3-5)% of Damage from Hits is taken from your Damagable Minions' Life before you",
-          "source": "Greust",
-          "area": "Act 7",
-          "note": "Damage from hits is taken from your minions first."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "high",
-          "effect": "(5-7)% more Maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "More maximum life is the best defensive arm."
-        },
-        "lowerLimb": {
-          "name": "Sea Witch's Tentacle",
-          "tier": "high",
-          "effect": "Minions have (8-12)% chance to deal Double Damage",
-          "source": "Brood Princess",
-          "area": "Act 1",
-          "note": "Minions have a chance to deal double damage."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Summon Skeletons until ranged weapons start dropping.",
-        "Animate every bow you find; Chance to Poison turns the volley into damage."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage",
-            "Minion gem levels"
-          ],
-          "note": "Any wand; the animated weapon does the damage."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "A 3-link is enough."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Movement speed is defence."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Add Minion Speed and start Desecrate plus Flesh Offering.",
-        "Take the first two labs when they unlock; Mindless Aggression is the army."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage",
-            "Minion gem levels"
-          ],
-          "note": "Minion wand."
-        },
-        {
-          "slot": "Shield",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Stay defensive; the minions do the damage."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "4-link",
-            "Life"
-          ],
-          "note": "Four links carry the swarm."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage"
-          ],
-          "note": "Bench minion damage on a free suffix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Five-link the animate group and reach 2,000 life.",
-        "Add Vile Toxins and Deadly Ailments; the poison does the heavy lifting."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage",
-            "Minion gem levels",
-            "Minion attack speed"
-          ],
-          "note": "The wand is the minion slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Five links."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Minion damage",
-            "Minion life"
-          ],
-          "note": "Minion damage first."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "Reach 3,000 life and cap resistances in white maps.",
-        "Unbound Ailments is the sixth link; keep the swarm refreshed."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage",
-            "Minion gem levels",
-            "Minion attack speed"
-          ],
-          "note": "Minion wand."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the six-link."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Resistances before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Rings",
-          "mods": [
-            "Elemental resistances"
-          ],
-          "note": "Bench the resistance the gear is missing."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Keep a Desecrate and Flesh Offering on the bar for every pack."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Minion Skill Gems",
-            "Minion damage",
-            "Minion attack speed"
-          ],
-          "note": "Gem levels beat everything for minions."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Six-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Minion damage",
-            "Minion life"
-          ],
-          "note": "Minion damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Minion damage"
-          ],
-          "note": "Bench minion damage."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 gems and a +1 minion gems wand for bosses."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Minion Skill Gems",
-            "Minion damage",
-            "Minion attack speed"
-          ],
-          "note": "The wand carries gem levels."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "+1 to Level of all Minion Skill Gems",
-            "Life",
-            "Minion damage"
-          ],
-          "note": "The amulet carries gem levels."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Minion damage",
-            "Minion life"
-          ],
-          "note": "Keep minion life."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Animate Weapon": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Animates a Melee Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
-      "effect": [
-        "Base duration is 40.00 seconds",
-        "Animated Lingering Blades deal 17 to 80 Added Attack Physical Damage",
-        "Can use Items requiring up to Level 100",
-        "Minions deal 38% more Damage",
-        "Minions have 38% more Attack Speed",
-        "Minions' Attacks deal 126 to 184 additional Physical Damage",
-        "Maximum 14 Animated Weapons"
-      ],
-      "tags": [
-        "duration",
-        "minion",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "to Maximum Animated Weapons",
-      "qualityWorth": "recommended"
-    },
-    "Animate Weapon of Ranged Arms": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "divine-font",
-        "act": null,
-        "quest": null
-      },
-      "color": "g",
-      "support": false,
-      "description": "Animates a Ranged Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
-      "effect": [
-        "Base duration is 40.00 seconds",
-        "Animated Lingering Blades become Bows",
-        "Can use Items requiring up to Level 100",
-        "Minions deal 138% of Damage",
-        "126 to 184 Added Physical Damage",
-        "Maximum 14 Animated Weapons"
-      ],
-      "tags": [
-        "duration",
-        "minion",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "to Maximum Animated Weapons",
-      "qualityWorth": "recommended"
-    },
-    "Arcane Surge": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Arcane Surge lasts 4 seconds",
-        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
-        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
-        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
-      ],
-      "tags": [
-        "arcane",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Chance to Poison": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 40% chance to Poison on Hit",
-        "Supported Skills have 94 to 141 added Chaos Damage"
-      ],
-      "tags": [
-        "chaos"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Damage with Poison",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Deadly Ailments": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "vendor",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills deal 80% less Damage with Hits",
-        "Supported Skills deal 44% more Damage with Ailments"
-      ],
-      "tags": [],
-      "qualityEffect": "Supported Skills deal % increased Damage over Time",
-      "qualityWorth": "recommended"
-    },
-    "Desecrate": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Desecrates the ground, spawning corpses based on monsters in the current area and dealing chaos damage over time to enemies. If you are using the Raise Spectre skill there is a chance to spawn spectral corpses matching your most recently raised Spectres. Spectral corpses cannot be interacted with except by Minion skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Spawns 5 corpses",
-        "Maximum of 10 corpses allowed",
-        "Deals 294 Base Chaos Damage per second",
-        "Spawned corpses' level matches the area level, up to a maximum of Level 80"
-      ],
-      "tags": [
-        "area",
-        "chaos",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cast Speed",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Flesh Offering": {
-      "requiredLevel": 12,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Siren's Cadence"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Consumes a corpse, which temporarily empowers your minions with swiftness. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
-      "effect": [
-        "Base duration is 5.00 seconds",
-        "Additional 1.00 seconds Base Duration per extra corpse Consumed",
-        "Grants Minions 30% increased Attack Speed",
-        "Grants Minions 29% increased Movement Speed",
-        "Grants Minions 30% increased Cast Speed"
-      ],
-      "tags": [
-        "duration",
-        "minion",
-        "spell"
-      ],
-      "qualityEffect": "% increased Effect of Offering",
-      "qualityWorth": "recommended"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "lilly",
-        "act": 6,
-        "quest": "Fallen from Grace"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Minion Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Minions from Supported Skills have 25% less Maximum Life",
-        "Minions from Supported Skills deal 39% more Damage"
-      ],
-      "tags": [
-        "minion"
-      ],
-      "qualityEffect": "Minions from Supported Skills deal % increased Damage",
-      "qualityWorth": "recommended"
-    },
-    "Minion Speed": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 44% increased Minion Movement Speed",
-        "Supported Skills have 34% increased Minion Attack Speed",
-        "Supported Skills have 34% increased Minion Cast Speed"
-      ],
-      "tags": [
-        "minion",
-        "movement"
-      ],
-      "qualityEffect": "Supported Skills have % increased Minion Movement Speed",
-      "qualityWorth": "recommended"
-    },
-    "Summon Skeletons": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Summon Skeleton Warrior minions at the targeted location. They use a melee attack and die after a duration. If made aggressive, Skeleton Warriors will also dash towards nearby enemies.",
-      "effect": [
-        "Base duration is 20.00 seconds",
-        "Summons 3 Skeleton Warriors",
-        "Maximum 7 Summoned Skeletons"
-      ],
-      "tags": [
-        "duration",
-        "minion",
-        "spell"
-      ],
-      "qualityEffect": "to Maximum Summoned Skeletons",
-      "qualityWorth": "recommended"
-    },
-    "Unbound Ailments": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "54% increased Duration of Ailments inflicted with Supported Skills",
-        "Supported Skills deal 19% more Damage with Ailments",
-        "Supported Skills have 54% increased Effect of non-Damaging Ailments on Enemies"
-      ],
-      "tags": [],
-      "qualityEffect": "% increased Duration of Ailments inflicted with Supported Skills",
-      "qualityWorth": "recommended"
-    },
-    "Vile Toxins": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills deal 5% more Damage with Hits for each Poison on the Enemy, up to 8",
-        "Supported Skills deal 19% more Damage with Poison"
-      ],
-      "tags": [],
-      "qualityEffect": "Supported Skills deal % increased Damage with Poison",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "163f386620d7",
-  "medal": "A",
-  "stale": {
-    "status": "waiting-for-pob",
-    "reason": "This build has not been verified against a patch fact set."
-  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -8526,6 +7687,7 @@
       }
     }
   },
+  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
@@ -8539,7 +7701,847 @@
       "pinnacle": "eJzNWm1z2rgW_lx-hcYznbs7VRq9-qUTugMkpemGhoYk3fRLR9gClPiF2jIJ_fV3ZONgUiDktnubYUYjHz1HOs-RdCwfcfDXXRSCmUwzlcRNC79GFpCxnwQqHjeti_N3e67119vGQV_oyemonavQtLxtvDgo6iCUMxk2Lc-2gBbpWOrLqiv6FVnAD0WWfRSRbFqflfYnFhCZL-Ogs5R_lH6aRCL2ZWqBSKh4kPg3UnfTJJ82LWyBoYgDpZvWxySWFpiKWE9kEvfEdZJ2k6BphXksUpXVmlS8aBqnuZ7c5KEFZkre9pJANq1O66QzsN42Xrw46IdiLtOBFhpkWuim1UmioYplcNgfWGAmwlw2LUw5cl57jHsIexhb--tVzxMtwv9B70SN5L2O7bn2JuBRLNPxfDBRMgzuFSjmWw06et9fYh2E3deOSx2MMCGb9PqTeaZ8EfbEnYry6L3S5-JGxkte2HM3snmnUnkmM5Xpe7yz0cJOEgY7g0_UeKJjFY93734ikmxndE_EopPUoNzZBr2IU5nJdCaXc0HQRo3BVNaA-LVbAA_2iz1kaueplED4Ws3kYCp9s-6LnswD0KmUtW1Fq311HDQturKjjARZIE4CmTUtjJANMaIYYoIoxI7tQEI8AqnNbciw40BGPQdyhjnkDqPQJhRBB2MCHeq60LExg45tah51oVsWzIUepxxiVHSNmIcgRtwxEg8xiHEhIS7CEFOEPIgp9kzddTnEHNnMlC6G2HaMluOY3hyXYIhd1-YQe9jY69mUQ4I4syHBFGFTUgQJth0XEuyaVuxxFxKCbAIJR6ZuY8-GxCYOMqVnJMzFkNgOQ5A4xhPEsTE2JfcgcRzXhcTxiAeNyQQSD3sepIhSF1LsOhxSQjCClDLHg5Q6nEPKsIMhZa6LIOXENqXrMUhthB3jX2a8bFMj8TA3JfMgdbhtStvoOp4ZxbOZC6nnYlMa_zJEbQIZxh6CDBObQoaZYySe60HGuUchsxlyIbM9jCBzCMeQOYWW6zguZB7hDHJMMIGcYswgpwRTUzpeMdmmZMxMvGu7kHNi6py5HHLuIRtyh5CitBnkLsGuKZmpM0Qg9wg3pY1saCPqudBGxkIbceZAGzkehjamBEEbM-xBG7uUQdsQhjb1HBvazPjT5sjIOea0WOwvDi7OTorKi4nW0-zN_v7t7e3rqdCTZCTvVChf-0m0PxVZpmZyL7tRYbhn9sZ-q9Vqtce9ln_bz9st_yi7Hcad_qfTQbt9djRAlx_uvsy6766G8_Z3__2QyU7b7RznifI6F18_zN1kT4X9v6fjjF0ft3v66Pvk-5V3qse2fdF9f3YRvIsvorvB1OtluN25-H55fhEO8ssLfXkXXuVX8kN02RXySzqN_c8TJG4-poTcngyP73T3M878sUfG8fxwFPzduWP94eSf_PjTceReH4pedmXvXd99-9Tj7cubrHv-gZ_NorwzVNPbTiy-jfm3o1ky7ty0h8df9IWi_VSd55_-3lNZO5q3vvdl9jVA7a_n196XC-x-vZoFU0VZOspOP35j7PzmOA-Q_XGYOvktc477M3X6NXWvUv7xa5zs6ZO9zsxut1qtZuH8_cr7B-ULOCunYvFUxBQTXkyIsIDSMjJPePG6-hFX7MMa0NkELLZJDehuAha7oQb0NgGLZbcEErQZ6NaHJovX2ouD_ZoLDvZNEC7CtYnSpjIwS69sLKpAxmIYyqBp6TSXFsjCRDetdhLMQSuNknxxsGmV8d1oVAH-xUFXRmBcjt-TWgRCi_1jLaNsv2uKAt2VUStWkdDysxTTJG6F-soCxQZ4kp4FYhEtXjCLBlC2gGQEzkQ8loGxOLOqcx3BFviWi1DpeeHI6sEMeyhHIg-19ZD9Gqr7T-I6yKfTJNU9FaskPhSRGMvH2JYaXRmtKi3plnJQNTwDep2JOfPqpJ-ozEzNjgRPZJbJtFJaEiy7AzoBVdsz4HipQnme3Kk425lfXWXJzkhBJX4GxA6lCMJ5S4WRjPXu5B6qLQmWLWDZ9AxIXsTDJI-DJ7P8QW9Jc9H07_I8KIk8Fp8XkQ__fHB-F8pscjoayVTF4x0D8wOdpYuKBrBs-Z0L4VBm0k-FfjT-_oivL-174e-b7Oq7-Wen-lBqmUYqFlo9HrTX69Q9s9LwO2e6E4pU6fmOjO7RtfdPJfp9c9wNk5nMfn6Oqxe0yPTniVwcJhZJkB1DoNE9XdWsuUpkGtxOZHUcAQvEwnP8N0z_cRQlqRZhR4ThjmtgVWXJrpKDsuH3LYd2kuhfsBrehSKShyKb7BzY7_H1oC4iCUrpM3izt1JfxHKQp084Wa_o1L4jCjFYyP_V2V7UsiphdqnkLfieJNE_RdbL1K7uayelJUVqofxyM3DzULBbJNtMfSD1fb7NPANVfti-bZwVIe0NOGudHTUGc5NdzlQmA3Atb2UIcONSpSpQIgYfjKBRaBcDvwGu3TiOpqHylc7eANRwXgIV-6kURj8qc6vAJH8bvN7S0lr4N6BIGDYwqTf10-Ra-tqchMu4UTjHjPnAdOdx08kzNd193HT6TE33HjedPU_TCXrcdP5MTcePm24_T9O3Wn5bfJs0BlMVS9BObh_a_KmMp28AQav2YwetGLO4zKlMaQVBBhgyaQIXrW_F3LQSjsD9lUvVjp2NPtgwPds4JqPRRMRBo5VqFYYynYNPuZrJdGeurzAqmKxMU8mhkJvmhxyMvDQ8a7xi_KV5XmLK2yKTSNlAiG4jNJFhJHWjJ65lppUP-jLUO5IhjT8o36P2n3UHm3smYO6kwNFopHwlY3_eWNDoy1hq81GVAfvlegZr3VNxNhd1K-CF3NzJPe4Gts0NwySYG0GgfKHlfzLQFelwmx8WydY3oL13_1t1zqs_KNqj-M_SxFTpYtUOdKpuJOjloVbTUMkUjJK0WpaLJdtNhS_BRGTgD8oeOriVp8L4Vvp6u7fW-_dJLuPbXDYuvlwalzJM8hSU3zE7rxxMN-7KVxi9BP59ZtAc5lKZZaY1vN_1a5lv2eqbeG9aWuv9sfV8NTRH98odxTl-d2-sxL9eMpMm0bQwvVhG5M-6T1qzRAXgKCxgIrzPTDXoto62rpZNjnlCnNl6hBuauHIihZ7IFLR3DzIbIubGkGA8YOiYe_THTd56dBNRHkrdOI3nd6BV1p9FlH8ix61nPJOuw43TqQjBmYrH_3eCPzl_eOsp0JAjv4rcUyPIU5nUj1a9Vve4s0IlVCMJRqHIbhqHamYOWMYo8K6Q7Mprw8hk68iReaGXIx9pmcYiLN_xv2RounXoXCvT22L0bipipX8RZ_aEgT_lItXff824_AnjtiKpJ_NM_-zIA6kXh3eglQ5lLZ2RZ3Ig_SQOynuFIqswEmEmF-mmQZjoIm9Sv3m4v8yu8jg_okjtgnoN6n1x6Fxi6BrMyk10BWRrgFUGtcLwtZ0VabUKYq-DyLBmkbMGUb4Dlhh3DcbEmbqPvE2YmocwWgMq5nzF29ha5H8WyadNOvWeyY469b8o0B116v9_YDvq8JoOX6dTLt2B1EUGrMh6mVoniUdqXK7oeJpXncpYRvNiS1ggzqOhTJuWu1gjPwKPZiIrLzMqKF78zeJgvxrgYP_hn0b_C38JUXg="
     }
   },
-  "patch": "3.30.0",
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:54:58.458Z"
+  },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Bow"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Quiver"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "dexjewel"
+        ]
+      }
+    }
+  },
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "minion",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Bandit Rogue's Head",
+          "tier": "low",
+          "effect": "(4-6)% increased Attack and Cast Speed",
+          "source": "Kraityn",
+          "area": "Act 2",
+          "note": "Attack and cast speed for summoning."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "low",
+          "effect": "+(14-18)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance while gearing."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "low",
+          "effect": "+(30-50) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life for you and your minions to hide behind."
+        },
+        "lowerLimb": {
+          "name": "Sea Witch's Tentacle",
+          "tier": "low",
+          "effect": "Minions deal (10-15)% increased Damage",
+          "source": "Brood Princess",
+          "area": "Act 1",
+          "note": "Minion damage from Act 1."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Bandit Rogue's Head",
+          "tier": "med",
+          "effect": "(8-10)% increased Attack and Cast Speed",
+          "source": "Kraityn",
+          "area": "Act 2",
+          "note": "Keep the summoning speed."
+        },
+        "torso": {
+          "name": "Ornate Torso",
+          "tier": "med",
+          "effect": "Minions have (20-30)% increased maximum Life",
+          "source": "Greust",
+          "area": "Act 7",
+          "note": "Minion life; the aura stays on after they die."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "med",
+          "effect": "+(60-80) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life before damage scaling."
+        },
+        "lowerLimb": {
+          "name": "Sea Witch's Tentacle",
+          "tier": "med",
+          "effect": "Minions deal (20-30)% increased Damage",
+          "source": "Brood Princess",
+          "area": "Act 1",
+          "note": "The default minion damage leg."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Chimera's Head",
+          "tier": "fixed",
+          "effect": "Minions deal (35-50)% increased Damage if you've Hit Recently",
+          "source": "Chimera",
+          "area": "Pinnacle / Map Boss",
+          "note": "Swap to this only if you hit recently; otherwise keep Bandit Rogue's Head."
+        },
+        "torso": {
+          "name": "Ornate Torso",
+          "tier": "high",
+          "effect": "(3-5)% of Damage from Hits is taken from your Damagable Minions' Life before you",
+          "source": "Greust",
+          "area": "Act 7",
+          "note": "Damage from hits is taken from your minions first."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "high",
+          "effect": "(5-7)% more Maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "More maximum life is the best defensive arm."
+        },
+        "lowerLimb": {
+          "name": "Sea Witch's Tentacle",
+          "tier": "high",
+          "effect": "Minions have (8-12)% chance to deal Double Damage",
+          "source": "Brood Princess",
+          "area": "Act 1",
+          "note": "Minions have a chance to deal double damage."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Summon Skeletons until ranged weapons start dropping.",
+        "Animate every bow you find; Chance to Poison turns the volley into damage."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage",
+            "Minion gem levels"
+          ],
+          "note": "Any wand; the animated weapon does the damage."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "A 3-link is enough."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Movement speed is defence."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Add Minion Speed and start Desecrate plus Flesh Offering.",
+        "Take the first two labs when they unlock; Mindless Aggression is the army."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage",
+            "Minion gem levels"
+          ],
+          "note": "Minion wand."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Stay defensive; the minions do the damage."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "4-link",
+            "Life"
+          ],
+          "note": "Four links carry the swarm."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage"
+          ],
+          "note": "Bench minion damage on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Five-link the animate group and reach 2,000 life.",
+        "Add Vile Toxins and Deadly Ailments; the poison does the heavy lifting."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage",
+            "Minion gem levels",
+            "Minion attack speed"
+          ],
+          "note": "The wand is the minion slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Five links."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Minion damage",
+            "Minion life"
+          ],
+          "note": "Minion damage first."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "Reach 3,000 life and cap resistances in white maps.",
+        "Unbound Ailments is the sixth link; keep the swarm refreshed."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage",
+            "Minion gem levels",
+            "Minion attack speed"
+          ],
+          "note": "Minion wand."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the six-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Resistances before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Rings",
+          "mods": [
+            "Elemental resistances"
+          ],
+          "note": "Bench the resistance the gear is missing."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Keep a Desecrate and Flesh Offering on the bar for every pack."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Minion Skill Gems",
+            "Minion damage",
+            "Minion attack speed"
+          ],
+          "note": "Gem levels beat everything for minions."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Six-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Minion damage",
+            "Minion life"
+          ],
+          "note": "Minion damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Minion damage"
+          ],
+          "note": "Bench minion damage."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 gems and a +1 minion gems wand for bosses."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Minion Skill Gems",
+            "Minion damage",
+            "Minion attack speed"
+          ],
+          "note": "The wand carries gem levels."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "+1 to Level of all Minion Skill Gems",
+            "Life",
+            "Minion damage"
+          ],
+          "note": "The amulet carries gem levels."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Minion damage",
+            "Minion life"
+          ],
+          "note": "Keep minion life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Animate Weapon": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Animates a Melee Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
+      "effect": [
+        "Base duration is 40.00 seconds",
+        "Animated Lingering Blades deal 17 to 80 Added Attack Physical Damage",
+        "Can use Items requiring up to Level 100",
+        "Minions deal 38% more Damage",
+        "Minions have 38% more Attack Speed",
+        "Minions' Attacks deal 126 to 184 additional Physical Damage",
+        "Maximum 14 Animated Weapons"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "to Maximum Animated Weapons",
+      "qualityWorth": "recommended"
+    },
+    "Animate Weapon of Ranged Arms": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "divine-font",
+        "act": null,
+        "quest": null
+      },
+      "color": "g",
+      "support": false,
+      "description": "Animates a Ranged Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
+      "effect": [
+        "Base duration is 40.00 seconds",
+        "Animated Lingering Blades become Bows",
+        "Can use Items requiring up to Level 100",
+        "Minions deal 138% of Damage",
+        "126 to 184 Added Physical Damage",
+        "Maximum 14 Animated Weapons"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "to Maximum Animated Weapons",
+      "qualityWorth": "recommended"
+    },
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Chance to Poison": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 40% chance to Poison on Hit",
+        "Supported Skills have 94 to 141 added Chaos Damage"
+      ],
+      "tags": [
+        "chaos"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Damage with Poison",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Deadly Ailments": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal 80% less Damage with Hits",
+        "Supported Skills deal 44% more Damage with Ailments"
+      ],
+      "tags": [],
+      "qualityEffect": "Supported Skills deal % increased Damage over Time",
+      "qualityWorth": "recommended"
+    },
+    "Desecrate": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Desecrates the ground, spawning corpses based on monsters in the current area and dealing chaos damage over time to enemies. If you are using the Raise Spectre skill there is a chance to spawn spectral corpses matching your most recently raised Spectres. Spectral corpses cannot be interacted with except by Minion skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Spawns 5 corpses",
+        "Maximum of 10 corpses allowed",
+        "Deals 294 Base Chaos Damage per second",
+        "Spawned corpses' level matches the area level, up to a maximum of Level 80"
+      ],
+      "tags": [
+        "area",
+        "chaos",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cast Speed",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Flesh Offering": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Siren's Cadence"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Consumes a corpse, which temporarily empowers your minions with swiftness. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
+      "effect": [
+        "Base duration is 5.00 seconds",
+        "Additional 1.00 seconds Base Duration per extra corpse Consumed",
+        "Grants Minions 30% increased Attack Speed",
+        "Grants Minions 29% increased Movement Speed",
+        "Grants Minions 30% increased Cast Speed"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "spell"
+      ],
+      "qualityEffect": "% increased Effect of Offering",
+      "qualityWorth": "recommended"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "lilly",
+        "act": 6,
+        "quest": "Fallen from Grace"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Minion Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Minions from Supported Skills have 25% less Maximum Life",
+        "Minions from Supported Skills deal 39% more Damage"
+      ],
+      "tags": [
+        "minion"
+      ],
+      "qualityEffect": "Minions from Supported Skills deal % increased Damage",
+      "qualityWorth": "recommended"
+    },
+    "Minion Speed": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Minion Movement Speed",
+        "Supported Skills have 34% increased Minion Attack Speed",
+        "Supported Skills have 34% increased Minion Cast Speed"
+      ],
+      "tags": [
+        "minion",
+        "movement"
+      ],
+      "qualityEffect": "Supported Skills have % increased Minion Movement Speed",
+      "qualityWorth": "recommended"
+    },
+    "Summon Skeletons": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Summon Skeleton Warrior minions at the targeted location. They use a melee attack and die after a duration. If made aggressive, Skeleton Warriors will also dash towards nearby enemies.",
+      "effect": [
+        "Base duration is 20.00 seconds",
+        "Summons 3 Skeleton Warriors",
+        "Maximum 7 Summoned Skeletons"
+      ],
+      "tags": [
+        "duration",
+        "minion",
+        "spell"
+      ],
+      "qualityEffect": "to Maximum Summoned Skeletons",
+      "qualityWorth": "recommended"
+    },
+    "Unbound Ailments": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "54% increased Duration of Ailments inflicted with Supported Skills",
+        "Supported Skills deal 19% more Damage with Ailments",
+        "Supported Skills have 54% increased Effect of non-Damaging Ailments on Enemies"
+      ],
+      "tags": [],
+      "qualityEffect": "% increased Duration of Ailments inflicted with Supported Skills",
+      "qualityWorth": "recommended"
+    },
+    "Vile Toxins": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills deal 5% more Damage with Hits for each Poison on the Enemy, up to 8",
+        "Supported Skills deal 19% more Damage with Poison"
+      ],
+      "tags": [],
+      "qualityEffect": "Supported Skills deal % increased Damage with Poison",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "163f386620d7",
   "guide": {
     "summary": {
       "text": "Poison Ranged Animate Weapons measure 75.8k at red maps and 108.1k at pinnacle. The animated bows poison from range while you position, and the build needs no unique.",
@@ -8587,11 +8589,5 @@
       "factsHash": "5d113c63a62a1599"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T12:54:58.458Z"
-  }
+  "medal": "A"
 }

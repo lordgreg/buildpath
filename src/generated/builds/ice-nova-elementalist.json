@@ -924,870 +924,7 @@
     "core": [],
     "optional": []
   },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Sceptre",
-          "Wand"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Shield"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "intjewel"
-        ]
-      }
-    }
-  },
   "status": "verified",
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "cold-spell",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Bandit Rogue's Head",
-          "tier": "low",
-          "effect": "(4-6)% increased Attack and Cast Speed",
-          "source": "Kraityn",
-          "area": "Act 2",
-          "note": "Cast speed while channeling Winter Orb."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "low",
-          "effect": "+(14-18)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "low",
-          "effect": "+(30-50) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life while channeling."
-        },
-        "lowerLimb": {
-          "name": "Siren's Tentacle",
-          "tier": "low",
-          "effect": "(10-15)% increased Effect of Cold Ailments",
-          "source": "Merveil",
-          "area": "Act 1",
-          "note": "Cold ailment effect."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Gelid Fangs",
-          "tier": "med",
-          "effect": "Damage Penetrates (6-8)% Cold Resistance",
-          "source": "Chill of the Mountain",
-          "area": "Act 9",
-          "note": "Cold penetration is the damage stat."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "med",
-          "effect": "+(22-28)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance while gearing."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "med",
-          "effect": "+(60-80) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life before damage scaling."
-        },
-        "lowerLimb": {
-          "name": "Siren's Tentacle",
-          "tier": "med",
-          "effect": "(20-30)% increased Effect of Cold Ailments",
-          "source": "Merveil",
-          "area": "Act 1",
-          "note": "Chill effect keeps packs in the orb."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Gelid Fangs",
-          "tier": "high",
-          "effect": "Hits have (10-15)% chance to treat Enemy Monster Cold Resistance values as inverted",
-          "source": "Chill of the Mountain",
-          "area": "Act 9",
-          "note": "Hits can treat cold resistance as inverted."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "high",
-          "effect": "+(2-3)% to maximum Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Maximum cold resistance."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "high",
-          "effect": "(5-7)% more Maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "More maximum life."
-        },
-        "lowerLimb": {
-          "name": "Siren's Tentacle",
-          "tier": "high",
-          "effect": "+5% to Maximum Effect of Chill",
-          "source": "Merveil",
-          "area": "Act 1",
-          "note": "Maximum chill effect."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Freezing Pulse; life and a 3-link first.",
-        "Do not buy crit gear before Ice Nova is available at level 12."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "Any magic wand."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "A 3-link is enough."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Movement speed is defence."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Switch to Ice Nova and add Controlled Destruction and Faster Casting.",
-        "Take the first two labs when they unlock; Shaper of Winter is the freeze."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Cold damage"
-          ],
-          "note": "A rare sceptre is the first real upgrade."
-        },
-        {
-          "slot": "Shield",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Stay defensive; the nova does the damage."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "4-link",
-            "Life"
-          ],
-          "note": "Four links carry the clear."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Cast speed"
-          ],
-          "note": "Bench cast speed on a free suffix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Five-link Ice Nova with Spell Echo and Increased Critical Strikes.",
-        "Reach 2,000 life and cap elemental resistances before adding crit multi."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Critical strike chance for spells"
-          ],
-          "note": "Crit sceptre."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Five links."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Life before crit."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "Reach 3,000 life and cap resistances in white maps.",
-        "Add Cold Penetration; keep Frost Bomb for exposure on rares."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Critical strike chance for spells"
-          ],
-          "note": "Rare crit sceptre."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the six-link."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Resistances before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Rings",
-          "mods": [
-            "Elemental resistances"
-          ],
-          "note": "Bench the resistance the gear is missing."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Increased Critical Damage is the last damage link."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Cold Skill Gems",
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "+1 cold gems is the red-map goal."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Six-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Crit multi."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Cast speed",
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 gems and keep a +1 cold gems sceptre for bosses."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Cold Skill Gems",
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "Gem levels beat added damage."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "+1 to Level of all Cold Skill Gems",
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "The amulet carries gem levels."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Keep life."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Cold Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 152 to 228 added Cold Damage"
-      ],
-      "tags": [
-        "cold"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Cold Damage",
-      "qualityWorth": "recommended"
-    },
-    "Arcane Surge": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Arcane Surge lasts 4 seconds",
-        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
-        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
-        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
-      ],
-      "tags": [
-        "arcane",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Cold Penetration": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills Penetrate 34% Cold Resistance"
-      ],
-      "tags": [
-        "cold"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Cold Damage",
-      "qualityWorth": "recommended"
-    },
-    "Controlled Destruction": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 80% less Critical Strike Chance",
-        "Supported Skills deal 39% more Spell Damage"
-      ],
-      "tags": [
-        "critical",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Faster Casting": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 39% increased Cast Speed"
-      ],
-      "tags": [
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills have % increased Cast Speed",
-      "qualityWorth": "recommended"
-    },
-    "Freezing Pulse": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "b",
-      "support": false,
-      "description": "An icy projectile which has a chance to freeze enemies it passes through. The projectile fades quickly, reducing damage and freezing chance until it dissipates.",
-      "effect": [
-        "Projectiles Pierce all Targets",
-        "Projectiles continuously lose Damage, up to 50% less Damage by the time they dissipate\nProjectiles have 25% chance to Freeze, which is lost over the first quarter of their flight",
-        "Deals 1659 to 2488 Cold Damage",
-        "Fires 5 Projectiles"
-      ],
-      "tags": [
-        "cold",
-        "projectile",
-        "spell"
-      ],
-      "qualityEffect": "% increased Projectile Speed",
-      "qualityWorth": "recommended"
-    },
-    "Frost Bomb": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Creates a crystal that pulses with cold for a duration. Each pulse applies a debuff to nearby enemies for a secondary duration which reduces life regeneration rate, and also inflicts Cold Exposure. When the crystal's duration ends, it explodes, dealing heavy cold damage to enemies around it.",
-      "effect": [
-        "Base duration is 2.00 seconds",
-        "Base secondary duration is 5.00 seconds",
-        "Cold Exposure applies -15% to Cold Resistance",
-        "75% reduced Life Regeneration rate",
-        "25% chance to Freeze enemies",
-        "Deals 1712 to 2568 Cold Damage",
-        "Base radius is 3.1 metres"
-      ],
-      "tags": [
-        "area",
-        "cold",
-        "duration",
-        "orb",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Frostblink": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving Chilled ground in an area at both ends of the teleport. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 3.00 seconds",
-        "Deals 1144 to 1716 Cold Damage",
-        "19% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area\n99% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
-        "38% increased maximum travel distance",
-        "+0.3 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "blink",
-        "cold",
-        "duration",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased maximum travel distance",
-      "qualityWorth": "recommended"
-    },
-    "Hatred": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Casts an aura that grants extra cold damage based on physical damage to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 39% of Physical Damage as Extra Cold Damage",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "cold",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Herald of Ice": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage.",
-      "effect": [
-        "Base radius is 1.2 metres",
-        "Damage cannot be Reflected",
-        "Buff grants 38 to 56 Added Spell Cold Damage",
-        "Buff grants 38 to 56 Added Attack Cold Damage",
-        "Deals 308 to 462 Cold Damage"
-      ],
-      "tags": [
-        "area",
-        "cold",
-        "herald",
-        "spell"
-      ],
-      "qualityEffect": "metres to radius",
-      "qualityWorth": "optional"
-    },
-    "Ice Nova": {
-      "requiredLevel": 12,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Siren's Cadence"
-      },
-      "color": "b",
-      "support": false,
-      "description": "A circle of ice expands from the caster.",
-      "effect": [
-        "25% chance to Freeze enemies",
-        "Deals 1122 to 1683 Cold Damage",
-        "Base radius is 3 metres"
-      ],
-      "tags": [
-        "area",
-        "cold",
-        "nova",
-        "spell"
-      ],
-      "qualityEffect": "Base radius is metres",
-      "qualityWorth": "optional"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "lilly",
-        "act": 6,
-        "quest": "Fallen from Grace"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Increased Critical Damage": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "vendor",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have +138% to Critical Strike Multiplier"
-      ],
-      "tags": [
-        "critical"
-      ],
-      "qualityEffect": "Supported Skills have % to Critical Strike Multiplier",
-      "qualityWorth": "recommended"
-    },
-    "Increased Critical Strikes": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have +2% to Critical Strike Chance",
-        "Supported Skills have 117% increased Critical Strike Chance"
-      ],
-      "tags": [
-        "critical"
-      ],
-      "qualityEffect": "Supported Skills have % increased Critical Strike Chance",
-      "qualityWorth": "recommended"
-    },
-    "Spell Echo": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "reward",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills Repeat an additional time",
-        "Supported Skills have 54% more Cast Speed"
-      ],
-      "tags": [
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "1dee185a7162",
-  "medal": "A",
-  "stale": {
-    "status": "waiting-for-pob",
-    "reason": "This build has not been verified against a patch fact set."
-  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -8481,6 +7618,7 @@
       }
     }
   },
+  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
@@ -8494,7 +7632,871 @@
       "pinnacle": "eJzVWmtvGjkX_hx-hTXSSruqacbX8VShKyAJSTd3cmn7ZeXMGHAzFzpjoOyvf-UZSIYUCHmbKq2QLI_9HNvPOfaxfczO39_iCIxVlus0aTjoresAlQRpqJN-w7m63K8L5-_3tZ0zaQanvdZIR7bmfW1rp8iDSI1V1HB87gAjs74y1_OmyL-uA4JI5vmJjFXDudEmGDhA5oFKwvZD-V6kYpUYGencOCCWOummwZ0ynSwdDRsOcsCtTEJtGs5JmigHDGViBipNjuWXNOukYcOJRonMdF6p0smsqp-NzOBuFDlgrNXkOA1Vw2k3j9pd531ta2vnLJJTlXWNNCA30jScdhrf6kSFu2ddB4xlNFINByHf89hbTlyEKWHO9nLRy9TI6P-QO9I9dS_j-cxfBdxLVNafdgdaReFDJ4J5a0e0d3B2D-au8MRbQSgTFLloldzZYJrrQEbH8puOR_GBNpfyTiUPfXLh41XC-zpTFyovjDknxVeB22kUPgavUVR_YBKd9DeWaA9kmm-MPpaJbKcVqFipIQu9SjKVq2ysHoxRJ6tFukNVQZK3LvMQxaJIS5PvbBdLyuYuM6WADIweq-5QBXYVFK3aD2AypSqrjMyX2WHYcMjCArMlrgOSNFR5w0EuQRBhl0DkcQ8igTEkiHuQcMYhRYJCSnwPUuZiSH3kQeZRArnLMOSYuJAT5kNOKYfc4xR6CGHoESGg5xMBhU8F9IngELlFTy71XYhc5jGIEMUuRJjaPHFdHyIiBIOIusyDiLmcQsSoyyDiLiYQcc8iPY_YVGAEkfC4D5EQnEHkM9-mnDCIXUa5TRmC2BUMQ4yIi2xKXIgRRQRixD0BMRIWj3wmIGauTTnyOcScYQIx96gLsWfVgz3OfIg9TwiIhccoxD7yfUhcjBkkSHgMEoyRCwmmjEFCqOdDQmwLhHhFiScIJJRzBAnDNs-ET62mKbapYJBwTmyJT31IPIQoJB7jNs89BInn2x4F8l1IfE4FpC7huEg5pK5ALqQIcwIpoh6GFPnChxRz6kNKKbYpdzmk1GcMUu5bvIcZglQU7QjPE5D6mFHIXMExZAQhARnBiNjU8yGjlHqQMVykVDDImG2fMd_lkHnIt1MEY5vHnEImsG1BYGrz1MU2tXjhcTuPiC8gR6hIsZ1KiGAXckSRzXNGIEeCUMgteciJb6WI73HImUtosQS2dq4ujorM1sCYYf5ue3symbwdSjNIe-qbjtTbII23hzLP9VjV8zsdRXW7YrabzWaz1T9uhpPzg9bRcYdNArW7L067rdanva57EQ2O0X4sPg5bg5vOSfD5aDDMO6IfkJZoH47P777qYPzPWTq8nE6D46N86l5-8k9GdxzvTsz5p3D_wr0Ju9f7H_Kr6dHl0cn5edQ6uPp4cXlyfdK94tdXWXR9dB18HtD489VnZtKwM9y9bZr8y0GrG_R9vPdxutsLP9S_0aODvpjuYnpGBvjmg0sn-EvGT_knIe_2b87rw6PW3VRd3bKrUTxqh1-HeJTgr4MjftgcNm_iWOKT7Asfx15QH304FTzj_0w6t50s9-v_-eT8wO-d4SPy-VM41ASTnjb1CcXZl8HpuWb7B5Guj0fexBt36_VDrz6eoF7nn_plj-F_k_TfftpsNhuNwhDbc0vslBt2Xppl9lV4HeuArOtwgDYqtl9othd8jytWYwXorQIWC6cCFKuAxfqoAP1VwGIKPgCxuxooql3jmbff2tmuqGBn27rpwqFbP24zXTsNy8oiC1QibyMVNhyTjZQD8ig1DaeVhlPQzOJ0lJUHoWa5A1iJ-RawtdNRMeiX_R8rI0Np5PahUXG-3bFJge6o-DBQJ-lYOqBYAhujExnPtpzDQIGybHbGw8gBX0cy0mZa6Gj-YdveVT05iozzmNgSFtvPotEdDYdpZpphqEJ7WtiVseyrp1iVQh0Vfyf3wK-oArYOzCt_AaLdoYqivWCQbkzxeBQZHUh7bnkgVzQDynZ-AVaHSZApmauwnWk72KhrMn2n8o1Jrm6gMmHnGDAHgXvUr6iDZ07llfJrNfALTW271M5UokwmjU6TjYl_J_dAuFi9C3U_gedOSeQp732j5DBNAPpx172fpblppfHths67gn9QTVEIytLXNH4xjttIJ3fPYTMTeERnVvp6Np5fvn_UwgfSZPY2uJFC5uAHZcxLXtOuu8qoLNbJRmt5ucwDoUcVr2fgAxXFyryAgVUmo_C0dxg86eCXSVRMXRSDtAeKite0eDuSmTbTDfncoyveel70evbtROnYngd-1L7zLU3m5magknKXnUXJNt3WZG5OFyUrqpK5AZOBSmYbOJghZppjr2D-wzhOMyOjtoyiTW8VCyKVc8qsHJQVP3U6zHL5PKx2rdUE_Jem8cciNmZzn-5zR-VIiHN_e7Nw-1Gwm4XkbL6rzH1Uzn4DXV5u39cuikn-Dlw0L_Zq3amNSOfansm-qImKAKq101sZGfDBftYK2aLbd0Dw2mE8jHSgTf4OuDXvD6DvT3RxGYwFNlxcQ7xaVbnD1BCu1pTXgFnVG1tnUtCJ7AAeH5JBcY8YRlplhf7swB6x855mh39fduJpduT3Zec_zY7-tuyw-zQ79vuyQ0-z478tu7XkJsWdqnad6hB0AzU0mXrM7bzcJN4B7C7yFO7KMTN3JVG2UGN34eLhpvaGsILm8623jl_a6w1kEtbaAx3rpA-6Q51pA8prxsZM-QKd8plw3sYb5Lp23AuGfkNnZCzz8n1MJoFawYCsYzAoDsy1g9FtpnPQ1lkQKbPhyHHtWCc6TXIwkGMF_sSijv2_Vk_PhUlon-Ds2FU2Lm4NYK_X04FWSTC1p-Vy019P3z5VVuk_Ty10nVpu03Bau5YyAheqLyMt16lkFjt-B1r1-9-inv7EpI7pgmpUr6cCY6me9noq00k_r735E7E64n8VLKQNAM7f1it0Vihl7SSaKeb-BfZp7bB12ukXp_BaN80ClakMlKfyZ8-aUMlo2ay590zuHyAY2EHawduTd6by_LH7-mkTZO1h8DZNTUUDreJzUwWgBVsdp-PCyjNPtbhMLB87B1WiyhAZyKRRNbKuhTe21tK0z-fL-D9jHqw9M96qyNTaA6kT0LLZTR3e84y2is3yAa89Bsp4ZN3baTL9BpplfuMx02LIh4lRUaT7qhjaOh5LlfxMMmtPfdZnoNrp0HoHnfR_kvZfkA1ae8yzdPBL03m80l-UTvXoc9zsHLYX-ER25fYimd_VdvVYJ6pcy_tFyabkVvSM1_Yc26217HnPqCyRUbnbvkjXZG3XI6Nta7PeO5lMtHkhzvQZHZ-PZGb-e5l-2TP6bcbKDKa5-dGeu8rMDtfAaBOpSgBllKuuCtIkLN8rijhGT0a5mgXAulFqilBN9UXj_gl9HjP6HoUrz-JLUPPA6hxDlmAW3r_nQLoEOI_izTFsaWOpqUD4MoiKKiPyliBKH_-AEUsw1tlUdeSvwlQ0hNwloMLmC9pGziziNAt3rZKptow3lKn-MYJsKFP91wXdUIZVZNgymXLqdpUpYm5FnM3m2mnS0_1yRifD0bxRlah4WiwJBySj-FZlDUfM5sj3wL2xzMunhjkUzf7csbM972Bn-_F_W_8HyqJ_Zw=="
     }
   },
-  "patch": "3.30.0",
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:53:58.022Z"
+  },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Sceptre",
+          "Wand"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Shield"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "intjewel"
+        ]
+      }
+    }
+  },
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "cold-spell",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Bandit Rogue's Head",
+          "tier": "low",
+          "effect": "(4-6)% increased Attack and Cast Speed",
+          "source": "Kraityn",
+          "area": "Act 2",
+          "note": "Cast speed while channeling Winter Orb."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "low",
+          "effect": "+(14-18)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "low",
+          "effect": "+(30-50) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life while channeling."
+        },
+        "lowerLimb": {
+          "name": "Siren's Tentacle",
+          "tier": "low",
+          "effect": "(10-15)% increased Effect of Cold Ailments",
+          "source": "Merveil",
+          "area": "Act 1",
+          "note": "Cold ailment effect."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Gelid Fangs",
+          "tier": "med",
+          "effect": "Damage Penetrates (6-8)% Cold Resistance",
+          "source": "Chill of the Mountain",
+          "area": "Act 9",
+          "note": "Cold penetration is the damage stat."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "med",
+          "effect": "+(22-28)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance while gearing."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "med",
+          "effect": "+(60-80) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life before damage scaling."
+        },
+        "lowerLimb": {
+          "name": "Siren's Tentacle",
+          "tier": "med",
+          "effect": "(20-30)% increased Effect of Cold Ailments",
+          "source": "Merveil",
+          "area": "Act 1",
+          "note": "Chill effect keeps packs in the orb."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Gelid Fangs",
+          "tier": "high",
+          "effect": "Hits have (10-15)% chance to treat Enemy Monster Cold Resistance values as inverted",
+          "source": "Chill of the Mountain",
+          "area": "Act 9",
+          "note": "Hits can treat cold resistance as inverted."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "high",
+          "effect": "+(2-3)% to maximum Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Maximum cold resistance."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "high",
+          "effect": "(5-7)% more Maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "More maximum life."
+        },
+        "lowerLimb": {
+          "name": "Siren's Tentacle",
+          "tier": "high",
+          "effect": "+5% to Maximum Effect of Chill",
+          "source": "Merveil",
+          "area": "Act 1",
+          "note": "Maximum chill effect."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Freezing Pulse; life and a 3-link first.",
+        "Do not buy crit gear before Ice Nova is available at level 12."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "Any magic wand."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "A 3-link is enough."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Movement speed is defence."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Switch to Ice Nova and add Controlled Destruction and Faster Casting.",
+        "Take the first two labs when they unlock; Shaper of Winter is the freeze."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Cold damage"
+          ],
+          "note": "A rare sceptre is the first real upgrade."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Stay defensive; the nova does the damage."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "4-link",
+            "Life"
+          ],
+          "note": "Four links carry the clear."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cast speed"
+          ],
+          "note": "Bench cast speed on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Five-link Ice Nova with Spell Echo and Increased Critical Strikes.",
+        "Reach 2,000 life and cap elemental resistances before adding crit multi."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Critical strike chance for spells"
+          ],
+          "note": "Crit sceptre."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Five links."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Life before crit."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "Reach 3,000 life and cap resistances in white maps.",
+        "Add Cold Penetration; keep Frost Bomb for exposure on rares."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Critical strike chance for spells"
+          ],
+          "note": "Rare crit sceptre."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the six-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Resistances before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Rings",
+          "mods": [
+            "Elemental resistances"
+          ],
+          "note": "Bench the resistance the gear is missing."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Increased Critical Damage is the last damage link."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Cold Skill Gems",
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "+1 cold gems is the red-map goal."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Six-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Crit multi."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cast speed",
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 gems and keep a +1 cold gems sceptre for bosses."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Cold Skill Gems",
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "Gem levels beat added damage."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "+1 to Level of all Cold Skill Gems",
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "The amulet carries gem levels."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Keep life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Cold Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 152 to 228 added Cold Damage"
+      ],
+      "tags": [
+        "cold"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Cold Damage",
+      "qualityWorth": "recommended"
+    },
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Cold Penetration": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Penetrate 34% Cold Resistance"
+      ],
+      "tags": [
+        "cold"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Cold Damage",
+      "qualityWorth": "recommended"
+    },
+    "Controlled Destruction": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 80% less Critical Strike Chance",
+        "Supported Skills deal 39% more Spell Damage"
+      ],
+      "tags": [
+        "critical",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Faster Casting": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 39% increased Cast Speed"
+      ],
+      "tags": [
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills have % increased Cast Speed",
+      "qualityWorth": "recommended"
+    },
+    "Freezing Pulse": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "b",
+      "support": false,
+      "description": "An icy projectile which has a chance to freeze enemies it passes through. The projectile fades quickly, reducing damage and freezing chance until it dissipates.",
+      "effect": [
+        "Projectiles Pierce all Targets",
+        "Projectiles continuously lose Damage, up to 50% less Damage by the time they dissipate\nProjectiles have 25% chance to Freeze, which is lost over the first quarter of their flight",
+        "Deals 1659 to 2488 Cold Damage",
+        "Fires 5 Projectiles"
+      ],
+      "tags": [
+        "cold",
+        "projectile",
+        "spell"
+      ],
+      "qualityEffect": "% increased Projectile Speed",
+      "qualityWorth": "recommended"
+    },
+    "Frost Bomb": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Creates a crystal that pulses with cold for a duration. Each pulse applies a debuff to nearby enemies for a secondary duration which reduces life regeneration rate, and also inflicts Cold Exposure. When the crystal's duration ends, it explodes, dealing heavy cold damage to enemies around it.",
+      "effect": [
+        "Base duration is 2.00 seconds",
+        "Base secondary duration is 5.00 seconds",
+        "Cold Exposure applies -15% to Cold Resistance",
+        "75% reduced Life Regeneration rate",
+        "25% chance to Freeze enemies",
+        "Deals 1712 to 2568 Cold Damage",
+        "Base radius is 3.1 metres"
+      ],
+      "tags": [
+        "area",
+        "cold",
+        "duration",
+        "orb",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Frostblink": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving Chilled ground in an area at both ends of the teleport. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 3.00 seconds",
+        "Deals 1144 to 1716 Cold Damage",
+        "19% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area\n99% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
+        "38% increased maximum travel distance",
+        "+0.3 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "blink",
+        "cold",
+        "duration",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased maximum travel distance",
+      "qualityWorth": "recommended"
+    },
+    "Hatred": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants extra cold damage based on physical damage to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 39% of Physical Damage as Extra Cold Damage",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "cold",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Herald of Ice": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage.",
+      "effect": [
+        "Base radius is 1.2 metres",
+        "Damage cannot be Reflected",
+        "Buff grants 38 to 56 Added Spell Cold Damage",
+        "Buff grants 38 to 56 Added Attack Cold Damage",
+        "Deals 308 to 462 Cold Damage"
+      ],
+      "tags": [
+        "area",
+        "cold",
+        "herald",
+        "spell"
+      ],
+      "qualityEffect": "metres to radius",
+      "qualityWorth": "optional"
+    },
+    "Ice Nova": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Siren's Cadence"
+      },
+      "color": "b",
+      "support": false,
+      "description": "A circle of ice expands from the caster.",
+      "effect": [
+        "25% chance to Freeze enemies",
+        "Deals 1122 to 1683 Cold Damage",
+        "Base radius is 3 metres"
+      ],
+      "tags": [
+        "area",
+        "cold",
+        "nova",
+        "spell"
+      ],
+      "qualityEffect": "Base radius is metres",
+      "qualityWorth": "optional"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "lilly",
+        "act": 6,
+        "quest": "Fallen from Grace"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Increased Critical Damage": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +138% to Critical Strike Multiplier"
+      ],
+      "tags": [
+        "critical"
+      ],
+      "qualityEffect": "Supported Skills have % to Critical Strike Multiplier",
+      "qualityWorth": "recommended"
+    },
+    "Increased Critical Strikes": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +2% to Critical Strike Chance",
+        "Supported Skills have 117% increased Critical Strike Chance"
+      ],
+      "tags": [
+        "critical"
+      ],
+      "qualityEffect": "Supported Skills have % increased Critical Strike Chance",
+      "qualityWorth": "recommended"
+    },
+    "Spell Echo": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "reward",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Repeat an additional time",
+        "Supported Skills have 54% more Cast Speed"
+      ],
+      "tags": [
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "1dee185a7162",
   "guide": {
     "summary": {
       "text": "Ice Nova Elementalist measures 95.2k at red maps and 119.8k at pinnacle. Critical strikes and the Elementalist cold package carry the build, and no unique is required.",
@@ -8542,11 +8544,5 @@
       "factsHash": "bfb2daeaf2d6a013"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T12:53:58.022Z"
-  }
+  "medal": "A"
 }

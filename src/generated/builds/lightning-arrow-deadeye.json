@@ -932,805 +932,7 @@
     "core": [],
     "optional": []
   },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Bow"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Quiver"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "dexjewel"
-        ]
-      }
-    }
-  },
   "status": "verified",
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "lightning-bow",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Bandit Rogue's Head",
-          "tier": "low",
-          "effect": "(4-6)% increased Attack and Cast Speed",
-          "source": "Kraityn",
-          "area": "Act 2",
-          "note": "Attack speed for Lightning Arrow."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "low",
-          "effect": "+(14-18)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance while gearing."
-        },
-        "upperLimb": {
-          "name": "Skeletal Archer's Arm",
-          "tier": "low",
-          "effect": "Projectiles deal (8-12)% increased Damage with Hits and Ailments for each Enemy Pierced",
-          "source": "Ironpoint",
-          "area": "Act 1",
-          "note": "Projectile damage per pierce."
-        },
-        "lowerLimb": {
-          "name": "Skeleton Wheel",
-          "tier": "low",
-          "effect": "(5-7)% increased Attack and Cast Speed if you've used a Movement Skill Recently",
-          "source": "Fleetfreak",
-          "area": "Act 6",
-          "note": "Attack speed after a movement skill."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Bandit Rogue's Head",
-          "tier": "med",
-          "effect": "(8-10)% increased Attack and Cast Speed",
-          "source": "Kraityn",
-          "area": "Act 2",
-          "note": "Attack speed for the bow."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "med",
-          "effect": "Damage Penetrates (6-8)% Lightning Resistance",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Lightning penetration."
-        },
-        "upperLimb": {
-          "name": "Skeletal Archer's Arm",
-          "tier": "med",
-          "effect": "Projectiles deal (15-20)% increased Damage with Hits and Ailments for each Enemy Pierced",
-          "source": "Ironpoint",
-          "area": "Act 1",
-          "note": "Projectile damage per pierce."
-        },
-        "lowerLimb": {
-          "name": "Skeletal Tail",
-          "tier": "med",
-          "effect": "(20-30)% increased Projectile Damage",
-          "source": "Skeletal Abomination",
-          "area": "Act 5",
-          "note": "Projectile damage."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Totemic Visage",
-          "tier": "high",
-          "effect": "(10-12)% more Maximum Lightning Damage",
-          "source": "Kuduku",
-          "area": "Act 1",
-          "note": "More maximum lightning damage."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "high",
-          "effect": "Hits have (10-15)% chance to treat Enemy Monster Lightning Resistance values as inverted",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Hits can treat lightning resistance as inverted."
-        },
-        "upperLimb": {
-          "name": "Skeletal Archer's Arm",
-          "tier": "high",
-          "effect": "Projectiles Pierce (2-3) additional Targets",
-          "source": "Ironpoint",
-          "area": "Act 1",
-          "note": "Projectiles pierce additional targets."
-        },
-        "lowerLimb": {
-          "name": "Skeletal Tail",
-          "tier": "high",
-          "effect": "Projectiles Pierce, Fork or Chain an additional time at random",
-          "source": "Skeletal Abomination",
-          "area": "Act 5",
-          "note": "An extra pierce, fork or chain at random."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Lightning Arrow; a physical bow with attack speed is the first upgrade.",
-        "Life, a 3-link and movement speed carry Act 1."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed"
-          ],
-          "note": "A magic bow is enough in Act 1."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "3-link."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Keep moving."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Attack speed"
-          ],
-          "note": "Bench attack speed if the bow has a free suffix."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Add Added Lightning Damage and Faster Attacks to Lightning Arrow.",
-        "Herald of Thunder and Grace are the core auras."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "A rare bow is the damage slot."
-        },
-        {
-          "slot": "Quiver",
-          "mods": [
-            "Life",
-            "Elemental resistances",
-            "Critical strike multiplier"
-          ],
-          "note": "Quiver is cheap damage and defence."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "4-link."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Quiver",
-          "mods": [
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi on a free suffix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Six-link Lightning Arrow and reach 2,000 life; cap elemental resistances.",
-        "The bow and quiver carry the damage; do not over-invest in armour."
-      ],
-      "lookFor": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "The 6-link is the damage step."
-        },
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "A rare bow is still the main slot."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Crit multi is the damage stat."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "A 5-link clears white maps; start the 6-link and upgrade the bow.",
-        "Reach 3,000 life and cap resistances."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "The bow is the damage slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the 6-link."
-        },
-        {
-          "slot": "Quiver",
-          "mods": [
-            "Life",
-            "Critical strike multiplier",
-            "Elemental resistances"
-          ],
-          "note": "Quiver fixes resists and damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Critical strike chance"
-          ],
-          "note": "Bench crit chance if the bow has a free suffix."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Critical strike multiplier is the red-map damage upgrade."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "Upgrade the bow before the quiver."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link is the gate."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Crit multi."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi on a free suffix."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 Lightning Arrow and awakened elemental supports."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "The endgame bow is the last big purchase."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Life",
-            "Chaos resistance",
-            "Critical strike multiplier"
-          ],
-          "note": "Fix chaos resistance here."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Keep life on every jewel."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Lightning Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 19 to 358 added Lightning Damage"
-      ],
-      "tags": [
-        "lightning"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Elemental Damage with Attacks": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Attack Skills deal 34% more Elemental Damage"
-      ],
-      "tags": [
-        "attack"
-      ],
-      "qualityEffect": "% increased Elemental Damage with Attack Skills",
-      "qualityWorth": "recommended"
-    },
-    "Faster Attacks": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 44% increased Attack Speed"
-      ],
-      "tags": [
-        "attack"
-      ],
-      "qualityEffect": "Supported Skills have % increased Attack Speed",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Frenzy": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Performs an attack with a ranged weapon that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed.",
-      "effect": [
-        "5% more Attack Damage per Frenzy Charge",
-        "5% more Attack Speed per Frenzy Charge"
-      ],
-      "tags": [
-        "attack",
-        "bow",
-        "projectile"
-      ],
-      "qualityEffect": "% more Attack Damage per Frenzy Charge % more Attack Speed per Frenzy Charge",
-      "qualityWorth": "recommended"
-    },
-    "Grace": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Casts an aura that grants evasion to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 29% more Evasion rating",
-        "You and nearby allies gain 1545 additional Evasion Rating",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Herald of Thunder": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Grants a buff which adds lightning damage to spells and attacks. If you kill a shocked enemy, this skill will create a storm, causing lightning bolts to strike enemies around you for a duration. The damage inflicted by this skill is not affected by modifiers to spell damage.",
-      "effect": [
-        "Base duration is 6.00 seconds",
-        "Storm Hits an Enemy every 0.25 Seconds",
-        "Cannot inflict Shock",
-        "Creates a storm when you Kill a Shocked Enemy",
-        "Buff grants 19 to 76 Added Spell Lightning Damage",
-        "Buff grants 19 to 76 Added Attack Lightning Damage",
-        "Deals 23 to 1108 Lightning Damage"
-      ],
-      "tags": [
-        "area",
-        "duration",
-        "herald",
-        "lightning",
-        "spell"
-      ],
-      "qualityEffect": "Storms Hit Enemies with % increased Frequency",
-      "qualityWorth": "recommended"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "lilly",
-        "act": 6,
-        "quest": "Fallen from Grace"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Increased Critical Damage": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "vendor",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have +138% to Critical Strike Multiplier"
-      ],
-      "tags": [
-        "critical"
-      ],
-      "qualityEffect": "Supported Skills have % to Critical Strike Multiplier",
-      "qualityWorth": "recommended"
-    },
-    "Increased Critical Strikes": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have +2% to Critical Strike Chance",
-        "Supported Skills have 117% increased Critical Strike Chance"
-      ],
-      "tags": [
-        "critical"
-      ],
-      "qualityEffect": "Supported Skills have % increased Critical Strike Chance",
-      "qualityWorth": "recommended"
-    },
-    "Lightning Arrow": {
-      "requiredLevel": 12,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Siren's Cadence"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning, which also damages a number of surrounding enemies.",
-      "effect": [
-        "50% of Physical Damage Converted to Lightning Damage",
-        "Hits up to 3 additional enemies near the target",
-        "Shocks Enemies as though dealing 290% more Damage"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "bow",
-        "lightning",
-        "projectile"
-      ],
-      "qualityEffect": "Hits up to additional enemies near the target",
-      "qualityWorth": "recommended"
-    },
-    "Precision": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Casts an aura that grants accuracy and critical strike chance to you and your allies.",
-      "effect": [
-        "You and nearby allies gain +701 to Accuracy Rating",
-        "You and nearby allies gain 58% increased Critical Strike Chance",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "critical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Sniper's Mark": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time.",
-      "effect": [
-        "Projectiles which Hit Cursed Enemies Split towards 2 additional targets",
-        "Cursed enemies take 29% increased Damage from Projectile Hits"
-      ],
-      "tags": [
-        "curse",
-        "mark",
-        "spell"
-      ],
-      "qualityEffect": "Cursed enemies take % increased Damage from Projectile Hits",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "547d8ddeb92d",
-  "medal": "B",
-  "stale": {
-    "status": "waiting-for-pob",
-    "reason": "This build has not been verified against a patch fact set."
-  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -8472,6 +7674,7 @@
       }
     }
   },
+  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
@@ -8485,7 +7688,806 @@
       "pinnacle": "eJzNWutvGrsS_1z-Cmul6pyjmsbv9VahV-RF0xOSNCRNc75UhjXgZB9k10DoX3_lXV5pgZDbntsICXnt39gz45nx7Hh3__MQR2Cks9ykSc3Db5EHdNJJQ5P0at7V5VFVev95X9k9V7Z_1t0bmsiNvK-82i3aINIjHdW8QHjAqqyn7efZVPQr8kAnUnl-qmJd8y5U0tOZB1Te0Um4vxg40CrUE-2BWJmklXbutG1k6XBQ87AH2ioJja15p2miPTBQie3rNGmq2zRrpGHNa2cm0Xcm6S0NmmQ62MuGtn83jDwwMnrcTENd8_brJ_st733l1avd80hNdNayyoLcKlvz9tO4bRIdHpy3PDBS0VDXPExxINlbiqjEEjFvZzXpZWpV9D_QnZiuntP4CPF1wMNEZ71Jq290FM4J0EZ2Dj-cz5EMCyreEuRLzAVfu8p5f5Kbjoqa6sHEw_iDsZfqTicLqZAf4HXERybTFzo3uV1ItHal_TQKtwafmF7fJibpbT99X6X51uimStR-ugTFwSboVZLpXGcjvdiJKhXrKFoDvQTkbzFnOCAFenen8CLXusy0BqpjzUi3BrrjjL-Yzj0Am2m95Fh05lnHYc0jj1zK9SAPJGmo85pHqISMMRhQBDFBGGJKOKRMBJAhjCFnSELOGIVcEgoFpxIKLhH0keTQx5hAyYWA0k0gAyphQJCAAeUcBtL3IUaSBBBjFvgQY8ExxFjywC0mJMTERwRiIouVfcwgplJyiLlkBGKBhQ-xkI7KL7jzpcNI5qgCJAKIA8wYxAFHAuLAxxjiQHIJcRDQABIsKYeEYkIgYYJhSJhkEhKOuPtnXEDCA0ohEUj4kPi-lNCxQyCRlCJIZBBwSAIkA0gCh6QIcw4pkgGDFHMkIcVCUkgJCjCkBGMfUhog6v5lAClDFEPKmMMw4UtIeUErhPQh9TlikErKJKRSCAJpIAl2_wJDhqggkGEpBGTYzcYIYhgy4hMEGQkEg4xih-GIcsg4xRQyzgIMGecBhUxQxiATbh-Z4L6EzC_m9H1GIZPMGYCUyIcsCHwJOXLzc0SpazMeQE4CxCCnSArIKcauTTCFnGHiu39GIGcFnjPJIRcIYciF5ALygPoI8kBSHwqEEIECEcSgQD7lUKCAESgwRQIKLCmDgmIaQEH9gENBJaNQMEQkFMxHARTc2YPgBCP3T1jhAK92ry5OisarvrWD_N3Ozng8fjtQtp929YOJ9NtOGu8MVJ6bka7mdyaKqs5fdur1en2vd1wPxwfDent8kPZaD3stdHr7qZodteqfPz2or42b9B-7N7QN2euH5sQcD9PbwLROPg6u7i9b3wYnN83h1UTeNf9hk_rldev0FgXsViafwtOD5tX19UX149_dq-z48uBj8ysirUt9-rmFB62bw6P-YeODuaF70eX1l8v28YNtN8R95-r0If1yacOOZVmSX2l5GlxTjPuN6uHDzeWon519CNMxuUXVVu_jl2Y0Vu3bf4Y4Ufe35v7T0eAgjtnf3av7j_cj4R_u5e2zSaN9dWyvDJbZ3f4wqQanmUjG37ID3WmZb_e351_yQHwL6GU7OK3iw5ObUZjt8Wo2GOmBEZNv9rzKznyaPZiRuq1envObr2nna_NL9farEF_zXr1er9WKjdiZ7cRueUrn5bZMn4qY48JP4S8eMFbH7hFPA-MKoHOgJaC_Fui8awko1wELo10CBuuAhYUugAStBTrDXQJOD79XuztLOtjdcVG6iOcujLtGy9lhOVg0gU5UO9JhzbPZUHsgj1Jb8_bScALqWZwOszL9qZcHgKOYnQCvdhs6Br1y_aa2KlRW7RxbHec7DfdXoBs6nh-S9SxLxx4oXOG5RImKp-fPfARMh6apHsEeuB-qyNhJobjZg1vpQHfVMLLe99KuEG3nWbK1hoNBmtl6GOpwztiBilVPPyVoSdnQ8WrihcDFOFiIPUO8ALkPIx3rxGWYBU_Xxvbr1qrOXb619NdaDdLku4mWxZ8PTQUHY2P7YL7MC9DCcdLJtMp1uJ8Z67LUls3Mnd5eB-snWKhhjgEzEJijXqIOnukEa-k3auAFucKRyq3Onmv9y1TLspb9_6qV75YSPHUUlP4J8M-fA63EDHSWN1V2t-UhcJ6lt7pjTaSvtbpLdP7II8r5_shBOePvtIEPOlNReNa97A-T0BUTthLvB6qFbOUQSLtgPvj7TOCDjmJtf94AGpnqPBkRHmMXGpl2_M5dPs90x7h33a3Nd45fyLHU-ft2tBGlI3dw_LRLl4FsX-X2uq-TMhxPKzNbRkBHe_aYcqEsNwjGfZ3Mzv4pYqo5_huM4DiO08yqaF9F0ZZ28Jhk6UCb9oNy4PeZw16a2l9gDUeRivWByvtb6mUJv3TyuU5Q9v6rGpm28lmR67PRY_AtTeMvRaXKtW7mrZOSE-rNX6Yc3D0Uck0LZK7d0nZeI3PPwJTvmu8rFyozdvIOXNQvDiutiSsK58alM7d6rCOAK59NZkKjEvDRdVQK6mLhd0CKynE8iEzH2PwdQBX_NTDzdCgui6LA1WwrfHmkzB9AUemrYLI8tDhbp75VKMet-R3r_tOskxfKunyadfpCWQ-eZp29TNYJepp1_kJZx0-zLl4m6xs5Hxc5fKU1MIkGe-n4e54_lfH0HSDoMf_YR4-Ymd7CzFiph2EOGAI2BRKtHsXcjRKOfihgVLC_VgdrtmeTjGm321dJWKln1kSRzibg09CMdLa1rG8wKiR5tE2lDEW_G_5eBtc_fUervGH8tXteYMprHpV01m0a3SRQv8i6K011q3NrOuBcR3ZLYUjlT8qrVPy1rGB3QQTcZRI47HZNx-ikM6lMxTjXibaZsjoH4vVqCVaqZyazu2F7BJ72u8u0p9XANqmhnYYT1xGajrL6jxw0VNbepIdp_fMd2KvOf4-V8-ZPiqoU_1Wy-LiaAprDyJpBZHQGuunsDXxmssVLCOirHPxJ2fcKrg8z5XSrO3aztlbr91kq45tU1iuy-8pnHaXDDJS5_taWg-lar3yD0WvQ6Tu2HKcuh890nrvRaO71KyXf4Orr5F5nWqv1sTG_arv0dqaOItfdXhuP4l8zHRW1yCnrhRmRv5Z1Uh-lJgSLkmXdRK6VV-imiTZayzrFPCPObEzh2i6unGhl-zoDe9sHmTURc21IcBpw4rgL8KdZ3pi6qXgYaVs5SyYPoF62X0SUf6aMG3O8zCQ9XDkbqAhcmKT3fxfwJ_cPb8wCnXDkVwn33AjyXEmWU6tmvXG8_0iUyHQ16EYqv6scmJFLsBxT4Kjo2VauNSuTjSvH7kAvVz60OktUVJ7xv2RpunHpoTVutrncKk6T8NcszJ6xcMtEI539mnX5M9atx9r2J7n92ZVb2k6Td2CNjfRSOWOY65bupElY1t-LqkJXRbmelmRaUWqLqslyhX5-vzyraf2IIkt3xitQs1LvDENXYB5dDs-AbAVwVmWcYfjKyYrS0wwiVkF0tMSRvwJRngELjFyBcXFmWUfBOsyShjBaASr2_JG2sTet_0yLT-tolmcmW9Isf15At6RZ-i4Asy1plj46wHwVTWm6LW2LClhR9XKt_TTpml5p0clgOJtUJzqeFC7hgWQYt3VW8-TsY8MfgIcjNS2Tz6B4-uXD7s5sgd2d7z_1_C8NGjZH"
     }
   },
-  "patch": "3.30.0",
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:54:27.568Z"
+  },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Bow"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Quiver"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "dexjewel"
+        ]
+      }
+    }
+  },
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "lightning-bow",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Bandit Rogue's Head",
+          "tier": "low",
+          "effect": "(4-6)% increased Attack and Cast Speed",
+          "source": "Kraityn",
+          "area": "Act 2",
+          "note": "Attack speed for Lightning Arrow."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "low",
+          "effect": "+(14-18)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance while gearing."
+        },
+        "upperLimb": {
+          "name": "Skeletal Archer's Arm",
+          "tier": "low",
+          "effect": "Projectiles deal (8-12)% increased Damage with Hits and Ailments for each Enemy Pierced",
+          "source": "Ironpoint",
+          "area": "Act 1",
+          "note": "Projectile damage per pierce."
+        },
+        "lowerLimb": {
+          "name": "Skeleton Wheel",
+          "tier": "low",
+          "effect": "(5-7)% increased Attack and Cast Speed if you've used a Movement Skill Recently",
+          "source": "Fleetfreak",
+          "area": "Act 6",
+          "note": "Attack speed after a movement skill."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Bandit Rogue's Head",
+          "tier": "med",
+          "effect": "(8-10)% increased Attack and Cast Speed",
+          "source": "Kraityn",
+          "area": "Act 2",
+          "note": "Attack speed for the bow."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "med",
+          "effect": "Damage Penetrates (6-8)% Lightning Resistance",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Lightning penetration."
+        },
+        "upperLimb": {
+          "name": "Skeletal Archer's Arm",
+          "tier": "med",
+          "effect": "Projectiles deal (15-20)% increased Damage with Hits and Ailments for each Enemy Pierced",
+          "source": "Ironpoint",
+          "area": "Act 1",
+          "note": "Projectile damage per pierce."
+        },
+        "lowerLimb": {
+          "name": "Skeletal Tail",
+          "tier": "med",
+          "effect": "(20-30)% increased Projectile Damage",
+          "source": "Skeletal Abomination",
+          "area": "Act 5",
+          "note": "Projectile damage."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Totemic Visage",
+          "tier": "high",
+          "effect": "(10-12)% more Maximum Lightning Damage",
+          "source": "Kuduku",
+          "area": "Act 1",
+          "note": "More maximum lightning damage."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "high",
+          "effect": "Hits have (10-15)% chance to treat Enemy Monster Lightning Resistance values as inverted",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Hits can treat lightning resistance as inverted."
+        },
+        "upperLimb": {
+          "name": "Skeletal Archer's Arm",
+          "tier": "high",
+          "effect": "Projectiles Pierce (2-3) additional Targets",
+          "source": "Ironpoint",
+          "area": "Act 1",
+          "note": "Projectiles pierce additional targets."
+        },
+        "lowerLimb": {
+          "name": "Skeletal Tail",
+          "tier": "high",
+          "effect": "Projectiles Pierce, Fork or Chain an additional time at random",
+          "source": "Skeletal Abomination",
+          "area": "Act 5",
+          "note": "An extra pierce, fork or chain at random."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Lightning Arrow; a physical bow with attack speed is the first upgrade.",
+        "Life, a 3-link and movement speed carry Act 1."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed"
+          ],
+          "note": "A magic bow is enough in Act 1."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "3-link."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Keep moving."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed if the bow has a free suffix."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Add Added Lightning Damage and Faster Attacks to Lightning Arrow.",
+        "Herald of Thunder and Grace are the core auras."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "A rare bow is the damage slot."
+        },
+        {
+          "slot": "Quiver",
+          "mods": [
+            "Life",
+            "Elemental resistances",
+            "Critical strike multiplier"
+          ],
+          "note": "Quiver is cheap damage and defence."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Quiver",
+          "mods": [
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Six-link Lightning Arrow and reach 2,000 life; cap elemental resistances.",
+        "The bow and quiver carry the damage; do not over-invest in armour."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "The 6-link is the damage step."
+        },
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "A rare bow is still the main slot."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Crit multi is the damage stat."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link and upgrade the bow.",
+        "Reach 3,000 life and cap resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "The bow is the damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Quiver",
+          "mods": [
+            "Life",
+            "Critical strike multiplier",
+            "Elemental resistances"
+          ],
+          "note": "Quiver fixes resists and damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Critical strike chance"
+          ],
+          "note": "Bench crit chance if the bow has a free suffix."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Critical strike multiplier is the red-map damage upgrade."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "Upgrade the bow before the quiver."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link is the gate."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Crit multi."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi on a free suffix."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 Lightning Arrow and awakened elemental supports."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "The endgame bow is the last big purchase."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Life",
+            "Chaos resistance",
+            "Critical strike multiplier"
+          ],
+          "note": "Fix chaos resistance here."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Keep life on every jewel."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Lightning Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 19 to 358 added Lightning Damage"
+      ],
+      "tags": [
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Elemental Damage with Attacks": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Attack Skills deal 34% more Elemental Damage"
+      ],
+      "tags": [
+        "attack"
+      ],
+      "qualityEffect": "% increased Elemental Damage with Attack Skills",
+      "qualityWorth": "recommended"
+    },
+    "Faster Attacks": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Attack Speed"
+      ],
+      "tags": [
+        "attack"
+      ],
+      "qualityEffect": "Supported Skills have % increased Attack Speed",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Frenzy": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Performs an attack with a ranged weapon that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed.",
+      "effect": [
+        "5% more Attack Damage per Frenzy Charge",
+        "5% more Attack Speed per Frenzy Charge"
+      ],
+      "tags": [
+        "attack",
+        "bow",
+        "projectile"
+      ],
+      "qualityEffect": "% more Attack Damage per Frenzy Charge % more Attack Speed per Frenzy Charge",
+      "qualityWorth": "recommended"
+    },
+    "Grace": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants evasion to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 29% more Evasion rating",
+        "You and nearby allies gain 1545 additional Evasion Rating",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Herald of Thunder": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Grants a buff which adds lightning damage to spells and attacks. If you kill a shocked enemy, this skill will create a storm, causing lightning bolts to strike enemies around you for a duration. The damage inflicted by this skill is not affected by modifiers to spell damage.",
+      "effect": [
+        "Base duration is 6.00 seconds",
+        "Storm Hits an Enemy every 0.25 Seconds",
+        "Cannot inflict Shock",
+        "Creates a storm when you Kill a Shocked Enemy",
+        "Buff grants 19 to 76 Added Spell Lightning Damage",
+        "Buff grants 19 to 76 Added Attack Lightning Damage",
+        "Deals 23 to 1108 Lightning Damage"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "herald",
+        "lightning",
+        "spell"
+      ],
+      "qualityEffect": "Storms Hit Enemies with % increased Frequency",
+      "qualityWorth": "recommended"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "lilly",
+        "act": 6,
+        "quest": "Fallen from Grace"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Increased Critical Damage": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +138% to Critical Strike Multiplier"
+      ],
+      "tags": [
+        "critical"
+      ],
+      "qualityEffect": "Supported Skills have % to Critical Strike Multiplier",
+      "qualityWorth": "recommended"
+    },
+    "Increased Critical Strikes": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +2% to Critical Strike Chance",
+        "Supported Skills have 117% increased Critical Strike Chance"
+      ],
+      "tags": [
+        "critical"
+      ],
+      "qualityEffect": "Supported Skills have % increased Critical Strike Chance",
+      "qualityWorth": "recommended"
+    },
+    "Lightning Arrow": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Siren's Cadence"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning, which also damages a number of surrounding enemies.",
+      "effect": [
+        "50% of Physical Damage Converted to Lightning Damage",
+        "Hits up to 3 additional enemies near the target",
+        "Shocks Enemies as though dealing 290% more Damage"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "bow",
+        "lightning",
+        "projectile"
+      ],
+      "qualityEffect": "Hits up to additional enemies near the target",
+      "qualityWorth": "recommended"
+    },
+    "Precision": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants accuracy and critical strike chance to you and your allies.",
+      "effect": [
+        "You and nearby allies gain +701 to Accuracy Rating",
+        "You and nearby allies gain 58% increased Critical Strike Chance",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "critical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Sniper's Mark": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time.",
+      "effect": [
+        "Projectiles which Hit Cursed Enemies Split towards 2 additional targets",
+        "Cursed enemies take 29% increased Damage from Projectile Hits"
+      ],
+      "tags": [
+        "curse",
+        "mark",
+        "spell"
+      ],
+      "qualityEffect": "Cursed enemies take % increased Damage from Projectile Hits",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "547d8ddeb92d",
   "guide": {
     "summary": {
       "text": "Lightning Arrow Deadeye is a fast bow build that measures 84.6k at red maps and 132.0k at pinnacle. A rare bow, added lightning and critical strikes carry the damage; no unique is required.",
@@ -8536,11 +8538,5 @@
       "factsHash": "ee682f415291b961"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T12:54:27.568Z"
-  }
+  "medal": "B"
 }

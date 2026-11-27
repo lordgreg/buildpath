@@ -891,732 +891,7 @@
     "core": [],
     "optional": []
   },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Sceptre",
-          "Wand"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Shield"
-        ],
-        "tags": [
-          "int_armour"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "intjewel"
-        ]
-      }
-    }
-  },
   "status": "verified",
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "lightning-totem",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Totemic Visage",
-          "tier": "low",
-          "effect": "(10-15)% chance to Shock",
-          "source": "Kuduku",
-          "area": "Act 1",
-          "note": "Shock chance for the totems."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "low",
-          "effect": "Damage Penetrates (3-4)% Lightning Resistance",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Lightning penetration."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "low",
-          "effect": "+(30-50) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life while placing totems."
-        },
-        "lowerLimb": {
-          "name": "Carved Haunches",
-          "tier": "low",
-          "effect": "(10-15)% increased Totem Placement speed",
-          "source": "Torchoak Grove",
-          "area": "Act 4",
-          "note": "Totem placement speed."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Totemic Visage",
-          "tier": "med",
-          "effect": "(20-30)% chance to Shock",
-          "source": "Kuduku",
-          "area": "Act 1",
-          "note": "More shock chance."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "med",
-          "effect": "Damage Penetrates (6-8)% Lightning Resistance",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Lightning penetration."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "med",
-          "effect": "+(60-80) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life before damage scaling."
-        },
-        "lowerLimb": {
-          "name": "Carved Haunches",
-          "tier": "med",
-          "effect": "(20-30)% increased Totem Placement speed",
-          "source": "Torchoak Grove",
-          "area": "Act 4",
-          "note": "Faster totem placement."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Totemic Visage",
-          "tier": "high",
-          "effect": "(10-12)% more Maximum Lightning Damage",
-          "source": "Kuduku",
-          "area": "Act 1",
-          "note": "More maximum lightning damage."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "high",
-          "effect": "Hits have (10-15)% chance to treat Enemy Monster Lightning Resistance values as inverted",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Hits can treat lightning resistance as inverted."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "high",
-          "effect": "(5-7)% more Maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "More maximum life."
-        },
-        "lowerLimb": {
-          "name": "Carved Haunches",
-          "tier": "high",
-          "effect": "Skills that Summon a Totem have (16-24)% chance to Summon two Totems instead of one",
-          "source": "Torchoak Grove",
-          "area": "Act 4",
-          "note": "Chance to summon two totems instead of one."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Rolling Magma; life and a 3-link come first.",
-        "Do not buy totem gear before Spell Totem is available."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "Any magic wand."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "A 3-link is enough."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Movement speed is defence."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Put Storm Burst of Repulsion on Spell Totem and add Added Lightning Damage.",
-        "Take the first two labs when they unlock; the totem nodes are the damage step."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Lightning damage"
-          ],
-          "note": "A rare sceptre is the first real upgrade."
-        },
-        {
-          "slot": "Shield",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Stay defensive; the totems do the damage."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "4-link",
-            "Life"
-          ],
-          "note": "Four links carry the channel."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Cast speed"
-          ],
-          "note": "Bench cast speed on a free suffix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Five-link the totem and reach 2,000 life; cap elemental resistances first.",
-        "Add Lightning Penetration and Controlled Destruction to the main group."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Lightning damage"
-          ],
-          "note": "The sceptre is the damage slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Five links."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Cast speed"
-          ],
-          "note": "Life before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "Reach 3,000 life and cap resistances in white maps.",
-        "Add Determination and keep a mana flask until the Hierophant recovery is online."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Lightning damage"
-          ],
-          "note": "Rare sceptre."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the six-link."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Resistances before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Rings",
-          "mods": [
-            "Elemental resistances"
-          ],
-          "note": "Bench the resistance the gear is missing."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Elemental Focus is the last damage link; keep both totems refreshed."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Lightning Skill Gems",
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "+1 lightning gems is the red-map goal."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Six-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Cast speed"
-          ],
-          "note": "Life first."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Cast speed",
-            "Lightning damage"
-          ],
-          "note": "Bench cast speed."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 gems and keep a second sceptre with more gem levels for bosses."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Lightning Skill Gems",
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "Gem levels beat added damage for the totem."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "+1 to Level of all Lightning Skill Gems",
-            "Life",
-            "Cast speed"
-          ],
-          "note": "The amulet carries gem levels."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Cast speed"
-          ],
-          "note": "Keep life."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Lightning Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 19 to 358 added Lightning Damage"
-      ],
-      "tags": [
-        "lightning"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Arcane Surge": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Arcane Surge lasts 4 seconds",
-        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
-        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
-        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
-      ],
-      "tags": [
-        "arcane",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Controlled Destruction": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 80% less Critical Strike Chance",
-        "Supported Skills deal 39% more Spell Damage"
-      ],
-      "tags": [
-        "critical",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Elemental Focus": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills cannot inflict Elemental Ailments",
-        "Supported Skills deal 34% more Elemental Damage"
-      ],
-      "tags": [],
-      "qualityEffect": "Supported Skills deal % increased Elemental Damage",
-      "qualityWorth": "recommended"
-    },
-    "Faster Casting": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 39% increased Cast Speed"
-      ],
-      "tags": [
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills have % increased Cast Speed",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Lightning Penetration": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills Penetrate 34% Lightning Resistance"
-      ],
-      "tags": [
-        "lightning"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Rolling Magma": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
-      "effect": [
-        "Projectiles can Chain when impacting the ground\nProjectiles do not change direction when Chaining",
-        "Deals 1215 to 1822 Fire Damage",
-        "Chains +3 Times",
-        "+0.4 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "chaining",
-        "fire",
-        "projectile",
-        "spell"
-      ],
-      "qualityEffect": "Chains Times",
-      "qualityWorth": "optional"
-    },
-    "Spell Totem": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Totem lasts 8 seconds",
-        "Supported Skills have 40% less Cast Speed",
-        "Supported Skills will summon a Totem which uses that Skill",
-        "Supported Skills deal 50% less Damage"
-      ],
-      "tags": [
-        "spell",
-        "totem"
-      ],
-      "qualityEffect": "Supported Skills have % increased Totem Placement speed",
-      "qualityWorth": "optional"
-    },
-    "Storm Burst of Repulsion": {
-      "requiredLevel": 12,
-      "source": {
-        "kind": "divine-font",
-        "act": null,
-        "quest": null
-      },
-      "color": "b",
-      "support": false,
-      "description": "Unleash orbs of energy while you channel that repeatedly jump away from the targeted location until their duration expires, dealing damage in a small area after each jump. When you stop channelling, all remaining orbs explode, dealing higher damage in a larger area.",
-      "effect": [
-        "Exploding Orbs deal 75% of Skill Damage for each 0.4 seconds of remaining Duration",
-        "50% of Physical Damage Converted to Lightning Damage",
-        "Orbs jump every 0.4 seconds",
-        "Base duration is 0.80 seconds",
-        "Deals 353 to 530 Physical Damage",
-        "+0.4 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "channelling",
-        "duration",
-        "lightning",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "Base duration is seconds",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "75b08760c63a",
-  "medal": "A",
-  "stale": {
-    "status": "waiting-for-pob",
-    "reason": "This build has not been verified against a patch fact set."
-  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -8188,6 +7463,7 @@
       }
     }
   },
+  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
@@ -8201,7 +7477,733 @@
       "pinnacle": "eJzVWm1v2roXfz0-hRVp0r2au_o5yVR2BfRxbdeutN26N5MhBrw6CUsMLfv0fzmBEnqB0v823a2VjvzwO7Z_x8cnzgk7_9zHBoxVlus0qXv4NfKASrpppJN-3bu63N8KvH_e1nbOpR2c9ZojbVzP29qLnaIMjBorU_dC4QErs76y17Oh6Bfkga6Ref5exqruXap4aGTmAZl3VRK15j2HWmXpcCAT64FY6qSddm-VPcjS0bDuYQ90ZBJpW_fep4nywFAmdqDS5FR-TbODNKp7ZpTITOeVLp1Mu_rZyA5uR8YDY63uTtNI1b1W46TV9t7WXrzYOTdyorK2lRbkVtq610rjjk5UtHve9sBYmpGqewQj5r_2CQuwEML3tperXqZWmv9D70T31IOOT2iwCriXqKw_aQ-0MtGDAuYYrV3R3uH5A5hiivnrABEWBhSHq_TOB5Ncd6U5lfc6HsWH2l7KW5XM50S-T1Yp7-tMXahc53ZOSqwCt1ITPQbz1YbqD2yik_7GGq2BTPON0acyka20AsVroVdJpnKVjdV8M_xg5V60h6oCDF4zMf8rXWNnuzhRrnSZKQVk1-qxag9V1x2CYlRXATZTqnLI6OyUHUV1jy-cLteCPJCkkcrrXkgIxIhiiDHikISYQoqFDymnFDIcMMgoQpDR0IfcZxQKQhEUlIdQMCag8AWDPvWdCALoc86hH9IAhjQQMGTUDV-Mj1iIIEbc524uJpwMAogxI8hJhyHUDyGmCIUQM0Swk9yHmGHuyoGPIOZIMIg5Qxxi4bvRfJ86GTh8KCiHBBESQII4x5BgShEkmGEKCQ55AAkhAYeEYe5DwggXkDAqCCQChwISwQmFRPiYOUm4kwxBIgIhIPEJopD4XDBnrDCEJKScQooI4ZCikCFIMSdOBjh00ueQUhL4kFJGXZn5IaRUUAwp9TmHtFgJZYwySJkQGFIWIgEp51xAKoRrFyELIfXDMIQ04FhAGgoWQBqGWECGmU8gYzigkDFGQsiYQAIy5oeuHKLASc6dFD5kIsQIMp9wDFnguHPEiJPcR5CjwLVQjAPIKfFDyKnPfSdDCjkTrsxZwCHngoWQc7daHhCHDxgiTrIQCuQ8QiAaBlBgXEiGQyd9DAXmhENBEPadTwkKBXV7J2goCukLKBjBCAqOKIOCYxQ4ycPC7V_sXF2cFIUXA2uH-Zvt7bu7u9dDaQdpT91ro15303h7KPNcj9VWfquN2XKnZLvRaDSa_atG9OFMNhvdvasPdrC7H7z_ftG82Tu9uzi5-Dw-2L-5wfe3o4P4rvt98L17eHPaa-j2t3fv-8nJ5Ks4vgqyd9p-OHl3lw-_Nzundo_cX3aG71FX7H_Nbs5buDlA14cXn_FpjoK9q73o8sqcmevu50-71zz6lDd7x_Hnq8_cph_jgZGHF2kQD3eluJ_s0uNhNNj3jw7vT3pHZ60mO-70c7X7iZ13Bh_JQT-NjN7_dsyPAnm7__Gqwz-jeNTq-MdHjeydsl8l28rGW-PO8VYnE4qeZ_pyfJbthfnH4_tv_nnPNnqoR9tH0ccmOaGfb6KhZiS7PRpdXIity8wfBWf-1vju8Mu7ZsDH7PZLEm2prwKN2fEXc7k1uGs0ig3Ynu3ATvlszsvtmNaKCOOCjYsYHtBWxa6Gp2H_37ji_FWA_mqgT3gFGKwCFqesAgxXAt0hmwMJWgUsPLgCxFPgznbFBDvbLiQXwdvFbFdoO_crO4siUInsGBXVPZuNlAdyk9q610yjCWhkcTrKyjtPo4z2TmMW7l_sHKgY9Mv5T5WVkbRy-8iqON8-cKJAH6i4bdMsbo6y3DaM_eSB4gRsruSBRMbTB03RCopmkPbAhRqOjHvSeLOLHsEe-DaSRttJYb1ZxU23q3pyZKz3mPISftvPIzgaDtPMtofKmMvUqvgpjiXeaVZUKixdK5g2_wbEGlGkoofrza6MZV9tTHG58pxs0Q8eAGCG-A14PyzqXCXKZtIWnrYh7-XKc95zxguA34B2K01slhqjol2V22zUfRbvFdpz4nMAWED8Bsz3jIpVYqXZT7ujfGPKj9XmXB96wLTrF5DcKVk8FdI_KjlME4B_PJ7vGxmrXZkPNgzlFfzcMkUjKFt_g51vZF2ZqPYoe05kq-pUAlrRDKbt_92Gz97Ef3S7d5VVWayTjcLfcp25cR51_HfWOVQmVvbHrdMyMtN2sqFdHtCVcDhr-qW2mJby2ev7tVZ34Huaxp-Kd3BXunkonZQrod7DzdHBXaWgNH31d-W2sg9v_64OdHmxflu7KFi9AReNi71ae-ISX7nOVQS-qjtlAK610o40Frxz1VqhW0z7BgSidhQPje5qm78BqOa_BDrpZko67bjM-QCXlaoFy3rKNBQovb-GSRVTXqzKG0aNVXtaMregSIIUZnPreUTKf5oU-eNIBU-Ton8cqfBpUuxPI0XQ06T4H0cKP01K_Gmk1nK6Ky5htetUR6DdVUObqceUPpTh_g0gaJFegFauEPMVS-QLOo9fslZtyzoGaa83kElUaw107EZqD3Wm7cyKm3IRC-ta3IlXGCFg08UdfMX4S9foMvKgTJnLpLuKAV3HYFA8-WuHo06mc9DSWdcou-HKSe1UJzpNcjCQYwX-IsEWCf9e6XeLTuWy8m7tKhsX1x-w1-vprlZJd-KSGeUDej199_WiSv95ZmHrzNJJo0ntWkoDLlRfGi3XmWSaY3oDmlsP_4t2-ovQLcIWTKN6PdUt8jZnvZ7KdNLPa6_-wnwLi78LFtIYMH9jmtNZYZS1TjQ1zNzln7QOX2edvknHKq-106yrMpWBg7L-XK-JlDTLvGZ6Hl9h9BJ0B26RbvHuVSNTeb542H-hg6y9uHXS1FYs0CyqmxoAL-zVaToudnkapRaPiePjfFAlqkyKgExaVaPrRnjleh1N90VtGf9n-MHai15HGVtrDaROQNMVNw14z9u0VWyWL3jtJU7GIxfezpLJPWiU5Y3XzIolHyVWGaP7qljaOh5LjfxMMmsvby5m4NrZ0EUHnfR_kfV_Ihu89trm6JCfTefxSf-pdKqXm9PGwVFrgY9xJ7dnZH5b29VjnajyLO8XLZuSWzEzWTtz7B6t5cx7VmWJNOXT9qdMTddOPbLajTad_SCTibY_iTN7xsQfRjKz33_OvPwZ8zZiZQeT3P7ozG1lp9dnYLU1qpLsGOWqrbppEpUpzCLn0JMmV9NMTduktkioVJOcD5_aZvnAf6NI5fPZEtQsQzTD0CWYhe9kMyBbAizvC3MMXzpYaisQsQyiTGVF_hJEGePnmGAJxgWbqo3CVZiKhWY_41kAFXu-YG3sTbND09TUKp3qyGRDHVrRoRvqVL6lYrahTvWLLl-mU7puW9kiP1bkxFyplSY93S89OhmOZoOqRMWT4kh4IBnFHZXVvWDqI_8G7o1l-UHzAYqnH4F3tmcT7Gw__rnb_wCH4zd_"
     }
   },
-  "patch": "3.30.0",
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:56:00.149Z"
+  },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Sceptre",
+          "Wand"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Shield"
+        ],
+        "tags": [
+          "int_armour"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "intjewel"
+        ]
+      }
+    }
+  },
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "lightning-totem",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Totemic Visage",
+          "tier": "low",
+          "effect": "(10-15)% chance to Shock",
+          "source": "Kuduku",
+          "area": "Act 1",
+          "note": "Shock chance for the totems."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "low",
+          "effect": "Damage Penetrates (3-4)% Lightning Resistance",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Lightning penetration."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "low",
+          "effect": "+(30-50) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life while placing totems."
+        },
+        "lowerLimb": {
+          "name": "Carved Haunches",
+          "tier": "low",
+          "effect": "(10-15)% increased Totem Placement speed",
+          "source": "Torchoak Grove",
+          "area": "Act 4",
+          "note": "Totem placement speed."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Totemic Visage",
+          "tier": "med",
+          "effect": "(20-30)% chance to Shock",
+          "source": "Kuduku",
+          "area": "Act 1",
+          "note": "More shock chance."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "med",
+          "effect": "Damage Penetrates (6-8)% Lightning Resistance",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Lightning penetration."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "med",
+          "effect": "+(60-80) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life before damage scaling."
+        },
+        "lowerLimb": {
+          "name": "Carved Haunches",
+          "tier": "med",
+          "effect": "(20-30)% increased Totem Placement speed",
+          "source": "Torchoak Grove",
+          "area": "Act 4",
+          "note": "Faster totem placement."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Totemic Visage",
+          "tier": "high",
+          "effect": "(10-12)% more Maximum Lightning Damage",
+          "source": "Kuduku",
+          "area": "Act 1",
+          "note": "More maximum lightning damage."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "high",
+          "effect": "Hits have (10-15)% chance to treat Enemy Monster Lightning Resistance values as inverted",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Hits can treat lightning resistance as inverted."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "high",
+          "effect": "(5-7)% more Maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "More maximum life."
+        },
+        "lowerLimb": {
+          "name": "Carved Haunches",
+          "tier": "high",
+          "effect": "Skills that Summon a Totem have (16-24)% chance to Summon two Totems instead of one",
+          "source": "Torchoak Grove",
+          "area": "Act 4",
+          "note": "Chance to summon two totems instead of one."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Rolling Magma; life and a 3-link come first.",
+        "Do not buy totem gear before Spell Totem is available."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "Any magic wand."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "A 3-link is enough."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Movement speed is defence."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Put Storm Burst of Repulsion on Spell Totem and add Added Lightning Damage.",
+        "Take the first two labs when they unlock; the totem nodes are the damage step."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "A rare sceptre is the first real upgrade."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Stay defensive; the totems do the damage."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "4-link",
+            "Life"
+          ],
+          "note": "Four links carry the channel."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cast speed"
+          ],
+          "note": "Bench cast speed on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Five-link the totem and reach 2,000 life; cap elemental resistances first.",
+        "Add Lightning Penetration and Controlled Destruction to the main group."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "The sceptre is the damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Five links."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Cast speed"
+          ],
+          "note": "Life before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "Reach 3,000 life and cap resistances in white maps.",
+        "Add Determination and keep a mana flask until the Hierophant recovery is online."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "Rare sceptre."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the six-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Resistances before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Rings",
+          "mods": [
+            "Elemental resistances"
+          ],
+          "note": "Bench the resistance the gear is missing."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Elemental Focus is the last damage link; keep both totems refreshed."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Lightning Skill Gems",
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "+1 lightning gems is the red-map goal."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Six-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Cast speed"
+          ],
+          "note": "Life first."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "Bench cast speed."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 gems and keep a second sceptre with more gem levels for bosses."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "+1 to Level of all Lightning Skill Gems",
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "Gem levels beat added damage for the totem."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "+1 to Level of all Lightning Skill Gems",
+            "Life",
+            "Cast speed"
+          ],
+          "note": "The amulet carries gem levels."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Cast speed"
+          ],
+          "note": "Keep life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Lightning Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 19 to 358 added Lightning Damage"
+      ],
+      "tags": [
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Controlled Destruction": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 80% less Critical Strike Chance",
+        "Supported Skills deal 39% more Spell Damage"
+      ],
+      "tags": [
+        "critical",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Elemental Focus": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills cannot inflict Elemental Ailments",
+        "Supported Skills deal 34% more Elemental Damage"
+      ],
+      "tags": [],
+      "qualityEffect": "Supported Skills deal % increased Elemental Damage",
+      "qualityWorth": "recommended"
+    },
+    "Faster Casting": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 39% increased Cast Speed"
+      ],
+      "tags": [
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills have % increased Cast Speed",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Lightning Penetration": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Penetrate 34% Lightning Resistance"
+      ],
+      "tags": [
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Rolling Magma": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
+      "effect": [
+        "Projectiles can Chain when impacting the ground\nProjectiles do not change direction when Chaining",
+        "Deals 1215 to 1822 Fire Damage",
+        "Chains +3 Times",
+        "+0.4 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "chaining",
+        "fire",
+        "projectile",
+        "spell"
+      ],
+      "qualityEffect": "Chains Times",
+      "qualityWorth": "optional"
+    },
+    "Spell Totem": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Totem lasts 8 seconds",
+        "Supported Skills have 40% less Cast Speed",
+        "Supported Skills will summon a Totem which uses that Skill",
+        "Supported Skills deal 50% less Damage"
+      ],
+      "tags": [
+        "spell",
+        "totem"
+      ],
+      "qualityEffect": "Supported Skills have % increased Totem Placement speed",
+      "qualityWorth": "optional"
+    },
+    "Storm Burst of Repulsion": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "divine-font",
+        "act": null,
+        "quest": null
+      },
+      "color": "b",
+      "support": false,
+      "description": "Unleash orbs of energy while you channel that repeatedly jump away from the targeted location until their duration expires, dealing damage in a small area after each jump. When you stop channelling, all remaining orbs explode, dealing higher damage in a larger area.",
+      "effect": [
+        "Exploding Orbs deal 75% of Skill Damage for each 0.4 seconds of remaining Duration",
+        "50% of Physical Damage Converted to Lightning Damage",
+        "Orbs jump every 0.4 seconds",
+        "Base duration is 0.80 seconds",
+        "Deals 353 to 530 Physical Damage",
+        "+0.4 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "channelling",
+        "duration",
+        "lightning",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "Base duration is seconds",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "75b08760c63a",
   "guide": {
     "summary": {
       "text": "Storm Burst of Repulsion Totems measure 14.3k at red maps and 21.0k at pinnacle. Two Spell Totems channel the bouncing orbs while you position, and the build needs no unique.",
@@ -8249,11 +8251,5 @@
       "factsHash": "68c66898e60fadb0"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T12:56:00.149Z"
-  }
+  "medal": "A"
 }

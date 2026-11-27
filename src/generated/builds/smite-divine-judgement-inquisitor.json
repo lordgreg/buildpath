@@ -913,812 +913,7 @@
     "core": [],
     "optional": []
   },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Two Hand Mace"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "str_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "str_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "str_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "str_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "strjewel"
-        ]
-      },
-      "offhand": null
-    }
-  },
   "status": "verified",
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "physical-melee",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "low",
-          "effect": "(10-15)% increased Global Physical Damage",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "Global physical damage."
-        },
-        "torso": {
-          "name": "Bonestalker's Ribcage",
-          "tier": "low",
-          "effect": "(4-5)% reduced Physical Damage taken over time",
-          "source": "Boneshaper",
-          "area": "Act 2",
-          "note": "Physical DoT reduction for Boneshatter."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "low",
-          "effect": "Adds (2-4) to (5-7) Physical Damage to Attacks",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "Flat physical damage to attacks."
-        },
-        "lowerLimb": {
-          "name": "Captain's Leg",
-          "tier": "low",
-          "effect": "(3-4)% increased Movement Speed",
-          "source": "Guard Captain",
-          "area": "Act 3",
-          "note": "Movement speed."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "med",
-          "effect": "(20-30)% increased Global Physical Damage",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "More global physical damage."
-        },
-        "torso": {
-          "name": "Bonestalker's Ribcage",
-          "tier": "med",
-          "effect": "(6-7)% reduced Physical Damage taken over time",
-          "source": "Boneshaper",
-          "area": "Act 2",
-          "note": "Physical DoT reduction."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "med",
-          "effect": "Adds (8-12) to (15-18) Physical Damage to Attacks",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "Flat physical damage to attacks."
-        },
-        "lowerLimb": {
-          "name": "Pocked Leg",
-          "tier": "med",
-          "effect": "(35-50)% increased Armour from Equipped Helmet and Gloves",
-          "source": "Pikerivet",
-          "area": "Act 4",
-          "note": "Armour from helmet and gloves."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Cutthroat's Head",
-          "tier": "high",
-          "effect": "Hits have (30-50)% chance to ignore Enemy Physical Damage Reduction",
-          "source": "Calaf",
-          "area": "Act 2",
-          "note": "Hits can ignore enemy physical damage reduction."
-        },
-        "torso": {
-          "name": "Searing Exarch's Descry",
-          "tier": "fixed",
-          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
-          "source": "Searing Exarch",
-          "area": "Pinnacle / Map Boss",
-          "note": "Physical hits are taken as fire, which you can resist."
-        },
-        "upperLimb": {
-          "name": "Crustacean's Claw",
-          "tier": "high",
-          "effect": "(10-12)% more Maximum Physical Attack Damage",
-          "source": "Dweller",
-          "area": "Act 1",
-          "note": "More maximum physical attack damage."
-        },
-        "lowerLimb": {
-          "name": "Lithic Haunches",
-          "tier": "high",
-          "effect": "(10-15)% chance to Avoid Physical Damage from Hits",
-          "source": "Boulderback",
-          "area": "Act 9",
-          "note": "Chance to avoid physical damage from hits."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Smite of Divine Judgement; life and a 3-link first.",
-        "Keep a mana flask until leech and reduced cost are online."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Added lightning damage",
-            "Attack speed"
-          ],
-          "note": "Any fast one-hand sword."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "A 3-link is enough."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Movement speed is defence."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Add Elemental Damage with Attacks and Ancestral Call.",
-        "Take the first two labs when they unlock; Righteous Providence is the crit."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Added lightning damage to attacks",
-            "Attack speed",
-            "Added physical damage"
-          ],
-          "note": "The weapon is the damage slot."
-        },
-        {
-          "slot": "Shield",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "A kite shield is the defensive slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "4-link",
-            "Life"
-          ],
-          "note": "Four links carry the clear."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Attack speed"
-          ],
-          "note": "Bench attack speed on a free suffix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Five-link the strike and reach 2,000 life; cap elemental resistances first.",
-        "Add Increased Critical Strikes and Multistrike."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Added lightning damage to attacks",
-            "Attack speed",
-            "Added physical damage"
-          ],
-          "note": "A rare foil."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Five links."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Life before crit."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "Reach 3,000 life and cap resistances in white maps.",
-        "Add Increased Critical Damage; keep Ancestral Protector for bosses."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Added lightning damage to attacks",
-            "Attack speed",
-            "Added physical damage"
-          ],
-          "note": "Rare crit foil."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "5-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the six-link."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Resistances before damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Rings",
-          "mods": [
-            "Elemental resistances"
-          ],
-          "note": "Bench the resistance the gear is missing."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Critical multi on the weapon is the red-map damage upgrade."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Added lightning damage to attacks",
-            "Attack speed",
-            "Critical strike multiplier"
-          ],
-          "note": "Crit multi is the damage suffix."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Six-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Crit multi."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 gems and a foil with tier-one added lightning."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Added lightning damage to attacks",
-            "Attack speed",
-            "Critical strike multiplier"
-          ],
-          "note": "Flat lightning beats increased physical here."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Critical strike multiplier",
-            "Life",
-            "Added lightning damage to attacks"
-          ],
-          "note": "The amulet carries crit multi."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Keep life."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Lightning Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 19 to 358 added Lightning Damage"
-      ],
-      "tags": [
-        "lightning"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Ancestral Call": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Strike Skills target 2 additional nearby Enemies"
-      ],
-      "tags": [
-        "attack",
-        "melee",
-        "strike"
-      ],
-      "qualityEffect": "Extra Targets for Supported Skills can be found % further away",
-      "qualityWorth": "optional"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Elemental Damage with Attacks": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Attack Skills deal 34% more Elemental Damage"
-      ],
-      "tags": [
-        "attack"
-      ],
-      "qualityEffect": "% increased Elemental Damage with Attack Skills",
-      "qualityWorth": "recommended"
-    },
-    "Herald of Thunder": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Grants a buff which adds lightning damage to spells and attacks. If you kill a shocked enemy, this skill will create a storm, causing lightning bolts to strike enemies around you for a duration. The damage inflicted by this skill is not affected by modifiers to spell damage.",
-      "effect": [
-        "Base duration is 6.00 seconds",
-        "Storm Hits an Enemy every 0.25 Seconds",
-        "Cannot inflict Shock",
-        "Creates a storm when you Kill a Shocked Enemy",
-        "Buff grants 19 to 76 Added Spell Lightning Damage",
-        "Buff grants 19 to 76 Added Attack Lightning Damage",
-        "Deals 23 to 1108 Lightning Damage"
-      ],
-      "tags": [
-        "area",
-        "duration",
-        "herald",
-        "lightning",
-        "spell"
-      ],
-      "qualityEffect": "Storms Hit Enemies with % increased Frequency",
-      "qualityWorth": "recommended"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "Breaking the Seal"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Increased Critical Strikes": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "siosa",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have +2% to Critical Strike Chance",
-        "Supported Skills have 117% increased Critical Strike Chance"
-      ],
-      "tags": [
-        "critical"
-      ],
-      "qualityEffect": "Supported Skills have % increased Critical Strike Chance",
-      "qualityWorth": "recommended"
-    },
-    "Leap Slam": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
-      "effect": [
-        "+0.55 seconds to Attack Time",
-        "Base radius is 1.5 metres",
-        "Damaging Hits always Stun Enemies that are on Full Life",
-        "39% increased Stun Duration against Enemies that are on Full Life"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee",
-        "movement",
-        "slam",
-        "travel"
-      ],
-      "qualityEffect": "% increased Stun Duration against Enemies that are on Full Life",
-      "qualityWorth": "recommended"
-    },
-    "Multistrike": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "reward",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills Repeat 2 additional times",
-        "First Repeat of Supported Skills deals 22% more Damage",
-        "Second Repeat of Supported Skills deals 44% more Damage",
-        "Supported Skills have 44% more Melee Attack Speed",
-        "Supported Skills deal 20% less Attack Damage"
-      ],
-      "tags": [
-        "attack",
-        "melee"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Melee Damage",
-      "qualityWorth": "recommended"
-    },
-    "Shockwave": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills will Trigger Shockwave on Melee Hit",
-        "Supported Skills can only be used with Maces, Sceptres or Staves"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Melee Damage",
-      "qualityWorth": "recommended"
-    },
-    "Smite of Divine Judgement": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "divine-font",
-        "act": null,
-        "quest": null
-      },
-      "color": "r",
-      "support": false,
-      "description": "Performs a melee attack, and causes lightning to strike nearby enemies, dealing damage in an area. Each target can only be hit once by this skill. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
-      "effect": [
-        "50% of Physical Damage Converted to Lightning Damage",
-        "Lightning strikes 3 targets within 5 metres",
-        "Base radius is 2.1 metres",
-        "38% more Area Damage"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "lightning",
-        "melee",
-        "strike"
-      ],
-      "qualityEffect": "Lightning strikes targets within metres",
-      "qualityWorth": "optional"
-    },
-    "Static Strike": {
-      "requiredLevel": 12,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Siren's Cadence"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Attack with a melee weapon, gaining static energy for a duration if you hit an enemy. While you have static energy, you'll frequently hit a number of nearby enemies with beams, dealing attack damage.",
-      "effect": [
-        "50% of Physical Damage Converted to Lightning Damage",
-        "Chains +1 Times",
-        "Beams deal 30% less Damage",
-        "Base duration is 4.00 seconds",
-        "Beams Hit Enemies every 0.32 seconds",
-        "6 maximum Beam Targets"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "chaining",
-        "duration",
-        "lightning",
-        "melee",
-        "strike"
-      ],
-      "qualityEffect": "% increased Beam frequency",
-      "qualityWorth": "optional"
-    },
-    "War Banner": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "r",
-      "support": false,
-      "description": "You must gain Valour from melee combat to use this skill, which will consume all Valour to place a banner with an aura. The aura will be larger and more powerful the more Valour was consumed. The banner lasts for a duration, but will end early if you leave the aura, or use the skill again while it's active.",
-      "effect": [
-        "Base duration is 10.00 seconds",
-        "Base radius is 2.4 metres",
-        "Banner grants 4% more Physical Damage with Melee Skills to You and Allies",
-        "Banner grants 8% increased Accuracy Rating to You and Allies",
-        "While you have no placed Banner, you can gain Valour",
-        "10% more Area of Effect per Valour consumed",
-        "10% more Aura effect per Valour consumed"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "banner",
-        "duration",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "Base duration is seconds",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "ace656082529",
-  "medal": "A",
-  "stale": {
-    "status": "waiting-for-pob",
-    "reason": "This build has not been verified against a patch fact set."
-  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -8309,6 +7504,7 @@
       }
     }
   },
+  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
@@ -8322,7 +7518,813 @@
       "pinnacle": "eJzVWvtP2zob_nn9K6xIRzqfZobvSSbYUSmlsNFxKYOxXybTuK0hl5I4he6v_-Skl5S1pZztaJsqRY79vLafx7c3r7vzz2MUgpFKM53Euw5-gxyg4m4S6Li_63y6ONjynH_e1XZOpRmc9PZyHdqSd7VXO0UahGqkwl3HFw4wMu0rczmtin5FDuiGMss-ykjtOhcqGoYydYDMuioOGvOSo_g-15k2SeqASOq4k3TvlGmlST7cdbADbmQcaLPrfExi5YChjM1AJXFb3iZpKwl2nTCPZaqzSpGOJ0X9NDeDuzx0wEirh3YSqF2nUT9udJx3tVevdk5DOVZpx0gDMiPNrtNIohsdq2D_tOOAkQxztetQwTh_wwl3hee7zNlebnqRGBn-C7tj3VMzG058dxWwGau0P-4MtAqDmQFa253m4ekMSbhPvDeCchf5gpJVdqeDcaa7MmzLRx3l0aE2F_JOxbNqfN8Tq2wPdKrOVaYzM4O7K8GNJAyegvlqkfoDE-u4v7FFYyCTbGN0W8aykVSgbOUwWOinOFWZSkdqPhBbK-vuDFUFR974mIkSvLNdLCKbukiVArJr9Eh1hqpr531Rm30BJlWqsq7odGEdBbsOX1hQNgc5IE4ClVkSAgpBIEYUQ8xdAomPKWTUdyHHnEBBKIKCMQFd6nnQ5ZxD16ce9DhCECNCMMSI-TbNXQ4xEpRDTKjrQ0xcRCAmHicQU4R8iBmyeIa5fQokIObIpRBzLOyTIW6f1INYuIjap63TdW2dHrW1-bZ-ggjxIEGcY0iQLwQk2OceJIR4HBKGuX1Sj0LCBMOQcMYFJNynFBKBfQGJ4MSmuWCQCJdw-2QIEhcXT4owJG5R6rm2Lc9zPSuO70OKCOGQIuohSBFnLqRI-BhSjGwO9lwOKWWuDykVFENKXc4hZVYByjBFkDKCXEiZEAJSzqh9ci4gFYIySF3mCUhd37bluz6C1PexgAwh7kOGBOOQUeoyyCjDBDKGPQoZY8SHrFCVMR95kAlMXMiEjxFkLuEYMpcRDJlHMIPMszozz0MuZL6thxe8OGLEprmLIEeeIJBTjD3IKXF9yKnnMcg58zjkXDAfcu66BHLucZvvIwG5xxCxT1vqCcQg96nN933iQYGw8KFA1Ldp16YxtmnMsE1zwqHAnouhIHa2CEIFhYL6gtunnbDMwwIKjigrlsCrnU_nx0Xi1cCYYfZ2e_vh4eHNUJpB0lOPOlRvukm0PZRZpkdqK7vTYbhlV8x2vV6v7_U_1YP-Ybc-vG7uPVzfNUjz_Pj8rN86uP5yPPjWPbxu9-q6id5voWRLh6cfrrOHq28t1b49G6OLm4OPqMv3b9PBybfMO754PDm78PcG6PLwnPJ2hrzmp2ZwzsPPrcsHrK6w9_W6eXDbbV1-_BKexxHpNWXrMglaSVPeX6bpYZ1123y8T6_Pg_tH-on2btXVwOuz48M-3ton7OLL4PLDQcyCex2NP_AjT95F4tMNN3m0Ne4q7h7cX4lh-GH8Ob0m-em9n5nGFj1N9UV-QbzLFJHRfW9vr332-Hh6c6AzmX-j7tmh_94jx_TLdRB3iXbldX6m-cHhnXui7sXgNm2oUe5eHY7286-pd_f5W_Q1DrbUrd8-ZR_q9fpuMQjb01HYKY_nrBySyVux49jNx-4oDtBGRfYNTzbF73HFOq0AxWqgS3gF6K4CFquxAvRWAu0yrAD9VcBizs6BZHLWvtrZrkiws2236GIzt3u4TXTsFCwLiyRQsbwJVbDrmDRXDsjCxOw6e0kwBvU0SvKJ21Mvd39rMd3-X-20VAT6ZfttZWQgjdw-MirKtlv2UaBbKupE2qh6aD47oFgAG-EdEMtoctwUGSDpgX090rEC7_OgryIVG2fq4hHsgPtchtqMCy2mL7apfdWTeWicp0yX0Np-Ga98OExS0xkk3bsHOVLP0Svh1nBuUSE5z_wNSNWDQAUzx2ZfRrK_Ob_lxnOqRTmYAcAU8RvwbobFxJJh2acrbQZ1Y2T3LtuY_ZWSwyR-UlGV_qxoQhw8aDMAs2Z-AxWO4m6qZKaCRqqNdbg7JtV3anMNVlcwl2GGAVMQmKF-Aw3aeWh0VnRoY9oLNnOmC9n_AbWdsu_PberlxAT4x3f0YyWHnVBGG27oc_hcE5sHysxfOdhXMt2TcazSDalU8HMuVzIF09xfN7yHKoyU-fHBbYQy1Wa8oSAz9FyOWdavHNhDlcowOOldDPI42Hh4v7OasyqLrBcyK_x1Y72XJCb78aHeV0alkY6l0Um8oURPbOYCPSn4deK0wmSkfoI6k329ITNzNVBxeVhPAk4bHgjW9mTRsrJOZGbAw0DFUz9ggpgox3_BqjmKoiQ1MmzIMNxwPiyaVI73ST4oC_7T6TBJZdNg1aVWD-BbkkSfi4iTTV3PUsdlT6gz-y6ycPtSsJsEumy6o8ws1mXfgS4_G9_Vzosd7i04r583a52xjexm2royt-pBhQDXGqmOsiQG7-17rTAu2n0LPFE7ioah7mqTvQWo5v4F9MwTisrAJrBx1xoW1aKn7nKNV0tL7xEU4bzaa0z-AiYBrTC5sQOw6F6Bwh0ZhlqlhYi2c08oiucpkj-covs8RfqHU_Sep8j-cIr-8xT5n02RoOcpij-bIl7H8KH4aLEcZNeAgyTtKnCaJkPZlyZJn1I9K0-Tt4CgRdrYRdX-Ty-SpuTqQZABhiwLDy0vxUUpRug7aWz-5Ou9ht3VMlFeyPTyKbBOn0Hh9ddaWsYmK253QPkhsKE0pNbWsU7iDAzkSIG_ibdF_P-tniSkWmSvm8B5cdtUeH2g2evprlZxd2wd5fJQrr22oplksaLXrFTDXsuB8ipMxt15vr2Bq-Yvl4auk-YmCca182QsQ3AaSqPWKTIJmr4Fe1uz36JMfxO6RdiCMqrXU11jmZ70eirVcT-rvf4b8y0s_leQkGEI5tGeOZtnNJlPsH8tDFsnTL9wkGvHaqSlGcgYtGQem1CZ7MWTJlAyXDZpJivnNUZ_ge7AdtT23TrGqcoyuyLCsAL6Xot1C2mFEqum1HKF1rpxN_b7qipQqqSVbFN58MJu005GxRyY9H9xDVm24Fz1VazSchGldq7SdTWsnT2rZFk6q5Zrs9b_u1GhqR0raQYqBXv2ZdNN-GUbgVXA0rF35c93ea0_J6M8VKZ2Eo8fQb1Mb9zn8lQ4io0KQ91XRddevnhfRmat52b3GVw7GdodRcf9_0j9n8hmrZNm2ZCfzeZFS-CFbHDVIWvXW0eNBT6hXc69UGZ3tcltVbHAD4qcTcmtaBmvbTmyh3HZctOoNJZheT7_lKbJ2qZzo21tk9ZbqYzthd1PaZi-oOGzXKbm289pl72g3XqkzGCcmR9tuaPMxCEGRptQVUIieaY6qpvEQRnELyITPRlmahLS6oSJKYIv1TD_7BZ5GgWqoKbR4tkF8hLMwi3wFEiXAKcRtymGLa2sCFlOIXwZRIWVHokliHLznmPcJRi7jVTZe6swZI7xl2CKwVyQETmT4NAkMrXKplIxxhva0IoN2dCm-kcBuqFN9e8KbJlNOSc7yhThsSIkZlONJO7pfjlV42E-rVTFKhoXc90BcR7dqHTX8aZ_J_wO2BzJrIwaT6F48seFne1pAzvbT__O-X_wuDVR"
     }
   },
-  "patch": "3.30.0",
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:55:29.182Z"
+  },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Two Hand Mace"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "str_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "str_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "str_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "str_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "strjewel"
+        ]
+      },
+      "offhand": null
+    }
+  },
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "physical-melee",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "low",
+          "effect": "(10-15)% increased Global Physical Damage",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "Global physical damage."
+        },
+        "torso": {
+          "name": "Bonestalker's Ribcage",
+          "tier": "low",
+          "effect": "(4-5)% reduced Physical Damage taken over time",
+          "source": "Boneshaper",
+          "area": "Act 2",
+          "note": "Physical DoT reduction for Boneshatter."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "low",
+          "effect": "Adds (2-4) to (5-7) Physical Damage to Attacks",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "Flat physical damage to attacks."
+        },
+        "lowerLimb": {
+          "name": "Captain's Leg",
+          "tier": "low",
+          "effect": "(3-4)% increased Movement Speed",
+          "source": "Guard Captain",
+          "area": "Act 3",
+          "note": "Movement speed."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "med",
+          "effect": "(20-30)% increased Global Physical Damage",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "More global physical damage."
+        },
+        "torso": {
+          "name": "Bonestalker's Ribcage",
+          "tier": "med",
+          "effect": "(6-7)% reduced Physical Damage taken over time",
+          "source": "Boneshaper",
+          "area": "Act 2",
+          "note": "Physical DoT reduction."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "med",
+          "effect": "Adds (8-12) to (15-18) Physical Damage to Attacks",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "Flat physical damage to attacks."
+        },
+        "lowerLimb": {
+          "name": "Pocked Leg",
+          "tier": "med",
+          "effect": "(35-50)% increased Armour from Equipped Helmet and Gloves",
+          "source": "Pikerivet",
+          "area": "Act 4",
+          "note": "Armour from helmet and gloves."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Cutthroat's Head",
+          "tier": "high",
+          "effect": "Hits have (30-50)% chance to ignore Enemy Physical Damage Reduction",
+          "source": "Calaf",
+          "area": "Act 2",
+          "note": "Hits can ignore enemy physical damage reduction."
+        },
+        "torso": {
+          "name": "Searing Exarch's Descry",
+          "tier": "fixed",
+          "effect": "(4-6)% of Cold Damage taken as Fire Damage (4-6)% of Lightning Damage taken as Fire Damage (4-6)% of Physical Damage taken as Fire Damage",
+          "source": "Searing Exarch",
+          "area": "Pinnacle / Map Boss",
+          "note": "Physical hits are taken as fire, which you can resist."
+        },
+        "upperLimb": {
+          "name": "Crustacean's Claw",
+          "tier": "high",
+          "effect": "(10-12)% more Maximum Physical Attack Damage",
+          "source": "Dweller",
+          "area": "Act 1",
+          "note": "More maximum physical attack damage."
+        },
+        "lowerLimb": {
+          "name": "Lithic Haunches",
+          "tier": "high",
+          "effect": "(10-15)% chance to Avoid Physical Damage from Hits",
+          "source": "Boulderback",
+          "area": "Act 9",
+          "note": "Chance to avoid physical damage from hits."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Smite of Divine Judgement; life and a 3-link first.",
+        "Keep a mana flask until leech and reduced cost are online."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Added lightning damage",
+            "Attack speed"
+          ],
+          "note": "Any fast one-hand sword."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "A 3-link is enough."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Movement speed is defence."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Add Elemental Damage with Attacks and Ancestral Call.",
+        "Take the first two labs when they unlock; Righteous Providence is the crit."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Added lightning damage to attacks",
+            "Attack speed",
+            "Added physical damage"
+          ],
+          "note": "The weapon is the damage slot."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "A kite shield is the defensive slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "4-link",
+            "Life"
+          ],
+          "note": "Four links carry the clear."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Five-link the strike and reach 2,000 life; cap elemental resistances first.",
+        "Add Increased Critical Strikes and Multistrike."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Added lightning damage to attacks",
+            "Attack speed",
+            "Added physical damage"
+          ],
+          "note": "A rare foil."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Five links."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Life before crit."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "Reach 3,000 life and cap resistances in white maps.",
+        "Add Increased Critical Damage; keep Ancestral Protector for bosses."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Added lightning damage to attacks",
+            "Attack speed",
+            "Added physical damage"
+          ],
+          "note": "Rare crit foil."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the six-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Resistances before damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Rings",
+          "mods": [
+            "Elemental resistances"
+          ],
+          "note": "Bench the resistance the gear is missing."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Critical multi on the weapon is the red-map damage upgrade."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Added lightning damage to attacks",
+            "Attack speed",
+            "Critical strike multiplier"
+          ],
+          "note": "Crit multi is the damage suffix."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Six-link."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Crit multi."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 gems and a foil with tier-one added lightning."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Added lightning damage to attacks",
+            "Attack speed",
+            "Critical strike multiplier"
+          ],
+          "note": "Flat lightning beats increased physical here."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Critical strike multiplier",
+            "Life",
+            "Added lightning damage to attacks"
+          ],
+          "note": "The amulet carries crit multi."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Critical strike multiplier",
+            "Life"
+          ],
+          "note": "Keep life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Lightning Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 19 to 358 added Lightning Damage"
+      ],
+      "tags": [
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Ancestral Call": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Strike Skills target 2 additional nearby Enemies"
+      ],
+      "tags": [
+        "attack",
+        "melee",
+        "strike"
+      ],
+      "qualityEffect": "Extra Targets for Supported Skills can be found % further away",
+      "qualityWorth": "optional"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Elemental Damage with Attacks": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Attack Skills deal 34% more Elemental Damage"
+      ],
+      "tags": [
+        "attack"
+      ],
+      "qualityEffect": "% increased Elemental Damage with Attack Skills",
+      "qualityWorth": "recommended"
+    },
+    "Herald of Thunder": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Grants a buff which adds lightning damage to spells and attacks. If you kill a shocked enemy, this skill will create a storm, causing lightning bolts to strike enemies around you for a duration. The damage inflicted by this skill is not affected by modifiers to spell damage.",
+      "effect": [
+        "Base duration is 6.00 seconds",
+        "Storm Hits an Enemy every 0.25 Seconds",
+        "Cannot inflict Shock",
+        "Creates a storm when you Kill a Shocked Enemy",
+        "Buff grants 19 to 76 Added Spell Lightning Damage",
+        "Buff grants 19 to 76 Added Attack Lightning Damage",
+        "Deals 23 to 1108 Lightning Damage"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "herald",
+        "lightning",
+        "spell"
+      ],
+      "qualityEffect": "Storms Hit Enemies with % increased Frequency",
+      "qualityWorth": "recommended"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "Breaking the Seal"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Increased Critical Strikes": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "siosa",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +2% to Critical Strike Chance",
+        "Supported Skills have 117% increased Critical Strike Chance"
+      ],
+      "tags": [
+        "critical"
+      ],
+      "qualityEffect": "Supported Skills have % increased Critical Strike Chance",
+      "qualityWorth": "recommended"
+    },
+    "Leap Slam": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
+      "effect": [
+        "+0.55 seconds to Attack Time",
+        "Base radius is 1.5 metres",
+        "Damaging Hits always Stun Enemies that are on Full Life",
+        "39% increased Stun Duration against Enemies that are on Full Life"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee",
+        "movement",
+        "slam",
+        "travel"
+      ],
+      "qualityEffect": "% increased Stun Duration against Enemies that are on Full Life",
+      "qualityWorth": "recommended"
+    },
+    "Multistrike": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "reward",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Repeat 2 additional times",
+        "First Repeat of Supported Skills deals 22% more Damage",
+        "Second Repeat of Supported Skills deals 44% more Damage",
+        "Supported Skills have 44% more Melee Attack Speed",
+        "Supported Skills deal 20% less Attack Damage"
+      ],
+      "tags": [
+        "attack",
+        "melee"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Melee Damage",
+      "qualityWorth": "recommended"
+    },
+    "Shockwave": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills will Trigger Shockwave on Melee Hit",
+        "Supported Skills can only be used with Maces, Sceptres or Staves"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Melee Damage",
+      "qualityWorth": "recommended"
+    },
+    "Smite of Divine Judgement": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "divine-font",
+        "act": null,
+        "quest": null
+      },
+      "color": "r",
+      "support": false,
+      "description": "Performs a melee attack, and causes lightning to strike nearby enemies, dealing damage in an area. Each target can only be hit once by this skill. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+      "effect": [
+        "50% of Physical Damage Converted to Lightning Damage",
+        "Lightning strikes 3 targets within 5 metres",
+        "Base radius is 2.1 metres",
+        "38% more Area Damage"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "lightning",
+        "melee",
+        "strike"
+      ],
+      "qualityEffect": "Lightning strikes targets within metres",
+      "qualityWorth": "optional"
+    },
+    "Static Strike": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Siren's Cadence"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Attack with a melee weapon, gaining static energy for a duration if you hit an enemy. While you have static energy, you'll frequently hit a number of nearby enemies with beams, dealing attack damage.",
+      "effect": [
+        "50% of Physical Damage Converted to Lightning Damage",
+        "Chains +1 Times",
+        "Beams deal 30% less Damage",
+        "Base duration is 4.00 seconds",
+        "Beams Hit Enemies every 0.32 seconds",
+        "6 maximum Beam Targets"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "chaining",
+        "duration",
+        "lightning",
+        "melee",
+        "strike"
+      ],
+      "qualityEffect": "% increased Beam frequency",
+      "qualityWorth": "optional"
+    },
+    "War Banner": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "r",
+      "support": false,
+      "description": "You must gain Valour from melee combat to use this skill, which will consume all Valour to place a banner with an aura. The aura will be larger and more powerful the more Valour was consumed. The banner lasts for a duration, but will end early if you leave the aura, or use the skill again while it's active.",
+      "effect": [
+        "Base duration is 10.00 seconds",
+        "Base radius is 2.4 metres",
+        "Banner grants 4% more Physical Damage with Melee Skills to You and Allies",
+        "Banner grants 8% increased Accuracy Rating to You and Allies",
+        "While you have no placed Banner, you can gain Valour",
+        "10% more Area of Effect per Valour consumed",
+        "10% more Aura effect per Valour consumed"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "banner",
+        "duration",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "Base duration is seconds",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "ace656082529",
   "guide": {
     "summary": {
       "text": "Smite of Divine Judgement measures 18.9k at red maps and 36.5k at pinnacle. The Inquisitor critical package ignores elemental resistances, and the build needs no unique.",
@@ -8370,11 +8372,5 @@
       "factsHash": "72e4c5210715ea5c"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T12:55:29.182Z"
-  }
+  "medal": "A"
 }

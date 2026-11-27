@@ -926,803 +926,7 @@
     "core": [],
     "optional": []
   },
-  "filter": {
-    "slots": {
-      "weapon": {
-        "itemClasses": [
-          "Bow"
-        ]
-      },
-      "helmet": {
-        "itemClasses": [
-          "Helmet"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "body": {
-        "itemClasses": [
-          "Body Armour"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "gloves": {
-        "itemClasses": [
-          "Gloves"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "boots": {
-        "itemClasses": [
-          "Boots"
-        ],
-        "tags": [
-          "dex_armour"
-        ]
-      },
-      "belt": {
-        "itemClasses": [
-          "Belt"
-        ]
-      },
-      "amulet": {
-        "itemClasses": [
-          "Amulet"
-        ]
-      },
-      "ring": {
-        "itemClasses": [
-          "Ring"
-        ]
-      },
-      "offhand": {
-        "itemClasses": [
-          "Quiver"
-        ]
-      },
-      "jewel": {
-        "itemClasses": [
-          "Jewel"
-        ],
-        "tags": [
-          "dexjewel"
-        ]
-      }
-    }
-  },
   "status": "verified",
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "cold-bow",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Bandit Rogue's Head",
-          "tier": "low",
-          "effect": "(4-6)% increased Attack and Cast Speed",
-          "source": "Kraityn",
-          "area": "Act 2",
-          "note": "Attack speed for the bow."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "low",
-          "effect": "+(14-18)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance."
-        },
-        "upperLimb": {
-          "name": "Skeletal Archer's Arm",
-          "tier": "low",
-          "effect": "Projectiles deal (8-12)% increased Damage with Hits and Ailments for each Enemy Pierced",
-          "source": "Ironpoint",
-          "area": "Act 1",
-          "note": "Projectile damage per pierce."
-        },
-        "lowerLimb": {
-          "name": "Skeleton Wheel",
-          "tier": "low",
-          "effect": "(5-7)% increased Attack and Cast Speed if you've used a Movement Skill Recently",
-          "source": "Fleetfreak",
-          "area": "Act 6",
-          "note": "Attack speed after a movement skill."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Gelid Fangs",
-          "tier": "med",
-          "effect": "Damage Penetrates (6-8)% Cold Resistance",
-          "source": "Chill of the Mountain",
-          "area": "Act 9",
-          "note": "Cold penetration for Ice Shot."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "med",
-          "effect": "+(22-28)% to Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Cold resistance while gearing."
-        },
-        "upperLimb": {
-          "name": "Skeletal Archer's Arm",
-          "tier": "med",
-          "effect": "Projectiles deal (15-20)% increased Damage with Hits and Ailments for each Enemy Pierced",
-          "source": "Ironpoint",
-          "area": "Act 1",
-          "note": "Projectile damage per pierce."
-        },
-        "lowerLimb": {
-          "name": "Skeletal Tail",
-          "tier": "med",
-          "effect": "(20-30)% increased Projectile Damage",
-          "source": "Skeletal Abomination",
-          "area": "Act 5",
-          "note": "Projectile damage."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Hydra's Head",
-          "tier": "fixed",
-          "effect": "Arrows Pierce all Targets after Forking",
-          "source": "Hydra",
-          "area": "Pinnacle / Map Boss",
-          "note": "Arrows pierce all targets after forking."
-        },
-        "torso": {
-          "name": "Elemental Essence",
-          "tier": "high",
-          "effect": "+(2-3)% to maximum Cold Resistance",
-          "source": "Stranglecharm",
-          "area": "Act 1",
-          "note": "Maximum cold resistance."
-        },
-        "upperLimb": {
-          "name": "Skeletal Archer's Arm",
-          "tier": "high",
-          "effect": "Projectiles Pierce (2-3) additional Targets",
-          "source": "Ironpoint",
-          "area": "Act 1",
-          "note": "Projectiles pierce additional targets."
-        },
-        "lowerLimb": {
-          "name": "Skeletal Tail",
-          "tier": "high",
-          "effect": "Projectiles Pierce, Fork or Chain an additional time at random",
-          "source": "Skeletal Abomination",
-          "area": "Act 5",
-          "note": "An extra pierce, fork or chain at random."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Ice Shot; a physical bow with attack speed is the first upgrade.",
-        "Life, a 3-link and movement speed carry Act 1."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed"
-          ],
-          "note": "A magic bow is enough in Act 1."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "3-link."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Keep moving."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Attack speed"
-          ],
-          "note": "Bench attack speed if the bow has a free suffix."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Add Added Cold Damage and Faster Attacks to Ice Shot.",
-        "Herald of Ice and Hatred are the damage auras."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "A rare bow is the damage slot."
-        },
-        {
-          "slot": "Quiver",
-          "mods": [
-            "Life",
-            "Elemental resistances",
-            "Critical strike multiplier"
-          ],
-          "note": "Quiver is cheap damage and defence."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "4-link."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Quiver",
-          "mods": [
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi on a free suffix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Six-link Ice Shot and reach 2,000 life; cap elemental resistances.",
-        "The bow and quiver carry the damage; do not over-invest in armour."
-      ],
-      "lookFor": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "The 6-link is the damage step."
-        },
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "A rare bow is still the main slot."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Crit multi is the damage stat."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "A 5-link clears white maps; start the 6-link and upgrade the bow.",
-        "Reach 3,000 life and cap resistances."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "The bow is the damage slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the 6-link."
-        },
-        {
-          "slot": "Quiver",
-          "mods": [
-            "Life",
-            "Critical strike multiplier",
-            "Elemental resistances"
-          ],
-          "note": "Quiver fixes resists and damage."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Critical strike chance"
-          ],
-          "note": "Bench crit chance if the bow has a free suffix."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Critical strike multiplier is the red-map damage upgrade."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "Upgrade the bow before the quiver."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link is the gate."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Crit multi."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi on a free suffix."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 Ice Shot and awakened elemental supports."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Physical DPS",
-            "Attack speed",
-            "Critical strike chance"
-          ],
-          "note": "The endgame bow is the last big purchase."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Life",
-            "Chaos resistance",
-            "Critical strike multiplier"
-          ],
-          "note": "Fix chaos resistance here."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Critical strike multiplier"
-          ],
-          "note": "Keep life on every jewel."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Cold Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 152 to 228 added Cold Damage"
-      ],
-      "tags": [
-        "cold"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Cold Damage",
-      "qualityWorth": "recommended"
-    },
-    "Cast when Damage Taken": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "vendor",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Trigger Supported Spells when you take 3272 total Damage from Hits",
-        "Supported Skills deal 27% less Damage",
-        "This Gem can only Support Skill Gems requiring Level 70 or lower"
-      ],
-      "tags": [
-        "spell",
-        "trigger"
-      ],
-      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Elemental Damage with Attacks": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Attack Skills deal 34% more Elemental Damage"
-      ],
-      "tags": [
-        "attack"
-      ],
-      "qualityEffect": "% increased Elemental Damage with Attack Skills",
-      "qualityWorth": "recommended"
-    },
-    "Faster Attacks": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 44% increased Attack Speed"
-      ],
-      "tags": [
-        "attack"
-      ],
-      "qualityEffect": "Supported Skills have % increased Attack Speed",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Grace": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Casts an aura that grants evasion to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 29% more Evasion rating",
-        "You and nearby allies gain 1545 additional Evasion Rating",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Hatred": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Casts an aura that grants extra cold damage based on physical damage to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 39% of Physical Damage as Extra Cold Damage",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "cold",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Herald of Ice": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage.",
-      "effect": [
-        "Base radius is 1.2 metres",
-        "Damage cannot be Reflected",
-        "Buff grants 38 to 56 Added Spell Cold Damage",
-        "Buff grants 38 to 56 Added Attack Cold Damage",
-        "Deals 308 to 462 Cold Damage"
-      ],
-      "tags": [
-        "area",
-        "cold",
-        "herald",
-        "spell"
-      ],
-      "qualityEffect": "metres to radius",
-      "qualityWorth": "optional"
-    },
-    "Ice Shot": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target.",
-      "effect": [
-        "60% of Physical Damage Converted to Cold Damage",
-        "Base radius is 2.4 metres",
-        "Chills Enemies as though dealing 195% more Damage"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "bow",
-        "cold",
-        "projectile"
-      ],
-      "qualityEffect": "% increased Area of Effect angle",
-      "qualityWorth": "recommended"
-    },
-    "Immortal Call": {
-      "requiredLevel": 34,
-      "source": {
-        "kind": "lilly",
-        "act": 6,
-        "quest": "Fallen from Grace"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
-      "effect": [
-        "15% less Physical Damage taken per Endurance Charge removed",
-        "20% increased Buff Duration per Endurance Charge removed",
-        "Base duration is 1.00 second",
-        "This Skill's Cooldown does not recover during its effect",
-        "34% less Elemental Damage taken",
-        "35% less Physical Damage taken"
-      ],
-      "tags": [
-        "duration",
-        "guard",
-        "spell"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Increased Critical Damage": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "vendor",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have +138% to Critical Strike Multiplier"
-      ],
-      "tags": [
-        "critical"
-      ],
-      "qualityEffect": "Supported Skills have % to Critical Strike Multiplier",
-      "qualityWorth": "recommended"
-    },
-    "Increased Critical Strikes": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have +2% to Critical Strike Chance",
-        "Supported Skills have 117% increased Critical Strike Chance"
-      ],
-      "tags": [
-        "critical"
-      ],
-      "qualityEffect": "Supported Skills have % increased Critical Strike Chance",
-      "qualityWorth": "recommended"
-    },
-    "Precision": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Casts an aura that grants accuracy and critical strike chance to you and your allies.",
-      "effect": [
-        "You and nearby allies gain +701 to Accuracy Rating",
-        "You and nearby allies gain 58% increased Critical Strike Chance",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "critical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Sniper's Mark": {
-      "requiredLevel": 4,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Breaking Some Eggs"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time.",
-      "effect": [
-        "Projectiles which Hit Cursed Enemies Split towards 2 additional targets",
-        "Cursed enemies take 29% increased Damage from Projectile Hits"
-      ],
-      "tags": [
-        "curse",
-        "mark",
-        "spell"
-      ],
-      "qualityEffect": "Cursed enemies take % increased Damage from Projectile Hits",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "5983952f8f8f",
-  "medal": "B",
-  "stale": {
-    "status": "waiting-for-pob",
-    "reason": "This build has not been verified against a patch fact set."
-  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -8436,6 +7640,7 @@
       }
     }
   },
+  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
@@ -8449,7 +7654,804 @@
       "pinnacle": "eJzNWltv27gSfo5_BSGg2F2UaXgXVcQ9cC513ObixEnT7kvAWLTNRBdXop24v_6Aku0oWdtxTrungQGC4nxDzgyHw9HI2_-5jyMw1llu0qTu4XfIAzrppqFJ-nXv4vzjpvT-86G23VZ2cNLbGZnIUT7UNraLPoj0WEd1LxAesCrra_tlNhW9Qh7oRirPj1Ws696ZSvo684DKuzoJdx8Ie1qFeqI9ECuTdNLurbbNLB0N6x72wLVKQmPr3nGaaA8MVWIHOk2O1E2aNdOw7l1nJtG3JulXiCaZEvvZyA5uR5EHxkbfHaWhrnu7jcPdjvehtrGx3Y7URGcdqyzIrbJ1bzeNr02iw712xwNjFY103cNCYoneBZgLn8jA21rMep5aFf0PfIemp-c8XBK8DLif6Kw_6QyMjsI5A1opzv5Be46kVAryjuKAMULRUnHag0luuio6UvcmHsUHxp6rW53Mp5EB58t4P5pMn-nc5HYO95eCd9MoXBt8aPoDm5ikv_70A5Xma6OPVKJ20woULzWQg14kmc51NtYPG7FJl25FZ6grQP4Oc4YDUqC3t4pD5HrnmdZAda0Z685Qd53vF9O5B2AzrSvnis4OViuse-TRiXIjyANJGuq87hEqIWMMBhRBTBCGmBIOKRMBpIILyBDGkHFEICfUh5whCTljFHJJKBScSii4RNBHkkMfYwKlmyogSMCAcg4D6fsQI0kCiDELfIix4BhiLHngVhTSLYkIxFRKDjGXjEAssPAhFtIhfey7thDOl5hBLJnDB0gEEAeYMYgDjgTEgY8xxIHkEhLEmYAESU4goZi4lvkYEiaYayWTkHDkkJxxAQkPKIVEIOFD4vtSQiIRJpDIIOCQBEgGkAQOQxHmHFJEkGtlwCDFHElIsZAUUoICDCnB2IeU4kBASn03TgNUtDKAlCGKIWXMjTPhS0h5MY_gkkMqhPQh9TlikErKJKRSCAJpIAl2rcCQISoIZFgKARl2czKCGIaMCOb6gWCQUewwHFEOGaeYQsZZgCETlDHI_GIG32cUMsmcF0iJfMiCwJeQI0pdy3gAOWaIQU4C11IkBeSUYAo5w8Q5BGYEcoEQhlxwGUAuJBeQ-zgInJMwBnlAfQR5IKkPBUKIQIEIYlAgn3IoUMAIFJgi4VriQ4ElZVBQTAMoqB9wKKhkFAqGiHM3gpFrCSv8f2P74uyw6GwMrB3m77e27u7u3g2VHaQ9fW8i_a6bxltDledmrDfzWxNFm-64bDUajcZOv9UI7_ZGjeu7vbTfud_poOObU97aE_lZNDjDHzuNL6f36qr5Lf3b7oxsU_YNM23yqZXHUWd4fHhya_sTfn44Of1xe_MtaOvW1Sd0cH56f7x3dHF5ebb56XPvImud7306ukKkc7H_6Sz8OOxciqB_erl_-k1_uuk2vxz_HR7nN02cdy-O79Ov5zbsWnz11Yz0_Zl_R_F17-vlTtZq00Fzc__-2_l4kJ0chOkduRnF7XP-uRF1J193hqPj2L8Mv38_-TxsXN6eKPX3MOik8ferLD9t3uf-RWt0-ln0fETG33t7J3nHTI5-nHw_CvSPgJ5fB8ebJD8I98JgzNh5IkZxIOLD7PAEXfl9f6xHm235LSPp1e2Pzcu2OGgLcZX3G41GvV5sxNZsJ7bLOzovt2X6VIQcF32Kk-IBY3XsHrEo4-ICoDsuFaC_FOjOUgUolwELp60Ag2XAwjcfgAQtBTpnrQCnt_PG9lbFBttbLkgX4dxFcdfpOD8siUUX6ERdRzqsezYbaQ_kUWrr3k4aTkAji9NRViY_jTL-O47ZBbCx3dQx6JfrH2mrQmXVVsvqON9quqZAN3Xc6urOILUeKM7A2uhExdMLp9XVoByb5nQEe-D7SEXGTgobzR7c3Hu6p0aR9Z4qtkCLrRep0RkNh2lmG2GoQ5cj7KlY9fVzWpVMTR3_g-9Bv4IEHA3MiK9A0f1IxzpxuWMh06Wxg4a1qnubr63zpVbDNHkyUVXzOWmqOLgzdgDmy7wCK7SSbqZVrsPdzFiXf3ZsZm71-jZYPkHFwWcYMAOBOeo12uCFrr-Uf6UFXtFR-Khyq7OXen-Vq6prOf6vevl2qcFzYb48nwD_fIzvJGaos_xIZbdrxvl2lt7orjWRvtTqNtH5oxNRzvdHDsoZf6cPHOhMReFJr9V91uMXcTzoVA6DtAcKwu_b9gMdxdr-_KY3M7W2TabYB2tMB37nzrYz3TXu1XVtl53jH_SoDP6-HW1G6dhdFj99jMvgtatyeznQSRmCp3WWNaOe4z15zPlgLEcEdwOdzO77KWJqOf4bnKAVx2lmVbSromjdFPURS-USm46DkvD73GEnTe0v8IaPkYr1nsoHa9qlgq_cdm4QlKP_qkWmvXxWs_pi9B34kabx16Lw5Hrf5r3DUhLqzV-OHNw9FHpN612u39F2XvJyz8CU744famcqM3byHpw1zvZrnYkr8ebGpTA3-k5HANe-mMyERiXgkxuoFdzFwu-BFLVWPIxM19j8PUA1_w0w8xQoLkucwFVga7xKKXMGUBTuaphUSQ_36fRsFcZxaz4R3X9edPJKRZfPi05fqejB86Kz1yk6Qc-Lzl-p6Ph50cXrFH2l5HdF3l7rDE2iwU5691Tm0zKevgcEPZYf--iRMNNvKjNRGmGYA4aATYFEi6mYOyrhCMw_fczo2F9qgyXbs0rHtNcbqCSsNTJrokhnE3A6MmOdra3rW4wKTR5tU6lDMe7IT3Vw49P3stpbxt-45wdM-dVGJd1lm0ZXKTQosu7akbrRuTVd0NaRXVMZUvuT8k0q_qoa2H3vAe7bENjv9UzX6KQ7qU3VaOtE20xZnQPxZrEGC80z09l9MHsEno4XNapnzcBWmeE6DSduIDRdZfUfOWiq7HqVHab1zPdgZ3P-e2yct39StEnxX6WIjyso4GgUWTOMjM5AL529dc9ctngJAQOVgz8pe2rgxihTzra6a1dba7F9X2Qyvspk_SK7r33RUTrKQJnrr-05mC49lW8xegO6AyeWk9Tl8JnOc0eN5qd-oeYrjvoyvZe51mJ7rMyvrl16OzNHkeuub41H8e8oHRf1x6nohRuRv6o2aYxTE4KHMmXDRK6X1-iqiVZ6yzLDvCDOrEzhrl1cOdTKDnQGdtYPMksi5tKQ4Czg1HHfs58XeWXqpuJRpG3tJJncg0bZfxVR_oU6rszxMpP0ce1kqCJwZpL-_13Bn9w_vDILdMqRX6XcSyPISzWpplZHjWZr95Eqkelp0ItUflvbM2OXYDmhwMdiZF29lqxMVq4cuwu9XHnf6ixRUXnH_5Kl6cqlR9a42eZ6qzhNwl-zMHvBwh0TjXX2a9blL1i3EWs7mOT2Z1fuaDtN3oE1NtKVcsYo1x3dTZOwrLkXVYWeinI9Lcl0otQWVZNqVX7-vXhW0_onilS-AS9AzUq9MwxdgHn0sXcGZAuAsyrjDMMXTlaUnmYQsQiio4pE_gJEeQc8YOQCjIszVRsFyzAVC2G0AFTs-SNrY29a_5kWn5bxVGcma_JU_y5A1-SpfOfHbE2eyp8IMF_EU7puR9uiAlZUvVxvN016pl96dDIczSbViY4nxZHwQDKKr3VW9-TUR_4J3B-raZl8BsXTfzJsb80W2N56-sfN_wICUSBZ"
     }
   },
-  "patch": "3.30.0",
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T12:54:12.574Z"
+  },
+  "filter": {
+    "slots": {
+      "weapon": {
+        "itemClasses": [
+          "Bow"
+        ]
+      },
+      "helmet": {
+        "itemClasses": [
+          "Helmet"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "body": {
+        "itemClasses": [
+          "Body Armour"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "gloves": {
+        "itemClasses": [
+          "Gloves"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "boots": {
+        "itemClasses": [
+          "Boots"
+        ],
+        "tags": [
+          "dex_armour"
+        ]
+      },
+      "belt": {
+        "itemClasses": [
+          "Belt"
+        ]
+      },
+      "amulet": {
+        "itemClasses": [
+          "Amulet"
+        ]
+      },
+      "ring": {
+        "itemClasses": [
+          "Ring"
+        ]
+      },
+      "offhand": {
+        "itemClasses": [
+          "Quiver"
+        ]
+      },
+      "jewel": {
+        "itemClasses": [
+          "Jewel"
+        ],
+        "tags": [
+          "dexjewel"
+        ]
+      }
+    }
+  },
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "cold-bow",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Bandit Rogue's Head",
+          "tier": "low",
+          "effect": "(4-6)% increased Attack and Cast Speed",
+          "source": "Kraityn",
+          "area": "Act 2",
+          "note": "Attack speed for the bow."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "low",
+          "effect": "+(14-18)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance."
+        },
+        "upperLimb": {
+          "name": "Skeletal Archer's Arm",
+          "tier": "low",
+          "effect": "Projectiles deal (8-12)% increased Damage with Hits and Ailments for each Enemy Pierced",
+          "source": "Ironpoint",
+          "area": "Act 1",
+          "note": "Projectile damage per pierce."
+        },
+        "lowerLimb": {
+          "name": "Skeleton Wheel",
+          "tier": "low",
+          "effect": "(5-7)% increased Attack and Cast Speed if you've used a Movement Skill Recently",
+          "source": "Fleetfreak",
+          "area": "Act 6",
+          "note": "Attack speed after a movement skill."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Gelid Fangs",
+          "tier": "med",
+          "effect": "Damage Penetrates (6-8)% Cold Resistance",
+          "source": "Chill of the Mountain",
+          "area": "Act 9",
+          "note": "Cold penetration for Ice Shot."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "med",
+          "effect": "+(22-28)% to Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Cold resistance while gearing."
+        },
+        "upperLimb": {
+          "name": "Skeletal Archer's Arm",
+          "tier": "med",
+          "effect": "Projectiles deal (15-20)% increased Damage with Hits and Ailments for each Enemy Pierced",
+          "source": "Ironpoint",
+          "area": "Act 1",
+          "note": "Projectile damage per pierce."
+        },
+        "lowerLimb": {
+          "name": "Skeletal Tail",
+          "tier": "med",
+          "effect": "(20-30)% increased Projectile Damage",
+          "source": "Skeletal Abomination",
+          "area": "Act 5",
+          "note": "Projectile damage."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Hydra's Head",
+          "tier": "fixed",
+          "effect": "Arrows Pierce all Targets after Forking",
+          "source": "Hydra",
+          "area": "Pinnacle / Map Boss",
+          "note": "Arrows pierce all targets after forking."
+        },
+        "torso": {
+          "name": "Elemental Essence",
+          "tier": "high",
+          "effect": "+(2-3)% to maximum Cold Resistance",
+          "source": "Stranglecharm",
+          "area": "Act 1",
+          "note": "Maximum cold resistance."
+        },
+        "upperLimb": {
+          "name": "Skeletal Archer's Arm",
+          "tier": "high",
+          "effect": "Projectiles Pierce (2-3) additional Targets",
+          "source": "Ironpoint",
+          "area": "Act 1",
+          "note": "Projectiles pierce additional targets."
+        },
+        "lowerLimb": {
+          "name": "Skeletal Tail",
+          "tier": "high",
+          "effect": "Projectiles Pierce, Fork or Chain an additional time at random",
+          "source": "Skeletal Abomination",
+          "area": "Act 5",
+          "note": "An extra pierce, fork or chain at random."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Ice Shot; a physical bow with attack speed is the first upgrade.",
+        "Life, a 3-link and movement speed carry Act 1."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed"
+          ],
+          "note": "A magic bow is enough in Act 1."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "3-link."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Keep moving."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Attack speed"
+          ],
+          "note": "Bench attack speed if the bow has a free suffix."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Add Added Cold Damage and Faster Attacks to Ice Shot.",
+        "Herald of Ice and Hatred are the damage auras."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "A rare bow is the damage slot."
+        },
+        {
+          "slot": "Quiver",
+          "mods": [
+            "Life",
+            "Elemental resistances",
+            "Critical strike multiplier"
+          ],
+          "note": "Quiver is cheap damage and defence."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Quiver",
+          "mods": [
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Six-link Ice Shot and reach 2,000 life; cap elemental resistances.",
+        "The bow and quiver carry the damage; do not over-invest in armour."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "The 6-link is the damage step."
+        },
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "A rare bow is still the main slot."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Crit multi is the damage stat."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link and upgrade the bow.",
+        "Reach 3,000 life and cap resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "The bow is the damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Quiver",
+          "mods": [
+            "Life",
+            "Critical strike multiplier",
+            "Elemental resistances"
+          ],
+          "note": "Quiver fixes resists and damage."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Critical strike chance"
+          ],
+          "note": "Bench crit chance if the bow has a free suffix."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
+        "Critical strike multiplier is the red-map damage upgrade."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "Upgrade the bow before the quiver."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link is the gate."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Crit multi."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Critical strike multiplier"
+          ],
+          "note": "Bench crit multi on a free suffix."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 Ice Shot and awakened elemental supports."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Physical DPS",
+            "Attack speed",
+            "Critical strike chance"
+          ],
+          "note": "The endgame bow is the last big purchase."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Life",
+            "Chaos resistance",
+            "Critical strike multiplier"
+          ],
+          "note": "Fix chaos resistance here."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Critical strike multiplier"
+          ],
+          "note": "Keep life on every jewel."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Cold Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 152 to 228 added Cold Damage"
+      ],
+      "tags": [
+        "cold"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Cold Damage",
+      "qualityWorth": "recommended"
+    },
+    "Cast when Damage Taken": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Trigger Supported Spells when you take 3272 total Damage from Hits",
+        "Supported Skills deal 27% less Damage",
+        "This Gem can only Support Skill Gems requiring Level 70 or lower"
+      ],
+      "tags": [
+        "spell",
+        "trigger"
+      ],
+      "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Elemental Damage with Attacks": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Attack Skills deal 34% more Elemental Damage"
+      ],
+      "tags": [
+        "attack"
+      ],
+      "qualityEffect": "% increased Elemental Damage with Attack Skills",
+      "qualityWorth": "recommended"
+    },
+    "Faster Attacks": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 44% increased Attack Speed"
+      ],
+      "tags": [
+        "attack"
+      ],
+      "qualityEffect": "Supported Skills have % increased Attack Speed",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Grace": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants evasion to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 29% more Evasion rating",
+        "You and nearby allies gain 1545 additional Evasion Rating",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Hatred": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants extra cold damage based on physical damage to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 39% of Physical Damage as Extra Cold Damage",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "cold",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Herald of Ice": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage.",
+      "effect": [
+        "Base radius is 1.2 metres",
+        "Damage cannot be Reflected",
+        "Buff grants 38 to 56 Added Spell Cold Damage",
+        "Buff grants 38 to 56 Added Attack Cold Damage",
+        "Deals 308 to 462 Cold Damage"
+      ],
+      "tags": [
+        "area",
+        "cold",
+        "herald",
+        "spell"
+      ],
+      "qualityEffect": "metres to radius",
+      "qualityWorth": "optional"
+    },
+    "Ice Shot": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target.",
+      "effect": [
+        "60% of Physical Damage Converted to Cold Damage",
+        "Base radius is 2.4 metres",
+        "Chills Enemies as though dealing 195% more Damage"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "bow",
+        "cold",
+        "projectile"
+      ],
+      "qualityEffect": "% increased Area of Effect angle",
+      "qualityWorth": "recommended"
+    },
+    "Immortal Call": {
+      "requiredLevel": 34,
+      "source": {
+        "kind": "lilly",
+        "act": 6,
+        "quest": "Fallen from Grace"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
+      "effect": [
+        "15% less Physical Damage taken per Endurance Charge removed",
+        "20% increased Buff Duration per Endurance Charge removed",
+        "Base duration is 1.00 second",
+        "This Skill's Cooldown does not recover during its effect",
+        "34% less Elemental Damage taken",
+        "35% less Physical Damage taken"
+      ],
+      "tags": [
+        "duration",
+        "guard",
+        "spell"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Increased Critical Damage": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +138% to Critical Strike Multiplier"
+      ],
+      "tags": [
+        "critical"
+      ],
+      "qualityEffect": "Supported Skills have % to Critical Strike Multiplier",
+      "qualityWorth": "recommended"
+    },
+    "Increased Critical Strikes": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have +2% to Critical Strike Chance",
+        "Supported Skills have 117% increased Critical Strike Chance"
+      ],
+      "tags": [
+        "critical"
+      ],
+      "qualityEffect": "Supported Skills have % increased Critical Strike Chance",
+      "qualityWorth": "recommended"
+    },
+    "Precision": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Casts an aura that grants accuracy and critical strike chance to you and your allies.",
+      "effect": [
+        "You and nearby allies gain +701 to Accuracy Rating",
+        "You and nearby allies gain 58% increased Critical Strike Chance",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "critical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Sniper's Mark": {
+      "requiredLevel": 4,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Breaking Some Eggs"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time.",
+      "effect": [
+        "Projectiles which Hit Cursed Enemies Split towards 2 additional targets",
+        "Cursed enemies take 29% increased Damage from Projectile Hits"
+      ],
+      "tags": [
+        "curse",
+        "mark",
+        "spell"
+      ],
+      "qualityEffect": "Cursed enemies take % increased Damage from Projectile Hits",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "5983952f8f8f",
   "guide": {
     "summary": {
       "text": "Ice Shot Deadeye is a cold bow build that measures 105.4k at red maps and 168.2k at pinnacle. Freeze is the defensive layer, the rare bow is the damage slot, and no unique is required.",
@@ -8500,11 +8502,5 @@
       "factsHash": "5327a2c93722c994"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T12:54:12.574Z"
-  }
+  "medal": "B"
 }
