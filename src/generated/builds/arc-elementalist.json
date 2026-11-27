@@ -1181,773 +1181,6 @@
     }
   ],
   "status": "verified",
-  "season": {
-    "id": "covens",
-    "name": "Covens"
-  },
-  "changelog": [
-    {
-      "season": "covens",
-      "date": "2026-11-26",
-      "notes": [
-        "First guide for the Covens league."
-      ],
-      "seasonName": "Covens"
-    },
-    {
-      "season": "covens",
-      "date": "2026-11-27",
-      "notes": [
-        "Re-measured the whole build after the jewel affix caps were fixed: the tree takes lightning and life first, Elemental Overload replaces the old support package, and the shock and exposure the ascendancy applies are declared in the PoB config.",
-        "Added Wave of Conviction with Physical to Lightning so Mastermind of Discord's exposure is real, and kept Conductivity as the curse.",
-        "Inspiration replaces Faster Casting in the measured six-link, which raises damage and cuts the mana cost; Spell Echo is part of the red-map set.",
-        "The physical layer is Determination, Arctic Armour, Enduring Cry and the granite and basalt flasks; Cerberus Limb and Saffell's Frame are the two required uniques.",
-        "Enduring Cry fills the three charges the tree can hold; the resistance passives pay for the strict resistance cap.",
-        "Heart of Destruction's Convergence is declared for the pinnacle window; the same build measures about 500k without it.",
-        "Pinnacle now measures 676k DPS, 6.8k life, 53.4k EHP, 14.0k physical max hit with chaos capped; red maps measure 541k DPS. Ratings 10/10/9/9."
-      ],
-      "seasonName": "Covens"
-    }
-  ],
-  "wickerman": {
-    "profile": "lightning-spell",
-    "steps": {
-      "leveling": {
-        "head": {
-          "name": "Totemic Visage",
-          "tier": "low",
-          "effect": "(10-15)% chance to Shock",
-          "source": "Kuduku",
-          "area": "Act 1",
-          "note": "Shock chance for Arc."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "low",
-          "effect": "Damage Penetrates (3-4)% Lightning Resistance",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Lightning penetration."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "low",
-          "effect": "+(30-50) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life while casting."
-        },
-        "lowerLimb": {
-          "name": "Galvanic Tentacle",
-          "tier": "low",
-          "effect": "+(14-18)% to Lightning Resistance",
-          "source": "Amarissa",
-          "area": "Act 1",
-          "note": "Lightning resistance."
-        }
-      },
-      "maps": {
-        "head": {
-          "name": "Totemic Visage",
-          "tier": "med",
-          "effect": "(20-30)% chance to Shock",
-          "source": "Kuduku",
-          "area": "Act 1",
-          "note": "More shock chance."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "med",
-          "effect": "Damage Penetrates (6-8)% Lightning Resistance",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Lightning penetration."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "med",
-          "effect": "+(60-80) to maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "Life before damage scaling."
-        },
-        "lowerLimb": {
-          "name": "Skeleton Wheel",
-          "tier": "med",
-          "effect": "(10-12)% increased Attack and Cast Speed if you've used a Movement Skill Recently",
-          "source": "Fleetfreak",
-          "area": "Act 6",
-          "note": "Cast speed after a movement skill."
-        }
-      },
-      "bossing": {
-        "head": {
-          "name": "Totemic Visage",
-          "tier": "high",
-          "effect": "(10-12)% more Maximum Lightning Damage",
-          "source": "Kuduku",
-          "area": "Act 1",
-          "note": "More maximum lightning damage."
-        },
-        "torso": {
-          "name": "Severed Stinger",
-          "tier": "high",
-          "effect": "Hits have (10-15)% chance to treat Enemy Monster Lightning Resistance values as inverted",
-          "source": "Fidelitas",
-          "area": "Act 2",
-          "note": "Hits can treat lightning resistance as inverted."
-        },
-        "upperLimb": {
-          "name": "Warden's Arm",
-          "tier": "high",
-          "effect": "(5-7)% more Maximum Life",
-          "source": "Brutus",
-          "area": "Act 1",
-          "note": "More maximum life."
-        },
-        "lowerLimb": {
-          "name": "Galvanic Tentacle",
-          "tier": "high",
-          "effect": "+(2-3)% to maximum Lightning Resistance",
-          "source": "Amarissa",
-          "area": "Act 1",
-          "note": "Maximum lightning resistance."
-        }
-      }
-    }
-  },
-  "stepPlans": {
-    "until-12": {
-      "goals": [
-        "Level with Arc; a spell damage wand and a 3-link are enough.",
-        "Life, resistances and movement speed carry Act 1."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "A magic wand is enough."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "3-link."
-        },
-        {
-          "slot": "Boots",
-          "mods": [
-            "Movement speed",
-            "Life"
-          ],
-          "note": "Keep moving."
-        }
-      ]
-    },
-    "until-28": {
-      "goals": [
-        "Add Added Lightning Damage and Controlled Destruction to Arc.",
-        "Start capping fire, cold and lightning resistance."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Lightning damage"
-          ],
-          "note": "Rare wand or sceptre."
-        },
-        {
-          "slot": "Shield",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Defensive shield."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "4-link."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Cast speed"
-          ],
-          "note": "Bench cast speed on a free suffix."
-        }
-      ]
-    },
-    "until-68": {
-      "goals": [
-        "Six-link Arc and reach 2,000 life; cap elemental resistances.",
-        "The 6-link and gem levels are the damage step."
-      ],
-      "lookFor": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "The 6-link is the damage step."
-        },
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Lightning damage"
-          ],
-          "note": "Do not drop cast speed."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Life",
-            "Cast speed"
-          ],
-          "note": "Life first, cast speed second."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Craft the missing resistance."
-        }
-      ]
-    },
-    "maps-early": {
-      "goals": [
-        "A 5-link clears white maps; start the 6-link and upgrade the wand.",
-        "Reach 3,000 life and cap resistances."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Lightning damage"
-          ],
-          "note": "The wand is the damage slot."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Start the 6-link."
-        },
-        {
-          "slot": "Rings",
-          "mods": [
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "Fix resists on rings."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Lightning damage"
-          ],
-          "note": "Bench elemental damage on a free prefix."
-        }
-      ]
-    },
-    "maps-red": {
-      "goals": [
-        "Six-link, 20% quality gems, 4,500 life and 6,000 max hit.",
-        "Critical strike or Elemental Overload is the red-map damage upgrade."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Spell damage",
-            "Cast speed",
-            "Critical strike chance"
-          ],
-          "note": "Crit wand."
-        },
-        {
-          "slot": "Body Armour",
-          "mods": [
-            "6-link",
-            "Life",
-            "Elemental resistances"
-          ],
-          "note": "6-link."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Crit multi."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "Critical strike multiplier"
-          ],
-          "note": "Bench crit multi."
-        }
-      ]
-    },
-    "pinnacle": {
-      "goals": [
-        "Cap chaos resistance at 75% and reach 5,000 life.",
-        "Use 21/20 Arc and awakened elemental supports."
-      ],
-      "lookFor": [
-        {
-          "slot": "Weapon",
-          "mods": [
-            "+1 to Level of all Lightning Skill Gems",
-            "Spell damage",
-            "Cast speed"
-          ],
-          "note": "+1 elemental gems is the endgame goal."
-        },
-        {
-          "slot": "Amulet",
-          "mods": [
-            "+1 to Level of all Lightning Skill Gems",
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Amulet carries gem levels."
-        },
-        {
-          "slot": "Jewels",
-          "mods": [
-            "Critical strike multiplier",
-            "Life"
-          ],
-          "note": "Keep life."
-        }
-      ],
-      "crafting": [
-        {
-          "slot": "Amulet",
-          "mods": [
-            "Chaos resistance",
-            "Life"
-          ],
-          "note": "Bench chaos resistance."
-        }
-      ]
-    }
-  },
-  "gemInfo": {
-    "Added Lightning Damage": {
-      "requiredLevel": 8,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 19 to 358 added Lightning Damage"
-      ],
-      "tags": [
-        "lightning"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Arc": {
-      "requiredLevel": 12,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Siren's Cadence"
-      },
-      "color": "b",
-      "support": false,
-      "description": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies, but not immediately back. Each time the arc chains, it will also chain a secondary arc to another enemy that the main arc has not already hit, which cannot chain further.",
-      "effect": [
-        "15% more Damage with Hits and Ailments for each remaining Chain",
-        "Deals 198 to 1122 Lightning Damage",
-        "Chains +7 Times"
-      ],
-      "tags": [
-        "chaining",
-        "lightning",
-        "spell"
-      ],
-      "qualityEffect": "Chains Times",
-      "qualityWorth": "optional"
-    },
-    "Arcane Surge": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Mercy Mission"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Arcane Surge lasts 4 seconds",
-        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
-        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
-        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
-      ],
-      "tags": [
-        "arcane",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Arctic Armour": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "g",
-      "support": false,
-      "description": "Conjures an icy barrier that chills enemies when they hit you. You drop chilled ground while moving, and take less Fire and Physical damage while stationary.",
-      "effect": [
-        "Chill Enemy for 0.5 seconds when Hit, reducing their Action Speed by 30%",
-        "Buff grants Immunity to Freeze",
-        "Buff grants 21% less Physical Damage taken from Hits while stationary",
-        "Buff grants 20% less Fire Damage taken from Hits while stationary",
-        "Base duration is 4.40 seconds"
-      ],
-      "tags": [
-        "cold",
-        "duration",
-        "spell"
-      ],
-      "qualityEffect": "% increased Skill Effect Duration",
-      "qualityWorth": "recommended"
-    },
-    "Clarity": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Casts an aura that grants mana regeneration to you and your allies.",
-      "effect": [
-        "You and nearby Allies Regenerate 33 Mana per second",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Conductivity": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Curses all targets in an area, lowering their lightning resistance and giving them a chance to be shocked when hit.",
-      "effect": [
-        "Hits against Cursed Enemies have +25% chance to Shock",
-        "Base duration is 11.80 seconds",
-        "+1 metre to radius",
-        "Cursed enemies have -36% to Lightning Resistance"
-      ],
-      "tags": [
-        "area",
-        "curse",
-        "duration",
-        "hex",
-        "lightning",
-        "spell"
-      ],
-      "qualityEffect": "Shocks on Cursed enemies have % increased Duration",
-      "qualityWorth": "recommended"
-    },
-    "Determination": {
-      "requiredLevel": 24,
-      "source": {
-        "kind": "vendor",
-        "act": 3,
-        "quest": "Lost in Love"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Casts an aura that grants armour to you and your allies.",
-      "effect": [
-        "You and nearby allies gain 49% more Armour",
-        "You and nearby allies gain 1026 additional Armour",
-        "+1.9 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "aura",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "% increased Area of Effect",
-      "qualityWorth": "recommended"
-    },
-    "Enduring Cry": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "r",
-      "support": false,
-      "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
-      "effect": [
-        "Grants 1 Endurance Charge per 5 Power to you and Allied Players",
-        "Buff grants 2% of Life Regenerated per second per\n5 power, counting a maximum of 25 Power",
-        "Counts total Power of Enemies in Range",
-        "38% increased Warcry Speed",
-        "Base duration is 3.40 seconds"
-      ],
-      "tags": [
-        "area",
-        "duration",
-        "warcry"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Faster Casting": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "reward",
-        "act": 2,
-        "quest": "Sharp and Cruel"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 39% increased Cast Speed"
-      ],
-      "tags": [
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills have % increased Cast Speed",
-      "qualityWorth": "recommended"
-    },
-    "Flame Dash": {
-      "requiredLevel": 10,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "The Caged Brute"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-      "effect": [
-        "Base duration is 4.00 seconds",
-        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-        "Deals 659 to 988 Fire Damage",
-        "Deals 1999.3 Base Fire Damage per second",
-        "19% increased Cooldown Recovery Rate"
-      ],
-      "tags": [
-        "blink",
-        "duration",
-        "fire",
-        "movement",
-        "spell",
-        "travel"
-      ],
-      "qualityEffect": "% increased Cooldown Recovery Rate",
-      "qualityWorth": "optional"
-    },
-    "Inspiration": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "level",
-        "act": null,
-        "quest": null
-      },
-      "color": "r",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Gain an Inspiration Charge when you Spend Mana on Upfront\nCosts or Effects of Supported Skills",
-        "Supported Skills have 34% less Mana Cost",
-        "Lose all Inspiration Charges after Spending a total of 800 Mana on Upfront Costs and Effects of Supported Skills",
-        "Supported Skills deal 5% more Elemental Damage per Inspiration Charge",
-        "Supported Skills have 8% increased Critical Strike Chance per Inspiration Charge"
-      ],
-      "tags": [
-        "critical"
-      ],
-      "qualityEffect": "Supported Skills have % less Mana Cost",
-      "qualityWorth": "optional"
-    },
-    "Lightning Penetration": {
-      "requiredLevel": 31,
-      "source": {
-        "kind": "reward",
-        "act": 3,
-        "quest": "A Fixture of Fate"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills Penetrate 34% Lightning Resistance"
-      ],
-      "tags": [
-        "lightning"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
-      "qualityWorth": "recommended"
-    },
-    "Physical to Lightning": {
-      "requiredLevel": 18,
-      "source": {
-        "kind": "level",
-        "act": null,
-        "quest": null
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills have 50% of Physical Damage Converted to Lightning Damage",
-        "Supported Skills gain 29% of Physical Damage as Extra Lightning Damage"
-      ],
-      "tags": [
-        "lightning",
-        "physical"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Physical Damage",
-      "qualityWorth": "recommended"
-    },
-    "Rolling Magma": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "reward",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "b",
-      "support": false,
-      "description": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
-      "effect": [
-        "Projectiles can Chain when impacting the ground\nProjectiles do not change direction when Chaining",
-        "Deals 1215 to 1822 Fire Damage",
-        "Chains +3 Times",
-        "+0.4 metres to radius"
-      ],
-      "tags": [
-        "area",
-        "chaining",
-        "fire",
-        "projectile",
-        "spell"
-      ],
-      "qualityEffect": "Chains Times",
-      "qualityWorth": "optional"
-    },
-    "Spell Echo": {
-      "requiredLevel": 38,
-      "source": {
-        "kind": "reward",
-        "act": 4,
-        "quest": "The Eternal Nightmare"
-      },
-      "color": "b",
-      "support": true,
-      "description": null,
-      "effect": [
-        "Supported Skills Repeat an additional time",
-        "Supported Skills have 54% more Cast Speed"
-      ],
-      "tags": [
-        "spell"
-      ],
-      "qualityEffect": "Supported Skills deal % increased Spell Damage",
-      "qualityWorth": "recommended"
-    },
-    "Wave of Conviction": {
-      "requiredLevel": 16,
-      "source": {
-        "kind": "vendor",
-        "act": 2,
-        "quest": "Intruders in Black"
-      },
-      "color": "b",
-      "support": false,
-      "description": "An expanding wave of energy surges forward, damaging enemies in a cone-shaped area over a duration. Each enemy hit is inflicted with Exposure matching the element of which they took the highest damage. Only one Wave of Conviction can be active at a time",
-      "effect": [
-        "25% of Physical Damage Converted to Fire Damage",
-        "25% of Physical Damage Converted to Lightning Damage",
-        "Base secondary duration is 4.00 seconds",
-        "Exposure applies -15% to Elemental Resistance matching highest Damage taken",
-        "Deals 1476 to 2214 Physical Damage",
-        "Base duration is 0.69 seconds"
-      ],
-      "tags": [
-        "area",
-        "duration",
-        "fire",
-        "lightning",
-        "physical",
-        "spell"
-      ],
-      "qualityEffect": "Damage Penetrates % of Enemy Elemental Resistances",
-      "qualityWorth": "recommended"
-    }
-  },
-  "seedHash": "79b235c5dfc4",
-  "medal": "S+",
-  "stale": {
-    "status": "waiting-for-pob",
-    "reason": "This build has not been verified against a patch fact set."
-  },
   "gates": {
     "until-12": {
       "pass": true,
@@ -8643,6 +7876,7 @@
       }
     }
   },
+  "patch": "3.30.0",
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
@@ -8656,7 +7890,777 @@
       "pinnacle": "eJzVWvtP27oX_3n9K6xI03dXuBA_kyC6q7Z0wEZ5Fdjjl8mkbuuRR0mcQu_V_vevnPSRsrYUXaZtIEWu8znH_hwf28fH2fv7IQzASCapiqOahbZtC8jIj7sq6tesq8t3Vdf6-21l70zowWmvkanAvHlbebWXl0EgRzKoWR63gBZJX-rrqSry1baAH4g0PRGhrFkflfYHFhCpL6Nuc17fCmQoIy0ClWoLhEJFndi_lfogibNhzUIWuBFRV-madRJH0gJDEemBjKO2-BYnB3G3ZgVZJBKVll6paPKqn2R6cJsFFhgped-Ou7JmNevHzY71tvLq1d5ZIMYy6WihQaqFrlnNOLxRkezun3UsMBJBJmsWdzhy3G2b2czaWS52GWsRPFPmWPXkHO8isgrYimTSH3cGSgbdmQDyPLS2N63DsxmYEcLwNiPcZoSxlT06G4xT5YugLR5UmIWHSl-KWxnN26Q28lYJv1OJvJBpPogTvLMS3IyD7sbgY9Uf6EhF_c3VD0Scboxui0g04xKU43XQqyiRqUxGcj4YhLirJDpDWQKybUZKf7nQ3k4-k0zpMpESCF-rkewMpW-cP9dqfgCdSFmaXGQ6u466NYsszCtTY1sgirsyrVnIJggihzuQIO5AilwKKfEcSD3kQOZQApmLCeQ2w5BjYkNOmAe5wyl0iOtChzEGHY-40EWEQdejLvSIy6HnOg5Edq7fpp4Nkc0cBhFC2IUIUWxDhInjQURcl0FEbYzMkzkQMZtTiBi1GUTcxgQi7hhZxzUY1-UMIo955skJg9hmlJsnQxAjzDHEiNimTIgNMaKIQIxM6xhxx4UYuUYKecyFGNuuCzG1mQ0xs00NRx6HmDNMIOYOtSF2bOJC7GCbQOxw5kHsOEbKQ54HiY0xgwS5DoMEY2RDgiljkBBK8qfjQUI4QZAQo40Qx7ylnCNImOtRSDijGBLOiSl71IPEQYhC4jBuytxBkDieacvj1IXUJhznTw6pzSmFFGFOIEXUwZAiz_UgxdzlkGKH25BS5BJIKbc5pNTxPEipxxikjCAHUu4hG1IHMwSpQxA2T6PfLZ6O40JmuxxDRrDjQUYpdSCj3KOQMWzKjBAMGaMug4y5nEPGPJtD5iDPOBHGpow5Nb6EXMhcamPzpB5krsONj3meC7lNzBOh_ImNnyGCbcgRRR7kxgSQE48T83Q45MwmNJ8Er_auLo7zwquB1sN0d2fn_v5-eyj0IO7JBxXIbT8Od4YiTdVIVtNbFQRVM2d26vV6vdFv17v354eNzG9_emh8bnXsy5OLL6N3iftp2Bh8PDjxxU3jH__wc7tXH3w9PBqd394pcf1-7MZVFZx9IP002m_cnHyz8cPlzfBU993jq4PDiy_ofXo1Pr48Pjk_DxqHV_fs8uT6pHPFr68uUCe7vtLXD8GXo0-99wMafrn6wnTcPQiluD1Jm3jc9vsebn0a7_e676sP9MNNP5X7n-hZu-9lh18-3-NvCT87GDaub8_uOvdf2lFwUBX0Pb6LBJcPH1qjuN-8bQhRHd6rNOC0moyqo9BpvdP_cHrrfDvPzj-4POEfHu6c80PvY4jcr5_fnygPf0vEZ-1pQpNeenpyx5rHt1fy4zGLbhInc08dezRSp1-T6mWP4a9R_LUf1-v1Wi0fiJ3pSOwVO3VaDMvkV77umCXIrCUWUFqG5hfixRL5Iy6fjSWgswqYT7ES0F0JNPOsBPRWAfNJNQdiexUw988ScLL3vtrbKZlgb8cs1PmSblZyU-gYNyxe5kUgI3ETyG7N0kkmLZAGsa5Zjbg7BvUkjLOkiIDqxR5gJKabwKu9AxmCftF-W2rRFVrsHGkZpjsH5pGjD2RYT3wL5O6_ETIS4WSzyX9O4jmMLHCXiUDpcW6W6Q-jcl_2RBZo6zGXJR3feVbPO9lwGCe63u3K7mzT3xeh6MunGBWShtNS4RJJ8x7MAGCK-A14zzp1JiOpE6FVHG3Me7nwnPec8QLgN6BdT3wRyU6WPGeUyzILHiwiCSb1vwG3oygdqmeO5IXsZr7smlCzzG1B1W9ArTOUQdDyB_HGxNpZoJUvTKA9p5WrAYWen8Bqr-j2UwvwRymGcQTQf1993wUilPsiHWy4Bpfwc6PklaCo_XVGOZRBKPWLbEha-dPtbSOrnMj7RamFOa6VP9stf515DoJ4JNP_bp5mHHUzI6_0eEPzLIrMbbNY_ysXiY9iJE97zTgaKX-T1W8idvZ4RTd6QNwDZU2_weI3zZRcxrN9deNlcKnsnPH0NdAxKAF-JelW1M0SFfWbyaYOuiAx5zatBnn9r5u6jTjWLzBz96WWSaiijfb35TJz2zx68VONMyml05zTtZL34J84Dj_liSNT-jwrHRc9IdbsYGPg5kdOb5KvMuWO1LOUlfkNVHHue1u5EInS411wUb9oVTpjk6VNVSq74Ju8lwFAlWZ8IwIN3puflVw2b3YXuLxyFA4D5Sud7gK74rwGKvITKYx0WCQqgUmlVtxlb4rcKSiSpxWEy5gi9CgOABVaftMUqQZ55i43m-nPI1LO06TwH0fKfZoU-eNIeU-Ton8aKWw_TYr9caTQ06T4n0ZqLadBHmBXDrObRKWgqRI_kPoxqfNiwd8F2C4TxJW2ilQcpWBgQqQ32K1i76-VnBcJmbMluMhvMfLtBrR6PeUrGfljE2wVm0NlC9m2iUIWFG1R9tpUmuseUFyxiMif15ubnXL9irFeZ5abuDuuXAsRgAvZF4ES60wySb_tgkZ19r9opzeYVDFdMI3s9aSvDdXTXk-aiCStbL1BrIr4XzkLYc6k03vJEp0VRuF2WfuiK00NM0_APGkdss46_fzYUenEiS8TmYDiGPJsr-lKESzzmomXbyH7NfAHppOm8yZ6TWSaLk6Fn-ggdL2DxLpkgTya29gAaGGs2vEoH-XJJF6cJoaP8UEZySLxAhKhZYWs07Bl3hqa5gpyGf9n-AFbawQZ6EpzIFQEGqa4GX_7mYO2is3yDq8N9USYmeXtNBo_gHpR3rjPNO_yUaRlEKi-zLu2jsdSIz-TzNoQz6wZqHI6NKuDivo_yfovyGZtbGfY4Jdm83iivySbclB3dXJ0ftWqNGVyI5MsBccqvKk0gjjugo4vhzqRi3zwnM-K7eNYin4md8G-DEay0omzxDe_kniYgl4ShyCL1F0m_60PMqFjHSgI9ECCRqCi7vfKtUiUiPQuOEskINvY27bndc0sSWSky2ZEFbwQU8z3ncky-8axq8i2_1oZkvw7mqhH380mhhehpRhlBsTf32C7SlcC7W32Oo8ESs2AYyn9gZnIabEyqh5o3WVqODT9yTc7MBApEBoE0qgyQ9qcbSGNIPZvK1vIlNvLgi4wlAlgk8QeMEHJovLKFjOyk_cFuDUS5nsIcCG0cahlQjj30EfAQnp5N5YoWRXc2T-6YUf0ejII_peCd4kIZaWRiMjcOH1QWk7VPdMdFxwKbaOyPxU-Rn-sQk-5HS67zZb7RNgz9xxIIP2-RTfFI2h8DRUR2CNvWOHFZO7FmwnQ3JvJkwIz1JPzCGJIvucx0GYs6fetmfIN7fJ9i82w0_VzM4svQzdFFMV6QrqutfBvp6xWOW_5aNKuHxw1F7aEwMzwXiDS28q-GqlIFnP-XV6z6f6womW8tuXQHE6KlltaJpEIivPKizRN1jadaWW0TVo_SERkZu2LNEyf0XBDpOaM-yLtsme0Ww-lHozT_9xyR-rJ4RdopQNZSlVmqexIP466xY1bnjHsiSCVk8xrJ4h1nhSdXz_NvuKYZq1LmIUPJ2YfZywBTi9rphiyVFmeFZ5C6DKIDEo9YksQRWQ7x_AlGBNjgdKHLM4qDJ5j3CWY-a3lFOWtRpV0IXsJLB_zsi6ErElud5JYXiVT1ow3lCl9dIPIhjLlL3rohjKsJMOWyRSu25E6z27nGW1TasZRT_ULj46G2VSpjGQ4zqeEBaIsvJFJzXInjvIjcBJ0lKBo-oXRAtjMB2XOly0j1RmYIKBrmWNuIEW00NulYrlEK89pzNvCbInI_aNrudbDME6zRF6Oh-ZyRCf5V9_za6cfNWSpzG9xzLbTHJgvvtOnexqPZJKo7hLJaW_JWn46P32L_DJpSm-dgCEok_ycuKxzezvT4d3befxd-_8B7CTZFA=="
     }
   },
-  "patch": "3.30.0",
+  "pipeline": {
+    "pobRef": "v2.69.0",
+    "treeVersion": "3_30",
+    "patchHash": "c7a4330850eb17ef",
+    "calibrated": true,
+    "checkedAt": "2026-11-27T13:33:48.360Z"
+  },
+  "season": {
+    "id": "covens",
+    "name": "Covens"
+  },
+  "changelog": [
+    {
+      "season": "covens",
+      "date": "2026-11-26",
+      "notes": [
+        "First guide for the Covens league."
+      ],
+      "seasonName": "Covens"
+    },
+    {
+      "season": "covens",
+      "date": "2026-11-27",
+      "notes": [
+        "Re-measured the whole build after the jewel affix caps were fixed: the tree takes lightning and life first, Elemental Overload replaces the old support package, and the shock and exposure the ascendancy applies are declared in the PoB config.",
+        "Added Wave of Conviction with Physical to Lightning so Mastermind of Discord's exposure is real, and kept Conductivity as the curse.",
+        "Inspiration replaces Faster Casting in the measured six-link, which raises damage and cuts the mana cost; Spell Echo is part of the red-map set.",
+        "The physical layer is Determination, Arctic Armour, Enduring Cry and the granite and basalt flasks; Cerberus Limb and Saffell's Frame are the two required uniques.",
+        "Enduring Cry fills the three charges the tree can hold; the resistance passives pay for the strict resistance cap.",
+        "Heart of Destruction's Convergence is declared for the pinnacle window; the same build measures about 500k without it.",
+        "Pinnacle now measures 676k DPS, 6.8k life, 53.4k EHP, 14.0k physical max hit with chaos capped; red maps measure 541k DPS. Ratings 10/10/9/9."
+      ],
+      "seasonName": "Covens"
+    }
+  ],
+  "wickerman": {
+    "profile": "lightning-spell",
+    "steps": {
+      "leveling": {
+        "head": {
+          "name": "Totemic Visage",
+          "tier": "low",
+          "effect": "(10-15)% chance to Shock",
+          "source": "Kuduku",
+          "area": "Act 1",
+          "note": "Shock chance for Arc."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "low",
+          "effect": "Damage Penetrates (3-4)% Lightning Resistance",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Lightning penetration."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "low",
+          "effect": "+(30-50) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life while casting."
+        },
+        "lowerLimb": {
+          "name": "Galvanic Tentacle",
+          "tier": "low",
+          "effect": "+(14-18)% to Lightning Resistance",
+          "source": "Amarissa",
+          "area": "Act 1",
+          "note": "Lightning resistance."
+        }
+      },
+      "maps": {
+        "head": {
+          "name": "Totemic Visage",
+          "tier": "med",
+          "effect": "(20-30)% chance to Shock",
+          "source": "Kuduku",
+          "area": "Act 1",
+          "note": "More shock chance."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "med",
+          "effect": "Damage Penetrates (6-8)% Lightning Resistance",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Lightning penetration."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "med",
+          "effect": "+(60-80) to maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "Life before damage scaling."
+        },
+        "lowerLimb": {
+          "name": "Skeleton Wheel",
+          "tier": "med",
+          "effect": "(10-12)% increased Attack and Cast Speed if you've used a Movement Skill Recently",
+          "source": "Fleetfreak",
+          "area": "Act 6",
+          "note": "Cast speed after a movement skill."
+        }
+      },
+      "bossing": {
+        "head": {
+          "name": "Totemic Visage",
+          "tier": "high",
+          "effect": "(10-12)% more Maximum Lightning Damage",
+          "source": "Kuduku",
+          "area": "Act 1",
+          "note": "More maximum lightning damage."
+        },
+        "torso": {
+          "name": "Severed Stinger",
+          "tier": "high",
+          "effect": "Hits have (10-15)% chance to treat Enemy Monster Lightning Resistance values as inverted",
+          "source": "Fidelitas",
+          "area": "Act 2",
+          "note": "Hits can treat lightning resistance as inverted."
+        },
+        "upperLimb": {
+          "name": "Warden's Arm",
+          "tier": "high",
+          "effect": "(5-7)% more Maximum Life",
+          "source": "Brutus",
+          "area": "Act 1",
+          "note": "More maximum life."
+        },
+        "lowerLimb": {
+          "name": "Galvanic Tentacle",
+          "tier": "high",
+          "effect": "+(2-3)% to maximum Lightning Resistance",
+          "source": "Amarissa",
+          "area": "Act 1",
+          "note": "Maximum lightning resistance."
+        }
+      }
+    }
+  },
+  "stepPlans": {
+    "until-12": {
+      "goals": [
+        "Level with Rolling Magma; a spell damage wand and a 3-link are enough.",
+        "Life, resistances and movement speed carry Act 1."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed"
+          ],
+          "note": "A magic wand is enough."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "3-link."
+        },
+        {
+          "slot": "Boots",
+          "mods": [
+            "Movement speed",
+            "Life"
+          ],
+          "note": "Keep moving."
+        }
+      ]
+    },
+    "until-28": {
+      "goals": [
+        "Swap to Arc with Added Lightning Damage, Faster Casting and Arcane Surge.",
+        "Add Wave of Conviction linked to Physical to Lightning for exposure."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "Rare wand or sceptre."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Defensive shield."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "4-link."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Cast speed"
+          ],
+          "note": "Bench cast speed on a free suffix."
+        }
+      ]
+    },
+    "until-68": {
+      "goals": [
+        "Five-link Arc and reach 2,000 life; cap elemental resistances.",
+        "Add Conductivity, Enduring Cry and Determination; keep Saffell's Frame when it drops."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "5-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Five-link Arc."
+        },
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "Cerberus Limb is the cheap unique upgrade."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Life",
+            "Cast speed"
+          ],
+          "note": "Life first, cast speed second."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Craft the missing resistance."
+        }
+      ]
+    },
+    "maps-early": {
+      "goals": [
+        "A 5-link clears white maps; start the 6-link and add Arctic Armour.",
+        "Reach 3,000 life and cap resistances."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "The sceptre is the damage slot."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Start the 6-link."
+        },
+        {
+          "slot": "Rings",
+          "mods": [
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Fix resists on rings."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Lightning damage"
+          ],
+          "note": "Bench elemental damage on a free prefix."
+        }
+      ]
+    },
+    "maps-red": {
+      "goals": [
+        "Six-link Arc, 20% quality gems, 4,500 life and Elemental Overload.",
+        "Saffell's Frame and capped chaos are the defensive upgrades."
+      ],
+      "lookFor": [
+        {
+          "slot": "Weapon",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Lightning damage"
+          ],
+          "note": "Cerberus Limb or a rare sceptre."
+        },
+        {
+          "slot": "Shield",
+          "mods": [
+            "Maximum elemental resistances",
+            "Life"
+          ],
+          "note": "Saffell's Frame."
+        },
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "6-link."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    },
+    "pinnacle": {
+      "goals": [
+        "Cap chaos resistance at 75% and reach 5,000 life.",
+        "Use 21/20 Arc, Spell Echo and awakened elemental supports."
+      ],
+      "lookFor": [
+        {
+          "slot": "Body Armour",
+          "mods": [
+            "6-link",
+            "Life",
+            "Elemental resistances"
+          ],
+          "note": "Six-link Arc."
+        },
+        {
+          "slot": "Amulet",
+          "mods": [
+            "+1 to Level of all Lightning Skill Gems",
+            "Life",
+            "Chaos resistance"
+          ],
+          "note": "Amulet carries gem levels."
+        },
+        {
+          "slot": "Jewels",
+          "mods": [
+            "Spell damage",
+            "Cast speed",
+            "Life"
+          ],
+          "note": "Keep life."
+        }
+      ],
+      "crafting": [
+        {
+          "slot": "Amulet",
+          "mods": [
+            "Chaos resistance",
+            "Life"
+          ],
+          "note": "Bench chaos resistance."
+        }
+      ]
+    }
+  },
+  "gemInfo": {
+    "Added Lightning Damage": {
+      "requiredLevel": 8,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 19 to 358 added Lightning Damage"
+      ],
+      "tags": [
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Arc": {
+      "requiredLevel": 12,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Siren's Cadence"
+      },
+      "color": "b",
+      "support": false,
+      "description": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies, but not immediately back. Each time the arc chains, it will also chain a secondary arc to another enemy that the main arc has not already hit, which cannot chain further.",
+      "effect": [
+        "15% more Damage with Hits and Ailments for each remaining Chain",
+        "Deals 198 to 1122 Lightning Damage",
+        "Chains +7 Times"
+      ],
+      "tags": [
+        "chaining",
+        "lightning",
+        "spell"
+      ],
+      "qualityEffect": "Chains Times",
+      "qualityWorth": "optional"
+    },
+    "Arcane Surge": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Arcane Surge lasts 4 seconds",
+        "Arcane Surge grants 20% increased Cast Speed\nArcane Surge grants 30% increased Mana Regeneration rate",
+        "Gain Arcane Surge after Spending a total of 400 Mana on\nUpfront Costs and Effects of a Supported Skill",
+        "Supported Skills deal 35% more Spell Damage while you have Arcane Surge"
+      ],
+      "tags": [
+        "arcane",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Arctic Armour": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "g",
+      "support": false,
+      "description": "Conjures an icy barrier that chills enemies when they hit you. You drop chilled ground while moving, and take less Fire and Physical damage while stationary.",
+      "effect": [
+        "Chill Enemy for 0.5 seconds when Hit, reducing their Action Speed by 30%",
+        "Buff grants Immunity to Freeze",
+        "Buff grants 21% less Physical Damage taken from Hits while stationary",
+        "Buff grants 20% less Fire Damage taken from Hits while stationary",
+        "Base duration is 4.40 seconds"
+      ],
+      "tags": [
+        "cold",
+        "duration",
+        "spell"
+      ],
+      "qualityEffect": "% increased Skill Effect Duration",
+      "qualityWorth": "recommended"
+    },
+    "Clarity": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Casts an aura that grants mana regeneration to you and your allies.",
+      "effect": [
+        "You and nearby Allies Regenerate 33 Mana per second",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Conductivity": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Curses all targets in an area, lowering their lightning resistance and giving them a chance to be shocked when hit.",
+      "effect": [
+        "Hits against Cursed Enemies have +25% chance to Shock",
+        "Base duration is 11.80 seconds",
+        "+1 metre to radius",
+        "Cursed enemies have -36% to Lightning Resistance"
+      ],
+      "tags": [
+        "area",
+        "curse",
+        "duration",
+        "hex",
+        "lightning",
+        "spell"
+      ],
+      "qualityEffect": "Shocks on Cursed enemies have % increased Duration",
+      "qualityWorth": "recommended"
+    },
+    "Determination": {
+      "requiredLevel": 24,
+      "source": {
+        "kind": "vendor",
+        "act": 3,
+        "quest": "Lost in Love"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Casts an aura that grants armour to you and your allies.",
+      "effect": [
+        "You and nearby allies gain 49% more Armour",
+        "You and nearby allies gain 1026 additional Armour",
+        "+1.9 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "aura",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "% increased Area of Effect",
+      "qualityWorth": "recommended"
+    },
+    "Enduring Cry": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
+      "effect": [
+        "Grants 1 Endurance Charge per 5 Power to you and Allied Players",
+        "Buff grants 2% of Life Regenerated per second per\n5 power, counting a maximum of 25 Power",
+        "Counts total Power of Enemies in Range",
+        "38% increased Warcry Speed",
+        "Base duration is 3.40 seconds"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "warcry"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Faster Casting": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 39% increased Cast Speed"
+      ],
+      "tags": [
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills have % increased Cast Speed",
+      "qualityWorth": "recommended"
+    },
+    "Flame Dash": {
+      "requiredLevel": 10,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+        "Deals 659 to 988 Fire Damage",
+        "Deals 1999.3 Base Fire Damage per second",
+        "19% increased Cooldown Recovery Rate"
+      ],
+      "tags": [
+        "blink",
+        "duration",
+        "fire",
+        "movement",
+        "spell",
+        "travel"
+      ],
+      "qualityEffect": "% increased Cooldown Recovery Rate",
+      "qualityWorth": "optional"
+    },
+    "Inspiration": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Gain an Inspiration Charge when you Spend Mana on Upfront\nCosts or Effects of Supported Skills",
+        "Supported Skills have 34% less Mana Cost",
+        "Lose all Inspiration Charges after Spending a total of 800 Mana on Upfront Costs and Effects of Supported Skills",
+        "Supported Skills deal 5% more Elemental Damage per Inspiration Charge",
+        "Supported Skills have 8% increased Critical Strike Chance per Inspiration Charge"
+      ],
+      "tags": [
+        "critical"
+      ],
+      "qualityEffect": "Supported Skills have % less Mana Cost",
+      "qualityWorth": "optional"
+    },
+    "Lightning Penetration": {
+      "requiredLevel": 31,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Penetrate 34% Lightning Resistance"
+      ],
+      "tags": [
+        "lightning"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Lightning Damage",
+      "qualityWorth": "recommended"
+    },
+    "Physical to Lightning": {
+      "requiredLevel": 18,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills have 50% of Physical Damage Converted to Lightning Damage",
+        "Supported Skills gain 29% of Physical Damage as Extra Lightning Damage"
+      ],
+      "tags": [
+        "lightning",
+        "physical"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Physical Damage",
+      "qualityWorth": "recommended"
+    },
+    "Rolling Magma": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "b",
+      "support": false,
+      "description": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
+      "effect": [
+        "Projectiles can Chain when impacting the ground\nProjectiles do not change direction when Chaining",
+        "Deals 1215 to 1822 Fire Damage",
+        "Chains +3 Times",
+        "+0.4 metres to radius"
+      ],
+      "tags": [
+        "area",
+        "chaining",
+        "fire",
+        "projectile",
+        "spell"
+      ],
+      "qualityEffect": "Chains Times",
+      "qualityWorth": "optional"
+    },
+    "Spell Echo": {
+      "requiredLevel": 38,
+      "source": {
+        "kind": "reward",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
+      "color": "b",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Supported Skills Repeat an additional time",
+        "Supported Skills have 54% more Cast Speed"
+      ],
+      "tags": [
+        "spell"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Spell Damage",
+      "qualityWorth": "recommended"
+    },
+    "Wave of Conviction": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "b",
+      "support": false,
+      "description": "An expanding wave of energy surges forward, damaging enemies in a cone-shaped area over a duration. Each enemy hit is inflicted with Exposure matching the element of which they took the highest damage. Only one Wave of Conviction can be active at a time",
+      "effect": [
+        "25% of Physical Damage Converted to Fire Damage",
+        "25% of Physical Damage Converted to Lightning Damage",
+        "Base secondary duration is 4.00 seconds",
+        "Exposure applies -15% to Elemental Resistance matching highest Damage taken",
+        "Deals 1476 to 2214 Physical Damage",
+        "Base duration is 0.69 seconds"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "fire",
+        "lightning",
+        "physical",
+        "spell"
+      ],
+      "qualityEffect": "Damage Penetrates % of Enemy Elemental Resistances",
+      "qualityWorth": "recommended"
+    }
+  },
+  "seedHash": "79b235c5dfc4",
   "guide": {
     "summary": {
       "text": "Arc Elementalist casts one lightning spell and lets the chains do the aiming, then pays for the single target with the tools the ascendancy already owns. Shaper of Storms guarantees the shock, Mastermind of Discord makes the Wave of Conviction exposure stronger, and Elemental Overload keeps its damage bonus up from Arc's own critical strikes. The defence is a large life pool, capped resistances, Saffell's Frame's maximum resistances, Determination armour, Arctic Armour while stationary and the endurance charges from Enduring Cry. The build measures 676.2k at pinnacle with 53353 effective life and 14019 physical max hit. Two cheap uniques are required. The quoted map and pinnacle numbers assume the declared shock, exposure, Elemental Overload, Convergence, endurance charges, active flasks and stationary Arctic Armour.",
@@ -8717,11 +8721,5 @@
       "factsHash": "2f492f9c68e0f285"
     }
   },
-  "pipeline": {
-    "pobRef": "v2.69.0",
-    "treeVersion": "3_30",
-    "patchHash": "c7a4330850eb17ef",
-    "calibrated": true,
-    "checkedAt": "2026-11-27T13:33:48.360Z"
-  }
+  "medal": "S+"
 }

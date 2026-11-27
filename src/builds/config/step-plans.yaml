@@ -635,7 +635,7 @@ profiles:
   arc:
     until-12:
       goals:
-        - "Level with Arc; a spell damage wand and a 3-link are enough."
+        - "Level with Rolling Magma; a spell damage wand and a 3-link are enough."
         - "Life, resistances and movement speed carry Act 1."
       lookFor:
         - slot: "Weapon"
@@ -649,8 +649,8 @@ profiles:
           note: "Keep moving."
     until-28:
       goals:
-        - "Add Added Lightning Damage and Controlled Destruction to Arc."
-        - "Start capping fire, cold and lightning resistance."
+        - "Swap to Arc with Added Lightning Damage, Faster Casting and Arcane Surge."
+        - "Add Wave of Conviction linked to Physical to Lightning for exposure."
       lookFor:
         - slot: "Weapon"
           mods: ["Spell damage", "Cast speed", "Lightning damage"]
@@ -667,15 +667,15 @@ profiles:
           note: "Bench cast speed on a free suffix."
     until-68:
       goals:
-        - "Six-link Arc and reach 2,000 life; cap elemental resistances."
-        - "The 6-link and gem levels are the damage step."
+        - "Five-link Arc and reach 2,000 life; cap elemental resistances."
+        - "Add Conductivity, Enduring Cry and Determination; keep Saffell's Frame when it drops."
       lookFor:
         - slot: "Body Armour"
-          mods: ["6-link", "Life", "Elemental resistances"]
-          note: "The 6-link is the damage step."
+          mods: ["5-link", "Life", "Elemental resistances"]
+          note: "Five-link Arc."
         - slot: "Weapon"
           mods: ["Spell damage", "Cast speed", "Lightning damage"]
-          note: "Do not drop cast speed."
+          note: "Cerberus Limb is the cheap unique upgrade."
         - slot: "Jewels"
           mods: ["Life", "Cast speed"]
           note: "Life first, cast speed second."
@@ -685,12 +685,12 @@ profiles:
           note: "Craft the missing resistance."
     maps-early:
       goals:
-        - "A 5-link clears white maps; start the 6-link and upgrade the wand."
+        - "A 5-link clears white maps; start the 6-link and add Arctic Armour."
         - "Reach 3,000 life and cap resistances."
       lookFor:
         - slot: "Weapon"
           mods: ["Spell damage", "Cast speed", "Lightning damage"]
-          note: "The wand is the damage slot."
+          note: "The sceptre is the damage slot."
         - slot: "Body Armour"
           mods: ["6-link", "Life", "Elemental resistances"]
           note: "Start the 6-link."
@@ -703,35 +703,35 @@ profiles:
           note: "Bench elemental damage on a free prefix."
     maps-red:
       goals:
-        - "Six-link, 20% quality gems, 4,500 life and 6,000 max hit."
-        - "Critical strike or Elemental Overload is the red-map damage upgrade."
+        - "Six-link Arc, 20% quality gems, 4,500 life and Elemental Overload."
+        - "Saffell's Frame and capped chaos are the defensive upgrades."
       lookFor:
         - slot: "Weapon"
-          mods: ["Spell damage", "Cast speed", "Critical strike chance"]
-          note: "Crit wand."
+          mods: ["Spell damage", "Cast speed", "Lightning damage"]
+          note: "Cerberus Limb or a rare sceptre."
+        - slot: "Shield"
+          mods: ["Maximum elemental resistances", "Life"]
+          note: "Saffell's Frame."
         - slot: "Body Armour"
           mods: ["6-link", "Life", "Elemental resistances"]
           note: "6-link."
-        - slot: "Jewels"
-          mods: ["Critical strike multiplier", "Life"]
-          note: "Crit multi."
       crafting:
-        - slot: "Weapon"
-          mods: ["Critical strike multiplier"]
-          note: "Bench crit multi."
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
     pinnacle:
       goals:
         - "Cap chaos resistance at 75% and reach 5,000 life."
-        - "Use 21/20 Arc and awakened elemental supports."
+        - "Use 21/20 Arc, Spell Echo and awakened elemental supports."
       lookFor:
-        - slot: "Weapon"
-          mods: ["+1 to Level of all Lightning Skill Gems", "Spell damage", "Cast speed"]
-          note: "+1 elemental gems is the endgame goal."
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Six-link Arc."
         - slot: "Amulet"
-          mods: ["+1 to Level of all Lightning Skill Gems", "Critical strike multiplier", "Life"]
+          mods: ["+1 to Level of all Lightning Skill Gems", "Life", "Chaos resistance"]
           note: "Amulet carries gem levels."
         - slot: "Jewels"
-          mods: ["Critical strike multiplier", "Life"]
+          mods: ["Spell damage", "Cast speed", "Life"]
           note: "Keep life."
       crafting:
         - slot: "Amulet"
@@ -754,8 +754,8 @@ profiles:
           note: "Keep moving."
     until-28:
       goals:
-        - "Add Spell Totem and Added Lightning Damage to Arc."
-        - "Cap resistances; totem placement speed is a luxury."
+        - "Self-cast Lightning Tendrils with Added Lightning Damage, Controlled Destruction and Arcane Surge."
+        - "Cap resistances; the totem swap waits for Spell Totem."
       lookFor:
         - slot: "Weapon"
           mods: ["Spell damage", "Cast speed", "Lightning damage"]
@@ -772,15 +772,15 @@ profiles:
           note: "Bench cast speed."
     until-68:
       goals:
-        - "Six-link Arc totem and 2,000 life; cap resistances."
-        - "Add Lightning Penetration and Controlled Destruction."
+        - "Five-link Lightning Tendrils on Spell Totem and reach 2,000 life."
+        - "Keep Arc in the helmet as the clear link; add Determination and low-level Clarity."
       lookFor:
         - slot: "Weapon"
           mods: ["Spell damage", "Cast speed", "Lightning damage"]
           note: "The sceptre is the damage slot."
         - slot: "Body Armour"
-          mods: ["6-link", "Life", "Elemental resistances"]
-          note: "6-link."
+          mods: ["5-link", "Life", "Elemental resistances"]
+          note: "Five-link Tendrils."
         - slot: "Jewels"
           mods: ["Life", "Cast speed"]
           note: "Life first."
@@ -790,7 +790,7 @@ profiles:
           note: "Craft the missing resistance."
     maps-early:
       goals:
-        - "A 5-link clears white maps; start the 6-link."
+        - "A 5-link clears white maps; start the six-link and the Arc helmet."
         - "Reach 3,000 life and cap resistances."
       lookFor:
         - slot: "Weapon"
@@ -798,7 +798,7 @@ profiles:
           note: "Rare sceptre."
         - slot: "Body Armour"
           mods: ["6-link", "Life", "Elemental resistances"]
-          note: "Start the 6-link."
+          note: "Start the six-link."
         - slot: "Rings"
           mods: ["Life", "Elemental resistances"]
           note: "Fix resists."
@@ -808,35 +808,35 @@ profiles:
           note: "Bench elemental damage."
     maps-red:
       goals:
-        - "Six-link, 20% quality gems, 4,500 life."
-        - "Totem placement speed and crit are the damage upgrades."
+        - "Six-link Lightning Tendrils of Eccentricity and 20% quality gems."
+        - "Add Blasphemy Conductivity, Lioneye's Remorse and capped chaos."
       lookFor:
-        - slot: "Weapon"
-          mods: ["Spell damage", "Cast speed", "Critical strike chance"]
-          note: "Crit sceptre."
         - slot: "Body Armour"
           mods: ["6-link", "Life", "Elemental resistances"]
-          note: "6-link."
-        - slot: "Jewels"
+          note: "Six-link Tendrils."
+        - slot: "Shield"
+          mods: ["Armour", "Life"]
+          note: "Lioneye's Remorse."
+        - slot: "Amulet"
           mods: ["Critical strike multiplier", "Life"]
-          note: "Crit multi."
+          note: "Marylene's Fallacy."
       crafting:
-        - slot: "Weapon"
-          mods: ["Critical strike multiplier"]
-          note: "Bench crit multi."
+        - slot: "Amulet"
+          mods: ["Chaos resistance", "Life"]
+          note: "Bench chaos resistance."
     pinnacle:
       goals:
         - "Cap chaos resistance at 75% and reach 5,000 life."
-        - "Use 21/20 Arc and awakened supports."
+        - "Use 21/20 Tendrils of Eccentricity, Awakened supports and Empower."
       lookFor:
+        - slot: "Body Armour"
+          mods: ["6-link", "Life", "Elemental resistances"]
+          note: "Six-link boss link."
         - slot: "Weapon"
           mods: ["+1 to Level of all Lightning Skill Gems", "Spell damage", "Cast speed"]
-          note: "+1 elemental gems."
-        - slot: "Amulet"
-          mods: ["+1 to Level of all Lightning Skill Gems", "Critical strike multiplier", "Life"]
-          note: "Amulet carries gem levels."
+          note: "+1 lightning gems."
         - slot: "Jewels"
-          mods: ["Critical strike multiplier", "Life"]
+          mods: ["Spell damage", "Cast speed", "Life"]
           note: "Keep life."
       crafting:
         - slot: "Amulet"
