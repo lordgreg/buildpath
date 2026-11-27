@@ -8022,17 +8022,11 @@
   "gemInfo": {
     "Added Fire Damage": {
       "requiredLevel": 8,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Scion",
-          "Templar"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": false,
       "color": "r",
       "support": true,
       "description": null,
@@ -8048,16 +8042,11 @@
     },
     "Arcane Surge": {
       "requiredLevel": 1,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "Mercy Mission",
-        "classes": [
-          "Scion",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "Mercy Mission"
       },
-      "free": true,
       "color": "b",
       "support": true,
       "description": null,
@@ -8077,8 +8066,11 @@
     },
     "Cast when Damage Taken": {
       "requiredLevel": 38,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
       "color": "r",
       "support": true,
       "description": null,
@@ -8096,17 +8088,11 @@
     },
     "Clarity": {
       "requiredLevel": 10,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "b",
       "support": false,
       "description": "Casts an aura that grants mana regeneration to you and your allies.",
@@ -8124,8 +8110,11 @@
     },
     "Convocation": {
       "requiredLevel": 24,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "siosa",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
       "color": "w",
       "support": false,
       "description": "Recalls all minions that are following you to your location, and grants them a temporary life regeneration effect.",
@@ -8143,14 +8132,11 @@
     },
     "Desecrate": {
       "requiredLevel": 16,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 2,
-        "quest": "Intruders in Black",
-        "classes": [
-          "Witch"
-        ]
+        "quest": "Intruders in Black"
       },
-      "free": true,
       "color": "g",
       "support": false,
       "description": "Desecrates the ground, spawning corpses based on monsters in the current area and dealing chaos damage over time to enemies. If you are using the Raise Spectre skill there is a chance to spawn spectral corpses matching your most recently raised Spectres. Spectral corpses cannot be interacted with except by Minion skills.",
@@ -8172,14 +8158,11 @@
     },
     "Feeding Frenzy": {
       "requiredLevel": 31,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 3,
-        "quest": "A Fixture of Fate",
-        "classes": [
-          "Witch"
-        ]
+        "quest": "A Fixture of Fate"
       },
-      "free": true,
       "color": "b",
       "support": true,
       "description": null,
@@ -8197,17 +8180,11 @@
     },
     "Flame Dash": {
       "requiredLevel": 10,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "b",
       "support": false,
       "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
@@ -8231,14 +8208,11 @@
     },
     "Flesh Offering": {
       "requiredLevel": 12,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Siren's Cadence",
-        "classes": [
-          "Witch"
-        ]
+        "quest": "The Siren's Cadence"
       },
-      "free": true,
       "color": "b",
       "support": false,
       "description": "Consumes a corpse, which temporarily empowers your minions with swiftness. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
@@ -8259,8 +8233,11 @@
     },
     "Generosity": {
       "requiredLevel": 31,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "siosa",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
       "color": "r",
       "support": true,
       "description": null,
@@ -8276,8 +8253,11 @@
     },
     "Immortal Call": {
       "requiredLevel": 34,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
       "color": "r",
       "support": false,
       "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
@@ -8299,18 +8279,11 @@
     },
     "Melee Physical Damage": {
       "requiredLevel": 18,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 2,
-        "quest": "Sharp and Cruel",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Scion",
-          "Shadow",
-          "Templar"
-        ]
+        "quest": "Sharp and Cruel"
       },
-      "free": false,
       "color": "r",
       "support": true,
       "description": null,
@@ -8329,15 +8302,11 @@
     },
     "Minion Damage": {
       "requiredLevel": 8,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "b",
       "support": true,
       "description": null,
@@ -8353,8 +8322,11 @@
     },
     "Minion Life": {
       "requiredLevel": 18,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
       "color": "b",
       "support": true,
       "description": null,
@@ -8369,14 +8341,11 @@
     },
     "Minion Speed": {
       "requiredLevel": 18,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 2,
-        "quest": "Sharp and Cruel",
-        "classes": [
-          "Witch"
-        ]
+        "quest": "Sharp and Cruel"
       },
-      "free": true,
       "color": "b",
       "support": true,
       "description": null,
@@ -8394,20 +8363,11 @@
     },
     "Multistrike": {
       "requiredLevel": 38,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 4,
-        "quest": "The Eternal Nightmare",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Ranger",
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Eternal Nightmare"
       },
-      "free": true,
       "color": "r",
       "support": true,
       "description": null,
@@ -8427,14 +8387,11 @@
     },
     "Raise Zombie": {
       "requiredLevel": 1,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "Enemy at the Gate",
-        "classes": [
-          "Witch"
-        ]
+        "quest": "Enemy at the Gate"
       },
-      "free": true,
       "color": "b",
       "support": false,
       "description": "Raises a zombie minion from a corpse, which will follow you and attack enemies with a melee strike.",
@@ -8451,14 +8408,11 @@
     },
     "Summon Raging Spirit": {
       "requiredLevel": 4,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "Breaking Some Eggs",
-        "classes": [
-          "Witch"
-        ]
+        "quest": "Breaking Some Eggs"
       },
-      "free": true,
       "color": "b",
       "support": false,
       "description": "Summons a short-lived flaming skull that rushes at nearby enemies and attacks them rapidly, converting all its physical damage to fire. Enemies will not directly engage these spirits, and can pass through them.",

@@ -1,0 +1,80 @@
+# Where leveling gems come from, for the gems the pinned RePoE export cannot
+# answer.
+#
+# RePoE's gems.json carries a single `quest_reward` per gem and drops the rest,
+# so a gem that one class gets as a reward and the others buy can arrive with no
+# quest at all, and a transfigured gem inherits the base gem's entry. Each entry
+# below is checked by hand against the 3.30 quest and vendor tables. The
+# compiler prefers this file over the export, so a wrong entry here is worse
+# than a missing one: only add a gem you have verified.
+#
+# `reward` lists the classes that get the gem free when that quest is handed in;
+# `vendor` lists the classes that can buy it from that act's vendor once the
+# quest is done. A gem with neither, but a vendor entry for another class, is
+# stocked by Siosa in the Act 3 Library after A Fixture of Fate. `siosa: true`
+# says that is the only route. `transfigured: true` marks a gem that only the
+# Divine Font at the end of a Labyrinth (or another player) can supply.
+schemaVersion: 1
+gems:
+  Boneshatter:
+    reward: { act: 3, quest: "Sever the Right Hand", classes: [Marauder] }
+    vendor: { act: 3, quest: "Sever the Right Hand", classes: [Duelist, Templar, Scion] }
+  Double Strike:
+    vendor:
+      act: 1
+      quest: "Enemy at the Gate"
+      classes: [Shadow, Ranger, Duelist, Marauder, Templar, Scion]
+  Flicker Strike:
+    vendor:
+      act: 1
+      quest: "The Caged Brute"
+      classes: [Shadow, Ranger, Duelist, Marauder, Templar, Scion]
+  Animate Weapon:
+    vendor: { act: 1, quest: "Breaking Some Eggs", classes: [Witch, Shadow, Scion] }
+  Winter Orb:
+    vendor:
+      act: 3
+      quest: "Sever the Right Hand"
+      classes: [Witch, Shadow, Templar, Scion]
+  Righteous Fire:
+    vendor:
+      act: 2
+      quest: "Intruders in Black"
+      classes: [Witch, Marauder, Templar, Scion]
+  Convocation:
+    siosa: true
+  Generosity:
+    siosa: true
+  Cast when Damage Taken:
+    vendor:
+      act: 4
+      quest: "The Eternal Nightmare"
+      classes: [Witch, Shadow, Ranger, Duelist, Marauder, Templar, Scion]
+  Immortal Call:
+    vendor:
+      act: 4
+      quest: "Breaking the Seal"
+      classes: [Duelist, Marauder, Scion, Templar]
+  Increased Critical Damage:
+    vendor:
+      act: 2
+      quest: "Sharp and Cruel"
+      classes: [Ranger, Scion, Shadow, Witch]
+  Increased Critical Strikes:
+    vendor:
+      act: 1
+      quest: "The Caged Brute"
+      classes: [Ranger, Scion, Shadow, Witch]
+  Minion Life:
+    vendor: { act: 2, quest: "Sharp and Cruel", classes: [Scion, Templar, Witch] }
+  Spell Totem:
+    vendor:
+      act: 1
+      quest: "The Caged Brute"
+      classes: [Marauder, Scion, Templar, Witch]
+  Animate Weapon of Ranged Arms:
+    transfigured: true
+  Smite of Divine Judgement:
+    transfigured: true
+  Storm Burst of Repulsion:
+    transfigured: true

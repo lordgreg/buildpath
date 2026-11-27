@@ -152,6 +152,7 @@ Related workflows:
 | Change a preset / family / ascendancy | `src/presets/*.yaml` |
 | Budget gear / archetype gear profiles | `src/builds/gear/` (`budgets.yaml`, `profiles.yaml`, `affixes.yaml`, `eldritch.yaml`) |
 | Gate thresholds, checkpoints, leveling budgets | `scripts/builds/gates.yaml`, `src/builds/config/checkpoints.yaml` |
+| Where a leveling gem comes from (quest, vendor, Siosa, Divine Font) | `src/builds/config/gem-sources.yaml` |
 | Pantheon and bandit data | `src/builds/config/pantheon.yaml` |
 | Build header art and one-click PoB assets | `public/builds/` |
 | Change filter output | `src/core/filter/` (esp. `generate.ts`, `emit.ts`) |

@@ -8165,17 +8165,11 @@
   "gemInfo": {
     "Added Lightning Damage": {
       "requiredLevel": 8,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": false,
       "color": "b",
       "support": true,
       "description": null,
@@ -8190,8 +8184,11 @@
     },
     "Cast when Damage Taken": {
       "requiredLevel": 38,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
       "color": "r",
       "support": true,
       "description": null,
@@ -8209,17 +8206,11 @@
     },
     "Clarity": {
       "requiredLevel": 10,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": false,
       "color": "b",
       "support": false,
       "description": "Casts an aura that grants mana regeneration to you and your allies.",
@@ -8237,18 +8228,11 @@
     },
     "Elemental Damage with Attacks": {
       "requiredLevel": 18,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 2,
-        "quest": "Sharp and Cruel",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Ranger",
-          "Scion",
-          "Templar"
-        ]
+        "quest": "Sharp and Cruel"
       },
-      "free": true,
       "color": "r",
       "support": true,
       "description": null,
@@ -8263,18 +8247,11 @@
     },
     "Faster Attacks": {
       "requiredLevel": 8,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Ranger",
-          "Scion",
-          "Shadow"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "g",
       "support": true,
       "description": null,
@@ -8289,17 +8266,11 @@
     },
     "Flame Dash": {
       "requiredLevel": 10,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": false,
       "color": "b",
       "support": false,
       "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
@@ -8323,16 +8294,11 @@
     },
     "Frenzy": {
       "requiredLevel": 16,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 2,
-        "quest": "Intruders in Black",
-        "classes": [
-          "Duelist",
-          "Ranger",
-          "Scion"
-        ]
+        "quest": "Intruders in Black"
       },
-      "free": true,
       "color": "g",
       "support": false,
       "description": "Performs an attack with a ranged weapon that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed.",
@@ -8350,15 +8316,11 @@
     },
     "Grace": {
       "requiredLevel": 24,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 3,
-        "quest": "Lost in Love",
-        "classes": [
-          "Duelist",
-          "Ranger"
-        ]
+        "quest": "Lost in Love"
       },
-      "free": true,
       "color": "g",
       "support": false,
       "description": "Casts an aura that grants evasion to you and your allies.",
@@ -8377,20 +8339,11 @@
     },
     "Herald of Thunder": {
       "requiredLevel": 16,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 2,
-        "quest": "Intruders in Black",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Ranger",
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "Intruders in Black"
       },
-      "free": true,
       "color": "b",
       "support": false,
       "description": "Grants a buff which adds lightning damage to spells and attacks. If you kill a shocked enemy, this skill will create a storm, causing lightning bolts to strike enemies around you for a duration. The damage inflicted by this skill is not affected by modifiers to spell damage.",
@@ -8415,8 +8368,11 @@
     },
     "Immortal Call": {
       "requiredLevel": 34,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "level",
+        "act": null,
+        "quest": null
+      },
       "color": "r",
       "support": false,
       "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
@@ -8438,8 +8394,11 @@
     },
     "Increased Critical Damage": {
       "requiredLevel": 18,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "vendor",
+        "act": 2,
+        "quest": "Sharp and Cruel"
+      },
       "color": "b",
       "support": true,
       "description": null,
@@ -8454,8 +8413,11 @@
     },
     "Increased Critical Strikes": {
       "requiredLevel": 8,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "The Caged Brute"
+      },
       "color": "b",
       "support": true,
       "description": null,
@@ -8471,14 +8433,11 @@
     },
     "Lightning Arrow": {
       "requiredLevel": 12,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Siren's Cadence",
-        "classes": [
-          "Ranger"
-        ]
+        "quest": "The Siren's Cadence"
       },
-      "free": true,
       "color": "g",
       "support": false,
       "description": "Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning, which also damages a number of surrounding enemies.",
@@ -8499,17 +8458,11 @@
     },
     "Precision": {
       "requiredLevel": 10,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Duelist",
-          "Ranger",
-          "Scion",
-          "Shadow"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "g",
       "support": false,
       "description": "Casts an aura that grants accuracy and critical strike chance to you and your allies.",
@@ -8529,15 +8482,11 @@
     },
     "Sniper's Mark": {
       "requiredLevel": 4,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "Breaking Some Eggs",
-        "classes": [
-          "Duelist",
-          "Ranger"
-        ]
+        "quest": "Breaking Some Eggs"
       },
-      "free": true,
       "color": "g",
       "support": false,
       "description": "Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time.",

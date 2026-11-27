@@ -66,6 +66,28 @@ const viscera = parse(
 const stepPlanConfig = parse(
   readFileSync(resolve(seedsDir, 'config/step-plans.yaml'), 'utf8'),
 );
+const gemSources = parse(
+  readFileSync(resolve(seedsDir, 'config/gem-sources.yaml'), 'utf8'),
+).gems ?? {};
+// A typo in the supplement would silently fall back to RePoE, so fail loudly.
+for (const [name, extra] of Object.entries(gemSources)) {
+  if (!gemLevels[name]) {
+    console.error(`gem-sources: unknown gem "${name}"`);
+    process.exit(1);
+  }
+  for (const route of ['reward', 'vendor']) {
+    const entry = extra?.[route];
+    if (!entry) continue;
+    if (!Array.isArray(entry.classes) || entry.classes.length === 0) {
+      console.error(`gem-sources: ${name} ${route} has no classes`);
+      process.exit(1);
+    }
+    if (typeof entry.quest !== 'string' || !entry.quest) {
+      console.error(`gem-sources: ${name} ${route} has no quest`);
+      process.exit(1);
+    }
+  }
+}
 const checkpointConfig = parse(
   readFileSync(resolve(seedsDir, 'config/checkpoints.yaml'), 'utf8'),
 ).checkpoints ?? {};
@@ -461,10 +483,39 @@ function resolveStepPlans(seed, file) {
 }
 
 /**
- * Where each gem comes from for this class: a free quest reward, or the same
- * quest's vendor pool. The distinction matters to a new player ("do I have to
- * buy this?") and it is already in the data, so the guide carries it.
+ * Where each gem comes from for this class: a free quest reward, the vendor
+ * pool the quest opens, Siosa, or the Divine Font. The distinction matters to a
+ * new player ("do I have to buy this?") so the guide carries it. The reviewed
+ * supplement wins over RePoE, whose export names one quest per gem and drops
+ * the rest; see src/builds/config/gem-sources.yaml.
  */
+function sourceForGem(name, className, entry) {
+  const extra = gemSources[name] ?? {};
+  if (extra.transfigured) return { kind: 'divine-font', act: null, quest: null };
+  const reward = extra.reward;
+  if (reward?.classes?.includes(className)) {
+    return { kind: 'reward', act: reward.act ?? null, quest: reward.quest ?? null };
+  }
+  const vendor = extra.vendor;
+  if (vendor?.classes?.includes(className)) {
+    return { kind: 'vendor', act: vendor.act ?? null, quest: vendor.quest ?? null };
+  }
+  if (extra.siosa) return { kind: 'siosa', act: 3, quest: 'A Fixture of Fate' };
+  const quest = entry.quest ?? null;
+  if (quest) {
+    return {
+      kind: quest.classes.includes(className) ? 'reward' : 'vendor',
+      act: quest.act ?? null,
+      quest: quest.quest ?? null,
+    };
+  }
+  // A gem some other class buys from an early vendor is also on Siosa's shelf.
+  if ((extra.vendor || extra.reward) && entry.levels[1] <= 31) {
+    return { kind: 'siosa', act: 3, quest: 'A Fixture of Fate' };
+  }
+  return { kind: 'level', act: null, quest: null };
+}
+
 function describeGems(seed) {
   const names = new Set();
   for (const bracket of seed.leveling.brackets) {
@@ -483,13 +534,9 @@ function describeGems(seed) {
   for (const name of [...names].sort()) {
     const entry = gemLevels[name];
     if (!entry) continue;
-    const quest = entry.quest ?? null;
     info[name] = {
       requiredLevel: entry.levels[1],
-      quest: quest
-        ? { act: quest.act, quest: quest.quest, classes: quest.classes }
-        : null,
-      free: quest ? quest.classes.includes(seed.class) : false,
+      source: sourceForGem(name, seed.class, entry),
       color: entry.color ?? null,
       support: entry.support === true,
       description: entry.description ?? null,

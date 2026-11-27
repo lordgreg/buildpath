@@ -1,13 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { activeSwaps } from './leveling.ts';
-import type { LevelingBracket, LevelingSwap } from './types.ts';
-
-const brackets: LevelingBracket[] = [
-  { until: 12, skills: ['Cleave'] },
-  { until: 28, skills: ['Boneshatter'] },
-  { until: 68, skills: ['Boneshatter'] },
-  { until: 100, skills: ['Boneshatter'] },
-];
+import { levelingStep } from './leveling.ts';
+import type { LevelingSwap } from './types.ts';
 
 const sunder: LevelingSwap = {
   gem: 'Sunder',
@@ -16,32 +9,154 @@ const sunder: LevelingSwap = {
   replaces: 'Cleave',
 };
 
-describe('activeSwaps', () => {
-  it('shows a boundary swap on both brackets that touch it', () => {
-    expect(activeSwaps([sunder], brackets, 0)).toEqual([sunder]);
-    expect(activeSwaps([sunder], brackets, 1)).toEqual([sunder]);
+/** The levels the compiled Boneshatter guide actually uses. */
+const levels: Record<string, number> = {
+  Cleave: 1,
+  Sunder: 12,
+  'Enduring Cry': 10,
+  Boneshatter: 28,
+};
+const required = (gem: string) => levels[gem];
+
+const boneshatter = {
+  swaps: [sunder],
+  brackets: [
+    { until: 12, skills: ['Cleave'] },
+    { until: 28, skills: ['Boneshatter', 'Enduring Cry'] },
+    { until: 68, skills: ['Boneshatter', 'Enduring Cry'] },
+    { until: 100, skills: ['Boneshatter', 'Enduring Cry'] },
+  ],
+};
+
+describe('levelingStep', () => {
+  it('opens the first step on the gem you can already use and ends it on the swap', () => {
+    expect(levelingStep(boneshatter, 0, required, { level: 12 })).toEqual({
+      from: 1,
+      until: 12,
+      startSkills: ['Cleave'],
+      upgrades: [{ ...sunder, atBoundary: true }],
+    });
   });
 
-  it('drops the swap once the next skill has taken over', () => {
-    expect(activeSwaps([sunder], brackets, 2)).toEqual([]);
-    expect(activeSwaps([sunder], brackets, 3)).toEqual([]);
+  it('opens the next step on the swapped-in gem, not the one it replaced', () => {
+    const step = levelingStep(boneshatter, 1, required, { level: 28 });
+    expect(step?.from).toBe(13);
+    expect(step?.startSkills).toEqual(['Sunder', 'Enduring Cry']);
+    expect(step?.upgrades).toEqual([
+      { gem: 'Boneshatter', fromLevel: 28, replaces: 'Sunder', atBoundary: true },
+    ]);
   });
 
-  it('treats untilLevel as exclusive', () => {
-    const short = { ...sunder, untilLevel: 13 };
-    expect(activeSwaps([short], brackets, 0)).toEqual([short]);
-    expect(activeSwaps([short], brackets, 1)).toEqual([]);
+  it('derives the upgrade a seed never wrote down', () => {
+    // Cyclone has no swap entry: the guide only says "until 28" lists it.
+    const step = levelingStep(
+      {
+        brackets: [
+          { until: 12, skills: ['Cleave'] },
+          { until: 28, skills: ['Cyclone'] },
+          { until: 100, skills: ['Cyclone'] },
+        ],
+      },
+      1,
+      (gem) => ({ Cleave: 1, Cyclone: 28 })[gem],
+      { level: 28 },
+    );
+    expect(step?.startSkills).toEqual(['Cleave']);
+    expect(step?.upgrades).toEqual([
+      { gem: 'Cyclone', fromLevel: 28, replaces: 'Cleave', atBoundary: true },
+    ]);
   });
 
-  it('keeps a swap with no end across every later bracket', () => {
+  it('clamps a bracket that overshoots the checkpoint', () => {
+    // Penance Brand has no level-12 bracket; its first bracket ends at 28.
+    const step = levelingStep(
+      {
+        brackets: [
+          { until: 28, skills: ['Rolling Magma', 'Flame Wall'] },
+          { until: 100, skills: ['Penance Brand', 'Flame Wall'] },
+        ],
+      },
+      0,
+      (gem) => ({ "Rolling Magma": 1, "Flame Wall": 4, "Penance Brand": 28 })[gem],
+      { level: 12 },
+    );
+    expect(step?.until).toBe(12);
+    expect(step?.startSkills).toEqual(['Rolling Magma']);
+    expect(step?.upgrades.map((upgrade) => upgrade.gem)).toEqual(['Flame Wall']);
+  });
+
+  it('opens a bracket late when the guide has no earlier bracket', () => {
+    // The same guide at the level-28 checkpoint: the step opens at 13 because
+    // the level-12 checkpoint already covered 1-12.
+    const step = levelingStep(
+      {
+        brackets: [
+          { until: 28, skills: ['Rolling Magma', 'Flame Wall'] },
+          { until: 100, skills: ['Penance Brand', 'Flame Wall'] },
+        ],
+      },
+      0,
+      (gem) => ({ 'Rolling Magma': 1, 'Flame Wall': 4, 'Penance Brand': 28 })[gem],
+      { level: 28, from: 13 },
+    );
+    expect(step?.from).toBe(13);
+    expect(step?.until).toBe(28);
+    expect(step?.startSkills).toEqual(['Rolling Magma', 'Flame Wall']);
+    // The next bracket's main skill becomes usable inside this step, so the
+    // hand-off is named even though the seed never wrote a swap for it.
+    expect(step?.upgrades).toEqual([
+      { gem: 'Penance Brand', fromLevel: 28, replaces: 'Rolling Magma', atBoundary: true },
+    ]);
+  });
+
+  it('keeps a mid-bracket upgrade at its own level', () => {
+    const step = levelingStep(
+      {
+        brackets: [
+          { until: 12, skills: ['Summon Skeletons'] },
+          { until: 68, skills: ['Summon Stone Golem'] },
+          { until: 100, skills: ['Summon Stone Golem'] },
+        ],
+      },
+      1,
+      (gem) => ({ "Summon Skeletons": 10, "Summon Stone Golem": 34 })[gem],
+      { level: 68 },
+    );
+    expect(step?.from).toBe(13);
+    expect(step?.startSkills).toEqual(['Summon Skeletons']);
+    expect(step?.upgrades).toEqual([
+      { gem: 'Summon Stone Golem', fromLevel: 34, replaces: 'Summon Skeletons', atBoundary: false },
+    ]);
+  });
+
+  it('reports nothing to start with when the first bracket needs a later gem', () => {
+    const step = levelingStep(
+      { brackets: [{ until: 12, skills: ['Essence Drain'] }] },
+      0,
+      (gem) => ({ "Essence Drain": 12 })[gem],
+      { level: 12 },
+    );
+    expect(step?.startSkills).toEqual([]);
+    expect(step?.upgrades).toEqual([
+      { gem: 'Essence Drain', fromLevel: 12, atBoundary: true },
+    ]);
+  });
+
+  it('returns null for a bracket that does not exist', () => {
+    expect(levelingStep(boneshatter, 9, required, { level: 100 })).toBeNull();
+  });
+
+  it('keeps a swap with no end in every later step', () => {
     const openEnded = { gem: 'Sunder', fromLevel: 12 };
-    expect(activeSwaps([openEnded], brackets, 0)).toHaveLength(1);
-    expect(activeSwaps([openEnded], brackets, 3)).toHaveLength(1);
-  });
-
-  it('handles missing swaps and out-of-range brackets', () => {
-    expect(activeSwaps(undefined, brackets, 0)).toEqual([]);
-    expect(activeSwaps([sunder], brackets, 4)).toEqual([]);
-    expect(activeSwaps([sunder], [], 0)).toEqual([]);
+    const leveling = {
+      swaps: [openEnded],
+      brackets: [
+        { until: 12, skills: ['Cleave'] },
+        { until: 28, skills: ['Boneshatter'] },
+        { until: 68, skills: ['Boneshatter'] },
+      ],
+    };
+    expect(levelingStep(leveling, 1, required, { level: 28 })?.startSkills).toContain('Sunder');
+    expect(levelingStep(leveling, 2, required, { level: 68 })?.startSkills).toContain('Sunder');
   });
 });

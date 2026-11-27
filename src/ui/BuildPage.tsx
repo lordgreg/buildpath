@@ -1,8 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
-import type { Build, BuildIndexEntry, GateResult } from '../core/builds/types.ts';
+import type {
+  Build,
+  BuildIndexEntry,
+  GateResult,
+  GemAvailability,
+} from '../core/builds/types.ts';
 import { BUILD_VERSION, BUILDS } from '../meta/builds.ts';
 import { GUIDE_SECTIONS, type GuideSection } from '../core/builds/guide.ts';
-import { activeSwaps } from '../core/builds/leveling.ts';
+import { levelingStep } from '../core/builds/leveling.ts';
 import { BANDITS } from '../meta/pantheon.ts';
 import { getPobLink } from '../meta/pob-links.ts';
 import AscendancyPanel from './AscendancyPanel.tsx';
@@ -90,6 +95,20 @@ function GemLink({
       {name}
     </a>
   );
+}
+
+/** One line saying how this class obtains the gem. */
+function gemSourceLabel(info: GemAvailability | undefined): string | null {
+  if (!info) return null;
+  const { kind, act, quest } = info.source;
+  const actPart = act === null ? null : `Act ${act}`;
+  if (kind === 'reward') return ['Quest reward', actPart, quest].filter(Boolean).join(' · ');
+  if (kind === 'vendor') {
+    return ['Vendor', actPart, quest ? `after ${quest}` : null].filter(Boolean).join(' · ');
+  }
+  if (kind === 'siosa') return 'Siosa · Act 3 Library, after A Fixture of Fate';
+  if (kind === 'divine-font') return 'Divine Font · end of any Labyrinth, or trade';
+  return `Buy it at level ${info.requiredLevel}`;
 }
 
 function n(value: number): string {
@@ -379,12 +398,25 @@ export default function BuildPage() {
     step === 'maps-red' || step === 'pinnacle' || build.gemQualityFrom === 'leveling';
   // A guide step is a leveling bracket: show the gems you level with at that
   // step, so there is no separate "leveling" section repeating the same thing.
+  // A map step is not a leveling step, and "play these until 100" there was
+  // noise; the gems table already lists what the checkpoint measured.
+  const isLevelingStep = step.startsWith('until-');
+  const levelingSteps = Object.keys(build.gates ?? {}).filter((id) => id.startsWith('until-'));
+  const levelingPosition = levelingSteps.indexOf(step);
+  const previousLevel =
+    levelingPosition > 0 ? build.gates?.[levelingSteps[levelingPosition - 1]!]?.level : undefined;
   const bracketIndex = build.leveling.brackets.findIndex(
     (entry) => gate !== undefined && entry.until >= gate.level,
   );
   const resolvedBracket = bracketIndex >= 0 ? bracketIndex : build.leveling.brackets.length - 1;
-  const bracket = build.leveling.brackets[resolvedBracket];
-  const swaps = activeSwaps(build.leveling.swaps, build.leveling.brackets, resolvedBracket);
+  const leveling = isLevelingStep
+    ? levelingStep(
+        build.leveling,
+        resolvedBracket,
+        (gem) => build.gemInfo?.[gem]?.requiredLevel,
+        { level: gate?.level, from: previousLevel === undefined ? 1 : previousLevel + 1 },
+      )
+    : null;
 
   return (
     <div className="min-h-dvh">
@@ -745,7 +777,7 @@ export default function BuildPage() {
         </section>
       )}
 
-      {bracket && (
+      {leveling && (
         <section aria-labelledby="leveling">
           <h2
             id="leveling"
@@ -753,70 +785,89 @@ export default function BuildPage() {
           >
             Leveling this step
           </h2>
-          <p className="mt-2 text-sm text-zinc-300">
-            {bracket.skills.map((skill, index) => (
-              <span key={skill}>
-                {index > 0 && <span className="text-zinc-600"> · </span>}
-                <GemLink name={skill} colour={build.gemInfo?.[skill]?.color} />
-              </span>
-            ))}
+          <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-zinc-500">
+            Levels {leveling.from}–{leveling.until}
           </p>
-          <p className="mt-2 text-[11px] leading-relaxed text-zinc-600">
-            Play these until level {bracket.until}
-            {bracket.until < 100 ? ', then move to the next step' : ' — the endgame step.'}
-          </p>
-          {swaps.length > 0 && (
-            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-              {swaps.map((swap) => {
-                const info = build.gemInfo?.[swap.gem];
-                const atBoundary = swap.fromLevel === bracket.until;
+          {leveling.startSkills.length > 0 ? (
+            <div className="mt-3">
+              <p className="text-[10px] uppercase tracking-[0.16em] text-zinc-600">Use</p>
+              <ul className="mt-1 grid gap-1">
+                {leveling.startSkills.map((skill) => {
+                  const info = build.gemInfo?.[skill];
+                  const source = gemSourceLabel(info);
+                  return (
+                    <li key={skill} className="text-sm text-zinc-300">
+                      <GemLink name={skill} colour={info?.color} />
+                      {source && (
+                        <span className="text-[11px] text-zinc-500"> — {source}</span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ) : (
+            <p className="mt-2 text-sm text-zinc-300">
+              Nothing is listed for these levels yet — use your class&apos;s
+              starting gem.
+            </p>
+          )}
+          {leveling.until <= 28 &&
+            leveling.startSkills.some(
+              (skill) => build.gemInfo?.[skill]?.source?.kind === 'divine-font',
+            ) && (
+              <p className="mt-2 text-[11px] leading-relaxed text-amber-300">
+                A transfigured gem only comes from the Divine Font at the end of a
+                Labyrinth, or from another player, so it is not a league-start gem
+                at this level.
+              </p>
+            )}
+          {leveling.upgrades.length > 0 && (
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+              {leveling.upgrades.map((upgrade) => {
+                const info = build.gemInfo?.[upgrade.gem];
+                const source = gemSourceLabel(info);
                 return (
                   <li
-                    key={swap.gem}
+                    key={upgrade.gem}
                     className="rounded-md border border-gold-400/30 bg-gold-400/[0.06] px-3 py-2.5"
                   >
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                       <span className="rounded bg-gold-400/15 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-gold-200">
-                        Swap
+                        {upgrade.replaces ? 'Swap' : 'Add'}
                       </span>
                       <span className="text-[11px] text-zinc-400">
-                        {atBoundary ? 'At' : 'From'} level{' '}
-                        <span className="font-semibold text-zinc-200">{swap.fromLevel}</span>
-                        {swap.untilLevel !== undefined && (
+                        {upgrade.atBoundary ? 'At' : 'From'} level{' '}
+                        <span className="font-semibold text-zinc-200">{upgrade.fromLevel}</span>
+                        {upgrade.untilLevel !== undefined && (
                           <>
                             <span className="mx-1 text-zinc-600">·</span>
                             until level{' '}
-                            <span className="font-semibold text-zinc-200">{swap.untilLevel}</span>
+                            <span className="font-semibold text-zinc-200">
+                              {upgrade.untilLevel}
+                            </span>
                           </>
                         )}
                       </span>
                     </div>
                     <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
-                      {swap.replaces && (
+                      {upgrade.replaces && (
                         <>
                           <GemLink
-                            name={swap.replaces}
-                            colour={build.gemInfo?.[swap.replaces]?.color}
+                            name={upgrade.replaces}
+                            colour={build.gemInfo?.[upgrade.replaces]?.color}
                           />
                           <span aria-hidden className="text-zinc-500">
                             →
                           </span>
                         </>
                       )}
-                      <GemLink name={swap.gem} colour={info?.color} strong />
+                      <GemLink name={upgrade.gem} colour={info?.color} strong />
                     </p>
-                    {info && (
-                      <p className="mt-1 text-[10px] text-zinc-500">
-                        {info.quest
-                          ? info.free
-                            ? `Quest reward · ${info.quest.quest}`
-                            : `Vendor after ${info.quest.quest}`
-                          : `Unlocks at character level ${info.requiredLevel}`}
-                      </p>
-                    )}
-                    {swap.note && (
+                    {source && <p className="mt-1 text-[10px] text-zinc-500">{source}</p>}
+                    {upgrade.note && (
                       <p className="mt-1.5 text-[11px] leading-relaxed text-zinc-400">
-                        {swap.note}
+                        {upgrade.note}
                       </p>
                     )}
                   </li>
@@ -920,13 +971,9 @@ export default function BuildPage() {
                                     {gem.note ? ` ${gem.note}` : ''}
                                   </span>
                                 )}
-                                {build.gemInfo?.[gem.name] && (
+                                {gemSourceLabel(build.gemInfo?.[gem.name]) && (
                                   <span className="mt-1 block text-zinc-500">
-                                    {build.gemInfo[gem.name].quest
-                                      ? build.gemInfo[gem.name].free
-                                        ? `Quest reward · ${build.gemInfo[gem.name].quest?.quest}`
-                                        : `Vendor after ${build.gemInfo[gem.name].quest?.quest}`
-                                      : `Unlocks at character level ${build.gemInfo[gem.name].requiredLevel}`}
+                                    {gemSourceLabel(build.gemInfo?.[gem.name])}
                                   </span>
                                 )}
                                 <span className="mt-1 block text-zinc-500">
@@ -1181,7 +1228,7 @@ export default function BuildPage() {
               ['tree', 'Passive tree'],
               ['gear', 'Gear'],
               ['gems', 'Gems'],
-              ['leveling', 'Leveling this step'],
+              ...(isLevelingStep ? ([['leveling', 'Leveling this step']] as [string, string][]) : []),
               ['ascendancy', 'Ascendancy'],
               ['pantheon', 'Pantheon'],
               ['bandit', 'Bandit'],

@@ -327,6 +327,8 @@ describe('published build data', () => {
         gemInfo?: Record<
           string,
           {
+            requiredLevel?: number;
+            source?: { kind: string; act: number | null; quest: string | null };
             color?: string | null;
             description?: string | null;
             effect?: string[];
@@ -1253,10 +1255,19 @@ describe('leveling availability', () => {
       JSON.parse(
         readFileSync(resolve(root, `src/generated/builds/${entry.id}.json`), 'utf8'),
       ) as {
+        id: string;
         class: string;
         leveling: {
+          swaps?: {
+            gem: string;
+            fromLevel: number;
+            untilLevel?: number;
+            replaces?: string;
+            note?: string;
+          }[];
           brackets: {
             until: number;
+            skills?: string[];
             skillGroups?: {
               slot: string;
               gems: (string | { name: string; maxLevel?: number; note?: string })[];
@@ -1264,6 +1275,10 @@ describe('leveling availability', () => {
             flasks?: { name: string; slot: string }[];
           }[];
         };
+        gemInfo?: Record<
+          string,
+          { requiredLevel?: number; source?: { kind: string; act: number | null; quest: string | null } }
+        >;
       },
   );
 
@@ -1285,25 +1300,71 @@ describe('leveling availability', () => {
     }
   });
 
-  it('names where each gem comes from for the build class', () => {
+  it('names where each leveling gem comes from for the build class', () => {
     for (const build of compiled) {
+      const names = new Set<string>();
       for (const bracket of build.leveling.brackets) {
+        for (const gem of bracket.skills ?? []) names.add(gem);
         for (const group of bracket.skillGroups ?? []) {
-          for (const gem of group.gems) {
-            const name = typeof gem === 'string' ? gem : gem.name;
-            const entry = gemLevels.gems[name]!;
-            expect(entry, `${build.class}: unknown gem "${name}"`).toBeDefined();
-            if (entry.quest) {
-              // A quest reward only exists for the classes that quest rewards;
-              // every other class buys it from the same act's vendor.
-              expect(
-                Array.isArray(entry.quest.classes),
-                `${build.class}: ${name} quest has no class list`,
-              ).toBe(true);
-            }
-          }
+          for (const gem of group.gems) names.add(typeof gem === 'string' ? gem : gem.name);
         }
       }
+      for (const swap of build.leveling.swaps ?? []) {
+        names.add(swap.gem);
+        if (swap.replaces) names.add(swap.replaces);
+      }
+      for (const name of names) {
+        const source = build.gemInfo?.[name]?.source;
+        expect(source, `${build.class}: ${name} has no source`).toBeDefined();
+        expect(
+          ['reward', 'vendor', 'siosa', 'divine-font', 'level'],
+          `${build.class}: ${name} has an unknown source`,
+        ).toContain(source!.kind);
+        if (source!.kind === 'reward' || source!.kind === 'vendor') {
+          expect(
+            source!.quest,
+            `${build.class}: ${name} is a ${source!.kind} with no quest`,
+          ).toBeTruthy();
+        }
+      }
+    }
+  });
+
+  it('sends the Marauder to the right quest for Cleave and Boneshatter', () => {
+    const build = compiled.find((entry) => entry.id === 'boneshatter-juggernaut');
+    // Cleave is not a Marauder quest reward: it is on the Act 1 vendor after
+    // the first quest, which is the moment the character reaches town.
+    expect(build?.gemInfo?.Cleave?.source).toEqual({
+      kind: 'vendor',
+      act: 1,
+      quest: 'Enemy at the Gate',
+    });
+    // RePoE has no quest for Boneshatter at all; the reviewed supplement does.
+    expect(build?.gemInfo?.Boneshatter?.source).toEqual({
+      kind: 'reward',
+      act: 3,
+      quest: 'Sever the Right Hand',
+    });
+    expect(build?.gemInfo?.Sunder?.source).toEqual({
+      kind: 'reward',
+      act: 1,
+      quest: "The Siren's Cadence",
+    });
+  });
+
+  it('never sells a transfigured gem as a quest reward', () => {
+    for (const id of [
+      'smite-divine-judgement-inquisitor',
+      'storm-burst-repulsion-hierophant',
+      'poison-ranged-animate-weapon-necromancer',
+    ]) {
+      const build = compiled.find((entry) => entry.id === id);
+      const main = build?.leveling.brackets.at(-1)?.skills?.[0];
+      expect(build?.gemInfo?.[main!]?.source, `${id}: ${main}`).toEqual({
+        kind: 'divine-font',
+        act: null,
+        quest: null,
+      });
     }
   });
 

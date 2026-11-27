@@ -8188,17 +8188,11 @@
   "gemInfo": {
     "Added Fire Damage": {
       "requiredLevel": 8,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Scion",
-          "Templar"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "r",
       "support": true,
       "description": null,
@@ -8214,14 +8208,11 @@
     },
     "Blood and Sand": {
       "requiredLevel": 4,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 1,
-        "quest": "Breaking Some Eggs",
-        "classes": [
-          "Duelist"
-        ]
+        "quest": "Breaking Some Eggs"
       },
-      "free": false,
       "color": "r",
       "support": false,
       "description": "Casts a buff that grants different bonuses to melee skills depending on your stance. Using the skill again alternates between Blood Stance and Sand Stance.",
@@ -8242,8 +8233,11 @@
     },
     "Boneshatter": {
       "requiredLevel": 28,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "reward",
+        "act": 3,
+        "quest": "Sever the Right Hand"
+      },
       "color": "r",
       "support": false,
       "description": "Attack enemies with a forceful melee strike that also hurts you. Successive uses will raise the damage dealt both to enemies and you. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
@@ -8266,14 +8260,11 @@
     },
     "Brutality": {
       "requiredLevel": 38,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 4,
-        "quest": "The Eternal Nightmare",
-        "classes": [
-          "Marauder"
-        ]
+        "quest": "The Eternal Nightmare"
       },
-      "free": true,
       "color": "r",
       "support": true,
       "description": null,
@@ -8290,8 +8281,11 @@
     },
     "Cast when Damage Taken": {
       "requiredLevel": 38,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
       "color": "r",
       "support": true,
       "description": null,
@@ -8309,14 +8303,11 @@
     },
     "Cleave": {
       "requiredLevel": 1,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 1,
-        "quest": "Enemy at the Gate",
-        "classes": [
-          "Duelist"
-        ]
+        "quest": "Enemy at the Gate"
       },
-      "free": false,
       "color": "r",
       "support": false,
       "description": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
@@ -8333,16 +8324,11 @@
     },
     "Close Combat": {
       "requiredLevel": 18,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 2,
-        "quest": "Sharp and Cruel",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Ranger"
-        ]
+        "quest": "Sharp and Cruel"
       },
-      "free": true,
       "color": "g",
       "support": true,
       "description": null,
@@ -8362,16 +8348,11 @@
     },
     "Decoy Totem": {
       "requiredLevel": 4,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "Breaking Some Eggs",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Scion"
-        ]
+        "quest": "Breaking Some Eggs"
       },
-      "free": true,
       "color": "r",
       "support": false,
       "description": "Summons a totem that taunts nearby monsters to attack it.",
@@ -8390,14 +8371,11 @@
     },
     "Determination": {
       "requiredLevel": 24,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 3,
-        "quest": "Lost in Love",
-        "classes": [
-          "Marauder"
-        ]
+        "quest": "Lost in Love"
       },
-      "free": true,
       "color": "r",
       "support": false,
       "description": "Casts an aura that grants armour to you and your allies.",
@@ -8417,15 +8395,11 @@
     },
     "Enduring Cry": {
       "requiredLevel": 10,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Duelist",
-          "Marauder"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "r",
       "support": false,
       "description": "Performs a warcry, taunting all nearby enemies to attack the user and granting a buff to the user and nearby allies. The user and allied players also gain endurance charges.",
@@ -8446,18 +8420,11 @@
     },
     "Faster Attacks": {
       "requiredLevel": 8,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Ranger",
-          "Scion",
-          "Shadow"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "g",
       "support": true,
       "description": null,
@@ -8472,14 +8439,11 @@
     },
     "Herald of Purity": {
       "requiredLevel": 16,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 2,
-        "quest": "Intruders in Black",
-        "classes": [
-          "Templar"
-        ]
+        "quest": "Intruders in Black"
       },
-      "free": false,
       "color": "r",
       "support": false,
       "description": "Grants a buff which lets you deal more physical damage. When you kill an enemy while you have this buff, this skill will summon a Sentinel of Purity, or refresh the duration and life of an existing one instead if you have the maximum number of them. The Sentinels of Purity have a single-target melee attack and an area melee attack.",
@@ -8504,8 +8468,11 @@
     },
     "Immortal Call": {
       "requiredLevel": 34,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "Breaking the Seal"
+      },
       "color": "r",
       "support": false,
       "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
@@ -8527,17 +8494,11 @@
     },
     "Leap Slam": {
       "requiredLevel": 10,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Scion",
-          "Templar"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "r",
       "support": false,
       "description": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
@@ -8560,18 +8521,11 @@
     },
     "Melee Physical Damage": {
       "requiredLevel": 18,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 2,
-        "quest": "Sharp and Cruel",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Scion",
-          "Shadow",
-          "Templar"
-        ]
+        "quest": "Sharp and Cruel"
       },
-      "free": true,
       "color": "r",
       "support": true,
       "description": null,
@@ -8590,16 +8544,11 @@
     },
     "Pulverise": {
       "requiredLevel": 31,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 3,
-        "quest": "A Fixture of Fate",
-        "classes": [
-          "Duelist",
-          "Marauder",
-          "Templar"
-        ]
+        "quest": "A Fixture of Fate"
       },
-      "free": true,
       "color": "r",
       "support": true,
       "description": null,
@@ -8618,14 +8567,11 @@
     },
     "Sunder": {
       "requiredLevel": 12,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Siren's Cadence",
-        "classes": [
-          "Marauder"
-        ]
+        "quest": "The Siren's Cadence"
       },
-      "free": true,
       "color": "r",
       "support": false,
       "description": "Slams the ground, creating a slow wave of churning terrain that damages enemies in a sequence of areas in front of you. A number of enemies hit by the wave will release a shockwave, damaging other enemies around them. Using the skill again will stop the previous wave. Requires a Mace, Sceptre, Axe, Staff or Unarmed.",
@@ -8647,16 +8593,11 @@
     },
     "Vulnerability": {
       "requiredLevel": 24,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 3,
-        "quest": "Lost in Love",
-        "classes": [
-          "Marauder",
-          "Scion",
-          "Templar"
-        ]
+        "quest": "Lost in Love"
       },
-      "free": true,
       "color": "r",
       "support": false,
       "description": "Curse all targets in an area, causing them to take increased physical damage. Attacks against the cursed enemies have a chance to inflict bleeding.",

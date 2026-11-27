@@ -8109,14 +8109,11 @@
   "gemInfo": {
     "Absolution": {
       "requiredLevel": 12,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Siren's Cadence",
-        "classes": [
-          "Templar"
-        ]
+        "quest": "The Siren's Cadence"
       },
-      "free": true,
       "color": "r",
       "support": false,
       "description": "Damages enemies in an area, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the corpse will be consumed to summon a Sentinel of Absolution for a secondary duration, or to refresh the duration and life of an existing one instead if you have the maximum number of them.",
@@ -8142,17 +8139,11 @@
     },
     "Added Lightning Damage": {
       "requiredLevel": 8,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "b",
       "support": true,
       "description": null,
@@ -8167,16 +8158,11 @@
     },
     "Arcane Surge": {
       "requiredLevel": 1,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "Mercy Mission",
-        "classes": [
-          "Scion",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "Mercy Mission"
       },
-      "free": true,
       "color": "b",
       "support": true,
       "description": null,
@@ -8196,8 +8182,11 @@
     },
     "Cast when Damage Taken": {
       "requiredLevel": 38,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "The Eternal Nightmare"
+      },
       "color": "r",
       "support": true,
       "description": null,
@@ -8215,17 +8204,11 @@
     },
     "Clarity": {
       "requiredLevel": 10,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "b",
       "support": false,
       "description": "Casts an aura that grants mana regeneration to you and your allies.",
@@ -8243,15 +8226,11 @@
     },
     "Controlled Destruction": {
       "requiredLevel": 18,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 2,
-        "quest": "Sharp and Cruel",
-        "classes": [
-          "Templar",
-          "Witch"
-        ]
+        "quest": "Sharp and Cruel"
       },
-      "free": true,
       "color": "b",
       "support": true,
       "description": null,
@@ -8268,8 +8247,11 @@
     },
     "Convocation": {
       "requiredLevel": 24,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "siosa",
+        "act": 3,
+        "quest": "A Fixture of Fate"
+      },
       "color": "w",
       "support": false,
       "description": "Recalls all minions that are following you to your location, and grants them a temporary life regeneration effect.",
@@ -8287,14 +8269,11 @@
     },
     "Desecrate": {
       "requiredLevel": 16,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 2,
-        "quest": "Intruders in Black",
-        "classes": [
-          "Witch"
-        ]
+        "quest": "Intruders in Black"
       },
-      "free": false,
       "color": "g",
       "support": false,
       "description": "Desecrates the ground, spawning corpses based on monsters in the current area and dealing chaos damage over time to enemies. If you are using the Raise Spectre skill there is a chance to spawn spectral corpses matching your most recently raised Spectres. Spectral corpses cannot be interacted with except by Minion skills.",
@@ -8316,14 +8295,11 @@
     },
     "Determination": {
       "requiredLevel": 24,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 3,
-        "quest": "Lost in Love",
-        "classes": [
-          "Marauder"
-        ]
+        "quest": "Lost in Love"
       },
-      "free": false,
       "color": "r",
       "support": false,
       "description": "Casts an aura that grants armour to you and your allies.",
@@ -8343,16 +8319,11 @@
     },
     "Elemental Focus": {
       "requiredLevel": 18,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 2,
-        "quest": "Sharp and Cruel",
-        "classes": [
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "Sharp and Cruel"
       },
-      "free": true,
       "color": "b",
       "support": true,
       "description": null,
@@ -8366,17 +8337,11 @@
     },
     "Flame Dash": {
       "requiredLevel": 10,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "b",
       "support": false,
       "description": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
@@ -8400,14 +8365,11 @@
     },
     "Holy Flame Totem": {
       "requiredLevel": 4,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "Breaking Some Eggs",
-        "classes": [
-          "Templar"
-        ]
+        "quest": "Breaking Some Eggs"
       },
-      "free": true,
       "color": "r",
       "support": false,
       "description": "Summons a totem that channels to fire a stream of flame at nearby enemies, and creates an area of consecrated ground around the totem.",
@@ -8434,8 +8396,11 @@
     },
     "Immortal Call": {
       "requiredLevel": 34,
-      "quest": null,
-      "free": false,
+      "source": {
+        "kind": "vendor",
+        "act": 4,
+        "quest": "Breaking the Seal"
+      },
       "color": "r",
       "support": false,
       "description": "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
@@ -8457,17 +8422,11 @@
     },
     "Lightning Penetration": {
       "requiredLevel": 31,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 3,
-        "quest": "A Fixture of Fate",
-        "classes": [
-          "Scion",
-          "Shadow",
-          "Templar",
-          "Witch"
-        ]
+        "quest": "A Fixture of Fate"
       },
-      "free": true,
       "color": "b",
       "support": true,
       "description": null,
@@ -8482,15 +8441,11 @@
     },
     "Minion Damage": {
       "requiredLevel": 8,
-      "quest": {
+      "source": {
+        "kind": "reward",
         "act": 1,
-        "quest": "The Caged Brute",
-        "classes": [
-          "Templar",
-          "Witch"
-        ]
+        "quest": "The Caged Brute"
       },
-      "free": true,
       "color": "b",
       "support": true,
       "description": null,
@@ -8506,14 +8461,11 @@
     },
     "Predator": {
       "requiredLevel": 18,
-      "quest": {
+      "source": {
+        "kind": "vendor",
         "act": 2,
-        "quest": "Sharp and Cruel",
-        "classes": [
-          "Witch"
-        ]
+        "quest": "Sharp and Cruel"
       },
-      "free": false,
       "color": "b",
       "support": true,
       "description": null,

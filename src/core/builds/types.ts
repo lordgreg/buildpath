@@ -160,14 +160,27 @@ export interface LevelingBracket {
   flasks?: FlaskChoice[];
 }
 
+/**
+ * Where a gem comes from for this build's class. `reward` is a free quest
+ * reward, `vendor` is the town vendor pool that the quest opens, `siosa` is the
+ * Act 3 Library vendor who stocks every gem the completed quests unlock,
+ * `divine-font` is a transfigured gem and `level` means the data names no
+ * quest, so the only honest advice is the level gate.
+ */
+export interface GemSource {
+  kind: 'reward' | 'vendor' | 'siosa' | 'divine-font' | 'level';
+  /** Act the quest or vendor is in; null when no quest is named. */
+  act: number | null;
+  /** Quest that grants the gem or opens the vendor stock. */
+  quest: string | null;
+}
+
 /** Where a gem comes from for this build's class. */
 export interface GemAvailability {
   /** Character level needed to use the gem at all. */
   requiredLevel: number;
-  /** The quest that grants it, when it is a quest gem. */
-  quest: { act: number | null; quest: string | null; classes: string[] } | null;
-  /** True when this class gets it as a free quest reward. */
-  free: boolean;
+  /** How this class obtains the gem, and the quest that gates it. */
+  source: GemSource;
   /** Gem colour from RePoE: r=strength, g=dexterity, b=intelligence, w=universal. */
   color?: 'r' | 'g' | 'b' | 'w' | null;
   /** True for a support gem; the tooltip labels its effect differently. */

@@ -712,11 +712,16 @@ rounding rule:
 - **Breadth depth** (D1): the 10-build backlog in §16 is the next breadth pass.
   Publish only the ones that pass every gate, and keep popularity claims off the
   site; the external signals are editorial input, not page copy.
+- **Leveling seed truth** (§16): three seeds name a skill their bracket cannot
+  hold yet. Fixing them moves `seedHash`, drops the carried gates and needs a
+  full re-verify, so it is its own pass.
 - **True third filter phase** (D10): ~18 new preset entries, goldens, audit
   expectations, filenames. Only if the two-phase mapping proves awkward.
 - **`src/core` extraction** (D13): after 1.0, only if a second site exists.
-- **Per-act quest-reward gem data** (D16): dropped from v1; revisit if the
-  bracket list proves too coarse.
+- **Per-act quest-reward gem data** (D16): still dropped from v1.
+  `src/builds/config/gem-sources.yaml` carries a reviewed per-gem supplement for
+  the gems RePoE omits or gets wrong; a full per-act table is only worth it if
+  the bracket list proves too coarse.
 - **Gate numbers**: the §8 defaults are calibrated. Further tuning is a
   calibration run (must-pass and must-fail), not an open design question.
 
@@ -800,6 +805,26 @@ league start. The live poe.ninja top ten has moved since (RF 4.8%, EK 4.1%,
 Cyclone of Tumult 3.5%, Void Shockwave 3.1%, Scorching Ray 3.1%); refreshing the
 snapshot with `npm run meta:add` is a separate task and is not required to start
 these seeds.
+
+### Deferred — leveling seed truth (needs a re-verify)
+
+The guide panel now resolves a step into "use this, switch at that level" from
+the gem level table, so a reader sees every hand-off even where a seed never
+wrote a `leveling.swaps` entry. Three seeds still describe a bracket the game
+does not allow; the panel can explain the contradiction, not remove it.
+
+| Seed | What is wrong | Fix |
+|---|---|---|
+| `penance-brand-elementalist` | no `until: 12` bracket, so the level-12 checkpoint reuses the `until: 28` bracket | add a bracket holding the level-12 gems the gate already measures (Rolling Magma, Flame Wall, Clarity) |
+| `smite-divine-judgement-inquisitor`, `storm-burst-repulsion-hierophant`, `poison-ranged-animate-weapon-necromancer` | level with a transfigured gem from level 1–4; a transfigured gem only exists after the first Labyrinth (Divine Font, or trade) | level with the base skill and move the transfigured gem to a swap at the first Lab |
+| `poison-ranged-animate-weapon-necromancer`, `summon-skeletons-necromancer` | the bracket's headline skill is not the gem the checkpoint measures (`Summon Skeletons` vs `Animate Weapon of Ranged Arms`; `Raise Zombie` vs `Summon Skeletons`) | make `skills[0]` the measured main gem |
+
+Every one of these edits `mechanics.leveling`, so `seedHash` moves, the carried
+gates are dropped, the build reverts to `draft` and is delisted until
+`builds:verify` re-proves all six checkpoints and `builds:publish-pobs`
+republishes the `maps-red` code. That is why it is a separate pass and not part
+of the guide fix. No gate threshold moves, so calibration is a re-run, not a
+retune.
 
 ## 17. Links
 
