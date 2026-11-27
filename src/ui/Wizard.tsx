@@ -14,6 +14,7 @@ import { autoBuildName } from '../core/filter/name.ts';
 import { THEMES } from '../core/filter/themes.ts';
 import { ASCENDANCIES, getAscendancy } from '../meta/ascendancies.ts';
 import { BUILDS, getBuildEntry } from '../meta/builds.ts';
+import { catalogueDps, sortBuilds, type CatalogueSort } from './buildsCatalogue.ts';
 import { FAMILIES, getFamily } from '../meta/families.ts';
 import {
   getAscendanciesForSkill,
@@ -67,6 +68,18 @@ const MODES: { id: BuildMode; label: string; hint: string }[] = [
   { id: 'build', label: 'By verified build', hint: 'A build with its own seed' },
   { id: 'scratch', label: 'From scratch', hint: 'Blank filter, your rules' },
 ];
+
+const BUILD_SORTS: { id: CatalogueSort; label: string; hint: string }[] = [
+  { id: 'tier', label: 'Tier', hint: 'Editorial medal, best first' },
+  { id: 'dps', label: 'Red-map DPS', hint: 'Damage measured at red maps' },
+  { id: 'newest', label: 'Newest', hint: 'Last verified first' },
+];
+
+function dpsLabel(value: number): string {
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(2)}M`;
+  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}k`;
+  return String(value);
+}
 
 const CLASS_ORDER = [
   'Witch',
@@ -141,6 +154,7 @@ export default function Wizard() {
   const [metaGrouping, setMetaGrouping] = useState<'family' | 'weight'>(
     'family',
   );
+  const [buildSort, setBuildSort] = useState<CatalogueSort>('tier');
   const [installOpen, setInstallOpen] = usePersistedOpen('install-open');
   const isStart = state.mode === 'start';
   const autoName = isStart ? '' : autoBuildName(asSelected(state));
@@ -222,6 +236,10 @@ export default function Wizard() {
   const skill =
     getSkill(state.leagueId, state.skillId) ?? familySkills[0] ?? null;
   const metaAscendancies = skill ? getAscendanciesForSkill(skill) : [];
+  const buildOptions = useMemo(
+    () => sortBuilds(BUILDS, buildSort, 'desc'),
+    [buildSort],
+  );
 
   const metaSkillButton = (entry: SkillEntry) => (
     <OptionButton
@@ -767,12 +785,33 @@ export default function Wizard() {
 
             {state.mode === 'build' && (
               <section aria-labelledby="build-heading">
-                <h2
-                  id="build-heading"
-                  className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
-                >
-                  Verified build
-                </h2>
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <h2
+                    id="build-heading"
+                    className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500"
+                  >
+                    Verified build
+                  </h2>
+                  <div className="flex flex-wrap gap-1" role="group" aria-label="Order builds by">
+                    {BUILD_SORTS.map((sort) => (
+                      <button
+                        key={sort.id}
+                        type="button"
+                        title={sort.hint}
+                        aria-pressed={buildSort === sort.id}
+                        onClick={() => setBuildSort(sort.id)}
+                        className={cx(
+                          'rounded border px-2 py-0.5 text-[10px]',
+                          buildSort === sort.id
+                            ? 'border-gold-400/60 bg-gold-400/10 text-gold-300'
+                            : 'border-ink-600 text-zinc-500 hover:text-zinc-300',
+                        )}
+                      >
+                        {sort.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
                 <p className="mt-2 text-xs leading-relaxed text-zinc-500">
                   Each seed is proven against Path of Building before it
                   publishes. The filter highlights the bases that build wants,
@@ -790,16 +829,21 @@ export default function Wizard() {
                   </p>
                 )}
                 <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                  {BUILDS.map((entry) => (
-                    <OptionButton
-                      key={entry.id}
-                      compact
-                      selected={entry.id === state.buildId}
-                      onClick={() => update({ buildId: entry.id })}
-                      title={entry.name}
-                      subtitle={`${entry.class} / ${entry.mainSkill}`}
-                    />
-                  ))}
+                  {buildOptions.map((entry) => {
+                    const damage = entry.gateSteps?.length
+                      ? `${dpsLabel(catalogueDps(entry))} red-map DPS`
+                      : 'not measured';
+                    return (
+                      <OptionButton
+                        key={entry.id}
+                        compact
+                        selected={entry.id === state.buildId}
+                        onClick={() => update({ buildId: entry.id })}
+                        title={entry.name}
+                        subtitle={`${entry.class} / ${entry.mainSkill}${entry.medal ? ` · ${entry.medal}` : ''} · ${damage}`}
+                      />
+                    );
+                  })}
                 </div>
               </section>
             )}
@@ -1036,7 +1080,20 @@ export default function Wizard() {
 
           {filter && (
           <div className="min-w-0 space-y-6">
-            <section className="rounded-xl border border-gold-400/25 bg-ink-800/70 p-5">
+            <section className="relative isolate overflow-hidden rounded-xl border border-gold-400/25 bg-ink-800/70 p-5">
+              {state.mode === 'build' && buildEntry?.status === 'verified' && (
+                <>
+                  <img
+                    src={`${import.meta.env.BASE_URL}builds/${buildEntry.id}.webp`}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    className="pointer-events-none absolute inset-0 -z-10 h-full w-full select-none object-cover object-center opacity-25"
+                  />
+                  <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-ink-950/90 via-ink-950/70 to-ink-950/40" />
+                </>
+              )}
               <p className="text-[11px] uppercase tracking-[0.2em] text-gold-400">
                 {eyebrow}
               </p>
