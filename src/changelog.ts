@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.75.1',
+    date: '2026-11-27',
+    title: 'Build filters follow the gear the builds wear',
+    notes: [
+      "**Every build filter now derives its equipment slots from the gear the PoB gates measured**, instead of the ascendancy default. A sceptre build no longer highlights only wands, a bow build no longer keeps a shield slot, and a two-hander never leaves an offhand behind. A seed can still override any slot.",
+      "**Gear profiles stop borrowing the wrong items.** The `spell`, `chaos`, `cold-spell`, `fire-dot`, `melee-lightning` and `rf` profiles now carry their own Cobalt or Crimson jewels instead of the shared Ghastly Eye summoner jewels; caster, bow, melee and RF profiles use a Leather Belt; and Smite's lightning melee profile wears strength armour rather than the caster set.",
+      "**All 21 builds were re-verified** against the pinned PoB oracle. Calibration was regenerated (126 must-pass, 10 must-fail, green), every published PoB code was reloaded in PoB, and the changed codes were republished to pobb.in.",
+      "A new invariant test fails if a build's filter hides any base the build actually wears at any checkpoint, or if a two-handed build keeps an offhand slot.",
+      "734 tests.",
+    ],
+    commits: [],
+    compare: 'v0.75.0...v0.75.1',
+  },
+  {
     version: '0.75.0',
     date: '2026-11-27',
     title: 'Five more builds, and the breadth pass starts',
