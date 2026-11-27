@@ -8561,6 +8561,35 @@
       "qualityEffect": "Supported Skills have % increased Area of Effect",
       "qualityWorth": "recommended"
     },
+    "Sunder": {
+      "requiredLevel": 12,
+      "quest": {
+        "act": 1,
+        "quest": "The Siren's Cadence",
+        "classes": [
+          "Marauder"
+        ]
+      },
+      "free": true,
+      "color": "r",
+      "support": false,
+      "description": "Slams the ground, creating a slow wave of churning terrain that damages enemies in a sequence of areas in front of you. A number of enemies hit by the wave will release a shockwave, damaging other enemies around them. Using the skill again will stop the previous wave. Requires a Mace, Sceptre, Axe, Staff or Unarmed.",
+      "effect": [
+        "Shockwaves deal 40% less Damage",
+        "Wave Areas gain +0.2 metres to radius for each previous Area in Wave",
+        "Wave Damages 5 Areas",
+        "Wave cannot stop before Damaging 2 Areas",
+        "Wave causes Shockwaves from up to 5 Enemies in each Area"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee",
+        "slam"
+      ],
+      "qualityEffect": "Wave Areas gain metres to radius for each previous Area in Wave",
+      "qualityWorth": "recommended"
+    },
     "Vulnerability": {
       "requiredLevel": 24,
       "quest": {

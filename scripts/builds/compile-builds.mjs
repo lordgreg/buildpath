@@ -390,6 +390,12 @@ function describeGems(seed) {
     }
     for (const gem of bracket.skills ?? []) names.add(gemName(gem));
   }
+  // Swap gems are shown on the guide too, so their colour, availability and
+  // description have to be present even when they never appear in a gate.
+  for (const swap of seed.leveling.swaps ?? []) {
+    names.add(swap.gem);
+    if (swap.replaces) names.add(swap.replaces);
+  }
   const info = {};
   for (const name of [...names].sort()) {
     const entry = gemLevels[name];

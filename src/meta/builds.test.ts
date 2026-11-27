@@ -562,6 +562,24 @@ describe('published build data', () => {
     }
   });
 
+  it('describes and colours every gem named by a leveling swap', () => {
+    for (const build of compiled) {
+      for (const swap of build.leveling.swaps ?? []) {
+        for (const name of [swap.gem, swap.replaces].filter(
+          (entry): entry is string => Boolean(entry),
+        )) {
+          const entry = build.gemInfo?.[name];
+          expect(entry, `${build.class}: ${name}`).toBeDefined();
+          expect(entry?.color, `${build.class}: ${name} has no colour`).toBeTruthy();
+          expect(
+            Boolean(entry?.description) || (entry?.effect?.length ?? 0) > 0,
+            `${build.class}: ${name} has no description or effect`,
+          ).toBe(true);
+        }
+      }
+    }
+  });
+
   it('caps gems the seed says must not be levelled', () => {
     for (const build of compiled) {
       for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
