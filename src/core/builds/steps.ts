@@ -81,8 +81,9 @@ export interface SeedSubStep extends StepDefaults {
   /** Gem groups by equipment slot, the same shape the gate measures. */
   gems?: SkillGroup[];
   flasks?: FlaskChoice[];
-  /** What changes here, in the guide's own words. Required. */
-  watch: string;
+  /** What changes here, in the guide's own words. Optional: a step that only
+   * continues the same setup has nothing to add. */
+  watch?: string;
   /** True when the step gets a PoB checkpoint and a gate report. */
   measure?: boolean;
   /** Why this step is editorial only. Required when `measure` is not true. */
@@ -107,6 +108,11 @@ export interface BuildSubStep extends SeedSubStep {
   /** First level the step covers; 1 for the first leveling step. */
   from: number;
   measure: boolean;
+  /**
+   * The reviewed checkpoint band it inherits, when the compiler was given the
+   * band table. The page and the tests read it instead of hard-coding ids.
+   */
+  band?: string;
 }
 
 /** One root as published, in STEP_ROOTS order. */
@@ -121,6 +127,8 @@ export interface ResolveStepsOptions {
   requiredLevel: (gem: string) => number | undefined;
   /** Budget ids the pipeline can gear from, from gear/budgets.yaml. */
   knownBudgets?: readonly string[];
+  /** Checkpoint bands, so every step publishes the band it inherits. */
+  bands?: readonly CheckpointBand[];
 }
 
 export interface ResolvedSteps {
@@ -239,6 +247,7 @@ export function resolveSteps(steps: SeedSteps, options: ResolveStepsOptions): Re
         root: rootId,
         from: (previousLevel ?? previousRootLevel ?? 0) + 1,
         measure: step.measure === true,
+        ...(options.bands ? { band: bandFor(step.level, options.bands).id } : {}),
       });
       previousLevel = step.level;
     }

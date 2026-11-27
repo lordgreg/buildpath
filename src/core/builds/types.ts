@@ -18,6 +18,8 @@ export interface BuildStepSummary {
   pass: boolean;
   level: number;
   dps: number;
+  /** Checkpoint band the step inherits, so the catalogue never matches on id. */
+  band?: string;
 }
 
 /** A short catalogue badge, e.g. SSF, Minion, HC-ready. */

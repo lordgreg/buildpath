@@ -18,7 +18,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
 import { evaluateGate as evaluateGatePure } from '../../src/core/builds/gates.ts';
-import { bandFor as bandForPure, measuredSteps, resolveMeasuredStep } from '../../src/core/builds/steps.ts';
+import { bandFor as bandForPure, resolveMeasuredStep } from '../../src/core/builds/steps.ts';
 import {
   notableTargetPriorities,
   weaponTraitsFor,
@@ -386,6 +386,30 @@ export function bandFor(level) {
 }
 
 /**
+ * `steps` is an object of roots in a seed and an array in compiled JSON; the
+ * pipeline reads seeds, so it has to accept both.
+ */
+function stepRoots(steps) {
+  return Array.isArray(steps)
+    ? steps
+    : Object.entries(steps).map(([id, root]) => ({ id, ...root }));
+}
+
+/** Every sub-step of a seed, in reading order, measured or not. */
+export function allSteps(steps) {
+  return steps ? stepRoots(steps).flatMap((root) => root.sub ?? []) : [];
+}
+
+/** The pre-refactor step id map, read from a raw seed's `aliases`. */
+export function stepAliasMap(seed) {
+  const aliases = {};
+  for (const step of allSteps(seed.steps)) {
+    for (const alias of step.aliases ?? []) aliases[alias] = step.id;
+  }
+  return aliases;
+}
+
+/**
  * The steps a seed is measured on, in reading order.
  *
  * A seed that declares `steps` is measured on its measured sub-steps. A seed
@@ -407,7 +431,9 @@ export function measuredCheckpointsFor(seed) {
     });
   }
   const bands = checkpointBands();
-  return measuredSteps(seed.steps).map((step) => resolveMeasuredStep(step, bands));
+  return allSteps(seed.steps)
+    .filter((step) => step.measure === true)
+    .map((step) => resolveMeasuredStep(step, bands));
 }
 
 /** Resolve the seed's ascendancy id to the name PoB and TreeData use. */
