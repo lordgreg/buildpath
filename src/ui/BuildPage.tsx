@@ -1031,7 +1031,7 @@ export default function BuildPage() {
                         }}
                         className={
                           active
-                            ? 'font-medium text-gold-200 underline-offset-2'
+                            ? 'text-white underline-offset-2'
                             : 'underline-offset-2 hover:text-zinc-300 hover:underline'
                         }
                       >
