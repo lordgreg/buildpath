@@ -88,11 +88,10 @@ scripts/       YAML compiler and data extractors
 - No network, no secrets, no analytics in the browser.
 - Presets are YAML; compiled JSON is committed and schema-validated.
 - **Guide steps are authored, never generated from their trigger** (D32). A step
-  id is stable and carries `aliases` for the checkpoint ids it replaced; moving
-  a trigger must not rename a URL, a PoB paste key or a calibration key.
+  id is stable; moving a trigger must not rename a URL, a PoB set or a
+  calibration key. There are no step-id aliases or URL fallbacks.
 - "My rules" are keyed by selection; presets always regenerate from the latest
   preset version.
-- Keep old share links working until 1.0.
 - Conventional Commits (`feat:`, `fix:`, `chore:`, `refactor:`, `docs:`,
   `test:`). Never bundle unrelated changes.
 
@@ -157,7 +156,7 @@ Related workflows:
 | Budget gear / archetype gear profiles | `src/builds/gear/` (`budgets.yaml`, `profiles.yaml`, `affixes.yaml`, `eldritch.yaml`) |
 | Gate thresholds, checkpoints, leveling budgets | `scripts/builds/gates.yaml`, `src/builds/config/checkpoints.yaml` |
 | Where a leveling gem comes from (quest, vendor, Siosa, Divine Font) | `src/builds/config/gem-sources.yaml` |
-| Guide steps: roots, sub-steps, triggers, aliases | `src/core/builds/steps.ts`, `docs/STEPS.md` |
+| Guide steps: roots, sub-steps, triggers | `src/core/builds/steps.ts`, `docs/STEPS.md` |
 | Review a build: audit, owner questions, proof, better version | `docs/BUILD-REVIEW.md` |
 | Pantheon and bandit data | `src/builds/config/pantheon.yaml` |
 | Build header art and one-click PoB assets | `public/builds/` |

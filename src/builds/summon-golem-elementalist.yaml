@@ -19,19 +19,18 @@ summary: >-
   builds carries them. No required unique, low APM and a good Dad build.
 
 pros:
-  - { weight: 3, text: "Golems are permanent and keep attacking while you move." }
-  - { weight: 3, text: "No required unique; minion gem levels and supports carry the damage." }
-  - { weight: 3, text: "Low APM and forgiving, which is what a Dad build needs." }
-  - { weight: 2, text: "The same caster gear as the skeleton and spectre builds." }
-  - { weight: 2, text: "Elementalist golem passives make the pack durable." }
-  - { weight: 1, text: "A simple first minion build if you prefer fewer buttons." }
+  - { weight: 3, text: "Permanent minions" }
+  - { weight: 3, text: "No required unique" }
+  - { weight: 3, text: "Low APM and forgiving" }
+  - { weight: 2, text: "Shared caster gear" }
+  - { weight: 1, text: "Simple first minion build" }
+
 cons:
-  - { weight: 3, text: "Golem damage is lower than a dedicated skeleton or spectre build." }
-  - { weight: 3, text: "You are fragile when the golems are dead or far away." }
-  - { weight: 2, text: "Clear speed is slower than a bow build." }
-  - { weight: 2, text: "The golem gem is not available until the middle of the campaign." }
-  - { weight: 1, text: "Many gems compete for slots and links." }
-  - { weight: 1, text: "Golem AI can spread damage away from the target you want." }
+  - { weight: 3, text: "Lower damage than skeletons" }
+  - { weight: 3, text: "Fragile without golems" }
+  - { weight: 2, text: "Slow clear" }
+  - { weight: 2, text: "Late campaign gem" }
+  - { weight: 1, text: "Many gem slots" }
 
 ratings:
   tankiness: 6
@@ -57,9 +56,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Summon Skeletons
-        grade: B
         measure: true
-        aliases: [until-12]
         gems:
           - slot: Body Armour
             gems:
@@ -86,10 +83,8 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Summon Skeletons
-        grade: B
         trigger: { from: 12 }
         measure: true
-        aliases: [until-28]
         gems:
           - slot: Body Armour
             gems:
@@ -122,7 +117,6 @@ steps:
       - id: leveling-28-38
         level: 38
         main: Summon Stone Golem
-        grade: B
         trigger: { from: 28 }
         points: 42
         measure: true
@@ -167,10 +161,8 @@ steps:
       - id: leveling-38-68
         level: 68
         main: Summon Stone Golem
-        grade: B
         trigger: { from: 38, link: 5 }
         measure: true
-        aliases: [until-68]
         gems:
           - slot: Body Armour
             gems:
@@ -214,10 +206,8 @@ steps:
       - id: maps-white
         level: 80
         main: Summon Stone Golem
-        grade: A
         trigger: { from: 68 }
         measure: true
-        aliases: [maps-early]
         gems:
           - slot: Body Armour
             gems:
@@ -259,7 +249,6 @@ steps:
       - id: maps-red
         level: 90
         main: Summon Stone Golem
-        grade: A
         trigger: { from: 80 }
         measure: true
         gems:
@@ -294,10 +283,8 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Summon Stone Golem
-        grade: S
         trigger: { from: 90 }
         measure: true
-        aliases: [pinnacle]
         gems:
           - slot: Body Armour
             gems:

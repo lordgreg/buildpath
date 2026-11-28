@@ -18,19 +18,18 @@ summary: >-
   no unique.
 
 pros:
-  - { weight: 3, text: "One swing hits the target and the enemies around it." }
-  - { weight: 3, text: "Inquisitor critical strikes ignore elemental resistances." }
-  - { weight: 2, text: "No required unique; a rare mace and shield carry the build." }
-  - { weight: 2, text: "Physical-to-lightning conversion and Shockwave scale together." }
-  - { weight: 2, text: "A shield and Consecrated Ground give it more defence than a two-hander." }
-  - { weight: 1, text: "The same mace and shield serve any later lightning attack build." }
+  - { weight: 3, text: "Hits target and nearby" }
+  - { weight: 3, text: "Ignores elemental res" }
+  - { weight: 2, text: "No required unique" }
+  - { weight: 2, text: "Shield and consecration" }
+  - { weight: 1, text: "Shared lightning gear" }
+
 cons:
-  - { weight: 3, text: "Melee range means you take the hits you are trying to dodge." }
-  - { weight: 3, text: "Single-target needs the critical package to be online." }
-  - { weight: 2, text: "Elemental reflect maps are a hard no." }
-  - { weight: 2, text: "Mana is tight before leech and reduced cost are sorted." }
-  - { weight: 1, text: "The build wants a six-link for its best damage." }
-  - { weight: 1, text: "Lightning-resistant bosses slow the fight noticeably." }
+  - { weight: 3, text: "Melee range" }
+  - { weight: 3, text: "Needs crit package" }
+  - { weight: 2, text: "No elemental reflect" }
+  - { weight: 2, text: "Mana issues while leveling" }
+  - { weight: 1, text: "Wants a six-link" }
 
 ratings:
   tankiness: 7
@@ -57,9 +56,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Static Strike
-        grade: B
         measure: true
-        aliases: [until-12]
         gems:
           - slot: Body Armour
             gems:
@@ -85,10 +82,8 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Static Strike
-        grade: B
         trigger: { from: 12 }
         measure: true
-        aliases: [until-28]
         gems:
           - slot: Body Armour
             gems:
@@ -120,7 +115,6 @@ steps:
       - id: leveling-28-38
         level: 38
         main: Static Strike
-        grade: C
         trigger: { from: 28 }
         points: 42
         measure: true
@@ -167,10 +161,8 @@ steps:
       - id: leveling-38-68
         level: 68
         main: Static Strike
-        grade: B
         trigger: { from: 38, link: 5 }
         measure: true
-        aliases: [until-68]
         gems:
           - slot: Body Armour
             gems:
@@ -218,10 +210,8 @@ steps:
       - id: maps-white
         level: 80
         main: Smite of Divine Judgement
-        grade: A
         trigger: { from: 68, skill: Smite of Divine Judgement }
         measure: true
-        aliases: [maps-early]
         gems:
           - slot: Body Armour
             gems:
@@ -266,7 +256,6 @@ steps:
       - id: maps-red
         level: 90
         main: Smite of Divine Judgement
-        grade: A
         trigger: { from: 80 }
         measure: true
         gems:
@@ -301,10 +290,8 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Smite of Divine Judgement
-        grade: S
         trigger: { from: 90 }
         measure: true
-        aliases: [pinnacle]
         gems:
           - slot: Body Armour
             gems:

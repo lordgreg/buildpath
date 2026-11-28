@@ -666,29 +666,11 @@ for (const file of files) {
   // what PoB measured, so it stays out of the hash like the guide prose.
   const hashedLeveling = { ...mechanics.leveling };
   delete hashedLeveling.swaps;
-  // A step grade is the guide's opinion of how the stretch plays, not a fact
-  // PoB measured: adding or changing one must not throw away the gates.
-  const hashedSteps = seed.steps
-    ? Object.fromEntries(
-        Object.entries(seed.steps).map(([rootId, root]) => [
-          rootId,
-          {
-            ...root,
-            sub: (root.sub ?? []).map(({ grade: _grade, ...rest }) => rest),
-          },
-        ]),
-      )
-    : undefined;
-  const mechanicsForHash = { ...mechanics };
-  // Assigning an existing key keeps its position, so a seed without grades
-  // hashes exactly as it did before this field existed.
-  if (hashedSteps) mechanicsForHash.steps = hashedSteps;
-  else delete mechanicsForHash.steps;
   // The profile's bases and affixes are part of what PoB measured, so a change
   // to profiles.yaml must invalidate the gates the same way a seed edit does.
   const gearProfileHash = hashOf(gearProfiles[seed.gearProfile ?? 'caster'] ?? {});
   const seedHash = hashOf({
-    ...mechanicsForHash,
+    ...mechanics,
     leveling: hashedLeveling,
     gearProfileHash,
   });
@@ -724,7 +706,7 @@ for (const file of files) {
     })),
     wickerman,
     stepPlans,
-    ...(steps ? { steps: steps.roots, stepAliases: steps.aliases } : {}),
+    ...(steps ? { steps: steps.roots } : {}),
     gemInfo: describeGems(seed),
     seedHash,
   });

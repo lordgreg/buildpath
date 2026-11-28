@@ -21,19 +21,18 @@ summary: >-
   skeleton build, and no unique is required. A deliberately low-APM Dad build.
 
 pros:
-  - { weight: 3, text: "The spectres keep attacking while you move; low APM and forgiving." }
-  - { weight: 3, text: "No required unique; gem levels and minion supports carry the damage." }
-  - { weight: 3, text: "The same caster gear as the skeleton and raging-spirit builds." }
-  - { weight: 2, text: "Slave Drivers are a known, easy-to-read spectre package." }
-  - { weight: 2, text: "A good Dad build: tanky minions and a simple rotation." }
-  - { weight: 1, text: "The spectre setup is portable between characters with the same links." }
+  - { weight: 3, text: "Low APM and forgiving" }
+  - { weight: 3, text: "No required unique" }
+  - { weight: 3, text: "Shared caster gear" }
+  - { weight: 2, text: "Known spectre package" }
+  - { weight: 1, text: "Portable setup" }
+
 cons:
-  - { weight: 3, text: "You have to acquire and keep the specific spectres." }
-  - { weight: 3, text: "You are fragile when the minion wall breaks or you are caught alone." }
-  - { weight: 2, text: "Clear speed is slower than a bow build." }
-  - { weight: 2, text: "Spectre AI can spread damage away from the target you want." }
-  - { weight: 1, text: "Many gems compete for slots and links." }
-  - { weight: 1, text: "The first spectre setup needs a visit to the right zone." }
+  - { weight: 3, text: "Must acquire spectres" }
+  - { weight: 3, text: "Fragile without minions" }
+  - { weight: 2, text: "Slow clear" }
+  - { weight: 2, text: "Spectre AI" }
+  - { weight: 1, text: "Many gem slots" }
 
 ratings:
   tankiness: 6
@@ -59,9 +58,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Summon Skeletons
-        grade: B
         measure: true
-        aliases: [until-12]
         gems:
           - slot: Body Armour
             gems:
@@ -91,10 +88,8 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Raise Spectre
-        grade: B
         trigger: { from: 12, skill: Raise Spectre }
         measure: true
-        aliases: [until-28]
         gems:
           - slot: Body Armour
             gems:
@@ -127,7 +122,6 @@ steps:
       - id: leveling-28-38
         level: 38
         main: Raise Spectre
-        grade: B
         trigger: { from: 28 }
         points: 42
         measure: true
@@ -171,10 +165,8 @@ steps:
       - id: leveling-38-68
         level: 68
         main: Raise Spectre
-        grade: B
         trigger: { from: 38, link: 5 }
         measure: true
-        aliases: [until-68]
         gems:
           - slot: Body Armour
             gems:
@@ -218,10 +210,8 @@ steps:
       - id: maps-white
         level: 80
         main: Raise Spectre
-        grade: A
         trigger: { from: 68 }
         measure: true
-        aliases: [maps-early]
         gems:
           - slot: Body Armour
             gems:
@@ -263,7 +253,6 @@ steps:
       - id: maps-red
         level: 90
         main: Raise Spectre
-        grade: A
         trigger: { from: 80 }
         measure: true
         gems:
@@ -298,10 +287,8 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Raise Spectre
-        grade: S
         trigger: { from: 90 }
         measure: true
-        aliases: [pinnacle]
         gems:
           - slot: Body Armour
             gems:

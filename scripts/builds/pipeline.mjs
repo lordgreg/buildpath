@@ -400,15 +400,6 @@ export function allSteps(steps) {
   return steps ? stepRoots(steps).flatMap((root) => root.sub ?? []) : [];
 }
 
-/** The pre-refactor step id map, read from a raw seed's `aliases`. */
-export function stepAliasMap(seed) {
-  const aliases = {};
-  for (const step of allSteps(seed.steps)) {
-    for (const alias of step.aliases ?? []) aliases[alias] = step.id;
-  }
-  return aliases;
-}
-
 /**
  * The steps a seed is measured on, in reading order.
  *

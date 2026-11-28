@@ -18,23 +18,12 @@ export function guideFactsHash(build, facts) {
     for (const segment of path.split('.')) {
       cursor = cursor?.[segment];
     }
-    // Step grades are the guide's opinion of how a stretch plays, not a fact
-    // the prose states: editing one must not stale a signed guide section.
-    if (path === 'steps') cursor = withoutStepGrades(cursor);
     return [path, cursor];
   });
   return createHash('sha256')
     .update(JSON.stringify(declared))
     .digest('hex')
     .slice(0, 16);
-}
-
-function withoutStepGrades(steps) {
-  if (!Array.isArray(steps)) return steps;
-  return steps.map((root) => ({
-    ...root,
-    sub: (root.sub ?? []).map(({ grade: _grade, ...rest }) => rest),
-  }));
 }
 
 /**

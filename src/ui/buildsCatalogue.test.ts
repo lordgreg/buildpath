@@ -3,6 +3,7 @@ import type { BuildChip, BuildIndexEntry, BuildStepSummary } from '../core/build
 import { discardLegacyBuilds } from './presets/storage.ts';
 import {
   catalogueDps,
+  catalogueStep,
   catalogueOptions,
   coerceCatalogueState,
   filterBuilds,
@@ -236,6 +237,20 @@ describe('catalogue order', () => {
       ],
     });
     expect(catalogueDps(noRed)).toBe(9_000);
+  });
+
+  it('finds a checkpoint by band before falling back to a legacy id', () => {
+    const migrated = build('e', {
+      gateSteps: [
+        { id: 'maps-red', pass: true, level: 90, dps: 50_000, band: 'maps-red' },
+        { id: 'endgame-pinnacle', pass: true, level: 96, dps: 90_000, band: 'pinnacle' },
+      ],
+    });
+    expect(catalogueStep(migrated, 'pinnacle')?.id).toBe('endgame-pinnacle');
+    const legacy = build('f', {
+      gateSteps: [{ id: 'pinnacle', pass: true, level: 96, dps: 90_000 }],
+    });
+    expect(catalogueStep(legacy, 'pinnacle')?.id).toBe('pinnacle');
   });
 
   it('orders by verification date and keeps unknown dates last in both directions', () => {

@@ -18,19 +18,18 @@ summary: >-
   next one, and it needs no unique.
 
 pros:
-  - { weight: 3, text: "The brand keeps applying damage while you move and dodge." }
-  - { weight: 3, text: "Ignite proliferation clears the pack from one detonation." }
-  - { weight: 2, text: "No required unique; fire damage and gem levels carry the build." }
-  - { weight: 2, text: "Brands can be pre-placed before a boss becomes targetable." }
-  - { weight: 2, text: "The same fire sceptre serves Righteous Fire or any fire spell later." }
-  - { weight: 1, text: "The damage-over-time playstyle is forgiving on reaction time." }
+  - { weight: 3, text: "Damage while moving" }
+  - { weight: 3, text: "Ignite clears packs" }
+  - { weight: 2, text: "No required unique" }
+  - { weight: 2, text: "Pre-place before bosses" }
+  - { weight: 1, text: "Forgiving reaction time" }
+
 cons:
-  - { weight: 3, text: "The brand has to charge before the big detonation lands." }
-  - { weight: 3, text: "Ignite damage needs time to tick, so burst phases favour other builds." }
-  - { weight: 2, text: "Brand attachment is a second thing to manage in a busy pack." }
-  - { weight: 2, text: "Fire-resistant bosses slow the fight noticeably." }
-  - { weight: 1, text: "The build wants a six-link for its best damage." }
-  - { weight: 1, text: "Elemental reflect maps are a hard no." }
+  - { weight: 3, text: "Brand must charge" }
+  - { weight: 3, text: "Ignite needs time" }
+  - { weight: 2, text: "Brand management" }
+  - { weight: 2, text: "Slow vs fire bosses" }
+  - { weight: 1, text: "No elemental reflect" }
 
 ratings:
   tankiness: 5
@@ -57,9 +56,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Rolling Magma
-        grade: B
         measure: true
-        aliases: [until-12]
         gems:
           - slot: Body Armour
             gems:
@@ -85,10 +82,8 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Rolling Magma
-        grade: B
         trigger: { from: 12 }
         measure: true
-        aliases: [until-28]
         gems:
           - slot: Body Armour
             gems:
@@ -114,7 +109,6 @@ steps:
       - id: leveling-28-38
         level: 38
         main: Rolling Magma
-        grade: C
         trigger: { from: 28 }
         points: 42
         measure: true
@@ -147,14 +141,12 @@ steps:
       - id: leveling-38-68
         level: 68
         main: Penance Brand
-        grade: B
         trigger: { from: 38, skill: Penance Brand }
         watch: >-
           Penance Brand from 39, once Deadly Ailments, Unbound Ailments and
           Controlled Destruction are in the link. The fifth link waits for 68 and
           the sixth for red maps.
         measure: true
-        aliases: [until-68]
         gems:
           - slot: Body Armour
             gems:
@@ -192,10 +184,8 @@ steps:
       - id: maps-white
         level: 80
         main: Penance Brand
-        grade: A
         trigger: { from: 68 }
         measure: true
-        aliases: [maps-early]
         gems:
           - slot: Body Armour
             gems:
@@ -231,7 +221,6 @@ steps:
       - id: maps-red
         level: 90
         main: Penance Brand
-        grade: A
         trigger: { from: 80 }
         measure: true
         gems:
@@ -257,10 +246,8 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Penance Brand
-        grade: S
         trigger: { from: 90 }
         measure: true
-        aliases: [pinnacle]
         gems:
           - slot: Body Armour
             gems:

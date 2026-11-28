@@ -77,14 +77,14 @@ mustFail:
 
   - id: uncapped-chaos-at-pinnacle
     seed: lightning-arrow-deadeye
-    checkpoint: pinnacle
+    checkpoint: endgame-pinnacle
     mutate:
       stripAffixes: [resist-chaos]
     failures: ["chaos resistance"]
 
   - id: starting-gear-at-pinnacle
     seed: lightning-arrow-deadeye
-    checkpoint: pinnacle
+    checkpoint: endgame-pinnacle
     mutate:
       budgetId: starting
     failures: ["life", "damage"]

@@ -3,7 +3,6 @@ import {
   bandFor,
   measuredSteps,
   resolveMeasuredStep,
-  resolveStepAlias,
   resolveSteps,
 } from './steps.ts';
 import type { SeedSteps } from './steps.ts';
@@ -354,59 +353,5 @@ describe('checkpoint bands', () => {
     const resolved = resolveMeasuredStep(step, bands);
     expect(resolved.gems).toHaveLength(1);
     expect(resolved.flasks).toEqual([{ slot: 'life', name: 'Small Life Flask' }]);
-  });
-});
-
-describe('step aliases', () => {
-  it('maps a pre-refactor step id onto the step that replaced it', () => {
-    const { aliases, errors } = resolve(
-      leveling({
-        sub: [
-          {
-            id: 'leveling-1-12',
-            level: 12,
-            main: 'Cleave',
-            watch: 'Early.',
-            measure: true,
-            aliases: ['until-12'],
-          },
-          {
-            id: 'leveling-12-28',
-            level: 28,
-            main: 'Sunder',
-            watch: 'Later.',
-            trigger: { from: 12 },
-            measure: true,
-            aliases: ['until-28'],
-          },
-        ],
-      }),
-    );
-    expect(errors).toEqual([]);
-    expect(aliases).toEqual({ 'until-12': 'leveling-1-12', 'until-28': 'leveling-12-28' });
-    expect(resolveStepAlias(aliases, 'until-28')).toBe('leveling-12-28');
-    expect(resolveStepAlias(aliases, 'maps-red')).toBe('maps-red');
-  });
-
-  it('rejects an alias that shadows a step id', () => {
-    const { errors } = resolve(
-      leveling({
-        sub: [
-          { id: 'leveling-1-12', level: 12, main: 'Cleave', watch: 'Early.', measure: true },
-          {
-            id: 'leveling-12-28',
-            level: 28,
-            main: 'Sunder',
-            watch: 'Later.',
-            trigger: { from: 12 },
-            measure: true,
-            aliases: ['leveling-1-12'],
-          },
-        ],
-      }),
-    );
-    expect(errors).toContain(
-      'steps.leveling.sub[1] (leveling-12-28): alias "leveling-1-12" is already a step id or alias',
-    );
   });
 });

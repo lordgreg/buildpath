@@ -18,19 +18,18 @@ summary: >-
   weapons on the ground and a Necromancer to command them.
 
 pros:
-  - { weight: 3, text: "The animated weapons keep firing while you move and dodge." }
-  - { weight: 3, text: "Poison keeps ticking after the volley, so damage does not stop." }
-  - { weight: 2, text: "Damage scales with minion notables and gem levels, not your own gear." }
-  - { weight: 2, text: "No required unique; the build works from the first dropped bow." }
-  - { weight: 2, text: "A ranged minion army is safer than a melee summoner." }
-  - { weight: 1, text: "The same caster gear serves any later Necromancer build." }
+  - { weight: 3, text: "Weapons fire while you move" }
+  - { weight: 3, text: "Poison keeps ticking" }
+  - { weight: 2, text: "Minion scaling, not gear" }
+  - { weight: 2, text: "No required unique" }
+  - { weight: 1, text: "Safer than melee minions" }
+
 cons:
-  - { weight: 3, text: "The army needs ranged weapons on the ground before it starts." }
-  - { weight: 3, text: "Animated weapons expire, and a long boss phase can outlast them." }
-  - { weight: 2, text: "Poison needs a moment to ramp, so short bursts feel slow." }
-  - { weight: 2, text: "Minion AI spreads the firing line and can leave a straggler." }
-  - { weight: 1, text: "Clear speed is slower than a bow or a well-geared melee mapper." }
-  - { weight: 1, text: "Fewer links early means the weapon count matters more than the tooltip." }
+  - { weight: 3, text: "Needs ranged weapons" }
+  - { weight: 3, text: "Weapons expire" }
+  - { weight: 2, text: "Poison needs ramp" }
+  - { weight: 2, text: "Minion AI" }
+  - { weight: 1, text: "Slow clear" }
 
 ratings:
   tankiness: 6
@@ -58,9 +57,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Animate Weapon
-        grade: B
         measure: true
-        aliases: [until-12]
         gems:
           - slot: Body Armour
             gems:
@@ -90,10 +87,8 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Animate Weapon
-        grade: B
         trigger: { from: 12 }
         measure: true
-        aliases: [until-28]
         gems:
           - slot: Body Armour
             gems:
@@ -129,7 +124,6 @@ steps:
       - id: leveling-28-38
         level: 38
         main: Animate Weapon
-        grade: B
         trigger: { from: 28 }
         points: 42
         measure: true
@@ -177,10 +171,8 @@ steps:
       - id: leveling-38-68
         level: 68
         main: Animate Weapon
-        grade: B
         trigger: { from: 38, link: 5 }
         measure: true
-        aliases: [until-68]
         gems:
           - slot: Body Armour
             gems:
@@ -228,10 +220,8 @@ steps:
       - id: maps-white
         level: 80
         main: Animate Weapon
-        grade: A
         trigger: { from: 68 }
         measure: true
-        aliases: [maps-early]
         gems:
           - slot: Body Armour
             gems:
@@ -277,7 +267,6 @@ steps:
       - id: maps-red
         level: 90
         main: Animate Weapon of Ranged Arms
-        grade: A
         trigger: { from: 80, skill: Animate Weapon of Ranged Arms }
         measure: true
         gems: &id001
@@ -328,10 +317,8 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Animate Weapon of Ranged Arms
-        grade: S
         trigger: { from: 90 }
         measure: true
-        aliases: [pinnacle]
         gems: *id001
         flasks: *id002
 

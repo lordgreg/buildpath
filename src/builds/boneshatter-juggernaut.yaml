@@ -23,19 +23,18 @@ dad: true
 gateProfile: standard
 
 pros:
-  - { weight: 3, text: "Very tanky: armour, endurance charges and Juggernaut damage reduction." }
-  - { weight: 3, text: "No required unique; a rare two-handed axe is the whole damage slot." }
-  - { weight: 2, text: "Strong single-target once trauma stacks are running." }
-  - { weight: 2, text: "Cheap to gear because accuracy is solved by Resolute Technique." }
-  - { weight: 2, text: "Trauma scaling rewards staying in the fight." }
-  - { weight: 1, text: "A comfortable lab runner for the first two labyrinths." }
+  - { weight: 3, text: "Very tanky" }
+  - { weight: 3, text: "No required unique" }
+  - { weight: 2, text: "Great single target" }
+  - { weight: 2, text: "Cheap to gear" }
+  - { weight: 1, text: "Comfortable lab runner" }
+
 cons:
-  - { weight: 3, text: "Trauma hurts you; mistakes and long fights tax your own life." }
-  - { weight: 3, text: "Melee range means you eat mechanics a ranged build can walk away from." }
-  - { weight: 2, text: "Attack speed is both damage and survival, so slow weapons feel bad." }
-  - { weight: 2, text: "Clear speed is slower than a bow or a minion build." }
-  - { weight: 1, text: "Mana is tight before leech and reduced cost are solved." }
-  - { weight: 1, text: "Resolute Technique gives up critical strikes entirely." }
+  - { weight: 3, text: "Trauma hurts you" }
+  - { weight: 3, text: "Melee range" }
+  - { weight: 2, text: "Needs attack speed" }
+  - { weight: 2, text: "Slow clear" }
+  - { weight: 1, text: "Mana issues while leveling" }
 
 ratings:
   # Tankiness and single target are 10s on the measured gates: both clear their
@@ -127,13 +126,11 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Cleave
-        grade: B
         watch: >-
           Cleave with Added Fire Damage and Faster Attacks carries acts 1-2.
           Keep a mana flask, because slam attacks are mana-hungry before leech,
           and do not spend currency on a rare axe yet.
         measure: true
-        aliases: [until-12]
         gems:
           - slot: Body Armour
             gems:
@@ -158,7 +155,6 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Sunder
-        grade: B
         trigger: { from: 12, skill: Sunder }
         watch: >-
           Sunder clears packs and hits single targets harder than Cleave, so it
@@ -167,7 +163,6 @@ steps:
           damage jump until Brutality is in the link. Stay on Sunder into the
           next step and do not fix the stretch with currency.
         measure: true
-        aliases: [until-28]
         gems:
           - slot: Body Armour
             gems:
@@ -199,7 +194,6 @@ steps:
       - id: leveling-28-38
         level: 38
         main: Sunder
-        grade: D
         trigger: { from: 28 }
         # `bandFor` would inherit the level-28 budget (30 points) and draw the
         # same tree as the step before it. A level-38 character has 37 points
@@ -254,7 +248,6 @@ steps:
       - id: leveling-38-68
         level: 68
         main: Boneshatter
-        grade: A
         trigger: { from: 38, skill: Boneshatter }
         watch: >-
           Boneshatter starts at 39, with Brutality replacing Added Fire Damage.
@@ -264,7 +257,6 @@ steps:
           Take the labs as they unlock: Unflinching at the normal lab,
           Unbreakable at the cruel lab.
         measure: true
-        aliases: [until-68]
         gems:
           - slot: Body Armour
             gems:
@@ -301,7 +293,6 @@ steps:
       - id: maps-white
         level: 80
         main: Boneshatter
-        grade: A
         trigger: { from: 68, link: 5 }
         watch: >-
           The five-link clears white maps, so spend the first maps on the weapon
@@ -309,7 +300,6 @@ steps:
           Determination once the axe has mana leech; before that the mana flask
           is what pays for attacks.
         measure: true
-        aliases: [maps-early]
         gems:
           - slot: Body Armour
             gems:
@@ -344,7 +334,6 @@ steps:
       - id: maps-yellow
         level: 85
         main: Boneshatter
-        grade: B
         trigger: { from: 80, link: 6 }
         watch: >-
           The six-link is the only change here and red maps measure it, so do not
@@ -383,7 +372,6 @@ steps:
       - id: maps-red
         level: 90
         main: Boneshatter
-        grade: A
         trigger: { from: 85, budget: ssf-week1 }
         watch: >-
           The six-link, 20% quality gems and capped resistances are the red-map
@@ -428,14 +416,12 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Boneshatter
-        grade: S
         trigger: { from: 90, budget: trade }
         watch: >-
           Cap chaos resistance and keep the trauma stacks running while you move
           out of the biggest slams. Enduring Cry before the burst; the weapon is
           the last big purchase and it must keep mana leech.
         measure: true
-        aliases: [pinnacle]
         gems:
           - slot: Body Armour
             gems:
@@ -498,20 +484,12 @@ changelog:
       - "First guide for the Covens league."
       - "The two-handed gear profile no longer inherits a shield; armour rolls and a chaos belt raise life, EHP and max hit at every map checkpoint."
       - "Weapon-scoped tree targets stop points going to one-hand and mace-crit notables under Resolute Technique."
-      - "Herald of Purity, Vulnerability, Added Fire Damage and a Silver Flask raise measured DPS across the leveling and map steps; re-rated S+."
-      - "The weapon carries mana leech so the Herald of Purity and Determination reservation is playable; CWDT stays level 5 and the triggered gems are capped to it."
-      - "A mana flask covers the 28-67 stretch before the rare axe can carry leech; the gate report now publishes unreserved mana and mana cost at every step."
-      - "Small armour slots use the glove/boot armour scale and a Leather Belt; the Melee Splash swap is part of the maps-red plan, not a hidden rating claim."
-      - "The leveling filter hides Chain Belts and normal/magic Paua Rings; rare Paua Rings still show, because a rare can roll life and resists."
-      - "Step plans stop recommending crit multi on a Resolute Technique build and stop calling the 5-link a 6-link."
+      - "Herald of Purity, Vulnerability, Added Fire Damage and a Silver Flask raise measured DPS; re-rated S+."
+      - "The weapon carries mana leech, a mana flask covers the 28-67 stretch, and the gate report now publishes unreserved mana and mana cost."
+      - "The leveling filter and step plans were corrected for Resolute Technique and the 5-link/6-link wording."
   - season: covens
     date: "2026-11-27"
     notes:
-      - "The 28-38 step now draws its own 41-point passive tree instead of repeating the level-28 tree; the 42-point budget is the step's reviewed override, not a derived count."
-      - "The 39-68 leveling step shows the support progression: a 4-link until level 38, then swap Added Fire Damage for Brutality and add Pulverise as the fifth link."
-      - "The 39-68 step plan keeps a mana flask until the axe carries leech; Herald of Purity is part of the level-38 setup and the flask pays for it."
-      - "Boneshatter starts at 39, with Brutality in the link; the 28-38 step stays on Sunder and is the Sunder measurement, because swapping before the next step was the rough patch."
-      - "The switch to Boneshatter is now a step with its own gate report instead of prose inside one long bracket, because a playtest found that stretch the hardest part of the build."
-      - "Brutality is already usable at 38; the 39 swap is the guide's step boundary, and a better axe is an upgrade rather than a gate."
-      - "Ascendancy labs are named correctly: Unflinching normal, Unbreakable cruel, then Undeniable and Unrelenting."
-      - "The stale pinnacle comment is gone; the page keeps reading the committed gate values."
+      - "The 28-38 step now has its own 41-point tree and stays on Sunder; Boneshatter starts at 39 with Brutality and its own gate report."
+      - "The 39-68 step shows the support progression and keeps a mana flask until the axe carries leech."
+      - "Ascendancy labs are named correctly: Unflinching, Unbreakable, Undeniable and Unrelenting."

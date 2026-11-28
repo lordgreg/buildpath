@@ -25,14 +25,6 @@ export type StepRootId = (typeof STEP_ROOTS)[number];
 export const STEP_TRIGGERS = ['skill', 'support', 'link', 'jewel', 'slot', 'budget'] as const;
 export type StepTriggerKind = (typeof STEP_TRIGGERS)[number];
 
-/**
- * How a step plays, authored by the maintainer: S is a power spike or a very
- * smooth stretch, D is the slog you warn people about. It is a guide opinion,
- * not a gate metric, so it never enters the mechanics hash.
- */
-export const STEP_GRADES = ['S', 'A', 'B', 'C', 'D'] as const;
-export type StepGrade = (typeof STEP_GRADES)[number];
-
 /** Item slots a `slot` trigger may name. Mirrors RePoE's equip slots. */
 export const STEP_SLOTS: readonly ItemSlot[] = [
   'weapon',
@@ -86,8 +78,6 @@ export interface SeedSubStep extends StepDefaults {
   level: number;
   /** The skill the step is built around; it must be usable at `level`. */
   main: string;
-  /** How the step plays (S best to D harshest), authored for the guide. */
-  grade?: StepGrade;
   /** Gem groups by equipment slot, the same shape the gate measures. */
   gems?: SkillGroup[];
   flasks?: FlaskChoice[];
@@ -99,8 +89,6 @@ export interface SeedSubStep extends StepDefaults {
   /** Why this step is editorial only. Required when `measure` is not true. */
   reason?: string;
   trigger?: StepTrigger;
-  /** Pre-refactor step ids this one replaces, so old share links still land. */
-  aliases?: string[];
 }
 
 /** One root's authored steps. */
@@ -143,8 +131,6 @@ export interface ResolveStepsOptions {
 
 export interface ResolvedSteps {
   roots: BuildStepRoot[];
-  /** Pre-refactor step id to the sub-step that replaced it. */
-  aliases: Record<string, string>;
   errors: string[];
 }
 
@@ -159,9 +145,7 @@ function gemLevel(name: string, options: ResolveStepsOptions): number | undefine
 export function resolveSteps(steps: SeedSteps, options: ResolveStepsOptions): ResolvedSteps {
   const errors: string[] = [];
   const roots: BuildStepRoot[] = [];
-  const aliases: Record<string, string> = {};
   const ids = new Set<string>();
-  const aliasSources = new Set<string>();
   let previousRootLevel: number | undefined;
 
   for (const rootId of STEP_ROOTS) {
@@ -187,10 +171,6 @@ export function resolveSteps(steps: SeedSteps, options: ResolveStepsOptions): Re
       if (!Number.isInteger(step.level) || step.level < 2 || step.level > 100) {
         errors.push(`${where}: level must be an integer between 2 and 100`);
         continue;
-      }
-
-      if (step.grade !== undefined && !STEP_GRADES.includes(step.grade)) {
-        errors.push(`${where}: grade must be one of ${STEP_GRADES.join(', ')}`);
       }
 
       // Only the first leveling step opens the character and takes no trigger;
@@ -248,14 +228,6 @@ export function resolveSteps(steps: SeedSteps, options: ResolveStepsOptions): Re
         errors.push(`${where}: unknown budget "${step.budget}"`);
       }
 
-      for (const alias of step.aliases ?? []) {
-        if (ids.has(alias) || aliasSources.has(alias)) {
-          errors.push(`${where}: alias "${alias}" is already a step id or alias`);
-        }
-        aliasSources.add(alias);
-        aliases[alias] = step.id;
-      }
-
       sub.push({
         ...step,
         root: rootId,
@@ -284,14 +256,7 @@ export function resolveSteps(steps: SeedSteps, options: ResolveStepsOptions): Re
     errors.push('steps: at least one root is required');
   }
 
-  // An alias may not shadow a real step id, whichever order the two appear in.
-  for (const [alias, target] of Object.entries(aliases)) {
-    if (ids.has(alias) && ids.has(target)) {
-      errors.push(`steps: alias "${alias}" collides with a step id`);
-    }
-  }
-
-  return { roots, aliases, errors };
+  return { roots, errors };
 }
 
 function checkTrigger(
@@ -429,15 +394,4 @@ export function resolveMeasuredStep(
     gems: step.gems ?? [],
     flasks: step.flasks ?? [],
   };
-}
-
-/**
- * Resolve a pre-refactor step id, e.g. `until-28`, to the sub-step that
- * replaced it. Unknown ids come back unchanged so the page can fall back.
- */
-export function resolveStepAlias(
-  aliases: Record<string, string> | undefined,
-  stepId: string,
-): string {
-  return aliases?.[stepId] ?? stepId;
 }

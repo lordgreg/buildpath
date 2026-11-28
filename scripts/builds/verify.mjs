@@ -22,6 +22,8 @@ import {
   seededShuffle,
 } from '../../src/core/builds/repair.ts';
 import { resolveGuide } from './guide.mjs';
+import { mergePobXml } from './pob/merge.mjs';
+import { stepRangeLabel } from '../../src/core/builds/stepView.ts';
 import {
   assertNodeCount,
   buildCheckpointSpec,
@@ -289,7 +291,7 @@ function verifySeed(seed) {
   }
   const report = {};
   const checkpointTrees = {};
-  const stepCodes = {};
+  const stepXmls = {};
   let allPass = true;
 
   for (const checkpoint of measuredCheckpointsFor(seed)) {
@@ -321,7 +323,7 @@ function verifySeed(seed) {
         xmlOut: xmlPath,
       });
     }
-    stepCodes[id] = encodePobCode(readFileSync(xmlPath, 'utf8'));
+    stepXmls[id] = readFileSync(xmlPath, 'utf8');
     const { metrics, scaled, gate, gear, bracket, groups } = repaired;
     allPass = allPass && gate.pass;
     checkpointTrees[id] = repaired.nodes;
@@ -353,7 +355,7 @@ function verifySeed(seed) {
     if (!gate.pass) console.log(`  ${gate.failures.join('; ')}`);
   }
   const codeStep = codeStepFor(seed);
-  if (!stepCodes[codeStep.id]) {
+  if (!stepXmls[codeStep.id]) {
     throw new Error(`${seed.id}: the ${codeStep.id} oracle run wrote no XML`);
   }
   return {
@@ -366,9 +368,8 @@ function verifySeed(seed) {
     pob: {
       ref: process.env.POB_REF ?? 'v2.69.0',
       checkpoint: codeStep.id,
-      code: stepCodes[codeStep.id],
-      byStep: stepCodes,
     },
+    xmls: stepXmls,
   };
 }
 
@@ -399,18 +400,64 @@ const files = readdirSync(seedsDir)
 if (onlyBuild && files.length === 0) {
   throw new Error(`no seed for --build=${onlyBuild}`);
 }
+
+/** Plain-text PoB notes: the introduction plus what changes at each step. */
+function buildPobNotes(build) {
+  const lines = [];
+  lines.push(
+    `${build.name} - ${build.season?.name ?? ''} ${build.patch ?? ''}`.trim(),
+  );
+  lines.push('');
+  if (build.guide?.summary) lines.push(build.guide.summary.text);
+  for (const id of ['leveling', 'maps', 'bossing']) {
+    if (build.guide?.[id]?.text) {
+      lines.push('');
+      lines.push(`${id[0].toUpperCase()}${id.slice(1)}`);
+      lines.push(build.guide[id].text);
+    }
+  }
+  lines.push('');
+  lines.push('Pros');
+  for (const entry of build.pros ?? []) lines.push(`+ ${entry.text}`);
+  lines.push('');
+  lines.push('Cons');
+  for (const entry of build.cons ?? []) lines.push(`- ${entry.text}`);
+  if (build.ratings) {
+    lines.push('');
+    lines.push(
+      `Ratings: tankiness ${build.ratings.tankiness}, single target ${build.ratings.singleTarget}, clear ${build.ratings.clear}, cost ${build.ratings.cost}.`,
+    );
+  }
+  lines.push('');
+  lines.push('Step by step');
+  const steps = build.steps
+    ? build.steps.flatMap((root) => root.sub)
+    : Object.entries(build.gates ?? {}).map(([id, gate]) => ({
+        id,
+        level: gate.level,
+        from: gate.level,
+        root: 'maps',
+        measure: true,
+        main: '',
+      }));
+  for (const step of steps) {
+    const label = stepRangeLabel(step);
+    lines.push(`${label}: ${step.watch ?? step.main}`);
+  }
+  return lines.join('\n');
+}
+
 for (const file of files) {
   const seed = readYaml(resolve(seedsDir, file));
   seed.ascendancyName = ascendancyName(seed);
   const path = resolve(outDir, `${seed.id}.json`);
   const build = JSON.parse(readFileSync(path, 'utf8'));
-  const { report, tree, status, pob } = verifySeed(seed);
+  const { report, tree, status, pob, xmls } = verifySeed(seed);
   // D22: a verification stamp only moves when a measured value moves, so a
   // nightly re-run that proves the same numbers produces no diff and no PR.
   const unchanged = JSON.stringify(build.gates) === JSON.stringify(report);
   build.gates = report;
   build.tree = tree;
-  build.pob = pob;
   build.patch = patchFacts.patch;
   build.status = status;
   const { guide, errors: guideErrors } = resolveGuide(build, seed.guide, {
@@ -424,12 +471,38 @@ for (const file of files) {
   if (!['signed', 'auto-breadth'].includes(guide.summary.status)) {
     build.status = 'draft';
   }
+  const measured = build.steps
+    ? build.steps.flatMap((root) => root.sub).filter((step) => step.measure)
+    : Object.entries(build.gates ?? {}).map(([id, gate]) => ({
+        id,
+        level: gate.level,
+        from: gate.level,
+        root: 'maps',
+        measure: true,
+        main: '',
+      }));
+  const combined = mergePobXml({
+    steps: measured
+      .filter((step) => xmls[step.id])
+      .map((step) => ({
+        id: step.id,
+        label: stepRangeLabel(step).replaceAll('–', '-'),
+        xml: xmls[step.id],
+      })),
+    activeStep: pob.checkpoint,
+    notes: buildPobNotes(build),
+  });
+  build.pob = {
+    ...pob,
+    code: encodePobCode(combined),
+    steps: measured.map((step) => step.id),
+  };
   // A one-click pob.cool link needs a URL whose body is the code, not our JSON.
   // This is the same published code the copy button shows; it is not an XML
   // download, and it keeps the reader on the pinned PoB version.
   const publicBuilds = resolve(root, 'public/builds');
   mkdirSync(publicBuilds, { recursive: true });
-  writeFileSync(resolve(publicBuilds, `${seed.id}.pob`), pob.code);
+  writeFileSync(resolve(publicBuilds, `${seed.id}.pob`), build.pob.code);
   build.pipeline = {
     pobRef: process.env.POB_REF ?? 'v2.69.0',
     treeVersion: checkpoints.treeVersion,

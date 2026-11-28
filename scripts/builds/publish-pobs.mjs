@@ -75,35 +75,30 @@ const previous = existsSync(linksPath)
   : {};
 for (const file of files) {
   const build = JSON.parse(readFileSync(resolve(outDir, file), 'utf8'));
-  const steps = build.pob?.byStep ?? {
-    [build.pob?.checkpoint ?? 'unknown']: build.pob?.code,
-  };
-  links[build.id] = {};
-  for (const [checkpoint, code] of Object.entries(steps)) {
-    if (!code) {
-      console.error(`${build.id}/${checkpoint}: no PoB code; run builds:verify first`);
-      process.exit(1);
-    }
-    const codeHash = createHash('sha256').update(code).digest('hex').slice(0, 16);
-    // A step whose code did not move keeps its paste: re-posting every build on
-    // every release churns public ids and hits the rate limit for no reason.
-    const kept = previous[build.id]?.[checkpoint];
-    if (kept?.codeHash === codeHash) {
-      links[build.id][checkpoint] = kept;
-      reused += 1;
-      continue;
-    }
-    const payload = await publish(build.id, checkpoint, code);
-    links[build.id][checkpoint] = {
-      id: payload,
-      url: `https://pobb.in/${payload}`,
-      codeHash,
-    };
-    published += 1;
-    console.log(`${build.id}/${checkpoint}: https://pobb.in/${payload}`);
-    // The API is rate-limited; a release step can afford a pause.
-    await sleep(900);
+  const code = build.pob?.code;
+  if (!code) {
+    console.error(`${build.id}: no PoB code; run builds:verify first`);
+    process.exit(1);
   }
+  const codeHash = createHash('sha256').update(code).digest('hex').slice(0, 16);
+  // A build whose code did not move keeps its paste: re-posting every build on
+  // every release churns public ids and hits the rate limit for no reason.
+  const kept = previous[build.id];
+  if (kept?.codeHash === codeHash) {
+    links[build.id] = kept;
+    reused += 1;
+    continue;
+  }
+  const payload = await publish(build.id, 'full', code);
+  links[build.id] = {
+    id: payload,
+    url: `https://pobb.in/${payload}`,
+    codeHash,
+  };
+  published += 1;
+  console.log(`${build.id}: https://pobb.in/${payload}`);
+  // The API is rate-limited; a release step can afford a pause.
+  await sleep(900);
 }
 
 writeFileSync(

@@ -18,18 +18,18 @@ summary: >-
   rotation, and it needs no unique.
 
 pros:
-  - { weight: 3, text: "The sentinels fight for you, so you can dodge while the damage continues." }
-  - { weight: 3, text: "Guardian defences and relics make the build forgiving to learn." }
-  - { weight: 2, text: "No required unique; the damage comes from gem levels and minion notables." }
-  - { weight: 2, text: "Absolution clears packs while the sentinels spread to the next group." }
-  - { weight: 2, text: "The same caster gear works for a later minion or spell build." }
-  - { weight: 1, text: "A relaxed league starter for a player who dislikes aiming." }
+  - { weight: 3, text: "Minions fight for you" }
+  - { weight: 3, text: "Forgiving Guardian defences" }
+  - { weight: 2, text: "No required unique" }
+  - { weight: 2, text: "Good pack clear" }
+  - { weight: 1, text: "Relaxed league starter" }
+
 cons:
-  - { weight: 3, text: "Sentinel AI decides part of the fight; they can lag behind a fast player." }
-  - { weight: 3, text: "Single-target needs the sentinels alive and positioned before the burst." }
-  - { weight: 2, text: "Recasting Absolution is a damage loss when a pack dies too quickly." }
-  - { weight: 2, text: "The build is slower than a bow or a well-geared melee mapper." }
-  - { weight: 1, text: "Elemental reflect maps remain a hard no." }
+  - { weight: 3, text: "Minion AI" }
+  - { weight: 3, text: "Needs setup for bosses" }
+  - { weight: 2, text: "Recasting loses damage" }
+  - { weight: 2, text: "Slower mapper" }
+  - { weight: 1, text: "No elemental reflect" }
 
 ratings:
   tankiness: 7
@@ -56,9 +56,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Absolution
-        grade: B
         measure: true
-        aliases: [until-12]
         gems:
           - slot: Body Armour
             gems:
@@ -87,10 +85,8 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Absolution
-        grade: B
         trigger: { from: 12 }
         measure: true
-        aliases: [until-28]
         gems:
           - slot: Body Armour
             gems:
@@ -128,7 +124,6 @@ steps:
       - id: leveling-28-38
         level: 38
         main: Absolution
-        grade: B
         trigger: { from: 28 }
         points: 42
         measure: true
@@ -179,10 +174,8 @@ steps:
       - id: leveling-38-68
         level: 68
         main: Absolution
-        grade: B
         trigger: { from: 38, link: 5 }
         measure: true
-        aliases: [until-68]
         gems:
           - slot: Body Armour
             gems:
@@ -232,10 +225,8 @@ steps:
       - id: maps-white
         level: 80
         main: Absolution
-        grade: A
         trigger: { from: 68 }
         measure: true
-        aliases: [maps-early]
         gems:
           - slot: Body Armour
             gems:
@@ -283,7 +274,6 @@ steps:
       - id: maps-red
         level: 90
         main: Absolution
-        grade: A
         trigger: { from: 80 }
         measure: true
         gems:
@@ -321,10 +311,8 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Absolution
-        grade: S
         trigger: { from: 90 }
         measure: true
-        aliases: [pinnacle]
         gems:
           - slot: Body Armour
             gems:

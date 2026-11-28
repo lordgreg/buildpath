@@ -394,8 +394,8 @@ export interface Build extends BuildIndexEntry {
     ref: string;
     checkpoint: string;
     code: string;
-    /** One code per guide step, so pobb.in can show the tree at that step. */
-    byStep?: Record<string, string>;
+    /** Measured step ids included as tree, item and skill sets. */
+    steps?: string[];
   };
   pros: BuildTradeoff[];
   cons: BuildTradeoff[];
@@ -405,8 +405,6 @@ export interface Build extends BuildIndexEntry {
    * §9.3). Absent until a seed migrates off `leveling.brackets`.
    */
   steps?: BuildStepRoot[];
-  /** Pre-refactor step id to the sub-step that replaced it, so old links land. */
-  stepAliases?: Record<string, string>;
   ascendancyOrder: AscendancyPoint[];
   bandit: BuildBandit;
   pantheon: { major: string; minor: string; note?: string };

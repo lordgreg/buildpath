@@ -6,17 +6,13 @@ export interface PobLink {
   codeHash: string;
 }
 
-const links = data as {
+const links = data as unknown as {
   schemaVersion: number;
-  links: Record<string, Record<string, PobLink>>;
+  links: Record<string, PobLink>;
 };
 
-export function getPobLink(buildId: string, checkpoint: string): PobLink | undefined {
-  return links.links[buildId]?.[checkpoint];
-}
-
-export function getPobLinks(buildId: string): Record<string, PobLink> {
-  return links.links[buildId] ?? {};
+export function getPobLink(buildId: string): PobLink | undefined {
+  return links.links[buildId];
 }
 
 export const POB_LINKS = links.links;

@@ -16,19 +16,18 @@ summary: >-
   pipeline proves, and the first that is not a minion one.
 
 pros:
-  - { weight: 3, text: "Fast clear: a single arrow covers a pack at range." }
-  - { weight: 3, text: "Strong league starter with no required unique." }
-  - { weight: 2, text: "Critical strikes and added lightning scale hard into maps." }
-  - { weight: 2, text: "Ranged play keeps you out of most retaliation range." }
-  - { weight: 2, text: "The filter and the build share the same bow and quiver bases." }
-  - { weight: 1, text: "Gear upgrades are easy to compare because the rare bow is the main damage slot." }
+  - { weight: 3, text: "Fast ranged clear" }
+  - { weight: 3, text: "Strong league starter" }
+  - { weight: 2, text: "Scales hard into maps" }
+  - { weight: 2, text: "Safe ranged play" }
+  - { weight: 1, text: "Easy bow upgrades" }
+
 cons:
-  - { weight: 3, text: "Evasion is the defensive layer; a bad streak of hits ends the map." }
-  - { weight: 3, text: "Single-target needs investment beyond the clear setup." }
-  - { weight: 2, text: "Critical gear is expensive relative to a plain resistance set." }
-  - { weight: 2, text: "Physical burst and spell damage are the common death causes." }
-  - { weight: 1, text: "Mana is tight before leech and reduced cost are online." }
-  - { weight: 1, text: "No built-in sustain; leech or life flasks have to cover it." }
+  - { weight: 3, text: "Evasion can fail" }
+  - { weight: 3, text: "Needs single-target investment" }
+  - { weight: 2, text: "Expensive crit gear" }
+  - { weight: 2, text: "Physical burst kills" }
+  - { weight: 1, text: "Mana issues while leveling" }
 
 ratings:
   tankiness: 4
@@ -89,9 +88,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Lightning Arrow
-        grade: B
         measure: true
-        aliases: [until-12]
         gems:
           - slot: Body Armour
             gems:
@@ -121,10 +118,8 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Lightning Arrow
-        grade: B
         trigger: { from: 12 }
         measure: true
-        aliases: [until-28]
         gems:
           - slot: Body Armour
             gems:
@@ -165,7 +160,6 @@ steps:
       - id: leveling-28-38
         level: 38
         main: Lightning Arrow
-        grade: B
         trigger: { from: 28 }
         points: 42
         measure: true
@@ -216,10 +210,8 @@ steps:
       - id: leveling-38-68
         level: 68
         main: Lightning Arrow
-        grade: B
         trigger: { from: 38, link: 5 }
         measure: true
-        aliases: [until-68]
         gems:
           - slot: Body Armour
             gems:
@@ -266,10 +258,8 @@ steps:
       - id: maps-white
         level: 80
         main: Lightning Arrow
-        grade: A
         trigger: { from: 68 }
         measure: true
-        aliases: [maps-early]
         gems:
           - slot: Body Armour
             gems:
@@ -314,7 +304,6 @@ steps:
       - id: maps-red
         level: 90
         main: Lightning Arrow
-        grade: A
         trigger: { from: 80 }
         measure: true
         gems:
@@ -349,10 +338,8 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Lightning Arrow
-        grade: S
         trigger: { from: 90 }
         measure: true
-        aliases: [pinnacle]
         gems:
           - slot: Body Armour
             gems:

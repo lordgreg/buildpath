@@ -16,19 +16,18 @@ summary: >-
   charges and life coming back. No required unique.
 
 pros:
-  - { weight: 3, text: "Flicker Strike teleports to enemies, so clear is fast and hands-off." }
-  - { weight: 3, text: "No required unique; a rare two-handed axe carries the damage." }
-  - { weight: 2, text: "Slayer leech and culling make the boss fight forgiving." }
-  - { weight: 2, text: "Blood Rage supplies frenzy charges between packs." }
-  - { weight: 2, text: "A fun, high-mobility melee build." }
-  - { weight: 1, text: "The same armour and axe bases as the other melee builds." }
+  - { weight: 3, text: "Fast, hands-off clear" }
+  - { weight: 3, text: "No required unique" }
+  - { weight: 2, text: "Forgiving boss leech" }
+  - { weight: 2, text: "Easy frenzy charges" }
+  - { weight: 1, text: "Fun high mobility" }
+
 cons:
-  - { weight: 3, text: "Flicker teleports you into danger; positioning is not fully yours." }
-  - { weight: 3, text: "Frenzy charge downtime stops the build." }
-  - { weight: 2, text: "Clear speed depends on keeping the chain going." }
-  - { weight: 2, text: "Melee range means you eat mechanics." }
-  - { weight: 1, text: "Mana is tight before leech and reduced cost are solved." }
-  - { weight: 1, text: "A six-link is a large damage step." }
+  - { weight: 3, text: "Teleports into danger" }
+  - { weight: 3, text: "Frenzy downtime stops it" }
+  - { weight: 2, text: "Needs the chain" }
+  - { weight: 2, text: "Melee range" }
+  - { weight: 1, text: "Mana issues while leveling" }
 
 ratings:
   tankiness: 5
@@ -67,9 +66,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Double Strike
-        grade: B
         measure: true
-        aliases: [until-12]
         gems:
           - slot: Body Armour
             gems:
@@ -96,10 +93,8 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Flicker Strike
-        grade: B
         trigger: { from: 12, skill: Flicker Strike }
         measure: true
-        aliases: [until-28]
         gems:
           - slot: Body Armour
             gems:
@@ -131,7 +126,6 @@ steps:
       - id: leveling-28-38
         level: 38
         main: Flicker Strike
-        grade: C
         trigger: { from: 28 }
         points: 42
         measure: true
@@ -175,10 +169,8 @@ steps:
       - id: leveling-38-68
         level: 68
         main: Flicker Strike
-        grade: B
         trigger: { from: 38, link: 5 }
         measure: true
-        aliases: [until-68]
         gems:
           - slot: Body Armour
             gems:
@@ -219,10 +211,8 @@ steps:
       - id: maps-white
         level: 80
         main: Flicker Strike
-        grade: A
         trigger: { from: 68 }
         measure: true
-        aliases: [maps-early]
         gems:
           - slot: Body Armour
             gems:
@@ -261,7 +251,6 @@ steps:
       - id: maps-red
         level: 90
         main: Flicker Strike
-        grade: A
         trigger: { from: 80 }
         measure: true
         gems:
@@ -293,10 +282,8 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Flicker Strike
-        grade: S
         trigger: { from: 90 }
         measure: true
-        aliases: [pinnacle]
         gems:
           - slot: Body Armour
             gems:

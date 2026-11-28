@@ -96,7 +96,7 @@ say that, not the reverse.
 | D21 | Filter output is deterministic **for a fixed preset hash**, not byte-stable across economy deploys — the economy snapshot is part of the preset hash by design. See §7.6. |
 | D22 | `verifiedAt` and gate files are rewritten only when a value moves (no daily churn), through a rolling PR. |
 | D23 | Gear at each checkpoint is **synthesised** from a reviewed budget file plus per-build overrides, never hand-written per build. Unknown mod ids fail the build (§7.7). |
-| D24 | The published PoB code is the gear set of the step in the `maps-red` band, and the page says so. One code per measured step, one named step quoted in the header. |
+| D24 | The published PoB code is one full-journey build: every measured step is its own tree, item set and skill set, the notes carry the introduction and step changes, and the code opens on the `maps-red` step. The page says the code opens there and that the gate report is the source of per-step numbers. |
 | D25 | `factsHash` covers a **declared** input list per guide section, not every resolvable path. |
 | D26 | One build per (main skill, ascendancy). A second seed for a pair is rejected, never published as a near-duplicate under a suffixed id. |
 | D27 | The game patch identity comes from the PoB tag. While PoB has no tag for the live patch, nothing is verified and the site says **"waiting for PoB"** rather than verifying against last patch's data. |
@@ -186,7 +186,6 @@ Hard rules — a PR that violates one of these is rejected, same as the existing
     { "id": "maps",    "sub": [ { "id": "maps-red",         "level": 90, "from": 81, "main": "…", "measure": true, "band": "maps-red" } ] },
     { "id": "endgame", "sub": [ { "id": "endgame-pinnacle", "level": 96, "from": 91, "main": "…", "measure": true, "band": "pinnacle" } ] }
   ],
-  "stepAliases": { "until-12": "leveling-1-12", "until-68": "leveling-38-68", "pinnacle": "endgame-pinnacle" },
   "bandit": "kill-all",
   "pantheon": { "major": "lunaris", "minor": "gruthkul", "note": "…" },
 
@@ -251,12 +250,10 @@ Rules:
   (`src/builds/config/checkpoints.yaml`), which supplies passive points, labs,
   gear budget, gem cap and the gate thresholds. A step that needs its real
   level budget overrides `points`; the thresholds still come from the band.
-  A step may carry an authored `grade` (S–D) for how it plays; it is editorial
-  and excluded from the mechanics hash.
   The band ids
   (`until-12 | until-28 | until-68 | maps-early | maps-red | pinnacle`) are the
   reviewed budget table, not the guide's step list. A step id is authored and
-  stable; `stepAliases` maps a pre-0.79 id onto the step that replaced it.
+  stable.
 - `tree.checkpoints[step]` is a **subset** of `tree.endgame`, asserted by test
   with valid topological order, for every measured step.
 - `gearSets` is keyed by step id and names one `budget`, taken from the step's
@@ -277,10 +274,10 @@ Rules:
   carries a `reason` and no gate.
 - `gearSets[cp].items` is produced by the synthesiser (§7.7). A build YAML only
   carries overrides — the slot whose base the build actually needs.
-- `pob.code` is the XML of the step whose band is `maps-red` (D24), so the code
-  a reader imports matches the gear the page calls "what we tested".
-- `pob.byStep` carries one code per measured step, keyed by step id like the
-  gate report and the tree.
+- `pob.code` is one full-journey build (D24): every measured step is a
+  `<Spec>`, an `<ItemSet>` and a `<SkillSet>`, the active pointers open on the
+  `maps-red` step, and `<Notes>` carries the introduction and step changes.
+- `pob.steps` lists the measured step ids included in the code.
 - `id` is unique across the catalogue: exactly one build per (main skill,
   ascendancy). A second seed for the same pair is rejected, never published as a
   near-duplicate under a suffixed id (D26).
@@ -593,7 +590,7 @@ Stale or failed builds render a banner and are excluded from `builds.html`
 ### 9.3 Steps: three roots and sub-steps
 
 The six checkpoint ids were doing nine jobs at once — guide step, URL `step=`,
-gate key, tree checkpoint, `pob.byStep` key, calibration observation key,
+gate key, tree checkpoint, calibration observation key,
 step-plan key, catalogue strip and filter mapping — while `leveling.brackets`
 and `leveling.swaps` described the same journey a second and third time. That
 is why a gem switch on a level boundary had nowhere to live and ended up as
@@ -633,9 +630,7 @@ The compiler proves, in `src/core/builds/steps.ts`:
 7. an unmeasured step says why, and a measured one never claims a number it did
    not measure.
 
-`aliases` on a sub-step map a pre-refactor id (`until-28`) onto the step that
-replaced it, and `resolveStepAlias` is the only reader; the table lives until
-1.0. `watch` is optional: a step that only continues the same setup says
+`watch` is optional: a step that only continues the same setup says
 nothing, and the band's step plan carries the gear advice. The reference is
 `docs/STEPS.md`.
 
@@ -664,11 +659,9 @@ deploy.
   there is no population data (D1, §7.4). A league selector waits for a second
   league to exist.
 - `build.html#build=<id>&step=<sub-step id>` — the page above. Hash routes, same
-  no-router rule as the builder; `step` holds a sub-step id, the same key the
-  gate report and `pob.byStep` use. A pre-0.79 id (`until-28`, `pinnacle`) still
-  resolves through `stepAliases`, and an id that no longer exists falls back to
-  the first measured step. The `act1…act10` step set in the early revisions
-  never shipped.
+  no-router rule as the builder; `step` holds a sub-step id. An id that no
+  longer exists falls back to the first measured step. The `act1…act10` step
+  set in the early revisions never shipped.
 - `index.html` — the existing builder, introduced as "Filter", with
   `mode=build&build=<id>` preselecting a build.
 - Filter phase mapping (D10):
@@ -689,7 +682,7 @@ facts, delisting, the league window, per-section prose with `factsHash`, the Dad
 profile, ratings, season tags and per-build changelogs shipped in 0.69.0. The
 first breadth batch (Storm Burst of Repulsion, Poison Ranged Animate Weapons,
 Penance Brand, Ice Nova and Smite of Divine Judgement) shipped in 0.75.0. The
-step model — three roots, authored sub-steps, bands and aliases — shipped in
+step model — three roots, authored sub-steps and bands — shipped in
 0.79.0.
 
 What remains is breadth: prove the 10 remaining builds in §16 through the same
@@ -713,8 +706,7 @@ chain. A build that does not pass every gate stays a draft and is not published
 - Step test: ids are unique, levels ascend inside and across roots, only the
   first leveling step omits a trigger, `trigger.from` is the previous level, a
   trigger names at most one kind, `main` and every listed gem are usable at the
-  step's level, an unmeasured step has a reason, and an alias may not shadow a
-  step id.
+  step's level, and an unmeasured step has a reason.
 - Gear-slot test: every gem group's slot exists in that checkpoint's gear, with
   `Shield` mapped to PoB's `Weapon 2`.
 - Jewel-pin test: every `tree.jewels` entry points at a socket in the checkpoint
@@ -886,11 +878,11 @@ Berserker, Forged Frostbearer and Wretched Defiler Spectres, and Poison SRS.
 - validate against `src/presets/schema/build.schema.json`;
 - carry `season: covens` and a changelog entry whose newest season matches;
 - pass every measured step, or stay a draft with its failures named;
-- publish a `maps-red` PoB code and a matching `.pob` asset;
+- publish one full-journey PoB code and a matching `.pob` asset;
 - add six must-pass calibration observations, one per band (126 → 186 across 31
   builds), and re-run the must-fail set;
 - not duplicate a `(main skill, ascendancy)` pair (D26);
-- carry generated 16:9 header art and per-step pobb.in pastes at release.
+- carry generated 16:9 header art and one pobb.in paste at release.
 
 `src/builds/config/league.yaml` and the repo's `covens.yaml` snapshot are from
 league start. The live poe.ninja top ten has moved since (RF 4.8%, EK 4.1%,

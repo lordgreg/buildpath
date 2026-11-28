@@ -64,6 +64,31 @@ if (files.length === 0) {
 }
 
 let failed = 0;
+
+function activeSpecNodes(xml) {
+  const tree = xml.match(/<Tree\b[^>]*activeSpec="(\d+)"[^>]*>([\s\S]*?)<\/Tree>/);
+  if (!tree) return 0;
+  const specs = [...tree[2].matchAll(/<Spec\b[^>]*\bnodes="([^"]*)"/g)];
+  const nodes = specs[Number(tree[1]) - 1]?.[1] ?? '';
+  return nodes.split(',').filter(Boolean).length;
+}
+
+function activeItemSetSlots(xml) {
+  const items = xml.match(/<Items\b[^>]*activeItemSet="(\d+)"[^>]*>([\s\S]*?)<\/Items>/);
+  if (!items) return 0;
+  const sets = [...items[2].matchAll(/<ItemSet\b[^>]*\bid="(\d+)"[^>]*>([\s\S]*?)<\/ItemSet>/g)];
+  const set = sets.find((entry) => entry[1] === items[1])?.[2] ?? '';
+  return (set.match(/<Slot\b/g) ?? []).length;
+}
+
+function activeSkillSetGems(xml) {
+  const skills = xml.match(/<Skills\b[^>]*activeSkillSet="(\d+)"[^>]*>([\s\S]*?)<\/Skills>/);
+  if (!skills) return 0;
+  const sets = [...skills[2].matchAll(/<SkillSet\b[^>]*\bid="(\d+)"[^>]*>([\s\S]*?)<\/SkillSet>/g)];
+  const set = sets.find((entry) => entry[1] === skills[1])?.[2] ?? '';
+  return (set.match(/<Gem\b/g) ?? []).length;
+}
+
 for (const file of files) {
   const build = JSON.parse(readFileSync(resolve(buildsDir, file), 'utf8'));
   const problems = [];
@@ -91,30 +116,57 @@ for (const file of files) {
   }
   if (xml && !xml.startsWith('<?xml')) problems.push('decoded bytes are not XML');
   if (xml && !xml.includes('<PathOfBuilding>')) problems.push('XML has no <PathOfBuilding> root');
+  if (xml && !xml.includes('<Notes>')) problems.push('XML has no <Notes> block');
 
-  // The code lists the normal tree plus the ascendancy nodes; the gate report
-  // keeps them apart because the page shows the tree without the ascendancy.
+  const stepIds = build.pob.steps ?? Object.keys(build.gates ?? {});
+  const gates = stepIds.map((id) => build.gates?.[id]).filter(Boolean);
+  const expectedSpecs = stepIds.length;
+  const expectedItems = gates.reduce(
+    (sum, entry) => sum + (entry.gear?.length ?? 0) + (entry.flasks?.length ?? 0),
+    0,
+  );
+  const expectedGems = gates.reduce(
+    (sum, entry) => sum + (entry.gems ?? []).reduce((count, group) => count + group.gems.length, 0),
+    0,
+  );
+  const expectedFlasks = gates.reduce((sum, entry) => sum + (entry.flasks?.length ?? 0), 0);
   const expectedNodes = gate.tree.nodes.length + (gate.metrics?.ascendancy ?? 0);
-  const expectedItems = gate.gear?.length ?? 0;
-  const expectedGems = (gate.gems ?? []).reduce((sum, group) => sum + group.gems.length, 0);
+  const expectedActiveItems =
+    (gate.gear?.filter((item) => !item.slot.startsWith('Jewel')).length ?? 0) +
+    (gate.flasks?.length ?? 0);
+  const expectedActiveGems = (gate.gems ?? []).reduce(
+    (sum, group) => sum + group.gems.length,
+    0,
+  );
+
   if (xml) {
-    const specNodes = xml.match(/<Spec\b[^>]*\bnodes="([^"]*)"/)?.[1] ?? '';
-    const allocated = specNodes.split(',').filter(Boolean).length;
-    const flaskSlots = count(xml, '<Slot name="Flask ');
-    const items = count(xml, '<Item id=') - flaskSlots;
+    const allocated = activeSpecNodes(xml);
+    const specs = count(xml, '<Spec ');
+    const itemSets = count(xml, '<ItemSet ');
+    const skillSets = count(xml, '<SkillSet ');
+    const items = count(xml, '<Item id=');
     const gems = count(xml, '<Gem ');
+    const flaskSlots = count(xml, '<Slot name="Flask ');
     if (allocated !== expectedNodes) {
-      problems.push(`XML has ${allocated} nodes, the ${build.pob.checkpoint} gate has ${expectedNodes}`);
+      problems.push(`active spec has ${allocated} nodes, the ${build.pob.checkpoint} gate has ${expectedNodes}`);
+    }
+    if (specs !== expectedSpecs) {
+      problems.push(`XML has ${specs} specs, expected ${expectedSpecs}`);
+    }
+    if (itemSets !== expectedSpecs) {
+      problems.push(`XML has ${itemSets} item sets, expected ${expectedSpecs}`);
+    }
+    if (skillSets !== expectedSpecs) {
+      problems.push(`XML has ${skillSets} skill sets, expected ${expectedSpecs}`);
     }
     if (items !== expectedItems) {
-      problems.push(`XML has ${items} items, the ${build.pob.checkpoint} gate has ${expectedItems}`);
+      problems.push(`XML has ${items} items, expected ${expectedItems}`);
     }
     if (gems !== expectedGems) {
-      problems.push(`XML has ${gems} gems, the ${build.pob.checkpoint} gate has ${expectedGems}`);
+      problems.push(`XML has ${gems} gems, expected ${expectedGems}`);
     }
-    const expectedFlasks = gate.flasks?.length ?? 0;
     if (flaskSlots !== expectedFlasks) {
-      problems.push(`XML has ${flaskSlots} flasks, the ${build.pob.checkpoint} gate has ${expectedFlasks}`);
+      problems.push(`XML has ${flaskSlots} flasks, expected ${expectedFlasks}`);
     }
   }
 
@@ -139,14 +191,22 @@ for (const file of files) {
   if (xml && !line) {
     problems.push(`PoB did not load the code: ${(result?.stderr ?? '').trim().split('\n').at(-1)}`);
   } else if (line) {
-    const [nodes, items, gems, flasks] = line.slice('RESULT '.length).split(' ').map(Number);
+    const [nodes, specs, itemSets, skillSets, items, gems, flasks, activeSlots, activeGems] = line
+      .slice('RESULT '.length)
+      .split(' ')
+      .map(Number);
     if (nodes !== expectedNodes) problems.push(`PoB loaded ${nodes} nodes, expected ${expectedNodes}`);
-    if (items - flasks !== expectedItems) {
-      problems.push(`PoB loaded ${items - flasks} items, expected ${expectedItems}`);
-    }
+    if (specs !== expectedSpecs) problems.push(`PoB loaded ${specs} specs, expected ${expectedSpecs}`);
+    if (itemSets !== expectedSpecs) problems.push(`PoB loaded ${itemSets} item sets, expected ${expectedSpecs}`);
+    if (skillSets !== expectedSpecs) problems.push(`PoB loaded ${skillSets} skill sets, expected ${expectedSpecs}`);
+    if (items !== expectedItems) problems.push(`PoB loaded ${items} items, expected ${expectedItems}`);
     if (gems !== expectedGems) problems.push(`PoB loaded ${gems} gems, expected ${expectedGems}`);
-    if (flasks !== (gate.flasks?.length ?? 0)) {
-      problems.push(`PoB loaded ${flasks} flasks, expected ${gate.flasks?.length ?? 0}`);
+    if (flasks !== expectedFlasks) problems.push(`PoB loaded ${flasks} flasks, expected ${expectedFlasks}`);
+    if (activeSlots !== expectedActiveItems) {
+      problems.push(`PoB active item set has ${activeSlots} slots, expected ${expectedActiveItems}`);
+    }
+    if (activeGems !== expectedActiveGems) {
+      problems.push(`PoB active skill set has ${activeGems} gems, expected ${expectedActiveGems}`);
     }
   }
 
@@ -156,8 +216,8 @@ for (const file of files) {
     for (const problem of problems) console.error(`  ${problem}`);
   } else {
     console.log(
-      `${file}: ${build.pob.checkpoint} code loads ` +
-        `(${expectedNodes} nodes, ${expectedItems} items, ${expectedGems} gems)`,
+      `${file}: full code loads ` +
+        `(${expectedSpecs} steps, ${expectedNodes} active nodes, ${expectedItems} items, ${expectedGems} gems)`,
     );
   }
 }

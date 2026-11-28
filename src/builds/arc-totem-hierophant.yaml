@@ -35,19 +35,18 @@ summary: >-
 # once published a 917k pinnacle that a legal character could not reach.
 
 pros:
-  - { weight: 3, text: "Two totems clear and boss from one six-link body, and the stronger pulse does the boss damage." }
-  - { weight: 3, text: "The required uniques are cheap: a Lapis Amulet and a strength shield, both common drops." }
-  - { weight: 2, text: "Lioneye's Remorse, Determination, the flasks and the endurance charges give the life pool a real physical layer." }
-  - { weight: 2, text: "Totems channel while you move, so positioning is far less punishing than self-cast." }
-  - { weight: 2, text: "No expensive required unique; the pinnacle bill is the six-link, the 21/20 gems and the Awakened supports, with Awakened Empower the priciest." }
-  - { weight: 1, text: "Arc chains to a whole pack, so the clear swap needs no aiming." }
+  - { weight: 3, text: "Totems clear and boss" }
+  - { weight: 3, text: "Cheap required uniques" }
+  - { weight: 2, text: "Real physical layer" }
+  - { weight: 2, text: "Safe while moving" }
+  - { weight: 1, text: "Arc clears without aiming" }
+
 cons:
-  - { weight: 3, text: "Both totems must survive the whole fight; area damage deletes them and the damage stops." }
-  - { weight: 3, text: "The default link needs a transfigured gem from the Divine Font or trade, and the pinnacle damage needs an Awakened Empower." }
-  - { weight: 2, text: "Clear is a totem's clear, not a bow build's; you walk between packs and wait for placement." }
-  - { weight: 2, text: "Blasphemy, Determination and Clarity leave only a few casts of unreserved mana; the mana flask is part of the rotation." }
-  - { weight: 2, text: "Two uniques are required for the measured red-map and pinnacle sets; they are cheap but they are not optional." }
-  - { weight: 1, text: "The tree's fire and cold walkers are planner artifacts with dead damage lines." }
+  - { weight: 3, text: "Totems die to area damage" }
+  - { weight: 3, text: "Needs transfigured gem" }
+  - { weight: 2, text: "Slow between packs" }
+  - { weight: 2, text: "Tight mana" }
+  - { weight: 1, text: "Expensive endgame gems" }
 
 ratings:
   # Measured on legal gems and not doubled for the second totem. Tankiness is
@@ -99,9 +98,7 @@ steps:
       - id: leveling-1-12
         level: 12
         main: Rolling Magma
-        grade: B
         measure: true
-        aliases: [until-12]
         gems:
           - slot: Body Armour
             gems:
@@ -127,10 +124,8 @@ steps:
       - id: leveling-12-28
         level: 28
         main: Lightning Tendrils
-        grade: B
         trigger: { from: 12, skill: Lightning Tendrils }
         measure: true
-        aliases: [until-28]
         gems:
           - slot: Body Armour
             gems:
@@ -160,7 +155,6 @@ steps:
       - id: leveling-28-38
         level: 38
         main: Lightning Tendrils
-        grade: C
         trigger: { from: 28 }
         points: 42
         measure: true
@@ -206,10 +200,8 @@ steps:
       - id: leveling-38-68
         level: 68
         main: Lightning Tendrils
-        grade: B
         trigger: { from: 38, link: 5 }
         measure: true
-        aliases: [until-68]
         gems:
           - slot: Body Armour
             gems:
@@ -254,10 +246,8 @@ steps:
       - id: maps-white
         level: 80
         main: Lightning Tendrils of Eccentricity
-        grade: A
         trigger: { from: 68, skill: Lightning Tendrils of Eccentricity }
         measure: true
-        aliases: [maps-early]
         gems:
           - slot: Body Armour
             gems:
@@ -301,7 +291,6 @@ steps:
       - id: maps-red
         level: 90
         main: Lightning Tendrils of Eccentricity
-        grade: A
         trigger: { from: 80 }
         measure: true
         gems:
@@ -357,10 +346,8 @@ steps:
       - id: endgame-pinnacle
         level: 96
         main: Lightning Tendrils of Eccentricity
-        grade: S
         trigger: { from: 90 }
         measure: true
-        aliases: [pinnacle]
         gems:
           - slot: Body Armour
             gems:
@@ -531,13 +518,8 @@ changelog:
   - season: covens
     date: "2026-11-27"
     notes:
-      - "The default link is Lightning Tendrils of Eccentricity on Spell Totems: its wide pulse clears and its stronger pulse bosses. Arc keeps the four-link helmet for open layouts."
-      - "The gate report measures the default link at red maps and pinnacle; the published paste holds both links, and the four-link Arc is the clear swap."
-      - "Lightning Tendrils, self-cast and then on Spell Totem, carries the campaign; the transfigured version takes over at the Merciless Labyrinth."
-      - "Arcane Blessing and Blasphemy with Conductivity are the damage layers; Determination, a Granite flask, a Basalt flask and Conviction of Power are the physical layer."
-      - "The tree buys life first; chaos resistance reaches 75% at pinnacle only, and every checkpoint passes the standard floors rather than the lower Dad damage floor."
-      - "Withdrew the S+: the gate had measured level-16 Awakened supports and Empower, and the game caps Awakened supports at 5 and Awakened Empower at 4. The late links now cap those levels explicitly."
-      - "On legal gems pinnacle measures 295k per totem and red maps 187k per totem; every checkpoint still passes its standard floor."
-      - "Ratings are 10/8/8/9 and the medal is S: tankiness stays 10 on 46.0k EHP and 14.1k max hit, while single target and clear drop to 8."
-      - "Two cheap common-drop uniques are required at red maps and pinnacle; the leveling steps stay unique-free, and the bill is the six-link, the 21/20 gems and the Awakened supports."
-      - "A 28-38 step now shows the four-link and the gems that unlock at 38; the fifth link waits for 68 and the sixth for red maps."
+      - "Lightning Tendrils of Eccentricity on Spell Totems is the default link; Arc stays as the four-link clear swap."
+      - "Arcane Blessing and Blasphemy/Conductivity are the damage layers; Determination, granite/basalt flasks and Conviction of Power are the physical layer."
+      - "Withdrew the S+ after the gate was found measuring level-16 Awakened supports; legal caps give 295k per totem at pinnacle and 187k at red maps."
+      - "Ratings are 10/8/8/9 and the medal is S; two cheap common-drop uniques are required at red maps and pinnacle."
+      - "The 28-38 step shows the four-link and the gems that unlock at 38; the fifth link waits for 68 and the sixth for red maps."

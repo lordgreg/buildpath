@@ -16,21 +16,22 @@ build, so a second step in the same band does not grow the report.
 
 ## What the page shows
 
-- **Step picker** — three labelled groups. Each step reads `Lv 13–28` inside
-  Leveling and `Lv 90` elsewhere, with `not measured` on an editorial step.
-- **What changes here** — the section that used to be "Leveling this step". It
-  prints the step's `watch` line for a migrated seed, or the derived leveling
-  plan for one that still has brackets. One section, one job.
+- **Step picker** — root first: Leveling, Maps and Endgame; picking a root shows
+  its sub-steps. Each step reads `Lv 13–28` inside Leveling and `Lv 90`
+  elsewhere, with `not measured` on an editorial step.
+- **Until you reach level X** — the section under Gems. It prints the step's
+  `watch` line for a migrated seed, or the derived leveling plan for one that
+  still has brackets. One section, one job.
 - **Numbers on an editorial step** — the nearest measured step at or before it,
   labelled in the gate report (`this step is not measured · showing Lv 13–28`),
   so a reader is never shown a number that belongs to a different step silently.
-- **Old links** — `step=until-28` resolves through `stepAliases`; an id that no
-  longer exists falls back to the first measured step rather than a blank page.
+- **Unknown step ids** — an id that no longer exists falls back to the first
+  measured step rather than a blank page. There are no alias tables.
 
 ## Why
 
 The six checkpoint ids did nine jobs: guide step, URL `step=`, gate key, tree
-checkpoint, `pob.byStep` key, calibration observation key, step-plan key,
+checkpoint, calibration observation key, step-plan key,
 catalogue strip and filter mapping. `leveling.brackets` and `leveling.swaps`
 described the same journey two more times, in different vocabularies.
 
@@ -153,23 +154,7 @@ the same tree as the step before it. A step that must show its own points sets
 
 The gate thresholds still come from the band (`until-28` here), so the
 override moves the tree, not the floor. Re-run `builds:verify -- --build=<id>`
-and republish that build's pastes: the tree changes the PoB code.
-
-### Grade
-
-`grade: S | A | B | C | D` is authored, not measured: how the stretch plays.
-S is a power spike or a very smooth stretch, D is the slog the guide warns
-about. It is shown on the step picker and in "What changes here" and is a
-guide opinion, so it is excluded from the mechanics hash: changing a grade
-never invalidates a gate report.
-
-```yaml
-- id: leveling-28-38
-  level: 38
-  main: Sunder
-  grade: D   # the rough stretch: no Brutality yet
-  measure: true
-```
+and republish that build's paste: the tree changes the PoB code.
 
 ### Advice
 
@@ -193,20 +178,7 @@ never invalidates a gate report.
 4. `trigger.from` equals the previous step's level;
 5. a trigger names at most one kind;
 6. `main` and every listed gem are usable at `level`;
-7. an unmeasured step has a `reason`; a `budget` names a real budget;
-8. an alias may not shadow a step id or another alias.
-
-## Old links
-
-A sub-step lists the pre-refactor ids it replaces:
-
-```yaml
-- id: leveling-12-28
-  aliases: [until-28]
-```
-
-`resolveStepAlias(stepAliases, 'until-28')` returns `leveling-12-28`, and returns
-an unknown id unchanged. The map stays until 1.0.
+7. an unmeasured step has a `reason`; a `budget` names a real budget.
 
 ## Cost
 
@@ -221,17 +193,17 @@ does not grow with the step count.
 
 The mechanical mapping used for the catalogue:
 
-| Old bracket | Step read at | Alias |
-|---|---|---|
-| `until: 12` | `leveling-1-12` (12) | `until-12` |
-| `until: 28` | `leveling-12-28` (28) | `until-28` |
-| `until: 68` | `leveling-38-68` (68) | `until-68` |
-| `bracketFor(80)` | `maps-white` (80) | `maps-early` |
-| `bracketFor(90)` | `maps-red` (90) | — |
-| `bracketFor(96)` | `endgame-pinnacle` (96) | `pinnacle` |
+| Old bracket | Step read at |
+|---|---|
+| `until: 12` | `leveling-1-12` (12) |
+| `until: 28` | `leveling-12-28` (28) |
+| `until: 68` | `leveling-38-68` (68) |
+| `bracketFor(80)` | `maps-white` (80) |
+| `bracketFor(90)` | `maps-red` (90) |
+| `bracketFor(96)` | `endgame-pinnacle` (96) |
 
 The step keeps the bracket's gem groups and flasks, so the gate measures what it
-measured before; only the id, the alias and the band lookup are new. A swap's
+measured before; only the id and the band lookup are new. A swap's
 own `note` becomes the `watch` line of the step whose level covers it: the
 migration invents no prose.
 
@@ -242,7 +214,7 @@ reader, and the switch that mattered lived in `swaps`. It is now
 `leveling-28-38` (Sunder, four links, CWDT and the curse at 38) and
 `leveling-38-68` (Boneshatter from 39, Brutality and the fifth link at 68).
 The 28-38 step is its own measurement, which is what makes the playtest's "the
-switch is a pain" a number instead of a feeling, and the step grade marks it D.
+switch is a pain" a number instead of a feeling.
 Brutality is already usable at 38; the 39 swap is the guide's step boundary, not
 a gem-level restriction. The two Sunder steps get their own step-plan keys so
 neither inherits the other's advice.

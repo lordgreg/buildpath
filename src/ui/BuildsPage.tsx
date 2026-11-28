@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import type {
-  BuildChip,
   BuildIndexEntry,
   BuildStepSummary,
 } from '../core/builds/types.ts';
 import { BUILDS, BUILD_VERSION } from '../meta/builds.ts';
 import { APP_VERSION } from '../version.ts';
 import SiteHeader from './SiteHeader.tsx';
+import BuildChips from './build/BuildChips.tsx';
 import { MedalBadge } from './RatingPanel.tsx';
 import {
   CATALOGUE_SORTS,
   DEFAULT_CATALOGUE_STATE,
   catalogueOptions,
+  catalogueStep,
   directionLabel,
   filterBuilds,
   keepKnown,
@@ -22,14 +23,6 @@ import {
   type CatalogueState,
   type CatalogueView,
 } from './buildsCatalogue.ts';
-
-const CHIP_STYLE: Record<BuildChip['kind'], string> = {
-  ssf: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300',
-  defence: 'border-sky-500/30 bg-sky-500/10 text-sky-300',
-  playstyle: 'border-gold-400/40 bg-gold-400/10 text-gold-200',
-  note: 'border-ink-600 bg-ink-900/70 text-zinc-400',
-  season: 'border-violet-400/40 bg-violet-500/10 text-violet-200',
-};
 
 const SORT_LABEL: Record<CatalogueSort, string> = {
   tier: 'Tier grade',
@@ -56,40 +49,7 @@ function titleCase(slug: string): string {
 }
 
 function step(entry: BuildIndexEntry, id: string): BuildStepSummary | undefined {
-  return entry.gateSteps?.find((candidate) => candidate.id === id);
-}
-
-function ChipRow({ chips, bare = false }: { chips: BuildChip[]; bare?: boolean }) {
-  return (
-    <ul className={`flex flex-wrap gap-1.5 ${bare ? '' : 'mt-3'}`}>
-      {chips.map((chip) => (
-        <li key={`${chip.kind}-${chip.label}`}>
-          <span
-            title={chip.title}
-            className={`inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] uppercase tracking-wide ${CHIP_STYLE[chip.kind]}`}
-          >
-            {chip.label}
-          </span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function StatusBadge({ status }: { status: BuildIndexEntry['status'] }) {
-  return (
-    <span
-      className={
-        status === 'verified'
-          ? 'rounded border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-emerald-300'
-          : status === 'stale'
-            ? 'rounded border border-rose-500/40 bg-rose-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-rose-300'
-            : 'rounded border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-[10px] uppercase tracking-wide text-amber-300'
-      }
-    >
-      {status}
-    </span>
-  );
+  return catalogueStep(entry, id);
 }
 
 /** The generated key art, kept quiet enough that the text stays the subject. */
@@ -183,19 +143,12 @@ function BuildCard({ build }: { build: BuildIndexEntry }) {
           </div>
           <div className="flex shrink-0 items-center gap-2">
             {build.medal && <MedalBadge medal={build.medal} small />}
-            <StatusBadge status={build.status} />
           </div>
         </div>
 
         <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-400">{build.summary}</p>
 
-        {build.chips && <ChipRow chips={build.chips} />}
-        {build.gateSteps && (
-          <p className="mt-2 text-[10px] text-zinc-600">
-            {build.gateSteps.filter((entry) => entry.pass).length}/{build.gateSteps.length} checkpoints
-            passed
-          </p>
-        )}
+        {build.chips && <BuildChips chips={build.chips} />}
 
         <DamagePair build={build} />
 
@@ -227,12 +180,11 @@ function BuildRow({ build }: { build: BuildIndexEntry }) {
           </h2>
           <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-zinc-500">{build.summary}</p>
           <div className="mt-1.5 flex flex-wrap items-center gap-2">
-            {build.chips && <ChipRow chips={build.chips} bare />}
+            {build.chips && <BuildChips chips={build.chips} bare />}
             <DamagePair build={build} compact />
           </div>
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-2 sm:flex-col sm:items-end">
-          <StatusBadge status={build.status} />
           <BuildActions build={build} />
         </div>
       </div>
@@ -317,7 +269,6 @@ export default function BuildsPage() {
   const published = BUILDS.filter((build) => build.status === 'verified');
   const stale = BUILDS.filter((build) => build.status === 'stale');
   const hidden = BUILDS.length - published.length;
-  const calibrated = published.filter((build) => build.calibrated).length;
   const families = [...new Set(published.map((build) => build.family))].sort();
 
   const [controls, setControls] = useState<CatalogueState>(readCatalogueState);
@@ -372,7 +323,7 @@ export default function BuildsPage() {
             </p>
           </div>
           <span className="rounded border border-ink-600 px-2 py-1 text-[11px] text-zinc-500">
-            {published.length} verified · {calibrated} calibrated
+            {published.length} builds
           </span>
         </div>
       </header>

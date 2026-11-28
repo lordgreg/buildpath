@@ -33,12 +33,12 @@ export default function RatingPanel({
     <section aria-labelledby="ratings" className="rounded-lg border border-ink-700 bg-ink-900/40 p-3">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h2
+          <h3
             id="ratings"
             className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500"
           >
             Ratings
-          </h2>
+          </h3>
           <p className="mt-0.5 text-[10px] text-zinc-600">Editorial 1–10; 10 is best.</p>
         </div>
         <div className="text-center">

@@ -21,12 +21,12 @@ export default function FeedbackPanel({ buildId }: { buildId: string }) {
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2
+          <h3
             id="feedback"
             className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500"
           >
             Player feedback
-          </h2>
+          </h3>
           <p className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm text-zinc-300">
             <span title="Thumbs up">
               <span aria-hidden="true">👍</span> {feedback.up}

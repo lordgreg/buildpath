@@ -23,7 +23,6 @@ import {
   gateThresholdsHash,
   measuredCheckpointsFor,
   outDir,
-  stepAliasMap,
   readYaml,
   runOracle,
   scaledMetrics,
@@ -60,10 +59,7 @@ function endgamePlan(seed) {
 function evaluate(seedId, checkpointId, mutate = {}) {
   const seed = seeds.get(seedId);
   if (!seed) throw new Error(`unknown calibration seed "${seedId}"`);
-  // A fixture names the band it is about (`maps-red`); after a seed migrates,
-  // that name is an alias of the step that replaced it.
-  const wanted = stepAliasMap(seed)[checkpointId] ?? checkpointId;
-  const checkpoint = measuredCheckpointsFor(seed).find((entry) => entry.id === wanted);
+  const checkpoint = measuredCheckpointsFor(seed).find((entry) => entry.id === checkpointId);
   if (!checkpoint) throw new Error(`unknown calibration step "${checkpointId}"`);
   const plan = endgamePlan(seed);
   const points = mutate.points ?? checkpoint.points;

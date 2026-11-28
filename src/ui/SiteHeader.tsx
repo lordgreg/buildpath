@@ -1,4 +1,5 @@
 import { APP_VERSION } from '../version.ts';
+import SiteSearch from './SiteSearch.tsx';
 
 export type SitePage = 'filter' | 'builds' | 'build' | 'demo' | 'changelog' | 'tests';
 
@@ -81,6 +82,7 @@ export default function SiteHeader({ active }: { active: SitePage }) {
               </a>
             );
           })}
+          <SiteSearch />
           <a
             href="https://github.com/lordgreg/buildpath"
             target="_blank"

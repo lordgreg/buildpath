@@ -39,9 +39,9 @@ export function wickermanPhase(checkpoint: string): WickermanStepId {
 
 function SlotCard({ slot, pick }: { slot: WickermanSlot; pick: WickermanPick }) {
   return (
-    <article className="rounded-lg border border-violet-400/25 bg-violet-500/[0.04] p-3">
+    <article className="rounded-lg border border-ink-700 bg-ink-900/40 p-3">
       <div className="flex flex-wrap items-center justify-between gap-1">
-        <p className="text-[9px] uppercase tracking-[0.18em] text-violet-300">
+        <p className="text-[9px] uppercase tracking-[0.18em] text-zinc-500">
           {SLOT_LABEL[slot]}
         </p>
         <span className="text-[9px] uppercase tracking-wide text-zinc-600">
@@ -50,7 +50,7 @@ function SlotCard({ slot, pick }: { slot: WickermanSlot; pick: WickermanPick }) 
       </div>
       <p className="mt-1 text-sm font-semibold leading-tight text-zinc-100">{pick.name}</p>
       <div className="mt-1 flex flex-wrap items-center gap-1.5">
-        <span className="rounded border border-violet-400/40 bg-violet-500/10 px-1.5 py-0.5 text-[9px] uppercase tracking-wide text-violet-200">
+        <span className="rounded border border-ink-600 bg-ink-800 px-1.5 py-0.5 text-[9px] uppercase tracking-wide text-zinc-300">
           {TIER_LABEL[pick.tier]}
         </span>
         <span className="text-[10px] text-zinc-500">
@@ -76,7 +76,7 @@ export default function WickermanPanel({
   return (
     <div>
       <div className="mb-2 flex flex-wrap items-center gap-2">
-        <span className="rounded border border-violet-400/40 bg-violet-500/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-violet-200">
+        <span className="rounded border border-ink-600 bg-ink-800 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-zinc-300">
           {phase}
         </span>
         <span className="text-[10px] text-zinc-600">

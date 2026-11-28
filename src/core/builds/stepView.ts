@@ -9,7 +9,7 @@
  * Pure, so the grouping and the old-link resolution can be tested without a DOM.
  */
 import { STEP_ROOTS } from './steps.ts';
-import type { BuildStepRoot, StepGrade, StepRootId } from './steps.ts';
+import type { BuildStepRoot, StepRootId } from './steps.ts';
 
 export const STEP_ROOT_LABELS: Record<StepRootId, string> = {
   leveling: 'Leveling',
@@ -43,8 +43,6 @@ export interface StepViewStep {
   gateKey?: string;
   /** What changes at this step. Authored on a migrated seed. */
   watch?: string;
-  /** How the step plays, S best to D harshest. Authored, never generated. */
-  grade?: StepGrade;
   /** Why an editorial step is unmeasured. */
   reason?: string;
 }
@@ -58,7 +56,6 @@ export interface StepViewRoot {
 /** The minimum a build needs to expose for the page to group its steps. */
 export interface StepViewSource {
   steps?: BuildStepRoot[];
-  stepAliases?: Record<string, string>;
   gates?: Record<string, { level: number }>;
 }
 
@@ -76,7 +73,6 @@ export function stepView(build: StepViewSource): StepViewRoot[] {
         measured: step.measure,
         ...(step.measure ? { gateKey: step.id } : {}),
         ...(step.watch ? { watch: step.watch } : {}),
-        ...(step.grade ? { grade: step.grade } : {}),
         ...(step.reason ? { reason: step.reason } : {}),
       })),
     }));
@@ -106,20 +102,16 @@ export function stepView(build: StepViewSource): StepViewRoot[] {
 }
 
 /**
- * Which step to open. A migrated seed's own id wins, then a pre-refactor id
- * through the alias table, then the first measured step - so a stale share link
- * still lands on a step that has numbers.
+ * Which step to open: the requested one when it exists, otherwise the first
+ * measured step, so a stale link still lands on a step that has numbers.
  */
 export function resolveStepId(
   roots: StepViewRoot[],
-  aliases: Record<string, string> | undefined,
   requested: string | null | undefined,
 ): string {
   const steps = roots.flatMap((root) => root.steps);
   const ids = new Set(steps.map((step) => step.id));
   if (requested && ids.has(requested)) return requested;
-  const aliased = requested ? aliases?.[requested] : undefined;
-  if (aliased && ids.has(aliased)) return aliased;
   return steps.find((step) => step.measured)?.id ?? steps[0]?.id ?? '';
 }
 

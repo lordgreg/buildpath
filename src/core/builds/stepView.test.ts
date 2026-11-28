@@ -31,7 +31,6 @@ const authored: BuildStepRoot[] = [
         level: 12,
         main: 'Cleave',
         watch: 'Cleave carries the first acts.',
-        grade: 'B',
         measure: true,
       },
       {
@@ -106,7 +105,6 @@ describe('step view of a migrated build', () => {
       measured: true,
       gateKey: 'leveling-1-12',
       watch: 'Cleave carries the first acts.',
-      grade: 'B',
     });
   });
 
@@ -122,24 +120,18 @@ describe('choosing the step to open', () => {
   const roots = stepView({ steps: authored });
 
   it('opens the requested step when it exists', () => {
-    expect(resolveStepId(roots, undefined, 'maps-white')).toBe('maps-white');
-  });
-
-  it('follows an alias from a pre-refactor link', () => {
-    expect(resolveStepId(roots, { 'until-28': 'leveling-12-28' }, 'until-28')).toBe(
-      'leveling-12-28',
-    );
+    expect(resolveStepId(roots, 'maps-white')).toBe('maps-white');
   });
 
   it('falls back to the first measured step for an unknown id', () => {
-    expect(resolveStepId(roots, undefined, 'until-99')).toBe('leveling-1-12');
+    expect(resolveStepId(roots, 'until-99')).toBe('leveling-1-12');
   });
 
   it('falls back to the first step when nothing is measured', () => {
     const editorial = stepView({
       steps: [{ id: 'leveling', sub: authored[0]!.sub.map((step) => ({ ...step, measure: false })) }],
     });
-    expect(resolveStepId(editorial, undefined, null)).toBe('leveling-1-12');
+    expect(resolveStepId(editorial, null)).toBe('leveling-1-12');
   });
 
   it('resolves the current step from the roots', () => {

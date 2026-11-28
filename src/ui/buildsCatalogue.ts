@@ -1,4 +1,4 @@
-import type { BuildIndexEntry } from '../core/builds/types.ts';
+import type { BuildIndexEntry, BuildStepSummary } from '../core/builds/types.ts';
 import type { BuildMedal } from '../core/builds/ratings.ts';
 
 /**
@@ -133,12 +133,21 @@ export function filterBuilds(builds: BuildIndexEntry[], state: CatalogueState): 
   });
 }
 
+/** The checkpoint a band names, whether the seed uses a band or a legacy id. */
+export function catalogueStep(
+  build: BuildIndexEntry,
+  band: string,
+): BuildStepSummary | undefined {
+  return (
+    build.gateSteps?.find((step) => step.band === band) ??
+    build.gateSteps?.find((step) => step.id === band)
+  );
+}
+
 /** The red-map damage the card shows; a build without that step uses its best. */
 export function catalogueDps(build: BuildIndexEntry): number {
   // The band is what "red maps" means; the id is only a name a seed chose.
-  const red =
-    build.gateSteps?.find((step) => step.band === 'maps-red') ??
-    build.gateSteps?.find((step) => step.id === 'maps-red');
+  const red = catalogueStep(build, 'maps-red');
   if (red) return red.dps;
   return build.gateSteps?.reduce((best, step) => Math.max(best, step.dps), 0) ?? 0;
 }
