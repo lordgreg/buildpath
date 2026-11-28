@@ -67,9 +67,10 @@ guide:
       gate measures. A better two-handed axe is an upgrade, not a gate. The
       first checkpoint measures {{gates.leveling-1-12.metrics.life|int}} life and
       {{gates.leveling-1-12.metrics.dps|dps}} damage; the second measures
-      {{gates.leveling-12-28.metrics.dps|dps}} with a self-cast Vulnerability. The mana
-      flask covers you until the rare axe carries leech; the Silver Flask comes
-      with that axe.
+      {{gates.leveling-12-28.metrics.dps|dps}} with a self-cast Vulnerability.
+      The mana flask covers the early stretch; Mana Leech takes over in the
+      next leveling step, and the Karui Chopper adds weapon leech when the
+      build swaps to Boneshatter.
     facts: [gates.leveling-1-12.metrics.life, gates.leveling-1-12.metrics.dps, gates.leveling-12-28.metrics.dps]
   maps:
     text: >-
@@ -166,8 +167,10 @@ steps:
           same four links and asks you to stand still and stack trauma, so it is
           not a damage jump until Brutality is in the link. Herald of Ash
           unlocks at 16; keep it off until the 28 step, because it reserves a
-          quarter of the bar and Sunder is mana-hungry before leech. Stay on
-          Sunder into the next step and do not fix the stretch with currency.
+          quarter of the bar and Sunder is mana-hungry before leech. The mana
+          flask is only for this stretch: Mana Leech unlocks at 31 and
+          takes over in the 28-38 step. Stay on Sunder and do not fix the
+          stretch with currency.
         measure: true
         gems:
           - slot: Body Armour
@@ -220,9 +223,10 @@ steps:
           it and save for the axe. Cast when Damage Taken carries Immortal Call
           only: at 38 the unreserved pool is 67 mana, and Immortal Call plus
           Vulnerability would cost 109, so self-cast the curse. Herald of Ash
-          and Determination are the auras here, with the mana flask paying for
-          them until the axe has leech; swap Ash for Herald of Purity at 39 when
-          Brutality replaces Added Fire.
+          and Determination are the auras here. Mana Leech replaces
+          Faster Attacks and pays for the attacks, so this step does not need a
+          mana flask; swap Ash for Herald of Purity at 39 when Brutality
+          replaces Added Fire and the Karui Chopper supplies the leech.
         measure: true
         gems:
           - slot: Body Armour
@@ -230,7 +234,7 @@ steps:
               - Sunder
               - Melee Physical Damage
               - Added Fire Damage
-              - Faster Attacks
+              - Mana Leech
           - slot: Weapon 1
             gems:
               - Leap Slam
@@ -249,7 +253,7 @@ steps:
               - { name: Vulnerability, note: "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together." }
         flasks:
           - { slot: life, name: "Giant Life Flask", note: "Divine drops at 60, so the giant flask is what you have at 38." }
-          - { slot: mana, name: "Greater Mana Flask", note: "The axe cannot carry leech yet, so keep this." }
+          - { slot: utility, name: "Silver Flask", note: "Onslaught; Mana Leech covers the mana." }
           - { slot: utility, name: "Granite Flask", note: "Armour is the defensive layer." }
           - { slot: utility, name: "Basalt Flask", note: "Physical damage reduction." }
           - { slot: utility, name: "Amethyst Flask", note: "Chaos resistance." }
@@ -260,9 +264,9 @@ steps:
         trigger: { from: 38, skill: Boneshatter }
         watch: >-
           Boneshatter starts at 39, with Brutality replacing Added Fire Damage.
-          The fifth link is Pulverise and it waits for 68. Herald of Purity and
-          Determination are the auras; until the axe carries leech, run a mana
-          flask in place of the Silver Flask and drop it once leech is online.
+          The Karui Chopper is the axe for this step: its mana leech pays for
+          the attacks, so there is no mana flask. The fifth link is Pulverise
+          and it waits for 68. Herald of Purity and Determination are the auras;
           CWDT carries Immortal Call only; self-cast Vulnerability on rares and
           bosses. Take the labs as they unlock: Unflinching at the normal lab,
           Unbreakable at the cruel lab.
@@ -306,10 +310,10 @@ steps:
         trigger: { from: 68, link: 5 }
         watch: >-
           The five-link clears white maps, so spend the first maps on the weapon
-          and the resistances, not on the chest. Fit Herald of Purity with
-          Determination once the axe has mana leech; before that the mana flask
-          is what pays for attacks. CWDT carries Immortal Call only, so keep
-          Vulnerability on a manual cast for rares and bosses.
+          and the resistances, not on the chest. Herald of Purity and
+          Determination are the auras; the Karui Chopper's mana leech pays for
+          the attacks. CWDT carries Immortal Call only, so keep Vulnerability on
+          a manual cast for rares and bosses.
         measure: true
         gems:
           - slot: Body Armour
@@ -502,13 +506,13 @@ changelog:
       - "The two-handed gear profile no longer inherits a shield; armour rolls and a chaos belt raise life, EHP and max hit at every map checkpoint."
       - "Weapon-scoped tree targets stop points going to one-hand and mace-crit notables under Resolute Technique."
       - "Herald of Purity, Vulnerability, Added Fire Damage and a Silver Flask raise measured DPS; re-rated S+."
-      - "The weapon carries mana leech, a mana flask covers the 28-67 stretch, and the gate report now publishes unreserved mana and mana cost."
+      - "The Karui Chopper carries mana leech, and the 28-38 step uses Mana Leech Support instead of a mana flask."
       - "The leveling filter and step plans were corrected for Resolute Technique and the 5-link/6-link wording."
   - season: covens
     date: "2026-11-27"
     notes:
       - "The 28-38 step now has its own 41-point tree and stays on Sunder; Boneshatter starts at 39 with Brutality and its own gate report."
-      - "The 39-68 step shows the support progression and keeps a mana flask until the axe carries leech."
+      - "The 39-68 step uses the Karui Chopper's mana leech; no mana flask is needed."
       - "Ascendancy labs are named correctly: Unflinching, Unbreakable, Undeniable and Unrelenting."
   - season: covens
     date: "2026-11-28"
@@ -517,3 +521,4 @@ changelog:
       - "Herald of Ash covers the pre-Brutality Sunder stretch; Herald of Purity returns when Brutality replaces Added Fire."
       - "Cast when Damage Taken carries Immortal Call only; Vulnerability is self-cast because the 38 mana pool cannot pay both."
       - "The early and 68 checkpoints use level-legal gear, and the axe carries a Dexterity roll it can equip."
+      - "The 28-38 step runs Mana Leech instead of Faster Attacks and drops the mana flask; the Karui Chopper's leech covers the 39-68 step."

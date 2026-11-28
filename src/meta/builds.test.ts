@@ -633,11 +633,12 @@ describe('published build data', () => {
         .gems.map((gem) => (typeof gem === 'string' ? gem : gem.name));
 
     // The rough patch: stay on the Sunder four-link, no Brutality yet.
+    // Mana Leech replaces Faster Attacks so the step does not need a flask.
     expect(bodyOf('leveling-28-38')).toEqual([
       'Sunder',
       'Melee Physical Damage',
       'Added Fire Damage',
-      'Faster Attacks',
+      'Mana Leech',
     ]);
     // The payoff: Boneshatter with Brutality, then Pulverise as the fifth link.
     expect(bodyOf('leveling-38-68')).toEqual(
