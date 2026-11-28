@@ -138,6 +138,21 @@ const GUIDE_LABEL: Record<(typeof GUIDE_SECTIONS)[number], string> = {
   bossing: 'Bossing',
 };
 
+const SECTION_IDS = [
+  'introduction',
+  'guide',
+  'tree',
+  'gear',
+  'gems',
+  'ascendancy',
+  'pantheon',
+  'bandits',
+  'wickerman',
+  'pob',
+  'filter',
+  'changelog',
+] as const;
+
 const STATUS_HELP: Record<GuideSection['status'], string> = {
   signed: 'Reviewed and signed by the maintainer.',
   'auto-breadth': 'Generated breadth copy that passed the checks but was not signed.',
@@ -234,6 +249,7 @@ export default function BuildPage() {
   const [stepOverride, setStepOverride] = useState<string | null>(
     () => hashParam('step'),
   );
+  const [activeSection, setActiveSection] = useState<string>('introduction');
 
   useEffect(() => {
     const onHash = () => {
@@ -249,6 +265,35 @@ export default function BuildPage() {
   useEffect(() => {
     document.title = buildGuideTitle(build?.name);
   }, [build]);
+
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      let current: string = SECTION_IDS[0];
+      for (const id of SECTION_IDS) {
+        const element = document.getElementById(id);
+        if (!element) continue;
+        if (element.getBoundingClientRect().top <= 120) current = id;
+        else break;
+      }
+      setActiveSection((previous) => (previous === current ? previous : current));
+    };
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        update();
+      });
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, [build?.id]);
 
   if (!build) {
     return (
@@ -297,7 +342,6 @@ export default function BuildPage() {
   const selectStep = (next: string) => {
     setStepOverride(next);
     writeStep(build.id, next);
-    document.getElementById('guide')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
@@ -974,20 +1018,28 @@ export default function BuildPage() {
                   ['pob', 'Path of Building', false],
                   ['filter', 'Filter', false],
                   ['changelog', 'Changelog', false],
-                ].map(([anchor, label, nested]) => (
-                  <li key={anchor as string} className={nested ? 'lg:pl-3' : ''}>
-                    <a
-                      href={`#${anchor}`}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        document.getElementById(anchor as string)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      }}
-                      className="underline-offset-2 hover:text-zinc-300 hover:underline"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
+                ].map(([anchor, label, nested]) => {
+                  const active = activeSection === anchor;
+                  return (
+                    <li key={anchor as string} className={nested ? 'lg:pl-3' : ''}>
+                      <a
+                        href={`#${anchor}`}
+                        aria-current={active ? 'location' : undefined}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          document.getElementById(anchor as string)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }}
+                        className={
+                          active
+                            ? 'font-medium text-gold-200 underline-offset-2'
+                            : 'underline-offset-2 hover:text-zinc-300 hover:underline'
+                        }
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
           </aside>
