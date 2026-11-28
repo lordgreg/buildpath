@@ -17,6 +17,26 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.82.0',
+    date: '2026-11-28',
+    title: 'Guide restructure, site search and one full-journey PoB code',
+    notes: [
+      "**The guide page has an Introduction and a Guide.** Summary, pros and cons, ratings and the prose overview sit under Introduction; the root-first step picker, gate report and per-step sections sit under Guide. Contents lists only Introduction, Guide, the per-step anchors, Path of Building, Filter and Changelog.",
+      "**One full PoB code per build.** Every measured step is its own tree, item set and skill set, and the notes carry the introduction and each step's changes. PoB opens on the red-map step; the gate report remains the source of per-step numbers. One pobb.in paste per build replaces the per-step pastes.",
+      "**Step grades are gone.** The S-D play-feel badge was an error and is removed from the data, the seeds, the page and the docs.",
+      "**Root-first step picker.** Pick Leveling, Maps or Endgame, then a sub-step. The same compact picker sits in the sticky menu above Contents.",
+      "**Gate report and changelog collapse.** The gate summary shows damage, life, ascendancy and any failure count; the full table opens on demand. Changelog entries are one line per big change.",
+      "**The guide header shows the catalogue tags and measured damage.** SSF, season, playstyle, Hardcore and the other chips sit under the title, with red-map and pinnacle DPS. The verified badge and the checkpoint count are internal and no longer rendered.",
+      "**Pinnacle DPS now appears.** The catalogue card looked up the step id `pinnacle`, but migrated seeds use `endgame-pinnacle` with band `pinnacle`; the band-aware lookup fixes the missing number.",
+      "**Site search.** Ctrl/Cmd+K opens search over build titles, classes, ascendancies, main skills, tags and site pages such as Changelog and Filter.",
+      "**Shorter pros and cons.** Every build now uses four or five short phrases instead of sentence-length entries, and the changelog notes are capped at one line.",
+      "**No URL fallbacks.** Old section anchors and step-id aliases are removed; `step=` must name a real step. Unknown ids fall back to the first measured step.",
+      "810 tests.",
+    ],
+    commits: [],
+    compare: 'v0.81.0...v0.82.0',
+  },
+  {
     version: '0.81.0',
     date: '2026-11-27',
     title: 'Boneshatter review fixes and a no-flask validation',
