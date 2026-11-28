@@ -29,6 +29,7 @@ import {
   buildCheckpointSpec,
   checkItemParsing,
   checkpoints,
+  decodePobCode,
   encodePobCode,
   evaluateGate,
   gates,
@@ -492,9 +493,21 @@ for (const file of files) {
     activeStep: pob.checkpoint,
     notes: buildPobNotes(build),
   });
+  // Compression output can differ between zlib builds even when the XML is
+  // byte-identical. Keep the committed code when it decodes to the same build,
+  // so a nightly run on another zlib version does not churn the code, the
+  // pobb.in hash or the .pob asset.
+  let code = encodePobCode(combined);
+  if (build.pob?.code) {
+    try {
+      if (decodePobCode(build.pob.code) === combined) code = build.pob.code;
+    } catch {
+      // A broken committed code is replaced by the fresh one.
+    }
+  }
   build.pob = {
     ...pob,
-    code: encodePobCode(combined),
+    code,
     steps: measured.map((step) => step.id),
   };
   // A one-click pob.cool link needs a URL whose body is the code, not our JSON.

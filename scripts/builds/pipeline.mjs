@@ -13,7 +13,7 @@
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { deflateSync } from 'node:zlib';
+import { deflateSync, inflateSync } from 'node:zlib';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
@@ -356,6 +356,12 @@ export function encodePobCode(xml) {
     .toString('base64')
     .replaceAll('+', '-')
     .replaceAll('/', '_');
+}
+
+/** Decode a PoB code exactly as PoB's import tab does. */
+export function decodePobCode(code) {
+  const standard = code.replaceAll('-', '+').replaceAll('_', '/');
+  return inflateSync(Buffer.from(standard, 'base64')).toString('utf8');
 }
 
 /** The bracket a checkpoint's level falls into. */
