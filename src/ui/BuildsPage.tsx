@@ -70,16 +70,9 @@ function Backdrop({ build }: { build: BuildIndexEntry }) {
 }
 
 function BuildActions({ build }: { build: BuildIndexEntry }) {
-  const href = `./build.html#build=${build.id}`;
   const filterHref = `./filter.html#mode=build&build=${build.id}&phase=leveling&strictness=soft`;
   return (
     <div className="flex flex-wrap gap-2">
-      <a
-        href={href}
-        className="rounded border border-gold-400/60 bg-gold-400/10 px-3 py-1.5 text-xs text-gold-200 hover:border-gold-300"
-      >
-        Open the guide
-      </a>
       <a
         href={filterHref}
         className="rounded border border-ink-600 px-3 py-1.5 text-xs text-zinc-300 hover:border-ink-400 hover:text-white"

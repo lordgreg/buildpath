@@ -5,12 +5,10 @@ import type { StepViewRoot, StepViewStep } from '../../core/builds/stepView.ts';
 function StepRow({
   entry,
   active,
-  result,
   onSelect,
 }: {
   entry: StepViewStep;
   active: boolean;
-  result: { pass: boolean } | undefined;
   onSelect: (id: string) => void;
 }) {
   return (
@@ -25,17 +23,6 @@ function StepRow({
       }
     >
       <span className="truncate">{stepRangeLabel(entry)}</span>
-      <span
-        className={
-          !entry.measured
-            ? 'text-[10px] text-zinc-600'
-            : result?.pass
-              ? 'text-[10px] text-emerald-400/80'
-              : 'text-[10px] text-rose-400/80'
-        }
-      >
-        {entry.measured ? (result?.pass ? 'pass' : 'fail') : 'not measured'}
-      </span>
     </button>
   );
 }
@@ -47,13 +34,11 @@ function StepRow({
 export default function StepPicker({
   roots,
   step,
-  gates,
   onSelect,
   variant = 'guide',
 }: {
   roots: StepViewRoot[];
   step: string;
-  gates: Record<string, { pass: boolean }> | undefined;
   onSelect: (id: string) => void;
   variant?: 'guide' | 'menu';
 }) {
@@ -83,11 +68,9 @@ export default function StepPicker({
                   setOpenRoot(root.id);
                   if (!activeRoot) onSelect(root.steps[0]!.id);
                 }}
-                className={
-                  activeRoot
-                    ? 'flex w-full items-center justify-between gap-2 rounded-md border border-gold-400/40 bg-gold-400/10 px-2.5 py-1.5 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-200'
-                    : 'flex w-full items-center justify-between gap-2 rounded-md border border-transparent px-2.5 py-1.5 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500 transition-colors hover:bg-ink-800/70 hover:text-zinc-200'
-                }
+                className={`flex w-full items-center justify-between gap-2 rounded-md border border-transparent px-2.5 py-1.5 text-left text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors hover:bg-ink-800/70 hover:text-zinc-200 ${
+                  activeRoot ? 'text-zinc-300' : 'text-zinc-500'
+                }`}
               >
                 <span>{root.label}</span>
                 <span className="text-[10px] font-normal normal-case tracking-normal text-zinc-600">
@@ -101,7 +84,6 @@ export default function StepPicker({
                       key={entry.id}
                       entry={entry}
                       active={entry.id === step}
-                      result={gates?.[entry.gateKey ?? entry.id]}
                       onSelect={onSelect}
                     />
                   ))}

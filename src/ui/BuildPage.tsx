@@ -449,12 +449,7 @@ export default function BuildPage() {
                 </p>
               </div>
 
-              <StepPicker
-                roots={roots}
-                step={step}
-                gates={build.gates}
-                onSelect={selectStep}
-              />
+              <StepPicker roots={roots} step={step} onSelect={selectStep} />
 
               {build.stepPlans?.[step] && (
                 <section aria-labelledby="step-plan">
@@ -949,7 +944,7 @@ export default function BuildPage() {
           <aside className="order-first mb-6 lg:order-none lg:mb-0">
             <nav
               aria-label="Contents"
-              className="lg:sticky lg:top-8 lg:mt-2 text-xs text-zinc-500"
+              className="lg:sticky lg:top-20 lg:mt-2 lg:max-h-[calc(100dvh-6rem)] lg:overflow-y-auto text-xs text-zinc-500"
             >
               <div className="mb-5">
                 <p className="mb-2 text-[10px] uppercase tracking-[0.2em] text-zinc-600">
@@ -958,7 +953,6 @@ export default function BuildPage() {
                 <StepPicker
                   roots={roots}
                   step={step}
-                  gates={build.gates}
                   onSelect={selectStep}
                   variant="menu"
                 />
