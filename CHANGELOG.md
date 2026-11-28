@@ -2,6 +2,13 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.82.4 — 2026-11-28
+
+Contents active state.
+
+- **The active Contents entry is white, not bold.** The scrollspy still marks the section you are reading, but the highlight is a plain colour change instead of a heavier gold label.
+- 812 tests.
+
 ## 0.82.3 — 2026-11-28
 
 Guide navigation and Boneshatter mana.

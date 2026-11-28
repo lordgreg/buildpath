@@ -17,6 +17,17 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.82.4',
+    date: '2026-11-28',
+    title: 'Contents active state',
+    notes: [
+      "**The active Contents entry is white, not bold.** The scrollspy still marks the section you are reading, but the highlight is a plain colour change instead of a heavier gold label.",
+      "812 tests.",
+    ],
+    commits: [],
+    compare: 'v0.82.3...v0.82.4',
+  },
+  {
     version: '0.82.3',
     date: '2026-11-28',
     title: 'Guide navigation and Boneshatter mana',
