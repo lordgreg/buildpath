@@ -181,49 +181,55 @@ profiles:
         boots: { base: "Steel Greaves", affixes: [life, movement-speed] }
         belt: { base: "Leather Belt", affixes: [life] }
     early:
+      # Level-28-legal bases: the 28 and 38 checkpoints both read this set, and
+      # a level-45 axe or body armour measured a character that cannot equip it.
+      # The Gilded Axe needs 37 Dexterity; the Onyx Amulet's explicit roll
+      # supplies it because the synthesised item carries no base implicit.
       slots:
-        weapon: { base: "Headsman Axe", affixes: [added-phys, attack-speed] }
-        body: { base: "Sun Plate", affixes: [life] }
-        helmet: { base: "Reaver Helmet", affixes: [life] }
-        gloves: { base: "Guarding Gauntlets", affixes: [life] }
-        boots: { base: "Antique Greaves", affixes: [life, movement-speed] }
+        weapon: { base: "Gilded Axe", affixes: [added-phys, attack-speed] }
+        body: { base: "Full Plate", affixes: [life] }
+        helmet: { base: "Close Helmet", affixes: [life] }
+        gloves: { base: "Bronze Gauntlets", affixes: [life] }
+        boots: { base: "Plated Greaves", affixes: [life, movement-speed] }
         belt: { base: "Leather Belt", affixes: [life] }
+        amulet: { base: "Onyx Amulet", affixes: [life, attribute-dex] }
     ssf-start:
       slots:
-        weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
+        weapon: { base: "Karui Chopper", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
         offhand: null
         body: { base: "Glorious Plate", affixes: [life, armour, resist-lightning, resist-cold] }
-        helmet: { base: "Eternal Burgonet", affixes: [life, armour, resist-fire, resist-cold] }
-        gloves: { base: "Spiked Gloves", affixes: [life, armour-small, attack-speed, resist-cold, resist-fire] }
+        # Level 65: a level-68 checkpoint cannot equip the level-69 Eternal Burgonet.
+        helmet: { base: "Royal Burgonet", affixes: [life, armour, resist-fire, resist-cold] }
+        gloves: { base: "Vaal Gauntlets", affixes: [life, armour-small, attack-speed, resist-cold, resist-fire] }
         boots: { base: "Titan Greaves", affixes: [movement-speed, life, armour-small, resist-cold, resist-lightning] }
         belt: { base: "Leather Belt", affixes: [life, armour-small, resist-fire, resist-chaos] }
-        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
+        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos, attribute-dex] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
       jewels: { count: 2, base: "Crimson Jewel", affixes: [life-jewel, attack-speed-jewel, phys-damage-jewel] }
     ssf-week1:
       slots:
-        weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
+        weapon: { base: "Karui Chopper", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
         offhand: null
         body: { base: "Legion Plate", affixes: [life, armour, resist-lightning, resist-cold] }
         helmet: { base: "Conqueror's Helmet", affixes: [life, armour, resist-fire, resist-cold] }
         gloves: { base: "Precursor Gauntlets", affixes: [life, armour-small, attack-speed, resist-cold, resist-fire] }
         boots: { base: "Brimstone Treads", affixes: [movement-speed, life, armour-small, resist-cold, resist-lightning] }
         belt: { base: "Leather Belt", affixes: [life, armour-small, resist-fire, resist-chaos] }
-        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
+        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos, attribute-dex] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
       jewels: { count: 6, base: "Crimson Jewel", affixes: [life-jewel, attack-speed-jewel, phys-damage-jewel] }
     trade:
       slots:
-        weapon: { base: "Apex Cleaver", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
+        weapon: { base: "Karui Chopper", affixes: [phys-pct, added-phys, attack-speed, mana-leech] }
         offhand: null
         body: { base: "Royal Plate", affixes: [life, armour, resist-lightning, resist-cold] }
         helmet: { base: "Giantslayer Helmet", affixes: [life, armour, resist-fire, resist-cold] }
         gloves: { base: "Leviathan Gauntlets", affixes: [life, armour-small, attack-speed, resist-cold, resist-fire] }
         boots: { base: "Leviathan Greaves", affixes: [movement-speed, life, armour-small, resist-cold, resist-lightning] }
         belt: { base: "Leather Belt", affixes: [life, armour-small, resist-fire, resist-chaos] }
-        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos] }
+        amulet: { base: "Onyx Amulet", affixes: [life, resist-lightning, resist-fire, resist-chaos, attribute-dex] }
         ring1: { base: "Opal Ring", affixes: [life, resist-fire, resist-lightning, resist-chaos] }
         ring2: { base: "Opal Ring", affixes: [life, resist-cold, resist-lightning, resist-chaos] }
       jewels: { count: 6, base: "Crimson Jewel", affixes: [life-jewel, attack-speed-jewel, phys-damage-jewel] }

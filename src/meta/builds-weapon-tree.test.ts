@@ -26,7 +26,8 @@ interface GateTree {
 }
 
 interface Gate {
-  gear: { slot: string; base: string }[];
+  level: number;
+  gear: { slot: string; base: string; mods?: string[] }[];
   tree: GateTree;
 }
 
@@ -109,6 +110,54 @@ describe('weapon-compatible tree notables', () => {
     for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
       expect(gate.tree.notables, checkpoint).not.toContain('Strong Arm');
       expect(gate.tree.notables, checkpoint).not.toContain('Spinecruncher');
+    }
+  });
+
+  it('gears Boneshatter with bases it can equip at every checkpoint', () => {
+    const build = readBuild('boneshatter-juggernaut');
+    for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
+      for (const item of gate.gear) {
+        const base = baseByName.get(item.base);
+        expect(base, `${checkpoint}: ${item.base}`).toBeDefined();
+        expect(base!.dropLevel, `${checkpoint}: ${item.base}`).toBeLessThanOrEqual(
+          gate.level,
+        );
+      }
+    }
+  });
+
+  it('gives Boneshatter enough Dexterity for its axe', () => {
+    const build = readBuild('boneshatter-juggernaut');
+    for (const [checkpoint, gate] of Object.entries(build.gates ?? {})) {
+      const weapon = baseByName.get(
+        gate.gear.find((item) => item.slot === 'Weapon 1')?.base ?? '',
+      );
+      const required = weapon?.requirements?.dex ?? 0;
+      if (required === 0) continue;
+      const treeDex = gate.tree.nodes.reduce((sum, node) => {
+        const stats = geometryById.get(node.id)?.stats ?? [];
+        return (
+          sum +
+          stats.reduce((total, line) => {
+            const match = /^\+(\d+) to Dexterity$/.exec(line);
+            return total + (match ? Number(match[1]) : 0);
+          }, 0)
+        );
+      }, 0);
+      const gearDex = gate.gear.reduce(
+        (sum, item) =>
+          sum +
+          (item.mods ?? []).reduce((total, mod) => {
+            const match = /^\+(\d+) to Dexterity$/.exec(mod);
+            return total + (match ? Number(match[1]) : 0);
+          }, 0),
+        0,
+      );
+      // Marauder starts with 14 Dexterity.
+      expect(
+        14 + treeDex + gearDex,
+        `${checkpoint}: Dexterity for ${weapon!.name}`,
+      ).toBeGreaterThanOrEqual(required);
     }
   });
 

@@ -725,16 +725,16 @@
         {
           "id": "leveling-1-12",
           "level": 12,
-          "main": "Cleave",
-          "watch": "Cleave with Added Fire Damage and Faster Attacks carries acts 1-2. Keep a mana flask, because slam attacks are mana-hungry before leech, and do not spend currency on a rare axe yet.",
+          "main": "Ground Slam",
+          "watch": "Ground Slam with Ruthless and Added Fire Damage carries acts 1-2. Take Ground Slam as the Marauder reward, buy Ruthless after Mercy Mission, and add Added Fire at 8. Keep a mana flask, because slam attacks are mana-hungry before leech, and do not spend currency on a rare axe yet.",
           "measure": true,
           "gems": [
             {
               "slot": "Body Armour",
               "gems": [
-                "Cleave",
-                "Added Fire Damage",
-                "Faster Attacks"
+                "Ground Slam",
+                "Ruthless",
+                "Added Fire Damage"
               ]
             },
             {
@@ -786,7 +786,7 @@
             "from": 12,
             "skill": "Sunder"
           },
-          "watch": "Sunder clears packs and hits single targets harder than Cleave, so it carries you from 12. Boneshatter unlocks at 28 but keeps the same four links and asks you to stand still and stack trauma, so it is not a damage jump until Brutality is in the link. Stay on Sunder into the next step and do not fix the stretch with currency.",
+          "watch": "Sunder clears packs and hits single targets harder than Ground Slam, so it carries you from 12. Boneshatter unlocks at 28 but keeps the same four links and asks you to stand still and stack trauma, so it is not a damage jump until Brutality is in the link. Herald of Ash unlocks at 16; keep it off until the 28 step, because it reserves a quarter of the bar and Sunder is mana-hungry before leech. Stay on Sunder into the next step and do not fix the stretch with currency.",
           "measure": true,
           "gems": [
             {
@@ -823,7 +823,7 @@
               "gems": [
                 {
                   "name": "Vulnerability",
-                  "note": "Self-cast until Cast when Damage Taken is available at 38."
+                  "note": "Self-cast on rares and bosses; CWDT will carry Immortal Call only."
                 }
               ]
             }
@@ -868,7 +868,7 @@
           },
           "points": 42,
           "labs": 1,
-          "watch": "Stay on Sunder through 38: this step is the Sunder measurement, not a Boneshatter step. Brutality is already usable at 38, but the guide swaps at 39 when the next step opens. The four links and the missing axe are what make this stretch feel bad, so spend nothing to fix it and save for the axe. Cast when Damage Taken brings Vulnerability and Immortal Call at 38; Herald of Purity and Determination come online here too, with the mana flask paying for them until the axe has leech.",
+          "watch": "Stay on Sunder through 38: this step is the Sunder measurement, not a Boneshatter step. Brutality is already usable at 38, but the guide swaps at 39 when the next step opens. The four links and the missing rare axe are what make this stretch feel bad, so spend nothing to fix it and save for the axe. Cast when Damage Taken carries Immortal Call only: at 38 the unreserved pool is 67 mana, and Immortal Call plus Vulnerability would cost 109, so self-cast the curse. Herald of Ash and Determination are the auras here, with the mana flask paying for them until the axe has leech; swap Ash for Herald of Purity at 39 when Brutality replaces Added Fire.",
           "measure": true,
           "gems": [
             {
@@ -891,8 +891,8 @@
               "slot": "Helmet",
               "gems": [
                 {
-                  "name": "Herald of Purity",
-                  "note": "The mana flask pays for this until the axe carries leech."
+                  "name": "Herald of Ash",
+                  "note": "Pre-Brutality aura; swap to Herald of Purity at 39."
                 },
                 "Determination"
               ]
@@ -909,18 +909,17 @@
                   "name": "Immortal Call",
                   "maxLevel": 7,
                   "note": "Level 7 is the highest a level-5 CWDT can support."
-                },
-                {
-                  "name": "Vulnerability",
-                  "maxLevel": 8,
-                  "note": "Level 8 is the highest a level-5 CWDT can support."
                 }
               ]
             },
             {
               "slot": "Boots",
               "gems": [
-                "Decoy Totem"
+                "Decoy Totem",
+                {
+                  "name": "Vulnerability",
+                  "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
+                }
               ]
             }
           ],
@@ -963,7 +962,7 @@
             "from": 38,
             "skill": "Boneshatter"
           },
-          "watch": "Boneshatter starts at 39, with Brutality replacing Added Fire Damage. The fifth link is Pulverise and it waits for 68. Herald of Purity and Determination are the auras; until the axe carries leech, run a mana flask in place of the Silver Flask and drop it once leech is online. Take the labs as they unlock: Unflinching at the normal lab, Unbreakable at the cruel lab.",
+          "watch": "Boneshatter starts at 39, with Brutality replacing Added Fire Damage. The fifth link is Pulverise and it waits for 68. Herald of Purity and Determination are the auras; until the axe carries leech, run a mana flask in place of the Silver Flask and drop it once leech is online. CWDT carries Immortal Call only; self-cast Vulnerability on rares and bosses. Take the labs as they unlock: Unflinching at the normal lab, Unbreakable at the cruel lab.",
           "measure": true,
           "gems": [
             {
@@ -1002,18 +1001,17 @@
                   "name": "Immortal Call",
                   "maxLevel": 7,
                   "note": "Level 7 is the highest a level-5 CWDT can support."
-                },
-                {
-                  "name": "Vulnerability",
-                  "maxLevel": 8,
-                  "note": "Level 8 is the highest a level-5 CWDT can support."
                 }
               ]
             },
             {
               "slot": "Boots",
               "gems": [
-                "Decoy Totem"
+                "Decoy Totem",
+                {
+                  "name": "Vulnerability",
+                  "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
+                }
               ]
             }
           ],
@@ -1061,7 +1059,7 @@
             "from": 68,
             "link": 5
           },
-          "watch": "The five-link clears white maps, so spend the first maps on the weapon and the resistances, not on the chest. Fit Herald of Purity with Determination once the axe has mana leech; before that the mana flask is what pays for attacks.",
+          "watch": "The five-link clears white maps, so spend the first maps on the weapon and the resistances, not on the chest. Fit Herald of Purity with Determination once the axe has mana leech; before that the mana flask is what pays for attacks. CWDT carries Immortal Call only, so keep Vulnerability on a manual cast for rares and bosses.",
           "measure": true,
           "gems": [
             {
@@ -1100,18 +1098,17 @@
                   "name": "Immortal Call",
                   "maxLevel": 7,
                   "note": "Level 7 is the highest a level-5 CWDT can support."
-                },
-                {
-                  "name": "Vulnerability",
-                  "maxLevel": 8,
-                  "note": "Level 8 is the highest a level-5 CWDT can support."
                 }
               ]
             },
             {
               "slot": "Boots",
               "gems": [
-                "Decoy Totem"
+                "Decoy Totem",
+                {
+                  "name": "Vulnerability",
+                  "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
+                }
               ]
             }
           ],
@@ -1183,9 +1180,28 @@
               ]
             },
             {
+              "slot": "Gloves",
+              "gems": [
+                {
+                  "name": "Cast when Damage Taken",
+                  "maxLevel": 5,
+                  "note": "Level 1-5 only: higher levels need bigger hits before it triggers."
+                },
+                {
+                  "name": "Immortal Call",
+                  "maxLevel": 7,
+                  "note": "Level 7 is the highest a level-5 CWDT can support."
+                }
+              ]
+            },
+            {
               "slot": "Boots",
               "gems": [
-                "Decoy Totem"
+                "Decoy Totem",
+                {
+                  "name": "Vulnerability",
+                  "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
+                }
               ]
             }
           ],
@@ -1229,7 +1245,7 @@
             "from": 85,
             "budget": "ssf-week1"
           },
-          "watch": "The six-link, 20% quality gems and capped resistances are the red-map gate. Swap Close Combat for Melee Splash on pack-heavy layouts and keep it for bosses; Herald of Purity stays the damage aura and Vulnerability rides on Cast when Damage Taken.",
+          "watch": "The six-link, 20% quality gems and capped resistances are the red-map gate. Swap Close Combat for Melee Splash on pack-heavy layouts and keep it for bosses; Herald of Purity stays the damage aura, and Vulnerability is self-cast because CWDT carries Immortal Call only.",
           "measure": true,
           "gems": [
             {
@@ -1269,18 +1285,17 @@
                   "name": "Immortal Call",
                   "maxLevel": 7,
                   "note": "Level 7 is the highest a level-5 CWDT can support."
-                },
-                {
-                  "name": "Vulnerability",
-                  "maxLevel": 8,
-                  "note": "Level 8 is the highest a level-5 CWDT can support."
                 }
               ]
             },
             {
               "slot": "Boots",
               "gems": [
-                "Decoy Totem"
+                "Decoy Totem",
+                {
+                  "name": "Vulnerability",
+                  "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
+                }
               ]
             }
           ],
@@ -1328,7 +1343,7 @@
             "from": 90,
             "budget": "trade"
           },
-          "watch": "Cap chaos resistance and keep the trauma stacks running while you move out of the biggest slams. Enduring Cry before the burst; the weapon is the last big purchase and it must keep mana leech.",
+          "watch": "Cap chaos resistance and keep the trauma stacks running while you move out of the biggest slams. Enduring Cry before the burst; keep Vulnerability on a manual cast for the burst, and keep mana leech on the weapon because it is the last big purchase.",
           "measure": true,
           "gems": [
             {
@@ -1368,18 +1383,17 @@
                   "name": "Immortal Call",
                   "maxLevel": 7,
                   "note": "Level 7 is the highest a level-5 CWDT can support."
-                },
-                {
-                  "name": "Vulnerability",
-                  "maxLevel": 8,
-                  "note": "Level 8 is the highest a level-5 CWDT can support."
                 }
               ]
             },
             {
               "slot": "Boots",
               "gems": [
-                "Decoy Totem"
+                "Decoy Totem",
+                {
+                  "name": "Vulnerability",
+                  "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
+                }
               ]
             }
           ],
@@ -1458,7 +1472,7 @@
         "dps": 25
       },
       "metrics": {
-        "dps": 41,
+        "dps": 35,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 425,
@@ -1705,15 +1719,15 @@
           "slot": "Body Armour",
           "gems": [
             {
-              "name": "Cleave",
+              "name": "Ground Slam",
+              "level": 5
+            },
+            {
+              "name": "Ruthless",
               "level": 5
             },
             {
               "name": "Added Fire Damage",
-              "level": 2
-            },
-            {
-              "name": "Faster Attacks",
               "level": 2
             }
           ]
@@ -1786,13 +1800,13 @@
         "dps": 350
       },
       "metrics": {
-        "dps": 1515,
+        "dps": 1256,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 1095,
         "energyShield": 0,
-        "ehp": 860,
-        "maxHit": 1678,
+        "ehp": 855,
+        "maxHit": 1615,
         "resists": [
           -60,
           -30,
@@ -2137,7 +2151,7 @@
       "gear": [
         {
           "slot": "Weapon 1",
-          "base": "Headsman Axe",
+          "base": "Gilded Axe",
           "mods": [
             "Adds 20 to 40 Physical Damage",
             "9% increased Attack Speed"
@@ -2148,7 +2162,7 @@
         },
         {
           "slot": "Helmet",
-          "base": "Reaver Helmet",
+          "base": "Close Helmet",
           "mods": [
             "+60 to maximum Life"
           ],
@@ -2158,7 +2172,7 @@
         },
         {
           "slot": "Body Armour",
-          "base": "Sun Plate",
+          "base": "Full Plate",
           "mods": [
             "+60 to maximum Life"
           ],
@@ -2168,7 +2182,7 @@
         },
         {
           "slot": "Gloves",
-          "base": "Guarding Gauntlets",
+          "base": "Bronze Gauntlets",
           "mods": [
             "+60 to maximum Life"
           ],
@@ -2178,7 +2192,7 @@
         },
         {
           "slot": "Boots",
-          "base": "Antique Greaves",
+          "base": "Plated Greaves",
           "mods": [
             "+60 to maximum Life",
             "20% increased Movement Speed"
@@ -2201,7 +2215,8 @@
           "slot": "Amulet",
           "base": "Onyx Amulet",
           "mods": [
-            "+60 to maximum Life"
+            "+60 to maximum Life",
+            "+15 to Dexterity"
           ],
           "budget": "early",
           "ilvl": 45,
@@ -2292,7 +2307,7 @@
             {
               "name": "Vulnerability",
               "level": 2,
-              "note": "Self-cast until Cast when Damage Taken is available at 38."
+              "note": "Self-cast on rares and bosses; CWDT will carry Immortal Call only."
             }
           ]
         }
@@ -2343,13 +2358,13 @@
         "dps": 350
       },
       "metrics": {
-        "dps": 3801,
+        "dps": 2914,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 1273,
         "energyShield": 0,
-        "ehp": 1319,
-        "maxHit": 2465,
+        "ehp": 1312,
+        "maxHit": 2385,
         "resists": [
           -60,
           -30,
@@ -2829,7 +2844,7 @@
       "gear": [
         {
           "slot": "Weapon 1",
-          "base": "Headsman Axe",
+          "base": "Gilded Axe",
           "mods": [
             "Adds 20 to 40 Physical Damage",
             "9% increased Attack Speed"
@@ -2840,7 +2855,7 @@
         },
         {
           "slot": "Helmet",
-          "base": "Reaver Helmet",
+          "base": "Close Helmet",
           "mods": [
             "+60 to maximum Life"
           ],
@@ -2850,7 +2865,7 @@
         },
         {
           "slot": "Body Armour",
-          "base": "Sun Plate",
+          "base": "Full Plate",
           "mods": [
             "+60 to maximum Life"
           ],
@@ -2860,7 +2875,7 @@
         },
         {
           "slot": "Gloves",
-          "base": "Guarding Gauntlets",
+          "base": "Bronze Gauntlets",
           "mods": [
             "+60 to maximum Life"
           ],
@@ -2870,7 +2885,7 @@
         },
         {
           "slot": "Boots",
-          "base": "Antique Greaves",
+          "base": "Plated Greaves",
           "mods": [
             "+60 to maximum Life",
             "20% increased Movement Speed"
@@ -2893,7 +2908,8 @@
           "slot": "Amulet",
           "base": "Onyx Amulet",
           "mods": [
-            "+60 to maximum Life"
+            "+60 to maximum Life",
+            "+15 to Dexterity"
           ],
           "budget": "early",
           "ilvl": 45,
@@ -2960,9 +2976,9 @@
           "slot": "Helmet",
           "gems": [
             {
-              "name": "Herald of Purity",
+              "name": "Herald of Ash",
               "level": 7,
-              "note": "The mana flask pays for this until the axe carries leech."
+              "note": "Pre-Brutality aura; swap to Herald of Purity at 39."
             },
             {
               "name": "Determination",
@@ -2984,12 +3000,6 @@
               "level": 3,
               "maxLevel": 7,
               "note": "Level 7 is the highest a level-5 CWDT can support."
-            },
-            {
-              "name": "Vulnerability",
-              "level": 5,
-              "maxLevel": 8,
-              "note": "Level 8 is the highest a level-5 CWDT can support."
             }
           ]
         },
@@ -2999,6 +3009,11 @@
             {
               "name": "Decoy Totem",
               "level": 10
+            },
+            {
+              "name": "Vulnerability",
+              "level": 5,
+              "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
             }
           ]
         }
@@ -3049,13 +3064,13 @@
         "dps": 8000
       },
       "metrics": {
-        "dps": 123386,
+        "dps": 123986,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 3373,
         "energyShield": 0,
         "ehp": 16486,
-        "maxHit": 7435,
+        "maxHit": 7441,
         "resists": [
           76,
           75,
@@ -3947,7 +3962,7 @@
       "gear": [
         {
           "slot": "Weapon 1",
-          "base": "Apex Cleaver",
+          "base": "Karui Chopper",
           "mods": [
             "140% increased Physical Damage",
             "Adds 30 to 60 Physical Damage",
@@ -3960,7 +3975,7 @@
         },
         {
           "slot": "Helmet",
-          "base": "Eternal Burgonet",
+          "base": "Royal Burgonet",
           "mods": [
             "+80 to maximum Life",
             "+200 to Armour",
@@ -3986,7 +4001,7 @@
         },
         {
           "slot": "Gloves",
-          "base": "Spiked Gloves",
+          "base": "Vaal Gauntlets",
           "mods": [
             "+80 to maximum Life",
             "+80 to Armour",
@@ -4032,7 +4047,8 @@
             "+80 to maximum Life",
             "+40% to Lightning Resistance",
             "+40% to Fire Resistance",
-            "+20% to Chaos Resistance"
+            "+20% to Chaos Resistance",
+            "+25 to Dexterity"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -4155,12 +4171,6 @@
               "level": 7,
               "maxLevel": 7,
               "note": "Level 7 is the highest a level-5 CWDT can support."
-            },
-            {
-              "name": "Vulnerability",
-              "level": 8,
-              "maxLevel": 8,
-              "note": "Level 8 is the highest a level-5 CWDT can support."
             }
           ]
         },
@@ -4170,6 +4180,11 @@
             {
               "name": "Decoy Totem",
               "level": 19
+            },
+            {
+              "name": "Vulnerability",
+              "level": 19,
+              "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
             }
           ]
         }
@@ -4221,13 +4236,13 @@
         "dps": 20000
       },
       "metrics": {
-        "dps": 158264,
+        "dps": 165252,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 4234,
         "energyShield": 0,
         "ehp": 21868,
-        "maxHit": 9285,
+        "maxHit": 9293,
         "resists": [
           76,
           75,
@@ -5256,7 +5271,7 @@
       "gear": [
         {
           "slot": "Weapon 1",
-          "base": "Apex Cleaver",
+          "base": "Karui Chopper",
           "mods": [
             "140% increased Physical Damage",
             "Adds 30 to 60 Physical Damage",
@@ -5269,7 +5284,7 @@
         },
         {
           "slot": "Helmet",
-          "base": "Eternal Burgonet",
+          "base": "Royal Burgonet",
           "mods": [
             "+80 to maximum Life",
             "+200 to Armour",
@@ -5295,7 +5310,7 @@
         },
         {
           "slot": "Gloves",
-          "base": "Spiked Gloves",
+          "base": "Vaal Gauntlets",
           "mods": [
             "+80 to maximum Life",
             "+80 to Armour",
@@ -5341,7 +5356,8 @@
             "+80 to maximum Life",
             "+40% to Lightning Resistance",
             "+40% to Fire Resistance",
-            "+20% to Chaos Resistance"
+            "+20% to Chaos Resistance",
+            "+25 to Dexterity"
           ],
           "budget": "ssf-start",
           "ilvl": 72,
@@ -5464,12 +5480,6 @@
               "level": 7,
               "maxLevel": 7,
               "note": "Level 7 is the highest a level-5 CWDT can support."
-            },
-            {
-              "name": "Vulnerability",
-              "level": 8,
-              "maxLevel": 8,
-              "note": "Level 8 is the highest a level-5 CWDT can support."
             }
           ]
         },
@@ -5479,6 +5489,11 @@
             {
               "name": "Decoy Totem",
               "level": 20
+            },
+            {
+              "name": "Vulnerability",
+              "level": 20,
+              "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
             }
           ]
         }
@@ -5530,7 +5545,7 @@
         "dps": 80000
       },
       "metrics": {
-        "dps": 439543,
+        "dps": 433996,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 5511,
@@ -6754,7 +6769,7 @@
       "gear": [
         {
           "slot": "Weapon 1",
-          "base": "Apex Cleaver",
+          "base": "Karui Chopper",
           "mods": [
             "140% increased Physical Damage",
             "Adds 30 to 60 Physical Damage",
@@ -6879,7 +6894,8 @@
             "+80 to maximum Life",
             "+40% to Lightning Resistance",
             "+40% to Fire Resistance",
-            "+20% to Chaos Resistance"
+            "+20% to Chaos Resistance",
+            "+25 to Dexterity"
           ],
           "budget": "ssf-week1",
           "ilvl": 82,
@@ -7066,13 +7082,6 @@
               "quality": 20,
               "maxLevel": 7,
               "note": "Level 7 is the highest a level-5 CWDT can support."
-            },
-            {
-              "name": "Vulnerability",
-              "level": 8,
-              "quality": 20,
-              "maxLevel": 8,
-              "note": "Level 8 is the highest a level-5 CWDT can support."
             }
           ]
         },
@@ -7083,6 +7092,12 @@
               "name": "Decoy Totem",
               "level": 20,
               "quality": 20
+            },
+            {
+              "name": "Vulnerability",
+              "level": 20,
+              "quality": 20,
+              "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
             }
           ]
         }
@@ -7135,7 +7150,7 @@
         "dps": 125000
       },
       "metrics": {
-        "dps": 660442,
+        "dps": 620771,
         "minionCount": 1,
         "dpsSource": "player",
         "life": 6933,
@@ -8439,7 +8454,7 @@
       "gear": [
         {
           "slot": "Weapon 1",
-          "base": "Apex Cleaver",
+          "base": "Karui Chopper",
           "mods": [
             "170% increased Physical Damage",
             "Adds 40 to 80 Physical Damage",
@@ -8564,7 +8579,8 @@
             "+100 to maximum Life",
             "+45% to Lightning Resistance",
             "+45% to Fire Resistance",
-            "+30% to Chaos Resistance"
+            "+30% to Chaos Resistance",
+            "+40 to Dexterity"
           ],
           "budget": "trade",
           "ilvl": 86,
@@ -8751,13 +8767,6 @@
               "quality": 20,
               "maxLevel": 7,
               "note": "Level 7 is the highest a level-5 CWDT can support."
-            },
-            {
-              "name": "Vulnerability",
-              "level": 8,
-              "quality": 20,
-              "maxLevel": 8,
-              "note": "Level 8 is the highest a level-5 CWDT can support."
             }
           ]
         },
@@ -8768,6 +8777,12 @@
               "name": "Decoy Totem",
               "level": 21,
               "quality": 20
+            },
+            {
+              "name": "Vulnerability",
+              "level": 21,
+              "quality": 20,
+              "note": "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together."
             }
           ]
         }
@@ -8812,7 +8827,7 @@
   "pob": {
     "ref": "v2.69.0",
     "checkpoint": "maps-red",
-    "code": "eJztXdty4rjWvh6eQkXV1J5dDYkt-diT9F-EJKTTOXVIOt19MyWwACfGJpYMIVf7HfYb7if5S7IdbDCOSTh0MnNDgS1Z66Rvrc8y1s7_PfQdMCQ-tT13tyxvSWVA3LZn2W53t3x9dVg1yv_3qbRzgVnvvLMX2A4_86m0I74ChwyJs1s2pTJg2O8S9i2-EvpLKoO2gyk9w32yWz7FPg4s4pcBpm3iWvXJqeOg2yW-iwNWBn1su02vfUdYw_eCwW5ZLoMWdi2b7ZbPPJeUwQC7rEc89xTfen7Ds3bLTuBi36aJU7Ybner6AevdBU4ZDG0yOvUssluu107qzfKn0m-_7Vw4eEz8JsMMUIbZbrnu9Vu2S6z9i2YZDLETkN2ygkxVgVuqJhm6qZrl7eyuVx7Dzgv6ndgd8tRHVWV5XsMDl_jdcbNnE8d66iDlinNwdPHUEklQUrcMKENNkwxlXr-L3pjabeyc4ge7H_SPbHaF74j7dBkZQqTP63xo--SSUJuyp_a6Nq9x3XOs6cbqfCt1e8y13W7hHvUe9uh067lqn2IX171EU4Tyml67PqHEH5KJJ2R1rijNAUk0hFuaIkly2HpnW0ykT6WdK58QgNvMHpLmgLR3y1r5U2mHfwXMJyQxsVA8sz5bYn4kJhQ_IpWB61mE7pY105ArpirLFVnXNbUCkWHIFaipEFWQrEGjgjRVQRVF0lRUUXRZVyuKqciwokqmpFRUQ1HMMmA2c8hu-WQI5KoMxcz5bef68kR8-a3H2IB-3N4ejUZbA8x6Xoc82A7Zanv97QGm1B6SKr2zHafK1diu1Wq1ve5Brd5jh8dNy2rekBZRxudDVT8bfb1qwPPLy1qttisG2Y5G2dnmdnitOaCiKhVNUbRKwjAShHJFVhVkxEaSVFVOmQoaOjeVBFW5gmTJkGLjqQrSIhMiQ9f12JDQkKSKgpCuPBlV1o0n0yqQf6q6VFElQ0sZu6LJsmlUNMWQtZThURUaS7L8Ua1_02gqrcvmtXtclYwrZ-_o-7Xj9lFNsWym4qPg1O5zj1iqS6F7-sUJRnv-3t7pFXz44Td82vqhHh4N94fSaEWeknWkVIS7kKzpCZ_piiKlHKdoksbdJ6mxEzVd1ea7UpcVqQJ1JMkVaCi6GjkXmkhFWS5GuiIVc7QCJThxNz-7qNMRNOCs66FZRcty_Zduq1H_-eP0-8Nd0JCurYO6CAF1_3bELg7UPeswCgXoHeD7b8NzVFPa9w78ghyPKOP9x88DeutXv5Of-tngsT5o3Y_vR7WjWoMeHDxctA5tioMHdnt3TYxz8_HEPK3VaqsPD6QpSkWFCFU0pJpRtOgyzA8ZSUdZgaPpuvoUPpJsxEEkKzKqQCRBPQ4oVTNgBWqyqVWgBnUpDjFNhyr_FIFWINwkJMItEXSyqckVBGVZrSCk6GYFIQ3JcTAqsi5XkAIlPR2YmqmYz4WnAk29omiG-DRlaW7AKqaqy_PDVjZNo6IiWeafhqxVVFUx1IqqaroWBbVqIkmrqKYJjYomKTqMwxxKUK5oUIFmHPJIh9x3pq5VNAXKUjgJKpoqISU5FZBZ1ZY1Fa7jqTBSjMOjgx8ynxK33dblpfT1uNl29au78_PgwDi5ejj_-v1yrycp4-sD62rwzX38fu3cXfd_Xv8cqG4f9hx8dHm_17h3Wo9sdH70ZWDZDPpHfMo8GPC7_NilZP-7cnHa-x4cuoqYQl-__Zygq__lntVb7Qf2qNdq7Roefb3a84wJ2o4f9IsO-6zAE_Szc355qWr-feN8pOgjfXzZubDMxxNF-8v1quzEPL1Qvsyg8m87YU1NQ5NFv8R04jNLBHEZ2Iz0-c-4kMlqqEM10TCq7fi0nlx_xXNc1RXEQ6ngbJcUU6rIUJdgPPMVE0mbnv-GoS-GAtDQi2GBaqrGMhDB4CMuGRdUkyOCbqqoohqQt1kVUhjSkmDiexombloPnV7jrP3zpOcpiQzqVW8b5Pyrol3f-r2LumRc3R1KX39Y56fO3tG19u2nIcvHPw-P-98amPxUmffzpifh7uX94MbQ2_u90aObARtdUn9QzjpdY3xIlJuO3R-fWp72193hTSoD-1_76LTVrg6P_3oePs4GttI_usXBymFElwvCiA7XCyMK4sFuKtIMoEAkVTRomNnQggwjgS8mD8I0yCiS_kKokXUDylOAg5A0BTsSMtYGPoauLgWCNKSkgAiZmmIsDkc6l3NzoITMpUGTuSxoan2dQNNBU7q62rt8OOwb35XL3k3jOFnRPLaPLmvO8bilhFC1h05_Kur-7aCZrnBurKvb46-X8lkzhCy3ml_p7J-H5ABTctPTb4_G-50zx2wrn49mKp4jfD5UDBxCl9-drXw05U4fd2IyMcIXBya9-fJwrzfgKSWPSG-en9km_P6IfwTHPQX6d9eE3Gu9W18PlgdhHAEmwGTo8xEsBXWGURDqDHNuQz5DJw1NaV5DMfkSDeeirJh7iYarRFkJ8XtMK4Ba3UTGPLyVFbhS1JU5jr0Oe6GEVo_ASFfVTeCwgTT45tFYWxIaW7WvR3v0x7HTfejs344uTy7PTp8KxsMfP-4ub783mgo-32OHR2cj62DPqB832_1qvcO-XHjU3S-Eyt8eHPfxpqNazZvL5k_nsu_2SQs3vnlWwzvAd2dzC8ouevzZ-X5e31NOjrpydf_x80VrUXQenvsvKDCHgb5_O9wfHh8aJkKnw1u_Sm41aSiN_up6HKBfgdCyVBSiZakoRstSUZCW5aIoLctFYVqW83F6m68TcLzmIUjjBQP-o0lYvGgQ_QR2iNszN_DDFoC4uOUQa7fM_ICUAXU8tlve86wxqPl9L_DD5bjaZAh-tVC2BumDbijxKWHYwgxvf2akT7cb_EO0bpB-3SF4yC_Nfxdt7OJ-tAQSH4mWGdUyuA-wY7OxSD7Rd37ZfdLBgcPK0yplyL-9kALNYDDwfFazLGLx1a193MfdZxUKOzVIf6bfRDdxCvBzID4ZqQk3puYhpoz4NcZw-44WVjLZK6lheBw8XW7p6u2E8ufH8w3BA88F8uuD-YTgQdPB_YLhPGk-MQk_BsKDkTXk9Tv7wLUC33a7dX9cUJVUj4k28WEgji9doULuPSJOn7DXO3eftL3xlcdIUfcmO0xMIo6C6HBkEWW9FtnzPEZfb5A9x_Osmms1sWsVNEm6y8Qo4jjArgXCMysEgu04902nQZi1nLq2PNgMXPHsSyEzxo0nBoyPbDwPnhKHkPgRkQVzYWbfiY7iNIjPT-dE9PdI_dr7Tv3LU-89pP4NTOPVpv7lKfReUr-xfhevPm8vD4vXWc_sE0b8vu1iZntuYUen-iR9nTqxGWbTcLwhWYJlvgWOS3zcsrm0BS1zRkZT3SbGmTqxiWoPZT1B9UarvQ1gyKarPf3vUe2Z77vaW55676Ha28A0Xm21tzyF1lrtHREfO9Z55yLwi6e76U4T04RngNcB8bnNYdgaSpw1l_jLKnEiDKtjym56xA1xOPpjS0Hw433P0z0TCxWYMjDqETeCeBC12NxN3s_9vucz7NSx4xQMhXSXiXLxcRCe2NwdmfUUqmsO8aXRm5WRWFlaZ-me-cT32kr3Pc8ltIcZK1y_p3okuHPycGzIzRV8GyvlN6jznh8wXAQqnjRN9Eh4cnIw1mlzlOwicIbEt2lx7yV6THRKHNy8n9ZCRpao33tgI5tw94rXndfs4LfGRzbh8TUQknW7_Z0wkg2sPa2ckWyAca-Hkaz5TssbYCSrmPRzGYk688-y90FH4PJ43ZuhIxvUeWV0ZIM6rYyObFCn9TwEu4p7Km-XjmzC3aulI-t28FujI5vw-DoeAVmz2_-hI__QkX_oyIbpyEom_Vw6os38m_wd0hH4d-Qja1Z6PYRkzUqth5GsWam641HC302KWfF0nOyT_EulRwmIj_8Cuq2fbr1SwXfHt9bl8DUSrnW4-E0zrnX5fN2Uax2Of4eca13hsFbStS6l1s-61hHlb4x2Lc0kc3mXPvPemHfCu-S_I-_aoNKr410bVGp1vGuDSq2cd21Qt_XwriUq-C541yYcvmLetW4XvznetQmfr4N3rdvx__Cuf3jXP7zrF-BdK5n4Sd4VfqfRrkjfbDICj57X_y5W1_i3H0_fTuJ_o4nNlOLmn0o7QsXo_Yj8--T1iPxX9GrET6VLzMH6IzitNT7XS80x30GM2pRYYCRKiVKTeS4BtQdSEv3EeB-BDEtfQ60_Aqn0uT9w7LbNKP9RsywKDMA8IGvT_KOk_g5st-0TzEcIqyUgtocStuAjJAWEuQL2RCIs1bl8YVIsKuIHqHL5-uEeX4BvQZY5Psodv-VZ41K9RygbOJjl2Sd6keVHsFfdq-69TBYlV5auyA2lCy6IBRo4cJlDGF22QdRnDOIxWmoyQhzQ8PmrK18lgJwKllNvSPrEZTnhouVLRxxWOiGY9YgP9viPJRtHzx0e9wOHsNK5O34AtfB70fFl-DsX4GkPOBBu64bddrYgRq4gvIKVS-cD7IBL2-0u2wrms4PDFwwemYDvmfec9rKUK4FjdwjoOJjelU6JZUeqgENxpKA4mcPmo2kfuzgattnHjgP4NnpLGDUfIgMmknk08NfAbt9Rm99hWMLI-eAYZY8jgi3ax-5MAlHU_AQCJe5vRZrJIOZCGUTOh80ohVxyrPKzkkiOmB80qdCEkJ8DTWtcagYuuJhJIunB00lkJo0UlSYfJKM80giwzzc6nZNJlmGVfLQMU0nNZfZ9QDKTyYIyQGnBZCLno2h-NlmGgfKB9Jl0sgQBYD6O5qWRBUf_gKTFEhzMx9q8JJMnWiRGkSQD83E3kWQaNnbZvByTI03mqPmYm8gxfMbwG5Jzssyi4-ajaDrLNHzs2mwZ2uYDZ3rUPUyxw5YwaD4-pget9Qnrjekyhs2Hw18km8J8TFxHNoX5sLjmbIryMXJt2RTlA-LmsynKx8uVZ1OUj5yrz6YoH0I3mU1RPs6uIZuifNBdUTZF-Zi7smyK8lF0RdkU5QPnarKpko-Pq8qmajKiL2uXB6lRb8mIOEAu1X27Tz0XHPPfqeF0mB5DS6JdarIpc_OnnDo1nXczpdaelxr-clIrcp7UUeFSG5AHEO5m40_L_ORYecqzsiLlCSMKGyTwT5stbGQ0V0dpC_0u1injLtHZaLXqhJB2j-cEKuZ7ttIwT-moDjpgxHexA_YCv-u5UyklT_EPRgaqQ0kcDB-pKn1QQnQVr1VNoGt8vAjqKihPCVFJNRzPt72AZpRTUwpM11MzFVVxnTIT10KKKXmKRUVZc2Df8Vvl4a9XucZIapETePN0mOfMTN1yoS0s9K5sht3MMi9PNZh3u_15vZ9TrnA5ouTCYH6l-DrXzZ1UMFKthz36rPh6nvjPFJoLy19kyrxOHSNPnbyy9aW6zIO0bB0X0sV8Tpd5de5LdVloMiyki1p4lWPfHtoumVcz52mWOW4-00xXdM15aw0Lj7rIMsf8knnhYfNZY8GaeeFRF7nbllM0LzqunlvJ_apVs55biv2qVbOamyXeadWs5uaSN1I1q7lJ5A1XzZr0fqtmLRfa3kPVrOXC4C9fNWu5XPTNVc1aLgN9W1Wzlss431bVrBW-0bzcqlnLv9W8oqpZW86N5oWHXcqd5oWr1yXdal50XCO3knu-ajY2Un8auaXY81XzhqTOrb1CqdEvJ7WZW1iFUiu_ntQF2KD660ldgA1qv5zUem718xwbNBKIBd8OG9Rza6TJw_33AfE9_18064GS-arD0h9IriL471R5ztdv6x5l4KDTsds2cdvj0h8QVaH67wxVIzOsiVjqz9zZt8alE9K1vaxnW6bsMEsr08QSlv6AShVqKaUbjtfCzkwQpP78BnqYgj-gUUVS2mCBj7lNSZutlbPquWsF8Z8ifNIOfOr5c56_yQsiWc6ZAmp6CszGfpItbY786rkVSkh-9zgiin_6XPn8IbPCBjJy6C9UfgftHpdLKDv0bAscOKIFRwzb4d_oL0Oh9dyaKJ9C52Hwmii0nlscPUOhF5Z_5RTayK2a8ij0S3VZHYU2cmupPAr9Ul1WR6GNwk8-51PoPM0yx11kLWYuhV541OU8-bzwsEt59HnhUZf07POi48rSazm0lh5En1u1z___qawtWrXL0mtJ9IbEfi2L3ozY8mtp9IbEfi2P3pDYryXSGxHbfB2R1nKItP48kVZEPjYyiLSewyKU1xJpswiRFg9OUwePs_-ZMV91TqTVKtKKEGmjCs08Ii1LmY-rp0thdU4xphZmhebzTPrSG3OuO0uktYWJtDlNhosTaaRMGzZFpBcw15w6fAGbFWHSJ2RoY9bjy6TZTDoninJvJunFmHSmQWRZTXLp-VNtnjnmhVymmQpw6YSVMhaTc22U97ca_n-KAmwa5V2jiAWfM1NhPm2-hk_nQPEiSszACFqA6pivYtQLa1BkKr9KH1l6Oad-qTbzcDxby8W0eTmrfqk2C82JBbVZFq_O0S174OUQ64WHXRKzXnjc5VDrhYddFrcuPnD84l45-eJeuSrDMggoaZK251rh-yLFu6E62KEkeslW0_GYeAtW8o2SNgtfu_X0nrJEq_ilhHEbmNEm9UrguCHKaBi_6C5uo2ReTLwmLG6iZjUhTkIiLaNFCNuTNnpGGw4eSe2NeW3gpI2Z0Ua4MmVGqRy9nit6Sdi8PokLy3LBPijRB2b1CSMlfN1YMlhgKlhQFRqvjZYsD0-Hi5zt4ox4kbM8PR0wcpazpyJGznJ2OmTkLF9Px4yc5ezpoIFSgaiBWRNrJmxgpjvzwwaixcMGKgX7KIk-asE-aqKPtkh4omR4cur12vCEWWEwg2ZZgZAZnjArGqbDE2VFw1R4oqxgSIcnygLZ6fBEWdNvOjxR1vSbDk-UNfNmwhNlujM_PJG-eHhyxy8anshcPDyVTJSeF55KMjyRWdVeG55KkWSrFM62SqF0WyDfKs8nXKVIxlWKpFylSM5VCiVd9QVJV31B0lWLonQiPNWiKJ0ITzUTpeeF5_RO3q-LTbUIdKqFoVMtAp1aAejUnodOrQh0akWgUysCnVoh6NReAJ3aC6BTewF0ai-ATn0h6Jze1vF1sakXqTr1wlWnXqTq1AtUnfrzVadepOrUi1SdRpGq0yhUdRovqDqNF1SdxguqTuMFVaexUNU5vfXN62LTLBKbZuHYNIvEplkgNs3nY9MsEptmkdjk9yKfD05-j68QlX5BePIbX4uTaekFAcrvOS0cofyO0TMhGr7G_FNpp-65HbsrTn92B0F8TeKS_ljcNyoDN-i3iC8m5XZ2w4MhpuHGB1FT3Yiy7c52PMDOmccI_ZTYRgkcB90u_8dmwEAV1L0hcSlAW0jakkqlOe1sCjBgI6_aw67Fl4PFVkWtwHYswHqYgT7BNPAJBQoyt9Q7gBnwxbLxgALsWkDTpC1FHB7YrovbDtkCVz0CfOwTgB9IBWAxSYDvOU7YZXp7CtDGvj8GrEeAJVabKuI7pm3iWthtj0Ef3xEqDjIfB30MaOAP7SF_rXtFXNL1QOCKN6rZFPjkPrB9Ym2VSsLi_Jaz-AJGNutFy82iW83iOov74tE6V-Ay2wHNwLWIL4wzxLYTjsP4NgqU4THw3LhFx_OFWJGVLECZT1i7twWetkQSV3H4k5xjEFB-KdAiHc8noiMd4cGf4ls3sC0C-hwr-J3qpL8wEy1c8sAAZWRQAS3SxgENLxGJ0u6R9t3As13h1FEv6tTF7Ek8ugVqoEXENRM-xw_CbNgFwaDrY4tUgOsxgEXf0Jsd26csOcQkLKAa3hDn9lTkyIOhSlTg8qStzANI-AADSpxOtc23p0jtdRAON3nfF2h7Q-JTMPaCyDcsEVwicmxCgcOXJ8NBk7fFQdvrExoOKaIZP5CtUukUD2iplghk3i-M-elwjwMSSVDSABGrwfaQTFSWIUQ6GMTLpX38AHo225oNcpsmIhxgvrjM--NwK4NqGw8GxEobA_i2RSgPt-x9PEKF8QP5Fw1NJswA7giJdLoPsM-IX-0EjhO2aGEfBIMtUMcD0YI8rVr6T4sitCIuEV8ctAPfJy4LZxoPWJDcQUrMgXCHs-bAwbQXyskdNuIviOuE2zEN-GZMWxyHKOUT8iJCi4nFIySJDCR8hkxo6JlWV6EkZ1j9mhKQ3BooOdVagU9ZpFrazMEg1O1J6xhlxA5SwA9csZ406tkOEYrxWQq8gHH3ikvb3S6hDFAH97mSF75HSx_AN8JhDbt349IHcOY9AVOEVaUPYlWaAW4QhwCG_S5hpQ-g3uO7NTEPdAn2-W-v3-EbnXDscHBLCET8Ev9HBi1VwVUobS_wmZgopWrkDx-7XVKqgjNCLApwuABPxepzFTQdbwTaDh-hGj5EYlMa8Nki1HRi5CxdYma7XfpRaGK7hFIgS5W00OKIuBgwK6DNn0Yxt0p8_4EBaI0FaJX4Tez__ee_MvwYQ7Dw8SwGc1ekN_F6mue4zSiQq3ALfOG-wgmkmIAi90KkLQUcKXijai9wu5OAEDMl9LrlCbijA-JaUay3BcbjCc6MCdsSCqD__ee_0Pj4BLpcZRoGt7hYz2Y0bRoKetjnbcVjCKHmFUA9YLMntXhMdXyvD2S4lUL-wHU8cWkGoAFaAUtMbor7BHR4anVsNxoe07vwaszj0cvnK-Pbu4TfuPvD0I4FsGkE9dGsuw36gwhnUwnMdsWQfKAt0EznQNtlXjo_Jc3asR9CacPEGPo8trKwKTT_95__Im7T9HVZz_eCbg_wU6xn0_DSEYxGbSLw6At4CjVJmo_3yE_FmAFkVIRlJ0mYY5ywOTJDMEtr5w2IS6O8mDa_KAVsAXAibHj4iEzMC5hYidAOHb4zRwtbwhNh7Lke6_GezBNWs1noNj5T4jqD5685yQC0OOjRKWjjV0htkxRq_OdsfuIt089F8eQJPNfhK9w9wlHU8ypxMk0l6QEec8EjKfuJTM2twJ-vEvNNuBtxd2vGxylHYQ5ewuTREBOv-WTg4DYfYAYr4uqkw3rCDdzDT_s2CpVsBkaYT0ounGZkJOZZxXGUMXiSpn9OaZMqOSoci1MwxKcKF5fEuSFVj4iJ4XsDLpbHHx8KM7ZNIztvCV-Gcw23KH_civXIOMKBj-Da7Ti22xZhEleFnt_HDm9eAdduyyf4Lo5sfrrtB0ScFcY3pI-RxYakKgwWIdiox9f0eTGUCEj2VPmJKskLJ0L46OZTvKfqBj4Fo2ZtvhvPFji02azJhYPTNhfWSEbMpKD5c5LFI6WS5o5q3QEehz6OgD9UVw3VpfZDNQ4P3t9znbF4gKsbRTZX5qkajEAF2EzYIgKyVjAGvH6yQs3C9My4Iwn2nXGUkWYqo5ZHKaGT0smeVzCFegmA4-mk2iN4GAKkKaW1qAD-J5Fopyu-AVd4-aiCTPjjKZB9YlX5tcOCvvl8Cee5CSGAg8dewOikRrKTumVgCWdJ2eXuQvVtqL32UVSrbfHozkS7ZVZs-TXjn8mwjyLI4QK37C4YBH67hydg0w9omKQTAby1sx2S9dLO9gVmvfPOHicbttv9VPp_PXU_tw==",
+    "code": "eJztXdtym8jWvh49RZeqpvbsimRDN8eMk7_kkxzHp1h2nORmqiVaAhuBTDeS5av9DvsN95P81Q1IICOMbB0Sz9y4ZNRNr-O31geI3vm_h74LhiSgju99qMpbUhUQr-Nbjtf7UL2-Oqwb1f_7WNm5wMw-7-6Gjsu_-VjZER-BS4bE_VA1pSpgOOgR9jU5E_pLqoKOiyk9w33yoXqKAxxaJKgCTDvEs_amXx2HvR4JPByyKuhjx2v5nTvCmoEfDj5U5SpoY89y2Ifqme-RKhhgj9nE907xrR80fetD1Q09HDg09ZXjxV_1gpDZd6FbBUOHjE59i3yo7jVO9lrVj5Xfftu5cPGYBC2GGaAMsw_VPb_fdjxi7V-0qmCI3ZB8qCoImaa6ZajQlCRFq27nT73yGXZfMO_E6ZLJHFWV5XkDDzwS9MYt2yGuNZkgFYpzcHQxGYkkKKlbBpShpkmGMm_ehT2mTge7p_jB6Yf9I4dd4TviTU4jQ4j0eZMPnYBcEupQNhmvz1V8z3et2cHqfCv1bOY5Xq_0jD0b-3R29Fy1T7GH9_zUUISKhl57AaEkGJKpJ2R1riitAUkNhFuSipASjd7ZFon0sbJzFRACcIc5Q9IakM6Hqlb9WNnhHwELCEklFkoy65Ml8iOVUPyIVAWebxH6oaqZhlwzVVmuybquqTWIDEOuQU2FqIZkDRo1pKkKqimSpqKaosu6WlNMRYY1VTIlpaYaimJWAXOYSz5UT4ZArstQZM5vO9eXJ-LDbzZjA_p-e3s0Gm0NMLP9LnlwXLLV8fvbA0ypMyR1eue4bp2rsd1oNBq7vYPGns0Oj1uW1bohbaKMz4eqfjb6ctWE55eXjUbjg1hkO15lZ5vb4bXmgIqq1DRF0Wopw0gQyjVZVZCRGElSVTljKmjo3FQSVOUakiVDSoynKkiLTYgMXdcTQ0JDkmoKQroyMaqsGxPTKpD_VXWppkqGljF2TZNl06hpiiFrGcOjOjSWZPmjRv-m2VLal61r77guGVfu7tG3a9fro4ZiOUzFR-Gp0-cesVSPQu_0sxuOdoPd3dMr-PA9aAa0_V09PBruD6XRijwl60ipCXchWdNTPtMVRco4TtEkjbtPUhMnarqqzXelLitSDepIkmvQUHQ1di40kYryXIx0RSrnaAVKcOpu_u2iTkfQgE9dD806WpbrP_fazb0f30-_PdyFTenaOtgTIaDu347YxYG6ax3GoQD9A3z_dXiOGkrn3oWfkesTZbz_-GlAb4P6N_JDPxs87g3a9-P7UeOo0aQHBw8X7UOH4vCB3d5dE-PcfDwxTxuNxurDA2mKUlMhQjUNqWYcLboMi0NG0lFe4Gi6rk7CR5KNJIhkRUY1iCSoJwGlagasQU02tRrUoC4lIabpUOV_RaCVCDcJiXBLBZ1sanINQVlWawgpullDSENyEoyKrMs1pEBJzwamZirmc-GpQFOvKZoh_pqyNDdgFVPV5flhK5umUVORLPO_hqzVVFUx1JqqaroWB7VqIkmrqaYJjZomKTpMwhxKUK5pUIFmEvJIh9x3pq7VNAXKUpQENU2VkJJOBWTWtWWlwnWSCiPFODw6-C7zlLjttS8vpS_HrY6nX92dn4cHxsnVw_mXb5e7tqSMrw-sq8FX7_HbtXt33f9x_WOgen1ou_jo8n63ee-2H9no_OjzwHIYDI54yjwY8Jv82KNk_5tycWp_Cw89RaTQl68_pugafL5ne-3OA3vUG41OA4--XO36xhRtxw_6RZd9UuAJ-tE9v7xUteC-eT5S9JE-vuxeWObjiaL95fl1dmKeXiifn6DybztRT00jk8X_iXTimSWCuAocRvr836SRyRuoQzU1MO7teFpPz7_iHFd1BfFQKpntkmJKNRnqEkwyXzGRtOn8Nwx9MRSAhl4OC1RTNZaBCAZfccm4oJocEXRTRTXVgHzMqpDCkJYEE9-yMHHTfujazbPOjxPbV1IV1K_fNsn5F0W7vg3siz3JuLo7lL58t85P3d2ja-3rD0OWj38cHve_NjH5oTL_x40t4d7l_eDG0Dv79ujRy4GNHtl7UM66PWN8SJSbrtMfn1q-9tfd4U2mAgdf-ui03akPj_96Hj7OBo7SP7rF4cphRJdLwogO1wsjCuLBbirSE0CBSKpp0DDzoQUZRgpfTB6EWZBRJP2FUCPrBpRnAAchaQZ2JGSsDXwMXV0KBGlIyQARMjXFWByOdC7n5kAJmUuDJnNZ0NT-MoWmg5Z0dbV7-XDYN74pl_ZN8zjd0Tx2ji4b7vG4rURQtYtOfyjq_u2gle1wbqyr2-Mvl_JZK4Isr17c6eyfR-QAU3Jj67dH4_3umWt2lE9HTzqeI3w-VAwcQVfQe9r5aMqdPu4mZGKELw5MevP54V5vwlNKHpHeOj9zTPjtEX8Pj20FBnfXhNxr9m2gh8uDMI4AU2Ay9PkIloE6wygJdYY5dyDP0OlAU5o3UCRfauBclBW5lxq4SpSVEL_GtAKo1U1kzMNbWYErRV2Z49jrsBdKaPUIjHRV3QQOG0iDvzwaa0tCY6vx5WiXfj92ew_d_dvR5cnl2emkYTz8_v3u8vZbs6Xg8112eHQ2sg52jb3jVqdf3-uyzxc-9fZLofLXB9d7vOmqVuvmsvXDvex7fdLGza--1fQP8N3Z3Iayhx5_dL-d7-0qJ0c9ub7_-OmivSg6D8-DFzSYw1Dfvx3uD48PDROh0-FtUCe3mjSURn_1fA7Qr0BoWSoL0bJUFqNlqSxIy3JZlJblsjAty8U4vc3vE3C85iFIkxsG_J8WYclNg_hf4ES4_eQCfjQCEA-3XWJ9qLIgJFVAXZ99qO761hg0gr4fBtHtuMZ0CX62SLYm6YNeJPEpYdjCDG9_YqRPt5v8jxjdJH1-E8-zWi7uV4FImkUmeLgf3wqJjoLocHzPUa2C-xC7DhuLShR_5uffJ10cuqw6q1-OMtsLadMKBwM_YJchs11C6XMqRaObpD-dMFVpemzj-jQsi1j81t0-7uMeKa3Wk3lT7cRXgH8Hki9jNeHS1NyJ9CiO5huCB74H5NeH8gnBgwUCeTp8ahV-LBvE8vqdfuBZYeB4vb1gXFKVzIypNslhII4vXaFS7j0ibp-w1zt3n3T88ZXPSFn3pidMTSKOgvhwbBFlvRbZ9X1GX2-QXdf3rYZntbBnlTRJdsrUKOI4wBy_xTcrBILtpPLNFkGYdzN1bVWwFXriyZdSZkwGTw2YHNl4oTglLiHJAyILFovcuVMdxdcg-X62aKC_R23UNqbmIaaMBA3GcOeufF-TnpXWMDoOJqdbunpvofRvII1XW_qXp9BbKf3G-l28-rq9PCxeZz-zTxgJ-o6HmeN7pR2dmZP2deaLzTCbpusPyRIs8zV0PRLgtsOlLWmZMzKamTY1zswXm-j2UN7zU79ot7cBDNl0t6f_Pbo98213e8tT7y10extI49V2e8tTaK3d3hEJsGuddxvULmmUzIypUaLDwO8C8cXmoGsNnc2aO_tldTYxdO1hym5s4kXwG_-apSTm8bnn2ZlTY_EvwcgmXozsIB6xuWu7n_p9P2DY3cOuWzIUslOmyiXHQfTFL978r4ziydL6vbyejn0VST-3Y899zHttHfuu7xFqY8ZKt-2ZGSnKnD6cRMjm-ryNdfAb1Hk3CBkukxgTTVMzUp6cHkx02hwTuwjdIQkcWt57qRlTnVIHN--ntXCQJer3FkjIJty94tvNa3bwsmnIRRiUr-Gzk_LISPLdBj2-BkKybre_EUaygVtOK2cky2Pcb4WRbCDl18NIVpL1cymJ-uT3ZG-Dj8ANMNZN85EN6rwyPrJBnVbGRzao01r4yBL1ewt8ZBPuXi0fWbeDfzU-sgmPr-PRjzW7_R8-8g8f-VX4yCZSfk3PNK0i6-fyEe3Jj8jfIB-Bf0dCsmal18NI1qzUeijJmpXac31K-CtJMStfj9NzUpWYHwbJ8Z9At_XzrVcq-OYI17ocvkbGtQ4X_9KUa10-XzfnWofj3yDpWlc4rJV1rSMWfjHatS4_b4B3Lc3bc4mX_uR9MW-EeMl_R-K1QaVXR7w2qNTqiNcGlVo58dqgbushXktU8E0Qr004fMXEa90u_uWI1yZ8vg7itW7H_0O8_iFevxDx2kTar4l4rSTz08Qr-kzj7ZC-OmQEHn2__03cX-Ofvk8-nSS_SBO7KCXDP1Z2hKrxixH55-l7Efl_8TsRP1YuMUfr9-C00fy0V2mN-dZh1KHEAiPRS1RazPcIaDyQipgn1nsPZFj5Emn9HkiVT_2B63QcRvk_DcuiwADMB7I2S0Aq6u_A8ToBwXyFqF0CYl8oYQu-QlpAWCigLSphZY_LF1XFsiK-gyqXrx9t7gX43mO566PC9du-Na7s2YSygYtZkX3iN1i-B7v13fruy2RRCmXpieJQueCCWKCJQ4-5hNFlG0R9xiA-o5UWI8QFzYBgLtErBJAzwXLqD0mfeKwgXLRi6YjLKicEM5sEYJf_s2Tj6IXL437oElY598YPoBF9Lru-DH_nAkw2fwPRfm7Y6-QLYhQKwltYuXI-wC64dLzesq1gPrs4fMHisQn4ZnnPaS9LhRK4TpeArovpXeWUWE6sCjgUR0qKk7tsMZr2sYfjZVt97LqA75-3hFWLITJkonTFC38Jnc4ddfglhiWsXAyOcfVoOi5_8cds-VDU4vIBJe5tRXpSP8yF6odcDJpJARHXJnIqSIGU7zSpVDbIzyGmNa4chq4LLp6UkOzq2RLypIiUFacYIuMqshv43iOZU0WWYZRipIzKSFLKcurIgiJAacE6IhcDaHEhWYZ9ijH0mUqyoADvZIHr--SBEb5ifiNWjKlFJWVRcZC0WLGDxbhbVHCKRIvFKFNwYDEGpwpO08Eem1dvCqTJXbUYf1P1hqcQvzo5p-Isum4xpmYrTjPAnsOWoW0xjmZX3cUUu2wJixajZXbRRp8we0yXsWwxPP4UlRUWQ-QaKissBsl1V1ZUjJBrqqyoGAw3XllRMVSuvLKiYtDcQGVFxXC6ycqKijF3DZUVFQPwiiorKsbflVVWVIypK6qsqBhHV1NZlWK0XFVlVdMRfdm4PMisektGxAVyZS9w-tT3wDH_P7OcDrNraGn4yySbMreaypmvZqtwrtTa81LDn05qRS6SOm5iPuMgdMCe7Q8GJJgVeuJZeca1siIVSSP6HCQAUHva58horpLSFvpd3MFMpsTfxvexTgjp2LxKUJHw-VrDIq3jtujSH2MX7IZBz_dmSkyR2u-MHFCHkjgYPWpVeadE4CpetJoC1-R4GdBVUJEKoq9qun7g-CHN6a1mFJhtrp60V-V1yq1bCymmFCkWd2hfMXbn9GcL-8ZIq1EQd_OUmOfNXOUKoS1q_K4chr3cvq9INVh0Gf55vZ9TrnQ7ohTCYHHr-DrXzc0qGKtmY58-K75eJP4znefC8pfJmdLqxJf-ixtZxSjSr6iPfaly80AuX-mFfGU-p8u8xveluiyUHQvpopa-HbLvDB2PzGuiizTLXbeYimZbvNa8mxILr7rI_ZD5PfTCyxbzypJN9MKrLnIprqCLXnRdvbC1-1nbaL2wNftZ22i1sGy81TZaLSwmv0QbrRbWkF-4jdakN9xGa4XQ9hbaaK0QBn_6NlorZKe_fhutFZLUX6uN1go56a_VRmulL0Uvt43Wii9Gr6iN1pZzKXrhZZdyLXrhdnZJF6MXXdcobO2eb6ONjTSkRmFr9nwbvSGpC7uxSGr000ltFrZakdTKzyd1CXqo_nxSl6CH2k8ntV7YDj1LD40UZMFfhx7qhU3S9HcB9yEJ_OBfNO8RlPmqw8ofSK4j-O9Mw85v8e75lIGDbtfpOMTrjCt_QFSH6r9zVI3NsCauqT9z8d8aV05Iz_G9HKY5Y4enTDPLNWHlD6jUoZZRuun6bew-CYLMD-eAjSn4Axp1JGUNFgaY25R02FpprF54OyH5PUVAOmFA_WAOly0KIlkuSAE1mwJPYz_NnzZHh_XCFiWiw7scEsWPhK4Cgq3yBjIKCDFUfgcdm8sllB36jgUOXDGCI4bj8k_0pyHVemFTVEyqizB4TaRaL-yOniHVC8u_flJtFPZRRaT6pcqtjlQbhd1VEal-qS6rI9VG6Seni0l1kWa56y5yu2YuqV541eU8Ob3wskt5dHrhVZf07PSi68rSa1m1ll1En9vHz_8tq6wt2sfL0mtp9YbEfi2v3ozY8muJ9YbEfi2z3pDYr6XWGxHbfCW11gqotf48tVZEQTZyqLVewCuU11Jrswy1Fk9bUxePSZBLreeqzqm1WkdaGWpt1KFZRK1lKfcZ92xzrM7pxtTSPNF8nltHN6JzqLW2MLU2Z-lxeWqNlFnDZqj1Auaa05kvYLMy3PqEDB3MbH4rNZ9bF0RR4eUlvRy3zjWIHP1mI2HX81NtnjnmhVyumUqw65SVcm44F9qo6Mc5_EcYJfg1KjpHGQs-Z6bSDNt8DcMugOJFlHgCI2gBrmO-imMvrEGZVC6tz7uoGBWTbFl6Oct-qXrzgD1f7UXcJUsv59kv1WahJFlQm2Ux7QLd8hdeDtVeeNklce2F110O2V542WWx7fILJ-8FltPvBZbrMqyCkJIW6fieFb2OUrx5qotdSuK3k7Vcn4m3bKVfWOmw6P1ek3d-pUYl7zxMxsCcMZk3DicDUc7A5D16yRgl92Ti_WrJEDVvCHFTEmk5IyIcn47Rc8Zw8Ehrb8wbA6djzJwxwpUZM0rV-OVf8SvI5s1JnViWS85BqTkwb04UKdHLzNLBAjPBgurQeG205Hl4NlzkfBfnxIuc5-nZgJHznD0TMXKes7MhI-f5ejZm5DxnzwYNlEpEDcxLrCdhA3PdWRw2EC0eNlApOUdJzVFLzlFTc7RFwhOlw5NzsdeGJ8wLgydolhcIueEJ86JhNjxRXjTMhCfKC4ZseKI8kJ0NT5SXfrPhifLSbzY8UV7mPQlPlOvO4vBE-uLhyR2_aHgic_HwVHJRel54KunwRGZde214KmWKrVK62iqlym2Jeqs8X3CVMhVXKVNylTI1VylVdNUXFF31BUVXLYvSqfBUy6J0KjzVXJSeF56zW4W_LjbVMtCploZOtQx0aiWgU3seOrUy0KmVgU6tDHRqpaBTewF0ai-ATu0F0Km9ADr1haBzdtvI18WmXqbr1Et3nXqZrlMv0XXqz3edepmuUy_TdRpluk6jVNdpvKDrNF7QdRov6DqNF3SdxkJd5-zOOq-LTbNMbJqlY9MsE5tmidg0n49Ns0xsmmVik1-LfD44-TW-UlT6BeHJL3wtTqalFwQov-a0cITyK0bPhGj0svSPlZ093-s6PfH1J28QJuckHumPxXWjKvDCfpsEIim38wceDDGN9lWIh-pGXG13tpMFds58RujH1C5N4Djs9Ujg4ZCBOtjzh8SjAG0haUuqVOaMcyjAgI38uo09_oa8vtgJqR06rgWYjRnoE0zDgFCgIGVLugOYgUDcSB5QgD0LaFDaMsThgeN5uOOSLXBlExDggAD8QGoAiyQBge-60ZTZ3S9ABwfBGDCbAEvcfqqJz5h2iGdhrzMGfXxHqDjIAhz2MaBhMHSG_KXxNXFKzweh59yHhCsUkPvQCYi1VakIi_NLzuIDGDnMBs3ADz1L7LUi5l6GzHYJpSD0mOOCVuhZJACh5_qdOypE8QBleAx8L_my6wdCmtg4FqAsIKxjb4ntG7IrRHKf4gCHfGpARjiwaqAdjqcr4654MRYJOmNw6lDu-0gvbFmgYXHHiIv3YqMIhyXCbYHJvk7CkS5_pHQMQsoNA9qk6wdErE5HePCn-NQLHYuAPkckfj08HRWYiREeeWCAMjKogTbp4JBGp4g179ikczfwHU-EzsiOJ_Uwm1iDboEGaBNxzlRk4QfhHOyBcNALsEVqwPMZwGJuFDNdJ6AsvcQ0-KAaXXbnRkFqHCeRSlSg_3SsvIXuIk9jQInbrXf4HhuZ3Qmi5abvJgMdf0gCCsZ-GEcBS4WwiE-HUODyu6LRoumL76Dj9wmNlhQ5gx_IVqVyige00kilC58XZdZsUiVhjyQoaYCIm9DOkExVliFEOhgkd2n7-AHYDtt6mkoOTeURwGGA_8yqzkdMrcLPnb8FyUTpzB4ewPfccTYwhBUHvu-CDva4Rwd4DNo-syMj4wfyLxoNEuYDd4TEtrgPccBIUO_yF0-KEW0cgHCwBfbwQIwgk5usweSWDa2JU0QQwZ0TBgHxWJQvPNBBevsskarR9m6tgYupHWnKHT3iL8HrRntRDfhOVFscJSnlcHERY9nUUzHOxYYVvkYmNPRcb6lQknO8dU0JSO-LlE7RdhhQFquWdVg4iHSbaJ1goNg-CwShJ-52jWzHJUIxnt3ADxkPC3Fqp9cjlAHq4j5X8iLwaeUd-Eo46GLvblx5B878CWzGSFp5J26iM8AN4hLAcNAjrPIO7Nl8qyrmgx7BAf_f73d5hHDMcXFbCESCCv9JCa3UwVUkrR0GTCRYpR77I8Bej1Tq4IwQiwIcPS9Axc3yOmi5_gh0XL5CPXrmxaE05Fkm1HQTXK9cYuZ4PfpeaOJ4HE1lqZYVWhwRJwNmDXT4wzPmVoXvvTAA7bEAuwq_xP6___xXhu8z8C0cPcVpLwPHcb4kmYI7jAK5DlddBTADxhb4zMMBp0BsmpZULBltrwY4iPFBdTv0etOYE8kYnd7yBRLTAfGsOJ06otrhKQSOCdsSNkL_-89_ofF-Ug-4VWmUP-JktsNo1voU2DjgY-MHMyZWqQHq82qW2I_Hbjfw-0CGW5nKFJc7rjg0QDtkKRChuE9AlzcYruPFMmB6F52N-TxLOC4wvjtQ9ImHWZRCiQAOjUtRnN23YX8Q14FMgXU8sSRfKA29DWqnRZS1P6NcdXgGdlMFBRozhdXh1YGSgFdjnODhJG1xICSOLe3QuW7cAq1sf-J4zM8W87Sju85DZLqoaYliPPG78DI0__ef_yLu5ex5mR34Yc8G_Ctm80rCTx3XnHhMjJh9gcmRWdO-5DOK-xbMADJqws3TjoUDu7AuMiMEz2rnD4hH4yYiGwuiRDkC1afRjEUvxbtbnqixJpExunw_lja2RGxEKeH5zObTmS9M50Rlk-IhmTSCvOIvXkjfR7qKM4ReHAlWVEwdCjRdeDxK0uzsgRvSmTIx8kPXisBNlsxI_Emd5yvw32aR2bjlp84-HofjgsR7BwpsEpBa0tpkWqYBHnOjxBbop8KcW5g_ZBe3S6Im87X40CcNS8ql06AIyMDFHUJTqCfiEvG41Iz3MxGFeWkRJ4pFnT0TF_QJbic9Z5fZIl64ySdbigrDOAyMMMczLrlm5LRbz5jvzxmrZBrJGq-UGQTnACMUTyAg02WKDA78CFf4s2hRP-VQHkuOxwPwZv-qINz-nNcO8wznuRFlTNunlDfxV1FuiKJO4wo2joHuPbj2uq7jdURiJMzBD_rY5cNr4NprBwTfJQkt4i8IifhWuNKQ3sf2H5K6MH9cSkY2f7qEN8ypFGQTdiA6aT_K_-ix4kmaZ3pEjjzxsA7fdWoLHDrsqQNFuGQ9KGybjuNp8_rntGOLlUo7L-ZDAzyOIiauwM_6ReiZ0_j5cXSEmPfWNOpln_hJGFONjEmdh3oSylw6fnbx5GKPiEwW8yZ8JEZq4DAhQVwdeEvCO3ErslvU6DEedAQH7jhuPJ702JE00ybcmdd6R1YTVYN3DXWb4GFUdUwpq0UN8J9HxfvF8R3totN38GDAHyqbenuSdAGx6vzcEaVsPU8GfC8lBHDx2A8ZnXbbTlq3P59GD78s8IRwRXhdQLqS6v9MWEQ20d4LNtQRD65NdV4mIyjmJH-WDs0UjZlIlyJ-2aRNtUBxsLrCNk4PDMKgY2NKtna2o2tclZ3tC8zs8-4uZ8-O1_tY-X93F3vU",
     "steps": [
       "leveling-1-12",
       "leveling-12-28",
@@ -8828,7 +8843,7 @@
     "treeVersion": "3_30",
     "patchHash": "c7a4330850eb17ef",
     "calibrated": true,
-    "checkedAt": "2026-11-28T08:26:38.981Z"
+    "checkedAt": "2026-11-28T12:22:58.227Z"
   },
   "season": {
     "id": "covens",
@@ -8855,6 +8870,17 @@
         "The 28-38 step now has its own 41-point tree and stays on Sunder; Boneshatter starts at 39 with Brutality and its own gate report.",
         "The 39-68 step shows the support progression and keeps a mana flask until the axe carries leech.",
         "Ascendancy labs are named correctly: Unflinching, Unbreakable, Undeniable and Unrelenting."
+      ],
+      "seasonName": "Covens"
+    },
+    {
+      "season": "covens",
+      "date": "2026-11-28",
+      "notes": [
+        "Ground Slam and Ruthless open the leveling; Sunder takes over at 12 and Boneshatter at 39.",
+        "Herald of Ash covers the pre-Brutality Sunder stretch; Herald of Purity returns when Brutality replaces Added Fire.",
+        "Cast when Damage Taken carries Immortal Call only; Vulnerability is self-cast because the 38 mana pool cannot pay both.",
+        "The early and 68 checkpoints use level-legal gear, and the axe carries a Dexterity roll it can equip."
       ],
       "seasonName": "Covens"
     }
@@ -8969,7 +8995,7 @@
   "stepPlans": {
     "leveling-1-12": {
       "goals": [
-        "Level with Cleave and Added Fire Damage; Boneshatter unlocks at 28, so do not buy for it yet.",
+        "Level with Ground Slam and Ruthless; Added Fire joins at 8, and Sunder takes over at 12. Boneshatter unlocks at 28, so do not buy for it yet.",
         "Physical damage is the whole build: upgrade the weapon whenever a higher-DPS base drops."
       ],
       "lookFor": [
@@ -9010,7 +9036,7 @@
     },
     "leveling-12-28": {
       "goals": [
-        "Sunder is the main skill from 28; self-cast Vulnerability once it is available and keep Enduring Cry on a movement or left-click bind.",
+        "Sunder is the main skill from 12; self-cast Vulnerability on rares and bosses and keep Enduring Cry on a movement or left-click bind.",
         "Boneshatter unlocks at 28 but keeps the same four links, so it is not a damage jump until Brutality is in the link; keep the four-link and save for the axe.",
         "Keep a mana flask: the magic axe cannot carry leech."
       ],
@@ -9055,8 +9081,8 @@
       "goals": [
         "Stay on Sunder through 38: this step is the Sunder measurement, not a Boneshatter step.",
         "Brutality is already usable at 38, but the guide swaps at 39 when the next step opens; a better axe is an upgrade, not a gate.",
-        "Cast when Damage Taken brings Vulnerability and Immortal Call at 38; keep their levels capped to the trigger.",
-        "Herald of Purity and Determination come online here; the mana flask pays for them until the axe carries leech."
+        "Cast when Damage Taken carries Immortal Call only; self-cast Vulnerability, because the 38 mana pool cannot pay both.",
+        "Herald of Ash and Determination are the auras here; swap Ash for Herald of Purity at 39 when Brutality replaces Added Fire."
       ],
       "lookFor": [
         {
@@ -9098,7 +9124,7 @@
     "leveling-38-68": {
       "goals": [
         "A 4-link is enough until level 38: swap Added Fire Damage for Brutality, then add Pulverise as the fifth link when you have one.",
-        "Boneshatter starts at 39; Herald of Purity and Determination are the auras, and until the axe carries leech, run a mana flask in place of the Silver Flask.",
+        "Boneshatter starts at 39; Herald of Purity and Determination are the auras, CWDT carries Immortal Call only, and until the axe carries leech, run a mana flask in place of the Silver Flask.",
         "5-link Boneshatter and reach 2,000 life; the 6-link is the maps-red step, not this one.",
         "Take the labs when they unlock: Unflinching at the normal lab, Unbreakable at the cruel lab, then Undeniable and Unrelenting."
       ],
@@ -9235,7 +9261,7 @@
     "maps-red": {
       "goals": [
         "Six-link, 20% quality gems, 5,500 life and 12,500 max hit.",
-        "Herald of Purity is the damage aura and a level-capped Vulnerability rides on Cast when Damage Taken.",
+        "Herald of Purity is the damage aura; self-cast Vulnerability, because Cast when Damage Taken carries Immortal Call only.",
         "Swap Close Combat for Melee Splash on pack-heavy maps; keep Close Combat for bosses."
       ],
       "lookFor": [
@@ -9282,7 +9308,7 @@
     "endgame-pinnacle": {
       "goals": [
         "Cap chaos resistance at 75% and reach 7,000 life.",
-        "Keep Herald of Purity and Vulnerability up; the measured pinnacle uses 21/20 gems, and 20/20 is the budget version."
+        "Keep Herald of Purity up and self-cast Vulnerability; the measured pinnacle uses 21/20 gems, and 20/20 is the budget version."
       ],
       "lookFor": [
         {
@@ -9442,27 +9468,6 @@
       "qualityEffect": "Supported Skills require % reduced amount of Damage taken to Trigger",
       "qualityWorth": "recommended"
     },
-    "Cleave": {
-      "requiredLevel": 1,
-      "source": {
-        "kind": "vendor",
-        "act": 1,
-        "quest": "Enemy at the Gate"
-      },
-      "color": "r",
-      "support": false,
-      "description": "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
-      "effect": [
-        "When Dual Wielding, Deals 60% Damage from each Weapon combined"
-      ],
-      "tags": [
-        "area",
-        "attack",
-        "melee"
-      ],
-      "qualityEffect": "metres to radius per Nearby Enemy, up to a maximum of +1 metre",
-      "qualityWorth": "recommended"
-    },
     "Close Combat": {
       "requiredLevel": 18,
       "source": {
@@ -9576,6 +9581,56 @@
         "attack"
       ],
       "qualityEffect": "Supported Skills have % increased Attack Speed",
+      "qualityWorth": "recommended"
+    },
+    "Ground Slam": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "reward",
+        "act": 1,
+        "quest": "Enemy at the Gate"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Slams the ground in front of you, creating a wave that travels forward and damages enemies with an increased chance to stun. The wave deals more damage to closer enemies. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+      "effect": [
+        "25% reduced Enemy Stun Threshold",
+        "+1 metre to radius",
+        "Deals up to 49% more Damage with Hits to closer targets"
+      ],
+      "tags": [
+        "area",
+        "attack",
+        "melee",
+        "slam"
+      ],
+      "qualityEffect": "Deals up to % more Damage with Hits to closer targets",
+      "qualityWorth": "recommended"
+    },
+    "Herald of Ash": {
+      "requiredLevel": 16,
+      "source": {
+        "kind": "reward",
+        "act": 2,
+        "quest": "Intruders in Black"
+      },
+      "color": "r",
+      "support": false,
+      "description": "Grants a buff providing fire damage based on your physical damage. While you have this buff, if you kill an enemy, other enemies near them will be burned based on the overkill damage. The burn inflicted by this skill can only be affected by modifiers to damage over time (burning damage is damage over time).",
+      "effect": [
+        "Base duration is 4.00 seconds",
+        "Base Burning Damage is 25% of Overkill Damage",
+        "38% more Burning Damage",
+        "Buff grants 20% of your Physical Damage as Extra Fire Damage"
+      ],
+      "tags": [
+        "area",
+        "duration",
+        "fire",
+        "herald",
+        "spell"
+      ],
+      "qualityEffect": "Base burning damage is an additional % of Overkill Damage",
       "qualityWorth": "recommended"
     },
     "Herald of Purity": {
@@ -9706,6 +9761,31 @@
       "qualityEffect": "Supported Skills have % increased Area of Effect",
       "qualityWorth": "recommended"
     },
+    "Ruthless": {
+      "requiredLevel": 1,
+      "source": {
+        "kind": "vendor",
+        "act": 1,
+        "quest": "Mercy Mission"
+      },
+      "color": "r",
+      "support": true,
+      "description": null,
+      "effect": [
+        "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
+        "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds",
+        "Ruthless Blows with Supported Skills deal 98% more Melee Damage",
+        "Ruthless Blows with Supported Skills deal 98% more Damage with\nAilments caused by Melee Hits"
+      ],
+      "tags": [
+        "attack",
+        "melee",
+        "slam",
+        "strike"
+      ],
+      "qualityEffect": "Supported Skills deal % increased Attack Damage",
+      "qualityWorth": "recommended"
+    },
     "Sunder": {
       "requiredLevel": 12,
       "source": {
@@ -9760,10 +9840,10 @@
       "qualityWorth": "recommended"
     }
   },
-  "seedHash": "4b4d464a3907",
+  "seedHash": "ec05c720398f",
   "guide": {
     "summary": {
-      "text": "Boneshatter Juggernaut is a two-handed melee build that measures 439.5k at red maps and 660.4k at pinnacle. The rare axe, armour rolls and Herald of Purity carry the damage, the ascendancy makes the trauma survivable, and no unique is required.",
+      "text": "Boneshatter Juggernaut is a two-handed melee build that measures 434.0k at red maps and 620.8k at pinnacle. The rare axe, armour rolls and Herald of Purity carry the damage, the ascendancy makes the trauma survivable, and no unique is required.",
       "status": "signed",
       "signed": {
         "by": "maintainer",
@@ -9775,10 +9855,10 @@
         "gates.maps-red.metrics.dps",
         "gates.endgame-pinnacle.metrics.dps"
       ],
-      "factsHash": "3caf509afb8983b2"
+      "factsHash": "4377898638df40b4"
     },
     "leveling": {
-      "text": "Level with Cleave and Added Fire Damage until Sunder is available, then stay on Sunder for the measured stretch. Brutality is already usable before the swap; the guide moves to Boneshatter at the next step, because the Sunder checkpoint is what the gate measures. A better two-handed axe is an upgrade, not a gate. The first checkpoint measures 425 life and 41 damage; the second measures 1.5k with a self-cast Vulnerability. The mana flask covers you until the rare axe carries leech; the Silver Flask comes with that axe.",
+      "text": "Level with Ground Slam and Ruthless until Sunder unlocks, then stay on Sunder for the measured stretch. Take Ground Slam as the Marauder reward, buy Ruthless after Mercy Mission, and add Added Fire when it unlocks. Brutality is already usable before the swap; the guide moves to Boneshatter at the next step, because the Sunder checkpoint is what the gate measures. A better two-handed axe is an upgrade, not a gate. The first checkpoint measures 425 life and 35 damage; the second measures 1.3k with a self-cast Vulnerability. The mana flask covers you until the rare axe carries leech; the Silver Flask comes with that axe.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -9786,10 +9866,10 @@
         "gates.leveling-1-12.metrics.dps",
         "gates.leveling-12-28.metrics.dps"
       ],
-      "factsHash": "acaa7ac12588b865"
+      "factsHash": "19fa82da4a191b8b"
     },
     "maps": {
-      "text": "At red maps the build measures 439.5k damage, 30206 effective life and 12237 physical max hit. Herald of Purity is the damage aura and a level-capped Vulnerability rides on Cast when Damage Taken; the axe's mana leech keeps the quarter-full mana bar up. Cap the elemental resistances, keep the axe current, and swap Close Combat for Melee Splash when you want faster packs.",
+      "text": "At red maps the build measures 434.0k damage, 30206 effective life and 12237 physical max hit. Herald of Purity is the damage aura; Vulnerability is self-cast and Cast when Damage Taken carries Immortal Call only, because the mana pool cannot pay both. The axe's mana leech keeps the quarter-full mana bar up. Cap the elemental resistances, keep the axe current, and swap Close Combat for Melee Splash when you want faster packs.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -9797,10 +9877,10 @@
         "gates.maps-red.metrics.ehp",
         "gates.maps-red.metrics.maxHit"
       ],
-      "factsHash": "3adc00ddf2243b0e"
+      "factsHash": "378de79918a45ca5"
     },
     "bossing": {
-      "text": "Pinnacle measures 660.4k damage with 39287 effective life and 15201 physical max hit. Use Enduring Cry before the burst, keep Vulnerability up, and keep the trauma stacks running while you move out of the biggest slams.",
+      "text": "Pinnacle measures 620.8k damage with 39287 effective life and 15201 physical max hit. Use Enduring Cry before the burst, keep Vulnerability up, and keep the trauma stacks running while you move out of the biggest slams.",
       "status": "auto-retry",
       "signed": null,
       "facts": [
@@ -9808,7 +9888,7 @@
         "gates.endgame-pinnacle.metrics.ehp",
         "gates.endgame-pinnacle.metrics.maxHit"
       ],
-      "factsHash": "ddb9da50a7f9ad36"
+      "factsHash": "602f69e03fc32fe0"
     }
   },
   "medal": "S+"

@@ -59,12 +59,13 @@ guide:
     signed: { by: "maintainer", at: "2026-11-27T00:00:00Z" }
   leveling:
     text: >-
-      Level with Cleave and Added Fire Damage until Sunder is available, then
-      stay on Sunder for the measured stretch. Brutality is already usable
-      before the swap; the guide moves to Boneshatter at the next step, because
-      the Sunder checkpoint is what the gate measures. A better two-handed axe
-      is an upgrade, not a gate. The first checkpoint measures
-      {{gates.leveling-1-12.metrics.life|int}} life and
+      Level with Ground Slam and Ruthless until Sunder unlocks, then stay on
+      Sunder for the measured stretch. Take Ground Slam as the Marauder reward,
+      buy Ruthless after Mercy Mission, and add Added Fire when it unlocks.
+      Brutality is already usable before the swap; the guide moves to
+      Boneshatter at the next step, because the Sunder checkpoint is what the
+      gate measures. A better two-handed axe is an upgrade, not a gate. The
+      first checkpoint measures {{gates.leveling-1-12.metrics.life|int}} life and
       {{gates.leveling-1-12.metrics.dps|dps}} damage; the second measures
       {{gates.leveling-12-28.metrics.dps|dps}} with a self-cast Vulnerability. The mana
       flask covers you until the rare axe carries leech; the Silver Flask comes
@@ -75,8 +76,9 @@ guide:
       At red maps the build measures {{gates.maps-red.metrics.dps|dps}} damage,
       {{gates.maps-red.metrics.ehp|int}} effective life and
       {{gates.maps-red.metrics.maxHit|int}} physical max hit. Herald of Purity is
-      the damage aura and a level-capped Vulnerability rides on Cast when Damage
-      Taken; the axe's mana leech keeps the quarter-full mana bar up. Cap the
+      the damage aura; Vulnerability is self-cast and Cast when Damage Taken
+      carries Immortal Call only, because the mana pool cannot pay both. The
+      axe's mana leech keeps the quarter-full mana bar up. Cap the
       elemental resistances, keep the axe current, and swap Close Combat for
       Melee Splash when you want faster packs.
     facts: [gates.maps-red.metrics.dps, gates.maps-red.metrics.ehp, gates.maps-red.metrics.maxHit]
@@ -125,18 +127,20 @@ steps:
     sub:
       - id: leveling-1-12
         level: 12
-        main: Cleave
+        main: Ground Slam
         watch: >-
-          Cleave with Added Fire Damage and Faster Attacks carries acts 1-2.
-          Keep a mana flask, because slam attacks are mana-hungry before leech,
-          and do not spend currency on a rare axe yet.
+          Ground Slam with Ruthless and Added Fire Damage carries acts 1-2.
+          Take Ground Slam as the Marauder reward, buy Ruthless after Mercy
+          Mission, and add Added Fire at 8. Keep a mana flask, because slam
+          attacks are mana-hungry before leech, and do not spend currency on a
+          rare axe yet.
         measure: true
         gems:
           - slot: Body Armour
             gems:
-              - Cleave
+              - Ground Slam
+              - Ruthless
               - Added Fire Damage
-              - Faster Attacks
           - slot: Weapon 1
             gems:
               - Leap Slam
@@ -157,11 +161,13 @@ steps:
         main: Sunder
         trigger: { from: 12, skill: Sunder }
         watch: >-
-          Sunder clears packs and hits single targets harder than Cleave, so it
-          carries you from 12. Boneshatter unlocks at 28 but keeps the same four
-          links and asks you to stand still and stack trauma, so it is not a
-          damage jump until Brutality is in the link. Stay on Sunder into the
-          next step and do not fix the stretch with currency.
+          Sunder clears packs and hits single targets harder than Ground Slam,
+          so it carries you from 12. Boneshatter unlocks at 28 but keeps the
+          same four links and asks you to stand still and stack trauma, so it is
+          not a damage jump until Brutality is in the link. Herald of Ash
+          unlocks at 16; keep it off until the 28 step, because it reserves a
+          quarter of the bar and Sunder is mana-hungry before leech. Stay on
+          Sunder into the next step and do not fix the stretch with currency.
         measure: true
         gems:
           - slot: Body Armour
@@ -183,7 +189,7 @@ steps:
               - Determination
           - slot: Gloves
             gems:
-              - { name: Vulnerability, note: "Self-cast until Cast when Damage Taken is available at 38." }
+              - { name: Vulnerability, note: "Self-cast on rares and bosses; CWDT will carry Immortal Call only." }
         flasks:
           - { slot: life, name: "Giant Life Flask", note: "Drops from level 24; medium is too small by now." }
           - { slot: mana, name: "Greater Mana Flask", note: "Drops from level 12; the magic axe cannot carry leech yet." }
@@ -210,10 +216,13 @@ steps:
           Stay on Sunder through 38: this step is the Sunder measurement, not a
           Boneshatter step. Brutality is already usable at 38, but the guide
           swaps at 39 when the next step opens. The four links and the missing
-          axe are what make this stretch feel bad, so spend nothing to fix it
-          and save for the axe. Cast when Damage Taken brings Vulnerability and
-          Immortal Call at 38; Herald of Purity and Determination come online
-          here too, with the mana flask paying for them until the axe has leech.
+          rare axe are what make this stretch feel bad, so spend nothing to fix
+          it and save for the axe. Cast when Damage Taken carries Immortal Call
+          only: at 38 the unreserved pool is 67 mana, and Immortal Call plus
+          Vulnerability would cost 109, so self-cast the curse. Herald of Ash
+          and Determination are the auras here, with the mana flask paying for
+          them until the axe has leech; swap Ash for Herald of Purity at 39 when
+          Brutality replaces Added Fire.
         measure: true
         gems:
           - slot: Body Armour
@@ -228,16 +237,16 @@ steps:
               - Enduring Cry
           - slot: Helmet
             gems:
-              - { name: Herald of Purity, note: "The mana flask pays for this until the axe carries leech." }
+              - { name: Herald of Ash, note: "Pre-Brutality aura; swap to Herald of Purity at 39." }
               - Determination
           - slot: Gloves
             gems:
               - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
               - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
-              - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
           - slot: Boots
             gems:
               - Decoy Totem
+              - { name: Vulnerability, note: "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together." }
         flasks:
           - { slot: life, name: "Giant Life Flask", note: "Divine drops at 60, so the giant flask is what you have at 38." }
           - { slot: mana, name: "Greater Mana Flask", note: "The axe cannot carry leech yet, so keep this." }
@@ -254,7 +263,8 @@ steps:
           The fifth link is Pulverise and it waits for 68. Herald of Purity and
           Determination are the auras; until the axe carries leech, run a mana
           flask in place of the Silver Flask and drop it once leech is online.
-          Take the labs as they unlock: Unflinching at the normal lab,
+          CWDT carries Immortal Call only; self-cast Vulnerability on rares and
+          bosses. Take the labs as they unlock: Unflinching at the normal lab,
           Unbreakable at the cruel lab.
         measure: true
         gems:
@@ -277,10 +287,10 @@ steps:
             gems:
               - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
               - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
-              - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
           - slot: Boots
             gems:
               - Decoy Totem
+              - { name: Vulnerability, note: "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together." }
         flasks:
           - { slot: life, name: "Divine Life Flask", note: "Drops from level 60; instant prefix." }
           - { slot: utility, name: "Silver Flask", note: "Onslaught is the damage flask now that leech covers mana." }
@@ -298,7 +308,8 @@ steps:
           The five-link clears white maps, so spend the first maps on the weapon
           and the resistances, not on the chest. Fit Herald of Purity with
           Determination once the axe has mana leech; before that the mana flask
-          is what pays for attacks.
+          is what pays for attacks. CWDT carries Immortal Call only, so keep
+          Vulnerability on a manual cast for rares and bosses.
         measure: true
         gems:
           - slot: Body Armour
@@ -320,10 +331,10 @@ steps:
             gems:
               - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
               - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
-              - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
           - slot: Boots
             gems:
               - Decoy Totem
+              - { name: Vulnerability, note: "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together." }
         flasks:
           - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
           - { slot: utility, name: "Silver Flask", note: "Onslaught is the damage flask." }
@@ -359,9 +370,14 @@ steps:
             gems:
               - Herald of Purity
               - Determination
+          - slot: Gloves
+            gems:
+              - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
+              - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
           - slot: Boots
             gems:
               - Decoy Totem
+              - { name: Vulnerability, note: "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together." }
         flasks:
           - { slot: life, name: "Divine Life Flask", note: "Instant prefix." }
           - { slot: utility, name: "Silver Flask", note: "Onslaught." }
@@ -376,8 +392,8 @@ steps:
         watch: >-
           The six-link, 20% quality gems and capped resistances are the red-map
           gate. Swap Close Combat for Melee Splash on pack-heavy layouts and keep
-          it for bosses; Herald of Purity stays the damage aura and Vulnerability
-          rides on Cast when Damage Taken.
+          it for bosses; Herald of Purity stays the damage aura, and
+          Vulnerability is self-cast because CWDT carries Immortal Call only.
         measure: true
         gems:
           - slot: Body Armour
@@ -400,10 +416,10 @@ steps:
             gems:
               - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
               - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
-              - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
           - slot: Boots
             gems:
               - Decoy Totem
+              - { name: Vulnerability, note: "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together." }
         flasks:
           - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
           - { slot: utility, name: "Silver Flask", note: "Onslaught: attack speed and movement." }
@@ -419,8 +435,9 @@ steps:
         trigger: { from: 90, budget: trade }
         watch: >-
           Cap chaos resistance and keep the trauma stacks running while you move
-          out of the biggest slams. Enduring Cry before the burst; the weapon is
-          the last big purchase and it must keep mana leech.
+          out of the biggest slams. Enduring Cry before the burst; keep
+          Vulnerability on a manual cast for the burst, and keep mana leech on
+          the weapon because it is the last big purchase.
         measure: true
         gems:
           - slot: Body Armour
@@ -443,10 +460,10 @@ steps:
             gems:
               - { name: Cast when Damage Taken, maxLevel: 5, note: "Level 1-5 only: higher levels need bigger hits before it triggers." }
               - { name: Immortal Call, maxLevel: 7, note: "Level 7 is the highest a level-5 CWDT can support." }
-              - { name: Vulnerability, maxLevel: 8, note: "Level 8 is the highest a level-5 CWDT can support." }
           - slot: Boots
             gems:
               - Decoy Totem
+              - { name: Vulnerability, note: "Self-cast on rares and bosses; CWDT cannot pay it and Immortal Call together." }
         flasks:
           - { slot: life, name: "Divine Life Flask", note: "Keep the instant prefix." }
           - { slot: utility, name: "Silver Flask", note: "Onslaught: attack speed and movement." }
@@ -493,3 +510,10 @@ changelog:
       - "The 28-38 step now has its own 41-point tree and stays on Sunder; Boneshatter starts at 39 with Brutality and its own gate report."
       - "The 39-68 step shows the support progression and keeps a mana flask until the axe carries leech."
       - "Ascendancy labs are named correctly: Unflinching, Unbreakable, Undeniable and Unrelenting."
+  - season: covens
+    date: "2026-11-28"
+    notes:
+      - "Ground Slam and Ruthless open the leveling; Sunder takes over at 12 and Boneshatter at 39."
+      - "Herald of Ash covers the pre-Brutality Sunder stretch; Herald of Purity returns when Brutality replaces Added Fire."
+      - "Cast when Damage Taken carries Immortal Call only; Vulnerability is self-cast because the 38 mana pool cannot pay both."
+      - "The early and 68 checkpoints use level-legal gear, and the axe carries a Dexterity roll it can equip."

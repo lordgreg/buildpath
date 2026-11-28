@@ -1513,14 +1513,20 @@ describe('leveling availability', () => {
     }
   });
 
-  it('sends the Marauder to the right quest for Cleave and Boneshatter', () => {
+  it('sends the Marauder to the right quest for Ground Slam, Ruthless and Boneshatter', () => {
     const build = compiled.find((entry) => entry.id === 'boneshatter-juggernaut');
-    // Cleave is not a Marauder quest reward: it is on the Act 1 vendor after
-    // the first quest, which is the moment the character reaches town.
-    expect(build?.gemInfo?.Cleave?.source).toEqual({
-      kind: 'vendor',
+    // Ground Slam is the Marauder's level-1 reward after Hillock.
+    expect(build?.gemInfo?.['Ground Slam']?.source).toEqual({
+      kind: 'reward',
       act: 1,
       quest: 'Enemy at the Gate',
+    });
+    // Ruthless is not a Marauder reward: the vendor sells it after the Tidal
+    // Island quest, which is the earliest point the character can buy it.
+    expect(build?.gemInfo?.Ruthless?.source).toEqual({
+      kind: 'vendor',
+      act: 1,
+      quest: 'Mercy Mission',
     });
     // RePoE has no quest for Boneshatter at all; the reviewed supplement does.
     expect(build?.gemInfo?.Boneshatter?.source).toEqual({

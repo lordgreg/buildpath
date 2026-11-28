@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.82.2',
+    date: '2026-11-28',
+    title: 'Boneshatter leveling and gate gear',
+    notes: [
+      "**Boneshatter opens on Ground Slam.** Ground Slam and Ruthless carry acts 1-2, Sunder follows at 12, and Boneshatter stays at 39.",
+      "**Herald of Ash covers the pre-Brutality stretch.** The 28-38 Sunder step runs Ash with Determination; Herald of Purity returns at 39 when Brutality replaces Added Fire.",
+      "**CWDT carries Immortal Call only.** The 38 mana pool is 67 and the old Immortal Call plus Vulnerability trigger cost 109, so Vulnerability is self-cast.",
+      "**Gate gear is now equippable.** The 28 and 38 checkpoints use level-28 bases, the 68 step uses a level-58 Karui Chopper, and the axe carries the Dexterity roll it needs.",
+      "812 tests.",
+    ],
+    commits: [],
+    compare: 'v0.82.1...v0.82.2',
+  },
+  {
     version: '0.82.1',
     date: '2026-11-28',
     title: 'Guide menu polish',
