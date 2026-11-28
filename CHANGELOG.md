@@ -2,6 +2,15 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.82.3 — 2026-11-28
+
+Guide navigation and Boneshatter mana.
+
+- **Selecting a step no longer scrolls the guide.** The step picker updates the page in place; it does not jump back to the picker block.
+- **Contents follows the page.** The section you are reading is highlighted in the sticky menu, from Introduction through Changelog.
+- **Boneshatter drops the leveling mana flask.** The 28-38 Sunder step runs Mana Leech instead of Faster Attacks, and the 39-68 step relies on the Karui Chopper's mana leech. The stale “mana flask until the axe” text is gone.
+- 812 tests.
+
 ## 0.82.2 — 2026-11-28
 
 Boneshatter leveling and gate gear.

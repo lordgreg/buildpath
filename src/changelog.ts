@@ -17,6 +17,19 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.82.3',
+    date: '2026-11-28',
+    title: 'Guide navigation and Boneshatter mana',
+    notes: [
+      "**Selecting a step no longer scrolls the guide.** The step picker updates the page in place; it does not jump back to the picker block.",
+      "**Contents follows the page.** The section you are reading is highlighted in the sticky menu, from Introduction through Changelog.",
+      "**Boneshatter drops the leveling mana flask.** The 28-38 Sunder step runs Mana Leech instead of Faster Attacks, and the 39-68 step relies on the Karui Chopper's mana leech. The stale 'mana flask until the axe' text is gone.",
+      "812 tests.",
+    ],
+    commits: [],
+    compare: 'v0.82.2...v0.82.3',
+  },
+  {
     version: '0.82.2',
     date: '2026-11-28',
     title: 'Boneshatter leveling and gate gear',
