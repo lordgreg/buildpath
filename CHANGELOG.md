@@ -2,6 +2,16 @@
 
 All notable changes to BuildPath. The same data powers the in-site changelog.
 
+## 0.82.1 — 2026-11-28
+
+Guide menu polish.
+
+- **The step picker no longer shows pass/fail.** The gate report carries the measurement status; the menu is navigation only.
+- **The sticky menu clears the site header.** It now starts below the header and scrolls internally on short screens, so the first steps are not cut off.
+- **Only the active sub-step is highlighted.** A root row is a group label, not a second selected item, so the root and child no longer overlap visually.
+- **The catalogue no longer repeats the guide link.** Clicking the build title opens the guide; the card keeps only the filter action.
+- 810 tests.
+
 ## 0.82.0 — 2026-11-28
 
 Guide restructure, site search and one full-journey PoB code.

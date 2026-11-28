@@ -17,6 +17,20 @@ export const REPO_URL = 'https://github.com/lordgreg/buildpath';
 
 export const RELEASES: Release[] = [
   {
+    version: '0.82.1',
+    date: '2026-11-28',
+    title: 'Guide menu polish',
+    notes: [
+      "**The step picker no longer shows pass/fail.** The gate report carries the measurement status; the menu is navigation only.",
+      "**The sticky menu clears the site header.** It now starts below the header and scrolls internally on short screens, so the first steps are not cut off.",
+      "**Only the active sub-step is highlighted.** A root row is a group label, not a second selected item, so the root and child no longer overlap visually.",
+      "**The catalogue no longer repeats the guide link.** Clicking the build title opens the guide; the card keeps only the filter action.",
+      "810 tests.",
+    ],
+    commits: [],
+    compare: 'v0.82.0...v0.82.1',
+  },
+  {
     version: '0.82.0',
     date: '2026-11-28',
     title: 'Guide restructure, site search and one full-journey PoB code',
